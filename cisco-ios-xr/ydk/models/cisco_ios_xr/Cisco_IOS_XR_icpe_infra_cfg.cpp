@@ -348,27 +348,27 @@ bool NvSatellites::has_leaf_or_child_of_name(const std::string & name) const
 NvSatellites::NvSatellite::NvSatellite()
     :
     satellite_id{YType::uint32, "satellite-id"},
-    delayed_switchback{YType::uint32, "delayed-switchback"},
-    description{YType::str, "description"},
-    device_name{YType::str, "device-name"},
-    disc_timeout{YType::uint32, "disc-timeout"},
-    enable{YType::empty, "enable"},
-    ip_address{YType::str, "ip-address"},
-    secret{YType::str, "secret"},
-    serial_number{YType::str, "serial-number"},
+    vrf{YType::str, "vrf"},
     timeout_warning{YType::uint32, "timeout-warning"},
+    device_name{YType::str, "device-name"},
+    description{YType::str, "description"},
     type{YType::str, "type"},
-    vrf{YType::str, "vrf"}
+    enable{YType::empty, "enable"},
+    disc_timeout{YType::uint32, "disc-timeout"},
+    delayed_switchback{YType::uint32, "delayed-switchback"},
+    serial_number{YType::str, "serial-number"},
+    secret{YType::str, "secret"},
+    ip_address{YType::str, "ip-address"}
     	,
-    candidate_fabric_ports(std::make_shared<NvSatellites::NvSatellite::CandidateFabricPorts>())
+    upgrade_on_connect(std::make_shared<NvSatellites::NvSatellite::UpgradeOnConnect>())
+	,candidate_fabric_ports(std::make_shared<NvSatellites::NvSatellite::CandidateFabricPorts>())
 	,connection_info(std::make_shared<NvSatellites::NvSatellite::ConnectionInfo>())
 	,redundancy(std::make_shared<NvSatellites::NvSatellite::Redundancy>())
-	,upgrade_on_connect(std::make_shared<NvSatellites::NvSatellite::UpgradeOnConnect>())
 {
+    upgrade_on_connect->parent = this;
     candidate_fabric_ports->parent = this;
     connection_info->parent = this;
     redundancy->parent = this;
-    upgrade_on_connect->parent = this;
 
     yang_name = "nv-satellite"; yang_parent_name = "nv-satellites"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -380,42 +380,42 @@ NvSatellites::NvSatellite::~NvSatellite()
 bool NvSatellites::NvSatellite::has_data() const
 {
     return satellite_id.is_set
-	|| delayed_switchback.is_set
-	|| description.is_set
-	|| device_name.is_set
-	|| disc_timeout.is_set
-	|| enable.is_set
-	|| ip_address.is_set
-	|| secret.is_set
-	|| serial_number.is_set
-	|| timeout_warning.is_set
-	|| type.is_set
 	|| vrf.is_set
+	|| timeout_warning.is_set
+	|| device_name.is_set
+	|| description.is_set
+	|| type.is_set
+	|| enable.is_set
+	|| disc_timeout.is_set
+	|| delayed_switchback.is_set
+	|| serial_number.is_set
+	|| secret.is_set
+	|| ip_address.is_set
+	|| (upgrade_on_connect !=  nullptr && upgrade_on_connect->has_data())
 	|| (candidate_fabric_ports !=  nullptr && candidate_fabric_ports->has_data())
 	|| (connection_info !=  nullptr && connection_info->has_data())
-	|| (redundancy !=  nullptr && redundancy->has_data())
-	|| (upgrade_on_connect !=  nullptr && upgrade_on_connect->has_data());
+	|| (redundancy !=  nullptr && redundancy->has_data());
 }
 
 bool NvSatellites::NvSatellite::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(satellite_id.yfilter)
-	|| ydk::is_set(delayed_switchback.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(device_name.yfilter)
-	|| ydk::is_set(disc_timeout.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(secret.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(timeout_warning.yfilter)
-	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(timeout_warning.yfilter)
+	|| ydk::is_set(device_name.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(disc_timeout.yfilter)
+	|| ydk::is_set(delayed_switchback.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(secret.yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| (upgrade_on_connect !=  nullptr && upgrade_on_connect->has_operation())
 	|| (candidate_fabric_ports !=  nullptr && candidate_fabric_ports->has_operation())
 	|| (connection_info !=  nullptr && connection_info->has_operation())
-	|| (redundancy !=  nullptr && redundancy->has_operation())
-	|| (upgrade_on_connect !=  nullptr && upgrade_on_connect->has_operation());
+	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
 
 std::string NvSatellites::NvSatellite::get_absolute_path() const
@@ -437,17 +437,17 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::get_na
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (satellite_id.is_set || is_set(satellite_id.yfilter)) leaf_name_data.push_back(satellite_id.get_name_leafdata());
-    if (delayed_switchback.is_set || is_set(delayed_switchback.yfilter)) leaf_name_data.push_back(delayed_switchback.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (device_name.is_set || is_set(device_name.yfilter)) leaf_name_data.push_back(device_name.get_name_leafdata());
-    if (disc_timeout.is_set || is_set(disc_timeout.yfilter)) leaf_name_data.push_back(disc_timeout.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (secret.is_set || is_set(secret.yfilter)) leaf_name_data.push_back(secret.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (timeout_warning.is_set || is_set(timeout_warning.yfilter)) leaf_name_data.push_back(timeout_warning.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (timeout_warning.is_set || is_set(timeout_warning.yfilter)) leaf_name_data.push_back(timeout_warning.get_name_leafdata());
+    if (device_name.is_set || is_set(device_name.yfilter)) leaf_name_data.push_back(device_name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (disc_timeout.is_set || is_set(disc_timeout.yfilter)) leaf_name_data.push_back(disc_timeout.get_name_leafdata());
+    if (delayed_switchback.is_set || is_set(delayed_switchback.yfilter)) leaf_name_data.push_back(delayed_switchback.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (secret.is_set || is_set(secret.yfilter)) leaf_name_data.push_back(secret.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -455,6 +455,15 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::get_na
 
 std::shared_ptr<Entity> NvSatellites::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "upgrade-on-connect")
+    {
+        if(upgrade_on_connect == nullptr)
+        {
+            upgrade_on_connect = std::make_shared<NvSatellites::NvSatellite::UpgradeOnConnect>();
+        }
+        return upgrade_on_connect;
+    }
+
     if(child_yang_name == "candidate-fabric-ports")
     {
         if(candidate_fabric_ports == nullptr)
@@ -482,21 +491,17 @@ std::shared_ptr<Entity> NvSatellites::NvSatellite::get_child_by_name(const std::
         return redundancy;
     }
 
-    if(child_yang_name == "upgrade-on-connect")
-    {
-        if(upgrade_on_connect == nullptr)
-        {
-            upgrade_on_connect = std::make_shared<NvSatellites::NvSatellite::UpgradeOnConnect>();
-        }
-        return upgrade_on_connect;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(upgrade_on_connect != nullptr)
+    {
+        children["upgrade-on-connect"] = upgrade_on_connect;
+    }
+
     if(candidate_fabric_ports != nullptr)
     {
         children["candidate-fabric-ports"] = candidate_fabric_ports;
@@ -512,11 +517,6 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::get_ch
         children["redundancy"] = redundancy;
     }
 
-    if(upgrade_on_connect != nullptr)
-    {
-        children["upgrade-on-connect"] = upgrade_on_connect;
-    }
-
     return children;
 }
 
@@ -528,53 +528,11 @@ void NvSatellites::NvSatellite::set_value(const std::string & value_path, const 
         satellite_id.value_namespace = name_space;
         satellite_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "delayed-switchback")
+    if(value_path == "vrf")
     {
-        delayed_switchback = value;
-        delayed_switchback.value_namespace = name_space;
-        delayed_switchback.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "device-name")
-    {
-        device_name = value;
-        device_name.value_namespace = name_space;
-        device_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disc-timeout")
-    {
-        disc_timeout = value;
-        disc_timeout.value_namespace = name_space;
-        disc_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secret")
-    {
-        secret = value;
-        secret.value_namespace = name_space;
-        secret.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-warning")
     {
@@ -582,17 +540,59 @@ void NvSatellites::NvSatellite::set_value(const std::string & value_path, const 
         timeout_warning.value_namespace = name_space;
         timeout_warning.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "device-name")
+    {
+        device_name = value;
+        device_name.value_namespace = name_space;
+        device_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "type")
     {
         type = value;
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vrf")
+    if(value_path == "enable")
     {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-timeout")
+    {
+        disc_timeout = value;
+        disc_timeout.value_namespace = name_space;
+        disc_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delayed-switchback")
+    {
+        delayed_switchback = value;
+        delayed_switchback.value_namespace = name_space;
+        delayed_switchback.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secret")
+    {
+        secret = value;
+        secret.value_namespace = name_space;
+        secret.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -602,55 +602,145 @@ void NvSatellites::NvSatellite::set_filter(const std::string & value_path, YFilt
     {
         satellite_id.yfilter = yfilter;
     }
-    if(value_path == "delayed-switchback")
+    if(value_path == "vrf")
     {
-        delayed_switchback.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "device-name")
-    {
-        device_name.yfilter = yfilter;
-    }
-    if(value_path == "disc-timeout")
-    {
-        disc_timeout.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "secret")
-    {
-        secret.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
+        vrf.yfilter = yfilter;
     }
     if(value_path == "timeout-warning")
     {
         timeout_warning.yfilter = yfilter;
     }
+    if(value_path == "device-name")
+    {
+        device_name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
     if(value_path == "type")
     {
         type.yfilter = yfilter;
     }
-    if(value_path == "vrf")
+    if(value_path == "enable")
     {
-        vrf.yfilter = yfilter;
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "disc-timeout")
+    {
+        disc_timeout.yfilter = yfilter;
+    }
+    if(value_path == "delayed-switchback")
+    {
+        delayed_switchback.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "secret")
+    {
+        secret.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
     }
 }
 
 bool NvSatellites::NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "candidate-fabric-ports" || name == "connection-info" || name == "redundancy" || name == "upgrade-on-connect" || name == "satellite-id" || name == "delayed-switchback" || name == "description" || name == "device-name" || name == "disc-timeout" || name == "enable" || name == "ip-address" || name == "secret" || name == "serial-number" || name == "timeout-warning" || name == "type" || name == "vrf")
+    if(name == "upgrade-on-connect" || name == "candidate-fabric-ports" || name == "connection-info" || name == "redundancy" || name == "satellite-id" || name == "vrf" || name == "timeout-warning" || name == "device-name" || name == "description" || name == "type" || name == "enable" || name == "disc-timeout" || name == "delayed-switchback" || name == "serial-number" || name == "secret" || name == "ip-address")
+        return true;
+    return false;
+}
+
+NvSatellites::NvSatellite::UpgradeOnConnect::UpgradeOnConnect()
+    :
+    connect_type{YType::enumeration, "connect-type"},
+    reference{YType::str, "reference"}
+{
+
+    yang_name = "upgrade-on-connect"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NvSatellites::NvSatellite::UpgradeOnConnect::~UpgradeOnConnect()
+{
+}
+
+bool NvSatellites::NvSatellite::UpgradeOnConnect::has_data() const
+{
+    return connect_type.is_set
+	|| reference.is_set;
+}
+
+bool NvSatellites::NvSatellite::UpgradeOnConnect::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(connect_type.yfilter)
+	|| ydk::is_set(reference.yfilter);
+}
+
+std::string NvSatellites::NvSatellite::UpgradeOnConnect::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "upgrade-on-connect";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::UpgradeOnConnect::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (connect_type.is_set || is_set(connect_type.yfilter)) leaf_name_data.push_back(connect_type.get_name_leafdata());
+    if (reference.is_set || is_set(reference.yfilter)) leaf_name_data.push_back(reference.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NvSatellites::NvSatellite::UpgradeOnConnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::UpgradeOnConnect::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "connect-type")
+    {
+        connect_type = value;
+        connect_type.value_namespace = name_space;
+        connect_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reference")
+    {
+        reference = value;
+        reference.value_namespace = name_space;
+        reference.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NvSatellites::NvSatellite::UpgradeOnConnect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "connect-type")
+    {
+        connect_type.yfilter = yfilter;
+    }
+    if(value_path == "reference")
+    {
+        reference.yfilter = yfilter;
+    }
+}
+
+bool NvSatellites::NvSatellite::UpgradeOnConnect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connect-type" || name == "reference")
         return true;
     return false;
 }
@@ -868,8 +958,8 @@ bool NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::has_l
 
 NvSatellites::NvSatellite::ConnectionInfo::ConnectionInfo()
     :
-    password{YType::str, "password"},
-    username{YType::str, "username"}
+    username{YType::str, "username"},
+    password{YType::str, "password"}
 {
 
     yang_name = "connection-info"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
@@ -881,15 +971,15 @@ NvSatellites::NvSatellite::ConnectionInfo::~ConnectionInfo()
 
 bool NvSatellites::NvSatellite::ConnectionInfo::has_data() const
 {
-    return password.is_set
-	|| username.is_set;
+    return username.is_set
+	|| password.is_set;
 }
 
 bool NvSatellites::NvSatellite::ConnectionInfo::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(password.yfilter)
-	|| ydk::is_set(username.yfilter);
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(password.yfilter);
 }
 
 std::string NvSatellites::NvSatellite::ConnectionInfo::get_segment_path() const
@@ -903,8 +993,8 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Connec
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -923,35 +1013,35 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Connec
 
 void NvSatellites::NvSatellite::ConnectionInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "username")
     {
         username = value;
         username.value_namespace = name_space;
         username.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "password")
+    {
+        password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void NvSatellites::NvSatellite::ConnectionInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
     if(value_path == "username")
     {
         username.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
     }
 }
 
 bool NvSatellites::NvSatellite::ConnectionInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "password" || name == "username")
+    if(name == "username" || name == "password")
         return true;
     return false;
 }
@@ -1028,96 +1118,6 @@ void NvSatellites::NvSatellite::Redundancy::set_filter(const std::string & value
 bool NvSatellites::NvSatellite::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "host-priority")
-        return true;
-    return false;
-}
-
-NvSatellites::NvSatellite::UpgradeOnConnect::UpgradeOnConnect()
-    :
-    connect_type{YType::enumeration, "connect-type"},
-    reference{YType::str, "reference"}
-{
-
-    yang_name = "upgrade-on-connect"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NvSatellites::NvSatellite::UpgradeOnConnect::~UpgradeOnConnect()
-{
-}
-
-bool NvSatellites::NvSatellite::UpgradeOnConnect::has_data() const
-{
-    return connect_type.is_set
-	|| reference.is_set;
-}
-
-bool NvSatellites::NvSatellite::UpgradeOnConnect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(connect_type.yfilter)
-	|| ydk::is_set(reference.yfilter);
-}
-
-std::string NvSatellites::NvSatellite::UpgradeOnConnect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "upgrade-on-connect";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::UpgradeOnConnect::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (connect_type.is_set || is_set(connect_type.yfilter)) leaf_name_data.push_back(connect_type.get_name_leafdata());
-    if (reference.is_set || is_set(reference.yfilter)) leaf_name_data.push_back(reference.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NvSatellites::NvSatellite::UpgradeOnConnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::UpgradeOnConnect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "connect-type")
-    {
-        connect_type = value;
-        connect_type.value_namespace = name_space;
-        connect_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reference")
-    {
-        reference = value;
-        reference.value_namespace = name_space;
-        reference.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NvSatellites::NvSatellite::UpgradeOnConnect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "connect-type")
-    {
-        connect_type.yfilter = yfilter;
-    }
-    if(value_path == "reference")
-    {
-        reference.yfilter = yfilter;
-    }
-}
-
-bool NvSatellites::NvSatellite::UpgradeOnConnect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "connect-type" || name == "reference")
         return true;
     return false;
 }

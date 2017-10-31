@@ -264,12 +264,12 @@ bool MdtSubscriptions::MdtSubscription::has_leaf_or_child_of_name(const std::str
 
 MdtSubscriptions::MdtSubscription::Base::Base()
     :
+    stream{YType::str, "stream"},
     encoding{YType::str, "encoding"},
-    no_filter{YType::uint32, "no-filter"},
-    no_synch_on_start{YType::boolean, "no-synch-on-start"},
     no_trigger{YType::uint32, "no-trigger"},
     period{YType::uint32, "period"},
-    stream{YType::str, "stream"},
+    no_synch_on_start{YType::boolean, "no-synch-on-start"},
+    no_filter{YType::uint32, "no-filter"},
     xpath{YType::str, "xpath"}
 {
 
@@ -282,24 +282,24 @@ MdtSubscriptions::MdtSubscription::Base::~Base()
 
 bool MdtSubscriptions::MdtSubscription::Base::has_data() const
 {
-    return encoding.is_set
-	|| no_filter.is_set
-	|| no_synch_on_start.is_set
+    return stream.is_set
+	|| encoding.is_set
 	|| no_trigger.is_set
 	|| period.is_set
-	|| stream.is_set
+	|| no_synch_on_start.is_set
+	|| no_filter.is_set
 	|| xpath.is_set;
 }
 
 bool MdtSubscriptions::MdtSubscription::Base::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(stream.yfilter)
 	|| ydk::is_set(encoding.yfilter)
-	|| ydk::is_set(no_filter.yfilter)
-	|| ydk::is_set(no_synch_on_start.yfilter)
 	|| ydk::is_set(no_trigger.yfilter)
 	|| ydk::is_set(period.yfilter)
-	|| ydk::is_set(stream.yfilter)
+	|| ydk::is_set(no_synch_on_start.yfilter)
+	|| ydk::is_set(no_filter.yfilter)
 	|| ydk::is_set(xpath.yfilter);
 }
 
@@ -314,12 +314,12 @@ std::vector<std::pair<std::string, LeafData> > MdtSubscriptions::MdtSubscription
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (stream.is_set || is_set(stream.yfilter)) leaf_name_data.push_back(stream.get_name_leafdata());
     if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
-    if (no_filter.is_set || is_set(no_filter.yfilter)) leaf_name_data.push_back(no_filter.get_name_leafdata());
-    if (no_synch_on_start.is_set || is_set(no_synch_on_start.yfilter)) leaf_name_data.push_back(no_synch_on_start.get_name_leafdata());
     if (no_trigger.is_set || is_set(no_trigger.yfilter)) leaf_name_data.push_back(no_trigger.get_name_leafdata());
     if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
-    if (stream.is_set || is_set(stream.yfilter)) leaf_name_data.push_back(stream.get_name_leafdata());
+    if (no_synch_on_start.is_set || is_set(no_synch_on_start.yfilter)) leaf_name_data.push_back(no_synch_on_start.get_name_leafdata());
+    if (no_filter.is_set || is_set(no_filter.yfilter)) leaf_name_data.push_back(no_filter.get_name_leafdata());
     if (xpath.is_set || is_set(xpath.yfilter)) leaf_name_data.push_back(xpath.get_name_leafdata());
 
     return leaf_name_data;
@@ -339,23 +339,17 @@ std::map<std::string, std::shared_ptr<Entity>> MdtSubscriptions::MdtSubscription
 
 void MdtSubscriptions::MdtSubscription::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "stream")
+    {
+        stream = value;
+        stream.value_namespace = name_space;
+        stream.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "encoding")
     {
         encoding = value;
         encoding.value_namespace = name_space;
         encoding.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "no-filter")
-    {
-        no_filter = value;
-        no_filter.value_namespace = name_space;
-        no_filter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "no-synch-on-start")
-    {
-        no_synch_on_start = value;
-        no_synch_on_start.value_namespace = name_space;
-        no_synch_on_start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-trigger")
     {
@@ -369,11 +363,17 @@ void MdtSubscriptions::MdtSubscription::Base::set_value(const std::string & valu
         period.value_namespace = name_space;
         period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stream")
+    if(value_path == "no-synch-on-start")
     {
-        stream = value;
-        stream.value_namespace = name_space;
-        stream.value_namespace_prefix = name_space_prefix;
+        no_synch_on_start = value;
+        no_synch_on_start.value_namespace = name_space;
+        no_synch_on_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-filter")
+    {
+        no_filter = value;
+        no_filter.value_namespace = name_space;
+        no_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xpath")
     {
@@ -385,17 +385,13 @@ void MdtSubscriptions::MdtSubscription::Base::set_value(const std::string & valu
 
 void MdtSubscriptions::MdtSubscription::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "stream")
+    {
+        stream.yfilter = yfilter;
+    }
     if(value_path == "encoding")
     {
         encoding.yfilter = yfilter;
-    }
-    if(value_path == "no-filter")
-    {
-        no_filter.yfilter = yfilter;
-    }
-    if(value_path == "no-synch-on-start")
-    {
-        no_synch_on_start.yfilter = yfilter;
     }
     if(value_path == "no-trigger")
     {
@@ -405,9 +401,13 @@ void MdtSubscriptions::MdtSubscription::Base::set_filter(const std::string & val
     {
         period.yfilter = yfilter;
     }
-    if(value_path == "stream")
+    if(value_path == "no-synch-on-start")
     {
-        stream.yfilter = yfilter;
+        no_synch_on_start.yfilter = yfilter;
+    }
+    if(value_path == "no-filter")
+    {
+        no_filter.yfilter = yfilter;
     }
     if(value_path == "xpath")
     {
@@ -417,7 +417,7 @@ void MdtSubscriptions::MdtSubscription::Base::set_filter(const std::string & val
 
 bool MdtSubscriptions::MdtSubscription::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "encoding" || name == "no-filter" || name == "no-synch-on-start" || name == "no-trigger" || name == "period" || name == "stream" || name == "xpath")
+    if(name == "stream" || name == "encoding" || name == "no-trigger" || name == "period" || name == "no-synch-on-start" || name == "no-filter" || name == "xpath")
         return true;
     return false;
 }

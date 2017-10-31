@@ -118,8 +118,8 @@ bool Exception::has_leaf_or_child_of_name(const std::string & name) const
 
 Exception::File::File()
     :
-    choice1{YType::str, "choice1"},
     choice2{YType::str, "choice2"},
+    choice1{YType::str, "choice1"},
     choice3{YType::str, "choice3"}
 {
 
@@ -132,16 +132,16 @@ Exception::File::~File()
 
 bool Exception::File::has_data() const
 {
-    return choice1.is_set
-	|| choice2.is_set
+    return choice2.is_set
+	|| choice1.is_set
 	|| choice3.is_set;
 }
 
 bool Exception::File::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(choice1.yfilter)
 	|| ydk::is_set(choice2.yfilter)
+	|| ydk::is_set(choice1.yfilter)
 	|| ydk::is_set(choice3.yfilter);
 }
 
@@ -163,8 +163,8 @@ std::vector<std::pair<std::string, LeafData> > Exception::File::get_name_leaf_da
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (choice1.is_set || is_set(choice1.yfilter)) leaf_name_data.push_back(choice1.get_name_leafdata());
     if (choice2.is_set || is_set(choice2.yfilter)) leaf_name_data.push_back(choice2.get_name_leafdata());
+    if (choice1.is_set || is_set(choice1.yfilter)) leaf_name_data.push_back(choice1.get_name_leafdata());
     if (choice3.is_set || is_set(choice3.yfilter)) leaf_name_data.push_back(choice3.get_name_leafdata());
 
     return leaf_name_data;
@@ -184,17 +184,17 @@ std::map<std::string, std::shared_ptr<Entity>> Exception::File::get_children() c
 
 void Exception::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "choice1")
-    {
-        choice1 = value;
-        choice1.value_namespace = name_space;
-        choice1.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "choice2")
     {
         choice2 = value;
         choice2.value_namespace = name_space;
         choice2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "choice1")
+    {
+        choice1 = value;
+        choice1.value_namespace = name_space;
+        choice1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "choice3")
     {
@@ -206,13 +206,13 @@ void Exception::File::set_value(const std::string & value_path, const std::strin
 
 void Exception::File::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "choice1")
-    {
-        choice1.yfilter = yfilter;
-    }
     if(value_path == "choice2")
     {
         choice2.yfilter = yfilter;
+    }
+    if(value_path == "choice1")
+    {
+        choice1.yfilter = yfilter;
     }
     if(value_path == "choice3")
     {
@@ -222,7 +222,7 @@ void Exception::File::set_filter(const std::string & value_path, YFilter yfilter
 
 bool Exception::File::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "choice1" || name == "choice2" || name == "choice3")
+    if(name == "choice2" || name == "choice1" || name == "choice3")
         return true;
     return false;
 }

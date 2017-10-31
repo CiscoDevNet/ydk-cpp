@@ -272,21 +272,21 @@ bool Ping::Input::has_leaf_or_child_of_name(const std::string & name) const
 
 Ping::Input::Destination::Destination()
     :
-    data_size{YType::uint64, "data-size"},
     destination{YType::str, "destination"},
-    do_not_frag{YType::boolean, "do-not-frag"},
-    interval{YType::uint32, "interval"},
-    outgoing_interface{YType::str, "outgoing-interface"},
-    pattern{YType::str, "pattern"},
-    priority{YType::uint8, "priority"},
     repeat_count{YType::uint64, "repeat-count"},
-    source{YType::str, "source"},
-    sweep{YType::boolean, "sweep"},
+    data_size{YType::uint64, "data-size"},
     timeout{YType::uint64, "timeout"},
-    type_of_service{YType::uint8, "type-of-service"},
-    validate{YType::boolean, "validate"},
+    interval{YType::uint32, "interval"},
+    pattern{YType::str, "pattern"},
+    sweep{YType::boolean, "sweep"},
+    vrf_name{YType::str, "vrf-name"},
+    source{YType::str, "source"},
     verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
+    type_of_service{YType::uint8, "type-of-service"},
+    do_not_frag{YType::boolean, "do-not-frag"},
+    validate{YType::boolean, "validate"},
+    priority{YType::uint8, "priority"},
+    outgoing_interface{YType::str, "outgoing-interface"}
 {
 
     yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
@@ -298,41 +298,41 @@ Ping::Input::Destination::~Destination()
 
 bool Ping::Input::Destination::has_data() const
 {
-    return data_size.is_set
-	|| destination.is_set
-	|| do_not_frag.is_set
-	|| interval.is_set
-	|| outgoing_interface.is_set
-	|| pattern.is_set
-	|| priority.is_set
+    return destination.is_set
 	|| repeat_count.is_set
-	|| source.is_set
-	|| sweep.is_set
+	|| data_size.is_set
 	|| timeout.is_set
-	|| type_of_service.is_set
-	|| validate.is_set
+	|| interval.is_set
+	|| pattern.is_set
+	|| sweep.is_set
+	|| vrf_name.is_set
+	|| source.is_set
 	|| verbose.is_set
-	|| vrf_name.is_set;
+	|| type_of_service.is_set
+	|| do_not_frag.is_set
+	|| validate.is_set
+	|| priority.is_set
+	|| outgoing_interface.is_set;
 }
 
 bool Ping::Input::Destination::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(data_size.yfilter)
 	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(do_not_frag.yfilter)
-	|| ydk::is_set(interval.yfilter)
-	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(pattern.yfilter)
-	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(repeat_count.yfilter)
-	|| ydk::is_set(source.yfilter)
-	|| ydk::is_set(sweep.yfilter)
+	|| ydk::is_set(data_size.yfilter)
 	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(type_of_service.yfilter)
-	|| ydk::is_set(validate.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(pattern.yfilter)
+	|| ydk::is_set(sweep.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(source.yfilter)
 	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(type_of_service.yfilter)
+	|| ydk::is_set(do_not_frag.yfilter)
+	|| ydk::is_set(validate.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(outgoing_interface.yfilter);
 }
 
 std::string Ping::Input::Destination::get_absolute_path() const
@@ -353,21 +353,21 @@ std::vector<std::pair<std::string, LeafData> > Ping::Input::Destination::get_nam
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (do_not_frag.is_set || is_set(do_not_frag.yfilter)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
+    if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (type_of_service.is_set || is_set(type_of_service.yfilter)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
-    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
+    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (type_of_service.is_set || is_set(type_of_service.yfilter)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
+    if (do_not_frag.is_set || is_set(do_not_frag.yfilter)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -386,47 +386,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Input::Destination::get_chi
 
 void Ping::Input::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "data-size")
-    {
-        data_size = value;
-        data_size.value_namespace = name_space;
-        data_size.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "destination")
     {
         destination = value;
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "do-not-frag")
-    {
-        do_not_frag = value;
-        do_not_frag.value_namespace = name_space;
-        do_not_frag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-        outgoing_interface.value_namespace = name_space;
-        outgoing_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pattern")
-    {
-        pattern = value;
-        pattern.value_namespace = name_space;
-        pattern.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "repeat-count")
     {
@@ -434,17 +398,11 @@ void Ping::Input::Destination::set_value(const std::string & value_path, const s
         repeat_count.value_namespace = name_space;
         repeat_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "source")
+    if(value_path == "data-size")
     {
-        source = value;
-        source.value_namespace = name_space;
-        source.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sweep")
-    {
-        sweep = value;
-        sweep.value_namespace = name_space;
-        sweep.value_namespace_prefix = name_space_prefix;
+        data_size = value;
+        data_size.value_namespace = name_space;
+        data_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
@@ -452,23 +410,23 @@ void Ping::Input::Destination::set_value(const std::string & value_path, const s
         timeout.value_namespace = name_space;
         timeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "type-of-service")
+    if(value_path == "interval")
     {
-        type_of_service = value;
-        type_of_service.value_namespace = name_space;
-        type_of_service.value_namespace_prefix = name_space_prefix;
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "validate")
+    if(value_path == "pattern")
     {
-        validate = value;
-        validate.value_namespace = name_space;
-        validate.value_namespace_prefix = name_space_prefix;
+        pattern = value;
+        pattern.value_namespace = name_space;
+        pattern.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verbose")
+    if(value_path == "sweep")
     {
-        verbose = value;
-        verbose.value_namespace = name_space;
-        verbose.value_namespace_prefix = name_space_prefix;
+        sweep = value;
+        sweep.value_namespace = name_space;
+        sweep.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
@@ -476,75 +434,117 @@ void Ping::Input::Destination::set_value(const std::string & value_path, const s
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+        verbose.value_namespace = name_space;
+        verbose.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type-of-service")
+    {
+        type_of_service = value;
+        type_of_service.value_namespace = name_space;
+        type_of_service.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "do-not-frag")
+    {
+        do_not_frag = value;
+        do_not_frag.value_namespace = name_space;
+        do_not_frag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "validate")
+    {
+        validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+        outgoing_interface.value_namespace = name_space;
+        outgoing_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ping::Input::Destination::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "data-size")
-    {
-        data_size.yfilter = yfilter;
-    }
     if(value_path == "destination")
     {
         destination.yfilter = yfilter;
-    }
-    if(value_path == "do-not-frag")
-    {
-        do_not_frag.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface.yfilter = yfilter;
-    }
-    if(value_path == "pattern")
-    {
-        pattern.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
     }
     if(value_path == "repeat-count")
     {
         repeat_count.yfilter = yfilter;
     }
-    if(value_path == "source")
+    if(value_path == "data-size")
     {
-        source.yfilter = yfilter;
-    }
-    if(value_path == "sweep")
-    {
-        sweep.yfilter = yfilter;
+        data_size.yfilter = yfilter;
     }
     if(value_path == "timeout")
     {
         timeout.yfilter = yfilter;
     }
-    if(value_path == "type-of-service")
+    if(value_path == "interval")
     {
-        type_of_service.yfilter = yfilter;
+        interval.yfilter = yfilter;
     }
-    if(value_path == "validate")
+    if(value_path == "pattern")
     {
-        validate.yfilter = yfilter;
+        pattern.yfilter = yfilter;
     }
-    if(value_path == "verbose")
+    if(value_path == "sweep")
     {
-        verbose.yfilter = yfilter;
+        sweep.yfilter = yfilter;
     }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "verbose")
+    {
+        verbose.yfilter = yfilter;
+    }
+    if(value_path == "type-of-service")
+    {
+        type_of_service.yfilter = yfilter;
+    }
+    if(value_path == "do-not-frag")
+    {
+        do_not_frag.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface.yfilter = yfilter;
+    }
 }
 
 bool Ping::Input::Destination::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "data-size" || name == "destination" || name == "do-not-frag" || name == "interval" || name == "outgoing-interface" || name == "pattern" || name == "priority" || name == "repeat-count" || name == "source" || name == "sweep" || name == "timeout" || name == "type-of-service" || name == "validate" || name == "verbose" || name == "vrf-name")
+    if(name == "destination" || name == "repeat-count" || name == "data-size" || name == "timeout" || name == "interval" || name == "pattern" || name == "sweep" || name == "vrf-name" || name == "source" || name == "verbose" || name == "type-of-service" || name == "do-not-frag" || name == "validate" || name == "priority" || name == "outgoing-interface")
         return true;
     return false;
 }
@@ -552,18 +552,18 @@ bool Ping::Input::Destination::has_leaf_or_child_of_name(const std::string & nam
 Ping::Input::Ipv4::Ipv4()
     :
     destination{YType::str, "destination"},
+    repeat_count{YType::uint64, "repeat-count"},
     data_size{YType::uint64, "data-size"},
-    do_not_frag{YType::boolean, "do-not-frag"},
+    timeout{YType::uint64, "timeout"},
     interval{YType::uint32, "interval"},
     pattern{YType::str, "pattern"},
-    repeat_count{YType::uint64, "repeat-count"},
-    source{YType::str, "source"},
     sweep{YType::boolean, "sweep"},
-    timeout{YType::uint64, "timeout"},
-    type_of_service{YType::uint8, "type-of-service"},
-    validate{YType::boolean, "validate"},
+    vrf_name{YType::str, "vrf-name"},
+    source{YType::str, "source"},
     verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
+    type_of_service{YType::uint8, "type-of-service"},
+    do_not_frag{YType::boolean, "do-not-frag"},
+    validate{YType::boolean, "validate"}
 {
 
     yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
@@ -576,36 +576,36 @@ Ping::Input::Ipv4::~Ipv4()
 bool Ping::Input::Ipv4::has_data() const
 {
     return destination.is_set
+	|| repeat_count.is_set
 	|| data_size.is_set
-	|| do_not_frag.is_set
+	|| timeout.is_set
 	|| interval.is_set
 	|| pattern.is_set
-	|| repeat_count.is_set
-	|| source.is_set
 	|| sweep.is_set
-	|| timeout.is_set
-	|| type_of_service.is_set
-	|| validate.is_set
+	|| vrf_name.is_set
+	|| source.is_set
 	|| verbose.is_set
-	|| vrf_name.is_set;
+	|| type_of_service.is_set
+	|| do_not_frag.is_set
+	|| validate.is_set;
 }
 
 bool Ping::Input::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(repeat_count.yfilter)
 	|| ydk::is_set(data_size.yfilter)
-	|| ydk::is_set(do_not_frag.yfilter)
+	|| ydk::is_set(timeout.yfilter)
 	|| ydk::is_set(interval.yfilter)
 	|| ydk::is_set(pattern.yfilter)
-	|| ydk::is_set(repeat_count.yfilter)
-	|| ydk::is_set(source.yfilter)
 	|| ydk::is_set(sweep.yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(type_of_service.yfilter)
-	|| ydk::is_set(validate.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(source.yfilter)
 	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(type_of_service.yfilter)
+	|| ydk::is_set(do_not_frag.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string Ping::Input::Ipv4::get_absolute_path() const
@@ -627,18 +627,18 @@ std::vector<std::pair<std::string, LeafData> > Ping::Input::Ipv4::get_name_leaf_
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
     if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
-    if (do_not_frag.is_set || is_set(do_not_frag.yfilter)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
     if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
     if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
     if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (type_of_service.is_set || is_set(type_of_service.yfilter)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
-    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (type_of_service.is_set || is_set(type_of_service.yfilter)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
+    if (do_not_frag.is_set || is_set(do_not_frag.yfilter)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -663,17 +663,23 @@ void Ping::Input::Ipv4::set_value(const std::string & value_path, const std::str
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "repeat-count")
+    {
+        repeat_count = value;
+        repeat_count.value_namespace = name_space;
+        repeat_count.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "data-size")
     {
         data_size = value;
         data_size.value_namespace = name_space;
         data_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "do-not-frag")
+    if(value_path == "timeout")
     {
-        do_not_frag = value;
-        do_not_frag.value_namespace = name_space;
-        do_not_frag.value_namespace_prefix = name_space_prefix;
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
@@ -687,11 +693,17 @@ void Ping::Input::Ipv4::set_value(const std::string & value_path, const std::str
         pattern.value_namespace = name_space;
         pattern.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "repeat-count")
+    if(value_path == "sweep")
     {
-        repeat_count = value;
-        repeat_count.value_namespace = name_space;
-        repeat_count.value_namespace_prefix = name_space_prefix;
+        sweep = value;
+        sweep.value_namespace = name_space;
+        sweep.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
@@ -699,17 +711,11 @@ void Ping::Input::Ipv4::set_value(const std::string & value_path, const std::str
         source.value_namespace = name_space;
         source.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sweep")
+    if(value_path == "verbose")
     {
-        sweep = value;
-        sweep.value_namespace = name_space;
-        sweep.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
+        verbose = value;
+        verbose.value_namespace = name_space;
+        verbose.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type-of-service")
     {
@@ -717,23 +723,17 @@ void Ping::Input::Ipv4::set_value(const std::string & value_path, const std::str
         type_of_service.value_namespace = name_space;
         type_of_service.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "do-not-frag")
+    {
+        do_not_frag = value;
+        do_not_frag.value_namespace = name_space;
+        do_not_frag.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "validate")
     {
         validate = value;
         validate.value_namespace = name_space;
         validate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "verbose")
-    {
-        verbose = value;
-        verbose.value_namespace = name_space;
-        verbose.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -743,13 +743,17 @@ void Ping::Input::Ipv4::set_filter(const std::string & value_path, YFilter yfilt
     {
         destination.yfilter = yfilter;
     }
+    if(value_path == "repeat-count")
+    {
+        repeat_count.yfilter = yfilter;
+    }
     if(value_path == "data-size")
     {
         data_size.yfilter = yfilter;
     }
-    if(value_path == "do-not-frag")
+    if(value_path == "timeout")
     {
-        do_not_frag.yfilter = yfilter;
+        timeout.yfilter = yfilter;
     }
     if(value_path == "interval")
     {
@@ -759,61 +763,57 @@ void Ping::Input::Ipv4::set_filter(const std::string & value_path, YFilter yfilt
     {
         pattern.yfilter = yfilter;
     }
-    if(value_path == "repeat-count")
-    {
-        repeat_count.yfilter = yfilter;
-    }
-    if(value_path == "source")
-    {
-        source.yfilter = yfilter;
-    }
     if(value_path == "sweep")
     {
         sweep.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-    if(value_path == "type-of-service")
-    {
-        type_of_service.yfilter = yfilter;
-    }
-    if(value_path == "validate")
-    {
-        validate.yfilter = yfilter;
-    }
-    if(value_path == "verbose")
-    {
-        verbose.yfilter = yfilter;
     }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "verbose")
+    {
+        verbose.yfilter = yfilter;
+    }
+    if(value_path == "type-of-service")
+    {
+        type_of_service.yfilter = yfilter;
+    }
+    if(value_path == "do-not-frag")
+    {
+        do_not_frag.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
 }
 
 bool Ping::Input::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "data-size" || name == "do-not-frag" || name == "interval" || name == "pattern" || name == "repeat-count" || name == "source" || name == "sweep" || name == "timeout" || name == "type-of-service" || name == "validate" || name == "verbose" || name == "vrf-name")
+    if(name == "destination" || name == "repeat-count" || name == "data-size" || name == "timeout" || name == "interval" || name == "pattern" || name == "sweep" || name == "vrf-name" || name == "source" || name == "verbose" || name == "type-of-service" || name == "do-not-frag" || name == "validate")
         return true;
     return false;
 }
 
 Ping::Input::Ipv6::Ipv6()
     :
-    data_size{YType::uint64, "data-size"},
     destination{YType::str, "destination"},
-    interval{YType::uint32, "interval"},
-    outgoing_interface{YType::str, "outgoing-interface"},
-    pattern{YType::str, "pattern"},
-    priority{YType::uint8, "priority"},
     repeat_count{YType::uint64, "repeat-count"},
-    source{YType::str, "source"},
-    sweep{YType::boolean, "sweep"},
+    data_size{YType::uint64, "data-size"},
     timeout{YType::uint64, "timeout"},
+    interval{YType::uint32, "interval"},
+    pattern{YType::str, "pattern"},
+    sweep{YType::boolean, "sweep"},
+    vrf_name{YType::str, "vrf-name"},
+    source{YType::str, "source"},
     verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
+    priority{YType::uint8, "priority"},
+    outgoing_interface{YType::str, "outgoing-interface"}
 {
 
     yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
@@ -825,35 +825,35 @@ Ping::Input::Ipv6::~Ipv6()
 
 bool Ping::Input::Ipv6::has_data() const
 {
-    return data_size.is_set
-	|| destination.is_set
-	|| interval.is_set
-	|| outgoing_interface.is_set
-	|| pattern.is_set
-	|| priority.is_set
+    return destination.is_set
 	|| repeat_count.is_set
-	|| source.is_set
-	|| sweep.is_set
+	|| data_size.is_set
 	|| timeout.is_set
+	|| interval.is_set
+	|| pattern.is_set
+	|| sweep.is_set
+	|| vrf_name.is_set
+	|| source.is_set
 	|| verbose.is_set
-	|| vrf_name.is_set;
+	|| priority.is_set
+	|| outgoing_interface.is_set;
 }
 
 bool Ping::Input::Ipv6::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(data_size.yfilter)
 	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(interval.yfilter)
-	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(pattern.yfilter)
-	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(repeat_count.yfilter)
-	|| ydk::is_set(source.yfilter)
-	|| ydk::is_set(sweep.yfilter)
+	|| ydk::is_set(data_size.yfilter)
 	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(pattern.yfilter)
+	|| ydk::is_set(sweep.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(source.yfilter)
 	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(outgoing_interface.yfilter);
 }
 
 std::string Ping::Input::Ipv6::get_absolute_path() const
@@ -874,18 +874,18 @@ std::vector<std::pair<std::string, LeafData> > Ping::Input::Ipv6::get_name_leaf_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
+    if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
+    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -904,41 +904,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Input::Ipv6::get_children()
 
 void Ping::Input::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "data-size")
-    {
-        data_size = value;
-        data_size.value_namespace = name_space;
-        data_size.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "destination")
     {
         destination = value;
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-        outgoing_interface.value_namespace = name_space;
-        outgoing_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pattern")
-    {
-        pattern = value;
-        pattern.value_namespace = name_space;
-        pattern.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "repeat-count")
     {
@@ -946,17 +916,11 @@ void Ping::Input::Ipv6::set_value(const std::string & value_path, const std::str
         repeat_count.value_namespace = name_space;
         repeat_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "source")
+    if(value_path == "data-size")
     {
-        source = value;
-        source.value_namespace = name_space;
-        source.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sweep")
-    {
-        sweep = value;
-        sweep.value_namespace = name_space;
-        sweep.value_namespace_prefix = name_space_prefix;
+        data_size = value;
+        data_size.value_namespace = name_space;
+        data_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
@@ -964,11 +928,23 @@ void Ping::Input::Ipv6::set_value(const std::string & value_path, const std::str
         timeout.value_namespace = name_space;
         timeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verbose")
+    if(value_path == "interval")
     {
-        verbose = value;
-        verbose.value_namespace = name_space;
-        verbose.value_namespace_prefix = name_space_prefix;
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pattern")
+    {
+        pattern = value;
+        pattern.value_namespace = name_space;
+        pattern.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sweep")
+    {
+        sweep = value;
+        sweep.value_namespace = name_space;
+        sweep.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
@@ -976,63 +952,87 @@ void Ping::Input::Ipv6::set_value(const std::string & value_path, const std::str
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+        verbose.value_namespace = name_space;
+        verbose.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+        outgoing_interface.value_namespace = name_space;
+        outgoing_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ping::Input::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "data-size")
-    {
-        data_size.yfilter = yfilter;
-    }
     if(value_path == "destination")
     {
         destination.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface.yfilter = yfilter;
-    }
-    if(value_path == "pattern")
-    {
-        pattern.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
     }
     if(value_path == "repeat-count")
     {
         repeat_count.yfilter = yfilter;
     }
-    if(value_path == "source")
+    if(value_path == "data-size")
     {
-        source.yfilter = yfilter;
-    }
-    if(value_path == "sweep")
-    {
-        sweep.yfilter = yfilter;
+        data_size.yfilter = yfilter;
     }
     if(value_path == "timeout")
     {
         timeout.yfilter = yfilter;
     }
-    if(value_path == "verbose")
+    if(value_path == "interval")
     {
-        verbose.yfilter = yfilter;
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "pattern")
+    {
+        pattern.yfilter = yfilter;
+    }
+    if(value_path == "sweep")
+    {
+        sweep.yfilter = yfilter;
     }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "verbose")
+    {
+        verbose.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface.yfilter = yfilter;
+    }
 }
 
 bool Ping::Input::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "data-size" || name == "destination" || name == "interval" || name == "outgoing-interface" || name == "pattern" || name == "priority" || name == "repeat-count" || name == "source" || name == "sweep" || name == "timeout" || name == "verbose" || name == "vrf-name")
+    if(name == "destination" || name == "repeat-count" || name == "data-size" || name == "timeout" || name == "interval" || name == "pattern" || name == "sweep" || name == "vrf-name" || name == "source" || name == "verbose" || name == "priority" || name == "outgoing-interface")
         return true;
     return false;
 }
@@ -1245,22 +1245,22 @@ bool Ping::Output::PingResponse::has_leaf_or_child_of_name(const std::string & n
 Ping::Output::PingResponse::Ipv4::Ipv4()
     :
     destination{YType::str, "destination"},
+    repeat_count{YType::uint64, "repeat-count"},
     data_size{YType::uint64, "data-size"},
-    hits{YType::uint64, "hits"},
+    timeout{YType::uint64, "timeout"},
     interval{YType::uint32, "interval"},
     pattern{YType::str, "pattern"},
-    ping_error_response{YType::str, "ping-error-response"},
-    repeat_count{YType::uint64, "repeat-count"},
-    rotate_pattern{YType::boolean, "rotate-pattern"},
+    sweep{YType::boolean, "sweep"},
+    hits{YType::uint64, "hits"},
+    total{YType::uint64, "total"},
+    success_rate{YType::uint64, "success-rate"},
+    rtt_min{YType::uint64, "rtt-min"},
     rtt_avg{YType::uint64, "rtt-avg"},
     rtt_max{YType::uint64, "rtt-max"},
-    rtt_min{YType::uint64, "rtt-min"},
-    success_rate{YType::uint64, "success-rate"},
-    sweep{YType::boolean, "sweep"},
-    sweep_max{YType::uint64, "sweep-max"},
     sweep_min{YType::uint32, "sweep-min"},
-    timeout{YType::uint64, "timeout"},
-    total{YType::uint64, "total"}
+    sweep_max{YType::uint64, "sweep-max"},
+    rotate_pattern{YType::boolean, "rotate-pattern"},
+    ping_error_response{YType::str, "ping-error-response"}
     	,
     replies(std::make_shared<Ping::Output::PingResponse::Ipv4::Replies>())
 {
@@ -1276,22 +1276,22 @@ Ping::Output::PingResponse::Ipv4::~Ipv4()
 bool Ping::Output::PingResponse::Ipv4::has_data() const
 {
     return destination.is_set
+	|| repeat_count.is_set
 	|| data_size.is_set
-	|| hits.is_set
+	|| timeout.is_set
 	|| interval.is_set
 	|| pattern.is_set
-	|| ping_error_response.is_set
-	|| repeat_count.is_set
-	|| rotate_pattern.is_set
+	|| sweep.is_set
+	|| hits.is_set
+	|| total.is_set
+	|| success_rate.is_set
+	|| rtt_min.is_set
 	|| rtt_avg.is_set
 	|| rtt_max.is_set
-	|| rtt_min.is_set
-	|| success_rate.is_set
-	|| sweep.is_set
-	|| sweep_max.is_set
 	|| sweep_min.is_set
-	|| timeout.is_set
-	|| total.is_set
+	|| sweep_max.is_set
+	|| rotate_pattern.is_set
+	|| ping_error_response.is_set
 	|| (replies !=  nullptr && replies->has_data());
 }
 
@@ -1299,22 +1299,22 @@ bool Ping::Output::PingResponse::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(repeat_count.yfilter)
 	|| ydk::is_set(data_size.yfilter)
-	|| ydk::is_set(hits.yfilter)
+	|| ydk::is_set(timeout.yfilter)
 	|| ydk::is_set(interval.yfilter)
 	|| ydk::is_set(pattern.yfilter)
-	|| ydk::is_set(ping_error_response.yfilter)
-	|| ydk::is_set(repeat_count.yfilter)
-	|| ydk::is_set(rotate_pattern.yfilter)
+	|| ydk::is_set(sweep.yfilter)
+	|| ydk::is_set(hits.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(success_rate.yfilter)
+	|| ydk::is_set(rtt_min.yfilter)
 	|| ydk::is_set(rtt_avg.yfilter)
 	|| ydk::is_set(rtt_max.yfilter)
-	|| ydk::is_set(rtt_min.yfilter)
-	|| ydk::is_set(success_rate.yfilter)
-	|| ydk::is_set(sweep.yfilter)
-	|| ydk::is_set(sweep_max.yfilter)
 	|| ydk::is_set(sweep_min.yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(sweep_max.yfilter)
+	|| ydk::is_set(rotate_pattern.yfilter)
+	|| ydk::is_set(ping_error_response.yfilter)
 	|| (replies !=  nullptr && replies->has_operation());
 }
 
@@ -1337,22 +1337,22 @@ std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv4:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
     if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
-    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
     if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
     if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (ping_error_response.is_set || is_set(ping_error_response.yfilter)) leaf_name_data.push_back(ping_error_response.get_name_leafdata());
-    if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
-    if (rotate_pattern.is_set || is_set(rotate_pattern.yfilter)) leaf_name_data.push_back(rotate_pattern.get_name_leafdata());
+    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
+    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (success_rate.is_set || is_set(success_rate.yfilter)) leaf_name_data.push_back(success_rate.get_name_leafdata());
+    if (rtt_min.is_set || is_set(rtt_min.yfilter)) leaf_name_data.push_back(rtt_min.get_name_leafdata());
     if (rtt_avg.is_set || is_set(rtt_avg.yfilter)) leaf_name_data.push_back(rtt_avg.get_name_leafdata());
     if (rtt_max.is_set || is_set(rtt_max.yfilter)) leaf_name_data.push_back(rtt_max.get_name_leafdata());
-    if (rtt_min.is_set || is_set(rtt_min.yfilter)) leaf_name_data.push_back(rtt_min.get_name_leafdata());
-    if (success_rate.is_set || is_set(success_rate.yfilter)) leaf_name_data.push_back(success_rate.get_name_leafdata());
-    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
-    if (sweep_max.is_set || is_set(sweep_max.yfilter)) leaf_name_data.push_back(sweep_max.get_name_leafdata());
     if (sweep_min.is_set || is_set(sweep_min.yfilter)) leaf_name_data.push_back(sweep_min.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (sweep_max.is_set || is_set(sweep_max.yfilter)) leaf_name_data.push_back(sweep_max.get_name_leafdata());
+    if (rotate_pattern.is_set || is_set(rotate_pattern.yfilter)) leaf_name_data.push_back(rotate_pattern.get_name_leafdata());
+    if (ping_error_response.is_set || is_set(ping_error_response.yfilter)) leaf_name_data.push_back(ping_error_response.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1391,17 +1391,23 @@ void Ping::Output::PingResponse::Ipv4::set_value(const std::string & value_path,
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "repeat-count")
+    {
+        repeat_count = value;
+        repeat_count.value_namespace = name_space;
+        repeat_count.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "data-size")
     {
         data_size = value;
         data_size.value_namespace = name_space;
         data_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hits")
+    if(value_path == "timeout")
     {
-        hits = value;
-        hits.value_namespace = name_space;
-        hits.value_namespace_prefix = name_space_prefix;
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
@@ -1415,23 +1421,35 @@ void Ping::Output::PingResponse::Ipv4::set_value(const std::string & value_path,
         pattern.value_namespace = name_space;
         pattern.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ping-error-response")
+    if(value_path == "sweep")
     {
-        ping_error_response = value;
-        ping_error_response.value_namespace = name_space;
-        ping_error_response.value_namespace_prefix = name_space_prefix;
+        sweep = value;
+        sweep.value_namespace = name_space;
+        sweep.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "repeat-count")
+    if(value_path == "hits")
     {
-        repeat_count = value;
-        repeat_count.value_namespace = name_space;
-        repeat_count.value_namespace_prefix = name_space_prefix;
+        hits = value;
+        hits.value_namespace = name_space;
+        hits.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rotate-pattern")
+    if(value_path == "total")
     {
-        rotate_pattern = value;
-        rotate_pattern.value_namespace = name_space;
-        rotate_pattern.value_namespace_prefix = name_space_prefix;
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "success-rate")
+    {
+        success_rate = value;
+        success_rate.value_namespace = name_space;
+        success_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt-min")
+    {
+        rtt_min = value;
+        rtt_min.value_namespace = name_space;
+        rtt_min.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtt-avg")
     {
@@ -1445,23 +1463,11 @@ void Ping::Output::PingResponse::Ipv4::set_value(const std::string & value_path,
         rtt_max.value_namespace = name_space;
         rtt_max.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rtt-min")
+    if(value_path == "sweep-min")
     {
-        rtt_min = value;
-        rtt_min.value_namespace = name_space;
-        rtt_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "success-rate")
-    {
-        success_rate = value;
-        success_rate.value_namespace = name_space;
-        success_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sweep")
-    {
-        sweep = value;
-        sweep.value_namespace = name_space;
-        sweep.value_namespace_prefix = name_space_prefix;
+        sweep_min = value;
+        sweep_min.value_namespace = name_space;
+        sweep_min.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sweep-max")
     {
@@ -1469,23 +1475,17 @@ void Ping::Output::PingResponse::Ipv4::set_value(const std::string & value_path,
         sweep_max.value_namespace = name_space;
         sweep_max.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sweep-min")
+    if(value_path == "rotate-pattern")
     {
-        sweep_min = value;
-        sweep_min.value_namespace = name_space;
-        sweep_min.value_namespace_prefix = name_space_prefix;
+        rotate_pattern = value;
+        rotate_pattern.value_namespace = name_space;
+        rotate_pattern.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "timeout")
+    if(value_path == "ping-error-response")
     {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
+        ping_error_response = value;
+        ping_error_response.value_namespace = name_space;
+        ping_error_response.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1495,13 +1495,17 @@ void Ping::Output::PingResponse::Ipv4::set_filter(const std::string & value_path
     {
         destination.yfilter = yfilter;
     }
+    if(value_path == "repeat-count")
+    {
+        repeat_count.yfilter = yfilter;
+    }
     if(value_path == "data-size")
     {
         data_size.yfilter = yfilter;
     }
-    if(value_path == "hits")
+    if(value_path == "timeout")
     {
-        hits.yfilter = yfilter;
+        timeout.yfilter = yfilter;
     }
     if(value_path == "interval")
     {
@@ -1511,17 +1515,25 @@ void Ping::Output::PingResponse::Ipv4::set_filter(const std::string & value_path
     {
         pattern.yfilter = yfilter;
     }
-    if(value_path == "ping-error-response")
+    if(value_path == "sweep")
     {
-        ping_error_response.yfilter = yfilter;
+        sweep.yfilter = yfilter;
     }
-    if(value_path == "repeat-count")
+    if(value_path == "hits")
     {
-        repeat_count.yfilter = yfilter;
+        hits.yfilter = yfilter;
     }
-    if(value_path == "rotate-pattern")
+    if(value_path == "total")
     {
-        rotate_pattern.yfilter = yfilter;
+        total.yfilter = yfilter;
+    }
+    if(value_path == "success-rate")
+    {
+        success_rate.yfilter = yfilter;
+    }
+    if(value_path == "rtt-min")
+    {
+        rtt_min.yfilter = yfilter;
     }
     if(value_path == "rtt-avg")
     {
@@ -1531,39 +1543,27 @@ void Ping::Output::PingResponse::Ipv4::set_filter(const std::string & value_path
     {
         rtt_max.yfilter = yfilter;
     }
-    if(value_path == "rtt-min")
+    if(value_path == "sweep-min")
     {
-        rtt_min.yfilter = yfilter;
-    }
-    if(value_path == "success-rate")
-    {
-        success_rate.yfilter = yfilter;
-    }
-    if(value_path == "sweep")
-    {
-        sweep.yfilter = yfilter;
+        sweep_min.yfilter = yfilter;
     }
     if(value_path == "sweep-max")
     {
         sweep_max.yfilter = yfilter;
     }
-    if(value_path == "sweep-min")
+    if(value_path == "rotate-pattern")
     {
-        sweep_min.yfilter = yfilter;
+        rotate_pattern.yfilter = yfilter;
     }
-    if(value_path == "timeout")
+    if(value_path == "ping-error-response")
     {
-        timeout.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
+        ping_error_response.yfilter = yfilter;
     }
 }
 
 bool Ping::Output::PingResponse::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "replies" || name == "destination" || name == "data-size" || name == "hits" || name == "interval" || name == "pattern" || name == "ping-error-response" || name == "repeat-count" || name == "rotate-pattern" || name == "rtt-avg" || name == "rtt-max" || name == "rtt-min" || name == "success-rate" || name == "sweep" || name == "sweep-max" || name == "sweep-min" || name == "timeout" || name == "total")
+    if(name == "replies" || name == "destination" || name == "repeat-count" || name == "data-size" || name == "timeout" || name == "interval" || name == "pattern" || name == "sweep" || name == "hits" || name == "total" || name == "success-rate" || name == "rtt-min" || name == "rtt-avg" || name == "rtt-max" || name == "sweep-min" || name == "sweep-max" || name == "rotate-pattern" || name == "ping-error-response")
         return true;
     return false;
 }
@@ -1955,22 +1955,22 @@ bool Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::
 
 Ping::Output::PingResponse::Ipv6::Ipv6()
     :
-    data_size{YType::uint64, "data-size"},
     destination{YType::str, "destination"},
-    hits{YType::uint64, "hits"},
+    repeat_count{YType::uint64, "repeat-count"},
+    data_size{YType::uint64, "data-size"},
+    timeout{YType::uint64, "timeout"},
     interval{YType::uint32, "interval"},
     pattern{YType::str, "pattern"},
-    repeat_count{YType::uint64, "repeat-count"},
-    rotate_pattern{YType::boolean, "rotate-pattern"},
-    rtt_avg{YType::uint64, "rtt-avg"},
-    rtt_max{YType::uint64, "rtt-max"},
-    rtt_min{YType::uint64, "rtt-min"},
-    success_rate{YType::uint64, "success-rate"},
     sweep{YType::boolean, "sweep"},
-    sweep_max{YType::uint64, "sweep-max"},
     sweep_min{YType::uint32, "sweep-min"},
-    timeout{YType::uint64, "timeout"},
-    total{YType::uint64, "total"}
+    sweep_max{YType::uint64, "sweep-max"},
+    rotate_pattern{YType::boolean, "rotate-pattern"},
+    hits{YType::uint64, "hits"},
+    total{YType::uint64, "total"},
+    success_rate{YType::uint64, "success-rate"},
+    rtt_min{YType::uint64, "rtt-min"},
+    rtt_avg{YType::uint64, "rtt-avg"},
+    rtt_max{YType::uint64, "rtt-max"}
     	,
     replies(std::make_shared<Ping::Output::PingResponse::Ipv6::Replies>())
 {
@@ -1985,44 +1985,44 @@ Ping::Output::PingResponse::Ipv6::~Ipv6()
 
 bool Ping::Output::PingResponse::Ipv6::has_data() const
 {
-    return data_size.is_set
-	|| destination.is_set
-	|| hits.is_set
+    return destination.is_set
+	|| repeat_count.is_set
+	|| data_size.is_set
+	|| timeout.is_set
 	|| interval.is_set
 	|| pattern.is_set
-	|| repeat_count.is_set
+	|| sweep.is_set
+	|| sweep_min.is_set
+	|| sweep_max.is_set
 	|| rotate_pattern.is_set
+	|| hits.is_set
+	|| total.is_set
+	|| success_rate.is_set
+	|| rtt_min.is_set
 	|| rtt_avg.is_set
 	|| rtt_max.is_set
-	|| rtt_min.is_set
-	|| success_rate.is_set
-	|| sweep.is_set
-	|| sweep_max.is_set
-	|| sweep_min.is_set
-	|| timeout.is_set
-	|| total.is_set
 	|| (replies !=  nullptr && replies->has_data());
 }
 
 bool Ping::Output::PingResponse::Ipv6::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(data_size.yfilter)
 	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(hits.yfilter)
+	|| ydk::is_set(repeat_count.yfilter)
+	|| ydk::is_set(data_size.yfilter)
+	|| ydk::is_set(timeout.yfilter)
 	|| ydk::is_set(interval.yfilter)
 	|| ydk::is_set(pattern.yfilter)
-	|| ydk::is_set(repeat_count.yfilter)
+	|| ydk::is_set(sweep.yfilter)
+	|| ydk::is_set(sweep_min.yfilter)
+	|| ydk::is_set(sweep_max.yfilter)
 	|| ydk::is_set(rotate_pattern.yfilter)
+	|| ydk::is_set(hits.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(success_rate.yfilter)
+	|| ydk::is_set(rtt_min.yfilter)
 	|| ydk::is_set(rtt_avg.yfilter)
 	|| ydk::is_set(rtt_max.yfilter)
-	|| ydk::is_set(rtt_min.yfilter)
-	|| ydk::is_set(success_rate.yfilter)
-	|| ydk::is_set(sweep.yfilter)
-	|| ydk::is_set(sweep_max.yfilter)
-	|| ydk::is_set(sweep_min.yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(total.yfilter)
 	|| (replies !=  nullptr && replies->has_operation());
 }
 
@@ -2044,22 +2044,22 @@ std::vector<std::pair<std::string, LeafData> > Ping::Output::PingResponse::Ipv6:
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
+    if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
+    if (data_size.is_set || is_set(data_size.yfilter)) leaf_name_data.push_back(data_size.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
     if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
     if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (repeat_count.is_set || is_set(repeat_count.yfilter)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
+    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
+    if (sweep_min.is_set || is_set(sweep_min.yfilter)) leaf_name_data.push_back(sweep_min.get_name_leafdata());
+    if (sweep_max.is_set || is_set(sweep_max.yfilter)) leaf_name_data.push_back(sweep_max.get_name_leafdata());
     if (rotate_pattern.is_set || is_set(rotate_pattern.yfilter)) leaf_name_data.push_back(rotate_pattern.get_name_leafdata());
+    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (success_rate.is_set || is_set(success_rate.yfilter)) leaf_name_data.push_back(success_rate.get_name_leafdata());
+    if (rtt_min.is_set || is_set(rtt_min.yfilter)) leaf_name_data.push_back(rtt_min.get_name_leafdata());
     if (rtt_avg.is_set || is_set(rtt_avg.yfilter)) leaf_name_data.push_back(rtt_avg.get_name_leafdata());
     if (rtt_max.is_set || is_set(rtt_max.yfilter)) leaf_name_data.push_back(rtt_max.get_name_leafdata());
-    if (rtt_min.is_set || is_set(rtt_min.yfilter)) leaf_name_data.push_back(rtt_min.get_name_leafdata());
-    if (success_rate.is_set || is_set(success_rate.yfilter)) leaf_name_data.push_back(success_rate.get_name_leafdata());
-    if (sweep.is_set || is_set(sweep.yfilter)) leaf_name_data.push_back(sweep.get_name_leafdata());
-    if (sweep_max.is_set || is_set(sweep_max.yfilter)) leaf_name_data.push_back(sweep_max.get_name_leafdata());
-    if (sweep_min.is_set || is_set(sweep_min.yfilter)) leaf_name_data.push_back(sweep_min.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2092,23 +2092,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv6:
 
 void Ping::Output::PingResponse::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "data-size")
-    {
-        data_size = value;
-        data_size.value_namespace = name_space;
-        data_size.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "destination")
     {
         destination = value;
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hits")
+    if(value_path == "repeat-count")
     {
-        hits = value;
-        hits.value_namespace = name_space;
-        hits.value_namespace_prefix = name_space_prefix;
+        repeat_count = value;
+        repeat_count.value_namespace = name_space;
+        repeat_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "data-size")
+    {
+        data_size = value;
+        data_size.value_namespace = name_space;
+        data_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
@@ -2122,17 +2128,53 @@ void Ping::Output::PingResponse::Ipv6::set_value(const std::string & value_path,
         pattern.value_namespace = name_space;
         pattern.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "repeat-count")
+    if(value_path == "sweep")
     {
-        repeat_count = value;
-        repeat_count.value_namespace = name_space;
-        repeat_count.value_namespace_prefix = name_space_prefix;
+        sweep = value;
+        sweep.value_namespace = name_space;
+        sweep.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sweep-min")
+    {
+        sweep_min = value;
+        sweep_min.value_namespace = name_space;
+        sweep_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sweep-max")
+    {
+        sweep_max = value;
+        sweep_max.value_namespace = name_space;
+        sweep_max.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rotate-pattern")
     {
         rotate_pattern = value;
         rotate_pattern.value_namespace = name_space;
         rotate_pattern.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hits")
+    {
+        hits = value;
+        hits.value_namespace = name_space;
+        hits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "success-rate")
+    {
+        success_rate = value;
+        success_rate.value_namespace = name_space;
+        success_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt-min")
+    {
+        rtt_min = value;
+        rtt_min.value_namespace = name_space;
+        rtt_min.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtt-avg")
     {
@@ -2146,63 +2188,25 @@ void Ping::Output::PingResponse::Ipv6::set_value(const std::string & value_path,
         rtt_max.value_namespace = name_space;
         rtt_max.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rtt-min")
-    {
-        rtt_min = value;
-        rtt_min.value_namespace = name_space;
-        rtt_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "success-rate")
-    {
-        success_rate = value;
-        success_rate.value_namespace = name_space;
-        success_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sweep")
-    {
-        sweep = value;
-        sweep.value_namespace = name_space;
-        sweep.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sweep-max")
-    {
-        sweep_max = value;
-        sweep_max.value_namespace = name_space;
-        sweep_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sweep-min")
-    {
-        sweep_min = value;
-        sweep_min.value_namespace = name_space;
-        sweep_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ping::Output::PingResponse::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "data-size")
-    {
-        data_size.yfilter = yfilter;
-    }
     if(value_path == "destination")
     {
         destination.yfilter = yfilter;
     }
-    if(value_path == "hits")
+    if(value_path == "repeat-count")
     {
-        hits.yfilter = yfilter;
+        repeat_count.yfilter = yfilter;
+    }
+    if(value_path == "data-size")
+    {
+        data_size.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
     }
     if(value_path == "interval")
     {
@@ -2212,13 +2216,37 @@ void Ping::Output::PingResponse::Ipv6::set_filter(const std::string & value_path
     {
         pattern.yfilter = yfilter;
     }
-    if(value_path == "repeat-count")
+    if(value_path == "sweep")
     {
-        repeat_count.yfilter = yfilter;
+        sweep.yfilter = yfilter;
+    }
+    if(value_path == "sweep-min")
+    {
+        sweep_min.yfilter = yfilter;
+    }
+    if(value_path == "sweep-max")
+    {
+        sweep_max.yfilter = yfilter;
     }
     if(value_path == "rotate-pattern")
     {
         rotate_pattern.yfilter = yfilter;
+    }
+    if(value_path == "hits")
+    {
+        hits.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "success-rate")
+    {
+        success_rate.yfilter = yfilter;
+    }
+    if(value_path == "rtt-min")
+    {
+        rtt_min.yfilter = yfilter;
     }
     if(value_path == "rtt-avg")
     {
@@ -2228,39 +2256,11 @@ void Ping::Output::PingResponse::Ipv6::set_filter(const std::string & value_path
     {
         rtt_max.yfilter = yfilter;
     }
-    if(value_path == "rtt-min")
-    {
-        rtt_min.yfilter = yfilter;
-    }
-    if(value_path == "success-rate")
-    {
-        success_rate.yfilter = yfilter;
-    }
-    if(value_path == "sweep")
-    {
-        sweep.yfilter = yfilter;
-    }
-    if(value_path == "sweep-max")
-    {
-        sweep_max.yfilter = yfilter;
-    }
-    if(value_path == "sweep-min")
-    {
-        sweep_min.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
 }
 
 bool Ping::Output::PingResponse::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "replies" || name == "data-size" || name == "destination" || name == "hits" || name == "interval" || name == "pattern" || name == "repeat-count" || name == "rotate-pattern" || name == "rtt-avg" || name == "rtt-max" || name == "rtt-min" || name == "success-rate" || name == "sweep" || name == "sweep-max" || name == "sweep-min" || name == "timeout" || name == "total")
+    if(name == "replies" || name == "destination" || name == "repeat-count" || name == "data-size" || name == "timeout" || name == "interval" || name == "pattern" || name == "sweep" || name == "sweep-min" || name == "sweep-max" || name == "rotate-pattern" || name == "hits" || name == "total" || name == "success-rate" || name == "rtt-min" || name == "rtt-avg" || name == "rtt-max")
         return true;
     return false;
 }

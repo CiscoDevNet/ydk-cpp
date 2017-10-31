@@ -39,6 +39,24 @@ class CliTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Ide
 
 }; // CliTcp
 
+class WebuiHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        WebuiHttp();
+        ~WebuiHttp();
+
+
+}; // WebuiHttp
+
+class WebuiHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        WebuiHttps();
+        ~WebuiHttps();
+
+
+}; // WebuiHttps
+
 class NetconfTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
@@ -47,6 +65,15 @@ class NetconfTcp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk:
 
 
 }; // NetconfTcp
+
+class SnmpUdp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        SnmpUdp();
+        ~SnmpUdp();
+
+
+}; // SnmpUdp
 
 class RestHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
@@ -65,33 +92,6 @@ class RestHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::
 
 
 }; // RestHttps
-
-class SnmpUdp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        SnmpUdp();
-        ~SnmpUdp();
-
-
-}; // SnmpUdp
-
-class WebuiHttp : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        WebuiHttp();
-        ~WebuiHttp();
-
-
-}; // WebuiHttp
-
-class WebuiHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        WebuiHttps();
-        ~WebuiHttps();
-
-
-}; // WebuiHttps
 
 
 }

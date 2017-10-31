@@ -63,38 +63,64 @@ class CISCOSTPEXTENSIONSMIB : public ydk::Entity
         class Stpxsmstinstanceedittable; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable
         class Stpxsmstporttable; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstporttable
 
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects> stpxuplinkfastobjects;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects> stpxbackbonefastobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects> stpxbpduskewingobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable> stpxbpduskewingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects> stpxfaststartobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable> stpxfaststartopermodetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable> stpxfaststartporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable> stpxinconsistencytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable> stpxloopguardconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects> stpxloopguardobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable> stpxloopinconsistencytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable> stpxmistpinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects> stpxspanningtreeobjects;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpobjects> stpxmistpobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable> stpxmstinstanceedittable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable> stpxmstinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects> stpxloopguardobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects> stpxfaststartobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects> stpxbpduskewingobjects;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstobjects> stpxmstobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstportroletable> stpxmstportroletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstporttable> stpxmstporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpobjects> stpxrstpobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstobjects> stpxsmstobjects;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable> stpxpvstvlantable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable> stpxinconsistencytable;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable> stpxrootguardconfigtable;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable> stpxrootinconsistencytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable> stpxrpvstporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpobjects> stpxrstpobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable> stpxrstpportroletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable> stpxmistpinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable> stpxloopguardconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable> stpxloopinconsistencytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable> stpxfaststartporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable> stpxfaststartopermodetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable> stpxbpduskewingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable> stpxmstinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable> stpxmstinstanceedittable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstporttable> stpxmstporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstportroletable> stpxmstportroletable;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpporttable> stpxrstpporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable> stpxsmstinstanceedittable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable> stpxrstpportroletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable> stpxrpvstporttable;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable> stpxsmstinstancetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstobjects> stpxsmstobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable> stpxsmstinstanceedittable;
         std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstporttable> stpxsmstporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects> stpxspanningtreeobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects> stpxuplinkfastobjects;
         
 }; // CISCOSTPEXTENSIONSMIB
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects : public ydk::Entity
+{
+    public:
+        Stpxuplinkfastobjects();
+        ~Stpxuplinkfastobjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxuplinkfastenabled; //type: boolean
+        ydk::YLeaf stpxuplinkfasttransitions; //type: uint32
+        ydk::YLeaf stpxuplinkstationlearninggenrate; //type: int32
+        ydk::YLeaf stpxuplinkstationlearningframes; //type: uint32
+        ydk::YLeaf stpxuplinkfastoperenabled; //type: boolean
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects : public ydk::Entity
@@ -125,11 +151,11 @@ class CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects : public ydk::Entity
 }; // CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects : public ydk::Entity
 {
     public:
-        Stpxbpduskewingobjects();
-        ~Stpxbpduskewingobjects();
+        Stpxspanningtreeobjects();
+        ~Stpxspanningtreeobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -142,16 +168,24 @@ class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxbpduskewingdetectionenable; //type: boolean
+        ydk::YLeaf stpxspanningtreetype; //type: Stpxspanningtreetype
+        ydk::YLeaf stpxspanningtreepathcostmode; //type: Stpxspanningtreepathcostmode
+        ydk::YLeaf stpxextendedsysidadminenabled; //type: boolean
+        ydk::YLeaf stpxextendedsysidoperenabled; //type: boolean
+        ydk::YLeaf stpxnotificationenable; //type: Stpxnotificationenable
+        ydk::YLeaf stpxspanningtreepathcostopermode; //type: Stpxspanningtreepathcostopermode
+        class Stpxspanningtreetype;
+        class Stpxspanningtreepathcostmode;
+        class Stpxspanningtreepathcostopermode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects
+}; // CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxmistpobjects : public ydk::Entity
 {
     public:
-        Stpxbpduskewingtable();
-        ~Stpxbpduskewingtable();
+        Stpxmistpobjects();
+        ~Stpxmistpobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -164,18 +198,16 @@ class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxbpduskewingentry; //type: CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry
+        ydk::YLeaf stpxmistpinstancenumber; //type: int32
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry> > stpxbpduskewingentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable
+}; // CISCOSTPEXTENSIONSMIB::Stpxmistpobjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects : public ydk::Entity
 {
     public:
-        Stpxbpduskewingentry();
-        ~Stpxbpduskewingentry();
+        Stpxloopguardobjects();
+        ~Stpxloopguardobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -188,13 +220,10 @@ class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxbpduskewinginstanceindex; //type: int32
-        ydk::YLeaf stpxbpduskewingportindex; //type: int32
-        ydk::YLeaf stpxbpduskewinglastskewduration; //type: uint32
-        ydk::YLeaf stpxbpduskewingworstskewduration; //type: uint32
-        ydk::YLeaf stpxbpduskewingworstskewtime; //type: uint32
+        ydk::YLeaf stpxloopguardglobaldefaultmode; //type: Stpxloopguardglobaldefaultmode
+        class Stpxloopguardglobaldefaultmode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry
+}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects : public ydk::Entity
@@ -222,11 +251,11 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects : public ydk::Entity
 }; // CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects : public ydk::Entity
 {
     public:
-        Stpxfaststartopermodetable();
-        ~Stpxfaststartopermodetable();
+        Stpxbpduskewingobjects();
+        ~Stpxbpduskewingobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -239,431 +268,9 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxfaststartopermodeentry; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry
+        ydk::YLeaf stpxbpduskewingdetectionenable; //type: boolean
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry> > stpxfaststartopermodeentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry : public ydk::Entity
-{
-    public:
-        Stpxfaststartopermodeentry();
-        ~Stpxfaststartopermodeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxfaststartopermodeinstindex; //type: int32
-        ydk::YLeaf stpxfaststartopermodeportindex; //type: int32
-        ydk::YLeaf stpxfaststartopermode; //type: Stpxfaststartopermode
-        class Stpxfaststartopermode;
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable : public ydk::Entity
-{
-    public:
-        Stpxfaststartporttable();
-        ~Stpxfaststartporttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxfaststartportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry> > stpxfaststartportentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry : public ydk::Entity
-{
-    public:
-        Stpxfaststartportentry();
-        ~Stpxfaststartportentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxfaststartportindex; //type: int32
-        ydk::YLeaf stpxfaststartportenable; //type: boolean
-        ydk::YLeaf stpxfaststartportmode; //type: Stpxfaststartportmode
-        ydk::YLeaf stpxfaststartportbpduguardmode; //type: Stpxfaststartportbpduguardmode
-        ydk::YLeaf stpxfaststartportbpdufiltermode; //type: Stpxfaststartportbpdufiltermode
-        class Stpxfaststartportmode;
-        class Stpxfaststartportbpduguardmode;
-        class Stpxfaststartportbpdufiltermode;
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable : public ydk::Entity
-{
-    public:
-        Stpxinconsistencytable();
-        ~Stpxinconsistencytable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxinconsistencyentry; //type: CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry> > stpxinconsistencyentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry : public ydk::Entity
-{
-    public:
-        Stpxinconsistencyentry();
-        ~Stpxinconsistencyentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxvlanindex; //type: int32
-        ydk::YLeaf stpxportindex; //type: int32
-        ydk::YLeaf stpxinconsistentstate; //type: Stpxinconsistentstate
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable : public ydk::Entity
-{
-    public:
-        Stpxloopguardconfigtable();
-        ~Stpxloopguardconfigtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxloopguardconfigentry; //type: CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry> > stpxloopguardconfigentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry : public ydk::Entity
-{
-    public:
-        Stpxloopguardconfigentry();
-        ~Stpxloopguardconfigentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxloopguardconfigportindex; //type: int32
-        ydk::YLeaf stpxloopguardconfigenabled; //type: boolean
-        ydk::YLeaf stpxloopguardconfigmode; //type: Stpxloopguardconfigmode
-        class Stpxloopguardconfigmode;
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects : public ydk::Entity
-{
-    public:
-        Stpxloopguardobjects();
-        ~Stpxloopguardobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxloopguardglobaldefaultmode; //type: Stpxloopguardglobaldefaultmode
-        class Stpxloopguardglobaldefaultmode;
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable : public ydk::Entity
-{
-    public:
-        Stpxloopinconsistencytable();
-        ~Stpxloopinconsistencytable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxloopinconsistencyentry; //type: CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry> > stpxloopinconsistencyentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry : public ydk::Entity
-{
-    public:
-        Stpxloopinconsistencyentry();
-        ~Stpxloopinconsistencyentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxloopinconsistencyindex; //type: int32
-        ydk::YLeaf stpxloopinconsistencyportindex; //type: int32
-        ydk::YLeaf stpxloopinconsistencystate; //type: boolean
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable : public ydk::Entity
-{
-    public:
-        Stpxmistpinstancetable();
-        ~Stpxmistpinstancetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxmistpinstanceentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry> > stpxmistpinstanceentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry : public ydk::Entity
-{
-    public:
-        Stpxmistpinstanceentry();
-        ~Stpxmistpinstanceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxmistpinstanceindex; //type: int32
-        ydk::YLeaf stpxmistpinstanceenable; //type: boolean
-        ydk::YLeaf stpxmistpinstancevlansmapped; //type: binary
-        ydk::YLeaf stpxmistpinstancevlansmapped2k; //type: binary
-        ydk::YLeaf stpxmistpinstancevlansmapped3k; //type: binary
-        ydk::YLeaf stpxmistpinstancevlansmapped4k; //type: binary
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmistpobjects : public ydk::Entity
-{
-    public:
-        Stpxmistpobjects();
-        ~Stpxmistpobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxmistpinstancenumber; //type: int32
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxmistpobjects
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable : public ydk::Entity
-{
-    public:
-        Stpxmstinstanceedittable();
-        ~Stpxmstinstanceedittable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxmstinstanceeditentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry> > stpxmstinstanceeditentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry : public ydk::Entity
-{
-    public:
-        Stpxmstinstanceeditentry();
-        ~Stpxmstinstanceeditentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxmstinstanceeditindex; //type: int32
-        ydk::YLeaf stpxmstinstanceeditvlansmap; //type: binary
-        ydk::YLeaf stpxmstinstanceeditvlansmap2k; //type: binary
-        ydk::YLeaf stpxmstinstanceeditvlansmap3k; //type: binary
-        ydk::YLeaf stpxmstinstanceeditvlansmap4k; //type: binary
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable : public ydk::Entity
-{
-    public:
-        Stpxmstinstancetable();
-        ~Stpxmstinstancetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxmstinstanceentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry> > stpxmstinstanceentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry : public ydk::Entity
-{
-    public:
-        Stpxmstinstanceentry();
-        ~Stpxmstinstanceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxmstinstanceindex; //type: int32
-        ydk::YLeaf stpxmstinstancevlansmapped; //type: binary
-        ydk::YLeaf stpxmstinstancevlansmapped2k; //type: binary
-        ydk::YLeaf stpxmstinstancevlansmapped3k; //type: binary
-        ydk::YLeaf stpxmstinstancevlansmapped4k; //type: binary
-        ydk::YLeaf stpxmstinstanceremaininghopcount; //type: int32
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry
+}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxmstobjects : public ydk::Entity
@@ -697,11 +304,11 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstobjects : public ydk::Entity
 }; // CISCOSTPEXTENSIONSMIB::Stpxmstobjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxrstpobjects : public ydk::Entity
 {
     public:
-        Stpxmstportroletable();
-        ~Stpxmstportroletable();
+        Stpxrstpobjects();
+        ~Stpxrstpobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -714,18 +321,16 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxmstportroleentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry
+        ydk::YLeaf stpxrstptransmitholdcount; //type: uint32
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry> > stpxmstportroleentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstportroletable
+}; // CISCOSTPEXTENSIONSMIB::Stpxrstpobjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxsmstobjects : public ydk::Entity
 {
     public:
-        Stpxmstportroleentry();
-        ~Stpxmstportroleentry();
+        Stpxsmstobjects();
+        ~Stpxsmstobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -738,64 +343,15 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxmstportroleinstanceindex; //type: int32
-        ydk::YLeaf stpxmstportroleportindex; //type: int32
-        ydk::YLeaf stpxmstportrolevalue; //type: Stpxmstportrolevalue
-        class Stpxmstportrolevalue;
+        ydk::YLeaf stpxsmstmaxinstances; //type: uint32
+        ydk::YLeaf stpxsmstmaxinstanceid; //type: uint32
+        ydk::YLeaf stpxsmstregionrevision; //type: uint32
+        ydk::YLeaf stpxsmstregioneditrevision; //type: uint32
+        ydk::YLeaf stpxsmstmaxhopcount; //type: uint32
+        ydk::YLeaf stpxsmstconfigdigest; //type: string
+        ydk::YLeaf stpxsmstconfigprestandarddigest; //type: string
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstporttable : public ydk::Entity
-{
-    public:
-        Stpxmstporttable();
-        ~Stpxmstporttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxmstportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry> > stpxmstportentry;
-        
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstporttable
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry : public ydk::Entity
-{
-    public:
-        Stpxmstportentry();
-        ~Stpxmstportentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf stpxmstportindex; //type: int32
-        ydk::YLeaf stpxmstportadminlinktype; //type: Stpxmstportadminlinktype
-        ydk::YLeaf stpxmstportoperlinktype; //type: Stpxmstportoperlinktype
-        ydk::YLeaf stpxmstportprotocolmigration; //type: boolean
-        ydk::YLeaf stpxmstportstatus; //type: Stpxmstportstatus
-        class Stpxmstportadminlinktype;
-        class Stpxmstportoperlinktype;
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry
+}; // CISCOSTPEXTENSIONSMIB::Stpxsmstobjects
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable : public ydk::Entity
@@ -844,6 +400,54 @@ class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry : public ydk::
         class Stpxpvstvlanenable;
 
 }; // CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable : public ydk::Entity
+{
+    public:
+        Stpxinconsistencytable();
+        ~Stpxinconsistencytable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxinconsistencyentry; //type: CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry> > stpxinconsistencyentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry : public ydk::Entity
+{
+    public:
+        Stpxinconsistencyentry();
+        ~Stpxinconsistencyentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxvlanindex; //type: int32
+        ydk::YLeaf stpxportindex; //type: int32
+        ydk::YLeaf stpxinconsistentstate; //type: Stpxinconsistentstate
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable : public ydk::Entity
@@ -941,11 +545,11 @@ class CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyen
 }; // CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable : public ydk::Entity
 {
     public:
-        Stpxrpvstporttable();
-        ~Stpxrpvstporttable();
+        Stpxmistpinstancetable();
+        ~Stpxmistpinstancetable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -958,18 +562,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxrpvstportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry
+        class Stpxmistpinstanceentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry> > stpxrpvstportentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry> > stpxmistpinstanceentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable
+}; // CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry : public ydk::Entity
 {
     public:
-        Stpxrpvstportentry();
-        ~Stpxrpvstportentry();
+        Stpxmistpinstanceentry();
+        ~Stpxmistpinstanceentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -982,18 +586,21 @@ class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxrpvstportvlanindex; //type: int32
-        ydk::YLeaf stpxrpvstportindex; //type: int32
-        ydk::YLeaf stpxrpvstportstatus; //type: Stpxrpvstportstatus
+        ydk::YLeaf stpxmistpinstanceindex; //type: int32
+        ydk::YLeaf stpxmistpinstanceenable; //type: boolean
+        ydk::YLeaf stpxmistpinstancevlansmapped; //type: binary
+        ydk::YLeaf stpxmistpinstancevlansmapped2k; //type: binary
+        ydk::YLeaf stpxmistpinstancevlansmapped3k; //type: binary
+        ydk::YLeaf stpxmistpinstancevlansmapped4k; //type: binary
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry
+}; // CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable : public ydk::Entity
 {
     public:
-        Stpxrstpobjects();
-        ~Stpxrstpobjects();
+        Stpxloopguardconfigtable();
+        ~Stpxloopguardconfigtable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1006,40 +613,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxrstptransmitholdcount; //type: uint32
+        class Stpxloopguardconfigentry; //type: CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpobjects
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable : public ydk::Entity
-{
-    public:
-        Stpxrstpportroletable();
-        ~Stpxrstpportroletable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Stpxrstpportroleentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry> > stpxrstpportroleentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry> > stpxloopguardconfigentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable
+}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry : public ydk::Entity
 {
     public:
-        Stpxrstpportroleentry();
-        ~Stpxrstpportroleentry();
+        Stpxloopguardconfigentry();
+        ~Stpxloopguardconfigentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1052,12 +637,414 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxrstpportroleinstanceindex; //type: int32
-        ydk::YLeaf stpxrstpportroleportindex; //type: int32
-        ydk::YLeaf stpxrstpportrolevalue; //type: Stpxrstpportrolevalue
-        class Stpxrstpportrolevalue;
+        ydk::YLeaf stpxloopguardconfigportindex; //type: int32
+        ydk::YLeaf stpxloopguardconfigenabled; //type: boolean
+        ydk::YLeaf stpxloopguardconfigmode; //type: Stpxloopguardconfigmode
+        class Stpxloopguardconfigmode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry
+}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable : public ydk::Entity
+{
+    public:
+        Stpxloopinconsistencytable();
+        ~Stpxloopinconsistencytable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxloopinconsistencyentry; //type: CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry> > stpxloopinconsistencyentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry : public ydk::Entity
+{
+    public:
+        Stpxloopinconsistencyentry();
+        ~Stpxloopinconsistencyentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxloopinconsistencyindex; //type: int32
+        ydk::YLeaf stpxloopinconsistencyportindex; //type: int32
+        ydk::YLeaf stpxloopinconsistencystate; //type: boolean
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable : public ydk::Entity
+{
+    public:
+        Stpxfaststartporttable();
+        ~Stpxfaststartporttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxfaststartportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry> > stpxfaststartportentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry : public ydk::Entity
+{
+    public:
+        Stpxfaststartportentry();
+        ~Stpxfaststartportentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxfaststartportindex; //type: int32
+        ydk::YLeaf stpxfaststartportenable; //type: boolean
+        ydk::YLeaf stpxfaststartportmode; //type: Stpxfaststartportmode
+        ydk::YLeaf stpxfaststartportbpduguardmode; //type: Stpxfaststartportbpduguardmode
+        ydk::YLeaf stpxfaststartportbpdufiltermode; //type: Stpxfaststartportbpdufiltermode
+        class Stpxfaststartportmode;
+        class Stpxfaststartportbpduguardmode;
+        class Stpxfaststartportbpdufiltermode;
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable : public ydk::Entity
+{
+    public:
+        Stpxfaststartopermodetable();
+        ~Stpxfaststartopermodetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxfaststartopermodeentry; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry> > stpxfaststartopermodeentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry : public ydk::Entity
+{
+    public:
+        Stpxfaststartopermodeentry();
+        ~Stpxfaststartopermodeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxfaststartopermodeinstindex; //type: int32
+        ydk::YLeaf stpxfaststartopermodeportindex; //type: int32
+        ydk::YLeaf stpxfaststartopermode; //type: Stpxfaststartopermode
+        class Stpxfaststartopermode;
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable : public ydk::Entity
+{
+    public:
+        Stpxbpduskewingtable();
+        ~Stpxbpduskewingtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxbpduskewingentry; //type: CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry> > stpxbpduskewingentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry : public ydk::Entity
+{
+    public:
+        Stpxbpduskewingentry();
+        ~Stpxbpduskewingentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxbpduskewinginstanceindex; //type: int32
+        ydk::YLeaf stpxbpduskewingportindex; //type: int32
+        ydk::YLeaf stpxbpduskewinglastskewduration; //type: uint32
+        ydk::YLeaf stpxbpduskewingworstskewduration; //type: uint32
+        ydk::YLeaf stpxbpduskewingworstskewtime; //type: uint32
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable : public ydk::Entity
+{
+    public:
+        Stpxmstinstancetable();
+        ~Stpxmstinstancetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxmstinstanceentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry> > stpxmstinstanceentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry : public ydk::Entity
+{
+    public:
+        Stpxmstinstanceentry();
+        ~Stpxmstinstanceentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxmstinstanceindex; //type: int32
+        ydk::YLeaf stpxmstinstancevlansmapped; //type: binary
+        ydk::YLeaf stpxmstinstancevlansmapped2k; //type: binary
+        ydk::YLeaf stpxmstinstancevlansmapped3k; //type: binary
+        ydk::YLeaf stpxmstinstancevlansmapped4k; //type: binary
+        ydk::YLeaf stpxmstinstanceremaininghopcount; //type: int32
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable : public ydk::Entity
+{
+    public:
+        Stpxmstinstanceedittable();
+        ~Stpxmstinstanceedittable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxmstinstanceeditentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry> > stpxmstinstanceeditentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry : public ydk::Entity
+{
+    public:
+        Stpxmstinstanceeditentry();
+        ~Stpxmstinstanceeditentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxmstinstanceeditindex; //type: int32
+        ydk::YLeaf stpxmstinstanceeditvlansmap; //type: binary
+        ydk::YLeaf stpxmstinstanceeditvlansmap2k; //type: binary
+        ydk::YLeaf stpxmstinstanceeditvlansmap3k; //type: binary
+        ydk::YLeaf stpxmstinstanceeditvlansmap4k; //type: binary
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstporttable : public ydk::Entity
+{
+    public:
+        Stpxmstporttable();
+        ~Stpxmstporttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxmstportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry> > stpxmstportentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstporttable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry : public ydk::Entity
+{
+    public:
+        Stpxmstportentry();
+        ~Stpxmstportentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxmstportindex; //type: int32
+        ydk::YLeaf stpxmstportadminlinktype; //type: Stpxmstportadminlinktype
+        ydk::YLeaf stpxmstportoperlinktype; //type: Stpxmstportoperlinktype
+        ydk::YLeaf stpxmstportprotocolmigration; //type: boolean
+        ydk::YLeaf stpxmstportstatus; //type: Stpxmstportstatus
+        class Stpxmstportadminlinktype;
+        class Stpxmstportoperlinktype;
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable : public ydk::Entity
+{
+    public:
+        Stpxmstportroletable();
+        ~Stpxmstportroletable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxmstportroleentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry> > stpxmstportroleentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstportroletable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry : public ydk::Entity
+{
+    public:
+        Stpxmstportroleentry();
+        ~Stpxmstportroleentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxmstportroleinstanceindex; //type: int32
+        ydk::YLeaf stpxmstportroleportindex; //type: int32
+        ydk::YLeaf stpxmstportrolevalue; //type: Stpxmstportrolevalue
+        class Stpxmstportrolevalue;
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable : public ydk::Entity
@@ -1111,11 +1098,11 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry : public ydk::
 }; // CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable : public ydk::Entity
 {
     public:
-        Stpxsmstinstanceedittable();
-        ~Stpxsmstinstanceedittable();
+        Stpxrstpportroletable();
+        ~Stpxrstpportroletable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1128,18 +1115,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxsmstinstanceeditentry; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
+        class Stpxrstpportroleentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry> > stpxsmstinstanceeditentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry> > stpxrstpportroleentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable
+}; // CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry : public ydk::Entity
 {
     public:
-        Stpxsmstinstanceeditentry();
-        ~Stpxsmstinstanceeditentry();
+        Stpxrstpportroleentry();
+        ~Stpxrstpportroleentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1152,12 +1139,60 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxsmstinstanceeditindex; //type: uint32
-        ydk::YLeaf stpxsmstinstanceeditvlansmap1k2k; //type: binary
-        ydk::YLeaf stpxsmstinstanceeditvlansmap3k4k; //type: binary
-        ydk::YLeaf stpxsmstinstanceeditrowstatus; //type: RowStatus
+        ydk::YLeaf stpxrstpportroleinstanceindex; //type: int32
+        ydk::YLeaf stpxrstpportroleportindex; //type: int32
+        ydk::YLeaf stpxrstpportrolevalue; //type: Stpxrstpportrolevalue
+        class Stpxrstpportrolevalue;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
+}; // CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable : public ydk::Entity
+{
+    public:
+        Stpxrpvstporttable();
+        ~Stpxrpvstporttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Stpxrpvstportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry> > stpxrpvstportentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry : public ydk::Entity
+{
+    public:
+        Stpxrpvstportentry();
+        ~Stpxrpvstportentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxrpvstportvlanindex; //type: int32
+        ydk::YLeaf stpxrpvstportindex; //type: int32
+        ydk::YLeaf stpxrpvstportstatus; //type: Stpxrpvstportstatus
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable : public ydk::Entity
@@ -1211,11 +1246,11 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry : publ
 }; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable : public ydk::Entity
 {
     public:
-        Stpxsmstobjects();
-        ~Stpxsmstobjects();
+        Stpxsmstinstanceedittable();
+        ~Stpxsmstinstanceedittable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1228,15 +1263,36 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxsmstmaxinstances; //type: uint32
-        ydk::YLeaf stpxsmstmaxinstanceid; //type: uint32
-        ydk::YLeaf stpxsmstregionrevision; //type: uint32
-        ydk::YLeaf stpxsmstregioneditrevision; //type: uint32
-        ydk::YLeaf stpxsmstmaxhopcount; //type: uint32
-        ydk::YLeaf stpxsmstconfigdigest; //type: string
-        ydk::YLeaf stpxsmstconfigprestandarddigest; //type: string
+        class Stpxsmstinstanceeditentry; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstobjects
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry> > stpxsmstinstanceeditentry;
+        
+}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable
+
+
+class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry : public ydk::Entity
+{
+    public:
+        Stpxsmstinstanceeditentry();
+        ~Stpxsmstinstanceeditentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf stpxsmstinstanceeditindex; //type: uint32
+        ydk::YLeaf stpxsmstinstanceeditvlansmap1k2k; //type: binary
+        ydk::YLeaf stpxsmstinstanceeditvlansmap3k4k; //type: binary
+        ydk::YLeaf stpxsmstinstanceeditrowstatus; //type: RowStatus
+
+}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
 
 
 class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable : public ydk::Entity
@@ -1292,61 +1348,40 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry : public ydk::
 
 }; // CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry
 
-
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype : public ydk::Enum
 {
     public:
-        Stpxspanningtreeobjects();
-        ~Stpxspanningtreeobjects();
+        static const ydk::Enum::YLeaf pvstPlus;
+        static const ydk::Enum::YLeaf mistp;
+        static const ydk::Enum::YLeaf mistpPvstPlus;
+        static const ydk::Enum::YLeaf mst;
+        static const ydk::Enum::YLeaf rapidPvstPlus;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
+};
 
-        ydk::YLeaf stpxspanningtreetype; //type: Stpxspanningtreetype
-        ydk::YLeaf stpxspanningtreepathcostmode; //type: Stpxspanningtreepathcostmode
-        ydk::YLeaf stpxextendedsysidadminenabled; //type: boolean
-        ydk::YLeaf stpxextendedsysidoperenabled; //type: boolean
-        ydk::YLeaf stpxnotificationenable; //type: Stpxnotificationenable
-        ydk::YLeaf stpxspanningtreepathcostopermode; //type: Stpxspanningtreepathcostopermode
-        class Stpxspanningtreetype;
-        class Stpxspanningtreepathcostmode;
-        class Stpxspanningtreepathcostopermode;
-
-}; // CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects
-
-
-class CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostmode : public ydk::Enum
 {
     public:
-        Stpxuplinkfastobjects();
-        ~Stpxuplinkfastobjects();
+        static const ydk::Enum::YLeaf short_;
+        static const ydk::Enum::YLeaf long_;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
+};
 
-        ydk::YLeaf stpxuplinkfastenabled; //type: boolean
-        ydk::YLeaf stpxuplinkfasttransitions; //type: uint32
-        ydk::YLeaf stpxuplinkstationlearninggenrate; //type: int32
-        ydk::YLeaf stpxuplinkstationlearningframes; //type: uint32
-        ydk::YLeaf stpxuplinkfastoperenabled; //type: boolean
+class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostopermode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf short_;
+        static const ydk::Enum::YLeaf long_;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects
+};
+
+class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::Stpxloopguardglobaldefaultmode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+};
 
 class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::Stpxfaststartglobaldefaultmode : public ydk::Enum
 {
@@ -1356,11 +1391,41 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::Stpxfaststartglobaldefaultmod
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::Stpxfaststartopermode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferstatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf released;
+        static const ydk::Enum::YLeaf acquiredBySnmp;
+        static const ydk::Enum::YLeaf acquiredByNonSnmp;
+
+};
+
+class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf acquire;
+        static const ydk::Enum::YLeaf releaseWithForce;
+        static const ydk::Enum::YLeaf commit;
+        static const ydk::Enum::YLeaf rollBack;
+
+};
+
+class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlanenable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf notApplicable;
+
+};
+
+class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::Stpxloopguardconfigmode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf default_;
 
 };
 
@@ -1393,53 +1458,11 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stp
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::Stpxloopguardconfigmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::Stpxfaststartopermode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf default_;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::Stpxloopguardglobaldefaultmode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferstatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf released;
-        static const ydk::Enum::YLeaf acquiredBySnmp;
-        static const ydk::Enum::YLeaf acquiredByNonSnmp;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf acquire;
-        static const ydk::Enum::YLeaf releaseWithForce;
-        static const ydk::Enum::YLeaf commit;
-        static const ydk::Enum::YLeaf rollBack;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue : public ydk::Enum
-{
-    public:
+        static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf root;
-        static const ydk::Enum::YLeaf designated;
-        static const ydk::Enum::YLeaf alternate;
-        static const ydk::Enum::YLeaf backUp;
-        static const ydk::Enum::YLeaf boundary;
-        static const ydk::Enum::YLeaf master;
 
 };
 
@@ -1461,16 +1484,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportoper
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlanenable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf notApplicable;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -1501,6 +1515,19 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpporto
 
 };
 
+class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf root;
+        static const ydk::Enum::YLeaf designated;
+        static const ydk::Enum::YLeaf alternate;
+        static const ydk::Enum::YLeaf backUp;
+        static const ydk::Enum::YLeaf boundary;
+        static const ydk::Enum::YLeaf master;
+
+};
+
 class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportadminmstmode : public ydk::Enum
 {
     public:
@@ -1515,33 +1542,6 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstporto
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf preStandard;
         static const ydk::Enum::YLeaf standard;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pvstPlus;
-        static const ydk::Enum::YLeaf mistp;
-        static const ydk::Enum::YLeaf mistpPvstPlus;
-        static const ydk::Enum::YLeaf mst;
-        static const ydk::Enum::YLeaf rapidPvstPlus;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostmode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf short_;
-        static const ydk::Enum::YLeaf long_;
-
-};
-
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostopermode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf short_;
-        static const ydk::Enum::YLeaf long_;
 
 };
 

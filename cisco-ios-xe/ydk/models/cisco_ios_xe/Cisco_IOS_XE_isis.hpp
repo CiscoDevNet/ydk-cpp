@@ -19,19 +19,19 @@ class IsisLevelType : public ydk::Enum
 
 };
 
-class AuthenticationLevelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
 class IsisRoutesLevelType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_1_2;
+        static const ydk::Enum::YLeaf level_2;
+
+};
+
+class AuthenticationLevelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
 };

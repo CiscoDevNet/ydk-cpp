@@ -239,9 +239,9 @@ CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatusch
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
     atmvclvci{YType::str, "atmVclVci"},
-    atmpvclstatuschangeend{YType::uint32, "atmPVclStatusChangeEnd"},
+    atmpvclstatustransition{YType::uint32, "atmPVclStatusTransition"},
     atmpvclstatuschangestart{YType::uint32, "atmPVclStatusChangeStart"},
-    atmpvclstatustransition{YType::uint32, "atmPVclStatusTransition"}
+    atmpvclstatuschangeend{YType::uint32, "atmPVclStatusChangeEnd"}
 {
 
     yang_name = "atmCurrentStatusChangePVclEntry"; yang_parent_name = "atmCurrentStatusChangePVclTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -256,9 +256,9 @@ bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentsta
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
-	|| atmpvclstatuschangeend.is_set
+	|| atmpvclstatustransition.is_set
 	|| atmpvclstatuschangestart.is_set
-	|| atmpvclstatustransition.is_set;
+	|| atmpvclstatuschangeend.is_set;
 }
 
 bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_operation() const
@@ -267,9 +267,9 @@ bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentsta
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(atmvclvpi.yfilter)
 	|| ydk::is_set(atmvclvci.yfilter)
-	|| ydk::is_set(atmpvclstatuschangeend.yfilter)
+	|| ydk::is_set(atmpvclstatustransition.yfilter)
 	|| ydk::is_set(atmpvclstatuschangestart.yfilter)
-	|| ydk::is_set(atmpvclstatustransition.yfilter);
+	|| ydk::is_set(atmpvclstatuschangeend.yfilter);
 }
 
 std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_absolute_path() const
@@ -293,9 +293,9 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIBEXTN::Atmc
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
     if (atmvclvpi.is_set || is_set(atmvclvpi.yfilter)) leaf_name_data.push_back(atmvclvpi.get_name_leafdata());
     if (atmvclvci.is_set || is_set(atmvclvci.yfilter)) leaf_name_data.push_back(atmvclvci.get_name_leafdata());
-    if (atmpvclstatuschangeend.is_set || is_set(atmpvclstatuschangeend.yfilter)) leaf_name_data.push_back(atmpvclstatuschangeend.get_name_leafdata());
-    if (atmpvclstatuschangestart.is_set || is_set(atmpvclstatuschangestart.yfilter)) leaf_name_data.push_back(atmpvclstatuschangestart.get_name_leafdata());
     if (atmpvclstatustransition.is_set || is_set(atmpvclstatustransition.yfilter)) leaf_name_data.push_back(atmpvclstatustransition.get_name_leafdata());
+    if (atmpvclstatuschangestart.is_set || is_set(atmpvclstatuschangestart.yfilter)) leaf_name_data.push_back(atmpvclstatuschangestart.get_name_leafdata());
+    if (atmpvclstatuschangeend.is_set || is_set(atmpvclstatuschangeend.yfilter)) leaf_name_data.push_back(atmpvclstatuschangeend.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -332,11 +332,11 @@ void CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentsta
         atmvclvci.value_namespace = name_space;
         atmvclvci.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmPVclStatusChangeEnd")
+    if(value_path == "atmPVclStatusTransition")
     {
-        atmpvclstatuschangeend = value;
-        atmpvclstatuschangeend.value_namespace = name_space;
-        atmpvclstatuschangeend.value_namespace_prefix = name_space_prefix;
+        atmpvclstatustransition = value;
+        atmpvclstatustransition.value_namespace = name_space;
+        atmpvclstatustransition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atmPVclStatusChangeStart")
     {
@@ -344,11 +344,11 @@ void CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentsta
         atmpvclstatuschangestart.value_namespace = name_space;
         atmpvclstatuschangestart.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmPVclStatusTransition")
+    if(value_path == "atmPVclStatusChangeEnd")
     {
-        atmpvclstatustransition = value;
-        atmpvclstatustransition.value_namespace = name_space;
-        atmpvclstatustransition.value_namespace_prefix = name_space_prefix;
+        atmpvclstatuschangeend = value;
+        atmpvclstatuschangeend.value_namespace = name_space;
+        atmpvclstatuschangeend.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -366,23 +366,23 @@ void CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentsta
     {
         atmvclvci.yfilter = yfilter;
     }
-    if(value_path == "atmPVclStatusChangeEnd")
+    if(value_path == "atmPVclStatusTransition")
     {
-        atmpvclstatuschangeend.yfilter = yfilter;
+        atmpvclstatustransition.yfilter = yfilter;
     }
     if(value_path == "atmPVclStatusChangeStart")
     {
         atmpvclstatuschangestart.yfilter = yfilter;
     }
-    if(value_path == "atmPVclStatusTransition")
+    if(value_path == "atmPVclStatusChangeEnd")
     {
-        atmpvclstatustransition.yfilter = yfilter;
+        atmpvclstatuschangeend.yfilter = yfilter;
     }
 }
 
 bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "atmPVclStatusChangeEnd" || name == "atmPVclStatusChangeStart" || name == "atmPVclStatusTransition")
+    if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "atmPVclStatusTransition" || name == "atmPVclStatusChangeStart" || name == "atmPVclStatusChangeEnd")
         return true;
     return false;
 }
@@ -492,10 +492,10 @@ CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclr
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
     rangeindex{YType::uint32, "rangeIndex"},
-    atmpvclhigherrangevalue{YType::int32, "atmPVclHigherRangeValue"},
     atmpvcllowerrangevalue{YType::int32, "atmPVclLowerRangeValue"},
-    atmpvclrangestatuschangeend{YType::uint32, "atmPVclRangeStatusChangeEnd"},
-    atmpvclrangestatuschangestart{YType::uint32, "atmPVclRangeStatusChangeStart"}
+    atmpvclhigherrangevalue{YType::int32, "atmPVclHigherRangeValue"},
+    atmpvclrangestatuschangestart{YType::uint32, "atmPVclRangeStatusChangeStart"},
+    atmpvclrangestatuschangeend{YType::uint32, "atmPVclRangeStatusChangeEnd"}
 {
 
     yang_name = "atmStatusChangePVclRangeEntry"; yang_parent_name = "atmStatusChangePVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -510,10 +510,10 @@ bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschange
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| rangeindex.is_set
-	|| atmpvclhigherrangevalue.is_set
 	|| atmpvcllowerrangevalue.is_set
-	|| atmpvclrangestatuschangeend.is_set
-	|| atmpvclrangestatuschangestart.is_set;
+	|| atmpvclhigherrangevalue.is_set
+	|| atmpvclrangestatuschangestart.is_set
+	|| atmpvclrangestatuschangeend.is_set;
 }
 
 bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_operation() const
@@ -522,10 +522,10 @@ bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschange
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(atmvclvpi.yfilter)
 	|| ydk::is_set(rangeindex.yfilter)
-	|| ydk::is_set(atmpvclhigherrangevalue.yfilter)
 	|| ydk::is_set(atmpvcllowerrangevalue.yfilter)
-	|| ydk::is_set(atmpvclrangestatuschangeend.yfilter)
-	|| ydk::is_set(atmpvclrangestatuschangestart.yfilter);
+	|| ydk::is_set(atmpvclhigherrangevalue.yfilter)
+	|| ydk::is_set(atmpvclrangestatuschangestart.yfilter)
+	|| ydk::is_set(atmpvclrangestatuschangeend.yfilter);
 }
 
 std::string CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_absolute_path() const
@@ -549,10 +549,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIBEXTN::Atms
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
     if (atmvclvpi.is_set || is_set(atmvclvpi.yfilter)) leaf_name_data.push_back(atmvclvpi.get_name_leafdata());
     if (rangeindex.is_set || is_set(rangeindex.yfilter)) leaf_name_data.push_back(rangeindex.get_name_leafdata());
-    if (atmpvclhigherrangevalue.is_set || is_set(atmpvclhigherrangevalue.yfilter)) leaf_name_data.push_back(atmpvclhigherrangevalue.get_name_leafdata());
     if (atmpvcllowerrangevalue.is_set || is_set(atmpvcllowerrangevalue.yfilter)) leaf_name_data.push_back(atmpvcllowerrangevalue.get_name_leafdata());
-    if (atmpvclrangestatuschangeend.is_set || is_set(atmpvclrangestatuschangeend.yfilter)) leaf_name_data.push_back(atmpvclrangestatuschangeend.get_name_leafdata());
+    if (atmpvclhigherrangevalue.is_set || is_set(atmpvclhigherrangevalue.yfilter)) leaf_name_data.push_back(atmpvclhigherrangevalue.get_name_leafdata());
     if (atmpvclrangestatuschangestart.is_set || is_set(atmpvclrangestatuschangestart.yfilter)) leaf_name_data.push_back(atmpvclrangestatuschangestart.get_name_leafdata());
+    if (atmpvclrangestatuschangeend.is_set || is_set(atmpvclrangestatuschangeend.yfilter)) leaf_name_data.push_back(atmpvclrangestatuschangeend.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -589,29 +589,29 @@ void CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschange
         rangeindex.value_namespace = name_space;
         rangeindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmPVclHigherRangeValue")
-    {
-        atmpvclhigherrangevalue = value;
-        atmpvclhigherrangevalue.value_namespace = name_space;
-        atmpvclhigherrangevalue.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "atmPVclLowerRangeValue")
     {
         atmpvcllowerrangevalue = value;
         atmpvcllowerrangevalue.value_namespace = name_space;
         atmpvcllowerrangevalue.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmPVclRangeStatusChangeEnd")
+    if(value_path == "atmPVclHigherRangeValue")
     {
-        atmpvclrangestatuschangeend = value;
-        atmpvclrangestatuschangeend.value_namespace = name_space;
-        atmpvclrangestatuschangeend.value_namespace_prefix = name_space_prefix;
+        atmpvclhigherrangevalue = value;
+        atmpvclhigherrangevalue.value_namespace = name_space;
+        atmpvclhigherrangevalue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atmPVclRangeStatusChangeStart")
     {
         atmpvclrangestatuschangestart = value;
         atmpvclrangestatuschangestart.value_namespace = name_space;
         atmpvclrangestatuschangestart.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "atmPVclRangeStatusChangeEnd")
+    {
+        atmpvclrangestatuschangeend = value;
+        atmpvclrangestatuschangeend.value_namespace = name_space;
+        atmpvclrangestatuschangeend.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -629,27 +629,27 @@ void CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschange
     {
         rangeindex.yfilter = yfilter;
     }
-    if(value_path == "atmPVclHigherRangeValue")
-    {
-        atmpvclhigherrangevalue.yfilter = yfilter;
-    }
     if(value_path == "atmPVclLowerRangeValue")
     {
         atmpvcllowerrangevalue.yfilter = yfilter;
     }
-    if(value_path == "atmPVclRangeStatusChangeEnd")
+    if(value_path == "atmPVclHigherRangeValue")
     {
-        atmpvclrangestatuschangeend.yfilter = yfilter;
+        atmpvclhigherrangevalue.yfilter = yfilter;
     }
     if(value_path == "atmPVclRangeStatusChangeStart")
     {
         atmpvclrangestatuschangestart.yfilter = yfilter;
     }
+    if(value_path == "atmPVclRangeStatusChangeEnd")
+    {
+        atmpvclrangestatuschangeend.yfilter = yfilter;
+    }
 }
 
 bool CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "atmVclVpi" || name == "rangeIndex" || name == "atmPVclHigherRangeValue" || name == "atmPVclLowerRangeValue" || name == "atmPVclRangeStatusChangeEnd" || name == "atmPVclRangeStatusChangeStart")
+    if(name == "ifIndex" || name == "atmVclVpi" || name == "rangeIndex" || name == "atmPVclLowerRangeValue" || name == "atmPVclHigherRangeValue" || name == "atmPVclRangeStatusChangeStart" || name == "atmPVclRangeStatusChangeEnd")
         return true;
     return false;
 }

@@ -38,63 +38,14 @@ class ENTITYMIB : public ydk::Entity
         class Entaliasmappingtable; //type: ENTITYMIB::Entaliasmappingtable
         class Entphysicalcontainstable; //type: ENTITYMIB::Entphysicalcontainstable
 
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entaliasmappingtable> entaliasmappingtable;
         std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entitygeneral> entitygeneral;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable> entphysicaltable;
         std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entlogicaltable> entlogicaltable;
         std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entlpmappingtable> entlpmappingtable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entaliasmappingtable> entaliasmappingtable;
         std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicalcontainstable> entphysicalcontainstable;
-        std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable> entphysicaltable;
         
 }; // ENTITYMIB
-
-
-class ENTITYMIB::Entaliasmappingtable : public ydk::Entity
-{
-    public:
-        Entaliasmappingtable();
-        ~Entaliasmappingtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Entaliasmappingentry; //type: ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry> > entaliasmappingentry;
-        
-}; // ENTITYMIB::Entaliasmappingtable
-
-
-class ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry : public ydk::Entity
-{
-    public:
-        Entaliasmappingentry();
-        ~Entaliasmappingentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        ydk::YLeaf entphysicalindex;
-        ydk::YLeaf entaliaslogicalindexorzero; //type: int32
-        ydk::YLeaf entaliasmappingidentifier; //type: string
-
-}; // ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry
 
 
 class ENTITYMIB::Entitygeneral : public ydk::Entity
@@ -117,6 +68,70 @@ class ENTITYMIB::Entitygeneral : public ydk::Entity
         ydk::YLeaf entlastchangetime; //type: uint32
 
 }; // ENTITYMIB::Entitygeneral
+
+
+class ENTITYMIB::Entphysicaltable : public ydk::Entity
+{
+    public:
+        Entphysicaltable();
+        ~Entphysicaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Entphysicalentry; //type: ENTITYMIB::Entphysicaltable::Entphysicalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry> > entphysicalentry;
+        
+}; // ENTITYMIB::Entphysicaltable
+
+
+class ENTITYMIB::Entphysicaltable::Entphysicalentry : public ydk::Entity
+{
+    public:
+        Entphysicalentry();
+        ~Entphysicalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entphysicalindex; //type: int32
+        ydk::YLeaf entphysicaldescr; //type: string
+        ydk::YLeaf entphysicalvendortype; //type: string
+        ydk::YLeaf entphysicalcontainedin; //type: int32
+        ydk::YLeaf entphysicalclass; //type: PhysicalClass
+        ydk::YLeaf entphysicalparentrelpos; //type: int32
+        ydk::YLeaf entphysicalname; //type: string
+        ydk::YLeaf entphysicalhardwarerev; //type: string
+        ydk::YLeaf entphysicalfirmwarerev; //type: string
+        ydk::YLeaf entphysicalsoftwarerev; //type: string
+        ydk::YLeaf entphysicalserialnum; //type: string
+        ydk::YLeaf entphysicalmfgname; //type: string
+        ydk::YLeaf entphysicalmodelname; //type: string
+        ydk::YLeaf entphysicalalias; //type: string
+        ydk::YLeaf entphysicalassetid; //type: string
+        ydk::YLeaf entphysicalisfru; //type: boolean
+        ydk::YLeaf entphysicalmfgdate; //type: string
+        ydk::YLeaf entphysicaluris; //type: binary
+        ydk::YLeaf ceentphysicalsecondserialnum; //type: string
+
+}; // ENTITYMIB::Entphysicaltable::Entphysicalentry
 
 
 class ENTITYMIB::Entlogicaltable : public ydk::Entity
@@ -220,6 +235,55 @@ class ENTITYMIB::Entlpmappingtable::Entlpmappingentry : public ydk::Entity
 }; // ENTITYMIB::Entlpmappingtable::Entlpmappingentry
 
 
+class ENTITYMIB::Entaliasmappingtable : public ydk::Entity
+{
+    public:
+        Entaliasmappingtable();
+        ~Entaliasmappingtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Entaliasmappingentry; //type: ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry> > entaliasmappingentry;
+        
+}; // ENTITYMIB::Entaliasmappingtable
+
+
+class ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry : public ydk::Entity
+{
+    public:
+        Entaliasmappingentry();
+        ~Entaliasmappingentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf entaliaslogicalindexorzero; //type: int32
+        ydk::YLeaf entaliasmappingidentifier; //type: string
+
+}; // ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry
+
+
 class ENTITYMIB::Entphysicalcontainstable : public ydk::Entity
 {
     public:
@@ -266,70 +330,6 @@ class ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry : public ydk
         ydk::YLeaf entphysicalchildindex; //type: int32
 
 }; // ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry
-
-
-class ENTITYMIB::Entphysicaltable : public ydk::Entity
-{
-    public:
-        Entphysicaltable();
-        ~Entphysicaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Entphysicalentry; //type: ENTITYMIB::Entphysicaltable::Entphysicalentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry> > entphysicalentry;
-        
-}; // ENTITYMIB::Entphysicaltable
-
-
-class ENTITYMIB::Entphysicaltable::Entphysicalentry : public ydk::Entity
-{
-    public:
-        Entphysicalentry();
-        ~Entphysicalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf entphysicalindex; //type: int32
-        ydk::YLeaf entphysicaldescr; //type: string
-        ydk::YLeaf entphysicalvendortype; //type: string
-        ydk::YLeaf entphysicalcontainedin; //type: int32
-        ydk::YLeaf entphysicalclass; //type: PhysicalClass
-        ydk::YLeaf entphysicalparentrelpos; //type: int32
-        ydk::YLeaf entphysicalname; //type: string
-        ydk::YLeaf entphysicalhardwarerev; //type: string
-        ydk::YLeaf entphysicalfirmwarerev; //type: string
-        ydk::YLeaf entphysicalsoftwarerev; //type: string
-        ydk::YLeaf entphysicalserialnum; //type: string
-        ydk::YLeaf entphysicalmfgname; //type: string
-        ydk::YLeaf entphysicalmodelname; //type: string
-        ydk::YLeaf entphysicalalias; //type: string
-        ydk::YLeaf entphysicalassetid; //type: string
-        ydk::YLeaf entphysicalisfru; //type: boolean
-        ydk::YLeaf entphysicalmfgdate; //type: string
-        ydk::YLeaf entphysicaluris; //type: binary
-        ydk::YLeaf ceentphysicalsecondserialnum; //type: string
-
-}; // ENTITYMIB::Entphysicaltable::Entphysicalentry
 
 class PhysicalClass : public ydk::Enum
 {

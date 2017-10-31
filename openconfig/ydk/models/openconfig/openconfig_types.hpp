@@ -37,15 +37,6 @@ class IPV6 : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Id
 
 }; // IPV6
 
-class L2ETHERNET : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
-{
-    public:
-        L2ETHERNET();
-        ~L2ETHERNET();
-
-
-}; // L2ETHERNET
-
 class MPLS : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
 {
     public:
@@ -54,6 +45,15 @@ class MPLS : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Id
 
 
 }; // MPLS
+
+class L2ETHERNET : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
+{
+    public:
+        L2ETHERNET();
+        ~L2ETHERNET();
+
+
+}; // L2ETHERNET
 
 
 }

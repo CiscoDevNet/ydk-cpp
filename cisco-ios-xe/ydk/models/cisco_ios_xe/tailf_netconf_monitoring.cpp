@@ -41,6 +41,26 @@ CliTcp::~CliTcp()
 {
 }
 
+WebuiHttp::WebuiHttp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-http")
+{
+
+}
+
+WebuiHttp::~WebuiHttp()
+{
+}
+
+WebuiHttps::WebuiHttps()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-https")
+{
+
+}
+
+WebuiHttps::~WebuiHttps()
+{
+}
+
 NetconfTcp::NetconfTcp()
      : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:netconf-tcp")
 {
@@ -48,6 +68,16 @@ NetconfTcp::NetconfTcp()
 }
 
 NetconfTcp::~NetconfTcp()
+{
+}
+
+SnmpUdp::SnmpUdp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:snmp-udp")
+{
+
+}
+
+SnmpUdp::~SnmpUdp()
 {
 }
 
@@ -68,36 +98,6 @@ RestHttps::RestHttps()
 }
 
 RestHttps::~RestHttps()
-{
-}
-
-SnmpUdp::SnmpUdp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:snmp-udp")
-{
-
-}
-
-SnmpUdp::~SnmpUdp()
-{
-}
-
-WebuiHttp::WebuiHttp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-http")
-{
-
-}
-
-WebuiHttp::~WebuiHttp()
-{
-}
-
-WebuiHttps::WebuiHttps()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-https")
-{
-
-}
-
-WebuiHttps::~WebuiHttps()
 {
 }
 

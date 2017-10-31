@@ -43,18 +43,40 @@ class CISCOFLASHMIB : public ydk::Entity
         class Ciscoflashpartitioningtable; //type: CISCOFLASHMIB::Ciscoflashpartitioningtable
         class Ciscoflashmiscoptable; //type: CISCOFLASHMIB::Ciscoflashmiscoptable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcfg> ciscoflashcfg;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashchiptable> ciscoflashchiptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcopytable> ciscoflashcopytable;
         std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevice> ciscoflashdevice;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcfg> ciscoflashcfg;
         std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable> ciscoflashdevicetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfilebytypetable> ciscoflashfilebytypetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable> ciscoflashfiletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashmiscoptable> ciscoflashmiscoptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitioningtable> ciscoflashpartitioningtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashchiptable> ciscoflashchiptable;
         std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable> ciscoflashpartitiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable> ciscoflashfiletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfilebytypetable> ciscoflashfilebytypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcopytable> ciscoflashcopytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitioningtable> ciscoflashpartitioningtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashmiscoptable> ciscoflashmiscoptable;
         
 }; // CISCOFLASHMIB
+
+
+class CISCOFLASHMIB::Ciscoflashdevice : public ydk::Entity
+{
+    public:
+        Ciscoflashdevice();
+        ~Ciscoflashdevice();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ciscoflashdevicessupported; //type: uint32
+
+}; // CISCOFLASHMIB::Ciscoflashdevice
 
 
 class CISCOFLASHMIB::Ciscoflashcfg : public ydk::Entity
@@ -79,145 +101,6 @@ class CISCOFLASHMIB::Ciscoflashcfg : public ydk::Entity
         ydk::YLeaf ciscoflashpartitionlowspacenotifenable; //type: boolean
 
 }; // CISCOFLASHMIB::Ciscoflashcfg
-
-
-class CISCOFLASHMIB::Ciscoflashchiptable : public ydk::Entity
-{
-    public:
-        Ciscoflashchiptable();
-        ~Ciscoflashchiptable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciscoflashchipentry; //type: CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry> > ciscoflashchipentry;
-        
-}; // CISCOFLASHMIB::Ciscoflashchiptable
-
-
-class CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry : public ydk::Entity
-{
-    public:
-        Ciscoflashchipentry();
-        ~Ciscoflashchipentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
-        ydk::YLeaf ciscoflashdeviceindex;
-        ydk::YLeaf ciscoflashchipindex; //type: int32
-        ydk::YLeaf ciscoflashchipcode; //type: string
-        ydk::YLeaf ciscoflashchipdescr; //type: string
-        ydk::YLeaf ciscoflashchipwriteretries; //type: uint32
-        ydk::YLeaf ciscoflashchiperaseretries; //type: uint32
-        ydk::YLeaf ciscoflashchipmaxwriteretries; //type: uint32
-        ydk::YLeaf ciscoflashchipmaxeraseretries; //type: uint32
-
-}; // CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry
-
-
-class CISCOFLASHMIB::Ciscoflashcopytable : public ydk::Entity
-{
-    public:
-        Ciscoflashcopytable();
-        ~Ciscoflashcopytable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciscoflashcopyentry; //type: CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry> > ciscoflashcopyentry;
-        
-}; // CISCOFLASHMIB::Ciscoflashcopytable
-
-
-class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry : public ydk::Entity
-{
-    public:
-        Ciscoflashcopyentry();
-        ~Ciscoflashcopyentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ciscoflashcopyserialnumber; //type: int32
-        ydk::YLeaf ciscoflashcopycommand; //type: Ciscoflashcopycommand
-        ydk::YLeaf ciscoflashcopyprotocol; //type: Ciscoflashcopyprotocol
-        ydk::YLeaf ciscoflashcopyserveraddress; //type: string
-        ydk::YLeaf ciscoflashcopysourcename; //type: string
-        ydk::YLeaf ciscoflashcopydestinationname; //type: string
-        ydk::YLeaf ciscoflashcopyremoteusername; //type: string
-        ydk::YLeaf ciscoflashcopystatus; //type: Ciscoflashcopystatus
-        ydk::YLeaf ciscoflashcopynotifyoncompletion; //type: boolean
-        ydk::YLeaf ciscoflashcopytime; //type: uint32
-        ydk::YLeaf ciscoflashcopyentrystatus; //type: RowStatus
-        ydk::YLeaf ciscoflashcopyverify; //type: boolean
-        ydk::YLeaf ciscoflashcopyserveraddrtype; //type: InetAddressType
-        ydk::YLeaf ciscoflashcopyserveraddrrev1; //type: binary
-        ydk::YLeaf ciscoflashcopyremotepassword; //type: string
-        class Ciscoflashcopycommand;
-        class Ciscoflashcopyprotocol;
-        class Ciscoflashcopystatus;
-
-}; // CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry
-
-
-class CISCOFLASHMIB::Ciscoflashdevice : public ydk::Entity
-{
-    public:
-        Ciscoflashdevice();
-        ~Ciscoflashdevice();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ciscoflashdevicessupported; //type: uint32
-
-}; // CISCOFLASHMIB::Ciscoflashdevice
 
 
 class CISCOFLASHMIB::Ciscoflashdevicetable : public ydk::Entity
@@ -283,11 +166,11 @@ class CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry : public ydk::
 }; // CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry
 
 
-class CISCOFLASHMIB::Ciscoflashfilebytypetable : public ydk::Entity
+class CISCOFLASHMIB::Ciscoflashchiptable : public ydk::Entity
 {
     public:
-        Ciscoflashfilebytypetable();
-        ~Ciscoflashfilebytypetable();
+        Ciscoflashchiptable();
+        ~Ciscoflashchiptable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -300,76 +183,18 @@ class CISCOFLASHMIB::Ciscoflashfilebytypetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashfilebytypeentry; //type: CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry
+        class Ciscoflashchipentry; //type: CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry> > ciscoflashfilebytypeentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry> > ciscoflashchipentry;
         
-}; // CISCOFLASHMIB::Ciscoflashfilebytypetable
+}; // CISCOFLASHMIB::Ciscoflashchiptable
 
 
-class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry : public ydk::Entity
+class CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry : public ydk::Entity
 {
     public:
-        Ciscoflashfilebytypeentry();
-        ~Ciscoflashfilebytypeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ciscoflashfiletype; //type: FlashFileType
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
-        ydk::YLeaf ciscoflashdeviceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::ciscoflashpartitionindex)
-        ydk::YLeaf ciscoflashpartitionindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::ciscoflashfileindex)
-        ydk::YLeaf ciscoflashfileindex;
-        ydk::YLeaf ciscoflashfilebytypesize; //type: uint32
-        ydk::YLeaf ciscoflashfilebytypechecksum; //type: binary
-        ydk::YLeaf ciscoflashfilebytypestatus; //type: Ciscoflashfilebytypestatus
-        ydk::YLeaf ciscoflashfilebytypename; //type: string
-        ydk::YLeaf ciscoflashfilebytypedate; //type: string
-        class Ciscoflashfilebytypestatus;
-
-}; // CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry
-
-
-class CISCOFLASHMIB::Ciscoflashfiletable : public ydk::Entity
-{
-    public:
-        Ciscoflashfiletable();
-        ~Ciscoflashfiletable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciscoflashfileentry; //type: CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry> > ciscoflashfileentry;
-        
-}; // CISCOFLASHMIB::Ciscoflashfiletable
-
-
-class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry : public ydk::Entity
-{
-    public:
-        Ciscoflashfileentry();
-        ~Ciscoflashfileentry();
+        Ciscoflashchipentry();
+        ~Ciscoflashchipentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -384,128 +209,15 @@ class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry : public ydk::Enti
 
         //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
         ydk::YLeaf ciscoflashdeviceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::ciscoflashpartitionindex)
-        ydk::YLeaf ciscoflashpartitionindex;
-        ydk::YLeaf ciscoflashfileindex; //type: uint32
-        ydk::YLeaf ciscoflashfilesize; //type: uint32
-        ydk::YLeaf ciscoflashfilechecksum; //type: binary
-        ydk::YLeaf ciscoflashfilestatus; //type: Ciscoflashfilestatus
-        ydk::YLeaf ciscoflashfilename; //type: string
-        ydk::YLeaf ciscoflashfiletype; //type: FlashFileType
-        ydk::YLeaf ciscoflashfiledate; //type: string
-        class Ciscoflashfilestatus;
+        ydk::YLeaf ciscoflashchipindex; //type: int32
+        ydk::YLeaf ciscoflashchipcode; //type: string
+        ydk::YLeaf ciscoflashchipdescr; //type: string
+        ydk::YLeaf ciscoflashchipwriteretries; //type: uint32
+        ydk::YLeaf ciscoflashchiperaseretries; //type: uint32
+        ydk::YLeaf ciscoflashchipmaxwriteretries; //type: uint32
+        ydk::YLeaf ciscoflashchipmaxeraseretries; //type: uint32
 
-}; // CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry
-
-
-class CISCOFLASHMIB::Ciscoflashmiscoptable : public ydk::Entity
-{
-    public:
-        Ciscoflashmiscoptable();
-        ~Ciscoflashmiscoptable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciscoflashmiscopentry; //type: CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry> > ciscoflashmiscopentry;
-        
-}; // CISCOFLASHMIB::Ciscoflashmiscoptable
-
-
-class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry : public ydk::Entity
-{
-    public:
-        Ciscoflashmiscopentry();
-        ~Ciscoflashmiscopentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ciscoflashmiscopserialnumber; //type: int32
-        ydk::YLeaf ciscoflashmiscopcommand; //type: Ciscoflashmiscopcommand
-        ydk::YLeaf ciscoflashmiscopdestinationname; //type: string
-        ydk::YLeaf ciscoflashmiscopstatus; //type: Ciscoflashmiscopstatus
-        ydk::YLeaf ciscoflashmiscopnotifyoncompletion; //type: boolean
-        ydk::YLeaf ciscoflashmiscoptime; //type: uint32
-        ydk::YLeaf ciscoflashmiscopentrystatus; //type: RowStatus
-        class Ciscoflashmiscopcommand;
-        class Ciscoflashmiscopstatus;
-
-}; // CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry
-
-
-class CISCOFLASHMIB::Ciscoflashpartitioningtable : public ydk::Entity
-{
-    public:
-        Ciscoflashpartitioningtable();
-        ~Ciscoflashpartitioningtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciscoflashpartitioningentry; //type: CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry> > ciscoflashpartitioningentry;
-        
-}; // CISCOFLASHMIB::Ciscoflashpartitioningtable
-
-
-class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry : public ydk::Entity
-{
-    public:
-        Ciscoflashpartitioningentry();
-        ~Ciscoflashpartitioningentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ciscoflashpartitioningserialnumber; //type: int32
-        ydk::YLeaf ciscoflashpartitioningcommand; //type: Ciscoflashpartitioningcommand
-        ydk::YLeaf ciscoflashpartitioningdestinationname; //type: string
-        ydk::YLeaf ciscoflashpartitioningpartitioncount; //type: uint32
-        ydk::YLeaf ciscoflashpartitioningpartitionsizes; //type: string
-        ydk::YLeaf ciscoflashpartitioningstatus; //type: Ciscoflashpartitioningstatus
-        ydk::YLeaf ciscoflashpartitioningnotifyoncompletion; //type: boolean
-        ydk::YLeaf ciscoflashpartitioningtime; //type: uint32
-        ydk::YLeaf ciscoflashpartitioningentrystatus; //type: RowStatus
-        class Ciscoflashpartitioningcommand;
-        class Ciscoflashpartitioningstatus;
-
-}; // CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry
+}; // CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry
 
 
 class CISCOFLASHMIB::Ciscoflashpartitiontable : public ydk::Entity
@@ -572,6 +284,294 @@ class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry : public
 
 }; // CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry
 
+
+class CISCOFLASHMIB::Ciscoflashfiletable : public ydk::Entity
+{
+    public:
+        Ciscoflashfiletable();
+        ~Ciscoflashfiletable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciscoflashfileentry; //type: CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry> > ciscoflashfileentry;
+        
+}; // CISCOFLASHMIB::Ciscoflashfiletable
+
+
+class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry : public ydk::Entity
+{
+    public:
+        Ciscoflashfileentry();
+        ~Ciscoflashfileentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
+        ydk::YLeaf ciscoflashdeviceindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::ciscoflashpartitionindex)
+        ydk::YLeaf ciscoflashpartitionindex;
+        ydk::YLeaf ciscoflashfileindex; //type: uint32
+        ydk::YLeaf ciscoflashfilesize; //type: uint32
+        ydk::YLeaf ciscoflashfilechecksum; //type: binary
+        ydk::YLeaf ciscoflashfilestatus; //type: Ciscoflashfilestatus
+        ydk::YLeaf ciscoflashfilename; //type: string
+        ydk::YLeaf ciscoflashfiletype; //type: FlashFileType
+        ydk::YLeaf ciscoflashfiledate; //type: string
+        class Ciscoflashfilestatus;
+
+}; // CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry
+
+
+class CISCOFLASHMIB::Ciscoflashfilebytypetable : public ydk::Entity
+{
+    public:
+        Ciscoflashfilebytypetable();
+        ~Ciscoflashfilebytypetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciscoflashfilebytypeentry; //type: CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry> > ciscoflashfilebytypeentry;
+        
+}; // CISCOFLASHMIB::Ciscoflashfilebytypetable
+
+
+class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry : public ydk::Entity
+{
+    public:
+        Ciscoflashfilebytypeentry();
+        ~Ciscoflashfilebytypeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ciscoflashfiletype; //type: FlashFileType
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
+        ydk::YLeaf ciscoflashdeviceindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::ciscoflashpartitionindex)
+        ydk::YLeaf ciscoflashpartitionindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::ciscoflashfileindex)
+        ydk::YLeaf ciscoflashfileindex;
+        ydk::YLeaf ciscoflashfilebytypesize; //type: uint32
+        ydk::YLeaf ciscoflashfilebytypechecksum; //type: binary
+        ydk::YLeaf ciscoflashfilebytypestatus; //type: Ciscoflashfilebytypestatus
+        ydk::YLeaf ciscoflashfilebytypename; //type: string
+        ydk::YLeaf ciscoflashfilebytypedate; //type: string
+        class Ciscoflashfilebytypestatus;
+
+}; // CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry
+
+
+class CISCOFLASHMIB::Ciscoflashcopytable : public ydk::Entity
+{
+    public:
+        Ciscoflashcopytable();
+        ~Ciscoflashcopytable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciscoflashcopyentry; //type: CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry> > ciscoflashcopyentry;
+        
+}; // CISCOFLASHMIB::Ciscoflashcopytable
+
+
+class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry : public ydk::Entity
+{
+    public:
+        Ciscoflashcopyentry();
+        ~Ciscoflashcopyentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ciscoflashcopyserialnumber; //type: int32
+        ydk::YLeaf ciscoflashcopycommand; //type: Ciscoflashcopycommand
+        ydk::YLeaf ciscoflashcopyprotocol; //type: Ciscoflashcopyprotocol
+        ydk::YLeaf ciscoflashcopyserveraddress; //type: string
+        ydk::YLeaf ciscoflashcopysourcename; //type: string
+        ydk::YLeaf ciscoflashcopydestinationname; //type: string
+        ydk::YLeaf ciscoflashcopyremoteusername; //type: string
+        ydk::YLeaf ciscoflashcopystatus; //type: Ciscoflashcopystatus
+        ydk::YLeaf ciscoflashcopynotifyoncompletion; //type: boolean
+        ydk::YLeaf ciscoflashcopytime; //type: uint32
+        ydk::YLeaf ciscoflashcopyentrystatus; //type: RowStatus
+        ydk::YLeaf ciscoflashcopyverify; //type: boolean
+        ydk::YLeaf ciscoflashcopyserveraddrtype; //type: InetAddressType
+        ydk::YLeaf ciscoflashcopyserveraddrrev1; //type: binary
+        ydk::YLeaf ciscoflashcopyremotepassword; //type: string
+        class Ciscoflashcopycommand;
+        class Ciscoflashcopyprotocol;
+        class Ciscoflashcopystatus;
+
+}; // CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry
+
+
+class CISCOFLASHMIB::Ciscoflashpartitioningtable : public ydk::Entity
+{
+    public:
+        Ciscoflashpartitioningtable();
+        ~Ciscoflashpartitioningtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciscoflashpartitioningentry; //type: CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry> > ciscoflashpartitioningentry;
+        
+}; // CISCOFLASHMIB::Ciscoflashpartitioningtable
+
+
+class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry : public ydk::Entity
+{
+    public:
+        Ciscoflashpartitioningentry();
+        ~Ciscoflashpartitioningentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ciscoflashpartitioningserialnumber; //type: int32
+        ydk::YLeaf ciscoflashpartitioningcommand; //type: Ciscoflashpartitioningcommand
+        ydk::YLeaf ciscoflashpartitioningdestinationname; //type: string
+        ydk::YLeaf ciscoflashpartitioningpartitioncount; //type: uint32
+        ydk::YLeaf ciscoflashpartitioningpartitionsizes; //type: string
+        ydk::YLeaf ciscoflashpartitioningstatus; //type: Ciscoflashpartitioningstatus
+        ydk::YLeaf ciscoflashpartitioningnotifyoncompletion; //type: boolean
+        ydk::YLeaf ciscoflashpartitioningtime; //type: uint32
+        ydk::YLeaf ciscoflashpartitioningentrystatus; //type: RowStatus
+        class Ciscoflashpartitioningcommand;
+        class Ciscoflashpartitioningstatus;
+
+}; // CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry
+
+
+class CISCOFLASHMIB::Ciscoflashmiscoptable : public ydk::Entity
+{
+    public:
+        Ciscoflashmiscoptable();
+        ~Ciscoflashmiscoptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciscoflashmiscopentry; //type: CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry> > ciscoflashmiscopentry;
+        
+}; // CISCOFLASHMIB::Ciscoflashmiscoptable
+
+
+class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry : public ydk::Entity
+{
+    public:
+        Ciscoflashmiscopentry();
+        ~Ciscoflashmiscopentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ciscoflashmiscopserialnumber; //type: int32
+        ydk::YLeaf ciscoflashmiscopcommand; //type: Ciscoflashmiscopcommand
+        ydk::YLeaf ciscoflashmiscopdestinationname; //type: string
+        ydk::YLeaf ciscoflashmiscopstatus; //type: Ciscoflashmiscopstatus
+        ydk::YLeaf ciscoflashmiscopnotifyoncompletion; //type: boolean
+        ydk::YLeaf ciscoflashmiscoptime; //type: uint32
+        ydk::YLeaf ciscoflashmiscopentrystatus; //type: RowStatus
+        class Ciscoflashmiscopcommand;
+        class Ciscoflashmiscopstatus;
+
+}; // CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry
+
 class FlashFileType : public ydk::Enum
 {
     public:
@@ -580,6 +580,60 @@ class FlashFileType : public ydk::Enum
         static const ydk::Enum::YLeaf image;
         static const ydk::Enum::YLeaf directory;
         static const ydk::Enum::YLeaf crashinfo;
+
+};
+
+class CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdeviceprogrammingjumper : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf installed;
+        static const ydk::Enum::YLeaf notInstalled;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
+class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionchecksumalgorithm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf simpleChecksum;
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf simpleCRC;
+
+};
+
+class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionstatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf readOnly;
+        static const ydk::Enum::YLeaf runFromFlash;
+        static const ydk::Enum::YLeaf readWrite;
+
+};
+
+class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionupgrademethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf rxbootFLH;
+        static const ydk::Enum::YLeaf direct;
+
+};
+
+class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfilestatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf deleted;
+        static const ydk::Enum::YLeaf invalidChecksum;
+        static const ydk::Enum::YLeaf valid;
+
+};
+
+class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Ciscoflashfilebytypestatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf deleted;
+        static const ydk::Enum::YLeaf invalidChecksum;
+        static const ydk::Enum::YLeaf valid;
 
 };
 
@@ -631,30 +685,27 @@ class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopysta
 
 };
 
-class CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdeviceprogrammingjumper : public ydk::Enum
+class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningcommand : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf installed;
-        static const ydk::Enum::YLeaf notInstalled;
-        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf partition;
 
 };
 
-class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Ciscoflashfilebytypestatus : public ydk::Enum
+class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf deleted;
-        static const ydk::Enum::YLeaf invalidChecksum;
-        static const ydk::Enum::YLeaf valid;
-
-};
-
-class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfilestatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf deleted;
-        static const ydk::Enum::YLeaf invalidChecksum;
-        static const ydk::Enum::YLeaf valid;
+        static const ydk::Enum::YLeaf partitioningInProgress;
+        static const ydk::Enum::YLeaf partitioningOperationSuccess;
+        static const ydk::Enum::YLeaf partitioningInvalidOperation;
+        static const ydk::Enum::YLeaf partitioningInvalidDestName;
+        static const ydk::Enum::YLeaf partitioningInvalidPartitionCount;
+        static const ydk::Enum::YLeaf partitioningInvalidPartitionSizes;
+        static const ydk::Enum::YLeaf partitioningDeviceBusy;
+        static const ydk::Enum::YLeaf partitioningDeviceOpenError;
+        static const ydk::Enum::YLeaf partitioningDeviceError;
+        static const ydk::Enum::YLeaf partitioningNoMemory;
+        static const ydk::Enum::YLeaf partitioningUnknownFailure;
 
 };
 
@@ -690,57 +741,6 @@ class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmis
         static const ydk::Enum::YLeaf miscOpSqueezeFailure;
         static const ydk::Enum::YLeaf miscOpNoSuchFile;
         static const ydk::Enum::YLeaf miscOpFormatFailure;
-
-};
-
-class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningcommand : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf partition;
-
-};
-
-class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf partitioningInProgress;
-        static const ydk::Enum::YLeaf partitioningOperationSuccess;
-        static const ydk::Enum::YLeaf partitioningInvalidOperation;
-        static const ydk::Enum::YLeaf partitioningInvalidDestName;
-        static const ydk::Enum::YLeaf partitioningInvalidPartitionCount;
-        static const ydk::Enum::YLeaf partitioningInvalidPartitionSizes;
-        static const ydk::Enum::YLeaf partitioningDeviceBusy;
-        static const ydk::Enum::YLeaf partitioningDeviceOpenError;
-        static const ydk::Enum::YLeaf partitioningDeviceError;
-        static const ydk::Enum::YLeaf partitioningNoMemory;
-        static const ydk::Enum::YLeaf partitioningUnknownFailure;
-
-};
-
-class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionchecksumalgorithm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf simpleChecksum;
-        static const ydk::Enum::YLeaf undefined;
-        static const ydk::Enum::YLeaf simpleCRC;
-
-};
-
-class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionstatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf readOnly;
-        static const ydk::Enum::YLeaf runFromFlash;
-        static const ydk::Enum::YLeaf readWrite;
-
-};
-
-class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionupgrademethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf rxbootFLH;
-        static const ydk::Enum::YLeaf direct;
 
 };
 

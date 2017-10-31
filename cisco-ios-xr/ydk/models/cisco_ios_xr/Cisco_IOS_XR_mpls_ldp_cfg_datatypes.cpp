@@ -11,15 +11,15 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_ldp_cfg_datatypes {
 
+const Enum::YLeaf MplsLdpNbrPassword::disable {1, "disable"};
+const Enum::YLeaf MplsLdpNbrPassword::specified {2, "specified"};
+
+const Enum::YLeaf MplsLdpDownstreamOnDemand::peer_acl {1, "peer-acl"};
+
 const Enum::YLeaf MplsLdpRouterId::address {1, "address"};
 
 const Enum::YLeaf MplsLdpafName::ipv4 {4, "ipv4"};
 const Enum::YLeaf MplsLdpafName::ipv6 {6, "ipv6"};
-
-const Enum::YLeaf MplsLdpDownstreamOnDemand::peer_acl {1, "peer-acl"};
-
-const Enum::YLeaf MplsLdpNbrPassword::disable {1, "disable"};
-const Enum::YLeaf MplsLdpNbrPassword::specified {2, "specified"};
 
 const Enum::YLeaf MplsLdpSessionProtection::all {1, "all"};
 const Enum::YLeaf MplsLdpSessionProtection::for_ {2, "for"};

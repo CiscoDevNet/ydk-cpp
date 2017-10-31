@@ -118,10 +118,10 @@ bool OSPFTRAPMIB::has_leaf_or_child_of_name(const std::string & name) const
 
 OSPFTRAPMIB::Ospftrapcontrol::Ospftrapcontrol()
     :
+    ospfsettrap{YType::str, "ospfSetTrap"},
     ospfconfigerrortype{YType::enumeration, "ospfConfigErrorType"},
-    ospfpacketsrc{YType::str, "ospfPacketSrc"},
     ospfpackettype{YType::enumeration, "ospfPacketType"},
-    ospfsettrap{YType::str, "ospfSetTrap"}
+    ospfpacketsrc{YType::str, "ospfPacketSrc"}
 {
 
     yang_name = "ospfTrapControl"; yang_parent_name = "OSPF-TRAP-MIB"; is_top_level_class = false; has_list_ancestor = false;
@@ -133,19 +133,19 @@ OSPFTRAPMIB::Ospftrapcontrol::~Ospftrapcontrol()
 
 bool OSPFTRAPMIB::Ospftrapcontrol::has_data() const
 {
-    return ospfconfigerrortype.is_set
-	|| ospfpacketsrc.is_set
+    return ospfsettrap.is_set
+	|| ospfconfigerrortype.is_set
 	|| ospfpackettype.is_set
-	|| ospfsettrap.is_set;
+	|| ospfpacketsrc.is_set;
 }
 
 bool OSPFTRAPMIB::Ospftrapcontrol::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(ospfsettrap.yfilter)
 	|| ydk::is_set(ospfconfigerrortype.yfilter)
-	|| ydk::is_set(ospfpacketsrc.yfilter)
 	|| ydk::is_set(ospfpackettype.yfilter)
-	|| ydk::is_set(ospfsettrap.yfilter);
+	|| ydk::is_set(ospfpacketsrc.yfilter);
 }
 
 std::string OSPFTRAPMIB::Ospftrapcontrol::get_absolute_path() const
@@ -166,10 +166,10 @@ std::vector<std::pair<std::string, LeafData> > OSPFTRAPMIB::Ospftrapcontrol::get
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ospfconfigerrortype.is_set || is_set(ospfconfigerrortype.yfilter)) leaf_name_data.push_back(ospfconfigerrortype.get_name_leafdata());
-    if (ospfpacketsrc.is_set || is_set(ospfpacketsrc.yfilter)) leaf_name_data.push_back(ospfpacketsrc.get_name_leafdata());
-    if (ospfpackettype.is_set || is_set(ospfpackettype.yfilter)) leaf_name_data.push_back(ospfpackettype.get_name_leafdata());
     if (ospfsettrap.is_set || is_set(ospfsettrap.yfilter)) leaf_name_data.push_back(ospfsettrap.get_name_leafdata());
+    if (ospfconfigerrortype.is_set || is_set(ospfconfigerrortype.yfilter)) leaf_name_data.push_back(ospfconfigerrortype.get_name_leafdata());
+    if (ospfpackettype.is_set || is_set(ospfpackettype.yfilter)) leaf_name_data.push_back(ospfpackettype.get_name_leafdata());
+    if (ospfpacketsrc.is_set || is_set(ospfpacketsrc.yfilter)) leaf_name_data.push_back(ospfpacketsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -188,17 +188,17 @@ std::map<std::string, std::shared_ptr<Entity>> OSPFTRAPMIB::Ospftrapcontrol::get
 
 void OSPFTRAPMIB::Ospftrapcontrol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "ospfSetTrap")
+    {
+        ospfsettrap = value;
+        ospfsettrap.value_namespace = name_space;
+        ospfsettrap.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ospfConfigErrorType")
     {
         ospfconfigerrortype = value;
         ospfconfigerrortype.value_namespace = name_space;
         ospfconfigerrortype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ospfPacketSrc")
-    {
-        ospfpacketsrc = value;
-        ospfpacketsrc.value_namespace = name_space;
-        ospfpacketsrc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfPacketType")
     {
@@ -206,37 +206,37 @@ void OSPFTRAPMIB::Ospftrapcontrol::set_value(const std::string & value_path, con
         ospfpackettype.value_namespace = name_space;
         ospfpackettype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ospfSetTrap")
+    if(value_path == "ospfPacketSrc")
     {
-        ospfsettrap = value;
-        ospfsettrap.value_namespace = name_space;
-        ospfsettrap.value_namespace_prefix = name_space_prefix;
+        ospfpacketsrc = value;
+        ospfpacketsrc.value_namespace = name_space;
+        ospfpacketsrc.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void OSPFTRAPMIB::Ospftrapcontrol::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "ospfSetTrap")
+    {
+        ospfsettrap.yfilter = yfilter;
+    }
     if(value_path == "ospfConfigErrorType")
     {
         ospfconfigerrortype.yfilter = yfilter;
-    }
-    if(value_path == "ospfPacketSrc")
-    {
-        ospfpacketsrc.yfilter = yfilter;
     }
     if(value_path == "ospfPacketType")
     {
         ospfpackettype.yfilter = yfilter;
     }
-    if(value_path == "ospfSetTrap")
+    if(value_path == "ospfPacketSrc")
     {
-        ospfsettrap.yfilter = yfilter;
+        ospfpacketsrc.yfilter = yfilter;
     }
 }
 
 bool OSPFTRAPMIB::Ospftrapcontrol::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ospfConfigErrorType" || name == "ospfPacketSrc" || name == "ospfPacketType" || name == "ospfSetTrap")
+    if(name == "ospfSetTrap" || name == "ospfConfigErrorType" || name == "ospfPacketType" || name == "ospfPacketSrc")
         return true;
     return false;
 }

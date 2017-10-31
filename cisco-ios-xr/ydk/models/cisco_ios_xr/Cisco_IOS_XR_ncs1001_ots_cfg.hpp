@@ -137,14 +137,6 @@ class HardwareModule::Node::Slot::Psm : public ydk::Entity
 
 }; // HardwareModule::Node::Slot::Psm
 
-class OtsPsmLockoutFrom : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf working;
-        static const ydk::Enum::YLeaf protected_;
-
-};
-
 class OtsAmplifierNode : public ydk::Enum
 {
     public:
@@ -164,6 +156,14 @@ class OtsAmplifierGridMode : public ydk::Enum
 };
 
 class OtsPsmManualSwitch : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf working;
+        static const ydk::Enum::YLeaf protected_;
+
+};
+
+class OtsPsmLockoutFrom : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf working;

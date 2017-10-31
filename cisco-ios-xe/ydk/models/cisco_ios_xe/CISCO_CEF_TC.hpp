@@ -18,53 +18,6 @@ class CefIpVersion : public ydk::Enum
 
 };
 
-class CefCCType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lcDetect;
-        static const ydk::Enum::YLeaf scanFibLcRp;
-        static const ydk::Enum::YLeaf scanFibRpLc;
-        static const ydk::Enum::YLeaf scanRibFib;
-        static const ydk::Enum::YLeaf scanFibRib;
-        static const ydk::Enum::YLeaf scanFibHwSw;
-        static const ydk::Enum::YLeaf scanFibSwHw;
-        static const ydk::Enum::YLeaf fullScanRibFib;
-        static const ydk::Enum::YLeaf fullScanFibRib;
-        static const ydk::Enum::YLeaf fullScanFibRpLc;
-        static const ydk::Enum::YLeaf fullScanFibLcRp;
-        static const ydk::Enum::YLeaf fullScanFibHwSw;
-        static const ydk::Enum::YLeaf fullScanFibSwHw;
-
-};
-
-class CefFailureReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf mallocFailure;
-        static const ydk::Enum::YLeaf hwFailure;
-        static const ydk::Enum::YLeaf keepaliveFailure;
-        static const ydk::Enum::YLeaf noMsgBuffer;
-        static const ydk::Enum::YLeaf invalidMsgSize;
-        static const ydk::Enum::YLeaf internalError;
-
-};
-
-class CefForwardingElementSpecialType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf illegal;
-        static const ydk::Enum::YLeaf punt;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf discard;
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf glean;
-        static const ydk::Enum::YLeaf unresolved;
-        static const ydk::Enum::YLeaf noRoute;
-        static const ydk::Enum::YLeaf none;
-
-};
-
 class CefAdjLinkType : public ydk::Enum
 {
     public:
@@ -73,14 +26,6 @@ class CefAdjLinkType : public ydk::Enum
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf raw;
         static const ydk::Enum::YLeaf unknown;
-
-};
-
-class CefAdminStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
 
 };
 
@@ -108,11 +53,66 @@ class CefPrefixSearchState : public ydk::Enum
 
 };
 
+class CefForwardingElementSpecialType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf illegal;
+        static const ydk::Enum::YLeaf punt;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf discard;
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf glean;
+        static const ydk::Enum::YLeaf unresolved;
+        static const ydk::Enum::YLeaf noRoute;
+        static const ydk::Enum::YLeaf none;
+
+};
+
+class CefAdminStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
 class CefOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
+
+};
+
+class CefFailureReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf mallocFailure;
+        static const ydk::Enum::YLeaf hwFailure;
+        static const ydk::Enum::YLeaf keepaliveFailure;
+        static const ydk::Enum::YLeaf noMsgBuffer;
+        static const ydk::Enum::YLeaf invalidMsgSize;
+        static const ydk::Enum::YLeaf internalError;
+
+};
+
+class CefCCType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lcDetect;
+        static const ydk::Enum::YLeaf scanFibLcRp;
+        static const ydk::Enum::YLeaf scanFibRpLc;
+        static const ydk::Enum::YLeaf scanRibFib;
+        static const ydk::Enum::YLeaf scanFibRib;
+        static const ydk::Enum::YLeaf scanFibHwSw;
+        static const ydk::Enum::YLeaf scanFibSwHw;
+        static const ydk::Enum::YLeaf fullScanRibFib;
+        static const ydk::Enum::YLeaf fullScanFibRib;
+        static const ydk::Enum::YLeaf fullScanFibRpLc;
+        static const ydk::Enum::YLeaf fullScanFibLcRp;
+        static const ydk::Enum::YLeaf fullScanFibHwSw;
+        static const ydk::Enum::YLeaf fullScanFibSwHw;
 
 };
 

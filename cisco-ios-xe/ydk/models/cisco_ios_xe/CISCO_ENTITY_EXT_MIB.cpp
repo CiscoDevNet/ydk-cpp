@@ -13,13 +13,13 @@ namespace CISCO_ENTITY_EXT_MIB {
 
 CISCOENTITYEXTMIB::CISCOENTITYEXTMIB()
     :
-    ceextconfigregtable(std::make_shared<CISCOENTITYEXTMIB::Ceextconfigregtable>())
+    ceextphysicalprocessortable(std::make_shared<CISCOENTITYEXTMIB::Ceextphysicalprocessortable>())
+	,ceextconfigregtable(std::make_shared<CISCOENTITYEXTMIB::Ceextconfigregtable>())
 	,ceextentityledtable(std::make_shared<CISCOENTITYEXTMIB::Ceextentityledtable>())
-	,ceextphysicalprocessortable(std::make_shared<CISCOENTITYEXTMIB::Ceextphysicalprocessortable>())
 {
+    ceextphysicalprocessortable->parent = this;
     ceextconfigregtable->parent = this;
     ceextentityledtable->parent = this;
-    ceextphysicalprocessortable->parent = this;
 
     yang_name = "CISCO-ENTITY-EXT-MIB"; yang_parent_name = "CISCO-ENTITY-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -30,17 +30,17 @@ CISCOENTITYEXTMIB::~CISCOENTITYEXTMIB()
 
 bool CISCOENTITYEXTMIB::has_data() const
 {
-    return (ceextconfigregtable !=  nullptr && ceextconfigregtable->has_data())
-	|| (ceextentityledtable !=  nullptr && ceextentityledtable->has_data())
-	|| (ceextphysicalprocessortable !=  nullptr && ceextphysicalprocessortable->has_data());
+    return (ceextphysicalprocessortable !=  nullptr && ceextphysicalprocessortable->has_data())
+	|| (ceextconfigregtable !=  nullptr && ceextconfigregtable->has_data())
+	|| (ceextentityledtable !=  nullptr && ceextentityledtable->has_data());
 }
 
 bool CISCOENTITYEXTMIB::has_operation() const
 {
     return is_set(yfilter)
+	|| (ceextphysicalprocessortable !=  nullptr && ceextphysicalprocessortable->has_operation())
 	|| (ceextconfigregtable !=  nullptr && ceextconfigregtable->has_operation())
-	|| (ceextentityledtable !=  nullptr && ceextentityledtable->has_operation())
-	|| (ceextphysicalprocessortable !=  nullptr && ceextphysicalprocessortable->has_operation());
+	|| (ceextentityledtable !=  nullptr && ceextentityledtable->has_operation());
 }
 
 std::string CISCOENTITYEXTMIB::get_segment_path() const
@@ -61,6 +61,15 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::get_name_leaf_
 
 std::shared_ptr<Entity> CISCOENTITYEXTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "ceExtPhysicalProcessorTable")
+    {
+        if(ceextphysicalprocessortable == nullptr)
+        {
+            ceextphysicalprocessortable = std::make_shared<CISCOENTITYEXTMIB::Ceextphysicalprocessortable>();
+        }
+        return ceextphysicalprocessortable;
+    }
+
     if(child_yang_name == "ceExtConfigRegTable")
     {
         if(ceextconfigregtable == nullptr)
@@ -79,21 +88,17 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::get_child_by_name(const std::string &
         return ceextentityledtable;
     }
 
-    if(child_yang_name == "ceExtPhysicalProcessorTable")
-    {
-        if(ceextphysicalprocessortable == nullptr)
-        {
-            ceextphysicalprocessortable = std::make_shared<CISCOENTITYEXTMIB::Ceextphysicalprocessortable>();
-        }
-        return ceextphysicalprocessortable;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ceextphysicalprocessortable != nullptr)
+    {
+        children["ceExtPhysicalProcessorTable"] = ceextphysicalprocessortable;
+    }
+
     if(ceextconfigregtable != nullptr)
     {
         children["ceExtConfigRegTable"] = ceextconfigregtable;
@@ -102,11 +107,6 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::get_children()
     if(ceextentityledtable != nullptr)
     {
         children["ceExtEntityLEDTable"] = ceextentityledtable;
-    }
-
-    if(ceextphysicalprocessortable != nullptr)
-    {
-        children["ceExtPhysicalProcessorTable"] = ceextphysicalprocessortable;
     }
 
     return children;
@@ -147,7 +147,260 @@ std::map<std::pair<std::string, std::string>, std::string> CISCOENTITYEXTMIB::ge
 
 bool CISCOENTITYEXTMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ceExtConfigRegTable" || name == "ceExtEntityLEDTable" || name == "ceExtPhysicalProcessorTable")
+    if(name == "ceExtPhysicalProcessorTable" || name == "ceExtConfigRegTable" || name == "ceExtEntityLEDTable")
+        return true;
+    return false;
+}
+
+CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessortable()
+{
+
+    yang_name = "ceExtPhysicalProcessorTable"; yang_parent_name = "CISCO-ENTITY-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYEXTMIB::Ceextphysicalprocessortable::~Ceextphysicalprocessortable()
+{
+}
+
+bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::has_data() const
+{
+    for (std::size_t index=0; index<ceextphysicalprocessorentry.size(); index++)
+    {
+        if(ceextphysicalprocessorentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::has_operation() const
+{
+    for (std::size_t index=0; index<ceextphysicalprocessorentry.size(); index++)
+    {
+        if(ceextphysicalprocessorentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-EXT-MIB:CISCO-ENTITY-EXT-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceExtPhysicalProcessorTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ceExtPhysicalProcessorEntry")
+    {
+        for(auto const & c : ceextphysicalprocessorentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry>();
+        c->parent = this;
+        ceextphysicalprocessorentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ceextphysicalprocessorentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceExtPhysicalProcessorEntry")
+        return true;
+    return false;
+}
+
+CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::Ceextphysicalprocessorentry()
+    :
+    entphysicalindex{YType::str, "entPhysicalIndex"},
+    ceextprocessorram{YType::uint32, "ceExtProcessorRam"},
+    ceextnvramsize{YType::uint32, "ceExtNVRAMSize"},
+    ceextnvramused{YType::uint32, "ceExtNVRAMUsed"},
+    ceextprocessorramoverflow{YType::uint32, "ceExtProcessorRamOverflow"},
+    ceexthcprocessorram{YType::uint64, "ceExtHCProcessorRam"}
+{
+
+    yang_name = "ceExtPhysicalProcessorEntry"; yang_parent_name = "ceExtPhysicalProcessorTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::~Ceextphysicalprocessorentry()
+{
+}
+
+bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::has_data() const
+{
+    return entphysicalindex.is_set
+	|| ceextprocessorram.is_set
+	|| ceextnvramsize.is_set
+	|| ceextnvramused.is_set
+	|| ceextprocessorramoverflow.is_set
+	|| ceexthcprocessorram.is_set;
+}
+
+bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(ceextprocessorram.yfilter)
+	|| ydk::is_set(ceextnvramsize.yfilter)
+	|| ydk::is_set(ceextnvramused.yfilter)
+	|| ydk::is_set(ceextprocessorramoverflow.yfilter)
+	|| ydk::is_set(ceexthcprocessorram.yfilter);
+}
+
+std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-ENTITY-EXT-MIB:CISCO-ENTITY-EXT-MIB/ceExtPhysicalProcessorTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceExtPhysicalProcessorEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (ceextprocessorram.is_set || is_set(ceextprocessorram.yfilter)) leaf_name_data.push_back(ceextprocessorram.get_name_leafdata());
+    if (ceextnvramsize.is_set || is_set(ceextnvramsize.yfilter)) leaf_name_data.push_back(ceextnvramsize.get_name_leafdata());
+    if (ceextnvramused.is_set || is_set(ceextnvramused.yfilter)) leaf_name_data.push_back(ceextnvramused.get_name_leafdata());
+    if (ceextprocessorramoverflow.is_set || is_set(ceextprocessorramoverflow.yfilter)) leaf_name_data.push_back(ceextprocessorramoverflow.get_name_leafdata());
+    if (ceexthcprocessorram.is_set || is_set(ceexthcprocessorram.yfilter)) leaf_name_data.push_back(ceexthcprocessorram.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceExtProcessorRam")
+    {
+        ceextprocessorram = value;
+        ceextprocessorram.value_namespace = name_space;
+        ceextprocessorram.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceExtNVRAMSize")
+    {
+        ceextnvramsize = value;
+        ceextnvramsize.value_namespace = name_space;
+        ceextnvramsize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceExtNVRAMUsed")
+    {
+        ceextnvramused = value;
+        ceextnvramused.value_namespace = name_space;
+        ceextnvramused.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceExtProcessorRamOverflow")
+    {
+        ceextprocessorramoverflow = value;
+        ceextprocessorramoverflow.value_namespace = name_space;
+        ceextprocessorramoverflow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceExtHCProcessorRam")
+    {
+        ceexthcprocessorram = value;
+        ceexthcprocessorram.value_namespace = name_space;
+        ceexthcprocessorram.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceExtProcessorRam")
+    {
+        ceextprocessorram.yfilter = yfilter;
+    }
+    if(value_path == "ceExtNVRAMSize")
+    {
+        ceextnvramsize.yfilter = yfilter;
+    }
+    if(value_path == "ceExtNVRAMUsed")
+    {
+        ceextnvramused.yfilter = yfilter;
+    }
+    if(value_path == "ceExtProcessorRamOverflow")
+    {
+        ceextprocessorramoverflow.yfilter = yfilter;
+    }
+    if(value_path == "ceExtHCProcessorRam")
+    {
+        ceexthcprocessorram.yfilter = yfilter;
+    }
+}
+
+bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "ceExtProcessorRam" || name == "ceExtNVRAMSize" || name == "ceExtNVRAMUsed" || name == "ceExtProcessorRamOverflow" || name == "ceExtHCProcessorRam")
         return true;
     return false;
 }
@@ -257,8 +510,8 @@ CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::Ceextconfigregentry
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceextconfigregister{YType::str, "ceExtConfigRegister"},
     ceextconfigregnext{YType::str, "ceExtConfigRegNext"},
-    ceextkickstartimagelist{YType::str, "ceExtKickstartImageList"},
-    ceextsysbootimagelist{YType::str, "ceExtSysBootImageList"}
+    ceextsysbootimagelist{YType::str, "ceExtSysBootImageList"},
+    ceextkickstartimagelist{YType::str, "ceExtKickstartImageList"}
 {
 
     yang_name = "ceExtConfigRegEntry"; yang_parent_name = "ceExtConfigRegTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -273,8 +526,8 @@ bool CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::has_data() con
     return entphysicalindex.is_set
 	|| ceextconfigregister.is_set
 	|| ceextconfigregnext.is_set
-	|| ceextkickstartimagelist.is_set
-	|| ceextsysbootimagelist.is_set;
+	|| ceextsysbootimagelist.is_set
+	|| ceextkickstartimagelist.is_set;
 }
 
 bool CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::has_operation() const
@@ -283,8 +536,8 @@ bool CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::has_operation(
 	|| ydk::is_set(entphysicalindex.yfilter)
 	|| ydk::is_set(ceextconfigregister.yfilter)
 	|| ydk::is_set(ceextconfigregnext.yfilter)
-	|| ydk::is_set(ceextkickstartimagelist.yfilter)
-	|| ydk::is_set(ceextsysbootimagelist.yfilter);
+	|| ydk::is_set(ceextsysbootimagelist.yfilter)
+	|| ydk::is_set(ceextkickstartimagelist.yfilter);
 }
 
 std::string CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::get_absolute_path() const
@@ -308,8 +561,8 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::Ceextconfigreg
     if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
     if (ceextconfigregister.is_set || is_set(ceextconfigregister.yfilter)) leaf_name_data.push_back(ceextconfigregister.get_name_leafdata());
     if (ceextconfigregnext.is_set || is_set(ceextconfigregnext.yfilter)) leaf_name_data.push_back(ceextconfigregnext.get_name_leafdata());
-    if (ceextkickstartimagelist.is_set || is_set(ceextkickstartimagelist.yfilter)) leaf_name_data.push_back(ceextkickstartimagelist.get_name_leafdata());
     if (ceextsysbootimagelist.is_set || is_set(ceextsysbootimagelist.yfilter)) leaf_name_data.push_back(ceextsysbootimagelist.get_name_leafdata());
+    if (ceextkickstartimagelist.is_set || is_set(ceextkickstartimagelist.yfilter)) leaf_name_data.push_back(ceextkickstartimagelist.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -346,17 +599,17 @@ void CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::set_value(cons
         ceextconfigregnext.value_namespace = name_space;
         ceextconfigregnext.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ceExtKickstartImageList")
-    {
-        ceextkickstartimagelist = value;
-        ceextkickstartimagelist.value_namespace = name_space;
-        ceextkickstartimagelist.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ceExtSysBootImageList")
     {
         ceextsysbootimagelist = value;
         ceextsysbootimagelist.value_namespace = name_space;
         ceextsysbootimagelist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceExtKickstartImageList")
+    {
+        ceextkickstartimagelist = value;
+        ceextkickstartimagelist.value_namespace = name_space;
+        ceextkickstartimagelist.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -374,19 +627,19 @@ void CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::set_filter(con
     {
         ceextconfigregnext.yfilter = yfilter;
     }
-    if(value_path == "ceExtKickstartImageList")
-    {
-        ceextkickstartimagelist.yfilter = yfilter;
-    }
     if(value_path == "ceExtSysBootImageList")
     {
         ceextsysbootimagelist.yfilter = yfilter;
+    }
+    if(value_path == "ceExtKickstartImageList")
+    {
+        ceextkickstartimagelist.yfilter = yfilter;
     }
 }
 
 bool CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "entPhysicalIndex" || name == "ceExtConfigRegister" || name == "ceExtConfigRegNext" || name == "ceExtKickstartImageList" || name == "ceExtSysBootImageList")
+    if(name == "entPhysicalIndex" || name == "ceExtConfigRegister" || name == "ceExtConfigRegNext" || name == "ceExtSysBootImageList" || name == "ceExtKickstartImageList")
         return true;
     return false;
 }
@@ -598,259 +851,6 @@ void CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry::set_filter(con
 bool CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "ceExtEntityLEDType" || name == "ceExtEntityLEDColor")
-        return true;
-    return false;
-}
-
-CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessortable()
-{
-
-    yang_name = "ceExtPhysicalProcessorTable"; yang_parent_name = "CISCO-ENTITY-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOENTITYEXTMIB::Ceextphysicalprocessortable::~Ceextphysicalprocessortable()
-{
-}
-
-bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::has_data() const
-{
-    for (std::size_t index=0; index<ceextphysicalprocessorentry.size(); index++)
-    {
-        if(ceextphysicalprocessorentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::has_operation() const
-{
-    for (std::size_t index=0; index<ceextphysicalprocessorentry.size(); index++)
-    {
-        if(ceextphysicalprocessorentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-ENTITY-EXT-MIB:CISCO-ENTITY-EXT-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceExtPhysicalProcessorTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ceExtPhysicalProcessorEntry")
-    {
-        for(auto const & c : ceextphysicalprocessorentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry>();
-        c->parent = this;
-        ceextphysicalprocessorentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceextphysicalprocessorentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceExtPhysicalProcessorEntry")
-        return true;
-    return false;
-}
-
-CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::Ceextphysicalprocessorentry()
-    :
-    entphysicalindex{YType::str, "entPhysicalIndex"},
-    ceexthcprocessorram{YType::uint64, "ceExtHCProcessorRam"},
-    ceextnvramsize{YType::uint32, "ceExtNVRAMSize"},
-    ceextnvramused{YType::uint32, "ceExtNVRAMUsed"},
-    ceextprocessorram{YType::uint32, "ceExtProcessorRam"},
-    ceextprocessorramoverflow{YType::uint32, "ceExtProcessorRamOverflow"}
-{
-
-    yang_name = "ceExtPhysicalProcessorEntry"; yang_parent_name = "ceExtPhysicalProcessorTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::~Ceextphysicalprocessorentry()
-{
-}
-
-bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::has_data() const
-{
-    return entphysicalindex.is_set
-	|| ceexthcprocessorram.is_set
-	|| ceextnvramsize.is_set
-	|| ceextnvramused.is_set
-	|| ceextprocessorram.is_set
-	|| ceextprocessorramoverflow.is_set;
-}
-
-bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entphysicalindex.yfilter)
-	|| ydk::is_set(ceexthcprocessorram.yfilter)
-	|| ydk::is_set(ceextnvramsize.yfilter)
-	|| ydk::is_set(ceextnvramused.yfilter)
-	|| ydk::is_set(ceextprocessorram.yfilter)
-	|| ydk::is_set(ceextprocessorramoverflow.yfilter);
-}
-
-std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-ENTITY-EXT-MIB:CISCO-ENTITY-EXT-MIB/ceExtPhysicalProcessorTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceExtPhysicalProcessorEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (ceexthcprocessorram.is_set || is_set(ceexthcprocessorram.yfilter)) leaf_name_data.push_back(ceexthcprocessorram.get_name_leafdata());
-    if (ceextnvramsize.is_set || is_set(ceextnvramsize.yfilter)) leaf_name_data.push_back(ceextnvramsize.get_name_leafdata());
-    if (ceextnvramused.is_set || is_set(ceextnvramused.yfilter)) leaf_name_data.push_back(ceextnvramused.get_name_leafdata());
-    if (ceextprocessorram.is_set || is_set(ceextprocessorram.yfilter)) leaf_name_data.push_back(ceextprocessorram.get_name_leafdata());
-    if (ceextprocessorramoverflow.is_set || is_set(ceextprocessorramoverflow.yfilter)) leaf_name_data.push_back(ceextprocessorramoverflow.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entPhysicalIndex")
-    {
-        entphysicalindex = value;
-        entphysicalindex.value_namespace = name_space;
-        entphysicalindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceExtHCProcessorRam")
-    {
-        ceexthcprocessorram = value;
-        ceexthcprocessorram.value_namespace = name_space;
-        ceexthcprocessorram.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceExtNVRAMSize")
-    {
-        ceextnvramsize = value;
-        ceextnvramsize.value_namespace = name_space;
-        ceextnvramsize.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceExtNVRAMUsed")
-    {
-        ceextnvramused = value;
-        ceextnvramused.value_namespace = name_space;
-        ceextnvramused.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceExtProcessorRam")
-    {
-        ceextprocessorram = value;
-        ceextprocessorram.value_namespace = name_space;
-        ceextprocessorram.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceExtProcessorRamOverflow")
-    {
-        ceextprocessorramoverflow = value;
-        ceextprocessorramoverflow.value_namespace = name_space;
-        ceextprocessorramoverflow.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entPhysicalIndex")
-    {
-        entphysicalindex.yfilter = yfilter;
-    }
-    if(value_path == "ceExtHCProcessorRam")
-    {
-        ceexthcprocessorram.yfilter = yfilter;
-    }
-    if(value_path == "ceExtNVRAMSize")
-    {
-        ceextnvramsize.yfilter = yfilter;
-    }
-    if(value_path == "ceExtNVRAMUsed")
-    {
-        ceextnvramused.yfilter = yfilter;
-    }
-    if(value_path == "ceExtProcessorRam")
-    {
-        ceextprocessorram.yfilter = yfilter;
-    }
-    if(value_path == "ceExtProcessorRamOverflow")
-    {
-        ceextprocessorramoverflow.yfilter = yfilter;
-    }
-}
-
-bool CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entPhysicalIndex" || name == "ceExtHCProcessorRam" || name == "ceExtNVRAMSize" || name == "ceExtNVRAMUsed" || name == "ceExtProcessorRam" || name == "ceExtProcessorRamOverflow")
         return true;
     return false;
 }

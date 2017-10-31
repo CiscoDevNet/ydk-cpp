@@ -10,30 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_icpe_sdacp_oper {
 
-class IcpeCpmControlFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_disconnected;
-        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_connecting;
-        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_authenticating;
-        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_check_ing_ver;
-        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_connected;
-        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_issu;
-
-};
-
-class IcpeCpmChanFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_down;
-        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_not_supported;
-        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_closed;
-        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_opening;
-        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_opened;
-        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_open;
-
-};
-
 class DpmProtoHostState : public ydk::Enum
 {
     public:
@@ -56,6 +32,18 @@ class DpmProtoState : public ydk::Enum
 
 };
 
+class IcpeCpmChanFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_down;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_not_supported;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_closed;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_opening;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_opened;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_open;
+
+};
+
 class IcpeCpmChannelResyncState : public ydk::Enum
 {
     public:
@@ -63,6 +51,18 @@ class IcpeCpmChannelResyncState : public ydk::Enum
         static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_not_in_resync;
         static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_client_resync;
         static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_satellite_resync;
+
+};
+
+class IcpeCpmControlFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_connecting;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_authenticating;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_check_ing_ver;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_connected;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_issu;
 
 };
 

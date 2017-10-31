@@ -11,6 +11,26 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace SNMP_FRAMEWORK_MIB {
 
+Snmpauthprotocols::Snmpauthprotocols()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpAuthProtocols")
+{
+
+}
+
+Snmpauthprotocols::~Snmpauthprotocols()
+{
+}
+
+Snmpprivprotocols::Snmpprivprotocols()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpPrivProtocols")
+{
+
+}
+
+Snmpprivprotocols::~Snmpprivprotocols()
+{
+}
+
 SNMPFRAMEWORKMIB::SNMPFRAMEWORKMIB()
     :
     snmpengine(std::make_shared<SNMPFRAMEWORKMIB::Snmpengine>())
@@ -118,10 +138,10 @@ bool SNMPFRAMEWORKMIB::has_leaf_or_child_of_name(const std::string & name) const
 
 SNMPFRAMEWORKMIB::Snmpengine::Snmpengine()
     :
-    snmpengineboots{YType::int32, "snmpEngineBoots"},
     snmpengineid{YType::str, "snmpEngineID"},
-    snmpenginemaxmessagesize{YType::int32, "snmpEngineMaxMessageSize"},
-    snmpenginetime{YType::int32, "snmpEngineTime"}
+    snmpengineboots{YType::int32, "snmpEngineBoots"},
+    snmpenginetime{YType::int32, "snmpEngineTime"},
+    snmpenginemaxmessagesize{YType::int32, "snmpEngineMaxMessageSize"}
 {
 
     yang_name = "snmpEngine"; yang_parent_name = "SNMP-FRAMEWORK-MIB"; is_top_level_class = false; has_list_ancestor = false;
@@ -133,19 +153,19 @@ SNMPFRAMEWORKMIB::Snmpengine::~Snmpengine()
 
 bool SNMPFRAMEWORKMIB::Snmpengine::has_data() const
 {
-    return snmpengineboots.is_set
-	|| snmpengineid.is_set
-	|| snmpenginemaxmessagesize.is_set
-	|| snmpenginetime.is_set;
+    return snmpengineid.is_set
+	|| snmpengineboots.is_set
+	|| snmpenginetime.is_set
+	|| snmpenginemaxmessagesize.is_set;
 }
 
 bool SNMPFRAMEWORKMIB::Snmpengine::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(snmpengineboots.yfilter)
 	|| ydk::is_set(snmpengineid.yfilter)
-	|| ydk::is_set(snmpenginemaxmessagesize.yfilter)
-	|| ydk::is_set(snmpenginetime.yfilter);
+	|| ydk::is_set(snmpengineboots.yfilter)
+	|| ydk::is_set(snmpenginetime.yfilter)
+	|| ydk::is_set(snmpenginemaxmessagesize.yfilter);
 }
 
 std::string SNMPFRAMEWORKMIB::Snmpengine::get_absolute_path() const
@@ -166,10 +186,10 @@ std::vector<std::pair<std::string, LeafData> > SNMPFRAMEWORKMIB::Snmpengine::get
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (snmpengineboots.is_set || is_set(snmpengineboots.yfilter)) leaf_name_data.push_back(snmpengineboots.get_name_leafdata());
     if (snmpengineid.is_set || is_set(snmpengineid.yfilter)) leaf_name_data.push_back(snmpengineid.get_name_leafdata());
-    if (snmpenginemaxmessagesize.is_set || is_set(snmpenginemaxmessagesize.yfilter)) leaf_name_data.push_back(snmpenginemaxmessagesize.get_name_leafdata());
+    if (snmpengineboots.is_set || is_set(snmpengineboots.yfilter)) leaf_name_data.push_back(snmpengineboots.get_name_leafdata());
     if (snmpenginetime.is_set || is_set(snmpenginetime.yfilter)) leaf_name_data.push_back(snmpenginetime.get_name_leafdata());
+    if (snmpenginemaxmessagesize.is_set || is_set(snmpenginemaxmessagesize.yfilter)) leaf_name_data.push_back(snmpenginemaxmessagesize.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -188,23 +208,17 @@ std::map<std::string, std::shared_ptr<Entity>> SNMPFRAMEWORKMIB::Snmpengine::get
 
 void SNMPFRAMEWORKMIB::Snmpengine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "snmpEngineBoots")
-    {
-        snmpengineboots = value;
-        snmpengineboots.value_namespace = name_space;
-        snmpengineboots.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "snmpEngineID")
     {
         snmpengineid = value;
         snmpengineid.value_namespace = name_space;
         snmpengineid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "snmpEngineMaxMessageSize")
+    if(value_path == "snmpEngineBoots")
     {
-        snmpenginemaxmessagesize = value;
-        snmpenginemaxmessagesize.value_namespace = name_space;
-        snmpenginemaxmessagesize.value_namespace_prefix = name_space_prefix;
+        snmpengineboots = value;
+        snmpengineboots.value_namespace = name_space;
+        snmpengineboots.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpEngineTime")
     {
@@ -212,53 +226,39 @@ void SNMPFRAMEWORKMIB::Snmpengine::set_value(const std::string & value_path, con
         snmpenginetime.value_namespace = name_space;
         snmpenginetime.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "snmpEngineMaxMessageSize")
+    {
+        snmpenginemaxmessagesize = value;
+        snmpenginemaxmessagesize.value_namespace = name_space;
+        snmpenginemaxmessagesize.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SNMPFRAMEWORKMIB::Snmpengine::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "snmpEngineBoots")
-    {
-        snmpengineboots.yfilter = yfilter;
-    }
     if(value_path == "snmpEngineID")
     {
         snmpengineid.yfilter = yfilter;
     }
-    if(value_path == "snmpEngineMaxMessageSize")
+    if(value_path == "snmpEngineBoots")
     {
-        snmpenginemaxmessagesize.yfilter = yfilter;
+        snmpengineboots.yfilter = yfilter;
     }
     if(value_path == "snmpEngineTime")
     {
         snmpenginetime.yfilter = yfilter;
     }
+    if(value_path == "snmpEngineMaxMessageSize")
+    {
+        snmpenginemaxmessagesize.yfilter = yfilter;
+    }
 }
 
 bool SNMPFRAMEWORKMIB::Snmpengine::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "snmpEngineBoots" || name == "snmpEngineID" || name == "snmpEngineMaxMessageSize" || name == "snmpEngineTime")
+    if(name == "snmpEngineID" || name == "snmpEngineBoots" || name == "snmpEngineTime" || name == "snmpEngineMaxMessageSize")
         return true;
     return false;
-}
-
-Snmpauthprotocols::Snmpauthprotocols()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpAuthProtocols")
-{
-
-}
-
-Snmpauthprotocols::~Snmpauthprotocols()
-{
-}
-
-Snmpprivprotocols::Snmpprivprotocols()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpPrivProtocols")
-{
-
-}
-
-Snmpprivprotocols::~Snmpprivprotocols()
-{
 }
 
 const Enum::YLeaf SnmpSecurityLevel::noAuthNoPriv {1, "noAuthNoPriv"};

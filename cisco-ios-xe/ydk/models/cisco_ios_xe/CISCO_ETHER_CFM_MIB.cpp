@@ -322,20 +322,20 @@ CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmevententry(
     cethercfmeventdomainindex{YType::uint32, "cEtherCfmEventDomainIndex"},
     cethercfmeventsvlan{YType::int32, "cEtherCfmEventSvlan"},
     cethercfmeventindex{YType::uint32, "cEtherCfmEventIndex"},
-    cethercfmeventcode{YType::enumeration, "cEtherCfmEventCode"},
-    cethercfmeventdeleterow{YType::enumeration, "cEtherCfmEventDeleteRow"},
     cethercfmeventdomainname{YType::str, "cEtherCfmEventDomainName"},
+    cethercfmeventtype{YType::enumeration, "cEtherCfmEventType"},
     cethercfmeventlastchange{YType::uint32, "cEtherCfmEventLastChange"},
-    cethercfmeventlclifcount{YType::uint32, "cEtherCfmEventLclIfCount"},
+    cethercfmeventserviceid{YType::str, "cEtherCfmEventServiceId"},
+    cethercfmeventlclmepid{YType::uint32, "cEtherCfmEventLclMepid"},
     cethercfmeventlclmacaddress{YType::str, "cEtherCfmEventLclMacAddress"},
     cethercfmeventlclmepcount{YType::uint32, "cEtherCfmEventLclMepCount"},
-    cethercfmeventlclmepid{YType::uint32, "cEtherCfmEventLclMepid"},
-    cethercfmeventrmtmacaddress{YType::str, "cEtherCfmEventRmtMacAddress"},
+    cethercfmeventlclifcount{YType::uint32, "cEtherCfmEventLclIfCount"},
     cethercfmeventrmtmepid{YType::uint32, "cEtherCfmEventRmtMepid"},
+    cethercfmeventrmtmacaddress{YType::str, "cEtherCfmEventRmtMacAddress"},
     cethercfmeventrmtportstate{YType::enumeration, "cEtherCfmEventRmtPortState"},
     cethercfmeventrmtserviceid{YType::str, "cEtherCfmEventRmtServiceId"},
-    cethercfmeventserviceid{YType::str, "cEtherCfmEventServiceId"},
-    cethercfmeventtype{YType::enumeration, "cEtherCfmEventType"}
+    cethercfmeventcode{YType::enumeration, "cEtherCfmEventCode"},
+    cethercfmeventdeleterow{YType::enumeration, "cEtherCfmEventDeleteRow"}
 {
 
     yang_name = "cEtherCfmEventEntry"; yang_parent_name = "cEtherCfmEventTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -350,20 +350,20 @@ bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_data() cons
     return cethercfmeventdomainindex.is_set
 	|| cethercfmeventsvlan.is_set
 	|| cethercfmeventindex.is_set
-	|| cethercfmeventcode.is_set
-	|| cethercfmeventdeleterow.is_set
 	|| cethercfmeventdomainname.is_set
+	|| cethercfmeventtype.is_set
 	|| cethercfmeventlastchange.is_set
-	|| cethercfmeventlclifcount.is_set
+	|| cethercfmeventserviceid.is_set
+	|| cethercfmeventlclmepid.is_set
 	|| cethercfmeventlclmacaddress.is_set
 	|| cethercfmeventlclmepcount.is_set
-	|| cethercfmeventlclmepid.is_set
-	|| cethercfmeventrmtmacaddress.is_set
+	|| cethercfmeventlclifcount.is_set
 	|| cethercfmeventrmtmepid.is_set
+	|| cethercfmeventrmtmacaddress.is_set
 	|| cethercfmeventrmtportstate.is_set
 	|| cethercfmeventrmtserviceid.is_set
-	|| cethercfmeventserviceid.is_set
-	|| cethercfmeventtype.is_set;
+	|| cethercfmeventcode.is_set
+	|| cethercfmeventdeleterow.is_set;
 }
 
 bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_operation() const
@@ -372,20 +372,20 @@ bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_operation()
 	|| ydk::is_set(cethercfmeventdomainindex.yfilter)
 	|| ydk::is_set(cethercfmeventsvlan.yfilter)
 	|| ydk::is_set(cethercfmeventindex.yfilter)
-	|| ydk::is_set(cethercfmeventcode.yfilter)
-	|| ydk::is_set(cethercfmeventdeleterow.yfilter)
 	|| ydk::is_set(cethercfmeventdomainname.yfilter)
+	|| ydk::is_set(cethercfmeventtype.yfilter)
 	|| ydk::is_set(cethercfmeventlastchange.yfilter)
-	|| ydk::is_set(cethercfmeventlclifcount.yfilter)
+	|| ydk::is_set(cethercfmeventserviceid.yfilter)
+	|| ydk::is_set(cethercfmeventlclmepid.yfilter)
 	|| ydk::is_set(cethercfmeventlclmacaddress.yfilter)
 	|| ydk::is_set(cethercfmeventlclmepcount.yfilter)
-	|| ydk::is_set(cethercfmeventlclmepid.yfilter)
-	|| ydk::is_set(cethercfmeventrmtmacaddress.yfilter)
+	|| ydk::is_set(cethercfmeventlclifcount.yfilter)
 	|| ydk::is_set(cethercfmeventrmtmepid.yfilter)
+	|| ydk::is_set(cethercfmeventrmtmacaddress.yfilter)
 	|| ydk::is_set(cethercfmeventrmtportstate.yfilter)
 	|| ydk::is_set(cethercfmeventrmtserviceid.yfilter)
-	|| ydk::is_set(cethercfmeventserviceid.yfilter)
-	|| ydk::is_set(cethercfmeventtype.yfilter);
+	|| ydk::is_set(cethercfmeventcode.yfilter)
+	|| ydk::is_set(cethercfmeventdeleterow.yfilter);
 }
 
 std::string CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::get_absolute_path() const
@@ -409,20 +409,20 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::Cethercfmeventt
     if (cethercfmeventdomainindex.is_set || is_set(cethercfmeventdomainindex.yfilter)) leaf_name_data.push_back(cethercfmeventdomainindex.get_name_leafdata());
     if (cethercfmeventsvlan.is_set || is_set(cethercfmeventsvlan.yfilter)) leaf_name_data.push_back(cethercfmeventsvlan.get_name_leafdata());
     if (cethercfmeventindex.is_set || is_set(cethercfmeventindex.yfilter)) leaf_name_data.push_back(cethercfmeventindex.get_name_leafdata());
-    if (cethercfmeventcode.is_set || is_set(cethercfmeventcode.yfilter)) leaf_name_data.push_back(cethercfmeventcode.get_name_leafdata());
-    if (cethercfmeventdeleterow.is_set || is_set(cethercfmeventdeleterow.yfilter)) leaf_name_data.push_back(cethercfmeventdeleterow.get_name_leafdata());
     if (cethercfmeventdomainname.is_set || is_set(cethercfmeventdomainname.yfilter)) leaf_name_data.push_back(cethercfmeventdomainname.get_name_leafdata());
+    if (cethercfmeventtype.is_set || is_set(cethercfmeventtype.yfilter)) leaf_name_data.push_back(cethercfmeventtype.get_name_leafdata());
     if (cethercfmeventlastchange.is_set || is_set(cethercfmeventlastchange.yfilter)) leaf_name_data.push_back(cethercfmeventlastchange.get_name_leafdata());
-    if (cethercfmeventlclifcount.is_set || is_set(cethercfmeventlclifcount.yfilter)) leaf_name_data.push_back(cethercfmeventlclifcount.get_name_leafdata());
+    if (cethercfmeventserviceid.is_set || is_set(cethercfmeventserviceid.yfilter)) leaf_name_data.push_back(cethercfmeventserviceid.get_name_leafdata());
+    if (cethercfmeventlclmepid.is_set || is_set(cethercfmeventlclmepid.yfilter)) leaf_name_data.push_back(cethercfmeventlclmepid.get_name_leafdata());
     if (cethercfmeventlclmacaddress.is_set || is_set(cethercfmeventlclmacaddress.yfilter)) leaf_name_data.push_back(cethercfmeventlclmacaddress.get_name_leafdata());
     if (cethercfmeventlclmepcount.is_set || is_set(cethercfmeventlclmepcount.yfilter)) leaf_name_data.push_back(cethercfmeventlclmepcount.get_name_leafdata());
-    if (cethercfmeventlclmepid.is_set || is_set(cethercfmeventlclmepid.yfilter)) leaf_name_data.push_back(cethercfmeventlclmepid.get_name_leafdata());
-    if (cethercfmeventrmtmacaddress.is_set || is_set(cethercfmeventrmtmacaddress.yfilter)) leaf_name_data.push_back(cethercfmeventrmtmacaddress.get_name_leafdata());
+    if (cethercfmeventlclifcount.is_set || is_set(cethercfmeventlclifcount.yfilter)) leaf_name_data.push_back(cethercfmeventlclifcount.get_name_leafdata());
     if (cethercfmeventrmtmepid.is_set || is_set(cethercfmeventrmtmepid.yfilter)) leaf_name_data.push_back(cethercfmeventrmtmepid.get_name_leafdata());
+    if (cethercfmeventrmtmacaddress.is_set || is_set(cethercfmeventrmtmacaddress.yfilter)) leaf_name_data.push_back(cethercfmeventrmtmacaddress.get_name_leafdata());
     if (cethercfmeventrmtportstate.is_set || is_set(cethercfmeventrmtportstate.yfilter)) leaf_name_data.push_back(cethercfmeventrmtportstate.get_name_leafdata());
     if (cethercfmeventrmtserviceid.is_set || is_set(cethercfmeventrmtserviceid.yfilter)) leaf_name_data.push_back(cethercfmeventrmtserviceid.get_name_leafdata());
-    if (cethercfmeventserviceid.is_set || is_set(cethercfmeventserviceid.yfilter)) leaf_name_data.push_back(cethercfmeventserviceid.get_name_leafdata());
-    if (cethercfmeventtype.is_set || is_set(cethercfmeventtype.yfilter)) leaf_name_data.push_back(cethercfmeventtype.get_name_leafdata());
+    if (cethercfmeventcode.is_set || is_set(cethercfmeventcode.yfilter)) leaf_name_data.push_back(cethercfmeventcode.get_name_leafdata());
+    if (cethercfmeventdeleterow.is_set || is_set(cethercfmeventdeleterow.yfilter)) leaf_name_data.push_back(cethercfmeventdeleterow.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -459,23 +459,17 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_value(const
         cethercfmeventindex.value_namespace = name_space;
         cethercfmeventindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cEtherCfmEventCode")
-    {
-        cethercfmeventcode = value;
-        cethercfmeventcode.value_namespace = name_space;
-        cethercfmeventcode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cEtherCfmEventDeleteRow")
-    {
-        cethercfmeventdeleterow = value;
-        cethercfmeventdeleterow.value_namespace = name_space;
-        cethercfmeventdeleterow.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cEtherCfmEventDomainName")
     {
         cethercfmeventdomainname = value;
         cethercfmeventdomainname.value_namespace = name_space;
         cethercfmeventdomainname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cEtherCfmEventType")
+    {
+        cethercfmeventtype = value;
+        cethercfmeventtype.value_namespace = name_space;
+        cethercfmeventtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cEtherCfmEventLastChange")
     {
@@ -483,11 +477,17 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_value(const
         cethercfmeventlastchange.value_namespace = name_space;
         cethercfmeventlastchange.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cEtherCfmEventLclIfCount")
+    if(value_path == "cEtherCfmEventServiceId")
     {
-        cethercfmeventlclifcount = value;
-        cethercfmeventlclifcount.value_namespace = name_space;
-        cethercfmeventlclifcount.value_namespace_prefix = name_space_prefix;
+        cethercfmeventserviceid = value;
+        cethercfmeventserviceid.value_namespace = name_space;
+        cethercfmeventserviceid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cEtherCfmEventLclMepid")
+    {
+        cethercfmeventlclmepid = value;
+        cethercfmeventlclmepid.value_namespace = name_space;
+        cethercfmeventlclmepid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cEtherCfmEventLclMacAddress")
     {
@@ -501,23 +501,23 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_value(const
         cethercfmeventlclmepcount.value_namespace = name_space;
         cethercfmeventlclmepcount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cEtherCfmEventLclMepid")
+    if(value_path == "cEtherCfmEventLclIfCount")
     {
-        cethercfmeventlclmepid = value;
-        cethercfmeventlclmepid.value_namespace = name_space;
-        cethercfmeventlclmepid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cEtherCfmEventRmtMacAddress")
-    {
-        cethercfmeventrmtmacaddress = value;
-        cethercfmeventrmtmacaddress.value_namespace = name_space;
-        cethercfmeventrmtmacaddress.value_namespace_prefix = name_space_prefix;
+        cethercfmeventlclifcount = value;
+        cethercfmeventlclifcount.value_namespace = name_space;
+        cethercfmeventlclifcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cEtherCfmEventRmtMepid")
     {
         cethercfmeventrmtmepid = value;
         cethercfmeventrmtmepid.value_namespace = name_space;
         cethercfmeventrmtmepid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cEtherCfmEventRmtMacAddress")
+    {
+        cethercfmeventrmtmacaddress = value;
+        cethercfmeventrmtmacaddress.value_namespace = name_space;
+        cethercfmeventrmtmacaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cEtherCfmEventRmtPortState")
     {
@@ -531,17 +531,17 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_value(const
         cethercfmeventrmtserviceid.value_namespace = name_space;
         cethercfmeventrmtserviceid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cEtherCfmEventServiceId")
+    if(value_path == "cEtherCfmEventCode")
     {
-        cethercfmeventserviceid = value;
-        cethercfmeventserviceid.value_namespace = name_space;
-        cethercfmeventserviceid.value_namespace_prefix = name_space_prefix;
+        cethercfmeventcode = value;
+        cethercfmeventcode.value_namespace = name_space;
+        cethercfmeventcode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cEtherCfmEventType")
+    if(value_path == "cEtherCfmEventDeleteRow")
     {
-        cethercfmeventtype = value;
-        cethercfmeventtype.value_namespace = name_space;
-        cethercfmeventtype.value_namespace_prefix = name_space_prefix;
+        cethercfmeventdeleterow = value;
+        cethercfmeventdeleterow.value_namespace = name_space;
+        cethercfmeventdeleterow.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -559,25 +559,25 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_filter(cons
     {
         cethercfmeventindex.yfilter = yfilter;
     }
-    if(value_path == "cEtherCfmEventCode")
-    {
-        cethercfmeventcode.yfilter = yfilter;
-    }
-    if(value_path == "cEtherCfmEventDeleteRow")
-    {
-        cethercfmeventdeleterow.yfilter = yfilter;
-    }
     if(value_path == "cEtherCfmEventDomainName")
     {
         cethercfmeventdomainname.yfilter = yfilter;
+    }
+    if(value_path == "cEtherCfmEventType")
+    {
+        cethercfmeventtype.yfilter = yfilter;
     }
     if(value_path == "cEtherCfmEventLastChange")
     {
         cethercfmeventlastchange.yfilter = yfilter;
     }
-    if(value_path == "cEtherCfmEventLclIfCount")
+    if(value_path == "cEtherCfmEventServiceId")
     {
-        cethercfmeventlclifcount.yfilter = yfilter;
+        cethercfmeventserviceid.yfilter = yfilter;
+    }
+    if(value_path == "cEtherCfmEventLclMepid")
+    {
+        cethercfmeventlclmepid.yfilter = yfilter;
     }
     if(value_path == "cEtherCfmEventLclMacAddress")
     {
@@ -587,17 +587,17 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_filter(cons
     {
         cethercfmeventlclmepcount.yfilter = yfilter;
     }
-    if(value_path == "cEtherCfmEventLclMepid")
+    if(value_path == "cEtherCfmEventLclIfCount")
     {
-        cethercfmeventlclmepid.yfilter = yfilter;
-    }
-    if(value_path == "cEtherCfmEventRmtMacAddress")
-    {
-        cethercfmeventrmtmacaddress.yfilter = yfilter;
+        cethercfmeventlclifcount.yfilter = yfilter;
     }
     if(value_path == "cEtherCfmEventRmtMepid")
     {
         cethercfmeventrmtmepid.yfilter = yfilter;
+    }
+    if(value_path == "cEtherCfmEventRmtMacAddress")
+    {
+        cethercfmeventrmtmacaddress.yfilter = yfilter;
     }
     if(value_path == "cEtherCfmEventRmtPortState")
     {
@@ -607,19 +607,19 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_filter(cons
     {
         cethercfmeventrmtserviceid.yfilter = yfilter;
     }
-    if(value_path == "cEtherCfmEventServiceId")
+    if(value_path == "cEtherCfmEventCode")
     {
-        cethercfmeventserviceid.yfilter = yfilter;
+        cethercfmeventcode.yfilter = yfilter;
     }
-    if(value_path == "cEtherCfmEventType")
+    if(value_path == "cEtherCfmEventDeleteRow")
     {
-        cethercfmeventtype.yfilter = yfilter;
+        cethercfmeventdeleterow.yfilter = yfilter;
     }
 }
 
 bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cEtherCfmEventDomainIndex" || name == "cEtherCfmEventSvlan" || name == "cEtherCfmEventIndex" || name == "cEtherCfmEventCode" || name == "cEtherCfmEventDeleteRow" || name == "cEtherCfmEventDomainName" || name == "cEtherCfmEventLastChange" || name == "cEtherCfmEventLclIfCount" || name == "cEtherCfmEventLclMacAddress" || name == "cEtherCfmEventLclMepCount" || name == "cEtherCfmEventLclMepid" || name == "cEtherCfmEventRmtMacAddress" || name == "cEtherCfmEventRmtMepid" || name == "cEtherCfmEventRmtPortState" || name == "cEtherCfmEventRmtServiceId" || name == "cEtherCfmEventServiceId" || name == "cEtherCfmEventType")
+    if(name == "cEtherCfmEventDomainIndex" || name == "cEtherCfmEventSvlan" || name == "cEtherCfmEventIndex" || name == "cEtherCfmEventDomainName" || name == "cEtherCfmEventType" || name == "cEtherCfmEventLastChange" || name == "cEtherCfmEventServiceId" || name == "cEtherCfmEventLclMepid" || name == "cEtherCfmEventLclMacAddress" || name == "cEtherCfmEventLclMepCount" || name == "cEtherCfmEventLclIfCount" || name == "cEtherCfmEventRmtMepid" || name == "cEtherCfmEventRmtMacAddress" || name == "cEtherCfmEventRmtPortState" || name == "cEtherCfmEventRmtServiceId" || name == "cEtherCfmEventCode" || name == "cEtherCfmEventDeleteRow")
         return true;
     return false;
 }

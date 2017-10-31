@@ -37,8 +37,8 @@ class UDPMIB : public ydk::Entity
         class Udpendpointtable; //type: UDPMIB::Udpendpointtable
 
         std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udp> udp;
-        std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udpendpointtable> udpendpointtable;
         std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udptable> udptable;
+        std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udpendpointtable> udpendpointtable;
         
 }; // UDPMIB
 
@@ -68,6 +68,53 @@ class UDPMIB::Udp : public ydk::Entity
         ydk::YLeaf udphcoutdatagrams; //type: uint64
 
 }; // UDPMIB::Udp
+
+
+class UDPMIB::Udptable : public ydk::Entity
+{
+    public:
+        Udptable();
+        ~Udptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Udpentry; //type: UDPMIB::Udptable::Udpentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udptable::Udpentry> > udpentry;
+        
+}; // UDPMIB::Udptable
+
+
+class UDPMIB::Udptable::Udpentry : public ydk::Entity
+{
+    public:
+        Udpentry();
+        ~Udpentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf udplocaladdress; //type: string
+        ydk::YLeaf udplocalport; //type: int32
+
+}; // UDPMIB::Udptable::Udpentry
 
 
 class UDPMIB::Udpendpointtable : public ydk::Entity
@@ -121,53 +168,6 @@ class UDPMIB::Udpendpointtable::Udpendpointentry : public ydk::Entity
         ydk::YLeaf udpendpointprocess; //type: uint32
 
 }; // UDPMIB::Udpendpointtable::Udpendpointentry
-
-
-class UDPMIB::Udptable : public ydk::Entity
-{
-    public:
-        Udptable();
-        ~Udptable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Udpentry; //type: UDPMIB::Udptable::Udpentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udptable::Udpentry> > udpentry;
-        
-}; // UDPMIB::Udptable
-
-
-class UDPMIB::Udptable::Udpentry : public ydk::Entity
-{
-    public:
-        Udpentry();
-        ~Udpentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf udplocaladdress; //type: string
-        ydk::YLeaf udplocalport; //type: int32
-
-}; // UDPMIB::Udptable::Udpentry
 
 
 }

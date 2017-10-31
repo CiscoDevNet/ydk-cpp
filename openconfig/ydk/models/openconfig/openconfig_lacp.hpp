@@ -36,8 +36,8 @@ class Lacp : public ydk::Entity
         class Interfaces; //type: Lacp::Interfaces
 
         std::shared_ptr<openconfig::openconfig_lacp::Lacp::Config> config;
-        std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces> interfaces;
         std::shared_ptr<openconfig::openconfig_lacp::Lacp::State> state;
+        std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces> interfaces;
         
 }; // Lacp
 
@@ -62,6 +62,28 @@ class Lacp::Config : public ydk::Entity
         ydk::YLeaf system_priority; //type: uint16
 
 }; // Lacp::Config
+
+
+class Lacp::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf system_priority; //type: uint16
+
+}; // Lacp::State
 
 
 class Lacp::Interfaces : public ydk::Entity
@@ -112,8 +134,8 @@ class Lacp::Interfaces::Interface : public ydk::Entity
         class Members; //type: Lacp::Interfaces::Interface::Members
 
         std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces::Interface::Config> config;
-        std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces::Interface::Members> members;
         std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces::Interface::State> state;
+        std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces::Interface::Members> members;
         
 }; // Lacp::Interfaces::Interface
 
@@ -142,6 +164,32 @@ class Lacp::Interfaces::Interface::Config : public ydk::Entity
         ydk::YLeaf system_priority; //type: uint16
 
 }; // Lacp::Interfaces::Interface::Config
+
+
+class Lacp::Interfaces::Interface::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf name;
+        ydk::YLeaf interval; //type: LacpPeriodType
+        ydk::YLeaf lacp_mode; //type: LacpActivityType
+        ydk::YLeaf system_id_mac; //type: string
+        ydk::YLeaf system_priority; //type: uint16
+
+}; // Lacp::Interfaces::Interface::State
 
 
 class Lacp::Interfaces::Interface::Members : public ydk::Entity
@@ -252,62 +300,6 @@ class Lacp::Interfaces::Interface::Members::Member::State::Counters : public ydk
 
 }; // Lacp::Interfaces::Interface::Members::Member::State::Counters
 
-
-class Lacp::Interfaces::Interface::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf name;
-        ydk::YLeaf interval; //type: LacpPeriodType
-        ydk::YLeaf lacp_mode; //type: LacpActivityType
-        ydk::YLeaf system_id_mac; //type: string
-        ydk::YLeaf system_priority; //type: uint16
-
-}; // Lacp::Interfaces::Interface::State
-
-
-class Lacp::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf system_priority; //type: uint16
-
-}; // Lacp::State
-
-class LacpSynchronizationType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf IN_SYNC;
-        static const ydk::Enum::YLeaf OUT_SYNC;
-
-};
-
 class LacpActivityType : public ydk::Enum
 {
     public:
@@ -321,6 +313,14 @@ class LacpTimeoutType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf LONG;
         static const ydk::Enum::YLeaf SHORT;
+
+};
+
+class LacpSynchronizationType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf IN_SYNC;
+        static const ydk::Enum::YLeaf OUT_SYNC;
 
 };
 

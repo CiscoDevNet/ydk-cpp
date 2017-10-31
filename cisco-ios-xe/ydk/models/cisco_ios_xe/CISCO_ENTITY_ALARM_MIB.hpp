@@ -41,16 +41,88 @@ class CISCOENTITYALARMMIB : public ydk::Entity
         class Cealarmhisttable; //type: CISCOENTITYALARMMIB::Cealarmhisttable
         class Cealarmfilterprofiletable; //type: CISCOENTITYALARMMIB::Cealarmfilterprofiletable
 
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmmonitoring> cealarmmonitoring;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmhistory> cealarmhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmfiltering> cealarmfiltering;
         std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmdescrmaptable> cealarmdescrmaptable;
         std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmdescrtable> cealarmdescrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmfiltering> cealarmfiltering;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmfilterprofiletable> cealarmfilterprofiletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmhistory> cealarmhistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmhisttable> cealarmhisttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmmonitoring> cealarmmonitoring;
         std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmtable> cealarmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmhisttable> cealarmhisttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmfilterprofiletable> cealarmfilterprofiletable;
         
 }; // CISCOENTITYALARMMIB
+
+
+class CISCOENTITYALARMMIB::Cealarmmonitoring : public ydk::Entity
+{
+    public:
+        Cealarmmonitoring();
+        ~Cealarmmonitoring();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cealarmcriticalcount; //type: uint32
+        ydk::YLeaf cealarmmajorcount; //type: uint32
+        ydk::YLeaf cealarmminorcount; //type: uint32
+        ydk::YLeaf cealarmcutoff; //type: boolean
+
+}; // CISCOENTITYALARMMIB::Cealarmmonitoring
+
+
+class CISCOENTITYALARMMIB::Cealarmhistory : public ydk::Entity
+{
+    public:
+        Cealarmhistory();
+        ~Cealarmhistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cealarmhisttablesize; //type: int32
+        ydk::YLeaf cealarmhistlastindex; //type: uint32
+
+}; // CISCOENTITYALARMMIB::Cealarmhistory
+
+
+class CISCOENTITYALARMMIB::Cealarmfiltering : public ydk::Entity
+{
+    public:
+        Cealarmfiltering();
+        ~Cealarmfiltering();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cealarmnotifiesenable; //type: int32
+        ydk::YLeaf cealarmsyslogenable; //type: int32
+        ydk::YLeaf cealarmfilterprofileindexnext; //type: uint32
+
+}; // CISCOENTITYALARMMIB::Cealarmfiltering
 
 
 class CISCOENTITYALARMMIB::Cealarmdescrmaptable : public ydk::Entity
@@ -150,11 +222,11 @@ class CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry : public ydk::En
 }; // CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry
 
 
-class CISCOENTITYALARMMIB::Cealarmfiltering : public ydk::Entity
+class CISCOENTITYALARMMIB::Cealarmtable : public ydk::Entity
 {
     public:
-        Cealarmfiltering();
-        ~Cealarmfiltering();
+        Cealarmtable();
+        ~Cealarmtable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -167,42 +239,18 @@ class CISCOENTITYALARMMIB::Cealarmfiltering : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cealarmnotifiesenable; //type: int32
-        ydk::YLeaf cealarmsyslogenable; //type: int32
-        ydk::YLeaf cealarmfilterprofileindexnext; //type: uint32
+        class Cealarmentry; //type: CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry
 
-}; // CISCOENTITYALARMMIB::Cealarmfiltering
-
-
-class CISCOENTITYALARMMIB::Cealarmfilterprofiletable : public ydk::Entity
-{
-    public:
-        Cealarmfilterprofiletable();
-        ~Cealarmfilterprofiletable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cealarmfilterprofileentry; //type: CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry> > cealarmfilterprofileentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry> > cealarmentry;
         
-}; // CISCOENTITYALARMMIB::Cealarmfilterprofiletable
+}; // CISCOENTITYALARMMIB::Cealarmtable
 
 
-class CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry : public ydk::Entity
+class CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry : public ydk::Entity
 {
     public:
-        Cealarmfilterprofileentry();
-        ~Cealarmfilterprofileentry();
+        Cealarmentry();
+        ~Cealarmentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -215,37 +263,13 @@ class CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cealarmfilterindex; //type: uint32
-        ydk::YLeaf cealarmfilterstatus; //type: RowStatus
-        ydk::YLeaf cealarmfilteralias; //type: string
-        ydk::YLeaf cealarmfilteralarmsenabled; //type: binary
-        ydk::YLeaf cealarmfilternotifiesenabled; //type: binary
-        ydk::YLeaf cealarmfiltersyslogenabled; //type: binary
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cealarmfilterprofile; //type: uint32
+        ydk::YLeaf cealarmseverity; //type: int32
+        ydk::YLeaf cealarmlist; //type: binary
 
-}; // CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry
-
-
-class CISCOENTITYALARMMIB::Cealarmhistory : public ydk::Entity
-{
-    public:
-        Cealarmhistory();
-        ~Cealarmhistory();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cealarmhisttablesize; //type: int32
-        ydk::YLeaf cealarmhistlastindex; //type: uint32
-
-}; // CISCOENTITYALARMMIB::Cealarmhistory
+}; // CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry
 
 
 class CISCOENTITYALARMMIB::Cealarmhisttable : public ydk::Entity
@@ -300,11 +324,11 @@ class CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry : public ydk::Enti
 }; // CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry
 
 
-class CISCOENTITYALARMMIB::Cealarmmonitoring : public ydk::Entity
+class CISCOENTITYALARMMIB::Cealarmfilterprofiletable : public ydk::Entity
 {
     public:
-        Cealarmmonitoring();
-        ~Cealarmmonitoring();
+        Cealarmfilterprofiletable();
+        ~Cealarmfilterprofiletable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -317,43 +341,18 @@ class CISCOENTITYALARMMIB::Cealarmmonitoring : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cealarmcriticalcount; //type: uint32
-        ydk::YLeaf cealarmmajorcount; //type: uint32
-        ydk::YLeaf cealarmminorcount; //type: uint32
-        ydk::YLeaf cealarmcutoff; //type: boolean
+        class Cealarmfilterprofileentry; //type: CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry
 
-}; // CISCOENTITYALARMMIB::Cealarmmonitoring
-
-
-class CISCOENTITYALARMMIB::Cealarmtable : public ydk::Entity
-{
-    public:
-        Cealarmtable();
-        ~Cealarmtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cealarmentry; //type: CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry> > cealarmentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_ALARM_MIB::CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry> > cealarmfilterprofileentry;
         
-}; // CISCOENTITYALARMMIB::Cealarmtable
+}; // CISCOENTITYALARMMIB::Cealarmfilterprofiletable
 
 
-class CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry : public ydk::Entity
+class CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry : public ydk::Entity
 {
     public:
-        Cealarmentry();
-        ~Cealarmentry();
+        Cealarmfilterprofileentry();
+        ~Cealarmfilterprofileentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -366,13 +365,14 @@ class CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        ydk::YLeaf entphysicalindex;
-        ydk::YLeaf cealarmfilterprofile; //type: uint32
-        ydk::YLeaf cealarmseverity; //type: int32
-        ydk::YLeaf cealarmlist; //type: binary
+        ydk::YLeaf cealarmfilterindex; //type: uint32
+        ydk::YLeaf cealarmfilterstatus; //type: RowStatus
+        ydk::YLeaf cealarmfilteralias; //type: string
+        ydk::YLeaf cealarmfilteralarmsenabled; //type: binary
+        ydk::YLeaf cealarmfilternotifiesenabled; //type: binary
+        ydk::YLeaf cealarmfiltersyslogenabled; //type: binary
 
-}; // CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry
+}; // CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry
 
 class AlarmSeverity : public ydk::Enum
 {

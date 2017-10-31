@@ -109,8 +109,8 @@ class SubscriberRedundancy::Groups::Group : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList> interface_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::Peer> peer;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::RevertiveTimer> revertive_timer;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute> state_control_route;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::VirtualMac> virtual_mac;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute> state_control_route;
         
 }; // SubscriberRedundancy::Groups::Group
 
@@ -135,10 +135,55 @@ class SubscriberRedundancy::Groups::Group::InterfaceList : public ydk::Entity
         class Interfaces; //type: SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces
         class InterfaceRanges; //type: SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges> interface_ranges;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges> interface_ranges;
         
 }; // SubscriberRedundancy::Groups::Group::InterfaceList
+
+
+class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface> > interface;
+        
+}; // SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces
+
+
+class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_id; //type: uint32
+
+}; // SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
 
 
 class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges : public ydk::Entity
@@ -187,51 +232,6 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Inter
         ydk::YLeaf interface_id_range_end; //type: uint32
 
 }; // SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
-
-
-class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface> > interface;
-        
-}; // SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces
-
-
-class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_id; //type: uint32
-
-}; // SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
 
 
 class SubscriberRedundancy::Groups::Group::Peer : public ydk::Entity
@@ -300,6 +300,28 @@ class SubscriberRedundancy::Groups::Group::RevertiveTimer : public ydk::Entity
         ydk::YLeaf value_; //type: uint32
 
 }; // SubscriberRedundancy::Groups::Group::RevertiveTimer
+
+
+class SubscriberRedundancy::Groups::Group::VirtualMac : public ydk::Entity
+{
+    public:
+        VirtualMac();
+        ~VirtualMac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf disable; //type: empty
+
+}; // SubscriberRedundancy::Groups::Group::VirtualMac
 
 
 class SubscriberRedundancy::Groups::Group::StateControlRoute : public ydk::Entity
@@ -539,28 +561,6 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdR
 }; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute
 
 
-class SubscriberRedundancy::Groups::Group::VirtualMac : public ydk::Entity
-{
-    public:
-        VirtualMac();
-        ~VirtualMac();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address; //type: string
-        ydk::YLeaf disable; //type: empty
-
-}; // SubscriberRedundancy::Groups::Group::VirtualMac
-
-
 class SubscriberRedundancy::RevertiveTimer : public ydk::Entity
 {
     public:
@@ -591,19 +591,19 @@ class SubscriberRedundancyGroupSlaveMode : public ydk::Enum
 
 };
 
-class SrgAddrFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class SubscriberRedundancyGroupRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
+
+};
+
+class SrgAddrFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

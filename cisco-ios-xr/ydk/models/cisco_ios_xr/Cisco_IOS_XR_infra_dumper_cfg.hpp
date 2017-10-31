@@ -44,9 +44,9 @@ class Exception : public ydk::Entity
         class Choice2; //type: Exception::Choice2
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice1> choice1;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice2> choice2;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice3> choice3;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::ProcessNames> process_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice2> choice2;
         
 }; // Exception
 
@@ -75,32 +75,6 @@ class Exception::Choice1 : public ydk::Entity
         ydk::YLeaf filename; //type: string
 
 }; // Exception::Choice1
-
-
-class Exception::Choice2 : public ydk::Entity
-{
-    public:
-        Choice2();
-        ~Choice2();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf compress; //type: boolean
-        ydk::YLeaf lower_limit; //type: uint32
-        ydk::YLeaf higher_limit; //type: uint32
-        ydk::YLeaf file_path; //type: string
-        ydk::YLeaf filename; //type: string
-
-}; // Exception::Choice2
 
 
 class Exception::Choice3 : public ydk::Entity
@@ -205,6 +179,32 @@ class Exception::ProcessNames::ProcessName::CoreOption : public ydk::Entity
 
 }; // Exception::ProcessNames::ProcessName::CoreOption
 
+
+class Exception::Choice2 : public ydk::Entity
+{
+    public:
+        Choice2();
+        ~Choice2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf compress; //type: boolean
+        ydk::YLeaf lower_limit; //type: uint32
+        ydk::YLeaf higher_limit; //type: uint32
+        ydk::YLeaf file_path; //type: string
+        ydk::YLeaf filename; //type: string
+
+}; // Exception::Choice2
+
 class Copy : public ydk::Enum
 {
     public:
@@ -213,27 +213,11 @@ class Copy : public ydk::Enum
 
 };
 
-class Skipcpuinfo : public ydk::Enum
+class Context : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf skip_cpu_info;
-
-};
-
-class Sparse : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf sparse;
-
-};
-
-class Mainmemory : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf main_memory;
+        static const ydk::Enum::YLeaf context;
 
 };
 
@@ -245,11 +229,11 @@ class Sharedmemory : public ydk::Enum
 
 };
 
-class Context : public ydk::Enum
+class Sparse : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf context;
+        static const ydk::Enum::YLeaf sparse;
 
 };
 
@@ -266,6 +250,22 @@ class Packetmemory : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf packet_memory;
+
+};
+
+class Skipcpuinfo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf skip_cpu_info;
+
+};
+
+class Mainmemory : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf main_memory;
 
 };
 

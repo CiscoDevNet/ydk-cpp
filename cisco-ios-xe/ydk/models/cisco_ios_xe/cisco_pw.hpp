@@ -10,6 +10,51 @@
 namespace cisco_ios_xe {
 namespace cisco_pw {
 
+class PwEncapsulationType : public virtual ydk::Identity
+{
+    public:
+        PwEncapsulationType();
+        ~PwEncapsulationType();
+
+
+}; // PwEncapsulationType
+
+class PwVcType : public virtual ydk::Identity
+{
+    public:
+        PwVcType();
+        ~PwVcType();
+
+
+}; // PwVcType
+
+class PwLoadBalanceType : public virtual ydk::Identity
+{
+    public:
+        PwLoadBalanceType();
+        ~PwLoadBalanceType();
+
+
+}; // PwLoadBalanceType
+
+class PwSignalingProtocolType : public virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolType();
+        ~PwSignalingProtocolType();
+
+
+}; // PwSignalingProtocolType
+
+class PwSequencingType : public virtual ydk::Identity
+{
+    public:
+        PwSequencingType();
+        ~PwSequencingType();
+
+
+}; // PwSequencingType
+
 class PseudowireConfig : public ydk::Entity
 {
     public:
@@ -36,8 +81,8 @@ class PseudowireConfig : public ydk::Entity
         class PwStaticOamClasses; //type: PseudowireConfig::PwStaticOamClasses
 
         std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::Global> global;
-        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwStaticOamClasses> pw_static_oam_classes;
         std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates> pw_templates;
+        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwStaticOamClasses> pw_static_oam_classes;
         
 }; // PseudowireConfig
 
@@ -68,56 +113,6 @@ class PseudowireConfig::Global : public ydk::Entity
         ydk::YLeaf vc_state_notification_rate; //type: uint32
 
 }; // PseudowireConfig::Global
-
-
-class PseudowireConfig::PwStaticOamClasses : public ydk::Entity
-{
-    public:
-        PwStaticOamClasses();
-        ~PwStaticOamClasses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class PwStaticOamClass; //type: PseudowireConfig::PwStaticOamClasses::PwStaticOamClass
-
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwStaticOamClasses::PwStaticOamClass> > pw_static_oam_class;
-        
-}; // PseudowireConfig::PwStaticOamClasses
-
-
-class PseudowireConfig::PwStaticOamClasses::PwStaticOamClass : public ydk::Entity
-{
-    public:
-        PwStaticOamClass();
-        ~PwStaticOamClass();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf ack; //type: boolean
-        ydk::YLeaf keepalive; //type: uint32
-        ydk::YLeaf timeout_refresh_send; //type: uint32
-        ydk::YLeaf timeout_refresh_ack; //type: uint32
-
-}; // PseudowireConfig::PwStaticOamClasses::PwStaticOamClass
 
 
 class PseudowireConfig::PwTemplates : public ydk::Entity
@@ -179,12 +174,12 @@ class PseudowireConfig::PwTemplates::PwTemplate : public ydk::Entity
         class PortProfileSpec; //type: PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec
 
         std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance> load_balance;
-        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec> port_profile_spec;
         std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PreferredPath> preferred_path;
         std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Sequencing> sequencing;
-        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Status> status;
-        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay> switchover_delay;
         std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Vccv> vccv;
+        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay> switchover_delay;
+        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Status> status;
+        std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec> port_profile_spec;
         
 }; // PseudowireConfig::PwTemplates::PwTemplate
 
@@ -238,32 +233,6 @@ class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel : public
 }; // PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec : public ydk::Entity
-{
-    public:
-        PortProfileSpec();
-        ~PortProfileSpec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf shutdown; //type: boolean
-        ydk::YLeaf shut_force; //type: boolean
-        ydk::YLeaf mtu; //type: uint32
-        ydk::YLeaf max_ports; //type: uint16
-        ydk::YLeaf enabled; //type: boolean
-
-}; // PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec
-
-
 class PseudowireConfig::PwTemplates::PwTemplate::PreferredPath : public ydk::Entity
 {
     public:
@@ -311,11 +280,11 @@ class PseudowireConfig::PwTemplates::PwTemplate::Sequencing : public ydk::Entity
 }; // PseudowireConfig::PwTemplates::PwTemplate::Sequencing
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::Status : public ydk::Entity
+class PseudowireConfig::PwTemplates::PwTemplate::Vccv : public ydk::Entity
 {
     public:
-        Status();
-        ~Status();
+        Vccv();
+        ~Vccv();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -327,13 +296,9 @@ class PseudowireConfig::PwTemplates::PwTemplate::Status : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf decoupled; //type: boolean
-        ydk::YLeaf disable; //type: boolean
-        ydk::YLeaf peer_topo_dual_homed; //type: boolean
-        ydk::YLeaf route_watch_disable; //type: boolean
-        ydk::YLeaf redundancy_master; //type: boolean
+        ydk::YLeaf control_word; //type: boolean
 
-}; // PseudowireConfig::PwTemplates::PwTemplate::Status
+}; // PseudowireConfig::PwTemplates::PwTemplate::Vccv
 
 
 class PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay : public ydk::Entity
@@ -359,11 +324,11 @@ class PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay : public ydk::E
 }; // PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::Vccv : public ydk::Entity
+class PseudowireConfig::PwTemplates::PwTemplate::Status : public ydk::Entity
 {
     public:
-        Vccv();
-        ~Vccv();
+        Status();
+        ~Status();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -375,9 +340,89 @@ class PseudowireConfig::PwTemplates::PwTemplate::Vccv : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf control_word; //type: boolean
+        ydk::YLeaf decoupled; //type: boolean
+        ydk::YLeaf disable; //type: boolean
+        ydk::YLeaf peer_topo_dual_homed; //type: boolean
+        ydk::YLeaf route_watch_disable; //type: boolean
+        ydk::YLeaf redundancy_master; //type: boolean
 
-}; // PseudowireConfig::PwTemplates::PwTemplate::Vccv
+}; // PseudowireConfig::PwTemplates::PwTemplate::Status
+
+
+class PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec : public ydk::Entity
+{
+    public:
+        PortProfileSpec();
+        ~PortProfileSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf shut_force; //type: boolean
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf max_ports; //type: uint16
+        ydk::YLeaf enabled; //type: boolean
+
+}; // PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec
+
+
+class PseudowireConfig::PwStaticOamClasses : public ydk::Entity
+{
+    public:
+        PwStaticOamClasses();
+        ~PwStaticOamClasses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class PwStaticOamClass; //type: PseudowireConfig::PwStaticOamClasses::PwStaticOamClass
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_pw::PseudowireConfig::PwStaticOamClasses::PwStaticOamClass> > pw_static_oam_class;
+        
+}; // PseudowireConfig::PwStaticOamClasses
+
+
+class PseudowireConfig::PwStaticOamClasses::PwStaticOamClass : public ydk::Entity
+{
+    public:
+        PwStaticOamClass();
+        ~PwStaticOamClass();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf ack; //type: boolean
+        ydk::YLeaf keepalive; //type: uint32
+        ydk::YLeaf timeout_refresh_send; //type: uint32
+        ydk::YLeaf timeout_refresh_ack; //type: uint32
+
+}; // PseudowireConfig::PwStaticOamClasses::PwStaticOamClass
 
 class PseudowireState : public ydk::Entity
 {
@@ -481,51 +526,6 @@ class PseudowireState::Pseudowires::Statistics : public ydk::Entity
 
 }; // PseudowireState::Pseudowires::Statistics
 
-class PwEncapsulationType : public virtual ydk::Identity
-{
-    public:
-        PwEncapsulationType();
-        ~PwEncapsulationType();
-
-
-}; // PwEncapsulationType
-
-class PwLoadBalanceType : public virtual ydk::Identity
-{
-    public:
-        PwLoadBalanceType();
-        ~PwLoadBalanceType();
-
-
-}; // PwLoadBalanceType
-
-class PwSequencingType : public virtual ydk::Identity
-{
-    public:
-        PwSequencingType();
-        ~PwSequencingType();
-
-
-}; // PwSequencingType
-
-class PwSignalingProtocolType : public virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolType();
-        ~PwSignalingProtocolType();
-
-
-}; // PwSignalingProtocolType
-
-class PwVcType : public virtual ydk::Identity
-{
-    public:
-        PwVcType();
-        ~PwVcType();
-
-
-}; // PwVcType
-
 class PwEncapMpls : public cisco_ios_xe::cisco_pw::PwEncapsulationType, virtual ydk::Identity
 {
     public:
@@ -534,87 +534,6 @@ class PwEncapMpls : public cisco_ios_xe::cisco_pw::PwEncapsulationType, virtual 
 
 
 }; // PwEncapMpls
-
-class PwLbEthernetType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
-{
-    public:
-        PwLbEthernetType();
-        ~PwLbEthernetType();
-
-
-}; // PwLbEthernetType
-
-class PwLbIpDstIp : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
-{
-    public:
-        PwLbIpDstIp();
-        ~PwLbIpDstIp();
-
-
-}; // PwLbIpDstIp
-
-class PwLbIpType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
-{
-    public:
-        PwLbIpType();
-        ~PwLbIpType();
-
-
-}; // PwLbIpType
-
-class PwSequencingBoth : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
-{
-    public:
-        PwSequencingBoth();
-        ~PwSequencingBoth();
-
-
-}; // PwSequencingBoth
-
-class PwSequencingReceive : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
-{
-    public:
-        PwSequencingReceive();
-        ~PwSequencingReceive();
-
-
-}; // PwSequencingReceive
-
-class PwSequencingTransmit : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
-{
-    public:
-        PwSequencingTransmit();
-        ~PwSequencingTransmit();
-
-
-}; // PwSequencingTransmit
-
-class PwSignalingProtocolBgp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolBgp();
-        ~PwSignalingProtocolBgp();
-
-
-}; // PwSignalingProtocolBgp
-
-class PwSignalingProtocolLdp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolLdp();
-        ~PwSignalingProtocolLdp();
-
-
-}; // PwSignalingProtocolLdp
-
-class PwSignalingProtocolNone : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolNone();
-        ~PwSignalingProtocolNone();
-
-
-}; // PwSignalingProtocolNone
 
 class PwVcTypeEther : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
 {
@@ -643,6 +562,24 @@ class PwVcTypeVlanPassthrough : public cisco_ios_xe::cisco_pw::PwVcType, virtual
 
 }; // PwVcTypeVlanPassthrough
 
+class PwLbEthernetType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+{
+    public:
+        PwLbEthernetType();
+        ~PwLbEthernetType();
+
+
+}; // PwLbEthernetType
+
+class PwLbEthSrcMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
+{
+    public:
+        PwLbEthSrcMac();
+        ~PwLbEthSrcMac();
+
+
+}; // PwLbEthSrcMac
+
 class PwLbEthDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
 {
     public:
@@ -661,14 +598,32 @@ class PwLbEthSrcDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtua
 
 }; // PwLbEthSrcDstMac
 
-class PwLbEthSrcMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
+class PwLbIpType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
 {
     public:
-        PwLbEthSrcMac();
-        ~PwLbEthSrcMac();
+        PwLbIpType();
+        ~PwLbIpType();
 
 
-}; // PwLbEthSrcMac
+}; // PwLbIpType
+
+class PwLbIpSrcIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
+{
+    public:
+        PwLbIpSrcIp();
+        ~PwLbIpSrcIp();
+
+
+}; // PwLbIpSrcIp
+
+class PwLbIpDstIp : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+{
+    public:
+        PwLbIpDstIp();
+        ~PwLbIpDstIp();
+
+
+}; // PwLbIpDstIp
 
 class PwLbIpSrcDstIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
 {
@@ -679,14 +634,59 @@ class PwLbIpSrcDstIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::I
 
 }; // PwLbIpSrcDstIp
 
-class PwLbIpSrcIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
+class PwSignalingProtocolNone : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
 {
     public:
-        PwLbIpSrcIp();
-        ~PwLbIpSrcIp();
+        PwSignalingProtocolNone();
+        ~PwSignalingProtocolNone();
 
 
-}; // PwLbIpSrcIp
+}; // PwSignalingProtocolNone
+
+class PwSignalingProtocolLdp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolLdp();
+        ~PwSignalingProtocolLdp();
+
+
+}; // PwSignalingProtocolLdp
+
+class PwSignalingProtocolBgp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolBgp();
+        ~PwSignalingProtocolBgp();
+
+
+}; // PwSignalingProtocolBgp
+
+class PwSequencingReceive : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
+{
+    public:
+        PwSequencingReceive();
+        ~PwSequencingReceive();
+
+
+}; // PwSequencingReceive
+
+class PwSequencingTransmit : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
+{
+    public:
+        PwSequencingTransmit();
+        ~PwSequencingTransmit();
+
+
+}; // PwSequencingTransmit
+
+class PwSequencingBoth : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
+{
+    public:
+        PwSequencingBoth();
+        ~PwSequencingBoth();
+
+
+}; // PwSequencingBoth
 
 class PwOperStateType : public ydk::Enum
 {

@@ -11,16 +11,6 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_bgp_types {
 
-AFISAFITYPE::AFISAFITYPE()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:AFI_SAFI_TYPE")
-{
-
-}
-
-AFISAFITYPE::~AFISAFITYPE()
-{
-}
-
 BGPCAPABILITY::BGPCAPABILITY()
      : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:BGP_CAPABILITY")
 {
@@ -28,6 +18,16 @@ BGPCAPABILITY::BGPCAPABILITY()
 }
 
 BGPCAPABILITY::~BGPCAPABILITY()
+{
+}
+
+AFISAFITYPE::AFISAFITYPE()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:AFI_SAFI_TYPE")
+{
+
+}
+
+AFISAFITYPE::~AFISAFITYPE()
 {
 }
 
@@ -51,13 +51,23 @@ REMOVEPRIVATEASOPTION::~REMOVEPRIVATEASOPTION()
 {
 }
 
-ADDPATHS::ADDPATHS()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:ADD_PATHS")
+MPBGP::MPBGP()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:MPBGP")
 {
 
 }
 
-ADDPATHS::~ADDPATHS()
+MPBGP::~MPBGP()
+{
+}
+
+ROUTEREFRESH::ROUTEREFRESH()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:ROUTE_REFRESH")
+{
+
+}
+
+ROUTEREFRESH::~ROUTEREFRESH()
 {
 }
 
@@ -81,13 +91,13 @@ GRACEFULRESTART::~GRACEFULRESTART()
 {
 }
 
-IPV4LABELEDUNICAST::IPV4LABELEDUNICAST()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV4_LABELED_UNICAST")
+ADDPATHS::ADDPATHS()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:ADD_PATHS")
 {
 
 }
 
-IPV4LABELEDUNICAST::~IPV4LABELEDUNICAST()
+ADDPATHS::~ADDPATHS()
 {
 }
 
@@ -101,16 +111,6 @@ IPV4UNICAST::~IPV4UNICAST()
 {
 }
 
-IPV6LABELEDUNICAST::IPV6LABELEDUNICAST()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV6_LABELED_UNICAST")
-{
-
-}
-
-IPV6LABELEDUNICAST::~IPV6LABELEDUNICAST()
-{
-}
-
 IPV6UNICAST::IPV6UNICAST()
      : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV6_UNICAST")
 {
@@ -121,33 +121,23 @@ IPV6UNICAST::~IPV6UNICAST()
 {
 }
 
-L2VPNEVPN::L2VPNEVPN()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L2VPN_EVPN")
+IPV4LABELEDUNICAST::IPV4LABELEDUNICAST()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV4_LABELED_UNICAST")
 {
 
 }
 
-L2VPNEVPN::~L2VPNEVPN()
+IPV4LABELEDUNICAST::~IPV4LABELEDUNICAST()
 {
 }
 
-L2VPNVPLS::L2VPNVPLS()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L2VPN_VPLS")
-{
-
-}
-
-L2VPNVPLS::~L2VPNVPLS()
-{
-}
-
-L3VPNIPV4MULTICAST::L3VPNIPV4MULTICAST()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV4_MULTICAST")
+IPV6LABELEDUNICAST::IPV6LABELEDUNICAST()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV6_LABELED_UNICAST")
 {
 
 }
 
-L3VPNIPV4MULTICAST::~L3VPNIPV4MULTICAST()
+IPV6LABELEDUNICAST::~IPV6LABELEDUNICAST()
 {
 }
 
@@ -161,16 +151,6 @@ L3VPNIPV4UNICAST::~L3VPNIPV4UNICAST()
 {
 }
 
-L3VPNIPV6MULTICAST::L3VPNIPV6MULTICAST()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV6_MULTICAST")
-{
-
-}
-
-L3VPNIPV6MULTICAST::~L3VPNIPV6MULTICAST()
-{
-}
-
 L3VPNIPV6UNICAST::L3VPNIPV6UNICAST()
      : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV6_UNICAST")
 {
@@ -181,23 +161,43 @@ L3VPNIPV6UNICAST::~L3VPNIPV6UNICAST()
 {
 }
 
-MPBGP::MPBGP()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:MPBGP")
+L3VPNIPV4MULTICAST::L3VPNIPV4MULTICAST()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV4_MULTICAST")
 {
 
 }
 
-MPBGP::~MPBGP()
+L3VPNIPV4MULTICAST::~L3VPNIPV4MULTICAST()
 {
 }
 
-NOADVERTISE::NOADVERTISE()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:NO_ADVERTISE")
+L3VPNIPV6MULTICAST::L3VPNIPV6MULTICAST()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV6_MULTICAST")
 {
 
 }
 
-NOADVERTISE::~NOADVERTISE()
+L3VPNIPV6MULTICAST::~L3VPNIPV6MULTICAST()
+{
+}
+
+L2VPNVPLS::L2VPNVPLS()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L2VPN_VPLS")
+{
+
+}
+
+L2VPNVPLS::~L2VPNVPLS()
+{
+}
+
+L2VPNEVPN::L2VPNEVPN()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L2VPN_EVPN")
+{
+
+}
+
+L2VPNEVPN::~L2VPNEVPN()
 {
 }
 
@@ -208,6 +208,16 @@ NOEXPORT::NOEXPORT()
 }
 
 NOEXPORT::~NOEXPORT()
+{
+}
+
+NOADVERTISE::NOADVERTISE()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:NO_ADVERTISE")
+{
+
+}
+
+NOADVERTISE::~NOADVERTISE()
 {
 }
 
@@ -251,30 +261,20 @@ PRIVATEASREPLACEALL::~PRIVATEASREPLACEALL()
 {
 }
 
-ROUTEREFRESH::ROUTEREFRESH()
-     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:ROUTE_REFRESH")
-{
-
-}
-
-ROUTEREFRESH::~ROUTEREFRESH()
-{
-}
+const Enum::YLeaf BgpSessionDirection::INBOUND {0, "INBOUND"};
+const Enum::YLeaf BgpSessionDirection::OUTBOUND {1, "OUTBOUND"};
 
 const Enum::YLeaf BgpOriginAttrType::IGP {0, "IGP"};
 const Enum::YLeaf BgpOriginAttrType::EGP {1, "EGP"};
 const Enum::YLeaf BgpOriginAttrType::INCOMPLETE {2, "INCOMPLETE"};
 
+const Enum::YLeaf PeerType::INTERNAL {0, "INTERNAL"};
+const Enum::YLeaf PeerType::EXTERNAL {1, "EXTERNAL"};
+
 const Enum::YLeaf CommunityType::STANDARD {0, "STANDARD"};
 const Enum::YLeaf CommunityType::EXTENDED {1, "EXTENDED"};
 const Enum::YLeaf CommunityType::BOTH {2, "BOTH"};
 const Enum::YLeaf CommunityType::NONE {3, "NONE"};
-
-const Enum::YLeaf PeerType::INTERNAL {0, "INTERNAL"};
-const Enum::YLeaf PeerType::EXTERNAL {1, "EXTERNAL"};
-
-const Enum::YLeaf BgpSessionDirection::INBOUND {0, "INBOUND"};
-const Enum::YLeaf BgpSessionDirection::OUTBOUND {1, "OUTBOUND"};
 
 
 }

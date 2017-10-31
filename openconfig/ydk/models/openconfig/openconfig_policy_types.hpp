@@ -64,15 +64,6 @@ class BGP : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, vir
 
 }; // BGP
 
-class DIRECTLYCONNECTED : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
-{
-    public:
-        DIRECTLYCONNECTED();
-        ~DIRECTLYCONNECTED();
-
-
-}; // DIRECTLYCONNECTED
-
 class ISIS : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
@@ -81,15 +72,6 @@ class ISIS : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, vi
 
 
 }; // ISIS
-
-class LOCALAGGREGATE : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
-{
-    public:
-        LOCALAGGREGATE();
-        ~LOCALAGGREGATE();
-
-
-}; // LOCALAGGREGATE
 
 class OSPF : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
@@ -117,6 +99,24 @@ class STATIC_ : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE,
 
 
 }; // STATIC_
+
+class DIRECTLYCONNECTED : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        DIRECTLYCONNECTED();
+        ~DIRECTLYCONNECTED();
+
+
+}; // DIRECTLYCONNECTED
+
+class LOCALAGGREGATE : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
+{
+    public:
+        LOCALAGGREGATE();
+        ~LOCALAGGREGATE();
+
+
+}; // LOCALAGGREGATE
 
 class MatchSetOptionsType : public ydk::Enum
 {

@@ -44,19 +44,41 @@ class NHRPMIB : public ydk::Entity
         class Nhrpservernhctable; //type: NHRPMIB::Nhrpservernhctable
         class Nhrpserverstattable; //type: NHRPMIB::Nhrpserverstattable
 
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpcachetable> nhrpcachetable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientnhstable> nhrpclientnhstable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientregistrationtable> nhrpclientregistrationtable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientstattable> nhrpclientstattable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable> nhrpclienttable;
         std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpgeneralobjects> nhrpgeneralobjects;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpcachetable> nhrpcachetable;
         std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrppurgereqtable> nhrppurgereqtable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable> nhrpclienttable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientregistrationtable> nhrpclientregistrationtable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientnhstable> nhrpclientnhstable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientstattable> nhrpclientstattable;
+        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable> nhrpservertable;
         std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservercachetable> nhrpservercachetable;
         std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservernhctable> nhrpservernhctable;
         std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpserverstattable> nhrpserverstattable;
-        std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable> nhrpservertable;
         
 }; // NHRPMIB
+
+
+class NHRPMIB::Nhrpgeneralobjects : public ydk::Entity
+{
+    public:
+        Nhrpgeneralobjects();
+        ~Nhrpgeneralobjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf nhrpnextindex; //type: uint32
+
+}; // NHRPMIB::Nhrpgeneralobjects
 
 
 class NHRPMIB::Nhrpcachetable : public ydk::Entity
@@ -124,11 +146,11 @@ class NHRPMIB::Nhrpcachetable::Nhrpcacheentry : public ydk::Entity
 }; // NHRPMIB::Nhrpcachetable::Nhrpcacheentry
 
 
-class NHRPMIB::Nhrpclientnhstable : public ydk::Entity
+class NHRPMIB::Nhrppurgereqtable : public ydk::Entity
 {
     public:
-        Nhrpclientnhstable();
-        ~Nhrpclientnhstable();
+        Nhrppurgereqtable();
+        ~Nhrppurgereqtable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -141,18 +163,18 @@ class NHRPMIB::Nhrpclientnhstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpclientnhsentry; //type: NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry
+        class Nhrppurgereqentry; //type: NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry> > nhrpclientnhsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry> > nhrppurgereqentry;
         
-}; // NHRPMIB::Nhrpclientnhstable
+}; // NHRPMIB::Nhrppurgereqtable
 
 
-class NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry : public ydk::Entity
+class NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry : public ydk::Entity
 {
     public:
-        Nhrpclientnhsentry();
-        ~Nhrpclientnhsentry();
+        Nhrppurgereqentry();
+        ~Nhrppurgereqentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -165,18 +187,74 @@ class NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry::nhrpclientindex)
-        ydk::YLeaf nhrpclientindex;
-        ydk::YLeaf nhrpclientnhsindex; //type: uint32
-        ydk::YLeaf nhrpclientnhsinternetworkaddrtype; //type: AddressFamilyNumbers
-        ydk::YLeaf nhrpclientnhsinternetworkaddr; //type: binary
-        ydk::YLeaf nhrpclientnhsnbmaaddrtype; //type: AddressFamilyNumbers
-        ydk::YLeaf nhrpclientnhsnbmaaddr; //type: binary
-        ydk::YLeaf nhrpclientnhsnbmasubaddr; //type: binary
-        ydk::YLeaf nhrpclientnhsinuse; //type: boolean
-        ydk::YLeaf nhrpclientnhsrowstatus; //type: RowStatus
+        ydk::YLeaf nhrppurgeindex; //type: uint32
+        ydk::YLeaf nhrppurgecacheidentifier; //type: uint32
+        ydk::YLeaf nhrppurgeprefixlength; //type: int32
+        ydk::YLeaf nhrppurgerequestid; //type: uint32
+        ydk::YLeaf nhrppurgereplyexpected; //type: boolean
+        ydk::YLeaf nhrppurgerowstatus; //type: RowStatus
 
-}; // NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry
+}; // NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry
+
+
+class NHRPMIB::Nhrpclienttable : public ydk::Entity
+{
+    public:
+        Nhrpclienttable();
+        ~Nhrpclienttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Nhrpcliententry; //type: NHRPMIB::Nhrpclienttable::Nhrpcliententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry> > nhrpcliententry;
+        
+}; // NHRPMIB::Nhrpclienttable
+
+
+class NHRPMIB::Nhrpclienttable::Nhrpcliententry : public ydk::Entity
+{
+    public:
+        Nhrpcliententry();
+        ~Nhrpcliententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf nhrpclientindex; //type: uint32
+        ydk::YLeaf nhrpclientinternetworkaddrtype; //type: AddressFamilyNumbers
+        ydk::YLeaf nhrpclientinternetworkaddr; //type: binary
+        ydk::YLeaf nhrpclientnbmaaddrtype; //type: AddressFamilyNumbers
+        ydk::YLeaf nhrpclientnbmaaddr; //type: binary
+        ydk::YLeaf nhrpclientnbmasubaddr; //type: binary
+        ydk::YLeaf nhrpclientinitialrequesttimeout; //type: int32
+        ydk::YLeaf nhrpclientregistrationrequestretries; //type: int32
+        ydk::YLeaf nhrpclientresolutionrequestretries; //type: int32
+        ydk::YLeaf nhrpclientpurgerequestretries; //type: int32
+        ydk::YLeaf nhrpclientdefaultmtu; //type: uint32
+        ydk::YLeaf nhrpclientholdtime; //type: uint32
+        ydk::YLeaf nhrpclientrequestid; //type: uint32
+        ydk::YLeaf nhrpclientstoragetype; //type: StorageType
+        ydk::YLeaf nhrpclientrowstatus; //type: RowStatus
+
+}; // NHRPMIB::Nhrpclienttable::Nhrpcliententry
 
 
 class NHRPMIB::Nhrpclientregistrationtable : public ydk::Entity
@@ -230,6 +308,61 @@ class NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry : public
         class Nhrpclientregstate;
 
 }; // NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry
+
+
+class NHRPMIB::Nhrpclientnhstable : public ydk::Entity
+{
+    public:
+        Nhrpclientnhstable();
+        ~Nhrpclientnhstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Nhrpclientnhsentry; //type: NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry> > nhrpclientnhsentry;
+        
+}; // NHRPMIB::Nhrpclientnhstable
+
+
+class NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry : public ydk::Entity
+{
+    public:
+        Nhrpclientnhsentry();
+        ~Nhrpclientnhsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry::nhrpclientindex)
+        ydk::YLeaf nhrpclientindex;
+        ydk::YLeaf nhrpclientnhsindex; //type: uint32
+        ydk::YLeaf nhrpclientnhsinternetworkaddrtype; //type: AddressFamilyNumbers
+        ydk::YLeaf nhrpclientnhsinternetworkaddr; //type: binary
+        ydk::YLeaf nhrpclientnhsnbmaaddrtype; //type: AddressFamilyNumbers
+        ydk::YLeaf nhrpclientnhsnbmaaddr; //type: binary
+        ydk::YLeaf nhrpclientnhsnbmasubaddr; //type: binary
+        ydk::YLeaf nhrpclientnhsinuse; //type: boolean
+        ydk::YLeaf nhrpclientnhsrowstatus; //type: RowStatus
+
+}; // NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry
 
 
 class NHRPMIB::Nhrpclientstattable : public ydk::Entity
@@ -304,11 +437,11 @@ class NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry : public ydk::Entity
 }; // NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry
 
 
-class NHRPMIB::Nhrpclienttable : public ydk::Entity
+class NHRPMIB::Nhrpservertable : public ydk::Entity
 {
     public:
-        Nhrpclienttable();
-        ~Nhrpclienttable();
+        Nhrpservertable();
+        ~Nhrpservertable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -321,18 +454,18 @@ class NHRPMIB::Nhrpclienttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nhrpcliententry; //type: NHRPMIB::Nhrpclienttable::Nhrpcliententry
+        class Nhrpserverentry; //type: NHRPMIB::Nhrpservertable::Nhrpserverentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpclienttable::Nhrpcliententry> > nhrpcliententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable::Nhrpserverentry> > nhrpserverentry;
         
-}; // NHRPMIB::Nhrpclienttable
+}; // NHRPMIB::Nhrpservertable
 
 
-class NHRPMIB::Nhrpclienttable::Nhrpcliententry : public ydk::Entity
+class NHRPMIB::Nhrpservertable::Nhrpserverentry : public ydk::Entity
 {
     public:
-        Nhrpcliententry();
-        ~Nhrpcliententry();
+        Nhrpserverentry();
+        ~Nhrpserverentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -345,96 +478,16 @@ class NHRPMIB::Nhrpclienttable::Nhrpcliententry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf nhrpclientindex; //type: uint32
-        ydk::YLeaf nhrpclientinternetworkaddrtype; //type: AddressFamilyNumbers
-        ydk::YLeaf nhrpclientinternetworkaddr; //type: binary
-        ydk::YLeaf nhrpclientnbmaaddrtype; //type: AddressFamilyNumbers
-        ydk::YLeaf nhrpclientnbmaaddr; //type: binary
-        ydk::YLeaf nhrpclientnbmasubaddr; //type: binary
-        ydk::YLeaf nhrpclientinitialrequesttimeout; //type: int32
-        ydk::YLeaf nhrpclientregistrationrequestretries; //type: int32
-        ydk::YLeaf nhrpclientresolutionrequestretries; //type: int32
-        ydk::YLeaf nhrpclientpurgerequestretries; //type: int32
-        ydk::YLeaf nhrpclientdefaultmtu; //type: uint32
-        ydk::YLeaf nhrpclientholdtime; //type: uint32
-        ydk::YLeaf nhrpclientrequestid; //type: uint32
-        ydk::YLeaf nhrpclientstoragetype; //type: StorageType
-        ydk::YLeaf nhrpclientrowstatus; //type: RowStatus
+        ydk::YLeaf nhrpserverindex; //type: uint32
+        ydk::YLeaf nhrpserverinternetworkaddrtype; //type: AddressFamilyNumbers
+        ydk::YLeaf nhrpserverinternetworkaddr; //type: binary
+        ydk::YLeaf nhrpservernbmaaddrtype; //type: AddressFamilyNumbers
+        ydk::YLeaf nhrpservernbmaaddr; //type: binary
+        ydk::YLeaf nhrpservernbmasubaddr; //type: binary
+        ydk::YLeaf nhrpserverstoragetype; //type: StorageType
+        ydk::YLeaf nhrpserverrowstatus; //type: RowStatus
 
-}; // NHRPMIB::Nhrpclienttable::Nhrpcliententry
-
-
-class NHRPMIB::Nhrpgeneralobjects : public ydk::Entity
-{
-    public:
-        Nhrpgeneralobjects();
-        ~Nhrpgeneralobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf nhrpnextindex; //type: uint32
-
-}; // NHRPMIB::Nhrpgeneralobjects
-
-
-class NHRPMIB::Nhrppurgereqtable : public ydk::Entity
-{
-    public:
-        Nhrppurgereqtable();
-        ~Nhrppurgereqtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Nhrppurgereqentry; //type: NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry> > nhrppurgereqentry;
-        
-}; // NHRPMIB::Nhrppurgereqtable
-
-
-class NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry : public ydk::Entity
-{
-    public:
-        Nhrppurgereqentry();
-        ~Nhrppurgereqentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf nhrppurgeindex; //type: uint32
-        ydk::YLeaf nhrppurgecacheidentifier; //type: uint32
-        ydk::YLeaf nhrppurgeprefixlength; //type: int32
-        ydk::YLeaf nhrppurgerequestid; //type: uint32
-        ydk::YLeaf nhrppurgereplyexpected; //type: boolean
-        ydk::YLeaf nhrppurgerowstatus; //type: RowStatus
-
-}; // NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry
+}; // NHRPMIB::Nhrpservertable::Nhrpserverentry
 
 
 class NHRPMIB::Nhrpservercachetable : public ydk::Entity
@@ -632,59 +685,6 @@ class NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry : public ydk::Entity
         ydk::YLeaf nhrpserverstatdiscontinuitytime; //type: uint32
 
 }; // NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry
-
-
-class NHRPMIB::Nhrpservertable : public ydk::Entity
-{
-    public:
-        Nhrpservertable();
-        ~Nhrpservertable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Nhrpserverentry; //type: NHRPMIB::Nhrpservertable::Nhrpserverentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::NHRP_MIB::NHRPMIB::Nhrpservertable::Nhrpserverentry> > nhrpserverentry;
-        
-}; // NHRPMIB::Nhrpservertable
-
-
-class NHRPMIB::Nhrpservertable::Nhrpserverentry : public ydk::Entity
-{
-    public:
-        Nhrpserverentry();
-        ~Nhrpserverentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf nhrpserverindex; //type: uint32
-        ydk::YLeaf nhrpserverinternetworkaddrtype; //type: AddressFamilyNumbers
-        ydk::YLeaf nhrpserverinternetworkaddr; //type: binary
-        ydk::YLeaf nhrpservernbmaaddrtype; //type: AddressFamilyNumbers
-        ydk::YLeaf nhrpservernbmaaddr; //type: binary
-        ydk::YLeaf nhrpservernbmasubaddr; //type: binary
-        ydk::YLeaf nhrpserverstoragetype; //type: StorageType
-        ydk::YLeaf nhrpserverrowstatus; //type: RowStatus
-
-}; // NHRPMIB::Nhrpservertable::Nhrpserverentry
 
 class NHRPMIB::Nhrpcachetable::Nhrpcacheentry::Nhrpcachetype : public ydk::Enum
 {

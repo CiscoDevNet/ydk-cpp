@@ -220,8 +220,8 @@ Controllers::Controllers_::Controller::Controller()
     :
     interafce_name{YType::str, "interafce-name"},
     controller{YType::str, "controller"},
-    description{YType::str, "description"},
-    state{YType::enumeration, "state"}
+    state{YType::enumeration, "state"},
+    description{YType::str, "description"}
 {
 
     yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
@@ -235,8 +235,8 @@ bool Controllers::Controllers_::Controller::has_data() const
 {
     return interafce_name.is_set
 	|| controller.is_set
-	|| description.is_set
-	|| state.is_set;
+	|| state.is_set
+	|| description.is_set;
 }
 
 bool Controllers::Controllers_::Controller::has_operation() const
@@ -244,8 +244,8 @@ bool Controllers::Controllers_::Controller::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(interafce_name.yfilter)
 	|| ydk::is_set(controller.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(state.yfilter);
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(description.yfilter);
 }
 
 std::string Controllers::Controllers_::Controller::get_absolute_path() const
@@ -268,8 +268,8 @@ std::vector<std::pair<std::string, LeafData> > Controllers::Controllers_::Contro
 
     if (interafce_name.is_set || is_set(interafce_name.yfilter)) leaf_name_data.push_back(interafce_name.get_name_leafdata());
     if (controller.is_set || is_set(controller.yfilter)) leaf_name_data.push_back(controller.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -300,17 +300,17 @@ void Controllers::Controllers_::Controller::set_value(const std::string & value_
         controller.value_namespace = name_space;
         controller.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "state")
     {
         state = value;
         state.value_namespace = name_space;
         state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -324,19 +324,19 @@ void Controllers::Controllers_::Controller::set_filter(const std::string & value
     {
         controller.yfilter = yfilter;
     }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
     if(value_path == "state")
     {
         state.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
     }
 }
 
 bool Controllers::Controllers_::Controller::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interafce-name" || name == "controller" || name == "description" || name == "state")
+    if(name == "interafce-name" || name == "controller" || name == "state" || name == "description")
         return true;
     return false;
 }

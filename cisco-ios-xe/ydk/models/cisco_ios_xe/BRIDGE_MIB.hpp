@@ -42,13 +42,13 @@ class BRIDGEMIB : public ydk::Entity
         class Dot1Dstatictable; //type: BRIDGEMIB::Dot1Dstatictable
 
         std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbase> dot1dbase;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable> dot1dbaseporttable;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstatictable> dot1dstatictable;
         std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstp> dot1dstp;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstpporttable> dot1dstpporttable;
         std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtp> dot1dtp;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable> dot1dbaseporttable;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstpporttable> dot1dstpporttable;
         std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpfdbtable> dot1dtpfdbtable;
         std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpporttable> dot1dtpporttable;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstatictable> dot1dstatictable;
         
 }; // BRIDGEMIB
 
@@ -76,6 +76,65 @@ class BRIDGEMIB::Dot1Dbase : public ydk::Entity
         class Dot1Dbasetype;
 
 }; // BRIDGEMIB::Dot1Dbase
+
+
+class BRIDGEMIB::Dot1Dstp : public ydk::Entity
+{
+    public:
+        Dot1Dstp();
+        ~Dot1Dstp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dot1dstpprotocolspecification; //type: Dot1Dstpprotocolspecification
+        ydk::YLeaf dot1dstppriority; //type: int32
+        ydk::YLeaf dot1dstptimesincetopologychange; //type: uint32
+        ydk::YLeaf dot1dstptopchanges; //type: uint32
+        ydk::YLeaf dot1dstpdesignatedroot; //type: binary
+        ydk::YLeaf dot1dstprootcost; //type: int32
+        ydk::YLeaf dot1dstprootport; //type: int32
+        ydk::YLeaf dot1dstpmaxage; //type: int32
+        ydk::YLeaf dot1dstphellotime; //type: int32
+        ydk::YLeaf dot1dstpholdtime; //type: int32
+        ydk::YLeaf dot1dstpforwarddelay; //type: int32
+        ydk::YLeaf dot1dstpbridgemaxage; //type: int32
+        ydk::YLeaf dot1dstpbridgehellotime; //type: int32
+        ydk::YLeaf dot1dstpbridgeforwarddelay; //type: int32
+        class Dot1Dstpprotocolspecification;
+
+}; // BRIDGEMIB::Dot1Dstp
+
+
+class BRIDGEMIB::Dot1Dtp : public ydk::Entity
+{
+    public:
+        Dot1Dtp();
+        ~Dot1Dtp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dot1dtplearnedentrydiscards; //type: uint32
+        ydk::YLeaf dot1dtpagingtime; //type: int32
+
+}; // BRIDGEMIB::Dot1Dtp
 
 
 class BRIDGEMIB::Dot1Dbaseporttable : public ydk::Entity
@@ -146,92 +205,6 @@ class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry : public ydk::Entity
 }; // BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry
 
 
-class BRIDGEMIB::Dot1Dstatictable : public ydk::Entity
-{
-    public:
-        Dot1Dstatictable();
-        ~Dot1Dstatictable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Dot1Dstaticentry; //type: BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry> > dot1dstaticentry;
-        
-}; // BRIDGEMIB::Dot1Dstatictable
-
-
-class BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry : public ydk::Entity
-{
-    public:
-        Dot1Dstaticentry();
-        ~Dot1Dstaticentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf dot1dstaticaddress; //type: string
-        ydk::YLeaf dot1dstaticreceiveport; //type: int32
-        ydk::YLeaf dot1dstaticallowedtogoto; //type: binary
-        ydk::YLeaf dot1dstaticstatus; //type: Dot1Dstaticstatus
-        class Dot1Dstaticstatus;
-
-}; // BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry
-
-
-class BRIDGEMIB::Dot1Dstp : public ydk::Entity
-{
-    public:
-        Dot1Dstp();
-        ~Dot1Dstp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf dot1dstpprotocolspecification; //type: Dot1Dstpprotocolspecification
-        ydk::YLeaf dot1dstppriority; //type: int32
-        ydk::YLeaf dot1dstptimesincetopologychange; //type: uint32
-        ydk::YLeaf dot1dstptopchanges; //type: uint32
-        ydk::YLeaf dot1dstpdesignatedroot; //type: binary
-        ydk::YLeaf dot1dstprootcost; //type: int32
-        ydk::YLeaf dot1dstprootport; //type: int32
-        ydk::YLeaf dot1dstpmaxage; //type: int32
-        ydk::YLeaf dot1dstphellotime; //type: int32
-        ydk::YLeaf dot1dstpholdtime; //type: int32
-        ydk::YLeaf dot1dstpforwarddelay; //type: int32
-        ydk::YLeaf dot1dstpbridgemaxage; //type: int32
-        ydk::YLeaf dot1dstpbridgehellotime; //type: int32
-        ydk::YLeaf dot1dstpbridgeforwarddelay; //type: int32
-        class Dot1Dstpprotocolspecification;
-
-}; // BRIDGEMIB::Dot1Dstp
-
-
 class BRIDGEMIB::Dot1Dstpporttable : public ydk::Entity
 {
     public:
@@ -289,29 +262,6 @@ class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry : public ydk::Entity
         class Dot1Dstpportenable;
 
 }; // BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry
-
-
-class BRIDGEMIB::Dot1Dtp : public ydk::Entity
-{
-    public:
-        Dot1Dtp();
-        ~Dot1Dtp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf dot1dtplearnedentrydiscards; //type: uint32
-        ydk::YLeaf dot1dtpagingtime; //type: int32
-
-}; // BRIDGEMIB::Dot1Dtp
 
 
 class BRIDGEMIB::Dot1Dtpfdbtable : public ydk::Entity
@@ -412,6 +362,56 @@ class BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry : public ydk::Entity
 
 }; // BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry
 
+
+class BRIDGEMIB::Dot1Dstatictable : public ydk::Entity
+{
+    public:
+        Dot1Dstatictable();
+        ~Dot1Dstatictable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Dot1Dstaticentry; //type: BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry> > dot1dstaticentry;
+        
+}; // BRIDGEMIB::Dot1Dstatictable
+
+
+class BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry : public ydk::Entity
+{
+    public:
+        Dot1Dstaticentry();
+        ~Dot1Dstaticentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dot1dstaticaddress; //type: string
+        ydk::YLeaf dot1dstaticreceiveport; //type: int32
+        ydk::YLeaf dot1dstaticallowedtogoto; //type: binary
+        ydk::YLeaf dot1dstaticstatus; //type: Dot1Dstaticstatus
+        class Dot1Dstaticstatus;
+
+}; // BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry
+
 class BRIDGEMIB::Dot1Dbase::Dot1Dbasetype : public ydk::Enum
 {
     public:
@@ -422,31 +422,20 @@ class BRIDGEMIB::Dot1Dbase::Dot1Dbasetype : public ydk::Enum
 
 };
 
-class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Qportacceptableframetypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf admitAll;
-        static const ydk::Enum::YLeaf admitOnlyVlanTagged;
-
-};
-
-class BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf permanent;
-        static const ydk::Enum::YLeaf deleteOnReset;
-        static const ydk::Enum::YLeaf deleteOnTimeout;
-
-};
-
 class BRIDGEMIB::Dot1Dstp::Dot1Dstpprotocolspecification : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf decLb100;
         static const ydk::Enum::YLeaf ieee8021d;
+
+};
+
+class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Qportacceptableframetypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf admitAll;
+        static const ydk::Enum::YLeaf admitOnlyVlanTagged;
 
 };
 
@@ -478,6 +467,17 @@ class BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus : public ydk
         static const ydk::Enum::YLeaf learned;
         static const ydk::Enum::YLeaf self;
         static const ydk::Enum::YLeaf mgmt;
+
+};
+
+class BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf permanent;
+        static const ydk::Enum::YLeaf deleteOnReset;
+        static const ydk::Enum::YLeaf deleteOnTimeout;
 
 };
 

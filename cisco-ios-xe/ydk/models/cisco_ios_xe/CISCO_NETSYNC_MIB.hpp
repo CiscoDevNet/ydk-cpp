@@ -40,9 +40,9 @@ class CISCONETSYNCMIB : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol> cisconetsyncmibnotifcontrol;
         std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsclkselglobaltable> cnsclkselglobaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsextoutputtable> cnsextoutputtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsinputsourcetable> cnsinputsourcetable;
         std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsselectedinputsourcetable> cnsselectedinputsourcetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsinputsourcetable> cnsinputsourcetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsextoutputtable> cnsextoutputtable;
         std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnst4Clocksourcetable> cnst4clocksourcetable;
         
 }; // CISCONETSYNCMIB
@@ -128,11 +128,11 @@ class CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry : public ydk::
 }; // CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry
 
 
-class CISCONETSYNCMIB::Cnsextoutputtable : public ydk::Entity
+class CISCONETSYNCMIB::Cnsselectedinputsourcetable : public ydk::Entity
 {
     public:
-        Cnsextoutputtable();
-        ~Cnsextoutputtable();
+        Cnsselectedinputsourcetable();
+        ~Cnsselectedinputsourcetable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -145,18 +145,18 @@ class CISCONETSYNCMIB::Cnsextoutputtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cnsextoutputentry; //type: CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry
+        class Cnsselectedinputsourceentry; //type: CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry> > cnsextoutputentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry> > cnsselectedinputsourceentry;
         
-}; // CISCONETSYNCMIB::Cnsextoutputtable
+}; // CISCONETSYNCMIB::Cnsselectedinputsourcetable
 
 
-class CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry : public ydk::Entity
+class CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry : public ydk::Entity
 {
     public:
-        Cnsextoutputentry();
-        ~Cnsextoutputentry();
+        Cnsselectedinputsourceentry();
+        ~Cnsselectedinputsourceentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -169,17 +169,16 @@ class CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cnsextoutlistindex; //type: uint32
-        ydk::YLeaf cnsextoutselnetsyncindex; //type: uint32
-        ydk::YLeaf cnsextoutname; //type: string
-        ydk::YLeaf cnsextoutintftype; //type: CiscoNetsyncIfType
-        ydk::YLeaf cnsextoutqualitylevel; //type: CiscoNetsyncQualityLevel
-        ydk::YLeaf cnsextoutpriority; //type: uint32
-        ydk::YLeaf cnsextoutfsw; //type: boolean
-        ydk::YLeaf cnsextoutmsw; //type: boolean
-        ydk::YLeaf cnsextoutsquelch; //type: boolean
+        ydk::YLeaf cnsselinpsrcnetsyncindex; //type: uint32
+        ydk::YLeaf cnsselinpsrcname; //type: string
+        ydk::YLeaf cnsselinpsrcintftype; //type: CiscoNetsyncIfType
+        ydk::YLeaf cnsselinpsrcqualitylevel; //type: CiscoNetsyncQualityLevel
+        ydk::YLeaf cnsselinpsrcpriority; //type: uint32
+        ydk::YLeaf cnsselinpsrctimestamp; //type: uint32
+        ydk::YLeaf cnsselinpsrcfsw; //type: boolean
+        ydk::YLeaf cnsselinpsrcmsw; //type: boolean
 
-}; // CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry
+}; // CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry
 
 
 class CISCONETSYNCMIB::Cnsinputsourcetable : public ydk::Entity
@@ -246,11 +245,11 @@ class CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry : public ydk::En
 }; // CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry
 
 
-class CISCONETSYNCMIB::Cnsselectedinputsourcetable : public ydk::Entity
+class CISCONETSYNCMIB::Cnsextoutputtable : public ydk::Entity
 {
     public:
-        Cnsselectedinputsourcetable();
-        ~Cnsselectedinputsourcetable();
+        Cnsextoutputtable();
+        ~Cnsextoutputtable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -263,18 +262,18 @@ class CISCONETSYNCMIB::Cnsselectedinputsourcetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cnsselectedinputsourceentry; //type: CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry
+        class Cnsextoutputentry; //type: CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry> > cnsselectedinputsourceentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NETSYNC_MIB::CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry> > cnsextoutputentry;
         
-}; // CISCONETSYNCMIB::Cnsselectedinputsourcetable
+}; // CISCONETSYNCMIB::Cnsextoutputtable
 
 
-class CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry : public ydk::Entity
+class CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry : public ydk::Entity
 {
     public:
-        Cnsselectedinputsourceentry();
-        ~Cnsselectedinputsourceentry();
+        Cnsextoutputentry();
+        ~Cnsextoutputentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,16 +286,17 @@ class CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cnsselinpsrcnetsyncindex; //type: uint32
-        ydk::YLeaf cnsselinpsrcname; //type: string
-        ydk::YLeaf cnsselinpsrcintftype; //type: CiscoNetsyncIfType
-        ydk::YLeaf cnsselinpsrcqualitylevel; //type: CiscoNetsyncQualityLevel
-        ydk::YLeaf cnsselinpsrcpriority; //type: uint32
-        ydk::YLeaf cnsselinpsrctimestamp; //type: uint32
-        ydk::YLeaf cnsselinpsrcfsw; //type: boolean
-        ydk::YLeaf cnsselinpsrcmsw; //type: boolean
+        ydk::YLeaf cnsextoutlistindex; //type: uint32
+        ydk::YLeaf cnsextoutselnetsyncindex; //type: uint32
+        ydk::YLeaf cnsextoutname; //type: string
+        ydk::YLeaf cnsextoutintftype; //type: CiscoNetsyncIfType
+        ydk::YLeaf cnsextoutqualitylevel; //type: CiscoNetsyncQualityLevel
+        ydk::YLeaf cnsextoutpriority; //type: uint32
+        ydk::YLeaf cnsextoutfsw; //type: boolean
+        ydk::YLeaf cnsextoutmsw; //type: boolean
+        ydk::YLeaf cnsextoutsquelch; //type: boolean
 
-}; // CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry
+}; // CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry
 
 
 class CISCONETSYNCMIB::Cnst4Clocksourcetable : public ydk::Entity
@@ -364,17 +364,6 @@ class CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry : public ydk
 
 }; // CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry
 
-class CiscoNetsyncSSMCap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncSSMCapNone;
-        static const ydk::Enum::YLeaf netsyncSSMCapTxRx;
-        static const ydk::Enum::YLeaf netsyncSSMCapTx;
-        static const ydk::Enum::YLeaf netsyncSSMCapRx;
-        static const ydk::Enum::YLeaf netsyncSSMCapInvalid;
-
-};
-
 class CiscoNetsyncIfType : public ydk::Enum
 {
     public:
@@ -390,6 +379,37 @@ class CiscoNetsyncIfType : public ydk::Enum
 
 };
 
+class CiscoNetsyncNetworkOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncNetworkOptionUnknown;
+        static const ydk::Enum::YLeaf netsyncNetworkOption1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen2;
+        static const ydk::Enum::YLeaf netsyncNetworkOption3;
+        static const ydk::Enum::YLeaf netsyncNetworkOptionInvalid;
+
+};
+
+class CiscoNetsyncEECOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncEECOptionUnknown;
+        static const ydk::Enum::YLeaf netsyncEECOption1;
+        static const ydk::Enum::YLeaf netsyncEECOption2;
+        static const ydk::Enum::YLeaf netsyncEECOptionInvalid;
+
+};
+
+class CiscoNetsyncQLMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netsyncQLModeUnknown;
+        static const ydk::Enum::YLeaf netsyncQLModeQlDisabled;
+        static const ydk::Enum::YLeaf netsyncQLModeQlEnabled;
+
+};
+
 class CiscoNetsyncClockMode : public ydk::Enum
 {
     public:
@@ -397,17 +417,6 @@ class CiscoNetsyncClockMode : public ydk::Enum
         static const ydk::Enum::YLeaf netsyncClockModeFreerun;
         static const ydk::Enum::YLeaf netsyncClockModeHoldover;
         static const ydk::Enum::YLeaf netsyncClockModeLocked;
-
-};
-
-class CiscoNetsyncESMCCap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncESMCCapNone;
-        static const ydk::Enum::YLeaf netsyncESMCCapTxRx;
-        static const ydk::Enum::YLeaf netsyncESMCCapTx;
-        static const ydk::Enum::YLeaf netsyncESMCCapRx;
-        static const ydk::Enum::YLeaf netsyncESMCCapInvalid;
 
 };
 
@@ -453,34 +462,25 @@ class CiscoNetsyncQualityLevel : public ydk::Enum
 
 };
 
-class CiscoNetsyncEECOption : public ydk::Enum
+class CiscoNetsyncSSMCap : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf netsyncEECOptionUnknown;
-        static const ydk::Enum::YLeaf netsyncEECOption1;
-        static const ydk::Enum::YLeaf netsyncEECOption2;
-        static const ydk::Enum::YLeaf netsyncEECOptionInvalid;
+        static const ydk::Enum::YLeaf netsyncSSMCapNone;
+        static const ydk::Enum::YLeaf netsyncSSMCapTxRx;
+        static const ydk::Enum::YLeaf netsyncSSMCapTx;
+        static const ydk::Enum::YLeaf netsyncSSMCapRx;
+        static const ydk::Enum::YLeaf netsyncSSMCapInvalid;
 
 };
 
-class CiscoNetsyncNetworkOption : public ydk::Enum
+class CiscoNetsyncESMCCap : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf netsyncNetworkOptionUnknown;
-        static const ydk::Enum::YLeaf netsyncNetworkOption1;
-        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen1;
-        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen2;
-        static const ydk::Enum::YLeaf netsyncNetworkOption3;
-        static const ydk::Enum::YLeaf netsyncNetworkOptionInvalid;
-
-};
-
-class CiscoNetsyncQLMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf netsyncQLModeUnknown;
-        static const ydk::Enum::YLeaf netsyncQLModeQlDisabled;
-        static const ydk::Enum::YLeaf netsyncQLModeQlEnabled;
+        static const ydk::Enum::YLeaf netsyncESMCCapNone;
+        static const ydk::Enum::YLeaf netsyncESMCCapTxRx;
+        static const ydk::Enum::YLeaf netsyncESMCCapTx;
+        static const ydk::Enum::YLeaf netsyncESMCCapRx;
+        static const ydk::Enum::YLeaf netsyncESMCCapInvalid;
 
 };
 

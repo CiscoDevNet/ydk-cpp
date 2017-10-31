@@ -10,6 +10,14 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_cfm_cfg {
 
+class CfmMipPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf lower_mep_only;
+
+};
+
 class CfmService : public ydk::Enum
 {
     public:
@@ -19,16 +27,6 @@ class CfmService : public ydk::Enum
         static const ydk::Enum::YLeaf vlan_aware_flexible_cross_connect;
         static const ydk::Enum::YLeaf vlan_unaware_flexible_cross_connect;
         static const ydk::Enum::YLeaf down_meps;
-
-};
-
-class CfmMdidFormat : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf dns_like;
-        static const ydk::Enum::YLeaf mac_address;
-        static const ydk::Enum::YLeaf string;
 
 };
 
@@ -52,11 +50,13 @@ class CfmLmCountersCfg : public ydk::Enum
 
 };
 
-class CfmMipPolicy : public ydk::Enum
+class CfmMdidFormat : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf lower_mep_only;
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf dns_like;
+        static const ydk::Enum::YLeaf mac_address;
+        static const ydk::Enum::YLeaf string;
 
 };
 

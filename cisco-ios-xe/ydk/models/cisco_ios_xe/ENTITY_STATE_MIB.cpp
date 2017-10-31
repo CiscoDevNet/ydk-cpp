@@ -219,12 +219,12 @@ bool ENTITYSTATEMIB::Entstatetable::has_leaf_or_child_of_name(const std::string 
 ENTITYSTATEMIB::Entstatetable::Entstateentry::Entstateentry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
-    entstateadmin{YType::enumeration, "entStateAdmin"},
-    entstatealarm{YType::bits, "entStateAlarm"},
     entstatelastchanged{YType::str, "entStateLastChanged"},
+    entstateadmin{YType::enumeration, "entStateAdmin"},
     entstateoper{YType::enumeration, "entStateOper"},
-    entstatestandby{YType::enumeration, "entStateStandby"},
-    entstateusage{YType::enumeration, "entStateUsage"}
+    entstateusage{YType::enumeration, "entStateUsage"},
+    entstatealarm{YType::bits, "entStateAlarm"},
+    entstatestandby{YType::enumeration, "entStateStandby"}
 {
 
     yang_name = "entStateEntry"; yang_parent_name = "entStateTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -237,24 +237,24 @@ ENTITYSTATEMIB::Entstatetable::Entstateentry::~Entstateentry()
 bool ENTITYSTATEMIB::Entstatetable::Entstateentry::has_data() const
 {
     return entphysicalindex.is_set
-	|| entstateadmin.is_set
-	|| entstatealarm.is_set
 	|| entstatelastchanged.is_set
+	|| entstateadmin.is_set
 	|| entstateoper.is_set
-	|| entstatestandby.is_set
-	|| entstateusage.is_set;
+	|| entstateusage.is_set
+	|| entstatealarm.is_set
+	|| entstatestandby.is_set;
 }
 
 bool ENTITYSTATEMIB::Entstatetable::Entstateentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
-	|| ydk::is_set(entstateadmin.yfilter)
-	|| ydk::is_set(entstatealarm.yfilter)
 	|| ydk::is_set(entstatelastchanged.yfilter)
+	|| ydk::is_set(entstateadmin.yfilter)
 	|| ydk::is_set(entstateoper.yfilter)
-	|| ydk::is_set(entstatestandby.yfilter)
-	|| ydk::is_set(entstateusage.yfilter);
+	|| ydk::is_set(entstateusage.yfilter)
+	|| ydk::is_set(entstatealarm.yfilter)
+	|| ydk::is_set(entstatestandby.yfilter);
 }
 
 std::string ENTITYSTATEMIB::Entstatetable::Entstateentry::get_absolute_path() const
@@ -276,12 +276,12 @@ std::vector<std::pair<std::string, LeafData> > ENTITYSTATEMIB::Entstatetable::En
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (entstateadmin.is_set || is_set(entstateadmin.yfilter)) leaf_name_data.push_back(entstateadmin.get_name_leafdata());
-    if (entstatealarm.is_set || is_set(entstatealarm.yfilter)) leaf_name_data.push_back(entstatealarm.get_name_leafdata());
     if (entstatelastchanged.is_set || is_set(entstatelastchanged.yfilter)) leaf_name_data.push_back(entstatelastchanged.get_name_leafdata());
+    if (entstateadmin.is_set || is_set(entstateadmin.yfilter)) leaf_name_data.push_back(entstateadmin.get_name_leafdata());
     if (entstateoper.is_set || is_set(entstateoper.yfilter)) leaf_name_data.push_back(entstateoper.get_name_leafdata());
-    if (entstatestandby.is_set || is_set(entstatestandby.yfilter)) leaf_name_data.push_back(entstatestandby.get_name_leafdata());
     if (entstateusage.is_set || is_set(entstateusage.yfilter)) leaf_name_data.push_back(entstateusage.get_name_leafdata());
+    if (entstatealarm.is_set || is_set(entstatealarm.yfilter)) leaf_name_data.push_back(entstatealarm.get_name_leafdata());
+    if (entstatestandby.is_set || is_set(entstatestandby.yfilter)) leaf_name_data.push_back(entstatestandby.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -306,21 +306,17 @@ void ENTITYSTATEMIB::Entstatetable::Entstateentry::set_value(const std::string &
         entphysicalindex.value_namespace = name_space;
         entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "entStateAdmin")
-    {
-        entstateadmin = value;
-        entstateadmin.value_namespace = name_space;
-        entstateadmin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "entStateAlarm")
-    {
-        entstatealarm[value] = true;
-    }
     if(value_path == "entStateLastChanged")
     {
         entstatelastchanged = value;
         entstatelastchanged.value_namespace = name_space;
         entstatelastchanged.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "entStateAdmin")
+    {
+        entstateadmin = value;
+        entstateadmin.value_namespace = name_space;
+        entstateadmin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entStateOper")
     {
@@ -328,17 +324,21 @@ void ENTITYSTATEMIB::Entstatetable::Entstateentry::set_value(const std::string &
         entstateoper.value_namespace = name_space;
         entstateoper.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "entStateStandby")
-    {
-        entstatestandby = value;
-        entstatestandby.value_namespace = name_space;
-        entstatestandby.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "entStateUsage")
     {
         entstateusage = value;
         entstateusage.value_namespace = name_space;
         entstateusage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "entStateAlarm")
+    {
+        entstatealarm[value] = true;
+    }
+    if(value_path == "entStateStandby")
+    {
+        entstatestandby = value;
+        entstatestandby.value_namespace = name_space;
+        entstatestandby.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -348,35 +348,35 @@ void ENTITYSTATEMIB::Entstatetable::Entstateentry::set_filter(const std::string 
     {
         entphysicalindex.yfilter = yfilter;
     }
-    if(value_path == "entStateAdmin")
-    {
-        entstateadmin.yfilter = yfilter;
-    }
-    if(value_path == "entStateAlarm")
-    {
-        entstatealarm.yfilter = yfilter;
-    }
     if(value_path == "entStateLastChanged")
     {
         entstatelastchanged.yfilter = yfilter;
+    }
+    if(value_path == "entStateAdmin")
+    {
+        entstateadmin.yfilter = yfilter;
     }
     if(value_path == "entStateOper")
     {
         entstateoper.yfilter = yfilter;
     }
-    if(value_path == "entStateStandby")
-    {
-        entstatestandby.yfilter = yfilter;
-    }
     if(value_path == "entStateUsage")
     {
         entstateusage.yfilter = yfilter;
+    }
+    if(value_path == "entStateAlarm")
+    {
+        entstatealarm.yfilter = yfilter;
+    }
+    if(value_path == "entStateStandby")
+    {
+        entstatestandby.yfilter = yfilter;
     }
 }
 
 bool ENTITYSTATEMIB::Entstatetable::Entstateentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "entPhysicalIndex" || name == "entStateAdmin" || name == "entStateAlarm" || name == "entStateLastChanged" || name == "entStateOper" || name == "entStateStandby" || name == "entStateUsage")
+    if(name == "entPhysicalIndex" || name == "entStateLastChanged" || name == "entStateAdmin" || name == "entStateOper" || name == "entStateUsage" || name == "entStateAlarm" || name == "entStateStandby")
         return true;
     return false;
 }

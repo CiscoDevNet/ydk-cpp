@@ -219,13 +219,13 @@ bool RedundancyGroupManager::Controllers::has_leaf_or_child_of_name(const std::s
 RedundancyGroupManager::Controllers::Controller::Controller()
     :
     controller_name{YType::str, "controller-name"},
-    backup_interface_handle{YType::str, "backup-interface-handle"},
-    backup_interface_name{YType::str, "backup-interface-name"},
-    backup_interface_next_hop_ip_address{YType::str, "backup-interface-next-hop-ip-address"},
-    controller_handle{YType::str, "controller-handle"},
+    multi_router_aps_group_number{YType::str, "multi-router-aps-group-number"},
     controller_name_xr{YType::str, "controller-name-xr"},
-    inter_chassis_group_state{YType::str, "inter-chassis-group-state"},
-    multi_router_aps_group_number{YType::str, "multi-router-aps-group-number"}
+    controller_handle{YType::str, "controller-handle"},
+    backup_interface_name{YType::str, "backup-interface-name"},
+    backup_interface_handle{YType::str, "backup-interface-handle"},
+    backup_interface_next_hop_ip_address{YType::str, "backup-interface-next-hop-ip-address"},
+    inter_chassis_group_state{YType::str, "inter-chassis-group-state"}
 {
 
     yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
@@ -238,26 +238,26 @@ RedundancyGroupManager::Controllers::Controller::~Controller()
 bool RedundancyGroupManager::Controllers::Controller::has_data() const
 {
     return controller_name.is_set
-	|| backup_interface_handle.is_set
-	|| backup_interface_name.is_set
-	|| backup_interface_next_hop_ip_address.is_set
-	|| controller_handle.is_set
+	|| multi_router_aps_group_number.is_set
 	|| controller_name_xr.is_set
-	|| inter_chassis_group_state.is_set
-	|| multi_router_aps_group_number.is_set;
+	|| controller_handle.is_set
+	|| backup_interface_name.is_set
+	|| backup_interface_handle.is_set
+	|| backup_interface_next_hop_ip_address.is_set
+	|| inter_chassis_group_state.is_set;
 }
 
 bool RedundancyGroupManager::Controllers::Controller::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(controller_name.yfilter)
-	|| ydk::is_set(backup_interface_handle.yfilter)
-	|| ydk::is_set(backup_interface_name.yfilter)
-	|| ydk::is_set(backup_interface_next_hop_ip_address.yfilter)
-	|| ydk::is_set(controller_handle.yfilter)
+	|| ydk::is_set(multi_router_aps_group_number.yfilter)
 	|| ydk::is_set(controller_name_xr.yfilter)
-	|| ydk::is_set(inter_chassis_group_state.yfilter)
-	|| ydk::is_set(multi_router_aps_group_number.yfilter);
+	|| ydk::is_set(controller_handle.yfilter)
+	|| ydk::is_set(backup_interface_name.yfilter)
+	|| ydk::is_set(backup_interface_handle.yfilter)
+	|| ydk::is_set(backup_interface_next_hop_ip_address.yfilter)
+	|| ydk::is_set(inter_chassis_group_state.yfilter);
 }
 
 std::string RedundancyGroupManager::Controllers::Controller::get_absolute_path() const
@@ -279,13 +279,13 @@ std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Controlle
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (controller_name.is_set || is_set(controller_name.yfilter)) leaf_name_data.push_back(controller_name.get_name_leafdata());
-    if (backup_interface_handle.is_set || is_set(backup_interface_handle.yfilter)) leaf_name_data.push_back(backup_interface_handle.get_name_leafdata());
-    if (backup_interface_name.is_set || is_set(backup_interface_name.yfilter)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
-    if (backup_interface_next_hop_ip_address.is_set || is_set(backup_interface_next_hop_ip_address.yfilter)) leaf_name_data.push_back(backup_interface_next_hop_ip_address.get_name_leafdata());
-    if (controller_handle.is_set || is_set(controller_handle.yfilter)) leaf_name_data.push_back(controller_handle.get_name_leafdata());
-    if (controller_name_xr.is_set || is_set(controller_name_xr.yfilter)) leaf_name_data.push_back(controller_name_xr.get_name_leafdata());
-    if (inter_chassis_group_state.is_set || is_set(inter_chassis_group_state.yfilter)) leaf_name_data.push_back(inter_chassis_group_state.get_name_leafdata());
     if (multi_router_aps_group_number.is_set || is_set(multi_router_aps_group_number.yfilter)) leaf_name_data.push_back(multi_router_aps_group_number.get_name_leafdata());
+    if (controller_name_xr.is_set || is_set(controller_name_xr.yfilter)) leaf_name_data.push_back(controller_name_xr.get_name_leafdata());
+    if (controller_handle.is_set || is_set(controller_handle.yfilter)) leaf_name_data.push_back(controller_handle.get_name_leafdata());
+    if (backup_interface_name.is_set || is_set(backup_interface_name.yfilter)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
+    if (backup_interface_handle.is_set || is_set(backup_interface_handle.yfilter)) leaf_name_data.push_back(backup_interface_handle.get_name_leafdata());
+    if (backup_interface_next_hop_ip_address.is_set || is_set(backup_interface_next_hop_ip_address.yfilter)) leaf_name_data.push_back(backup_interface_next_hop_ip_address.get_name_leafdata());
+    if (inter_chassis_group_state.is_set || is_set(inter_chassis_group_state.yfilter)) leaf_name_data.push_back(inter_chassis_group_state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -310,29 +310,11 @@ void RedundancyGroupManager::Controllers::Controller::set_value(const std::strin
         controller_name.value_namespace = name_space;
         controller_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "backup-interface-handle")
+    if(value_path == "multi-router-aps-group-number")
     {
-        backup_interface_handle = value;
-        backup_interface_handle.value_namespace = name_space;
-        backup_interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface-name")
-    {
-        backup_interface_name = value;
-        backup_interface_name.value_namespace = name_space;
-        backup_interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "backup-interface-next-hop-ip-address")
-    {
-        backup_interface_next_hop_ip_address = value;
-        backup_interface_next_hop_ip_address.value_namespace = name_space;
-        backup_interface_next_hop_ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "controller-handle")
-    {
-        controller_handle = value;
-        controller_handle.value_namespace = name_space;
-        controller_handle.value_namespace_prefix = name_space_prefix;
+        multi_router_aps_group_number = value;
+        multi_router_aps_group_number.value_namespace = name_space;
+        multi_router_aps_group_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-name-xr")
     {
@@ -340,17 +322,35 @@ void RedundancyGroupManager::Controllers::Controller::set_value(const std::strin
         controller_name_xr.value_namespace = name_space;
         controller_name_xr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "controller-handle")
+    {
+        controller_handle = value;
+        controller_handle.value_namespace = name_space;
+        controller_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-interface-name")
+    {
+        backup_interface_name = value;
+        backup_interface_name.value_namespace = name_space;
+        backup_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-interface-handle")
+    {
+        backup_interface_handle = value;
+        backup_interface_handle.value_namespace = name_space;
+        backup_interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-interface-next-hop-ip-address")
+    {
+        backup_interface_next_hop_ip_address = value;
+        backup_interface_next_hop_ip_address.value_namespace = name_space;
+        backup_interface_next_hop_ip_address.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "inter-chassis-group-state")
     {
         inter_chassis_group_state = value;
         inter_chassis_group_state.value_namespace = name_space;
         inter_chassis_group_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multi-router-aps-group-number")
-    {
-        multi_router_aps_group_number = value;
-        multi_router_aps_group_number.value_namespace = name_space;
-        multi_router_aps_group_number.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -360,39 +360,39 @@ void RedundancyGroupManager::Controllers::Controller::set_filter(const std::stri
     {
         controller_name.yfilter = yfilter;
     }
-    if(value_path == "backup-interface-handle")
+    if(value_path == "multi-router-aps-group-number")
     {
-        backup_interface_handle.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface-name")
-    {
-        backup_interface_name.yfilter = yfilter;
-    }
-    if(value_path == "backup-interface-next-hop-ip-address")
-    {
-        backup_interface_next_hop_ip_address.yfilter = yfilter;
-    }
-    if(value_path == "controller-handle")
-    {
-        controller_handle.yfilter = yfilter;
+        multi_router_aps_group_number.yfilter = yfilter;
     }
     if(value_path == "controller-name-xr")
     {
         controller_name_xr.yfilter = yfilter;
     }
+    if(value_path == "controller-handle")
+    {
+        controller_handle.yfilter = yfilter;
+    }
+    if(value_path == "backup-interface-name")
+    {
+        backup_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "backup-interface-handle")
+    {
+        backup_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "backup-interface-next-hop-ip-address")
+    {
+        backup_interface_next_hop_ip_address.yfilter = yfilter;
+    }
     if(value_path == "inter-chassis-group-state")
     {
         inter_chassis_group_state.yfilter = yfilter;
-    }
-    if(value_path == "multi-router-aps-group-number")
-    {
-        multi_router_aps_group_number.yfilter = yfilter;
     }
 }
 
 bool RedundancyGroupManager::Controllers::Controller::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "controller-name" || name == "backup-interface-handle" || name == "backup-interface-name" || name == "backup-interface-next-hop-ip-address" || name == "controller-handle" || name == "controller-name-xr" || name == "inter-chassis-group-state" || name == "multi-router-aps-group-number")
+    if(name == "controller-name" || name == "multi-router-aps-group-number" || name == "controller-name-xr" || name == "controller-handle" || name == "backup-interface-name" || name == "backup-interface-handle" || name == "backup-interface-next-hop-ip-address" || name == "inter-chassis-group-state")
         return true;
     return false;
 }

@@ -13,11 +13,11 @@ namespace IGMP_STD_MIB {
 
 IGMPSTDMIB::IGMPSTDMIB()
     :
-    igmpcachetable(std::make_shared<IGMPSTDMIB::Igmpcachetable>())
-	,igmpinterfacetable(std::make_shared<IGMPSTDMIB::Igmpinterfacetable>())
+    igmpinterfacetable(std::make_shared<IGMPSTDMIB::Igmpinterfacetable>())
+	,igmpcachetable(std::make_shared<IGMPSTDMIB::Igmpcachetable>())
 {
-    igmpcachetable->parent = this;
     igmpinterfacetable->parent = this;
+    igmpcachetable->parent = this;
 
     yang_name = "IGMP-STD-MIB"; yang_parent_name = "IGMP-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -28,15 +28,15 @@ IGMPSTDMIB::~IGMPSTDMIB()
 
 bool IGMPSTDMIB::has_data() const
 {
-    return (igmpcachetable !=  nullptr && igmpcachetable->has_data())
-	|| (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_data());
+    return (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_data())
+	|| (igmpcachetable !=  nullptr && igmpcachetable->has_data());
 }
 
 bool IGMPSTDMIB::has_operation() const
 {
     return is_set(yfilter)
-	|| (igmpcachetable !=  nullptr && igmpcachetable->has_operation())
-	|| (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_operation());
+	|| (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_operation())
+	|| (igmpcachetable !=  nullptr && igmpcachetable->has_operation());
 }
 
 std::string IGMPSTDMIB::get_segment_path() const
@@ -57,15 +57,6 @@ std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::get_name_leaf_data() 
 
 std::shared_ptr<Entity> IGMPSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "igmpCacheTable")
-    {
-        if(igmpcachetable == nullptr)
-        {
-            igmpcachetable = std::make_shared<IGMPSTDMIB::Igmpcachetable>();
-        }
-        return igmpcachetable;
-    }
-
     if(child_yang_name == "igmpInterfaceTable")
     {
         if(igmpinterfacetable == nullptr)
@@ -75,20 +66,29 @@ std::shared_ptr<Entity> IGMPSTDMIB::get_child_by_name(const std::string & child_
         return igmpinterfacetable;
     }
 
+    if(child_yang_name == "igmpCacheTable")
+    {
+        if(igmpcachetable == nullptr)
+        {
+            igmpcachetable = std::make_shared<IGMPSTDMIB::Igmpcachetable>();
+        }
+        return igmpcachetable;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(igmpcachetable != nullptr)
-    {
-        children["igmpCacheTable"] = igmpcachetable;
-    }
-
     if(igmpinterfacetable != nullptr)
     {
         children["igmpInterfaceTable"] = igmpinterfacetable;
+    }
+
+    if(igmpcachetable != nullptr)
+    {
+        children["igmpCacheTable"] = igmpcachetable;
     }
 
     return children;
@@ -129,7 +129,386 @@ std::map<std::pair<std::string, std::string>, std::string> IGMPSTDMIB::get_names
 
 bool IGMPSTDMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "igmpCacheTable" || name == "igmpInterfaceTable")
+    if(name == "igmpInterfaceTable" || name == "igmpCacheTable")
+        return true;
+    return false;
+}
+
+IGMPSTDMIB::Igmpinterfacetable::Igmpinterfacetable()
+{
+
+    yang_name = "igmpInterfaceTable"; yang_parent_name = "IGMP-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IGMPSTDMIB::Igmpinterfacetable::~Igmpinterfacetable()
+{
+}
+
+bool IGMPSTDMIB::Igmpinterfacetable::has_data() const
+{
+    for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
+    {
+        if(igmpinterfaceentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool IGMPSTDMIB::Igmpinterfacetable::has_operation() const
+{
+    for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
+    {
+        if(igmpinterfaceentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string IGMPSTDMIB::Igmpinterfacetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IGMPSTDMIB::Igmpinterfacetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "igmpInterfaceTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpinterfacetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "igmpInterfaceEntry")
+    {
+        for(auto const & c : igmpinterfaceentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry>();
+        c->parent = this;
+        igmpinterfaceentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : igmpinterfaceentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void IGMPSTDMIB::Igmpinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IGMPSTDMIB::Igmpinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IGMPSTDMIB::Igmpinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igmpInterfaceEntry")
+        return true;
+    return false;
+}
+
+IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::Igmpinterfaceentry()
+    :
+    igmpinterfaceifindex{YType::int32, "igmpInterfaceIfIndex"},
+    igmpinterfacequeryinterval{YType::uint32, "igmpInterfaceQueryInterval"},
+    igmpinterfacestatus{YType::enumeration, "igmpInterfaceStatus"},
+    igmpinterfaceversion{YType::uint32, "igmpInterfaceVersion"},
+    igmpinterfacequerier{YType::str, "igmpInterfaceQuerier"},
+    igmpinterfacequerymaxresponsetime{YType::uint32, "igmpInterfaceQueryMaxResponseTime"},
+    igmpinterfacequerieruptime{YType::uint32, "igmpInterfaceQuerierUpTime"},
+    igmpinterfacequerierexpirytime{YType::uint32, "igmpInterfaceQuerierExpiryTime"},
+    igmpinterfaceversion1queriertimer{YType::uint32, "igmpInterfaceVersion1QuerierTimer"},
+    igmpinterfacewrongversionqueries{YType::uint32, "igmpInterfaceWrongVersionQueries"},
+    igmpinterfacejoins{YType::uint32, "igmpInterfaceJoins"},
+    igmpinterfaceproxyifindex{YType::int32, "igmpInterfaceProxyIfIndex"},
+    igmpinterfacegroups{YType::uint32, "igmpInterfaceGroups"},
+    igmpinterfacerobustness{YType::uint32, "igmpInterfaceRobustness"},
+    igmpinterfacelastmembqueryintvl{YType::uint32, "igmpInterfaceLastMembQueryIntvl"}
+{
+
+    yang_name = "igmpInterfaceEntry"; yang_parent_name = "igmpInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::~Igmpinterfaceentry()
+{
+}
+
+bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_data() const
+{
+    return igmpinterfaceifindex.is_set
+	|| igmpinterfacequeryinterval.is_set
+	|| igmpinterfacestatus.is_set
+	|| igmpinterfaceversion.is_set
+	|| igmpinterfacequerier.is_set
+	|| igmpinterfacequerymaxresponsetime.is_set
+	|| igmpinterfacequerieruptime.is_set
+	|| igmpinterfacequerierexpirytime.is_set
+	|| igmpinterfaceversion1queriertimer.is_set
+	|| igmpinterfacewrongversionqueries.is_set
+	|| igmpinterfacejoins.is_set
+	|| igmpinterfaceproxyifindex.is_set
+	|| igmpinterfacegroups.is_set
+	|| igmpinterfacerobustness.is_set
+	|| igmpinterfacelastmembqueryintvl.is_set;
+}
+
+bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(igmpinterfaceifindex.yfilter)
+	|| ydk::is_set(igmpinterfacequeryinterval.yfilter)
+	|| ydk::is_set(igmpinterfacestatus.yfilter)
+	|| ydk::is_set(igmpinterfaceversion.yfilter)
+	|| ydk::is_set(igmpinterfacequerier.yfilter)
+	|| ydk::is_set(igmpinterfacequerymaxresponsetime.yfilter)
+	|| ydk::is_set(igmpinterfacequerieruptime.yfilter)
+	|| ydk::is_set(igmpinterfacequerierexpirytime.yfilter)
+	|| ydk::is_set(igmpinterfaceversion1queriertimer.yfilter)
+	|| ydk::is_set(igmpinterfacewrongversionqueries.yfilter)
+	|| ydk::is_set(igmpinterfacejoins.yfilter)
+	|| ydk::is_set(igmpinterfaceproxyifindex.yfilter)
+	|| ydk::is_set(igmpinterfacegroups.yfilter)
+	|| ydk::is_set(igmpinterfacerobustness.yfilter)
+	|| ydk::is_set(igmpinterfacelastmembqueryintvl.yfilter);
+}
+
+std::string IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/igmpInterfaceTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "igmpInterfaceEntry" <<"[igmpInterfaceIfIndex='" <<igmpinterfaceifindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (igmpinterfaceifindex.is_set || is_set(igmpinterfaceifindex.yfilter)) leaf_name_data.push_back(igmpinterfaceifindex.get_name_leafdata());
+    if (igmpinterfacequeryinterval.is_set || is_set(igmpinterfacequeryinterval.yfilter)) leaf_name_data.push_back(igmpinterfacequeryinterval.get_name_leafdata());
+    if (igmpinterfacestatus.is_set || is_set(igmpinterfacestatus.yfilter)) leaf_name_data.push_back(igmpinterfacestatus.get_name_leafdata());
+    if (igmpinterfaceversion.is_set || is_set(igmpinterfaceversion.yfilter)) leaf_name_data.push_back(igmpinterfaceversion.get_name_leafdata());
+    if (igmpinterfacequerier.is_set || is_set(igmpinterfacequerier.yfilter)) leaf_name_data.push_back(igmpinterfacequerier.get_name_leafdata());
+    if (igmpinterfacequerymaxresponsetime.is_set || is_set(igmpinterfacequerymaxresponsetime.yfilter)) leaf_name_data.push_back(igmpinterfacequerymaxresponsetime.get_name_leafdata());
+    if (igmpinterfacequerieruptime.is_set || is_set(igmpinterfacequerieruptime.yfilter)) leaf_name_data.push_back(igmpinterfacequerieruptime.get_name_leafdata());
+    if (igmpinterfacequerierexpirytime.is_set || is_set(igmpinterfacequerierexpirytime.yfilter)) leaf_name_data.push_back(igmpinterfacequerierexpirytime.get_name_leafdata());
+    if (igmpinterfaceversion1queriertimer.is_set || is_set(igmpinterfaceversion1queriertimer.yfilter)) leaf_name_data.push_back(igmpinterfaceversion1queriertimer.get_name_leafdata());
+    if (igmpinterfacewrongversionqueries.is_set || is_set(igmpinterfacewrongversionqueries.yfilter)) leaf_name_data.push_back(igmpinterfacewrongversionqueries.get_name_leafdata());
+    if (igmpinterfacejoins.is_set || is_set(igmpinterfacejoins.yfilter)) leaf_name_data.push_back(igmpinterfacejoins.get_name_leafdata());
+    if (igmpinterfaceproxyifindex.is_set || is_set(igmpinterfaceproxyifindex.yfilter)) leaf_name_data.push_back(igmpinterfaceproxyifindex.get_name_leafdata());
+    if (igmpinterfacegroups.is_set || is_set(igmpinterfacegroups.yfilter)) leaf_name_data.push_back(igmpinterfacegroups.get_name_leafdata());
+    if (igmpinterfacerobustness.is_set || is_set(igmpinterfacerobustness.yfilter)) leaf_name_data.push_back(igmpinterfacerobustness.get_name_leafdata());
+    if (igmpinterfacelastmembqueryintvl.is_set || is_set(igmpinterfacelastmembqueryintvl.yfilter)) leaf_name_data.push_back(igmpinterfacelastmembqueryintvl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "igmpInterfaceIfIndex")
+    {
+        igmpinterfaceifindex = value;
+        igmpinterfaceifindex.value_namespace = name_space;
+        igmpinterfaceifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceQueryInterval")
+    {
+        igmpinterfacequeryinterval = value;
+        igmpinterfacequeryinterval.value_namespace = name_space;
+        igmpinterfacequeryinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceStatus")
+    {
+        igmpinterfacestatus = value;
+        igmpinterfacestatus.value_namespace = name_space;
+        igmpinterfacestatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceVersion")
+    {
+        igmpinterfaceversion = value;
+        igmpinterfaceversion.value_namespace = name_space;
+        igmpinterfaceversion.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceQuerier")
+    {
+        igmpinterfacequerier = value;
+        igmpinterfacequerier.value_namespace = name_space;
+        igmpinterfacequerier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceQueryMaxResponseTime")
+    {
+        igmpinterfacequerymaxresponsetime = value;
+        igmpinterfacequerymaxresponsetime.value_namespace = name_space;
+        igmpinterfacequerymaxresponsetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceQuerierUpTime")
+    {
+        igmpinterfacequerieruptime = value;
+        igmpinterfacequerieruptime.value_namespace = name_space;
+        igmpinterfacequerieruptime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceQuerierExpiryTime")
+    {
+        igmpinterfacequerierexpirytime = value;
+        igmpinterfacequerierexpirytime.value_namespace = name_space;
+        igmpinterfacequerierexpirytime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceVersion1QuerierTimer")
+    {
+        igmpinterfaceversion1queriertimer = value;
+        igmpinterfaceversion1queriertimer.value_namespace = name_space;
+        igmpinterfaceversion1queriertimer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceWrongVersionQueries")
+    {
+        igmpinterfacewrongversionqueries = value;
+        igmpinterfacewrongversionqueries.value_namespace = name_space;
+        igmpinterfacewrongversionqueries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceJoins")
+    {
+        igmpinterfacejoins = value;
+        igmpinterfacejoins.value_namespace = name_space;
+        igmpinterfacejoins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceProxyIfIndex")
+    {
+        igmpinterfaceproxyifindex = value;
+        igmpinterfaceproxyifindex.value_namespace = name_space;
+        igmpinterfaceproxyifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceGroups")
+    {
+        igmpinterfacegroups = value;
+        igmpinterfacegroups.value_namespace = name_space;
+        igmpinterfacegroups.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceRobustness")
+    {
+        igmpinterfacerobustness = value;
+        igmpinterfacerobustness.value_namespace = name_space;
+        igmpinterfacerobustness.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpInterfaceLastMembQueryIntvl")
+    {
+        igmpinterfacelastmembqueryintvl = value;
+        igmpinterfacelastmembqueryintvl.value_namespace = name_space;
+        igmpinterfacelastmembqueryintvl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igmpInterfaceIfIndex")
+    {
+        igmpinterfaceifindex.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceQueryInterval")
+    {
+        igmpinterfacequeryinterval.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceStatus")
+    {
+        igmpinterfacestatus.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceVersion")
+    {
+        igmpinterfaceversion.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceQuerier")
+    {
+        igmpinterfacequerier.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceQueryMaxResponseTime")
+    {
+        igmpinterfacequerymaxresponsetime.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceQuerierUpTime")
+    {
+        igmpinterfacequerieruptime.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceQuerierExpiryTime")
+    {
+        igmpinterfacequerierexpirytime.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceVersion1QuerierTimer")
+    {
+        igmpinterfaceversion1queriertimer.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceWrongVersionQueries")
+    {
+        igmpinterfacewrongversionqueries.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceJoins")
+    {
+        igmpinterfacejoins.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceProxyIfIndex")
+    {
+        igmpinterfaceproxyifindex.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceGroups")
+    {
+        igmpinterfacegroups.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceRobustness")
+    {
+        igmpinterfacerobustness.yfilter = yfilter;
+    }
+    if(value_path == "igmpInterfaceLastMembQueryIntvl")
+    {
+        igmpinterfacelastmembqueryintvl.yfilter = yfilter;
+    }
+}
+
+bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igmpInterfaceIfIndex" || name == "igmpInterfaceQueryInterval" || name == "igmpInterfaceStatus" || name == "igmpInterfaceVersion" || name == "igmpInterfaceQuerier" || name == "igmpInterfaceQueryMaxResponseTime" || name == "igmpInterfaceQuerierUpTime" || name == "igmpInterfaceQuerierExpiryTime" || name == "igmpInterfaceVersion1QuerierTimer" || name == "igmpInterfaceWrongVersionQueries" || name == "igmpInterfaceJoins" || name == "igmpInterfaceProxyIfIndex" || name == "igmpInterfaceGroups" || name == "igmpInterfaceRobustness" || name == "igmpInterfaceLastMembQueryIntvl")
         return true;
     return false;
 }
@@ -238,11 +617,11 @@ IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::Igmpcacheentry()
     :
     igmpcacheaddress{YType::str, "igmpCacheAddress"},
     igmpcacheifindex{YType::int32, "igmpCacheIfIndex"},
-    igmpcacheexpirytime{YType::uint32, "igmpCacheExpiryTime"},
-    igmpcachelastreporter{YType::str, "igmpCacheLastReporter"},
     igmpcacheself{YType::boolean, "igmpCacheSelf"},
-    igmpcachestatus{YType::enumeration, "igmpCacheStatus"},
+    igmpcachelastreporter{YType::str, "igmpCacheLastReporter"},
     igmpcacheuptime{YType::uint32, "igmpCacheUpTime"},
+    igmpcacheexpirytime{YType::uint32, "igmpCacheExpiryTime"},
+    igmpcachestatus{YType::enumeration, "igmpCacheStatus"},
     igmpcacheversion1hosttimer{YType::uint32, "igmpCacheVersion1HostTimer"}
 {
 
@@ -257,11 +636,11 @@ bool IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::has_data() const
 {
     return igmpcacheaddress.is_set
 	|| igmpcacheifindex.is_set
-	|| igmpcacheexpirytime.is_set
-	|| igmpcachelastreporter.is_set
 	|| igmpcacheself.is_set
-	|| igmpcachestatus.is_set
+	|| igmpcachelastreporter.is_set
 	|| igmpcacheuptime.is_set
+	|| igmpcacheexpirytime.is_set
+	|| igmpcachestatus.is_set
 	|| igmpcacheversion1hosttimer.is_set;
 }
 
@@ -270,11 +649,11 @@ bool IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(igmpcacheaddress.yfilter)
 	|| ydk::is_set(igmpcacheifindex.yfilter)
-	|| ydk::is_set(igmpcacheexpirytime.yfilter)
-	|| ydk::is_set(igmpcachelastreporter.yfilter)
 	|| ydk::is_set(igmpcacheself.yfilter)
-	|| ydk::is_set(igmpcachestatus.yfilter)
+	|| ydk::is_set(igmpcachelastreporter.yfilter)
 	|| ydk::is_set(igmpcacheuptime.yfilter)
+	|| ydk::is_set(igmpcacheexpirytime.yfilter)
+	|| ydk::is_set(igmpcachestatus.yfilter)
 	|| ydk::is_set(igmpcacheversion1hosttimer.yfilter);
 }
 
@@ -298,11 +677,11 @@ std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpcachetable::Igmpc
 
     if (igmpcacheaddress.is_set || is_set(igmpcacheaddress.yfilter)) leaf_name_data.push_back(igmpcacheaddress.get_name_leafdata());
     if (igmpcacheifindex.is_set || is_set(igmpcacheifindex.yfilter)) leaf_name_data.push_back(igmpcacheifindex.get_name_leafdata());
-    if (igmpcacheexpirytime.is_set || is_set(igmpcacheexpirytime.yfilter)) leaf_name_data.push_back(igmpcacheexpirytime.get_name_leafdata());
-    if (igmpcachelastreporter.is_set || is_set(igmpcachelastreporter.yfilter)) leaf_name_data.push_back(igmpcachelastreporter.get_name_leafdata());
     if (igmpcacheself.is_set || is_set(igmpcacheself.yfilter)) leaf_name_data.push_back(igmpcacheself.get_name_leafdata());
-    if (igmpcachestatus.is_set || is_set(igmpcachestatus.yfilter)) leaf_name_data.push_back(igmpcachestatus.get_name_leafdata());
+    if (igmpcachelastreporter.is_set || is_set(igmpcachelastreporter.yfilter)) leaf_name_data.push_back(igmpcachelastreporter.get_name_leafdata());
     if (igmpcacheuptime.is_set || is_set(igmpcacheuptime.yfilter)) leaf_name_data.push_back(igmpcacheuptime.get_name_leafdata());
+    if (igmpcacheexpirytime.is_set || is_set(igmpcacheexpirytime.yfilter)) leaf_name_data.push_back(igmpcacheexpirytime.get_name_leafdata());
+    if (igmpcachestatus.is_set || is_set(igmpcachestatus.yfilter)) leaf_name_data.push_back(igmpcachestatus.get_name_leafdata());
     if (igmpcacheversion1hosttimer.is_set || is_set(igmpcacheversion1hosttimer.yfilter)) leaf_name_data.push_back(igmpcacheversion1hosttimer.get_name_leafdata());
 
     return leaf_name_data;
@@ -334,11 +713,11 @@ void IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::set_value(const std::string & v
         igmpcacheifindex.value_namespace = name_space;
         igmpcacheifindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "igmpCacheExpiryTime")
+    if(value_path == "igmpCacheSelf")
     {
-        igmpcacheexpirytime = value;
-        igmpcacheexpirytime.value_namespace = name_space;
-        igmpcacheexpirytime.value_namespace_prefix = name_space_prefix;
+        igmpcacheself = value;
+        igmpcacheself.value_namespace = name_space;
+        igmpcacheself.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmpCacheLastReporter")
     {
@@ -346,23 +725,23 @@ void IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::set_value(const std::string & v
         igmpcachelastreporter.value_namespace = name_space;
         igmpcachelastreporter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "igmpCacheSelf")
+    if(value_path == "igmpCacheUpTime")
     {
-        igmpcacheself = value;
-        igmpcacheself.value_namespace = name_space;
-        igmpcacheself.value_namespace_prefix = name_space_prefix;
+        igmpcacheuptime = value;
+        igmpcacheuptime.value_namespace = name_space;
+        igmpcacheuptime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheExpiryTime")
+    {
+        igmpcacheexpirytime = value;
+        igmpcacheexpirytime.value_namespace = name_space;
+        igmpcacheexpirytime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmpCacheStatus")
     {
         igmpcachestatus = value;
         igmpcachestatus.value_namespace = name_space;
         igmpcachestatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheUpTime")
-    {
-        igmpcacheuptime = value;
-        igmpcacheuptime.value_namespace = name_space;
-        igmpcacheuptime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmpCacheVersion1HostTimer")
     {
@@ -382,25 +761,25 @@ void IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::set_filter(const std::string & 
     {
         igmpcacheifindex.yfilter = yfilter;
     }
-    if(value_path == "igmpCacheExpiryTime")
+    if(value_path == "igmpCacheSelf")
     {
-        igmpcacheexpirytime.yfilter = yfilter;
+        igmpcacheself.yfilter = yfilter;
     }
     if(value_path == "igmpCacheLastReporter")
     {
         igmpcachelastreporter.yfilter = yfilter;
     }
-    if(value_path == "igmpCacheSelf")
+    if(value_path == "igmpCacheUpTime")
     {
-        igmpcacheself.yfilter = yfilter;
+        igmpcacheuptime.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheExpiryTime")
+    {
+        igmpcacheexpirytime.yfilter = yfilter;
     }
     if(value_path == "igmpCacheStatus")
     {
         igmpcachestatus.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheUpTime")
-    {
-        igmpcacheuptime.yfilter = yfilter;
     }
     if(value_path == "igmpCacheVersion1HostTimer")
     {
@@ -410,386 +789,7 @@ void IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::set_filter(const std::string & 
 
 bool IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "igmpCacheAddress" || name == "igmpCacheIfIndex" || name == "igmpCacheExpiryTime" || name == "igmpCacheLastReporter" || name == "igmpCacheSelf" || name == "igmpCacheStatus" || name == "igmpCacheUpTime" || name == "igmpCacheVersion1HostTimer")
-        return true;
-    return false;
-}
-
-IGMPSTDMIB::Igmpinterfacetable::Igmpinterfacetable()
-{
-
-    yang_name = "igmpInterfaceTable"; yang_parent_name = "IGMP-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-IGMPSTDMIB::Igmpinterfacetable::~Igmpinterfacetable()
-{
-}
-
-bool IGMPSTDMIB::Igmpinterfacetable::has_data() const
-{
-    for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
-    {
-        if(igmpinterfaceentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool IGMPSTDMIB::Igmpinterfacetable::has_operation() const
-{
-    for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
-    {
-        if(igmpinterfaceentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string IGMPSTDMIB::Igmpinterfacetable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string IGMPSTDMIB::Igmpinterfacetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igmpInterfaceTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpinterfacetable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "igmpInterfaceEntry")
-    {
-        for(auto const & c : igmpinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry>();
-        c->parent = this;
-        igmpinterfaceentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : igmpinterfaceentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void IGMPSTDMIB::Igmpinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IGMPSTDMIB::Igmpinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IGMPSTDMIB::Igmpinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "igmpInterfaceEntry")
-        return true;
-    return false;
-}
-
-IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::Igmpinterfaceentry()
-    :
-    igmpinterfaceifindex{YType::int32, "igmpInterfaceIfIndex"},
-    igmpinterfacegroups{YType::uint32, "igmpInterfaceGroups"},
-    igmpinterfacejoins{YType::uint32, "igmpInterfaceJoins"},
-    igmpinterfacelastmembqueryintvl{YType::uint32, "igmpInterfaceLastMembQueryIntvl"},
-    igmpinterfaceproxyifindex{YType::int32, "igmpInterfaceProxyIfIndex"},
-    igmpinterfacequerier{YType::str, "igmpInterfaceQuerier"},
-    igmpinterfacequerierexpirytime{YType::uint32, "igmpInterfaceQuerierExpiryTime"},
-    igmpinterfacequerieruptime{YType::uint32, "igmpInterfaceQuerierUpTime"},
-    igmpinterfacequeryinterval{YType::uint32, "igmpInterfaceQueryInterval"},
-    igmpinterfacequerymaxresponsetime{YType::uint32, "igmpInterfaceQueryMaxResponseTime"},
-    igmpinterfacerobustness{YType::uint32, "igmpInterfaceRobustness"},
-    igmpinterfacestatus{YType::enumeration, "igmpInterfaceStatus"},
-    igmpinterfaceversion{YType::uint32, "igmpInterfaceVersion"},
-    igmpinterfaceversion1queriertimer{YType::uint32, "igmpInterfaceVersion1QuerierTimer"},
-    igmpinterfacewrongversionqueries{YType::uint32, "igmpInterfaceWrongVersionQueries"}
-{
-
-    yang_name = "igmpInterfaceEntry"; yang_parent_name = "igmpInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::~Igmpinterfaceentry()
-{
-}
-
-bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_data() const
-{
-    return igmpinterfaceifindex.is_set
-	|| igmpinterfacegroups.is_set
-	|| igmpinterfacejoins.is_set
-	|| igmpinterfacelastmembqueryintvl.is_set
-	|| igmpinterfaceproxyifindex.is_set
-	|| igmpinterfacequerier.is_set
-	|| igmpinterfacequerierexpirytime.is_set
-	|| igmpinterfacequerieruptime.is_set
-	|| igmpinterfacequeryinterval.is_set
-	|| igmpinterfacequerymaxresponsetime.is_set
-	|| igmpinterfacerobustness.is_set
-	|| igmpinterfacestatus.is_set
-	|| igmpinterfaceversion.is_set
-	|| igmpinterfaceversion1queriertimer.is_set
-	|| igmpinterfacewrongversionqueries.is_set;
-}
-
-bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(igmpinterfaceifindex.yfilter)
-	|| ydk::is_set(igmpinterfacegroups.yfilter)
-	|| ydk::is_set(igmpinterfacejoins.yfilter)
-	|| ydk::is_set(igmpinterfacelastmembqueryintvl.yfilter)
-	|| ydk::is_set(igmpinterfaceproxyifindex.yfilter)
-	|| ydk::is_set(igmpinterfacequerier.yfilter)
-	|| ydk::is_set(igmpinterfacequerierexpirytime.yfilter)
-	|| ydk::is_set(igmpinterfacequerieruptime.yfilter)
-	|| ydk::is_set(igmpinterfacequeryinterval.yfilter)
-	|| ydk::is_set(igmpinterfacequerymaxresponsetime.yfilter)
-	|| ydk::is_set(igmpinterfacerobustness.yfilter)
-	|| ydk::is_set(igmpinterfacestatus.yfilter)
-	|| ydk::is_set(igmpinterfaceversion.yfilter)
-	|| ydk::is_set(igmpinterfaceversion1queriertimer.yfilter)
-	|| ydk::is_set(igmpinterfacewrongversionqueries.yfilter);
-}
-
-std::string IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/igmpInterfaceTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igmpInterfaceEntry" <<"[igmpInterfaceIfIndex='" <<igmpinterfaceifindex <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (igmpinterfaceifindex.is_set || is_set(igmpinterfaceifindex.yfilter)) leaf_name_data.push_back(igmpinterfaceifindex.get_name_leafdata());
-    if (igmpinterfacegroups.is_set || is_set(igmpinterfacegroups.yfilter)) leaf_name_data.push_back(igmpinterfacegroups.get_name_leafdata());
-    if (igmpinterfacejoins.is_set || is_set(igmpinterfacejoins.yfilter)) leaf_name_data.push_back(igmpinterfacejoins.get_name_leafdata());
-    if (igmpinterfacelastmembqueryintvl.is_set || is_set(igmpinterfacelastmembqueryintvl.yfilter)) leaf_name_data.push_back(igmpinterfacelastmembqueryintvl.get_name_leafdata());
-    if (igmpinterfaceproxyifindex.is_set || is_set(igmpinterfaceproxyifindex.yfilter)) leaf_name_data.push_back(igmpinterfaceproxyifindex.get_name_leafdata());
-    if (igmpinterfacequerier.is_set || is_set(igmpinterfacequerier.yfilter)) leaf_name_data.push_back(igmpinterfacequerier.get_name_leafdata());
-    if (igmpinterfacequerierexpirytime.is_set || is_set(igmpinterfacequerierexpirytime.yfilter)) leaf_name_data.push_back(igmpinterfacequerierexpirytime.get_name_leafdata());
-    if (igmpinterfacequerieruptime.is_set || is_set(igmpinterfacequerieruptime.yfilter)) leaf_name_data.push_back(igmpinterfacequerieruptime.get_name_leafdata());
-    if (igmpinterfacequeryinterval.is_set || is_set(igmpinterfacequeryinterval.yfilter)) leaf_name_data.push_back(igmpinterfacequeryinterval.get_name_leafdata());
-    if (igmpinterfacequerymaxresponsetime.is_set || is_set(igmpinterfacequerymaxresponsetime.yfilter)) leaf_name_data.push_back(igmpinterfacequerymaxresponsetime.get_name_leafdata());
-    if (igmpinterfacerobustness.is_set || is_set(igmpinterfacerobustness.yfilter)) leaf_name_data.push_back(igmpinterfacerobustness.get_name_leafdata());
-    if (igmpinterfacestatus.is_set || is_set(igmpinterfacestatus.yfilter)) leaf_name_data.push_back(igmpinterfacestatus.get_name_leafdata());
-    if (igmpinterfaceversion.is_set || is_set(igmpinterfaceversion.yfilter)) leaf_name_data.push_back(igmpinterfaceversion.get_name_leafdata());
-    if (igmpinterfaceversion1queriertimer.is_set || is_set(igmpinterfaceversion1queriertimer.yfilter)) leaf_name_data.push_back(igmpinterfaceversion1queriertimer.get_name_leafdata());
-    if (igmpinterfacewrongversionqueries.is_set || is_set(igmpinterfacewrongversionqueries.yfilter)) leaf_name_data.push_back(igmpinterfacewrongversionqueries.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "igmpInterfaceIfIndex")
-    {
-        igmpinterfaceifindex = value;
-        igmpinterfaceifindex.value_namespace = name_space;
-        igmpinterfaceifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceGroups")
-    {
-        igmpinterfacegroups = value;
-        igmpinterfacegroups.value_namespace = name_space;
-        igmpinterfacegroups.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceJoins")
-    {
-        igmpinterfacejoins = value;
-        igmpinterfacejoins.value_namespace = name_space;
-        igmpinterfacejoins.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceLastMembQueryIntvl")
-    {
-        igmpinterfacelastmembqueryintvl = value;
-        igmpinterfacelastmembqueryintvl.value_namespace = name_space;
-        igmpinterfacelastmembqueryintvl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceProxyIfIndex")
-    {
-        igmpinterfaceproxyifindex = value;
-        igmpinterfaceproxyifindex.value_namespace = name_space;
-        igmpinterfaceproxyifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceQuerier")
-    {
-        igmpinterfacequerier = value;
-        igmpinterfacequerier.value_namespace = name_space;
-        igmpinterfacequerier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceQuerierExpiryTime")
-    {
-        igmpinterfacequerierexpirytime = value;
-        igmpinterfacequerierexpirytime.value_namespace = name_space;
-        igmpinterfacequerierexpirytime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceQuerierUpTime")
-    {
-        igmpinterfacequerieruptime = value;
-        igmpinterfacequerieruptime.value_namespace = name_space;
-        igmpinterfacequerieruptime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceQueryInterval")
-    {
-        igmpinterfacequeryinterval = value;
-        igmpinterfacequeryinterval.value_namespace = name_space;
-        igmpinterfacequeryinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceQueryMaxResponseTime")
-    {
-        igmpinterfacequerymaxresponsetime = value;
-        igmpinterfacequerymaxresponsetime.value_namespace = name_space;
-        igmpinterfacequerymaxresponsetime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceRobustness")
-    {
-        igmpinterfacerobustness = value;
-        igmpinterfacerobustness.value_namespace = name_space;
-        igmpinterfacerobustness.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceStatus")
-    {
-        igmpinterfacestatus = value;
-        igmpinterfacestatus.value_namespace = name_space;
-        igmpinterfacestatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceVersion")
-    {
-        igmpinterfaceversion = value;
-        igmpinterfaceversion.value_namespace = name_space;
-        igmpinterfaceversion.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceVersion1QuerierTimer")
-    {
-        igmpinterfaceversion1queriertimer = value;
-        igmpinterfaceversion1queriertimer.value_namespace = name_space;
-        igmpinterfaceversion1queriertimer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpInterfaceWrongVersionQueries")
-    {
-        igmpinterfacewrongversionqueries = value;
-        igmpinterfacewrongversionqueries.value_namespace = name_space;
-        igmpinterfacewrongversionqueries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "igmpInterfaceIfIndex")
-    {
-        igmpinterfaceifindex.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceGroups")
-    {
-        igmpinterfacegroups.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceJoins")
-    {
-        igmpinterfacejoins.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceLastMembQueryIntvl")
-    {
-        igmpinterfacelastmembqueryintvl.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceProxyIfIndex")
-    {
-        igmpinterfaceproxyifindex.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceQuerier")
-    {
-        igmpinterfacequerier.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceQuerierExpiryTime")
-    {
-        igmpinterfacequerierexpirytime.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceQuerierUpTime")
-    {
-        igmpinterfacequerieruptime.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceQueryInterval")
-    {
-        igmpinterfacequeryinterval.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceQueryMaxResponseTime")
-    {
-        igmpinterfacequerymaxresponsetime.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceRobustness")
-    {
-        igmpinterfacerobustness.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceStatus")
-    {
-        igmpinterfacestatus.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceVersion")
-    {
-        igmpinterfaceversion.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceVersion1QuerierTimer")
-    {
-        igmpinterfaceversion1queriertimer.yfilter = yfilter;
-    }
-    if(value_path == "igmpInterfaceWrongVersionQueries")
-    {
-        igmpinterfacewrongversionqueries.yfilter = yfilter;
-    }
-}
-
-bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "igmpInterfaceIfIndex" || name == "igmpInterfaceGroups" || name == "igmpInterfaceJoins" || name == "igmpInterfaceLastMembQueryIntvl" || name == "igmpInterfaceProxyIfIndex" || name == "igmpInterfaceQuerier" || name == "igmpInterfaceQuerierExpiryTime" || name == "igmpInterfaceQuerierUpTime" || name == "igmpInterfaceQueryInterval" || name == "igmpInterfaceQueryMaxResponseTime" || name == "igmpInterfaceRobustness" || name == "igmpInterfaceStatus" || name == "igmpInterfaceVersion" || name == "igmpInterfaceVersion1QuerierTimer" || name == "igmpInterfaceWrongVersionQueries")
+    if(name == "igmpCacheAddress" || name == "igmpCacheIfIndex" || name == "igmpCacheSelf" || name == "igmpCacheLastReporter" || name == "igmpCacheUpTime" || name == "igmpCacheExpiryTime" || name == "igmpCacheStatus" || name == "igmpCacheVersion1HostTimer")
         return true;
     return false;
 }

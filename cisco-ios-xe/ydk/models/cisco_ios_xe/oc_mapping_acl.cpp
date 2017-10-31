@@ -338,9 +338,9 @@ bool AclMapping::AclSets::AclSet::has_leaf_or_child_of_name(const std::string & 
 
 AclMapping::AclSets::AclSet::Config::Config()
     :
+    name{YType::str, "name"},
     acl_type{YType::enumeration, "acl-type"},
-    description{YType::str, "description"},
-    name{YType::str, "name"}
+    description{YType::str, "description"}
     	,
     acl_entries(std::make_shared<AclMapping::AclSets::AclSet::Config::AclEntries>())
 {
@@ -355,18 +355,18 @@ AclMapping::AclSets::AclSet::Config::~Config()
 
 bool AclMapping::AclSets::AclSet::Config::has_data() const
 {
-    return acl_type.is_set
+    return name.is_set
+	|| acl_type.is_set
 	|| description.is_set
-	|| name.is_set
 	|| (acl_entries !=  nullptr && acl_entries->has_data());
 }
 
 bool AclMapping::AclSets::AclSet::Config::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(acl_type.yfilter)
 	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(name.yfilter)
 	|| (acl_entries !=  nullptr && acl_entries->has_operation());
 }
 
@@ -381,9 +381,9 @@ std::vector<std::pair<std::string, LeafData> > AclMapping::AclSets::AclSet::Conf
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (acl_type.is_set || is_set(acl_type.yfilter)) leaf_name_data.push_back(acl_type.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -416,6 +416,12 @@ std::map<std::string, std::shared_ptr<Entity>> AclMapping::AclSets::AclSet::Conf
 
 void AclMapping::AclSets::AclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "acl-type")
     {
         acl_type = value;
@@ -428,16 +434,14 @@ void AclMapping::AclSets::AclSet::Config::set_value(const std::string & value_pa
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void AclMapping::AclSets::AclSet::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
     if(value_path == "acl-type")
     {
         acl_type.yfilter = yfilter;
@@ -446,15 +450,11 @@ void AclMapping::AclSets::AclSet::Config::set_filter(const std::string & value_p
     {
         description.yfilter = yfilter;
     }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
 }
 
 bool AclMapping::AclSets::AclSet::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "acl-entries" || name == "acl-type" || name == "description" || name == "name")
+    if(name == "acl-entries" || name == "name" || name == "acl-type" || name == "description")
         return true;
     return false;
 }
@@ -747,14 +747,14 @@ AclMapping::Interfaces::Interface::Interface()
     id{YType::str, "id"}
     	,
     config(std::make_shared<AclMapping::Interfaces::Interface::Config>())
-	,egress_acl_sets(std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets>())
-	,ingress_acl_sets(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets>())
 	,interface_ref(std::make_shared<AclMapping::Interfaces::Interface::InterfaceRef>())
+	,ingress_acl_sets(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets>())
+	,egress_acl_sets(std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets>())
 {
     config->parent = this;
-    egress_acl_sets->parent = this;
-    ingress_acl_sets->parent = this;
     interface_ref->parent = this;
+    ingress_acl_sets->parent = this;
+    egress_acl_sets->parent = this;
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -767,9 +767,9 @@ bool AclMapping::Interfaces::Interface::has_data() const
 {
     return id.is_set
 	|| (config !=  nullptr && config->has_data())
-	|| (egress_acl_sets !=  nullptr && egress_acl_sets->has_data())
+	|| (interface_ref !=  nullptr && interface_ref->has_data())
 	|| (ingress_acl_sets !=  nullptr && ingress_acl_sets->has_data())
-	|| (interface_ref !=  nullptr && interface_ref->has_data());
+	|| (egress_acl_sets !=  nullptr && egress_acl_sets->has_data());
 }
 
 bool AclMapping::Interfaces::Interface::has_operation() const
@@ -777,9 +777,9 @@ bool AclMapping::Interfaces::Interface::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (config !=  nullptr && config->has_operation())
-	|| (egress_acl_sets !=  nullptr && egress_acl_sets->has_operation())
+	|| (interface_ref !=  nullptr && interface_ref->has_operation())
 	|| (ingress_acl_sets !=  nullptr && ingress_acl_sets->has_operation())
-	|| (interface_ref !=  nullptr && interface_ref->has_operation());
+	|| (egress_acl_sets !=  nullptr && egress_acl_sets->has_operation());
 }
 
 std::string AclMapping::Interfaces::Interface::get_absolute_path() const
@@ -817,13 +817,13 @@ std::shared_ptr<Entity> AclMapping::Interfaces::Interface::get_child_by_name(con
         return config;
     }
 
-    if(child_yang_name == "egress-acl-sets")
+    if(child_yang_name == "interface-ref")
     {
-        if(egress_acl_sets == nullptr)
+        if(interface_ref == nullptr)
         {
-            egress_acl_sets = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets>();
+            interface_ref = std::make_shared<AclMapping::Interfaces::Interface::InterfaceRef>();
         }
-        return egress_acl_sets;
+        return interface_ref;
     }
 
     if(child_yang_name == "ingress-acl-sets")
@@ -835,13 +835,13 @@ std::shared_ptr<Entity> AclMapping::Interfaces::Interface::get_child_by_name(con
         return ingress_acl_sets;
     }
 
-    if(child_yang_name == "interface-ref")
+    if(child_yang_name == "egress-acl-sets")
     {
-        if(interface_ref == nullptr)
+        if(egress_acl_sets == nullptr)
         {
-            interface_ref = std::make_shared<AclMapping::Interfaces::Interface::InterfaceRef>();
+            egress_acl_sets = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets>();
         }
-        return interface_ref;
+        return egress_acl_sets;
     }
 
     return nullptr;
@@ -855,9 +855,9 @@ std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface
         children["config"] = config;
     }
 
-    if(egress_acl_sets != nullptr)
+    if(interface_ref != nullptr)
     {
-        children["egress-acl-sets"] = egress_acl_sets;
+        children["interface-ref"] = interface_ref;
     }
 
     if(ingress_acl_sets != nullptr)
@@ -865,9 +865,9 @@ std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface
         children["ingress-acl-sets"] = ingress_acl_sets;
     }
 
-    if(interface_ref != nullptr)
+    if(egress_acl_sets != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        children["egress-acl-sets"] = egress_acl_sets;
     }
 
     return children;
@@ -893,7 +893,7 @@ void AclMapping::Interfaces::Interface::set_filter(const std::string & value_pat
 
 bool AclMapping::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "egress-acl-sets" || name == "ingress-acl-sets" || name == "interface-ref" || name == "id")
+    if(name == "config" || name == "interface-ref" || name == "ingress-acl-sets" || name == "egress-acl-sets" || name == "id")
         return true;
     return false;
 }
@@ -970,1002 +970,6 @@ void AclMapping::Interfaces::Interface::Config::set_filter(const std::string & v
 bool AclMapping::Interfaces::Interface::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSets()
-{
-
-    yang_name = "egress-acl-sets"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::~EgressAclSets()
-{
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::has_data() const
-{
-    for (std::size_t index=0; index<egress_acl_set.size(); index++)
-    {
-        if(egress_acl_set[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::has_operation() const
-{
-    for (std::size_t index=0; index<egress_acl_set.size(); index++)
-    {
-        if(egress_acl_set[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::EgressAclSets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "egress-acl-sets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "egress-acl-set")
-    {
-        for(auto const & c : egress_acl_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet>();
-        c->parent = this;
-        egress_acl_set.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : egress_acl_set)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "egress-acl-set")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::EgressAclSet()
-    :
-    set_name{YType::str, "set-name"}
-    	,
-    acl_entries(std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries>())
-	,config(std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config>())
-{
-    acl_entries->parent = this;
-    config->parent = this;
-
-    yang_name = "egress-acl-set"; yang_parent_name = "egress-acl-sets"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::~EgressAclSet()
-{
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::has_data() const
-{
-    return set_name.is_set
-	|| (acl_entries !=  nullptr && acl_entries->has_data())
-	|| (config !=  nullptr && config->has_data());
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_name.yfilter)
-	|| (acl_entries !=  nullptr && acl_entries->has_operation())
-	|| (config !=  nullptr && config->has_operation());
-}
-
-std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "egress-acl-set" <<"[set-name='" <<set_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-entries")
-    {
-        if(acl_entries == nullptr)
-        {
-            acl_entries = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries>();
-        }
-        return acl_entries;
-    }
-
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config>();
-        }
-        return config;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(acl_entries != nullptr)
-    {
-        children["acl-entries"] = acl_entries;
-    }
-
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-name")
-    {
-        set_name = value;
-        set_name.value_namespace = name_space;
-        set_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-name")
-    {
-        set_name.yfilter = yfilter;
-    }
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-entries" || name == "config" || name == "set-name")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntries()
-{
-
-    yang_name = "acl-entries"; yang_parent_name = "egress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::~AclEntries()
-{
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::has_data() const
-{
-    for (std::size_t index=0; index<acl_entry.size(); index++)
-    {
-        if(acl_entry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::has_operation() const
-{
-    for (std::size_t index=0; index<acl_entry.size(); index++)
-    {
-        if(acl_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl-entries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-entry")
-    {
-        for(auto const & c : acl_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry>();
-        c->parent = this;
-        acl_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : acl_entry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-entry")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::AclEntry()
-    :
-    sequence_id{YType::str, "sequence-id"}
-{
-
-    yang_name = "acl-entry"; yang_parent_name = "acl-entries"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::~AclEntry()
-{
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::has_data() const
-{
-    return sequence_id.is_set;
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sequence_id.yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl-entry" <<"[sequence-id='" <<sequence_id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sequence_id.is_set || is_set(sequence_id.yfilter)) leaf_name_data.push_back(sequence_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sequence-id")
-    {
-        sequence_id = value;
-        sequence_id.value_namespace = name_space;
-        sequence_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sequence-id")
-    {
-        sequence_id.yfilter = yfilter;
-    }
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sequence-id")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::Config()
-    :
-    set_name{YType::str, "set-name"}
-{
-
-    yang_name = "config"; yang_parent_name = "egress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::~Config()
-{
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::has_data() const
-{
-    return set_name.is_set;
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_name.yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-name")
-    {
-        set_name = value;
-        set_name.value_namespace = name_space;
-        set_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-name")
-    {
-        set_name.yfilter = yfilter;
-    }
-}
-
-bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-name")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSets()
-{
-
-    yang_name = "ingress-acl-sets"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::~IngressAclSets()
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::has_data() const
-{
-    for (std::size_t index=0; index<ingress_acl_set.size(); index++)
-    {
-        if(ingress_acl_set[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::has_operation() const
-{
-    for (std::size_t index=0; index<ingress_acl_set.size(); index++)
-    {
-        if(ingress_acl_set[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::IngressAclSets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ingress-acl-sets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ingress-acl-set")
-    {
-        for(auto const & c : ingress_acl_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet>();
-        c->parent = this;
-        ingress_acl_set.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ingress_acl_set)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ingress-acl-set")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::IngressAclSet()
-    :
-    set_name{YType::str, "set-name"}
-    	,
-    acl_entries(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries>())
-	,config(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config>())
-	,state(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State>())
-{
-    acl_entries->parent = this;
-    config->parent = this;
-    state->parent = this;
-
-    yang_name = "ingress-acl-set"; yang_parent_name = "ingress-acl-sets"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::~IngressAclSet()
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::has_data() const
-{
-    return set_name.is_set
-	|| (acl_entries !=  nullptr && acl_entries->has_data())
-	|| (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_name.yfilter)
-	|| (acl_entries !=  nullptr && acl_entries->has_operation())
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ingress-acl-set" <<"[set-name='" <<set_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-entries")
-    {
-        if(acl_entries == nullptr)
-        {
-            acl_entries = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries>();
-        }
-        return acl_entries;
-    }
-
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(acl_entries != nullptr)
-    {
-        children["acl-entries"] = acl_entries;
-    }
-
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-name")
-    {
-        set_name = value;
-        set_name.value_namespace = name_space;
-        set_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-name")
-    {
-        set_name.yfilter = yfilter;
-    }
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-entries" || name == "config" || name == "state" || name == "set-name")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntries()
-{
-
-    yang_name = "acl-entries"; yang_parent_name = "ingress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::~AclEntries()
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::has_data() const
-{
-    for (std::size_t index=0; index<acl_entry.size(); index++)
-    {
-        if(acl_entry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::has_operation() const
-{
-    for (std::size_t index=0; index<acl_entry.size(); index++)
-    {
-        if(acl_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl-entries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-entry")
-    {
-        for(auto const & c : acl_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry>();
-        c->parent = this;
-        acl_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : acl_entry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-entry")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::AclEntry()
-    :
-    sequence_id{YType::str, "sequence-id"}
-{
-
-    yang_name = "acl-entry"; yang_parent_name = "acl-entries"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::~AclEntry()
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::has_data() const
-{
-    return sequence_id.is_set;
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sequence_id.yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl-entry" <<"[sequence-id='" <<sequence_id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sequence_id.is_set || is_set(sequence_id.yfilter)) leaf_name_data.push_back(sequence_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sequence-id")
-    {
-        sequence_id = value;
-        sequence_id.value_namespace = name_space;
-        sequence_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sequence-id")
-    {
-        sequence_id.yfilter = yfilter;
-    }
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sequence-id")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::Config()
-    :
-    set_name{YType::str, "set-name"}
-{
-
-    yang_name = "config"; yang_parent_name = "ingress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::~Config()
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::has_data() const
-{
-    return set_name.is_set;
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_name.yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-name")
-    {
-        set_name = value;
-        set_name.value_namespace = name_space;
-        set_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-name")
-    {
-        set_name.yfilter = yfilter;
-    }
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-name")
-        return true;
-    return false;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::State()
-    :
-    set_name{YType::str, "set-name"}
-{
-
-    yang_name = "state"; yang_parent_name = "ingress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::~State()
-{
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::has_data() const
-{
-    return set_name.is_set;
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_name.yfilter);
-}
-
-std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-name")
-    {
-        set_name = value;
-        set_name.value_namespace = name_space;
-        set_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-name")
-    {
-        set_name.yfilter = yfilter;
-    }
-}
-
-bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-name")
         return true;
     return false;
 }
@@ -2244,6 +1248,1002 @@ void AclMapping::Interfaces::Interface::InterfaceRef::State::set_filter(const st
 bool AclMapping::Interfaces::Interface::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "subinterface")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSets()
+{
+
+    yang_name = "ingress-acl-sets"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::~IngressAclSets()
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::has_data() const
+{
+    for (std::size_t index=0; index<ingress_acl_set.size(); index++)
+    {
+        if(ingress_acl_set[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::has_operation() const
+{
+    for (std::size_t index=0; index<ingress_acl_set.size(); index++)
+    {
+        if(ingress_acl_set[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::IngressAclSets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ingress-acl-sets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ingress-acl-set")
+    {
+        for(auto const & c : ingress_acl_set)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet>();
+        c->parent = this;
+        ingress_acl_set.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ingress_acl_set)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ingress-acl-set")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::IngressAclSet()
+    :
+    set_name{YType::str, "set-name"}
+    	,
+    config(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config>())
+	,state(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State>())
+	,acl_entries(std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries>())
+{
+    config->parent = this;
+    state->parent = this;
+    acl_entries->parent = this;
+
+    yang_name = "ingress-acl-set"; yang_parent_name = "ingress-acl-sets"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::~IngressAclSet()
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::has_data() const
+{
+    return set_name.is_set
+	|| (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data())
+	|| (acl_entries !=  nullptr && acl_entries->has_data());
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (acl_entries !=  nullptr && acl_entries->has_operation());
+}
+
+std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ingress-acl-set" <<"[set-name='" <<set_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State>();
+        }
+        return state;
+    }
+
+    if(child_yang_name == "acl-entries")
+    {
+        if(acl_entries == nullptr)
+        {
+            acl_entries = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries>();
+        }
+        return acl_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    if(acl_entries != nullptr)
+    {
+        children["acl-entries"] = acl_entries;
+    }
+
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-name")
+    {
+        set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "acl-entries" || name == "set-name")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::Config()
+    :
+    set_name{YType::str, "set-name"}
+{
+
+    yang_name = "config"; yang_parent_name = "ingress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::~Config()
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::has_data() const
+{
+    return set_name.is_set;
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-name")
+    {
+        set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::State()
+    :
+    set_name{YType::str, "set-name"}
+{
+
+    yang_name = "state"; yang_parent_name = "ingress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::~State()
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::has_data() const
+{
+    return set_name.is_set;
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-name")
+    {
+        set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntries()
+{
+
+    yang_name = "acl-entries"; yang_parent_name = "ingress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::~AclEntries()
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::has_data() const
+{
+    for (std::size_t index=0; index<acl_entry.size(); index++)
+    {
+        if(acl_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::has_operation() const
+{
+    for (std::size_t index=0; index<acl_entry.size(); index++)
+    {
+        if(acl_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-entry")
+    {
+        for(auto const & c : acl_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry>();
+        c->parent = this;
+        acl_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : acl_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-entry")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::AclEntry()
+    :
+    sequence_id{YType::str, "sequence-id"}
+{
+
+    yang_name = "acl-entry"; yang_parent_name = "acl-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::~AclEntry()
+{
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::has_data() const
+{
+    return sequence_id.is_set;
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sequence_id.yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-entry" <<"[sequence-id='" <<sequence_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sequence_id.is_set || is_set(sequence_id.yfilter)) leaf_name_data.push_back(sequence_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sequence-id")
+    {
+        sequence_id = value;
+        sequence_id.value_namespace = name_space;
+        sequence_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sequence-id")
+    {
+        sequence_id.yfilter = yfilter;
+    }
+}
+
+bool AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sequence-id")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSets()
+{
+
+    yang_name = "egress-acl-sets"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::~EgressAclSets()
+{
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::has_data() const
+{
+    for (std::size_t index=0; index<egress_acl_set.size(); index++)
+    {
+        if(egress_acl_set[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::has_operation() const
+{
+    for (std::size_t index=0; index<egress_acl_set.size(); index++)
+    {
+        if(egress_acl_set[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::EgressAclSets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "egress-acl-sets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "egress-acl-set")
+    {
+        for(auto const & c : egress_acl_set)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet>();
+        c->parent = this;
+        egress_acl_set.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : egress_acl_set)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress-acl-set")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::EgressAclSet()
+    :
+    set_name{YType::str, "set-name"}
+    	,
+    config(std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config>())
+	,acl_entries(std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries>())
+{
+    config->parent = this;
+    acl_entries->parent = this;
+
+    yang_name = "egress-acl-set"; yang_parent_name = "egress-acl-sets"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::~EgressAclSet()
+{
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::has_data() const
+{
+    return set_name.is_set
+	|| (config !=  nullptr && config->has_data())
+	|| (acl_entries !=  nullptr && acl_entries->has_data());
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (acl_entries !=  nullptr && acl_entries->has_operation());
+}
+
+std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "egress-acl-set" <<"[set-name='" <<set_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "acl-entries")
+    {
+        if(acl_entries == nullptr)
+        {
+            acl_entries = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries>();
+        }
+        return acl_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(acl_entries != nullptr)
+    {
+        children["acl-entries"] = acl_entries;
+    }
+
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-name")
+    {
+        set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "acl-entries" || name == "set-name")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::Config()
+    :
+    set_name{YType::str, "set-name"}
+{
+
+    yang_name = "config"; yang_parent_name = "egress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::~Config()
+{
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::has_data() const
+{
+    return set_name.is_set;
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-name")
+    {
+        set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntries()
+{
+
+    yang_name = "acl-entries"; yang_parent_name = "egress-acl-set"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::~AclEntries()
+{
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::has_data() const
+{
+    for (std::size_t index=0; index<acl_entry.size(); index++)
+    {
+        if(acl_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::has_operation() const
+{
+    for (std::size_t index=0; index<acl_entry.size(); index++)
+    {
+        if(acl_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-entry")
+    {
+        for(auto const & c : acl_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry>();
+        c->parent = this;
+        acl_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : acl_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-entry")
+        return true;
+    return false;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::AclEntry()
+    :
+    sequence_id{YType::str, "sequence-id"}
+{
+
+    yang_name = "acl-entry"; yang_parent_name = "acl-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::~AclEntry()
+{
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::has_data() const
+{
+    return sequence_id.is_set;
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sequence_id.yfilter);
+}
+
+std::string AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-entry" <<"[sequence-id='" <<sequence_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sequence_id.is_set || is_set(sequence_id.yfilter)) leaf_name_data.push_back(sequence_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sequence-id")
+    {
+        sequence_id = value;
+        sequence_id.value_namespace = name_space;
+        sequence_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sequence-id")
+    {
+        sequence_id.yfilter = yfilter;
+    }
+}
+
+bool AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sequence-id")
         return true;
     return false;
 }

@@ -96,15 +96,6 @@ class Ipv6srpEncapsulation : public ydk::Enum
 
 };
 
-class Ipv6NdRouterPref : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
-
-};
-
 class Ipv6ndMonth : public ydk::Enum
 {
     public:
@@ -120,6 +111,15 @@ class Ipv6ndMonth : public ydk::Enum
         static const ydk::Enum::YLeaf october;
         static const ydk::Enum::YLeaf november;
         static const ydk::Enum::YLeaf december;
+
+};
+
+class Ipv6NdRouterPref : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 

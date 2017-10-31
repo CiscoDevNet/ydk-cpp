@@ -238,12 +238,221 @@ class UdpConnection::Nodes::Node : public ydk::Entity
         class PcbDetails; //type: UdpConnection::Nodes::Node::PcbDetails
         class PcbBriefs; //type: UdpConnection::Nodes::Node::PcbBriefs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts> lpts;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs> pcb_briefs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails> pcb_details;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts> lpts;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails> pcb_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs> pcb_briefs;
         
 }; // UdpConnection::Nodes::Node
+
+
+class UdpConnection::Nodes::Node::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Clients; //type: UdpConnection::Nodes::Node::Statistics::Clients
+        class Summary; //type: UdpConnection::Nodes::Node::Statistics::Summary
+        class PcbStatistics; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Clients> clients;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Summary> summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics> pcb_statistics;
+        
+}; // UdpConnection::Nodes::Node::Statistics
+
+
+class UdpConnection::Nodes::Node::Statistics::Clients : public ydk::Entity
+{
+    public:
+        Clients();
+        ~Clients();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Client; //type: UdpConnection::Nodes::Node::Statistics::Clients::Client
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Clients::Client> > client;
+        
+}; // UdpConnection::Nodes::Node::Statistics::Clients
+
+
+class UdpConnection::Nodes::Node::Statistics::Clients::Client : public ydk::Entity
+{
+    public:
+        Client();
+        ~Client();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf client_jid; //type: int32
+        ydk::YLeaf client_name; //type: string
+        ydk::YLeaf ipv4_received_packets; //type: uint32
+        ydk::YLeaf ipv4_sent_packets; //type: uint32
+        ydk::YLeaf ipv6_received_packets; //type: uint32
+        ydk::YLeaf ipv6_sent_packets; //type: uint32
+
+}; // UdpConnection::Nodes::Node::Statistics::Clients::Client
+
+
+class UdpConnection::Nodes::Node::Statistics::Summary : public ydk::Entity
+{
+    public:
+        Summary();
+        ~Summary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf received_total_packets; //type: uint32
+        ydk::YLeaf received_no_port_packets; //type: uint32
+        ydk::YLeaf received_bad_checksum_packets; //type: uint32
+        ydk::YLeaf received_too_short_packets; //type: uint32
+        ydk::YLeaf received_drop_packets; //type: uint32
+        ydk::YLeaf sent_total_packets; //type: uint32
+        ydk::YLeaf sent_error_packets; //type: uint32
+        ydk::YLeaf forward_broadcast_packets; //type: uint32
+        ydk::YLeaf cloned_packets; //type: uint32
+        ydk::YLeaf failed_clone_packets; //type: uint32
+
+}; // UdpConnection::Nodes::Node::Statistics::Summary
+
+
+class UdpConnection::Nodes::Node::Statistics::PcbStatistics : public ydk::Entity
+{
+    public:
+        PcbStatistics();
+        ~PcbStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PcbStatistic; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic> > pcb_statistic;
+        
+}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics
+
+
+class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic : public ydk::Entity
+{
+    public:
+        PcbStatistic();
+        ~PcbStatistic();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pcb_address; //type: uint32
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf is_paw_socket; //type: boolean
+        class Send; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send
+        class Receive; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send> send;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive> receive;
+        
+}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic
+
+
+class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send : public ydk::Entity
+{
+    public:
+        Send();
+        ~Send();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf received_application_bytes; //type: uint64
+        ydk::YLeaf received_xipc_pulses; //type: uint64
+        ydk::YLeaf sent_network_packets; //type: uint64
+        ydk::YLeaf sent_net_io_packets; //type: uint64
+        ydk::YLeaf failed_queued_network_packets; //type: uint32
+        ydk::YLeaf failed_queued_net_io_packets; //type: uint32
+
+}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send
+
+
+class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive : public ydk::Entity
+{
+    public:
+        Receive();
+        ~Receive();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf received_network_packets; //type: uint64
+        ydk::YLeaf failed_queued_application_packets; //type: uint32
+        ydk::YLeaf queued_application_packets; //type: uint64
+        ydk::YLeaf failed_queued_application_socket_packets; //type: uint32
+        ydk::YLeaf queued_application_socket_packets; //type: uint64
+
+}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive
 
 
 class UdpConnection::Nodes::Node::Lpts : public ydk::Entity
@@ -363,11 +572,57 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb : public ydk::
         class ForeignAddress; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress
         class Common; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common> common;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress> foreign_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress> local_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress> foreign_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common> common;
         
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb
+
+
+class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress : public ydk::Entity
+{
+    public:
+        LocalAddress();
+        ~LocalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: AddrFamily
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress
+
+
+class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress : public ydk::Entity
+{
+    public:
+        ForeignAddress();
+        ~ForeignAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: AddrFamily
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress
 
 
 class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common : public ydk::Entity
@@ -417,12 +672,57 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
         class AcceptMask; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask
         class Filter; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options> options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags> lpts_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask> accept_mask;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter> > filter;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags> lpts_flags;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options> options;
         
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb
+
+
+class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options : public ydk::Entity
+{
+    public:
+        Options();
+        ~Options();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_receive_filter; //type: boolean
+        ydk::YLeaf is_ip_sla; //type: boolean
+
+}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options
+
+
+class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags : public ydk::Entity
+{
+    public:
+        LptsFlags();
+        ~LptsFlags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_pcb_bound; //type: boolean
+        ydk::YLeaf is_local_address_ignore; //type: boolean
+        ydk::YLeaf is_ignore_vrf_filter; //type: boolean
+
+}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags
 
 
 class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask : public ydk::Entity
@@ -479,34 +779,11 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
         class RemoteAddress; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress
         class LocalAddress; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress> local_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType> packet_type;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress> remote_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress> local_address;
         
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter
-
-
-class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress : public ydk::Entity
-{
-    public:
-        LocalAddress();
-        ~LocalAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf af_name; //type: AddrFamily
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress
 
 
 class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType : public ydk::Entity
@@ -557,75 +834,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress
 
 
-class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags : public ydk::Entity
-{
-    public:
-        LptsFlags();
-        ~LptsFlags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_pcb_bound; //type: boolean
-        ydk::YLeaf is_local_address_ignore; //type: boolean
-        ydk::YLeaf is_ignore_vrf_filter; //type: boolean
-
-}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags
-
-
-class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options : public ydk::Entity
-{
-    public:
-        Options();
-        ~Options();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_receive_filter; //type: boolean
-        ydk::YLeaf is_ip_sla; //type: boolean
-
-}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options
-
-
-class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress : public ydk::Entity
-{
-    public:
-        ForeignAddress();
-        ~ForeignAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf af_name; //type: AddrFamily
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress
-
-
-class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress : public ydk::Entity
+class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress : public ydk::Entity
 {
     public:
         LocalAddress();
@@ -645,108 +854,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress 
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress
-
-
-class UdpConnection::Nodes::Node::PcbBriefs : public ydk::Entity
-{
-    public:
-        PcbBriefs();
-        ~PcbBriefs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PcbBrief; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief> > pcb_brief;
-        
-}; // UdpConnection::Nodes::Node::PcbBriefs
-
-
-class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief : public ydk::Entity
-{
-    public:
-        PcbBrief();
-        ~PcbBrief();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pcb_address; //type: uint32
-        ydk::YLeaf af_name; //type: UdpAddressFamily
-        ydk::YLeaf local_port; //type: uint16
-        ydk::YLeaf foreign_port; //type: uint16
-        ydk::YLeaf receive_queue; //type: uint32
-        ydk::YLeaf send_queue; //type: uint32
-        ydk::YLeaf vrf_id; //type: uint32
-        class LocalAddress; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress
-        class ForeignAddress; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress> foreign_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress> local_address;
-        
-}; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
-
-
-class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress : public ydk::Entity
-{
-    public:
-        ForeignAddress();
-        ~ForeignAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf af_name; //type: UdpAddressFamily
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress
-
-
-class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress : public ydk::Entity
-{
-    public:
-        LocalAddress();
-        ~LocalAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf af_name; //type: UdpAddressFamily
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress
+}; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress
 
 
 class UdpConnection::Nodes::Node::PcbDetails : public ydk::Entity
@@ -799,33 +907,10 @@ class UdpConnection::Nodes::Node::PcbDetails::PcbDetail : public ydk::Entity
         class LocalAddress; //type: UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress
         class ForeignAddress; //type: UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress> foreign_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress> local_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress> foreign_address;
         
 }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail
-
-
-class UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress : public ydk::Entity
-{
-    public:
-        ForeignAddress();
-        ~ForeignAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf af_name; //type: UdpAddressFamily
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress
 
 
 class UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress : public ydk::Entity
@@ -851,11 +936,11 @@ class UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress : public y
 }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress
 
 
-class UdpConnection::Nodes::Node::Statistics : public ydk::Entity
+class UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress : public ydk::Entity
 {
     public:
-        Statistics();
-        ~Statistics();
+        ForeignAddress();
+        ~ForeignAddress();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -867,95 +952,41 @@ class UdpConnection::Nodes::Node::Statistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Clients; //type: UdpConnection::Nodes::Node::Statistics::Clients
-        class Summary; //type: UdpConnection::Nodes::Node::Statistics::Summary
-        class PcbStatistics; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics
+        ydk::YLeaf af_name; //type: UdpAddressFamily
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Clients> clients;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics> pcb_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Summary> summary;
+}; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress
+
+
+class UdpConnection::Nodes::Node::PcbBriefs : public ydk::Entity
+{
+    public:
+        PcbBriefs();
+        ~PcbBriefs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PcbBrief; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief> > pcb_brief;
         
-}; // UdpConnection::Nodes::Node::Statistics
+}; // UdpConnection::Nodes::Node::PcbBriefs
 
 
-class UdpConnection::Nodes::Node::Statistics::Clients : public ydk::Entity
+class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief : public ydk::Entity
 {
     public:
-        Clients();
-        ~Clients();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Client; //type: UdpConnection::Nodes::Node::Statistics::Clients::Client
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Clients::Client> > client;
-        
-}; // UdpConnection::Nodes::Node::Statistics::Clients
-
-
-class UdpConnection::Nodes::Node::Statistics::Clients::Client : public ydk::Entity
-{
-    public:
-        Client();
-        ~Client();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf client_id; //type: uint32
-        ydk::YLeaf client_jid; //type: int32
-        ydk::YLeaf client_name; //type: string
-        ydk::YLeaf ipv4_received_packets; //type: uint32
-        ydk::YLeaf ipv4_sent_packets; //type: uint32
-        ydk::YLeaf ipv6_received_packets; //type: uint32
-        ydk::YLeaf ipv6_sent_packets; //type: uint32
-
-}; // UdpConnection::Nodes::Node::Statistics::Clients::Client
-
-
-class UdpConnection::Nodes::Node::Statistics::PcbStatistics : public ydk::Entity
-{
-    public:
-        PcbStatistics();
-        ~PcbStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PcbStatistic; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic> > pcb_statistic;
-        
-}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics
-
-
-class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic : public ydk::Entity
-{
-    public:
-        PcbStatistic();
-        ~PcbStatistic();
+        PcbBrief();
+        ~PcbBrief();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -968,22 +999,26 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf pcb_address; //type: uint32
+        ydk::YLeaf af_name; //type: UdpAddressFamily
+        ydk::YLeaf local_port; //type: uint16
+        ydk::YLeaf foreign_port; //type: uint16
+        ydk::YLeaf receive_queue; //type: uint32
+        ydk::YLeaf send_queue; //type: uint32
         ydk::YLeaf vrf_id; //type: uint32
-        ydk::YLeaf is_paw_socket; //type: boolean
-        class Send; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send
-        class Receive; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive
+        class LocalAddress; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress
+        class ForeignAddress; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive> receive;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send> send;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress> local_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress> foreign_address;
         
-}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic
+}; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
 
 
-class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive : public ydk::Entity
+class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress : public ydk::Entity
 {
     public:
-        Receive();
-        ~Receive();
+        LocalAddress();
+        ~LocalAddress();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -995,20 +1030,18 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Recei
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf received_network_packets; //type: uint64
-        ydk::YLeaf failed_queued_application_packets; //type: uint32
-        ydk::YLeaf queued_application_packets; //type: uint64
-        ydk::YLeaf failed_queued_application_socket_packets; //type: uint32
-        ydk::YLeaf queued_application_socket_packets; //type: uint64
+        ydk::YLeaf af_name; //type: UdpAddressFamily
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
 
-}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive
+}; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress
 
 
-class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send : public ydk::Entity
+class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress : public ydk::Entity
 {
     public:
-        Send();
-        ~Send();
+        ForeignAddress();
+        ~ForeignAddress();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1020,44 +1053,11 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf received_application_bytes; //type: uint64
-        ydk::YLeaf received_xipc_pulses; //type: uint64
-        ydk::YLeaf sent_network_packets; //type: uint64
-        ydk::YLeaf sent_net_io_packets; //type: uint64
-        ydk::YLeaf failed_queued_network_packets; //type: uint32
-        ydk::YLeaf failed_queued_net_io_packets; //type: uint32
+        ydk::YLeaf af_name; //type: UdpAddressFamily
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
 
-}; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send
-
-
-class UdpConnection::Nodes::Node::Statistics::Summary : public ydk::Entity
-{
-    public:
-        Summary();
-        ~Summary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf received_total_packets; //type: uint32
-        ydk::YLeaf received_no_port_packets; //type: uint32
-        ydk::YLeaf received_bad_checksum_packets; //type: uint32
-        ydk::YLeaf received_too_short_packets; //type: uint32
-        ydk::YLeaf received_drop_packets; //type: uint32
-        ydk::YLeaf sent_total_packets; //type: uint32
-        ydk::YLeaf sent_error_packets; //type: uint32
-        ydk::YLeaf forward_broadcast_packets; //type: uint32
-        ydk::YLeaf cloned_packets; //type: uint32
-        ydk::YLeaf failed_clone_packets; //type: uint32
-
-}; // UdpConnection::Nodes::Node::Statistics::Summary
+}; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress
 
 class LptsPcbQuery : public ydk::Enum
 {
@@ -1069,11 +1069,115 @@ class LptsPcbQuery : public ydk::Enum
 
 };
 
-class UdpAddressFamily : public ydk::Enum
+class MessageTypeIgmp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf membership_query;
+        static const ydk::Enum::YLeaf v1_membership_report;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf pi_mv1;
+        static const ydk::Enum::YLeaf cisco_trace_messages;
+        static const ydk::Enum::YLeaf v2_membership_report;
+        static const ydk::Enum::YLeaf v2_leave_group;
+        static const ydk::Enum::YLeaf multicast_traceroute_response;
+        static const ydk::Enum::YLeaf multicast_traceroute;
+        static const ydk::Enum::YLeaf v3_membership_report;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+
+};
+
+class MessageTypeIgmp_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf membership_query;
+        static const ydk::Enum::YLeaf v1_membership_report;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf pi_mv1;
+        static const ydk::Enum::YLeaf cisco_trace_messages;
+        static const ydk::Enum::YLeaf v2_membership_report;
+        static const ydk::Enum::YLeaf v2_leave_group;
+        static const ydk::Enum::YLeaf multicast_traceroute_response;
+        static const ydk::Enum::YLeaf multicast_traceroute;
+        static const ydk::Enum::YLeaf v3_membership_report;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+
+};
+
+class MessageTypeIcmpv6 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf destination_unreachable;
+        static const ydk::Enum::YLeaf packet_too_big;
+        static const ydk::Enum::YLeaf time_exceeded;
+        static const ydk::Enum::YLeaf parameter_problem;
+        static const ydk::Enum::YLeaf echo_request;
+        static const ydk::Enum::YLeaf echo_reply;
+        static const ydk::Enum::YLeaf multicast_listener_query;
+        static const ydk::Enum::YLeaf multicast_listener_report;
+        static const ydk::Enum::YLeaf multicast_listener_done;
+        static const ydk::Enum::YLeaf router_solicitation;
+        static const ydk::Enum::YLeaf router_advertisement;
+        static const ydk::Enum::YLeaf neighbor_solicitation;
+        static const ydk::Enum::YLeaf neighbor_advertisement;
+        static const ydk::Enum::YLeaf redirect_message;
+        static const ydk::Enum::YLeaf router_renumbering;
+        static const ydk::Enum::YLeaf node_information_query;
+        static const ydk::Enum::YLeaf node_information_reply;
+        static const ydk::Enum::YLeaf inverse_neighbor_discovery_solicitaion;
+        static const ydk::Enum::YLeaf inverse_neighbor_discover_advertisement;
+        static const ydk::Enum::YLeaf v2_multicast_listener_report;
+        static const ydk::Enum::YLeaf home_agent_address_discovery_request;
+        static const ydk::Enum::YLeaf home_agent_address_discovery_reply;
+        static const ydk::Enum::YLeaf mobile_prefix_solicitation;
+        static const ydk::Enum::YLeaf mobile_prefix_advertisement;
+        static const ydk::Enum::YLeaf certification_path_solicitation_message;
+        static const ydk::Enum::YLeaf certification_path_advertisement_message;
+        static const ydk::Enum::YLeaf experimental_mobility_protocols;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+        static const ydk::Enum::YLeaf fmipv6_messages;
+
+};
+
+class MessageTypeIcmpv6_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf destination_unreachable;
+        static const ydk::Enum::YLeaf packet_too_big;
+        static const ydk::Enum::YLeaf time_exceeded;
+        static const ydk::Enum::YLeaf parameter_problem;
+        static const ydk::Enum::YLeaf echo_request;
+        static const ydk::Enum::YLeaf echo_reply;
+        static const ydk::Enum::YLeaf multicast_listener_query;
+        static const ydk::Enum::YLeaf multicast_listener_report;
+        static const ydk::Enum::YLeaf multicast_listener_done;
+        static const ydk::Enum::YLeaf router_solicitation;
+        static const ydk::Enum::YLeaf router_advertisement;
+        static const ydk::Enum::YLeaf neighbor_solicitation;
+        static const ydk::Enum::YLeaf neighbor_advertisement;
+        static const ydk::Enum::YLeaf redirect_message;
+        static const ydk::Enum::YLeaf router_renumbering;
+        static const ydk::Enum::YLeaf node_information_query;
+        static const ydk::Enum::YLeaf node_information_reply;
+        static const ydk::Enum::YLeaf inverse_neighbor_discovery_solicitaion;
+        static const ydk::Enum::YLeaf inverse_neighbor_discover_advertisement;
+        static const ydk::Enum::YLeaf v2_multicast_listener_report;
+        static const ydk::Enum::YLeaf home_agent_address_discovery_request;
+        static const ydk::Enum::YLeaf home_agent_address_discovery_reply;
+        static const ydk::Enum::YLeaf mobile_prefix_solicitation;
+        static const ydk::Enum::YLeaf mobile_prefix_advertisement;
+        static const ydk::Enum::YLeaf certification_path_solicitation_message;
+        static const ydk::Enum::YLeaf certification_path_advertisement_message;
+        static const ydk::Enum::YLeaf experimental_mobility_protocols;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+        static const ydk::Enum::YLeaf fmipv6_messages;
 
 };
 
@@ -1104,6 +1208,46 @@ class MessageTypeIcmp : public ydk::Enum
         static const ydk::Enum::YLeaf mobile_registration_request;
         static const ydk::Enum::YLeaf mobile_registration_reply;
         static const ydk::Enum::YLeaf domain_name_request;
+
+};
+
+class MessageTypeIcmp_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf echo_reply;
+        static const ydk::Enum::YLeaf destination_unreachable;
+        static const ydk::Enum::YLeaf source_quench;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf alternate_host_address;
+        static const ydk::Enum::YLeaf echo;
+        static const ydk::Enum::YLeaf router_advertisement;
+        static const ydk::Enum::YLeaf router_selection;
+        static const ydk::Enum::YLeaf time_exceeded;
+        static const ydk::Enum::YLeaf parameter_problem;
+        static const ydk::Enum::YLeaf time_stamp;
+        static const ydk::Enum::YLeaf time_stamp_reply;
+        static const ydk::Enum::YLeaf information_request;
+        static const ydk::Enum::YLeaf information_reply;
+        static const ydk::Enum::YLeaf address_mask_request;
+        static const ydk::Enum::YLeaf address_mask_reply;
+        static const ydk::Enum::YLeaf trace_route;
+        static const ydk::Enum::YLeaf datagram_conversion_error;
+        static const ydk::Enum::YLeaf mobile_host_redirect;
+        static const ydk::Enum::YLeaf where_are_you;
+        static const ydk::Enum::YLeaf iam_here;
+        static const ydk::Enum::YLeaf mobile_registration_request;
+        static const ydk::Enum::YLeaf mobile_registration_reply;
+        static const ydk::Enum::YLeaf domain_name_request;
+
+};
+
+class Packet : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf icm_pv6;
+        static const ydk::Enum::YLeaf igmp;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -1155,155 +1299,11 @@ class AddrFamily : public ydk::Enum
 
 };
 
-class MessageTypeIcmpv6 : public ydk::Enum
+class UdpAddressFamily : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf destination_unreachable;
-        static const ydk::Enum::YLeaf packet_too_big;
-        static const ydk::Enum::YLeaf time_exceeded;
-        static const ydk::Enum::YLeaf parameter_problem;
-        static const ydk::Enum::YLeaf echo_request;
-        static const ydk::Enum::YLeaf echo_reply;
-        static const ydk::Enum::YLeaf multicast_listener_query;
-        static const ydk::Enum::YLeaf multicast_listener_report;
-        static const ydk::Enum::YLeaf multicast_listener_done;
-        static const ydk::Enum::YLeaf router_solicitation;
-        static const ydk::Enum::YLeaf router_advertisement;
-        static const ydk::Enum::YLeaf neighbor_solicitation;
-        static const ydk::Enum::YLeaf neighbor_advertisement;
-        static const ydk::Enum::YLeaf redirect_message;
-        static const ydk::Enum::YLeaf router_renumbering;
-        static const ydk::Enum::YLeaf node_information_query;
-        static const ydk::Enum::YLeaf node_information_reply;
-        static const ydk::Enum::YLeaf inverse_neighbor_discovery_solicitaion;
-        static const ydk::Enum::YLeaf inverse_neighbor_discover_advertisement;
-        static const ydk::Enum::YLeaf v2_multicast_listener_report;
-        static const ydk::Enum::YLeaf home_agent_address_discovery_request;
-        static const ydk::Enum::YLeaf home_agent_address_discovery_reply;
-        static const ydk::Enum::YLeaf mobile_prefix_solicitation;
-        static const ydk::Enum::YLeaf mobile_prefix_advertisement;
-        static const ydk::Enum::YLeaf certification_path_solicitation_message;
-        static const ydk::Enum::YLeaf certification_path_advertisement_message;
-        static const ydk::Enum::YLeaf experimental_mobility_protocols;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-        static const ydk::Enum::YLeaf fmipv6_messages;
-
-};
-
-class MessageTypeIcmp_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf echo_reply;
-        static const ydk::Enum::YLeaf destination_unreachable;
-        static const ydk::Enum::YLeaf source_quench;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf alternate_host_address;
-        static const ydk::Enum::YLeaf echo;
-        static const ydk::Enum::YLeaf router_advertisement;
-        static const ydk::Enum::YLeaf router_selection;
-        static const ydk::Enum::YLeaf time_exceeded;
-        static const ydk::Enum::YLeaf parameter_problem;
-        static const ydk::Enum::YLeaf time_stamp;
-        static const ydk::Enum::YLeaf time_stamp_reply;
-        static const ydk::Enum::YLeaf information_request;
-        static const ydk::Enum::YLeaf information_reply;
-        static const ydk::Enum::YLeaf address_mask_request;
-        static const ydk::Enum::YLeaf address_mask_reply;
-        static const ydk::Enum::YLeaf trace_route;
-        static const ydk::Enum::YLeaf datagram_conversion_error;
-        static const ydk::Enum::YLeaf mobile_host_redirect;
-        static const ydk::Enum::YLeaf where_are_you;
-        static const ydk::Enum::YLeaf iam_here;
-        static const ydk::Enum::YLeaf mobile_registration_request;
-        static const ydk::Enum::YLeaf mobile_registration_reply;
-        static const ydk::Enum::YLeaf domain_name_request;
-
-};
-
-class Packet : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf icm_pv6;
-        static const ydk::Enum::YLeaf igmp;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class MessageTypeIgmp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf membership_query;
-        static const ydk::Enum::YLeaf v1_membership_report;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf pi_mv1;
-        static const ydk::Enum::YLeaf cisco_trace_messages;
-        static const ydk::Enum::YLeaf v2_membership_report;
-        static const ydk::Enum::YLeaf v2_leave_group;
-        static const ydk::Enum::YLeaf multicast_traceroute_response;
-        static const ydk::Enum::YLeaf multicast_traceroute;
-        static const ydk::Enum::YLeaf v3_membership_report;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-
-};
-
-class MessageTypeIgmp_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf membership_query;
-        static const ydk::Enum::YLeaf v1_membership_report;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf pi_mv1;
-        static const ydk::Enum::YLeaf cisco_trace_messages;
-        static const ydk::Enum::YLeaf v2_membership_report;
-        static const ydk::Enum::YLeaf v2_leave_group;
-        static const ydk::Enum::YLeaf multicast_traceroute_response;
-        static const ydk::Enum::YLeaf multicast_traceroute;
-        static const ydk::Enum::YLeaf v3_membership_report;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-
-};
-
-class MessageTypeIcmpv6_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf destination_unreachable;
-        static const ydk::Enum::YLeaf packet_too_big;
-        static const ydk::Enum::YLeaf time_exceeded;
-        static const ydk::Enum::YLeaf parameter_problem;
-        static const ydk::Enum::YLeaf echo_request;
-        static const ydk::Enum::YLeaf echo_reply;
-        static const ydk::Enum::YLeaf multicast_listener_query;
-        static const ydk::Enum::YLeaf multicast_listener_report;
-        static const ydk::Enum::YLeaf multicast_listener_done;
-        static const ydk::Enum::YLeaf router_solicitation;
-        static const ydk::Enum::YLeaf router_advertisement;
-        static const ydk::Enum::YLeaf neighbor_solicitation;
-        static const ydk::Enum::YLeaf neighbor_advertisement;
-        static const ydk::Enum::YLeaf redirect_message;
-        static const ydk::Enum::YLeaf router_renumbering;
-        static const ydk::Enum::YLeaf node_information_query;
-        static const ydk::Enum::YLeaf node_information_reply;
-        static const ydk::Enum::YLeaf inverse_neighbor_discovery_solicitaion;
-        static const ydk::Enum::YLeaf inverse_neighbor_discover_advertisement;
-        static const ydk::Enum::YLeaf v2_multicast_listener_report;
-        static const ydk::Enum::YLeaf home_agent_address_discovery_request;
-        static const ydk::Enum::YLeaf home_agent_address_discovery_reply;
-        static const ydk::Enum::YLeaf mobile_prefix_solicitation;
-        static const ydk::Enum::YLeaf mobile_prefix_advertisement;
-        static const ydk::Enum::YLeaf certification_path_solicitation_message;
-        static const ydk::Enum::YLeaf certification_path_advertisement_message;
-        static const ydk::Enum::YLeaf experimental_mobility_protocols;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-        static const ydk::Enum::YLeaf fmipv6_messages;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

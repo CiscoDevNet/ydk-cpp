@@ -42,10 +42,10 @@ class CISCOSESSBORDERCTRLRCALLSTATSMIB : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable> csbcallstatsinstancetable;
         std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable> csbcallstatstable;
         std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable> csbcurrperiodicstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table> csbh248statsrev1table;
-        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable> csbh248statstable;
         std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable> csbhistorystatstable;
         std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable> csbperflowstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable> csbh248statstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table> csbh248statsrev1table;
         
 }; // CISCOSESSBORDERCTRLRCALLSTATSMIB
 
@@ -265,132 +265,6 @@ class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiod
 }; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcurrperiodicstatstable::Csbcurrperiodicstatsentry
 
 
-class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table : public ydk::Entity
-{
-    public:
-        Csbh248Statsrev1Table();
-        ~Csbh248Statsrev1Table();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Csbh248Statsrev1Entry; //type: CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry> > csbh248statsrev1entry;
-        
-}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table
-
-
-class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry : public ydk::Entity
-{
-    public:
-        Csbh248Statsrev1Entry();
-        ~Csbh248Statsrev1Entry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
-        ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
-        ydk::YLeaf csbcallstatsserviceindex;
-        ydk::YLeaf csbh248statsvdbeid; //type: int32
-        ydk::YLeaf csbh248statsrequestssentrev1; //type: uint32
-        ydk::YLeaf csbh248statsrequestsrcvdrev1; //type: uint32
-        ydk::YLeaf csbh248statsrequestsfailedrev1; //type: uint32
-        ydk::YLeaf csbh248statsrequestsretriedrev1; //type: uint32
-        ydk::YLeaf csbh248statsrepliessentrev1; //type: uint32
-        ydk::YLeaf csbh248statsrepliesrcvdrev1; //type: uint32
-        ydk::YLeaf csbh248statsrepliesretriedrev1; //type: uint32
-        ydk::YLeaf csbh248statssegpktssentrev1; //type: uint32
-        ydk::YLeaf csbh248statssegpktsrcvdrev1; //type: uint32
-        ydk::YLeaf csbh248statsestablishedtimerev1; //type: binary
-        ydk::YLeaf csbh248statstmaxtimeoutvalrev1; //type: int32
-        ydk::YLeaf csbh248statsrttrev1; //type: uint32
-        ydk::YLeaf csbh248statsltrev1; //type: uint32
-
-}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry
-
-
-class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable : public ydk::Entity
-{
-    public:
-        Csbh248Statstable();
-        ~Csbh248Statstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Csbh248Statsentry; //type: CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry> > csbh248statsentry;
-        
-}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable
-
-
-class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry : public ydk::Entity
-{
-    public:
-        Csbh248Statsentry();
-        ~Csbh248Statsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
-        ydk::YLeaf csbcallstatsinstanceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
-        ydk::YLeaf csbcallstatsserviceindex;
-        ydk::YLeaf csbh248statsctrlrindex; //type: int32
-        ydk::YLeaf csbh248statsrequestssent; //type: uint32
-        ydk::YLeaf csbh248statsrequestsrcvd; //type: uint32
-        ydk::YLeaf csbh248statsrequestsfailed; //type: uint32
-        ydk::YLeaf csbh248statsrequestsretried; //type: uint32
-        ydk::YLeaf csbh248statsrepliessent; //type: uint32
-        ydk::YLeaf csbh248statsrepliesrcvd; //type: uint32
-        ydk::YLeaf csbh248statsrepliesretried; //type: uint32
-        ydk::YLeaf csbh248statssegpktssent; //type: uint32
-        ydk::YLeaf csbh248statssegpktsrcvd; //type: uint32
-        ydk::YLeaf csbh248statsestablishedtime; //type: binary
-        ydk::YLeaf csbh248statstmaxtimeoutval; //type: int32
-        ydk::YLeaf csbh248statsrtt; //type: uint32
-        ydk::YLeaf csbh248statslt; //type: uint32
-
-}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry
-
-
 class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbhistorystatstable : public ydk::Entity
 {
     public:
@@ -555,6 +429,132 @@ class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsent
         class Csbperflowstatsflowtype;
 
 }; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbperflowstatstable::Csbperflowstatsentry
+
+
+class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable : public ydk::Entity
+{
+    public:
+        Csbh248Statstable();
+        ~Csbh248Statstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Csbh248Statsentry; //type: CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry> > csbh248statsentry;
+        
+}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable
+
+
+class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry : public ydk::Entity
+{
+    public:
+        Csbh248Statsentry();
+        ~Csbh248Statsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        ydk::YLeaf csbcallstatsinstanceindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        ydk::YLeaf csbcallstatsserviceindex;
+        ydk::YLeaf csbh248statsctrlrindex; //type: int32
+        ydk::YLeaf csbh248statsrequestssent; //type: uint32
+        ydk::YLeaf csbh248statsrequestsrcvd; //type: uint32
+        ydk::YLeaf csbh248statsrequestsfailed; //type: uint32
+        ydk::YLeaf csbh248statsrequestsretried; //type: uint32
+        ydk::YLeaf csbh248statsrepliessent; //type: uint32
+        ydk::YLeaf csbh248statsrepliesrcvd; //type: uint32
+        ydk::YLeaf csbh248statsrepliesretried; //type: uint32
+        ydk::YLeaf csbh248statssegpktssent; //type: uint32
+        ydk::YLeaf csbh248statssegpktsrcvd; //type: uint32
+        ydk::YLeaf csbh248statsestablishedtime; //type: binary
+        ydk::YLeaf csbh248statstmaxtimeoutval; //type: int32
+        ydk::YLeaf csbh248statsrtt; //type: uint32
+        ydk::YLeaf csbh248statslt; //type: uint32
+
+}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statstable::Csbh248Statsentry
+
+
+class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table : public ydk::Entity
+{
+    public:
+        Csbh248Statsrev1Table();
+        ~Csbh248Statsrev1Table();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Csbh248Statsrev1Entry; //type: CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry> > csbh248statsrev1entry;
+        
+}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table
+
+
+class CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry : public ydk::Entity
+{
+    public:
+        Csbh248Statsrev1Entry();
+        ~Csbh248Statsrev1Entry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatsinstancetable::Csbcallstatsinstanceentry::csbcallstatsinstanceindex)
+        ydk::YLeaf csbcallstatsinstanceindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SESS_BORDER_CTRLR_CALL_STATS_MIB::CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbcallstatstable::Csbcallstatsentry::csbcallstatsserviceindex)
+        ydk::YLeaf csbcallstatsserviceindex;
+        ydk::YLeaf csbh248statsvdbeid; //type: int32
+        ydk::YLeaf csbh248statsrequestssentrev1; //type: uint32
+        ydk::YLeaf csbh248statsrequestsrcvdrev1; //type: uint32
+        ydk::YLeaf csbh248statsrequestsfailedrev1; //type: uint32
+        ydk::YLeaf csbh248statsrequestsretriedrev1; //type: uint32
+        ydk::YLeaf csbh248statsrepliessentrev1; //type: uint32
+        ydk::YLeaf csbh248statsrepliesrcvdrev1; //type: uint32
+        ydk::YLeaf csbh248statsrepliesretriedrev1; //type: uint32
+        ydk::YLeaf csbh248statssegpktssentrev1; //type: uint32
+        ydk::YLeaf csbh248statssegpktsrcvdrev1; //type: uint32
+        ydk::YLeaf csbh248statsestablishedtimerev1; //type: binary
+        ydk::YLeaf csbh248statstmaxtimeoutvalrev1; //type: int32
+        ydk::YLeaf csbh248statsrttrev1; //type: uint32
+        ydk::YLeaf csbh248statsltrev1; //type: uint32
+
+}; // CISCOSESSBORDERCTRLRCALLSTATSMIB::Csbh248Statsrev1Table::Csbh248Statsrev1Entry
 
 class CiscoSbcPeriodicStatsInterval : public ydk::Enum
 {

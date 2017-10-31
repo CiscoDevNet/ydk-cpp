@@ -20,6 +20,15 @@ class LspType : public virtual ydk::Identity
 
 }; // LspType
 
+class NexthopResolutionType : public virtual ydk::Identity
+{
+    public:
+        NexthopResolutionType();
+        ~NexthopResolutionType();
+
+
+}; // NexthopResolutionType
+
 class MplsStatic : public ydk::Entity
 {
     public:
@@ -67,26 +76,26 @@ class MplsStatic::MplsStaticCfg : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        class Ipv6IngressLsps; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps
+        class Interfaces; //type: MplsStatic::MplsStaticCfg::Interfaces
+        class NamedLsps; //type: MplsStatic::MplsStaticCfg::NamedLsps
         class Ipv4IngressLsps; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps
         class InLabelLsps; //type: MplsStatic::MplsStaticCfg::InLabelLsps
-        class Ipv6IngressLsps; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps
-        class NamedLsps; //type: MplsStatic::MplsStaticCfg::NamedLsps
-        class Interfaces; //type: MplsStatic::MplsStaticCfg::Interfaces
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps> in_label_lsps;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Interfaces> interfaces;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps> ipv4_ingress_lsps;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps> ipv6_ingress_lsps;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps> named_lsps;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps> ipv4_ingress_lsps;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps> in_label_lsps;
         
 }; // MplsStatic::MplsStaticCfg
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps : public ydk::Entity
 {
     public:
-        InLabelLsps();
-        ~InLabelLsps();
+        Ipv6IngressLsps();
+        ~Ipv6IngressLsps();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -99,18 +108,18 @@ class MplsStatic::MplsStaticCfg::InLabelLsps : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class InLabelLsp; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp
+        class Ipv6IngressLsp; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp> > in_label_lsp;
+        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp> > ipv6_ingress_lsp;
         
-}; // MplsStatic::MplsStaticCfg::InLabelLsps
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp : public ydk::Entity
 {
     public:
-        InLabelLsp();
-        ~InLabelLsp();
+        Ipv6IngressLsp();
+        ~Ipv6IngressLsp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -124,15 +133,17 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf name; //type: string
         ydk::YLeaf in_label; //type: one of enumeration, uint32
-        class Path; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
+        class Path; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path> path;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path> path;
         
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path : public ydk::Entity
 {
     public:
         Path();
@@ -149,16 +160,131 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf auto_protect; //type: boolean
-        class Operations; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations
-        class NextHop; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop
+        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations
+        class NextHop; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop
 
-        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop> > next_hop;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations> operations;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations> operations;
+        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop> > next_hop;
         
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations : public ydk::Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf preserve; //type: empty
+        ydk::YLeaf pop_and_forward; //type: empty
+        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push> push;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations
+
+
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap : public ydk::Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap
+
+
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack
+
+
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push : public ydk::Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push
+
+
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack
+
+
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -177,16 +303,16 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop : public
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf type; //type: Hoptype
         ydk::YLeaf protected_by; //type: uint32
-        class NextHopType; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType
-        class Operations; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations
+        class NextHopType; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType
+        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations> operations;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType> next_hop_type;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations> operations;
         
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType : public ydk::Entity
 {
     public:
         NextHopType();
@@ -209,10 +335,10 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHop
         //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
         ydk::YLeaf out_interface_name;
 
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations : public ydk::Entity
 {
     public:
         Operations();
@@ -230,60 +356,16 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operati
 
         ydk::YLeaf preserve; //type: empty
         ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push
+        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push> push;
         
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push : public ydk::Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push
-
-
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap : public ydk::Entity
 {
     public:
         Swap();
@@ -299,14 +381,14 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operati
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack> stack;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack> stack;
         
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
 {
     public:
         Stack();
@@ -324,37 +406,10 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operati
 
         ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
 
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations : public ydk::Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf preserve; //type: empty
-        ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations
-
-
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push : public ydk::Entity
 {
     public:
         Push();
@@ -370,14 +425,14 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack> stack;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack> stack;
         
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push
 
 
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack : public ydk::Entity
 {
     public:
         Stack();
@@ -395,51 +450,7 @@ class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
 
         ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
 
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap : public ydk::Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap
-
-
-class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack
+}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack
 
 
 class MplsStatic::MplsStaticCfg::Interfaces : public ydk::Entity
@@ -490,6 +501,370 @@ class MplsStatic::MplsStaticCfg::Interfaces::Interface : public ydk::Entity
 }; // MplsStatic::MplsStaticCfg::Interfaces::Interface
 
 
+class MplsStatic::MplsStaticCfg::NamedLsps : public ydk::Entity
+{
+    public:
+        NamedLsps();
+        ~NamedLsps();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class NamedLsp; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
+
+        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp> > named_lsp;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp : public ydk::Entity
+{
+    public:
+        NamedLsp();
+        ~NamedLsp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf lsp_type; //type: LspType
+        ydk::YLeaf in_label; //type: one of enumeration, uint32
+        ydk::YLeaf ipv4_prefix; //type: string
+        ydk::YLeaf ipv6_prefix; //type: string
+        class Path; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path> path;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path : public ydk::Entity
+{
+    public:
+        Path();
+        ~Path();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auto_protect; //type: boolean
+        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
+        class NextHop; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations> operations;
+        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop> > next_hop;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations : public ydk::Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf preserve; //type: empty
+        ydk::YLeaf pop_and_forward; //type: empty
+        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push> push;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap : public ydk::Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push : public ydk::Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf type; //type: Hoptype
+        ydk::YLeaf protected_by; //type: uint32
+        class NextHopType; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
+        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType> next_hop_type;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations> operations;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType : public ydk::Entity
+{
+    public:
+        NextHopType();
+        ~NextHopType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf if_index; //type: uint32
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf mac_address; //type: string
+        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf out_interface_name;
+
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations : public ydk::Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf preserve; //type: empty
+        ydk::YLeaf pop_and_forward; //type: empty
+        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push> push;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap : public ydk::Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push : public ydk::Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
+
+
+class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
+
+
 class MplsStatic::MplsStaticCfg::Ipv4IngressLsps : public ydk::Entity
 {
     public:
@@ -533,8 +908,8 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp : public ydk::E
 
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf in_label; //type: one of enumeration, uint32
         ydk::YLeaf name; //type: string
+        ydk::YLeaf in_label; //type: one of enumeration, uint32
         class Path; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path
 
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path> path;
@@ -587,8 +962,8 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop 
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf protected_by; //type: uint32
         ydk::YLeaf type; //type: Hoptype
-        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations
         class NextHopType; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType
+        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations
 
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType> next_hop_type;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations> operations;
@@ -614,10 +989,10 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop:
 
         //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
         ydk::YLeaf out_interface_name;
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf if_index; //type: uint32
         ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf ipv4_address; //type: string
 
 }; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::NextHopType
 
@@ -640,8 +1015,8 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop:
 
         ydk::YLeaf pop_and_forward; //type: empty
         ydk::YLeaf preserve; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push
+        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap
 
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Push> push;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::NextHop::Operations::Swap> swap;
@@ -758,54 +1133,10 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operatio
         class Swap; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap
         class Push; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push> push;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push> push;
         
 }; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations
-
-
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push : public ydk::Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push
-
-
-class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
 
 
 class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap : public ydk::Entity
@@ -852,11 +1183,55 @@ class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operatio
 }; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Swap::Stack
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps : public ydk::Entity
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push : public ydk::Entity
 {
     public:
-        Ipv6IngressLsps();
-        ~Ipv6IngressLsps();
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push
+
+
+class MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::Ipv4IngressLsps::Ipv4IngressLsp::Path::Operations::Push::Stack
+
+
+class MplsStatic::MplsStaticCfg::InLabelLsps : public ydk::Entity
+{
+    public:
+        InLabelLsps();
+        ~InLabelLsps();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -869,18 +1244,18 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv6IngressLsp; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp
+        class InLabelLsp; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp> > ipv6_ingress_lsp;
+        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp> > in_label_lsp;
         
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps
+}; // MplsStatic::MplsStaticCfg::InLabelLsps
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp : public ydk::Entity
 {
     public:
-        Ipv6IngressLsp();
-        ~Ipv6IngressLsp();
+        InLabelLsp();
+        ~InLabelLsp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -894,17 +1269,15 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp : public ydk::E
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf name; //type: string
         ydk::YLeaf in_label; //type: one of enumeration, uint32
-        class Path; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path
+        class Path; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path> path;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path> path;
         
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path : public ydk::Entity
 {
     public:
         Path();
@@ -921,16 +1294,131 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf auto_protect; //type: boolean
-        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations
-        class NextHop; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop
+        class Operations; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations
+        class NextHop; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop
 
-        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop> > next_hop;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations> operations;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations> operations;
+        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop> > next_hop;
         
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations : public ydk::Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf preserve; //type: empty
+        ydk::YLeaf pop_and_forward; //type: empty
+        class Swap; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push> push;
+        
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations
+
+
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap : public ydk::Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap
+
+
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Swap::Stack
+
+
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push : public ydk::Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack> stack;
+        
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push
+
+
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::Operations::Push::Stack
+
+
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -949,16 +1437,16 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop 
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf type; //type: Hoptype
         ydk::YLeaf protected_by; //type: uint32
-        class NextHopType; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType
-        class Operations; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations
+        class NextHopType; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType
+        class Operations; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations> operations;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType> next_hop_type;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations> operations;
         
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType : public ydk::Entity
 {
     public:
         NextHopType();
@@ -981,10 +1469,10 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
         //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
         ydk::YLeaf out_interface_name;
 
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::NextHopType
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::NextHopType
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations : public ydk::Entity
 {
     public:
         Operations();
@@ -1002,60 +1490,16 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
 
         ydk::YLeaf preserve; //type: empty
         ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push
+        class Swap; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push> push;
         
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push : public ydk::Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push
-
-
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap : public ydk::Entity
 {
     public:
         Swap();
@@ -1071,14 +1515,14 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack> stack;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack> stack;
         
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
 {
     public:
         Stack();
@@ -1096,37 +1540,10 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop:
 
         ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
 
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::NextHop::Operations::Swap::Stack
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Swap::Stack
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations : public ydk::Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf preserve; //type: empty
-        ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations
-
-
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push : public ydk::Entity
 {
     public:
         Push();
@@ -1142,14 +1559,14 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operatio
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack
+        class Stack; //type: MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack> stack;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack> stack;
         
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push
 
 
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack : public ydk::Entity
+class MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack : public ydk::Entity
 {
     public:
         Stack();
@@ -1167,415 +1584,7 @@ class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operatio
 
         ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
 
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap : public ydk::Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap
-
-
-class MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::Ipv6IngressLsps::Ipv6IngressLsp::Path::Operations::Swap::Stack
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps : public ydk::Entity
-{
-    public:
-        NamedLsps();
-        ~NamedLsps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class NamedLsp; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
-
-        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp> > named_lsp;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp : public ydk::Entity
-{
-    public:
-        NamedLsp();
-        ~NamedLsp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf lsp_type; //type: LspType
-        ydk::YLeaf in_label; //type: one of enumeration, uint32
-        ydk::YLeaf ipv4_prefix; //type: string
-        ydk::YLeaf ipv6_prefix; //type: string
-        class Path; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path> path;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path : public ydk::Entity
-{
-    public:
-        Path();
-        ~Path();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf auto_protect; //type: boolean
-        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
-        class NextHop; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
-
-        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop> > next_hop;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations> operations;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop : public ydk::Entity
-{
-    public:
-        NextHop();
-        ~NextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf index_; //type: uint32
-        ydk::YLeaf type; //type: Hoptype
-        ydk::YLeaf protected_by; //type: uint32
-        class NextHopType; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
-        class Operations; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations> operations;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType : public ydk::Entity
-{
-    public:
-        NextHopType();
-        ~NextHopType();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf if_index; //type: uint32
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf mac_address; //type: string
-        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf out_interface_name;
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::NextHopType
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations : public ydk::Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf preserve; //type: empty
-        ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push : public ydk::Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap : public ydk::Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::NextHop::Operations::Swap::Stack
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations : public ydk::Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf preserve; //type: empty
-        ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push : public ydk::Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap : public ydk::Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap
-
-
-class MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticCfg::NamedLsps::NamedLsp::Path::Operations::Swap::Stack
+}; // MplsStatic::MplsStaticCfg::InLabelLsps::InLabelLsp::Path::NextHop::Operations::Push::Stack
 
 
 class MplsStatic::MplsStaticState : public ydk::Entity
@@ -1651,58 +1660,11 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath : publi
         class EgressStats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats
         class Path; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path
 
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats> egress_stats;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats> ingress_stats;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats> egress_stats;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path> path;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats : public ydk::Entity
-{
-    public:
-        EgressStats();
-        ~EgressStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats> stats;
-        
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats : public ydk::Entity
-{
-    public:
-        Stats();
-        ~Stats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-        ydk::YLeaf dropped_packets; //type: uint64
-        ydk::YLeaf dropped_bytes; //type: uint64
-
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats
 
 
 class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats : public ydk::Entity
@@ -1752,6 +1714,53 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Ingres
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::IngressStats::Stats
 
 
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats : public ydk::Entity
+{
+    public:
+        EgressStats();
+        ~EgressStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats> stats;
+        
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats : public ydk::Entity
+{
+    public:
+        Stats();
+        ~Stats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf dropped_bytes; //type: uint64
+
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::EgressStats::Stats
+
+
 class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path : public ydk::Entity
 {
     public:
@@ -1772,10 +1781,125 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path :
         class Operations; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations
         class NextHop; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop
 
-        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop> > next_hop;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations> operations;
+        std::vector<std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop> > next_hop;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations : public ydk::Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf preserve; //type: empty
+        ydk::YLeaf pop_and_forward; //type: empty
+        class Swap; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push> push;
+        
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap : public ydk::Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack> stack;
+        
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push : public ydk::Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack> stack;
+        
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack
 
 
 class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop : public ydk::Entity
@@ -1803,8 +1927,8 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
         class NexthopStats; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats
 
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType> next_hop_type;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats> nexthop_stats;
         std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations> operations;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats> nexthop_stats;
         
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop
 
@@ -1833,6 +1957,121 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
         ydk::YLeaf out_interface_name;
 
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NextHopType
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations : public ydk::Entity
+{
+    public:
+        Operations();
+        ~Operations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf preserve; //type: empty
+        ydk::YLeaf pop_and_forward; //type: empty
+        class Swap; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap
+        class Push; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap> swap;
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push> push;
+        
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap : public ydk::Entity
+{
+    public:
+        Swap();
+        ~Swap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack> stack;
+        
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push : public ydk::Entity
+{
+    public:
+        Push();
+        ~Push();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack
+
+        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack> stack;
+        
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push
+
+
+class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack : public ydk::Entity
+{
+    public:
+        Stack();
+        ~Stack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
+
+}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack
 
 
 class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats : public ydk::Entity
@@ -1881,272 +2120,6 @@ class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::
 
 }; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::NexthopStats::Stats
 
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations : public ydk::Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf preserve; //type: empty
-        ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push : public ydk::Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap : public ydk::Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::NextHop::Operations::Swap::Stack
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations : public ydk::Entity
-{
-    public:
-        Operations();
-        ~Operations();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf preserve; //type: empty
-        ydk::YLeaf pop_and_forward; //type: empty
-        class Swap; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap
-        class Push; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push> push;
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap> swap;
-        
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push : public ydk::Entity
-{
-    public:
-        Push();
-        ~Push();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack> stack;
-        
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Push::Stack
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap : public ydk::Entity
-{
-    public:
-        Swap();
-        ~Swap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Stack; //type: MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack
-
-        std::shared_ptr<cisco_ios_xe::common_mpls_static::MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack> stack;
-        
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap
-
-
-class MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack : public ydk::Entity
-{
-    public:
-        Stack();
-        ~Stack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList label_stack; //type: list of  one of enumeration, uint32
-
-}; // MplsStatic::MplsStaticState::LabelSwitchedPaths::LabelSwitchedPath::Path::Operations::Swap::Stack
-
-class NexthopResolutionType : public virtual ydk::Identity
-{
-    public:
-        NexthopResolutionType();
-        ~NexthopResolutionType();
-
-
-}; // NexthopResolutionType
-
-class BgpRouteNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolutionType, virtual ydk::Identity
-{
-    public:
-        BgpRouteNexthop();
-        ~BgpRouteNexthop();
-
-
-}; // BgpRouteNexthop
-
-class IsisRouteNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolutionType, virtual ydk::Identity
-{
-    public:
-        IsisRouteNexthop();
-        ~IsisRouteNexthop();
-
-
-}; // IsisRouteNexthop
-
-class Lsp : public cisco_ios_xe::common_mpls_static::LspType, virtual ydk::Identity
-{
-    public:
-        Lsp();
-        ~Lsp();
-
-
-}; // Lsp
-
 class LspIPv4 : public cisco_ios_xe::common_mpls_static::LspType, virtual ydk::Identity
 {
     public:
@@ -2174,14 +2147,14 @@ class LspVrf : public cisco_ios_xe::common_mpls_static::LspType, virtual ydk::Id
 
 }; // LspVrf
 
-class OspfRouteNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolutionType, virtual ydk::Identity
+class Lsp : public cisco_ios_xe::common_mpls_static::LspType, virtual ydk::Identity
 {
     public:
-        OspfRouteNexthop();
-        ~OspfRouteNexthop();
+        Lsp();
+        ~Lsp();
 
 
-}; // OspfRouteNexthop
+}; // Lsp
 
 class StaticNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolutionType, virtual ydk::Identity
 {
@@ -2191,6 +2164,33 @@ class StaticNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolution
 
 
 }; // StaticNexthop
+
+class BgpRouteNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolutionType, virtual ydk::Identity
+{
+    public:
+        BgpRouteNexthop();
+        ~BgpRouteNexthop();
+
+
+}; // BgpRouteNexthop
+
+class OspfRouteNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolutionType, virtual ydk::Identity
+{
+    public:
+        OspfRouteNexthop();
+        ~OspfRouteNexthop();
+
+
+}; // OspfRouteNexthop
+
+class IsisRouteNexthop : public cisco_ios_xe::common_mpls_static::NexthopResolutionType, virtual ydk::Identity
+{
+    public:
+        IsisRouteNexthop();
+        ~IsisRouteNexthop();
+
+
+}; // IsisRouteNexthop
 
 class Hoptype : public ydk::Enum
 {

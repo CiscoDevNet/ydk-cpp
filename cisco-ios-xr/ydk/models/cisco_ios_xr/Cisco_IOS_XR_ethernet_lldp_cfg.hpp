@@ -68,20 +68,20 @@ class Lldp::TlvSelect : public ydk::Entity
         class SystemCapabilities; //type: Lldp::TlvSelect::SystemCapabilities
         class ManagementAddress; //type: Lldp::TlvSelect::ManagementAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::ManagementAddress> management_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::PortDescription> port_description;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemCapabilities> system_capabilities;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemDescription> system_description;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemName> system_name;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::PortDescription> port_description;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemDescription> system_description;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::SystemCapabilities> system_capabilities;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_cfg::Lldp::TlvSelect::ManagementAddress> management_address;
         
 }; // Lldp::TlvSelect
 
 
-class Lldp::TlvSelect::ManagementAddress : public ydk::Entity
+class Lldp::TlvSelect::SystemName : public ydk::Entity
 {
     public:
-        ManagementAddress();
-        ~ManagementAddress();
+        SystemName();
+        ~SystemName();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,7 +96,7 @@ class Lldp::TlvSelect::ManagementAddress : public ydk::Entity
 
         ydk::YLeaf disable; //type: boolean
 
-}; // Lldp::TlvSelect::ManagementAddress
+}; // Lldp::TlvSelect::SystemName
 
 
 class Lldp::TlvSelect::PortDescription : public ydk::Entity
@@ -121,28 +121,6 @@ class Lldp::TlvSelect::PortDescription : public ydk::Entity
 }; // Lldp::TlvSelect::PortDescription
 
 
-class Lldp::TlvSelect::SystemCapabilities : public ydk::Entity
-{
-    public:
-        SystemCapabilities();
-        ~SystemCapabilities();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf disable; //type: boolean
-
-}; // Lldp::TlvSelect::SystemCapabilities
-
-
 class Lldp::TlvSelect::SystemDescription : public ydk::Entity
 {
     public:
@@ -165,11 +143,11 @@ class Lldp::TlvSelect::SystemDescription : public ydk::Entity
 }; // Lldp::TlvSelect::SystemDescription
 
 
-class Lldp::TlvSelect::SystemName : public ydk::Entity
+class Lldp::TlvSelect::SystemCapabilities : public ydk::Entity
 {
     public:
-        SystemName();
-        ~SystemName();
+        SystemCapabilities();
+        ~SystemCapabilities();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -184,7 +162,29 @@ class Lldp::TlvSelect::SystemName : public ydk::Entity
 
         ydk::YLeaf disable; //type: boolean
 
-}; // Lldp::TlvSelect::SystemName
+}; // Lldp::TlvSelect::SystemCapabilities
+
+
+class Lldp::TlvSelect::ManagementAddress : public ydk::Entity
+{
+    public:
+        ManagementAddress();
+        ~ManagementAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf disable; //type: boolean
+
+}; // Lldp::TlvSelect::ManagementAddress
 
 
 }

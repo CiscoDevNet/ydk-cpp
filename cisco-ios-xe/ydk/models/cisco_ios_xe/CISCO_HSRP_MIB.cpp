@@ -321,23 +321,23 @@ CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::Chsrpgrpentry()
     :
     ifindex{YType::str, "ifIndex"},
     chsrpgrpnumber{YType::uint32, "cHsrpGrpNumber"},
-    chsrpgrpactiverouter{YType::str, "cHsrpGrpActiveRouter"},
     chsrpgrpauth{YType::str, "cHsrpGrpAuth"},
-    chsrpgrpconfiguredhellotime{YType::uint32, "cHsrpGrpConfiguredHelloTime"},
-    chsrpgrpconfiguredholdtime{YType::uint32, "cHsrpGrpConfiguredHoldTime"},
-    chsrpgrpentryrowstatus{YType::enumeration, "cHsrpGrpEntryRowStatus"},
-    chsrpgrpipnone{YType::boolean, "cHsrpGrpIpNone"},
-    chsrpgrplearnedhellotime{YType::uint32, "cHsrpGrpLearnedHelloTime"},
-    chsrpgrplearnedholdtime{YType::uint32, "cHsrpGrpLearnedHoldTime"},
+    chsrpgrppriority{YType::uint32, "cHsrpGrpPriority"},
     chsrpgrppreempt{YType::boolean, "cHsrpGrpPreempt"},
     chsrpgrppreemptdelay{YType::uint32, "cHsrpGrpPreemptDelay"},
-    chsrpgrppriority{YType::uint32, "cHsrpGrpPriority"},
+    chsrpgrpuseconfiguredtimers{YType::boolean, "cHsrpGrpUseConfiguredTimers"},
+    chsrpgrpconfiguredhellotime{YType::uint32, "cHsrpGrpConfiguredHelloTime"},
+    chsrpgrpconfiguredholdtime{YType::uint32, "cHsrpGrpConfiguredHoldTime"},
+    chsrpgrplearnedhellotime{YType::uint32, "cHsrpGrpLearnedHelloTime"},
+    chsrpgrplearnedholdtime{YType::uint32, "cHsrpGrpLearnedHoldTime"},
+    chsrpgrpvirtualipaddr{YType::str, "cHsrpGrpVirtualIpAddr"},
+    chsrpgrpuseconfigvirtualipaddr{YType::boolean, "cHsrpGrpUseConfigVirtualIpAddr"},
+    chsrpgrpactiverouter{YType::str, "cHsrpGrpActiveRouter"},
     chsrpgrpstandbyrouter{YType::str, "cHsrpGrpStandbyRouter"},
     chsrpgrpstandbystate{YType::enumeration, "cHsrpGrpStandbyState"},
-    chsrpgrpuseconfiguredtimers{YType::boolean, "cHsrpGrpUseConfiguredTimers"},
-    chsrpgrpuseconfigvirtualipaddr{YType::boolean, "cHsrpGrpUseConfigVirtualIpAddr"},
-    chsrpgrpvirtualipaddr{YType::str, "cHsrpGrpVirtualIpAddr"},
-    chsrpgrpvirtualmacaddr{YType::str, "cHsrpGrpVirtualMacAddr"}
+    chsrpgrpvirtualmacaddr{YType::str, "cHsrpGrpVirtualMacAddr"},
+    chsrpgrpentryrowstatus{YType::enumeration, "cHsrpGrpEntryRowStatus"},
+    chsrpgrpipnone{YType::boolean, "cHsrpGrpIpNone"}
 {
 
     yang_name = "cHsrpGrpEntry"; yang_parent_name = "cHsrpGrpTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -351,23 +351,23 @@ bool CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::has_data() const
 {
     return ifindex.is_set
 	|| chsrpgrpnumber.is_set
-	|| chsrpgrpactiverouter.is_set
 	|| chsrpgrpauth.is_set
-	|| chsrpgrpconfiguredhellotime.is_set
-	|| chsrpgrpconfiguredholdtime.is_set
-	|| chsrpgrpentryrowstatus.is_set
-	|| chsrpgrpipnone.is_set
-	|| chsrpgrplearnedhellotime.is_set
-	|| chsrpgrplearnedholdtime.is_set
+	|| chsrpgrppriority.is_set
 	|| chsrpgrppreempt.is_set
 	|| chsrpgrppreemptdelay.is_set
-	|| chsrpgrppriority.is_set
+	|| chsrpgrpuseconfiguredtimers.is_set
+	|| chsrpgrpconfiguredhellotime.is_set
+	|| chsrpgrpconfiguredholdtime.is_set
+	|| chsrpgrplearnedhellotime.is_set
+	|| chsrpgrplearnedholdtime.is_set
+	|| chsrpgrpvirtualipaddr.is_set
+	|| chsrpgrpuseconfigvirtualipaddr.is_set
+	|| chsrpgrpactiverouter.is_set
 	|| chsrpgrpstandbyrouter.is_set
 	|| chsrpgrpstandbystate.is_set
-	|| chsrpgrpuseconfiguredtimers.is_set
-	|| chsrpgrpuseconfigvirtualipaddr.is_set
-	|| chsrpgrpvirtualipaddr.is_set
-	|| chsrpgrpvirtualmacaddr.is_set;
+	|| chsrpgrpvirtualmacaddr.is_set
+	|| chsrpgrpentryrowstatus.is_set
+	|| chsrpgrpipnone.is_set;
 }
 
 bool CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::has_operation() const
@@ -375,23 +375,23 @@ bool CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(chsrpgrpnumber.yfilter)
-	|| ydk::is_set(chsrpgrpactiverouter.yfilter)
 	|| ydk::is_set(chsrpgrpauth.yfilter)
-	|| ydk::is_set(chsrpgrpconfiguredhellotime.yfilter)
-	|| ydk::is_set(chsrpgrpconfiguredholdtime.yfilter)
-	|| ydk::is_set(chsrpgrpentryrowstatus.yfilter)
-	|| ydk::is_set(chsrpgrpipnone.yfilter)
-	|| ydk::is_set(chsrpgrplearnedhellotime.yfilter)
-	|| ydk::is_set(chsrpgrplearnedholdtime.yfilter)
+	|| ydk::is_set(chsrpgrppriority.yfilter)
 	|| ydk::is_set(chsrpgrppreempt.yfilter)
 	|| ydk::is_set(chsrpgrppreemptdelay.yfilter)
-	|| ydk::is_set(chsrpgrppriority.yfilter)
+	|| ydk::is_set(chsrpgrpuseconfiguredtimers.yfilter)
+	|| ydk::is_set(chsrpgrpconfiguredhellotime.yfilter)
+	|| ydk::is_set(chsrpgrpconfiguredholdtime.yfilter)
+	|| ydk::is_set(chsrpgrplearnedhellotime.yfilter)
+	|| ydk::is_set(chsrpgrplearnedholdtime.yfilter)
+	|| ydk::is_set(chsrpgrpvirtualipaddr.yfilter)
+	|| ydk::is_set(chsrpgrpuseconfigvirtualipaddr.yfilter)
+	|| ydk::is_set(chsrpgrpactiverouter.yfilter)
 	|| ydk::is_set(chsrpgrpstandbyrouter.yfilter)
 	|| ydk::is_set(chsrpgrpstandbystate.yfilter)
-	|| ydk::is_set(chsrpgrpuseconfiguredtimers.yfilter)
-	|| ydk::is_set(chsrpgrpuseconfigvirtualipaddr.yfilter)
-	|| ydk::is_set(chsrpgrpvirtualipaddr.yfilter)
-	|| ydk::is_set(chsrpgrpvirtualmacaddr.yfilter);
+	|| ydk::is_set(chsrpgrpvirtualmacaddr.yfilter)
+	|| ydk::is_set(chsrpgrpentryrowstatus.yfilter)
+	|| ydk::is_set(chsrpgrpipnone.yfilter);
 }
 
 std::string CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_absolute_path() const
@@ -414,23 +414,23 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPMIB::Chsrpgrptable::Chsr
 
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
     if (chsrpgrpnumber.is_set || is_set(chsrpgrpnumber.yfilter)) leaf_name_data.push_back(chsrpgrpnumber.get_name_leafdata());
-    if (chsrpgrpactiverouter.is_set || is_set(chsrpgrpactiverouter.yfilter)) leaf_name_data.push_back(chsrpgrpactiverouter.get_name_leafdata());
     if (chsrpgrpauth.is_set || is_set(chsrpgrpauth.yfilter)) leaf_name_data.push_back(chsrpgrpauth.get_name_leafdata());
-    if (chsrpgrpconfiguredhellotime.is_set || is_set(chsrpgrpconfiguredhellotime.yfilter)) leaf_name_data.push_back(chsrpgrpconfiguredhellotime.get_name_leafdata());
-    if (chsrpgrpconfiguredholdtime.is_set || is_set(chsrpgrpconfiguredholdtime.yfilter)) leaf_name_data.push_back(chsrpgrpconfiguredholdtime.get_name_leafdata());
-    if (chsrpgrpentryrowstatus.is_set || is_set(chsrpgrpentryrowstatus.yfilter)) leaf_name_data.push_back(chsrpgrpentryrowstatus.get_name_leafdata());
-    if (chsrpgrpipnone.is_set || is_set(chsrpgrpipnone.yfilter)) leaf_name_data.push_back(chsrpgrpipnone.get_name_leafdata());
-    if (chsrpgrplearnedhellotime.is_set || is_set(chsrpgrplearnedhellotime.yfilter)) leaf_name_data.push_back(chsrpgrplearnedhellotime.get_name_leafdata());
-    if (chsrpgrplearnedholdtime.is_set || is_set(chsrpgrplearnedholdtime.yfilter)) leaf_name_data.push_back(chsrpgrplearnedholdtime.get_name_leafdata());
+    if (chsrpgrppriority.is_set || is_set(chsrpgrppriority.yfilter)) leaf_name_data.push_back(chsrpgrppriority.get_name_leafdata());
     if (chsrpgrppreempt.is_set || is_set(chsrpgrppreempt.yfilter)) leaf_name_data.push_back(chsrpgrppreempt.get_name_leafdata());
     if (chsrpgrppreemptdelay.is_set || is_set(chsrpgrppreemptdelay.yfilter)) leaf_name_data.push_back(chsrpgrppreemptdelay.get_name_leafdata());
-    if (chsrpgrppriority.is_set || is_set(chsrpgrppriority.yfilter)) leaf_name_data.push_back(chsrpgrppriority.get_name_leafdata());
+    if (chsrpgrpuseconfiguredtimers.is_set || is_set(chsrpgrpuseconfiguredtimers.yfilter)) leaf_name_data.push_back(chsrpgrpuseconfiguredtimers.get_name_leafdata());
+    if (chsrpgrpconfiguredhellotime.is_set || is_set(chsrpgrpconfiguredhellotime.yfilter)) leaf_name_data.push_back(chsrpgrpconfiguredhellotime.get_name_leafdata());
+    if (chsrpgrpconfiguredholdtime.is_set || is_set(chsrpgrpconfiguredholdtime.yfilter)) leaf_name_data.push_back(chsrpgrpconfiguredholdtime.get_name_leafdata());
+    if (chsrpgrplearnedhellotime.is_set || is_set(chsrpgrplearnedhellotime.yfilter)) leaf_name_data.push_back(chsrpgrplearnedhellotime.get_name_leafdata());
+    if (chsrpgrplearnedholdtime.is_set || is_set(chsrpgrplearnedholdtime.yfilter)) leaf_name_data.push_back(chsrpgrplearnedholdtime.get_name_leafdata());
+    if (chsrpgrpvirtualipaddr.is_set || is_set(chsrpgrpvirtualipaddr.yfilter)) leaf_name_data.push_back(chsrpgrpvirtualipaddr.get_name_leafdata());
+    if (chsrpgrpuseconfigvirtualipaddr.is_set || is_set(chsrpgrpuseconfigvirtualipaddr.yfilter)) leaf_name_data.push_back(chsrpgrpuseconfigvirtualipaddr.get_name_leafdata());
+    if (chsrpgrpactiverouter.is_set || is_set(chsrpgrpactiverouter.yfilter)) leaf_name_data.push_back(chsrpgrpactiverouter.get_name_leafdata());
     if (chsrpgrpstandbyrouter.is_set || is_set(chsrpgrpstandbyrouter.yfilter)) leaf_name_data.push_back(chsrpgrpstandbyrouter.get_name_leafdata());
     if (chsrpgrpstandbystate.is_set || is_set(chsrpgrpstandbystate.yfilter)) leaf_name_data.push_back(chsrpgrpstandbystate.get_name_leafdata());
-    if (chsrpgrpuseconfiguredtimers.is_set || is_set(chsrpgrpuseconfiguredtimers.yfilter)) leaf_name_data.push_back(chsrpgrpuseconfiguredtimers.get_name_leafdata());
-    if (chsrpgrpuseconfigvirtualipaddr.is_set || is_set(chsrpgrpuseconfigvirtualipaddr.yfilter)) leaf_name_data.push_back(chsrpgrpuseconfigvirtualipaddr.get_name_leafdata());
-    if (chsrpgrpvirtualipaddr.is_set || is_set(chsrpgrpvirtualipaddr.yfilter)) leaf_name_data.push_back(chsrpgrpvirtualipaddr.get_name_leafdata());
     if (chsrpgrpvirtualmacaddr.is_set || is_set(chsrpgrpvirtualmacaddr.yfilter)) leaf_name_data.push_back(chsrpgrpvirtualmacaddr.get_name_leafdata());
+    if (chsrpgrpentryrowstatus.is_set || is_set(chsrpgrpentryrowstatus.yfilter)) leaf_name_data.push_back(chsrpgrpentryrowstatus.get_name_leafdata());
+    if (chsrpgrpipnone.is_set || is_set(chsrpgrpipnone.yfilter)) leaf_name_data.push_back(chsrpgrpipnone.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -461,53 +461,17 @@ void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_value(const std::string & v
         chsrpgrpnumber.value_namespace = name_space;
         chsrpgrpnumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cHsrpGrpActiveRouter")
-    {
-        chsrpgrpactiverouter = value;
-        chsrpgrpactiverouter.value_namespace = name_space;
-        chsrpgrpactiverouter.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cHsrpGrpAuth")
     {
         chsrpgrpauth = value;
         chsrpgrpauth.value_namespace = name_space;
         chsrpgrpauth.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cHsrpGrpConfiguredHelloTime")
+    if(value_path == "cHsrpGrpPriority")
     {
-        chsrpgrpconfiguredhellotime = value;
-        chsrpgrpconfiguredhellotime.value_namespace = name_space;
-        chsrpgrpconfiguredhellotime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cHsrpGrpConfiguredHoldTime")
-    {
-        chsrpgrpconfiguredholdtime = value;
-        chsrpgrpconfiguredholdtime.value_namespace = name_space;
-        chsrpgrpconfiguredholdtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cHsrpGrpEntryRowStatus")
-    {
-        chsrpgrpentryrowstatus = value;
-        chsrpgrpentryrowstatus.value_namespace = name_space;
-        chsrpgrpentryrowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cHsrpGrpIpNone")
-    {
-        chsrpgrpipnone = value;
-        chsrpgrpipnone.value_namespace = name_space;
-        chsrpgrpipnone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cHsrpGrpLearnedHelloTime")
-    {
-        chsrpgrplearnedhellotime = value;
-        chsrpgrplearnedhellotime.value_namespace = name_space;
-        chsrpgrplearnedhellotime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cHsrpGrpLearnedHoldTime")
-    {
-        chsrpgrplearnedholdtime = value;
-        chsrpgrplearnedholdtime.value_namespace = name_space;
-        chsrpgrplearnedholdtime.value_namespace_prefix = name_space_prefix;
+        chsrpgrppriority = value;
+        chsrpgrppriority.value_namespace = name_space;
+        chsrpgrppriority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cHsrpGrpPreempt")
     {
@@ -521,11 +485,53 @@ void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_value(const std::string & v
         chsrpgrppreemptdelay.value_namespace = name_space;
         chsrpgrppreemptdelay.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cHsrpGrpPriority")
+    if(value_path == "cHsrpGrpUseConfiguredTimers")
     {
-        chsrpgrppriority = value;
-        chsrpgrppriority.value_namespace = name_space;
-        chsrpgrppriority.value_namespace_prefix = name_space_prefix;
+        chsrpgrpuseconfiguredtimers = value;
+        chsrpgrpuseconfiguredtimers.value_namespace = name_space;
+        chsrpgrpuseconfiguredtimers.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpConfiguredHelloTime")
+    {
+        chsrpgrpconfiguredhellotime = value;
+        chsrpgrpconfiguredhellotime.value_namespace = name_space;
+        chsrpgrpconfiguredhellotime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpConfiguredHoldTime")
+    {
+        chsrpgrpconfiguredholdtime = value;
+        chsrpgrpconfiguredholdtime.value_namespace = name_space;
+        chsrpgrpconfiguredholdtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpLearnedHelloTime")
+    {
+        chsrpgrplearnedhellotime = value;
+        chsrpgrplearnedhellotime.value_namespace = name_space;
+        chsrpgrplearnedhellotime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpLearnedHoldTime")
+    {
+        chsrpgrplearnedholdtime = value;
+        chsrpgrplearnedholdtime.value_namespace = name_space;
+        chsrpgrplearnedholdtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpVirtualIpAddr")
+    {
+        chsrpgrpvirtualipaddr = value;
+        chsrpgrpvirtualipaddr.value_namespace = name_space;
+        chsrpgrpvirtualipaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpUseConfigVirtualIpAddr")
+    {
+        chsrpgrpuseconfigvirtualipaddr = value;
+        chsrpgrpuseconfigvirtualipaddr.value_namespace = name_space;
+        chsrpgrpuseconfigvirtualipaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpActiveRouter")
+    {
+        chsrpgrpactiverouter = value;
+        chsrpgrpactiverouter.value_namespace = name_space;
+        chsrpgrpactiverouter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cHsrpGrpStandbyRouter")
     {
@@ -539,29 +545,23 @@ void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_value(const std::string & v
         chsrpgrpstandbystate.value_namespace = name_space;
         chsrpgrpstandbystate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cHsrpGrpUseConfiguredTimers")
-    {
-        chsrpgrpuseconfiguredtimers = value;
-        chsrpgrpuseconfiguredtimers.value_namespace = name_space;
-        chsrpgrpuseconfiguredtimers.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cHsrpGrpUseConfigVirtualIpAddr")
-    {
-        chsrpgrpuseconfigvirtualipaddr = value;
-        chsrpgrpuseconfigvirtualipaddr.value_namespace = name_space;
-        chsrpgrpuseconfigvirtualipaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cHsrpGrpVirtualIpAddr")
-    {
-        chsrpgrpvirtualipaddr = value;
-        chsrpgrpvirtualipaddr.value_namespace = name_space;
-        chsrpgrpvirtualipaddr.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cHsrpGrpVirtualMacAddr")
     {
         chsrpgrpvirtualmacaddr = value;
         chsrpgrpvirtualmacaddr.value_namespace = name_space;
         chsrpgrpvirtualmacaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpEntryRowStatus")
+    {
+        chsrpgrpentryrowstatus = value;
+        chsrpgrpentryrowstatus.value_namespace = name_space;
+        chsrpgrpentryrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cHsrpGrpIpNone")
+    {
+        chsrpgrpipnone = value;
+        chsrpgrpipnone.value_namespace = name_space;
+        chsrpgrpipnone.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -575,37 +575,13 @@ void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_filter(const std::string & 
     {
         chsrpgrpnumber.yfilter = yfilter;
     }
-    if(value_path == "cHsrpGrpActiveRouter")
-    {
-        chsrpgrpactiverouter.yfilter = yfilter;
-    }
     if(value_path == "cHsrpGrpAuth")
     {
         chsrpgrpauth.yfilter = yfilter;
     }
-    if(value_path == "cHsrpGrpConfiguredHelloTime")
+    if(value_path == "cHsrpGrpPriority")
     {
-        chsrpgrpconfiguredhellotime.yfilter = yfilter;
-    }
-    if(value_path == "cHsrpGrpConfiguredHoldTime")
-    {
-        chsrpgrpconfiguredholdtime.yfilter = yfilter;
-    }
-    if(value_path == "cHsrpGrpEntryRowStatus")
-    {
-        chsrpgrpentryrowstatus.yfilter = yfilter;
-    }
-    if(value_path == "cHsrpGrpIpNone")
-    {
-        chsrpgrpipnone.yfilter = yfilter;
-    }
-    if(value_path == "cHsrpGrpLearnedHelloTime")
-    {
-        chsrpgrplearnedhellotime.yfilter = yfilter;
-    }
-    if(value_path == "cHsrpGrpLearnedHoldTime")
-    {
-        chsrpgrplearnedholdtime.yfilter = yfilter;
+        chsrpgrppriority.yfilter = yfilter;
     }
     if(value_path == "cHsrpGrpPreempt")
     {
@@ -615,9 +591,37 @@ void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_filter(const std::string & 
     {
         chsrpgrppreemptdelay.yfilter = yfilter;
     }
-    if(value_path == "cHsrpGrpPriority")
+    if(value_path == "cHsrpGrpUseConfiguredTimers")
     {
-        chsrpgrppriority.yfilter = yfilter;
+        chsrpgrpuseconfiguredtimers.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpConfiguredHelloTime")
+    {
+        chsrpgrpconfiguredhellotime.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpConfiguredHoldTime")
+    {
+        chsrpgrpconfiguredholdtime.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpLearnedHelloTime")
+    {
+        chsrpgrplearnedhellotime.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpLearnedHoldTime")
+    {
+        chsrpgrplearnedholdtime.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpVirtualIpAddr")
+    {
+        chsrpgrpvirtualipaddr.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpUseConfigVirtualIpAddr")
+    {
+        chsrpgrpuseconfigvirtualipaddr.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpActiveRouter")
+    {
+        chsrpgrpactiverouter.yfilter = yfilter;
     }
     if(value_path == "cHsrpGrpStandbyRouter")
     {
@@ -627,27 +631,23 @@ void CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::set_filter(const std::string & 
     {
         chsrpgrpstandbystate.yfilter = yfilter;
     }
-    if(value_path == "cHsrpGrpUseConfiguredTimers")
-    {
-        chsrpgrpuseconfiguredtimers.yfilter = yfilter;
-    }
-    if(value_path == "cHsrpGrpUseConfigVirtualIpAddr")
-    {
-        chsrpgrpuseconfigvirtualipaddr.yfilter = yfilter;
-    }
-    if(value_path == "cHsrpGrpVirtualIpAddr")
-    {
-        chsrpgrpvirtualipaddr.yfilter = yfilter;
-    }
     if(value_path == "cHsrpGrpVirtualMacAddr")
     {
         chsrpgrpvirtualmacaddr.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpEntryRowStatus")
+    {
+        chsrpgrpentryrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "cHsrpGrpIpNone")
+    {
+        chsrpgrpipnone.yfilter = yfilter;
     }
 }
 
 bool CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "cHsrpGrpNumber" || name == "cHsrpGrpActiveRouter" || name == "cHsrpGrpAuth" || name == "cHsrpGrpConfiguredHelloTime" || name == "cHsrpGrpConfiguredHoldTime" || name == "cHsrpGrpEntryRowStatus" || name == "cHsrpGrpIpNone" || name == "cHsrpGrpLearnedHelloTime" || name == "cHsrpGrpLearnedHoldTime" || name == "cHsrpGrpPreempt" || name == "cHsrpGrpPreemptDelay" || name == "cHsrpGrpPriority" || name == "cHsrpGrpStandbyRouter" || name == "cHsrpGrpStandbyState" || name == "cHsrpGrpUseConfiguredTimers" || name == "cHsrpGrpUseConfigVirtualIpAddr" || name == "cHsrpGrpVirtualIpAddr" || name == "cHsrpGrpVirtualMacAddr")
+    if(name == "ifIndex" || name == "cHsrpGrpNumber" || name == "cHsrpGrpAuth" || name == "cHsrpGrpPriority" || name == "cHsrpGrpPreempt" || name == "cHsrpGrpPreemptDelay" || name == "cHsrpGrpUseConfiguredTimers" || name == "cHsrpGrpConfiguredHelloTime" || name == "cHsrpGrpConfiguredHoldTime" || name == "cHsrpGrpLearnedHelloTime" || name == "cHsrpGrpLearnedHoldTime" || name == "cHsrpGrpVirtualIpAddr" || name == "cHsrpGrpUseConfigVirtualIpAddr" || name == "cHsrpGrpActiveRouter" || name == "cHsrpGrpStandbyRouter" || name == "cHsrpGrpStandbyState" || name == "cHsrpGrpVirtualMacAddr" || name == "cHsrpGrpEntryRowStatus" || name == "cHsrpGrpIpNone")
         return true;
     return false;
 }

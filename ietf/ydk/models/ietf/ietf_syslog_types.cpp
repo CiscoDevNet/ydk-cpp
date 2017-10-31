@@ -21,63 +21,33 @@ SyslogFacility::~SyslogFacility()
 {
 }
 
-Audit::Audit()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:audit")
+Kern::Kern()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:kern")
 {
 
 }
 
-Audit::~Audit()
+Kern::~Kern()
 {
 }
 
-Auth::Auth()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:auth")
-{
-
-}
-
-Auth::~Auth()
-{
-}
-
-Authpriv::Authpriv()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:authpriv")
+User::User()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:user")
 {
 
 }
 
-Authpriv::~Authpriv()
+User::~User()
 {
 }
 
-Console::Console()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:console")
-{
-
-}
-
-Console::~Console()
-{
-}
-
-Cron::Cron()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron")
+Mail::Mail()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:mail")
 {
 
 }
 
-Cron::~Cron()
-{
-}
-
-Cron2::Cron2()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron2")
-{
-
-}
-
-Cron2::~Cron2()
+Mail::~Mail()
 {
 }
 
@@ -91,6 +61,76 @@ Daemon::~Daemon()
 {
 }
 
+Auth::Auth()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:auth")
+{
+
+}
+
+Auth::~Auth()
+{
+}
+
+Syslog::Syslog()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:syslog")
+{
+
+}
+
+Syslog::~Syslog()
+{
+}
+
+Lpr::Lpr()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:lpr")
+{
+
+}
+
+Lpr::~Lpr()
+{
+}
+
+News::News()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:news")
+{
+
+}
+
+News::~News()
+{
+}
+
+Uucp::Uucp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:uucp")
+{
+
+}
+
+Uucp::~Uucp()
+{
+}
+
+Cron::Cron()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron")
+{
+
+}
+
+Cron::~Cron()
+{
+}
+
+Authpriv::Authpriv()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:authpriv")
+{
+
+}
+
+Authpriv::~Authpriv()
+{
+}
+
 Ftp::Ftp()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ftp")
 {
@@ -101,13 +141,43 @@ Ftp::~Ftp()
 {
 }
 
-Kern::Kern()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:kern")
+Ntp::Ntp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ntp")
 {
 
 }
 
-Kern::~Kern()
+Ntp::~Ntp()
+{
+}
+
+Audit::Audit()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:audit")
+{
+
+}
+
+Audit::~Audit()
+{
+}
+
+Console::Console()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:console")
+{
+
+}
+
+Console::~Console()
+{
+}
+
+Cron2::Cron2()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron2")
+{
+
+}
+
+Cron2::~Cron2()
 {
 }
 
@@ -188,76 +258,6 @@ Local7::Local7()
 }
 
 Local7::~Local7()
-{
-}
-
-Lpr::Lpr()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:lpr")
-{
-
-}
-
-Lpr::~Lpr()
-{
-}
-
-Mail::Mail()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:mail")
-{
-
-}
-
-Mail::~Mail()
-{
-}
-
-News::News()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:news")
-{
-
-}
-
-News::~News()
-{
-}
-
-Ntp::Ntp()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ntp")
-{
-
-}
-
-Ntp::~Ntp()
-{
-}
-
-Syslog::Syslog()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:syslog")
-{
-
-}
-
-Syslog::~Syslog()
-{
-}
-
-User::User()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:user")
-{
-
-}
-
-User::~User()
-{
-}
-
-Uucp::Uucp()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:uucp")
-{
-
-}
-
-Uucp::~Uucp()
 {
 }
 

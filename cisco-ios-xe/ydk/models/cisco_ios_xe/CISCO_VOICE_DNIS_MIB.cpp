@@ -237,10 +237,10 @@ bool CISCOVOICEDNISMIB::Cvdnismappingtable::has_leaf_or_child_of_name(const std:
 CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingentry()
     :
     cvdnismappingname{YType::str, "cvDnisMappingName"},
-    cvdnismappingrefresh{YType::enumeration, "cvDnisMappingRefresh"},
-    cvdnismappingstatus{YType::enumeration, "cvDnisMappingStatus"},
     cvdnismappingurl{YType::str, "cvDnisMappingUrl"},
-    cvdnismappingurlaccesserror{YType::str, "cvDnisMappingUrlAccessError"}
+    cvdnismappingrefresh{YType::enumeration, "cvDnisMappingRefresh"},
+    cvdnismappingurlaccesserror{YType::str, "cvDnisMappingUrlAccessError"},
+    cvdnismappingstatus{YType::enumeration, "cvDnisMappingStatus"}
 {
 
     yang_name = "cvDnisMappingEntry"; yang_parent_name = "cvDnisMappingTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -253,20 +253,20 @@ CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::~Cvdnismappingentry()
 bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_data() const
 {
     return cvdnismappingname.is_set
-	|| cvdnismappingrefresh.is_set
-	|| cvdnismappingstatus.is_set
 	|| cvdnismappingurl.is_set
-	|| cvdnismappingurlaccesserror.is_set;
+	|| cvdnismappingrefresh.is_set
+	|| cvdnismappingurlaccesserror.is_set
+	|| cvdnismappingstatus.is_set;
 }
 
 bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvdnismappingname.yfilter)
-	|| ydk::is_set(cvdnismappingrefresh.yfilter)
-	|| ydk::is_set(cvdnismappingstatus.yfilter)
 	|| ydk::is_set(cvdnismappingurl.yfilter)
-	|| ydk::is_set(cvdnismappingurlaccesserror.yfilter);
+	|| ydk::is_set(cvdnismappingrefresh.yfilter)
+	|| ydk::is_set(cvdnismappingurlaccesserror.yfilter)
+	|| ydk::is_set(cvdnismappingstatus.yfilter);
 }
 
 std::string CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::get_absolute_path() const
@@ -288,10 +288,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnismappingt
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cvdnismappingname.is_set || is_set(cvdnismappingname.yfilter)) leaf_name_data.push_back(cvdnismappingname.get_name_leafdata());
-    if (cvdnismappingrefresh.is_set || is_set(cvdnismappingrefresh.yfilter)) leaf_name_data.push_back(cvdnismappingrefresh.get_name_leafdata());
-    if (cvdnismappingstatus.is_set || is_set(cvdnismappingstatus.yfilter)) leaf_name_data.push_back(cvdnismappingstatus.get_name_leafdata());
     if (cvdnismappingurl.is_set || is_set(cvdnismappingurl.yfilter)) leaf_name_data.push_back(cvdnismappingurl.get_name_leafdata());
+    if (cvdnismappingrefresh.is_set || is_set(cvdnismappingrefresh.yfilter)) leaf_name_data.push_back(cvdnismappingrefresh.get_name_leafdata());
     if (cvdnismappingurlaccesserror.is_set || is_set(cvdnismappingurlaccesserror.yfilter)) leaf_name_data.push_back(cvdnismappingurlaccesserror.get_name_leafdata());
+    if (cvdnismappingstatus.is_set || is_set(cvdnismappingstatus.yfilter)) leaf_name_data.push_back(cvdnismappingstatus.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -316,29 +316,29 @@ void CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::set_value(const 
         cvdnismappingname.value_namespace = name_space;
         cvdnismappingname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cvDnisMappingRefresh")
-    {
-        cvdnismappingrefresh = value;
-        cvdnismappingrefresh.value_namespace = name_space;
-        cvdnismappingrefresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cvDnisMappingStatus")
-    {
-        cvdnismappingstatus = value;
-        cvdnismappingstatus.value_namespace = name_space;
-        cvdnismappingstatus.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cvDnisMappingUrl")
     {
         cvdnismappingurl = value;
         cvdnismappingurl.value_namespace = name_space;
         cvdnismappingurl.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cvDnisMappingRefresh")
+    {
+        cvdnismappingrefresh = value;
+        cvdnismappingrefresh.value_namespace = name_space;
+        cvdnismappingrefresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "cvDnisMappingUrlAccessError")
     {
         cvdnismappingurlaccesserror = value;
         cvdnismappingurlaccesserror.value_namespace = name_space;
         cvdnismappingurlaccesserror.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cvDnisMappingStatus")
+    {
+        cvdnismappingstatus = value;
+        cvdnismappingstatus.value_namespace = name_space;
+        cvdnismappingstatus.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -348,27 +348,27 @@ void CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::set_filter(const
     {
         cvdnismappingname.yfilter = yfilter;
     }
-    if(value_path == "cvDnisMappingRefresh")
-    {
-        cvdnismappingrefresh.yfilter = yfilter;
-    }
-    if(value_path == "cvDnisMappingStatus")
-    {
-        cvdnismappingstatus.yfilter = yfilter;
-    }
     if(value_path == "cvDnisMappingUrl")
     {
         cvdnismappingurl.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisMappingRefresh")
+    {
+        cvdnismappingrefresh.yfilter = yfilter;
     }
     if(value_path == "cvDnisMappingUrlAccessError")
     {
         cvdnismappingurlaccesserror.yfilter = yfilter;
     }
+    if(value_path == "cvDnisMappingStatus")
+    {
+        cvdnismappingstatus.yfilter = yfilter;
+    }
 }
 
 bool CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cvDnisMappingName" || name == "cvDnisMappingRefresh" || name == "cvDnisMappingStatus" || name == "cvDnisMappingUrl" || name == "cvDnisMappingUrlAccessError")
+    if(name == "cvDnisMappingName" || name == "cvDnisMappingUrl" || name == "cvDnisMappingRefresh" || name == "cvDnisMappingUrlAccessError" || name == "cvDnisMappingStatus")
         return true;
     return false;
 }
@@ -477,9 +477,9 @@ CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::Cvdnisnodeentry()
     :
     cvdnismappingname{YType::str, "cvDnisMappingName"},
     cvdnisnumber{YType::str, "cvDnisNumber"},
+    cvdnisnodeurl{YType::str, "cvDnisNodeUrl"},
     cvdnisnodemodifiable{YType::boolean, "cvDnisNodeModifiable"},
-    cvdnisnodestatus{YType::enumeration, "cvDnisNodeStatus"},
-    cvdnisnodeurl{YType::str, "cvDnisNodeUrl"}
+    cvdnisnodestatus{YType::enumeration, "cvDnisNodeStatus"}
 {
 
     yang_name = "cvDnisNodeEntry"; yang_parent_name = "cvDnisNodeTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -493,9 +493,9 @@ bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_data() const
 {
     return cvdnismappingname.is_set
 	|| cvdnisnumber.is_set
+	|| cvdnisnodeurl.is_set
 	|| cvdnisnodemodifiable.is_set
-	|| cvdnisnodestatus.is_set
-	|| cvdnisnodeurl.is_set;
+	|| cvdnisnodestatus.is_set;
 }
 
 bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_operation() const
@@ -503,9 +503,9 @@ bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(cvdnismappingname.yfilter)
 	|| ydk::is_set(cvdnisnumber.yfilter)
+	|| ydk::is_set(cvdnisnodeurl.yfilter)
 	|| ydk::is_set(cvdnisnodemodifiable.yfilter)
-	|| ydk::is_set(cvdnisnodestatus.yfilter)
-	|| ydk::is_set(cvdnisnodeurl.yfilter);
+	|| ydk::is_set(cvdnisnodestatus.yfilter);
 }
 
 std::string CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get_absolute_path() const
@@ -528,9 +528,9 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::Cvdnisnodetabl
 
     if (cvdnismappingname.is_set || is_set(cvdnismappingname.yfilter)) leaf_name_data.push_back(cvdnismappingname.get_name_leafdata());
     if (cvdnisnumber.is_set || is_set(cvdnisnumber.yfilter)) leaf_name_data.push_back(cvdnisnumber.get_name_leafdata());
+    if (cvdnisnodeurl.is_set || is_set(cvdnisnodeurl.yfilter)) leaf_name_data.push_back(cvdnisnodeurl.get_name_leafdata());
     if (cvdnisnodemodifiable.is_set || is_set(cvdnisnodemodifiable.yfilter)) leaf_name_data.push_back(cvdnisnodemodifiable.get_name_leafdata());
     if (cvdnisnodestatus.is_set || is_set(cvdnisnodestatus.yfilter)) leaf_name_data.push_back(cvdnisnodestatus.get_name_leafdata());
-    if (cvdnisnodeurl.is_set || is_set(cvdnisnodeurl.yfilter)) leaf_name_data.push_back(cvdnisnodeurl.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -561,6 +561,12 @@ void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_value(const std::s
         cvdnisnumber.value_namespace = name_space;
         cvdnisnumber.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cvDnisNodeUrl")
+    {
+        cvdnisnodeurl = value;
+        cvdnisnodeurl.value_namespace = name_space;
+        cvdnisnodeurl.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "cvDnisNodeModifiable")
     {
         cvdnisnodemodifiable = value;
@@ -572,12 +578,6 @@ void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_value(const std::s
         cvdnisnodestatus = value;
         cvdnisnodestatus.value_namespace = name_space;
         cvdnisnodestatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cvDnisNodeUrl")
-    {
-        cvdnisnodeurl = value;
-        cvdnisnodeurl.value_namespace = name_space;
-        cvdnisnodeurl.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -591,6 +591,10 @@ void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_filter(const std::
     {
         cvdnisnumber.yfilter = yfilter;
     }
+    if(value_path == "cvDnisNodeUrl")
+    {
+        cvdnisnodeurl.yfilter = yfilter;
+    }
     if(value_path == "cvDnisNodeModifiable")
     {
         cvdnisnodemodifiable.yfilter = yfilter;
@@ -599,15 +603,11 @@ void CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::set_filter(const std::
     {
         cvdnisnodestatus.yfilter = yfilter;
     }
-    if(value_path == "cvDnisNodeUrl")
-    {
-        cvdnisnodeurl.yfilter = yfilter;
-    }
 }
 
 bool CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cvDnisMappingName" || name == "cvDnisNumber" || name == "cvDnisNodeModifiable" || name == "cvDnisNodeStatus" || name == "cvDnisNodeUrl")
+    if(name == "cvDnisMappingName" || name == "cvDnisNumber" || name == "cvDnisNodeUrl" || name == "cvDnisNodeModifiable" || name == "cvDnisNodeStatus")
         return true;
     return false;
 }

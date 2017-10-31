@@ -13,8 +13,8 @@ namespace Cisco_IOS_XE_checkpoint_archive_oper {
 
 CheckpointArchives::CheckpointArchives()
     :
-    current{YType::uint8, "current"},
     max{YType::uint8, "max"},
+    current{YType::uint8, "current"},
     recent{YType::str, "recent"}
     	,
     archives(std::make_shared<CheckpointArchives::Archives>())
@@ -30,8 +30,8 @@ CheckpointArchives::~CheckpointArchives()
 
 bool CheckpointArchives::has_data() const
 {
-    return current.is_set
-	|| max.is_set
+    return max.is_set
+	|| current.is_set
 	|| recent.is_set
 	|| (archives !=  nullptr && archives->has_data());
 }
@@ -39,8 +39,8 @@ bool CheckpointArchives::has_data() const
 bool CheckpointArchives::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(current.yfilter)
 	|| ydk::is_set(max.yfilter)
+	|| ydk::is_set(current.yfilter)
 	|| ydk::is_set(recent.yfilter)
 	|| (archives !=  nullptr && archives->has_operation());
 }
@@ -56,8 +56,8 @@ std::vector<std::pair<std::string, LeafData> > CheckpointArchives::get_name_leaf
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (current.is_set || is_set(current.yfilter)) leaf_name_data.push_back(current.get_name_leafdata());
     if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+    if (current.is_set || is_set(current.yfilter)) leaf_name_data.push_back(current.get_name_leafdata());
     if (recent.is_set || is_set(recent.yfilter)) leaf_name_data.push_back(recent.get_name_leafdata());
 
     return leaf_name_data;
@@ -91,17 +91,17 @@ std::map<std::string, std::shared_ptr<Entity>> CheckpointArchives::get_children(
 
 void CheckpointArchives::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "current")
-    {
-        current = value;
-        current.value_namespace = name_space;
-        current.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "max")
     {
         max = value;
         max.value_namespace = name_space;
         max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "current")
+    {
+        current = value;
+        current.value_namespace = name_space;
+        current.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recent")
     {
@@ -113,13 +113,13 @@ void CheckpointArchives::set_value(const std::string & value_path, const std::st
 
 void CheckpointArchives::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "current")
-    {
-        current.yfilter = yfilter;
-    }
     if(value_path == "max")
     {
         max.yfilter = yfilter;
+    }
+    if(value_path == "current")
+    {
+        current.yfilter = yfilter;
     }
     if(value_path == "recent")
     {
@@ -154,7 +154,7 @@ std::map<std::pair<std::string, std::string>, std::string> CheckpointArchives::g
 
 bool CheckpointArchives::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "archives" || name == "current" || name == "max" || name == "recent")
+    if(name == "archives" || name == "max" || name == "current" || name == "recent")
         return true;
     return false;
 }

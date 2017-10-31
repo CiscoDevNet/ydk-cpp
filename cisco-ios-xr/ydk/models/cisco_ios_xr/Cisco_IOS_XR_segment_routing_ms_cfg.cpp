@@ -464,9 +464,9 @@ Sr::Mappings::Mapping::Mapping()
     af{YType::str, "af"},
     ip{YType::str, "ip"},
     mask{YType::int32, "mask"},
-    flag_attached{YType::enumeration, "flag-attached"},
+    sid_start{YType::uint32, "sid-start"},
     sid_range{YType::int32, "sid-range"},
-    sid_start{YType::uint32, "sid-start"}
+    flag_attached{YType::enumeration, "flag-attached"}
 {
 
     yang_name = "mapping"; yang_parent_name = "mappings"; is_top_level_class = false; has_list_ancestor = false;
@@ -481,9 +481,9 @@ bool Sr::Mappings::Mapping::has_data() const
     return af.is_set
 	|| ip.is_set
 	|| mask.is_set
-	|| flag_attached.is_set
+	|| sid_start.is_set
 	|| sid_range.is_set
-	|| sid_start.is_set;
+	|| flag_attached.is_set;
 }
 
 bool Sr::Mappings::Mapping::has_operation() const
@@ -492,9 +492,9 @@ bool Sr::Mappings::Mapping::has_operation() const
 	|| ydk::is_set(af.yfilter)
 	|| ydk::is_set(ip.yfilter)
 	|| ydk::is_set(mask.yfilter)
-	|| ydk::is_set(flag_attached.yfilter)
+	|| ydk::is_set(sid_start.yfilter)
 	|| ydk::is_set(sid_range.yfilter)
-	|| ydk::is_set(sid_start.yfilter);
+	|| ydk::is_set(flag_attached.yfilter);
 }
 
 std::string Sr::Mappings::Mapping::get_absolute_path() const
@@ -518,9 +518,9 @@ std::vector<std::pair<std::string, LeafData> > Sr::Mappings::Mapping::get_name_l
     if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
     if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
-    if (sid_range.is_set || is_set(sid_range.yfilter)) leaf_name_data.push_back(sid_range.get_name_leafdata());
     if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (sid_range.is_set || is_set(sid_range.yfilter)) leaf_name_data.push_back(sid_range.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -557,11 +557,11 @@ void Sr::Mappings::Mapping::set_value(const std::string & value_path, const std:
         mask.value_namespace = name_space;
         mask.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "sid-start")
     {
-        flag_attached = value;
-        flag_attached.value_namespace = name_space;
-        flag_attached.value_namespace_prefix = name_space_prefix;
+        sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-range")
     {
@@ -569,11 +569,11 @@ void Sr::Mappings::Mapping::set_value(const std::string & value_path, const std:
         sid_range.value_namespace = name_space;
         sid_range.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sid-start")
+    if(value_path == "flag-attached")
     {
-        sid_start = value;
-        sid_start.value_namespace = name_space;
-        sid_start.value_namespace_prefix = name_space_prefix;
+        flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -591,23 +591,23 @@ void Sr::Mappings::Mapping::set_filter(const std::string & value_path, YFilter y
     {
         mask.yfilter = yfilter;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "sid-start")
     {
-        flag_attached.yfilter = yfilter;
+        sid_start.yfilter = yfilter;
     }
     if(value_path == "sid-range")
     {
         sid_range.yfilter = yfilter;
     }
-    if(value_path == "sid-start")
+    if(value_path == "flag-attached")
     {
-        sid_start.yfilter = yfilter;
+        flag_attached.yfilter = yfilter;
     }
 }
 
 bool Sr::Mappings::Mapping::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "af" || name == "ip" || name == "mask" || name == "flag-attached" || name == "sid-range" || name == "sid-start")
+    if(name == "af" || name == "ip" || name == "mask" || name == "sid-start" || name == "sid-range" || name == "flag-attached")
         return true;
     return false;
 }

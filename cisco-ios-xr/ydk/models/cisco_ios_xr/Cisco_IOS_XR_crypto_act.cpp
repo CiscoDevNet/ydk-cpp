@@ -11,6 +11,1346 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_crypto_act {
 
+KeyGenerateRsaGeneralKeys::KeyGenerateRsaGeneralKeys()
+    :
+    input(std::make_shared<KeyGenerateRsaGeneralKeys::Input>())
+{
+    input->parent = this;
+
+    yang_name = "key-generate-rsa-general-keys"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyGenerateRsaGeneralKeys::~KeyGenerateRsaGeneralKeys()
+{
+}
+
+bool KeyGenerateRsaGeneralKeys::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool KeyGenerateRsaGeneralKeys::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string KeyGenerateRsaGeneralKeys::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-general-keys";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaGeneralKeys::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<KeyGenerateRsaGeneralKeys::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaGeneralKeys::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void KeyGenerateRsaGeneralKeys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyGenerateRsaGeneralKeys::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::clone_ptr() const
+{
+    return std::make_shared<KeyGenerateRsaGeneralKeys>();
+}
+
+std::string KeyGenerateRsaGeneralKeys::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyGenerateRsaGeneralKeys::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyGenerateRsaGeneralKeys::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyGenerateRsaGeneralKeys::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyGenerateRsaGeneralKeys::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+KeyGenerateRsaGeneralKeys::Input::Input()
+    :
+    key_label{YType::str, "key-label"},
+    key_modulus{YType::int32, "key-modulus"}
+{
+
+    yang_name = "input"; yang_parent_name = "key-generate-rsa-general-keys"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+KeyGenerateRsaGeneralKeys::Input::~Input()
+{
+}
+
+bool KeyGenerateRsaGeneralKeys::Input::has_data() const
+{
+    return key_label.is_set
+	|| key_modulus.is_set;
+}
+
+bool KeyGenerateRsaGeneralKeys::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_label.yfilter)
+	|| ydk::is_set(key_modulus.yfilter);
+}
+
+std::string KeyGenerateRsaGeneralKeys::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-general-keys/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string KeyGenerateRsaGeneralKeys::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaGeneralKeys::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
+    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaGeneralKeys::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyGenerateRsaGeneralKeys::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-label")
+    {
+        key_label = value;
+        key_label.value_namespace = name_space;
+        key_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-modulus")
+    {
+        key_modulus = value;
+        key_modulus.value_namespace = name_space;
+        key_modulus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void KeyGenerateRsaGeneralKeys::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-label")
+    {
+        key_label.yfilter = yfilter;
+    }
+    if(value_path == "key-modulus")
+    {
+        key_modulus.yfilter = yfilter;
+    }
+}
+
+bool KeyGenerateRsaGeneralKeys::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-label" || name == "key-modulus")
+        return true;
+    return false;
+}
+
+KeyGenerateRsaUsageKeys::KeyGenerateRsaUsageKeys()
+    :
+    input(std::make_shared<KeyGenerateRsaUsageKeys::Input>())
+{
+    input->parent = this;
+
+    yang_name = "key-generate-rsa-usage-keys"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyGenerateRsaUsageKeys::~KeyGenerateRsaUsageKeys()
+{
+}
+
+bool KeyGenerateRsaUsageKeys::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool KeyGenerateRsaUsageKeys::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string KeyGenerateRsaUsageKeys::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-usage-keys";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaUsageKeys::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<KeyGenerateRsaUsageKeys::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaUsageKeys::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void KeyGenerateRsaUsageKeys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyGenerateRsaUsageKeys::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::clone_ptr() const
+{
+    return std::make_shared<KeyGenerateRsaUsageKeys>();
+}
+
+std::string KeyGenerateRsaUsageKeys::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyGenerateRsaUsageKeys::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyGenerateRsaUsageKeys::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyGenerateRsaUsageKeys::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyGenerateRsaUsageKeys::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+KeyGenerateRsaUsageKeys::Input::Input()
+    :
+    key_label{YType::str, "key-label"},
+    key_modulus{YType::int32, "key-modulus"}
+{
+
+    yang_name = "input"; yang_parent_name = "key-generate-rsa-usage-keys"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+KeyGenerateRsaUsageKeys::Input::~Input()
+{
+}
+
+bool KeyGenerateRsaUsageKeys::Input::has_data() const
+{
+    return key_label.is_set
+	|| key_modulus.is_set;
+}
+
+bool KeyGenerateRsaUsageKeys::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_label.yfilter)
+	|| ydk::is_set(key_modulus.yfilter);
+}
+
+std::string KeyGenerateRsaUsageKeys::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-usage-keys/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string KeyGenerateRsaUsageKeys::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaUsageKeys::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
+    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaUsageKeys::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyGenerateRsaUsageKeys::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-label")
+    {
+        key_label = value;
+        key_label.value_namespace = name_space;
+        key_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-modulus")
+    {
+        key_modulus = value;
+        key_modulus.value_namespace = name_space;
+        key_modulus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void KeyGenerateRsaUsageKeys::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-label")
+    {
+        key_label.yfilter = yfilter;
+    }
+    if(value_path == "key-modulus")
+    {
+        key_modulus.yfilter = yfilter;
+    }
+}
+
+bool KeyGenerateRsaUsageKeys::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-label" || name == "key-modulus")
+        return true;
+    return false;
+}
+
+KeyGenerateRsa::KeyGenerateRsa()
+    :
+    input(std::make_shared<KeyGenerateRsa::Input>())
+{
+    input->parent = this;
+
+    yang_name = "key-generate-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyGenerateRsa::~KeyGenerateRsa()
+{
+}
+
+bool KeyGenerateRsa::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool KeyGenerateRsa::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string KeyGenerateRsa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateRsa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<KeyGenerateRsa::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void KeyGenerateRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyGenerateRsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyGenerateRsa::clone_ptr() const
+{
+    return std::make_shared<KeyGenerateRsa>();
+}
+
+std::string KeyGenerateRsa::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyGenerateRsa::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyGenerateRsa::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyGenerateRsa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyGenerateRsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+KeyGenerateRsa::Input::Input()
+    :
+    key_label{YType::str, "key-label"},
+    key_modulus{YType::int32, "key-modulus"}
+{
+
+    yang_name = "input"; yang_parent_name = "key-generate-rsa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+KeyGenerateRsa::Input::~Input()
+{
+}
+
+bool KeyGenerateRsa::Input::has_data() const
+{
+    return key_label.is_set
+	|| key_modulus.is_set;
+}
+
+bool KeyGenerateRsa::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_label.yfilter)
+	|| ydk::is_set(key_modulus.yfilter);
+}
+
+std::string KeyGenerateRsa::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string KeyGenerateRsa::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateRsa::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
+    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateRsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsa::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyGenerateRsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-label")
+    {
+        key_label = value;
+        key_label.value_namespace = name_space;
+        key_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-modulus")
+    {
+        key_modulus = value;
+        key_modulus.value_namespace = name_space;
+        key_modulus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void KeyGenerateRsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-label")
+    {
+        key_label.yfilter = yfilter;
+    }
+    if(value_path == "key-modulus")
+    {
+        key_modulus.yfilter = yfilter;
+    }
+}
+
+bool KeyGenerateRsa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-label" || name == "key-modulus")
+        return true;
+    return false;
+}
+
+KeyGenerateDsa::KeyGenerateDsa()
+    :
+    input(std::make_shared<KeyGenerateDsa::Input>())
+{
+    input->parent = this;
+
+    yang_name = "key-generate-dsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyGenerateDsa::~KeyGenerateDsa()
+{
+}
+
+bool KeyGenerateDsa::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool KeyGenerateDsa::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string KeyGenerateDsa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-dsa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateDsa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateDsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<KeyGenerateDsa::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateDsa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void KeyGenerateDsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyGenerateDsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyGenerateDsa::clone_ptr() const
+{
+    return std::make_shared<KeyGenerateDsa>();
+}
+
+std::string KeyGenerateDsa::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyGenerateDsa::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyGenerateDsa::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyGenerateDsa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyGenerateDsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+KeyGenerateDsa::Input::Input()
+    :
+    key_modulus{YType::int32, "key-modulus"}
+{
+
+    yang_name = "input"; yang_parent_name = "key-generate-dsa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+KeyGenerateDsa::Input::~Input()
+{
+}
+
+bool KeyGenerateDsa::Input::has_data() const
+{
+    return key_modulus.is_set;
+}
+
+bool KeyGenerateDsa::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_modulus.yfilter);
+}
+
+std::string KeyGenerateDsa::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-dsa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string KeyGenerateDsa::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyGenerateDsa::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyGenerateDsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyGenerateDsa::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyGenerateDsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-modulus")
+    {
+        key_modulus = value;
+        key_modulus.value_namespace = name_space;
+        key_modulus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void KeyGenerateDsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-modulus")
+    {
+        key_modulus.yfilter = yfilter;
+    }
+}
+
+bool KeyGenerateDsa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-modulus")
+        return true;
+    return false;
+}
+
+KeyZeroizeRsa::KeyZeroizeRsa()
+    :
+    input(std::make_shared<KeyZeroizeRsa::Input>())
+{
+    input->parent = this;
+
+    yang_name = "key-zeroize-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyZeroizeRsa::~KeyZeroizeRsa()
+{
+}
+
+bool KeyZeroizeRsa::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool KeyZeroizeRsa::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string KeyZeroizeRsa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-rsa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyZeroizeRsa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyZeroizeRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<KeyZeroizeRsa::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeRsa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void KeyZeroizeRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyZeroizeRsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyZeroizeRsa::clone_ptr() const
+{
+    return std::make_shared<KeyZeroizeRsa>();
+}
+
+std::string KeyZeroizeRsa::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyZeroizeRsa::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyZeroizeRsa::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyZeroizeRsa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyZeroizeRsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+KeyZeroizeRsa::Input::Input()
+    :
+    key_label{YType::str, "key-label"}
+{
+
+    yang_name = "input"; yang_parent_name = "key-zeroize-rsa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+KeyZeroizeRsa::Input::~Input()
+{
+}
+
+bool KeyZeroizeRsa::Input::has_data() const
+{
+    return key_label.is_set;
+}
+
+bool KeyZeroizeRsa::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_label.yfilter);
+}
+
+std::string KeyZeroizeRsa::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-rsa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string KeyZeroizeRsa::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyZeroizeRsa::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyZeroizeRsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeRsa::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyZeroizeRsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-label")
+    {
+        key_label = value;
+        key_label.value_namespace = name_space;
+        key_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void KeyZeroizeRsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-label")
+    {
+        key_label.yfilter = yfilter;
+    }
+}
+
+bool KeyZeroizeRsa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-label")
+        return true;
+    return false;
+}
+
+KeyZeroizeDsa::KeyZeroizeDsa()
+{
+
+    yang_name = "key-zeroize-dsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyZeroizeDsa::~KeyZeroizeDsa()
+{
+}
+
+bool KeyZeroizeDsa::has_data() const
+{
+    return false;
+}
+
+bool KeyZeroizeDsa::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string KeyZeroizeDsa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-dsa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyZeroizeDsa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyZeroizeDsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeDsa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyZeroizeDsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyZeroizeDsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyZeroizeDsa::clone_ptr() const
+{
+    return std::make_shared<KeyZeroizeDsa>();
+}
+
+std::string KeyZeroizeDsa::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyZeroizeDsa::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyZeroizeDsa::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyZeroizeDsa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyZeroizeDsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+KeyZeroizeAuthenticationRsa::KeyZeroizeAuthenticationRsa()
+{
+
+    yang_name = "key-zeroize-authentication-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyZeroizeAuthenticationRsa::~KeyZeroizeAuthenticationRsa()
+{
+}
+
+bool KeyZeroizeAuthenticationRsa::has_data() const
+{
+    return false;
+}
+
+bool KeyZeroizeAuthenticationRsa::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string KeyZeroizeAuthenticationRsa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-authentication-rsa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyZeroizeAuthenticationRsa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyZeroizeAuthenticationRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeAuthenticationRsa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyZeroizeAuthenticationRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyZeroizeAuthenticationRsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyZeroizeAuthenticationRsa::clone_ptr() const
+{
+    return std::make_shared<KeyZeroizeAuthenticationRsa>();
+}
+
+std::string KeyZeroizeAuthenticationRsa::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyZeroizeAuthenticationRsa::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyZeroizeAuthenticationRsa::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyZeroizeAuthenticationRsa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyZeroizeAuthenticationRsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+KeyImportAuthenticationRsa::KeyImportAuthenticationRsa()
+    :
+    input(std::make_shared<KeyImportAuthenticationRsa::Input>())
+{
+    input->parent = this;
+
+    yang_name = "key-import-authentication-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+KeyImportAuthenticationRsa::~KeyImportAuthenticationRsa()
+{
+}
+
+bool KeyImportAuthenticationRsa::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool KeyImportAuthenticationRsa::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string KeyImportAuthenticationRsa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-import-authentication-rsa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyImportAuthenticationRsa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyImportAuthenticationRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<KeyImportAuthenticationRsa::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyImportAuthenticationRsa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void KeyImportAuthenticationRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void KeyImportAuthenticationRsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> KeyImportAuthenticationRsa::clone_ptr() const
+{
+    return std::make_shared<KeyImportAuthenticationRsa>();
+}
+
+std::string KeyImportAuthenticationRsa::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string KeyImportAuthenticationRsa::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function KeyImportAuthenticationRsa::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> KeyImportAuthenticationRsa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool KeyImportAuthenticationRsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+KeyImportAuthenticationRsa::Input::Input()
+    :
+    path{YType::str, "path"}
+{
+
+    yang_name = "input"; yang_parent_name = "key-import-authentication-rsa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+KeyImportAuthenticationRsa::Input::~Input()
+{
+}
+
+bool KeyImportAuthenticationRsa::Input::has_data() const
+{
+    return path.is_set;
+}
+
+bool KeyImportAuthenticationRsa::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter);
+}
+
+std::string KeyImportAuthenticationRsa::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:key-import-authentication-rsa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string KeyImportAuthenticationRsa::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > KeyImportAuthenticationRsa::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> KeyImportAuthenticationRsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KeyImportAuthenticationRsa::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KeyImportAuthenticationRsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path")
+    {
+        path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void KeyImportAuthenticationRsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool KeyImportAuthenticationRsa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
+}
+
 CaAuthenticate::CaAuthenticate()
     :
     input(std::make_shared<CaAuthenticate::Input>())
@@ -193,6 +1533,382 @@ void CaAuthenticate::Input::set_filter(const std::string & value_path, YFilter y
 }
 
 bool CaAuthenticate::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server-name")
+        return true;
+    return false;
+}
+
+CaEnroll::CaEnroll()
+    :
+    input(std::make_shared<CaEnroll::Input>())
+{
+    input->parent = this;
+
+    yang_name = "ca-enroll"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+CaEnroll::~CaEnroll()
+{
+}
+
+bool CaEnroll::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool CaEnroll::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string CaEnroll::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:ca-enroll";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CaEnroll::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CaEnroll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<CaEnroll::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CaEnroll::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void CaEnroll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CaEnroll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> CaEnroll::clone_ptr() const
+{
+    return std::make_shared<CaEnroll>();
+}
+
+std::string CaEnroll::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string CaEnroll::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function CaEnroll::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CaEnroll::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool CaEnroll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+CaEnroll::Input::Input()
+    :
+    server_name{YType::str, "server-name"}
+{
+
+    yang_name = "input"; yang_parent_name = "ca-enroll"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CaEnroll::Input::~Input()
+{
+}
+
+bool CaEnroll::Input::has_data() const
+{
+    return server_name.is_set;
+}
+
+bool CaEnroll::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(server_name.yfilter);
+}
+
+std::string CaEnroll::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:ca-enroll/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CaEnroll::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CaEnroll::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (server_name.is_set || is_set(server_name.yfilter)) leaf_name_data.push_back(server_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CaEnroll::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CaEnroll::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CaEnroll::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "server-name")
+    {
+        server_name = value;
+        server_name.value_namespace = name_space;
+        server_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CaEnroll::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "server-name")
+    {
+        server_name.yfilter = yfilter;
+    }
+}
+
+bool CaEnroll::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server-name")
+        return true;
+    return false;
+}
+
+CaImportCertificate::CaImportCertificate()
+    :
+    input(std::make_shared<CaImportCertificate::Input>())
+{
+    input->parent = this;
+
+    yang_name = "ca-import-certificate"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+CaImportCertificate::~CaImportCertificate()
+{
+}
+
+bool CaImportCertificate::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool CaImportCertificate::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string CaImportCertificate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:ca-import-certificate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CaImportCertificate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CaImportCertificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<CaImportCertificate::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CaImportCertificate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void CaImportCertificate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CaImportCertificate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> CaImportCertificate::clone_ptr() const
+{
+    return std::make_shared<CaImportCertificate>();
+}
+
+std::string CaImportCertificate::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string CaImportCertificate::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function CaImportCertificate::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CaImportCertificate::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool CaImportCertificate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+CaImportCertificate::Input::Input()
+    :
+    server_name{YType::str, "server-name"}
+{
+
+    yang_name = "input"; yang_parent_name = "ca-import-certificate"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CaImportCertificate::Input::~Input()
+{
+}
+
+bool CaImportCertificate::Input::has_data() const
+{
+    return server_name.is_set;
+}
+
+bool CaImportCertificate::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(server_name.yfilter);
+}
+
+std::string CaImportCertificate::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-act:ca-import-certificate/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CaImportCertificate::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CaImportCertificate::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (server_name.is_set || is_set(server_name.yfilter)) leaf_name_data.push_back(server_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CaImportCertificate::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CaImportCertificate::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CaImportCertificate::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "server-name")
+    {
+        server_name = value;
+        server_name.value_namespace = name_space;
+        server_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CaImportCertificate::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "server-name")
+    {
+        server_name.yfilter = yfilter;
+    }
+}
+
+bool CaImportCertificate::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "server-name")
         return true;
@@ -676,382 +2392,6 @@ bool CaCrlRequest::Output::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-CaEnroll::CaEnroll()
-    :
-    input(std::make_shared<CaEnroll::Input>())
-{
-    input->parent = this;
-
-    yang_name = "ca-enroll"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-CaEnroll::~CaEnroll()
-{
-}
-
-bool CaEnroll::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool CaEnroll::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string CaEnroll::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:ca-enroll";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CaEnroll::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CaEnroll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<CaEnroll::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CaEnroll::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void CaEnroll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CaEnroll::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> CaEnroll::clone_ptr() const
-{
-    return std::make_shared<CaEnroll>();
-}
-
-std::string CaEnroll::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string CaEnroll::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function CaEnroll::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> CaEnroll::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool CaEnroll::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-CaEnroll::Input::Input()
-    :
-    server_name{YType::str, "server-name"}
-{
-
-    yang_name = "input"; yang_parent_name = "ca-enroll"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CaEnroll::Input::~Input()
-{
-}
-
-bool CaEnroll::Input::has_data() const
-{
-    return server_name.is_set;
-}
-
-bool CaEnroll::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(server_name.yfilter);
-}
-
-std::string CaEnroll::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:ca-enroll/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CaEnroll::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CaEnroll::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (server_name.is_set || is_set(server_name.yfilter)) leaf_name_data.push_back(server_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CaEnroll::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CaEnroll::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CaEnroll::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "server-name")
-    {
-        server_name = value;
-        server_name.value_namespace = name_space;
-        server_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CaEnroll::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "server-name")
-    {
-        server_name.yfilter = yfilter;
-    }
-}
-
-bool CaEnroll::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "server-name")
-        return true;
-    return false;
-}
-
-CaImportCertificate::CaImportCertificate()
-    :
-    input(std::make_shared<CaImportCertificate::Input>())
-{
-    input->parent = this;
-
-    yang_name = "ca-import-certificate"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-CaImportCertificate::~CaImportCertificate()
-{
-}
-
-bool CaImportCertificate::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool CaImportCertificate::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string CaImportCertificate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:ca-import-certificate";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CaImportCertificate::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CaImportCertificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<CaImportCertificate::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CaImportCertificate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void CaImportCertificate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CaImportCertificate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> CaImportCertificate::clone_ptr() const
-{
-    return std::make_shared<CaImportCertificate>();
-}
-
-std::string CaImportCertificate::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string CaImportCertificate::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function CaImportCertificate::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> CaImportCertificate::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool CaImportCertificate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-CaImportCertificate::Input::Input()
-    :
-    server_name{YType::str, "server-name"}
-{
-
-    yang_name = "input"; yang_parent_name = "ca-import-certificate"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CaImportCertificate::Input::~Input()
-{
-}
-
-bool CaImportCertificate::Input::has_data() const
-{
-    return server_name.is_set;
-}
-
-bool CaImportCertificate::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(server_name.yfilter);
-}
-
-std::string CaImportCertificate::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:ca-import-certificate/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CaImportCertificate::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CaImportCertificate::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (server_name.is_set || is_set(server_name.yfilter)) leaf_name_data.push_back(server_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CaImportCertificate::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CaImportCertificate::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CaImportCertificate::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "server-name")
-    {
-        server_name = value;
-        server_name.value_namespace = name_space;
-        server_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CaImportCertificate::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "server-name")
-    {
-        server_name.yfilter = yfilter;
-    }
-}
-
-bool CaImportCertificate::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "server-name")
-        return true;
-    return false;
-}
-
 CaTrustpoolImportUrl::CaTrustpoolImportUrl()
     :
     input(std::make_shared<CaTrustpoolImportUrl::Input>())
@@ -1424,1346 +2764,6 @@ void CaTrustpoolImportUrlClean::Input::set_filter(const std::string & value_path
 bool CaTrustpoolImportUrlClean::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "url")
-        return true;
-    return false;
-}
-
-KeyGenerateDsa::KeyGenerateDsa()
-    :
-    input(std::make_shared<KeyGenerateDsa::Input>())
-{
-    input->parent = this;
-
-    yang_name = "key-generate-dsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyGenerateDsa::~KeyGenerateDsa()
-{
-}
-
-bool KeyGenerateDsa::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool KeyGenerateDsa::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string KeyGenerateDsa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-dsa";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateDsa::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateDsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<KeyGenerateDsa::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateDsa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void KeyGenerateDsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyGenerateDsa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyGenerateDsa::clone_ptr() const
-{
-    return std::make_shared<KeyGenerateDsa>();
-}
-
-std::string KeyGenerateDsa::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyGenerateDsa::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyGenerateDsa::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyGenerateDsa::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyGenerateDsa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-KeyGenerateDsa::Input::Input()
-    :
-    key_modulus{YType::int32, "key-modulus"}
-{
-
-    yang_name = "input"; yang_parent_name = "key-generate-dsa"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-KeyGenerateDsa::Input::~Input()
-{
-}
-
-bool KeyGenerateDsa::Input::has_data() const
-{
-    return key_modulus.is_set;
-}
-
-bool KeyGenerateDsa::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key_modulus.yfilter);
-}
-
-std::string KeyGenerateDsa::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-dsa/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string KeyGenerateDsa::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateDsa::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateDsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateDsa::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyGenerateDsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key-modulus")
-    {
-        key_modulus = value;
-        key_modulus.value_namespace = name_space;
-        key_modulus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void KeyGenerateDsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key-modulus")
-    {
-        key_modulus.yfilter = yfilter;
-    }
-}
-
-bool KeyGenerateDsa::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-modulus")
-        return true;
-    return false;
-}
-
-KeyGenerateRsa::KeyGenerateRsa()
-    :
-    input(std::make_shared<KeyGenerateRsa::Input>())
-{
-    input->parent = this;
-
-    yang_name = "key-generate-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyGenerateRsa::~KeyGenerateRsa()
-{
-}
-
-bool KeyGenerateRsa::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool KeyGenerateRsa::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string KeyGenerateRsa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateRsa::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<KeyGenerateRsa::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void KeyGenerateRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyGenerateRsa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyGenerateRsa::clone_ptr() const
-{
-    return std::make_shared<KeyGenerateRsa>();
-}
-
-std::string KeyGenerateRsa::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyGenerateRsa::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyGenerateRsa::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyGenerateRsa::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyGenerateRsa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-KeyGenerateRsa::Input::Input()
-    :
-    key_label{YType::str, "key-label"},
-    key_modulus{YType::int32, "key-modulus"}
-{
-
-    yang_name = "input"; yang_parent_name = "key-generate-rsa"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-KeyGenerateRsa::Input::~Input()
-{
-}
-
-bool KeyGenerateRsa::Input::has_data() const
-{
-    return key_label.is_set
-	|| key_modulus.is_set;
-}
-
-bool KeyGenerateRsa::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key_label.yfilter)
-	|| ydk::is_set(key_modulus.yfilter);
-}
-
-std::string KeyGenerateRsa::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string KeyGenerateRsa::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateRsa::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
-    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateRsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsa::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyGenerateRsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key-label")
-    {
-        key_label = value;
-        key_label.value_namespace = name_space;
-        key_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-modulus")
-    {
-        key_modulus = value;
-        key_modulus.value_namespace = name_space;
-        key_modulus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void KeyGenerateRsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key-label")
-    {
-        key_label.yfilter = yfilter;
-    }
-    if(value_path == "key-modulus")
-    {
-        key_modulus.yfilter = yfilter;
-    }
-}
-
-bool KeyGenerateRsa::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-label" || name == "key-modulus")
-        return true;
-    return false;
-}
-
-KeyGenerateRsaGeneralKeys::KeyGenerateRsaGeneralKeys()
-    :
-    input(std::make_shared<KeyGenerateRsaGeneralKeys::Input>())
-{
-    input->parent = this;
-
-    yang_name = "key-generate-rsa-general-keys"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyGenerateRsaGeneralKeys::~KeyGenerateRsaGeneralKeys()
-{
-}
-
-bool KeyGenerateRsaGeneralKeys::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool KeyGenerateRsaGeneralKeys::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string KeyGenerateRsaGeneralKeys::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-general-keys";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaGeneralKeys::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<KeyGenerateRsaGeneralKeys::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaGeneralKeys::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void KeyGenerateRsaGeneralKeys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyGenerateRsaGeneralKeys::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::clone_ptr() const
-{
-    return std::make_shared<KeyGenerateRsaGeneralKeys>();
-}
-
-std::string KeyGenerateRsaGeneralKeys::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyGenerateRsaGeneralKeys::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyGenerateRsaGeneralKeys::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyGenerateRsaGeneralKeys::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyGenerateRsaGeneralKeys::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-KeyGenerateRsaGeneralKeys::Input::Input()
-    :
-    key_label{YType::str, "key-label"},
-    key_modulus{YType::int32, "key-modulus"}
-{
-
-    yang_name = "input"; yang_parent_name = "key-generate-rsa-general-keys"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-KeyGenerateRsaGeneralKeys::Input::~Input()
-{
-}
-
-bool KeyGenerateRsaGeneralKeys::Input::has_data() const
-{
-    return key_label.is_set
-	|| key_modulus.is_set;
-}
-
-bool KeyGenerateRsaGeneralKeys::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key_label.yfilter)
-	|| ydk::is_set(key_modulus.yfilter);
-}
-
-std::string KeyGenerateRsaGeneralKeys::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-general-keys/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string KeyGenerateRsaGeneralKeys::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaGeneralKeys::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
-    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaGeneralKeys::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyGenerateRsaGeneralKeys::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key-label")
-    {
-        key_label = value;
-        key_label.value_namespace = name_space;
-        key_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-modulus")
-    {
-        key_modulus = value;
-        key_modulus.value_namespace = name_space;
-        key_modulus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void KeyGenerateRsaGeneralKeys::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key-label")
-    {
-        key_label.yfilter = yfilter;
-    }
-    if(value_path == "key-modulus")
-    {
-        key_modulus.yfilter = yfilter;
-    }
-}
-
-bool KeyGenerateRsaGeneralKeys::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-label" || name == "key-modulus")
-        return true;
-    return false;
-}
-
-KeyGenerateRsaUsageKeys::KeyGenerateRsaUsageKeys()
-    :
-    input(std::make_shared<KeyGenerateRsaUsageKeys::Input>())
-{
-    input->parent = this;
-
-    yang_name = "key-generate-rsa-usage-keys"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyGenerateRsaUsageKeys::~KeyGenerateRsaUsageKeys()
-{
-}
-
-bool KeyGenerateRsaUsageKeys::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool KeyGenerateRsaUsageKeys::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string KeyGenerateRsaUsageKeys::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-usage-keys";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaUsageKeys::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<KeyGenerateRsaUsageKeys::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaUsageKeys::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void KeyGenerateRsaUsageKeys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyGenerateRsaUsageKeys::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::clone_ptr() const
-{
-    return std::make_shared<KeyGenerateRsaUsageKeys>();
-}
-
-std::string KeyGenerateRsaUsageKeys::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyGenerateRsaUsageKeys::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyGenerateRsaUsageKeys::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyGenerateRsaUsageKeys::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyGenerateRsaUsageKeys::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-KeyGenerateRsaUsageKeys::Input::Input()
-    :
-    key_label{YType::str, "key-label"},
-    key_modulus{YType::int32, "key-modulus"}
-{
-
-    yang_name = "input"; yang_parent_name = "key-generate-rsa-usage-keys"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-KeyGenerateRsaUsageKeys::Input::~Input()
-{
-}
-
-bool KeyGenerateRsaUsageKeys::Input::has_data() const
-{
-    return key_label.is_set
-	|| key_modulus.is_set;
-}
-
-bool KeyGenerateRsaUsageKeys::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key_label.yfilter)
-	|| ydk::is_set(key_modulus.yfilter);
-}
-
-std::string KeyGenerateRsaUsageKeys::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-generate-rsa-usage-keys/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string KeyGenerateRsaUsageKeys::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyGenerateRsaUsageKeys::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
-    if (key_modulus.is_set || is_set(key_modulus.yfilter)) leaf_name_data.push_back(key_modulus.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaUsageKeys::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyGenerateRsaUsageKeys::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key-label")
-    {
-        key_label = value;
-        key_label.value_namespace = name_space;
-        key_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-modulus")
-    {
-        key_modulus = value;
-        key_modulus.value_namespace = name_space;
-        key_modulus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void KeyGenerateRsaUsageKeys::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key-label")
-    {
-        key_label.yfilter = yfilter;
-    }
-    if(value_path == "key-modulus")
-    {
-        key_modulus.yfilter = yfilter;
-    }
-}
-
-bool KeyGenerateRsaUsageKeys::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-label" || name == "key-modulus")
-        return true;
-    return false;
-}
-
-KeyImportAuthenticationRsa::KeyImportAuthenticationRsa()
-    :
-    input(std::make_shared<KeyImportAuthenticationRsa::Input>())
-{
-    input->parent = this;
-
-    yang_name = "key-import-authentication-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyImportAuthenticationRsa::~KeyImportAuthenticationRsa()
-{
-}
-
-bool KeyImportAuthenticationRsa::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool KeyImportAuthenticationRsa::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string KeyImportAuthenticationRsa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-import-authentication-rsa";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyImportAuthenticationRsa::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyImportAuthenticationRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<KeyImportAuthenticationRsa::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyImportAuthenticationRsa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void KeyImportAuthenticationRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyImportAuthenticationRsa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyImportAuthenticationRsa::clone_ptr() const
-{
-    return std::make_shared<KeyImportAuthenticationRsa>();
-}
-
-std::string KeyImportAuthenticationRsa::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyImportAuthenticationRsa::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyImportAuthenticationRsa::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyImportAuthenticationRsa::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyImportAuthenticationRsa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-KeyImportAuthenticationRsa::Input::Input()
-    :
-    path{YType::str, "path"}
-{
-
-    yang_name = "input"; yang_parent_name = "key-import-authentication-rsa"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-KeyImportAuthenticationRsa::Input::~Input()
-{
-}
-
-bool KeyImportAuthenticationRsa::Input::has_data() const
-{
-    return path.is_set;
-}
-
-bool KeyImportAuthenticationRsa::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(path.yfilter);
-}
-
-std::string KeyImportAuthenticationRsa::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-import-authentication-rsa/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string KeyImportAuthenticationRsa::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyImportAuthenticationRsa::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyImportAuthenticationRsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyImportAuthenticationRsa::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyImportAuthenticationRsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void KeyImportAuthenticationRsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-}
-
-bool KeyImportAuthenticationRsa::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path")
-        return true;
-    return false;
-}
-
-KeyZeroizeAuthenticationRsa::KeyZeroizeAuthenticationRsa()
-{
-
-    yang_name = "key-zeroize-authentication-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyZeroizeAuthenticationRsa::~KeyZeroizeAuthenticationRsa()
-{
-}
-
-bool KeyZeroizeAuthenticationRsa::has_data() const
-{
-    return false;
-}
-
-bool KeyZeroizeAuthenticationRsa::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string KeyZeroizeAuthenticationRsa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-authentication-rsa";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyZeroizeAuthenticationRsa::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyZeroizeAuthenticationRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeAuthenticationRsa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyZeroizeAuthenticationRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyZeroizeAuthenticationRsa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyZeroizeAuthenticationRsa::clone_ptr() const
-{
-    return std::make_shared<KeyZeroizeAuthenticationRsa>();
-}
-
-std::string KeyZeroizeAuthenticationRsa::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyZeroizeAuthenticationRsa::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyZeroizeAuthenticationRsa::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyZeroizeAuthenticationRsa::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyZeroizeAuthenticationRsa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-KeyZeroizeDsa::KeyZeroizeDsa()
-{
-
-    yang_name = "key-zeroize-dsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyZeroizeDsa::~KeyZeroizeDsa()
-{
-}
-
-bool KeyZeroizeDsa::has_data() const
-{
-    return false;
-}
-
-bool KeyZeroizeDsa::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string KeyZeroizeDsa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-dsa";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyZeroizeDsa::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyZeroizeDsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeDsa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyZeroizeDsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyZeroizeDsa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyZeroizeDsa::clone_ptr() const
-{
-    return std::make_shared<KeyZeroizeDsa>();
-}
-
-std::string KeyZeroizeDsa::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyZeroizeDsa::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyZeroizeDsa::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyZeroizeDsa::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyZeroizeDsa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-KeyZeroizeRsa::KeyZeroizeRsa()
-    :
-    input(std::make_shared<KeyZeroizeRsa::Input>())
-{
-    input->parent = this;
-
-    yang_name = "key-zeroize-rsa"; yang_parent_name = "Cisco-IOS-XR-crypto-act"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-KeyZeroizeRsa::~KeyZeroizeRsa()
-{
-}
-
-bool KeyZeroizeRsa::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool KeyZeroizeRsa::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string KeyZeroizeRsa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-rsa";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyZeroizeRsa::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyZeroizeRsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<KeyZeroizeRsa::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeRsa::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    return children;
-}
-
-void KeyZeroizeRsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void KeyZeroizeRsa::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> KeyZeroizeRsa::clone_ptr() const
-{
-    return std::make_shared<KeyZeroizeRsa>();
-}
-
-std::string KeyZeroizeRsa::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string KeyZeroizeRsa::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function KeyZeroizeRsa::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> KeyZeroizeRsa::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool KeyZeroizeRsa::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-KeyZeroizeRsa::Input::Input()
-    :
-    key_label{YType::str, "key-label"}
-{
-
-    yang_name = "input"; yang_parent_name = "key-zeroize-rsa"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-KeyZeroizeRsa::Input::~Input()
-{
-}
-
-bool KeyZeroizeRsa::Input::has_data() const
-{
-    return key_label.is_set;
-}
-
-bool KeyZeroizeRsa::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key_label.yfilter);
-}
-
-std::string KeyZeroizeRsa::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-act:key-zeroize-rsa/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string KeyZeroizeRsa::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > KeyZeroizeRsa::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key_label.is_set || is_set(key_label.yfilter)) leaf_name_data.push_back(key_label.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> KeyZeroizeRsa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeRsa::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void KeyZeroizeRsa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key-label")
-    {
-        key_label = value;
-        key_label.value_namespace = name_space;
-        key_label.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void KeyZeroizeRsa::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key-label")
-    {
-        key_label.yfilter = yfilter;
-    }
-}
-
-bool KeyZeroizeRsa::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-label")
         return true;
     return false;
 }

@@ -133,10 +133,10 @@ EfpStats::EfpStat::EfpStat()
     :
     id{YType::uint32, "id"},
     interface{YType::str, "interface"},
-    in_bytes{YType::uint64, "in-bytes"},
     in_pkts{YType::uint64, "in-pkts"},
-    out_bytes{YType::uint64, "out-bytes"},
-    out_pkts{YType::uint64, "out-pkts"}
+    in_bytes{YType::uint64, "in-bytes"},
+    out_pkts{YType::uint64, "out-pkts"},
+    out_bytes{YType::uint64, "out-bytes"}
 {
 
     yang_name = "efp-stat"; yang_parent_name = "efp-stats"; is_top_level_class = false; has_list_ancestor = false;
@@ -150,10 +150,10 @@ bool EfpStats::EfpStat::has_data() const
 {
     return id.is_set
 	|| interface.is_set
-	|| in_bytes.is_set
 	|| in_pkts.is_set
-	|| out_bytes.is_set
-	|| out_pkts.is_set;
+	|| in_bytes.is_set
+	|| out_pkts.is_set
+	|| out_bytes.is_set;
 }
 
 bool EfpStats::EfpStat::has_operation() const
@@ -161,10 +161,10 @@ bool EfpStats::EfpStat::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(in_bytes.yfilter)
 	|| ydk::is_set(in_pkts.yfilter)
-	|| ydk::is_set(out_bytes.yfilter)
-	|| ydk::is_set(out_pkts.yfilter);
+	|| ydk::is_set(in_bytes.yfilter)
+	|| ydk::is_set(out_pkts.yfilter)
+	|| ydk::is_set(out_bytes.yfilter);
 }
 
 std::string EfpStats::EfpStat::get_absolute_path() const
@@ -187,10 +187,10 @@ std::vector<std::pair<std::string, LeafData> > EfpStats::EfpStat::get_name_leaf_
 
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (in_bytes.is_set || is_set(in_bytes.yfilter)) leaf_name_data.push_back(in_bytes.get_name_leafdata());
     if (in_pkts.is_set || is_set(in_pkts.yfilter)) leaf_name_data.push_back(in_pkts.get_name_leafdata());
-    if (out_bytes.is_set || is_set(out_bytes.yfilter)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
+    if (in_bytes.is_set || is_set(in_bytes.yfilter)) leaf_name_data.push_back(in_bytes.get_name_leafdata());
     if (out_pkts.is_set || is_set(out_pkts.yfilter)) leaf_name_data.push_back(out_pkts.get_name_leafdata());
+    if (out_bytes.is_set || is_set(out_bytes.yfilter)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -221,29 +221,29 @@ void EfpStats::EfpStat::set_value(const std::string & value_path, const std::str
         interface.value_namespace = name_space;
         interface.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "in-bytes")
-    {
-        in_bytes = value;
-        in_bytes.value_namespace = name_space;
-        in_bytes.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "in-pkts")
     {
         in_pkts = value;
         in_pkts.value_namespace = name_space;
         in_pkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "out-bytes")
+    if(value_path == "in-bytes")
     {
-        out_bytes = value;
-        out_bytes.value_namespace = name_space;
-        out_bytes.value_namespace_prefix = name_space_prefix;
+        in_bytes = value;
+        in_bytes.value_namespace = name_space;
+        in_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pkts")
     {
         out_pkts = value;
         out_pkts.value_namespace = name_space;
         out_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-bytes")
+    {
+        out_bytes = value;
+        out_bytes.value_namespace = name_space;
+        out_bytes.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -257,27 +257,27 @@ void EfpStats::EfpStat::set_filter(const std::string & value_path, YFilter yfilt
     {
         interface.yfilter = yfilter;
     }
-    if(value_path == "in-bytes")
-    {
-        in_bytes.yfilter = yfilter;
-    }
     if(value_path == "in-pkts")
     {
         in_pkts.yfilter = yfilter;
     }
-    if(value_path == "out-bytes")
+    if(value_path == "in-bytes")
     {
-        out_bytes.yfilter = yfilter;
+        in_bytes.yfilter = yfilter;
     }
     if(value_path == "out-pkts")
     {
         out_pkts.yfilter = yfilter;
     }
+    if(value_path == "out-bytes")
+    {
+        out_bytes.yfilter = yfilter;
+    }
 }
 
 bool EfpStats::EfpStat::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id" || name == "interface" || name == "in-bytes" || name == "in-pkts" || name == "out-bytes" || name == "out-pkts")
+    if(name == "id" || name == "interface" || name == "in-pkts" || name == "in-bytes" || name == "out-pkts" || name == "out-bytes")
         return true;
     return false;
 }

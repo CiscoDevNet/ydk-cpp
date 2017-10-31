@@ -275,14 +275,14 @@ bool LldpEntries::LldpEntry::has_leaf_or_child_of_name(const std::string & name)
 
 LldpEntries::LldpEntry::Capabilities::Capabilities()
     :
-    access_point{YType::empty, "access-point"},
-    bridge{YType::empty, "bridge"},
-    docsis{YType::empty, "docsis"},
-    other{YType::empty, "other"},
     repeater{YType::empty, "repeater"},
+    bridge{YType::empty, "bridge"},
+    access_point{YType::empty, "access-point"},
     router{YType::empty, "router"},
+    telephone{YType::empty, "telephone"},
+    docsis{YType::empty, "docsis"},
     station{YType::empty, "station"},
-    telephone{YType::empty, "telephone"}
+    other{YType::empty, "other"}
 {
 
     yang_name = "capabilities"; yang_parent_name = "lldp-entry"; is_top_level_class = false; has_list_ancestor = true;
@@ -294,27 +294,27 @@ LldpEntries::LldpEntry::Capabilities::~Capabilities()
 
 bool LldpEntries::LldpEntry::Capabilities::has_data() const
 {
-    return access_point.is_set
+    return repeater.is_set
 	|| bridge.is_set
-	|| docsis.is_set
-	|| other.is_set
-	|| repeater.is_set
+	|| access_point.is_set
 	|| router.is_set
+	|| telephone.is_set
+	|| docsis.is_set
 	|| station.is_set
-	|| telephone.is_set;
+	|| other.is_set;
 }
 
 bool LldpEntries::LldpEntry::Capabilities::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(access_point.yfilter)
-	|| ydk::is_set(bridge.yfilter)
-	|| ydk::is_set(docsis.yfilter)
-	|| ydk::is_set(other.yfilter)
 	|| ydk::is_set(repeater.yfilter)
+	|| ydk::is_set(bridge.yfilter)
+	|| ydk::is_set(access_point.yfilter)
 	|| ydk::is_set(router.yfilter)
+	|| ydk::is_set(telephone.yfilter)
+	|| ydk::is_set(docsis.yfilter)
 	|| ydk::is_set(station.yfilter)
-	|| ydk::is_set(telephone.yfilter);
+	|| ydk::is_set(other.yfilter);
 }
 
 std::string LldpEntries::LldpEntry::Capabilities::get_segment_path() const
@@ -328,14 +328,14 @@ std::vector<std::pair<std::string, LeafData> > LldpEntries::LldpEntry::Capabilit
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_point.is_set || is_set(access_point.yfilter)) leaf_name_data.push_back(access_point.get_name_leafdata());
-    if (bridge.is_set || is_set(bridge.yfilter)) leaf_name_data.push_back(bridge.get_name_leafdata());
-    if (docsis.is_set || is_set(docsis.yfilter)) leaf_name_data.push_back(docsis.get_name_leafdata());
-    if (other.is_set || is_set(other.yfilter)) leaf_name_data.push_back(other.get_name_leafdata());
     if (repeater.is_set || is_set(repeater.yfilter)) leaf_name_data.push_back(repeater.get_name_leafdata());
+    if (bridge.is_set || is_set(bridge.yfilter)) leaf_name_data.push_back(bridge.get_name_leafdata());
+    if (access_point.is_set || is_set(access_point.yfilter)) leaf_name_data.push_back(access_point.get_name_leafdata());
     if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (station.is_set || is_set(station.yfilter)) leaf_name_data.push_back(station.get_name_leafdata());
     if (telephone.is_set || is_set(telephone.yfilter)) leaf_name_data.push_back(telephone.get_name_leafdata());
+    if (docsis.is_set || is_set(docsis.yfilter)) leaf_name_data.push_back(docsis.get_name_leafdata());
+    if (station.is_set || is_set(station.yfilter)) leaf_name_data.push_back(station.get_name_leafdata());
+    if (other.is_set || is_set(other.yfilter)) leaf_name_data.push_back(other.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -354,11 +354,11 @@ std::map<std::string, std::shared_ptr<Entity>> LldpEntries::LldpEntry::Capabilit
 
 void LldpEntries::LldpEntry::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "access-point")
+    if(value_path == "repeater")
     {
-        access_point = value;
-        access_point.value_namespace = name_space;
-        access_point.value_namespace_prefix = name_space_prefix;
+        repeater = value;
+        repeater.value_namespace = name_space;
+        repeater.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge")
     {
@@ -366,23 +366,11 @@ void LldpEntries::LldpEntry::Capabilities::set_value(const std::string & value_p
         bridge.value_namespace = name_space;
         bridge.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "docsis")
+    if(value_path == "access-point")
     {
-        docsis = value;
-        docsis.value_namespace = name_space;
-        docsis.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "other")
-    {
-        other = value;
-        other.value_namespace = name_space;
-        other.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "repeater")
-    {
-        repeater = value;
-        repeater.value_namespace = name_space;
-        repeater.value_namespace_prefix = name_space_prefix;
+        access_point = value;
+        access_point.value_namespace = name_space;
+        access_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router")
     {
@@ -390,59 +378,71 @@ void LldpEntries::LldpEntry::Capabilities::set_value(const std::string & value_p
         router.value_namespace = name_space;
         router.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "station")
-    {
-        station = value;
-        station.value_namespace = name_space;
-        station.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "telephone")
     {
         telephone = value;
         telephone.value_namespace = name_space;
         telephone.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "docsis")
+    {
+        docsis = value;
+        docsis.value_namespace = name_space;
+        docsis.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "station")
+    {
+        station = value;
+        station.value_namespace = name_space;
+        station.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "other")
+    {
+        other = value;
+        other.value_namespace = name_space;
+        other.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void LldpEntries::LldpEntry::Capabilities::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "access-point")
+    if(value_path == "repeater")
     {
-        access_point.yfilter = yfilter;
+        repeater.yfilter = yfilter;
     }
     if(value_path == "bridge")
     {
         bridge.yfilter = yfilter;
     }
-    if(value_path == "docsis")
+    if(value_path == "access-point")
     {
-        docsis.yfilter = yfilter;
-    }
-    if(value_path == "other")
-    {
-        other.yfilter = yfilter;
-    }
-    if(value_path == "repeater")
-    {
-        repeater.yfilter = yfilter;
+        access_point.yfilter = yfilter;
     }
     if(value_path == "router")
     {
         router.yfilter = yfilter;
     }
+    if(value_path == "telephone")
+    {
+        telephone.yfilter = yfilter;
+    }
+    if(value_path == "docsis")
+    {
+        docsis.yfilter = yfilter;
+    }
     if(value_path == "station")
     {
         station.yfilter = yfilter;
     }
-    if(value_path == "telephone")
+    if(value_path == "other")
     {
-        telephone.yfilter = yfilter;
+        other.yfilter = yfilter;
     }
 }
 
 bool LldpEntries::LldpEntry::Capabilities::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-point" || name == "bridge" || name == "docsis" || name == "other" || name == "repeater" || name == "router" || name == "station" || name == "telephone")
+    if(name == "repeater" || name == "bridge" || name == "access-point" || name == "router" || name == "telephone" || name == "docsis" || name == "station" || name == "other")
         return true;
     return false;
 }

@@ -708,15 +708,15 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_leaf_or_child_
 
 AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::SumData()
     :
-    crc_err_count{YType::uint32, "crc-err-count"},
-    gen_err_count{YType::uint32, "gen-err-count"},
     instance{YType::uint32, "instance"},
-    mbe_err_count{YType::uint32, "mbe-err-count"},
-    node_key{YType::uint32, "node-key"},
     num_nodes{YType::uint32, "num-nodes"},
+    crc_err_count{YType::uint32, "crc-err-count"},
+    sbe_err_count{YType::uint32, "sbe-err-count"},
+    mbe_err_count{YType::uint32, "mbe-err-count"},
     par_err_count{YType::uint32, "par-err-count"},
+    gen_err_count{YType::uint32, "gen-err-count"},
     reset_err_count{YType::uint32, "reset-err-count"},
-    sbe_err_count{YType::uint32, "sbe-err-count"}
+    node_key{YType::uint32, "node-key"}
 {
 
     yang_name = "sum-data"; yang_parent_name = "count"; is_top_level_class = false; has_list_ancestor = true;
@@ -733,14 +733,14 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_data(
         if(leaf.is_set)
             return true;
     }
-    return crc_err_count.is_set
-	|| gen_err_count.is_set
-	|| instance.is_set
-	|| mbe_err_count.is_set
+    return instance.is_set
 	|| num_nodes.is_set
+	|| crc_err_count.is_set
+	|| sbe_err_count.is_set
+	|| mbe_err_count.is_set
 	|| par_err_count.is_set
-	|| reset_err_count.is_set
-	|| sbe_err_count.is_set;
+	|| gen_err_count.is_set
+	|| reset_err_count.is_set;
 }
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_operation() const
@@ -751,15 +751,15 @@ bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_opera
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(crc_err_count.yfilter)
-	|| ydk::is_set(gen_err_count.yfilter)
 	|| ydk::is_set(instance.yfilter)
-	|| ydk::is_set(mbe_err_count.yfilter)
-	|| ydk::is_set(node_key.yfilter)
 	|| ydk::is_set(num_nodes.yfilter)
+	|| ydk::is_set(crc_err_count.yfilter)
+	|| ydk::is_set(sbe_err_count.yfilter)
+	|| ydk::is_set(mbe_err_count.yfilter)
 	|| ydk::is_set(par_err_count.yfilter)
+	|| ydk::is_set(gen_err_count.yfilter)
 	|| ydk::is_set(reset_err_count.yfilter)
-	|| ydk::is_set(sbe_err_count.yfilter);
+	|| ydk::is_set(node_key.yfilter);
 }
 
 std::string AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::get_segment_path() const
@@ -773,14 +773,14 @@ std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::Rack::Node
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (crc_err_count.is_set || is_set(crc_err_count.yfilter)) leaf_name_data.push_back(crc_err_count.get_name_leafdata());
-    if (gen_err_count.is_set || is_set(gen_err_count.yfilter)) leaf_name_data.push_back(gen_err_count.get_name_leafdata());
     if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (mbe_err_count.is_set || is_set(mbe_err_count.yfilter)) leaf_name_data.push_back(mbe_err_count.get_name_leafdata());
     if (num_nodes.is_set || is_set(num_nodes.yfilter)) leaf_name_data.push_back(num_nodes.get_name_leafdata());
-    if (par_err_count.is_set || is_set(par_err_count.yfilter)) leaf_name_data.push_back(par_err_count.get_name_leafdata());
-    if (reset_err_count.is_set || is_set(reset_err_count.yfilter)) leaf_name_data.push_back(reset_err_count.get_name_leafdata());
+    if (crc_err_count.is_set || is_set(crc_err_count.yfilter)) leaf_name_data.push_back(crc_err_count.get_name_leafdata());
     if (sbe_err_count.is_set || is_set(sbe_err_count.yfilter)) leaf_name_data.push_back(sbe_err_count.get_name_leafdata());
+    if (mbe_err_count.is_set || is_set(mbe_err_count.yfilter)) leaf_name_data.push_back(mbe_err_count.get_name_leafdata());
+    if (par_err_count.is_set || is_set(par_err_count.yfilter)) leaf_name_data.push_back(par_err_count.get_name_leafdata());
+    if (gen_err_count.is_set || is_set(gen_err_count.yfilter)) leaf_name_data.push_back(gen_err_count.get_name_leafdata());
+    if (reset_err_count.is_set || is_set(reset_err_count.yfilter)) leaf_name_data.push_back(reset_err_count.get_name_leafdata());
 
     auto node_key_name_datas = node_key.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), node_key_name_datas.begin(), node_key_name_datas.end());
@@ -801,33 +801,11 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Node
 
 void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "crc-err-count")
-    {
-        crc_err_count = value;
-        crc_err_count.value_namespace = name_space;
-        crc_err_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "gen-err-count")
-    {
-        gen_err_count = value;
-        gen_err_count.value_namespace = name_space;
-        gen_err_count.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "instance")
     {
         instance = value;
         instance.value_namespace = name_space;
         instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mbe-err-count")
-    {
-        mbe_err_count = value;
-        mbe_err_count.value_namespace = name_space;
-        mbe_err_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-key")
-    {
-        node_key.append(value);
     }
     if(value_path == "num-nodes")
     {
@@ -835,17 +813,11 @@ void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::set_value
         num_nodes.value_namespace = name_space;
         num_nodes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "par-err-count")
+    if(value_path == "crc-err-count")
     {
-        par_err_count = value;
-        par_err_count.value_namespace = name_space;
-        par_err_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reset-err-count")
-    {
-        reset_err_count = value;
-        reset_err_count.value_namespace = name_space;
-        reset_err_count.value_namespace_prefix = name_space_prefix;
+        crc_err_count = value;
+        crc_err_count.value_namespace = name_space;
+        crc_err_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbe-err-count")
     {
@@ -853,51 +825,79 @@ void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::set_value
         sbe_err_count.value_namespace = name_space;
         sbe_err_count.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "mbe-err-count")
+    {
+        mbe_err_count = value;
+        mbe_err_count.value_namespace = name_space;
+        mbe_err_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "par-err-count")
+    {
+        par_err_count = value;
+        par_err_count.value_namespace = name_space;
+        par_err_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gen-err-count")
+    {
+        gen_err_count = value;
+        gen_err_count.value_namespace = name_space;
+        gen_err_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reset-err-count")
+    {
+        reset_err_count = value;
+        reset_err_count.value_namespace = name_space;
+        reset_err_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-key")
+    {
+        node_key.append(value);
+    }
 }
 
 void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "crc-err-count")
-    {
-        crc_err_count.yfilter = yfilter;
-    }
-    if(value_path == "gen-err-count")
-    {
-        gen_err_count.yfilter = yfilter;
-    }
     if(value_path == "instance")
     {
         instance.yfilter = yfilter;
-    }
-    if(value_path == "mbe-err-count")
-    {
-        mbe_err_count.yfilter = yfilter;
-    }
-    if(value_path == "node-key")
-    {
-        node_key.yfilter = yfilter;
     }
     if(value_path == "num-nodes")
     {
         num_nodes.yfilter = yfilter;
     }
-    if(value_path == "par-err-count")
+    if(value_path == "crc-err-count")
     {
-        par_err_count.yfilter = yfilter;
-    }
-    if(value_path == "reset-err-count")
-    {
-        reset_err_count.yfilter = yfilter;
+        crc_err_count.yfilter = yfilter;
     }
     if(value_path == "sbe-err-count")
     {
         sbe_err_count.yfilter = yfilter;
     }
+    if(value_path == "mbe-err-count")
+    {
+        mbe_err_count.yfilter = yfilter;
+    }
+    if(value_path == "par-err-count")
+    {
+        par_err_count.yfilter = yfilter;
+    }
+    if(value_path == "gen-err-count")
+    {
+        gen_err_count.yfilter = yfilter;
+    }
+    if(value_path == "reset-err-count")
+    {
+        reset_err_count.yfilter = yfilter;
+    }
+    if(value_path == "node-key")
+    {
+        node_key.yfilter = yfilter;
+    }
 }
 
 bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "crc-err-count" || name == "gen-err-count" || name == "instance" || name == "mbe-err-count" || name == "node-key" || name == "num-nodes" || name == "par-err-count" || name == "reset-err-count" || name == "sbe-err-count")
+    if(name == "instance" || name == "num-nodes" || name == "crc-err-count" || name == "sbe-err-count" || name == "mbe-err-count" || name == "par-err-count" || name == "gen-err-count" || name == "reset-err-count" || name == "node-key")
         return true;
     return false;
 }

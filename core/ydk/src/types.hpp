@@ -123,6 +123,8 @@ class Entity {
     virtual std::vector<std::pair<std::string, LeafData> > get_name_leaf_data() const = 0;
 
     virtual std::map<std::string, std::shared_ptr<Entity>> get_children() const = 0;
+    virtual std::vector<std::string> get_order_of_children() const ;
+
     virtual std::shared_ptr<Entity> clone_ptr() const;
 
     virtual void set_parent(Entity* p);

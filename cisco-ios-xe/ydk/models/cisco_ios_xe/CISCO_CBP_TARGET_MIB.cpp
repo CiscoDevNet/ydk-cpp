@@ -338,11 +338,11 @@ CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::Ccbpttargetentry()
     ccbpttargetdir{YType::enumeration, "ccbptTargetDir"},
     ccbptpolicysourcetype{YType::enumeration, "ccbptPolicySourceType"},
     ccbptpolicyid{YType::uint32, "ccbptPolicyId"},
-    ccbptpolicyattachtime{YType::uint32, "ccbptPolicyAttachTime"},
-    ccbptpolicyinstance{YType::str, "ccbptPolicyInstance"},
-    ccbptpolicymap{YType::str, "ccbptPolicyMap"},
     ccbpttargetstatus{YType::enumeration, "ccbptTargetStatus"},
-    ccbpttargetstoragetype{YType::enumeration, "ccbptTargetStorageType"}
+    ccbpttargetstoragetype{YType::enumeration, "ccbptTargetStorageType"},
+    ccbptpolicymap{YType::str, "ccbptPolicyMap"},
+    ccbptpolicyinstance{YType::str, "ccbptPolicyInstance"},
+    ccbptpolicyattachtime{YType::uint32, "ccbptPolicyAttachTime"}
 {
 
     yang_name = "ccbptTargetEntry"; yang_parent_name = "ccbptTargetTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -359,11 +359,11 @@ bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_data() const
 	|| ccbpttargetdir.is_set
 	|| ccbptpolicysourcetype.is_set
 	|| ccbptpolicyid.is_set
-	|| ccbptpolicyattachtime.is_set
-	|| ccbptpolicyinstance.is_set
-	|| ccbptpolicymap.is_set
 	|| ccbpttargetstatus.is_set
-	|| ccbpttargetstoragetype.is_set;
+	|| ccbpttargetstoragetype.is_set
+	|| ccbptpolicymap.is_set
+	|| ccbptpolicyinstance.is_set
+	|| ccbptpolicyattachtime.is_set;
 }
 
 bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_operation() const
@@ -374,11 +374,11 @@ bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_operation() cons
 	|| ydk::is_set(ccbpttargetdir.yfilter)
 	|| ydk::is_set(ccbptpolicysourcetype.yfilter)
 	|| ydk::is_set(ccbptpolicyid.yfilter)
-	|| ydk::is_set(ccbptpolicyattachtime.yfilter)
-	|| ydk::is_set(ccbptpolicyinstance.yfilter)
-	|| ydk::is_set(ccbptpolicymap.yfilter)
 	|| ydk::is_set(ccbpttargetstatus.yfilter)
-	|| ydk::is_set(ccbpttargetstoragetype.yfilter);
+	|| ydk::is_set(ccbpttargetstoragetype.yfilter)
+	|| ydk::is_set(ccbptpolicymap.yfilter)
+	|| ydk::is_set(ccbptpolicyinstance.yfilter)
+	|| ydk::is_set(ccbptpolicyattachtime.yfilter);
 }
 
 std::string CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::get_absolute_path() const
@@ -404,11 +404,11 @@ std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::Ccbpttargettab
     if (ccbpttargetdir.is_set || is_set(ccbpttargetdir.yfilter)) leaf_name_data.push_back(ccbpttargetdir.get_name_leafdata());
     if (ccbptpolicysourcetype.is_set || is_set(ccbptpolicysourcetype.yfilter)) leaf_name_data.push_back(ccbptpolicysourcetype.get_name_leafdata());
     if (ccbptpolicyid.is_set || is_set(ccbptpolicyid.yfilter)) leaf_name_data.push_back(ccbptpolicyid.get_name_leafdata());
-    if (ccbptpolicyattachtime.is_set || is_set(ccbptpolicyattachtime.yfilter)) leaf_name_data.push_back(ccbptpolicyattachtime.get_name_leafdata());
-    if (ccbptpolicyinstance.is_set || is_set(ccbptpolicyinstance.yfilter)) leaf_name_data.push_back(ccbptpolicyinstance.get_name_leafdata());
-    if (ccbptpolicymap.is_set || is_set(ccbptpolicymap.yfilter)) leaf_name_data.push_back(ccbptpolicymap.get_name_leafdata());
     if (ccbpttargetstatus.is_set || is_set(ccbpttargetstatus.yfilter)) leaf_name_data.push_back(ccbpttargetstatus.get_name_leafdata());
     if (ccbpttargetstoragetype.is_set || is_set(ccbpttargetstoragetype.yfilter)) leaf_name_data.push_back(ccbpttargetstoragetype.get_name_leafdata());
+    if (ccbptpolicymap.is_set || is_set(ccbptpolicymap.yfilter)) leaf_name_data.push_back(ccbptpolicymap.get_name_leafdata());
+    if (ccbptpolicyinstance.is_set || is_set(ccbptpolicyinstance.yfilter)) leaf_name_data.push_back(ccbptpolicyinstance.get_name_leafdata());
+    if (ccbptpolicyattachtime.is_set || is_set(ccbptpolicyattachtime.yfilter)) leaf_name_data.push_back(ccbptpolicyattachtime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -457,24 +457,6 @@ void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_value(const std:
         ccbptpolicyid.value_namespace = name_space;
         ccbptpolicyid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ccbptPolicyAttachTime")
-    {
-        ccbptpolicyattachtime = value;
-        ccbptpolicyattachtime.value_namespace = name_space;
-        ccbptpolicyattachtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccbptPolicyInstance")
-    {
-        ccbptpolicyinstance = value;
-        ccbptpolicyinstance.value_namespace = name_space;
-        ccbptpolicyinstance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccbptPolicyMap")
-    {
-        ccbptpolicymap = value;
-        ccbptpolicymap.value_namespace = name_space;
-        ccbptpolicymap.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ccbptTargetStatus")
     {
         ccbpttargetstatus = value;
@@ -486,6 +468,24 @@ void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_value(const std:
         ccbpttargetstoragetype = value;
         ccbpttargetstoragetype.value_namespace = name_space;
         ccbpttargetstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccbptPolicyMap")
+    {
+        ccbptpolicymap = value;
+        ccbptpolicymap.value_namespace = name_space;
+        ccbptpolicymap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccbptPolicyInstance")
+    {
+        ccbptpolicyinstance = value;
+        ccbptpolicyinstance.value_namespace = name_space;
+        ccbptpolicyinstance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccbptPolicyAttachTime")
+    {
+        ccbptpolicyattachtime = value;
+        ccbptpolicyattachtime.value_namespace = name_space;
+        ccbptpolicyattachtime.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -511,18 +511,6 @@ void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_filter(const std
     {
         ccbptpolicyid.yfilter = yfilter;
     }
-    if(value_path == "ccbptPolicyAttachTime")
-    {
-        ccbptpolicyattachtime.yfilter = yfilter;
-    }
-    if(value_path == "ccbptPolicyInstance")
-    {
-        ccbptpolicyinstance.yfilter = yfilter;
-    }
-    if(value_path == "ccbptPolicyMap")
-    {
-        ccbptpolicymap.yfilter = yfilter;
-    }
     if(value_path == "ccbptTargetStatus")
     {
         ccbpttargetstatus.yfilter = yfilter;
@@ -531,11 +519,23 @@ void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_filter(const std
     {
         ccbpttargetstoragetype.yfilter = yfilter;
     }
+    if(value_path == "ccbptPolicyMap")
+    {
+        ccbptpolicymap.yfilter = yfilter;
+    }
+    if(value_path == "ccbptPolicyInstance")
+    {
+        ccbptpolicyinstance.yfilter = yfilter;
+    }
+    if(value_path == "ccbptPolicyAttachTime")
+    {
+        ccbptpolicyattachtime.yfilter = yfilter;
+    }
 }
 
 bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ccbptTargetType" || name == "ccbptTargetId" || name == "ccbptTargetDir" || name == "ccbptPolicySourceType" || name == "ccbptPolicyId" || name == "ccbptPolicyAttachTime" || name == "ccbptPolicyInstance" || name == "ccbptPolicyMap" || name == "ccbptTargetStatus" || name == "ccbptTargetStorageType")
+    if(name == "ccbptTargetType" || name == "ccbptTargetId" || name == "ccbptTargetDir" || name == "ccbptPolicySourceType" || name == "ccbptPolicyId" || name == "ccbptTargetStatus" || name == "ccbptTargetStorageType" || name == "ccbptPolicyMap" || name == "ccbptPolicyInstance" || name == "ccbptPolicyAttachTime")
         return true;
     return false;
 }

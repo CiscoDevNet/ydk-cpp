@@ -14,14 +14,14 @@ namespace CISCO_IETF_MPLS_TE_EXT_STD_03_MIB {
 CISCOIETFMPLSTEEXTSTD03MIB::CISCOIETFMPLSTEEXTSTD03MIB()
     :
     cmplsnodeconfigtable(std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable>())
-	,cmplsnodeiccmaptable(std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable>())
 	,cmplsnodeipmaptable(std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable>())
+	,cmplsnodeiccmaptable(std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable>())
 	,cmplstunnelexttable(std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable>())
 	,cmplstunnelreverseperftable(std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable>())
 {
     cmplsnodeconfigtable->parent = this;
-    cmplsnodeiccmaptable->parent = this;
     cmplsnodeipmaptable->parent = this;
+    cmplsnodeiccmaptable->parent = this;
     cmplstunnelexttable->parent = this;
     cmplstunnelreverseperftable->parent = this;
 
@@ -35,8 +35,8 @@ CISCOIETFMPLSTEEXTSTD03MIB::~CISCOIETFMPLSTEEXTSTD03MIB()
 bool CISCOIETFMPLSTEEXTSTD03MIB::has_data() const
 {
     return (cmplsnodeconfigtable !=  nullptr && cmplsnodeconfigtable->has_data())
-	|| (cmplsnodeiccmaptable !=  nullptr && cmplsnodeiccmaptable->has_data())
 	|| (cmplsnodeipmaptable !=  nullptr && cmplsnodeipmaptable->has_data())
+	|| (cmplsnodeiccmaptable !=  nullptr && cmplsnodeiccmaptable->has_data())
 	|| (cmplstunnelexttable !=  nullptr && cmplstunnelexttable->has_data())
 	|| (cmplstunnelreverseperftable !=  nullptr && cmplstunnelreverseperftable->has_data());
 }
@@ -45,8 +45,8 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cmplsnodeconfigtable !=  nullptr && cmplsnodeconfigtable->has_operation())
-	|| (cmplsnodeiccmaptable !=  nullptr && cmplsnodeiccmaptable->has_operation())
 	|| (cmplsnodeipmaptable !=  nullptr && cmplsnodeipmaptable->has_operation())
+	|| (cmplsnodeiccmaptable !=  nullptr && cmplsnodeiccmaptable->has_operation())
 	|| (cmplstunnelexttable !=  nullptr && cmplstunnelexttable->has_operation())
 	|| (cmplstunnelreverseperftable !=  nullptr && cmplstunnelreverseperftable->has_operation());
 }
@@ -78,15 +78,6 @@ std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::get_child_by_name(const std:
         return cmplsnodeconfigtable;
     }
 
-    if(child_yang_name == "cmplsNodeIccMapTable")
-    {
-        if(cmplsnodeiccmaptable == nullptr)
-        {
-            cmplsnodeiccmaptable = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable>();
-        }
-        return cmplsnodeiccmaptable;
-    }
-
     if(child_yang_name == "cmplsNodeIpMapTable")
     {
         if(cmplsnodeipmaptable == nullptr)
@@ -94,6 +85,15 @@ std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::get_child_by_name(const std:
             cmplsnodeipmaptable = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable>();
         }
         return cmplsnodeipmaptable;
+    }
+
+    if(child_yang_name == "cmplsNodeIccMapTable")
+    {
+        if(cmplsnodeiccmaptable == nullptr)
+        {
+            cmplsnodeiccmaptable = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable>();
+        }
+        return cmplsnodeiccmaptable;
     }
 
     if(child_yang_name == "cmplsTunnelExtTable")
@@ -125,14 +125,14 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::get_c
         children["cmplsNodeConfigTable"] = cmplsnodeconfigtable;
     }
 
-    if(cmplsnodeiccmaptable != nullptr)
-    {
-        children["cmplsNodeIccMapTable"] = cmplsnodeiccmaptable;
-    }
-
     if(cmplsnodeipmaptable != nullptr)
     {
         children["cmplsNodeIpMapTable"] = cmplsnodeipmaptable;
+    }
+
+    if(cmplsnodeiccmaptable != nullptr)
+    {
+        children["cmplsNodeIccMapTable"] = cmplsnodeiccmaptable;
     }
 
     if(cmplstunnelexttable != nullptr)
@@ -183,7 +183,7 @@ std::map<std::pair<std::string, std::string>, std::string> CISCOIETFMPLSTEEXTSTD
 
 bool CISCOIETFMPLSTEEXTSTD03MIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cmplsNodeConfigTable" || name == "cmplsNodeIccMapTable" || name == "cmplsNodeIpMapTable" || name == "cmplsTunnelExtTable" || name == "cmplsTunnelReversePerfTable")
+    if(name == "cmplsNodeConfigTable" || name == "cmplsNodeIpMapTable" || name == "cmplsNodeIccMapTable" || name == "cmplsTunnelExtTable" || name == "cmplsTunnelReversePerfTable")
         return true;
     return false;
 }
@@ -292,8 +292,8 @@ CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry::Cmplsnod
     :
     cmplsnodeconfiglocalid{YType::uint32, "cmplsNodeConfigLocalId"},
     cmplsnodeconfigglobalid{YType::str, "cmplsNodeConfigGlobalId"},
-    cmplsnodeconfigiccid{YType::str, "cmplsNodeConfigIccId"},
     cmplsnodeconfignodeid{YType::uint32, "cmplsNodeConfigNodeId"},
+    cmplsnodeconfigiccid{YType::str, "cmplsNodeConfigIccId"},
     cmplsnodeconfigrowstatus{YType::enumeration, "cmplsNodeConfigRowStatus"},
     cmplsnodeconfigstoragetype{YType::enumeration, "cmplsNodeConfigStorageType"}
 {
@@ -309,8 +309,8 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry::has
 {
     return cmplsnodeconfiglocalid.is_set
 	|| cmplsnodeconfigglobalid.is_set
-	|| cmplsnodeconfigiccid.is_set
 	|| cmplsnodeconfignodeid.is_set
+	|| cmplsnodeconfigiccid.is_set
 	|| cmplsnodeconfigrowstatus.is_set
 	|| cmplsnodeconfigstoragetype.is_set;
 }
@@ -320,8 +320,8 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry::has
     return is_set(yfilter)
 	|| ydk::is_set(cmplsnodeconfiglocalid.yfilter)
 	|| ydk::is_set(cmplsnodeconfigglobalid.yfilter)
-	|| ydk::is_set(cmplsnodeconfigiccid.yfilter)
 	|| ydk::is_set(cmplsnodeconfignodeid.yfilter)
+	|| ydk::is_set(cmplsnodeconfigiccid.yfilter)
 	|| ydk::is_set(cmplsnodeconfigrowstatus.yfilter)
 	|| ydk::is_set(cmplsnodeconfigstoragetype.yfilter);
 }
@@ -346,8 +346,8 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
     if (cmplsnodeconfiglocalid.is_set || is_set(cmplsnodeconfiglocalid.yfilter)) leaf_name_data.push_back(cmplsnodeconfiglocalid.get_name_leafdata());
     if (cmplsnodeconfigglobalid.is_set || is_set(cmplsnodeconfigglobalid.yfilter)) leaf_name_data.push_back(cmplsnodeconfigglobalid.get_name_leafdata());
-    if (cmplsnodeconfigiccid.is_set || is_set(cmplsnodeconfigiccid.yfilter)) leaf_name_data.push_back(cmplsnodeconfigiccid.get_name_leafdata());
     if (cmplsnodeconfignodeid.is_set || is_set(cmplsnodeconfignodeid.yfilter)) leaf_name_data.push_back(cmplsnodeconfignodeid.get_name_leafdata());
+    if (cmplsnodeconfigiccid.is_set || is_set(cmplsnodeconfigiccid.yfilter)) leaf_name_data.push_back(cmplsnodeconfigiccid.get_name_leafdata());
     if (cmplsnodeconfigrowstatus.is_set || is_set(cmplsnodeconfigrowstatus.yfilter)) leaf_name_data.push_back(cmplsnodeconfigrowstatus.get_name_leafdata());
     if (cmplsnodeconfigstoragetype.is_set || is_set(cmplsnodeconfigstoragetype.yfilter)) leaf_name_data.push_back(cmplsnodeconfigstoragetype.get_name_leafdata());
 
@@ -380,17 +380,17 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry::set
         cmplsnodeconfigglobalid.value_namespace = name_space;
         cmplsnodeconfigglobalid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cmplsNodeConfigIccId")
-    {
-        cmplsnodeconfigiccid = value;
-        cmplsnodeconfigiccid.value_namespace = name_space;
-        cmplsnodeconfigiccid.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cmplsNodeConfigNodeId")
     {
         cmplsnodeconfignodeid = value;
         cmplsnodeconfignodeid.value_namespace = name_space;
         cmplsnodeconfignodeid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmplsNodeConfigIccId")
+    {
+        cmplsnodeconfigiccid = value;
+        cmplsnodeconfigiccid.value_namespace = name_space;
+        cmplsnodeconfigiccid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmplsNodeConfigRowStatus")
     {
@@ -416,13 +416,13 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry::set
     {
         cmplsnodeconfigglobalid.yfilter = yfilter;
     }
-    if(value_path == "cmplsNodeConfigIccId")
-    {
-        cmplsnodeconfigiccid.yfilter = yfilter;
-    }
     if(value_path == "cmplsNodeConfigNodeId")
     {
         cmplsnodeconfignodeid.yfilter = yfilter;
+    }
+    if(value_path == "cmplsNodeConfigIccId")
+    {
+        cmplsnodeconfigiccid.yfilter = yfilter;
     }
     if(value_path == "cmplsNodeConfigRowStatus")
     {
@@ -436,204 +436,7 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry::set
 
 bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cmplsNodeConfigLocalId" || name == "cmplsNodeConfigGlobalId" || name == "cmplsNodeConfigIccId" || name == "cmplsNodeConfigNodeId" || name == "cmplsNodeConfigRowStatus" || name == "cmplsNodeConfigStorageType")
-        return true;
-    return false;
-}
-
-CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmaptable()
-{
-
-    yang_name = "cmplsNodeIccMapTable"; yang_parent_name = "CISCO-IETF-MPLS-TE-EXT-STD-03-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::~Cmplsnodeiccmaptable()
-{
-}
-
-bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::has_data() const
-{
-    for (std::size_t index=0; index<cmplsnodeiccmapentry.size(); index++)
-    {
-        if(cmplsnodeiccmapentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::has_operation() const
-{
-    for (std::size_t index=0; index<cmplsnodeiccmapentry.size(); index++)
-    {
-        if(cmplsnodeiccmapentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-IETF-MPLS-TE-EXT-STD-03-MIB:CISCO-IETF-MPLS-TE-EXT-STD-03-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cmplsNodeIccMapTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cmplsNodeIccMapEntry")
-    {
-        for(auto const & c : cmplsnodeiccmapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry>();
-        c->parent = this;
-        cmplsnodeiccmapentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmplsnodeiccmapentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cmplsNodeIccMapEntry")
-        return true;
-    return false;
-}
-
-CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::Cmplsnodeiccmapentry()
-    :
-    cmplsnodeiccmapiccid{YType::str, "cmplsNodeIccMapIccId"},
-    cmplsnodeiccmaplocalid{YType::uint32, "cmplsNodeIccMapLocalId"}
-{
-
-    yang_name = "cmplsNodeIccMapEntry"; yang_parent_name = "cmplsNodeIccMapTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::~Cmplsnodeiccmapentry()
-{
-}
-
-bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::has_data() const
-{
-    return cmplsnodeiccmapiccid.is_set
-	|| cmplsnodeiccmaplocalid.is_set;
-}
-
-bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cmplsnodeiccmapiccid.yfilter)
-	|| ydk::is_set(cmplsnodeiccmaplocalid.yfilter);
-}
-
-std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-IETF-MPLS-TE-EXT-STD-03-MIB:CISCO-IETF-MPLS-TE-EXT-STD-03-MIB/cmplsNodeIccMapTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cmplsNodeIccMapEntry" <<"[cmplsNodeIccMapIccId='" <<cmplsnodeiccmapiccid <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cmplsnodeiccmapiccid.is_set || is_set(cmplsnodeiccmapiccid.yfilter)) leaf_name_data.push_back(cmplsnodeiccmapiccid.get_name_leafdata());
-    if (cmplsnodeiccmaplocalid.is_set || is_set(cmplsnodeiccmaplocalid.yfilter)) leaf_name_data.push_back(cmplsnodeiccmaplocalid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cmplsNodeIccMapIccId")
-    {
-        cmplsnodeiccmapiccid = value;
-        cmplsnodeiccmapiccid.value_namespace = name_space;
-        cmplsnodeiccmapiccid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cmplsNodeIccMapLocalId")
-    {
-        cmplsnodeiccmaplocalid = value;
-        cmplsnodeiccmaplocalid.value_namespace = name_space;
-        cmplsnodeiccmaplocalid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cmplsNodeIccMapIccId")
-    {
-        cmplsnodeiccmapiccid.yfilter = yfilter;
-    }
-    if(value_path == "cmplsNodeIccMapLocalId")
-    {
-        cmplsnodeiccmaplocalid.yfilter = yfilter;
-    }
-}
-
-bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cmplsNodeIccMapIccId" || name == "cmplsNodeIccMapLocalId")
+    if(name == "cmplsNodeConfigLocalId" || name == "cmplsNodeConfigGlobalId" || name == "cmplsNodeConfigNodeId" || name == "cmplsNodeConfigIccId" || name == "cmplsNodeConfigRowStatus" || name == "cmplsNodeConfigStorageType")
         return true;
     return false;
 }
@@ -849,6 +652,203 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable::Cmplsnodeipmapentry::has_l
     return false;
 }
 
+CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmaptable()
+{
+
+    yang_name = "cmplsNodeIccMapTable"; yang_parent_name = "CISCO-IETF-MPLS-TE-EXT-STD-03-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::~Cmplsnodeiccmaptable()
+{
+}
+
+bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::has_data() const
+{
+    for (std::size_t index=0; index<cmplsnodeiccmapentry.size(); index++)
+    {
+        if(cmplsnodeiccmapentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::has_operation() const
+{
+    for (std::size_t index=0; index<cmplsnodeiccmapentry.size(); index++)
+    {
+        if(cmplsnodeiccmapentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-MPLS-TE-EXT-STD-03-MIB:CISCO-IETF-MPLS-TE-EXT-STD-03-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cmplsNodeIccMapTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cmplsNodeIccMapEntry")
+    {
+        for(auto const & c : cmplsnodeiccmapentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry>();
+        c->parent = this;
+        cmplsnodeiccmapentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cmplsnodeiccmapentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmplsNodeIccMapEntry")
+        return true;
+    return false;
+}
+
+CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::Cmplsnodeiccmapentry()
+    :
+    cmplsnodeiccmapiccid{YType::str, "cmplsNodeIccMapIccId"},
+    cmplsnodeiccmaplocalid{YType::uint32, "cmplsNodeIccMapLocalId"}
+{
+
+    yang_name = "cmplsNodeIccMapEntry"; yang_parent_name = "cmplsNodeIccMapTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::~Cmplsnodeiccmapentry()
+{
+}
+
+bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::has_data() const
+{
+    return cmplsnodeiccmapiccid.is_set
+	|| cmplsnodeiccmaplocalid.is_set;
+}
+
+bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cmplsnodeiccmapiccid.yfilter)
+	|| ydk::is_set(cmplsnodeiccmaplocalid.yfilter);
+}
+
+std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-MPLS-TE-EXT-STD-03-MIB:CISCO-IETF-MPLS-TE-EXT-STD-03-MIB/cmplsNodeIccMapTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cmplsNodeIccMapEntry" <<"[cmplsNodeIccMapIccId='" <<cmplsnodeiccmapiccid <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cmplsnodeiccmapiccid.is_set || is_set(cmplsnodeiccmapiccid.yfilter)) leaf_name_data.push_back(cmplsnodeiccmapiccid.get_name_leafdata());
+    if (cmplsnodeiccmaplocalid.is_set || is_set(cmplsnodeiccmaplocalid.yfilter)) leaf_name_data.push_back(cmplsnodeiccmaplocalid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cmplsNodeIccMapIccId")
+    {
+        cmplsnodeiccmapiccid = value;
+        cmplsnodeiccmapiccid.value_namespace = name_space;
+        cmplsnodeiccmapiccid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmplsNodeIccMapLocalId")
+    {
+        cmplsnodeiccmaplocalid = value;
+        cmplsnodeiccmaplocalid.value_namespace = name_space;
+        cmplsnodeiccmaplocalid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmplsNodeIccMapIccId")
+    {
+        cmplsnodeiccmapiccid.yfilter = yfilter;
+    }
+    if(value_path == "cmplsNodeIccMapLocalId")
+    {
+        cmplsnodeiccmaplocalid.yfilter = yfilter;
+    }
+}
+
+bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmplsNodeIccMapIccId" || name == "cmplsNodeIccMapLocalId")
+        return true;
+    return false;
+}
+
 CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelexttable()
 {
 
@@ -955,11 +955,11 @@ CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::Cmplstunne
     mplstunnelinstance{YType::str, "mplsTunnelInstance"},
     mplstunnelingresslsrid{YType::str, "mplsTunnelIngressLSRId"},
     mplstunnelegresslsrid{YType::str, "mplsTunnelEgressLSRId"},
+    cmplstunneloppositedirptr{YType::str, "cmplsTunnelOppositeDirPtr"},
+    cmplstunnelextoppositedirtnlvalid{YType::boolean, "cmplsTunnelExtOppositeDirTnlValid"},
     cmplstunnelextdesttnlindex{YType::uint32, "cmplsTunnelExtDestTnlIndex"},
     cmplstunnelextdesttnllspindex{YType::uint32, "cmplsTunnelExtDestTnlLspIndex"},
-    cmplstunnelextdesttnlvalid{YType::boolean, "cmplsTunnelExtDestTnlValid"},
-    cmplstunnelextoppositedirtnlvalid{YType::boolean, "cmplsTunnelExtOppositeDirTnlValid"},
-    cmplstunneloppositedirptr{YType::str, "cmplsTunnelOppositeDirPtr"}
+    cmplstunnelextdesttnlvalid{YType::boolean, "cmplsTunnelExtDestTnlValid"}
 {
 
     yang_name = "cmplsTunnelExtEntry"; yang_parent_name = "cmplsTunnelExtTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -975,11 +975,11 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::has_d
 	|| mplstunnelinstance.is_set
 	|| mplstunnelingresslsrid.is_set
 	|| mplstunnelegresslsrid.is_set
+	|| cmplstunneloppositedirptr.is_set
+	|| cmplstunnelextoppositedirtnlvalid.is_set
 	|| cmplstunnelextdesttnlindex.is_set
 	|| cmplstunnelextdesttnllspindex.is_set
-	|| cmplstunnelextdesttnlvalid.is_set
-	|| cmplstunnelextoppositedirtnlvalid.is_set
-	|| cmplstunneloppositedirptr.is_set;
+	|| cmplstunnelextdesttnlvalid.is_set;
 }
 
 bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::has_operation() const
@@ -989,11 +989,11 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::has_o
 	|| ydk::is_set(mplstunnelinstance.yfilter)
 	|| ydk::is_set(mplstunnelingresslsrid.yfilter)
 	|| ydk::is_set(mplstunnelegresslsrid.yfilter)
+	|| ydk::is_set(cmplstunneloppositedirptr.yfilter)
+	|| ydk::is_set(cmplstunnelextoppositedirtnlvalid.yfilter)
 	|| ydk::is_set(cmplstunnelextdesttnlindex.yfilter)
 	|| ydk::is_set(cmplstunnelextdesttnllspindex.yfilter)
-	|| ydk::is_set(cmplstunnelextdesttnlvalid.yfilter)
-	|| ydk::is_set(cmplstunnelextoppositedirtnlvalid.yfilter)
-	|| ydk::is_set(cmplstunneloppositedirptr.yfilter);
+	|| ydk::is_set(cmplstunnelextdesttnlvalid.yfilter);
 }
 
 std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::get_absolute_path() const
@@ -1018,11 +1018,11 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
     if (mplstunnelinstance.is_set || is_set(mplstunnelinstance.yfilter)) leaf_name_data.push_back(mplstunnelinstance.get_name_leafdata());
     if (mplstunnelingresslsrid.is_set || is_set(mplstunnelingresslsrid.yfilter)) leaf_name_data.push_back(mplstunnelingresslsrid.get_name_leafdata());
     if (mplstunnelegresslsrid.is_set || is_set(mplstunnelegresslsrid.yfilter)) leaf_name_data.push_back(mplstunnelegresslsrid.get_name_leafdata());
+    if (cmplstunneloppositedirptr.is_set || is_set(cmplstunneloppositedirptr.yfilter)) leaf_name_data.push_back(cmplstunneloppositedirptr.get_name_leafdata());
+    if (cmplstunnelextoppositedirtnlvalid.is_set || is_set(cmplstunnelextoppositedirtnlvalid.yfilter)) leaf_name_data.push_back(cmplstunnelextoppositedirtnlvalid.get_name_leafdata());
     if (cmplstunnelextdesttnlindex.is_set || is_set(cmplstunnelextdesttnlindex.yfilter)) leaf_name_data.push_back(cmplstunnelextdesttnlindex.get_name_leafdata());
     if (cmplstunnelextdesttnllspindex.is_set || is_set(cmplstunnelextdesttnllspindex.yfilter)) leaf_name_data.push_back(cmplstunnelextdesttnllspindex.get_name_leafdata());
     if (cmplstunnelextdesttnlvalid.is_set || is_set(cmplstunnelextdesttnlvalid.yfilter)) leaf_name_data.push_back(cmplstunnelextdesttnlvalid.get_name_leafdata());
-    if (cmplstunnelextoppositedirtnlvalid.is_set || is_set(cmplstunnelextoppositedirtnlvalid.yfilter)) leaf_name_data.push_back(cmplstunnelextoppositedirtnlvalid.get_name_leafdata());
-    if (cmplstunneloppositedirptr.is_set || is_set(cmplstunneloppositedirptr.yfilter)) leaf_name_data.push_back(cmplstunneloppositedirptr.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1065,6 +1065,18 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::set_v
         mplstunnelegresslsrid.value_namespace = name_space;
         mplstunnelegresslsrid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cmplsTunnelOppositeDirPtr")
+    {
+        cmplstunneloppositedirptr = value;
+        cmplstunneloppositedirptr.value_namespace = name_space;
+        cmplstunneloppositedirptr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmplsTunnelExtOppositeDirTnlValid")
+    {
+        cmplstunnelextoppositedirtnlvalid = value;
+        cmplstunnelextoppositedirtnlvalid.value_namespace = name_space;
+        cmplstunnelextoppositedirtnlvalid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "cmplsTunnelExtDestTnlIndex")
     {
         cmplstunnelextdesttnlindex = value;
@@ -1082,18 +1094,6 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::set_v
         cmplstunnelextdesttnlvalid = value;
         cmplstunnelextdesttnlvalid.value_namespace = name_space;
         cmplstunnelextdesttnlvalid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cmplsTunnelExtOppositeDirTnlValid")
-    {
-        cmplstunnelextoppositedirtnlvalid = value;
-        cmplstunnelextoppositedirtnlvalid.value_namespace = name_space;
-        cmplstunnelextoppositedirtnlvalid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cmplsTunnelOppositeDirPtr")
-    {
-        cmplstunneloppositedirptr = value;
-        cmplstunneloppositedirptr.value_namespace = name_space;
-        cmplstunneloppositedirptr.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1115,6 +1115,14 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::set_f
     {
         mplstunnelegresslsrid.yfilter = yfilter;
     }
+    if(value_path == "cmplsTunnelOppositeDirPtr")
+    {
+        cmplstunneloppositedirptr.yfilter = yfilter;
+    }
+    if(value_path == "cmplsTunnelExtOppositeDirTnlValid")
+    {
+        cmplstunnelextoppositedirtnlvalid.yfilter = yfilter;
+    }
     if(value_path == "cmplsTunnelExtDestTnlIndex")
     {
         cmplstunnelextdesttnlindex.yfilter = yfilter;
@@ -1127,19 +1135,11 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::set_f
     {
         cmplstunnelextdesttnlvalid.yfilter = yfilter;
     }
-    if(value_path == "cmplsTunnelExtOppositeDirTnlValid")
-    {
-        cmplstunnelextoppositedirtnlvalid.yfilter = yfilter;
-    }
-    if(value_path == "cmplsTunnelOppositeDirPtr")
-    {
-        cmplstunneloppositedirptr.yfilter = yfilter;
-    }
 }
 
 bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsTunnelIndex" || name == "mplsTunnelInstance" || name == "mplsTunnelIngressLSRId" || name == "mplsTunnelEgressLSRId" || name == "cmplsTunnelExtDestTnlIndex" || name == "cmplsTunnelExtDestTnlLspIndex" || name == "cmplsTunnelExtDestTnlValid" || name == "cmplsTunnelExtOppositeDirTnlValid" || name == "cmplsTunnelOppositeDirPtr")
+    if(name == "mplsTunnelIndex" || name == "mplsTunnelInstance" || name == "mplsTunnelIngressLSRId" || name == "mplsTunnelEgressLSRId" || name == "cmplsTunnelOppositeDirPtr" || name == "cmplsTunnelExtOppositeDirTnlValid" || name == "cmplsTunnelExtDestTnlIndex" || name == "cmplsTunnelExtDestTnlLspIndex" || name == "cmplsTunnelExtDestTnlValid")
         return true;
     return false;
 }
@@ -1250,11 +1250,11 @@ CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfe
     mplstunnelinstance{YType::str, "mplsTunnelInstance"},
     mplstunnelingresslsrid{YType::str, "mplsTunnelIngressLSRId"},
     mplstunnelegresslsrid{YType::str, "mplsTunnelEgressLSRId"},
-    cmplstunnelreverseperfbytes{YType::uint32, "cmplsTunnelReversePerfBytes"},
-    cmplstunnelreverseperferrors{YType::uint32, "cmplsTunnelReversePerfErrors"},
-    cmplstunnelreverseperfhcbytes{YType::uint64, "cmplsTunnelReversePerfHCBytes"},
+    cmplstunnelreverseperfpackets{YType::uint32, "cmplsTunnelReversePerfPackets"},
     cmplstunnelreverseperfhcpackets{YType::uint64, "cmplsTunnelReversePerfHCPackets"},
-    cmplstunnelreverseperfpackets{YType::uint32, "cmplsTunnelReversePerfPackets"}
+    cmplstunnelreverseperferrors{YType::uint32, "cmplsTunnelReversePerfErrors"},
+    cmplstunnelreverseperfbytes{YType::uint32, "cmplsTunnelReversePerfBytes"},
+    cmplstunnelreverseperfhcbytes{YType::uint64, "cmplsTunnelReversePerfHCBytes"}
 {
 
     yang_name = "cmplsTunnelReversePerfEntry"; yang_parent_name = "cmplsTunnelReversePerfTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -1270,11 +1270,11 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverse
 	|| mplstunnelinstance.is_set
 	|| mplstunnelingresslsrid.is_set
 	|| mplstunnelegresslsrid.is_set
-	|| cmplstunnelreverseperfbytes.is_set
-	|| cmplstunnelreverseperferrors.is_set
-	|| cmplstunnelreverseperfhcbytes.is_set
+	|| cmplstunnelreverseperfpackets.is_set
 	|| cmplstunnelreverseperfhcpackets.is_set
-	|| cmplstunnelreverseperfpackets.is_set;
+	|| cmplstunnelreverseperferrors.is_set
+	|| cmplstunnelreverseperfbytes.is_set
+	|| cmplstunnelreverseperfhcbytes.is_set;
 }
 
 bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry::has_operation() const
@@ -1284,11 +1284,11 @@ bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverse
 	|| ydk::is_set(mplstunnelinstance.yfilter)
 	|| ydk::is_set(mplstunnelingresslsrid.yfilter)
 	|| ydk::is_set(mplstunnelegresslsrid.yfilter)
-	|| ydk::is_set(cmplstunnelreverseperfbytes.yfilter)
-	|| ydk::is_set(cmplstunnelreverseperferrors.yfilter)
-	|| ydk::is_set(cmplstunnelreverseperfhcbytes.yfilter)
+	|| ydk::is_set(cmplstunnelreverseperfpackets.yfilter)
 	|| ydk::is_set(cmplstunnelreverseperfhcpackets.yfilter)
-	|| ydk::is_set(cmplstunnelreverseperfpackets.yfilter);
+	|| ydk::is_set(cmplstunnelreverseperferrors.yfilter)
+	|| ydk::is_set(cmplstunnelreverseperfbytes.yfilter)
+	|| ydk::is_set(cmplstunnelreverseperfhcbytes.yfilter);
 }
 
 std::string CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry::get_absolute_path() const
@@ -1313,11 +1313,11 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
     if (mplstunnelinstance.is_set || is_set(mplstunnelinstance.yfilter)) leaf_name_data.push_back(mplstunnelinstance.get_name_leafdata());
     if (mplstunnelingresslsrid.is_set || is_set(mplstunnelingresslsrid.yfilter)) leaf_name_data.push_back(mplstunnelingresslsrid.get_name_leafdata());
     if (mplstunnelegresslsrid.is_set || is_set(mplstunnelegresslsrid.yfilter)) leaf_name_data.push_back(mplstunnelegresslsrid.get_name_leafdata());
-    if (cmplstunnelreverseperfbytes.is_set || is_set(cmplstunnelreverseperfbytes.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperfbytes.get_name_leafdata());
-    if (cmplstunnelreverseperferrors.is_set || is_set(cmplstunnelreverseperferrors.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperferrors.get_name_leafdata());
-    if (cmplstunnelreverseperfhcbytes.is_set || is_set(cmplstunnelreverseperfhcbytes.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperfhcbytes.get_name_leafdata());
-    if (cmplstunnelreverseperfhcpackets.is_set || is_set(cmplstunnelreverseperfhcpackets.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperfhcpackets.get_name_leafdata());
     if (cmplstunnelreverseperfpackets.is_set || is_set(cmplstunnelreverseperfpackets.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperfpackets.get_name_leafdata());
+    if (cmplstunnelreverseperfhcpackets.is_set || is_set(cmplstunnelreverseperfhcpackets.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperfhcpackets.get_name_leafdata());
+    if (cmplstunnelreverseperferrors.is_set || is_set(cmplstunnelreverseperferrors.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperferrors.get_name_leafdata());
+    if (cmplstunnelreverseperfbytes.is_set || is_set(cmplstunnelreverseperfbytes.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperfbytes.get_name_leafdata());
+    if (cmplstunnelreverseperfhcbytes.is_set || is_set(cmplstunnelreverseperfhcbytes.yfilter)) leaf_name_data.push_back(cmplstunnelreverseperfhcbytes.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1360,23 +1360,11 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverse
         mplstunnelegresslsrid.value_namespace = name_space;
         mplstunnelegresslsrid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cmplsTunnelReversePerfBytes")
+    if(value_path == "cmplsTunnelReversePerfPackets")
     {
-        cmplstunnelreverseperfbytes = value;
-        cmplstunnelreverseperfbytes.value_namespace = name_space;
-        cmplstunnelreverseperfbytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cmplsTunnelReversePerfErrors")
-    {
-        cmplstunnelreverseperferrors = value;
-        cmplstunnelreverseperferrors.value_namespace = name_space;
-        cmplstunnelreverseperferrors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cmplsTunnelReversePerfHCBytes")
-    {
-        cmplstunnelreverseperfhcbytes = value;
-        cmplstunnelreverseperfhcbytes.value_namespace = name_space;
-        cmplstunnelreverseperfhcbytes.value_namespace_prefix = name_space_prefix;
+        cmplstunnelreverseperfpackets = value;
+        cmplstunnelreverseperfpackets.value_namespace = name_space;
+        cmplstunnelreverseperfpackets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmplsTunnelReversePerfHCPackets")
     {
@@ -1384,11 +1372,23 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverse
         cmplstunnelreverseperfhcpackets.value_namespace = name_space;
         cmplstunnelreverseperfhcpackets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cmplsTunnelReversePerfPackets")
+    if(value_path == "cmplsTunnelReversePerfErrors")
     {
-        cmplstunnelreverseperfpackets = value;
-        cmplstunnelreverseperfpackets.value_namespace = name_space;
-        cmplstunnelreverseperfpackets.value_namespace_prefix = name_space_prefix;
+        cmplstunnelreverseperferrors = value;
+        cmplstunnelreverseperferrors.value_namespace = name_space;
+        cmplstunnelreverseperferrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmplsTunnelReversePerfBytes")
+    {
+        cmplstunnelreverseperfbytes = value;
+        cmplstunnelreverseperfbytes.value_namespace = name_space;
+        cmplstunnelreverseperfbytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cmplsTunnelReversePerfHCBytes")
+    {
+        cmplstunnelreverseperfhcbytes = value;
+        cmplstunnelreverseperfhcbytes.value_namespace = name_space;
+        cmplstunnelreverseperfhcbytes.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1410,31 +1410,31 @@ void CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverse
     {
         mplstunnelegresslsrid.yfilter = yfilter;
     }
-    if(value_path == "cmplsTunnelReversePerfBytes")
+    if(value_path == "cmplsTunnelReversePerfPackets")
     {
-        cmplstunnelreverseperfbytes.yfilter = yfilter;
-    }
-    if(value_path == "cmplsTunnelReversePerfErrors")
-    {
-        cmplstunnelreverseperferrors.yfilter = yfilter;
-    }
-    if(value_path == "cmplsTunnelReversePerfHCBytes")
-    {
-        cmplstunnelreverseperfhcbytes.yfilter = yfilter;
+        cmplstunnelreverseperfpackets.yfilter = yfilter;
     }
     if(value_path == "cmplsTunnelReversePerfHCPackets")
     {
         cmplstunnelreverseperfhcpackets.yfilter = yfilter;
     }
-    if(value_path == "cmplsTunnelReversePerfPackets")
+    if(value_path == "cmplsTunnelReversePerfErrors")
     {
-        cmplstunnelreverseperfpackets.yfilter = yfilter;
+        cmplstunnelreverseperferrors.yfilter = yfilter;
+    }
+    if(value_path == "cmplsTunnelReversePerfBytes")
+    {
+        cmplstunnelreverseperfbytes.yfilter = yfilter;
+    }
+    if(value_path == "cmplsTunnelReversePerfHCBytes")
+    {
+        cmplstunnelreverseperfhcbytes.yfilter = yfilter;
     }
 }
 
 bool CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsTunnelIndex" || name == "mplsTunnelInstance" || name == "mplsTunnelIngressLSRId" || name == "mplsTunnelEgressLSRId" || name == "cmplsTunnelReversePerfBytes" || name == "cmplsTunnelReversePerfErrors" || name == "cmplsTunnelReversePerfHCBytes" || name == "cmplsTunnelReversePerfHCPackets" || name == "cmplsTunnelReversePerfPackets")
+    if(name == "mplsTunnelIndex" || name == "mplsTunnelInstance" || name == "mplsTunnelIngressLSRId" || name == "mplsTunnelEgressLSRId" || name == "cmplsTunnelReversePerfPackets" || name == "cmplsTunnelReversePerfHCPackets" || name == "cmplsTunnelReversePerfErrors" || name == "cmplsTunnelReversePerfBytes" || name == "cmplsTunnelReversePerfHCBytes")
         return true;
     return false;
 }

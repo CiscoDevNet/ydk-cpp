@@ -230,14 +230,14 @@ IpExplicitPaths::Paths::Path::~Path()
 
 bool IpExplicitPaths::Paths::Path::has_data() const
 {
-    for (std::size_t index=0; index<identifier.size(); index++)
-    {
-        if(identifier[index]->has_data())
-            return true;
-    }
     for (std::size_t index=0; index<name.size(); index++)
     {
         if(name[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<identifier.size(); index++)
+    {
+        if(identifier[index]->has_data())
             return true;
     }
     return type.is_set;
@@ -245,14 +245,14 @@ bool IpExplicitPaths::Paths::Path::has_data() const
 
 bool IpExplicitPaths::Paths::Path::has_operation() const
 {
-    for (std::size_t index=0; index<identifier.size(); index++)
-    {
-        if(identifier[index]->has_operation())
-            return true;
-    }
     for (std::size_t index=0; index<name.size(); index++)
     {
         if(name[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<identifier.size(); index++)
+    {
+        if(identifier[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -285,22 +285,6 @@ std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::get
 
 std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "identifier")
-    {
-        for(auto const & c : identifier)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier>();
-        c->parent = this;
-        identifier.push_back(c);
-        return c;
-    }
-
     if(child_yang_name == "name")
     {
         for(auto const & c : name)
@@ -317,18 +301,34 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::get_child_by_name(const st
         return c;
     }
 
+    if(child_yang_name == "identifier")
+    {
+        for(auto const & c : identifier)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier>();
+        c->parent = this;
+        identifier.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : identifier)
+    for (auto const & c : name)
     {
         children[c->get_segment_path()] = c;
     }
 
-    for (auto const & c : name)
+    for (auto const & c : identifier)
     {
         children[c->get_segment_path()] = c;
     }
@@ -356,355 +356,7 @@ void IpExplicitPaths::Paths::Path::set_filter(const std::string & value_path, YF
 
 bool IpExplicitPaths::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "identifier" || name == "name" || name == "type")
-        return true;
-    return false;
-}
-
-IpExplicitPaths::Paths::Path::Identifier::Identifier()
-    :
-    id{YType::uint32, "id"},
-    disable{YType::empty, "disable"}
-    	,
-    hops(std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops>())
-{
-    hops->parent = this;
-
-    yang_name = "identifier"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-IpExplicitPaths::Paths::Path::Identifier::~Identifier()
-{
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::has_data() const
-{
-    return id.is_set
-	|| disable.is_set
-	|| (hops !=  nullptr && hops->has_data());
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| (hops !=  nullptr && hops->has_operation());
-}
-
-std::string IpExplicitPaths::Paths::Path::Identifier::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "identifier" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::Identifier::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hops")
-    {
-        if(hops == nullptr)
-        {
-            hops = std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops>();
-        }
-        return hops;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(hops != nullptr)
-    {
-        children["hops"] = hops;
-    }
-
-    return children;
-}
-
-void IpExplicitPaths::Paths::Path::Identifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpExplicitPaths::Paths::Path::Identifier::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hops" || name == "id" || name == "disable")
-        return true;
-    return false;
-}
-
-IpExplicitPaths::Paths::Path::Identifier::Hops::Hops()
-{
-
-    yang_name = "hops"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-IpExplicitPaths::Paths::Path::Identifier::Hops::~Hops()
-{
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_data() const
-{
-    for (std::size_t index=0; index<hop.size(); index++)
-    {
-        if(hop[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_operation() const
-{
-    for (std::size_t index=0; index<hop.size(); index++)
-    {
-        if(hop[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string IpExplicitPaths::Paths::Path::Identifier::Hops::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hops";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::Identifier::Hops::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hop")
-    {
-        for(auto const & c : hop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops::Hop>();
-        c->parent = this;
-        hop.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::Hops::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hop)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void IpExplicitPaths::Paths::Path::Identifier::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IpExplicitPaths::Paths::Path::Identifier::Hops::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hop")
-        return true;
-    return false;
-}
-
-IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::Hop()
-    :
-    index_number{YType::uint32, "index-number"},
-    hop_type{YType::enumeration, "hop-type"},
-    if_index{YType::int32, "if-index"},
-    ip_address{YType::str, "ip-address"},
-    mpls_label{YType::uint32, "mpls-label"},
-    num_type{YType::enumeration, "num-type"}
-{
-
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::~Hop()
-{
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_data() const
-{
-    return index_number.is_set
-	|| hop_type.is_set
-	|| if_index.is_set
-	|| ip_address.is_set
-	|| mpls_label.is_set
-	|| num_type.is_set;
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(index_number.yfilter)
-	|| ydk::is_set(hop_type.yfilter)
-	|| ydk::is_set(if_index.yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(mpls_label.yfilter)
-	|| ydk::is_set(num_type.yfilter);
-}
-
-std::string IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[index-number='" <<index_number <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_number.is_set || is_set(index_number.yfilter)) leaf_name_data.push_back(index_number.get_name_leafdata());
-    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (num_type.is_set || is_set(num_type.yfilter)) leaf_name_data.push_back(num_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "index-number")
-    {
-        index_number = value;
-        index_number.value_namespace = name_space;
-        index_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hop-type")
-    {
-        hop_type = value;
-        hop_type.value_namespace = name_space;
-        hop_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "if-index")
-    {
-        if_index = value;
-        if_index.value_namespace = name_space;
-        if_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mpls-label")
-    {
-        mpls_label = value;
-        mpls_label.value_namespace = name_space;
-        mpls_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-type")
-    {
-        num_type = value;
-        num_type.value_namespace = name_space;
-        num_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "index-number")
-    {
-        index_number.yfilter = yfilter;
-    }
-    if(value_path == "hop-type")
-    {
-        hop_type.yfilter = yfilter;
-    }
-    if(value_path == "if-index")
-    {
-        if_index.yfilter = yfilter;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "mpls-label")
-    {
-        mpls_label.yfilter = yfilter;
-    }
-    if(value_path == "num-type")
-    {
-        num_type.yfilter = yfilter;
-    }
-}
-
-bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "index-number" || name == "hop-type" || name == "if-index" || name == "ip-address" || name == "mpls-label" || name == "num-type")
+    if(name == "name" || name == "identifier" || name == "type")
         return true;
     return false;
 }
@@ -914,11 +566,11 @@ bool IpExplicitPaths::Paths::Path::Name::Hops::has_leaf_or_child_of_name(const s
 IpExplicitPaths::Paths::Path::Name::Hops::Hop::Hop()
     :
     index_number{YType::uint32, "index-number"},
+    ip_address{YType::str, "ip-address"},
     hop_type{YType::enumeration, "hop-type"},
     if_index{YType::int32, "if-index"},
-    ip_address{YType::str, "ip-address"},
-    mpls_label{YType::uint32, "mpls-label"},
-    num_type{YType::enumeration, "num-type"}
+    num_type{YType::enumeration, "num-type"},
+    mpls_label{YType::uint32, "mpls-label"}
 {
 
     yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
@@ -931,22 +583,22 @@ IpExplicitPaths::Paths::Path::Name::Hops::Hop::~Hop()
 bool IpExplicitPaths::Paths::Path::Name::Hops::Hop::has_data() const
 {
     return index_number.is_set
+	|| ip_address.is_set
 	|| hop_type.is_set
 	|| if_index.is_set
-	|| ip_address.is_set
-	|| mpls_label.is_set
-	|| num_type.is_set;
+	|| num_type.is_set
+	|| mpls_label.is_set;
 }
 
 bool IpExplicitPaths::Paths::Path::Name::Hops::Hop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_number.yfilter)
+	|| ydk::is_set(ip_address.yfilter)
 	|| ydk::is_set(hop_type.yfilter)
 	|| ydk::is_set(if_index.yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(mpls_label.yfilter)
-	|| ydk::is_set(num_type.yfilter);
+	|| ydk::is_set(num_type.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
 }
 
 std::string IpExplicitPaths::Paths::Path::Name::Hops::Hop::get_segment_path() const
@@ -961,11 +613,11 @@ std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::Nam
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_number.is_set || is_set(index_number.yfilter)) leaf_name_data.push_back(index_number.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
     if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
     if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
     if (num_type.is_set || is_set(num_type.yfilter)) leaf_name_data.push_back(num_type.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -990,6 +642,12 @@ void IpExplicitPaths::Paths::Path::Name::Hops::Hop::set_value(const std::string 
         index_number.value_namespace = name_space;
         index_number.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "hop-type")
     {
         hop_type = value;
@@ -1002,23 +660,17 @@ void IpExplicitPaths::Paths::Path::Name::Hops::Hop::set_value(const std::string 
         if_index.value_namespace = name_space;
         if_index.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ip-address")
+    if(value_path == "num-type")
     {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
+        num_type = value;
+        num_type.value_namespace = name_space;
+        num_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
         mpls_label.value_namespace = name_space;
         mpls_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-type")
-    {
-        num_type = value;
-        num_type.value_namespace = name_space;
-        num_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1028,6 +680,10 @@ void IpExplicitPaths::Paths::Path::Name::Hops::Hop::set_filter(const std::string
     {
         index_number.yfilter = yfilter;
     }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
     if(value_path == "hop-type")
     {
         hop_type.yfilter = yfilter;
@@ -1036,29 +692,370 @@ void IpExplicitPaths::Paths::Path::Name::Hops::Hop::set_filter(const std::string
     {
         if_index.yfilter = yfilter;
     }
-    if(value_path == "ip-address")
+    if(value_path == "num-type")
     {
-        ip_address.yfilter = yfilter;
+        num_type.yfilter = yfilter;
     }
     if(value_path == "mpls-label")
     {
         mpls_label.yfilter = yfilter;
     }
-    if(value_path == "num-type")
-    {
-        num_type.yfilter = yfilter;
-    }
 }
 
 bool IpExplicitPaths::Paths::Path::Name::Hops::Hop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "index-number" || name == "hop-type" || name == "if-index" || name == "ip-address" || name == "mpls-label" || name == "num-type")
+    if(name == "index-number" || name == "ip-address" || name == "hop-type" || name == "if-index" || name == "num-type" || name == "mpls-label")
         return true;
     return false;
 }
 
-const Enum::YLeaf IpIepPath::identifier {1, "identifier"};
-const Enum::YLeaf IpIepPath::name {2, "name"};
+IpExplicitPaths::Paths::Path::Identifier::Identifier()
+    :
+    id{YType::uint32, "id"},
+    disable{YType::empty, "disable"}
+    	,
+    hops(std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops>())
+{
+    hops->parent = this;
+
+    yang_name = "identifier"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpExplicitPaths::Paths::Path::Identifier::~Identifier()
+{
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::has_data() const
+{
+    return id.is_set
+	|| disable.is_set
+	|| (hops !=  nullptr && hops->has_data());
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| (hops !=  nullptr && hops->has_operation());
+}
+
+std::string IpExplicitPaths::Paths::Path::Identifier::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "identifier" <<"[id='" <<id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::Identifier::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hops")
+    {
+        if(hops == nullptr)
+        {
+            hops = std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops>();
+        }
+        return hops;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hops != nullptr)
+    {
+        children["hops"] = hops;
+    }
+
+    return children;
+}
+
+void IpExplicitPaths::Paths::Path::Identifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpExplicitPaths::Paths::Path::Identifier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hops" || name == "id" || name == "disable")
+        return true;
+    return false;
+}
+
+IpExplicitPaths::Paths::Path::Identifier::Hops::Hops()
+{
+
+    yang_name = "hops"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpExplicitPaths::Paths::Path::Identifier::Hops::~Hops()
+{
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_data() const
+{
+    for (std::size_t index=0; index<hop.size(); index++)
+    {
+        if(hop[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_operation() const
+{
+    for (std::size_t index=0; index<hop.size(); index++)
+    {
+        if(hop[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string IpExplicitPaths::Paths::Path::Identifier::Hops::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hops";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::Identifier::Hops::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hop")
+    {
+        for(auto const & c : hop)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops::Hop>();
+        c->parent = this;
+        hop.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::Hops::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hop)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void IpExplicitPaths::Paths::Path::Identifier::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IpExplicitPaths::Paths::Path::Identifier::Hops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::Hops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hop")
+        return true;
+    return false;
+}
+
+IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::Hop()
+    :
+    index_number{YType::uint32, "index-number"},
+    ip_address{YType::str, "ip-address"},
+    hop_type{YType::enumeration, "hop-type"},
+    if_index{YType::int32, "if-index"},
+    num_type{YType::enumeration, "num-type"},
+    mpls_label{YType::uint32, "mpls-label"}
+{
+
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::~Hop()
+{
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_data() const
+{
+    return index_number.is_set
+	|| ip_address.is_set
+	|| hop_type.is_set
+	|| if_index.is_set
+	|| num_type.is_set
+	|| mpls_label.is_set;
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_number.yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(num_type.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
+}
+
+std::string IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hop" <<"[index-number='" <<index_number <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_number.is_set || is_set(index_number.yfilter)) leaf_name_data.push_back(index_number.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (num_type.is_set || is_set(num_type.yfilter)) leaf_name_data.push_back(num_type.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index-number")
+    {
+        index_number = value;
+        index_number.value_namespace = name_space;
+        index_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "if-index")
+    {
+        if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-type")
+    {
+        num_type = value;
+        num_type.value_namespace = name_space;
+        num_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index-number")
+    {
+        index_number.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+    if(value_path == "num-type")
+    {
+        num_type.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
+
+bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index-number" || name == "ip-address" || name == "hop-type" || name == "if-index" || name == "num-type" || name == "mpls-label")
+        return true;
+    return false;
+}
 
 const Enum::YLeaf IpIepNum::unnumbered {1, "unnumbered"};
 const Enum::YLeaf IpIepNum::numbered {2, "numbered"};
@@ -1068,6 +1065,9 @@ const Enum::YLeaf IpIepHop::next_loose {3, "next-loose"};
 const Enum::YLeaf IpIepHop::exclude {4, "exclude"};
 const Enum::YLeaf IpIepHop::exclude_srlg {5, "exclude-srlg"};
 const Enum::YLeaf IpIepHop::next_label {6, "next-label"};
+
+const Enum::YLeaf IpIepPath::identifier {1, "identifier"};
+const Enum::YLeaf IpIepPath::name {2, "name"};
 
 
 }

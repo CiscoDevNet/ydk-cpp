@@ -36,62 +36,11 @@ class TUNNELMIB : public ydk::Entity
         class Tunnelconfigtable; //type: TUNNELMIB::Tunnelconfigtable
         class Tunnelinetconfigtable; //type: TUNNELMIB::Tunnelinetconfigtable
 
-        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelconfigtable> tunnelconfigtable;
         std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunneliftable> tunneliftable;
+        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelconfigtable> tunnelconfigtable;
         std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelinetconfigtable> tunnelinetconfigtable;
         
 }; // TUNNELMIB
-
-
-class TUNNELMIB::Tunnelconfigtable : public ydk::Entity
-{
-    public:
-        Tunnelconfigtable();
-        ~Tunnelconfigtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Tunnelconfigentry; //type: TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry> > tunnelconfigentry;
-        
-}; // TUNNELMIB::Tunnelconfigtable
-
-
-class TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry : public ydk::Entity
-{
-    public:
-        Tunnelconfigentry();
-        ~Tunnelconfigentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf tunnelconfiglocaladdress; //type: string
-        ydk::YLeaf tunnelconfigremoteaddress; //type: string
-        ydk::YLeaf tunnelconfigencapsmethod; //type: IANAtunnelType
-        ydk::YLeaf tunnelconfigid; //type: int32
-        ydk::YLeaf tunnelconfigifindex; //type: int32
-        ydk::YLeaf tunnelconfigstatus; //type: RowStatus
-
-}; // TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry
 
 
 class TUNNELMIB::Tunneliftable : public ydk::Entity
@@ -151,6 +100,57 @@ class TUNNELMIB::Tunneliftable::Tunnelifentry : public ydk::Entity
         class Tunnelifsecurity;
 
 }; // TUNNELMIB::Tunneliftable::Tunnelifentry
+
+
+class TUNNELMIB::Tunnelconfigtable : public ydk::Entity
+{
+    public:
+        Tunnelconfigtable();
+        ~Tunnelconfigtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Tunnelconfigentry; //type: TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry> > tunnelconfigentry;
+        
+}; // TUNNELMIB::Tunnelconfigtable
+
+
+class TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry : public ydk::Entity
+{
+    public:
+        Tunnelconfigentry();
+        ~Tunnelconfigentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tunnelconfiglocaladdress; //type: string
+        ydk::YLeaf tunnelconfigremoteaddress; //type: string
+        ydk::YLeaf tunnelconfigencapsmethod; //type: IANAtunnelType
+        ydk::YLeaf tunnelconfigid; //type: int32
+        ydk::YLeaf tunnelconfigifindex; //type: int32
+        ydk::YLeaf tunnelconfigstatus; //type: RowStatus
+
+}; // TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry
 
 
 class TUNNELMIB::Tunnelinetconfigtable : public ydk::Entity

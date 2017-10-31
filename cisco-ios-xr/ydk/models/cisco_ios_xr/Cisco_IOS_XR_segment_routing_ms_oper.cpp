@@ -341,17 +341,17 @@ bool Srms::Mapping::MappingIpv4::has_leaf_or_child_of_name(const std::string & n
 
 Srms::Mapping::MappingIpv4::MappingMi::MappingMi()
     :
-    area{YType::str, "area"},
-    flag_attached{YType::enumeration, "flag-attached"},
     ip{YType::str, "ip"},
+    prefix{YType::int32, "prefix"},
+    src{YType::enumeration, "src"},
+    router{YType::str, "router"},
+    area{YType::str, "area"},
+    prefix_xr{YType::uint8, "prefix-xr"},
+    sid_start{YType::uint32, "sid-start"},
+    sid_count{YType::uint32, "sid-count"},
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
-    prefix{YType::int32, "prefix"},
-    prefix_xr{YType::uint8, "prefix-xr"},
-    router{YType::str, "router"},
-    sid_count{YType::uint32, "sid-count"},
-    sid_start{YType::uint32, "sid-start"},
-    src{YType::enumeration, "src"}
+    flag_attached{YType::enumeration, "flag-attached"}
     	,
     addr(std::make_shared<Srms::Mapping::MappingIpv4::MappingMi::Addr>())
 {
@@ -366,34 +366,34 @@ Srms::Mapping::MappingIpv4::MappingMi::~MappingMi()
 
 bool Srms::Mapping::MappingIpv4::MappingMi::has_data() const
 {
-    return area.is_set
-	|| flag_attached.is_set
-	|| ip.is_set
+    return ip.is_set
+	|| prefix.is_set
+	|| src.is_set
+	|| router.is_set
+	|| area.is_set
+	|| prefix_xr.is_set
+	|| sid_start.is_set
+	|| sid_count.is_set
 	|| last_prefix.is_set
 	|| last_sid_index.is_set
-	|| prefix.is_set
-	|| prefix_xr.is_set
-	|| router.is_set
-	|| sid_count.is_set
-	|| sid_start.is_set
-	|| src.is_set
+	|| flag_attached.is_set
 	|| (addr !=  nullptr && addr->has_data());
 }
 
 bool Srms::Mapping::MappingIpv4::MappingMi::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(area.yfilter)
-	|| ydk::is_set(flag_attached.yfilter)
 	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(router.yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(sid_start.yfilter)
+	|| ydk::is_set(sid_count.yfilter)
 	|| ydk::is_set(last_prefix.yfilter)
 	|| ydk::is_set(last_sid_index.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter)
-	|| ydk::is_set(router.yfilter)
-	|| ydk::is_set(sid_count.yfilter)
-	|| ydk::is_set(sid_start.yfilter)
-	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(flag_attached.yfilter)
 	|| (addr !=  nullptr && addr->has_operation());
 }
 
@@ -415,17 +415,17 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv4::Mappi
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
     if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
     if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
-    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
-    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -458,23 +458,53 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::Mappi
 
 void Srms::Mapping::MappingIpv4::MappingMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src")
+    {
+        src = value;
+        src.value_namespace = name_space;
+        src.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "router")
+    {
+        router = value;
+        router.value_namespace = name_space;
+        router.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "area")
     {
         area = value;
         area.value_namespace = name_space;
         area.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached = value;
-        flag_attached.value_namespace = name_space;
-        flag_attached.value_namespace_prefix = name_space_prefix;
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ip")
+    if(value_path == "sid-start")
     {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
+        sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count = value;
+        sid_count.value_namespace = name_space;
+        sid_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-prefix")
     {
@@ -488,57 +518,47 @@ void Srms::Mapping::MappingIpv4::MappingMi::set_value(const std::string & value_
         last_sid_index.value_namespace = name_space;
         last_sid_index.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix")
+    if(value_path == "flag-attached")
     {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "router")
-    {
-        router = value;
-        router.value_namespace = name_space;
-        router.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count = value;
-        sid_count.value_namespace = name_space;
-        sid_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start = value;
-        sid_start.value_namespace = name_space;
-        sid_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src")
-    {
-        src = value;
-        src.value_namespace = name_space;
-        src.value_namespace_prefix = name_space_prefix;
+        flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Srms::Mapping::MappingIpv4::MappingMi::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "src")
+    {
+        src.yfilter = yfilter;
+    }
+    if(value_path == "router")
+    {
+        router.yfilter = yfilter;
+    }
     if(value_path == "area")
     {
         area.yfilter = yfilter;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached.yfilter = yfilter;
+        prefix_xr.yfilter = yfilter;
     }
-    if(value_path == "ip")
+    if(value_path == "sid-start")
     {
-        ip.yfilter = yfilter;
+        sid_start.yfilter = yfilter;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count.yfilter = yfilter;
     }
     if(value_path == "last-prefix")
     {
@@ -548,35 +568,15 @@ void Srms::Mapping::MappingIpv4::MappingMi::set_filter(const std::string & value
     {
         last_sid_index.yfilter = yfilter;
     }
-    if(value_path == "prefix")
+    if(value_path == "flag-attached")
     {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr.yfilter = yfilter;
-    }
-    if(value_path == "router")
-    {
-        router.yfilter = yfilter;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count.yfilter = yfilter;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start.yfilter = yfilter;
-    }
-    if(value_path == "src")
-    {
-        src.yfilter = yfilter;
+        flag_attached.yfilter = yfilter;
     }
 }
 
 bool Srms::Mapping::MappingIpv4::MappingMi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addr" || name == "area" || name == "flag-attached" || name == "ip" || name == "last-prefix" || name == "last-sid-index" || name == "prefix" || name == "prefix-xr" || name == "router" || name == "sid-count" || name == "sid-start" || name == "src")
+    if(name == "addr" || name == "ip" || name == "prefix" || name == "src" || name == "router" || name == "area" || name == "prefix-xr" || name == "sid-start" || name == "sid-count" || name == "last-prefix" || name == "last-sid-index" || name == "flag-attached")
         return true;
     return false;
 }
@@ -794,17 +794,17 @@ bool Srms::Mapping::MappingIpv6::has_leaf_or_child_of_name(const std::string & n
 
 Srms::Mapping::MappingIpv6::MappingMi::MappingMi()
     :
-    area{YType::str, "area"},
-    flag_attached{YType::enumeration, "flag-attached"},
     ip{YType::str, "ip"},
+    prefix{YType::int32, "prefix"},
+    src{YType::enumeration, "src"},
+    router{YType::str, "router"},
+    area{YType::str, "area"},
+    prefix_xr{YType::uint8, "prefix-xr"},
+    sid_start{YType::uint32, "sid-start"},
+    sid_count{YType::uint32, "sid-count"},
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
-    prefix{YType::int32, "prefix"},
-    prefix_xr{YType::uint8, "prefix-xr"},
-    router{YType::str, "router"},
-    sid_count{YType::uint32, "sid-count"},
-    sid_start{YType::uint32, "sid-start"},
-    src{YType::enumeration, "src"}
+    flag_attached{YType::enumeration, "flag-attached"}
     	,
     addr(std::make_shared<Srms::Mapping::MappingIpv6::MappingMi::Addr>())
 {
@@ -819,34 +819,34 @@ Srms::Mapping::MappingIpv6::MappingMi::~MappingMi()
 
 bool Srms::Mapping::MappingIpv6::MappingMi::has_data() const
 {
-    return area.is_set
-	|| flag_attached.is_set
-	|| ip.is_set
+    return ip.is_set
+	|| prefix.is_set
+	|| src.is_set
+	|| router.is_set
+	|| area.is_set
+	|| prefix_xr.is_set
+	|| sid_start.is_set
+	|| sid_count.is_set
 	|| last_prefix.is_set
 	|| last_sid_index.is_set
-	|| prefix.is_set
-	|| prefix_xr.is_set
-	|| router.is_set
-	|| sid_count.is_set
-	|| sid_start.is_set
-	|| src.is_set
+	|| flag_attached.is_set
 	|| (addr !=  nullptr && addr->has_data());
 }
 
 bool Srms::Mapping::MappingIpv6::MappingMi::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(area.yfilter)
-	|| ydk::is_set(flag_attached.yfilter)
 	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(router.yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(sid_start.yfilter)
+	|| ydk::is_set(sid_count.yfilter)
 	|| ydk::is_set(last_prefix.yfilter)
 	|| ydk::is_set(last_sid_index.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter)
-	|| ydk::is_set(router.yfilter)
-	|| ydk::is_set(sid_count.yfilter)
-	|| ydk::is_set(sid_start.yfilter)
-	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(flag_attached.yfilter)
 	|| (addr !=  nullptr && addr->has_operation());
 }
 
@@ -868,17 +868,17 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv6::Mappi
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
     if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
     if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
-    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
-    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -911,23 +911,53 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::Mappi
 
 void Srms::Mapping::MappingIpv6::MappingMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src")
+    {
+        src = value;
+        src.value_namespace = name_space;
+        src.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "router")
+    {
+        router = value;
+        router.value_namespace = name_space;
+        router.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "area")
     {
         area = value;
         area.value_namespace = name_space;
         area.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached = value;
-        flag_attached.value_namespace = name_space;
-        flag_attached.value_namespace_prefix = name_space_prefix;
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ip")
+    if(value_path == "sid-start")
     {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
+        sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count = value;
+        sid_count.value_namespace = name_space;
+        sid_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-prefix")
     {
@@ -941,57 +971,47 @@ void Srms::Mapping::MappingIpv6::MappingMi::set_value(const std::string & value_
         last_sid_index.value_namespace = name_space;
         last_sid_index.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix")
+    if(value_path == "flag-attached")
     {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "router")
-    {
-        router = value;
-        router.value_namespace = name_space;
-        router.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count = value;
-        sid_count.value_namespace = name_space;
-        sid_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start = value;
-        sid_start.value_namespace = name_space;
-        sid_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src")
-    {
-        src = value;
-        src.value_namespace = name_space;
-        src.value_namespace_prefix = name_space_prefix;
+        flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Srms::Mapping::MappingIpv6::MappingMi::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "src")
+    {
+        src.yfilter = yfilter;
+    }
+    if(value_path == "router")
+    {
+        router.yfilter = yfilter;
+    }
     if(value_path == "area")
     {
         area.yfilter = yfilter;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached.yfilter = yfilter;
+        prefix_xr.yfilter = yfilter;
     }
-    if(value_path == "ip")
+    if(value_path == "sid-start")
     {
-        ip.yfilter = yfilter;
+        sid_start.yfilter = yfilter;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count.yfilter = yfilter;
     }
     if(value_path == "last-prefix")
     {
@@ -1001,35 +1021,15 @@ void Srms::Mapping::MappingIpv6::MappingMi::set_filter(const std::string & value
     {
         last_sid_index.yfilter = yfilter;
     }
-    if(value_path == "prefix")
+    if(value_path == "flag-attached")
     {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr.yfilter = yfilter;
-    }
-    if(value_path == "router")
-    {
-        router.yfilter = yfilter;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count.yfilter = yfilter;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start.yfilter = yfilter;
-    }
-    if(value_path == "src")
-    {
-        src.yfilter = yfilter;
+        flag_attached.yfilter = yfilter;
     }
 }
 
 bool Srms::Mapping::MappingIpv6::MappingMi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addr" || name == "area" || name == "flag-attached" || name == "ip" || name == "last-prefix" || name == "last-sid-index" || name == "prefix" || name == "prefix-xr" || name == "router" || name == "sid-count" || name == "sid-start" || name == "src")
+    if(name == "addr" || name == "ip" || name == "prefix" || name == "src" || name == "router" || name == "area" || name == "prefix-xr" || name == "sid-start" || name == "sid-count" || name == "last-prefix" || name == "last-sid-index" || name == "flag-attached")
         return true;
     return false;
 }
@@ -1252,11 +1252,11 @@ bool Srms::Policy::has_leaf_or_child_of_name(const std::string & name) const
 
 Srms::Policy::PolicyIpv4::PolicyIpv4()
     :
-    policy_ipv4_active(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active>())
-	,policy_ipv4_backup(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup>())
+    policy_ipv4_backup(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup>())
+	,policy_ipv4_active(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active>())
 {
-    policy_ipv4_active->parent = this;
     policy_ipv4_backup->parent = this;
+    policy_ipv4_active->parent = this;
 
     yang_name = "policy-ipv4"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -1267,15 +1267,15 @@ Srms::Policy::PolicyIpv4::~PolicyIpv4()
 
 bool Srms::Policy::PolicyIpv4::has_data() const
 {
-    return (policy_ipv4_active !=  nullptr && policy_ipv4_active->has_data())
-	|| (policy_ipv4_backup !=  nullptr && policy_ipv4_backup->has_data());
+    return (policy_ipv4_backup !=  nullptr && policy_ipv4_backup->has_data())
+	|| (policy_ipv4_active !=  nullptr && policy_ipv4_active->has_data());
 }
 
 bool Srms::Policy::PolicyIpv4::has_operation() const
 {
     return is_set(yfilter)
-	|| (policy_ipv4_active !=  nullptr && policy_ipv4_active->has_operation())
-	|| (policy_ipv4_backup !=  nullptr && policy_ipv4_backup->has_operation());
+	|| (policy_ipv4_backup !=  nullptr && policy_ipv4_backup->has_operation())
+	|| (policy_ipv4_active !=  nullptr && policy_ipv4_active->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv4::get_absolute_path() const
@@ -1303,15 +1303,6 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::get_nam
 
 std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "policy-ipv4-active")
-    {
-        if(policy_ipv4_active == nullptr)
-        {
-            policy_ipv4_active = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active>();
-        }
-        return policy_ipv4_active;
-    }
-
     if(child_yang_name == "policy-ipv4-backup")
     {
         if(policy_ipv4_backup == nullptr)
@@ -1321,20 +1312,29 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::get_child_by_name(const std::s
         return policy_ipv4_backup;
     }
 
+    if(child_yang_name == "policy-ipv4-active")
+    {
+        if(policy_ipv4_active == nullptr)
+        {
+            policy_ipv4_active = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active>();
+        }
+        return policy_ipv4_active;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(policy_ipv4_active != nullptr)
-    {
-        children["policy-ipv4-active"] = policy_ipv4_active;
-    }
-
     if(policy_ipv4_backup != nullptr)
     {
         children["policy-ipv4-backup"] = policy_ipv4_backup;
+    }
+
+    if(policy_ipv4_active != nullptr)
+    {
+        children["policy-ipv4-active"] = policy_ipv4_active;
     }
 
     return children;
@@ -1350,439 +1350,7 @@ void Srms::Policy::PolicyIpv4::set_filter(const std::string & value_path, YFilte
 
 bool Srms::Policy::PolicyIpv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "policy-ipv4-active" || name == "policy-ipv4-backup")
-        return true;
-    return false;
-}
-
-Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyIpv4Active()
-{
-
-    yang_name = "policy-ipv4-active"; yang_parent_name = "policy-ipv4"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Srms::Policy::PolicyIpv4::PolicyIpv4Active::~PolicyIpv4Active()
-{
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_data() const
-{
-    for (std::size_t index=0; index<policy_mi.size(); index++)
-    {
-        if(policy_mi[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_operation() const
-{
-    for (std::size_t index=0; index<policy_mi.size(); index++)
-    {
-        if(policy_mi[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv4/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-ipv4-active";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "policy-mi")
-    {
-        for(auto const & c : policy_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
-        c->parent = this;
-        policy_mi.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : policy_mi)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Srms::Policy::PolicyIpv4::PolicyIpv4Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Srms::Policy::PolicyIpv4::PolicyIpv4Active::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy-mi")
-        return true;
-    return false;
-}
-
-Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::PolicyMi()
-    :
-    mi_id{YType::str, "mi-id"},
-    area{YType::str, "area"},
-    flag_attached{YType::enumeration, "flag-attached"},
-    last_prefix{YType::str, "last-prefix"},
-    last_sid_index{YType::uint32, "last-sid-index"},
-    prefix_xr{YType::uint8, "prefix-xr"},
-    router{YType::str, "router"},
-    sid_count{YType::uint32, "sid-count"},
-    sid_start{YType::uint32, "sid-start"},
-    src{YType::enumeration, "src"}
-    	,
-    addr(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>())
-{
-    addr->parent = this;
-
-    yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-active"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::~PolicyMi()
-{
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_data() const
-{
-    return mi_id.is_set
-	|| area.is_set
-	|| flag_attached.is_set
-	|| last_prefix.is_set
-	|| last_sid_index.is_set
-	|| prefix_xr.is_set
-	|| router.is_set
-	|| sid_count.is_set
-	|| sid_start.is_set
-	|| src.is_set
-	|| (addr !=  nullptr && addr->has_data());
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mi_id.yfilter)
-	|| ydk::is_set(area.yfilter)
-	|| ydk::is_set(flag_attached.yfilter)
-	|| ydk::is_set(last_prefix.yfilter)
-	|| ydk::is_set(last_sid_index.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter)
-	|| ydk::is_set(router.yfilter)
-	|| ydk::is_set(sid_count.yfilter)
-	|| ydk::is_set(sid_start.yfilter)
-	|| ydk::is_set(src.yfilter)
-	|| (addr !=  nullptr && addr->has_operation());
-}
-
-std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv4/policy-ipv4-active/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mi_id.is_set || is_set(mi_id.yfilter)) leaf_name_data.push_back(mi_id.get_name_leafdata());
-    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
-    if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
-    if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
-    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
-    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "addr")
-    {
-        if(addr == nullptr)
-        {
-            addr = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>();
-        }
-        return addr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(addr != nullptr)
-    {
-        children["addr"] = addr;
-    }
-
-    return children;
-}
-
-void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mi-id")
-    {
-        mi_id = value;
-        mi_id.value_namespace = name_space;
-        mi_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "area")
-    {
-        area = value;
-        area.value_namespace = name_space;
-        area.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flag-attached")
-    {
-        flag_attached = value;
-        flag_attached.value_namespace = name_space;
-        flag_attached.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-prefix")
-    {
-        last_prefix = value;
-        last_prefix.value_namespace = name_space;
-        last_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-sid-index")
-    {
-        last_sid_index = value;
-        last_sid_index.value_namespace = name_space;
-        last_sid_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "router")
-    {
-        router = value;
-        router.value_namespace = name_space;
-        router.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count = value;
-        sid_count.value_namespace = name_space;
-        sid_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start = value;
-        sid_start.value_namespace = name_space;
-        sid_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src")
-    {
-        src = value;
-        src.value_namespace = name_space;
-        src.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mi-id")
-    {
-        mi_id.yfilter = yfilter;
-    }
-    if(value_path == "area")
-    {
-        area.yfilter = yfilter;
-    }
-    if(value_path == "flag-attached")
-    {
-        flag_attached.yfilter = yfilter;
-    }
-    if(value_path == "last-prefix")
-    {
-        last_prefix.yfilter = yfilter;
-    }
-    if(value_path == "last-sid-index")
-    {
-        last_sid_index.yfilter = yfilter;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr.yfilter = yfilter;
-    }
-    if(value_path == "router")
-    {
-        router.yfilter = yfilter;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count.yfilter = yfilter;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start.yfilter = yfilter;
-    }
-    if(value_path == "src")
-    {
-        src.yfilter = yfilter;
-    }
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "addr" || name == "mi-id" || name == "area" || name == "flag-attached" || name == "last-prefix" || name == "last-sid-index" || name == "prefix-xr" || name == "router" || name == "sid-count" || name == "sid-start" || name == "src")
-        return true;
-    return false;
-}
-
-Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::Addr()
-    :
-    af{YType::enumeration, "af"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
-{
-
-    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::~Addr()
-{
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_data() const
-{
-    return af.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
-}
-
-std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "addr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af")
-    {
-        af = value;
-        af.value_namespace = name_space;
-        af.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6 = value;
-        ipv6.value_namespace = name_space;
-        ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af")
-    {
-        af.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6.yfilter = yfilter;
-    }
-}
-
-bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af" || name == "ipv4" || name == "ipv6")
+    if(name == "policy-ipv4-backup" || name == "policy-ipv4-active")
         return true;
     return false;
 }
@@ -1890,15 +1458,15 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::has_leaf_or_child_of_name(const
 Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::PolicyMi()
     :
     mi_id{YType::str, "mi-id"},
+    src{YType::enumeration, "src"},
+    router{YType::str, "router"},
     area{YType::str, "area"},
-    flag_attached{YType::enumeration, "flag-attached"},
+    prefix_xr{YType::uint8, "prefix-xr"},
+    sid_start{YType::uint32, "sid-start"},
+    sid_count{YType::uint32, "sid-count"},
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
-    prefix_xr{YType::uint8, "prefix-xr"},
-    router{YType::str, "router"},
-    sid_count{YType::uint32, "sid-count"},
-    sid_start{YType::uint32, "sid-start"},
-    src{YType::enumeration, "src"}
+    flag_attached{YType::enumeration, "flag-attached"}
     	,
     addr(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr>())
 {
@@ -1914,15 +1482,15 @@ Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::~PolicyMi()
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::has_data() const
 {
     return mi_id.is_set
+	|| src.is_set
+	|| router.is_set
 	|| area.is_set
-	|| flag_attached.is_set
+	|| prefix_xr.is_set
+	|| sid_start.is_set
+	|| sid_count.is_set
 	|| last_prefix.is_set
 	|| last_sid_index.is_set
-	|| prefix_xr.is_set
-	|| router.is_set
-	|| sid_count.is_set
-	|| sid_start.is_set
-	|| src.is_set
+	|| flag_attached.is_set
 	|| (addr !=  nullptr && addr->has_data());
 }
 
@@ -1930,15 +1498,15 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mi_id.yfilter)
+	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(router.yfilter)
 	|| ydk::is_set(area.yfilter)
-	|| ydk::is_set(flag_attached.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(sid_start.yfilter)
+	|| ydk::is_set(sid_count.yfilter)
 	|| ydk::is_set(last_prefix.yfilter)
 	|| ydk::is_set(last_sid_index.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter)
-	|| ydk::is_set(router.yfilter)
-	|| ydk::is_set(sid_count.yfilter)
-	|| ydk::is_set(sid_start.yfilter)
-	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(flag_attached.yfilter)
 	|| (addr !=  nullptr && addr->has_operation());
 }
 
@@ -1961,15 +1529,15 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyI
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mi_id.is_set || is_set(mi_id.yfilter)) leaf_name_data.push_back(mi_id.get_name_leafdata());
+    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
     if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
     if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
     if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
-    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
-    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2008,17 +1576,41 @@ void Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::set_value(const std::
         mi_id.value_namespace = name_space;
         mi_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "src")
+    {
+        src = value;
+        src.value_namespace = name_space;
+        src.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "router")
+    {
+        router = value;
+        router.value_namespace = name_space;
+        router.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "area")
     {
         area = value;
         area.value_namespace = name_space;
         area.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached = value;
-        flag_attached.value_namespace = name_space;
-        flag_attached.value_namespace_prefix = name_space_prefix;
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count = value;
+        sid_count.value_namespace = name_space;
+        sid_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-prefix")
     {
@@ -2032,35 +1624,11 @@ void Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::set_value(const std::
         last_sid_index.value_namespace = name_space;
         last_sid_index.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-xr")
+    if(value_path == "flag-attached")
     {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "router")
-    {
-        router = value;
-        router.value_namespace = name_space;
-        router.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count = value;
-        sid_count.value_namespace = name_space;
-        sid_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start = value;
-        sid_start.value_namespace = name_space;
-        sid_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src")
-    {
-        src = value;
-        src.value_namespace = name_space;
-        src.value_namespace_prefix = name_space_prefix;
+        flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2070,13 +1638,29 @@ void Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::set_filter(const std:
     {
         mi_id.yfilter = yfilter;
     }
+    if(value_path == "src")
+    {
+        src.yfilter = yfilter;
+    }
+    if(value_path == "router")
+    {
+        router.yfilter = yfilter;
+    }
     if(value_path == "area")
     {
         area.yfilter = yfilter;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached.yfilter = yfilter;
+        prefix_xr.yfilter = yfilter;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start.yfilter = yfilter;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count.yfilter = yfilter;
     }
     if(value_path == "last-prefix")
     {
@@ -2086,31 +1670,15 @@ void Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::set_filter(const std:
     {
         last_sid_index.yfilter = yfilter;
     }
-    if(value_path == "prefix-xr")
+    if(value_path == "flag-attached")
     {
-        prefix_xr.yfilter = yfilter;
-    }
-    if(value_path == "router")
-    {
-        router.yfilter = yfilter;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count.yfilter = yfilter;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start.yfilter = yfilter;
-    }
-    if(value_path == "src")
-    {
-        src.yfilter = yfilter;
+        flag_attached.yfilter = yfilter;
     }
 }
 
 bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addr" || name == "mi-id" || name == "area" || name == "flag-attached" || name == "last-prefix" || name == "last-sid-index" || name == "prefix-xr" || name == "router" || name == "sid-count" || name == "sid-start" || name == "src")
+    if(name == "addr" || name == "mi-id" || name == "src" || name == "router" || name == "area" || name == "prefix-xr" || name == "sid-start" || name == "sid-count" || name == "last-prefix" || name == "last-sid-index" || name == "flag-attached")
         return true;
     return false;
 }
@@ -2219,13 +1787,445 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::has_leaf_or_chi
     return false;
 }
 
+Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyIpv4Active()
+{
+
+    yang_name = "policy-ipv4-active"; yang_parent_name = "policy-ipv4"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::Policy::PolicyIpv4::PolicyIpv4Active::~PolicyIpv4Active()
+{
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_data() const
+{
+    for (std::size_t index=0; index<policy_mi.size(); index++)
+    {
+        if(policy_mi[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_operation() const
+{
+    for (std::size_t index=0; index<policy_mi.size(); index++)
+    {
+        if(policy_mi[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-ipv4-active";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy-mi")
+    {
+        for(auto const & c : policy_mi)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
+        c->parent = this;
+        policy_mi.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : policy_mi)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Srms::Policy::PolicyIpv4::PolicyIpv4Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::Policy::PolicyIpv4::PolicyIpv4Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-mi")
+        return true;
+    return false;
+}
+
+Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::PolicyMi()
+    :
+    mi_id{YType::str, "mi-id"},
+    src{YType::enumeration, "src"},
+    router{YType::str, "router"},
+    area{YType::str, "area"},
+    prefix_xr{YType::uint8, "prefix-xr"},
+    sid_start{YType::uint32, "sid-start"},
+    sid_count{YType::uint32, "sid-count"},
+    last_prefix{YType::str, "last-prefix"},
+    last_sid_index{YType::uint32, "last-sid-index"},
+    flag_attached{YType::enumeration, "flag-attached"}
+    	,
+    addr(std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>())
+{
+    addr->parent = this;
+
+    yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-active"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::~PolicyMi()
+{
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_data() const
+{
+    return mi_id.is_set
+	|| src.is_set
+	|| router.is_set
+	|| area.is_set
+	|| prefix_xr.is_set
+	|| sid_start.is_set
+	|| sid_count.is_set
+	|| last_prefix.is_set
+	|| last_sid_index.is_set
+	|| flag_attached.is_set
+	|| (addr !=  nullptr && addr->has_data());
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mi_id.yfilter)
+	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(router.yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(sid_start.yfilter)
+	|| ydk::is_set(sid_count.yfilter)
+	|| ydk::is_set(last_prefix.yfilter)
+	|| ydk::is_set(last_sid_index.yfilter)
+	|| ydk::is_set(flag_attached.yfilter)
+	|| (addr !=  nullptr && addr->has_operation());
+}
+
+std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv4/policy-ipv4-active/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mi_id.is_set || is_set(mi_id.yfilter)) leaf_name_data.push_back(mi_id.get_name_leafdata());
+    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
+    if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
+    if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "addr")
+    {
+        if(addr == nullptr)
+        {
+            addr = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>();
+        }
+        return addr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
+    {
+        children["addr"] = addr;
+    }
+
+    return children;
+}
+
+void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mi-id")
+    {
+        mi_id = value;
+        mi_id.value_namespace = name_space;
+        mi_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src")
+    {
+        src = value;
+        src.value_namespace = name_space;
+        src.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "router")
+    {
+        router = value;
+        router.value_namespace = name_space;
+        router.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "area")
+    {
+        area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count = value;
+        sid_count.value_namespace = name_space;
+        sid_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-prefix")
+    {
+        last_prefix = value;
+        last_prefix.value_namespace = name_space;
+        last_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-sid-index")
+    {
+        last_sid_index = value;
+        last_sid_index.value_namespace = name_space;
+        last_sid_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag-attached")
+    {
+        flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mi-id")
+    {
+        mi_id.yfilter = yfilter;
+    }
+    if(value_path == "src")
+    {
+        src.yfilter = yfilter;
+    }
+    if(value_path == "router")
+    {
+        router.yfilter = yfilter;
+    }
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr.yfilter = yfilter;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start.yfilter = yfilter;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count.yfilter = yfilter;
+    }
+    if(value_path == "last-prefix")
+    {
+        last_prefix.yfilter = yfilter;
+    }
+    if(value_path == "last-sid-index")
+    {
+        last_sid_index.yfilter = yfilter;
+    }
+    if(value_path == "flag-attached")
+    {
+        flag_attached.yfilter = yfilter;
+    }
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr" || name == "mi-id" || name == "src" || name == "router" || name == "area" || name == "prefix-xr" || name == "sid-start" || name == "sid-count" || name == "last-prefix" || name == "last-sid-index" || name == "flag-attached")
+        return true;
+    return false;
+}
+
+Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::Addr()
+    :
+    af{YType::enumeration, "af"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::~Addr()
+{
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_data() const
+{
+    return af.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "addr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af")
+    {
+        af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
 Srms::Policy::PolicyIpv6::PolicyIpv6()
     :
-    policy_ipv6_active(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active>())
-	,policy_ipv6_backup(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup>())
+    policy_ipv6_backup(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup>())
+	,policy_ipv6_active(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active>())
 {
-    policy_ipv6_active->parent = this;
     policy_ipv6_backup->parent = this;
+    policy_ipv6_active->parent = this;
 
     yang_name = "policy-ipv6"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -2236,15 +2236,15 @@ Srms::Policy::PolicyIpv6::~PolicyIpv6()
 
 bool Srms::Policy::PolicyIpv6::has_data() const
 {
-    return (policy_ipv6_active !=  nullptr && policy_ipv6_active->has_data())
-	|| (policy_ipv6_backup !=  nullptr && policy_ipv6_backup->has_data());
+    return (policy_ipv6_backup !=  nullptr && policy_ipv6_backup->has_data())
+	|| (policy_ipv6_active !=  nullptr && policy_ipv6_active->has_data());
 }
 
 bool Srms::Policy::PolicyIpv6::has_operation() const
 {
     return is_set(yfilter)
-	|| (policy_ipv6_active !=  nullptr && policy_ipv6_active->has_operation())
-	|| (policy_ipv6_backup !=  nullptr && policy_ipv6_backup->has_operation());
+	|| (policy_ipv6_backup !=  nullptr && policy_ipv6_backup->has_operation())
+	|| (policy_ipv6_active !=  nullptr && policy_ipv6_active->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv6::get_absolute_path() const
@@ -2272,15 +2272,6 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::get_nam
 
 std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "policy-ipv6-active")
-    {
-        if(policy_ipv6_active == nullptr)
-        {
-            policy_ipv6_active = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active>();
-        }
-        return policy_ipv6_active;
-    }
-
     if(child_yang_name == "policy-ipv6-backup")
     {
         if(policy_ipv6_backup == nullptr)
@@ -2290,20 +2281,29 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::get_child_by_name(const std::s
         return policy_ipv6_backup;
     }
 
+    if(child_yang_name == "policy-ipv6-active")
+    {
+        if(policy_ipv6_active == nullptr)
+        {
+            policy_ipv6_active = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active>();
+        }
+        return policy_ipv6_active;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(policy_ipv6_active != nullptr)
-    {
-        children["policy-ipv6-active"] = policy_ipv6_active;
-    }
-
     if(policy_ipv6_backup != nullptr)
     {
         children["policy-ipv6-backup"] = policy_ipv6_backup;
+    }
+
+    if(policy_ipv6_active != nullptr)
+    {
+        children["policy-ipv6-active"] = policy_ipv6_active;
     }
 
     return children;
@@ -2319,439 +2319,7 @@ void Srms::Policy::PolicyIpv6::set_filter(const std::string & value_path, YFilte
 
 bool Srms::Policy::PolicyIpv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "policy-ipv6-active" || name == "policy-ipv6-backup")
-        return true;
-    return false;
-}
-
-Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyIpv6Active()
-{
-
-    yang_name = "policy-ipv6-active"; yang_parent_name = "policy-ipv6"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Srms::Policy::PolicyIpv6::PolicyIpv6Active::~PolicyIpv6Active()
-{
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_data() const
-{
-    for (std::size_t index=0; index<policy_mi.size(); index++)
-    {
-        if(policy_mi[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_operation() const
-{
-    for (std::size_t index=0; index<policy_mi.size(); index++)
-    {
-        if(policy_mi[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv6/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-ipv6-active";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "policy-mi")
-    {
-        for(auto const & c : policy_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi>();
-        c->parent = this;
-        policy_mi.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : policy_mi)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Srms::Policy::PolicyIpv6::PolicyIpv6Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Srms::Policy::PolicyIpv6::PolicyIpv6Active::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy-mi")
-        return true;
-    return false;
-}
-
-Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::PolicyMi()
-    :
-    mi_id{YType::str, "mi-id"},
-    area{YType::str, "area"},
-    flag_attached{YType::enumeration, "flag-attached"},
-    last_prefix{YType::str, "last-prefix"},
-    last_sid_index{YType::uint32, "last-sid-index"},
-    prefix_xr{YType::uint8, "prefix-xr"},
-    router{YType::str, "router"},
-    sid_count{YType::uint32, "sid-count"},
-    sid_start{YType::uint32, "sid-start"},
-    src{YType::enumeration, "src"}
-    	,
-    addr(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr>())
-{
-    addr->parent = this;
-
-    yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-active"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::~PolicyMi()
-{
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_data() const
-{
-    return mi_id.is_set
-	|| area.is_set
-	|| flag_attached.is_set
-	|| last_prefix.is_set
-	|| last_sid_index.is_set
-	|| prefix_xr.is_set
-	|| router.is_set
-	|| sid_count.is_set
-	|| sid_start.is_set
-	|| src.is_set
-	|| (addr !=  nullptr && addr->has_data());
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mi_id.yfilter)
-	|| ydk::is_set(area.yfilter)
-	|| ydk::is_set(flag_attached.yfilter)
-	|| ydk::is_set(last_prefix.yfilter)
-	|| ydk::is_set(last_sid_index.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter)
-	|| ydk::is_set(router.yfilter)
-	|| ydk::is_set(sid_count.yfilter)
-	|| ydk::is_set(sid_start.yfilter)
-	|| ydk::is_set(src.yfilter)
-	|| (addr !=  nullptr && addr->has_operation());
-}
-
-std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv6/policy-ipv6-active/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mi_id.is_set || is_set(mi_id.yfilter)) leaf_name_data.push_back(mi_id.get_name_leafdata());
-    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
-    if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
-    if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
-    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
-    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "addr")
-    {
-        if(addr == nullptr)
-        {
-            addr = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr>();
-        }
-        return addr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(addr != nullptr)
-    {
-        children["addr"] = addr;
-    }
-
-    return children;
-}
-
-void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mi-id")
-    {
-        mi_id = value;
-        mi_id.value_namespace = name_space;
-        mi_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "area")
-    {
-        area = value;
-        area.value_namespace = name_space;
-        area.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flag-attached")
-    {
-        flag_attached = value;
-        flag_attached.value_namespace = name_space;
-        flag_attached.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-prefix")
-    {
-        last_prefix = value;
-        last_prefix.value_namespace = name_space;
-        last_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-sid-index")
-    {
-        last_sid_index = value;
-        last_sid_index.value_namespace = name_space;
-        last_sid_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "router")
-    {
-        router = value;
-        router.value_namespace = name_space;
-        router.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count = value;
-        sid_count.value_namespace = name_space;
-        sid_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start = value;
-        sid_start.value_namespace = name_space;
-        sid_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src")
-    {
-        src = value;
-        src.value_namespace = name_space;
-        src.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mi-id")
-    {
-        mi_id.yfilter = yfilter;
-    }
-    if(value_path == "area")
-    {
-        area.yfilter = yfilter;
-    }
-    if(value_path == "flag-attached")
-    {
-        flag_attached.yfilter = yfilter;
-    }
-    if(value_path == "last-prefix")
-    {
-        last_prefix.yfilter = yfilter;
-    }
-    if(value_path == "last-sid-index")
-    {
-        last_sid_index.yfilter = yfilter;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr.yfilter = yfilter;
-    }
-    if(value_path == "router")
-    {
-        router.yfilter = yfilter;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count.yfilter = yfilter;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start.yfilter = yfilter;
-    }
-    if(value_path == "src")
-    {
-        src.yfilter = yfilter;
-    }
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "addr" || name == "mi-id" || name == "area" || name == "flag-attached" || name == "last-prefix" || name == "last-sid-index" || name == "prefix-xr" || name == "router" || name == "sid-count" || name == "sid-start" || name == "src")
-        return true;
-    return false;
-}
-
-Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::Addr()
-    :
-    af{YType::enumeration, "af"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
-{
-
-    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::~Addr()
-{
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_data() const
-{
-    return af.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
-}
-
-std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "addr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af")
-    {
-        af = value;
-        af.value_namespace = name_space;
-        af.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6 = value;
-        ipv6.value_namespace = name_space;
-        ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af")
-    {
-        af.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6.yfilter = yfilter;
-    }
-}
-
-bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af" || name == "ipv4" || name == "ipv6")
+    if(name == "policy-ipv6-backup" || name == "policy-ipv6-active")
         return true;
     return false;
 }
@@ -2859,15 +2427,15 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::has_leaf_or_child_of_name(const
 Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::PolicyMi()
     :
     mi_id{YType::str, "mi-id"},
+    src{YType::enumeration, "src"},
+    router{YType::str, "router"},
     area{YType::str, "area"},
-    flag_attached{YType::enumeration, "flag-attached"},
+    prefix_xr{YType::uint8, "prefix-xr"},
+    sid_start{YType::uint32, "sid-start"},
+    sid_count{YType::uint32, "sid-count"},
     last_prefix{YType::str, "last-prefix"},
     last_sid_index{YType::uint32, "last-sid-index"},
-    prefix_xr{YType::uint8, "prefix-xr"},
-    router{YType::str, "router"},
-    sid_count{YType::uint32, "sid-count"},
-    sid_start{YType::uint32, "sid-start"},
-    src{YType::enumeration, "src"}
+    flag_attached{YType::enumeration, "flag-attached"}
     	,
     addr(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr>())
 {
@@ -2883,15 +2451,15 @@ Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::~PolicyMi()
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::has_data() const
 {
     return mi_id.is_set
+	|| src.is_set
+	|| router.is_set
 	|| area.is_set
-	|| flag_attached.is_set
+	|| prefix_xr.is_set
+	|| sid_start.is_set
+	|| sid_count.is_set
 	|| last_prefix.is_set
 	|| last_sid_index.is_set
-	|| prefix_xr.is_set
-	|| router.is_set
-	|| sid_count.is_set
-	|| sid_start.is_set
-	|| src.is_set
+	|| flag_attached.is_set
 	|| (addr !=  nullptr && addr->has_data());
 }
 
@@ -2899,15 +2467,15 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mi_id.yfilter)
+	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(router.yfilter)
 	|| ydk::is_set(area.yfilter)
-	|| ydk::is_set(flag_attached.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(sid_start.yfilter)
+	|| ydk::is_set(sid_count.yfilter)
 	|| ydk::is_set(last_prefix.yfilter)
 	|| ydk::is_set(last_sid_index.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter)
-	|| ydk::is_set(router.yfilter)
-	|| ydk::is_set(sid_count.yfilter)
-	|| ydk::is_set(sid_start.yfilter)
-	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(flag_attached.yfilter)
 	|| (addr !=  nullptr && addr->has_operation());
 }
 
@@ -2930,15 +2498,15 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyI
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mi_id.is_set || is_set(mi_id.yfilter)) leaf_name_data.push_back(mi_id.get_name_leafdata());
+    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
     if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
     if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
     if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
-    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
-    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2977,17 +2545,41 @@ void Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::set_value(const std::
         mi_id.value_namespace = name_space;
         mi_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "src")
+    {
+        src = value;
+        src.value_namespace = name_space;
+        src.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "router")
+    {
+        router = value;
+        router.value_namespace = name_space;
+        router.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "area")
     {
         area = value;
         area.value_namespace = name_space;
         area.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached = value;
-        flag_attached.value_namespace = name_space;
-        flag_attached.value_namespace_prefix = name_space_prefix;
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count = value;
+        sid_count.value_namespace = name_space;
+        sid_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-prefix")
     {
@@ -3001,35 +2593,11 @@ void Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::set_value(const std::
         last_sid_index.value_namespace = name_space;
         last_sid_index.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-xr")
+    if(value_path == "flag-attached")
     {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "router")
-    {
-        router = value;
-        router.value_namespace = name_space;
-        router.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count = value;
-        sid_count.value_namespace = name_space;
-        sid_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start = value;
-        sid_start.value_namespace = name_space;
-        sid_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "src")
-    {
-        src = value;
-        src.value_namespace = name_space;
-        src.value_namespace_prefix = name_space_prefix;
+        flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3039,13 +2607,29 @@ void Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::set_filter(const std:
     {
         mi_id.yfilter = yfilter;
     }
+    if(value_path == "src")
+    {
+        src.yfilter = yfilter;
+    }
+    if(value_path == "router")
+    {
+        router.yfilter = yfilter;
+    }
     if(value_path == "area")
     {
         area.yfilter = yfilter;
     }
-    if(value_path == "flag-attached")
+    if(value_path == "prefix-xr")
     {
-        flag_attached.yfilter = yfilter;
+        prefix_xr.yfilter = yfilter;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start.yfilter = yfilter;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count.yfilter = yfilter;
     }
     if(value_path == "last-prefix")
     {
@@ -3055,31 +2639,15 @@ void Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::set_filter(const std:
     {
         last_sid_index.yfilter = yfilter;
     }
-    if(value_path == "prefix-xr")
+    if(value_path == "flag-attached")
     {
-        prefix_xr.yfilter = yfilter;
-    }
-    if(value_path == "router")
-    {
-        router.yfilter = yfilter;
-    }
-    if(value_path == "sid-count")
-    {
-        sid_count.yfilter = yfilter;
-    }
-    if(value_path == "sid-start")
-    {
-        sid_start.yfilter = yfilter;
-    }
-    if(value_path == "src")
-    {
-        src.yfilter = yfilter;
+        flag_attached.yfilter = yfilter;
     }
 }
 
 bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addr" || name == "mi-id" || name == "area" || name == "flag-attached" || name == "last-prefix" || name == "last-sid-index" || name == "prefix-xr" || name == "router" || name == "sid-count" || name == "sid-start" || name == "src")
+    if(name == "addr" || name == "mi-id" || name == "src" || name == "router" || name == "area" || name == "prefix-xr" || name == "sid-start" || name == "sid-count" || name == "last-prefix" || name == "last-sid-index" || name == "flag-attached")
         return true;
     return false;
 }
@@ -3188,6 +2756,441 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::has_leaf_or_chi
     return false;
 }
 
+Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyIpv6Active()
+{
+
+    yang_name = "policy-ipv6-active"; yang_parent_name = "policy-ipv6"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::Policy::PolicyIpv6::PolicyIpv6Active::~PolicyIpv6Active()
+{
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_data() const
+{
+    for (std::size_t index=0; index<policy_mi.size(); index++)
+    {
+        if(policy_mi[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_operation() const
+{
+    for (std::size_t index=0; index<policy_mi.size(); index++)
+    {
+        if(policy_mi[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-ipv6-active";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy-mi")
+    {
+        for(auto const & c : policy_mi)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi>();
+        c->parent = this;
+        policy_mi.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : policy_mi)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Srms::Policy::PolicyIpv6::PolicyIpv6Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::Policy::PolicyIpv6::PolicyIpv6Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-mi")
+        return true;
+    return false;
+}
+
+Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::PolicyMi()
+    :
+    mi_id{YType::str, "mi-id"},
+    src{YType::enumeration, "src"},
+    router{YType::str, "router"},
+    area{YType::str, "area"},
+    prefix_xr{YType::uint8, "prefix-xr"},
+    sid_start{YType::uint32, "sid-start"},
+    sid_count{YType::uint32, "sid-count"},
+    last_prefix{YType::str, "last-prefix"},
+    last_sid_index{YType::uint32, "last-sid-index"},
+    flag_attached{YType::enumeration, "flag-attached"}
+    	,
+    addr(std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr>())
+{
+    addr->parent = this;
+
+    yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-active"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::~PolicyMi()
+{
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_data() const
+{
+    return mi_id.is_set
+	|| src.is_set
+	|| router.is_set
+	|| area.is_set
+	|| prefix_xr.is_set
+	|| sid_start.is_set
+	|| sid_count.is_set
+	|| last_prefix.is_set
+	|| last_sid_index.is_set
+	|| flag_attached.is_set
+	|| (addr !=  nullptr && addr->has_data());
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mi_id.yfilter)
+	|| ydk::is_set(src.yfilter)
+	|| ydk::is_set(router.yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(sid_start.yfilter)
+	|| ydk::is_set(sid_count.yfilter)
+	|| ydk::is_set(last_prefix.yfilter)
+	|| ydk::is_set(last_sid_index.yfilter)
+	|| ydk::is_set(flag_attached.yfilter)
+	|| (addr !=  nullptr && addr->has_operation());
+}
+
+std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/policy/policy-ipv6/policy-ipv6-active/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-mi" <<"[mi-id='" <<mi_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mi_id.is_set || is_set(mi_id.yfilter)) leaf_name_data.push_back(mi_id.get_name_leafdata());
+    if (src.is_set || is_set(src.yfilter)) leaf_name_data.push_back(src.get_name_leafdata());
+    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (sid_count.is_set || is_set(sid_count.yfilter)) leaf_name_data.push_back(sid_count.get_name_leafdata());
+    if (last_prefix.is_set || is_set(last_prefix.yfilter)) leaf_name_data.push_back(last_prefix.get_name_leafdata());
+    if (last_sid_index.is_set || is_set(last_sid_index.yfilter)) leaf_name_data.push_back(last_sid_index.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "addr")
+    {
+        if(addr == nullptr)
+        {
+            addr = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr>();
+        }
+        return addr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
+    {
+        children["addr"] = addr;
+    }
+
+    return children;
+}
+
+void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mi-id")
+    {
+        mi_id = value;
+        mi_id.value_namespace = name_space;
+        mi_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src")
+    {
+        src = value;
+        src.value_namespace = name_space;
+        src.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "router")
+    {
+        router = value;
+        router.value_namespace = name_space;
+        router.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "area")
+    {
+        area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count = value;
+        sid_count.value_namespace = name_space;
+        sid_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-prefix")
+    {
+        last_prefix = value;
+        last_prefix.value_namespace = name_space;
+        last_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-sid-index")
+    {
+        last_sid_index = value;
+        last_sid_index.value_namespace = name_space;
+        last_sid_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag-attached")
+    {
+        flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mi-id")
+    {
+        mi_id.yfilter = yfilter;
+    }
+    if(value_path == "src")
+    {
+        src.yfilter = yfilter;
+    }
+    if(value_path == "router")
+    {
+        router.yfilter = yfilter;
+    }
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr.yfilter = yfilter;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start.yfilter = yfilter;
+    }
+    if(value_path == "sid-count")
+    {
+        sid_count.yfilter = yfilter;
+    }
+    if(value_path == "last-prefix")
+    {
+        last_prefix.yfilter = yfilter;
+    }
+    if(value_path == "last-sid-index")
+    {
+        last_sid_index.yfilter = yfilter;
+    }
+    if(value_path == "flag-attached")
+    {
+        flag_attached.yfilter = yfilter;
+    }
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr" || name == "mi-id" || name == "src" || name == "router" || name == "area" || name == "prefix-xr" || name == "sid-start" || name == "sid-count" || name == "last-prefix" || name == "last-sid-index" || name == "flag-attached")
+        return true;
+    return false;
+}
+
+Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::Addr()
+    :
+    af{YType::enumeration, "af"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "addr"; yang_parent_name = "policy-mi"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::~Addr()
+{
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_data() const
+{
+    return af.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "addr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af")
+    {
+        af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
+const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
+
 const Enum::YLeaf SrmsMiAfEB::none {0, "none"};
 const Enum::YLeaf SrmsMiAfEB::ipv4 {1, "ipv4"};
 const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
@@ -3195,9 +3198,6 @@ const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
 const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
 const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
 const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
-
-const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
-const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
 
 
 }

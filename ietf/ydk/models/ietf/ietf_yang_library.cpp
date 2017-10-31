@@ -147,10 +147,10 @@ ModulesState::Module::Module()
     :
     name{YType::str, "name"},
     revision{YType::str, "revision"},
-    conformance_type{YType::enumeration, "conformance-type"},
-    feature{YType::str, "feature"},
+    schema{YType::str, "schema"},
     namespace_{YType::str, "namespace"},
-    schema{YType::str, "schema"}
+    feature{YType::str, "feature"},
+    conformance_type{YType::enumeration, "conformance-type"}
 {
 
     yang_name = "module"; yang_parent_name = "modules-state"; is_top_level_class = false; has_list_ancestor = false;
@@ -179,9 +179,9 @@ bool ModulesState::Module::has_data() const
     }
     return name.is_set
 	|| revision.is_set
-	|| conformance_type.is_set
+	|| schema.is_set
 	|| namespace_.is_set
-	|| schema.is_set;
+	|| conformance_type.is_set;
 }
 
 bool ModulesState::Module::has_operation() const
@@ -204,10 +204,10 @@ bool ModulesState::Module::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(revision.yfilter)
-	|| ydk::is_set(conformance_type.yfilter)
-	|| ydk::is_set(feature.yfilter)
+	|| ydk::is_set(schema.yfilter)
 	|| ydk::is_set(namespace_.yfilter)
-	|| ydk::is_set(schema.yfilter);
+	|| ydk::is_set(feature.yfilter)
+	|| ydk::is_set(conformance_type.yfilter);
 }
 
 std::string ModulesState::Module::get_absolute_path() const
@@ -230,9 +230,9 @@ std::vector<std::pair<std::string, LeafData> > ModulesState::Module::get_name_le
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
-    if (conformance_type.is_set || is_set(conformance_type.yfilter)) leaf_name_data.push_back(conformance_type.get_name_leafdata());
-    if (namespace_.is_set || is_set(namespace_.yfilter)) leaf_name_data.push_back(namespace_.get_name_leafdata());
     if (schema.is_set || is_set(schema.yfilter)) leaf_name_data.push_back(schema.get_name_leafdata());
+    if (namespace_.is_set || is_set(namespace_.yfilter)) leaf_name_data.push_back(namespace_.get_name_leafdata());
+    if (conformance_type.is_set || is_set(conformance_type.yfilter)) leaf_name_data.push_back(conformance_type.get_name_leafdata());
 
     auto feature_name_datas = feature.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), feature_name_datas.begin(), feature_name_datas.end());
@@ -307,15 +307,11 @@ void ModulesState::Module::set_value(const std::string & value_path, const std::
         revision.value_namespace = name_space;
         revision.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "conformance-type")
+    if(value_path == "schema")
     {
-        conformance_type = value;
-        conformance_type.value_namespace = name_space;
-        conformance_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "feature")
-    {
-        feature.append(value);
+        schema = value;
+        schema.value_namespace = name_space;
+        schema.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "namespace")
     {
@@ -323,11 +319,15 @@ void ModulesState::Module::set_value(const std::string & value_path, const std::
         namespace_.value_namespace = name_space;
         namespace_.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "schema")
+    if(value_path == "feature")
     {
-        schema = value;
-        schema.value_namespace = name_space;
-        schema.value_namespace_prefix = name_space_prefix;
+        feature.append(value);
+    }
+    if(value_path == "conformance-type")
+    {
+        conformance_type = value;
+        conformance_type.value_namespace = name_space;
+        conformance_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -341,27 +341,27 @@ void ModulesState::Module::set_filter(const std::string & value_path, YFilter yf
     {
         revision.yfilter = yfilter;
     }
-    if(value_path == "conformance-type")
+    if(value_path == "schema")
     {
-        conformance_type.yfilter = yfilter;
-    }
-    if(value_path == "feature")
-    {
-        feature.yfilter = yfilter;
+        schema.yfilter = yfilter;
     }
     if(value_path == "namespace")
     {
         namespace_.yfilter = yfilter;
     }
-    if(value_path == "schema")
+    if(value_path == "feature")
     {
-        schema.yfilter = yfilter;
+        feature.yfilter = yfilter;
+    }
+    if(value_path == "conformance-type")
+    {
+        conformance_type.yfilter = yfilter;
     }
 }
 
 bool ModulesState::Module::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "deviation" || name == "submodule" || name == "name" || name == "revision" || name == "conformance-type" || name == "feature" || name == "namespace" || name == "schema")
+    if(name == "deviation" || name == "submodule" || name == "name" || name == "revision" || name == "schema" || name == "namespace" || name == "feature" || name == "conformance-type")
         return true;
     return false;
 }

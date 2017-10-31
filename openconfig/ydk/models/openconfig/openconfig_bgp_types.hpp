@@ -10,15 +10,6 @@
 namespace openconfig {
 namespace openconfig_bgp_types {
 
-class AFISAFITYPE : public virtual ydk::Identity
-{
-    public:
-        AFISAFITYPE();
-        ~AFISAFITYPE();
-
-
-}; // AFISAFITYPE
-
 class BGPCAPABILITY : public virtual ydk::Identity
 {
     public:
@@ -27,6 +18,15 @@ class BGPCAPABILITY : public virtual ydk::Identity
 
 
 }; // BGPCAPABILITY
+
+class AFISAFITYPE : public virtual ydk::Identity
+{
+    public:
+        AFISAFITYPE();
+        ~AFISAFITYPE();
+
+
+}; // AFISAFITYPE
 
 class BGPWELLKNOWNSTDCOMMUNITY : public virtual ydk::Identity
 {
@@ -46,14 +46,23 @@ class REMOVEPRIVATEASOPTION : public virtual ydk::Identity
 
 }; // REMOVEPRIVATEASOPTION
 
-class ADDPATHS : public openconfig::openconfig_bgp_types::BGPCAPABILITY, virtual ydk::Identity
+class MPBGP : public openconfig::openconfig_bgp_types::BGPCAPABILITY, virtual ydk::Identity
 {
     public:
-        ADDPATHS();
-        ~ADDPATHS();
+        MPBGP();
+        ~MPBGP();
 
 
-}; // ADDPATHS
+}; // MPBGP
+
+class ROUTEREFRESH : public openconfig::openconfig_bgp_types::BGPCAPABILITY, virtual ydk::Identity
+{
+    public:
+        ROUTEREFRESH();
+        ~ROUTEREFRESH();
+
+
+}; // ROUTEREFRESH
 
 class ASN32 : public openconfig::openconfig_bgp_types::BGPCAPABILITY, virtual ydk::Identity
 {
@@ -73,14 +82,14 @@ class GRACEFULRESTART : public openconfig::openconfig_bgp_types::BGPCAPABILITY, 
 
 }; // GRACEFULRESTART
 
-class IPV4LABELEDUNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
+class ADDPATHS : public openconfig::openconfig_bgp_types::BGPCAPABILITY, virtual ydk::Identity
 {
     public:
-        IPV4LABELEDUNICAST();
-        ~IPV4LABELEDUNICAST();
+        ADDPATHS();
+        ~ADDPATHS();
 
 
-}; // IPV4LABELEDUNICAST
+}; // ADDPATHS
 
 class IPV4UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
@@ -91,15 +100,6 @@ class IPV4UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtua
 
 }; // IPV4UNICAST
 
-class IPV6LABELEDUNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        IPV6LABELEDUNICAST();
-        ~IPV6LABELEDUNICAST();
-
-
-}; // IPV6LABELEDUNICAST
-
 class IPV6UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
     public:
@@ -109,32 +109,23 @@ class IPV6UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtua
 
 }; // IPV6UNICAST
 
-class L2VPNEVPN : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
+class IPV4LABELEDUNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
     public:
-        L2VPNEVPN();
-        ~L2VPNEVPN();
+        IPV4LABELEDUNICAST();
+        ~IPV4LABELEDUNICAST();
 
 
-}; // L2VPNEVPN
+}; // IPV4LABELEDUNICAST
 
-class L2VPNVPLS : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
+class IPV6LABELEDUNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
     public:
-        L2VPNVPLS();
-        ~L2VPNVPLS();
+        IPV6LABELEDUNICAST();
+        ~IPV6LABELEDUNICAST();
 
 
-}; // L2VPNVPLS
-
-class L3VPNIPV4MULTICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        L3VPNIPV4MULTICAST();
-        ~L3VPNIPV4MULTICAST();
-
-
-}; // L3VPNIPV4MULTICAST
+}; // IPV6LABELEDUNICAST
 
 class L3VPNIPV4UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
@@ -145,15 +136,6 @@ class L3VPNIPV4UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, v
 
 }; // L3VPNIPV4UNICAST
 
-class L3VPNIPV6MULTICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
-{
-    public:
-        L3VPNIPV6MULTICAST();
-        ~L3VPNIPV6MULTICAST();
-
-
-}; // L3VPNIPV6MULTICAST
-
 class L3VPNIPV6UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
     public:
@@ -163,23 +145,41 @@ class L3VPNIPV6UNICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, v
 
 }; // L3VPNIPV6UNICAST
 
-class MPBGP : public openconfig::openconfig_bgp_types::BGPCAPABILITY, virtual ydk::Identity
+class L3VPNIPV4MULTICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
     public:
-        MPBGP();
-        ~MPBGP();
+        L3VPNIPV4MULTICAST();
+        ~L3VPNIPV4MULTICAST();
 
 
-}; // MPBGP
+}; // L3VPNIPV4MULTICAST
 
-class NOADVERTISE : public openconfig::openconfig_bgp_types::BGPWELLKNOWNSTDCOMMUNITY, virtual ydk::Identity
+class L3VPNIPV6MULTICAST : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
 {
     public:
-        NOADVERTISE();
-        ~NOADVERTISE();
+        L3VPNIPV6MULTICAST();
+        ~L3VPNIPV6MULTICAST();
 
 
-}; // NOADVERTISE
+}; // L3VPNIPV6MULTICAST
+
+class L2VPNVPLS : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        L2VPNVPLS();
+        ~L2VPNVPLS();
+
+
+}; // L2VPNVPLS
+
+class L2VPNEVPN : public openconfig::openconfig_bgp_types::AFISAFITYPE, virtual ydk::Identity
+{
+    public:
+        L2VPNEVPN();
+        ~L2VPNEVPN();
+
+
+}; // L2VPNEVPN
 
 class NOEXPORT : public openconfig::openconfig_bgp_types::BGPWELLKNOWNSTDCOMMUNITY, virtual ydk::Identity
 {
@@ -189,6 +189,15 @@ class NOEXPORT : public openconfig::openconfig_bgp_types::BGPWELLKNOWNSTDCOMMUNI
 
 
 }; // NOEXPORT
+
+class NOADVERTISE : public openconfig::openconfig_bgp_types::BGPWELLKNOWNSTDCOMMUNITY, virtual ydk::Identity
+{
+    public:
+        NOADVERTISE();
+        ~NOADVERTISE();
+
+
+}; // NOADVERTISE
 
 class NOEXPORTSUBCONFED : public openconfig::openconfig_bgp_types::BGPWELLKNOWNSTDCOMMUNITY, virtual ydk::Identity
 {
@@ -226,14 +235,13 @@ class PRIVATEASREPLACEALL : public openconfig::openconfig_bgp_types::REMOVEPRIVA
 
 }; // PRIVATEASREPLACEALL
 
-class ROUTEREFRESH : public openconfig::openconfig_bgp_types::BGPCAPABILITY, virtual ydk::Identity
+class BgpSessionDirection : public ydk::Enum
 {
     public:
-        ROUTEREFRESH();
-        ~ROUTEREFRESH();
+        static const ydk::Enum::YLeaf INBOUND;
+        static const ydk::Enum::YLeaf OUTBOUND;
 
-
-}; // ROUTEREFRESH
+};
 
 class BgpOriginAttrType : public ydk::Enum
 {
@@ -241,16 +249,6 @@ class BgpOriginAttrType : public ydk::Enum
         static const ydk::Enum::YLeaf IGP;
         static const ydk::Enum::YLeaf EGP;
         static const ydk::Enum::YLeaf INCOMPLETE;
-
-};
-
-class CommunityType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf STANDARD;
-        static const ydk::Enum::YLeaf EXTENDED;
-        static const ydk::Enum::YLeaf BOTH;
-        static const ydk::Enum::YLeaf NONE;
 
 };
 
@@ -262,11 +260,13 @@ class PeerType : public ydk::Enum
 
 };
 
-class BgpSessionDirection : public ydk::Enum
+class CommunityType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf INBOUND;
-        static const ydk::Enum::YLeaf OUTBOUND;
+        static const ydk::Enum::YLeaf STANDARD;
+        static const ydk::Enum::YLeaf EXTENDED;
+        static const ydk::Enum::YLeaf BOTH;
+        static const ydk::Enum::YLeaf NONE;
 
 };
 

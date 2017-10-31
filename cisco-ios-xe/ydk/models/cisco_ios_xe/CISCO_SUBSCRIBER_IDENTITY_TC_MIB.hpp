@@ -38,18 +38,6 @@ class SubSessionIdentity : public ydk::Enum
 
 };
 
-class SubscriberProtocolType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf atom;
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf psdn;
-        static const ydk::Enum::YLeaf ppp;
-        static const ydk::Enum::YLeaf vpdn;
-
-};
-
 class SubscriberMediaType : public ydk::Enum
 {
     public:
@@ -61,6 +49,18 @@ class SubscriberMediaType : public ydk::Enum
         static const ydk::Enum::YLeaf isdn;
         static const ydk::Enum::YLeaf mpls;
         static const ydk::Enum::YLeaf sync;
+
+};
+
+class SubscriberProtocolType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf atom;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf psdn;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf vpdn;
 
 };
 

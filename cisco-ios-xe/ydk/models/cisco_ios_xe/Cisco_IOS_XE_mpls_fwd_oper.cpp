@@ -246,9 +246,9 @@ bool MplsForwardingTable::LocalLabelEntry::has_leaf_or_child_of_name(const std::
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ForwardingInfo()
     :
     outgoing_interface{YType::str, "outgoing-interface"},
+    outgoing_label{YType::str, "outgoing-label"},
     label_switched_bytes{YType::uint64, "label-switched-bytes"},
-    next_hop{YType::str, "next-hop"},
-    outgoing_label{YType::str, "outgoing-label"}
+    next_hop{YType::str, "next-hop"}
     	,
     connection_info(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo>())
 {
@@ -264,9 +264,9 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::~ForwardingInfo()
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_data() const
 {
     return outgoing_interface.is_set
+	|| outgoing_label.is_set
 	|| label_switched_bytes.is_set
 	|| next_hop.is_set
-	|| outgoing_label.is_set
 	|| (connection_info !=  nullptr && connection_info->has_data());
 }
 
@@ -274,9 +274,9 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(outgoing_interface.yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
 	|| ydk::is_set(label_switched_bytes.yfilter)
 	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(outgoing_label.yfilter)
 	|| (connection_info !=  nullptr && connection_info->has_operation());
 }
 
@@ -292,9 +292,9 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEn
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
     if (label_switched_bytes.is_set || is_set(label_switched_bytes.yfilter)) leaf_name_data.push_back(label_switched_bytes.get_name_leafdata());
     if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -333,6 +333,12 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::set_value(const std::
         outgoing_interface.value_namespace = name_space;
         outgoing_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "label-switched-bytes")
     {
         label_switched_bytes = value;
@@ -345,12 +351,6 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::set_value(const std::
         next_hop.value_namespace = name_space;
         next_hop.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "outgoing-label")
-    {
-        outgoing_label = value;
-        outgoing_label.value_namespace = name_space;
-        outgoing_label.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -358,6 +358,10 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::set_filter(const std:
     if(value_path == "outgoing-interface")
     {
         outgoing_interface.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
     }
     if(value_path == "label-switched-bytes")
     {
@@ -367,28 +371,24 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::set_filter(const std:
     {
         next_hop.yfilter = yfilter;
     }
-    if(value_path == "outgoing-label")
-    {
-        outgoing_label.yfilter = yfilter;
-    }
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "connection-info" || name == "outgoing-interface" || name == "label-switched-bytes" || name == "next-hop" || name == "outgoing-label")
+    if(name == "connection-info" || name == "outgoing-interface" || name == "outgoing-label" || name == "label-switched-bytes" || name == "next-hop")
         return true;
     return false;
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::ConnectionInfo()
     :
-    ip{YType::str, "ip"},
-    l2ckt_id{YType::uint32, "l2ckt-id"},
-    mask{YType::uint16, "mask"},
-    nh_id{YType::uint32, "nh-id"},
-    tunnel_id{YType::uint32, "tunnel-id"},
     type{YType::enumeration, "type"},
-    vrf_id{YType::uint32, "vrf-id"}
+    ip{YType::str, "ip"},
+    mask{YType::uint16, "mask"},
+    tunnel_id{YType::uint32, "tunnel-id"},
+    vrf_id{YType::uint32, "vrf-id"},
+    nh_id{YType::uint32, "nh-id"},
+    l2ckt_id{YType::uint32, "l2ckt-id"}
     	,
     tunnel_tp(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp>())
 {
@@ -403,26 +403,26 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::~Connectio
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_data() const
 {
-    return ip.is_set
-	|| l2ckt_id.is_set
+    return type.is_set
+	|| ip.is_set
 	|| mask.is_set
-	|| nh_id.is_set
 	|| tunnel_id.is_set
-	|| type.is_set
 	|| vrf_id.is_set
+	|| nh_id.is_set
+	|| l2ckt_id.is_set
 	|| (tunnel_tp !=  nullptr && tunnel_tp->has_data());
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(l2ckt_id.yfilter)
-	|| ydk::is_set(mask.yfilter)
-	|| ydk::is_set(nh_id.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter)
 	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(mask.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
 	|| ydk::is_set(vrf_id.yfilter)
+	|| ydk::is_set(nh_id.yfilter)
+	|| ydk::is_set(l2ckt_id.yfilter)
 	|| (tunnel_tp !=  nullptr && tunnel_tp->has_operation());
 }
 
@@ -437,13 +437,13 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEn
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (l2ckt_id.is_set || is_set(l2ckt_id.yfilter)) leaf_name_data.push_back(l2ckt_id.get_name_leafdata());
-    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
-    if (nh_id.is_set || is_set(nh_id.yfilter)) leaf_name_data.push_back(nh_id.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
     if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
+    if (nh_id.is_set || is_set(nh_id.yfilter)) leaf_name_data.push_back(nh_id.get_name_leafdata());
+    if (l2ckt_id.is_set || is_set(l2ckt_id.yfilter)) leaf_name_data.push_back(l2ckt_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -476,17 +476,17 @@ std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEn
 
 void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ip")
     {
         ip = value;
         ip.value_namespace = name_space;
         ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2ckt-id")
-    {
-        l2ckt_id = value;
-        l2ckt_id.value_namespace = name_space;
-        l2ckt_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask")
     {
@@ -494,23 +494,11 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::set_v
         mask.value_namespace = name_space;
         mask.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nh-id")
-    {
-        nh_id = value;
-        nh_id.value_namespace = name_space;
-        nh_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
         tunnel_id.value_namespace = name_space;
         tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-id")
     {
@@ -518,43 +506,55 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::set_v
         vrf_id.value_namespace = name_space;
         vrf_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-id")
+    {
+        nh_id = value;
+        nh_id.value_namespace = name_space;
+        nh_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2ckt-id")
+    {
+        l2ckt_id = value;
+        l2ckt_id.value_namespace = name_space;
+        l2ckt_id.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
     if(value_path == "ip")
     {
         ip.yfilter = yfilter;
-    }
-    if(value_path == "l2ckt-id")
-    {
-        l2ckt_id.yfilter = yfilter;
     }
     if(value_path == "mask")
     {
         mask.yfilter = yfilter;
     }
-    if(value_path == "nh-id")
-    {
-        nh_id.yfilter = yfilter;
-    }
     if(value_path == "tunnel-id")
     {
         tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
     }
     if(value_path == "vrf-id")
     {
         vrf_id.yfilter = yfilter;
     }
+    if(value_path == "nh-id")
+    {
+        nh_id.yfilter = yfilter;
+    }
+    if(value_path == "l2ckt-id")
+    {
+        l2ckt_id.yfilter = yfilter;
+    }
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tunnel-tp" || name == "ip" || name == "l2ckt-id" || name == "mask" || name == "nh-id" || name == "tunnel-id" || name == "type" || name == "vrf-id")
+    if(name == "tunnel-tp" || name == "type" || name == "ip" || name == "mask" || name == "tunnel-id" || name == "vrf-id" || name == "nh-id" || name == "l2ckt-id")
         return true;
     return false;
 }
@@ -563,11 +563,11 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
     :
     tunnel{YType::uint32, "tunnel"}
     	,
-    dst_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>())
-	,src_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>())
+    src_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>())
+	,dst_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>())
 {
-    dst_id->parent = this;
     src_id->parent = this;
+    dst_id->parent = this;
 
     yang_name = "tunnel-tp"; yang_parent_name = "connection-info"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -579,16 +579,16 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::has_data() const
 {
     return tunnel.is_set
-	|| (dst_id !=  nullptr && dst_id->has_data())
-	|| (src_id !=  nullptr && src_id->has_data());
+	|| (src_id !=  nullptr && src_id->has_data())
+	|| (dst_id !=  nullptr && dst_id->has_data());
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tunnel.yfilter)
-	|| (dst_id !=  nullptr && dst_id->has_operation())
-	|| (src_id !=  nullptr && src_id->has_operation());
+	|| (src_id !=  nullptr && src_id->has_operation())
+	|| (dst_id !=  nullptr && dst_id->has_operation());
 }
 
 std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_segment_path() const
@@ -610,15 +610,6 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEn
 
 std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dst-id")
-    {
-        if(dst_id == nullptr)
-        {
-            dst_id = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>();
-        }
-        return dst_id;
-    }
-
     if(child_yang_name == "src-id")
     {
         if(src_id == nullptr)
@@ -628,20 +619,29 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
         return src_id;
     }
 
+    if(child_yang_name == "dst-id")
+    {
+        if(dst_id == nullptr)
+        {
+            dst_id = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>();
+        }
+        return dst_id;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dst_id != nullptr)
-    {
-        children["dst-id"] = dst_id;
-    }
-
     if(src_id != nullptr)
     {
         children["src-id"] = src_id;
+    }
+
+    if(dst_id != nullptr)
+    {
+        children["dst-id"] = dst_id;
     }
 
     return children;
@@ -667,97 +667,7 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Tunne
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dst-id" || name == "src-id" || name == "tunnel")
-        return true;
-    return false;
-}
-
-MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::DstId()
-    :
-    global{YType::uint32, "global"},
-    node{YType::str, "node"}
-{
-
-    yang_name = "dst-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::~DstId()
-{
-}
-
-bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_data() const
-{
-    return global.is_set
-	|| node.is_set;
-}
-
-bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(global.yfilter)
-	|| ydk::is_set(node.yfilter);
-}
-
-std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dst-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (global.is_set || is_set(global.yfilter)) leaf_name_data.push_back(global.get_name_leafdata());
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "global")
-    {
-        global = value;
-        global.value_namespace = name_space;
-        global.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node")
-    {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "global")
-    {
-        global.yfilter = yfilter;
-    }
-    if(value_path == "node")
-    {
-        node.yfilter = yfilter;
-    }
-}
-
-bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global" || name == "node")
+    if(name == "src-id" || name == "dst-id" || name == "tunnel")
         return true;
     return false;
 }
@@ -846,6 +756,96 @@ void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Tunne
 }
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "node")
+        return true;
+    return false;
+}
+
+MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::DstId()
+    :
+    global{YType::uint32, "global"},
+    node{YType::str, "node"}
+{
+
+    yang_name = "dst-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::~DstId()
+{
+}
+
+bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_data() const
+{
+    return global.is_set
+	|| node.is_set;
+}
+
+bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(global.yfilter)
+	|| ydk::is_set(node.yfilter);
+}
+
+std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dst-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (global.is_set || is_set(global.yfilter)) leaf_name_data.push_back(global.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "global")
+    {
+        global = value;
+        global.value_namespace = name_space;
+        global.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global")
+    {
+        global.yfilter = yfilter;
+    }
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+}
+
+bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "global" || name == "node")
         return true;

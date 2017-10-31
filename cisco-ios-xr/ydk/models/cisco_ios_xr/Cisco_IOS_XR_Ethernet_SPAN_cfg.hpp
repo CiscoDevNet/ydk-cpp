@@ -112,16 +112,6 @@ class SpanMonitorSession::Sessions::Session::Destination : public ydk::Entity
 
 }; // SpanMonitorSession::Sessions::Session::Destination
 
-class SpanDestination : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf pseudowire;
-        static const ydk::Enum::YLeaf ipv4_address;
-        static const ydk::Enum::YLeaf ipv6_address;
-
-};
-
 class SpanTrafficDirection : public ydk::Enum
 {
     public:
@@ -139,6 +129,16 @@ class SpanMirrorInterval : public ydk::Enum
         static const ydk::Enum::YLeaf Y_4k;
         static const ydk::Enum::YLeaf Y_8k;
         static const ydk::Enum::YLeaf Y_16k;
+
+};
+
+class SpanDestination : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf pseudowire;
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf ipv6_address;
 
 };
 

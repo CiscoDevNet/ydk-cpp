@@ -11,19 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace IANA_RTPROTO_MIB {
 
-const Enum::YLeaf IANAipMRouteProtocol::other {1, "other"};
-const Enum::YLeaf IANAipMRouteProtocol::local {2, "local"};
-const Enum::YLeaf IANAipMRouteProtocol::netmgmt {3, "netmgmt"};
-const Enum::YLeaf IANAipMRouteProtocol::dvmrp {4, "dvmrp"};
-const Enum::YLeaf IANAipMRouteProtocol::mospf {5, "mospf"};
-const Enum::YLeaf IANAipMRouteProtocol::pimSparseDense {6, "pimSparseDense"};
-const Enum::YLeaf IANAipMRouteProtocol::cbt {7, "cbt"};
-const Enum::YLeaf IANAipMRouteProtocol::pimSparseMode {8, "pimSparseMode"};
-const Enum::YLeaf IANAipMRouteProtocol::pimDenseMode {9, "pimDenseMode"};
-const Enum::YLeaf IANAipMRouteProtocol::igmpOnly {10, "igmpOnly"};
-const Enum::YLeaf IANAipMRouteProtocol::bgmp {11, "bgmp"};
-const Enum::YLeaf IANAipMRouteProtocol::msdp {12, "msdp"};
-
 const Enum::YLeaf IANAipRouteProtocol::other {1, "other"};
 const Enum::YLeaf IANAipRouteProtocol::local {2, "local"};
 const Enum::YLeaf IANAipRouteProtocol::netmgmt {3, "netmgmt"};
@@ -41,6 +28,19 @@ const Enum::YLeaf IANAipRouteProtocol::bgp {14, "bgp"};
 const Enum::YLeaf IANAipRouteProtocol::idpr {15, "idpr"};
 const Enum::YLeaf IANAipRouteProtocol::ciscoEigrp {16, "ciscoEigrp"};
 const Enum::YLeaf IANAipRouteProtocol::dvmrp {17, "dvmrp"};
+
+const Enum::YLeaf IANAipMRouteProtocol::other {1, "other"};
+const Enum::YLeaf IANAipMRouteProtocol::local {2, "local"};
+const Enum::YLeaf IANAipMRouteProtocol::netmgmt {3, "netmgmt"};
+const Enum::YLeaf IANAipMRouteProtocol::dvmrp {4, "dvmrp"};
+const Enum::YLeaf IANAipMRouteProtocol::mospf {5, "mospf"};
+const Enum::YLeaf IANAipMRouteProtocol::pimSparseDense {6, "pimSparseDense"};
+const Enum::YLeaf IANAipMRouteProtocol::cbt {7, "cbt"};
+const Enum::YLeaf IANAipMRouteProtocol::pimSparseMode {8, "pimSparseMode"};
+const Enum::YLeaf IANAipMRouteProtocol::pimDenseMode {9, "pimDenseMode"};
+const Enum::YLeaf IANAipMRouteProtocol::igmpOnly {10, "igmpOnly"};
+const Enum::YLeaf IANAipMRouteProtocol::bgmp {11, "bgmp"};
+const Enum::YLeaf IANAipMRouteProtocol::msdp {12, "msdp"};
 
 
 }

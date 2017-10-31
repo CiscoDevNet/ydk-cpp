@@ -221,12 +221,12 @@ Ssespan::Nodes::Node::Node()
     node{YType::str, "node"}
     	,
     span_mirr_infos(std::make_shared<Ssespan::Nodes::Node::SpanMirrInfos>())
-	,span_sess_infos(std::make_shared<Ssespan::Nodes::Node::SpanSessInfos>())
 	,spanudf(std::make_shared<Ssespan::Nodes::Node::Spanudf>())
+	,span_sess_infos(std::make_shared<Ssespan::Nodes::Node::SpanSessInfos>())
 {
     span_mirr_infos->parent = this;
-    span_sess_infos->parent = this;
     spanudf->parent = this;
+    span_sess_infos->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -239,8 +239,8 @@ bool Ssespan::Nodes::Node::has_data() const
 {
     return node.is_set
 	|| (span_mirr_infos !=  nullptr && span_mirr_infos->has_data())
-	|| (span_sess_infos !=  nullptr && span_sess_infos->has_data())
-	|| (spanudf !=  nullptr && spanudf->has_data());
+	|| (spanudf !=  nullptr && spanudf->has_data())
+	|| (span_sess_infos !=  nullptr && span_sess_infos->has_data());
 }
 
 bool Ssespan::Nodes::Node::has_operation() const
@@ -248,8 +248,8 @@ bool Ssespan::Nodes::Node::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
 	|| (span_mirr_infos !=  nullptr && span_mirr_infos->has_operation())
-	|| (span_sess_infos !=  nullptr && span_sess_infos->has_operation())
-	|| (spanudf !=  nullptr && spanudf->has_operation());
+	|| (spanudf !=  nullptr && spanudf->has_operation())
+	|| (span_sess_infos !=  nullptr && span_sess_infos->has_operation());
 }
 
 std::string Ssespan::Nodes::Node::get_absolute_path() const
@@ -287,15 +287,6 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::get_child_by_name(const std::strin
         return span_mirr_infos;
     }
 
-    if(child_yang_name == "span-sess-infos")
-    {
-        if(span_sess_infos == nullptr)
-        {
-            span_sess_infos = std::make_shared<Ssespan::Nodes::Node::SpanSessInfos>();
-        }
-        return span_sess_infos;
-    }
-
     if(child_yang_name == "spanudf")
     {
         if(spanudf == nullptr)
@@ -303,6 +294,15 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::get_child_by_name(const std::strin
             spanudf = std::make_shared<Ssespan::Nodes::Node::Spanudf>();
         }
         return spanudf;
+    }
+
+    if(child_yang_name == "span-sess-infos")
+    {
+        if(span_sess_infos == nullptr)
+        {
+            span_sess_infos = std::make_shared<Ssespan::Nodes::Node::SpanSessInfos>();
+        }
+        return span_sess_infos;
     }
 
     return nullptr;
@@ -316,14 +316,14 @@ std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::get_childre
         children["span-mirr-infos"] = span_mirr_infos;
     }
 
-    if(span_sess_infos != nullptr)
-    {
-        children["span-sess-infos"] = span_sess_infos;
-    }
-
     if(spanudf != nullptr)
     {
         children["spanudf"] = spanudf;
+    }
+
+    if(span_sess_infos != nullptr)
+    {
+        children["span-sess-infos"] = span_sess_infos;
     }
 
     return children;
@@ -349,7 +349,7 @@ void Ssespan::Nodes::Node::set_filter(const std::string & value_path, YFilter yf
 
 bool Ssespan::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "span-mirr-infos" || name == "span-sess-infos" || name == "spanudf" || name == "node")
+    if(name == "span-mirr-infos" || name == "spanudf" || name == "span-sess-infos" || name == "node")
         return true;
     return false;
 }
@@ -450,29 +450,29 @@ bool Ssespan::Nodes::Node::SpanMirrInfos::has_leaf_or_child_of_name(const std::s
 Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::SpanMirrInfo()
     :
     intf_name{YType::str, "intf-name"},
+    src_ifh{YType::uint32, "src-ifh"},
+    intf_name_xr{YType::str, "intf-name-xr"},
+    v4_acl_flag{YType::uint32, "v4-acl-flag"},
+    v6_acl_flag{YType::uint32, "v6-acl-flag"},
     gre_acl_flag{YType::uint32, "gre-acl-flag"},
-    gre_sessid{YType::uint32, "gre-sessid"},
+    v4state{YType::uint32, "v4state"},
+    v6state{YType::uint32, "v6state"},
     gre_state{YType::uint32, "gre-state"},
+    v4sessid{YType::uint32, "v4sessid"},
+    v6sessid{YType::uint32, "v6sessid"},
+    gre_sessid{YType::uint32, "gre-sessid"},
+    v4dst_type{YType::uint32, "v4dst-type"},
+    v6dst_type{YType::uint32, "v6dst-type"},
     gredst_type{YType::uint32, "gredst-type"},
+    v4statsptr{YType::uint32, "v4statsptr"},
+    v6statsptr{YType::uint32, "v6statsptr"},
     grev4statsptr{YType::uint32, "grev4statsptr"},
     grev6statsptr{YType::uint32, "grev6statsptr"},
-    intf_name_xr{YType::str, "intf-name-xr"},
     mplsv4stats{YType::uint32, "mplsv4stats"},
     mplsv6pkts{YType::uint32, "mplsv6pkts"},
     np_umask{YType::uint32, "np-umask"},
-    sft_hw_data{YType::uint32, "sft-hw-data"},
-    src_ifh{YType::uint32, "src-ifh"},
     uidb{YType::uint32, "uidb"},
-    v4_acl_flag{YType::uint32, "v4-acl-flag"},
-    v4dst_type{YType::uint32, "v4dst-type"},
-    v4sessid{YType::uint32, "v4sessid"},
-    v4state{YType::uint32, "v4state"},
-    v4statsptr{YType::uint32, "v4statsptr"},
-    v6_acl_flag{YType::uint32, "v6-acl-flag"},
-    v6dst_type{YType::uint32, "v6dst-type"},
-    v6sessid{YType::uint32, "v6sessid"},
-    v6state{YType::uint32, "v6state"},
-    v6statsptr{YType::uint32, "v6statsptr"}
+    sft_hw_data{YType::uint32, "sft-hw-data"}
 {
 
     yang_name = "span-mirr-info"; yang_parent_name = "span-mirr-infos"; is_top_level_class = false; has_list_ancestor = true;
@@ -484,77 +484,77 @@ Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::~SpanMirrInfo()
 
 bool Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::has_data() const
 {
-    for (auto const & leaf : sft_hw_data.getYLeafs())
+    for (auto const & leaf : uidb.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : uidb.getYLeafs())
+    for (auto const & leaf : sft_hw_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
     return intf_name.is_set
+	|| src_ifh.is_set
+	|| intf_name_xr.is_set
+	|| v4_acl_flag.is_set
+	|| v6_acl_flag.is_set
 	|| gre_acl_flag.is_set
-	|| gre_sessid.is_set
+	|| v4state.is_set
+	|| v6state.is_set
 	|| gre_state.is_set
+	|| v4sessid.is_set
+	|| v6sessid.is_set
+	|| gre_sessid.is_set
+	|| v4dst_type.is_set
+	|| v6dst_type.is_set
 	|| gredst_type.is_set
+	|| v4statsptr.is_set
+	|| v6statsptr.is_set
 	|| grev4statsptr.is_set
 	|| grev6statsptr.is_set
-	|| intf_name_xr.is_set
 	|| mplsv4stats.is_set
 	|| mplsv6pkts.is_set
-	|| np_umask.is_set
-	|| src_ifh.is_set
-	|| v4_acl_flag.is_set
-	|| v4dst_type.is_set
-	|| v4sessid.is_set
-	|| v4state.is_set
-	|| v4statsptr.is_set
-	|| v6_acl_flag.is_set
-	|| v6dst_type.is_set
-	|| v6sessid.is_set
-	|| v6state.is_set
-	|| v6statsptr.is_set;
+	|| np_umask.is_set;
 }
 
 bool Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::has_operation() const
 {
-    for (auto const & leaf : sft_hw_data.getYLeafs())
+    for (auto const & leaf : uidb.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
     }
-    for (auto const & leaf : uidb.getYLeafs())
+    for (auto const & leaf : sft_hw_data.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(intf_name.yfilter)
+	|| ydk::is_set(src_ifh.yfilter)
+	|| ydk::is_set(intf_name_xr.yfilter)
+	|| ydk::is_set(v4_acl_flag.yfilter)
+	|| ydk::is_set(v6_acl_flag.yfilter)
 	|| ydk::is_set(gre_acl_flag.yfilter)
-	|| ydk::is_set(gre_sessid.yfilter)
+	|| ydk::is_set(v4state.yfilter)
+	|| ydk::is_set(v6state.yfilter)
 	|| ydk::is_set(gre_state.yfilter)
+	|| ydk::is_set(v4sessid.yfilter)
+	|| ydk::is_set(v6sessid.yfilter)
+	|| ydk::is_set(gre_sessid.yfilter)
+	|| ydk::is_set(v4dst_type.yfilter)
+	|| ydk::is_set(v6dst_type.yfilter)
 	|| ydk::is_set(gredst_type.yfilter)
+	|| ydk::is_set(v4statsptr.yfilter)
+	|| ydk::is_set(v6statsptr.yfilter)
 	|| ydk::is_set(grev4statsptr.yfilter)
 	|| ydk::is_set(grev6statsptr.yfilter)
-	|| ydk::is_set(intf_name_xr.yfilter)
 	|| ydk::is_set(mplsv4stats.yfilter)
 	|| ydk::is_set(mplsv6pkts.yfilter)
 	|| ydk::is_set(np_umask.yfilter)
-	|| ydk::is_set(sft_hw_data.yfilter)
-	|| ydk::is_set(src_ifh.yfilter)
 	|| ydk::is_set(uidb.yfilter)
-	|| ydk::is_set(v4_acl_flag.yfilter)
-	|| ydk::is_set(v4dst_type.yfilter)
-	|| ydk::is_set(v4sessid.yfilter)
-	|| ydk::is_set(v4state.yfilter)
-	|| ydk::is_set(v4statsptr.yfilter)
-	|| ydk::is_set(v6_acl_flag.yfilter)
-	|| ydk::is_set(v6dst_type.yfilter)
-	|| ydk::is_set(v6sessid.yfilter)
-	|| ydk::is_set(v6state.yfilter)
-	|| ydk::is_set(v6statsptr.yfilter);
+	|| ydk::is_set(sft_hw_data.yfilter);
 }
 
 std::string Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::get_segment_path() const
@@ -569,32 +569,32 @@ std::vector<std::pair<std::string, LeafData> > Ssespan::Nodes::Node::SpanMirrInf
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
+    if (src_ifh.is_set || is_set(src_ifh.yfilter)) leaf_name_data.push_back(src_ifh.get_name_leafdata());
+    if (intf_name_xr.is_set || is_set(intf_name_xr.yfilter)) leaf_name_data.push_back(intf_name_xr.get_name_leafdata());
+    if (v4_acl_flag.is_set || is_set(v4_acl_flag.yfilter)) leaf_name_data.push_back(v4_acl_flag.get_name_leafdata());
+    if (v6_acl_flag.is_set || is_set(v6_acl_flag.yfilter)) leaf_name_data.push_back(v6_acl_flag.get_name_leafdata());
     if (gre_acl_flag.is_set || is_set(gre_acl_flag.yfilter)) leaf_name_data.push_back(gre_acl_flag.get_name_leafdata());
-    if (gre_sessid.is_set || is_set(gre_sessid.yfilter)) leaf_name_data.push_back(gre_sessid.get_name_leafdata());
+    if (v4state.is_set || is_set(v4state.yfilter)) leaf_name_data.push_back(v4state.get_name_leafdata());
+    if (v6state.is_set || is_set(v6state.yfilter)) leaf_name_data.push_back(v6state.get_name_leafdata());
     if (gre_state.is_set || is_set(gre_state.yfilter)) leaf_name_data.push_back(gre_state.get_name_leafdata());
+    if (v4sessid.is_set || is_set(v4sessid.yfilter)) leaf_name_data.push_back(v4sessid.get_name_leafdata());
+    if (v6sessid.is_set || is_set(v6sessid.yfilter)) leaf_name_data.push_back(v6sessid.get_name_leafdata());
+    if (gre_sessid.is_set || is_set(gre_sessid.yfilter)) leaf_name_data.push_back(gre_sessid.get_name_leafdata());
+    if (v4dst_type.is_set || is_set(v4dst_type.yfilter)) leaf_name_data.push_back(v4dst_type.get_name_leafdata());
+    if (v6dst_type.is_set || is_set(v6dst_type.yfilter)) leaf_name_data.push_back(v6dst_type.get_name_leafdata());
     if (gredst_type.is_set || is_set(gredst_type.yfilter)) leaf_name_data.push_back(gredst_type.get_name_leafdata());
+    if (v4statsptr.is_set || is_set(v4statsptr.yfilter)) leaf_name_data.push_back(v4statsptr.get_name_leafdata());
+    if (v6statsptr.is_set || is_set(v6statsptr.yfilter)) leaf_name_data.push_back(v6statsptr.get_name_leafdata());
     if (grev4statsptr.is_set || is_set(grev4statsptr.yfilter)) leaf_name_data.push_back(grev4statsptr.get_name_leafdata());
     if (grev6statsptr.is_set || is_set(grev6statsptr.yfilter)) leaf_name_data.push_back(grev6statsptr.get_name_leafdata());
-    if (intf_name_xr.is_set || is_set(intf_name_xr.yfilter)) leaf_name_data.push_back(intf_name_xr.get_name_leafdata());
     if (mplsv4stats.is_set || is_set(mplsv4stats.yfilter)) leaf_name_data.push_back(mplsv4stats.get_name_leafdata());
     if (mplsv6pkts.is_set || is_set(mplsv6pkts.yfilter)) leaf_name_data.push_back(mplsv6pkts.get_name_leafdata());
     if (np_umask.is_set || is_set(np_umask.yfilter)) leaf_name_data.push_back(np_umask.get_name_leafdata());
-    if (src_ifh.is_set || is_set(src_ifh.yfilter)) leaf_name_data.push_back(src_ifh.get_name_leafdata());
-    if (v4_acl_flag.is_set || is_set(v4_acl_flag.yfilter)) leaf_name_data.push_back(v4_acl_flag.get_name_leafdata());
-    if (v4dst_type.is_set || is_set(v4dst_type.yfilter)) leaf_name_data.push_back(v4dst_type.get_name_leafdata());
-    if (v4sessid.is_set || is_set(v4sessid.yfilter)) leaf_name_data.push_back(v4sessid.get_name_leafdata());
-    if (v4state.is_set || is_set(v4state.yfilter)) leaf_name_data.push_back(v4state.get_name_leafdata());
-    if (v4statsptr.is_set || is_set(v4statsptr.yfilter)) leaf_name_data.push_back(v4statsptr.get_name_leafdata());
-    if (v6_acl_flag.is_set || is_set(v6_acl_flag.yfilter)) leaf_name_data.push_back(v6_acl_flag.get_name_leafdata());
-    if (v6dst_type.is_set || is_set(v6dst_type.yfilter)) leaf_name_data.push_back(v6dst_type.get_name_leafdata());
-    if (v6sessid.is_set || is_set(v6sessid.yfilter)) leaf_name_data.push_back(v6sessid.get_name_leafdata());
-    if (v6state.is_set || is_set(v6state.yfilter)) leaf_name_data.push_back(v6state.get_name_leafdata());
-    if (v6statsptr.is_set || is_set(v6statsptr.yfilter)) leaf_name_data.push_back(v6statsptr.get_name_leafdata());
 
-    auto sft_hw_data_name_datas = sft_hw_data.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sft_hw_data_name_datas.begin(), sft_hw_data_name_datas.end());
     auto uidb_name_datas = uidb.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), uidb_name_datas.begin(), uidb_name_datas.end());
+    auto sft_hw_data_name_datas = sft_hw_data.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sft_hw_data_name_datas.begin(), sft_hw_data_name_datas.end());
     return leaf_name_data;
 
 }
@@ -618,17 +618,47 @@ void Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::set_value(const std::str
         intf_name.value_namespace = name_space;
         intf_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "src-ifh")
+    {
+        src_ifh = value;
+        src_ifh.value_namespace = name_space;
+        src_ifh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intf-name-xr")
+    {
+        intf_name_xr = value;
+        intf_name_xr.value_namespace = name_space;
+        intf_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v4-acl-flag")
+    {
+        v4_acl_flag = value;
+        v4_acl_flag.value_namespace = name_space;
+        v4_acl_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v6-acl-flag")
+    {
+        v6_acl_flag = value;
+        v6_acl_flag.value_namespace = name_space;
+        v6_acl_flag.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "gre-acl-flag")
     {
         gre_acl_flag = value;
         gre_acl_flag.value_namespace = name_space;
         gre_acl_flag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "gre-sessid")
+    if(value_path == "v4state")
     {
-        gre_sessid = value;
-        gre_sessid.value_namespace = name_space;
-        gre_sessid.value_namespace_prefix = name_space_prefix;
+        v4state = value;
+        v4state.value_namespace = name_space;
+        v4state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v6state")
+    {
+        v6state = value;
+        v6state.value_namespace = name_space;
+        v6state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gre-state")
     {
@@ -636,11 +666,53 @@ void Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::set_value(const std::str
         gre_state.value_namespace = name_space;
         gre_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "v4sessid")
+    {
+        v4sessid = value;
+        v4sessid.value_namespace = name_space;
+        v4sessid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v6sessid")
+    {
+        v6sessid = value;
+        v6sessid.value_namespace = name_space;
+        v6sessid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gre-sessid")
+    {
+        gre_sessid = value;
+        gre_sessid.value_namespace = name_space;
+        gre_sessid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v4dst-type")
+    {
+        v4dst_type = value;
+        v4dst_type.value_namespace = name_space;
+        v4dst_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v6dst-type")
+    {
+        v6dst_type = value;
+        v6dst_type.value_namespace = name_space;
+        v6dst_type.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "gredst-type")
     {
         gredst_type = value;
         gredst_type.value_namespace = name_space;
         gredst_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v4statsptr")
+    {
+        v4statsptr = value;
+        v4statsptr.value_namespace = name_space;
+        v4statsptr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v6statsptr")
+    {
+        v6statsptr = value;
+        v6statsptr.value_namespace = name_space;
+        v6statsptr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "grev4statsptr")
     {
@@ -653,12 +725,6 @@ void Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::set_value(const std::str
         grev6statsptr = value;
         grev6statsptr.value_namespace = name_space;
         grev6statsptr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intf-name-xr")
-    {
-        intf_name_xr = value;
-        intf_name_xr.value_namespace = name_space;
-        intf_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsv4stats")
     {
@@ -678,79 +744,13 @@ void Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::set_value(const std::str
         np_umask.value_namespace = name_space;
         np_umask.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sft-hw-data")
-    {
-        sft_hw_data.append(value);
-    }
-    if(value_path == "src-ifh")
-    {
-        src_ifh = value;
-        src_ifh.value_namespace = name_space;
-        src_ifh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "uidb")
     {
         uidb.append(value);
     }
-    if(value_path == "v4-acl-flag")
+    if(value_path == "sft-hw-data")
     {
-        v4_acl_flag = value;
-        v4_acl_flag.value_namespace = name_space;
-        v4_acl_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v4dst-type")
-    {
-        v4dst_type = value;
-        v4dst_type.value_namespace = name_space;
-        v4dst_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v4sessid")
-    {
-        v4sessid = value;
-        v4sessid.value_namespace = name_space;
-        v4sessid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v4state")
-    {
-        v4state = value;
-        v4state.value_namespace = name_space;
-        v4state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v4statsptr")
-    {
-        v4statsptr = value;
-        v4statsptr.value_namespace = name_space;
-        v4statsptr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v6-acl-flag")
-    {
-        v6_acl_flag = value;
-        v6_acl_flag.value_namespace = name_space;
-        v6_acl_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v6dst-type")
-    {
-        v6dst_type = value;
-        v6dst_type.value_namespace = name_space;
-        v6dst_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v6sessid")
-    {
-        v6sessid = value;
-        v6sessid.value_namespace = name_space;
-        v6sessid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v6state")
-    {
-        v6state = value;
-        v6state.value_namespace = name_space;
-        v6state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v6statsptr")
-    {
-        v6statsptr = value;
-        v6statsptr.value_namespace = name_space;
-        v6statsptr.value_namespace_prefix = name_space_prefix;
+        sft_hw_data.append(value);
     }
 }
 
@@ -760,21 +760,69 @@ void Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::set_filter(const std::st
     {
         intf_name.yfilter = yfilter;
     }
+    if(value_path == "src-ifh")
+    {
+        src_ifh.yfilter = yfilter;
+    }
+    if(value_path == "intf-name-xr")
+    {
+        intf_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "v4-acl-flag")
+    {
+        v4_acl_flag.yfilter = yfilter;
+    }
+    if(value_path == "v6-acl-flag")
+    {
+        v6_acl_flag.yfilter = yfilter;
+    }
     if(value_path == "gre-acl-flag")
     {
         gre_acl_flag.yfilter = yfilter;
     }
-    if(value_path == "gre-sessid")
+    if(value_path == "v4state")
     {
-        gre_sessid.yfilter = yfilter;
+        v4state.yfilter = yfilter;
+    }
+    if(value_path == "v6state")
+    {
+        v6state.yfilter = yfilter;
     }
     if(value_path == "gre-state")
     {
         gre_state.yfilter = yfilter;
     }
+    if(value_path == "v4sessid")
+    {
+        v4sessid.yfilter = yfilter;
+    }
+    if(value_path == "v6sessid")
+    {
+        v6sessid.yfilter = yfilter;
+    }
+    if(value_path == "gre-sessid")
+    {
+        gre_sessid.yfilter = yfilter;
+    }
+    if(value_path == "v4dst-type")
+    {
+        v4dst_type.yfilter = yfilter;
+    }
+    if(value_path == "v6dst-type")
+    {
+        v6dst_type.yfilter = yfilter;
+    }
     if(value_path == "gredst-type")
     {
         gredst_type.yfilter = yfilter;
+    }
+    if(value_path == "v4statsptr")
+    {
+        v4statsptr.yfilter = yfilter;
+    }
+    if(value_path == "v6statsptr")
+    {
+        v6statsptr.yfilter = yfilter;
     }
     if(value_path == "grev4statsptr")
     {
@@ -783,10 +831,6 @@ void Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::set_filter(const std::st
     if(value_path == "grev6statsptr")
     {
         grev6statsptr.yfilter = yfilter;
-    }
-    if(value_path == "intf-name-xr")
-    {
-        intf_name_xr.yfilter = yfilter;
     }
     if(value_path == "mplsv4stats")
     {
@@ -800,63 +844,192 @@ void Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::set_filter(const std::st
     {
         np_umask.yfilter = yfilter;
     }
-    if(value_path == "sft-hw-data")
-    {
-        sft_hw_data.yfilter = yfilter;
-    }
-    if(value_path == "src-ifh")
-    {
-        src_ifh.yfilter = yfilter;
-    }
     if(value_path == "uidb")
     {
         uidb.yfilter = yfilter;
     }
-    if(value_path == "v4-acl-flag")
+    if(value_path == "sft-hw-data")
     {
-        v4_acl_flag.yfilter = yfilter;
-    }
-    if(value_path == "v4dst-type")
-    {
-        v4dst_type.yfilter = yfilter;
-    }
-    if(value_path == "v4sessid")
-    {
-        v4sessid.yfilter = yfilter;
-    }
-    if(value_path == "v4state")
-    {
-        v4state.yfilter = yfilter;
-    }
-    if(value_path == "v4statsptr")
-    {
-        v4statsptr.yfilter = yfilter;
-    }
-    if(value_path == "v6-acl-flag")
-    {
-        v6_acl_flag.yfilter = yfilter;
-    }
-    if(value_path == "v6dst-type")
-    {
-        v6dst_type.yfilter = yfilter;
-    }
-    if(value_path == "v6sessid")
-    {
-        v6sessid.yfilter = yfilter;
-    }
-    if(value_path == "v6state")
-    {
-        v6state.yfilter = yfilter;
-    }
-    if(value_path == "v6statsptr")
-    {
-        v6statsptr.yfilter = yfilter;
+        sft_hw_data.yfilter = yfilter;
     }
 }
 
 bool Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "intf-name" || name == "gre-acl-flag" || name == "gre-sessid" || name == "gre-state" || name == "gredst-type" || name == "grev4statsptr" || name == "grev6statsptr" || name == "intf-name-xr" || name == "mplsv4stats" || name == "mplsv6pkts" || name == "np-umask" || name == "sft-hw-data" || name == "src-ifh" || name == "uidb" || name == "v4-acl-flag" || name == "v4dst-type" || name == "v4sessid" || name == "v4state" || name == "v4statsptr" || name == "v6-acl-flag" || name == "v6dst-type" || name == "v6sessid" || name == "v6state" || name == "v6statsptr")
+    if(name == "intf-name" || name == "src-ifh" || name == "intf-name-xr" || name == "v4-acl-flag" || name == "v6-acl-flag" || name == "gre-acl-flag" || name == "v4state" || name == "v6state" || name == "gre-state" || name == "v4sessid" || name == "v6sessid" || name == "gre-sessid" || name == "v4dst-type" || name == "v6dst-type" || name == "gredst-type" || name == "v4statsptr" || name == "v6statsptr" || name == "grev4statsptr" || name == "grev6statsptr" || name == "mplsv4stats" || name == "mplsv6pkts" || name == "np-umask" || name == "uidb" || name == "sft-hw-data")
+        return true;
+    return false;
+}
+
+Ssespan::Nodes::Node::Spanudf::Spanudf()
+    :
+    udf_hdr{YType::uint32, "udf-hdr"},
+    udf_type{YType::uint32, "udf-type"},
+    udf_len{YType::uint32, "udf-len"},
+    udf_value{YType::uint32, "udf-value"},
+    udf_hw_data{YType::uint32, "udf-hw-data"}
+{
+
+    yang_name = "spanudf"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ssespan::Nodes::Node::Spanudf::~Spanudf()
+{
+}
+
+bool Ssespan::Nodes::Node::Spanudf::has_data() const
+{
+    for (auto const & leaf : udf_hdr.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : udf_type.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : udf_len.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : udf_value.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : udf_hw_data.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Ssespan::Nodes::Node::Spanudf::has_operation() const
+{
+    for (auto const & leaf : udf_hdr.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : udf_type.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : udf_len.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : udf_value.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : udf_hw_data.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(udf_hdr.yfilter)
+	|| ydk::is_set(udf_type.yfilter)
+	|| ydk::is_set(udf_len.yfilter)
+	|| ydk::is_set(udf_value.yfilter)
+	|| ydk::is_set(udf_hw_data.yfilter);
+}
+
+std::string Ssespan::Nodes::Node::Spanudf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spanudf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssespan::Nodes::Node::Spanudf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto udf_hdr_name_datas = udf_hdr.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), udf_hdr_name_datas.begin(), udf_hdr_name_datas.end());
+    auto udf_type_name_datas = udf_type.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), udf_type_name_datas.begin(), udf_type_name_datas.end());
+    auto udf_len_name_datas = udf_len.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), udf_len_name_datas.begin(), udf_len_name_datas.end());
+    auto udf_value_name_datas = udf_value.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), udf_value_name_datas.begin(), udf_value_name_datas.end());
+    auto udf_hw_data_name_datas = udf_hw_data.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), udf_hw_data_name_datas.begin(), udf_hw_data_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssespan::Nodes::Node::Spanudf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::Spanudf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ssespan::Nodes::Node::Spanudf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "udf-hdr")
+    {
+        udf_hdr.append(value);
+    }
+    if(value_path == "udf-type")
+    {
+        udf_type.append(value);
+    }
+    if(value_path == "udf-len")
+    {
+        udf_len.append(value);
+    }
+    if(value_path == "udf-value")
+    {
+        udf_value.append(value);
+    }
+    if(value_path == "udf-hw-data")
+    {
+        udf_hw_data.append(value);
+    }
+}
+
+void Ssespan::Nodes::Node::Spanudf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "udf-hdr")
+    {
+        udf_hdr.yfilter = yfilter;
+    }
+    if(value_path == "udf-type")
+    {
+        udf_type.yfilter = yfilter;
+    }
+    if(value_path == "udf-len")
+    {
+        udf_len.yfilter = yfilter;
+    }
+    if(value_path == "udf-value")
+    {
+        udf_value.yfilter = yfilter;
+    }
+    if(value_path == "udf-hw-data")
+    {
+        udf_hw_data.yfilter = yfilter;
+    }
+}
+
+bool Ssespan::Nodes::Node::Spanudf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udf-hdr" || name == "udf-type" || name == "udf-len" || name == "udf-value" || name == "udf-hw-data")
         return true;
     return false;
 }
@@ -958,21 +1131,21 @@ Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::SpanSessInfo()
     :
     session_id{YType::int32, "session-id"},
     session_class{YType::int32, "session-class"},
-    class_{YType::uint32, "class"},
-    dfbit{YType::uint32, "dfbit"},
-    dst_ip{YType::uint32, "dst-ip"},
+    valid{YType::uint8, "valid"},
     id{YType::uint32, "id"},
-    ifhandle{YType::uint32, "ifhandle"},
-    ip_type{YType::uint32, "ip-type"},
-    mode{YType::uint32, "mode"},
-    sdt_hw_data{YType::uint32, "sdt-hw-data"},
-    src_ip{YType::uint32, "src-ip"},
     state{YType::uint32, "state"},
+    class_{YType::uint32, "class"},
+    ifhandle{YType::uint32, "ifhandle"},
+    mode{YType::uint32, "mode"},
+    ip_type{YType::uint32, "ip-type"},
+    vrf_id{YType::uint32, "vrf-id"},
     tos_bit{YType::uint32, "tos-bit"},
     tos_bit_copied{YType::uint32, "tos-bit-copied"},
     ttl{YType::uint32, "ttl"},
-    valid{YType::uint8, "valid"},
-    vrf_id{YType::uint32, "vrf-id"}
+    dfbit{YType::uint32, "dfbit"},
+    src_ip{YType::uint32, "src-ip"},
+    dst_ip{YType::uint32, "dst-ip"},
+    sdt_hw_data{YType::uint32, "sdt-hw-data"}
 {
 
     yang_name = "span-sess-info"; yang_parent_name = "span-sess-infos"; is_top_level_class = false; has_list_ancestor = true;
@@ -984,50 +1157,50 @@ Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::~SpanSessInfo()
 
 bool Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::has_data() const
 {
+    for (auto const & leaf : src_ip.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
     for (auto const & leaf : dst_ip.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
     for (auto const & leaf : sdt_hw_data.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : src_ip.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
     return session_id.is_set
 	|| session_class.is_set
-	|| class_.is_set
-	|| dfbit.is_set
+	|| valid.is_set
 	|| id.is_set
-	|| ifhandle.is_set
-	|| ip_type.is_set
-	|| mode.is_set
 	|| state.is_set
+	|| class_.is_set
+	|| ifhandle.is_set
+	|| mode.is_set
+	|| ip_type.is_set
+	|| vrf_id.is_set
 	|| tos_bit.is_set
 	|| tos_bit_copied.is_set
 	|| ttl.is_set
-	|| valid.is_set
-	|| vrf_id.is_set;
+	|| dfbit.is_set;
 }
 
 bool Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::has_operation() const
 {
+    for (auto const & leaf : src_ip.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     for (auto const & leaf : dst_ip.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : sdt_hw_data.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : src_ip.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
@@ -1035,21 +1208,21 @@ bool Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(session_class.yfilter)
-	|| ydk::is_set(class_.yfilter)
-	|| ydk::is_set(dfbit.yfilter)
-	|| ydk::is_set(dst_ip.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(ifhandle.yfilter)
-	|| ydk::is_set(ip_type.yfilter)
-	|| ydk::is_set(mode.yfilter)
-	|| ydk::is_set(sdt_hw_data.yfilter)
-	|| ydk::is_set(src_ip.yfilter)
 	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(class_.yfilter)
+	|| ydk::is_set(ifhandle.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(ip_type.yfilter)
+	|| ydk::is_set(vrf_id.yfilter)
 	|| ydk::is_set(tos_bit.yfilter)
 	|| ydk::is_set(tos_bit_copied.yfilter)
 	|| ydk::is_set(ttl.yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(vrf_id.yfilter);
+	|| ydk::is_set(dfbit.yfilter)
+	|| ydk::is_set(src_ip.yfilter)
+	|| ydk::is_set(dst_ip.yfilter)
+	|| ydk::is_set(sdt_hw_data.yfilter);
 }
 
 std::string Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::get_segment_path() const
@@ -1065,25 +1238,25 @@ std::vector<std::pair<std::string, LeafData> > Ssespan::Nodes::Node::SpanSessInf
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
     if (session_class.is_set || is_set(session_class.yfilter)) leaf_name_data.push_back(session_class.get_name_leafdata());
-    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
-    if (dfbit.is_set || is_set(dfbit.yfilter)) leaf_name_data.push_back(dfbit.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (ifhandle.is_set || is_set(ifhandle.yfilter)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
-    if (ip_type.is_set || is_set(ip_type.yfilter)) leaf_name_data.push_back(ip_type.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
+    if (ifhandle.is_set || is_set(ifhandle.yfilter)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (ip_type.is_set || is_set(ip_type.yfilter)) leaf_name_data.push_back(ip_type.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
     if (tos_bit.is_set || is_set(tos_bit.yfilter)) leaf_name_data.push_back(tos_bit.get_name_leafdata());
     if (tos_bit_copied.is_set || is_set(tos_bit_copied.yfilter)) leaf_name_data.push_back(tos_bit_copied.get_name_leafdata());
     if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
+    if (dfbit.is_set || is_set(dfbit.yfilter)) leaf_name_data.push_back(dfbit.get_name_leafdata());
 
+    auto src_ip_name_datas = src_ip.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), src_ip_name_datas.begin(), src_ip_name_datas.end());
     auto dst_ip_name_datas = dst_ip.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), dst_ip_name_datas.begin(), dst_ip_name_datas.end());
     auto sdt_hw_data_name_datas = sdt_hw_data.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sdt_hw_data_name_datas.begin(), sdt_hw_data_name_datas.end());
-    auto src_ip_name_datas = src_ip.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), src_ip_name_datas.begin(), src_ip_name_datas.end());
     return leaf_name_data;
 
 }
@@ -1113,21 +1286,11 @@ void Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::set_value(const std::str
         session_class.value_namespace = name_space;
         session_class.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "class")
+    if(value_path == "valid")
     {
-        class_ = value;
-        class_.value_namespace = name_space;
-        class_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dfbit")
-    {
-        dfbit = value;
-        dfbit.value_namespace = name_space;
-        dfbit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dst-ip")
-    {
-        dst_ip.append(value);
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
@@ -1135,17 +1298,23 @@ void Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::set_value(const std::str
         id.value_namespace = name_space;
         id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class")
+    {
+        class_ = value;
+        class_.value_namespace = name_space;
+        class_.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ifhandle")
     {
         ifhandle = value;
         ifhandle.value_namespace = name_space;
         ifhandle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-type")
-    {
-        ip_type = value;
-        ip_type.value_namespace = name_space;
-        ip_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
@@ -1153,19 +1322,17 @@ void Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::set_value(const std::str
         mode.value_namespace = name_space;
         mode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sdt-hw-data")
+    if(value_path == "ip-type")
     {
-        sdt_hw_data.append(value);
+        ip_type = value;
+        ip_type.value_namespace = name_space;
+        ip_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "src-ip")
+    if(value_path == "vrf-id")
     {
-        src_ip.append(value);
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
+        vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos-bit")
     {
@@ -1185,17 +1352,23 @@ void Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::set_value(const std::str
         ttl.value_namespace = name_space;
         ttl.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "valid")
+    if(value_path == "dfbit")
     {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
+        dfbit = value;
+        dfbit.value_namespace = name_space;
+        dfbit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vrf-id")
+    if(value_path == "src-ip")
     {
-        vrf_id = value;
-        vrf_id.value_namespace = name_space;
-        vrf_id.value_namespace_prefix = name_space_prefix;
+        src_ip.append(value);
+    }
+    if(value_path == "dst-ip")
+    {
+        dst_ip.append(value);
+    }
+    if(value_path == "sdt-hw-data")
+    {
+        sdt_hw_data.append(value);
     }
 }
 
@@ -1209,45 +1382,37 @@ void Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::set_filter(const std::st
     {
         session_class.yfilter = yfilter;
     }
-    if(value_path == "class")
+    if(value_path == "valid")
     {
-        class_.yfilter = yfilter;
-    }
-    if(value_path == "dfbit")
-    {
-        dfbit.yfilter = yfilter;
-    }
-    if(value_path == "dst-ip")
-    {
-        dst_ip.yfilter = yfilter;
+        valid.yfilter = yfilter;
     }
     if(value_path == "id")
     {
         id.yfilter = yfilter;
     }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "class")
+    {
+        class_.yfilter = yfilter;
+    }
     if(value_path == "ifhandle")
     {
         ifhandle.yfilter = yfilter;
-    }
-    if(value_path == "ip-type")
-    {
-        ip_type.yfilter = yfilter;
     }
     if(value_path == "mode")
     {
         mode.yfilter = yfilter;
     }
-    if(value_path == "sdt-hw-data")
+    if(value_path == "ip-type")
     {
-        sdt_hw_data.yfilter = yfilter;
+        ip_type.yfilter = yfilter;
     }
-    if(value_path == "src-ip")
+    if(value_path == "vrf-id")
     {
-        src_ip.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
+        vrf_id.yfilter = yfilter;
     }
     if(value_path == "tos-bit")
     {
@@ -1261,192 +1426,27 @@ void Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::set_filter(const std::st
     {
         ttl.yfilter = yfilter;
     }
-    if(value_path == "valid")
+    if(value_path == "dfbit")
     {
-        valid.yfilter = yfilter;
+        dfbit.yfilter = yfilter;
     }
-    if(value_path == "vrf-id")
+    if(value_path == "src-ip")
     {
-        vrf_id.yfilter = yfilter;
+        src_ip.yfilter = yfilter;
+    }
+    if(value_path == "dst-ip")
+    {
+        dst_ip.yfilter = yfilter;
+    }
+    if(value_path == "sdt-hw-data")
+    {
+        sdt_hw_data.yfilter = yfilter;
     }
 }
 
 bool Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "session-class" || name == "class" || name == "dfbit" || name == "dst-ip" || name == "id" || name == "ifhandle" || name == "ip-type" || name == "mode" || name == "sdt-hw-data" || name == "src-ip" || name == "state" || name == "tos-bit" || name == "tos-bit-copied" || name == "ttl" || name == "valid" || name == "vrf-id")
-        return true;
-    return false;
-}
-
-Ssespan::Nodes::Node::Spanudf::Spanudf()
-    :
-    udf_hdr{YType::uint32, "udf-hdr"},
-    udf_hw_data{YType::uint32, "udf-hw-data"},
-    udf_len{YType::uint32, "udf-len"},
-    udf_type{YType::uint32, "udf-type"},
-    udf_value{YType::uint32, "udf-value"}
-{
-
-    yang_name = "spanudf"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ssespan::Nodes::Node::Spanudf::~Spanudf()
-{
-}
-
-bool Ssespan::Nodes::Node::Spanudf::has_data() const
-{
-    for (auto const & leaf : udf_hdr.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : udf_hw_data.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : udf_len.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : udf_type.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : udf_value.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Ssespan::Nodes::Node::Spanudf::has_operation() const
-{
-    for (auto const & leaf : udf_hdr.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : udf_hw_data.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : udf_len.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : udf_type.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : udf_value.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(udf_hdr.yfilter)
-	|| ydk::is_set(udf_hw_data.yfilter)
-	|| ydk::is_set(udf_len.yfilter)
-	|| ydk::is_set(udf_type.yfilter)
-	|| ydk::is_set(udf_value.yfilter);
-}
-
-std::string Ssespan::Nodes::Node::Spanudf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "spanudf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ssespan::Nodes::Node::Spanudf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto udf_hdr_name_datas = udf_hdr.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), udf_hdr_name_datas.begin(), udf_hdr_name_datas.end());
-    auto udf_hw_data_name_datas = udf_hw_data.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), udf_hw_data_name_datas.begin(), udf_hw_data_name_datas.end());
-    auto udf_len_name_datas = udf_len.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), udf_len_name_datas.begin(), udf_len_name_datas.end());
-    auto udf_type_name_datas = udf_type.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), udf_type_name_datas.begin(), udf_type_name_datas.end());
-    auto udf_value_name_datas = udf_value.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), udf_value_name_datas.begin(), udf_value_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ssespan::Nodes::Node::Spanudf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::Spanudf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ssespan::Nodes::Node::Spanudf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "udf-hdr")
-    {
-        udf_hdr.append(value);
-    }
-    if(value_path == "udf-hw-data")
-    {
-        udf_hw_data.append(value);
-    }
-    if(value_path == "udf-len")
-    {
-        udf_len.append(value);
-    }
-    if(value_path == "udf-type")
-    {
-        udf_type.append(value);
-    }
-    if(value_path == "udf-value")
-    {
-        udf_value.append(value);
-    }
-}
-
-void Ssespan::Nodes::Node::Spanudf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "udf-hdr")
-    {
-        udf_hdr.yfilter = yfilter;
-    }
-    if(value_path == "udf-hw-data")
-    {
-        udf_hw_data.yfilter = yfilter;
-    }
-    if(value_path == "udf-len")
-    {
-        udf_len.yfilter = yfilter;
-    }
-    if(value_path == "udf-type")
-    {
-        udf_type.yfilter = yfilter;
-    }
-    if(value_path == "udf-value")
-    {
-        udf_value.yfilter = yfilter;
-    }
-}
-
-bool Ssespan::Nodes::Node::Spanudf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "udf-hdr" || name == "udf-hw-data" || name == "udf-len" || name == "udf-type" || name == "udf-value")
+    if(name == "session-id" || name == "session-class" || name == "valid" || name == "id" || name == "state" || name == "class" || name == "ifhandle" || name == "mode" || name == "ip-type" || name == "vrf-id" || name == "tos-bit" || name == "tos-bit-copied" || name == "ttl" || name == "dfbit" || name == "src-ip" || name == "dst-ip" || name == "sdt-hw-data")
         return true;
     return false;
 }

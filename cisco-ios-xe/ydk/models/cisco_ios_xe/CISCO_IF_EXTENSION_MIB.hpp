@@ -43,25 +43,25 @@ class CISCOIFEXTENSIONMIB : public ydk::Entity
         class Cieifdot1Dbasemappingtable; //type: CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable
         class Cieifnamemappingtable; //type: CISCOIFEXTENSIONMIB::Cieifnamemappingtable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable> cieifdot1dbasemappingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable> cieifdot1qcustomethertypetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifindexpersistencetable> cieifindexpersistencetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifinterfacetable> cieifinterfacetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifnamemappingtable> cieifnamemappingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifpacketstatstable> cieifpacketstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifstatuslisttable> cieifstatuslisttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifutiltable> cieifutiltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifvlstatstable> cieifvlstatstable;
         std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig> ciscoifextsystemconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifpacketstatstable> cieifpacketstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifinterfacetable> cieifinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifstatuslisttable> cieifstatuslisttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifvlstatstable> cieifvlstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifindexpersistencetable> cieifindexpersistencetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable> cieifdot1qcustomethertypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifutiltable> cieifutiltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable> cieifdot1dbasemappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifnamemappingtable> cieifnamemappingtable;
         
 }; // CISCOIFEXTENSIONMIB
 
 
-class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig : public ydk::Entity
 {
     public:
-        Cieifdot1Dbasemappingtable();
-        ~Cieifdot1Dbasemappingtable();
+        Ciscoifextsystemconfig();
+        ~Ciscoifextsystemconfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -74,18 +74,48 @@ class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifdot1Dbasemappingentry; //type: CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
+        ydk::YLeaf ciesystemmtu; //type: int32
+        ydk::YLeaf cielinkupdownenable; //type: Cielinkupdownenable
+        ydk::YLeaf ciestandardlinkupdownvarbinds; //type: Ciestandardlinkupdownvarbinds
+        ydk::YLeaf cieifindexpersistence; //type: boolean
+        ydk::YLeaf ciedelayedlinkupdownnotifenable; //type: boolean
+        ydk::YLeaf ciedelayedlinkupdownnotifdelay; //type: uint32
+        ydk::YLeaf cieifindexglobalpersistence; //type: IfIndexPersistenceState
+        ydk::YLeaf cielinkupdownconfig; //type: Cielinkupdownconfig
+        class Ciestandardlinkupdownvarbinds;
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry> > cieifdot1dbasemappingentry;
-        
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable
+}; // CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig
 
 
-class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::Cieifpacketstatstable : public ydk::Entity
 {
     public:
-        Cieifdot1Dbasemappingentry();
-        ~Cieifdot1Dbasemappingentry();
+        Cieifpacketstatstable();
+        ~Cieifpacketstatstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cieifpacketstatsentry; //type: CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry> > cieifpacketstatsentry;
+        
+}; // CISCOIFEXTENSIONMIB::Cieifpacketstatstable
+
+
+class CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry : public ydk::Entity
+{
+    public:
+        Cieifpacketstatsentry();
+        ~Cieifpacketstatsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -100,107 +130,20 @@ class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentr
 
         //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf cieifdot1dbasemappingport; //type: int32
+        ydk::YLeaf cieiflastintime; //type: uint32
+        ydk::YLeaf cieiflastouttime; //type: uint32
+        ydk::YLeaf cieiflastouthangtime; //type: uint32
+        ydk::YLeaf cieifinruntserrs; //type: uint32
+        ydk::YLeaf cieifingiantserrs; //type: uint32
+        ydk::YLeaf cieifinframingerrs; //type: uint32
+        ydk::YLeaf cieifinoverrunerrs; //type: uint32
+        ydk::YLeaf cieifinignored; //type: uint32
+        ydk::YLeaf cieifinaborterrs; //type: uint32
+        ydk::YLeaf cieifinputqueuedrops; //type: uint32
+        ydk::YLeaf cieifoutputqueuedrops; //type: uint32
+        ydk::YLeaf cieifpacketdiscontinuitytime; //type: uint32
 
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
-
-
-class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable : public ydk::Entity
-{
-    public:
-        Cieifdot1Qcustomethertypetable();
-        ~Cieifdot1Qcustomethertypetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cieifdot1Qcustomethertypeentry; //type: CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry> > cieifdot1qcustomethertypeentry;
-        
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable
-
-
-class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry : public ydk::Entity
-{
-    public:
-        Cieifdot1Qcustomethertypeentry();
-        ~Cieifdot1Qcustomethertypeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf cieifdot1qcustomadminethertype; //type: int32
-        ydk::YLeaf cieifdot1qcustomoperethertype; //type: int32
-
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry
-
-
-class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable : public ydk::Entity
-{
-    public:
-        Cieifindexpersistencetable();
-        ~Cieifindexpersistencetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cieifindexpersistenceentry; //type: CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry> > cieifindexpersistenceentry;
-        
-}; // CISCOIFEXTENSIONMIB::Cieifindexpersistencetable
-
-
-class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry : public ydk::Entity
-{
-    public:
-        Cieifindexpersistenceentry();
-        ~Cieifindexpersistenceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf cieifindexpersistenceenabled; //type: boolean
-        ydk::YLeaf cieifindexpersistencecontrol; //type: IfIndexPersistenceState
-
-}; // CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
+}; // CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry
 
 
 class CISCOIFEXTENSIONMIB::Cieifinterfacetable : public ydk::Entity
@@ -273,112 +216,6 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry : public ydk
 }; // CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry
 
 
-class CISCOIFEXTENSIONMIB::Cieifnamemappingtable : public ydk::Entity
-{
-    public:
-        Cieifnamemappingtable();
-        ~Cieifnamemappingtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cieifnamemappingentry; //type: CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry> > cieifnamemappingentry;
-        
-}; // CISCOIFEXTENSIONMIB::Cieifnamemappingtable
-
-
-class CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry : public ydk::Entity
-{
-    public:
-        Cieifnamemappingentry();
-        ~Cieifnamemappingentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cieifname; //type: string
-        ydk::YLeaf cieifindex; //type: int32
-
-}; // CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry
-
-
-class CISCOIFEXTENSIONMIB::Cieifpacketstatstable : public ydk::Entity
-{
-    public:
-        Cieifpacketstatstable();
-        ~Cieifpacketstatstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cieifpacketstatsentry; //type: CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry> > cieifpacketstatsentry;
-        
-}; // CISCOIFEXTENSIONMIB::Cieifpacketstatstable
-
-
-class CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry : public ydk::Entity
-{
-    public:
-        Cieifpacketstatsentry();
-        ~Cieifpacketstatsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf cieiflastintime; //type: uint32
-        ydk::YLeaf cieiflastouttime; //type: uint32
-        ydk::YLeaf cieiflastouthangtime; //type: uint32
-        ydk::YLeaf cieifinruntserrs; //type: uint32
-        ydk::YLeaf cieifingiantserrs; //type: uint32
-        ydk::YLeaf cieifinframingerrs; //type: uint32
-        ydk::YLeaf cieifinoverrunerrs; //type: uint32
-        ydk::YLeaf cieifinignored; //type: uint32
-        ydk::YLeaf cieifinaborterrs; //type: uint32
-        ydk::YLeaf cieifinputqueuedrops; //type: uint32
-        ydk::YLeaf cieifoutputqueuedrops; //type: uint32
-        ydk::YLeaf cieifpacketdiscontinuitytime; //type: uint32
-
-}; // CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry
-
-
 class CISCOIFEXTENSIONMIB::Cieifstatuslisttable : public ydk::Entity
 {
     public:
@@ -429,58 +266,6 @@ class CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry : public y
         ydk::YLeaf cieinterfaceownershipbitmap; //type: binary
 
 }; // CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry
-
-
-class CISCOIFEXTENSIONMIB::Cieifutiltable : public ydk::Entity
-{
-    public:
-        Cieifutiltable();
-        ~Cieifutiltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cieifutilentry; //type: CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry> > cieifutilentry;
-        
-}; // CISCOIFEXTENSIONMIB::Cieifutiltable
-
-
-class CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry : public ydk::Entity
-{
-    public:
-        Cieifutilentry();
-        ~Cieifutilentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf cieifinpktrate; //type: uint64
-        ydk::YLeaf cieifinoctetrate; //type: uint64
-        ydk::YLeaf cieifoutpktrate; //type: uint64
-        ydk::YLeaf cieifoutoctetrate; //type: uint64
-        ydk::YLeaf cieifinterval; //type: uint32
-
-}; // CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry
 
 
 class CISCOIFEXTENSIONMIB::Cieifvlstatstable : public ydk::Entity
@@ -538,11 +323,11 @@ class CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry : public ydk::En
 }; // CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry
 
 
-class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig : public ydk::Entity
+class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable : public ydk::Entity
 {
     public:
-        Ciscoifextsystemconfig();
-        ~Ciscoifextsystemconfig();
+        Cieifindexpersistencetable();
+        ~Cieifindexpersistencetable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -555,17 +340,232 @@ class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ciesystemmtu; //type: int32
-        ydk::YLeaf cielinkupdownenable; //type: Cielinkupdownenable
-        ydk::YLeaf ciestandardlinkupdownvarbinds; //type: Ciestandardlinkupdownvarbinds
-        ydk::YLeaf cieifindexpersistence; //type: boolean
-        ydk::YLeaf ciedelayedlinkupdownnotifenable; //type: boolean
-        ydk::YLeaf ciedelayedlinkupdownnotifdelay; //type: uint32
-        ydk::YLeaf cieifindexglobalpersistence; //type: IfIndexPersistenceState
-        ydk::YLeaf cielinkupdownconfig; //type: Cielinkupdownconfig
-        class Ciestandardlinkupdownvarbinds;
+        class Cieifindexpersistenceentry; //type: CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
 
-}; // CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry> > cieifindexpersistenceentry;
+        
+}; // CISCOIFEXTENSIONMIB::Cieifindexpersistencetable
+
+
+class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry : public ydk::Entity
+{
+    public:
+        Cieifindexpersistenceentry();
+        ~Cieifindexpersistenceentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cieifindexpersistenceenabled; //type: boolean
+        ydk::YLeaf cieifindexpersistencecontrol; //type: IfIndexPersistenceState
+
+}; // CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
+
+
+class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable : public ydk::Entity
+{
+    public:
+        Cieifdot1Qcustomethertypetable();
+        ~Cieifdot1Qcustomethertypetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cieifdot1Qcustomethertypeentry; //type: CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry> > cieifdot1qcustomethertypeentry;
+        
+}; // CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable
+
+
+class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry : public ydk::Entity
+{
+    public:
+        Cieifdot1Qcustomethertypeentry();
+        ~Cieifdot1Qcustomethertypeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cieifdot1qcustomadminethertype; //type: int32
+        ydk::YLeaf cieifdot1qcustomoperethertype; //type: int32
+
+}; // CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry
+
+
+class CISCOIFEXTENSIONMIB::Cieifutiltable : public ydk::Entity
+{
+    public:
+        Cieifutiltable();
+        ~Cieifutiltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cieifutilentry; //type: CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry> > cieifutilentry;
+        
+}; // CISCOIFEXTENSIONMIB::Cieifutiltable
+
+
+class CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry : public ydk::Entity
+{
+    public:
+        Cieifutilentry();
+        ~Cieifutilentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cieifinpktrate; //type: uint64
+        ydk::YLeaf cieifinoctetrate; //type: uint64
+        ydk::YLeaf cieifoutpktrate; //type: uint64
+        ydk::YLeaf cieifoutoctetrate; //type: uint64
+        ydk::YLeaf cieifinterval; //type: uint32
+
+}; // CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry
+
+
+class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable : public ydk::Entity
+{
+    public:
+        Cieifdot1Dbasemappingtable();
+        ~Cieifdot1Dbasemappingtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cieifdot1Dbasemappingentry; //type: CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry> > cieifdot1dbasemappingentry;
+        
+}; // CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable
+
+
+class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry : public ydk::Entity
+{
+    public:
+        Cieifdot1Dbasemappingentry();
+        ~Cieifdot1Dbasemappingentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cieifdot1dbasemappingport; //type: int32
+
+}; // CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
+
+
+class CISCOIFEXTENSIONMIB::Cieifnamemappingtable : public ydk::Entity
+{
+    public:
+        Cieifnamemappingtable();
+        ~Cieifnamemappingtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cieifnamemappingentry; //type: CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry> > cieifnamemappingentry;
+        
+}; // CISCOIFEXTENSIONMIB::Cieifnamemappingtable
+
+
+class CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry : public ydk::Entity
+{
+    public:
+        Cieifnamemappingentry();
+        ~Cieifnamemappingentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cieifname; //type: string
+        ydk::YLeaf cieifindex; //type: int32
+
+}; // CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry
 
 class IfIndexPersistenceState : public ydk::Enum
 {
@@ -573,6 +573,15 @@ class IfIndexPersistenceState : public ydk::Enum
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf global;
+
+};
+
+class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciestandardlinkupdownvarbinds : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf additional;
+        static const ydk::Enum::YLeaf other;
 
 };
 
@@ -610,15 +619,6 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiffillpa
     public:
         static const ydk::Enum::YLeaf arbff8G;
         static const ydk::Enum::YLeaf idle8G;
-
-};
-
-class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciestandardlinkupdownvarbinds : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf additional;
-        static const ydk::Enum::YLeaf other;
 
 };
 

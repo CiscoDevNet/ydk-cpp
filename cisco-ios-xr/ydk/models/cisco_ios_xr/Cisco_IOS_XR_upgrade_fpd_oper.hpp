@@ -190,13 +190,13 @@ class Fpd_::Packages::AllPackage : public ydk::Entity
 
 }; // Fpd_::Packages::AllPackage
 
-class FpdSub1 : public ydk::Enum
+class FpdSub : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf fpga1;
         static const ydk::Enum::YLeaf rommon;
         static const ydk::Enum::YLeaf rommona;
-        static const ydk::Enum::YLeaf fabric_loader;
+        static const ydk::Enum::YLeaf fabldr;
         static const ydk::Enum::YLeaf fpga2;
         static const ydk::Enum::YLeaf fpga3;
         static const ydk::Enum::YLeaf fpga4;
@@ -239,13 +239,13 @@ class Fpd : public ydk::Enum
 
 };
 
-class FpdSub : public ydk::Enum
+class FpdSub1 : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf fpga1;
         static const ydk::Enum::YLeaf rommon;
         static const ydk::Enum::YLeaf rommona;
-        static const ydk::Enum::YLeaf fabldr;
+        static const ydk::Enum::YLeaf fabric_loader;
         static const ydk::Enum::YLeaf fpga2;
         static const ydk::Enum::YLeaf fpga3;
         static const ydk::Enum::YLeaf fpga4;

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_subscriber_srg_cfg {
 SubscriberRedundancy::SubscriberRedundancy()
     :
     enable{YType::empty, "enable"},
-    hold_timer{YType::uint32, "hold-timer"},
+    virtual_mac_prefix{YType::str, "virtual-mac-prefix"},
     preferred_role{YType::enumeration, "preferred-role"},
-    redundancy_disable{YType::empty, "redundancy-disable"},
-    slave_mode{YType::enumeration, "slave-mode"},
     source_interface{YType::str, "source-interface"},
-    virtual_mac_prefix{YType::str, "virtual-mac-prefix"}
+    slave_mode{YType::enumeration, "slave-mode"},
+    hold_timer{YType::uint32, "hold-timer"},
+    redundancy_disable{YType::empty, "redundancy-disable"}
     	,
     groups(std::make_shared<SubscriberRedundancy::Groups>())
 	,revertive_timer(std::make_shared<SubscriberRedundancy::RevertiveTimer>())
@@ -37,12 +37,12 @@ SubscriberRedundancy::~SubscriberRedundancy()
 bool SubscriberRedundancy::has_data() const
 {
     return enable.is_set
-	|| hold_timer.is_set
-	|| preferred_role.is_set
-	|| redundancy_disable.is_set
-	|| slave_mode.is_set
-	|| source_interface.is_set
 	|| virtual_mac_prefix.is_set
+	|| preferred_role.is_set
+	|| source_interface.is_set
+	|| slave_mode.is_set
+	|| hold_timer.is_set
+	|| redundancy_disable.is_set
 	|| (groups !=  nullptr && groups->has_data())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_data());
 }
@@ -51,12 +51,12 @@ bool SubscriberRedundancy::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(hold_timer.yfilter)
-	|| ydk::is_set(preferred_role.yfilter)
-	|| ydk::is_set(redundancy_disable.yfilter)
-	|| ydk::is_set(slave_mode.yfilter)
-	|| ydk::is_set(source_interface.yfilter)
 	|| ydk::is_set(virtual_mac_prefix.yfilter)
+	|| ydk::is_set(preferred_role.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(slave_mode.yfilter)
+	|| ydk::is_set(hold_timer.yfilter)
+	|| ydk::is_set(redundancy_disable.yfilter)
 	|| (groups !=  nullptr && groups->has_operation())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation());
 }
@@ -73,12 +73,12 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::get_name_le
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
-    if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
-    if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
-    if (slave_mode.is_set || is_set(slave_mode.yfilter)) leaf_name_data.push_back(slave_mode.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
     if (virtual_mac_prefix.is_set || is_set(virtual_mac_prefix.yfilter)) leaf_name_data.push_back(virtual_mac_prefix.get_name_leafdata());
+    if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (slave_mode.is_set || is_set(slave_mode.yfilter)) leaf_name_data.push_back(slave_mode.get_name_leafdata());
+    if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
+    if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -131,11 +131,11 @@ void SubscriberRedundancy::set_value(const std::string & value_path, const std::
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hold-timer")
+    if(value_path == "virtual-mac-prefix")
     {
-        hold_timer = value;
-        hold_timer.value_namespace = name_space;
-        hold_timer.value_namespace_prefix = name_space_prefix;
+        virtual_mac_prefix = value;
+        virtual_mac_prefix.value_namespace = name_space;
+        virtual_mac_prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preferred-role")
     {
@@ -143,11 +143,11 @@ void SubscriberRedundancy::set_value(const std::string & value_path, const std::
         preferred_role.value_namespace = name_space;
         preferred_role.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "redundancy-disable")
+    if(value_path == "source-interface")
     {
-        redundancy_disable = value;
-        redundancy_disable.value_namespace = name_space;
-        redundancy_disable.value_namespace_prefix = name_space_prefix;
+        source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slave-mode")
     {
@@ -155,17 +155,17 @@ void SubscriberRedundancy::set_value(const std::string & value_path, const std::
         slave_mode.value_namespace = name_space;
         slave_mode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "source-interface")
+    if(value_path == "hold-timer")
     {
-        source_interface = value;
-        source_interface.value_namespace = name_space;
-        source_interface.value_namespace_prefix = name_space_prefix;
+        hold_timer = value;
+        hold_timer.value_namespace = name_space;
+        hold_timer.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "virtual-mac-prefix")
+    if(value_path == "redundancy-disable")
     {
-        virtual_mac_prefix = value;
-        virtual_mac_prefix.value_namespace = name_space;
-        virtual_mac_prefix.value_namespace_prefix = name_space_prefix;
+        redundancy_disable = value;
+        redundancy_disable.value_namespace = name_space;
+        redundancy_disable.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -175,29 +175,29 @@ void SubscriberRedundancy::set_filter(const std::string & value_path, YFilter yf
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "hold-timer")
+    if(value_path == "virtual-mac-prefix")
     {
-        hold_timer.yfilter = yfilter;
+        virtual_mac_prefix.yfilter = yfilter;
     }
     if(value_path == "preferred-role")
     {
         preferred_role.yfilter = yfilter;
     }
-    if(value_path == "redundancy-disable")
+    if(value_path == "source-interface")
     {
-        redundancy_disable.yfilter = yfilter;
+        source_interface.yfilter = yfilter;
     }
     if(value_path == "slave-mode")
     {
         slave_mode.yfilter = yfilter;
     }
-    if(value_path == "source-interface")
+    if(value_path == "hold-timer")
     {
-        source_interface.yfilter = yfilter;
+        hold_timer.yfilter = yfilter;
     }
-    if(value_path == "virtual-mac-prefix")
+    if(value_path == "redundancy-disable")
     {
-        virtual_mac_prefix.yfilter = yfilter;
+        redundancy_disable.yfilter = yfilter;
     }
 }
 
@@ -228,7 +228,7 @@ std::map<std::pair<std::string, std::string>, std::string> SubscriberRedundancy:
 
 bool SubscriberRedundancy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "groups" || name == "revertive-timer" || name == "enable" || name == "hold-timer" || name == "preferred-role" || name == "redundancy-disable" || name == "slave-mode" || name == "source-interface" || name == "virtual-mac-prefix")
+    if(name == "groups" || name == "revertive-timer" || name == "enable" || name == "virtual-mac-prefix" || name == "preferred-role" || name == "source-interface" || name == "slave-mode" || name == "hold-timer" || name == "redundancy-disable")
         return true;
     return false;
 }
@@ -336,29 +336,29 @@ bool SubscriberRedundancy::Groups::has_leaf_or_child_of_name(const std::string &
 SubscriberRedundancy::Groups::Group::Group()
     :
     group_id{YType::uint32, "group-id"},
-    access_tracking_object{YType::str, "access-tracking-object"},
-    core_tracking_object{YType::str, "core-tracking-object"},
-    description{YType::str, "description"},
     disable_tracking_object{YType::empty, "disable-tracking-object"},
+    core_tracking_object{YType::str, "core-tracking-object"},
     enable{YType::empty, "enable"},
-    enable_fast_switchover{YType::empty, "enable-fast-switchover"},
-    hold_timer{YType::uint32, "hold-timer"},
-    l2tp_source_ip_address{YType::str, "l2tp-source-ip-address"},
     preferred_role{YType::enumeration, "preferred-role"},
-    redundancy_disable{YType::empty, "redundancy-disable"},
-    slave_mode{YType::enumeration, "slave-mode"}
+    description{YType::str, "description"},
+    l2tp_source_ip_address{YType::str, "l2tp-source-ip-address"},
+    slave_mode{YType::enumeration, "slave-mode"},
+    hold_timer{YType::uint32, "hold-timer"},
+    access_tracking_object{YType::str, "access-tracking-object"},
+    enable_fast_switchover{YType::empty, "enable-fast-switchover"},
+    redundancy_disable{YType::empty, "redundancy-disable"}
     	,
     interface_list(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList>())
 	,peer(std::make_shared<SubscriberRedundancy::Groups::Group::Peer>())
 	,revertive_timer(std::make_shared<SubscriberRedundancy::Groups::Group::RevertiveTimer>())
-	,state_control_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute>())
 	,virtual_mac(std::make_shared<SubscriberRedundancy::Groups::Group::VirtualMac>())
+	,state_control_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute>())
 {
     interface_list->parent = this;
     peer->parent = this;
     revertive_timer->parent = this;
-    state_control_route->parent = this;
     virtual_mac->parent = this;
+    state_control_route->parent = this;
 
     yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -370,44 +370,44 @@ SubscriberRedundancy::Groups::Group::~Group()
 bool SubscriberRedundancy::Groups::Group::has_data() const
 {
     return group_id.is_set
-	|| access_tracking_object.is_set
-	|| core_tracking_object.is_set
-	|| description.is_set
 	|| disable_tracking_object.is_set
+	|| core_tracking_object.is_set
 	|| enable.is_set
-	|| enable_fast_switchover.is_set
-	|| hold_timer.is_set
-	|| l2tp_source_ip_address.is_set
 	|| preferred_role.is_set
-	|| redundancy_disable.is_set
+	|| description.is_set
+	|| l2tp_source_ip_address.is_set
 	|| slave_mode.is_set
+	|| hold_timer.is_set
+	|| access_tracking_object.is_set
+	|| enable_fast_switchover.is_set
+	|| redundancy_disable.is_set
 	|| (interface_list !=  nullptr && interface_list->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_data())
-	|| (state_control_route !=  nullptr && state_control_route->has_data())
-	|| (virtual_mac !=  nullptr && virtual_mac->has_data());
+	|| (virtual_mac !=  nullptr && virtual_mac->has_data())
+	|| (state_control_route !=  nullptr && state_control_route->has_data());
 }
 
 bool SubscriberRedundancy::Groups::Group::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(group_id.yfilter)
-	|| ydk::is_set(access_tracking_object.yfilter)
-	|| ydk::is_set(core_tracking_object.yfilter)
-	|| ydk::is_set(description.yfilter)
 	|| ydk::is_set(disable_tracking_object.yfilter)
+	|| ydk::is_set(core_tracking_object.yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(enable_fast_switchover.yfilter)
-	|| ydk::is_set(hold_timer.yfilter)
-	|| ydk::is_set(l2tp_source_ip_address.yfilter)
 	|| ydk::is_set(preferred_role.yfilter)
-	|| ydk::is_set(redundancy_disable.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(l2tp_source_ip_address.yfilter)
 	|| ydk::is_set(slave_mode.yfilter)
+	|| ydk::is_set(hold_timer.yfilter)
+	|| ydk::is_set(access_tracking_object.yfilter)
+	|| ydk::is_set(enable_fast_switchover.yfilter)
+	|| ydk::is_set(redundancy_disable.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation())
-	|| (state_control_route !=  nullptr && state_control_route->has_operation())
-	|| (virtual_mac !=  nullptr && virtual_mac->has_operation());
+	|| (virtual_mac !=  nullptr && virtual_mac->has_operation())
+	|| (state_control_route !=  nullptr && state_control_route->has_operation());
 }
 
 std::string SubscriberRedundancy::Groups::Group::get_absolute_path() const
@@ -429,17 +429,17 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
-    if (access_tracking_object.is_set || is_set(access_tracking_object.yfilter)) leaf_name_data.push_back(access_tracking_object.get_name_leafdata());
-    if (core_tracking_object.is_set || is_set(core_tracking_object.yfilter)) leaf_name_data.push_back(core_tracking_object.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
     if (disable_tracking_object.is_set || is_set(disable_tracking_object.yfilter)) leaf_name_data.push_back(disable_tracking_object.get_name_leafdata());
+    if (core_tracking_object.is_set || is_set(core_tracking_object.yfilter)) leaf_name_data.push_back(core_tracking_object.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (enable_fast_switchover.is_set || is_set(enable_fast_switchover.yfilter)) leaf_name_data.push_back(enable_fast_switchover.get_name_leafdata());
-    if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
-    if (l2tp_source_ip_address.is_set || is_set(l2tp_source_ip_address.yfilter)) leaf_name_data.push_back(l2tp_source_ip_address.get_name_leafdata());
     if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
-    if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (l2tp_source_ip_address.is_set || is_set(l2tp_source_ip_address.yfilter)) leaf_name_data.push_back(l2tp_source_ip_address.get_name_leafdata());
     if (slave_mode.is_set || is_set(slave_mode.yfilter)) leaf_name_data.push_back(slave_mode.get_name_leafdata());
+    if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
+    if (access_tracking_object.is_set || is_set(access_tracking_object.yfilter)) leaf_name_data.push_back(access_tracking_object.get_name_leafdata());
+    if (enable_fast_switchover.is_set || is_set(enable_fast_switchover.yfilter)) leaf_name_data.push_back(enable_fast_switchover.get_name_leafdata());
+    if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -474,15 +474,6 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::get_child_by_name(c
         return revertive_timer;
     }
 
-    if(child_yang_name == "state-control-route")
-    {
-        if(state_control_route == nullptr)
-        {
-            state_control_route = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute>();
-        }
-        return state_control_route;
-    }
-
     if(child_yang_name == "virtual-mac")
     {
         if(virtual_mac == nullptr)
@@ -490,6 +481,15 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::get_child_by_name(c
             virtual_mac = std::make_shared<SubscriberRedundancy::Groups::Group::VirtualMac>();
         }
         return virtual_mac;
+    }
+
+    if(child_yang_name == "state-control-route")
+    {
+        if(state_control_route == nullptr)
+        {
+            state_control_route = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute>();
+        }
+        return state_control_route;
     }
 
     return nullptr;
@@ -513,14 +513,14 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
         children["revertive-timer"] = revertive_timer;
     }
 
-    if(state_control_route != nullptr)
-    {
-        children["state-control-route"] = state_control_route;
-    }
-
     if(virtual_mac != nullptr)
     {
         children["virtual-mac"] = virtual_mac;
+    }
+
+    if(state_control_route != nullptr)
+    {
+        children["state-control-route"] = state_control_route;
     }
 
     return children;
@@ -534,11 +534,11 @@ void SubscriberRedundancy::Groups::Group::set_value(const std::string & value_pa
         group_id.value_namespace = name_space;
         group_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-tracking-object")
+    if(value_path == "disable-tracking-object")
     {
-        access_tracking_object = value;
-        access_tracking_object.value_namespace = name_space;
-        access_tracking_object.value_namespace_prefix = name_space_prefix;
+        disable_tracking_object = value;
+        disable_tracking_object.value_namespace = name_space;
+        disable_tracking_object.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "core-tracking-object")
     {
@@ -546,41 +546,11 @@ void SubscriberRedundancy::Groups::Group::set_value(const std::string & value_pa
         core_tracking_object.value_namespace = name_space;
         core_tracking_object.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable-tracking-object")
-    {
-        disable_tracking_object = value;
-        disable_tracking_object.value_namespace = name_space;
-        disable_tracking_object.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "enable")
     {
         enable = value;
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable-fast-switchover")
-    {
-        enable_fast_switchover = value;
-        enable_fast_switchover.value_namespace = name_space;
-        enable_fast_switchover.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hold-timer")
-    {
-        hold_timer = value;
-        hold_timer.value_namespace = name_space;
-        hold_timer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2tp-source-ip-address")
-    {
-        l2tp_source_ip_address = value;
-        l2tp_source_ip_address.value_namespace = name_space;
-        l2tp_source_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preferred-role")
     {
@@ -588,17 +558,47 @@ void SubscriberRedundancy::Groups::Group::set_value(const std::string & value_pa
         preferred_role.value_namespace = name_space;
         preferred_role.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "redundancy-disable")
+    if(value_path == "description")
     {
-        redundancy_disable = value;
-        redundancy_disable.value_namespace = name_space;
-        redundancy_disable.value_namespace_prefix = name_space_prefix;
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2tp-source-ip-address")
+    {
+        l2tp_source_ip_address = value;
+        l2tp_source_ip_address.value_namespace = name_space;
+        l2tp_source_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slave-mode")
     {
         slave_mode = value;
         slave_mode.value_namespace = name_space;
         slave_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hold-timer")
+    {
+        hold_timer = value;
+        hold_timer.value_namespace = name_space;
+        hold_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-tracking-object")
+    {
+        access_tracking_object = value;
+        access_tracking_object.value_namespace = name_space;
+        access_tracking_object.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable-fast-switchover")
+    {
+        enable_fast_switchover = value;
+        enable_fast_switchover.value_namespace = name_space;
+        enable_fast_switchover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-disable")
+    {
+        redundancy_disable = value;
+        redundancy_disable.value_namespace = name_space;
+        redundancy_disable.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -608,55 +608,55 @@ void SubscriberRedundancy::Groups::Group::set_filter(const std::string & value_p
     {
         group_id.yfilter = yfilter;
     }
-    if(value_path == "access-tracking-object")
+    if(value_path == "disable-tracking-object")
     {
-        access_tracking_object.yfilter = yfilter;
+        disable_tracking_object.yfilter = yfilter;
     }
     if(value_path == "core-tracking-object")
     {
         core_tracking_object.yfilter = yfilter;
     }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "disable-tracking-object")
-    {
-        disable_tracking_object.yfilter = yfilter;
-    }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
-    }
-    if(value_path == "enable-fast-switchover")
-    {
-        enable_fast_switchover.yfilter = yfilter;
-    }
-    if(value_path == "hold-timer")
-    {
-        hold_timer.yfilter = yfilter;
-    }
-    if(value_path == "l2tp-source-ip-address")
-    {
-        l2tp_source_ip_address.yfilter = yfilter;
     }
     if(value_path == "preferred-role")
     {
         preferred_role.yfilter = yfilter;
     }
-    if(value_path == "redundancy-disable")
+    if(value_path == "description")
     {
-        redundancy_disable.yfilter = yfilter;
+        description.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-source-ip-address")
+    {
+        l2tp_source_ip_address.yfilter = yfilter;
     }
     if(value_path == "slave-mode")
     {
         slave_mode.yfilter = yfilter;
     }
+    if(value_path == "hold-timer")
+    {
+        hold_timer.yfilter = yfilter;
+    }
+    if(value_path == "access-tracking-object")
+    {
+        access_tracking_object.yfilter = yfilter;
+    }
+    if(value_path == "enable-fast-switchover")
+    {
+        enable_fast_switchover.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-disable")
+    {
+        redundancy_disable.yfilter = yfilter;
+    }
 }
 
 bool SubscriberRedundancy::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-list" || name == "peer" || name == "revertive-timer" || name == "state-control-route" || name == "virtual-mac" || name == "group-id" || name == "access-tracking-object" || name == "core-tracking-object" || name == "description" || name == "disable-tracking-object" || name == "enable" || name == "enable-fast-switchover" || name == "hold-timer" || name == "l2tp-source-ip-address" || name == "preferred-role" || name == "redundancy-disable" || name == "slave-mode")
+    if(name == "interface-list" || name == "peer" || name == "revertive-timer" || name == "virtual-mac" || name == "state-control-route" || name == "group-id" || name == "disable-tracking-object" || name == "core-tracking-object" || name == "enable" || name == "preferred-role" || name == "description" || name == "l2tp-source-ip-address" || name == "slave-mode" || name == "hold-timer" || name == "access-tracking-object" || name == "enable-fast-switchover" || name == "redundancy-disable")
         return true;
     return false;
 }
@@ -665,11 +665,11 @@ SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceList()
     :
     enable{YType::empty, "enable"}
     	,
-    interface_ranges(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges>())
-	,interfaces(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces>())
+    interfaces(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces>())
+	,interface_ranges(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges>())
 {
-    interface_ranges->parent = this;
     interfaces->parent = this;
+    interface_ranges->parent = this;
 
     yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -681,16 +681,16 @@ SubscriberRedundancy::Groups::Group::InterfaceList::~InterfaceList()
 bool SubscriberRedundancy::Groups::Group::InterfaceList::has_data() const
 {
     return enable.is_set
-	|| (interface_ranges !=  nullptr && interface_ranges->has_data())
-	|| (interfaces !=  nullptr && interfaces->has_data());
+	|| (interfaces !=  nullptr && interfaces->has_data())
+	|| (interface_ranges !=  nullptr && interface_ranges->has_data());
 }
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| (interface_ranges !=  nullptr && interface_ranges->has_operation())
-	|| (interfaces !=  nullptr && interfaces->has_operation());
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (interface_ranges !=  nullptr && interface_ranges->has_operation());
 }
 
 std::string SubscriberRedundancy::Groups::Group::InterfaceList::get_segment_path() const
@@ -712,15 +712,6 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "interface-ranges")
-    {
-        if(interface_ranges == nullptr)
-        {
-            interface_ranges = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges>();
-        }
-        return interface_ranges;
-    }
-
     if(child_yang_name == "interfaces")
     {
         if(interfaces == nullptr)
@@ -730,20 +721,29 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::get_
         return interfaces;
     }
 
+    if(child_yang_name == "interface-ranges")
+    {
+        if(interface_ranges == nullptr)
+        {
+            interface_ranges = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges>();
+        }
+        return interface_ranges;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(interface_ranges != nullptr)
-    {
-        children["interface-ranges"] = interface_ranges;
-    }
-
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
+    }
+
+    if(interface_ranges != nullptr)
+    {
+        children["interface-ranges"] = interface_ranges;
     }
 
     return children;
@@ -769,232 +769,7 @@ void SubscriberRedundancy::Groups::Group::InterfaceList::set_filter(const std::s
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-ranges" || name == "interfaces" || name == "enable")
-        return true;
-    return false;
-}
-
-SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRanges()
-{
-
-    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceRanges()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_data() const
-{
-    for (std::size_t index=0; index<interface_range.size(); index++)
-    {
-        if(interface_range[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_operation() const
-{
-    for (std::size_t index=0; index<interface_range.size(); index++)
-    {
-        if(interface_range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-ranges";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-range")
-    {
-        for(auto const & c : interface_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
-        c->parent = this;
-        interface_range.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_range)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-range")
-        return true;
-    return false;
-}
-
-SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::InterfaceRange()
-    :
-    interface_name{YType::str, "interface-name"},
-    sub_interface_range_start{YType::uint32, "sub-interface-range-start"},
-    sub_interface_range_end{YType::uint32, "sub-interface-range-end"},
-    interface_id_range_end{YType::uint32, "interface-id-range-end"},
-    interface_id_range_start{YType::uint32, "interface-id-range-start"}
-{
-
-    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::~InterfaceRange()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_data() const
-{
-    return interface_name.is_set
-	|| sub_interface_range_start.is_set
-	|| sub_interface_range_end.is_set
-	|| interface_id_range_end.is_set
-	|| interface_id_range_start.is_set;
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(sub_interface_range_start.yfilter)
-	|| ydk::is_set(sub_interface_range_end.yfilter)
-	|| ydk::is_set(interface_id_range_end.yfilter)
-	|| ydk::is_set(interface_id_range_start.yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-range" <<"[interface-name='" <<interface_name <<"']" <<"[sub-interface-range-start='" <<sub_interface_range_start <<"']" <<"[sub-interface-range-end='" <<sub_interface_range_end <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (sub_interface_range_start.is_set || is_set(sub_interface_range_start.yfilter)) leaf_name_data.push_back(sub_interface_range_start.get_name_leafdata());
-    if (sub_interface_range_end.is_set || is_set(sub_interface_range_end.yfilter)) leaf_name_data.push_back(sub_interface_range_end.get_name_leafdata());
-    if (interface_id_range_end.is_set || is_set(interface_id_range_end.yfilter)) leaf_name_data.push_back(interface_id_range_end.get_name_leafdata());
-    if (interface_id_range_start.is_set || is_set(interface_id_range_start.yfilter)) leaf_name_data.push_back(interface_id_range_start.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-interface-range-start")
-    {
-        sub_interface_range_start = value;
-        sub_interface_range_start.value_namespace = name_space;
-        sub_interface_range_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-interface-range-end")
-    {
-        sub_interface_range_end = value;
-        sub_interface_range_end.value_namespace = name_space;
-        sub_interface_range_end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-id-range-end")
-    {
-        interface_id_range_end = value;
-        interface_id_range_end.value_namespace = name_space;
-        interface_id_range_end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-id-range-start")
-    {
-        interface_id_range_start = value;
-        interface_id_range_start.value_namespace = name_space;
-        interface_id_range_start.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "sub-interface-range-start")
-    {
-        sub_interface_range_start.yfilter = yfilter;
-    }
-    if(value_path == "sub-interface-range-end")
-    {
-        sub_interface_range_end.yfilter = yfilter;
-    }
-    if(value_path == "interface-id-range-end")
-    {
-        interface_id_range_end.yfilter = yfilter;
-    }
-    if(value_path == "interface-id-range-start")
-    {
-        interface_id_range_start.yfilter = yfilter;
-    }
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "sub-interface-range-start" || name == "sub-interface-range-end" || name == "interface-id-range-end" || name == "interface-id-range-start")
+    if(name == "interfaces" || name == "interface-ranges" || name == "enable")
         return true;
     return false;
 }
@@ -1178,6 +953,231 @@ void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::
 bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "interface-id")
+        return true;
+    return false;
+}
+
+SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRanges()
+{
+
+    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceRanges()
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_data() const
+{
+    for (std::size_t index=0; index<interface_range.size(); index++)
+    {
+        if(interface_range[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_operation() const
+{
+    for (std::size_t index=0; index<interface_range.size(); index++)
+    {
+        if(interface_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-ranges";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-range")
+    {
+        for(auto const & c : interface_range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
+        c->parent = this;
+        interface_range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface_range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-range")
+        return true;
+    return false;
+}
+
+SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::InterfaceRange()
+    :
+    interface_name{YType::str, "interface-name"},
+    sub_interface_range_start{YType::uint32, "sub-interface-range-start"},
+    sub_interface_range_end{YType::uint32, "sub-interface-range-end"},
+    interface_id_range_start{YType::uint32, "interface-id-range-start"},
+    interface_id_range_end{YType::uint32, "interface-id-range-end"}
+{
+
+    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::~InterfaceRange()
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_data() const
+{
+    return interface_name.is_set
+	|| sub_interface_range_start.is_set
+	|| sub_interface_range_end.is_set
+	|| interface_id_range_start.is_set
+	|| interface_id_range_end.is_set;
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(sub_interface_range_start.yfilter)
+	|| ydk::is_set(sub_interface_range_end.yfilter)
+	|| ydk::is_set(interface_id_range_start.yfilter)
+	|| ydk::is_set(interface_id_range_end.yfilter);
+}
+
+std::string SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-range" <<"[interface-name='" <<interface_name <<"']" <<"[sub-interface-range-start='" <<sub_interface_range_start <<"']" <<"[sub-interface-range-end='" <<sub_interface_range_end <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (sub_interface_range_start.is_set || is_set(sub_interface_range_start.yfilter)) leaf_name_data.push_back(sub_interface_range_start.get_name_leafdata());
+    if (sub_interface_range_end.is_set || is_set(sub_interface_range_end.yfilter)) leaf_name_data.push_back(sub_interface_range_end.get_name_leafdata());
+    if (interface_id_range_start.is_set || is_set(interface_id_range_start.yfilter)) leaf_name_data.push_back(interface_id_range_start.get_name_leafdata());
+    if (interface_id_range_end.is_set || is_set(interface_id_range_end.yfilter)) leaf_name_data.push_back(interface_id_range_end.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-interface-range-start")
+    {
+        sub_interface_range_start = value;
+        sub_interface_range_start.value_namespace = name_space;
+        sub_interface_range_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-interface-range-end")
+    {
+        sub_interface_range_end = value;
+        sub_interface_range_end.value_namespace = name_space;
+        sub_interface_range_end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-id-range-start")
+    {
+        interface_id_range_start = value;
+        interface_id_range_start.value_namespace = name_space;
+        interface_id_range_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-id-range-end")
+    {
+        interface_id_range_end = value;
+        interface_id_range_end.value_namespace = name_space;
+        interface_id_range_end.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-range-start")
+    {
+        sub_interface_range_start.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-range-end")
+    {
+        sub_interface_range_end.yfilter = yfilter;
+    }
+    if(value_path == "interface-id-range-start")
+    {
+        interface_id_range_start.yfilter = yfilter;
+    }
+    if(value_path == "interface-id-range-end")
+    {
+        interface_id_range_end.yfilter = yfilter;
+    }
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "sub-interface-range-start" || name == "sub-interface-range-end" || name == "interface-id-range-start" || name == "interface-id-range-end")
         return true;
     return false;
 }
@@ -1453,6 +1453,96 @@ void SubscriberRedundancy::Groups::Group::RevertiveTimer::set_filter(const std::
 bool SubscriberRedundancy::Groups::Group::RevertiveTimer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max-value" || name == "value")
+        return true;
+    return false;
+}
+
+SubscriberRedundancy::Groups::Group::VirtualMac::VirtualMac()
+    :
+    address{YType::str, "address"},
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "virtual-mac"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SubscriberRedundancy::Groups::Group::VirtualMac::~VirtualMac()
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::VirtualMac::has_data() const
+{
+    return address.is_set
+	|| disable.is_set;
+}
+
+bool SubscriberRedundancy::Groups::Group::VirtualMac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string SubscriberRedundancy::Groups::Group::VirtualMac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "virtual-mac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::VirtualMac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::VirtualMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::VirtualMac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SubscriberRedundancy::Groups::Group::VirtualMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberRedundancy::Groups::Group::VirtualMac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool SubscriberRedundancy::Groups::Group::VirtualMac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "disable")
         return true;
     return false;
 }
@@ -2474,96 +2564,6 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRo
     return false;
 }
 
-SubscriberRedundancy::Groups::Group::VirtualMac::VirtualMac()
-    :
-    address{YType::str, "address"},
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "virtual-mac"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-SubscriberRedundancy::Groups::Group::VirtualMac::~VirtualMac()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::VirtualMac::has_data() const
-{
-    return address.is_set
-	|| disable.is_set;
-}
-
-bool SubscriberRedundancy::Groups::Group::VirtualMac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::VirtualMac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "virtual-mac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::VirtualMac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::VirtualMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::VirtualMac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::VirtualMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SubscriberRedundancy::Groups::Group::VirtualMac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool SubscriberRedundancy::Groups::Group::VirtualMac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "disable")
-        return true;
-    return false;
-}
-
 SubscriberRedundancy::RevertiveTimer::RevertiveTimer()
     :
     max_value{YType::uint32, "max-value"},
@@ -2664,11 +2664,11 @@ bool SubscriberRedundancy::RevertiveTimer::has_leaf_or_child_of_name(const std::
 const Enum::YLeaf SubscriberRedundancyGroupSlaveMode::warm {1, "warm"};
 const Enum::YLeaf SubscriberRedundancyGroupSlaveMode::hot {2, "hot"};
 
-const Enum::YLeaf SrgAddrFamily::ipv4 {2, "ipv4"};
-const Enum::YLeaf SrgAddrFamily::ipv6 {10, "ipv6"};
-
 const Enum::YLeaf SubscriberRedundancyGroupRole::master {1, "master"};
 const Enum::YLeaf SubscriberRedundancyGroupRole::slave {2, "slave"};
+
+const Enum::YLeaf SrgAddrFamily::ipv4 {2, "ipv4"};
+const Enum::YLeaf SrgAddrFamily::ipv6 {10, "ipv6"};
 
 
 }

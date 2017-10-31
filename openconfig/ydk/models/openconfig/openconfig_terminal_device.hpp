@@ -38,9 +38,9 @@ class TerminalDevice : public ydk::Entity
         class OperationalModes; //type: TerminalDevice::OperationalModes
 
         std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::Config> config;
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::State> state;
         std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels> logical_channels;
         std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::OperationalModes> operational_modes;
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::State> state;
         
 }; // TerminalDevice
 
@@ -64,6 +64,27 @@ class TerminalDevice::Config : public ydk::Entity
 
 
 }; // TerminalDevice::Config
+
+
+class TerminalDevice::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+
+}; // TerminalDevice::State
 
 
 class TerminalDevice::LogicalChannels : public ydk::Entity
@@ -117,11 +138,11 @@ class TerminalDevice::LogicalChannels::Channel : public ydk::Entity
         class LogicalChannelAssignments; //type: TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments
 
         std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Config> config;
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::State> state;
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn> otn;
         std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Ethernet> ethernet;
         std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Ingress> ingress;
         std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments> logical_channel_assignments;
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn> otn;
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::State> state;
         
 }; // TerminalDevice::LogicalChannels::Channel
 
@@ -151,6 +172,221 @@ class TerminalDevice::LogicalChannels::Channel::Config : public ydk::Entity
         ydk::YLeaf loopback_mode; //type: LoopbackModeType
 
 }; // TerminalDevice::LogicalChannels::Channel::Config
+
+
+class TerminalDevice::LogicalChannels::Channel::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf admin_state; //type: AdminStateType
+        ydk::YLeaf rate_class; //type: TRIBUTARYRATECLASSTYPE
+        ydk::YLeaf trib_protocol; //type: TRIBUTARYPROTOCOLTYPE
+        ydk::YLeaf logical_channel_type; //type: LOGICALELEMENTPROTOCOLTYPE
+        ydk::YLeaf loopback_mode; //type: LoopbackModeType
+        ydk::YLeaf link_state; //type: LinkState
+        class LinkState;
+
+}; // TerminalDevice::LogicalChannels::Channel::State
+
+
+class TerminalDevice::LogicalChannels::Channel::Otn : public ydk::Entity
+{
+    public:
+        Otn();
+        ~Otn();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: TerminalDevice::LogicalChannels::Channel::Otn::Config
+        class State; //type: TerminalDevice::LogicalChannels::Channel::Otn::State
+
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::Config> config;
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State> state;
+        
+}; // TerminalDevice::LogicalChannels::Channel::Otn
+
+
+class TerminalDevice::LogicalChannels::Channel::Otn::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tti_msg_transmit; //type: string
+        ydk::YLeaf tti_msg_expected; //type: string
+        ydk::YLeaf tti_msg_auto; //type: boolean
+
+}; // TerminalDevice::LogicalChannels::Channel::Otn::Config
+
+
+class TerminalDevice::LogicalChannels::Channel::Otn::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tti_msg_transmit; //type: string
+        ydk::YLeaf tti_msg_expected; //type: string
+        ydk::YLeaf tti_msg_auto; //type: boolean
+        ydk::YLeaf tti_msg_recv; //type: string
+        ydk::YLeaf rdi_msg; //type: string
+        ydk::YLeaf errored_seconds; //type: uint64
+        ydk::YLeaf severely_errored_seconds; //type: uint64
+        ydk::YLeaf unavailable_seconds; //type: uint64
+        ydk::YLeaf code_violations; //type: uint64
+        ydk::YLeaf fec_uncorrectable_words; //type: uint64
+        ydk::YLeaf fec_corrected_bytes; //type: uint64
+        ydk::YLeaf fec_corrected_bits; //type: uint64
+        ydk::YLeaf background_block_errors; //type: uint64
+        class PreFecBer; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer
+        class PostFecBer; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer
+        class QValue; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::QValue
+        class Esnr; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr
+
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer> pre_fec_ber;
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer> post_fec_ber;
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::QValue> q_value;
+        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr> esnr;
+        
+}; // TerminalDevice::LogicalChannels::Channel::Otn::State
+
+
+class TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer : public ydk::Entity
+{
+    public:
+        PreFecBer();
+        ~PreFecBer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer
+
+
+class TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer : public ydk::Entity
+{
+    public:
+        PostFecBer();
+        ~PostFecBer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer
+
+
+class TerminalDevice::LogicalChannels::Channel::Otn::State::QValue : public ydk::Entity
+{
+    public:
+        QValue();
+        ~QValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // TerminalDevice::LogicalChannels::Channel::Otn::State::QValue
+
+
+class TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr : public ydk::Entity
+{
+    public:
+        Esnr();
+        ~Esnr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr
 
 
 class TerminalDevice::LogicalChannels::Channel::Ethernet : public ydk::Entity
@@ -409,221 +645,6 @@ class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assig
 }; // TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State
 
 
-class TerminalDevice::LogicalChannels::Channel::Otn : public ydk::Entity
-{
-    public:
-        Otn();
-        ~Otn();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: TerminalDevice::LogicalChannels::Channel::Otn::Config
-        class State; //type: TerminalDevice::LogicalChannels::Channel::Otn::State
-
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::Config> config;
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State> state;
-        
-}; // TerminalDevice::LogicalChannels::Channel::Otn
-
-
-class TerminalDevice::LogicalChannels::Channel::Otn::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tti_msg_transmit; //type: string
-        ydk::YLeaf tti_msg_expected; //type: string
-        ydk::YLeaf tti_msg_auto; //type: boolean
-
-}; // TerminalDevice::LogicalChannels::Channel::Otn::Config
-
-
-class TerminalDevice::LogicalChannels::Channel::Otn::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tti_msg_transmit; //type: string
-        ydk::YLeaf tti_msg_expected; //type: string
-        ydk::YLeaf tti_msg_auto; //type: boolean
-        ydk::YLeaf tti_msg_recv; //type: string
-        ydk::YLeaf rdi_msg; //type: string
-        ydk::YLeaf errored_seconds; //type: uint64
-        ydk::YLeaf severely_errored_seconds; //type: uint64
-        ydk::YLeaf unavailable_seconds; //type: uint64
-        ydk::YLeaf code_violations; //type: uint64
-        ydk::YLeaf fec_uncorrectable_words; //type: uint64
-        ydk::YLeaf fec_corrected_bytes; //type: uint64
-        ydk::YLeaf fec_corrected_bits; //type: uint64
-        ydk::YLeaf background_block_errors; //type: uint64
-        class PreFecBer; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer
-        class PostFecBer; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer
-        class QValue; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::QValue
-        class Esnr; //type: TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr
-
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr> esnr;
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer> post_fec_ber;
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer> pre_fec_ber;
-        std::shared_ptr<openconfig::openconfig_terminal_device::TerminalDevice::LogicalChannels::Channel::Otn::State::QValue> q_value;
-        
-}; // TerminalDevice::LogicalChannels::Channel::Otn::State
-
-
-class TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr : public ydk::Entity
-{
-    public:
-        Esnr();
-        ~Esnr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr
-
-
-class TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer : public ydk::Entity
-{
-    public:
-        PostFecBer();
-        ~PostFecBer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer
-
-
-class TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer : public ydk::Entity
-{
-    public:
-        PreFecBer();
-        ~PreFecBer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer
-
-
-class TerminalDevice::LogicalChannels::Channel::Otn::State::QValue : public ydk::Entity
-{
-    public:
-        QValue();
-        ~QValue();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // TerminalDevice::LogicalChannels::Channel::Otn::State::QValue
-
-
-class TerminalDevice::LogicalChannels::Channel::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf index_; //type: uint32
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf admin_state; //type: AdminStateType
-        ydk::YLeaf rate_class; //type: TRIBUTARYRATECLASSTYPE
-        ydk::YLeaf trib_protocol; //type: TRIBUTARYPROTOCOLTYPE
-        ydk::YLeaf logical_channel_type; //type: LOGICALELEMENTPROTOCOLTYPE
-        ydk::YLeaf loopback_mode; //type: LoopbackModeType
-        ydk::YLeaf link_state; //type: LinkState
-        class LinkState;
-
-}; // TerminalDevice::LogicalChannels::Channel::State
-
-
 class TerminalDevice::OperationalModes : public ydk::Entity
 {
     public:
@@ -718,26 +739,13 @@ class TerminalDevice::OperationalModes::Mode::State : public ydk::Entity
 
 }; // TerminalDevice::OperationalModes::Mode::State
 
-
-class TerminalDevice::State : public ydk::Entity
+class TerminalDevice::LogicalChannels::Channel::State::LinkState : public ydk::Enum
 {
     public:
-        State();
-        ~State();
+        static const ydk::Enum::YLeaf UP;
+        static const ydk::Enum::YLeaf DOWN;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-
-}; // TerminalDevice::State
+};
 
 class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::AssignmentType : public ydk::Enum
 {
@@ -752,14 +760,6 @@ class TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assig
     public:
         static const ydk::Enum::YLeaf LOGICAL_CHANNEL;
         static const ydk::Enum::YLeaf OPTICAL_CHANNEL;
-
-};
-
-class TerminalDevice::LogicalChannels::Channel::State::LinkState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf UP;
-        static const ydk::Enum::YLeaf DOWN;
 
 };
 

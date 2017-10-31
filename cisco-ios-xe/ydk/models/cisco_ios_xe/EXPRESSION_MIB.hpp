@@ -39,21 +39,21 @@ class EXPRESSIONMIB : public ydk::Entity
         class Expobjecttable; //type: EXPRESSIONMIB::Expobjecttable
         class Expvaluetable; //type: EXPRESSIONMIB::Expvaluetable
 
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expexpressiontable> expexpressiontable;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expresource> expresource;
         std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnames> expnames;
         std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable> expnametable;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expexpressiontable> expexpressiontable;
         std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expobjecttable> expobjecttable;
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expresource> expresource;
         std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expvaluetable> expvaluetable;
         
 }; // EXPRESSIONMIB
 
 
-class EXPRESSIONMIB::Expexpressiontable : public ydk::Entity
+class EXPRESSIONMIB::Expresource : public ydk::Entity
 {
     public:
-        Expexpressiontable();
-        ~Expexpressiontable();
+        Expresource();
+        ~Expresource();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -66,48 +66,13 @@ class EXPRESSIONMIB::Expexpressiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Expexpressionentry; //type: EXPRESSIONMIB::Expexpressiontable::Expexpressionentry
+        ydk::YLeaf expresourcedeltaminimum; //type: int32
+        ydk::YLeaf expresourcedeltawildcardinstancemaximum; //type: uint32
+        ydk::YLeaf expresourcedeltawildcardinstances; //type: uint32
+        ydk::YLeaf expresourcedeltawildcardinstanceshigh; //type: uint32
+        ydk::YLeaf expresourcedeltawildcardinstanceresourcelacks; //type: uint32
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expexpressiontable::Expexpressionentry> > expexpressionentry;
-        
-}; // EXPRESSIONMIB::Expexpressiontable
-
-
-class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry : public ydk::Entity
-{
-    public:
-        Expexpressionentry();
-        ~Expexpressionentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable::Expnameentry::expexpressionindex)
-        ydk::YLeaf expexpressionindex;
-        ydk::YLeaf expexpressionname; //type: binary
-        ydk::YLeaf expexpression; //type: binary
-        ydk::YLeaf expexpressionvaluetype; //type: Expexpressionvaluetype
-        ydk::YLeaf expexpressioncomment; //type: string
-        ydk::YLeaf expexpressiondeltainterval; //type: int32
-        ydk::YLeaf expexpressionprefix; //type: string
-        ydk::YLeaf expexpressionerrors; //type: uint32
-        ydk::YLeaf expexpressionerrortime; //type: uint32
-        ydk::YLeaf expexpressionerrorindex; //type: int32
-        ydk::YLeaf expexpressionerror; //type: Expexpressionerror
-        ydk::YLeaf expexpressioninstance; //type: string
-        ydk::YLeaf expexpressionowner; //type: string
-        class Expexpressionvaluetype;
-        class Expexpressionerror;
-
-}; // EXPRESSIONMIB::Expexpressiontable::Expexpressionentry
+}; // EXPRESSIONMIB::Expresource
 
 
 class EXPRESSIONMIB::Expnames : public ydk::Entity
@@ -181,6 +146,67 @@ class EXPRESSIONMIB::Expnametable::Expnameentry : public ydk::Entity
 }; // EXPRESSIONMIB::Expnametable::Expnameentry
 
 
+class EXPRESSIONMIB::Expexpressiontable : public ydk::Entity
+{
+    public:
+        Expexpressiontable();
+        ~Expexpressiontable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Expexpressionentry; //type: EXPRESSIONMIB::Expexpressiontable::Expexpressionentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expexpressiontable::Expexpressionentry> > expexpressionentry;
+        
+}; // EXPRESSIONMIB::Expexpressiontable
+
+
+class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry : public ydk::Entity
+{
+    public:
+        Expexpressionentry();
+        ~Expexpressionentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable::Expnameentry::expexpressionindex)
+        ydk::YLeaf expexpressionindex;
+        ydk::YLeaf expexpressionname; //type: binary
+        ydk::YLeaf expexpression; //type: binary
+        ydk::YLeaf expexpressionvaluetype; //type: Expexpressionvaluetype
+        ydk::YLeaf expexpressioncomment; //type: string
+        ydk::YLeaf expexpressiondeltainterval; //type: int32
+        ydk::YLeaf expexpressionprefix; //type: string
+        ydk::YLeaf expexpressionerrors; //type: uint32
+        ydk::YLeaf expexpressionerrortime; //type: uint32
+        ydk::YLeaf expexpressionerrorindex; //type: int32
+        ydk::YLeaf expexpressionerror; //type: Expexpressionerror
+        ydk::YLeaf expexpressioninstance; //type: string
+        ydk::YLeaf expexpressionowner; //type: string
+        class Expexpressionvaluetype;
+        class Expexpressionerror;
+
+}; // EXPRESSIONMIB::Expexpressiontable::Expexpressionentry
+
+
 class EXPRESSIONMIB::Expobjecttable : public ydk::Entity
 {
     public:
@@ -238,32 +264,6 @@ class EXPRESSIONMIB::Expobjecttable::Expobjectentry : public ydk::Entity
         class Expobjectdiscontinuityidtype;
 
 }; // EXPRESSIONMIB::Expobjecttable::Expobjectentry
-
-
-class EXPRESSIONMIB::Expresource : public ydk::Entity
-{
-    public:
-        Expresource();
-        ~Expresource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf expresourcedeltaminimum; //type: int32
-        ydk::YLeaf expresourcedeltawildcardinstancemaximum; //type: uint32
-        ydk::YLeaf expresourcedeltawildcardinstances; //type: uint32
-        ydk::YLeaf expresourcedeltawildcardinstanceshigh; //type: uint32
-        ydk::YLeaf expresourcedeltawildcardinstanceresourcelacks; //type: uint32
-
-}; // EXPRESSIONMIB::Expresource
 
 
 class EXPRESSIONMIB::Expvaluetable : public ydk::Entity

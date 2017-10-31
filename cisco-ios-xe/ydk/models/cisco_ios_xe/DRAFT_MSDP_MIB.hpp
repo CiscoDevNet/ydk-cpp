@@ -38,8 +38,8 @@ class DRAFTMSDPMIB : public ydk::Entity
         class Msdpsacachetable; //type: DRAFTMSDPMIB::Msdpsacachetable
 
         std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdp> msdp;
-        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdppeertable> msdppeertable;
         std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdprequeststable> msdprequeststable;
+        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdppeertable> msdppeertable;
         std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdpsacachetable> msdpsacachetable;
         
 }; // DRAFTMSDPMIB
@@ -68,6 +68,55 @@ class DRAFTMSDPMIB::Msdp : public ydk::Entity
         ydk::YLeaf msdpsaholddownperiod; //type: int32
 
 }; // DRAFTMSDPMIB::Msdp
+
+
+class DRAFTMSDPMIB::Msdprequeststable : public ydk::Entity
+{
+    public:
+        Msdprequeststable();
+        ~Msdprequeststable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Msdprequestsentry; //type: DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry> > msdprequestsentry;
+        
+}; // DRAFTMSDPMIB::Msdprequeststable
+
+
+class DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry : public ydk::Entity
+{
+    public:
+        Msdprequestsentry();
+        ~Msdprequestsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf msdprequestsgroupaddress; //type: string
+        ydk::YLeaf msdprequestsgroupmask; //type: string
+        ydk::YLeaf msdprequestspeer; //type: string
+        ydk::YLeaf msdprequestsstatus; //type: RowStatus
+
+}; // DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry
 
 
 class DRAFTMSDPMIB::Msdppeertable : public ydk::Entity
@@ -148,55 +197,6 @@ class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry : public ydk::Entity
         class Msdppeerencapsulationtype;
 
 }; // DRAFTMSDPMIB::Msdppeertable::Msdppeerentry
-
-
-class DRAFTMSDPMIB::Msdprequeststable : public ydk::Entity
-{
-    public:
-        Msdprequeststable();
-        ~Msdprequeststable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Msdprequestsentry; //type: DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry> > msdprequestsentry;
-        
-}; // DRAFTMSDPMIB::Msdprequeststable
-
-
-class DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry : public ydk::Entity
-{
-    public:
-        Msdprequestsentry();
-        ~Msdprequestsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf msdprequestsgroupaddress; //type: string
-        ydk::YLeaf msdprequestsgroupmask; //type: string
-        ydk::YLeaf msdprequestspeer; //type: string
-        ydk::YLeaf msdprequestsstatus; //type: RowStatus
-
-}; // DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry
 
 
 class DRAFTMSDPMIB::Msdpsacachetable : public ydk::Entity

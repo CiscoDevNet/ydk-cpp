@@ -414,26 +414,26 @@ bool EsAcl::Accesses::Access::AccessListEntries::has_leaf_or_child_of_name(const
 EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::AccessListEntry()
     :
     sequence_number{YType::uint32, "sequence-number"},
-    capture{YType::boolean, "capture"},
+    grant{YType::enumeration, "grant"},
+    vlan1{YType::uint16, "vlan1"},
+    vlan2{YType::uint16, "vlan2"},
     cos{YType::uint8, "cos"},
     dei{YType::uint8, "dei"},
-    ether_type_number{YType::uint16, "ether-type-number"},
-    grant{YType::enumeration, "grant"},
-    inner_cos{YType::uint8, "inner-cos"},
-    inner_dei{YType::uint8, "inner-dei"},
     inner_vlan1{YType::uint16, "inner-vlan1"},
     inner_vlan2{YType::uint16, "inner-vlan2"},
-    log_option{YType::uint8, "log-option"},
+    inner_cos{YType::uint8, "inner-cos"},
+    inner_dei{YType::uint8, "inner-dei"},
     remark{YType::str, "remark"},
-    sequence_str{YType::str, "sequence-str"},
-    vlan1{YType::uint16, "vlan1"},
-    vlan2{YType::uint16, "vlan2"}
+    ether_type_number{YType::uint16, "ether-type-number"},
+    capture{YType::boolean, "capture"},
+    log_option{YType::uint8, "log-option"},
+    sequence_str{YType::str, "sequence-str"}
     	,
-    destination_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>())
-	,source_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork>())
+    source_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork>())
+	,destination_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>())
 {
-    destination_network->parent = this;
     source_network->parent = this;
+    destination_network->parent = this;
 
     yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -445,44 +445,44 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::~AccessListEntry()
 bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::has_data() const
 {
     return sequence_number.is_set
-	|| capture.is_set
-	|| cos.is_set
-	|| dei.is_set
-	|| ether_type_number.is_set
 	|| grant.is_set
-	|| inner_cos.is_set
-	|| inner_dei.is_set
-	|| inner_vlan1.is_set
-	|| inner_vlan2.is_set
-	|| log_option.is_set
-	|| remark.is_set
-	|| sequence_str.is_set
 	|| vlan1.is_set
 	|| vlan2.is_set
-	|| (destination_network !=  nullptr && destination_network->has_data())
-	|| (source_network !=  nullptr && source_network->has_data());
+	|| cos.is_set
+	|| dei.is_set
+	|| inner_vlan1.is_set
+	|| inner_vlan2.is_set
+	|| inner_cos.is_set
+	|| inner_dei.is_set
+	|| remark.is_set
+	|| ether_type_number.is_set
+	|| capture.is_set
+	|| log_option.is_set
+	|| sequence_str.is_set
+	|| (source_network !=  nullptr && source_network->has_data())
+	|| (destination_network !=  nullptr && destination_network->has_data());
 }
 
 bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequence_number.yfilter)
-	|| ydk::is_set(capture.yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| ydk::is_set(dei.yfilter)
-	|| ydk::is_set(ether_type_number.yfilter)
 	|| ydk::is_set(grant.yfilter)
-	|| ydk::is_set(inner_cos.yfilter)
-	|| ydk::is_set(inner_dei.yfilter)
-	|| ydk::is_set(inner_vlan1.yfilter)
-	|| ydk::is_set(inner_vlan2.yfilter)
-	|| ydk::is_set(log_option.yfilter)
-	|| ydk::is_set(remark.yfilter)
-	|| ydk::is_set(sequence_str.yfilter)
 	|| ydk::is_set(vlan1.yfilter)
 	|| ydk::is_set(vlan2.yfilter)
-	|| (destination_network !=  nullptr && destination_network->has_operation())
-	|| (source_network !=  nullptr && source_network->has_operation());
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(inner_vlan1.yfilter)
+	|| ydk::is_set(inner_vlan2.yfilter)
+	|| ydk::is_set(inner_cos.yfilter)
+	|| ydk::is_set(inner_dei.yfilter)
+	|| ydk::is_set(remark.yfilter)
+	|| ydk::is_set(ether_type_number.yfilter)
+	|| ydk::is_set(capture.yfilter)
+	|| ydk::is_set(log_option.yfilter)
+	|| ydk::is_set(sequence_str.yfilter)
+	|| (source_network !=  nullptr && source_network->has_operation())
+	|| (destination_network !=  nullptr && destination_network->has_operation());
 }
 
 std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_segment_path() const
@@ -497,20 +497,20 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Accesses::Access::AccessLi
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
-    if (capture.is_set || is_set(capture.yfilter)) leaf_name_data.push_back(capture.get_name_leafdata());
-    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (ether_type_number.is_set || is_set(ether_type_number.yfilter)) leaf_name_data.push_back(ether_type_number.get_name_leafdata());
     if (grant.is_set || is_set(grant.yfilter)) leaf_name_data.push_back(grant.get_name_leafdata());
-    if (inner_cos.is_set || is_set(inner_cos.yfilter)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
-    if (inner_dei.is_set || is_set(inner_dei.yfilter)) leaf_name_data.push_back(inner_dei.get_name_leafdata());
-    if (inner_vlan1.is_set || is_set(inner_vlan1.yfilter)) leaf_name_data.push_back(inner_vlan1.get_name_leafdata());
-    if (inner_vlan2.is_set || is_set(inner_vlan2.yfilter)) leaf_name_data.push_back(inner_vlan2.get_name_leafdata());
-    if (log_option.is_set || is_set(log_option.yfilter)) leaf_name_data.push_back(log_option.get_name_leafdata());
-    if (remark.is_set || is_set(remark.yfilter)) leaf_name_data.push_back(remark.get_name_leafdata());
-    if (sequence_str.is_set || is_set(sequence_str.yfilter)) leaf_name_data.push_back(sequence_str.get_name_leafdata());
     if (vlan1.is_set || is_set(vlan1.yfilter)) leaf_name_data.push_back(vlan1.get_name_leafdata());
     if (vlan2.is_set || is_set(vlan2.yfilter)) leaf_name_data.push_back(vlan2.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (inner_vlan1.is_set || is_set(inner_vlan1.yfilter)) leaf_name_data.push_back(inner_vlan1.get_name_leafdata());
+    if (inner_vlan2.is_set || is_set(inner_vlan2.yfilter)) leaf_name_data.push_back(inner_vlan2.get_name_leafdata());
+    if (inner_cos.is_set || is_set(inner_cos.yfilter)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
+    if (inner_dei.is_set || is_set(inner_dei.yfilter)) leaf_name_data.push_back(inner_dei.get_name_leafdata());
+    if (remark.is_set || is_set(remark.yfilter)) leaf_name_data.push_back(remark.get_name_leafdata());
+    if (ether_type_number.is_set || is_set(ether_type_number.yfilter)) leaf_name_data.push_back(ether_type_number.get_name_leafdata());
+    if (capture.is_set || is_set(capture.yfilter)) leaf_name_data.push_back(capture.get_name_leafdata());
+    if (log_option.is_set || is_set(log_option.yfilter)) leaf_name_data.push_back(log_option.get_name_leafdata());
+    if (sequence_str.is_set || is_set(sequence_str.yfilter)) leaf_name_data.push_back(sequence_str.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -518,15 +518,6 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Accesses::Access::AccessLi
 
 std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "destination-network")
-    {
-        if(destination_network == nullptr)
-        {
-            destination_network = std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>();
-        }
-        return destination_network;
-    }
-
     if(child_yang_name == "source-network")
     {
         if(source_network == nullptr)
@@ -536,20 +527,29 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEn
         return source_network;
     }
 
+    if(child_yang_name == "destination-network")
+    {
+        if(destination_network == nullptr)
+        {
+            destination_network = std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>();
+        }
+        return destination_network;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(destination_network != nullptr)
-    {
-        children["destination-network"] = destination_network;
-    }
-
     if(source_network != nullptr)
     {
         children["source-network"] = source_network;
+    }
+
+    if(destination_network != nullptr)
+    {
+        children["destination-network"] = destination_network;
     }
 
     return children;
@@ -563,77 +563,11 @@ void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::set_value(cons
         sequence_number.value_namespace = name_space;
         sequence_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "capture")
-    {
-        capture = value;
-        capture.value_namespace = name_space;
-        capture.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cos")
-    {
-        cos = value;
-        cos.value_namespace = name_space;
-        cos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dei")
-    {
-        dei = value;
-        dei.value_namespace = name_space;
-        dei.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ether-type-number")
-    {
-        ether_type_number = value;
-        ether_type_number.value_namespace = name_space;
-        ether_type_number.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "grant")
     {
         grant = value;
         grant.value_namespace = name_space;
         grant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "inner-cos")
-    {
-        inner_cos = value;
-        inner_cos.value_namespace = name_space;
-        inner_cos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "inner-dei")
-    {
-        inner_dei = value;
-        inner_dei.value_namespace = name_space;
-        inner_dei.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "inner-vlan1")
-    {
-        inner_vlan1 = value;
-        inner_vlan1.value_namespace = name_space;
-        inner_vlan1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "inner-vlan2")
-    {
-        inner_vlan2 = value;
-        inner_vlan2.value_namespace = name_space;
-        inner_vlan2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "log-option")
-    {
-        log_option = value;
-        log_option.value_namespace = name_space;
-        log_option.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remark")
-    {
-        remark = value;
-        remark.value_namespace = name_space;
-        remark.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sequence-str")
-    {
-        sequence_str = value;
-        sequence_str.value_namespace = name_space;
-        sequence_str.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan1")
     {
@@ -647,6 +581,72 @@ void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::set_value(cons
         vlan2.value_namespace = name_space;
         vlan2.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cos")
+    {
+        cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dei")
+    {
+        dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inner-vlan1")
+    {
+        inner_vlan1 = value;
+        inner_vlan1.value_namespace = name_space;
+        inner_vlan1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inner-vlan2")
+    {
+        inner_vlan2 = value;
+        inner_vlan2.value_namespace = name_space;
+        inner_vlan2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos = value;
+        inner_cos.value_namespace = name_space;
+        inner_cos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inner-dei")
+    {
+        inner_dei = value;
+        inner_dei.value_namespace = name_space;
+        inner_dei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remark")
+    {
+        remark = value;
+        remark.value_namespace = name_space;
+        remark.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ether-type-number")
+    {
+        ether_type_number = value;
+        ether_type_number.value_namespace = name_space;
+        ether_type_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "capture")
+    {
+        capture = value;
+        capture.value_namespace = name_space;
+        capture.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "log-option")
+    {
+        log_option = value;
+        log_option.value_namespace = name_space;
+        log_option.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sequence-str")
+    {
+        sequence_str = value;
+        sequence_str.value_namespace = name_space;
+        sequence_str.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::set_filter(const std::string & value_path, YFilter yfilter)
@@ -655,53 +655,9 @@ void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::set_filter(con
     {
         sequence_number.yfilter = yfilter;
     }
-    if(value_path == "capture")
-    {
-        capture.yfilter = yfilter;
-    }
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-    if(value_path == "dei")
-    {
-        dei.yfilter = yfilter;
-    }
-    if(value_path == "ether-type-number")
-    {
-        ether_type_number.yfilter = yfilter;
-    }
     if(value_path == "grant")
     {
         grant.yfilter = yfilter;
-    }
-    if(value_path == "inner-cos")
-    {
-        inner_cos.yfilter = yfilter;
-    }
-    if(value_path == "inner-dei")
-    {
-        inner_dei.yfilter = yfilter;
-    }
-    if(value_path == "inner-vlan1")
-    {
-        inner_vlan1.yfilter = yfilter;
-    }
-    if(value_path == "inner-vlan2")
-    {
-        inner_vlan2.yfilter = yfilter;
-    }
-    if(value_path == "log-option")
-    {
-        log_option.yfilter = yfilter;
-    }
-    if(value_path == "remark")
-    {
-        remark.yfilter = yfilter;
-    }
-    if(value_path == "sequence-str")
-    {
-        sequence_str.yfilter = yfilter;
     }
     if(value_path == "vlan1")
     {
@@ -711,101 +667,55 @@ void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::set_filter(con
     {
         vlan2.yfilter = yfilter;
     }
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "inner-vlan1")
+    {
+        inner_vlan1.yfilter = yfilter;
+    }
+    if(value_path == "inner-vlan2")
+    {
+        inner_vlan2.yfilter = yfilter;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos.yfilter = yfilter;
+    }
+    if(value_path == "inner-dei")
+    {
+        inner_dei.yfilter = yfilter;
+    }
+    if(value_path == "remark")
+    {
+        remark.yfilter = yfilter;
+    }
+    if(value_path == "ether-type-number")
+    {
+        ether_type_number.yfilter = yfilter;
+    }
+    if(value_path == "capture")
+    {
+        capture.yfilter = yfilter;
+    }
+    if(value_path == "log-option")
+    {
+        log_option.yfilter = yfilter;
+    }
+    if(value_path == "sequence-str")
+    {
+        sequence_str.yfilter = yfilter;
+    }
 }
 
 bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination-network" || name == "source-network" || name == "sequence-number" || name == "capture" || name == "cos" || name == "dei" || name == "ether-type-number" || name == "grant" || name == "inner-cos" || name == "inner-dei" || name == "inner-vlan1" || name == "inner-vlan2" || name == "log-option" || name == "remark" || name == "sequence-str" || name == "vlan1" || name == "vlan2")
-        return true;
-    return false;
-}
-
-EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::DestinationNetwork()
-    :
-    destination_address{YType::str, "destination-address"},
-    destination_wild_card_bits{YType::str, "destination-wild-card-bits"}
-{
-
-    yang_name = "destination-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::~DestinationNetwork()
-{
-}
-
-bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_data() const
-{
-    return destination_address.is_set
-	|| destination_wild_card_bits.is_set;
-}
-
-bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(destination_wild_card_bits.yfilter);
-}
-
-std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-network";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (destination_wild_card_bits.is_set || is_set(destination_wild_card_bits.yfilter)) leaf_name_data.push_back(destination_wild_card_bits.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-wild-card-bits")
-    {
-        destination_wild_card_bits = value;
-        destination_wild_card_bits.value_namespace = name_space;
-        destination_wild_card_bits.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "destination-wild-card-bits")
-    {
-        destination_wild_card_bits.yfilter = yfilter;
-    }
-}
-
-bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "destination-wild-card-bits")
+    if(name == "source-network" || name == "destination-network" || name == "sequence-number" || name == "grant" || name == "vlan1" || name == "vlan2" || name == "cos" || name == "dei" || name == "inner-vlan1" || name == "inner-vlan2" || name == "inner-cos" || name == "inner-dei" || name == "remark" || name == "ether-type-number" || name == "capture" || name == "log-option" || name == "sequence-str")
         return true;
     return false;
 }
@@ -896,6 +806,96 @@ void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork:
 bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-address" || name == "source-wild-card-bits")
+        return true;
+    return false;
+}
+
+EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::DestinationNetwork()
+    :
+    destination_address{YType::str, "destination-address"},
+    destination_wild_card_bits{YType::str, "destination-wild-card-bits"}
+{
+
+    yang_name = "destination-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::~DestinationNetwork()
+{
+}
+
+bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_data() const
+{
+    return destination_address.is_set
+	|| destination_wild_card_bits.is_set;
+}
+
+bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(destination_wild_card_bits.yfilter);
+}
+
+std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination-network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (destination_wild_card_bits.is_set || is_set(destination_wild_card_bits.yfilter)) leaf_name_data.push_back(destination_wild_card_bits.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-wild-card-bits")
+    {
+        destination_wild_card_bits = value;
+        destination_wild_card_bits.value_namespace = name_space;
+        destination_wild_card_bits.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "destination-wild-card-bits")
+    {
+        destination_wild_card_bits.yfilter = yfilter;
+    }
+}
+
+bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "destination-wild-card-bits")
         return true;
     return false;
 }

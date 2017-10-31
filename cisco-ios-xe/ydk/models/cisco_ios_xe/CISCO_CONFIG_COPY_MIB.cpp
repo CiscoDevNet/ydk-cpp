@@ -13,11 +13,11 @@ namespace CISCO_CONFIG_COPY_MIB {
 
 CISCOCONFIGCOPYMIB::CISCOCONFIGCOPYMIB()
     :
-    cccopyerrortable(std::make_shared<CISCOCONFIGCOPYMIB::Cccopyerrortable>())
-	,cccopytable(std::make_shared<CISCOCONFIGCOPYMIB::Cccopytable>())
+    cccopytable(std::make_shared<CISCOCONFIGCOPYMIB::Cccopytable>())
+	,cccopyerrortable(std::make_shared<CISCOCONFIGCOPYMIB::Cccopyerrortable>())
 {
-    cccopyerrortable->parent = this;
     cccopytable->parent = this;
+    cccopyerrortable->parent = this;
 
     yang_name = "CISCO-CONFIG-COPY-MIB"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -28,15 +28,15 @@ CISCOCONFIGCOPYMIB::~CISCOCONFIGCOPYMIB()
 
 bool CISCOCONFIGCOPYMIB::has_data() const
 {
-    return (cccopyerrortable !=  nullptr && cccopyerrortable->has_data())
-	|| (cccopytable !=  nullptr && cccopytable->has_data());
+    return (cccopytable !=  nullptr && cccopytable->has_data())
+	|| (cccopyerrortable !=  nullptr && cccopyerrortable->has_data());
 }
 
 bool CISCOCONFIGCOPYMIB::has_operation() const
 {
     return is_set(yfilter)
-	|| (cccopyerrortable !=  nullptr && cccopyerrortable->has_operation())
-	|| (cccopytable !=  nullptr && cccopytable->has_operation());
+	|| (cccopytable !=  nullptr && cccopytable->has_operation())
+	|| (cccopyerrortable !=  nullptr && cccopyerrortable->has_operation());
 }
 
 std::string CISCOCONFIGCOPYMIB::get_segment_path() const
@@ -57,15 +57,6 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::get_name_leaf
 
 std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ccCopyErrorTable")
-    {
-        if(cccopyerrortable == nullptr)
-        {
-            cccopyerrortable = std::make_shared<CISCOCONFIGCOPYMIB::Cccopyerrortable>();
-        }
-        return cccopyerrortable;
-    }
-
     if(child_yang_name == "ccCopyTable")
     {
         if(cccopytable == nullptr)
@@ -75,20 +66,29 @@ std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::get_child_by_name(const std::string 
         return cccopytable;
     }
 
+    if(child_yang_name == "ccCopyErrorTable")
+    {
+        if(cccopyerrortable == nullptr)
+        {
+            cccopyerrortable = std::make_shared<CISCOCONFIGCOPYMIB::Cccopyerrortable>();
+        }
+        return cccopyerrortable;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cccopyerrortable != nullptr)
-    {
-        children["ccCopyErrorTable"] = cccopyerrortable;
-    }
-
     if(cccopytable != nullptr)
     {
         children["ccCopyTable"] = cccopytable;
+    }
+
+    if(cccopyerrortable != nullptr)
+    {
+        children["ccCopyErrorTable"] = cccopyerrortable;
     }
 
     return children;
@@ -129,7 +129,400 @@ std::map<std::pair<std::string, std::string>, std::string> CISCOCONFIGCOPYMIB::g
 
 bool CISCOCONFIGCOPYMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ccCopyErrorTable" || name == "ccCopyTable")
+    if(name == "ccCopyTable" || name == "ccCopyErrorTable")
+        return true;
+    return false;
+}
+
+CISCOCONFIGCOPYMIB::Cccopytable::Cccopytable()
+{
+
+    yang_name = "ccCopyTable"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOCONFIGCOPYMIB::Cccopytable::~Cccopytable()
+{
+}
+
+bool CISCOCONFIGCOPYMIB::Cccopytable::has_data() const
+{
+    for (std::size_t index=0; index<cccopyentry.size(); index++)
+    {
+        if(cccopyentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOCONFIGCOPYMIB::Cccopytable::has_operation() const
+{
+    for (std::size_t index=0; index<cccopyentry.size(); index++)
+    {
+        if(cccopyentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOCONFIGCOPYMIB::Cccopytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGCOPYMIB::Cccopytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ccCopyTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ccCopyEntry")
+    {
+        for(auto const & c : cccopyentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry>();
+        c->parent = this;
+        cccopyentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cccopyentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOCONFIGCOPYMIB::Cccopytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOCONFIGCOPYMIB::Cccopytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOCONFIGCOPYMIB::Cccopytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccCopyEntry")
+        return true;
+    return false;
+}
+
+CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::Cccopyentry()
+    :
+    cccopyindex{YType::uint32, "ccCopyIndex"},
+    cccopyprotocol{YType::enumeration, "ccCopyProtocol"},
+    cccopysourcefiletype{YType::enumeration, "ccCopySourceFileType"},
+    cccopydestfiletype{YType::enumeration, "ccCopyDestFileType"},
+    cccopyserveraddress{YType::str, "ccCopyServerAddress"},
+    cccopyfilename{YType::str, "ccCopyFileName"},
+    cccopyusername{YType::str, "ccCopyUserName"},
+    cccopyuserpassword{YType::str, "ccCopyUserPassword"},
+    cccopynotificationoncompletion{YType::boolean, "ccCopyNotificationOnCompletion"},
+    cccopystate{YType::enumeration, "ccCopyState"},
+    cccopytimestarted{YType::uint32, "ccCopyTimeStarted"},
+    cccopytimecompleted{YType::uint32, "ccCopyTimeCompleted"},
+    cccopyfailcause{YType::enumeration, "ccCopyFailCause"},
+    cccopyentryrowstatus{YType::enumeration, "ccCopyEntryRowStatus"},
+    cccopyserveraddresstype{YType::enumeration, "ccCopyServerAddressType"},
+    cccopyserveraddressrev1{YType::str, "ccCopyServerAddressRev1"}
+{
+
+    yang_name = "ccCopyEntry"; yang_parent_name = "ccCopyTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::~Cccopyentry()
+{
+}
+
+bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_data() const
+{
+    return cccopyindex.is_set
+	|| cccopyprotocol.is_set
+	|| cccopysourcefiletype.is_set
+	|| cccopydestfiletype.is_set
+	|| cccopyserveraddress.is_set
+	|| cccopyfilename.is_set
+	|| cccopyusername.is_set
+	|| cccopyuserpassword.is_set
+	|| cccopynotificationoncompletion.is_set
+	|| cccopystate.is_set
+	|| cccopytimestarted.is_set
+	|| cccopytimecompleted.is_set
+	|| cccopyfailcause.is_set
+	|| cccopyentryrowstatus.is_set
+	|| cccopyserveraddresstype.is_set
+	|| cccopyserveraddressrev1.is_set;
+}
+
+bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cccopyindex.yfilter)
+	|| ydk::is_set(cccopyprotocol.yfilter)
+	|| ydk::is_set(cccopysourcefiletype.yfilter)
+	|| ydk::is_set(cccopydestfiletype.yfilter)
+	|| ydk::is_set(cccopyserveraddress.yfilter)
+	|| ydk::is_set(cccopyfilename.yfilter)
+	|| ydk::is_set(cccopyusername.yfilter)
+	|| ydk::is_set(cccopyuserpassword.yfilter)
+	|| ydk::is_set(cccopynotificationoncompletion.yfilter)
+	|| ydk::is_set(cccopystate.yfilter)
+	|| ydk::is_set(cccopytimestarted.yfilter)
+	|| ydk::is_set(cccopytimecompleted.yfilter)
+	|| ydk::is_set(cccopyfailcause.yfilter)
+	|| ydk::is_set(cccopyentryrowstatus.yfilter)
+	|| ydk::is_set(cccopyserveraddresstype.yfilter)
+	|| ydk::is_set(cccopyserveraddressrev1.yfilter);
+}
+
+std::string CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/ccCopyTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ccCopyEntry" <<"[ccCopyIndex='" <<cccopyindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cccopyindex.is_set || is_set(cccopyindex.yfilter)) leaf_name_data.push_back(cccopyindex.get_name_leafdata());
+    if (cccopyprotocol.is_set || is_set(cccopyprotocol.yfilter)) leaf_name_data.push_back(cccopyprotocol.get_name_leafdata());
+    if (cccopysourcefiletype.is_set || is_set(cccopysourcefiletype.yfilter)) leaf_name_data.push_back(cccopysourcefiletype.get_name_leafdata());
+    if (cccopydestfiletype.is_set || is_set(cccopydestfiletype.yfilter)) leaf_name_data.push_back(cccopydestfiletype.get_name_leafdata());
+    if (cccopyserveraddress.is_set || is_set(cccopyserveraddress.yfilter)) leaf_name_data.push_back(cccopyserveraddress.get_name_leafdata());
+    if (cccopyfilename.is_set || is_set(cccopyfilename.yfilter)) leaf_name_data.push_back(cccopyfilename.get_name_leafdata());
+    if (cccopyusername.is_set || is_set(cccopyusername.yfilter)) leaf_name_data.push_back(cccopyusername.get_name_leafdata());
+    if (cccopyuserpassword.is_set || is_set(cccopyuserpassword.yfilter)) leaf_name_data.push_back(cccopyuserpassword.get_name_leafdata());
+    if (cccopynotificationoncompletion.is_set || is_set(cccopynotificationoncompletion.yfilter)) leaf_name_data.push_back(cccopynotificationoncompletion.get_name_leafdata());
+    if (cccopystate.is_set || is_set(cccopystate.yfilter)) leaf_name_data.push_back(cccopystate.get_name_leafdata());
+    if (cccopytimestarted.is_set || is_set(cccopytimestarted.yfilter)) leaf_name_data.push_back(cccopytimestarted.get_name_leafdata());
+    if (cccopytimecompleted.is_set || is_set(cccopytimecompleted.yfilter)) leaf_name_data.push_back(cccopytimecompleted.get_name_leafdata());
+    if (cccopyfailcause.is_set || is_set(cccopyfailcause.yfilter)) leaf_name_data.push_back(cccopyfailcause.get_name_leafdata());
+    if (cccopyentryrowstatus.is_set || is_set(cccopyentryrowstatus.yfilter)) leaf_name_data.push_back(cccopyentryrowstatus.get_name_leafdata());
+    if (cccopyserveraddresstype.is_set || is_set(cccopyserveraddresstype.yfilter)) leaf_name_data.push_back(cccopyserveraddresstype.get_name_leafdata());
+    if (cccopyserveraddressrev1.is_set || is_set(cccopyserveraddressrev1.yfilter)) leaf_name_data.push_back(cccopyserveraddressrev1.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ccCopyIndex")
+    {
+        cccopyindex = value;
+        cccopyindex.value_namespace = name_space;
+        cccopyindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyProtocol")
+    {
+        cccopyprotocol = value;
+        cccopyprotocol.value_namespace = name_space;
+        cccopyprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopySourceFileType")
+    {
+        cccopysourcefiletype = value;
+        cccopysourcefiletype.value_namespace = name_space;
+        cccopysourcefiletype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyDestFileType")
+    {
+        cccopydestfiletype = value;
+        cccopydestfiletype.value_namespace = name_space;
+        cccopydestfiletype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyServerAddress")
+    {
+        cccopyserveraddress = value;
+        cccopyserveraddress.value_namespace = name_space;
+        cccopyserveraddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyFileName")
+    {
+        cccopyfilename = value;
+        cccopyfilename.value_namespace = name_space;
+        cccopyfilename.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyUserName")
+    {
+        cccopyusername = value;
+        cccopyusername.value_namespace = name_space;
+        cccopyusername.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyUserPassword")
+    {
+        cccopyuserpassword = value;
+        cccopyuserpassword.value_namespace = name_space;
+        cccopyuserpassword.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyNotificationOnCompletion")
+    {
+        cccopynotificationoncompletion = value;
+        cccopynotificationoncompletion.value_namespace = name_space;
+        cccopynotificationoncompletion.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyState")
+    {
+        cccopystate = value;
+        cccopystate.value_namespace = name_space;
+        cccopystate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyTimeStarted")
+    {
+        cccopytimestarted = value;
+        cccopytimestarted.value_namespace = name_space;
+        cccopytimestarted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyTimeCompleted")
+    {
+        cccopytimecompleted = value;
+        cccopytimecompleted.value_namespace = name_space;
+        cccopytimecompleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyFailCause")
+    {
+        cccopyfailcause = value;
+        cccopyfailcause.value_namespace = name_space;
+        cccopyfailcause.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyEntryRowStatus")
+    {
+        cccopyentryrowstatus = value;
+        cccopyentryrowstatus.value_namespace = name_space;
+        cccopyentryrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyServerAddressType")
+    {
+        cccopyserveraddresstype = value;
+        cccopyserveraddresstype.value_namespace = name_space;
+        cccopyserveraddresstype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyServerAddressRev1")
+    {
+        cccopyserveraddressrev1 = value;
+        cccopyserveraddressrev1.value_namespace = name_space;
+        cccopyserveraddressrev1.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ccCopyIndex")
+    {
+        cccopyindex.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyProtocol")
+    {
+        cccopyprotocol.yfilter = yfilter;
+    }
+    if(value_path == "ccCopySourceFileType")
+    {
+        cccopysourcefiletype.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyDestFileType")
+    {
+        cccopydestfiletype.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyServerAddress")
+    {
+        cccopyserveraddress.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyFileName")
+    {
+        cccopyfilename.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyUserName")
+    {
+        cccopyusername.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyUserPassword")
+    {
+        cccopyuserpassword.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyNotificationOnCompletion")
+    {
+        cccopynotificationoncompletion.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyState")
+    {
+        cccopystate.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyTimeStarted")
+    {
+        cccopytimestarted.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyTimeCompleted")
+    {
+        cccopytimecompleted.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyFailCause")
+    {
+        cccopyfailcause.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyEntryRowStatus")
+    {
+        cccopyentryrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyServerAddressType")
+    {
+        cccopyserveraddresstype.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyServerAddressRev1")
+    {
+        cccopyserveraddressrev1.yfilter = yfilter;
+    }
+}
+
+bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccCopyIndex" || name == "ccCopyProtocol" || name == "ccCopySourceFileType" || name == "ccCopyDestFileType" || name == "ccCopyServerAddress" || name == "ccCopyFileName" || name == "ccCopyUserName" || name == "ccCopyUserPassword" || name == "ccCopyNotificationOnCompletion" || name == "ccCopyState" || name == "ccCopyTimeStarted" || name == "ccCopyTimeCompleted" || name == "ccCopyFailCause" || name == "ccCopyEntryRowStatus" || name == "ccCopyServerAddressType" || name == "ccCopyServerAddressRev1")
         return true;
     return false;
 }
@@ -238,10 +631,10 @@ CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::Cccopyerrorentry()
     :
     cccopyindex{YType::str, "ccCopyIndex"},
     cccopyerrorindex{YType::uint32, "ccCopyErrorIndex"},
-    cccopyerrordescription{YType::str, "ccCopyErrorDescription"},
-    cccopyerrordeviceipaddress{YType::str, "ccCopyErrorDeviceIpAddress"},
     cccopyerrordeviceipaddresstype{YType::enumeration, "ccCopyErrorDeviceIpAddressType"},
-    cccopyerrordevicewwn{YType::str, "ccCopyErrorDeviceWWN"}
+    cccopyerrordeviceipaddress{YType::str, "ccCopyErrorDeviceIpAddress"},
+    cccopyerrordevicewwn{YType::str, "ccCopyErrorDeviceWWN"},
+    cccopyerrordescription{YType::str, "ccCopyErrorDescription"}
 {
 
     yang_name = "ccCopyErrorEntry"; yang_parent_name = "ccCopyErrorTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -255,10 +648,10 @@ bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_data() const
 {
     return cccopyindex.is_set
 	|| cccopyerrorindex.is_set
-	|| cccopyerrordescription.is_set
-	|| cccopyerrordeviceipaddress.is_set
 	|| cccopyerrordeviceipaddresstype.is_set
-	|| cccopyerrordevicewwn.is_set;
+	|| cccopyerrordeviceipaddress.is_set
+	|| cccopyerrordevicewwn.is_set
+	|| cccopyerrordescription.is_set;
 }
 
 bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_operation() const
@@ -266,10 +659,10 @@ bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_operation() con
     return is_set(yfilter)
 	|| ydk::is_set(cccopyindex.yfilter)
 	|| ydk::is_set(cccopyerrorindex.yfilter)
-	|| ydk::is_set(cccopyerrordescription.yfilter)
-	|| ydk::is_set(cccopyerrordeviceipaddress.yfilter)
 	|| ydk::is_set(cccopyerrordeviceipaddresstype.yfilter)
-	|| ydk::is_set(cccopyerrordevicewwn.yfilter);
+	|| ydk::is_set(cccopyerrordeviceipaddress.yfilter)
+	|| ydk::is_set(cccopyerrordevicewwn.yfilter)
+	|| ydk::is_set(cccopyerrordescription.yfilter);
 }
 
 std::string CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::get_absolute_path() const
@@ -292,10 +685,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopyerrorta
 
     if (cccopyindex.is_set || is_set(cccopyindex.yfilter)) leaf_name_data.push_back(cccopyindex.get_name_leafdata());
     if (cccopyerrorindex.is_set || is_set(cccopyerrorindex.yfilter)) leaf_name_data.push_back(cccopyerrorindex.get_name_leafdata());
-    if (cccopyerrordescription.is_set || is_set(cccopyerrordescription.yfilter)) leaf_name_data.push_back(cccopyerrordescription.get_name_leafdata());
-    if (cccopyerrordeviceipaddress.is_set || is_set(cccopyerrordeviceipaddress.yfilter)) leaf_name_data.push_back(cccopyerrordeviceipaddress.get_name_leafdata());
     if (cccopyerrordeviceipaddresstype.is_set || is_set(cccopyerrordeviceipaddresstype.yfilter)) leaf_name_data.push_back(cccopyerrordeviceipaddresstype.get_name_leafdata());
+    if (cccopyerrordeviceipaddress.is_set || is_set(cccopyerrordeviceipaddress.yfilter)) leaf_name_data.push_back(cccopyerrordeviceipaddress.get_name_leafdata());
     if (cccopyerrordevicewwn.is_set || is_set(cccopyerrordevicewwn.yfilter)) leaf_name_data.push_back(cccopyerrordevicewwn.get_name_leafdata());
+    if (cccopyerrordescription.is_set || is_set(cccopyerrordescription.yfilter)) leaf_name_data.push_back(cccopyerrordescription.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -326,11 +719,11 @@ void CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::set_value(const std
         cccopyerrorindex.value_namespace = name_space;
         cccopyerrorindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ccCopyErrorDescription")
+    if(value_path == "ccCopyErrorDeviceIpAddressType")
     {
-        cccopyerrordescription = value;
-        cccopyerrordescription.value_namespace = name_space;
-        cccopyerrordescription.value_namespace_prefix = name_space_prefix;
+        cccopyerrordeviceipaddresstype = value;
+        cccopyerrordeviceipaddresstype.value_namespace = name_space;
+        cccopyerrordeviceipaddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ccCopyErrorDeviceIpAddress")
     {
@@ -338,17 +731,17 @@ void CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::set_value(const std
         cccopyerrordeviceipaddress.value_namespace = name_space;
         cccopyerrordeviceipaddress.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ccCopyErrorDeviceIpAddressType")
-    {
-        cccopyerrordeviceipaddresstype = value;
-        cccopyerrordeviceipaddresstype.value_namespace = name_space;
-        cccopyerrordeviceipaddresstype.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ccCopyErrorDeviceWWN")
     {
         cccopyerrordevicewwn = value;
         cccopyerrordevicewwn.value_namespace = name_space;
         cccopyerrordevicewwn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccCopyErrorDescription")
+    {
+        cccopyerrordescription = value;
+        cccopyerrordescription.value_namespace = name_space;
+        cccopyerrordescription.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -362,423 +755,36 @@ void CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::set_filter(const st
     {
         cccopyerrorindex.yfilter = yfilter;
     }
-    if(value_path == "ccCopyErrorDescription")
+    if(value_path == "ccCopyErrorDeviceIpAddressType")
     {
-        cccopyerrordescription.yfilter = yfilter;
+        cccopyerrordeviceipaddresstype.yfilter = yfilter;
     }
     if(value_path == "ccCopyErrorDeviceIpAddress")
     {
         cccopyerrordeviceipaddress.yfilter = yfilter;
     }
-    if(value_path == "ccCopyErrorDeviceIpAddressType")
-    {
-        cccopyerrordeviceipaddresstype.yfilter = yfilter;
-    }
     if(value_path == "ccCopyErrorDeviceWWN")
     {
         cccopyerrordevicewwn.yfilter = yfilter;
+    }
+    if(value_path == "ccCopyErrorDescription")
+    {
+        cccopyerrordescription.yfilter = yfilter;
     }
 }
 
 bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ccCopyIndex" || name == "ccCopyErrorIndex" || name == "ccCopyErrorDescription" || name == "ccCopyErrorDeviceIpAddress" || name == "ccCopyErrorDeviceIpAddressType" || name == "ccCopyErrorDeviceWWN")
+    if(name == "ccCopyIndex" || name == "ccCopyErrorIndex" || name == "ccCopyErrorDeviceIpAddressType" || name == "ccCopyErrorDeviceIpAddress" || name == "ccCopyErrorDeviceWWN" || name == "ccCopyErrorDescription")
         return true;
     return false;
 }
 
-CISCOCONFIGCOPYMIB::Cccopytable::Cccopytable()
-{
-
-    yang_name = "ccCopyTable"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOCONFIGCOPYMIB::Cccopytable::~Cccopytable()
-{
-}
-
-bool CISCOCONFIGCOPYMIB::Cccopytable::has_data() const
-{
-    for (std::size_t index=0; index<cccopyentry.size(); index++)
-    {
-        if(cccopyentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CISCOCONFIGCOPYMIB::Cccopytable::has_operation() const
-{
-    for (std::size_t index=0; index<cccopyentry.size(); index++)
-    {
-        if(cccopyentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CISCOCONFIGCOPYMIB::Cccopytable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOCONFIGCOPYMIB::Cccopytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccCopyTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ccCopyEntry")
-    {
-        for(auto const & c : cccopyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry>();
-        c->parent = this;
-        cccopyentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cccopyentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CISCOCONFIGCOPYMIB::Cccopytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CISCOCONFIGCOPYMIB::Cccopytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CISCOCONFIGCOPYMIB::Cccopytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ccCopyEntry")
-        return true;
-    return false;
-}
-
-CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::Cccopyentry()
-    :
-    cccopyindex{YType::uint32, "ccCopyIndex"},
-    cccopydestfiletype{YType::enumeration, "ccCopyDestFileType"},
-    cccopyentryrowstatus{YType::enumeration, "ccCopyEntryRowStatus"},
-    cccopyfailcause{YType::enumeration, "ccCopyFailCause"},
-    cccopyfilename{YType::str, "ccCopyFileName"},
-    cccopynotificationoncompletion{YType::boolean, "ccCopyNotificationOnCompletion"},
-    cccopyprotocol{YType::enumeration, "ccCopyProtocol"},
-    cccopyserveraddress{YType::str, "ccCopyServerAddress"},
-    cccopyserveraddressrev1{YType::str, "ccCopyServerAddressRev1"},
-    cccopyserveraddresstype{YType::enumeration, "ccCopyServerAddressType"},
-    cccopysourcefiletype{YType::enumeration, "ccCopySourceFileType"},
-    cccopystate{YType::enumeration, "ccCopyState"},
-    cccopytimecompleted{YType::uint32, "ccCopyTimeCompleted"},
-    cccopytimestarted{YType::uint32, "ccCopyTimeStarted"},
-    cccopyusername{YType::str, "ccCopyUserName"},
-    cccopyuserpassword{YType::str, "ccCopyUserPassword"}
-{
-
-    yang_name = "ccCopyEntry"; yang_parent_name = "ccCopyTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::~Cccopyentry()
-{
-}
-
-bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_data() const
-{
-    return cccopyindex.is_set
-	|| cccopydestfiletype.is_set
-	|| cccopyentryrowstatus.is_set
-	|| cccopyfailcause.is_set
-	|| cccopyfilename.is_set
-	|| cccopynotificationoncompletion.is_set
-	|| cccopyprotocol.is_set
-	|| cccopyserveraddress.is_set
-	|| cccopyserveraddressrev1.is_set
-	|| cccopyserveraddresstype.is_set
-	|| cccopysourcefiletype.is_set
-	|| cccopystate.is_set
-	|| cccopytimecompleted.is_set
-	|| cccopytimestarted.is_set
-	|| cccopyusername.is_set
-	|| cccopyuserpassword.is_set;
-}
-
-bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cccopyindex.yfilter)
-	|| ydk::is_set(cccopydestfiletype.yfilter)
-	|| ydk::is_set(cccopyentryrowstatus.yfilter)
-	|| ydk::is_set(cccopyfailcause.yfilter)
-	|| ydk::is_set(cccopyfilename.yfilter)
-	|| ydk::is_set(cccopynotificationoncompletion.yfilter)
-	|| ydk::is_set(cccopyprotocol.yfilter)
-	|| ydk::is_set(cccopyserveraddress.yfilter)
-	|| ydk::is_set(cccopyserveraddressrev1.yfilter)
-	|| ydk::is_set(cccopyserveraddresstype.yfilter)
-	|| ydk::is_set(cccopysourcefiletype.yfilter)
-	|| ydk::is_set(cccopystate.yfilter)
-	|| ydk::is_set(cccopytimecompleted.yfilter)
-	|| ydk::is_set(cccopytimestarted.yfilter)
-	|| ydk::is_set(cccopyusername.yfilter)
-	|| ydk::is_set(cccopyuserpassword.yfilter);
-}
-
-std::string CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/ccCopyTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccCopyEntry" <<"[ccCopyIndex='" <<cccopyindex <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cccopyindex.is_set || is_set(cccopyindex.yfilter)) leaf_name_data.push_back(cccopyindex.get_name_leafdata());
-    if (cccopydestfiletype.is_set || is_set(cccopydestfiletype.yfilter)) leaf_name_data.push_back(cccopydestfiletype.get_name_leafdata());
-    if (cccopyentryrowstatus.is_set || is_set(cccopyentryrowstatus.yfilter)) leaf_name_data.push_back(cccopyentryrowstatus.get_name_leafdata());
-    if (cccopyfailcause.is_set || is_set(cccopyfailcause.yfilter)) leaf_name_data.push_back(cccopyfailcause.get_name_leafdata());
-    if (cccopyfilename.is_set || is_set(cccopyfilename.yfilter)) leaf_name_data.push_back(cccopyfilename.get_name_leafdata());
-    if (cccopynotificationoncompletion.is_set || is_set(cccopynotificationoncompletion.yfilter)) leaf_name_data.push_back(cccopynotificationoncompletion.get_name_leafdata());
-    if (cccopyprotocol.is_set || is_set(cccopyprotocol.yfilter)) leaf_name_data.push_back(cccopyprotocol.get_name_leafdata());
-    if (cccopyserveraddress.is_set || is_set(cccopyserveraddress.yfilter)) leaf_name_data.push_back(cccopyserveraddress.get_name_leafdata());
-    if (cccopyserveraddressrev1.is_set || is_set(cccopyserveraddressrev1.yfilter)) leaf_name_data.push_back(cccopyserveraddressrev1.get_name_leafdata());
-    if (cccopyserveraddresstype.is_set || is_set(cccopyserveraddresstype.yfilter)) leaf_name_data.push_back(cccopyserveraddresstype.get_name_leafdata());
-    if (cccopysourcefiletype.is_set || is_set(cccopysourcefiletype.yfilter)) leaf_name_data.push_back(cccopysourcefiletype.get_name_leafdata());
-    if (cccopystate.is_set || is_set(cccopystate.yfilter)) leaf_name_data.push_back(cccopystate.get_name_leafdata());
-    if (cccopytimecompleted.is_set || is_set(cccopytimecompleted.yfilter)) leaf_name_data.push_back(cccopytimecompleted.get_name_leafdata());
-    if (cccopytimestarted.is_set || is_set(cccopytimestarted.yfilter)) leaf_name_data.push_back(cccopytimestarted.get_name_leafdata());
-    if (cccopyusername.is_set || is_set(cccopyusername.yfilter)) leaf_name_data.push_back(cccopyusername.get_name_leafdata());
-    if (cccopyuserpassword.is_set || is_set(cccopyuserpassword.yfilter)) leaf_name_data.push_back(cccopyuserpassword.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ccCopyIndex")
-    {
-        cccopyindex = value;
-        cccopyindex.value_namespace = name_space;
-        cccopyindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyDestFileType")
-    {
-        cccopydestfiletype = value;
-        cccopydestfiletype.value_namespace = name_space;
-        cccopydestfiletype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyEntryRowStatus")
-    {
-        cccopyentryrowstatus = value;
-        cccopyentryrowstatus.value_namespace = name_space;
-        cccopyentryrowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyFailCause")
-    {
-        cccopyfailcause = value;
-        cccopyfailcause.value_namespace = name_space;
-        cccopyfailcause.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyFileName")
-    {
-        cccopyfilename = value;
-        cccopyfilename.value_namespace = name_space;
-        cccopyfilename.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyNotificationOnCompletion")
-    {
-        cccopynotificationoncompletion = value;
-        cccopynotificationoncompletion.value_namespace = name_space;
-        cccopynotificationoncompletion.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyProtocol")
-    {
-        cccopyprotocol = value;
-        cccopyprotocol.value_namespace = name_space;
-        cccopyprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyServerAddress")
-    {
-        cccopyserveraddress = value;
-        cccopyserveraddress.value_namespace = name_space;
-        cccopyserveraddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyServerAddressRev1")
-    {
-        cccopyserveraddressrev1 = value;
-        cccopyserveraddressrev1.value_namespace = name_space;
-        cccopyserveraddressrev1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyServerAddressType")
-    {
-        cccopyserveraddresstype = value;
-        cccopyserveraddresstype.value_namespace = name_space;
-        cccopyserveraddresstype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopySourceFileType")
-    {
-        cccopysourcefiletype = value;
-        cccopysourcefiletype.value_namespace = name_space;
-        cccopysourcefiletype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyState")
-    {
-        cccopystate = value;
-        cccopystate.value_namespace = name_space;
-        cccopystate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyTimeCompleted")
-    {
-        cccopytimecompleted = value;
-        cccopytimecompleted.value_namespace = name_space;
-        cccopytimecompleted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyTimeStarted")
-    {
-        cccopytimestarted = value;
-        cccopytimestarted.value_namespace = name_space;
-        cccopytimestarted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyUserName")
-    {
-        cccopyusername = value;
-        cccopyusername.value_namespace = name_space;
-        cccopyusername.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccCopyUserPassword")
-    {
-        cccopyuserpassword = value;
-        cccopyuserpassword.value_namespace = name_space;
-        cccopyuserpassword.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ccCopyIndex")
-    {
-        cccopyindex.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyDestFileType")
-    {
-        cccopydestfiletype.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyEntryRowStatus")
-    {
-        cccopyentryrowstatus.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyFailCause")
-    {
-        cccopyfailcause.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyFileName")
-    {
-        cccopyfilename.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyNotificationOnCompletion")
-    {
-        cccopynotificationoncompletion.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyProtocol")
-    {
-        cccopyprotocol.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyServerAddress")
-    {
-        cccopyserveraddress.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyServerAddressRev1")
-    {
-        cccopyserveraddressrev1.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyServerAddressType")
-    {
-        cccopyserveraddresstype.yfilter = yfilter;
-    }
-    if(value_path == "ccCopySourceFileType")
-    {
-        cccopysourcefiletype.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyState")
-    {
-        cccopystate.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyTimeCompleted")
-    {
-        cccopytimecompleted.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyTimeStarted")
-    {
-        cccopytimestarted.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyUserName")
-    {
-        cccopyusername.yfilter = yfilter;
-    }
-    if(value_path == "ccCopyUserPassword")
-    {
-        cccopyuserpassword.yfilter = yfilter;
-    }
-}
-
-bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ccCopyIndex" || name == "ccCopyDestFileType" || name == "ccCopyEntryRowStatus" || name == "ccCopyFailCause" || name == "ccCopyFileName" || name == "ccCopyNotificationOnCompletion" || name == "ccCopyProtocol" || name == "ccCopyServerAddress" || name == "ccCopyServerAddressRev1" || name == "ccCopyServerAddressType" || name == "ccCopySourceFileType" || name == "ccCopyState" || name == "ccCopyTimeCompleted" || name == "ccCopyTimeStarted" || name == "ccCopyUserName" || name == "ccCopyUserPassword")
-        return true;
-    return false;
-}
+const Enum::YLeaf ConfigCopyProtocol::tftp {1, "tftp"};
+const Enum::YLeaf ConfigCopyProtocol::ftp {2, "ftp"};
+const Enum::YLeaf ConfigCopyProtocol::rcp {3, "rcp"};
+const Enum::YLeaf ConfigCopyProtocol::scp {4, "scp"};
+const Enum::YLeaf ConfigCopyProtocol::sftp {5, "sftp"};
 
 const Enum::YLeaf ConfigCopyState::waiting {1, "waiting"};
 const Enum::YLeaf ConfigCopyState::running {2, "running"};
@@ -801,12 +807,6 @@ const Enum::YLeaf ConfigFileType::startupConfig {3, "startupConfig"};
 const Enum::YLeaf ConfigFileType::runningConfig {4, "runningConfig"};
 const Enum::YLeaf ConfigFileType::terminal {5, "terminal"};
 const Enum::YLeaf ConfigFileType::fabricStartupConfig {6, "fabricStartupConfig"};
-
-const Enum::YLeaf ConfigCopyProtocol::tftp {1, "tftp"};
-const Enum::YLeaf ConfigCopyProtocol::ftp {2, "ftp"};
-const Enum::YLeaf ConfigCopyProtocol::rcp {3, "rcp"};
-const Enum::YLeaf ConfigCopyProtocol::scp {4, "scp"};
-const Enum::YLeaf ConfigCopyProtocol::sftp {5, "sftp"};
 
 
 }

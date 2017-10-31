@@ -205,8 +205,8 @@ bool Statistics::Period::has_leaf_or_child_of_name(const std::string & name) con
 
 Statistics::Period::ServiceAccounting::ServiceAccounting()
     :
-    polling_disable{YType::empty, "polling-disable"},
-    polling_period{YType::uint32, "polling-period"}
+    polling_period{YType::uint32, "polling-period"},
+    polling_disable{YType::empty, "polling-disable"}
 {
 
     yang_name = "service-accounting"; yang_parent_name = "period"; is_top_level_class = false; has_list_ancestor = false;
@@ -218,15 +218,15 @@ Statistics::Period::ServiceAccounting::~ServiceAccounting()
 
 bool Statistics::Period::ServiceAccounting::has_data() const
 {
-    return polling_disable.is_set
-	|| polling_period.is_set;
+    return polling_period.is_set
+	|| polling_disable.is_set;
 }
 
 bool Statistics::Period::ServiceAccounting::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(polling_disable.yfilter)
-	|| ydk::is_set(polling_period.yfilter);
+	|| ydk::is_set(polling_period.yfilter)
+	|| ydk::is_set(polling_disable.yfilter);
 }
 
 std::string Statistics::Period::ServiceAccounting::get_absolute_path() const
@@ -247,8 +247,8 @@ std::vector<std::pair<std::string, LeafData> > Statistics::Period::ServiceAccoun
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (polling_disable.is_set || is_set(polling_disable.yfilter)) leaf_name_data.push_back(polling_disable.get_name_leafdata());
     if (polling_period.is_set || is_set(polling_period.yfilter)) leaf_name_data.push_back(polling_period.get_name_leafdata());
+    if (polling_disable.is_set || is_set(polling_disable.yfilter)) leaf_name_data.push_back(polling_disable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -267,35 +267,35 @@ std::map<std::string, std::shared_ptr<Entity>> Statistics::Period::ServiceAccoun
 
 void Statistics::Period::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "polling-disable")
-    {
-        polling_disable = value;
-        polling_disable.value_namespace = name_space;
-        polling_disable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "polling-period")
     {
         polling_period = value;
         polling_period.value_namespace = name_space;
         polling_period.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "polling-disable")
+    {
+        polling_disable = value;
+        polling_disable.value_namespace = name_space;
+        polling_disable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Statistics::Period::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "polling-disable")
-    {
-        polling_disable.yfilter = yfilter;
-    }
     if(value_path == "polling-period")
     {
         polling_period.yfilter = yfilter;
+    }
+    if(value_path == "polling-disable")
+    {
+        polling_disable.yfilter = yfilter;
     }
 }
 
 bool Statistics::Period::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "polling-disable" || name == "polling-period")
+    if(name == "polling-period" || name == "polling-disable")
         return true;
     return false;
 }

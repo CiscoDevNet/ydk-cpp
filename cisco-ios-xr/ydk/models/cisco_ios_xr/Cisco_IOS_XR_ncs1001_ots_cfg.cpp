@@ -358,8 +358,8 @@ bool HardwareModule::Node::Slot::has_leaf_or_child_of_name(const std::string & n
 
 HardwareModule::Node::Slot::Amplifier::Amplifier()
     :
-    grid_mode{YType::enumeration, "grid-mode"},
     node_type{YType::enumeration, "node-type"},
+    grid_mode{YType::enumeration, "grid-mode"},
     udc_vlan{YType::uint32, "udc-vlan"}
 {
 
@@ -372,16 +372,16 @@ HardwareModule::Node::Slot::Amplifier::~Amplifier()
 
 bool HardwareModule::Node::Slot::Amplifier::has_data() const
 {
-    return grid_mode.is_set
-	|| node_type.is_set
+    return node_type.is_set
+	|| grid_mode.is_set
 	|| udc_vlan.is_set;
 }
 
 bool HardwareModule::Node::Slot::Amplifier::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(grid_mode.yfilter)
 	|| ydk::is_set(node_type.yfilter)
+	|| ydk::is_set(grid_mode.yfilter)
 	|| ydk::is_set(udc_vlan.yfilter);
 }
 
@@ -396,8 +396,8 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Ampli
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (grid_mode.is_set || is_set(grid_mode.yfilter)) leaf_name_data.push_back(grid_mode.get_name_leafdata());
     if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
+    if (grid_mode.is_set || is_set(grid_mode.yfilter)) leaf_name_data.push_back(grid_mode.get_name_leafdata());
     if (udc_vlan.is_set || is_set(udc_vlan.yfilter)) leaf_name_data.push_back(udc_vlan.get_name_leafdata());
 
     return leaf_name_data;
@@ -417,17 +417,17 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Ampli
 
 void HardwareModule::Node::Slot::Amplifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "grid-mode")
-    {
-        grid_mode = value;
-        grid_mode.value_namespace = name_space;
-        grid_mode.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "node-type")
     {
         node_type = value;
         node_type.value_namespace = name_space;
         node_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "grid-mode")
+    {
+        grid_mode = value;
+        grid_mode.value_namespace = name_space;
+        grid_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udc-vlan")
     {
@@ -439,13 +439,13 @@ void HardwareModule::Node::Slot::Amplifier::set_value(const std::string & value_
 
 void HardwareModule::Node::Slot::Amplifier::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "grid-mode")
-    {
-        grid_mode.yfilter = yfilter;
-    }
     if(value_path == "node-type")
     {
         node_type.yfilter = yfilter;
+    }
+    if(value_path == "grid-mode")
+    {
+        grid_mode.yfilter = yfilter;
     }
     if(value_path == "udc-vlan")
     {
@@ -455,19 +455,19 @@ void HardwareModule::Node::Slot::Amplifier::set_filter(const std::string & value
 
 bool HardwareModule::Node::Slot::Amplifier::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "grid-mode" || name == "node-type" || name == "udc-vlan")
+    if(name == "node-type" || name == "grid-mode" || name == "udc-vlan")
         return true;
     return false;
 }
 
 HardwareModule::Node::Slot::Psm::Psm()
     :
-    auto_threshold{YType::boolean, "auto-threshold"},
-    lockout_from{YType::enumeration, "lockout-from"},
-    manual_switch_to{YType::enumeration, "manual-switch-to"},
     mono_dir{YType::boolean, "mono-dir"},
+    auto_threshold{YType::boolean, "auto-threshold"},
     path_protection{YType::boolean, "path-protection"},
-    section_protection{YType::boolean, "section-protection"}
+    section_protection{YType::boolean, "section-protection"},
+    lockout_from{YType::enumeration, "lockout-from"},
+    manual_switch_to{YType::enumeration, "manual-switch-to"}
 {
 
     yang_name = "psm"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
@@ -479,23 +479,23 @@ HardwareModule::Node::Slot::Psm::~Psm()
 
 bool HardwareModule::Node::Slot::Psm::has_data() const
 {
-    return auto_threshold.is_set
-	|| lockout_from.is_set
-	|| manual_switch_to.is_set
-	|| mono_dir.is_set
+    return mono_dir.is_set
+	|| auto_threshold.is_set
 	|| path_protection.is_set
-	|| section_protection.is_set;
+	|| section_protection.is_set
+	|| lockout_from.is_set
+	|| manual_switch_to.is_set;
 }
 
 bool HardwareModule::Node::Slot::Psm::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(auto_threshold.yfilter)
-	|| ydk::is_set(lockout_from.yfilter)
-	|| ydk::is_set(manual_switch_to.yfilter)
 	|| ydk::is_set(mono_dir.yfilter)
+	|| ydk::is_set(auto_threshold.yfilter)
 	|| ydk::is_set(path_protection.yfilter)
-	|| ydk::is_set(section_protection.yfilter);
+	|| ydk::is_set(section_protection.yfilter)
+	|| ydk::is_set(lockout_from.yfilter)
+	|| ydk::is_set(manual_switch_to.yfilter);
 }
 
 std::string HardwareModule::Node::Slot::Psm::get_segment_path() const
@@ -509,12 +509,12 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Psm::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_threshold.is_set || is_set(auto_threshold.yfilter)) leaf_name_data.push_back(auto_threshold.get_name_leafdata());
-    if (lockout_from.is_set || is_set(lockout_from.yfilter)) leaf_name_data.push_back(lockout_from.get_name_leafdata());
-    if (manual_switch_to.is_set || is_set(manual_switch_to.yfilter)) leaf_name_data.push_back(manual_switch_to.get_name_leafdata());
     if (mono_dir.is_set || is_set(mono_dir.yfilter)) leaf_name_data.push_back(mono_dir.get_name_leafdata());
+    if (auto_threshold.is_set || is_set(auto_threshold.yfilter)) leaf_name_data.push_back(auto_threshold.get_name_leafdata());
     if (path_protection.is_set || is_set(path_protection.yfilter)) leaf_name_data.push_back(path_protection.get_name_leafdata());
     if (section_protection.is_set || is_set(section_protection.yfilter)) leaf_name_data.push_back(section_protection.get_name_leafdata());
+    if (lockout_from.is_set || is_set(lockout_from.yfilter)) leaf_name_data.push_back(lockout_from.get_name_leafdata());
+    if (manual_switch_to.is_set || is_set(manual_switch_to.yfilter)) leaf_name_data.push_back(manual_switch_to.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -533,29 +533,17 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Psm::
 
 void HardwareModule::Node::Slot::Psm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "auto-threshold")
-    {
-        auto_threshold = value;
-        auto_threshold.value_namespace = name_space;
-        auto_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lockout-from")
-    {
-        lockout_from = value;
-        lockout_from.value_namespace = name_space;
-        lockout_from.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manual-switch-to")
-    {
-        manual_switch_to = value;
-        manual_switch_to.value_namespace = name_space;
-        manual_switch_to.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mono-dir")
     {
         mono_dir = value;
         mono_dir.value_namespace = name_space;
         mono_dir.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auto-threshold")
+    {
+        auto_threshold = value;
+        auto_threshold.value_namespace = name_space;
+        auto_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-protection")
     {
@@ -569,25 +557,29 @@ void HardwareModule::Node::Slot::Psm::set_value(const std::string & value_path, 
         section_protection.value_namespace = name_space;
         section_protection.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "lockout-from")
+    {
+        lockout_from = value;
+        lockout_from.value_namespace = name_space;
+        lockout_from.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manual-switch-to")
+    {
+        manual_switch_to = value;
+        manual_switch_to.value_namespace = name_space;
+        manual_switch_to.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void HardwareModule::Node::Slot::Psm::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "auto-threshold")
-    {
-        auto_threshold.yfilter = yfilter;
-    }
-    if(value_path == "lockout-from")
-    {
-        lockout_from.yfilter = yfilter;
-    }
-    if(value_path == "manual-switch-to")
-    {
-        manual_switch_to.yfilter = yfilter;
-    }
     if(value_path == "mono-dir")
     {
         mono_dir.yfilter = yfilter;
+    }
+    if(value_path == "auto-threshold")
+    {
+        auto_threshold.yfilter = yfilter;
     }
     if(value_path == "path-protection")
     {
@@ -597,17 +589,22 @@ void HardwareModule::Node::Slot::Psm::set_filter(const std::string & value_path,
     {
         section_protection.yfilter = yfilter;
     }
+    if(value_path == "lockout-from")
+    {
+        lockout_from.yfilter = yfilter;
+    }
+    if(value_path == "manual-switch-to")
+    {
+        manual_switch_to.yfilter = yfilter;
+    }
 }
 
 bool HardwareModule::Node::Slot::Psm::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "auto-threshold" || name == "lockout-from" || name == "manual-switch-to" || name == "mono-dir" || name == "path-protection" || name == "section-protection")
+    if(name == "mono-dir" || name == "auto-threshold" || name == "path-protection" || name == "section-protection" || name == "lockout-from" || name == "manual-switch-to")
         return true;
     return false;
 }
-
-const Enum::YLeaf OtsPsmLockoutFrom::working {1, "working"};
-const Enum::YLeaf OtsPsmLockoutFrom::protected_ {2, "protected"};
 
 const Enum::YLeaf OtsAmplifierNode::term {0, "term"};
 const Enum::YLeaf OtsAmplifierNode::ila {1, "ila"};
@@ -619,6 +616,9 @@ const Enum::YLeaf OtsAmplifierGridMode::gr_idle_ss {2, "gr-idle-ss"};
 
 const Enum::YLeaf OtsPsmManualSwitch::working {1, "working"};
 const Enum::YLeaf OtsPsmManualSwitch::protected_ {2, "protected"};
+
+const Enum::YLeaf OtsPsmLockoutFrom::working {1, "working"};
+const Enum::YLeaf OtsPsmLockoutFrom::protected_ {2, "protected"};
 
 
 }

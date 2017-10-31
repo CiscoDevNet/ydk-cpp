@@ -143,9 +143,9 @@ Interfaces::Interface::Interface()
     :
     name{YType::str, "name"},
     description{YType::str, "description"},
+    type{YType::identityref, "type"},
     enabled{YType::boolean, "enabled"},
-    link_up_down_trap_enable{YType::enumeration, "link-up-down-trap-enable"},
-    type{YType::identityref, "type"}
+    link_up_down_trap_enable{YType::enumeration, "link-up-down-trap-enable"}
     	,
     ipv4(nullptr) // presence node
 	,ipv6(nullptr) // presence node
@@ -167,9 +167,9 @@ bool Interfaces::Interface::has_data() const
     }
     return name.is_set
 	|| description.is_set
+	|| type.is_set
 	|| enabled.is_set
 	|| link_up_down_trap_enable.is_set
-	|| type.is_set
 	|| (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -184,9 +184,9 @@ bool Interfaces::Interface::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(enabled.yfilter)
 	|| ydk::is_set(link_up_down_trap_enable.yfilter)
-	|| ydk::is_set(type.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -211,9 +211,9 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::get_name_l
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
     if (link_up_down_trap_enable.is_set || is_set(link_up_down_trap_enable.yfilter)) leaf_name_data.push_back(link_up_down_trap_enable.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -293,6 +293,12 @@ void Interfaces::Interface::set_value(const std::string & value_path, const std:
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "enabled")
     {
         enabled = value;
@@ -304,12 +310,6 @@ void Interfaces::Interface::set_value(const std::string & value_path, const std:
         link_up_down_trap_enable = value;
         link_up_down_trap_enable.value_namespace = name_space;
         link_up_down_trap_enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -323,6 +323,10 @@ void Interfaces::Interface::set_filter(const std::string & value_path, YFilter y
     {
         description.yfilter = yfilter;
     }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
     if(value_path == "enabled")
     {
         enabled.yfilter = yfilter;
@@ -331,15 +335,11 @@ void Interfaces::Interface::set_filter(const std::string & value_path, YFilter y
     {
         link_up_down_trap_enable.yfilter = yfilter;
     }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
 }
 
 bool Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "diffserv-target-entry" || name == "ipv4" || name == "ipv6" || name == "name" || name == "description" || name == "enabled" || name == "link-up-down-trap-enable" || name == "type")
+    if(name == "diffserv-target-entry" || name == "ipv4" || name == "ipv6" || name == "name" || name == "description" || name == "type" || name == "enabled" || name == "link-up-down-trap-enable")
         return true;
     return false;
 }
@@ -603,8 +603,8 @@ bool Interfaces::Interface::Ipv4::has_leaf_or_child_of_name(const std::string & 
 Interfaces::Interface::Ipv4::Address::Address()
     :
     ip{YType::str, "ip"},
-    netmask{YType::str, "netmask"},
-    prefix_length{YType::uint8, "prefix-length"}
+    prefix_length{YType::uint8, "prefix-length"},
+    netmask{YType::str, "netmask"}
 {
 
     yang_name = "address"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
@@ -617,16 +617,16 @@ Interfaces::Interface::Ipv4::Address::~Address()
 bool Interfaces::Interface::Ipv4::Address::has_data() const
 {
     return ip.is_set
-	|| netmask.is_set
-	|| prefix_length.is_set;
+	|| prefix_length.is_set
+	|| netmask.is_set;
 }
 
 bool Interfaces::Interface::Ipv4::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(netmask.yfilter)
-	|| ydk::is_set(prefix_length.yfilter);
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(netmask.yfilter);
 }
 
 std::string Interfaces::Interface::Ipv4::Address::get_segment_path() const
@@ -641,8 +641,8 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ipv4::Addr
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
     if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -667,17 +667,17 @@ void Interfaces::Interface::Ipv4::Address::set_value(const std::string & value_p
         ip.value_namespace = name_space;
         ip.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "netmask")
-    {
-        netmask = value;
-        netmask.value_namespace = name_space;
-        netmask.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
         prefix_length.value_namespace = name_space;
         prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "netmask")
+    {
+        netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -687,19 +687,19 @@ void Interfaces::Interface::Ipv4::Address::set_filter(const std::string & value_
     {
         ip.yfilter = yfilter;
     }
-    if(value_path == "netmask")
-    {
-        netmask.yfilter = yfilter;
-    }
     if(value_path == "prefix-length")
     {
         prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
     }
 }
 
 bool Interfaces::Interface::Ipv4::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip" || name == "netmask" || name == "prefix-length")
+    if(name == "ip" || name == "prefix-length" || name == "netmask")
         return true;
     return false;
 }
@@ -796,10 +796,10 @@ bool Interfaces::Interface::Ipv4::Neighbor::has_leaf_or_child_of_name(const std:
 
 Interfaces::Interface::Ipv6::Ipv6()
     :
-    dup_addr_detect_transmits{YType::uint32, "dup-addr-detect-transmits"},
     enabled{YType::boolean, "enabled"},
     forwarding{YType::boolean, "forwarding"},
-    mtu{YType::uint32, "mtu"}
+    mtu{YType::uint32, "mtu"},
+    dup_addr_detect_transmits{YType::uint32, "dup-addr-detect-transmits"}
     	,
     autoconf(std::make_shared<Interfaces::Interface::Ipv6::Autoconf>())
 	,ipv6_router_advertisements(std::make_shared<Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements>())
@@ -826,10 +826,10 @@ bool Interfaces::Interface::Ipv6::has_data() const
         if(neighbor[index]->has_data())
             return true;
     }
-    return dup_addr_detect_transmits.is_set
-	|| enabled.is_set
+    return enabled.is_set
 	|| forwarding.is_set
 	|| mtu.is_set
+	|| dup_addr_detect_transmits.is_set
 	|| (autoconf !=  nullptr && autoconf->has_data())
 	|| (ipv6_router_advertisements !=  nullptr && ipv6_router_advertisements->has_data());
 }
@@ -847,10 +847,10 @@ bool Interfaces::Interface::Ipv6::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(dup_addr_detect_transmits.yfilter)
 	|| ydk::is_set(enabled.yfilter)
 	|| ydk::is_set(forwarding.yfilter)
 	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(dup_addr_detect_transmits.yfilter)
 	|| (autoconf !=  nullptr && autoconf->has_operation())
 	|| (ipv6_router_advertisements !=  nullptr && ipv6_router_advertisements->has_operation());
 }
@@ -866,10 +866,10 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ipv6::get_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dup_addr_detect_transmits.is_set || is_set(dup_addr_detect_transmits.yfilter)) leaf_name_data.push_back(dup_addr_detect_transmits.get_name_leafdata());
     if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
     if (forwarding.is_set || is_set(forwarding.yfilter)) leaf_name_data.push_back(forwarding.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (dup_addr_detect_transmits.is_set || is_set(dup_addr_detect_transmits.yfilter)) leaf_name_data.push_back(dup_addr_detect_transmits.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -893,6 +893,22 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
         return c;
     }
 
+    if(child_yang_name == "neighbor")
+    {
+        for(auto const & c : neighbor)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Interfaces::Interface::Ipv6::Neighbor>();
+        c->parent = this;
+        neighbor.push_back(c);
+        return c;
+    }
+
     if(child_yang_name == "autoconf")
     {
         if(autoconf == nullptr)
@@ -911,22 +927,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
         return ipv6_router_advertisements;
     }
 
-    if(child_yang_name == "neighbor")
-    {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Interfaces::Interface::Ipv6::Neighbor>();
-        c->parent = this;
-        neighbor.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
@@ -934,6 +934,11 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::get_
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : neighbor)
     {
         children[c->get_segment_path()] = c;
     }
@@ -948,22 +953,11 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::get_
         children["ipv6-router-advertisements"] = ipv6_router_advertisements;
     }
 
-    for (auto const & c : neighbor)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
 void Interfaces::Interface::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "dup-addr-detect-transmits")
-    {
-        dup_addr_detect_transmits = value;
-        dup_addr_detect_transmits.value_namespace = name_space;
-        dup_addr_detect_transmits.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "enabled")
     {
         enabled = value;
@@ -982,14 +976,16 @@ void Interfaces::Interface::Ipv6::set_value(const std::string & value_path, cons
         mtu.value_namespace = name_space;
         mtu.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "dup-addr-detect-transmits")
+    {
+        dup_addr_detect_transmits = value;
+        dup_addr_detect_transmits.value_namespace = name_space;
+        dup_addr_detect_transmits.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Interfaces::Interface::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "dup-addr-detect-transmits")
-    {
-        dup_addr_detect_transmits.yfilter = yfilter;
-    }
     if(value_path == "enabled")
     {
         enabled.yfilter = yfilter;
@@ -1002,11 +998,15 @@ void Interfaces::Interface::Ipv6::set_filter(const std::string & value_path, YFi
     {
         mtu.yfilter = yfilter;
     }
+    if(value_path == "dup-addr-detect-transmits")
+    {
+        dup_addr_detect_transmits.yfilter = yfilter;
+    }
 }
 
 bool Interfaces::Interface::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address" || name == "autoconf" || name == "ipv6-router-advertisements" || name == "neighbor" || name == "dup-addr-detect-transmits" || name == "enabled" || name == "forwarding" || name == "mtu")
+    if(name == "address" || name == "neighbor" || name == "autoconf" || name == "ipv6-router-advertisements" || name == "enabled" || name == "forwarding" || name == "mtu" || name == "dup-addr-detect-transmits")
         return true;
     return false;
 }
@@ -1101,12 +1101,102 @@ bool Interfaces::Interface::Ipv6::Address::has_leaf_or_child_of_name(const std::
     return false;
 }
 
+Interfaces::Interface::Ipv6::Neighbor::Neighbor()
+    :
+    ip{YType::str, "ip"},
+    link_layer_address{YType::str, "link-layer-address"}
+{
+
+    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Interfaces::Interface::Ipv6::Neighbor::~Neighbor()
+{
+}
+
+bool Interfaces::Interface::Ipv6::Neighbor::has_data() const
+{
+    return ip.is_set
+	|| link_layer_address.is_set;
+}
+
+bool Interfaces::Interface::Ipv6::Neighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(link_layer_address.yfilter);
+}
+
+std::string Interfaces::Interface::Ipv6::Neighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ipv6::Neighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (link_layer_address.is_set || is_set(link_layer_address.yfilter)) leaf_name_data.push_back(link_layer_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Neighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Interfaces::Interface::Ipv6::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-layer-address")
+    {
+        link_layer_address = value;
+        link_layer_address.value_namespace = name_space;
+        link_layer_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Interfaces::Interface::Ipv6::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "link-layer-address")
+    {
+        link_layer_address.yfilter = yfilter;
+    }
+}
+
+bool Interfaces::Interface::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "link-layer-address")
+        return true;
+    return false;
+}
+
 Interfaces::Interface::Ipv6::Autoconf::Autoconf()
     :
     create_global_addresses{YType::boolean, "create-global-addresses"},
     create_temporary_addresses{YType::boolean, "create-temporary-addresses"},
-    temporary_preferred_lifetime{YType::uint32, "temporary-preferred-lifetime"},
-    temporary_valid_lifetime{YType::uint32, "temporary-valid-lifetime"}
+    temporary_valid_lifetime{YType::uint32, "temporary-valid-lifetime"},
+    temporary_preferred_lifetime{YType::uint32, "temporary-preferred-lifetime"}
 {
 
     yang_name = "autoconf"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
@@ -1120,8 +1210,8 @@ bool Interfaces::Interface::Ipv6::Autoconf::has_data() const
 {
     return create_global_addresses.is_set
 	|| create_temporary_addresses.is_set
-	|| temporary_preferred_lifetime.is_set
-	|| temporary_valid_lifetime.is_set;
+	|| temporary_valid_lifetime.is_set
+	|| temporary_preferred_lifetime.is_set;
 }
 
 bool Interfaces::Interface::Ipv6::Autoconf::has_operation() const
@@ -1129,8 +1219,8 @@ bool Interfaces::Interface::Ipv6::Autoconf::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(create_global_addresses.yfilter)
 	|| ydk::is_set(create_temporary_addresses.yfilter)
-	|| ydk::is_set(temporary_preferred_lifetime.yfilter)
-	|| ydk::is_set(temporary_valid_lifetime.yfilter);
+	|| ydk::is_set(temporary_valid_lifetime.yfilter)
+	|| ydk::is_set(temporary_preferred_lifetime.yfilter);
 }
 
 std::string Interfaces::Interface::Ipv6::Autoconf::get_segment_path() const
@@ -1146,8 +1236,8 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ipv6::Auto
 
     if (create_global_addresses.is_set || is_set(create_global_addresses.yfilter)) leaf_name_data.push_back(create_global_addresses.get_name_leafdata());
     if (create_temporary_addresses.is_set || is_set(create_temporary_addresses.yfilter)) leaf_name_data.push_back(create_temporary_addresses.get_name_leafdata());
-    if (temporary_preferred_lifetime.is_set || is_set(temporary_preferred_lifetime.yfilter)) leaf_name_data.push_back(temporary_preferred_lifetime.get_name_leafdata());
     if (temporary_valid_lifetime.is_set || is_set(temporary_valid_lifetime.yfilter)) leaf_name_data.push_back(temporary_valid_lifetime.get_name_leafdata());
+    if (temporary_preferred_lifetime.is_set || is_set(temporary_preferred_lifetime.yfilter)) leaf_name_data.push_back(temporary_preferred_lifetime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1178,17 +1268,17 @@ void Interfaces::Interface::Ipv6::Autoconf::set_value(const std::string & value_
         create_temporary_addresses.value_namespace = name_space;
         create_temporary_addresses.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "temporary-preferred-lifetime")
-    {
-        temporary_preferred_lifetime = value;
-        temporary_preferred_lifetime.value_namespace = name_space;
-        temporary_preferred_lifetime.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "temporary-valid-lifetime")
     {
         temporary_valid_lifetime = value;
         temporary_valid_lifetime.value_namespace = name_space;
         temporary_valid_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temporary-preferred-lifetime")
+    {
+        temporary_preferred_lifetime = value;
+        temporary_preferred_lifetime.value_namespace = name_space;
+        temporary_preferred_lifetime.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1202,35 +1292,35 @@ void Interfaces::Interface::Ipv6::Autoconf::set_filter(const std::string & value
     {
         create_temporary_addresses.yfilter = yfilter;
     }
-    if(value_path == "temporary-preferred-lifetime")
-    {
-        temporary_preferred_lifetime.yfilter = yfilter;
-    }
     if(value_path == "temporary-valid-lifetime")
     {
         temporary_valid_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "temporary-preferred-lifetime")
+    {
+        temporary_preferred_lifetime.yfilter = yfilter;
     }
 }
 
 bool Interfaces::Interface::Ipv6::Autoconf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "create-global-addresses" || name == "create-temporary-addresses" || name == "temporary-preferred-lifetime" || name == "temporary-valid-lifetime")
+    if(name == "create-global-addresses" || name == "create-temporary-addresses" || name == "temporary-valid-lifetime" || name == "temporary-preferred-lifetime")
         return true;
     return false;
 }
 
 Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::Ipv6RouterAdvertisements()
     :
-    cur_hop_limit{YType::uint8, "cur-hop-limit"},
-    default_lifetime{YType::uint16, "default-lifetime"},
-    link_mtu{YType::uint32, "link-mtu"},
-    managed_flag{YType::boolean, "managed-flag"},
+    send_advertisements{YType::boolean, "send-advertisements"},
     max_rtr_adv_interval{YType::uint16, "max-rtr-adv-interval"},
     min_rtr_adv_interval{YType::uint16, "min-rtr-adv-interval"},
+    managed_flag{YType::boolean, "managed-flag"},
     other_config_flag{YType::boolean, "other-config-flag"},
+    link_mtu{YType::uint32, "link-mtu"},
     reachable_time{YType::uint32, "reachable-time"},
     retrans_timer{YType::uint32, "retrans-timer"},
-    send_advertisements{YType::boolean, "send-advertisements"}
+    cur_hop_limit{YType::uint8, "cur-hop-limit"},
+    default_lifetime{YType::uint16, "default-lifetime"}
     	,
     prefix_list(std::make_shared<Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList>())
 {
@@ -1245,32 +1335,32 @@ Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::~Ipv6RouterAdvertisements
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::has_data() const
 {
-    return cur_hop_limit.is_set
-	|| default_lifetime.is_set
-	|| link_mtu.is_set
-	|| managed_flag.is_set
+    return send_advertisements.is_set
 	|| max_rtr_adv_interval.is_set
 	|| min_rtr_adv_interval.is_set
+	|| managed_flag.is_set
 	|| other_config_flag.is_set
+	|| link_mtu.is_set
 	|| reachable_time.is_set
 	|| retrans_timer.is_set
-	|| send_advertisements.is_set
+	|| cur_hop_limit.is_set
+	|| default_lifetime.is_set
 	|| (prefix_list !=  nullptr && prefix_list->has_data());
 }
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(cur_hop_limit.yfilter)
-	|| ydk::is_set(default_lifetime.yfilter)
-	|| ydk::is_set(link_mtu.yfilter)
-	|| ydk::is_set(managed_flag.yfilter)
+	|| ydk::is_set(send_advertisements.yfilter)
 	|| ydk::is_set(max_rtr_adv_interval.yfilter)
 	|| ydk::is_set(min_rtr_adv_interval.yfilter)
+	|| ydk::is_set(managed_flag.yfilter)
 	|| ydk::is_set(other_config_flag.yfilter)
+	|| ydk::is_set(link_mtu.yfilter)
 	|| ydk::is_set(reachable_time.yfilter)
 	|| ydk::is_set(retrans_timer.yfilter)
-	|| ydk::is_set(send_advertisements.yfilter)
+	|| ydk::is_set(cur_hop_limit.yfilter)
+	|| ydk::is_set(default_lifetime.yfilter)
 	|| (prefix_list !=  nullptr && prefix_list->has_operation());
 }
 
@@ -1285,16 +1375,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ipv6::Ipv6
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cur_hop_limit.is_set || is_set(cur_hop_limit.yfilter)) leaf_name_data.push_back(cur_hop_limit.get_name_leafdata());
-    if (default_lifetime.is_set || is_set(default_lifetime.yfilter)) leaf_name_data.push_back(default_lifetime.get_name_leafdata());
-    if (link_mtu.is_set || is_set(link_mtu.yfilter)) leaf_name_data.push_back(link_mtu.get_name_leafdata());
-    if (managed_flag.is_set || is_set(managed_flag.yfilter)) leaf_name_data.push_back(managed_flag.get_name_leafdata());
+    if (send_advertisements.is_set || is_set(send_advertisements.yfilter)) leaf_name_data.push_back(send_advertisements.get_name_leafdata());
     if (max_rtr_adv_interval.is_set || is_set(max_rtr_adv_interval.yfilter)) leaf_name_data.push_back(max_rtr_adv_interval.get_name_leafdata());
     if (min_rtr_adv_interval.is_set || is_set(min_rtr_adv_interval.yfilter)) leaf_name_data.push_back(min_rtr_adv_interval.get_name_leafdata());
+    if (managed_flag.is_set || is_set(managed_flag.yfilter)) leaf_name_data.push_back(managed_flag.get_name_leafdata());
     if (other_config_flag.is_set || is_set(other_config_flag.yfilter)) leaf_name_data.push_back(other_config_flag.get_name_leafdata());
+    if (link_mtu.is_set || is_set(link_mtu.yfilter)) leaf_name_data.push_back(link_mtu.get_name_leafdata());
     if (reachable_time.is_set || is_set(reachable_time.yfilter)) leaf_name_data.push_back(reachable_time.get_name_leafdata());
     if (retrans_timer.is_set || is_set(retrans_timer.yfilter)) leaf_name_data.push_back(retrans_timer.get_name_leafdata());
-    if (send_advertisements.is_set || is_set(send_advertisements.yfilter)) leaf_name_data.push_back(send_advertisements.get_name_leafdata());
+    if (cur_hop_limit.is_set || is_set(cur_hop_limit.yfilter)) leaf_name_data.push_back(cur_hop_limit.get_name_leafdata());
+    if (default_lifetime.is_set || is_set(default_lifetime.yfilter)) leaf_name_data.push_back(default_lifetime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1327,29 +1417,11 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Ipv6
 
 void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cur-hop-limit")
+    if(value_path == "send-advertisements")
     {
-        cur_hop_limit = value;
-        cur_hop_limit.value_namespace = name_space;
-        cur_hop_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "default-lifetime")
-    {
-        default_lifetime = value;
-        default_lifetime.value_namespace = name_space;
-        default_lifetime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-mtu")
-    {
-        link_mtu = value;
-        link_mtu.value_namespace = name_space;
-        link_mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "managed-flag")
-    {
-        managed_flag = value;
-        managed_flag.value_namespace = name_space;
-        managed_flag.value_namespace_prefix = name_space_prefix;
+        send_advertisements = value;
+        send_advertisements.value_namespace = name_space;
+        send_advertisements.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-rtr-adv-interval")
     {
@@ -1363,11 +1435,23 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::set_value(const std:
         min_rtr_adv_interval.value_namespace = name_space;
         min_rtr_adv_interval.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "managed-flag")
+    {
+        managed_flag = value;
+        managed_flag.value_namespace = name_space;
+        managed_flag.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "other-config-flag")
     {
         other_config_flag = value;
         other_config_flag.value_namespace = name_space;
         other_config_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-mtu")
+    {
+        link_mtu = value;
+        link_mtu.value_namespace = name_space;
+        link_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reachable-time")
     {
@@ -1381,31 +1465,25 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::set_value(const std:
         retrans_timer.value_namespace = name_space;
         retrans_timer.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "send-advertisements")
+    if(value_path == "cur-hop-limit")
     {
-        send_advertisements = value;
-        send_advertisements.value_namespace = name_space;
-        send_advertisements.value_namespace_prefix = name_space_prefix;
+        cur_hop_limit = value;
+        cur_hop_limit.value_namespace = name_space;
+        cur_hop_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default-lifetime")
+    {
+        default_lifetime = value;
+        default_lifetime.value_namespace = name_space;
+        default_lifetime.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cur-hop-limit")
+    if(value_path == "send-advertisements")
     {
-        cur_hop_limit.yfilter = yfilter;
-    }
-    if(value_path == "default-lifetime")
-    {
-        default_lifetime.yfilter = yfilter;
-    }
-    if(value_path == "link-mtu")
-    {
-        link_mtu.yfilter = yfilter;
-    }
-    if(value_path == "managed-flag")
-    {
-        managed_flag.yfilter = yfilter;
+        send_advertisements.yfilter = yfilter;
     }
     if(value_path == "max-rtr-adv-interval")
     {
@@ -1415,9 +1493,17 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::set_filter(const std
     {
         min_rtr_adv_interval.yfilter = yfilter;
     }
+    if(value_path == "managed-flag")
+    {
+        managed_flag.yfilter = yfilter;
+    }
     if(value_path == "other-config-flag")
     {
         other_config_flag.yfilter = yfilter;
+    }
+    if(value_path == "link-mtu")
+    {
+        link_mtu.yfilter = yfilter;
     }
     if(value_path == "reachable-time")
     {
@@ -1427,15 +1513,19 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::set_filter(const std
     {
         retrans_timer.yfilter = yfilter;
     }
-    if(value_path == "send-advertisements")
+    if(value_path == "cur-hop-limit")
     {
-        send_advertisements.yfilter = yfilter;
+        cur_hop_limit.yfilter = yfilter;
+    }
+    if(value_path == "default-lifetime")
+    {
+        default_lifetime.yfilter = yfilter;
     }
 }
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-list" || name == "cur-hop-limit" || name == "default-lifetime" || name == "link-mtu" || name == "managed-flag" || name == "max-rtr-adv-interval" || name == "min-rtr-adv-interval" || name == "other-config-flag" || name == "reachable-time" || name == "retrans-timer" || name == "send-advertisements")
+    if(name == "prefix-list" || name == "send-advertisements" || name == "max-rtr-adv-interval" || name == "min-rtr-adv-interval" || name == "managed-flag" || name == "other-config-flag" || name == "link-mtu" || name == "reachable-time" || name == "retrans-timer" || name == "cur-hop-limit" || name == "default-lifetime")
         return true;
     return false;
 }
@@ -1536,11 +1626,11 @@ bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::has_leaf
 Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::Prefix()
     :
     prefix_spec{YType::str, "prefix-spec"},
-    autonomous_flag{YType::boolean, "autonomous-flag"},
     no_advertise{YType::empty, "no-advertise"},
+    valid_lifetime{YType::uint32, "valid-lifetime"},
     on_link_flag{YType::boolean, "on-link-flag"},
     preferred_lifetime{YType::uint32, "preferred-lifetime"},
-    valid_lifetime{YType::uint32, "valid-lifetime"}
+    autonomous_flag{YType::boolean, "autonomous-flag"}
 {
 
     yang_name = "prefix"; yang_parent_name = "prefix-list"; is_top_level_class = false; has_list_ancestor = true;
@@ -1553,22 +1643,22 @@ Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::~Pref
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::has_data() const
 {
     return prefix_spec.is_set
-	|| autonomous_flag.is_set
 	|| no_advertise.is_set
+	|| valid_lifetime.is_set
 	|| on_link_flag.is_set
 	|| preferred_lifetime.is_set
-	|| valid_lifetime.is_set;
+	|| autonomous_flag.is_set;
 }
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix_spec.yfilter)
-	|| ydk::is_set(autonomous_flag.yfilter)
 	|| ydk::is_set(no_advertise.yfilter)
+	|| ydk::is_set(valid_lifetime.yfilter)
 	|| ydk::is_set(on_link_flag.yfilter)
 	|| ydk::is_set(preferred_lifetime.yfilter)
-	|| ydk::is_set(valid_lifetime.yfilter);
+	|| ydk::is_set(autonomous_flag.yfilter);
 }
 
 std::string Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::get_segment_path() const
@@ -1583,11 +1673,11 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ipv6::Ipv6
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (prefix_spec.is_set || is_set(prefix_spec.yfilter)) leaf_name_data.push_back(prefix_spec.get_name_leafdata());
-    if (autonomous_flag.is_set || is_set(autonomous_flag.yfilter)) leaf_name_data.push_back(autonomous_flag.get_name_leafdata());
     if (no_advertise.is_set || is_set(no_advertise.yfilter)) leaf_name_data.push_back(no_advertise.get_name_leafdata());
+    if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
     if (on_link_flag.is_set || is_set(on_link_flag.yfilter)) leaf_name_data.push_back(on_link_flag.get_name_leafdata());
     if (preferred_lifetime.is_set || is_set(preferred_lifetime.yfilter)) leaf_name_data.push_back(preferred_lifetime.get_name_leafdata());
-    if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
+    if (autonomous_flag.is_set || is_set(autonomous_flag.yfilter)) leaf_name_data.push_back(autonomous_flag.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1612,17 +1702,17 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::
         prefix_spec.value_namespace = name_space;
         prefix_spec.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "autonomous-flag")
-    {
-        autonomous_flag = value;
-        autonomous_flag.value_namespace = name_space;
-        autonomous_flag.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "no-advertise")
     {
         no_advertise = value;
         no_advertise.value_namespace = name_space;
         no_advertise.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime = value;
+        valid_lifetime.value_namespace = name_space;
+        valid_lifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "on-link-flag")
     {
@@ -1636,11 +1726,11 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::
         preferred_lifetime.value_namespace = name_space;
         preferred_lifetime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "valid-lifetime")
+    if(value_path == "autonomous-flag")
     {
-        valid_lifetime = value;
-        valid_lifetime.value_namespace = name_space;
-        valid_lifetime.value_namespace_prefix = name_space_prefix;
+        autonomous_flag = value;
+        autonomous_flag.value_namespace = name_space;
+        autonomous_flag.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1650,13 +1740,13 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::
     {
         prefix_spec.yfilter = yfilter;
     }
-    if(value_path == "autonomous-flag")
-    {
-        autonomous_flag.yfilter = yfilter;
-    }
     if(value_path == "no-advertise")
     {
         no_advertise.yfilter = yfilter;
+    }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime.yfilter = yfilter;
     }
     if(value_path == "on-link-flag")
     {
@@ -1666,105 +1756,15 @@ void Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::
     {
         preferred_lifetime.yfilter = yfilter;
     }
-    if(value_path == "valid-lifetime")
+    if(value_path == "autonomous-flag")
     {
-        valid_lifetime.yfilter = yfilter;
+        autonomous_flag.yfilter = yfilter;
     }
 }
 
 bool Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-spec" || name == "autonomous-flag" || name == "no-advertise" || name == "on-link-flag" || name == "preferred-lifetime" || name == "valid-lifetime")
-        return true;
-    return false;
-}
-
-Interfaces::Interface::Ipv6::Neighbor::Neighbor()
-    :
-    ip{YType::str, "ip"},
-    link_layer_address{YType::str, "link-layer-address"}
-{
-
-    yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Interfaces::Interface::Ipv6::Neighbor::~Neighbor()
-{
-}
-
-bool Interfaces::Interface::Ipv6::Neighbor::has_data() const
-{
-    return ip.is_set
-	|| link_layer_address.is_set;
-}
-
-bool Interfaces::Interface::Ipv6::Neighbor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(link_layer_address.yfilter);
-}
-
-std::string Interfaces::Interface::Ipv6::Neighbor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ipv6::Neighbor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (link_layer_address.is_set || is_set(link_layer_address.yfilter)) leaf_name_data.push_back(link_layer_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Neighbor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Interfaces::Interface::Ipv6::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-layer-address")
-    {
-        link_layer_address = value;
-        link_layer_address.value_namespace = name_space;
-        link_layer_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Interfaces::Interface::Ipv6::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "link-layer-address")
-    {
-        link_layer_address.yfilter = yfilter;
-    }
-}
-
-bool Interfaces::Interface::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "link-layer-address")
+    if(name == "prefix-spec" || name == "no-advertise" || name == "valid-lifetime" || name == "on-link-flag" || name == "preferred-lifetime" || name == "autonomous-flag")
         return true;
     return false;
 }
@@ -1890,20 +1890,20 @@ bool InterfacesState::has_leaf_or_child_of_name(const std::string & name) const
 InterfacesState::Interface::Interface()
     :
     name{YType::str, "name"},
+    type{YType::identityref, "type"},
     admin_status{YType::enumeration, "admin-status"},
-    higher_layer_if{YType::str, "higher-layer-if"},
-    if_index{YType::int32, "if-index"},
-    last_change{YType::str, "last-change"},
-    lower_layer_if{YType::str, "lower-layer-if"},
     oper_status{YType::enumeration, "oper-status"},
+    last_change{YType::str, "last-change"},
+    if_index{YType::int32, "if-index"},
     phys_address{YType::str, "phys-address"},
-    routing_instance{YType::str, "ietf-routing:routing-instance"},
+    higher_layer_if{YType::str, "higher-layer-if"},
+    lower_layer_if{YType::str, "lower-layer-if"},
     speed{YType::uint64, "speed"},
-    type{YType::identityref, "type"}
+    routing_instance{YType::str, "ietf-routing:routing-instance"}
     	,
-    ipv4(nullptr) // presence node
+    statistics(std::make_shared<InterfacesState::Interface::Statistics>())
+	,ipv4(nullptr) // presence node
 	,ipv6(nullptr) // presence node
-	,statistics(std::make_shared<InterfacesState::Interface::Statistics>())
 {
     statistics->parent = this;
 
@@ -1932,17 +1932,17 @@ bool InterfacesState::Interface::has_data() const
             return true;
     }
     return name.is_set
-	|| admin_status.is_set
-	|| if_index.is_set
-	|| last_change.is_set
-	|| oper_status.is_set
-	|| phys_address.is_set
-	|| routing_instance.is_set
-	|| speed.is_set
 	|| type.is_set
+	|| admin_status.is_set
+	|| oper_status.is_set
+	|| last_change.is_set
+	|| if_index.is_set
+	|| phys_address.is_set
+	|| speed.is_set
+	|| routing_instance.is_set
+	|| (statistics !=  nullptr && statistics->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data())
-	|| (statistics !=  nullptr && statistics->has_data());
+	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
 
 bool InterfacesState::Interface::has_operation() const
@@ -1964,19 +1964,19 @@ bool InterfacesState::Interface::has_operation() const
     }
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(admin_status.yfilter)
-	|| ydk::is_set(higher_layer_if.yfilter)
-	|| ydk::is_set(if_index.yfilter)
-	|| ydk::is_set(last_change.yfilter)
-	|| ydk::is_set(lower_layer_if.yfilter)
-	|| ydk::is_set(oper_status.yfilter)
-	|| ydk::is_set(phys_address.yfilter)
-	|| ydk::is_set(routing_instance.yfilter)
-	|| ydk::is_set(speed.yfilter)
 	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(admin_status.yfilter)
+	|| ydk::is_set(oper_status.yfilter)
+	|| ydk::is_set(last_change.yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(phys_address.yfilter)
+	|| ydk::is_set(higher_layer_if.yfilter)
+	|| ydk::is_set(lower_layer_if.yfilter)
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(routing_instance.yfilter)
+	|| (statistics !=  nullptr && statistics->has_operation())
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation())
-	|| (statistics !=  nullptr && statistics->has_operation());
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string InterfacesState::Interface::get_absolute_path() const
@@ -1998,14 +1998,14 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::get_n
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (admin_status.is_set || is_set(admin_status.yfilter)) leaf_name_data.push_back(admin_status.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (last_change.is_set || is_set(last_change.yfilter)) leaf_name_data.push_back(last_change.get_name_leafdata());
-    if (oper_status.is_set || is_set(oper_status.yfilter)) leaf_name_data.push_back(oper_status.get_name_leafdata());
-    if (phys_address.is_set || is_set(phys_address.yfilter)) leaf_name_data.push_back(phys_address.get_name_leafdata());
-    if (routing_instance.is_set || is_set(routing_instance.yfilter)) leaf_name_data.push_back(routing_instance.get_name_leafdata());
-    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (admin_status.is_set || is_set(admin_status.yfilter)) leaf_name_data.push_back(admin_status.get_name_leafdata());
+    if (oper_status.is_set || is_set(oper_status.yfilter)) leaf_name_data.push_back(oper_status.get_name_leafdata());
+    if (last_change.is_set || is_set(last_change.yfilter)) leaf_name_data.push_back(last_change.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (phys_address.is_set || is_set(phys_address.yfilter)) leaf_name_data.push_back(phys_address.get_name_leafdata());
+    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (routing_instance.is_set || is_set(routing_instance.yfilter)) leaf_name_data.push_back(routing_instance.get_name_leafdata());
 
     auto higher_layer_if_name_datas = higher_layer_if.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), higher_layer_if_name_datas.begin(), higher_layer_if_name_datas.end());
@@ -2017,6 +2017,15 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::get_n
 
 std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "statistics")
+    {
+        if(statistics == nullptr)
+        {
+            statistics = std::make_shared<InterfacesState::Interface::Statistics>();
+        }
+        return statistics;
+    }
+
     if(child_yang_name == "diffserv-target-entry")
     {
         for(auto const & c : diffserv_target_entry)
@@ -2051,21 +2060,17 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
         return ipv6;
     }
 
-    if(child_yang_name == "statistics")
-    {
-        if(statistics == nullptr)
-        {
-            statistics = std::make_shared<InterfacesState::Interface::Statistics>();
-        }
-        return statistics;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
+    {
+        children["statistics"] = statistics;
+    }
+
     for (auto const & c : diffserv_target_entry)
     {
         children[c->get_segment_path()] = c;
@@ -2081,11 +2086,6 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::get_c
         children["ipv6"] = ipv6;
     }
 
-    if(statistics != nullptr)
-    {
-        children["statistics"] = statistics;
-    }
-
     return children;
 }
 
@@ -2097,31 +2097,17 @@ void InterfacesState::Interface::set_value(const std::string & value_path, const
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "admin-status")
     {
         admin_status = value;
         admin_status.value_namespace = name_space;
         admin_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "higher-layer-if")
-    {
-        higher_layer_if.append(value);
-    }
-    if(value_path == "if-index")
-    {
-        if_index = value;
-        if_index.value_namespace = name_space;
-        if_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-change")
-    {
-        last_change = value;
-        last_change.value_namespace = name_space;
-        last_change.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lower-layer-if")
-    {
-        lower_layer_if.append(value);
     }
     if(value_path == "oper-status")
     {
@@ -2129,17 +2115,31 @@ void InterfacesState::Interface::set_value(const std::string & value_path, const
         oper_status.value_namespace = name_space;
         oper_status.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "last-change")
+    {
+        last_change = value;
+        last_change.value_namespace = name_space;
+        last_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "if-index")
+    {
+        if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "phys-address")
     {
         phys_address = value;
         phys_address.value_namespace = name_space;
         phys_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "routing-instance")
+    if(value_path == "higher-layer-if")
     {
-        routing_instance = value;
-        routing_instance.value_namespace = name_space;
-        routing_instance.value_namespace_prefix = name_space_prefix;
+        higher_layer_if.append(value);
+    }
+    if(value_path == "lower-layer-if")
+    {
+        lower_layer_if.append(value);
     }
     if(value_path == "speed")
     {
@@ -2147,11 +2147,11 @@ void InterfacesState::Interface::set_value(const std::string & value_path, const
         speed.value_namespace = name_space;
         speed.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "type")
+    if(value_path == "routing-instance")
     {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
+        routing_instance = value;
+        routing_instance.value_namespace = name_space;
+        routing_instance.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2161,51 +2161,337 @@ void InterfacesState::Interface::set_filter(const std::string & value_path, YFil
     {
         name.yfilter = yfilter;
     }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
     if(value_path == "admin-status")
     {
         admin_status.yfilter = yfilter;
-    }
-    if(value_path == "higher-layer-if")
-    {
-        higher_layer_if.yfilter = yfilter;
-    }
-    if(value_path == "if-index")
-    {
-        if_index.yfilter = yfilter;
-    }
-    if(value_path == "last-change")
-    {
-        last_change.yfilter = yfilter;
-    }
-    if(value_path == "lower-layer-if")
-    {
-        lower_layer_if.yfilter = yfilter;
     }
     if(value_path == "oper-status")
     {
         oper_status.yfilter = yfilter;
     }
+    if(value_path == "last-change")
+    {
+        last_change.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
     if(value_path == "phys-address")
     {
         phys_address.yfilter = yfilter;
     }
-    if(value_path == "routing-instance")
+    if(value_path == "higher-layer-if")
     {
-        routing_instance.yfilter = yfilter;
+        higher_layer_if.yfilter = yfilter;
+    }
+    if(value_path == "lower-layer-if")
+    {
+        lower_layer_if.yfilter = yfilter;
     }
     if(value_path == "speed")
     {
         speed.yfilter = yfilter;
     }
-    if(value_path == "type")
+    if(value_path == "routing-instance")
     {
-        type.yfilter = yfilter;
+        routing_instance.yfilter = yfilter;
     }
 }
 
 bool InterfacesState::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "diffserv-target-entry" || name == "ipv4" || name == "ipv6" || name == "statistics" || name == "name" || name == "admin-status" || name == "higher-layer-if" || name == "if-index" || name == "last-change" || name == "lower-layer-if" || name == "oper-status" || name == "phys-address" || name == "routing-instance" || name == "speed" || name == "type")
+    if(name == "statistics" || name == "diffserv-target-entry" || name == "ipv4" || name == "ipv6" || name == "name" || name == "type" || name == "admin-status" || name == "oper-status" || name == "last-change" || name == "if-index" || name == "phys-address" || name == "higher-layer-if" || name == "lower-layer-if" || name == "speed" || name == "routing-instance")
+        return true;
+    return false;
+}
+
+InterfacesState::Interface::Statistics::Statistics()
+    :
+    discontinuity_time{YType::str, "discontinuity-time"},
+    in_octets{YType::uint64, "in-octets"},
+    in_unicast_pkts{YType::uint64, "in-unicast-pkts"},
+    in_broadcast_pkts{YType::uint64, "in-broadcast-pkts"},
+    in_multicast_pkts{YType::uint64, "in-multicast-pkts"},
+    in_discards{YType::uint32, "in-discards"},
+    in_errors{YType::uint32, "in-errors"},
+    in_unknown_protos{YType::uint32, "in-unknown-protos"},
+    out_octets{YType::uint64, "out-octets"},
+    out_unicast_pkts{YType::uint64, "out-unicast-pkts"},
+    out_broadcast_pkts{YType::uint64, "out-broadcast-pkts"},
+    out_multicast_pkts{YType::uint64, "out-multicast-pkts"},
+    out_discards{YType::uint32, "out-discards"},
+    out_errors{YType::uint32, "out-errors"},
+    in_pkts{YType::uint64, "ietf-interfaces-ext:in-pkts"},
+    out_pkts{YType::uint64, "ietf-interfaces-ext:out-pkts"}
+{
+
+    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfacesState::Interface::Statistics::~Statistics()
+{
+}
+
+bool InterfacesState::Interface::Statistics::has_data() const
+{
+    return discontinuity_time.is_set
+	|| in_octets.is_set
+	|| in_unicast_pkts.is_set
+	|| in_broadcast_pkts.is_set
+	|| in_multicast_pkts.is_set
+	|| in_discards.is_set
+	|| in_errors.is_set
+	|| in_unknown_protos.is_set
+	|| out_octets.is_set
+	|| out_unicast_pkts.is_set
+	|| out_broadcast_pkts.is_set
+	|| out_multicast_pkts.is_set
+	|| out_discards.is_set
+	|| out_errors.is_set
+	|| in_pkts.is_set
+	|| out_pkts.is_set;
+}
+
+bool InterfacesState::Interface::Statistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discontinuity_time.yfilter)
+	|| ydk::is_set(in_octets.yfilter)
+	|| ydk::is_set(in_unicast_pkts.yfilter)
+	|| ydk::is_set(in_broadcast_pkts.yfilter)
+	|| ydk::is_set(in_multicast_pkts.yfilter)
+	|| ydk::is_set(in_discards.yfilter)
+	|| ydk::is_set(in_errors.yfilter)
+	|| ydk::is_set(in_unknown_protos.yfilter)
+	|| ydk::is_set(out_octets.yfilter)
+	|| ydk::is_set(out_unicast_pkts.yfilter)
+	|| ydk::is_set(out_broadcast_pkts.yfilter)
+	|| ydk::is_set(out_multicast_pkts.yfilter)
+	|| ydk::is_set(out_discards.yfilter)
+	|| ydk::is_set(out_errors.yfilter)
+	|| ydk::is_set(in_pkts.yfilter)
+	|| ydk::is_set(out_pkts.yfilter);
+}
+
+std::string InterfacesState::Interface::Statistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Statistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discontinuity_time.is_set || is_set(discontinuity_time.yfilter)) leaf_name_data.push_back(discontinuity_time.get_name_leafdata());
+    if (in_octets.is_set || is_set(in_octets.yfilter)) leaf_name_data.push_back(in_octets.get_name_leafdata());
+    if (in_unicast_pkts.is_set || is_set(in_unicast_pkts.yfilter)) leaf_name_data.push_back(in_unicast_pkts.get_name_leafdata());
+    if (in_broadcast_pkts.is_set || is_set(in_broadcast_pkts.yfilter)) leaf_name_data.push_back(in_broadcast_pkts.get_name_leafdata());
+    if (in_multicast_pkts.is_set || is_set(in_multicast_pkts.yfilter)) leaf_name_data.push_back(in_multicast_pkts.get_name_leafdata());
+    if (in_discards.is_set || is_set(in_discards.yfilter)) leaf_name_data.push_back(in_discards.get_name_leafdata());
+    if (in_errors.is_set || is_set(in_errors.yfilter)) leaf_name_data.push_back(in_errors.get_name_leafdata());
+    if (in_unknown_protos.is_set || is_set(in_unknown_protos.yfilter)) leaf_name_data.push_back(in_unknown_protos.get_name_leafdata());
+    if (out_octets.is_set || is_set(out_octets.yfilter)) leaf_name_data.push_back(out_octets.get_name_leafdata());
+    if (out_unicast_pkts.is_set || is_set(out_unicast_pkts.yfilter)) leaf_name_data.push_back(out_unicast_pkts.get_name_leafdata());
+    if (out_broadcast_pkts.is_set || is_set(out_broadcast_pkts.yfilter)) leaf_name_data.push_back(out_broadcast_pkts.get_name_leafdata());
+    if (out_multicast_pkts.is_set || is_set(out_multicast_pkts.yfilter)) leaf_name_data.push_back(out_multicast_pkts.get_name_leafdata());
+    if (out_discards.is_set || is_set(out_discards.yfilter)) leaf_name_data.push_back(out_discards.get_name_leafdata());
+    if (out_errors.is_set || is_set(out_errors.yfilter)) leaf_name_data.push_back(out_errors.get_name_leafdata());
+    if (in_pkts.is_set || is_set(in_pkts.yfilter)) leaf_name_data.push_back(in_pkts.get_name_leafdata());
+    if (out_pkts.is_set || is_set(out_pkts.yfilter)) leaf_name_data.push_back(out_pkts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfacesState::Interface::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Statistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfacesState::Interface::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discontinuity-time")
+    {
+        discontinuity_time = value;
+        discontinuity_time.value_namespace = name_space;
+        discontinuity_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-octets")
+    {
+        in_octets = value;
+        in_octets.value_namespace = name_space;
+        in_octets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-unicast-pkts")
+    {
+        in_unicast_pkts = value;
+        in_unicast_pkts.value_namespace = name_space;
+        in_unicast_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-broadcast-pkts")
+    {
+        in_broadcast_pkts = value;
+        in_broadcast_pkts.value_namespace = name_space;
+        in_broadcast_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-multicast-pkts")
+    {
+        in_multicast_pkts = value;
+        in_multicast_pkts.value_namespace = name_space;
+        in_multicast_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-discards")
+    {
+        in_discards = value;
+        in_discards.value_namespace = name_space;
+        in_discards.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-errors")
+    {
+        in_errors = value;
+        in_errors.value_namespace = name_space;
+        in_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-unknown-protos")
+    {
+        in_unknown_protos = value;
+        in_unknown_protos.value_namespace = name_space;
+        in_unknown_protos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-octets")
+    {
+        out_octets = value;
+        out_octets.value_namespace = name_space;
+        out_octets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-unicast-pkts")
+    {
+        out_unicast_pkts = value;
+        out_unicast_pkts.value_namespace = name_space;
+        out_unicast_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-broadcast-pkts")
+    {
+        out_broadcast_pkts = value;
+        out_broadcast_pkts.value_namespace = name_space;
+        out_broadcast_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-multicast-pkts")
+    {
+        out_multicast_pkts = value;
+        out_multicast_pkts.value_namespace = name_space;
+        out_multicast_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-discards")
+    {
+        out_discards = value;
+        out_discards.value_namespace = name_space;
+        out_discards.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-errors")
+    {
+        out_errors = value;
+        out_errors.value_namespace = name_space;
+        out_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-pkts")
+    {
+        in_pkts = value;
+        in_pkts.value_namespace = name_space;
+        in_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts")
+    {
+        out_pkts = value;
+        out_pkts.value_namespace = name_space;
+        out_pkts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfacesState::Interface::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discontinuity-time")
+    {
+        discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "in-octets")
+    {
+        in_octets.yfilter = yfilter;
+    }
+    if(value_path == "in-unicast-pkts")
+    {
+        in_unicast_pkts.yfilter = yfilter;
+    }
+    if(value_path == "in-broadcast-pkts")
+    {
+        in_broadcast_pkts.yfilter = yfilter;
+    }
+    if(value_path == "in-multicast-pkts")
+    {
+        in_multicast_pkts.yfilter = yfilter;
+    }
+    if(value_path == "in-discards")
+    {
+        in_discards.yfilter = yfilter;
+    }
+    if(value_path == "in-errors")
+    {
+        in_errors.yfilter = yfilter;
+    }
+    if(value_path == "in-unknown-protos")
+    {
+        in_unknown_protos.yfilter = yfilter;
+    }
+    if(value_path == "out-octets")
+    {
+        out_octets.yfilter = yfilter;
+    }
+    if(value_path == "out-unicast-pkts")
+    {
+        out_unicast_pkts.yfilter = yfilter;
+    }
+    if(value_path == "out-broadcast-pkts")
+    {
+        out_broadcast_pkts.yfilter = yfilter;
+    }
+    if(value_path == "out-multicast-pkts")
+    {
+        out_multicast_pkts.yfilter = yfilter;
+    }
+    if(value_path == "out-discards")
+    {
+        out_discards.yfilter = yfilter;
+    }
+    if(value_path == "out-errors")
+    {
+        out_errors.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts")
+    {
+        in_pkts.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts")
+    {
+        out_pkts.yfilter = yfilter;
+    }
+}
+
+bool InterfacesState::Interface::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discontinuity-time" || name == "in-octets" || name == "in-unicast-pkts" || name == "in-broadcast-pkts" || name == "in-multicast-pkts" || name == "in-discards" || name == "in-errors" || name == "in-unknown-protos" || name == "out-octets" || name == "out-unicast-pkts" || name == "out-broadcast-pkts" || name == "out-multicast-pkts" || name == "out-discards" || name == "out-errors" || name == "in-pkts" || name == "out-pkts")
         return true;
     return false;
 }
@@ -2491,8 +2777,8 @@ bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::ClassifierEntryStatistics()
     :
-    classified_bytes{YType::uint64, "classified-bytes"},
     classified_pkts{YType::uint64, "classified-pkts"},
+    classified_bytes{YType::uint64, "classified-bytes"},
     classified_rate{YType::uint64, "classified-rate"}
 {
 
@@ -2505,16 +2791,16 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::has_data() const
 {
-    return classified_bytes.is_set
-	|| classified_pkts.is_set
+    return classified_pkts.is_set
+	|| classified_bytes.is_set
 	|| classified_rate.is_set;
 }
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(classified_bytes.yfilter)
 	|| ydk::is_set(classified_pkts.yfilter)
+	|| ydk::is_set(classified_bytes.yfilter)
 	|| ydk::is_set(classified_rate.yfilter);
 }
 
@@ -2529,8 +2815,8 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Diffs
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (classified_bytes.is_set || is_set(classified_bytes.yfilter)) leaf_name_data.push_back(classified_bytes.get_name_leafdata());
     if (classified_pkts.is_set || is_set(classified_pkts.yfilter)) leaf_name_data.push_back(classified_pkts.get_name_leafdata());
+    if (classified_bytes.is_set || is_set(classified_bytes.yfilter)) leaf_name_data.push_back(classified_bytes.get_name_leafdata());
     if (classified_rate.is_set || is_set(classified_rate.yfilter)) leaf_name_data.push_back(classified_rate.get_name_leafdata());
 
     return leaf_name_data;
@@ -2550,17 +2836,17 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Diffs
 
 void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "classified-bytes")
-    {
-        classified_bytes = value;
-        classified_bytes.value_namespace = name_space;
-        classified_bytes.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "classified-pkts")
     {
         classified_pkts = value;
         classified_pkts.value_namespace = name_space;
         classified_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "classified-bytes")
+    {
+        classified_bytes = value;
+        classified_bytes.value_namespace = name_space;
+        classified_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "classified-rate")
     {
@@ -2572,13 +2858,13 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 
 void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "classified-bytes")
-    {
-        classified_bytes.yfilter = yfilter;
-    }
     if(value_path == "classified-pkts")
     {
         classified_pkts.yfilter = yfilter;
+    }
+    if(value_path == "classified-bytes")
+    {
+        classified_bytes.yfilter = yfilter;
     }
     if(value_path == "classified-rate")
     {
@@ -2588,7 +2874,7 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "classified-bytes" || name == "classified-pkts" || name == "classified-rate")
+    if(name == "classified-pkts" || name == "classified-bytes" || name == "classified-rate")
         return true;
     return false;
 }
@@ -2596,10 +2882,10 @@ bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::MeterStatistics()
     :
     meter_id{YType::uint16, "meter-id"},
-    meter_failed_bytes{YType::uint64, "meter-failed-bytes"},
-    meter_failed_pkts{YType::uint64, "meter-failed-pkts"},
+    meter_succeed_pkts{YType::uint64, "meter-succeed-pkts"},
     meter_succeed_bytes{YType::uint64, "meter-succeed-bytes"},
-    meter_succeed_pkts{YType::uint64, "meter-succeed-pkts"}
+    meter_failed_pkts{YType::uint64, "meter-failed-pkts"},
+    meter_failed_bytes{YType::uint64, "meter-failed-bytes"}
 {
 
     yang_name = "meter-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
@@ -2612,20 +2898,20 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::has_data() const
 {
     return meter_id.is_set
-	|| meter_failed_bytes.is_set
-	|| meter_failed_pkts.is_set
+	|| meter_succeed_pkts.is_set
 	|| meter_succeed_bytes.is_set
-	|| meter_succeed_pkts.is_set;
+	|| meter_failed_pkts.is_set
+	|| meter_failed_bytes.is_set;
 }
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(meter_id.yfilter)
-	|| ydk::is_set(meter_failed_bytes.yfilter)
-	|| ydk::is_set(meter_failed_pkts.yfilter)
+	|| ydk::is_set(meter_succeed_pkts.yfilter)
 	|| ydk::is_set(meter_succeed_bytes.yfilter)
-	|| ydk::is_set(meter_succeed_pkts.yfilter);
+	|| ydk::is_set(meter_failed_pkts.yfilter)
+	|| ydk::is_set(meter_failed_bytes.yfilter);
 }
 
 std::string InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_segment_path() const
@@ -2640,10 +2926,10 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Diffs
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (meter_id.is_set || is_set(meter_id.yfilter)) leaf_name_data.push_back(meter_id.get_name_leafdata());
-    if (meter_failed_bytes.is_set || is_set(meter_failed_bytes.yfilter)) leaf_name_data.push_back(meter_failed_bytes.get_name_leafdata());
-    if (meter_failed_pkts.is_set || is_set(meter_failed_pkts.yfilter)) leaf_name_data.push_back(meter_failed_pkts.get_name_leafdata());
-    if (meter_succeed_bytes.is_set || is_set(meter_succeed_bytes.yfilter)) leaf_name_data.push_back(meter_succeed_bytes.get_name_leafdata());
     if (meter_succeed_pkts.is_set || is_set(meter_succeed_pkts.yfilter)) leaf_name_data.push_back(meter_succeed_pkts.get_name_leafdata());
+    if (meter_succeed_bytes.is_set || is_set(meter_succeed_bytes.yfilter)) leaf_name_data.push_back(meter_succeed_bytes.get_name_leafdata());
+    if (meter_failed_pkts.is_set || is_set(meter_failed_pkts.yfilter)) leaf_name_data.push_back(meter_failed_pkts.get_name_leafdata());
+    if (meter_failed_bytes.is_set || is_set(meter_failed_bytes.yfilter)) leaf_name_data.push_back(meter_failed_bytes.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2668,17 +2954,11 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
         meter_id.value_namespace = name_space;
         meter_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "meter-failed-bytes")
+    if(value_path == "meter-succeed-pkts")
     {
-        meter_failed_bytes = value;
-        meter_failed_bytes.value_namespace = name_space;
-        meter_failed_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "meter-failed-pkts")
-    {
-        meter_failed_pkts = value;
-        meter_failed_pkts.value_namespace = name_space;
-        meter_failed_pkts.value_namespace_prefix = name_space_prefix;
+        meter_succeed_pkts = value;
+        meter_succeed_pkts.value_namespace = name_space;
+        meter_succeed_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "meter-succeed-bytes")
     {
@@ -2686,11 +2966,17 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
         meter_succeed_bytes.value_namespace = name_space;
         meter_succeed_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "meter-succeed-pkts")
+    if(value_path == "meter-failed-pkts")
     {
-        meter_succeed_pkts = value;
-        meter_succeed_pkts.value_namespace = name_space;
-        meter_succeed_pkts.value_namespace_prefix = name_space_prefix;
+        meter_failed_pkts = value;
+        meter_failed_pkts.value_namespace = name_space;
+        meter_failed_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "meter-failed-bytes")
+    {
+        meter_failed_bytes = value;
+        meter_failed_bytes.value_namespace = name_space;
+        meter_failed_bytes.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2700,39 +2986,39 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
     {
         meter_id.yfilter = yfilter;
     }
-    if(value_path == "meter-failed-bytes")
+    if(value_path == "meter-succeed-pkts")
     {
-        meter_failed_bytes.yfilter = yfilter;
-    }
-    if(value_path == "meter-failed-pkts")
-    {
-        meter_failed_pkts.yfilter = yfilter;
+        meter_succeed_pkts.yfilter = yfilter;
     }
     if(value_path == "meter-succeed-bytes")
     {
         meter_succeed_bytes.yfilter = yfilter;
     }
-    if(value_path == "meter-succeed-pkts")
+    if(value_path == "meter-failed-pkts")
     {
-        meter_succeed_pkts.yfilter = yfilter;
+        meter_failed_pkts.yfilter = yfilter;
+    }
+    if(value_path == "meter-failed-bytes")
+    {
+        meter_failed_bytes.yfilter = yfilter;
     }
 }
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "meter-id" || name == "meter-failed-bytes" || name == "meter-failed-pkts" || name == "meter-succeed-bytes" || name == "meter-succeed-pkts")
+    if(name == "meter-id" || name == "meter-succeed-pkts" || name == "meter-succeed-bytes" || name == "meter-failed-pkts" || name == "meter-failed-bytes")
         return true;
     return false;
 }
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::QueuingStatistics()
     :
-    drop_bytes{YType::uint64, "drop-bytes"},
-    drop_pkts{YType::uint64, "drop-pkts"},
-    output_bytes{YType::uint64, "output-bytes"},
     output_pkts{YType::uint64, "output-pkts"},
+    output_bytes{YType::uint64, "output-bytes"},
+    queue_size_pkts{YType::uint64, "queue-size-pkts"},
     queue_size_bytes{YType::uint64, "queue-size-bytes"},
-    queue_size_pkts{YType::uint64, "queue-size-pkts"}
+    drop_pkts{YType::uint64, "drop-pkts"},
+    drop_bytes{YType::uint64, "drop-bytes"}
     	,
     wred_stats(std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>())
 {
@@ -2747,24 +3033,24 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_data() const
 {
-    return drop_bytes.is_set
-	|| drop_pkts.is_set
+    return output_pkts.is_set
 	|| output_bytes.is_set
-	|| output_pkts.is_set
-	|| queue_size_bytes.is_set
 	|| queue_size_pkts.is_set
+	|| queue_size_bytes.is_set
+	|| drop_pkts.is_set
+	|| drop_bytes.is_set
 	|| (wred_stats !=  nullptr && wred_stats->has_data());
 }
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(drop_bytes.yfilter)
-	|| ydk::is_set(drop_pkts.yfilter)
-	|| ydk::is_set(output_bytes.yfilter)
 	|| ydk::is_set(output_pkts.yfilter)
-	|| ydk::is_set(queue_size_bytes.yfilter)
+	|| ydk::is_set(output_bytes.yfilter)
 	|| ydk::is_set(queue_size_pkts.yfilter)
+	|| ydk::is_set(queue_size_bytes.yfilter)
+	|| ydk::is_set(drop_pkts.yfilter)
+	|| ydk::is_set(drop_bytes.yfilter)
 	|| (wred_stats !=  nullptr && wred_stats->has_operation());
 }
 
@@ -2779,12 +3065,12 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Diffs
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
-    if (drop_pkts.is_set || is_set(drop_pkts.yfilter)) leaf_name_data.push_back(drop_pkts.get_name_leafdata());
-    if (output_bytes.is_set || is_set(output_bytes.yfilter)) leaf_name_data.push_back(output_bytes.get_name_leafdata());
     if (output_pkts.is_set || is_set(output_pkts.yfilter)) leaf_name_data.push_back(output_pkts.get_name_leafdata());
-    if (queue_size_bytes.is_set || is_set(queue_size_bytes.yfilter)) leaf_name_data.push_back(queue_size_bytes.get_name_leafdata());
+    if (output_bytes.is_set || is_set(output_bytes.yfilter)) leaf_name_data.push_back(output_bytes.get_name_leafdata());
     if (queue_size_pkts.is_set || is_set(queue_size_pkts.yfilter)) leaf_name_data.push_back(queue_size_pkts.get_name_leafdata());
+    if (queue_size_bytes.is_set || is_set(queue_size_bytes.yfilter)) leaf_name_data.push_back(queue_size_bytes.get_name_leafdata());
+    if (drop_pkts.is_set || is_set(drop_pkts.yfilter)) leaf_name_data.push_back(drop_pkts.get_name_leafdata());
+    if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2817,17 +3103,11 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Diffs
 
 void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "drop-bytes")
+    if(value_path == "output-pkts")
     {
-        drop_bytes = value;
-        drop_bytes.value_namespace = name_space;
-        drop_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "drop-pkts")
-    {
-        drop_pkts = value;
-        drop_pkts.value_namespace = name_space;
-        drop_pkts.value_namespace_prefix = name_space_prefix;
+        output_pkts = value;
+        output_pkts.value_namespace = name_space;
+        output_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-bytes")
     {
@@ -2835,11 +3115,11 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
         output_bytes.value_namespace = name_space;
         output_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "output-pkts")
+    if(value_path == "queue-size-pkts")
     {
-        output_pkts = value;
-        output_pkts.value_namespace = name_space;
-        output_pkts.value_namespace_prefix = name_space_prefix;
+        queue_size_pkts = value;
+        queue_size_pkts.value_namespace = name_space;
+        queue_size_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-size-bytes")
     {
@@ -2847,53 +3127,59 @@ void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierSt
         queue_size_bytes.value_namespace = name_space;
         queue_size_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "queue-size-pkts")
+    if(value_path == "drop-pkts")
     {
-        queue_size_pkts = value;
-        queue_size_pkts.value_namespace = name_space;
-        queue_size_pkts.value_namespace_prefix = name_space_prefix;
+        drop_pkts = value;
+        drop_pkts.value_namespace = name_space;
+        drop_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-bytes")
+    {
+        drop_bytes = value;
+        drop_bytes.value_namespace = name_space;
+        drop_bytes.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "drop-bytes")
+    if(value_path == "output-pkts")
     {
-        drop_bytes.yfilter = yfilter;
-    }
-    if(value_path == "drop-pkts")
-    {
-        drop_pkts.yfilter = yfilter;
+        output_pkts.yfilter = yfilter;
     }
     if(value_path == "output-bytes")
     {
         output_bytes.yfilter = yfilter;
     }
-    if(value_path == "output-pkts")
+    if(value_path == "queue-size-pkts")
     {
-        output_pkts.yfilter = yfilter;
+        queue_size_pkts.yfilter = yfilter;
     }
     if(value_path == "queue-size-bytes")
     {
         queue_size_bytes.yfilter = yfilter;
     }
-    if(value_path == "queue-size-pkts")
+    if(value_path == "drop-pkts")
     {
-        queue_size_pkts.yfilter = yfilter;
+        drop_pkts.yfilter = yfilter;
+    }
+    if(value_path == "drop-bytes")
+    {
+        drop_bytes.yfilter = yfilter;
     }
 }
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "wred-stats" || name == "drop-bytes" || name == "drop-pkts" || name == "output-bytes" || name == "output-pkts" || name == "queue-size-bytes" || name == "queue-size-pkts")
+    if(name == "wred-stats" || name == "output-pkts" || name == "output-bytes" || name == "queue-size-pkts" || name == "queue-size-bytes" || name == "drop-pkts" || name == "drop-bytes")
         return true;
     return false;
 }
 
 InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::WredStats()
     :
-    early_drop_bytes{YType::uint64, "early-drop-bytes"},
-    early_drop_pkts{YType::uint64, "early-drop-pkts"}
+    early_drop_pkts{YType::uint64, "early-drop-pkts"},
+    early_drop_bytes{YType::uint64, "early-drop-bytes"}
 {
 
     yang_name = "wred-stats"; yang_parent_name = "queuing-statistics"; is_top_level_class = false; has_list_ancestor = true;
@@ -2905,15 +3191,15 @@ InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatist
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_data() const
 {
-    return early_drop_bytes.is_set
-	|| early_drop_pkts.is_set;
+    return early_drop_pkts.is_set
+	|| early_drop_bytes.is_set;
 }
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(early_drop_bytes.yfilter)
-	|| ydk::is_set(early_drop_pkts.yfilter);
+	|| ydk::is_set(early_drop_pkts.yfilter)
+	|| ydk::is_set(early_drop_bytes.yfilter);
 }
 
 std::string InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::get_segment_path() const
@@ -2927,8 +3213,8 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Diffs
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (early_drop_bytes.is_set || is_set(early_drop_bytes.yfilter)) leaf_name_data.push_back(early_drop_bytes.get_name_leafdata());
     if (early_drop_pkts.is_set || is_set(early_drop_pkts.yfilter)) leaf_name_data.push_back(early_drop_pkts.get_name_leafdata());
+    if (early_drop_bytes.is_set || is_set(early_drop_bytes.yfilter)) leaf_name_data.push_back(early_drop_bytes.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2947,35 +3233,35 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Diffs
 
 void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "early-drop-bytes")
-    {
-        early_drop_bytes = value;
-        early_drop_bytes.value_namespace = name_space;
-        early_drop_bytes.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "early-drop-pkts")
     {
         early_drop_pkts = value;
         early_drop_pkts.value_namespace = name_space;
         early_drop_pkts.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "early-drop-bytes")
+    {
+        early_drop_bytes = value;
+        early_drop_bytes.value_namespace = name_space;
+        early_drop_bytes.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "early-drop-bytes")
-    {
-        early_drop_bytes.yfilter = yfilter;
-    }
     if(value_path == "early-drop-pkts")
     {
         early_drop_pkts.yfilter = yfilter;
+    }
+    if(value_path == "early-drop-bytes")
+    {
+        early_drop_bytes.yfilter = yfilter;
     }
 }
 
 bool InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "early-drop-bytes" || name == "early-drop-pkts")
+    if(name == "early-drop-pkts" || name == "early-drop-bytes")
         return true;
     return false;
 }
@@ -3135,9 +3421,9 @@ bool InterfacesState::Interface::Ipv4::has_leaf_or_child_of_name(const std::stri
 InterfacesState::Interface::Ipv4::Address::Address()
     :
     ip{YType::str, "ip"},
+    prefix_length{YType::uint8, "prefix-length"},
     netmask{YType::str, "netmask"},
-    origin{YType::enumeration, "origin"},
-    prefix_length{YType::uint8, "prefix-length"}
+    origin{YType::enumeration, "origin"}
 {
 
     yang_name = "address"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
@@ -3150,18 +3436,18 @@ InterfacesState::Interface::Ipv4::Address::~Address()
 bool InterfacesState::Interface::Ipv4::Address::has_data() const
 {
     return ip.is_set
+	|| prefix_length.is_set
 	|| netmask.is_set
-	|| origin.is_set
-	|| prefix_length.is_set;
+	|| origin.is_set;
 }
 
 bool InterfacesState::Interface::Ipv4::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
 	|| ydk::is_set(netmask.yfilter)
-	|| ydk::is_set(origin.yfilter)
-	|| ydk::is_set(prefix_length.yfilter);
+	|| ydk::is_set(origin.yfilter);
 }
 
 std::string InterfacesState::Interface::Ipv4::Address::get_segment_path() const
@@ -3176,9 +3462,9 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv4:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
     if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
     if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3203,6 +3489,12 @@ void InterfacesState::Interface::Ipv4::Address::set_value(const std::string & va
         ip.value_namespace = name_space;
         ip.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "netmask")
     {
         netmask = value;
@@ -3215,12 +3507,6 @@ void InterfacesState::Interface::Ipv4::Address::set_value(const std::string & va
         origin.value_namespace = name_space;
         origin.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void InterfacesState::Interface::Ipv4::Address::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3228,6 +3514,10 @@ void InterfacesState::Interface::Ipv4::Address::set_filter(const std::string & v
     if(value_path == "ip")
     {
         ip.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
     }
     if(value_path == "netmask")
     {
@@ -3237,15 +3527,11 @@ void InterfacesState::Interface::Ipv4::Address::set_filter(const std::string & v
     {
         origin.yfilter = yfilter;
     }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
 }
 
 bool InterfacesState::Interface::Ipv4::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip" || name == "netmask" || name == "origin" || name == "prefix-length")
+    if(name == "ip" || name == "prefix-length" || name == "netmask" || name == "origin")
         return true;
     return false;
 }
@@ -3509,8 +3795,8 @@ bool InterfacesState::Interface::Ipv6::has_leaf_or_child_of_name(const std::stri
 InterfacesState::Interface::Ipv6::Address::Address()
     :
     ip{YType::str, "ip"},
-    origin{YType::enumeration, "origin"},
     prefix_length{YType::uint8, "prefix-length"},
+    origin{YType::enumeration, "origin"},
     status{YType::enumeration, "status"}
 {
 
@@ -3524,8 +3810,8 @@ InterfacesState::Interface::Ipv6::Address::~Address()
 bool InterfacesState::Interface::Ipv6::Address::has_data() const
 {
     return ip.is_set
-	|| origin.is_set
 	|| prefix_length.is_set
+	|| origin.is_set
 	|| status.is_set;
 }
 
@@ -3533,8 +3819,8 @@ bool InterfacesState::Interface::Ipv6::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(origin.yfilter)
 	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| ydk::is_set(status.yfilter);
 }
 
@@ -3550,8 +3836,8 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
     if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
     if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
     return leaf_name_data;
@@ -3577,17 +3863,17 @@ void InterfacesState::Interface::Ipv6::Address::set_value(const std::string & va
         ip.value_namespace = name_space;
         ip.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "origin")
-    {
-        origin = value;
-        origin.value_namespace = name_space;
-        origin.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
         prefix_length.value_namespace = name_space;
         prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
@@ -3603,13 +3889,13 @@ void InterfacesState::Interface::Ipv6::Address::set_filter(const std::string & v
     {
         ip.yfilter = yfilter;
     }
-    if(value_path == "origin")
-    {
-        origin.yfilter = yfilter;
-    }
     if(value_path == "prefix-length")
     {
         prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
     }
     if(value_path == "status")
     {
@@ -3619,7 +3905,7 @@ void InterfacesState::Interface::Ipv6::Address::set_filter(const std::string & v
 
 bool InterfacesState::Interface::Ipv6::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip" || name == "origin" || name == "prefix-length" || name == "status")
+    if(name == "ip" || name == "prefix-length" || name == "origin" || name == "status")
         return true;
     return false;
 }
@@ -3627,9 +3913,9 @@ bool InterfacesState::Interface::Ipv6::Address::has_leaf_or_child_of_name(const 
 InterfacesState::Interface::Ipv6::Neighbor::Neighbor()
     :
     ip{YType::str, "ip"},
-    is_router{YType::empty, "is-router"},
     link_layer_address{YType::str, "link-layer-address"},
     origin{YType::enumeration, "origin"},
+    is_router{YType::empty, "is-router"},
     state{YType::enumeration, "state"}
 {
 
@@ -3643,9 +3929,9 @@ InterfacesState::Interface::Ipv6::Neighbor::~Neighbor()
 bool InterfacesState::Interface::Ipv6::Neighbor::has_data() const
 {
     return ip.is_set
-	|| is_router.is_set
 	|| link_layer_address.is_set
 	|| origin.is_set
+	|| is_router.is_set
 	|| state.is_set;
 }
 
@@ -3653,9 +3939,9 @@ bool InterfacesState::Interface::Ipv6::Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(is_router.yfilter)
 	|| ydk::is_set(link_layer_address.yfilter)
 	|| ydk::is_set(origin.yfilter)
+	|| ydk::is_set(is_router.yfilter)
 	|| ydk::is_set(state.yfilter);
 }
 
@@ -3671,9 +3957,9 @@ std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Ipv6:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (is_router.is_set || is_set(is_router.yfilter)) leaf_name_data.push_back(is_router.get_name_leafdata());
     if (link_layer_address.is_set || is_set(link_layer_address.yfilter)) leaf_name_data.push_back(link_layer_address.get_name_leafdata());
     if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (is_router.is_set || is_set(is_router.yfilter)) leaf_name_data.push_back(is_router.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
     return leaf_name_data;
@@ -3699,12 +3985,6 @@ void InterfacesState::Interface::Ipv6::Neighbor::set_value(const std::string & v
         ip.value_namespace = name_space;
         ip.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-router")
-    {
-        is_router = value;
-        is_router.value_namespace = name_space;
-        is_router.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "link-layer-address")
     {
         link_layer_address = value;
@@ -3716,6 +3996,12 @@ void InterfacesState::Interface::Ipv6::Neighbor::set_value(const std::string & v
         origin = value;
         origin.value_namespace = name_space;
         origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-router")
+    {
+        is_router = value;
+        is_router.value_namespace = name_space;
+        is_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
@@ -3731,10 +4017,6 @@ void InterfacesState::Interface::Ipv6::Neighbor::set_filter(const std::string & 
     {
         ip.yfilter = yfilter;
     }
-    if(value_path == "is-router")
-    {
-        is_router.yfilter = yfilter;
-    }
     if(value_path == "link-layer-address")
     {
         link_layer_address.yfilter = yfilter;
@@ -3742,6 +4024,10 @@ void InterfacesState::Interface::Ipv6::Neighbor::set_filter(const std::string & 
     if(value_path == "origin")
     {
         origin.yfilter = yfilter;
+    }
+    if(value_path == "is-router")
+    {
+        is_router.yfilter = yfilter;
     }
     if(value_path == "state")
     {
@@ -3751,293 +4037,7 @@ void InterfacesState::Interface::Ipv6::Neighbor::set_filter(const std::string & 
 
 bool InterfacesState::Interface::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip" || name == "is-router" || name == "link-layer-address" || name == "origin" || name == "state")
-        return true;
-    return false;
-}
-
-InterfacesState::Interface::Statistics::Statistics()
-    :
-    discontinuity_time{YType::str, "discontinuity-time"},
-    in_broadcast_pkts{YType::uint64, "in-broadcast-pkts"},
-    in_discards{YType::uint32, "in-discards"},
-    in_errors{YType::uint32, "in-errors"},
-    in_multicast_pkts{YType::uint64, "in-multicast-pkts"},
-    in_octets{YType::uint64, "in-octets"},
-    in_pkts{YType::uint64, "ietf-interfaces-ext:in-pkts"},
-    in_unicast_pkts{YType::uint64, "in-unicast-pkts"},
-    in_unknown_protos{YType::uint32, "in-unknown-protos"},
-    out_broadcast_pkts{YType::uint64, "out-broadcast-pkts"},
-    out_discards{YType::uint32, "out-discards"},
-    out_errors{YType::uint32, "out-errors"},
-    out_multicast_pkts{YType::uint64, "out-multicast-pkts"},
-    out_octets{YType::uint64, "out-octets"},
-    out_pkts{YType::uint64, "ietf-interfaces-ext:out-pkts"},
-    out_unicast_pkts{YType::uint64, "out-unicast-pkts"}
-{
-
-    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfacesState::Interface::Statistics::~Statistics()
-{
-}
-
-bool InterfacesState::Interface::Statistics::has_data() const
-{
-    return discontinuity_time.is_set
-	|| in_broadcast_pkts.is_set
-	|| in_discards.is_set
-	|| in_errors.is_set
-	|| in_multicast_pkts.is_set
-	|| in_octets.is_set
-	|| in_pkts.is_set
-	|| in_unicast_pkts.is_set
-	|| in_unknown_protos.is_set
-	|| out_broadcast_pkts.is_set
-	|| out_discards.is_set
-	|| out_errors.is_set
-	|| out_multicast_pkts.is_set
-	|| out_octets.is_set
-	|| out_pkts.is_set
-	|| out_unicast_pkts.is_set;
-}
-
-bool InterfacesState::Interface::Statistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discontinuity_time.yfilter)
-	|| ydk::is_set(in_broadcast_pkts.yfilter)
-	|| ydk::is_set(in_discards.yfilter)
-	|| ydk::is_set(in_errors.yfilter)
-	|| ydk::is_set(in_multicast_pkts.yfilter)
-	|| ydk::is_set(in_octets.yfilter)
-	|| ydk::is_set(in_pkts.yfilter)
-	|| ydk::is_set(in_unicast_pkts.yfilter)
-	|| ydk::is_set(in_unknown_protos.yfilter)
-	|| ydk::is_set(out_broadcast_pkts.yfilter)
-	|| ydk::is_set(out_discards.yfilter)
-	|| ydk::is_set(out_errors.yfilter)
-	|| ydk::is_set(out_multicast_pkts.yfilter)
-	|| ydk::is_set(out_octets.yfilter)
-	|| ydk::is_set(out_pkts.yfilter)
-	|| ydk::is_set(out_unicast_pkts.yfilter);
-}
-
-std::string InterfacesState::Interface::Statistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "statistics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfacesState::Interface::Statistics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discontinuity_time.is_set || is_set(discontinuity_time.yfilter)) leaf_name_data.push_back(discontinuity_time.get_name_leafdata());
-    if (in_broadcast_pkts.is_set || is_set(in_broadcast_pkts.yfilter)) leaf_name_data.push_back(in_broadcast_pkts.get_name_leafdata());
-    if (in_discards.is_set || is_set(in_discards.yfilter)) leaf_name_data.push_back(in_discards.get_name_leafdata());
-    if (in_errors.is_set || is_set(in_errors.yfilter)) leaf_name_data.push_back(in_errors.get_name_leafdata());
-    if (in_multicast_pkts.is_set || is_set(in_multicast_pkts.yfilter)) leaf_name_data.push_back(in_multicast_pkts.get_name_leafdata());
-    if (in_octets.is_set || is_set(in_octets.yfilter)) leaf_name_data.push_back(in_octets.get_name_leafdata());
-    if (in_pkts.is_set || is_set(in_pkts.yfilter)) leaf_name_data.push_back(in_pkts.get_name_leafdata());
-    if (in_unicast_pkts.is_set || is_set(in_unicast_pkts.yfilter)) leaf_name_data.push_back(in_unicast_pkts.get_name_leafdata());
-    if (in_unknown_protos.is_set || is_set(in_unknown_protos.yfilter)) leaf_name_data.push_back(in_unknown_protos.get_name_leafdata());
-    if (out_broadcast_pkts.is_set || is_set(out_broadcast_pkts.yfilter)) leaf_name_data.push_back(out_broadcast_pkts.get_name_leafdata());
-    if (out_discards.is_set || is_set(out_discards.yfilter)) leaf_name_data.push_back(out_discards.get_name_leafdata());
-    if (out_errors.is_set || is_set(out_errors.yfilter)) leaf_name_data.push_back(out_errors.get_name_leafdata());
-    if (out_multicast_pkts.is_set || is_set(out_multicast_pkts.yfilter)) leaf_name_data.push_back(out_multicast_pkts.get_name_leafdata());
-    if (out_octets.is_set || is_set(out_octets.yfilter)) leaf_name_data.push_back(out_octets.get_name_leafdata());
-    if (out_pkts.is_set || is_set(out_pkts.yfilter)) leaf_name_data.push_back(out_pkts.get_name_leafdata());
-    if (out_unicast_pkts.is_set || is_set(out_unicast_pkts.yfilter)) leaf_name_data.push_back(out_unicast_pkts.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfacesState::Interface::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Statistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void InterfacesState::Interface::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discontinuity-time")
-    {
-        discontinuity_time = value;
-        discontinuity_time.value_namespace = name_space;
-        discontinuity_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-broadcast-pkts")
-    {
-        in_broadcast_pkts = value;
-        in_broadcast_pkts.value_namespace = name_space;
-        in_broadcast_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-discards")
-    {
-        in_discards = value;
-        in_discards.value_namespace = name_space;
-        in_discards.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-errors")
-    {
-        in_errors = value;
-        in_errors.value_namespace = name_space;
-        in_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-multicast-pkts")
-    {
-        in_multicast_pkts = value;
-        in_multicast_pkts.value_namespace = name_space;
-        in_multicast_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-octets")
-    {
-        in_octets = value;
-        in_octets.value_namespace = name_space;
-        in_octets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-pkts")
-    {
-        in_pkts = value;
-        in_pkts.value_namespace = name_space;
-        in_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-unicast-pkts")
-    {
-        in_unicast_pkts = value;
-        in_unicast_pkts.value_namespace = name_space;
-        in_unicast_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-unknown-protos")
-    {
-        in_unknown_protos = value;
-        in_unknown_protos.value_namespace = name_space;
-        in_unknown_protos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-broadcast-pkts")
-    {
-        out_broadcast_pkts = value;
-        out_broadcast_pkts.value_namespace = name_space;
-        out_broadcast_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-discards")
-    {
-        out_discards = value;
-        out_discards.value_namespace = name_space;
-        out_discards.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-errors")
-    {
-        out_errors = value;
-        out_errors.value_namespace = name_space;
-        out_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-multicast-pkts")
-    {
-        out_multicast_pkts = value;
-        out_multicast_pkts.value_namespace = name_space;
-        out_multicast_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-octets")
-    {
-        out_octets = value;
-        out_octets.value_namespace = name_space;
-        out_octets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-pkts")
-    {
-        out_pkts = value;
-        out_pkts.value_namespace = name_space;
-        out_pkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-unicast-pkts")
-    {
-        out_unicast_pkts = value;
-        out_unicast_pkts.value_namespace = name_space;
-        out_unicast_pkts.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfacesState::Interface::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discontinuity-time")
-    {
-        discontinuity_time.yfilter = yfilter;
-    }
-    if(value_path == "in-broadcast-pkts")
-    {
-        in_broadcast_pkts.yfilter = yfilter;
-    }
-    if(value_path == "in-discards")
-    {
-        in_discards.yfilter = yfilter;
-    }
-    if(value_path == "in-errors")
-    {
-        in_errors.yfilter = yfilter;
-    }
-    if(value_path == "in-multicast-pkts")
-    {
-        in_multicast_pkts.yfilter = yfilter;
-    }
-    if(value_path == "in-octets")
-    {
-        in_octets.yfilter = yfilter;
-    }
-    if(value_path == "in-pkts")
-    {
-        in_pkts.yfilter = yfilter;
-    }
-    if(value_path == "in-unicast-pkts")
-    {
-        in_unicast_pkts.yfilter = yfilter;
-    }
-    if(value_path == "in-unknown-protos")
-    {
-        in_unknown_protos.yfilter = yfilter;
-    }
-    if(value_path == "out-broadcast-pkts")
-    {
-        out_broadcast_pkts.yfilter = yfilter;
-    }
-    if(value_path == "out-discards")
-    {
-        out_discards.yfilter = yfilter;
-    }
-    if(value_path == "out-errors")
-    {
-        out_errors.yfilter = yfilter;
-    }
-    if(value_path == "out-multicast-pkts")
-    {
-        out_multicast_pkts.yfilter = yfilter;
-    }
-    if(value_path == "out-octets")
-    {
-        out_octets.yfilter = yfilter;
-    }
-    if(value_path == "out-pkts")
-    {
-        out_pkts.yfilter = yfilter;
-    }
-    if(value_path == "out-unicast-pkts")
-    {
-        out_unicast_pkts.yfilter = yfilter;
-    }
-}
-
-bool InterfacesState::Interface::Statistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "discontinuity-time" || name == "in-broadcast-pkts" || name == "in-discards" || name == "in-errors" || name == "in-multicast-pkts" || name == "in-octets" || name == "in-pkts" || name == "in-unicast-pkts" || name == "in-unknown-protos" || name == "out-broadcast-pkts" || name == "out-discards" || name == "out-errors" || name == "out-multicast-pkts" || name == "out-octets" || name == "out-pkts" || name == "out-unicast-pkts")
+    if(name == "ip" || name == "link-layer-address" || name == "origin" || name == "is-router" || name == "state")
         return true;
     return false;
 }

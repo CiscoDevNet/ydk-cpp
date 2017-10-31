@@ -10,6 +10,14 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lpts_pre_ifib_cfg {
 
+class LptsDynamicFlowConfig : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flows_config;
+        static const ydk::Enum::YLeaf platform_config;
+
+};
+
 class LptsPreIFibPrecedenceNumber : public ydk::Enum
 {
     public:
@@ -21,14 +29,6 @@ class LptsPreIFibPrecedenceNumber : public ydk::Enum
         static const ydk::Enum::YLeaf network;
         static const ydk::Enum::YLeaf priority;
         static const ydk::Enum::YLeaf routine;
-
-};
-
-class LptsDynamicFlowConfig : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flows_config;
-        static const ydk::Enum::YLeaf platform_config;
 
 };
 

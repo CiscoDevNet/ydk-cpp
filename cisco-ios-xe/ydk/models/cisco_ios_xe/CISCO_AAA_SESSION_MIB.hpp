@@ -36,8 +36,8 @@ class CISCOAAASESSIONMIB : public ydk::Entity
         class Casnactivetable; //type: CISCOAAASESSIONMIB::Casnactivetable
 
         std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casnactive> casnactive;
-        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casnactivetable> casnactivetable;
         std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casngeneral> casngeneral;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casnactivetable> casnactivetable;
         
 }; // CISCOAAASESSIONMIB
 
@@ -63,6 +63,29 @@ class CISCOAAASESSIONMIB::Casnactive : public ydk::Entity
         ydk::YLeaf casnactivetablehighwatermark; //type: uint32
 
 }; // CISCOAAASESSIONMIB::Casnactive
+
+
+class CISCOAAASESSIONMIB::Casngeneral : public ydk::Entity
+{
+    public:
+        Casngeneral();
+        ~Casngeneral();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf casntotalsessions; //type: uint32
+        ydk::YLeaf casndisconnectedsessions; //type: uint32
+
+}; // CISCOAAASESSIONMIB::Casngeneral
 
 
 class CISCOAAASESSIONMIB::Casnactivetable : public ydk::Entity
@@ -116,29 +139,6 @@ class CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry : public ydk::Entity
         ydk::YLeaf casnvaiifindex; //type: int32
 
 }; // CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry
-
-
-class CISCOAAASESSIONMIB::Casngeneral : public ydk::Entity
-{
-    public:
-        Casngeneral();
-        ~Casngeneral();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf casntotalsessions; //type: uint32
-        ydk::YLeaf casndisconnectedsessions; //type: uint32
-
-}; // CISCOAAASESSIONMIB::Casngeneral
 
 
 }

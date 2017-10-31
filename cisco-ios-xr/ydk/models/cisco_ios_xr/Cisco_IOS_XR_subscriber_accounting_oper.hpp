@@ -84,124 +84,11 @@ class SubscriberAccounting::Nodes::Node : public ydk::Entity
         class SubscriberAccountingSummary; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary
         class SubscriberAccountingFlowFeatures; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures> subscriber_accounting_flow_features;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures> subscriber_accounting_session_features;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary> subscriber_accounting_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures> subscriber_accounting_flow_features;
         
 }; // SubscriberAccounting::Nodes::Node
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures : public ydk::Entity
-{
-    public:
-        SubscriberAccountingFlowFeatures();
-        ~SubscriberAccountingFlowFeatures();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SubscriberAccountingFlowFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature> > subscriber_accounting_flow_feature;
-        
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature : public ydk::Entity
-{
-    public:
-        SubscriberAccountingFlowFeature();
-        ~SubscriberAccountingFlowFeature();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf class_label; //type: int32
-        class FlowFeatureData; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData> flow_feature_data;
-        
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature
-
-
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData : public ydk::Entity
-{
-    public:
-        FlowFeatureData();
-        ~FlowFeatureData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flow_accounting_enabled_flag; //type: boolean
-        ydk::YLeaf flow_idle_timeout_enabled_flag; //type: boolean
-        ydk::YLeaf prepaid_enabled_flag; //type: boolean
-        ydk::YLeaf prepaid_reauth_timer_enabled; //type: boolean
-        ydk::YLeaf prepaid_idle_timeout_enabled; //type: boolean
-        ydk::YLeaf prepaid_final_unit; //type: boolean
-        ydk::YLeaf unique_class_label; //type: uint32
-        ydk::YLeaf flow_direction; //type: uint32
-        ydk::YLeaf flow_accounting_periodic_interval; //type: uint32
-        ydk::YLeaf flow_idle_timeout_value; //type: uint32
-        ydk::YLeaf prepaid_time_quota; //type: uint32
-        ydk::YLeaf prepaid_time_threshold; //type: uint32
-        ydk::YLeaf prepaid_total_time_quota; //type: uint32
-        ydk::YLeaf prepaid_volume_threshold; //type: uint32
-        ydk::YLeaf prepaid_remaining_qt; //type: uint32
-        ydk::YLeaf prepaid_remaining_qat; //type: uint32
-        ydk::YLeaf prepaid_remaining_qit; //type: uint32
-        ydk::YLeaf prepaid_remaining_qtt; //type: uint32
-        ydk::YLeaf prepaid_remaining_wheel; //type: uint32
-        ydk::YLeaf prepaid_tariff_time; //type: uint32
-        ydk::YLeaf prepaid_idle_timeout_value; //type: uint32
-        ydk::YLeaf prepaid_reauth_timeout_value; //type: uint32
-        ydk::YLeaf prepaid_ccfh; //type: uint32
-        ydk::YLeaf prepaid_result_code; //type: uint32
-        ydk::YLeaf prepaid_volumei_quota; //type: uint64
-        ydk::YLeaf prepaid_volumeo_quota; //type: uint64
-        ydk::YLeaf prepaid_volumeb_quota; //type: uint64
-        ydk::YLeaf prepaid_total_volumei_quota; //type: uint64
-        ydk::YLeaf prepaid_total_volumeo_quota; //type: uint64
-        ydk::YLeaf prepaid_total_volumeb_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_usedi_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_usedo_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_refi_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_refo_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_refb_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_newi_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_newo_quota; //type: uint64
-        ydk::YLeaf prepaid_volume_newb_quota; //type: uint64
-        ydk::YLeaf prepaid_tariff_volumei_quota; //type: uint64
-        ydk::YLeaf prepaid_tariff_volumeo_quota; //type: uint64
-        ydk::YLeaf prepaid_tariff_volumeb_quota; //type: uint64
-        ydk::YLeaf flow_accounting_method_list_name; //type: string
-        ydk::YLeaf prepaid_cfg; //type: string
-        ydk::YLeaf prepaid_time_state; //type: string
-        ydk::YLeaf prepaid_volume_state; //type: string
-        ydk::YLeaf prepaid_charging_rule; //type: string
-
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
 
 
 class SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures : public ydk::Entity
@@ -347,8 +234,8 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary : public yd
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters> aaa_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters> idle_timeout_counters;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters> session_flow_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters> session_timeout_counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters> session_flow_counters;
         
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary
 
@@ -436,6 +323,28 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeou
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters
 
 
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters : public ydk::Entity
+{
+    public:
+        SessionTimeoutCounters();
+        ~SessionTimeoutCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf active_session_timers; //type: uint32
+        ydk::YLeaf expired_session_timers; //type: uint32
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters
+
+
 class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters : public ydk::Entity
 {
     public:
@@ -461,11 +370,11 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlo
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters
 
 
-class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters : public ydk::Entity
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures : public ydk::Entity
 {
     public:
-        SessionTimeoutCounters();
-        ~SessionTimeoutCounters();
+        SubscriberAccountingFlowFeatures();
+        ~SubscriberAccountingFlowFeatures();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -477,10 +386,101 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTim
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf active_session_timers; //type: uint32
-        ydk::YLeaf expired_session_timers; //type: uint32
+        class SubscriberAccountingFlowFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature
 
-}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature> > subscriber_accounting_flow_feature;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature : public ydk::Entity
+{
+    public:
+        SubscriberAccountingFlowFeature();
+        ~SubscriberAccountingFlowFeature();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf class_label; //type: int32
+        class FlowFeatureData; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData> flow_feature_data;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData : public ydk::Entity
+{
+    public:
+        FlowFeatureData();
+        ~FlowFeatureData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flow_accounting_enabled_flag; //type: boolean
+        ydk::YLeaf flow_idle_timeout_enabled_flag; //type: boolean
+        ydk::YLeaf prepaid_enabled_flag; //type: boolean
+        ydk::YLeaf prepaid_reauth_timer_enabled; //type: boolean
+        ydk::YLeaf prepaid_idle_timeout_enabled; //type: boolean
+        ydk::YLeaf prepaid_final_unit; //type: boolean
+        ydk::YLeaf unique_class_label; //type: uint32
+        ydk::YLeaf flow_direction; //type: uint32
+        ydk::YLeaf flow_accounting_periodic_interval; //type: uint32
+        ydk::YLeaf flow_idle_timeout_value; //type: uint32
+        ydk::YLeaf prepaid_time_quota; //type: uint32
+        ydk::YLeaf prepaid_time_threshold; //type: uint32
+        ydk::YLeaf prepaid_total_time_quota; //type: uint32
+        ydk::YLeaf prepaid_volume_threshold; //type: uint32
+        ydk::YLeaf prepaid_remaining_qt; //type: uint32
+        ydk::YLeaf prepaid_remaining_qat; //type: uint32
+        ydk::YLeaf prepaid_remaining_qit; //type: uint32
+        ydk::YLeaf prepaid_remaining_qtt; //type: uint32
+        ydk::YLeaf prepaid_remaining_wheel; //type: uint32
+        ydk::YLeaf prepaid_tariff_time; //type: uint32
+        ydk::YLeaf prepaid_idle_timeout_value; //type: uint32
+        ydk::YLeaf prepaid_reauth_timeout_value; //type: uint32
+        ydk::YLeaf prepaid_ccfh; //type: uint32
+        ydk::YLeaf prepaid_result_code; //type: uint32
+        ydk::YLeaf prepaid_volumei_quota; //type: uint64
+        ydk::YLeaf prepaid_volumeo_quota; //type: uint64
+        ydk::YLeaf prepaid_volumeb_quota; //type: uint64
+        ydk::YLeaf prepaid_total_volumei_quota; //type: uint64
+        ydk::YLeaf prepaid_total_volumeo_quota; //type: uint64
+        ydk::YLeaf prepaid_total_volumeb_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_usedi_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_usedo_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_refi_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_refo_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_refb_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_newi_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_newo_quota; //type: uint64
+        ydk::YLeaf prepaid_volume_newb_quota; //type: uint64
+        ydk::YLeaf prepaid_tariff_volumei_quota; //type: uint64
+        ydk::YLeaf prepaid_tariff_volumeo_quota; //type: uint64
+        ydk::YLeaf prepaid_tariff_volumeb_quota; //type: uint64
+        ydk::YLeaf flow_accounting_method_list_name; //type: string
+        ydk::YLeaf prepaid_cfg; //type: string
+        ydk::YLeaf prepaid_time_state; //type: string
+        ydk::YLeaf prepaid_volume_state; //type: string
+        ydk::YLeaf prepaid_charging_rule; //type: string
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
 
 
 }

@@ -348,9 +348,9 @@ bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_leaf_or_child_
 
 TrafficCollector::Statistics::Statistics()
     :
+    history_size{YType::str, "history-size"},
     collection_interval{YType::enumeration, "collection-interval"},
     enable_traffic_collector_statistics{YType::empty, "enable-traffic-collector-statistics"},
-    history_size{YType::str, "history-size"},
     history_timeout{YType::str, "history-timeout"}
 {
 
@@ -363,18 +363,18 @@ TrafficCollector::Statistics::~Statistics()
 
 bool TrafficCollector::Statistics::has_data() const
 {
-    return collection_interval.is_set
+    return history_size.is_set
+	|| collection_interval.is_set
 	|| enable_traffic_collector_statistics.is_set
-	|| history_size.is_set
 	|| history_timeout.is_set;
 }
 
 bool TrafficCollector::Statistics::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(history_size.yfilter)
 	|| ydk::is_set(collection_interval.yfilter)
 	|| ydk::is_set(enable_traffic_collector_statistics.yfilter)
-	|| ydk::is_set(history_size.yfilter)
 	|| ydk::is_set(history_timeout.yfilter);
 }
 
@@ -396,9 +396,9 @@ std::vector<std::pair<std::string, LeafData> > TrafficCollector::Statistics::get
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (history_size.is_set || is_set(history_size.yfilter)) leaf_name_data.push_back(history_size.get_name_leafdata());
     if (collection_interval.is_set || is_set(collection_interval.yfilter)) leaf_name_data.push_back(collection_interval.get_name_leafdata());
     if (enable_traffic_collector_statistics.is_set || is_set(enable_traffic_collector_statistics.yfilter)) leaf_name_data.push_back(enable_traffic_collector_statistics.get_name_leafdata());
-    if (history_size.is_set || is_set(history_size.yfilter)) leaf_name_data.push_back(history_size.get_name_leafdata());
     if (history_timeout.is_set || is_set(history_timeout.yfilter)) leaf_name_data.push_back(history_timeout.get_name_leafdata());
 
     return leaf_name_data;
@@ -418,6 +418,12 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Statistics::get
 
 void TrafficCollector::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "history-size")
+    {
+        history_size = value;
+        history_size.value_namespace = name_space;
+        history_size.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "collection-interval")
     {
         collection_interval = value;
@@ -430,12 +436,6 @@ void TrafficCollector::Statistics::set_value(const std::string & value_path, con
         enable_traffic_collector_statistics.value_namespace = name_space;
         enable_traffic_collector_statistics.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "history-size")
-    {
-        history_size = value;
-        history_size.value_namespace = name_space;
-        history_size.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "history-timeout")
     {
         history_timeout = value;
@@ -446,6 +446,10 @@ void TrafficCollector::Statistics::set_value(const std::string & value_path, con
 
 void TrafficCollector::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "history-size")
+    {
+        history_size.yfilter = yfilter;
+    }
     if(value_path == "collection-interval")
     {
         collection_interval.yfilter = yfilter;
@@ -453,10 +457,6 @@ void TrafficCollector::Statistics::set_filter(const std::string & value_path, YF
     if(value_path == "enable-traffic-collector-statistics")
     {
         enable_traffic_collector_statistics.yfilter = yfilter;
-    }
-    if(value_path == "history-size")
-    {
-        history_size.yfilter = yfilter;
     }
     if(value_path == "history-timeout")
     {
@@ -466,10 +466,12 @@ void TrafficCollector::Statistics::set_filter(const std::string & value_path, YF
 
 bool TrafficCollector::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "collection-interval" || name == "enable-traffic-collector-statistics" || name == "history-size" || name == "history-timeout")
+    if(name == "history-size" || name == "collection-interval" || name == "enable-traffic-collector-statistics" || name == "history-timeout")
         return true;
     return false;
 }
+
+const Enum::YLeaf HistorySize::max {10, "max"};
 
 const Enum::YLeaf CollectIonInterval::Y_1_minute {1, "1-minute"};
 const Enum::YLeaf CollectIonInterval::Y_2_minutes {2, "2-minutes"};
@@ -485,8 +487,6 @@ const Enum::YLeaf CollectIonInterval::Y_30_minutes {30, "30-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_60_minutes {60, "60-minutes"};
 
 const Enum::YLeaf HistoryTimeout::max {720, "max"};
-
-const Enum::YLeaf HistorySize::max {10, "max"};
 
 
 }

@@ -43,18 +43,115 @@ class CISCOPROCESSMIB : public ydk::Entity
         class Cpmthreadtable; //type: CISCOPROCESSMIB::Cpmthreadtable
         class Cpmvirtualprocesstable; //type: CISCOPROCESSMIB::Cpmvirtualprocesstable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcoretable> cpmcoretable;
         std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuhistory> cpmcpuhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable> cpmcputotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcoretable> cpmcoretable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable> cpmprocesstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocessextrevtable> cpmprocessextrevtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputhresholdtable> cpmcputhresholdtable;
         std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuhistorytable> cpmcpuhistorytable;
         std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcpuprocesshistorytable> cpmcpuprocesshistorytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputhresholdtable> cpmcputhresholdtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable> cpmcputotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocessextrevtable> cpmprocessextrevtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable> cpmprocesstable;
         std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmthreadtable> cpmthreadtable;
         std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmvirtualprocesstable> cpmvirtualprocesstable;
         
 }; // CISCOPROCESSMIB
+
+
+class CISCOPROCESSMIB::Cpmcpuhistory : public ydk::Entity
+{
+    public:
+        Cpmcpuhistory();
+        ~Cpmcpuhistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cpmcpuhistorythreshold; //type: uint32
+        ydk::YLeaf cpmcpuhistorysize; //type: uint32
+
+}; // CISCOPROCESSMIB::Cpmcpuhistory
+
+
+class CISCOPROCESSMIB::Cpmcputotaltable : public ydk::Entity
+{
+    public:
+        Cpmcputotaltable();
+        ~Cpmcputotaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpmcputotalentry; //type: CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry> > cpmcputotalentry;
+        
+}; // CISCOPROCESSMIB::Cpmcputotaltable
+
+
+class CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry : public ydk::Entity
+{
+    public:
+        Cpmcputotalentry();
+        ~Cpmcputotalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cpmcputotalindex; //type: uint32
+        ydk::YLeaf cpmcputotalphysicalindex; //type: int32
+        ydk::YLeaf cpmcputotal5sec; //type: uint32
+        ydk::YLeaf cpmcputotal1min; //type: uint32
+        ydk::YLeaf cpmcputotal5min; //type: uint32
+        ydk::YLeaf cpmcputotal5secrev; //type: uint32
+        ydk::YLeaf cpmcputotal1minrev; //type: uint32
+        ydk::YLeaf cpmcputotal5minrev; //type: uint32
+        ydk::YLeaf cpmcpumoninterval; //type: uint32
+        ydk::YLeaf cpmcputotalmonintervalvalue; //type: uint32
+        ydk::YLeaf cpmcpuinterruptmonintervalvalue; //type: uint32
+        ydk::YLeaf cpmcpumemoryused; //type: uint32
+        ydk::YLeaf cpmcpumemoryfree; //type: uint32
+        ydk::YLeaf cpmcpumemorykernelreserved; //type: uint32
+        ydk::YLeaf cpmcpumemorylowest; //type: uint32
+        ydk::YLeaf cpmcpumemoryusedovrflw; //type: uint32
+        ydk::YLeaf cpmcpumemoryhcused; //type: uint64
+        ydk::YLeaf cpmcpumemoryfreeovrflw; //type: uint32
+        ydk::YLeaf cpmcpumemoryhcfree; //type: uint64
+        ydk::YLeaf cpmcpumemorykernelreservedovrflw; //type: uint32
+        ydk::YLeaf cpmcpumemoryhckernelreserved; //type: uint64
+        ydk::YLeaf cpmcpumemorylowestovrflw; //type: uint32
+        ydk::YLeaf cpmcpumemoryhclowest; //type: uint64
+        ydk::YLeaf cpmcpuloadavg1min; //type: uint32
+        ydk::YLeaf cpmcpuloadavg5min; //type: uint32
+        ydk::YLeaf cpmcpuloadavg15min; //type: uint32
+        ydk::YLeaf cpmcpumemorycommitted; //type: uint32
+        ydk::YLeaf cpmcpumemorycommittedovrflw; //type: uint32
+        ydk::YLeaf cpmcpumemoryhccommitted; //type: uint64
+
+}; // CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry
 
 
 class CISCOPROCESSMIB::Cpmcoretable : public ydk::Entity
@@ -112,11 +209,11 @@ class CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry : public ydk::Entity
 }; // CISCOPROCESSMIB::Cpmcoretable::Cpmcoreentry
 
 
-class CISCOPROCESSMIB::Cpmcpuhistory : public ydk::Entity
+class CISCOPROCESSMIB::Cpmprocesstable : public ydk::Entity
 {
     public:
-        Cpmcpuhistory();
-        ~Cpmcpuhistory();
+        Cpmprocesstable();
+        ~Cpmprocesstable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -129,10 +226,184 @@ class CISCOPROCESSMIB::Cpmcpuhistory : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cpmcpuhistorythreshold; //type: uint32
-        ydk::YLeaf cpmcpuhistorysize; //type: uint32
+        class Cpmprocessentry; //type: CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry
 
-}; // CISCOPROCESSMIB::Cpmcpuhistory
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry> > cpmprocessentry;
+        
+}; // CISCOPROCESSMIB::Cpmprocesstable
+
+
+class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry : public ydk::Entity
+{
+    public:
+        Cpmprocessentry();
+        ~Cpmprocessentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        ydk::YLeaf cpmcputotalindex;
+        ydk::YLeaf cpmprocesspid; //type: uint32
+        ydk::YLeaf cpmprocessname; //type: string
+        ydk::YLeaf cpmprocessusecs; //type: uint32
+        ydk::YLeaf cpmprocesstimecreated; //type: uint32
+        ydk::YLeaf cpmprocessaverageusecs; //type: uint32
+        ydk::YLeaf cpmprocextmemallocated; //type: uint32
+        ydk::YLeaf cpmprocextmemfreed; //type: uint32
+        ydk::YLeaf cpmprocextinvoked; //type: uint32
+        ydk::YLeaf cpmprocextruntime; //type: uint32
+        ydk::YLeaf cpmprocextutil5sec; //type: uint32
+        ydk::YLeaf cpmprocextutil1min; //type: uint32
+        ydk::YLeaf cpmprocextutil5min; //type: uint32
+        ydk::YLeaf cpmprocextpriority; //type: Cpmprocextpriority
+        class Cpmprocextpriority;
+
+}; // CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry
+
+
+class CISCOPROCESSMIB::Cpmprocessextrevtable : public ydk::Entity
+{
+    public:
+        Cpmprocessextrevtable();
+        ~Cpmprocessextrevtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpmprocessextreventry; //type: CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry> > cpmprocessextreventry;
+        
+}; // CISCOPROCESSMIB::Cpmprocessextrevtable
+
+
+class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry : public ydk::Entity
+{
+    public:
+        Cpmprocessextreventry();
+        ~Cpmprocessextreventry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        ydk::YLeaf cpmcputotalindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::cpmprocesspid)
+        ydk::YLeaf cpmprocesspid;
+        ydk::YLeaf cpmprocextmemallocatedrev; //type: uint32
+        ydk::YLeaf cpmprocextmemfreedrev; //type: uint32
+        ydk::YLeaf cpmprocextinvokedrev; //type: uint32
+        ydk::YLeaf cpmprocextruntimerev; //type: uint32
+        ydk::YLeaf cpmprocextutil5secrev; //type: uint32
+        ydk::YLeaf cpmprocextutil1minrev; //type: uint32
+        ydk::YLeaf cpmprocextutil5minrev; //type: uint32
+        ydk::YLeaf cpmprocextpriorityrev; //type: Cpmprocextpriorityrev
+        ydk::YLeaf cpmprocesstype; //type: Cpmprocesstype
+        ydk::YLeaf cpmprocessrespawn; //type: uint32
+        ydk::YLeaf cpmprocessrespawncount; //type: uint32
+        ydk::YLeaf cpmprocessrespawnafterlastpatch; //type: uint32
+        ydk::YLeaf cpmprocessmemorycore; //type: Cpmprocessmemorycore
+        ydk::YLeaf cpmprocesslastrestartuser; //type: string
+        ydk::YLeaf cpmprocesstextsegmentsize; //type: uint32
+        ydk::YLeaf cpmprocessdatasegmentsize; //type: uint32
+        ydk::YLeaf cpmprocessstacksize; //type: uint32
+        ydk::YLeaf cpmprocessdynamicmemorysize; //type: uint32
+        ydk::YLeaf cpmprocextmemallocatedrevovrflw; //type: uint32
+        ydk::YLeaf cpmprocexthcmemallocatedrev; //type: uint64
+        ydk::YLeaf cpmprocextmemfreedrevovrflw; //type: uint32
+        ydk::YLeaf cpmprocexthcmemfreedrev; //type: uint64
+        ydk::YLeaf cpmprocesstextsegmentsizeovrflw; //type: uint32
+        ydk::YLeaf cpmprocesshctextsegmentsize; //type: uint64
+        ydk::YLeaf cpmprocessdatasegmentsizeovrflw; //type: uint32
+        ydk::YLeaf cpmprocesshcdatasegmentsize; //type: uint64
+        ydk::YLeaf cpmprocessstacksizeovrflw; //type: uint32
+        ydk::YLeaf cpmprocesshcstacksize; //type: uint64
+        ydk::YLeaf cpmprocessdynamicmemorysizeovrflw; //type: uint32
+        ydk::YLeaf cpmprocesshcdynamicmemorysize; //type: uint64
+        class Cpmprocextpriorityrev;
+        class Cpmprocesstype;
+        class Cpmprocessmemorycore;
+
+}; // CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry
+
+
+class CISCOPROCESSMIB::Cpmcputhresholdtable : public ydk::Entity
+{
+    public:
+        Cpmcputhresholdtable();
+        ~Cpmcputhresholdtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpmcputhresholdentry; //type: CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry> > cpmcputhresholdentry;
+        
+}; // CISCOPROCESSMIB::Cpmcputhresholdtable
+
+
+class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry : public ydk::Entity
+{
+    public:
+        Cpmcputhresholdentry();
+        ~Cpmcputhresholdentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
+        ydk::YLeaf cpmcputotalindex;
+        ydk::YLeaf cpmcputhresholdclass; //type: Cpmcputhresholdclass
+        ydk::YLeaf cpmcpurisingthresholdvalue; //type: uint32
+        ydk::YLeaf cpmcpurisingthresholdperiod; //type: uint32
+        ydk::YLeaf cpmcpufallingthresholdvalue; //type: uint32
+        ydk::YLeaf cpmcpufallingthresholdperiod; //type: uint32
+        ydk::YLeaf cpmcputhresholdentrystatus; //type: RowStatus
+        class Cpmcputhresholdclass;
+
+}; // CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry
 
 
 class CISCOPROCESSMIB::Cpmcpuhistorytable : public ydk::Entity
@@ -239,277 +510,6 @@ class CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry : pu
         ydk::YLeaf cpmcpuhistoryprocutil; //type: uint32
 
 }; // CISCOPROCESSMIB::Cpmcpuprocesshistorytable::Cpmcpuprocesshistoryentry
-
-
-class CISCOPROCESSMIB::Cpmcputhresholdtable : public ydk::Entity
-{
-    public:
-        Cpmcputhresholdtable();
-        ~Cpmcputhresholdtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cpmcputhresholdentry; //type: CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry> > cpmcputhresholdentry;
-        
-}; // CISCOPROCESSMIB::Cpmcputhresholdtable
-
-
-class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry : public ydk::Entity
-{
-    public:
-        Cpmcputhresholdentry();
-        ~Cpmcputhresholdentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
-        ydk::YLeaf cpmcputotalindex;
-        ydk::YLeaf cpmcputhresholdclass; //type: Cpmcputhresholdclass
-        ydk::YLeaf cpmcpurisingthresholdvalue; //type: uint32
-        ydk::YLeaf cpmcpurisingthresholdperiod; //type: uint32
-        ydk::YLeaf cpmcpufallingthresholdvalue; //type: uint32
-        ydk::YLeaf cpmcpufallingthresholdperiod; //type: uint32
-        ydk::YLeaf cpmcputhresholdentrystatus; //type: RowStatus
-        class Cpmcputhresholdclass;
-
-}; // CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry
-
-
-class CISCOPROCESSMIB::Cpmcputotaltable : public ydk::Entity
-{
-    public:
-        Cpmcputotaltable();
-        ~Cpmcputotaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cpmcputotalentry; //type: CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry> > cpmcputotalentry;
-        
-}; // CISCOPROCESSMIB::Cpmcputotaltable
-
-
-class CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry : public ydk::Entity
-{
-    public:
-        Cpmcputotalentry();
-        ~Cpmcputotalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cpmcputotalindex; //type: uint32
-        ydk::YLeaf cpmcputotalphysicalindex; //type: int32
-        ydk::YLeaf cpmcputotal5sec; //type: uint32
-        ydk::YLeaf cpmcputotal1min; //type: uint32
-        ydk::YLeaf cpmcputotal5min; //type: uint32
-        ydk::YLeaf cpmcputotal5secrev; //type: uint32
-        ydk::YLeaf cpmcputotal1minrev; //type: uint32
-        ydk::YLeaf cpmcputotal5minrev; //type: uint32
-        ydk::YLeaf cpmcpumoninterval; //type: uint32
-        ydk::YLeaf cpmcputotalmonintervalvalue; //type: uint32
-        ydk::YLeaf cpmcpuinterruptmonintervalvalue; //type: uint32
-        ydk::YLeaf cpmcpumemoryused; //type: uint32
-        ydk::YLeaf cpmcpumemoryfree; //type: uint32
-        ydk::YLeaf cpmcpumemorykernelreserved; //type: uint32
-        ydk::YLeaf cpmcpumemorylowest; //type: uint32
-        ydk::YLeaf cpmcpumemoryusedovrflw; //type: uint32
-        ydk::YLeaf cpmcpumemoryhcused; //type: uint64
-        ydk::YLeaf cpmcpumemoryfreeovrflw; //type: uint32
-        ydk::YLeaf cpmcpumemoryhcfree; //type: uint64
-        ydk::YLeaf cpmcpumemorykernelreservedovrflw; //type: uint32
-        ydk::YLeaf cpmcpumemoryhckernelreserved; //type: uint64
-        ydk::YLeaf cpmcpumemorylowestovrflw; //type: uint32
-        ydk::YLeaf cpmcpumemoryhclowest; //type: uint64
-        ydk::YLeaf cpmcpuloadavg1min; //type: uint32
-        ydk::YLeaf cpmcpuloadavg5min; //type: uint32
-        ydk::YLeaf cpmcpuloadavg15min; //type: uint32
-        ydk::YLeaf cpmcpumemorycommitted; //type: uint32
-        ydk::YLeaf cpmcpumemorycommittedovrflw; //type: uint32
-        ydk::YLeaf cpmcpumemoryhccommitted; //type: uint64
-
-}; // CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry
-
-
-class CISCOPROCESSMIB::Cpmprocessextrevtable : public ydk::Entity
-{
-    public:
-        Cpmprocessextrevtable();
-        ~Cpmprocessextrevtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cpmprocessextreventry; //type: CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry> > cpmprocessextreventry;
-        
-}; // CISCOPROCESSMIB::Cpmprocessextrevtable
-
-
-class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry : public ydk::Entity
-{
-    public:
-        Cpmprocessextreventry();
-        ~Cpmprocessextreventry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
-        ydk::YLeaf cpmcputotalindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::cpmprocesspid)
-        ydk::YLeaf cpmprocesspid;
-        ydk::YLeaf cpmprocextmemallocatedrev; //type: uint32
-        ydk::YLeaf cpmprocextmemfreedrev; //type: uint32
-        ydk::YLeaf cpmprocextinvokedrev; //type: uint32
-        ydk::YLeaf cpmprocextruntimerev; //type: uint32
-        ydk::YLeaf cpmprocextutil5secrev; //type: uint32
-        ydk::YLeaf cpmprocextutil1minrev; //type: uint32
-        ydk::YLeaf cpmprocextutil5minrev; //type: uint32
-        ydk::YLeaf cpmprocextpriorityrev; //type: Cpmprocextpriorityrev
-        ydk::YLeaf cpmprocesstype; //type: Cpmprocesstype
-        ydk::YLeaf cpmprocessrespawn; //type: uint32
-        ydk::YLeaf cpmprocessrespawncount; //type: uint32
-        ydk::YLeaf cpmprocessrespawnafterlastpatch; //type: uint32
-        ydk::YLeaf cpmprocessmemorycore; //type: Cpmprocessmemorycore
-        ydk::YLeaf cpmprocesslastrestartuser; //type: string
-        ydk::YLeaf cpmprocesstextsegmentsize; //type: uint32
-        ydk::YLeaf cpmprocessdatasegmentsize; //type: uint32
-        ydk::YLeaf cpmprocessstacksize; //type: uint32
-        ydk::YLeaf cpmprocessdynamicmemorysize; //type: uint32
-        ydk::YLeaf cpmprocextmemallocatedrevovrflw; //type: uint32
-        ydk::YLeaf cpmprocexthcmemallocatedrev; //type: uint64
-        ydk::YLeaf cpmprocextmemfreedrevovrflw; //type: uint32
-        ydk::YLeaf cpmprocexthcmemfreedrev; //type: uint64
-        ydk::YLeaf cpmprocesstextsegmentsizeovrflw; //type: uint32
-        ydk::YLeaf cpmprocesshctextsegmentsize; //type: uint64
-        ydk::YLeaf cpmprocessdatasegmentsizeovrflw; //type: uint32
-        ydk::YLeaf cpmprocesshcdatasegmentsize; //type: uint64
-        ydk::YLeaf cpmprocessstacksizeovrflw; //type: uint32
-        ydk::YLeaf cpmprocesshcstacksize; //type: uint64
-        ydk::YLeaf cpmprocessdynamicmemorysizeovrflw; //type: uint32
-        ydk::YLeaf cpmprocesshcdynamicmemorysize; //type: uint64
-        class Cpmprocextpriorityrev;
-        class Cpmprocesstype;
-        class Cpmprocessmemorycore;
-
-}; // CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry
-
-
-class CISCOPROCESSMIB::Cpmprocesstable : public ydk::Entity
-{
-    public:
-        Cpmprocesstable();
-        ~Cpmprocesstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cpmprocessentry; //type: CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry> > cpmprocessentry;
-        
-}; // CISCOPROCESSMIB::Cpmprocesstable
-
-
-class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry : public ydk::Entity
-{
-    public:
-        Cpmprocessentry();
-        ~Cpmprocessentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_PROCESS_MIB::CISCOPROCESSMIB::Cpmcputotaltable::Cpmcputotalentry::cpmcputotalindex)
-        ydk::YLeaf cpmcputotalindex;
-        ydk::YLeaf cpmprocesspid; //type: uint32
-        ydk::YLeaf cpmprocessname; //type: string
-        ydk::YLeaf cpmprocessusecs; //type: uint32
-        ydk::YLeaf cpmprocesstimecreated; //type: uint32
-        ydk::YLeaf cpmprocessaverageusecs; //type: uint32
-        ydk::YLeaf cpmprocextmemallocated; //type: uint32
-        ydk::YLeaf cpmprocextmemfreed; //type: uint32
-        ydk::YLeaf cpmprocextinvoked; //type: uint32
-        ydk::YLeaf cpmprocextruntime; //type: uint32
-        ydk::YLeaf cpmprocextutil5sec; //type: uint32
-        ydk::YLeaf cpmprocextutil1min; //type: uint32
-        ydk::YLeaf cpmprocextutil5min; //type: uint32
-        ydk::YLeaf cpmprocextpriority; //type: Cpmprocextpriority
-        class Cpmprocextpriority;
-
-}; // CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry
 
 
 class CISCOPROCESSMIB::Cpmthreadtable : public ydk::Entity
@@ -632,12 +632,14 @@ class CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry : public y
 
 }; // CISCOPROCESSMIB::Cpmvirtualprocesstable::Cpmvirtualprocessentry
 
-class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass : public ydk::Enum
+class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf total;
-        static const ydk::Enum::YLeaf interrupt;
-        static const ydk::Enum::YLeaf process;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf notAssigned;
 
 };
 
@@ -677,14 +679,12 @@ class CISCOPROCESSMIB::Cpmprocessextrevtable::Cpmprocessextreventry::Cpmprocessm
 
 };
 
-class CISCOPROCESSMIB::Cpmprocesstable::Cpmprocessentry::Cpmprocextpriority : public ydk::Enum
+class CISCOPROCESSMIB::Cpmcputhresholdtable::Cpmcputhresholdentry::Cpmcputhresholdclass : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf low;
-        static const ydk::Enum::YLeaf notAssigned;
+        static const ydk::Enum::YLeaf total;
+        static const ydk::Enum::YLeaf interrupt;
+        static const ydk::Enum::YLeaf process;
 
 };
 

@@ -13,10 +13,10 @@ namespace Cisco_IOS_XR_freqsync_cfg {
 
 FrequencySynchronization::FrequencySynchronization()
     :
-    clock_interface_source_type{YType::enumeration, "clock-interface-source-type"},
-    enable{YType::empty, "enable"},
     quality_level_option{YType::enumeration, "quality-level-option"},
+    enable{YType::empty, "enable"},
     source_selection_logging{YType::enumeration, "source-selection-logging"},
+    clock_interface_source_type{YType::enumeration, "clock-interface-source-type"},
     system_timing_mode{YType::enumeration, "system-timing-mode"}
 {
 
@@ -29,20 +29,20 @@ FrequencySynchronization::~FrequencySynchronization()
 
 bool FrequencySynchronization::has_data() const
 {
-    return clock_interface_source_type.is_set
+    return quality_level_option.is_set
 	|| enable.is_set
-	|| quality_level_option.is_set
 	|| source_selection_logging.is_set
+	|| clock_interface_source_type.is_set
 	|| system_timing_mode.is_set;
 }
 
 bool FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(clock_interface_source_type.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(source_selection_logging.yfilter)
+	|| ydk::is_set(clock_interface_source_type.yfilter)
 	|| ydk::is_set(system_timing_mode.yfilter);
 }
 
@@ -57,10 +57,10 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::get_nam
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (clock_interface_source_type.is_set || is_set(clock_interface_source_type.yfilter)) leaf_name_data.push_back(clock_interface_source_type.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (source_selection_logging.is_set || is_set(source_selection_logging.yfilter)) leaf_name_data.push_back(source_selection_logging.get_name_leafdata());
+    if (clock_interface_source_type.is_set || is_set(clock_interface_source_type.yfilter)) leaf_name_data.push_back(clock_interface_source_type.get_name_leafdata());
     if (system_timing_mode.is_set || is_set(system_timing_mode.yfilter)) leaf_name_data.push_back(system_timing_mode.get_name_leafdata());
 
     return leaf_name_data;
@@ -80,11 +80,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::get_chi
 
 void FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "clock-interface-source-type")
+    if(value_path == "quality-level-option")
     {
-        clock_interface_source_type = value;
-        clock_interface_source_type.value_namespace = name_space;
-        clock_interface_source_type.value_namespace_prefix = name_space_prefix;
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
@@ -92,17 +92,17 @@ void FrequencySynchronization::set_value(const std::string & value_path, const s
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "source-selection-logging")
     {
         source_selection_logging = value;
         source_selection_logging.value_namespace = name_space;
         source_selection_logging.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-interface-source-type")
+    {
+        clock_interface_source_type = value;
+        clock_interface_source_type.value_namespace = name_space;
+        clock_interface_source_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-timing-mode")
     {
@@ -114,21 +114,21 @@ void FrequencySynchronization::set_value(const std::string & value_path, const s
 
 void FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "clock-interface-source-type")
+    if(value_path == "quality-level-option")
     {
-        clock_interface_source_type.yfilter = yfilter;
+        quality_level_option.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option.yfilter = yfilter;
-    }
     if(value_path == "source-selection-logging")
     {
         source_selection_logging.yfilter = yfilter;
+    }
+    if(value_path == "clock-interface-source-type")
+    {
+        clock_interface_source_type.yfilter = yfilter;
     }
     if(value_path == "system-timing-mode")
     {
@@ -163,7 +163,7 @@ std::map<std::pair<std::string, std::string>, std::string> FrequencySynchronizat
 
 bool FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-interface-source-type" || name == "enable" || name == "quality-level-option" || name == "source-selection-logging" || name == "system-timing-mode")
+    if(name == "quality-level-option" || name == "enable" || name == "source-selection-logging" || name == "clock-interface-source-type" || name == "system-timing-mode")
         return true;
     return false;
 }

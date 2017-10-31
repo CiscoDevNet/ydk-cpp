@@ -111,11 +111,12 @@ class HardwareModule::Node::Slice::Values : public ydk::Entity
 
 }; // HardwareModule::Node::Slice::Values
 
-class Fec : public ydk::Enum
+class TrunkDataRate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf sd7;
-        static const ydk::Enum::YLeaf sd20;
+        static const ydk::Enum::YLeaf hundred_gig;
+        static const ydk::Enum::YLeaf two_hundred_gig;
+        static const ydk::Enum::YLeaf two_hundred_fifty_gig;
 
 };
 
@@ -129,12 +130,11 @@ class ClientDataRate : public ydk::Enum
 
 };
 
-class TrunkDataRate : public ydk::Enum
+class Fec : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf hundred_gig;
-        static const ydk::Enum::YLeaf two_hundred_gig;
-        static const ydk::Enum::YLeaf two_hundred_fifty_gig;
+        static const ydk::Enum::YLeaf sd7;
+        static const ydk::Enum::YLeaf sd20;
 
 };
 

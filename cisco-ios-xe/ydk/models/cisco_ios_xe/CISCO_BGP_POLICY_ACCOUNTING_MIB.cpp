@@ -220,10 +220,10 @@ CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::Cbpacctentry()
     :
     ifindex{YType::str, "ifIndex"},
     cbpaccttrafficindex{YType::int32, "cbpAcctTrafficIndex"},
-    cbpacctinoctetcount{YType::uint64, "cbpAcctInOctetCount"},
     cbpacctinpacketcount{YType::uint64, "cbpAcctInPacketCount"},
-    cbpacctoutoctetcount{YType::uint64, "cbpAcctOutOctetCount"},
-    cbpacctoutpacketcount{YType::uint64, "cbpAcctOutPacketCount"}
+    cbpacctinoctetcount{YType::uint64, "cbpAcctInOctetCount"},
+    cbpacctoutpacketcount{YType::uint64, "cbpAcctOutPacketCount"},
+    cbpacctoutoctetcount{YType::uint64, "cbpAcctOutOctetCount"}
 {
 
     yang_name = "cbpAcctEntry"; yang_parent_name = "cbpAcctTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -237,10 +237,10 @@ bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_data() const
 {
     return ifindex.is_set
 	|| cbpaccttrafficindex.is_set
-	|| cbpacctinoctetcount.is_set
 	|| cbpacctinpacketcount.is_set
-	|| cbpacctoutoctetcount.is_set
-	|| cbpacctoutpacketcount.is_set;
+	|| cbpacctinoctetcount.is_set
+	|| cbpacctoutpacketcount.is_set
+	|| cbpacctoutoctetcount.is_set;
 }
 
 bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_operation() const
@@ -248,10 +248,10 @@ bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_operation() co
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(cbpaccttrafficindex.yfilter)
-	|| ydk::is_set(cbpacctinoctetcount.yfilter)
 	|| ydk::is_set(cbpacctinpacketcount.yfilter)
-	|| ydk::is_set(cbpacctoutoctetcount.yfilter)
-	|| ydk::is_set(cbpacctoutpacketcount.yfilter);
+	|| ydk::is_set(cbpacctinoctetcount.yfilter)
+	|| ydk::is_set(cbpacctoutpacketcount.yfilter)
+	|| ydk::is_set(cbpacctoutoctetcount.yfilter);
 }
 
 std::string CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::get_absolute_path() const
@@ -274,10 +274,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::Cbpa
 
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
     if (cbpaccttrafficindex.is_set || is_set(cbpaccttrafficindex.yfilter)) leaf_name_data.push_back(cbpaccttrafficindex.get_name_leafdata());
-    if (cbpacctinoctetcount.is_set || is_set(cbpacctinoctetcount.yfilter)) leaf_name_data.push_back(cbpacctinoctetcount.get_name_leafdata());
     if (cbpacctinpacketcount.is_set || is_set(cbpacctinpacketcount.yfilter)) leaf_name_data.push_back(cbpacctinpacketcount.get_name_leafdata());
-    if (cbpacctoutoctetcount.is_set || is_set(cbpacctoutoctetcount.yfilter)) leaf_name_data.push_back(cbpacctoutoctetcount.get_name_leafdata());
+    if (cbpacctinoctetcount.is_set || is_set(cbpacctinoctetcount.yfilter)) leaf_name_data.push_back(cbpacctinoctetcount.get_name_leafdata());
     if (cbpacctoutpacketcount.is_set || is_set(cbpacctoutpacketcount.yfilter)) leaf_name_data.push_back(cbpacctoutpacketcount.get_name_leafdata());
+    if (cbpacctoutoctetcount.is_set || is_set(cbpacctoutoctetcount.yfilter)) leaf_name_data.push_back(cbpacctoutoctetcount.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -308,29 +308,29 @@ void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::set_value(const st
         cbpaccttrafficindex.value_namespace = name_space;
         cbpaccttrafficindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbpAcctInOctetCount")
-    {
-        cbpacctinoctetcount = value;
-        cbpacctinoctetcount.value_namespace = name_space;
-        cbpacctinoctetcount.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cbpAcctInPacketCount")
     {
         cbpacctinpacketcount = value;
         cbpacctinpacketcount.value_namespace = name_space;
         cbpacctinpacketcount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbpAcctOutOctetCount")
+    if(value_path == "cbpAcctInOctetCount")
     {
-        cbpacctoutoctetcount = value;
-        cbpacctoutoctetcount.value_namespace = name_space;
-        cbpacctoutoctetcount.value_namespace_prefix = name_space_prefix;
+        cbpacctinoctetcount = value;
+        cbpacctinoctetcount.value_namespace = name_space;
+        cbpacctinoctetcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbpAcctOutPacketCount")
     {
         cbpacctoutpacketcount = value;
         cbpacctoutpacketcount.value_namespace = name_space;
         cbpacctoutpacketcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cbpAcctOutOctetCount")
+    {
+        cbpacctoutoctetcount = value;
+        cbpacctoutoctetcount.value_namespace = name_space;
+        cbpacctoutoctetcount.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -344,27 +344,27 @@ void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::set_filter(const s
     {
         cbpaccttrafficindex.yfilter = yfilter;
     }
-    if(value_path == "cbpAcctInOctetCount")
-    {
-        cbpacctinoctetcount.yfilter = yfilter;
-    }
     if(value_path == "cbpAcctInPacketCount")
     {
         cbpacctinpacketcount.yfilter = yfilter;
     }
-    if(value_path == "cbpAcctOutOctetCount")
+    if(value_path == "cbpAcctInOctetCount")
     {
-        cbpacctoutoctetcount.yfilter = yfilter;
+        cbpacctinoctetcount.yfilter = yfilter;
     }
     if(value_path == "cbpAcctOutPacketCount")
     {
         cbpacctoutpacketcount.yfilter = yfilter;
     }
+    if(value_path == "cbpAcctOutOctetCount")
+    {
+        cbpacctoutoctetcount.yfilter = yfilter;
+    }
 }
 
 bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "cbpAcctTrafficIndex" || name == "cbpAcctInOctetCount" || name == "cbpAcctInPacketCount" || name == "cbpAcctOutOctetCount" || name == "cbpAcctOutPacketCount")
+    if(name == "ifIndex" || name == "cbpAcctTrafficIndex" || name == "cbpAcctInPacketCount" || name == "cbpAcctInOctetCount" || name == "cbpAcctOutPacketCount" || name == "cbpAcctOutOctetCount")
         return true;
     return false;
 }

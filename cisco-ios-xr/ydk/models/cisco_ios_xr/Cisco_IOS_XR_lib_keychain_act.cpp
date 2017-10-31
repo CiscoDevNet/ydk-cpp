@@ -391,8 +391,8 @@ bool MasterKeyUpdate::has_leaf_or_child_of_name(const std::string & name) const
 
 MasterKeyUpdate::Input::Input()
     :
-    new_key{YType::str, "new-key"},
-    old_key{YType::str, "old-key"}
+    old_key{YType::str, "old-key"},
+    new_key{YType::str, "new-key"}
 {
 
     yang_name = "input"; yang_parent_name = "master-key-update"; is_top_level_class = false; has_list_ancestor = false;
@@ -404,15 +404,15 @@ MasterKeyUpdate::Input::~Input()
 
 bool MasterKeyUpdate::Input::has_data() const
 {
-    return new_key.is_set
-	|| old_key.is_set;
+    return old_key.is_set
+	|| new_key.is_set;
 }
 
 bool MasterKeyUpdate::Input::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(new_key.yfilter)
-	|| ydk::is_set(old_key.yfilter);
+	|| ydk::is_set(old_key.yfilter)
+	|| ydk::is_set(new_key.yfilter);
 }
 
 std::string MasterKeyUpdate::Input::get_absolute_path() const
@@ -433,8 +433,8 @@ std::vector<std::pair<std::string, LeafData> > MasterKeyUpdate::Input::get_name_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (new_key.is_set || is_set(new_key.yfilter)) leaf_name_data.push_back(new_key.get_name_leafdata());
     if (old_key.is_set || is_set(old_key.yfilter)) leaf_name_data.push_back(old_key.get_name_leafdata());
+    if (new_key.is_set || is_set(new_key.yfilter)) leaf_name_data.push_back(new_key.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -453,35 +453,35 @@ std::map<std::string, std::shared_ptr<Entity>> MasterKeyUpdate::Input::get_child
 
 void MasterKeyUpdate::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "new-key")
-    {
-        new_key = value;
-        new_key.value_namespace = name_space;
-        new_key.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "old-key")
     {
         old_key = value;
         old_key.value_namespace = name_space;
         old_key.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "new-key")
+    {
+        new_key = value;
+        new_key.value_namespace = name_space;
+        new_key.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MasterKeyUpdate::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "new-key")
-    {
-        new_key.yfilter = yfilter;
-    }
     if(value_path == "old-key")
     {
         old_key.yfilter = yfilter;
+    }
+    if(value_path == "new-key")
+    {
+        new_key.yfilter = yfilter;
     }
 }
 
 bool MasterKeyUpdate::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "new-key" || name == "old-key")
+    if(name == "old-key" || name == "new-key")
         return true;
     return false;
 }

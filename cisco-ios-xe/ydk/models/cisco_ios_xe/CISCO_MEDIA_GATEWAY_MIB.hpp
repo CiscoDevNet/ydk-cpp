@@ -41,16 +41,338 @@ class CISCOMEDIAGATEWAYMIB : public ydk::Entity
         class Cmediagwcallcontrolconfigtable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable
         class Cmediagwrscstatstable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable> cmediagwcallcontrolconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable> cmediagwdnsipconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable> cmediagwdomainnameconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable> cmediagwipconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable> cmediagwrscstatstable;
         std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable> cmediagwtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwliftable> cmgwliftable;
         std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable> cmgwsignalprotocoltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable> cmediagwipconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable> cmediagwdomainnameconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable> cmediagwdnsipconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwliftable> cmgwliftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable> cmediagwcallcontrolconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable> cmediagwrscstatstable;
         
 }; // CISCOMEDIAGATEWAYMIB
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwtable : public ydk::Entity
+{
+    public:
+        Cmediagwtable();
+        ~Cmediagwtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmediagwentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry> > cmediagwentry;
+        
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwtable
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry : public ydk::Entity
+{
+    public:
+        Cmediagwentry();
+        ~Cmediagwentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cmgwindex; //type: int32
+        ydk::YLeaf cmgwdomainname; //type: string
+        ydk::YLeaf cmgwphysicalindex; //type: int32
+        ydk::YLeaf cmgwservicestate; //type: CGwServiceState
+        ydk::YLeaf cmgwadminstate; //type: CGwAdminState
+        ydk::YLeaf cmgwgracetime; //type: int32
+        ydk::YLeaf cmgwvtmappingmode; //type: Cmgwvtmappingmode
+        ydk::YLeaf cmgwsrcfilterenabled; //type: boolean
+        ydk::YLeaf cmgwlawinterceptenabled; //type: boolean
+        ydk::YLeaf cmgwv23enabled; //type: boolean
+        class Cmgwvtmappingmode;
+
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry
+
+
+class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable : public ydk::Entity
+{
+    public:
+        Cmgwsignalprotocoltable();
+        ~Cmgwsignalprotocoltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmgwsignalprotocolentry; //type: CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry> > cmgwsignalprotocolentry;
+        
+}; // CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable
+
+
+class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry : public ydk::Entity
+{
+    public:
+        Cmgwsignalprotocolentry();
+        ~Cmgwsignalprotocolentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        ydk::YLeaf cmgwindex;
+        ydk::YLeaf cmgwsignalprotocolindex; //type: int32
+        ydk::YLeaf cmgwsignalprotocol; //type: Cmgwsignalprotocol
+        ydk::YLeaf cmgwsignalprotocolversion; //type: string
+        ydk::YLeaf cmgwsignalprotocolport; //type: int32
+        ydk::YLeaf cmgwsignalmgcprotocolport; //type: uint16
+        ydk::YLeaf cmgwsignalprotocolpreference; //type: int32
+        ydk::YLeaf cmgwsignalprotocolconfigver; //type: string
+        class Cmgwsignalprotocol;
+
+}; // CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable : public ydk::Entity
+{
+    public:
+        Cmediagwipconfigtable();
+        ~Cmediagwipconfigtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmediagwipconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry> > cmediagwipconfigentry;
+        
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry : public ydk::Entity
+{
+    public:
+        Cmediagwipconfigentry();
+        ~Cmediagwipconfigentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        ydk::YLeaf cmgwindex;
+        ydk::YLeaf cmgwipconfigindex; //type: int32
+        ydk::YLeaf cmgwipconfigifindex; //type: int32
+        ydk::YLeaf cmgwipconfigvpi; //type: int32
+        ydk::YLeaf cmgwipconfigvci; //type: int32
+        ydk::YLeaf cmgwipconfigaddrtype; //type: InetAddressType
+        ydk::YLeaf cmgwipconfigaddress; //type: binary
+        ydk::YLeaf cmgwipconfigsubnetmask; //type: uint32
+        ydk::YLeaf cmgwipconfigdefaultgwip; //type: boolean
+        ydk::YLeaf cmgwipconfigforremotemapping; //type: boolean
+        ydk::YLeaf cmgwipconfigrowstatus; //type: RowStatus
+
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable : public ydk::Entity
+{
+    public:
+        Cmediagwdomainnameconfigtable();
+        ~Cmediagwdomainnameconfigtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmediagwdomainnameconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry> > cmediagwdomainnameconfigentry;
+        
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry : public ydk::Entity
+{
+    public:
+        Cmediagwdomainnameconfigentry();
+        ~Cmediagwdomainnameconfigentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        ydk::YLeaf cmgwindex;
+        ydk::YLeaf cmgwconfigdomainnameindex; //type: int32
+        ydk::YLeaf cmgwconfigdomainnameentity; //type: Cmgwconfigdomainnameentity
+        ydk::YLeaf cmgwconfigdomainname; //type: string
+        ydk::YLeaf cmgwconfigdomainnamerowstatus; //type: RowStatus
+        class Cmgwconfigdomainnameentity;
+
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable : public ydk::Entity
+{
+    public:
+        Cmediagwdnsipconfigtable();
+        ~Cmediagwdnsipconfigtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmediagwdnsipconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry> > cmediagwdnsipconfigentry;
+        
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable
+
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry : public ydk::Entity
+{
+    public:
+        Cmediagwdnsipconfigentry();
+        ~Cmediagwdnsipconfigentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        ydk::YLeaf cmgwindex;
+        ydk::YLeaf cmgwdnsipindex; //type: int32
+        ydk::YLeaf cmgwdnsdomainname; //type: string
+        ydk::YLeaf cmgwdnsiptype; //type: InetAddressType
+        ydk::YLeaf cmgwdnsip; //type: binary
+        ydk::YLeaf cmgwdnsiprowstatus; //type: RowStatus
+
+}; // CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry
+
+
+class CISCOMEDIAGATEWAYMIB::Cmgwliftable : public ydk::Entity
+{
+    public:
+        Cmgwliftable();
+        ~Cmgwliftable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmgwlifentry; //type: CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry> > cmgwlifentry;
+        
+}; // CISCOMEDIAGATEWAYMIB::Cmgwliftable
+
+
+class CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry : public ydk::Entity
+{
+    public:
+        Cmgwlifentry();
+        ~Cmgwlifentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        ydk::YLeaf cmgwindex;
+        ydk::YLeaf cmgwlifnumber; //type: uint32
+        ydk::YLeaf cmgwlifpvccount; //type: uint32
+        ydk::YLeaf cmgwlifvoiceifcount; //type: uint32
+
+}; // CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry
 
 
 class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable : public ydk::Entity
@@ -120,167 +442,6 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolc
 }; // CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable : public ydk::Entity
-{
-    public:
-        Cmediagwdnsipconfigtable();
-        ~Cmediagwdnsipconfigtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cmediagwdnsipconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry> > cmediagwdnsipconfigentry;
-        
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable
-
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry : public ydk::Entity
-{
-    public:
-        Cmediagwdnsipconfigentry();
-        ~Cmediagwdnsipconfigentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
-        ydk::YLeaf cmgwindex;
-        ydk::YLeaf cmgwdnsipindex; //type: int32
-        ydk::YLeaf cmgwdnsdomainname; //type: string
-        ydk::YLeaf cmgwdnsiptype; //type: InetAddressType
-        ydk::YLeaf cmgwdnsip; //type: binary
-        ydk::YLeaf cmgwdnsiprowstatus; //type: RowStatus
-
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry
-
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable : public ydk::Entity
-{
-    public:
-        Cmediagwdomainnameconfigtable();
-        ~Cmediagwdomainnameconfigtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cmediagwdomainnameconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry> > cmediagwdomainnameconfigentry;
-        
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable
-
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry : public ydk::Entity
-{
-    public:
-        Cmediagwdomainnameconfigentry();
-        ~Cmediagwdomainnameconfigentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
-        ydk::YLeaf cmgwindex;
-        ydk::YLeaf cmgwconfigdomainnameindex; //type: int32
-        ydk::YLeaf cmgwconfigdomainnameentity; //type: Cmgwconfigdomainnameentity
-        ydk::YLeaf cmgwconfigdomainname; //type: string
-        ydk::YLeaf cmgwconfigdomainnamerowstatus; //type: RowStatus
-        class Cmgwconfigdomainnameentity;
-
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry
-
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable : public ydk::Entity
-{
-    public:
-        Cmediagwipconfigtable();
-        ~Cmediagwipconfigtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cmediagwipconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry> > cmediagwipconfigentry;
-        
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable
-
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry : public ydk::Entity
-{
-    public:
-        Cmediagwipconfigentry();
-        ~Cmediagwipconfigentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
-        ydk::YLeaf cmgwindex;
-        ydk::YLeaf cmgwipconfigindex; //type: int32
-        ydk::YLeaf cmgwipconfigifindex; //type: int32
-        ydk::YLeaf cmgwipconfigvpi; //type: int32
-        ydk::YLeaf cmgwipconfigvci; //type: int32
-        ydk::YLeaf cmgwipconfigaddrtype; //type: InetAddressType
-        ydk::YLeaf cmgwipconfigaddress; //type: binary
-        ydk::YLeaf cmgwipconfigsubnetmask; //type: uint32
-        ydk::YLeaf cmgwipconfigdefaultgwip; //type: boolean
-        ydk::YLeaf cmgwipconfigforremotemapping; //type: boolean
-        ydk::YLeaf cmgwipconfigrowstatus; //type: RowStatus
-
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry
-
-
 class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable : public ydk::Entity
 {
     public:
@@ -333,167 +494,6 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry : publi
 
 }; // CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry
 
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwtable : public ydk::Entity
-{
-    public:
-        Cmediagwtable();
-        ~Cmediagwtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cmediagwentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry> > cmediagwentry;
-        
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwtable
-
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry : public ydk::Entity
-{
-    public:
-        Cmediagwentry();
-        ~Cmediagwentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cmgwindex; //type: int32
-        ydk::YLeaf cmgwdomainname; //type: string
-        ydk::YLeaf cmgwphysicalindex; //type: int32
-        ydk::YLeaf cmgwservicestate; //type: CGwServiceState
-        ydk::YLeaf cmgwadminstate; //type: CGwAdminState
-        ydk::YLeaf cmgwgracetime; //type: int32
-        ydk::YLeaf cmgwvtmappingmode; //type: Cmgwvtmappingmode
-        ydk::YLeaf cmgwsrcfilterenabled; //type: boolean
-        ydk::YLeaf cmgwlawinterceptenabled; //type: boolean
-        ydk::YLeaf cmgwv23enabled; //type: boolean
-        class Cmgwvtmappingmode;
-
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry
-
-
-class CISCOMEDIAGATEWAYMIB::Cmgwliftable : public ydk::Entity
-{
-    public:
-        Cmgwliftable();
-        ~Cmgwliftable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cmgwlifentry; //type: CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry> > cmgwlifentry;
-        
-}; // CISCOMEDIAGATEWAYMIB::Cmgwliftable
-
-
-class CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry : public ydk::Entity
-{
-    public:
-        Cmgwlifentry();
-        ~Cmgwlifentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
-        ydk::YLeaf cmgwindex;
-        ydk::YLeaf cmgwlifnumber; //type: uint32
-        ydk::YLeaf cmgwlifpvccount; //type: uint32
-        ydk::YLeaf cmgwlifvoiceifcount; //type: uint32
-
-}; // CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry
-
-
-class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable : public ydk::Entity
-{
-    public:
-        Cmgwsignalprotocoltable();
-        ~Cmgwsignalprotocoltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cmgwsignalprotocolentry; //type: CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry> > cmgwsignalprotocolentry;
-        
-}; // CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable
-
-
-class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry : public ydk::Entity
-{
-    public:
-        Cmgwsignalprotocolentry();
-        ~Cmgwsignalprotocolentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
-        ydk::YLeaf cmgwindex;
-        ydk::YLeaf cmgwsignalprotocolindex; //type: int32
-        ydk::YLeaf cmgwsignalprotocol; //type: Cmgwsignalprotocol
-        ydk::YLeaf cmgwsignalprotocolversion; //type: string
-        ydk::YLeaf cmgwsignalprotocolport; //type: int32
-        ydk::YLeaf cmgwsignalmgcprotocolport; //type: uint16
-        ydk::YLeaf cmgwsignalprotocolpreference; //type: int32
-        ydk::YLeaf cmgwsignalprotocolconfigver; //type: string
-        class Cmgwsignalprotocol;
-
-}; // CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry
-
 class CGwServiceState : public ydk::Enum
 {
     public:
@@ -520,6 +520,33 @@ class CCallControlJitterDelayMode : public ydk::Enum
 
 };
 
+class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf titan;
+
+};
+
+class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf mgcp;
+        static const ydk::Enum::YLeaf h248;
+        static const ydk::Enum::YLeaf tgcp;
+
+};
+
+class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gateway;
+        static const ydk::Enum::YLeaf dnsServer;
+        static const ydk::Enum::YLeaf mgc;
+
+};
+
 class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled : public ydk::Enum
 {
     public:
@@ -536,15 +563,6 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolc
         static const ydk::Enum::YLeaf atmPvcAal2;
         static const ydk::Enum::YLeaf atmSvcAal2;
         static const ydk::Enum::YLeaf atmSvcAal1;
-
-};
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf gateway;
-        static const ydk::Enum::YLeaf dnsServer;
-        static const ydk::Enum::YLeaf mgc;
 
 };
 
@@ -568,24 +586,6 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrs
         static const ydk::Enum::YLeaf largeipcbuffer;
         static const ydk::Enum::YLeaf hugeipcbuffer;
         static const ydk::Enum::YLeaf mblkipcbuffer;
-
-};
-
-class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf titan;
-
-};
-
-class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf mgcp;
-        static const ydk::Enum::YLeaf h248;
-        static const ydk::Enum::YLeaf tgcp;
 
 };
 

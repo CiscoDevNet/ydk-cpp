@@ -41,67 +41,17 @@ class DS1MIB : public ydk::Entity
         class Dsx1Fractable; //type: DS1MIB::Dsx1Fractable
         class Dsx1Chanmappingtable; //type: DS1MIB::Dsx1Chanmappingtable
 
-        std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Chanmappingtable> dsx1chanmappingtable;
         std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Configtable> dsx1configtable;
         std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Currenttable> dsx1currenttable;
+        std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Intervaltable> dsx1intervaltable;
+        std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Totaltable> dsx1totaltable;
         std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Farendcurrenttable> dsx1farendcurrenttable;
         std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Farendintervaltable> dsx1farendintervaltable;
         std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Farendtotaltable> dsx1farendtotaltable;
         std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Fractable> dsx1fractable;
-        std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Intervaltable> dsx1intervaltable;
-        std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Totaltable> dsx1totaltable;
+        std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Chanmappingtable> dsx1chanmappingtable;
         
 }; // DS1MIB
-
-
-class DS1MIB::Dsx1Chanmappingtable : public ydk::Entity
-{
-    public:
-        Dsx1Chanmappingtable();
-        ~Dsx1Chanmappingtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Dsx1Chanmappingentry; //type: DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry> > dsx1chanmappingentry;
-        
-}; // DS1MIB::Dsx1Chanmappingtable
-
-
-class DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry : public ydk::Entity
-{
-    public:
-        Dsx1Chanmappingentry();
-        ~Dsx1Chanmappingentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Configtable::Dsx1Configentry::dsx1ds1channelnumber)
-        ydk::YLeaf dsx1ds1channelnumber;
-        ydk::YLeaf dsx1chanmappedifindex; //type: int32
-
-}; // DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry
 
 
 class DS1MIB::Dsx1Configtable : public ydk::Entity
@@ -231,6 +181,120 @@ class DS1MIB::Dsx1Currenttable::Dsx1Currententry : public ydk::Entity
         ydk::YLeaf dsx1currentlcvs; //type: uint32
 
 }; // DS1MIB::Dsx1Currenttable::Dsx1Currententry
+
+
+class DS1MIB::Dsx1Intervaltable : public ydk::Entity
+{
+    public:
+        Dsx1Intervaltable();
+        ~Dsx1Intervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Dsx1Intervalentry; //type: DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry> > dsx1intervalentry;
+        
+}; // DS1MIB::Dsx1Intervaltable
+
+
+class DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry : public ydk::Entity
+{
+    public:
+        Dsx1Intervalentry();
+        ~Dsx1Intervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dsx1intervalindex; //type: int32
+        ydk::YLeaf dsx1intervalnumber; //type: int32
+        ydk::YLeaf dsx1intervaless; //type: uint32
+        ydk::YLeaf dsx1intervalsess; //type: uint32
+        ydk::YLeaf dsx1intervalsefss; //type: uint32
+        ydk::YLeaf dsx1intervaluass; //type: uint32
+        ydk::YLeaf dsx1intervalcsss; //type: uint32
+        ydk::YLeaf dsx1intervalpcvs; //type: uint32
+        ydk::YLeaf dsx1intervalless; //type: uint32
+        ydk::YLeaf dsx1intervalbess; //type: uint32
+        ydk::YLeaf dsx1intervaldms; //type: uint32
+        ydk::YLeaf dsx1intervallcvs; //type: uint32
+        ydk::YLeaf dsx1intervalvaliddata; //type: boolean
+
+}; // DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry
+
+
+class DS1MIB::Dsx1Totaltable : public ydk::Entity
+{
+    public:
+        Dsx1Totaltable();
+        ~Dsx1Totaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Dsx1Totalentry; //type: DS1MIB::Dsx1Totaltable::Dsx1Totalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Totaltable::Dsx1Totalentry> > dsx1totalentry;
+        
+}; // DS1MIB::Dsx1Totaltable
+
+
+class DS1MIB::Dsx1Totaltable::Dsx1Totalentry : public ydk::Entity
+{
+    public:
+        Dsx1Totalentry();
+        ~Dsx1Totalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dsx1totalindex; //type: int32
+        ydk::YLeaf dsx1totaless; //type: uint32
+        ydk::YLeaf dsx1totalsess; //type: uint32
+        ydk::YLeaf dsx1totalsefss; //type: uint32
+        ydk::YLeaf dsx1totaluass; //type: uint32
+        ydk::YLeaf dsx1totalcsss; //type: uint32
+        ydk::YLeaf dsx1totalpcvs; //type: uint32
+        ydk::YLeaf dsx1totalless; //type: uint32
+        ydk::YLeaf dsx1totalbess; //type: uint32
+        ydk::YLeaf dsx1totaldms; //type: uint32
+        ydk::YLeaf dsx1totallcvs; //type: uint32
+
+}; // DS1MIB::Dsx1Totaltable::Dsx1Totalentry
 
 
 class DS1MIB::Dsx1Farendcurrenttable : public ydk::Entity
@@ -451,11 +515,11 @@ class DS1MIB::Dsx1Fractable::Dsx1Fracentry : public ydk::Entity
 }; // DS1MIB::Dsx1Fractable::Dsx1Fracentry
 
 
-class DS1MIB::Dsx1Intervaltable : public ydk::Entity
+class DS1MIB::Dsx1Chanmappingtable : public ydk::Entity
 {
     public:
-        Dsx1Intervaltable();
-        ~Dsx1Intervaltable();
+        Dsx1Chanmappingtable();
+        ~Dsx1Chanmappingtable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -468,18 +532,18 @@ class DS1MIB::Dsx1Intervaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx1Intervalentry; //type: DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry
+        class Dsx1Chanmappingentry; //type: DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry> > dsx1intervalentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry> > dsx1chanmappingentry;
         
-}; // DS1MIB::Dsx1Intervaltable
+}; // DS1MIB::Dsx1Chanmappingtable
 
 
-class DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry : public ydk::Entity
+class DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry : public ydk::Entity
 {
     public:
-        Dsx1Intervalentry();
-        ~Dsx1Intervalentry();
+        Dsx1Chanmappingentry();
+        ~Dsx1Chanmappingentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -492,77 +556,13 @@ class DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dsx1intervalindex; //type: int32
-        ydk::YLeaf dsx1intervalnumber; //type: int32
-        ydk::YLeaf dsx1intervaless; //type: uint32
-        ydk::YLeaf dsx1intervalsess; //type: uint32
-        ydk::YLeaf dsx1intervalsefss; //type: uint32
-        ydk::YLeaf dsx1intervaluass; //type: uint32
-        ydk::YLeaf dsx1intervalcsss; //type: uint32
-        ydk::YLeaf dsx1intervalpcvs; //type: uint32
-        ydk::YLeaf dsx1intervalless; //type: uint32
-        ydk::YLeaf dsx1intervalbess; //type: uint32
-        ydk::YLeaf dsx1intervaldms; //type: uint32
-        ydk::YLeaf dsx1intervallcvs; //type: uint32
-        ydk::YLeaf dsx1intervalvaliddata; //type: boolean
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Configtable::Dsx1Configentry::dsx1ds1channelnumber)
+        ydk::YLeaf dsx1ds1channelnumber;
+        ydk::YLeaf dsx1chanmappedifindex; //type: int32
 
-}; // DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry
-
-
-class DS1MIB::Dsx1Totaltable : public ydk::Entity
-{
-    public:
-        Dsx1Totaltable();
-        ~Dsx1Totaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Dsx1Totalentry; //type: DS1MIB::Dsx1Totaltable::Dsx1Totalentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::DS1_MIB::DS1MIB::Dsx1Totaltable::Dsx1Totalentry> > dsx1totalentry;
-        
-}; // DS1MIB::Dsx1Totaltable
-
-
-class DS1MIB::Dsx1Totaltable::Dsx1Totalentry : public ydk::Entity
-{
-    public:
-        Dsx1Totalentry();
-        ~Dsx1Totalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf dsx1totalindex; //type: int32
-        ydk::YLeaf dsx1totaless; //type: uint32
-        ydk::YLeaf dsx1totalsess; //type: uint32
-        ydk::YLeaf dsx1totalsefss; //type: uint32
-        ydk::YLeaf dsx1totaluass; //type: uint32
-        ydk::YLeaf dsx1totalcsss; //type: uint32
-        ydk::YLeaf dsx1totalpcvs; //type: uint32
-        ydk::YLeaf dsx1totalless; //type: uint32
-        ydk::YLeaf dsx1totalbess; //type: uint32
-        ydk::YLeaf dsx1totaldms; //type: uint32
-        ydk::YLeaf dsx1totallcvs; //type: uint32
-
-}; // DS1MIB::Dsx1Totaltable::Dsx1Totalentry
+}; // DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry
 
 class DS1MIB::Dsx1Configtable::Dsx1Configentry::Dsx1Linetype : public ydk::Enum
 {

@@ -338,14 +338,14 @@ bool InterfaceDampening::Interfaces::Interface::has_leaf_or_child_of_name(const 
 
 InterfaceDampening::Interfaces::Interface::IfDampening::IfDampening()
     :
-    half_life{YType::uint32, "half-life"},
-    is_dampening_enabled{YType::boolean, "is-dampening-enabled"},
-    last_state_transition_time{YType::uint32, "last-state-transition-time"},
-    maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
-    restart_penalty{YType::uint32, "restart-penalty"},
-    reuse_threshold{YType::uint32, "reuse-threshold"},
     state_transition_count{YType::uint32, "state-transition-count"},
-    suppress_threshold{YType::uint32, "suppress-threshold"}
+    last_state_transition_time{YType::uint32, "last-state-transition-time"},
+    is_dampening_enabled{YType::boolean, "is-dampening-enabled"},
+    half_life{YType::uint32, "half-life"},
+    reuse_threshold{YType::uint32, "reuse-threshold"},
+    suppress_threshold{YType::uint32, "suppress-threshold"},
+    maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
+    restart_penalty{YType::uint32, "restart-penalty"}
     	,
     interface_dampening(std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_>())
 {
@@ -365,14 +365,14 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::has_data() const
         if(capsulation[index]->has_data())
             return true;
     }
-    return half_life.is_set
-	|| is_dampening_enabled.is_set
+    return state_transition_count.is_set
 	|| last_state_transition_time.is_set
+	|| is_dampening_enabled.is_set
+	|| half_life.is_set
+	|| reuse_threshold.is_set
+	|| suppress_threshold.is_set
 	|| maximum_suppress_time.is_set
 	|| restart_penalty.is_set
-	|| reuse_threshold.is_set
-	|| state_transition_count.is_set
-	|| suppress_threshold.is_set
 	|| (interface_dampening !=  nullptr && interface_dampening->has_data());
 }
 
@@ -384,14 +384,14 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::has_operation() con
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(half_life.yfilter)
-	|| ydk::is_set(is_dampening_enabled.yfilter)
+	|| ydk::is_set(state_transition_count.yfilter)
 	|| ydk::is_set(last_state_transition_time.yfilter)
+	|| ydk::is_set(is_dampening_enabled.yfilter)
+	|| ydk::is_set(half_life.yfilter)
+	|| ydk::is_set(reuse_threshold.yfilter)
+	|| ydk::is_set(suppress_threshold.yfilter)
 	|| ydk::is_set(maximum_suppress_time.yfilter)
 	|| ydk::is_set(restart_penalty.yfilter)
-	|| ydk::is_set(reuse_threshold.yfilter)
-	|| ydk::is_set(state_transition_count.yfilter)
-	|| ydk::is_set(suppress_threshold.yfilter)
 	|| (interface_dampening !=  nullptr && interface_dampening->has_operation());
 }
 
@@ -406,14 +406,14 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (half_life.is_set || is_set(half_life.yfilter)) leaf_name_data.push_back(half_life.get_name_leafdata());
-    if (is_dampening_enabled.is_set || is_set(is_dampening_enabled.yfilter)) leaf_name_data.push_back(is_dampening_enabled.get_name_leafdata());
+    if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
     if (last_state_transition_time.is_set || is_set(last_state_transition_time.yfilter)) leaf_name_data.push_back(last_state_transition_time.get_name_leafdata());
+    if (is_dampening_enabled.is_set || is_set(is_dampening_enabled.yfilter)) leaf_name_data.push_back(is_dampening_enabled.get_name_leafdata());
+    if (half_life.is_set || is_set(half_life.yfilter)) leaf_name_data.push_back(half_life.get_name_leafdata());
+    if (reuse_threshold.is_set || is_set(reuse_threshold.yfilter)) leaf_name_data.push_back(reuse_threshold.get_name_leafdata());
+    if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
     if (maximum_suppress_time.is_set || is_set(maximum_suppress_time.yfilter)) leaf_name_data.push_back(maximum_suppress_time.get_name_leafdata());
     if (restart_penalty.is_set || is_set(restart_penalty.yfilter)) leaf_name_data.push_back(restart_penalty.get_name_leafdata());
-    if (reuse_threshold.is_set || is_set(reuse_threshold.yfilter)) leaf_name_data.push_back(reuse_threshold.get_name_leafdata());
-    if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
-    if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -421,6 +421,15 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 
 std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "interface-dampening")
+    {
+        if(interface_dampening == nullptr)
+        {
+            interface_dampening = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_>();
+        }
+        return interface_dampening;
+    }
+
     if(child_yang_name == "capsulation")
     {
         for(auto const & c : capsulation)
@@ -437,29 +446,20 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::
         return c;
     }
 
-    if(child_yang_name == "interface-dampening")
-    {
-        if(interface_dampening == nullptr)
-        {
-            interface_dampening = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_>();
-        }
-        return interface_dampening;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : capsulation)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     if(interface_dampening != nullptr)
     {
         children["interface-dampening"] = interface_dampening;
+    }
+
+    for (auto const & c : capsulation)
+    {
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -467,11 +467,17 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::I
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "half-life")
+    if(value_path == "state-transition-count")
     {
-        half_life = value;
-        half_life.value_namespace = name_space;
-        half_life.value_namespace_prefix = name_space_prefix;
+        state_transition_count = value;
+        state_transition_count.value_namespace = name_space;
+        state_transition_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-state-transition-time")
+    {
+        last_state_transition_time = value;
+        last_state_transition_time.value_namespace = name_space;
+        last_state_transition_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dampening-enabled")
     {
@@ -479,11 +485,23 @@ void InterfaceDampening::Interfaces::Interface::IfDampening::set_value(const std
         is_dampening_enabled.value_namespace = name_space;
         is_dampening_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "last-state-transition-time")
+    if(value_path == "half-life")
     {
-        last_state_transition_time = value;
-        last_state_transition_time.value_namespace = name_space;
-        last_state_transition_time.value_namespace_prefix = name_space_prefix;
+        half_life = value;
+        half_life.value_namespace = name_space;
+        half_life.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reuse-threshold")
+    {
+        reuse_threshold = value;
+        reuse_threshold.value_namespace = name_space;
+        reuse_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppress-threshold")
+    {
+        suppress_threshold = value;
+        suppress_threshold.value_namespace = name_space;
+        suppress_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-suppress-time")
     {
@@ -497,39 +515,33 @@ void InterfaceDampening::Interfaces::Interface::IfDampening::set_value(const std
         restart_penalty.value_namespace = name_space;
         restart_penalty.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "reuse-threshold")
-    {
-        reuse_threshold = value;
-        reuse_threshold.value_namespace = name_space;
-        reuse_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state-transition-count")
-    {
-        state_transition_count = value;
-        state_transition_count.value_namespace = name_space;
-        state_transition_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "suppress-threshold")
-    {
-        suppress_threshold = value;
-        suppress_threshold.value_namespace = name_space;
-        suppress_threshold.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "half-life")
+    if(value_path == "state-transition-count")
     {
-        half_life.yfilter = yfilter;
+        state_transition_count.yfilter = yfilter;
+    }
+    if(value_path == "last-state-transition-time")
+    {
+        last_state_transition_time.yfilter = yfilter;
     }
     if(value_path == "is-dampening-enabled")
     {
         is_dampening_enabled.yfilter = yfilter;
     }
-    if(value_path == "last-state-transition-time")
+    if(value_path == "half-life")
     {
-        last_state_transition_time.yfilter = yfilter;
+        half_life.yfilter = yfilter;
+    }
+    if(value_path == "reuse-threshold")
+    {
+        reuse_threshold.yfilter = yfilter;
+    }
+    if(value_path == "suppress-threshold")
+    {
+        suppress_threshold.yfilter = yfilter;
     }
     if(value_path == "maximum-suppress-time")
     {
@@ -539,23 +551,143 @@ void InterfaceDampening::Interfaces::Interface::IfDampening::set_filter(const st
     {
         restart_penalty.yfilter = yfilter;
     }
-    if(value_path == "reuse-threshold")
-    {
-        reuse_threshold.yfilter = yfilter;
-    }
-    if(value_path == "state-transition-count")
-    {
-        state_transition_count.yfilter = yfilter;
-    }
-    if(value_path == "suppress-threshold")
-    {
-        suppress_threshold.yfilter = yfilter;
-    }
 }
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "capsulation" || name == "interface-dampening" || name == "half-life" || name == "is-dampening-enabled" || name == "last-state-transition-time" || name == "maximum-suppress-time" || name == "restart-penalty" || name == "reuse-threshold" || name == "state-transition-count" || name == "suppress-threshold")
+    if(name == "interface-dampening" || name == "capsulation" || name == "state-transition-count" || name == "last-state-transition-time" || name == "is-dampening-enabled" || name == "half-life" || name == "reuse-threshold" || name == "suppress-threshold" || name == "maximum-suppress-time" || name == "restart-penalty")
+        return true;
+    return false;
+}
+
+InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::InterfaceDampening_()
+    :
+    penalty{YType::uint32, "penalty"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
+    seconds_remaining{YType::uint32, "seconds-remaining"},
+    flaps{YType::uint32, "flaps"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "interface-dampening"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::~InterfaceDampening_()
+{
+}
+
+bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_data() const
+{
+    return penalty.is_set
+	|| is_suppressed_enabled.is_set
+	|| seconds_remaining.is_set
+	|| flaps.is_set
+	|| state.is_set;
+}
+
+bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
+	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(flaps.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-dampening";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
+    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "penalty")
+    {
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled = value;
+        is_suppressed_enabled.value_namespace = name_space;
+        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining = value;
+        seconds_remaining.value_namespace = name_space;
+        seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "penalty")
+    {
+        penalty.yfilter = yfilter;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled.yfilter = yfilter;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "penalty" || name == "is-suppressed-enabled" || name == "seconds-remaining" || name == "flaps" || name == "state")
         return true;
     return false;
 }
@@ -657,10 +789,10 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::has_le
 
 InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::CapsulationDampening()
     :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
     penalty{YType::uint32, "penalty"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
     seconds_remaining{YType::uint32, "seconds-remaining"},
+    flaps{YType::uint32, "flaps"},
     state{YType::enumeration, "state"}
 {
 
@@ -673,20 +805,20 @@ InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::has_data() const
 {
-    return flaps.is_set
+    return penalty.is_set
 	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
 	|| seconds_remaining.is_set
+	|| flaps.is_set
 	|| state.is_set;
 }
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
 	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
 	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(flaps.yfilter)
 	|| ydk::is_set(state.yfilter);
 }
 
@@ -701,10 +833,10 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
     if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
     if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
     return leaf_name_data;
@@ -724,11 +856,11 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::I
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "flaps")
+    if(value_path == "penalty")
     {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-suppressed-enabled")
     {
@@ -736,17 +868,17 @@ void InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsul
         is_suppressed_enabled.value_namespace = name_space;
         is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "seconds-remaining")
     {
         seconds_remaining = value;
         seconds_remaining.value_namespace = name_space;
         seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
@@ -758,21 +890,21 @@ void InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsul
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "flaps")
+    if(value_path == "penalty")
     {
-        flaps.yfilter = yfilter;
+        penalty.yfilter = yfilter;
     }
     if(value_path == "is-suppressed-enabled")
     {
         is_suppressed_enabled.yfilter = yfilter;
     }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
     if(value_path == "seconds-remaining")
     {
         seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
     }
     if(value_path == "state")
     {
@@ -782,139 +914,7 @@ void InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsul
 
 bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
-        return true;
-    return false;
-}
-
-InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::InterfaceDampening_()
-    :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
-    penalty{YType::uint32, "penalty"},
-    seconds_remaining{YType::uint32, "seconds-remaining"},
-    state{YType::enumeration, "state"}
-{
-
-    yang_name = "interface-dampening"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::~InterfaceDampening_()
-{
-}
-
-bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_data() const
-{
-    return flaps.is_set
-	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
-	|| seconds_remaining.is_set
-	|| state.is_set;
-}
-
-bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
-	|| ydk::is_set(penalty.yfilter)
-	|| ydk::is_set(seconds_remaining.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-dampening";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
-    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
-    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flaps")
-    {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled = value;
-        is_suppressed_enabled.value_namespace = name_space;
-        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining = value;
-        seconds_remaining.value_namespace = name_space;
-        seconds_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flaps")
-    {
-        flaps.yfilter = yfilter;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled.yfilter = yfilter;
-    }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
+    if(name == "penalty" || name == "is-suppressed-enabled" || name == "seconds-remaining" || name == "flaps" || name == "state")
         return true;
     return false;
 }
@@ -1395,14 +1395,14 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::has_leaf_or_ch
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::IfHandle()
     :
     interface_handle_name{YType::str, "interface-handle-name"},
-    half_life{YType::uint32, "half-life"},
-    is_dampening_enabled{YType::boolean, "is-dampening-enabled"},
-    last_state_transition_time{YType::uint32, "last-state-transition-time"},
-    maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
-    restart_penalty{YType::uint32, "restart-penalty"},
-    reuse_threshold{YType::uint32, "reuse-threshold"},
     state_transition_count{YType::uint32, "state-transition-count"},
-    suppress_threshold{YType::uint32, "suppress-threshold"}
+    last_state_transition_time{YType::uint32, "last-state-transition-time"},
+    is_dampening_enabled{YType::boolean, "is-dampening-enabled"},
+    half_life{YType::uint32, "half-life"},
+    reuse_threshold{YType::uint32, "reuse-threshold"},
+    suppress_threshold{YType::uint32, "suppress-threshold"},
+    maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
+    restart_penalty{YType::uint32, "restart-penalty"}
     	,
     interface_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_>())
 {
@@ -1423,14 +1423,14 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_
             return true;
     }
     return interface_handle_name.is_set
-	|| half_life.is_set
-	|| is_dampening_enabled.is_set
+	|| state_transition_count.is_set
 	|| last_state_transition_time.is_set
+	|| is_dampening_enabled.is_set
+	|| half_life.is_set
+	|| reuse_threshold.is_set
+	|| suppress_threshold.is_set
 	|| maximum_suppress_time.is_set
 	|| restart_penalty.is_set
-	|| reuse_threshold.is_set
-	|| state_transition_count.is_set
-	|| suppress_threshold.is_set
 	|| (interface_dampening !=  nullptr && interface_dampening->has_data());
 }
 
@@ -1443,14 +1443,14 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_
     }
     return is_set(yfilter)
 	|| ydk::is_set(interface_handle_name.yfilter)
-	|| ydk::is_set(half_life.yfilter)
-	|| ydk::is_set(is_dampening_enabled.yfilter)
+	|| ydk::is_set(state_transition_count.yfilter)
 	|| ydk::is_set(last_state_transition_time.yfilter)
+	|| ydk::is_set(is_dampening_enabled.yfilter)
+	|| ydk::is_set(half_life.yfilter)
+	|| ydk::is_set(reuse_threshold.yfilter)
+	|| ydk::is_set(suppress_threshold.yfilter)
 	|| ydk::is_set(maximum_suppress_time.yfilter)
 	|| ydk::is_set(restart_penalty.yfilter)
-	|| ydk::is_set(reuse_threshold.yfilter)
-	|| ydk::is_set(state_transition_count.yfilter)
-	|| ydk::is_set(suppress_threshold.yfilter)
 	|| (interface_dampening !=  nullptr && interface_dampening->has_operation());
 }
 
@@ -1466,14 +1466,14 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_handle_name.is_set || is_set(interface_handle_name.yfilter)) leaf_name_data.push_back(interface_handle_name.get_name_leafdata());
-    if (half_life.is_set || is_set(half_life.yfilter)) leaf_name_data.push_back(half_life.get_name_leafdata());
-    if (is_dampening_enabled.is_set || is_set(is_dampening_enabled.yfilter)) leaf_name_data.push_back(is_dampening_enabled.get_name_leafdata());
+    if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
     if (last_state_transition_time.is_set || is_set(last_state_transition_time.yfilter)) leaf_name_data.push_back(last_state_transition_time.get_name_leafdata());
+    if (is_dampening_enabled.is_set || is_set(is_dampening_enabled.yfilter)) leaf_name_data.push_back(is_dampening_enabled.get_name_leafdata());
+    if (half_life.is_set || is_set(half_life.yfilter)) leaf_name_data.push_back(half_life.get_name_leafdata());
+    if (reuse_threshold.is_set || is_set(reuse_threshold.yfilter)) leaf_name_data.push_back(reuse_threshold.get_name_leafdata());
+    if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
     if (maximum_suppress_time.is_set || is_set(maximum_suppress_time.yfilter)) leaf_name_data.push_back(maximum_suppress_time.get_name_leafdata());
     if (restart_penalty.is_set || is_set(restart_penalty.yfilter)) leaf_name_data.push_back(restart_penalty.get_name_leafdata());
-    if (reuse_threshold.is_set || is_set(reuse_threshold.yfilter)) leaf_name_data.push_back(reuse_threshold.get_name_leafdata());
-    if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
-    if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1481,6 +1481,15 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "interface-dampening")
+    {
+        if(interface_dampening == nullptr)
+        {
+            interface_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_>();
+        }
+        return interface_dampening;
+    }
+
     if(child_yang_name == "capsulation")
     {
         for(auto const & c : capsulation)
@@ -1497,29 +1506,20 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHand
         return c;
     }
 
-    if(child_yang_name == "interface-dampening")
-    {
-        if(interface_dampening == nullptr)
-        {
-            interface_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_>();
-        }
-        return interface_dampening;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : capsulation)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     if(interface_dampening != nullptr)
     {
         children["interface-dampening"] = interface_dampening;
+    }
+
+    for (auto const & c : capsulation)
+    {
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1533,11 +1533,17 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::set_
         interface_handle_name.value_namespace = name_space;
         interface_handle_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "half-life")
+    if(value_path == "state-transition-count")
     {
-        half_life = value;
-        half_life.value_namespace = name_space;
-        half_life.value_namespace_prefix = name_space_prefix;
+        state_transition_count = value;
+        state_transition_count.value_namespace = name_space;
+        state_transition_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-state-transition-time")
+    {
+        last_state_transition_time = value;
+        last_state_transition_time.value_namespace = name_space;
+        last_state_transition_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dampening-enabled")
     {
@@ -1545,11 +1551,23 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::set_
         is_dampening_enabled.value_namespace = name_space;
         is_dampening_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "last-state-transition-time")
+    if(value_path == "half-life")
     {
-        last_state_transition_time = value;
-        last_state_transition_time.value_namespace = name_space;
-        last_state_transition_time.value_namespace_prefix = name_space_prefix;
+        half_life = value;
+        half_life.value_namespace = name_space;
+        half_life.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reuse-threshold")
+    {
+        reuse_threshold = value;
+        reuse_threshold.value_namespace = name_space;
+        reuse_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppress-threshold")
+    {
+        suppress_threshold = value;
+        suppress_threshold.value_namespace = name_space;
+        suppress_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-suppress-time")
     {
@@ -1563,24 +1581,6 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::set_
         restart_penalty.value_namespace = name_space;
         restart_penalty.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "reuse-threshold")
-    {
-        reuse_threshold = value;
-        reuse_threshold.value_namespace = name_space;
-        reuse_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state-transition-count")
-    {
-        state_transition_count = value;
-        state_transition_count.value_namespace = name_space;
-        state_transition_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "suppress-threshold")
-    {
-        suppress_threshold = value;
-        suppress_threshold.value_namespace = name_space;
-        suppress_threshold.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1589,17 +1589,29 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::set_
     {
         interface_handle_name.yfilter = yfilter;
     }
-    if(value_path == "half-life")
+    if(value_path == "state-transition-count")
     {
-        half_life.yfilter = yfilter;
+        state_transition_count.yfilter = yfilter;
+    }
+    if(value_path == "last-state-transition-time")
+    {
+        last_state_transition_time.yfilter = yfilter;
     }
     if(value_path == "is-dampening-enabled")
     {
         is_dampening_enabled.yfilter = yfilter;
     }
-    if(value_path == "last-state-transition-time")
+    if(value_path == "half-life")
     {
-        last_state_transition_time.yfilter = yfilter;
+        half_life.yfilter = yfilter;
+    }
+    if(value_path == "reuse-threshold")
+    {
+        reuse_threshold.yfilter = yfilter;
+    }
+    if(value_path == "suppress-threshold")
+    {
+        suppress_threshold.yfilter = yfilter;
     }
     if(value_path == "maximum-suppress-time")
     {
@@ -1609,23 +1621,143 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::set_
     {
         restart_penalty.yfilter = yfilter;
     }
-    if(value_path == "reuse-threshold")
-    {
-        reuse_threshold.yfilter = yfilter;
-    }
-    if(value_path == "state-transition-count")
-    {
-        state_transition_count.yfilter = yfilter;
-    }
-    if(value_path == "suppress-threshold")
-    {
-        suppress_threshold.yfilter = yfilter;
-    }
 }
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "capsulation" || name == "interface-dampening" || name == "interface-handle-name" || name == "half-life" || name == "is-dampening-enabled" || name == "last-state-transition-time" || name == "maximum-suppress-time" || name == "restart-penalty" || name == "reuse-threshold" || name == "state-transition-count" || name == "suppress-threshold")
+    if(name == "interface-dampening" || name == "capsulation" || name == "interface-handle-name" || name == "state-transition-count" || name == "last-state-transition-time" || name == "is-dampening-enabled" || name == "half-life" || name == "reuse-threshold" || name == "suppress-threshold" || name == "maximum-suppress-time" || name == "restart-penalty")
+        return true;
+    return false;
+}
+
+InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::InterfaceDampening_()
+    :
+    penalty{YType::uint32, "penalty"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
+    seconds_remaining{YType::uint32, "seconds-remaining"},
+    flaps{YType::uint32, "flaps"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "interface-dampening"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::~InterfaceDampening_()
+{
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_data() const
+{
+    return penalty.is_set
+	|| is_suppressed_enabled.is_set
+	|| seconds_remaining.is_set
+	|| flaps.is_set
+	|| state.is_set;
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
+	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(flaps.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-dampening";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
+    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "penalty")
+    {
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled = value;
+        is_suppressed_enabled.value_namespace = name_space;
+        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining = value;
+        seconds_remaining.value_namespace = name_space;
+        seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "penalty")
+    {
+        penalty.yfilter = yfilter;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled.yfilter = yfilter;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "penalty" || name == "is-suppressed-enabled" || name == "seconds-remaining" || name == "flaps" || name == "state")
         return true;
     return false;
 }
@@ -1727,10 +1859,10 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Caps
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::CapsulationDampening()
     :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
     penalty{YType::uint32, "penalty"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
     seconds_remaining{YType::uint32, "seconds-remaining"},
+    flaps{YType::uint32, "flaps"},
     state{YType::enumeration, "state"}
 {
 
@@ -1743,20 +1875,20 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulati
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::has_data() const
 {
-    return flaps.is_set
+    return penalty.is_set
 	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
 	|| seconds_remaining.is_set
+	|| flaps.is_set
 	|| state.is_set;
 }
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
 	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
 	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(flaps.yfilter)
 	|| ydk::is_set(state.yfilter);
 }
 
@@ -1771,10 +1903,10 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
     if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
     if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
     return leaf_name_data;
@@ -1794,11 +1926,11 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "flaps")
+    if(value_path == "penalty")
     {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-suppressed-enabled")
     {
@@ -1806,17 +1938,17 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Caps
         is_suppressed_enabled.value_namespace = name_space;
         is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "seconds-remaining")
     {
         seconds_remaining = value;
         seconds_remaining.value_namespace = name_space;
         seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
@@ -1828,21 +1960,21 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Caps
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "flaps")
+    if(value_path == "penalty")
     {
-        flaps.yfilter = yfilter;
+        penalty.yfilter = yfilter;
     }
     if(value_path == "is-suppressed-enabled")
     {
         is_suppressed_enabled.yfilter = yfilter;
     }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
     if(value_path == "seconds-remaining")
     {
         seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
     }
     if(value_path == "state")
     {
@@ -1852,139 +1984,7 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Caps
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
-        return true;
-    return false;
-}
-
-InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::InterfaceDampening_()
-    :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
-    penalty{YType::uint32, "penalty"},
-    seconds_remaining{YType::uint32, "seconds-remaining"},
-    state{YType::enumeration, "state"}
-{
-
-    yang_name = "interface-dampening"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::~InterfaceDampening_()
-{
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_data() const
-{
-    return flaps.is_set
-	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
-	|| seconds_remaining.is_set
-	|| state.is_set;
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
-	|| ydk::is_set(penalty.yfilter)
-	|| ydk::is_set(seconds_remaining.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-dampening";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
-    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
-    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flaps")
-    {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled = value;
-        is_suppressed_enabled.value_namespace = name_space;
-        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining = value;
-        seconds_remaining.value_namespace = name_space;
-        seconds_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flaps")
-    {
-        flaps.yfilter = yfilter;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled.yfilter = yfilter;
-    }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
+    if(name == "penalty" || name == "is-suppressed-enabled" || name == "seconds-remaining" || name == "flaps" || name == "state")
         return true;
     return false;
 }
@@ -2085,14 +2085,14 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::has_leaf_or_c
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
-    half_life{YType::uint32, "half-life"},
-    is_dampening_enabled{YType::boolean, "is-dampening-enabled"},
-    last_state_transition_time{YType::uint32, "last-state-transition-time"},
-    maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
-    restart_penalty{YType::uint32, "restart-penalty"},
-    reuse_threshold{YType::uint32, "reuse-threshold"},
     state_transition_count{YType::uint32, "state-transition-count"},
-    suppress_threshold{YType::uint32, "suppress-threshold"}
+    last_state_transition_time{YType::uint32, "last-state-transition-time"},
+    is_dampening_enabled{YType::boolean, "is-dampening-enabled"},
+    half_life{YType::uint32, "half-life"},
+    reuse_threshold{YType::uint32, "reuse-threshold"},
+    suppress_threshold{YType::uint32, "suppress-threshold"},
+    maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
+    restart_penalty{YType::uint32, "restart-penalty"}
     	,
     interface_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_>())
 {
@@ -2113,14 +2113,14 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::ha
             return true;
     }
     return interface_name.is_set
-	|| half_life.is_set
-	|| is_dampening_enabled.is_set
+	|| state_transition_count.is_set
 	|| last_state_transition_time.is_set
+	|| is_dampening_enabled.is_set
+	|| half_life.is_set
+	|| reuse_threshold.is_set
+	|| suppress_threshold.is_set
 	|| maximum_suppress_time.is_set
 	|| restart_penalty.is_set
-	|| reuse_threshold.is_set
-	|| state_transition_count.is_set
-	|| suppress_threshold.is_set
 	|| (interface_dampening !=  nullptr && interface_dampening->has_data());
 }
 
@@ -2133,14 +2133,14 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::ha
     }
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(half_life.yfilter)
-	|| ydk::is_set(is_dampening_enabled.yfilter)
+	|| ydk::is_set(state_transition_count.yfilter)
 	|| ydk::is_set(last_state_transition_time.yfilter)
+	|| ydk::is_set(is_dampening_enabled.yfilter)
+	|| ydk::is_set(half_life.yfilter)
+	|| ydk::is_set(reuse_threshold.yfilter)
+	|| ydk::is_set(suppress_threshold.yfilter)
 	|| ydk::is_set(maximum_suppress_time.yfilter)
 	|| ydk::is_set(restart_penalty.yfilter)
-	|| ydk::is_set(reuse_threshold.yfilter)
-	|| ydk::is_set(state_transition_count.yfilter)
-	|| ydk::is_set(suppress_threshold.yfilter)
 	|| (interface_dampening !=  nullptr && interface_dampening->has_operation());
 }
 
@@ -2156,14 +2156,14 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (half_life.is_set || is_set(half_life.yfilter)) leaf_name_data.push_back(half_life.get_name_leafdata());
-    if (is_dampening_enabled.is_set || is_set(is_dampening_enabled.yfilter)) leaf_name_data.push_back(is_dampening_enabled.get_name_leafdata());
+    if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
     if (last_state_transition_time.is_set || is_set(last_state_transition_time.yfilter)) leaf_name_data.push_back(last_state_transition_time.get_name_leafdata());
+    if (is_dampening_enabled.is_set || is_set(is_dampening_enabled.yfilter)) leaf_name_data.push_back(is_dampening_enabled.get_name_leafdata());
+    if (half_life.is_set || is_set(half_life.yfilter)) leaf_name_data.push_back(half_life.get_name_leafdata());
+    if (reuse_threshold.is_set || is_set(reuse_threshold.yfilter)) leaf_name_data.push_back(reuse_threshold.get_name_leafdata());
+    if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
     if (maximum_suppress_time.is_set || is_set(maximum_suppress_time.yfilter)) leaf_name_data.push_back(maximum_suppress_time.get_name_leafdata());
     if (restart_penalty.is_set || is_set(restart_penalty.yfilter)) leaf_name_data.push_back(restart_penalty.get_name_leafdata());
-    if (reuse_threshold.is_set || is_set(reuse_threshold.yfilter)) leaf_name_data.push_back(reuse_threshold.get_name_leafdata());
-    if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
-    if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2171,6 +2171,15 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "interface-dampening")
+    {
+        if(interface_dampening == nullptr)
+        {
+            interface_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_>();
+        }
+        return interface_dampening;
+    }
+
     if(child_yang_name == "capsulation")
     {
         for(auto const & c : capsulation)
@@ -2187,29 +2196,20 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interf
         return c;
     }
 
-    if(child_yang_name == "interface-dampening")
-    {
-        if(interface_dampening == nullptr)
-        {
-            interface_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_>();
-        }
-        return interface_dampening;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : capsulation)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     if(interface_dampening != nullptr)
     {
         children["interface-dampening"] = interface_dampening;
+    }
+
+    for (auto const & c : capsulation)
+    {
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2223,11 +2223,17 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::se
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "half-life")
+    if(value_path == "state-transition-count")
     {
-        half_life = value;
-        half_life.value_namespace = name_space;
-        half_life.value_namespace_prefix = name_space_prefix;
+        state_transition_count = value;
+        state_transition_count.value_namespace = name_space;
+        state_transition_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-state-transition-time")
+    {
+        last_state_transition_time = value;
+        last_state_transition_time.value_namespace = name_space;
+        last_state_transition_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dampening-enabled")
     {
@@ -2235,11 +2241,23 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::se
         is_dampening_enabled.value_namespace = name_space;
         is_dampening_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "last-state-transition-time")
+    if(value_path == "half-life")
     {
-        last_state_transition_time = value;
-        last_state_transition_time.value_namespace = name_space;
-        last_state_transition_time.value_namespace_prefix = name_space_prefix;
+        half_life = value;
+        half_life.value_namespace = name_space;
+        half_life.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reuse-threshold")
+    {
+        reuse_threshold = value;
+        reuse_threshold.value_namespace = name_space;
+        reuse_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppress-threshold")
+    {
+        suppress_threshold = value;
+        suppress_threshold.value_namespace = name_space;
+        suppress_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-suppress-time")
     {
@@ -2253,24 +2271,6 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::se
         restart_penalty.value_namespace = name_space;
         restart_penalty.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "reuse-threshold")
-    {
-        reuse_threshold = value;
-        reuse_threshold.value_namespace = name_space;
-        reuse_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state-transition-count")
-    {
-        state_transition_count = value;
-        state_transition_count.value_namespace = name_space;
-        state_transition_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "suppress-threshold")
-    {
-        suppress_threshold = value;
-        suppress_threshold.value_namespace = name_space;
-        suppress_threshold.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2279,17 +2279,29 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::se
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "half-life")
+    if(value_path == "state-transition-count")
     {
-        half_life.yfilter = yfilter;
+        state_transition_count.yfilter = yfilter;
+    }
+    if(value_path == "last-state-transition-time")
+    {
+        last_state_transition_time.yfilter = yfilter;
     }
     if(value_path == "is-dampening-enabled")
     {
         is_dampening_enabled.yfilter = yfilter;
     }
-    if(value_path == "last-state-transition-time")
+    if(value_path == "half-life")
     {
-        last_state_transition_time.yfilter = yfilter;
+        half_life.yfilter = yfilter;
+    }
+    if(value_path == "reuse-threshold")
+    {
+        reuse_threshold.yfilter = yfilter;
+    }
+    if(value_path == "suppress-threshold")
+    {
+        suppress_threshold.yfilter = yfilter;
     }
     if(value_path == "maximum-suppress-time")
     {
@@ -2299,23 +2311,143 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::se
     {
         restart_penalty.yfilter = yfilter;
     }
-    if(value_path == "reuse-threshold")
-    {
-        reuse_threshold.yfilter = yfilter;
-    }
-    if(value_path == "state-transition-count")
-    {
-        state_transition_count.yfilter = yfilter;
-    }
-    if(value_path == "suppress-threshold")
-    {
-        suppress_threshold.yfilter = yfilter;
-    }
 }
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "capsulation" || name == "interface-dampening" || name == "interface-name" || name == "half-life" || name == "is-dampening-enabled" || name == "last-state-transition-time" || name == "maximum-suppress-time" || name == "restart-penalty" || name == "reuse-threshold" || name == "state-transition-count" || name == "suppress-threshold")
+    if(name == "interface-dampening" || name == "capsulation" || name == "interface-name" || name == "state-transition-count" || name == "last-state-transition-time" || name == "is-dampening-enabled" || name == "half-life" || name == "reuse-threshold" || name == "suppress-threshold" || name == "maximum-suppress-time" || name == "restart-penalty")
+        return true;
+    return false;
+}
+
+InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::InterfaceDampening_()
+    :
+    penalty{YType::uint32, "penalty"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
+    seconds_remaining{YType::uint32, "seconds-remaining"},
+    flaps{YType::uint32, "flaps"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "interface-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::~InterfaceDampening_()
+{
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_data() const
+{
+    return penalty.is_set
+	|| is_suppressed_enabled.is_set
+	|| seconds_remaining.is_set
+	|| flaps.is_set
+	|| state.is_set;
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
+	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(flaps.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-dampening";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
+    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "penalty")
+    {
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled = value;
+        is_suppressed_enabled.value_namespace = name_space;
+        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining = value;
+        seconds_remaining.value_namespace = name_space;
+        seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "penalty")
+    {
+        penalty.yfilter = yfilter;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled.yfilter = yfilter;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "penalty" || name == "is-suppressed-enabled" || name == "seconds-remaining" || name == "flaps" || name == "state")
         return true;
     return false;
 }
@@ -2417,10 +2549,10 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Ca
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::CapsulationDampening()
     :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
     penalty{YType::uint32, "penalty"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
     seconds_remaining{YType::uint32, "seconds-remaining"},
+    flaps{YType::uint32, "flaps"},
     state{YType::enumeration, "state"}
 {
 
@@ -2433,20 +2565,20 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsula
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::has_data() const
 {
-    return flaps.is_set
+    return penalty.is_set
 	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
 	|| seconds_remaining.is_set
+	|| flaps.is_set
 	|| state.is_set;
 }
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
 	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
 	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(flaps.yfilter)
 	|| ydk::is_set(state.yfilter);
 }
 
@@ -2461,10 +2593,10 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
     if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
     if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
     return leaf_name_data;
@@ -2484,11 +2616,11 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "flaps")
+    if(value_path == "penalty")
     {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-suppressed-enabled")
     {
@@ -2496,17 +2628,17 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Ca
         is_suppressed_enabled.value_namespace = name_space;
         is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "seconds-remaining")
     {
         seconds_remaining = value;
         seconds_remaining.value_namespace = name_space;
         seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
@@ -2518,21 +2650,21 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Ca
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "flaps")
+    if(value_path == "penalty")
     {
-        flaps.yfilter = yfilter;
+        penalty.yfilter = yfilter;
     }
     if(value_path == "is-suppressed-enabled")
     {
         is_suppressed_enabled.yfilter = yfilter;
     }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
     if(value_path == "seconds-remaining")
     {
         seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
     }
     if(value_path == "state")
     {
@@ -2542,139 +2674,7 @@ void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Ca
 
 bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
-        return true;
-    return false;
-}
-
-InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::InterfaceDampening_()
-    :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
-    penalty{YType::uint32, "penalty"},
-    seconds_remaining{YType::uint32, "seconds-remaining"},
-    state{YType::enumeration, "state"}
-{
-
-    yang_name = "interface-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::~InterfaceDampening_()
-{
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_data() const
-{
-    return flaps.is_set
-	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
-	|| seconds_remaining.is_set
-	|| state.is_set;
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
-	|| ydk::is_set(penalty.yfilter)
-	|| ydk::is_set(seconds_remaining.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-dampening";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
-    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
-    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flaps")
-    {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled = value;
-        is_suppressed_enabled.value_namespace = name_space;
-        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining = value;
-        seconds_remaining.value_namespace = name_space;
-        seconds_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flaps")
-    {
-        flaps.yfilter = yfilter;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled.yfilter = yfilter;
-    }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
+    if(name == "penalty" || name == "is-suppressed-enabled" || name == "seconds-remaining" || name == "flaps" || name == "state")
         return true;
     return false;
 }
@@ -3306,19 +3306,19 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
-    actual_line_state{YType::enumeration, "actual-line-state"},
+    interface{YType::str, "interface"},
+    parent_interface{YType::str, "parent-interface"},
+    type{YType::str, "type"},
+    state{YType::enumeration, "state"},
     actual_state{YType::enumeration, "actual-state"},
-    bandwidth{YType::uint32, "bandwidth"},
+    line_state{YType::enumeration, "line-state"},
+    actual_line_state{YType::enumeration, "actual-line-state"},
     encapsulation{YType::str, "encapsulation"},
     encapsulation_type_string{YType::str, "encapsulation-type-string"},
-    interface{YType::str, "interface"},
-    l2_transport{YType::boolean, "l2-transport"},
-    line_state{YType::enumeration, "line-state"},
     mtu{YType::uint32, "mtu"},
-    parent_interface{YType::str, "parent-interface"},
-    state{YType::enumeration, "state"},
     sub_interface_mtu_overhead{YType::uint32, "sub-interface-mtu-overhead"},
-    type{YType::str, "type"}
+    l2_transport{YType::boolean, "l2-transport"},
+    bandwidth{YType::uint32, "bandwidth"}
 {
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
@@ -3331,38 +3331,38 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interface
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::has_data() const
 {
     return interface_name.is_set
-	|| actual_line_state.is_set
+	|| interface.is_set
+	|| parent_interface.is_set
+	|| type.is_set
+	|| state.is_set
 	|| actual_state.is_set
-	|| bandwidth.is_set
+	|| line_state.is_set
+	|| actual_line_state.is_set
 	|| encapsulation.is_set
 	|| encapsulation_type_string.is_set
-	|| interface.is_set
-	|| l2_transport.is_set
-	|| line_state.is_set
 	|| mtu.is_set
-	|| parent_interface.is_set
-	|| state.is_set
 	|| sub_interface_mtu_overhead.is_set
-	|| type.is_set;
+	|| l2_transport.is_set
+	|| bandwidth.is_set;
 }
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(actual_line_state.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(parent_interface.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(actual_state.yfilter)
-	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(actual_line_state.yfilter)
 	|| ydk::is_set(encapsulation.yfilter)
 	|| ydk::is_set(encapsulation_type_string.yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(l2_transport.yfilter)
-	|| ydk::is_set(line_state.yfilter)
 	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(parent_interface.yfilter)
-	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(sub_interface_mtu_overhead.yfilter)
-	|| ydk::is_set(type.yfilter);
+	|| ydk::is_set(l2_transport.yfilter)
+	|| ydk::is_set(bandwidth.yfilter);
 }
 
 std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_segment_path() const
@@ -3377,19 +3377,19 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (actual_line_state.is_set || is_set(actual_line_state.yfilter)) leaf_name_data.push_back(actual_line_state.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (actual_state.is_set || is_set(actual_state.yfilter)) leaf_name_data.push_back(actual_state.get_name_leafdata());
-    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (actual_line_state.is_set || is_set(actual_line_state.yfilter)) leaf_name_data.push_back(actual_line_state.get_name_leafdata());
     if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
     if (encapsulation_type_string.is_set || is_set(encapsulation_type_string.yfilter)) leaf_name_data.push_back(encapsulation_type_string.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (l2_transport.is_set || is_set(l2_transport.yfilter)) leaf_name_data.push_back(l2_transport.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (sub_interface_mtu_overhead.is_set || is_set(sub_interface_mtu_overhead.yfilter)) leaf_name_data.push_back(sub_interface_mtu_overhead.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (l2_transport.is_set || is_set(l2_transport.yfilter)) leaf_name_data.push_back(l2_transport.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3414,11 +3414,29 @@ void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "actual-line-state")
+    if(value_path == "interface")
     {
-        actual_line_state = value;
-        actual_line_state.value_namespace = name_space;
-        actual_line_state.value_namespace_prefix = name_space_prefix;
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface = value;
+        parent_interface.value_namespace = name_space;
+        parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actual-state")
     {
@@ -3426,11 +3444,17 @@ void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
         actual_state.value_namespace = name_space;
         actual_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bandwidth")
+    if(value_path == "line-state")
     {
-        bandwidth = value;
-        bandwidth.value_namespace = name_space;
-        bandwidth.value_namespace_prefix = name_space_prefix;
+        line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "actual-line-state")
+    {
+        actual_line_state = value;
+        actual_line_state.value_namespace = name_space;
+        actual_line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation")
     {
@@ -3444,41 +3468,11 @@ void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
         encapsulation_type_string.value_namespace = name_space;
         encapsulation_type_string.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2-transport")
-    {
-        l2_transport = value;
-        l2_transport.value_namespace = name_space;
-        l2_transport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "line-state")
-    {
-        line_state = value;
-        line_state.value_namespace = name_space;
-        line_state.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mtu")
     {
         mtu = value;
         mtu.value_namespace = name_space;
         mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-interface")
-    {
-        parent_interface = value;
-        parent_interface.value_namespace = name_space;
-        parent_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-mtu-overhead")
     {
@@ -3486,11 +3480,17 @@ void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
         sub_interface_mtu_overhead.value_namespace = name_space;
         sub_interface_mtu_overhead.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "type")
+    if(value_path == "l2-transport")
     {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
+        l2_transport = value;
+        l2_transport.value_namespace = name_space;
+        l2_transport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3500,17 +3500,33 @@ void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "actual-line-state")
+    if(value_path == "interface")
     {
-        actual_line_state.yfilter = yfilter;
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
     }
     if(value_path == "actual-state")
     {
         actual_state.yfilter = yfilter;
     }
-    if(value_path == "bandwidth")
+    if(value_path == "line-state")
     {
-        bandwidth.yfilter = yfilter;
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "actual-line-state")
+    {
+        actual_line_state.yfilter = yfilter;
     }
     if(value_path == "encapsulation")
     {
@@ -3520,43 +3536,27 @@ void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
     {
         encapsulation_type_string.yfilter = yfilter;
     }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "l2-transport")
-    {
-        l2_transport.yfilter = yfilter;
-    }
-    if(value_path == "line-state")
-    {
-        line_state.yfilter = yfilter;
-    }
     if(value_path == "mtu")
     {
         mtu.yfilter = yfilter;
-    }
-    if(value_path == "parent-interface")
-    {
-        parent_interface.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
     }
     if(value_path == "sub-interface-mtu-overhead")
     {
         sub_interface_mtu_overhead.yfilter = yfilter;
     }
-    if(value_path == "type")
+    if(value_path == "l2-transport")
     {
-        type.yfilter = yfilter;
+        l2_transport.yfilter = yfilter;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
     }
 }
 
 bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "actual-line-state" || name == "actual-state" || name == "bandwidth" || name == "encapsulation" || name == "encapsulation-type-string" || name == "interface" || name == "l2-transport" || name == "line-state" || name == "mtu" || name == "parent-interface" || name == "state" || name == "sub-interface-mtu-overhead" || name == "type")
+    if(name == "interface-name" || name == "interface" || name == "parent-interface" || name == "type" || name == "state" || name == "actual-state" || name == "line-state" || name == "actual-line-state" || name == "encapsulation" || name == "encapsulation-type-string" || name == "mtu" || name == "sub-interface-mtu-overhead" || name == "l2-transport" || name == "bandwidth")
         return true;
     return false;
 }
@@ -3845,19 +3845,19 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
-    actual_line_state{YType::enumeration, "actual-line-state"},
+    interface{YType::str, "interface"},
+    parent_interface{YType::str, "parent-interface"},
+    type{YType::str, "type"},
+    state{YType::enumeration, "state"},
     actual_state{YType::enumeration, "actual-state"},
-    bandwidth{YType::uint32, "bandwidth"},
+    line_state{YType::enumeration, "line-state"},
+    actual_line_state{YType::enumeration, "actual-line-state"},
     encapsulation{YType::str, "encapsulation"},
     encapsulation_type_string{YType::str, "encapsulation-type-string"},
-    interface{YType::str, "interface"},
-    l2_transport{YType::boolean, "l2-transport"},
-    line_state{YType::enumeration, "line-state"},
     mtu{YType::uint32, "mtu"},
-    parent_interface{YType::str, "parent-interface"},
-    state{YType::enumeration, "state"},
     sub_interface_mtu_overhead{YType::uint32, "sub-interface-mtu-overhead"},
-    type{YType::str, "type"}
+    l2_transport{YType::boolean, "l2-transport"},
+    bandwidth{YType::uint32, "bandwidth"}
 {
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
@@ -3870,38 +3870,38 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Inter
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::has_data() const
 {
     return interface_name.is_set
-	|| actual_line_state.is_set
+	|| interface.is_set
+	|| parent_interface.is_set
+	|| type.is_set
+	|| state.is_set
 	|| actual_state.is_set
-	|| bandwidth.is_set
+	|| line_state.is_set
+	|| actual_line_state.is_set
 	|| encapsulation.is_set
 	|| encapsulation_type_string.is_set
-	|| interface.is_set
-	|| l2_transport.is_set
-	|| line_state.is_set
 	|| mtu.is_set
-	|| parent_interface.is_set
-	|| state.is_set
 	|| sub_interface_mtu_overhead.is_set
-	|| type.is_set;
+	|| l2_transport.is_set
+	|| bandwidth.is_set;
 }
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(actual_line_state.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(parent_interface.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(actual_state.yfilter)
-	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(actual_line_state.yfilter)
 	|| ydk::is_set(encapsulation.yfilter)
 	|| ydk::is_set(encapsulation_type_string.yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(l2_transport.yfilter)
-	|| ydk::is_set(line_state.yfilter)
 	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(parent_interface.yfilter)
-	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(sub_interface_mtu_overhead.yfilter)
-	|| ydk::is_set(type.yfilter);
+	|| ydk::is_set(l2_transport.yfilter)
+	|| ydk::is_set(bandwidth.yfilter);
 }
 
 std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_segment_path() const
@@ -3916,19 +3916,19 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (actual_line_state.is_set || is_set(actual_line_state.yfilter)) leaf_name_data.push_back(actual_line_state.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (actual_state.is_set || is_set(actual_state.yfilter)) leaf_name_data.push_back(actual_state.get_name_leafdata());
-    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (actual_line_state.is_set || is_set(actual_line_state.yfilter)) leaf_name_data.push_back(actual_line_state.get_name_leafdata());
     if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
     if (encapsulation_type_string.is_set || is_set(encapsulation_type_string.yfilter)) leaf_name_data.push_back(encapsulation_type_string.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (l2_transport.is_set || is_set(l2_transport.yfilter)) leaf_name_data.push_back(l2_transport.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (sub_interface_mtu_overhead.is_set || is_set(sub_interface_mtu_overhead.yfilter)) leaf_name_data.push_back(sub_interface_mtu_overhead.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (l2_transport.is_set || is_set(l2_transport.yfilter)) leaf_name_data.push_back(l2_transport.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3953,11 +3953,29 @@ void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "actual-line-state")
+    if(value_path == "interface")
     {
-        actual_line_state = value;
-        actual_line_state.value_namespace = name_space;
-        actual_line_state.value_namespace_prefix = name_space_prefix;
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface = value;
+        parent_interface.value_namespace = name_space;
+        parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actual-state")
     {
@@ -3965,11 +3983,17 @@ void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
         actual_state.value_namespace = name_space;
         actual_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bandwidth")
+    if(value_path == "line-state")
     {
-        bandwidth = value;
-        bandwidth.value_namespace = name_space;
-        bandwidth.value_namespace_prefix = name_space_prefix;
+        line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "actual-line-state")
+    {
+        actual_line_state = value;
+        actual_line_state.value_namespace = name_space;
+        actual_line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation")
     {
@@ -3983,41 +4007,11 @@ void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
         encapsulation_type_string.value_namespace = name_space;
         encapsulation_type_string.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2-transport")
-    {
-        l2_transport = value;
-        l2_transport.value_namespace = name_space;
-        l2_transport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "line-state")
-    {
-        line_state = value;
-        line_state.value_namespace = name_space;
-        line_state.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mtu")
     {
         mtu = value;
         mtu.value_namespace = name_space;
         mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-interface")
-    {
-        parent_interface = value;
-        parent_interface.value_namespace = name_space;
-        parent_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-mtu-overhead")
     {
@@ -4025,11 +4019,17 @@ void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
         sub_interface_mtu_overhead.value_namespace = name_space;
         sub_interface_mtu_overhead.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "type")
+    if(value_path == "l2-transport")
     {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
+        l2_transport = value;
+        l2_transport.value_namespace = name_space;
+        l2_transport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -4039,17 +4039,33 @@ void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "actual-line-state")
+    if(value_path == "interface")
     {
-        actual_line_state.yfilter = yfilter;
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
     }
     if(value_path == "actual-state")
     {
         actual_state.yfilter = yfilter;
     }
-    if(value_path == "bandwidth")
+    if(value_path == "line-state")
     {
-        bandwidth.yfilter = yfilter;
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "actual-line-state")
+    {
+        actual_line_state.yfilter = yfilter;
     }
     if(value_path == "encapsulation")
     {
@@ -4059,43 +4075,27 @@ void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
     {
         encapsulation_type_string.yfilter = yfilter;
     }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "l2-transport")
-    {
-        l2_transport.yfilter = yfilter;
-    }
-    if(value_path == "line-state")
-    {
-        line_state.yfilter = yfilter;
-    }
     if(value_path == "mtu")
     {
         mtu.yfilter = yfilter;
-    }
-    if(value_path == "parent-interface")
-    {
-        parent_interface.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
     }
     if(value_path == "sub-interface-mtu-overhead")
     {
         sub_interface_mtu_overhead.yfilter = yfilter;
     }
-    if(value_path == "type")
+    if(value_path == "l2-transport")
     {
-        type.yfilter = yfilter;
+        l2_transport.yfilter = yfilter;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
     }
 }
 
 bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "actual-line-state" || name == "actual-state" || name == "bandwidth" || name == "encapsulation" || name == "encapsulation-type-string" || name == "interface" || name == "l2-transport" || name == "line-state" || name == "mtu" || name == "parent-interface" || name == "state" || name == "sub-interface-mtu-overhead" || name == "type")
+    if(name == "interface-name" || name == "interface" || name == "parent-interface" || name == "type" || name == "state" || name == "actual-state" || name == "line-state" || name == "actual-line-state" || name == "encapsulation" || name == "encapsulation-type-string" || name == "mtu" || name == "sub-interface-mtu-overhead" || name == "l2-transport" || name == "bandwidth")
         return true;
     return false;
 }
@@ -4276,19 +4276,19 @@ bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::has_leaf_
 InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
-    actual_line_state{YType::enumeration, "actual-line-state"},
+    interface{YType::str, "interface"},
+    parent_interface{YType::str, "parent-interface"},
+    type{YType::str, "type"},
+    state{YType::enumeration, "state"},
     actual_state{YType::enumeration, "actual-state"},
-    bandwidth{YType::uint32, "bandwidth"},
+    line_state{YType::enumeration, "line-state"},
+    actual_line_state{YType::enumeration, "actual-line-state"},
     encapsulation{YType::str, "encapsulation"},
     encapsulation_type_string{YType::str, "encapsulation-type-string"},
-    interface{YType::str, "interface"},
-    l2_transport{YType::boolean, "l2-transport"},
-    line_state{YType::enumeration, "line-state"},
     mtu{YType::uint32, "mtu"},
-    parent_interface{YType::str, "parent-interface"},
-    state{YType::enumeration, "state"},
     sub_interface_mtu_overhead{YType::uint32, "sub-interface-mtu-overhead"},
-    type{YType::str, "type"}
+    l2_transport{YType::boolean, "l2-transport"},
+    bandwidth{YType::uint32, "bandwidth"}
 {
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
@@ -4301,38 +4301,38 @@ InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::~In
 bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::has_data() const
 {
     return interface_name.is_set
-	|| actual_line_state.is_set
+	|| interface.is_set
+	|| parent_interface.is_set
+	|| type.is_set
+	|| state.is_set
 	|| actual_state.is_set
-	|| bandwidth.is_set
+	|| line_state.is_set
+	|| actual_line_state.is_set
 	|| encapsulation.is_set
 	|| encapsulation_type_string.is_set
-	|| interface.is_set
-	|| l2_transport.is_set
-	|| line_state.is_set
 	|| mtu.is_set
-	|| parent_interface.is_set
-	|| state.is_set
 	|| sub_interface_mtu_overhead.is_set
-	|| type.is_set;
+	|| l2_transport.is_set
+	|| bandwidth.is_set;
 }
 
 bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(actual_line_state.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(parent_interface.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(actual_state.yfilter)
-	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(actual_line_state.yfilter)
 	|| ydk::is_set(encapsulation.yfilter)
 	|| ydk::is_set(encapsulation_type_string.yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(l2_transport.yfilter)
-	|| ydk::is_set(line_state.yfilter)
 	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(parent_interface.yfilter)
-	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(sub_interface_mtu_overhead.yfilter)
-	|| ydk::is_set(type.yfilter);
+	|| ydk::is_set(l2_transport.yfilter)
+	|| ydk::is_set(bandwidth.yfilter);
 }
 
 std::string InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_segment_path() const
@@ -4347,19 +4347,19 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (actual_line_state.is_set || is_set(actual_line_state.yfilter)) leaf_name_data.push_back(actual_line_state.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (actual_state.is_set || is_set(actual_state.yfilter)) leaf_name_data.push_back(actual_state.get_name_leafdata());
-    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (actual_line_state.is_set || is_set(actual_line_state.yfilter)) leaf_name_data.push_back(actual_line_state.get_name_leafdata());
     if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
     if (encapsulation_type_string.is_set || is_set(encapsulation_type_string.yfilter)) leaf_name_data.push_back(encapsulation_type_string.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (l2_transport.is_set || is_set(l2_transport.yfilter)) leaf_name_data.push_back(l2_transport.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (sub_interface_mtu_overhead.is_set || is_set(sub_interface_mtu_overhead.yfilter)) leaf_name_data.push_back(sub_interface_mtu_overhead.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (l2_transport.is_set || is_set(l2_transport.yfilter)) leaf_name_data.push_back(l2_transport.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4384,11 +4384,29 @@ void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "actual-line-state")
+    if(value_path == "interface")
     {
-        actual_line_state = value;
-        actual_line_state.value_namespace = name_space;
-        actual_line_state.value_namespace_prefix = name_space_prefix;
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface = value;
+        parent_interface.value_namespace = name_space;
+        parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actual-state")
     {
@@ -4396,11 +4414,17 @@ void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
         actual_state.value_namespace = name_space;
         actual_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bandwidth")
+    if(value_path == "line-state")
     {
-        bandwidth = value;
-        bandwidth.value_namespace = name_space;
-        bandwidth.value_namespace_prefix = name_space_prefix;
+        line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "actual-line-state")
+    {
+        actual_line_state = value;
+        actual_line_state.value_namespace = name_space;
+        actual_line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation")
     {
@@ -4414,41 +4438,11 @@ void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
         encapsulation_type_string.value_namespace = name_space;
         encapsulation_type_string.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2-transport")
-    {
-        l2_transport = value;
-        l2_transport.value_namespace = name_space;
-        l2_transport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "line-state")
-    {
-        line_state = value;
-        line_state.value_namespace = name_space;
-        line_state.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mtu")
     {
         mtu = value;
         mtu.value_namespace = name_space;
         mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-interface")
-    {
-        parent_interface = value;
-        parent_interface.value_namespace = name_space;
-        parent_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-mtu-overhead")
     {
@@ -4456,11 +4450,17 @@ void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
         sub_interface_mtu_overhead.value_namespace = name_space;
         sub_interface_mtu_overhead.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "type")
+    if(value_path == "l2-transport")
     {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
+        l2_transport = value;
+        l2_transport.value_namespace = name_space;
+        l2_transport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -4470,17 +4470,33 @@ void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "actual-line-state")
+    if(value_path == "interface")
     {
-        actual_line_state.yfilter = yfilter;
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
     }
     if(value_path == "actual-state")
     {
         actual_state.yfilter = yfilter;
     }
-    if(value_path == "bandwidth")
+    if(value_path == "line-state")
     {
-        bandwidth.yfilter = yfilter;
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "actual-line-state")
+    {
+        actual_line_state.yfilter = yfilter;
     }
     if(value_path == "encapsulation")
     {
@@ -4490,43 +4506,27 @@ void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
     {
         encapsulation_type_string.yfilter = yfilter;
     }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "l2-transport")
-    {
-        l2_transport.yfilter = yfilter;
-    }
-    if(value_path == "line-state")
-    {
-        line_state.yfilter = yfilter;
-    }
     if(value_path == "mtu")
     {
         mtu.yfilter = yfilter;
-    }
-    if(value_path == "parent-interface")
-    {
-        parent_interface.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
     }
     if(value_path == "sub-interface-mtu-overhead")
     {
         sub_interface_mtu_overhead.yfilter = yfilter;
     }
-    if(value_path == "type")
+    if(value_path == "l2-transport")
     {
-        type.yfilter = yfilter;
+        l2_transport.yfilter = yfilter;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
     }
 }
 
 bool InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "actual-line-state" || name == "actual-state" || name == "bandwidth" || name == "encapsulation" || name == "encapsulation-type-string" || name == "interface" || name == "l2-transport" || name == "line-state" || name == "mtu" || name == "parent-interface" || name == "state" || name == "sub-interface-mtu-overhead" || name == "type")
+    if(name == "interface-name" || name == "interface" || name == "parent-interface" || name == "type" || name == "state" || name == "actual-state" || name == "line-state" || name == "actual-line-state" || name == "encapsulation" || name == "encapsulation-type-string" || name == "mtu" || name == "sub-interface-mtu-overhead" || name == "l2-transport" || name == "bandwidth")
         return true;
     return false;
 }

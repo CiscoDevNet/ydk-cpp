@@ -132,8 +132,8 @@ class Macsec::Secy::Interfaces::Interface::Stats : public ydk::Entity
         class RxScStats; //type: Macsec::Secy::Interfaces::Interface::Stats::RxScStats
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::IntfStats> intf_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::RxScStats> > rx_sc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::TxScStats> tx_sc_stats;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::RxScStats> > rx_sc_stats;
         
 }; // Macsec::Secy::Interfaces::Interface::Stats
 
@@ -168,6 +168,58 @@ class Macsec::Secy::Interfaces::Interface::Stats::IntfStats : public ydk::Entity
         ydk::YLeaf out_octets_encrypted; //type: uint64
 
 }; // Macsec::Secy::Interfaces::Interface::Stats::IntfStats
+
+
+class Macsec::Secy::Interfaces::Interface::Stats::TxScStats : public ydk::Entity
+{
+    public:
+        TxScStats();
+        ~TxScStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tx_sci; //type: uint64
+        ydk::YLeaf out_pkts_protected; //type: uint64
+        ydk::YLeaf out_pkts_encrypted; //type: uint64
+        ydk::YLeaf out_octets_protected; //type: uint64
+        ydk::YLeaf out_octets_encrypted; //type: uint64
+        ydk::YLeaf out_pkts_too_long; //type: uint64
+        class TxsaStat; //type: Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat> > txsa_stat;
+        
+}; // Macsec::Secy::Interfaces::Interface::Stats::TxScStats
+
+
+class Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat : public ydk::Entity
+{
+    public:
+        TxsaStat();
+        ~TxsaStat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf out_pkts_protected; //type: uint64
+        ydk::YLeaf out_pkts_encrypted; //type: uint64
+        ydk::YLeaf next_pn; //type: uint64
+
+}; // Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat
 
 
 class Macsec::Secy::Interfaces::Interface::Stats::RxScStats : public ydk::Entity
@@ -229,58 +281,6 @@ class Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat : public y
         ydk::YLeaf next_pn; //type: uint64
 
 }; // Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat
-
-
-class Macsec::Secy::Interfaces::Interface::Stats::TxScStats : public ydk::Entity
-{
-    public:
-        TxScStats();
-        ~TxScStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tx_sci; //type: uint64
-        ydk::YLeaf out_pkts_protected; //type: uint64
-        ydk::YLeaf out_pkts_encrypted; //type: uint64
-        ydk::YLeaf out_octets_protected; //type: uint64
-        ydk::YLeaf out_octets_encrypted; //type: uint64
-        ydk::YLeaf out_pkts_too_long; //type: uint64
-        class TxsaStat; //type: Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat> > txsa_stat;
-        
-}; // Macsec::Secy::Interfaces::Interface::Stats::TxScStats
-
-
-class Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat : public ydk::Entity
-{
-    public:
-        TxsaStat();
-        ~TxsaStat();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf out_pkts_protected; //type: uint64
-        ydk::YLeaf out_pkts_encrypted; //type: uint64
-        ydk::YLeaf next_pn; //type: uint64
-
-}; // Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat
 
 
 }

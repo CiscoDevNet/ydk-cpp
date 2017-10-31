@@ -311,23 +311,23 @@ CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::Csbradiu
     csbcallstatsinstanceindex{YType::str, "csbCallStatsInstanceIndex"},
     csbcallstatsserviceindex{YType::str, "csbCallStatsServiceIndex"},
     csbradiusstatsentindex{YType::uint32, "csbRadiusStatsEntIndex"},
-    csbradiusstatsacsaccpts{YType::uint64, "csbRadiusStatsAcsAccpts"},
-    csbradiusstatsacschalls{YType::uint64, "csbRadiusStatsAcsChalls"},
-    csbradiusstatsacsrejects{YType::uint64, "csbRadiusStatsAcsRejects"},
+    csbradiusstatsclientname{YType::str, "csbRadiusStatsClientName"},
+    csbradiusstatsclienttype{YType::enumeration, "csbRadiusStatsClientType"},
+    csbradiusstatssrvrname{YType::str, "csbRadiusStatsSrvrName"},
     csbradiusstatsacsreqs{YType::uint64, "csbRadiusStatsAcsReqs"},
     csbradiusstatsacsrtrns{YType::uint64, "csbRadiusStatsAcsRtrns"},
+    csbradiusstatsacsaccpts{YType::uint64, "csbRadiusStatsAcsAccpts"},
+    csbradiusstatsacsrejects{YType::uint64, "csbRadiusStatsAcsRejects"},
+    csbradiusstatsacschalls{YType::uint64, "csbRadiusStatsAcsChalls"},
     csbradiusstatsactreqs{YType::uint64, "csbRadiusStatsActReqs"},
     csbradiusstatsactretrans{YType::uint64, "csbRadiusStatsActRetrans"},
     csbradiusstatsactrsps{YType::uint64, "csbRadiusStatsActRsps"},
-    csbradiusstatsbadauths{YType::uint64, "csbRadiusStatsBadAuths"},
-    csbradiusstatsclientname{YType::str, "csbRadiusStatsClientName"},
-    csbradiusstatsclienttype{YType::enumeration, "csbRadiusStatsClientType"},
-    csbradiusstatsdropped{YType::uint64, "csbRadiusStatsDropped"},
     csbradiusstatsmalformedrsps{YType::uint64, "csbRadiusStatsMalformedRsps"},
+    csbradiusstatsbadauths{YType::uint64, "csbRadiusStatsBadAuths"},
     csbradiusstatspending{YType::uint32, "csbRadiusStatsPending"},
-    csbradiusstatssrvrname{YType::str, "csbRadiusStatsSrvrName"},
     csbradiusstatstimeouts{YType::uint64, "csbRadiusStatsTimeouts"},
-    csbradiusstatsunknowntype{YType::uint64, "csbRadiusStatsUnknownType"}
+    csbradiusstatsunknowntype{YType::uint64, "csbRadiusStatsUnknownType"},
+    csbradiusstatsdropped{YType::uint64, "csbRadiusStatsDropped"}
 {
 
     yang_name = "csbRadiusStatsEntry"; yang_parent_name = "csbRadiusStatsTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -342,23 +342,23 @@ bool CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::has
     return csbcallstatsinstanceindex.is_set
 	|| csbcallstatsserviceindex.is_set
 	|| csbradiusstatsentindex.is_set
-	|| csbradiusstatsacsaccpts.is_set
-	|| csbradiusstatsacschalls.is_set
-	|| csbradiusstatsacsrejects.is_set
+	|| csbradiusstatsclientname.is_set
+	|| csbradiusstatsclienttype.is_set
+	|| csbradiusstatssrvrname.is_set
 	|| csbradiusstatsacsreqs.is_set
 	|| csbradiusstatsacsrtrns.is_set
+	|| csbradiusstatsacsaccpts.is_set
+	|| csbradiusstatsacsrejects.is_set
+	|| csbradiusstatsacschalls.is_set
 	|| csbradiusstatsactreqs.is_set
 	|| csbradiusstatsactretrans.is_set
 	|| csbradiusstatsactrsps.is_set
-	|| csbradiusstatsbadauths.is_set
-	|| csbradiusstatsclientname.is_set
-	|| csbradiusstatsclienttype.is_set
-	|| csbradiusstatsdropped.is_set
 	|| csbradiusstatsmalformedrsps.is_set
+	|| csbradiusstatsbadauths.is_set
 	|| csbradiusstatspending.is_set
-	|| csbradiusstatssrvrname.is_set
 	|| csbradiusstatstimeouts.is_set
-	|| csbradiusstatsunknowntype.is_set;
+	|| csbradiusstatsunknowntype.is_set
+	|| csbradiusstatsdropped.is_set;
 }
 
 bool CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::has_operation() const
@@ -367,23 +367,23 @@ bool CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::has
 	|| ydk::is_set(csbcallstatsinstanceindex.yfilter)
 	|| ydk::is_set(csbcallstatsserviceindex.yfilter)
 	|| ydk::is_set(csbradiusstatsentindex.yfilter)
-	|| ydk::is_set(csbradiusstatsacsaccpts.yfilter)
-	|| ydk::is_set(csbradiusstatsacschalls.yfilter)
-	|| ydk::is_set(csbradiusstatsacsrejects.yfilter)
+	|| ydk::is_set(csbradiusstatsclientname.yfilter)
+	|| ydk::is_set(csbradiusstatsclienttype.yfilter)
+	|| ydk::is_set(csbradiusstatssrvrname.yfilter)
 	|| ydk::is_set(csbradiusstatsacsreqs.yfilter)
 	|| ydk::is_set(csbradiusstatsacsrtrns.yfilter)
+	|| ydk::is_set(csbradiusstatsacsaccpts.yfilter)
+	|| ydk::is_set(csbradiusstatsacsrejects.yfilter)
+	|| ydk::is_set(csbradiusstatsacschalls.yfilter)
 	|| ydk::is_set(csbradiusstatsactreqs.yfilter)
 	|| ydk::is_set(csbradiusstatsactretrans.yfilter)
 	|| ydk::is_set(csbradiusstatsactrsps.yfilter)
-	|| ydk::is_set(csbradiusstatsbadauths.yfilter)
-	|| ydk::is_set(csbradiusstatsclientname.yfilter)
-	|| ydk::is_set(csbradiusstatsclienttype.yfilter)
-	|| ydk::is_set(csbradiusstatsdropped.yfilter)
 	|| ydk::is_set(csbradiusstatsmalformedrsps.yfilter)
+	|| ydk::is_set(csbradiusstatsbadauths.yfilter)
 	|| ydk::is_set(csbradiusstatspending.yfilter)
-	|| ydk::is_set(csbradiusstatssrvrname.yfilter)
 	|| ydk::is_set(csbradiusstatstimeouts.yfilter)
-	|| ydk::is_set(csbradiusstatsunknowntype.yfilter);
+	|| ydk::is_set(csbradiusstatsunknowntype.yfilter)
+	|| ydk::is_set(csbradiusstatsdropped.yfilter);
 }
 
 std::string CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::get_absolute_path() const
@@ -407,23 +407,23 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
     if (csbcallstatsinstanceindex.is_set || is_set(csbcallstatsinstanceindex.yfilter)) leaf_name_data.push_back(csbcallstatsinstanceindex.get_name_leafdata());
     if (csbcallstatsserviceindex.is_set || is_set(csbcallstatsserviceindex.yfilter)) leaf_name_data.push_back(csbcallstatsserviceindex.get_name_leafdata());
     if (csbradiusstatsentindex.is_set || is_set(csbradiusstatsentindex.yfilter)) leaf_name_data.push_back(csbradiusstatsentindex.get_name_leafdata());
-    if (csbradiusstatsacsaccpts.is_set || is_set(csbradiusstatsacsaccpts.yfilter)) leaf_name_data.push_back(csbradiusstatsacsaccpts.get_name_leafdata());
-    if (csbradiusstatsacschalls.is_set || is_set(csbradiusstatsacschalls.yfilter)) leaf_name_data.push_back(csbradiusstatsacschalls.get_name_leafdata());
-    if (csbradiusstatsacsrejects.is_set || is_set(csbradiusstatsacsrejects.yfilter)) leaf_name_data.push_back(csbradiusstatsacsrejects.get_name_leafdata());
+    if (csbradiusstatsclientname.is_set || is_set(csbradiusstatsclientname.yfilter)) leaf_name_data.push_back(csbradiusstatsclientname.get_name_leafdata());
+    if (csbradiusstatsclienttype.is_set || is_set(csbradiusstatsclienttype.yfilter)) leaf_name_data.push_back(csbradiusstatsclienttype.get_name_leafdata());
+    if (csbradiusstatssrvrname.is_set || is_set(csbradiusstatssrvrname.yfilter)) leaf_name_data.push_back(csbradiusstatssrvrname.get_name_leafdata());
     if (csbradiusstatsacsreqs.is_set || is_set(csbradiusstatsacsreqs.yfilter)) leaf_name_data.push_back(csbradiusstatsacsreqs.get_name_leafdata());
     if (csbradiusstatsacsrtrns.is_set || is_set(csbradiusstatsacsrtrns.yfilter)) leaf_name_data.push_back(csbradiusstatsacsrtrns.get_name_leafdata());
+    if (csbradiusstatsacsaccpts.is_set || is_set(csbradiusstatsacsaccpts.yfilter)) leaf_name_data.push_back(csbradiusstatsacsaccpts.get_name_leafdata());
+    if (csbradiusstatsacsrejects.is_set || is_set(csbradiusstatsacsrejects.yfilter)) leaf_name_data.push_back(csbradiusstatsacsrejects.get_name_leafdata());
+    if (csbradiusstatsacschalls.is_set || is_set(csbradiusstatsacschalls.yfilter)) leaf_name_data.push_back(csbradiusstatsacschalls.get_name_leafdata());
     if (csbradiusstatsactreqs.is_set || is_set(csbradiusstatsactreqs.yfilter)) leaf_name_data.push_back(csbradiusstatsactreqs.get_name_leafdata());
     if (csbradiusstatsactretrans.is_set || is_set(csbradiusstatsactretrans.yfilter)) leaf_name_data.push_back(csbradiusstatsactretrans.get_name_leafdata());
     if (csbradiusstatsactrsps.is_set || is_set(csbradiusstatsactrsps.yfilter)) leaf_name_data.push_back(csbradiusstatsactrsps.get_name_leafdata());
-    if (csbradiusstatsbadauths.is_set || is_set(csbradiusstatsbadauths.yfilter)) leaf_name_data.push_back(csbradiusstatsbadauths.get_name_leafdata());
-    if (csbradiusstatsclientname.is_set || is_set(csbradiusstatsclientname.yfilter)) leaf_name_data.push_back(csbradiusstatsclientname.get_name_leafdata());
-    if (csbradiusstatsclienttype.is_set || is_set(csbradiusstatsclienttype.yfilter)) leaf_name_data.push_back(csbradiusstatsclienttype.get_name_leafdata());
-    if (csbradiusstatsdropped.is_set || is_set(csbradiusstatsdropped.yfilter)) leaf_name_data.push_back(csbradiusstatsdropped.get_name_leafdata());
     if (csbradiusstatsmalformedrsps.is_set || is_set(csbradiusstatsmalformedrsps.yfilter)) leaf_name_data.push_back(csbradiusstatsmalformedrsps.get_name_leafdata());
+    if (csbradiusstatsbadauths.is_set || is_set(csbradiusstatsbadauths.yfilter)) leaf_name_data.push_back(csbradiusstatsbadauths.get_name_leafdata());
     if (csbradiusstatspending.is_set || is_set(csbradiusstatspending.yfilter)) leaf_name_data.push_back(csbradiusstatspending.get_name_leafdata());
-    if (csbradiusstatssrvrname.is_set || is_set(csbradiusstatssrvrname.yfilter)) leaf_name_data.push_back(csbradiusstatssrvrname.get_name_leafdata());
     if (csbradiusstatstimeouts.is_set || is_set(csbradiusstatstimeouts.yfilter)) leaf_name_data.push_back(csbradiusstatstimeouts.get_name_leafdata());
     if (csbradiusstatsunknowntype.is_set || is_set(csbradiusstatsunknowntype.yfilter)) leaf_name_data.push_back(csbradiusstatsunknowntype.get_name_leafdata());
+    if (csbradiusstatsdropped.is_set || is_set(csbradiusstatsdropped.yfilter)) leaf_name_data.push_back(csbradiusstatsdropped.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -460,23 +460,23 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
         csbradiusstatsentindex.value_namespace = name_space;
         csbradiusstatsentindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "csbRadiusStatsAcsAccpts")
+    if(value_path == "csbRadiusStatsClientName")
     {
-        csbradiusstatsacsaccpts = value;
-        csbradiusstatsacsaccpts.value_namespace = name_space;
-        csbradiusstatsacsaccpts.value_namespace_prefix = name_space_prefix;
+        csbradiusstatsclientname = value;
+        csbradiusstatsclientname.value_namespace = name_space;
+        csbradiusstatsclientname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "csbRadiusStatsAcsChalls")
+    if(value_path == "csbRadiusStatsClientType")
     {
-        csbradiusstatsacschalls = value;
-        csbradiusstatsacschalls.value_namespace = name_space;
-        csbradiusstatsacschalls.value_namespace_prefix = name_space_prefix;
+        csbradiusstatsclienttype = value;
+        csbradiusstatsclienttype.value_namespace = name_space;
+        csbradiusstatsclienttype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "csbRadiusStatsAcsRejects")
+    if(value_path == "csbRadiusStatsSrvrName")
     {
-        csbradiusstatsacsrejects = value;
-        csbradiusstatsacsrejects.value_namespace = name_space;
-        csbradiusstatsacsrejects.value_namespace_prefix = name_space_prefix;
+        csbradiusstatssrvrname = value;
+        csbradiusstatssrvrname.value_namespace = name_space;
+        csbradiusstatssrvrname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "csbRadiusStatsAcsReqs")
     {
@@ -489,6 +489,24 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
         csbradiusstatsacsrtrns = value;
         csbradiusstatsacsrtrns.value_namespace = name_space;
         csbradiusstatsacsrtrns.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRadiusStatsAcsAccpts")
+    {
+        csbradiusstatsacsaccpts = value;
+        csbradiusstatsacsaccpts.value_namespace = name_space;
+        csbradiusstatsacsaccpts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRadiusStatsAcsRejects")
+    {
+        csbradiusstatsacsrejects = value;
+        csbradiusstatsacsrejects.value_namespace = name_space;
+        csbradiusstatsacsrejects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRadiusStatsAcsChalls")
+    {
+        csbradiusstatsacschalls = value;
+        csbradiusstatsacschalls.value_namespace = name_space;
+        csbradiusstatsacschalls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "csbRadiusStatsActReqs")
     {
@@ -508,47 +526,23 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
         csbradiusstatsactrsps.value_namespace = name_space;
         csbradiusstatsactrsps.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "csbRadiusStatsBadAuths")
-    {
-        csbradiusstatsbadauths = value;
-        csbradiusstatsbadauths.value_namespace = name_space;
-        csbradiusstatsbadauths.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRadiusStatsClientName")
-    {
-        csbradiusstatsclientname = value;
-        csbradiusstatsclientname.value_namespace = name_space;
-        csbradiusstatsclientname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRadiusStatsClientType")
-    {
-        csbradiusstatsclienttype = value;
-        csbradiusstatsclienttype.value_namespace = name_space;
-        csbradiusstatsclienttype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRadiusStatsDropped")
-    {
-        csbradiusstatsdropped = value;
-        csbradiusstatsdropped.value_namespace = name_space;
-        csbradiusstatsdropped.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "csbRadiusStatsMalformedRsps")
     {
         csbradiusstatsmalformedrsps = value;
         csbradiusstatsmalformedrsps.value_namespace = name_space;
         csbradiusstatsmalformedrsps.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "csbRadiusStatsBadAuths")
+    {
+        csbradiusstatsbadauths = value;
+        csbradiusstatsbadauths.value_namespace = name_space;
+        csbradiusstatsbadauths.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "csbRadiusStatsPending")
     {
         csbradiusstatspending = value;
         csbradiusstatspending.value_namespace = name_space;
         csbradiusstatspending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRadiusStatsSrvrName")
-    {
-        csbradiusstatssrvrname = value;
-        csbradiusstatssrvrname.value_namespace = name_space;
-        csbradiusstatssrvrname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "csbRadiusStatsTimeouts")
     {
@@ -561,6 +555,12 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
         csbradiusstatsunknowntype = value;
         csbradiusstatsunknowntype.value_namespace = name_space;
         csbradiusstatsunknowntype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRadiusStatsDropped")
+    {
+        csbradiusstatsdropped = value;
+        csbradiusstatsdropped.value_namespace = name_space;
+        csbradiusstatsdropped.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -578,17 +578,17 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
     {
         csbradiusstatsentindex.yfilter = yfilter;
     }
-    if(value_path == "csbRadiusStatsAcsAccpts")
+    if(value_path == "csbRadiusStatsClientName")
     {
-        csbradiusstatsacsaccpts.yfilter = yfilter;
+        csbradiusstatsclientname.yfilter = yfilter;
     }
-    if(value_path == "csbRadiusStatsAcsChalls")
+    if(value_path == "csbRadiusStatsClientType")
     {
-        csbradiusstatsacschalls.yfilter = yfilter;
+        csbradiusstatsclienttype.yfilter = yfilter;
     }
-    if(value_path == "csbRadiusStatsAcsRejects")
+    if(value_path == "csbRadiusStatsSrvrName")
     {
-        csbradiusstatsacsrejects.yfilter = yfilter;
+        csbradiusstatssrvrname.yfilter = yfilter;
     }
     if(value_path == "csbRadiusStatsAcsReqs")
     {
@@ -597,6 +597,18 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
     if(value_path == "csbRadiusStatsAcsRtrns")
     {
         csbradiusstatsacsrtrns.yfilter = yfilter;
+    }
+    if(value_path == "csbRadiusStatsAcsAccpts")
+    {
+        csbradiusstatsacsaccpts.yfilter = yfilter;
+    }
+    if(value_path == "csbRadiusStatsAcsRejects")
+    {
+        csbradiusstatsacsrejects.yfilter = yfilter;
+    }
+    if(value_path == "csbRadiusStatsAcsChalls")
+    {
+        csbradiusstatsacschalls.yfilter = yfilter;
     }
     if(value_path == "csbRadiusStatsActReqs")
     {
@@ -610,33 +622,17 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
     {
         csbradiusstatsactrsps.yfilter = yfilter;
     }
-    if(value_path == "csbRadiusStatsBadAuths")
-    {
-        csbradiusstatsbadauths.yfilter = yfilter;
-    }
-    if(value_path == "csbRadiusStatsClientName")
-    {
-        csbradiusstatsclientname.yfilter = yfilter;
-    }
-    if(value_path == "csbRadiusStatsClientType")
-    {
-        csbradiusstatsclienttype.yfilter = yfilter;
-    }
-    if(value_path == "csbRadiusStatsDropped")
-    {
-        csbradiusstatsdropped.yfilter = yfilter;
-    }
     if(value_path == "csbRadiusStatsMalformedRsps")
     {
         csbradiusstatsmalformedrsps.yfilter = yfilter;
     }
+    if(value_path == "csbRadiusStatsBadAuths")
+    {
+        csbradiusstatsbadauths.yfilter = yfilter;
+    }
     if(value_path == "csbRadiusStatsPending")
     {
         csbradiusstatspending.yfilter = yfilter;
-    }
-    if(value_path == "csbRadiusStatsSrvrName")
-    {
-        csbradiusstatssrvrname.yfilter = yfilter;
     }
     if(value_path == "csbRadiusStatsTimeouts")
     {
@@ -646,11 +642,15 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::set
     {
         csbradiusstatsunknowntype.yfilter = yfilter;
     }
+    if(value_path == "csbRadiusStatsDropped")
+    {
+        csbradiusstatsdropped.yfilter = yfilter;
+    }
 }
 
 bool CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbRadiusStatsEntIndex" || name == "csbRadiusStatsAcsAccpts" || name == "csbRadiusStatsAcsChalls" || name == "csbRadiusStatsAcsRejects" || name == "csbRadiusStatsAcsReqs" || name == "csbRadiusStatsAcsRtrns" || name == "csbRadiusStatsActReqs" || name == "csbRadiusStatsActRetrans" || name == "csbRadiusStatsActRsps" || name == "csbRadiusStatsBadAuths" || name == "csbRadiusStatsClientName" || name == "csbRadiusStatsClientType" || name == "csbRadiusStatsDropped" || name == "csbRadiusStatsMalformedRsps" || name == "csbRadiusStatsPending" || name == "csbRadiusStatsSrvrName" || name == "csbRadiusStatsTimeouts" || name == "csbRadiusStatsUnknownType")
+    if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbRadiusStatsEntIndex" || name == "csbRadiusStatsClientName" || name == "csbRadiusStatsClientType" || name == "csbRadiusStatsSrvrName" || name == "csbRadiusStatsAcsReqs" || name == "csbRadiusStatsAcsRtrns" || name == "csbRadiusStatsAcsAccpts" || name == "csbRadiusStatsAcsRejects" || name == "csbRadiusStatsAcsChalls" || name == "csbRadiusStatsActReqs" || name == "csbRadiusStatsActRetrans" || name == "csbRadiusStatsActRsps" || name == "csbRadiusStatsMalformedRsps" || name == "csbRadiusStatsBadAuths" || name == "csbRadiusStatsPending" || name == "csbRadiusStatsTimeouts" || name == "csbRadiusStatsUnknownType" || name == "csbRadiusStatsDropped")
         return true;
     return false;
 }
@@ -761,18 +761,18 @@ CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry
     csbcallstatsserviceindex{YType::str, "csbCallStatsServiceIndex"},
     csbrfbillrealmstatsindex{YType::uint32, "csbRfBillRealmStatsIndex"},
     csbrfbillrealmstatsrealmname{YType::str, "csbRfBillRealmStatsRealmName"},
-    csbrfbillrealmstatsfaileventacrs{YType::uint32, "csbRfBillRealmStatsFailEventAcrs"},
-    csbrfbillrealmstatsfailinterimacrs{YType::uint32, "csbRfBillRealmStatsFailInterimAcrs"},
-    csbrfbillrealmstatsfailstartacrs{YType::uint32, "csbRfBillRealmStatsFailStartAcrs"},
-    csbrfbillrealmstatsfailstopacrs{YType::uint32, "csbRfBillRealmStatsFailStopAcrs"},
-    csbrfbillrealmstatssucceventacrs{YType::uint32, "csbRfBillRealmStatsSuccEventAcrs"},
-    csbrfbillrealmstatssuccinterimacrs{YType::uint32, "csbRfBillRealmStatsSuccInterimAcrs"},
-    csbrfbillrealmstatssuccstartacrs{YType::uint32, "csbRfBillRealmStatsSuccStartAcrs"},
-    csbrfbillrealmstatssuccstopacrs{YType::uint32, "csbRfBillRealmStatsSuccStopAcrs"},
-    csbrfbillrealmstatstotaleventacrs{YType::uint32, "csbRfBillRealmStatsTotalEventAcrs"},
-    csbrfbillrealmstatstotalinterimacrs{YType::uint32, "csbRfBillRealmStatsTotalInterimAcrs"},
     csbrfbillrealmstatstotalstartacrs{YType::uint32, "csbRfBillRealmStatsTotalStartAcrs"},
-    csbrfbillrealmstatstotalstopacrs{YType::uint32, "csbRfBillRealmStatsTotalStopAcrs"}
+    csbrfbillrealmstatstotalinterimacrs{YType::uint32, "csbRfBillRealmStatsTotalInterimAcrs"},
+    csbrfbillrealmstatstotalstopacrs{YType::uint32, "csbRfBillRealmStatsTotalStopAcrs"},
+    csbrfbillrealmstatstotaleventacrs{YType::uint32, "csbRfBillRealmStatsTotalEventAcrs"},
+    csbrfbillrealmstatssuccstartacrs{YType::uint32, "csbRfBillRealmStatsSuccStartAcrs"},
+    csbrfbillrealmstatssuccinterimacrs{YType::uint32, "csbRfBillRealmStatsSuccInterimAcrs"},
+    csbrfbillrealmstatssuccstopacrs{YType::uint32, "csbRfBillRealmStatsSuccStopAcrs"},
+    csbrfbillrealmstatssucceventacrs{YType::uint32, "csbRfBillRealmStatsSuccEventAcrs"},
+    csbrfbillrealmstatsfailstartacrs{YType::uint32, "csbRfBillRealmStatsFailStartAcrs"},
+    csbrfbillrealmstatsfailinterimacrs{YType::uint32, "csbRfBillRealmStatsFailInterimAcrs"},
+    csbrfbillrealmstatsfailstopacrs{YType::uint32, "csbRfBillRealmStatsFailStopAcrs"},
+    csbrfbillrealmstatsfaileventacrs{YType::uint32, "csbRfBillRealmStatsFailEventAcrs"}
 {
 
     yang_name = "csbRfBillRealmStatsEntry"; yang_parent_name = "csbRfBillRealmStatsTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -788,18 +788,18 @@ bool CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstats
 	|| csbcallstatsserviceindex.is_set
 	|| csbrfbillrealmstatsindex.is_set
 	|| csbrfbillrealmstatsrealmname.is_set
-	|| csbrfbillrealmstatsfaileventacrs.is_set
-	|| csbrfbillrealmstatsfailinterimacrs.is_set
-	|| csbrfbillrealmstatsfailstartacrs.is_set
-	|| csbrfbillrealmstatsfailstopacrs.is_set
-	|| csbrfbillrealmstatssucceventacrs.is_set
-	|| csbrfbillrealmstatssuccinterimacrs.is_set
-	|| csbrfbillrealmstatssuccstartacrs.is_set
-	|| csbrfbillrealmstatssuccstopacrs.is_set
-	|| csbrfbillrealmstatstotaleventacrs.is_set
-	|| csbrfbillrealmstatstotalinterimacrs.is_set
 	|| csbrfbillrealmstatstotalstartacrs.is_set
-	|| csbrfbillrealmstatstotalstopacrs.is_set;
+	|| csbrfbillrealmstatstotalinterimacrs.is_set
+	|| csbrfbillrealmstatstotalstopacrs.is_set
+	|| csbrfbillrealmstatstotaleventacrs.is_set
+	|| csbrfbillrealmstatssuccstartacrs.is_set
+	|| csbrfbillrealmstatssuccinterimacrs.is_set
+	|| csbrfbillrealmstatssuccstopacrs.is_set
+	|| csbrfbillrealmstatssucceventacrs.is_set
+	|| csbrfbillrealmstatsfailstartacrs.is_set
+	|| csbrfbillrealmstatsfailinterimacrs.is_set
+	|| csbrfbillrealmstatsfailstopacrs.is_set
+	|| csbrfbillrealmstatsfaileventacrs.is_set;
 }
 
 bool CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry::has_operation() const
@@ -809,18 +809,18 @@ bool CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstats
 	|| ydk::is_set(csbcallstatsserviceindex.yfilter)
 	|| ydk::is_set(csbrfbillrealmstatsindex.yfilter)
 	|| ydk::is_set(csbrfbillrealmstatsrealmname.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatsfaileventacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatsfailinterimacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatsfailstartacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatsfailstopacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatssucceventacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatssuccinterimacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatssuccstartacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatssuccstopacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatstotaleventacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatstotalinterimacrs.yfilter)
 	|| ydk::is_set(csbrfbillrealmstatstotalstartacrs.yfilter)
-	|| ydk::is_set(csbrfbillrealmstatstotalstopacrs.yfilter);
+	|| ydk::is_set(csbrfbillrealmstatstotalinterimacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatstotalstopacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatstotaleventacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatssuccstartacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatssuccinterimacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatssuccstopacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatssucceventacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatsfailstartacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatsfailinterimacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatsfailstopacrs.yfilter)
+	|| ydk::is_set(csbrfbillrealmstatsfaileventacrs.yfilter);
 }
 
 std::string CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry::get_absolute_path() const
@@ -845,18 +845,18 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
     if (csbcallstatsserviceindex.is_set || is_set(csbcallstatsserviceindex.yfilter)) leaf_name_data.push_back(csbcallstatsserviceindex.get_name_leafdata());
     if (csbrfbillrealmstatsindex.is_set || is_set(csbrfbillrealmstatsindex.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsindex.get_name_leafdata());
     if (csbrfbillrealmstatsrealmname.is_set || is_set(csbrfbillrealmstatsrealmname.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsrealmname.get_name_leafdata());
-    if (csbrfbillrealmstatsfaileventacrs.is_set || is_set(csbrfbillrealmstatsfaileventacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfaileventacrs.get_name_leafdata());
-    if (csbrfbillrealmstatsfailinterimacrs.is_set || is_set(csbrfbillrealmstatsfailinterimacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfailinterimacrs.get_name_leafdata());
-    if (csbrfbillrealmstatsfailstartacrs.is_set || is_set(csbrfbillrealmstatsfailstartacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfailstartacrs.get_name_leafdata());
-    if (csbrfbillrealmstatsfailstopacrs.is_set || is_set(csbrfbillrealmstatsfailstopacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfailstopacrs.get_name_leafdata());
-    if (csbrfbillrealmstatssucceventacrs.is_set || is_set(csbrfbillrealmstatssucceventacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssucceventacrs.get_name_leafdata());
-    if (csbrfbillrealmstatssuccinterimacrs.is_set || is_set(csbrfbillrealmstatssuccinterimacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssuccinterimacrs.get_name_leafdata());
-    if (csbrfbillrealmstatssuccstartacrs.is_set || is_set(csbrfbillrealmstatssuccstartacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssuccstartacrs.get_name_leafdata());
-    if (csbrfbillrealmstatssuccstopacrs.is_set || is_set(csbrfbillrealmstatssuccstopacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssuccstopacrs.get_name_leafdata());
-    if (csbrfbillrealmstatstotaleventacrs.is_set || is_set(csbrfbillrealmstatstotaleventacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatstotaleventacrs.get_name_leafdata());
-    if (csbrfbillrealmstatstotalinterimacrs.is_set || is_set(csbrfbillrealmstatstotalinterimacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatstotalinterimacrs.get_name_leafdata());
     if (csbrfbillrealmstatstotalstartacrs.is_set || is_set(csbrfbillrealmstatstotalstartacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatstotalstartacrs.get_name_leafdata());
+    if (csbrfbillrealmstatstotalinterimacrs.is_set || is_set(csbrfbillrealmstatstotalinterimacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatstotalinterimacrs.get_name_leafdata());
     if (csbrfbillrealmstatstotalstopacrs.is_set || is_set(csbrfbillrealmstatstotalstopacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatstotalstopacrs.get_name_leafdata());
+    if (csbrfbillrealmstatstotaleventacrs.is_set || is_set(csbrfbillrealmstatstotaleventacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatstotaleventacrs.get_name_leafdata());
+    if (csbrfbillrealmstatssuccstartacrs.is_set || is_set(csbrfbillrealmstatssuccstartacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssuccstartacrs.get_name_leafdata());
+    if (csbrfbillrealmstatssuccinterimacrs.is_set || is_set(csbrfbillrealmstatssuccinterimacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssuccinterimacrs.get_name_leafdata());
+    if (csbrfbillrealmstatssuccstopacrs.is_set || is_set(csbrfbillrealmstatssuccstopacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssuccstopacrs.get_name_leafdata());
+    if (csbrfbillrealmstatssucceventacrs.is_set || is_set(csbrfbillrealmstatssucceventacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatssucceventacrs.get_name_leafdata());
+    if (csbrfbillrealmstatsfailstartacrs.is_set || is_set(csbrfbillrealmstatsfailstartacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfailstartacrs.get_name_leafdata());
+    if (csbrfbillrealmstatsfailinterimacrs.is_set || is_set(csbrfbillrealmstatsfailinterimacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfailinterimacrs.get_name_leafdata());
+    if (csbrfbillrealmstatsfailstopacrs.is_set || is_set(csbrfbillrealmstatsfailstopacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfailstopacrs.get_name_leafdata());
+    if (csbrfbillrealmstatsfaileventacrs.is_set || is_set(csbrfbillrealmstatsfaileventacrs.yfilter)) leaf_name_data.push_back(csbrfbillrealmstatsfaileventacrs.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -899,59 +899,11 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstats
         csbrfbillrealmstatsrealmname.value_namespace = name_space;
         csbrfbillrealmstatsrealmname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "csbRfBillRealmStatsFailEventAcrs")
+    if(value_path == "csbRfBillRealmStatsTotalStartAcrs")
     {
-        csbrfbillrealmstatsfaileventacrs = value;
-        csbrfbillrealmstatsfaileventacrs.value_namespace = name_space;
-        csbrfbillrealmstatsfaileventacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsFailInterimAcrs")
-    {
-        csbrfbillrealmstatsfailinterimacrs = value;
-        csbrfbillrealmstatsfailinterimacrs.value_namespace = name_space;
-        csbrfbillrealmstatsfailinterimacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsFailStartAcrs")
-    {
-        csbrfbillrealmstatsfailstartacrs = value;
-        csbrfbillrealmstatsfailstartacrs.value_namespace = name_space;
-        csbrfbillrealmstatsfailstartacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsFailStopAcrs")
-    {
-        csbrfbillrealmstatsfailstopacrs = value;
-        csbrfbillrealmstatsfailstopacrs.value_namespace = name_space;
-        csbrfbillrealmstatsfailstopacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccEventAcrs")
-    {
-        csbrfbillrealmstatssucceventacrs = value;
-        csbrfbillrealmstatssucceventacrs.value_namespace = name_space;
-        csbrfbillrealmstatssucceventacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccInterimAcrs")
-    {
-        csbrfbillrealmstatssuccinterimacrs = value;
-        csbrfbillrealmstatssuccinterimacrs.value_namespace = name_space;
-        csbrfbillrealmstatssuccinterimacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccStartAcrs")
-    {
-        csbrfbillrealmstatssuccstartacrs = value;
-        csbrfbillrealmstatssuccstartacrs.value_namespace = name_space;
-        csbrfbillrealmstatssuccstartacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccStopAcrs")
-    {
-        csbrfbillrealmstatssuccstopacrs = value;
-        csbrfbillrealmstatssuccstopacrs.value_namespace = name_space;
-        csbrfbillrealmstatssuccstopacrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "csbRfBillRealmStatsTotalEventAcrs")
-    {
-        csbrfbillrealmstatstotaleventacrs = value;
-        csbrfbillrealmstatstotaleventacrs.value_namespace = name_space;
-        csbrfbillrealmstatstotaleventacrs.value_namespace_prefix = name_space_prefix;
+        csbrfbillrealmstatstotalstartacrs = value;
+        csbrfbillrealmstatstotalstartacrs.value_namespace = name_space;
+        csbrfbillrealmstatstotalstartacrs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "csbRfBillRealmStatsTotalInterimAcrs")
     {
@@ -959,17 +911,65 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstats
         csbrfbillrealmstatstotalinterimacrs.value_namespace = name_space;
         csbrfbillrealmstatstotalinterimacrs.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "csbRfBillRealmStatsTotalStartAcrs")
-    {
-        csbrfbillrealmstatstotalstartacrs = value;
-        csbrfbillrealmstatstotalstartacrs.value_namespace = name_space;
-        csbrfbillrealmstatstotalstartacrs.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "csbRfBillRealmStatsTotalStopAcrs")
     {
         csbrfbillrealmstatstotalstopacrs = value;
         csbrfbillrealmstatstotalstopacrs.value_namespace = name_space;
         csbrfbillrealmstatstotalstopacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsTotalEventAcrs")
+    {
+        csbrfbillrealmstatstotaleventacrs = value;
+        csbrfbillrealmstatstotaleventacrs.value_namespace = name_space;
+        csbrfbillrealmstatstotaleventacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccStartAcrs")
+    {
+        csbrfbillrealmstatssuccstartacrs = value;
+        csbrfbillrealmstatssuccstartacrs.value_namespace = name_space;
+        csbrfbillrealmstatssuccstartacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccInterimAcrs")
+    {
+        csbrfbillrealmstatssuccinterimacrs = value;
+        csbrfbillrealmstatssuccinterimacrs.value_namespace = name_space;
+        csbrfbillrealmstatssuccinterimacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccStopAcrs")
+    {
+        csbrfbillrealmstatssuccstopacrs = value;
+        csbrfbillrealmstatssuccstopacrs.value_namespace = name_space;
+        csbrfbillrealmstatssuccstopacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccEventAcrs")
+    {
+        csbrfbillrealmstatssucceventacrs = value;
+        csbrfbillrealmstatssucceventacrs.value_namespace = name_space;
+        csbrfbillrealmstatssucceventacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsFailStartAcrs")
+    {
+        csbrfbillrealmstatsfailstartacrs = value;
+        csbrfbillrealmstatsfailstartacrs.value_namespace = name_space;
+        csbrfbillrealmstatsfailstartacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsFailInterimAcrs")
+    {
+        csbrfbillrealmstatsfailinterimacrs = value;
+        csbrfbillrealmstatsfailinterimacrs.value_namespace = name_space;
+        csbrfbillrealmstatsfailinterimacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsFailStopAcrs")
+    {
+        csbrfbillrealmstatsfailstopacrs = value;
+        csbrfbillrealmstatsfailstopacrs.value_namespace = name_space;
+        csbrfbillrealmstatsfailstopacrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "csbRfBillRealmStatsFailEventAcrs")
+    {
+        csbrfbillrealmstatsfaileventacrs = value;
+        csbrfbillrealmstatsfaileventacrs.value_namespace = name_space;
+        csbrfbillrealmstatsfaileventacrs.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -991,59 +991,59 @@ void CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstats
     {
         csbrfbillrealmstatsrealmname.yfilter = yfilter;
     }
-    if(value_path == "csbRfBillRealmStatsFailEventAcrs")
+    if(value_path == "csbRfBillRealmStatsTotalStartAcrs")
     {
-        csbrfbillrealmstatsfaileventacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsFailInterimAcrs")
-    {
-        csbrfbillrealmstatsfailinterimacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsFailStartAcrs")
-    {
-        csbrfbillrealmstatsfailstartacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsFailStopAcrs")
-    {
-        csbrfbillrealmstatsfailstopacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccEventAcrs")
-    {
-        csbrfbillrealmstatssucceventacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccInterimAcrs")
-    {
-        csbrfbillrealmstatssuccinterimacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccStartAcrs")
-    {
-        csbrfbillrealmstatssuccstartacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsSuccStopAcrs")
-    {
-        csbrfbillrealmstatssuccstopacrs.yfilter = yfilter;
-    }
-    if(value_path == "csbRfBillRealmStatsTotalEventAcrs")
-    {
-        csbrfbillrealmstatstotaleventacrs.yfilter = yfilter;
+        csbrfbillrealmstatstotalstartacrs.yfilter = yfilter;
     }
     if(value_path == "csbRfBillRealmStatsTotalInterimAcrs")
     {
         csbrfbillrealmstatstotalinterimacrs.yfilter = yfilter;
     }
-    if(value_path == "csbRfBillRealmStatsTotalStartAcrs")
-    {
-        csbrfbillrealmstatstotalstartacrs.yfilter = yfilter;
-    }
     if(value_path == "csbRfBillRealmStatsTotalStopAcrs")
     {
         csbrfbillrealmstatstotalstopacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsTotalEventAcrs")
+    {
+        csbrfbillrealmstatstotaleventacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccStartAcrs")
+    {
+        csbrfbillrealmstatssuccstartacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccInterimAcrs")
+    {
+        csbrfbillrealmstatssuccinterimacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccStopAcrs")
+    {
+        csbrfbillrealmstatssuccstopacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsSuccEventAcrs")
+    {
+        csbrfbillrealmstatssucceventacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsFailStartAcrs")
+    {
+        csbrfbillrealmstatsfailstartacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsFailInterimAcrs")
+    {
+        csbrfbillrealmstatsfailinterimacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsFailStopAcrs")
+    {
+        csbrfbillrealmstatsfailstopacrs.yfilter = yfilter;
+    }
+    if(value_path == "csbRfBillRealmStatsFailEventAcrs")
+    {
+        csbrfbillrealmstatsfaileventacrs.yfilter = yfilter;
     }
 }
 
 bool CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbRfBillRealmStatsIndex" || name == "csbRfBillRealmStatsRealmName" || name == "csbRfBillRealmStatsFailEventAcrs" || name == "csbRfBillRealmStatsFailInterimAcrs" || name == "csbRfBillRealmStatsFailStartAcrs" || name == "csbRfBillRealmStatsFailStopAcrs" || name == "csbRfBillRealmStatsSuccEventAcrs" || name == "csbRfBillRealmStatsSuccInterimAcrs" || name == "csbRfBillRealmStatsSuccStartAcrs" || name == "csbRfBillRealmStatsSuccStopAcrs" || name == "csbRfBillRealmStatsTotalEventAcrs" || name == "csbRfBillRealmStatsTotalInterimAcrs" || name == "csbRfBillRealmStatsTotalStartAcrs" || name == "csbRfBillRealmStatsTotalStopAcrs")
+    if(name == "csbCallStatsInstanceIndex" || name == "csbCallStatsServiceIndex" || name == "csbRfBillRealmStatsIndex" || name == "csbRfBillRealmStatsRealmName" || name == "csbRfBillRealmStatsTotalStartAcrs" || name == "csbRfBillRealmStatsTotalInterimAcrs" || name == "csbRfBillRealmStatsTotalStopAcrs" || name == "csbRfBillRealmStatsTotalEventAcrs" || name == "csbRfBillRealmStatsSuccStartAcrs" || name == "csbRfBillRealmStatsSuccInterimAcrs" || name == "csbRfBillRealmStatsSuccStopAcrs" || name == "csbRfBillRealmStatsSuccEventAcrs" || name == "csbRfBillRealmStatsFailStartAcrs" || name == "csbRfBillRealmStatsFailInterimAcrs" || name == "csbRfBillRealmStatsFailStopAcrs" || name == "csbRfBillRealmStatsFailEventAcrs")
         return true;
     return false;
 }

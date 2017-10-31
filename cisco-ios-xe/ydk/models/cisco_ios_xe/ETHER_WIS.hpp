@@ -37,9 +37,9 @@ class ETHERWIS : public ydk::Entity
         class Etherwisfarendpathcurrenttable; //type: ETHERWIS::Etherwisfarendpathcurrenttable
 
         std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisdevicetable> etherwisdevicetable;
-        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisfarendpathcurrenttable> etherwisfarendpathcurrenttable;
-        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwispathcurrenttable> etherwispathcurrenttable;
         std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwissectioncurrenttable> etherwissectioncurrenttable;
+        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwispathcurrenttable> etherwispathcurrenttable;
+        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisfarendpathcurrenttable> etherwisfarendpathcurrenttable;
         
 }; // ETHERWIS
 
@@ -96,11 +96,11 @@ class ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry : public ydk::Entity
 }; // ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry
 
 
-class ETHERWIS::Etherwisfarendpathcurrenttable : public ydk::Entity
+class ETHERWIS::Etherwissectioncurrenttable : public ydk::Entity
 {
     public:
-        Etherwisfarendpathcurrenttable();
-        ~Etherwisfarendpathcurrenttable();
+        Etherwissectioncurrenttable();
+        ~Etherwissectioncurrenttable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -113,18 +113,18 @@ class ETHERWIS::Etherwisfarendpathcurrenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Etherwisfarendpathcurrententry; //type: ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
+        class Etherwissectioncurrententry; //type: ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry> > etherwisfarendpathcurrententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry> > etherwissectioncurrententry;
         
-}; // ETHERWIS::Etherwisfarendpathcurrenttable
+}; // ETHERWIS::Etherwissectioncurrenttable
 
 
-class ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry : public ydk::Entity
+class ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry : public ydk::Entity
 {
     public:
-        Etherwisfarendpathcurrententry();
-        ~Etherwisfarendpathcurrententry();
+        Etherwissectioncurrententry();
+        ~Etherwissectioncurrententry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -139,9 +139,10 @@ class ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry :
 
         //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf etherwisfarendpathcurrentstatus; //type: Etherwisfarendpathcurrentstatus
+        ydk::YLeaf etherwissectioncurrentj0transmitted; //type: binary
+        ydk::YLeaf etherwissectioncurrentj0received; //type: binary
 
-}; // ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
+}; // ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry
 
 
 class ETHERWIS::Etherwispathcurrenttable : public ydk::Entity
@@ -194,11 +195,11 @@ class ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry : public ydk:
 }; // ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry
 
 
-class ETHERWIS::Etherwissectioncurrenttable : public ydk::Entity
+class ETHERWIS::Etherwisfarendpathcurrenttable : public ydk::Entity
 {
     public:
-        Etherwissectioncurrenttable();
-        ~Etherwissectioncurrenttable();
+        Etherwisfarendpathcurrenttable();
+        ~Etherwisfarendpathcurrenttable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -211,18 +212,18 @@ class ETHERWIS::Etherwissectioncurrenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Etherwissectioncurrententry; //type: ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry
+        class Etherwisfarendpathcurrententry; //type: ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry> > etherwissectioncurrententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry> > etherwisfarendpathcurrententry;
         
-}; // ETHERWIS::Etherwissectioncurrenttable
+}; // ETHERWIS::Etherwisfarendpathcurrenttable
 
 
-class ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry : public ydk::Entity
+class ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry : public ydk::Entity
 {
     public:
-        Etherwissectioncurrententry();
-        ~Etherwissectioncurrententry();
+        Etherwisfarendpathcurrententry();
+        ~Etherwisfarendpathcurrententry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,10 +238,9 @@ class ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry : publi
 
         //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf etherwissectioncurrentj0transmitted; //type: binary
-        ydk::YLeaf etherwissectioncurrentj0received; //type: binary
+        ydk::YLeaf etherwisfarendpathcurrentstatus; //type: Etherwisfarendpathcurrentstatus
 
-}; // ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry
+}; // ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
 
 class ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpatternmode : public ydk::Enum
 {

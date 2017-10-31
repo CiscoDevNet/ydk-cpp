@@ -10,6 +10,13 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_nve_cfg {
 
+class HostReachProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp;
+
+};
+
 class VxlanUdpPortEnum : public ydk::Enum
 {
     public:
@@ -26,17 +33,10 @@ class OverlayEncapEnum : public ydk::Enum
 
 };
 
-class IrProtocolEnum : public ydk::Enum
+class UnknownUnicastFloodingEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bgp;
-
-};
-
-class HostReachProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf suppress_uuf;
 
 };
 
@@ -47,10 +47,10 @@ class LoadBalanceEnum : public ydk::Enum
 
 };
 
-class UnknownUnicastFloodingEnum : public ydk::Enum
+class IrProtocolEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf suppress_uuf;
+        static const ydk::Enum::YLeaf bgp;
 
 };
 

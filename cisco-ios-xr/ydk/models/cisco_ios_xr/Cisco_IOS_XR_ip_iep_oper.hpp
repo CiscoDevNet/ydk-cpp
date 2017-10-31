@@ -199,20 +199,20 @@ class IepHop : public ydk::Enum
 
 };
 
-class IepStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
 class IepAddress : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf next;
         static const ydk::Enum::YLeaf exclude;
         static const ydk::Enum::YLeaf exclude_srlg;
+
+};
+
+class IepStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 

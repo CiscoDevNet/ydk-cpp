@@ -13,13 +13,13 @@ namespace INT_SERV_MIB {
 
 INTSERVMIB::INTSERVMIB()
     :
-    intsrvflowtable(std::make_shared<INTSERVMIB::Intsrvflowtable>())
-	,intsrvgenobjects(std::make_shared<INTSERVMIB::Intsrvgenobjects>())
+    intsrvgenobjects(std::make_shared<INTSERVMIB::Intsrvgenobjects>())
 	,intsrvifattribtable(std::make_shared<INTSERVMIB::Intsrvifattribtable>())
+	,intsrvflowtable(std::make_shared<INTSERVMIB::Intsrvflowtable>())
 {
-    intsrvflowtable->parent = this;
     intsrvgenobjects->parent = this;
     intsrvifattribtable->parent = this;
+    intsrvflowtable->parent = this;
 
     yang_name = "INT-SERV-MIB"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -30,17 +30,17 @@ INTSERVMIB::~INTSERVMIB()
 
 bool INTSERVMIB::has_data() const
 {
-    return (intsrvflowtable !=  nullptr && intsrvflowtable->has_data())
-	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_data())
-	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_data());
+    return (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_data())
+	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_data())
+	|| (intsrvflowtable !=  nullptr && intsrvflowtable->has_data());
 }
 
 bool INTSERVMIB::has_operation() const
 {
     return is_set(yfilter)
-	|| (intsrvflowtable !=  nullptr && intsrvflowtable->has_operation())
 	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_operation())
-	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_operation());
+	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_operation())
+	|| (intsrvflowtable !=  nullptr && intsrvflowtable->has_operation());
 }
 
 std::string INTSERVMIB::get_segment_path() const
@@ -61,15 +61,6 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::get_name_leaf_data() 
 
 std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "intSrvFlowTable")
-    {
-        if(intsrvflowtable == nullptr)
-        {
-            intsrvflowtable = std::make_shared<INTSERVMIB::Intsrvflowtable>();
-        }
-        return intsrvflowtable;
-    }
-
     if(child_yang_name == "intSrvGenObjects")
     {
         if(intsrvgenobjects == nullptr)
@@ -88,17 +79,21 @@ std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_
         return intsrvifattribtable;
     }
 
+    if(child_yang_name == "intSrvFlowTable")
+    {
+        if(intsrvflowtable == nullptr)
+        {
+            intsrvflowtable = std::make_shared<INTSERVMIB::Intsrvflowtable>();
+        }
+        return intsrvflowtable;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(intsrvflowtable != nullptr)
-    {
-        children["intSrvFlowTable"] = intsrvflowtable;
-    }
-
     if(intsrvgenobjects != nullptr)
     {
         children["intSrvGenObjects"] = intsrvgenobjects;
@@ -107,6 +102,11 @@ std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::get_children() const
     if(intsrvifattribtable != nullptr)
     {
         children["intSrvIfAttribTable"] = intsrvifattribtable;
+    }
+
+    if(intsrvflowtable != nullptr)
+    {
+        children["intSrvFlowTable"] = intsrvflowtable;
     }
 
     return children;
@@ -147,526 +147,7 @@ std::map<std::pair<std::string, std::string>, std::string> INTSERVMIB::get_names
 
 bool INTSERVMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "intSrvFlowTable" || name == "intSrvGenObjects" || name == "intSrvIfAttribTable")
-        return true;
-    return false;
-}
-
-INTSERVMIB::Intsrvflowtable::Intsrvflowtable()
-{
-
-    yang_name = "intSrvFlowTable"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-INTSERVMIB::Intsrvflowtable::~Intsrvflowtable()
-{
-}
-
-bool INTSERVMIB::Intsrvflowtable::has_data() const
-{
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
-    {
-        if(intsrvflowentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool INTSERVMIB::Intsrvflowtable::has_operation() const
-{
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
-    {
-        if(intsrvflowentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string INTSERVMIB::Intsrvflowtable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "INT-SERV-MIB:INT-SERV-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string INTSERVMIB::Intsrvflowtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "intSrvFlowTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "intSrvFlowEntry")
-    {
-        for(auto const & c : intsrvflowentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<INTSERVMIB::Intsrvflowtable::Intsrvflowentry>();
-        c->parent = this;
-        intsrvflowentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : intsrvflowentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void INTSERVMIB::Intsrvflowtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void INTSERVMIB::Intsrvflowtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool INTSERVMIB::Intsrvflowtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "intSrvFlowEntry")
-        return true;
-    return false;
-}
-
-INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowentry()
-    :
-    intsrvflownumber{YType::int32, "intSrvFlowNumber"},
-    intsrvflowbesteffort{YType::uint32, "intSrvFlowBestEffort"},
-    intsrvflowburst{YType::int32, "intSrvFlowBurst"},
-    intsrvflowdestaddr{YType::str, "intSrvFlowDestAddr"},
-    intsrvflowdestaddrlength{YType::int32, "intSrvFlowDestAddrLength"},
-    intsrvflowdestport{YType::str, "intSrvFlowDestPort"},
-    intsrvflowdiscard{YType::boolean, "intSrvFlowDiscard"},
-    intsrvflowflowid{YType::int32, "intSrvFlowFlowId"},
-    intsrvflowifaddr{YType::str, "intSrvFlowIfAddr"},
-    intsrvflowinterface{YType::int32, "intSrvFlowInterface"},
-    intsrvflowmaxtu{YType::int32, "intSrvFlowMaxTU"},
-    intsrvflowmintu{YType::int32, "intSrvFlowMinTU"},
-    intsrvfloworder{YType::int32, "intSrvFlowOrder"},
-    intsrvflowowner{YType::enumeration, "intSrvFlowOwner"},
-    intsrvflowpoliced{YType::uint32, "intSrvFlowPoliced"},
-    intsrvflowport{YType::str, "intSrvFlowPort"},
-    intsrvflowprotocol{YType::int32, "intSrvFlowProtocol"},
-    intsrvflowqueue{YType::int32, "intSrvFlowQueue"},
-    intsrvflowrate{YType::int32, "intSrvFlowRate"},
-    intsrvflowsenderaddr{YType::str, "intSrvFlowSenderAddr"},
-    intsrvflowsenderaddrlength{YType::int32, "intSrvFlowSenderAddrLength"},
-    intsrvflowservice{YType::enumeration, "intSrvFlowService"},
-    intsrvflowstatus{YType::enumeration, "intSrvFlowStatus"},
-    intsrvflowtype{YType::int32, "intSrvFlowType"},
-    intsrvflowweight{YType::int32, "intSrvFlowWeight"}
-{
-
-    yang_name = "intSrvFlowEntry"; yang_parent_name = "intSrvFlowTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-INTSERVMIB::Intsrvflowtable::Intsrvflowentry::~Intsrvflowentry()
-{
-}
-
-bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_data() const
-{
-    return intsrvflownumber.is_set
-	|| intsrvflowbesteffort.is_set
-	|| intsrvflowburst.is_set
-	|| intsrvflowdestaddr.is_set
-	|| intsrvflowdestaddrlength.is_set
-	|| intsrvflowdestport.is_set
-	|| intsrvflowdiscard.is_set
-	|| intsrvflowflowid.is_set
-	|| intsrvflowifaddr.is_set
-	|| intsrvflowinterface.is_set
-	|| intsrvflowmaxtu.is_set
-	|| intsrvflowmintu.is_set
-	|| intsrvfloworder.is_set
-	|| intsrvflowowner.is_set
-	|| intsrvflowpoliced.is_set
-	|| intsrvflowport.is_set
-	|| intsrvflowprotocol.is_set
-	|| intsrvflowqueue.is_set
-	|| intsrvflowrate.is_set
-	|| intsrvflowsenderaddr.is_set
-	|| intsrvflowsenderaddrlength.is_set
-	|| intsrvflowservice.is_set
-	|| intsrvflowstatus.is_set
-	|| intsrvflowtype.is_set
-	|| intsrvflowweight.is_set;
-}
-
-bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(intsrvflownumber.yfilter)
-	|| ydk::is_set(intsrvflowbesteffort.yfilter)
-	|| ydk::is_set(intsrvflowburst.yfilter)
-	|| ydk::is_set(intsrvflowdestaddr.yfilter)
-	|| ydk::is_set(intsrvflowdestaddrlength.yfilter)
-	|| ydk::is_set(intsrvflowdestport.yfilter)
-	|| ydk::is_set(intsrvflowdiscard.yfilter)
-	|| ydk::is_set(intsrvflowflowid.yfilter)
-	|| ydk::is_set(intsrvflowifaddr.yfilter)
-	|| ydk::is_set(intsrvflowinterface.yfilter)
-	|| ydk::is_set(intsrvflowmaxtu.yfilter)
-	|| ydk::is_set(intsrvflowmintu.yfilter)
-	|| ydk::is_set(intsrvfloworder.yfilter)
-	|| ydk::is_set(intsrvflowowner.yfilter)
-	|| ydk::is_set(intsrvflowpoliced.yfilter)
-	|| ydk::is_set(intsrvflowport.yfilter)
-	|| ydk::is_set(intsrvflowprotocol.yfilter)
-	|| ydk::is_set(intsrvflowqueue.yfilter)
-	|| ydk::is_set(intsrvflowrate.yfilter)
-	|| ydk::is_set(intsrvflowsenderaddr.yfilter)
-	|| ydk::is_set(intsrvflowsenderaddrlength.yfilter)
-	|| ydk::is_set(intsrvflowservice.yfilter)
-	|| ydk::is_set(intsrvflowstatus.yfilter)
-	|| ydk::is_set(intsrvflowtype.yfilter)
-	|| ydk::is_set(intsrvflowweight.yfilter);
-}
-
-std::string INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "INT-SERV-MIB:INT-SERV-MIB/intSrvFlowTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "intSrvFlowEntry" <<"[intSrvFlowNumber='" <<intsrvflownumber <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (intsrvflownumber.is_set || is_set(intsrvflownumber.yfilter)) leaf_name_data.push_back(intsrvflownumber.get_name_leafdata());
-    if (intsrvflowbesteffort.is_set || is_set(intsrvflowbesteffort.yfilter)) leaf_name_data.push_back(intsrvflowbesteffort.get_name_leafdata());
-    if (intsrvflowburst.is_set || is_set(intsrvflowburst.yfilter)) leaf_name_data.push_back(intsrvflowburst.get_name_leafdata());
-    if (intsrvflowdestaddr.is_set || is_set(intsrvflowdestaddr.yfilter)) leaf_name_data.push_back(intsrvflowdestaddr.get_name_leafdata());
-    if (intsrvflowdestaddrlength.is_set || is_set(intsrvflowdestaddrlength.yfilter)) leaf_name_data.push_back(intsrvflowdestaddrlength.get_name_leafdata());
-    if (intsrvflowdestport.is_set || is_set(intsrvflowdestport.yfilter)) leaf_name_data.push_back(intsrvflowdestport.get_name_leafdata());
-    if (intsrvflowdiscard.is_set || is_set(intsrvflowdiscard.yfilter)) leaf_name_data.push_back(intsrvflowdiscard.get_name_leafdata());
-    if (intsrvflowflowid.is_set || is_set(intsrvflowflowid.yfilter)) leaf_name_data.push_back(intsrvflowflowid.get_name_leafdata());
-    if (intsrvflowifaddr.is_set || is_set(intsrvflowifaddr.yfilter)) leaf_name_data.push_back(intsrvflowifaddr.get_name_leafdata());
-    if (intsrvflowinterface.is_set || is_set(intsrvflowinterface.yfilter)) leaf_name_data.push_back(intsrvflowinterface.get_name_leafdata());
-    if (intsrvflowmaxtu.is_set || is_set(intsrvflowmaxtu.yfilter)) leaf_name_data.push_back(intsrvflowmaxtu.get_name_leafdata());
-    if (intsrvflowmintu.is_set || is_set(intsrvflowmintu.yfilter)) leaf_name_data.push_back(intsrvflowmintu.get_name_leafdata());
-    if (intsrvfloworder.is_set || is_set(intsrvfloworder.yfilter)) leaf_name_data.push_back(intsrvfloworder.get_name_leafdata());
-    if (intsrvflowowner.is_set || is_set(intsrvflowowner.yfilter)) leaf_name_data.push_back(intsrvflowowner.get_name_leafdata());
-    if (intsrvflowpoliced.is_set || is_set(intsrvflowpoliced.yfilter)) leaf_name_data.push_back(intsrvflowpoliced.get_name_leafdata());
-    if (intsrvflowport.is_set || is_set(intsrvflowport.yfilter)) leaf_name_data.push_back(intsrvflowport.get_name_leafdata());
-    if (intsrvflowprotocol.is_set || is_set(intsrvflowprotocol.yfilter)) leaf_name_data.push_back(intsrvflowprotocol.get_name_leafdata());
-    if (intsrvflowqueue.is_set || is_set(intsrvflowqueue.yfilter)) leaf_name_data.push_back(intsrvflowqueue.get_name_leafdata());
-    if (intsrvflowrate.is_set || is_set(intsrvflowrate.yfilter)) leaf_name_data.push_back(intsrvflowrate.get_name_leafdata());
-    if (intsrvflowsenderaddr.is_set || is_set(intsrvflowsenderaddr.yfilter)) leaf_name_data.push_back(intsrvflowsenderaddr.get_name_leafdata());
-    if (intsrvflowsenderaddrlength.is_set || is_set(intsrvflowsenderaddrlength.yfilter)) leaf_name_data.push_back(intsrvflowsenderaddrlength.get_name_leafdata());
-    if (intsrvflowservice.is_set || is_set(intsrvflowservice.yfilter)) leaf_name_data.push_back(intsrvflowservice.get_name_leafdata());
-    if (intsrvflowstatus.is_set || is_set(intsrvflowstatus.yfilter)) leaf_name_data.push_back(intsrvflowstatus.get_name_leafdata());
-    if (intsrvflowtype.is_set || is_set(intsrvflowtype.yfilter)) leaf_name_data.push_back(intsrvflowtype.get_name_leafdata());
-    if (intsrvflowweight.is_set || is_set(intsrvflowweight.yfilter)) leaf_name_data.push_back(intsrvflowweight.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "intSrvFlowNumber")
-    {
-        intsrvflownumber = value;
-        intsrvflownumber.value_namespace = name_space;
-        intsrvflownumber.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowBestEffort")
-    {
-        intsrvflowbesteffort = value;
-        intsrvflowbesteffort.value_namespace = name_space;
-        intsrvflowbesteffort.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowBurst")
-    {
-        intsrvflowburst = value;
-        intsrvflowburst.value_namespace = name_space;
-        intsrvflowburst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowDestAddr")
-    {
-        intsrvflowdestaddr = value;
-        intsrvflowdestaddr.value_namespace = name_space;
-        intsrvflowdestaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowDestAddrLength")
-    {
-        intsrvflowdestaddrlength = value;
-        intsrvflowdestaddrlength.value_namespace = name_space;
-        intsrvflowdestaddrlength.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowDestPort")
-    {
-        intsrvflowdestport = value;
-        intsrvflowdestport.value_namespace = name_space;
-        intsrvflowdestport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowDiscard")
-    {
-        intsrvflowdiscard = value;
-        intsrvflowdiscard.value_namespace = name_space;
-        intsrvflowdiscard.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowFlowId")
-    {
-        intsrvflowflowid = value;
-        intsrvflowflowid.value_namespace = name_space;
-        intsrvflowflowid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowIfAddr")
-    {
-        intsrvflowifaddr = value;
-        intsrvflowifaddr.value_namespace = name_space;
-        intsrvflowifaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowInterface")
-    {
-        intsrvflowinterface = value;
-        intsrvflowinterface.value_namespace = name_space;
-        intsrvflowinterface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowMaxTU")
-    {
-        intsrvflowmaxtu = value;
-        intsrvflowmaxtu.value_namespace = name_space;
-        intsrvflowmaxtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowMinTU")
-    {
-        intsrvflowmintu = value;
-        intsrvflowmintu.value_namespace = name_space;
-        intsrvflowmintu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowOrder")
-    {
-        intsrvfloworder = value;
-        intsrvfloworder.value_namespace = name_space;
-        intsrvfloworder.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowOwner")
-    {
-        intsrvflowowner = value;
-        intsrvflowowner.value_namespace = name_space;
-        intsrvflowowner.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowPoliced")
-    {
-        intsrvflowpoliced = value;
-        intsrvflowpoliced.value_namespace = name_space;
-        intsrvflowpoliced.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowPort")
-    {
-        intsrvflowport = value;
-        intsrvflowport.value_namespace = name_space;
-        intsrvflowport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowProtocol")
-    {
-        intsrvflowprotocol = value;
-        intsrvflowprotocol.value_namespace = name_space;
-        intsrvflowprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowQueue")
-    {
-        intsrvflowqueue = value;
-        intsrvflowqueue.value_namespace = name_space;
-        intsrvflowqueue.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowRate")
-    {
-        intsrvflowrate = value;
-        intsrvflowrate.value_namespace = name_space;
-        intsrvflowrate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowSenderAddr")
-    {
-        intsrvflowsenderaddr = value;
-        intsrvflowsenderaddr.value_namespace = name_space;
-        intsrvflowsenderaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowSenderAddrLength")
-    {
-        intsrvflowsenderaddrlength = value;
-        intsrvflowsenderaddrlength.value_namespace = name_space;
-        intsrvflowsenderaddrlength.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowService")
-    {
-        intsrvflowservice = value;
-        intsrvflowservice.value_namespace = name_space;
-        intsrvflowservice.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowStatus")
-    {
-        intsrvflowstatus = value;
-        intsrvflowstatus.value_namespace = name_space;
-        intsrvflowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowType")
-    {
-        intsrvflowtype = value;
-        intsrvflowtype.value_namespace = name_space;
-        intsrvflowtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvFlowWeight")
-    {
-        intsrvflowweight = value;
-        intsrvflowweight.value_namespace = name_space;
-        intsrvflowweight.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "intSrvFlowNumber")
-    {
-        intsrvflownumber.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowBestEffort")
-    {
-        intsrvflowbesteffort.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowBurst")
-    {
-        intsrvflowburst.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowDestAddr")
-    {
-        intsrvflowdestaddr.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowDestAddrLength")
-    {
-        intsrvflowdestaddrlength.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowDestPort")
-    {
-        intsrvflowdestport.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowDiscard")
-    {
-        intsrvflowdiscard.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowFlowId")
-    {
-        intsrvflowflowid.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowIfAddr")
-    {
-        intsrvflowifaddr.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowInterface")
-    {
-        intsrvflowinterface.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowMaxTU")
-    {
-        intsrvflowmaxtu.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowMinTU")
-    {
-        intsrvflowmintu.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowOrder")
-    {
-        intsrvfloworder.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowOwner")
-    {
-        intsrvflowowner.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowPoliced")
-    {
-        intsrvflowpoliced.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowPort")
-    {
-        intsrvflowport.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowProtocol")
-    {
-        intsrvflowprotocol.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowQueue")
-    {
-        intsrvflowqueue.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowRate")
-    {
-        intsrvflowrate.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowSenderAddr")
-    {
-        intsrvflowsenderaddr.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowSenderAddrLength")
-    {
-        intsrvflowsenderaddrlength.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowService")
-    {
-        intsrvflowservice.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowStatus")
-    {
-        intsrvflowstatus.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowType")
-    {
-        intsrvflowtype.yfilter = yfilter;
-    }
-    if(value_path == "intSrvFlowWeight")
-    {
-        intsrvflowweight.yfilter = yfilter;
-    }
-}
-
-bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "intSrvFlowNumber" || name == "intSrvFlowBestEffort" || name == "intSrvFlowBurst" || name == "intSrvFlowDestAddr" || name == "intSrvFlowDestAddrLength" || name == "intSrvFlowDestPort" || name == "intSrvFlowDiscard" || name == "intSrvFlowFlowId" || name == "intSrvFlowIfAddr" || name == "intSrvFlowInterface" || name == "intSrvFlowMaxTU" || name == "intSrvFlowMinTU" || name == "intSrvFlowOrder" || name == "intSrvFlowOwner" || name == "intSrvFlowPoliced" || name == "intSrvFlowPort" || name == "intSrvFlowProtocol" || name == "intSrvFlowQueue" || name == "intSrvFlowRate" || name == "intSrvFlowSenderAddr" || name == "intSrvFlowSenderAddrLength" || name == "intSrvFlowService" || name == "intSrvFlowStatus" || name == "intSrvFlowType" || name == "intSrvFlowWeight")
+    if(name == "intSrvGenObjects" || name == "intSrvIfAttribTable" || name == "intSrvFlowTable")
         return true;
     return false;
 }
@@ -858,9 +339,9 @@ INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::Intsrvifattribentry()
     :
     ifindex{YType::str, "ifIndex"},
     intsrvifattriballocatedbits{YType::int32, "intSrvIfAttribAllocatedBits"},
+    intsrvifattribmaxallocatedbits{YType::int32, "intSrvIfAttribMaxAllocatedBits"},
     intsrvifattriballocatedbuffer{YType::int32, "intSrvIfAttribAllocatedBuffer"},
     intsrvifattribflows{YType::uint32, "intSrvIfAttribFlows"},
-    intsrvifattribmaxallocatedbits{YType::int32, "intSrvIfAttribMaxAllocatedBits"},
     intsrvifattribpropagationdelay{YType::int32, "intSrvIfAttribPropagationDelay"},
     intsrvifattribstatus{YType::enumeration, "intSrvIfAttribStatus"}
 {
@@ -876,9 +357,9 @@ bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_data() const
 {
     return ifindex.is_set
 	|| intsrvifattriballocatedbits.is_set
+	|| intsrvifattribmaxallocatedbits.is_set
 	|| intsrvifattriballocatedbuffer.is_set
 	|| intsrvifattribflows.is_set
-	|| intsrvifattribmaxallocatedbits.is_set
 	|| intsrvifattribpropagationdelay.is_set
 	|| intsrvifattribstatus.is_set;
 }
@@ -888,9 +369,9 @@ bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(intsrvifattriballocatedbits.yfilter)
+	|| ydk::is_set(intsrvifattribmaxallocatedbits.yfilter)
 	|| ydk::is_set(intsrvifattriballocatedbuffer.yfilter)
 	|| ydk::is_set(intsrvifattribflows.yfilter)
-	|| ydk::is_set(intsrvifattribmaxallocatedbits.yfilter)
 	|| ydk::is_set(intsrvifattribpropagationdelay.yfilter)
 	|| ydk::is_set(intsrvifattribstatus.yfilter);
 }
@@ -915,9 +396,9 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvifattribtable::
 
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
     if (intsrvifattriballocatedbits.is_set || is_set(intsrvifattriballocatedbits.yfilter)) leaf_name_data.push_back(intsrvifattriballocatedbits.get_name_leafdata());
+    if (intsrvifattribmaxallocatedbits.is_set || is_set(intsrvifattribmaxallocatedbits.yfilter)) leaf_name_data.push_back(intsrvifattribmaxallocatedbits.get_name_leafdata());
     if (intsrvifattriballocatedbuffer.is_set || is_set(intsrvifattriballocatedbuffer.yfilter)) leaf_name_data.push_back(intsrvifattriballocatedbuffer.get_name_leafdata());
     if (intsrvifattribflows.is_set || is_set(intsrvifattribflows.yfilter)) leaf_name_data.push_back(intsrvifattribflows.get_name_leafdata());
-    if (intsrvifattribmaxallocatedbits.is_set || is_set(intsrvifattribmaxallocatedbits.yfilter)) leaf_name_data.push_back(intsrvifattribmaxallocatedbits.get_name_leafdata());
     if (intsrvifattribpropagationdelay.is_set || is_set(intsrvifattribpropagationdelay.yfilter)) leaf_name_data.push_back(intsrvifattribpropagationdelay.get_name_leafdata());
     if (intsrvifattribstatus.is_set || is_set(intsrvifattribstatus.yfilter)) leaf_name_data.push_back(intsrvifattribstatus.get_name_leafdata());
 
@@ -950,6 +431,12 @@ void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_value(const std::
         intsrvifattriballocatedbits.value_namespace = name_space;
         intsrvifattriballocatedbits.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "intSrvIfAttribMaxAllocatedBits")
+    {
+        intsrvifattribmaxallocatedbits = value;
+        intsrvifattribmaxallocatedbits.value_namespace = name_space;
+        intsrvifattribmaxallocatedbits.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "intSrvIfAttribAllocatedBuffer")
     {
         intsrvifattriballocatedbuffer = value;
@@ -961,12 +448,6 @@ void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_value(const std::
         intsrvifattribflows = value;
         intsrvifattribflows.value_namespace = name_space;
         intsrvifattribflows.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intSrvIfAttribMaxAllocatedBits")
-    {
-        intsrvifattribmaxallocatedbits = value;
-        intsrvifattribmaxallocatedbits.value_namespace = name_space;
-        intsrvifattribmaxallocatedbits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvIfAttribPropagationDelay")
     {
@@ -992,6 +473,10 @@ void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_filter(const std:
     {
         intsrvifattriballocatedbits.yfilter = yfilter;
     }
+    if(value_path == "intSrvIfAttribMaxAllocatedBits")
+    {
+        intsrvifattribmaxallocatedbits.yfilter = yfilter;
+    }
     if(value_path == "intSrvIfAttribAllocatedBuffer")
     {
         intsrvifattriballocatedbuffer.yfilter = yfilter;
@@ -999,10 +484,6 @@ void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_filter(const std:
     if(value_path == "intSrvIfAttribFlows")
     {
         intsrvifattribflows.yfilter = yfilter;
-    }
-    if(value_path == "intSrvIfAttribMaxAllocatedBits")
-    {
-        intsrvifattribmaxallocatedbits.yfilter = yfilter;
     }
     if(value_path == "intSrvIfAttribPropagationDelay")
     {
@@ -1016,7 +497,526 @@ void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_filter(const std:
 
 bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "intSrvIfAttribAllocatedBits" || name == "intSrvIfAttribAllocatedBuffer" || name == "intSrvIfAttribFlows" || name == "intSrvIfAttribMaxAllocatedBits" || name == "intSrvIfAttribPropagationDelay" || name == "intSrvIfAttribStatus")
+    if(name == "ifIndex" || name == "intSrvIfAttribAllocatedBits" || name == "intSrvIfAttribMaxAllocatedBits" || name == "intSrvIfAttribAllocatedBuffer" || name == "intSrvIfAttribFlows" || name == "intSrvIfAttribPropagationDelay" || name == "intSrvIfAttribStatus")
+        return true;
+    return false;
+}
+
+INTSERVMIB::Intsrvflowtable::Intsrvflowtable()
+{
+
+    yang_name = "intSrvFlowTable"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+INTSERVMIB::Intsrvflowtable::~Intsrvflowtable()
+{
+}
+
+bool INTSERVMIB::Intsrvflowtable::has_data() const
+{
+    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    {
+        if(intsrvflowentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool INTSERVMIB::Intsrvflowtable::has_operation() const
+{
+    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    {
+        if(intsrvflowentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string INTSERVMIB::Intsrvflowtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "INT-SERV-MIB:INT-SERV-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string INTSERVMIB::Intsrvflowtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "intSrvFlowTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "intSrvFlowEntry")
+    {
+        for(auto const & c : intsrvflowentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<INTSERVMIB::Intsrvflowtable::Intsrvflowentry>();
+        c->parent = this;
+        intsrvflowentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : intsrvflowentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void INTSERVMIB::Intsrvflowtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void INTSERVMIB::Intsrvflowtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool INTSERVMIB::Intsrvflowtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intSrvFlowEntry")
+        return true;
+    return false;
+}
+
+INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowentry()
+    :
+    intsrvflownumber{YType::int32, "intSrvFlowNumber"},
+    intsrvflowtype{YType::int32, "intSrvFlowType"},
+    intsrvflowowner{YType::enumeration, "intSrvFlowOwner"},
+    intsrvflowdestaddr{YType::str, "intSrvFlowDestAddr"},
+    intsrvflowsenderaddr{YType::str, "intSrvFlowSenderAddr"},
+    intsrvflowdestaddrlength{YType::int32, "intSrvFlowDestAddrLength"},
+    intsrvflowsenderaddrlength{YType::int32, "intSrvFlowSenderAddrLength"},
+    intsrvflowprotocol{YType::int32, "intSrvFlowProtocol"},
+    intsrvflowdestport{YType::str, "intSrvFlowDestPort"},
+    intsrvflowport{YType::str, "intSrvFlowPort"},
+    intsrvflowflowid{YType::int32, "intSrvFlowFlowId"},
+    intsrvflowinterface{YType::int32, "intSrvFlowInterface"},
+    intsrvflowifaddr{YType::str, "intSrvFlowIfAddr"},
+    intsrvflowrate{YType::int32, "intSrvFlowRate"},
+    intsrvflowburst{YType::int32, "intSrvFlowBurst"},
+    intsrvflowweight{YType::int32, "intSrvFlowWeight"},
+    intsrvflowqueue{YType::int32, "intSrvFlowQueue"},
+    intsrvflowmintu{YType::int32, "intSrvFlowMinTU"},
+    intsrvflowmaxtu{YType::int32, "intSrvFlowMaxTU"},
+    intsrvflowbesteffort{YType::uint32, "intSrvFlowBestEffort"},
+    intsrvflowpoliced{YType::uint32, "intSrvFlowPoliced"},
+    intsrvflowdiscard{YType::boolean, "intSrvFlowDiscard"},
+    intsrvflowservice{YType::enumeration, "intSrvFlowService"},
+    intsrvfloworder{YType::int32, "intSrvFlowOrder"},
+    intsrvflowstatus{YType::enumeration, "intSrvFlowStatus"}
+{
+
+    yang_name = "intSrvFlowEntry"; yang_parent_name = "intSrvFlowTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+INTSERVMIB::Intsrvflowtable::Intsrvflowentry::~Intsrvflowentry()
+{
+}
+
+bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_data() const
+{
+    return intsrvflownumber.is_set
+	|| intsrvflowtype.is_set
+	|| intsrvflowowner.is_set
+	|| intsrvflowdestaddr.is_set
+	|| intsrvflowsenderaddr.is_set
+	|| intsrvflowdestaddrlength.is_set
+	|| intsrvflowsenderaddrlength.is_set
+	|| intsrvflowprotocol.is_set
+	|| intsrvflowdestport.is_set
+	|| intsrvflowport.is_set
+	|| intsrvflowflowid.is_set
+	|| intsrvflowinterface.is_set
+	|| intsrvflowifaddr.is_set
+	|| intsrvflowrate.is_set
+	|| intsrvflowburst.is_set
+	|| intsrvflowweight.is_set
+	|| intsrvflowqueue.is_set
+	|| intsrvflowmintu.is_set
+	|| intsrvflowmaxtu.is_set
+	|| intsrvflowbesteffort.is_set
+	|| intsrvflowpoliced.is_set
+	|| intsrvflowdiscard.is_set
+	|| intsrvflowservice.is_set
+	|| intsrvfloworder.is_set
+	|| intsrvflowstatus.is_set;
+}
+
+bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(intsrvflownumber.yfilter)
+	|| ydk::is_set(intsrvflowtype.yfilter)
+	|| ydk::is_set(intsrvflowowner.yfilter)
+	|| ydk::is_set(intsrvflowdestaddr.yfilter)
+	|| ydk::is_set(intsrvflowsenderaddr.yfilter)
+	|| ydk::is_set(intsrvflowdestaddrlength.yfilter)
+	|| ydk::is_set(intsrvflowsenderaddrlength.yfilter)
+	|| ydk::is_set(intsrvflowprotocol.yfilter)
+	|| ydk::is_set(intsrvflowdestport.yfilter)
+	|| ydk::is_set(intsrvflowport.yfilter)
+	|| ydk::is_set(intsrvflowflowid.yfilter)
+	|| ydk::is_set(intsrvflowinterface.yfilter)
+	|| ydk::is_set(intsrvflowifaddr.yfilter)
+	|| ydk::is_set(intsrvflowrate.yfilter)
+	|| ydk::is_set(intsrvflowburst.yfilter)
+	|| ydk::is_set(intsrvflowweight.yfilter)
+	|| ydk::is_set(intsrvflowqueue.yfilter)
+	|| ydk::is_set(intsrvflowmintu.yfilter)
+	|| ydk::is_set(intsrvflowmaxtu.yfilter)
+	|| ydk::is_set(intsrvflowbesteffort.yfilter)
+	|| ydk::is_set(intsrvflowpoliced.yfilter)
+	|| ydk::is_set(intsrvflowdiscard.yfilter)
+	|| ydk::is_set(intsrvflowservice.yfilter)
+	|| ydk::is_set(intsrvfloworder.yfilter)
+	|| ydk::is_set(intsrvflowstatus.yfilter);
+}
+
+std::string INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "INT-SERV-MIB:INT-SERV-MIB/intSrvFlowTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "intSrvFlowEntry" <<"[intSrvFlowNumber='" <<intsrvflownumber <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (intsrvflownumber.is_set || is_set(intsrvflownumber.yfilter)) leaf_name_data.push_back(intsrvflownumber.get_name_leafdata());
+    if (intsrvflowtype.is_set || is_set(intsrvflowtype.yfilter)) leaf_name_data.push_back(intsrvflowtype.get_name_leafdata());
+    if (intsrvflowowner.is_set || is_set(intsrvflowowner.yfilter)) leaf_name_data.push_back(intsrvflowowner.get_name_leafdata());
+    if (intsrvflowdestaddr.is_set || is_set(intsrvflowdestaddr.yfilter)) leaf_name_data.push_back(intsrvflowdestaddr.get_name_leafdata());
+    if (intsrvflowsenderaddr.is_set || is_set(intsrvflowsenderaddr.yfilter)) leaf_name_data.push_back(intsrvflowsenderaddr.get_name_leafdata());
+    if (intsrvflowdestaddrlength.is_set || is_set(intsrvflowdestaddrlength.yfilter)) leaf_name_data.push_back(intsrvflowdestaddrlength.get_name_leafdata());
+    if (intsrvflowsenderaddrlength.is_set || is_set(intsrvflowsenderaddrlength.yfilter)) leaf_name_data.push_back(intsrvflowsenderaddrlength.get_name_leafdata());
+    if (intsrvflowprotocol.is_set || is_set(intsrvflowprotocol.yfilter)) leaf_name_data.push_back(intsrvflowprotocol.get_name_leafdata());
+    if (intsrvflowdestport.is_set || is_set(intsrvflowdestport.yfilter)) leaf_name_data.push_back(intsrvflowdestport.get_name_leafdata());
+    if (intsrvflowport.is_set || is_set(intsrvflowport.yfilter)) leaf_name_data.push_back(intsrvflowport.get_name_leafdata());
+    if (intsrvflowflowid.is_set || is_set(intsrvflowflowid.yfilter)) leaf_name_data.push_back(intsrvflowflowid.get_name_leafdata());
+    if (intsrvflowinterface.is_set || is_set(intsrvflowinterface.yfilter)) leaf_name_data.push_back(intsrvflowinterface.get_name_leafdata());
+    if (intsrvflowifaddr.is_set || is_set(intsrvflowifaddr.yfilter)) leaf_name_data.push_back(intsrvflowifaddr.get_name_leafdata());
+    if (intsrvflowrate.is_set || is_set(intsrvflowrate.yfilter)) leaf_name_data.push_back(intsrvflowrate.get_name_leafdata());
+    if (intsrvflowburst.is_set || is_set(intsrvflowburst.yfilter)) leaf_name_data.push_back(intsrvflowburst.get_name_leafdata());
+    if (intsrvflowweight.is_set || is_set(intsrvflowweight.yfilter)) leaf_name_data.push_back(intsrvflowweight.get_name_leafdata());
+    if (intsrvflowqueue.is_set || is_set(intsrvflowqueue.yfilter)) leaf_name_data.push_back(intsrvflowqueue.get_name_leafdata());
+    if (intsrvflowmintu.is_set || is_set(intsrvflowmintu.yfilter)) leaf_name_data.push_back(intsrvflowmintu.get_name_leafdata());
+    if (intsrvflowmaxtu.is_set || is_set(intsrvflowmaxtu.yfilter)) leaf_name_data.push_back(intsrvflowmaxtu.get_name_leafdata());
+    if (intsrvflowbesteffort.is_set || is_set(intsrvflowbesteffort.yfilter)) leaf_name_data.push_back(intsrvflowbesteffort.get_name_leafdata());
+    if (intsrvflowpoliced.is_set || is_set(intsrvflowpoliced.yfilter)) leaf_name_data.push_back(intsrvflowpoliced.get_name_leafdata());
+    if (intsrvflowdiscard.is_set || is_set(intsrvflowdiscard.yfilter)) leaf_name_data.push_back(intsrvflowdiscard.get_name_leafdata());
+    if (intsrvflowservice.is_set || is_set(intsrvflowservice.yfilter)) leaf_name_data.push_back(intsrvflowservice.get_name_leafdata());
+    if (intsrvfloworder.is_set || is_set(intsrvfloworder.yfilter)) leaf_name_data.push_back(intsrvfloworder.get_name_leafdata());
+    if (intsrvflowstatus.is_set || is_set(intsrvflowstatus.yfilter)) leaf_name_data.push_back(intsrvflowstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "intSrvFlowNumber")
+    {
+        intsrvflownumber = value;
+        intsrvflownumber.value_namespace = name_space;
+        intsrvflownumber.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowType")
+    {
+        intsrvflowtype = value;
+        intsrvflowtype.value_namespace = name_space;
+        intsrvflowtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowOwner")
+    {
+        intsrvflowowner = value;
+        intsrvflowowner.value_namespace = name_space;
+        intsrvflowowner.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowDestAddr")
+    {
+        intsrvflowdestaddr = value;
+        intsrvflowdestaddr.value_namespace = name_space;
+        intsrvflowdestaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowSenderAddr")
+    {
+        intsrvflowsenderaddr = value;
+        intsrvflowsenderaddr.value_namespace = name_space;
+        intsrvflowsenderaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowDestAddrLength")
+    {
+        intsrvflowdestaddrlength = value;
+        intsrvflowdestaddrlength.value_namespace = name_space;
+        intsrvflowdestaddrlength.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowSenderAddrLength")
+    {
+        intsrvflowsenderaddrlength = value;
+        intsrvflowsenderaddrlength.value_namespace = name_space;
+        intsrvflowsenderaddrlength.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowProtocol")
+    {
+        intsrvflowprotocol = value;
+        intsrvflowprotocol.value_namespace = name_space;
+        intsrvflowprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowDestPort")
+    {
+        intsrvflowdestport = value;
+        intsrvflowdestport.value_namespace = name_space;
+        intsrvflowdestport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowPort")
+    {
+        intsrvflowport = value;
+        intsrvflowport.value_namespace = name_space;
+        intsrvflowport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowFlowId")
+    {
+        intsrvflowflowid = value;
+        intsrvflowflowid.value_namespace = name_space;
+        intsrvflowflowid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowInterface")
+    {
+        intsrvflowinterface = value;
+        intsrvflowinterface.value_namespace = name_space;
+        intsrvflowinterface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowIfAddr")
+    {
+        intsrvflowifaddr = value;
+        intsrvflowifaddr.value_namespace = name_space;
+        intsrvflowifaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowRate")
+    {
+        intsrvflowrate = value;
+        intsrvflowrate.value_namespace = name_space;
+        intsrvflowrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowBurst")
+    {
+        intsrvflowburst = value;
+        intsrvflowburst.value_namespace = name_space;
+        intsrvflowburst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowWeight")
+    {
+        intsrvflowweight = value;
+        intsrvflowweight.value_namespace = name_space;
+        intsrvflowweight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowQueue")
+    {
+        intsrvflowqueue = value;
+        intsrvflowqueue.value_namespace = name_space;
+        intsrvflowqueue.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowMinTU")
+    {
+        intsrvflowmintu = value;
+        intsrvflowmintu.value_namespace = name_space;
+        intsrvflowmintu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowMaxTU")
+    {
+        intsrvflowmaxtu = value;
+        intsrvflowmaxtu.value_namespace = name_space;
+        intsrvflowmaxtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowBestEffort")
+    {
+        intsrvflowbesteffort = value;
+        intsrvflowbesteffort.value_namespace = name_space;
+        intsrvflowbesteffort.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowPoliced")
+    {
+        intsrvflowpoliced = value;
+        intsrvflowpoliced.value_namespace = name_space;
+        intsrvflowpoliced.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowDiscard")
+    {
+        intsrvflowdiscard = value;
+        intsrvflowdiscard.value_namespace = name_space;
+        intsrvflowdiscard.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowService")
+    {
+        intsrvflowservice = value;
+        intsrvflowservice.value_namespace = name_space;
+        intsrvflowservice.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowOrder")
+    {
+        intsrvfloworder = value;
+        intsrvfloworder.value_namespace = name_space;
+        intsrvfloworder.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intSrvFlowStatus")
+    {
+        intsrvflowstatus = value;
+        intsrvflowstatus.value_namespace = name_space;
+        intsrvflowstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "intSrvFlowNumber")
+    {
+        intsrvflownumber.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowType")
+    {
+        intsrvflowtype.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowOwner")
+    {
+        intsrvflowowner.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDestAddr")
+    {
+        intsrvflowdestaddr.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowSenderAddr")
+    {
+        intsrvflowsenderaddr.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDestAddrLength")
+    {
+        intsrvflowdestaddrlength.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowSenderAddrLength")
+    {
+        intsrvflowsenderaddrlength.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowProtocol")
+    {
+        intsrvflowprotocol.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDestPort")
+    {
+        intsrvflowdestport.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowPort")
+    {
+        intsrvflowport.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowFlowId")
+    {
+        intsrvflowflowid.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowInterface")
+    {
+        intsrvflowinterface.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowIfAddr")
+    {
+        intsrvflowifaddr.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowRate")
+    {
+        intsrvflowrate.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowBurst")
+    {
+        intsrvflowburst.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowWeight")
+    {
+        intsrvflowweight.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowQueue")
+    {
+        intsrvflowqueue.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowMinTU")
+    {
+        intsrvflowmintu.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowMaxTU")
+    {
+        intsrvflowmaxtu.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowBestEffort")
+    {
+        intsrvflowbesteffort.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowPoliced")
+    {
+        intsrvflowpoliced.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDiscard")
+    {
+        intsrvflowdiscard.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowService")
+    {
+        intsrvflowservice.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowOrder")
+    {
+        intsrvfloworder.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowStatus")
+    {
+        intsrvflowstatus.yfilter = yfilter;
+    }
+}
+
+bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intSrvFlowNumber" || name == "intSrvFlowType" || name == "intSrvFlowOwner" || name == "intSrvFlowDestAddr" || name == "intSrvFlowSenderAddr" || name == "intSrvFlowDestAddrLength" || name == "intSrvFlowSenderAddrLength" || name == "intSrvFlowProtocol" || name == "intSrvFlowDestPort" || name == "intSrvFlowPort" || name == "intSrvFlowFlowId" || name == "intSrvFlowInterface" || name == "intSrvFlowIfAddr" || name == "intSrvFlowRate" || name == "intSrvFlowBurst" || name == "intSrvFlowWeight" || name == "intSrvFlowQueue" || name == "intSrvFlowMinTU" || name == "intSrvFlowMaxTU" || name == "intSrvFlowBestEffort" || name == "intSrvFlowPoliced" || name == "intSrvFlowDiscard" || name == "intSrvFlowService" || name == "intSrvFlowOrder" || name == "intSrvFlowStatus")
         return true;
     return false;
 }

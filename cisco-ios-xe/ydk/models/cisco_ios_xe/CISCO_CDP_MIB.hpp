@@ -38,13 +38,143 @@ class CISCOCDPMIB : public ydk::Entity
         class Cdpcachetable; //type: CISCOCDPMIB::Cdpcachetable
         class Cdpctaddresstable; //type: CISCOCDPMIB::Cdpctaddresstable
 
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpglobal> cdpglobal;
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfacetable> cdpinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfaceexttable> cdpinterfaceexttable;
         std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpcachetable> cdpcachetable;
         std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpctaddresstable> cdpctaddresstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpglobal> cdpglobal;
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfaceexttable> cdpinterfaceexttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfacetable> cdpinterfacetable;
         
 }; // CISCOCDPMIB
+
+
+class CISCOCDPMIB::Cdpglobal : public ydk::Entity
+{
+    public:
+        Cdpglobal();
+        ~Cdpglobal();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cdpglobalrun; //type: boolean
+        ydk::YLeaf cdpglobalmessageinterval; //type: int32
+        ydk::YLeaf cdpglobalholdtime; //type: int32
+        ydk::YLeaf cdpglobaldeviceid; //type: string
+        ydk::YLeaf cdpgloballastchange; //type: uint32
+        ydk::YLeaf cdpglobaldeviceidformatcpb; //type: Cdpglobaldeviceidformatcpb
+        ydk::YLeaf cdpglobaldeviceidformat; //type: Cdpglobaldeviceidformat
+        class Cdpglobaldeviceidformat;
+
+}; // CISCOCDPMIB::Cdpglobal
+
+
+class CISCOCDPMIB::Cdpinterfacetable : public ydk::Entity
+{
+    public:
+        Cdpinterfacetable();
+        ~Cdpinterfacetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cdpinterfaceentry; //type: CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry> > cdpinterfaceentry;
+        
+}; // CISCOCDPMIB::Cdpinterfacetable
+
+
+class CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry : public ydk::Entity
+{
+    public:
+        Cdpinterfaceentry();
+        ~Cdpinterfaceentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cdpinterfaceifindex; //type: int32
+        ydk::YLeaf cdpinterfaceenable; //type: boolean
+        ydk::YLeaf cdpinterfacemessageinterval; //type: int32
+        ydk::YLeaf cdpinterfacegroup; //type: int32
+        ydk::YLeaf cdpinterfaceport; //type: int32
+        ydk::YLeaf cdpinterfacename; //type: string
+
+}; // CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry
+
+
+class CISCOCDPMIB::Cdpinterfaceexttable : public ydk::Entity
+{
+    public:
+        Cdpinterfaceexttable();
+        ~Cdpinterfaceexttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cdpinterfaceextentry; //type: CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry> > cdpinterfaceextentry;
+        
+}; // CISCOCDPMIB::Cdpinterfaceexttable
+
+
+class CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry : public ydk::Entity
+{
+    public:
+        Cdpinterfaceextentry();
+        ~Cdpinterfaceextentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cdpinterfaceextendedtrust; //type: Cdpinterfaceextendedtrust
+        ydk::YLeaf cdpinterfacecosforuntrustedport; //type: uint32
+        class Cdpinterfaceextendedtrust;
+
+}; // CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry
 
 
 class CISCOCDPMIB::Cdpcachetable : public ydk::Entity
@@ -168,145 +298,6 @@ class CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry : public ydk::Entity
 
 }; // CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry
 
-
-class CISCOCDPMIB::Cdpglobal : public ydk::Entity
-{
-    public:
-        Cdpglobal();
-        ~Cdpglobal();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cdpglobalrun; //type: boolean
-        ydk::YLeaf cdpglobalmessageinterval; //type: int32
-        ydk::YLeaf cdpglobalholdtime; //type: int32
-        ydk::YLeaf cdpglobaldeviceid; //type: string
-        ydk::YLeaf cdpgloballastchange; //type: uint32
-        ydk::YLeaf cdpglobaldeviceidformatcpb; //type: Cdpglobaldeviceidformatcpb
-        ydk::YLeaf cdpglobaldeviceidformat; //type: Cdpglobaldeviceidformat
-        class Cdpglobaldeviceidformat;
-
-}; // CISCOCDPMIB::Cdpglobal
-
-
-class CISCOCDPMIB::Cdpinterfaceexttable : public ydk::Entity
-{
-    public:
-        Cdpinterfaceexttable();
-        ~Cdpinterfaceexttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cdpinterfaceextentry; //type: CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry> > cdpinterfaceextentry;
-        
-}; // CISCOCDPMIB::Cdpinterfaceexttable
-
-
-class CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry : public ydk::Entity
-{
-    public:
-        Cdpinterfaceextentry();
-        ~Cdpinterfaceextentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf cdpinterfaceextendedtrust; //type: Cdpinterfaceextendedtrust
-        ydk::YLeaf cdpinterfacecosforuntrustedport; //type: uint32
-        class Cdpinterfaceextendedtrust;
-
-}; // CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry
-
-
-class CISCOCDPMIB::Cdpinterfacetable : public ydk::Entity
-{
-    public:
-        Cdpinterfacetable();
-        ~Cdpinterfacetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cdpinterfaceentry; //type: CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CDP_MIB::CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry> > cdpinterfaceentry;
-        
-}; // CISCOCDPMIB::Cdpinterfacetable
-
-
-class CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry : public ydk::Entity
-{
-    public:
-        Cdpinterfaceentry();
-        ~Cdpinterfaceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cdpinterfaceifindex; //type: int32
-        ydk::YLeaf cdpinterfaceenable; //type: boolean
-        ydk::YLeaf cdpinterfacemessageinterval; //type: int32
-        ydk::YLeaf cdpinterfacegroup; //type: int32
-        ydk::YLeaf cdpinterfaceport; //type: int32
-        ydk::YLeaf cdpinterfacename; //type: string
-
-}; // CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry
-
-class CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheduplex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf halfduplex;
-        static const ydk::Enum::YLeaf fullduplex;
-
-};
-
 class CISCOCDPMIB::Cdpglobal::Cdpglobaldeviceidformat : public ydk::Enum
 {
     public:
@@ -321,6 +312,15 @@ class CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::Cdpinterfaceexten
     public:
         static const ydk::Enum::YLeaf trusted;
         static const ydk::Enum::YLeaf noTrust;
+
+};
+
+class CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::Cdpcacheduplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf halfduplex;
+        static const ydk::Enum::YLeaf fullduplex;
 
 };
 

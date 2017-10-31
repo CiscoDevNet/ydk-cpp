@@ -320,11 +320,11 @@ bool ClockInterface::Clocks::Clock_::has_leaf_or_child_of_name(const std::string
 
 ClockInterface::Clocks::Clock_::FrequencySynchronization::FrequencySynchronization()
     :
-    priority{YType::uint32, "priority"},
-    selection_input{YType::empty, "selection-input"},
     ssm_disable{YType::empty, "ssm-disable"},
+    wait_to_restore_time{YType::uint32, "wait-to-restore-time"},
     time_of_day_priority{YType::uint32, "time-of-day-priority"},
-    wait_to_restore_time{YType::uint32, "wait-to-restore-time"}
+    priority{YType::uint32, "priority"},
+    selection_input{YType::empty, "selection-input"}
     	,
     input_quality_level(std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel>())
 	,output_quality_level(std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel>())
@@ -341,11 +341,11 @@ ClockInterface::Clocks::Clock_::FrequencySynchronization::~FrequencySynchronizat
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_data() const
 {
-    return priority.is_set
-	|| selection_input.is_set
-	|| ssm_disable.is_set
-	|| time_of_day_priority.is_set
+    return ssm_disable.is_set
 	|| wait_to_restore_time.is_set
+	|| time_of_day_priority.is_set
+	|| priority.is_set
+	|| selection_input.is_set
 	|| (input_quality_level !=  nullptr && input_quality_level->has_data())
 	|| (output_quality_level !=  nullptr && output_quality_level->has_data());
 }
@@ -353,11 +353,11 @@ bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_data() const
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(ssm_disable.yfilter)
+	|| ydk::is_set(wait_to_restore_time.yfilter)
+	|| ydk::is_set(time_of_day_priority.yfilter)
 	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(selection_input.yfilter)
-	|| ydk::is_set(ssm_disable.yfilter)
-	|| ydk::is_set(time_of_day_priority.yfilter)
-	|| ydk::is_set(wait_to_restore_time.yfilter)
 	|| (input_quality_level !=  nullptr && input_quality_level->has_operation())
 	|| (output_quality_level !=  nullptr && output_quality_level->has_operation());
 }
@@ -373,11 +373,11 @@ std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::F
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (ssm_disable.is_set || is_set(ssm_disable.yfilter)) leaf_name_data.push_back(ssm_disable.get_name_leafdata());
+    if (wait_to_restore_time.is_set || is_set(wait_to_restore_time.yfilter)) leaf_name_data.push_back(wait_to_restore_time.get_name_leafdata());
+    if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (selection_input.is_set || is_set(selection_input.yfilter)) leaf_name_data.push_back(selection_input.get_name_leafdata());
-    if (ssm_disable.is_set || is_set(ssm_disable.yfilter)) leaf_name_data.push_back(ssm_disable.get_name_leafdata());
-    if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
-    if (wait_to_restore_time.is_set || is_set(wait_to_restore_time.yfilter)) leaf_name_data.push_back(wait_to_restore_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -424,6 +424,24 @@ std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::F
 
 void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "ssm-disable")
+    {
+        ssm_disable = value;
+        ssm_disable.value_namespace = name_space;
+        ssm_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "wait-to-restore-time")
+    {
+        wait_to_restore_time = value;
+        wait_to_restore_time.value_namespace = name_space;
+        wait_to_restore_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-of-day-priority")
+    {
+        time_of_day_priority = value;
+        time_of_day_priority.value_namespace = name_space;
+        time_of_day_priority.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "priority")
     {
         priority = value;
@@ -436,28 +454,22 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_value(const s
         selection_input.value_namespace = name_space;
         selection_input.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ssm-disable")
-    {
-        ssm_disable = value;
-        ssm_disable.value_namespace = name_space;
-        ssm_disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-of-day-priority")
-    {
-        time_of_day_priority = value;
-        time_of_day_priority.value_namespace = name_space;
-        time_of_day_priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wait-to-restore-time")
-    {
-        wait_to_restore_time = value;
-        wait_to_restore_time.value_namespace = name_space;
-        wait_to_restore_time.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "ssm-disable")
+    {
+        ssm_disable.yfilter = yfilter;
+    }
+    if(value_path == "wait-to-restore-time")
+    {
+        wait_to_restore_time.yfilter = yfilter;
+    }
+    if(value_path == "time-of-day-priority")
+    {
+        time_of_day_priority.yfilter = yfilter;
+    }
     if(value_path == "priority")
     {
         priority.yfilter = yfilter;
@@ -466,33 +478,21 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_filter(const 
     {
         selection_input.yfilter = yfilter;
     }
-    if(value_path == "ssm-disable")
-    {
-        ssm_disable.yfilter = yfilter;
-    }
-    if(value_path == "time-of-day-priority")
-    {
-        time_of_day_priority.yfilter = yfilter;
-    }
-    if(value_path == "wait-to-restore-time")
-    {
-        wait_to_restore_time.yfilter = yfilter;
-    }
 }
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input-quality-level" || name == "output-quality-level" || name == "priority" || name == "selection-input" || name == "ssm-disable" || name == "time-of-day-priority" || name == "wait-to-restore-time")
+    if(name == "input-quality-level" || name == "output-quality-level" || name == "ssm-disable" || name == "wait-to-restore-time" || name == "time-of-day-priority" || name == "priority" || name == "selection-input")
         return true;
     return false;
 }
 
 ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
     :
+    quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
-    max_quality_level_value{YType::enumeration, "max-quality-level-value"},
     min_quality_level_value{YType::enumeration, "min-quality-level-value"},
-    quality_level_option{YType::enumeration, "quality-level-option"}
+    max_quality_level_value{YType::enumeration, "max-quality-level-value"}
 {
 
     yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
@@ -504,19 +504,19 @@ ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::~In
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_data() const
 {
-    return exact_quality_level_value.is_set
-	|| max_quality_level_value.is_set
+    return quality_level_option.is_set
+	|| exact_quality_level_value.is_set
 	|| min_quality_level_value.is_set
-	|| quality_level_option.is_set;
+	|| max_quality_level_value.is_set;
 }
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(quality_level_option.yfilter)
 	|| ydk::is_set(exact_quality_level_value.yfilter)
-	|| ydk::is_set(max_quality_level_value.yfilter)
 	|| ydk::is_set(min_quality_level_value.yfilter)
-	|| ydk::is_set(quality_level_option.yfilter);
+	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
 std::string ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_segment_path() const
@@ -530,10 +530,10 @@ std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::F
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (exact_quality_level_value.is_set || is_set(exact_quality_level_value.yfilter)) leaf_name_data.push_back(exact_quality_level_value.get_name_leafdata());
-    if (max_quality_level_value.is_set || is_set(max_quality_level_value.yfilter)) leaf_name_data.push_back(max_quality_level_value.get_name_leafdata());
-    if (min_quality_level_value.is_set || is_set(min_quality_level_value.yfilter)) leaf_name_data.push_back(min_quality_level_value.get_name_leafdata());
     if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (exact_quality_level_value.is_set || is_set(exact_quality_level_value.yfilter)) leaf_name_data.push_back(exact_quality_level_value.get_name_leafdata());
+    if (min_quality_level_value.is_set || is_set(min_quality_level_value.yfilter)) leaf_name_data.push_back(min_quality_level_value.get_name_leafdata());
+    if (max_quality_level_value.is_set || is_set(max_quality_level_value.yfilter)) leaf_name_data.push_back(max_quality_level_value.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -552,17 +552,17 @@ std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::F
 
 void ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "exact-quality-level-value")
     {
         exact_quality_level_value = value;
         exact_quality_level_value.value_namespace = name_space;
         exact_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value = value;
-        max_quality_level_value.value_namespace = name_space;
-        max_quality_level_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-quality-level-value")
     {
@@ -570,47 +570,47 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel
         min_quality_level_value.value_namespace = name_space;
         min_quality_level_value.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "quality-level-option")
+    if(value_path == "max-quality-level-value")
     {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
+        max_quality_level_value = value;
+        max_quality_level_value.value_namespace = name_space;
+        max_quality_level_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option.yfilter = yfilter;
+    }
     if(value_path == "exact-quality-level-value")
     {
         exact_quality_level_value.yfilter = yfilter;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value.yfilter = yfilter;
     }
     if(value_path == "min-quality-level-value")
     {
         min_quality_level_value.yfilter = yfilter;
     }
-    if(value_path == "quality-level-option")
+    if(value_path == "max-quality-level-value")
     {
-        quality_level_option.yfilter = yfilter;
+        max_quality_level_value.yfilter = yfilter;
     }
 }
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "exact-quality-level-value" || name == "max-quality-level-value" || name == "min-quality-level-value" || name == "quality-level-option")
+    if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
     return false;
 }
 
 ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
     :
+    quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
-    max_quality_level_value{YType::enumeration, "max-quality-level-value"},
     min_quality_level_value{YType::enumeration, "min-quality-level-value"},
-    quality_level_option{YType::enumeration, "quality-level-option"}
+    max_quality_level_value{YType::enumeration, "max-quality-level-value"}
 {
 
     yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
@@ -622,19 +622,19 @@ ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::~O
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_data() const
 {
-    return exact_quality_level_value.is_set
-	|| max_quality_level_value.is_set
+    return quality_level_option.is_set
+	|| exact_quality_level_value.is_set
 	|| min_quality_level_value.is_set
-	|| quality_level_option.is_set;
+	|| max_quality_level_value.is_set;
 }
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(quality_level_option.yfilter)
 	|| ydk::is_set(exact_quality_level_value.yfilter)
-	|| ydk::is_set(max_quality_level_value.yfilter)
 	|| ydk::is_set(min_quality_level_value.yfilter)
-	|| ydk::is_set(quality_level_option.yfilter);
+	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
 std::string ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
@@ -648,10 +648,10 @@ std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::F
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (exact_quality_level_value.is_set || is_set(exact_quality_level_value.yfilter)) leaf_name_data.push_back(exact_quality_level_value.get_name_leafdata());
-    if (max_quality_level_value.is_set || is_set(max_quality_level_value.yfilter)) leaf_name_data.push_back(max_quality_level_value.get_name_leafdata());
-    if (min_quality_level_value.is_set || is_set(min_quality_level_value.yfilter)) leaf_name_data.push_back(min_quality_level_value.get_name_leafdata());
     if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (exact_quality_level_value.is_set || is_set(exact_quality_level_value.yfilter)) leaf_name_data.push_back(exact_quality_level_value.get_name_leafdata());
+    if (min_quality_level_value.is_set || is_set(min_quality_level_value.yfilter)) leaf_name_data.push_back(min_quality_level_value.get_name_leafdata());
+    if (max_quality_level_value.is_set || is_set(max_quality_level_value.yfilter)) leaf_name_data.push_back(max_quality_level_value.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -670,17 +670,17 @@ std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::F
 
 void ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "exact-quality-level-value")
     {
         exact_quality_level_value = value;
         exact_quality_level_value.value_namespace = name_space;
         exact_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value = value;
-        max_quality_level_value.value_namespace = name_space;
-        max_quality_level_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-quality-level-value")
     {
@@ -688,47 +688,47 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLeve
         min_quality_level_value.value_namespace = name_space;
         min_quality_level_value.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "quality-level-option")
+    if(value_path == "max-quality-level-value")
     {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
+        max_quality_level_value = value;
+        max_quality_level_value.value_namespace = name_space;
+        max_quality_level_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option.yfilter = yfilter;
+    }
     if(value_path == "exact-quality-level-value")
     {
         exact_quality_level_value.yfilter = yfilter;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value.yfilter = yfilter;
     }
     if(value_path == "min-quality-level-value")
     {
         min_quality_level_value.yfilter = yfilter;
     }
-    if(value_path == "quality-level-option")
+    if(value_path == "max-quality-level-value")
     {
-        quality_level_option.yfilter = yfilter;
+        max_quality_level_value.yfilter = yfilter;
     }
 }
 
 bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "exact-quality-level-value" || name == "max-quality-level-value" || name == "min-quality-level-value" || name == "quality-level-option")
+    if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
     return false;
 }
 
 FrequencySynchronization::FrequencySynchronization()
     :
-    clock_interface_source_type{YType::enumeration, "clock-interface-source-type"},
-    enable{YType::empty, "enable"},
     quality_level_option{YType::enumeration, "quality-level-option"},
+    enable{YType::empty, "enable"},
     source_selection_logging{YType::enumeration, "source-selection-logging"},
+    clock_interface_source_type{YType::enumeration, "clock-interface-source-type"},
     system_timing_mode{YType::enumeration, "system-timing-mode"}
 {
 
@@ -741,20 +741,20 @@ FrequencySynchronization::~FrequencySynchronization()
 
 bool FrequencySynchronization::has_data() const
 {
-    return clock_interface_source_type.is_set
+    return quality_level_option.is_set
 	|| enable.is_set
-	|| quality_level_option.is_set
 	|| source_selection_logging.is_set
+	|| clock_interface_source_type.is_set
 	|| system_timing_mode.is_set;
 }
 
 bool FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(clock_interface_source_type.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(source_selection_logging.yfilter)
+	|| ydk::is_set(clock_interface_source_type.yfilter)
 	|| ydk::is_set(system_timing_mode.yfilter);
 }
 
@@ -769,10 +769,10 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::get_nam
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (clock_interface_source_type.is_set || is_set(clock_interface_source_type.yfilter)) leaf_name_data.push_back(clock_interface_source_type.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (source_selection_logging.is_set || is_set(source_selection_logging.yfilter)) leaf_name_data.push_back(source_selection_logging.get_name_leafdata());
+    if (clock_interface_source_type.is_set || is_set(clock_interface_source_type.yfilter)) leaf_name_data.push_back(clock_interface_source_type.get_name_leafdata());
     if (system_timing_mode.is_set || is_set(system_timing_mode.yfilter)) leaf_name_data.push_back(system_timing_mode.get_name_leafdata());
 
     return leaf_name_data;
@@ -792,11 +792,11 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::get_chi
 
 void FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "clock-interface-source-type")
+    if(value_path == "quality-level-option")
     {
-        clock_interface_source_type = value;
-        clock_interface_source_type.value_namespace = name_space;
-        clock_interface_source_type.value_namespace_prefix = name_space_prefix;
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
@@ -804,17 +804,17 @@ void FrequencySynchronization::set_value(const std::string & value_path, const s
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "source-selection-logging")
     {
         source_selection_logging = value;
         source_selection_logging.value_namespace = name_space;
         source_selection_logging.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-interface-source-type")
+    {
+        clock_interface_source_type = value;
+        clock_interface_source_type.value_namespace = name_space;
+        clock_interface_source_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-timing-mode")
     {
@@ -826,21 +826,21 @@ void FrequencySynchronization::set_value(const std::string & value_path, const s
 
 void FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "clock-interface-source-type")
+    if(value_path == "quality-level-option")
     {
-        clock_interface_source_type.yfilter = yfilter;
+        quality_level_option.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option.yfilter = yfilter;
-    }
     if(value_path == "source-selection-logging")
     {
         source_selection_logging.yfilter = yfilter;
+    }
+    if(value_path == "clock-interface-source-type")
+    {
+        clock_interface_source_type.yfilter = yfilter;
     }
     if(value_path == "system-timing-mode")
     {
@@ -875,7 +875,7 @@ std::map<std::pair<std::string, std::string>, std::string> FrequencySynchronizat
 
 bool FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-interface-source-type" || name == "enable" || name == "quality-level-option" || name == "source-selection-logging" || name == "system-timing-mode")
+    if(name == "quality-level-option" || name == "enable" || name == "source-selection-logging" || name == "clock-interface-source-type" || name == "system-timing-mode")
         return true;
     return false;
 }

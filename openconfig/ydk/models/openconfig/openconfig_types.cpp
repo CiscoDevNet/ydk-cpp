@@ -41,16 +41,6 @@ IPV6::~IPV6()
 {
 }
 
-L2ETHERNET::L2ETHERNET()
-     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:L2_ETHERNET")
-{
-
-}
-
-L2ETHERNET::~L2ETHERNET()
-{
-}
-
 MPLS::MPLS()
      : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:MPLS")
 {
@@ -58,6 +48,16 @@ MPLS::MPLS()
 }
 
 MPLS::~MPLS()
+{
+}
+
+L2ETHERNET::L2ETHERNET()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:L2_ETHERNET")
+{
+
+}
+
+L2ETHERNET::~L2ETHERNET()
 {
 }
 

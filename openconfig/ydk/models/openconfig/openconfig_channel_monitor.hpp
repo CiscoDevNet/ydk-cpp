@@ -61,11 +61,59 @@ class ChannelMonitors::ChannelMonitor : public ydk::Entity
         class State; //type: ChannelMonitors::ChannelMonitor::State
         class Channels; //type: ChannelMonitors::ChannelMonitor::Channels
 
-        std::shared_ptr<openconfig::openconfig_channel_monitor::ChannelMonitors::ChannelMonitor::Channels> channels;
         std::shared_ptr<openconfig::openconfig_channel_monitor::ChannelMonitors::ChannelMonitor::Config> config;
         std::shared_ptr<openconfig::openconfig_channel_monitor::ChannelMonitors::ChannelMonitor::State> state;
+        std::shared_ptr<openconfig::openconfig_channel_monitor::ChannelMonitors::ChannelMonitor::Channels> channels;
         
 }; // ChannelMonitors::ChannelMonitor
+
+
+class ChannelMonitors::ChannelMonitor::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
+        ydk::YLeaf name;
+        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
+        ydk::YLeaf monitor_port;
+
+}; // ChannelMonitors::ChannelMonitor::Config
+
+
+class ChannelMonitors::ChannelMonitor::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
+        ydk::YLeaf name;
+        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
+        ydk::YLeaf monitor_port;
+
+}; // ChannelMonitors::ChannelMonitor::State
 
 
 class ChannelMonitors::ChannelMonitor::Channels : public ydk::Entity
@@ -139,54 +187,6 @@ class ChannelMonitors::ChannelMonitor::Channels::Channel::State : public ydk::En
         ydk::YLeaf psd; //type: binary
 
 }; // ChannelMonitors::ChannelMonitor::Channels::Channel::State
-
-
-class ChannelMonitors::ChannelMonitor::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
-        ydk::YLeaf name;
-        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
-        ydk::YLeaf monitor_port;
-
-}; // ChannelMonitors::ChannelMonitor::Config
-
-
-class ChannelMonitors::ChannelMonitor::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
-        ydk::YLeaf name;
-        //type: leafref (refers to openconfig::openconfig_platform::Components::Component::name)
-        ydk::YLeaf monitor_port;
-
-}; // ChannelMonitors::ChannelMonitor::State
 
 
 }

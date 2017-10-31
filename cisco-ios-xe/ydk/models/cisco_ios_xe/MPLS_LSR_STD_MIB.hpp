@@ -40,22 +40,22 @@ class MPLSLSRSTDMIB : public ydk::Entity
         class Mplslabelstacktable; //type: MPLSLSRSTDMIB::Mplslabelstacktable
         class Mplsinsegmentmaptable; //type: MPLSLSRSTDMIB::Mplsinsegmentmaptable
 
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmentmaptable> mplsinsegmentmaptable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmenttable> mplsinsegmenttable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinterfacetable> mplsinterfacetable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslabelstacktable> mplslabelstacktable;
         std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslsrobjects> mplslsrobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinterfacetable> mplsinterfacetable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmenttable> mplsinsegmenttable;
         std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsoutsegmenttable> mplsoutsegmenttable;
         std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsxctable> mplsxctable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslabelstacktable> mplslabelstacktable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmentmaptable> mplsinsegmentmaptable;
         
 }; // MPLSLSRSTDMIB
 
 
-class MPLSLSRSTDMIB::Mplsinsegmentmaptable : public ydk::Entity
+class MPLSLSRSTDMIB::Mplslsrobjects : public ydk::Entity
 {
     public:
-        Mplsinsegmentmaptable();
-        ~Mplsinsegmentmaptable();
+        Mplslsrobjects();
+        ~Mplslsrobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -68,18 +68,45 @@ class MPLSLSRSTDMIB::Mplsinsegmentmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsinsegmentmapentry; //type: MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry
+        ydk::YLeaf mplsinsegmentindexnext; //type: binary
+        ydk::YLeaf mplsoutsegmentindexnext; //type: binary
+        ydk::YLeaf mplsxcindexnext; //type: binary
+        ydk::YLeaf mplsmaxlabelstackdepth; //type: uint32
+        ydk::YLeaf mplslabelstackindexnext; //type: binary
+        ydk::YLeaf mplsxcnotificationsenable; //type: boolean
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry> > mplsinsegmentmapentry;
+}; // MPLSLSRSTDMIB::Mplslsrobjects
+
+
+class MPLSLSRSTDMIB::Mplsinterfacetable : public ydk::Entity
+{
+    public:
+        Mplsinterfacetable();
+        ~Mplsinterfacetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mplsinterfaceentry; //type: MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry> > mplsinterfaceentry;
         
-}; // MPLSLSRSTDMIB::Mplsinsegmentmaptable
+}; // MPLSLSRSTDMIB::Mplsinterfacetable
 
 
-class MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry : public ydk::Entity
+class MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry : public ydk::Entity
 {
     public:
-        Mplsinsegmentmapentry();
-        ~Mplsinsegmentmapentry();
+        Mplsinterfaceentry();
+        ~Mplsinterfaceentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -92,12 +119,20 @@ class MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf mplsinsegmentmapinterface; //type: int32
-        ydk::YLeaf mplsinsegmentmaplabel; //type: uint32
-        ydk::YLeaf mplsinsegmentmaplabelptrindex; //type: string
-        ydk::YLeaf mplsinsegmentmapindex; //type: binary
+        ydk::YLeaf mplsinterfaceindex; //type: int32
+        ydk::YLeaf mplsinterfacelabelminin; //type: uint32
+        ydk::YLeaf mplsinterfacelabelmaxin; //type: uint32
+        ydk::YLeaf mplsinterfacelabelminout; //type: uint32
+        ydk::YLeaf mplsinterfacelabelmaxout; //type: uint32
+        ydk::YLeaf mplsinterfacetotalbandwidth; //type: uint32
+        ydk::YLeaf mplsinterfaceavailablebandwidth; //type: uint32
+        ydk::YLeaf mplsinterfacelabelparticipationtype; //type: Mplsinterfacelabelparticipationtype
+        ydk::YLeaf mplsinterfaceperfinlabelsinuse; //type: uint32
+        ydk::YLeaf mplsinterfaceperfinlabellookupfailures; //type: uint32
+        ydk::YLeaf mplsinterfaceperfoutlabelsinuse; //type: uint32
+        ydk::YLeaf mplsinterfaceperfoutfragmentedpkts; //type: uint32
 
-}; // MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry
+}; // MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry
 
 
 class MPLSLSRSTDMIB::Mplsinsegmenttable : public ydk::Entity
@@ -160,141 +195,6 @@ class MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry : public ydk::Entity
         ydk::YLeaf mplsinsegmentperfdiscontinuitytime; //type: uint32
 
 }; // MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry
-
-
-class MPLSLSRSTDMIB::Mplsinterfacetable : public ydk::Entity
-{
-    public:
-        Mplsinterfacetable();
-        ~Mplsinterfacetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Mplsinterfaceentry; //type: MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry> > mplsinterfaceentry;
-        
-}; // MPLSLSRSTDMIB::Mplsinterfacetable
-
-
-class MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry : public ydk::Entity
-{
-    public:
-        Mplsinterfaceentry();
-        ~Mplsinterfaceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf mplsinterfaceindex; //type: int32
-        ydk::YLeaf mplsinterfacelabelminin; //type: uint32
-        ydk::YLeaf mplsinterfacelabelmaxin; //type: uint32
-        ydk::YLeaf mplsinterfacelabelminout; //type: uint32
-        ydk::YLeaf mplsinterfacelabelmaxout; //type: uint32
-        ydk::YLeaf mplsinterfacetotalbandwidth; //type: uint32
-        ydk::YLeaf mplsinterfaceavailablebandwidth; //type: uint32
-        ydk::YLeaf mplsinterfacelabelparticipationtype; //type: Mplsinterfacelabelparticipationtype
-        ydk::YLeaf mplsinterfaceperfinlabelsinuse; //type: uint32
-        ydk::YLeaf mplsinterfaceperfinlabellookupfailures; //type: uint32
-        ydk::YLeaf mplsinterfaceperfoutlabelsinuse; //type: uint32
-        ydk::YLeaf mplsinterfaceperfoutfragmentedpkts; //type: uint32
-
-}; // MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry
-
-
-class MPLSLSRSTDMIB::Mplslabelstacktable : public ydk::Entity
-{
-    public:
-        Mplslabelstacktable();
-        ~Mplslabelstacktable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Mplslabelstackentry; //type: MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry> > mplslabelstackentry;
-        
-}; // MPLSLSRSTDMIB::Mplslabelstacktable
-
-
-class MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry : public ydk::Entity
-{
-    public:
-        Mplslabelstackentry();
-        ~Mplslabelstackentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf mplslabelstackindex; //type: binary
-        ydk::YLeaf mplslabelstacklabelindex; //type: uint32
-        ydk::YLeaf mplslabelstacklabel; //type: uint32
-        ydk::YLeaf mplslabelstacklabelptr; //type: string
-        ydk::YLeaf mplslabelstackrowstatus; //type: RowStatus
-        ydk::YLeaf mplslabelstackstoragetype; //type: StorageType
-
-}; // MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry
-
-
-class MPLSLSRSTDMIB::Mplslsrobjects : public ydk::Entity
-{
-    public:
-        Mplslsrobjects();
-        ~Mplslsrobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf mplsinsegmentindexnext; //type: binary
-        ydk::YLeaf mplsoutsegmentindexnext; //type: binary
-        ydk::YLeaf mplsxcindexnext; //type: binary
-        ydk::YLeaf mplsmaxlabelstackdepth; //type: uint32
-        ydk::YLeaf mplslabelstackindexnext; //type: binary
-        ydk::YLeaf mplsxcnotificationsenable; //type: boolean
-
-}; // MPLSLSRSTDMIB::Mplslsrobjects
 
 
 class MPLSLSRSTDMIB::Mplsoutsegmenttable : public ydk::Entity
@@ -415,6 +315,106 @@ class MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry : public ydk::Entity
         class Mplsxcoperstatus;
 
 }; // MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry
+
+
+class MPLSLSRSTDMIB::Mplslabelstacktable : public ydk::Entity
+{
+    public:
+        Mplslabelstacktable();
+        ~Mplslabelstacktable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mplslabelstackentry; //type: MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry> > mplslabelstackentry;
+        
+}; // MPLSLSRSTDMIB::Mplslabelstacktable
+
+
+class MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry : public ydk::Entity
+{
+    public:
+        Mplslabelstackentry();
+        ~Mplslabelstackentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mplslabelstackindex; //type: binary
+        ydk::YLeaf mplslabelstacklabelindex; //type: uint32
+        ydk::YLeaf mplslabelstacklabel; //type: uint32
+        ydk::YLeaf mplslabelstacklabelptr; //type: string
+        ydk::YLeaf mplslabelstackrowstatus; //type: RowStatus
+        ydk::YLeaf mplslabelstackstoragetype; //type: StorageType
+
+}; // MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry
+
+
+class MPLSLSRSTDMIB::Mplsinsegmentmaptable : public ydk::Entity
+{
+    public:
+        Mplsinsegmentmaptable();
+        ~Mplsinsegmentmaptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mplsinsegmentmapentry; //type: MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry> > mplsinsegmentmapentry;
+        
+}; // MPLSLSRSTDMIB::Mplsinsegmentmaptable
+
+
+class MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry : public ydk::Entity
+{
+    public:
+        Mplsinsegmentmapentry();
+        ~Mplsinsegmentmapentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mplsinsegmentmapinterface; //type: int32
+        ydk::YLeaf mplsinsegmentmaplabel; //type: uint32
+        ydk::YLeaf mplsinsegmentmaplabelptrindex; //type: string
+        ydk::YLeaf mplsinsegmentmapindex; //type: binary
+
+}; // MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry
 
 class MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcadminstatus : public ydk::Enum
 {

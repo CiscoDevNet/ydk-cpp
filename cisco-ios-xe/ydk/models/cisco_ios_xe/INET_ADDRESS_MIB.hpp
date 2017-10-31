@@ -10,12 +10,15 @@
 namespace cisco_ios_xe {
 namespace INET_ADDRESS_MIB {
 
-class InetVersion : public ydk::Enum
+class InetAddressType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv4z;
+        static const ydk::Enum::YLeaf ipv6z;
+        static const ydk::Enum::YLeaf dns;
 
 };
 
@@ -32,15 +35,12 @@ class InetScopeType : public ydk::Enum
 
 };
 
-class InetAddressType : public ydk::Enum
+class InetVersion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf ipv4z;
-        static const ydk::Enum::YLeaf ipv6z;
-        static const ydk::Enum::YLeaf dns;
 
 };
 

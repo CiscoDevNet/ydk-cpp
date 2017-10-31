@@ -592,13 +592,13 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::has_leaf_or_child_of_name(co
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::Index_()
     :
     index_{YType::int32, "index"},
-    accepted{YType::uint64, "accepted"},
-    burst{YType::uint32, "burst"},
-    cos_q{YType::uint8, "cos-q"},
     cos_q_name{YType::str, "cos-q-name"},
-    dropped{YType::uint64, "dropped"},
+    cos_q{YType::uint8, "cos-q"},
+    rx_channel{YType::uint32, "rx-channel"},
     flow_rate{YType::uint32, "flow-rate"},
-    rx_channel{YType::uint32, "rx-channel"}
+    burst{YType::uint32, "burst"},
+    accepted{YType::uint64, "accepted"},
+    dropped{YType::uint64, "dropped"}
 {
 
     yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
@@ -611,26 +611,26 @@ HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::~Index_()
 bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_data() const
 {
     return index_.is_set
-	|| accepted.is_set
-	|| burst.is_set
-	|| cos_q.is_set
 	|| cos_q_name.is_set
-	|| dropped.is_set
+	|| cos_q.is_set
+	|| rx_channel.is_set
 	|| flow_rate.is_set
-	|| rx_channel.is_set;
+	|| burst.is_set
+	|| accepted.is_set
+	|| dropped.is_set;
 }
 
 bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(accepted.yfilter)
-	|| ydk::is_set(burst.yfilter)
-	|| ydk::is_set(cos_q.yfilter)
 	|| ydk::is_set(cos_q_name.yfilter)
-	|| ydk::is_set(dropped.yfilter)
+	|| ydk::is_set(cos_q.yfilter)
+	|| ydk::is_set(rx_channel.yfilter)
 	|| ydk::is_set(flow_rate.yfilter)
-	|| ydk::is_set(rx_channel.yfilter);
+	|| ydk::is_set(burst.yfilter)
+	|| ydk::is_set(accepted.yfilter)
+	|| ydk::is_set(dropped.yfilter);
 }
 
 std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_segment_path() const
@@ -645,13 +645,13 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (accepted.is_set || is_set(accepted.yfilter)) leaf_name_data.push_back(accepted.get_name_leafdata());
-    if (burst.is_set || is_set(burst.yfilter)) leaf_name_data.push_back(burst.get_name_leafdata());
-    if (cos_q.is_set || is_set(cos_q.yfilter)) leaf_name_data.push_back(cos_q.get_name_leafdata());
     if (cos_q_name.is_set || is_set(cos_q_name.yfilter)) leaf_name_data.push_back(cos_q_name.get_name_leafdata());
-    if (dropped.is_set || is_set(dropped.yfilter)) leaf_name_data.push_back(dropped.get_name_leafdata());
-    if (flow_rate.is_set || is_set(flow_rate.yfilter)) leaf_name_data.push_back(flow_rate.get_name_leafdata());
+    if (cos_q.is_set || is_set(cos_q.yfilter)) leaf_name_data.push_back(cos_q.get_name_leafdata());
     if (rx_channel.is_set || is_set(rx_channel.yfilter)) leaf_name_data.push_back(rx_channel.get_name_leafdata());
+    if (flow_rate.is_set || is_set(flow_rate.yfilter)) leaf_name_data.push_back(flow_rate.get_name_leafdata());
+    if (burst.is_set || is_set(burst.yfilter)) leaf_name_data.push_back(burst.get_name_leafdata());
+    if (accepted.is_set || is_set(accepted.yfilter)) leaf_name_data.push_back(accepted.get_name_leafdata());
+    if (dropped.is_set || is_set(dropped.yfilter)) leaf_name_data.push_back(dropped.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -676,17 +676,11 @@ void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_value(const std:
         index_.value_namespace = name_space;
         index_.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "accepted")
+    if(value_path == "cos-q-name")
     {
-        accepted = value;
-        accepted.value_namespace = name_space;
-        accepted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "burst")
-    {
-        burst = value;
-        burst.value_namespace = name_space;
-        burst.value_namespace_prefix = name_space_prefix;
+        cos_q_name = value;
+        cos_q_name.value_namespace = name_space;
+        cos_q_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cos-q")
     {
@@ -694,17 +688,11 @@ void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_value(const std:
         cos_q.value_namespace = name_space;
         cos_q.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cos-q-name")
+    if(value_path == "rx-channel")
     {
-        cos_q_name = value;
-        cos_q_name.value_namespace = name_space;
-        cos_q_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dropped")
-    {
-        dropped = value;
-        dropped.value_namespace = name_space;
-        dropped.value_namespace_prefix = name_space_prefix;
+        rx_channel = value;
+        rx_channel.value_namespace = name_space;
+        rx_channel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-rate")
     {
@@ -712,11 +700,23 @@ void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_value(const std:
         flow_rate.value_namespace = name_space;
         flow_rate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rx-channel")
+    if(value_path == "burst")
     {
-        rx_channel = value;
-        rx_channel.value_namespace = name_space;
-        rx_channel.value_namespace_prefix = name_space_prefix;
+        burst = value;
+        burst.value_namespace = name_space;
+        burst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accepted")
+    {
+        accepted = value;
+        accepted.value_namespace = name_space;
+        accepted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped")
+    {
+        dropped = value;
+        dropped.value_namespace = name_space;
+        dropped.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -726,50 +726,50 @@ void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_filter(const std
     {
         index_.yfilter = yfilter;
     }
-    if(value_path == "accepted")
+    if(value_path == "cos-q-name")
     {
-        accepted.yfilter = yfilter;
-    }
-    if(value_path == "burst")
-    {
-        burst.yfilter = yfilter;
+        cos_q_name.yfilter = yfilter;
     }
     if(value_path == "cos-q")
     {
         cos_q.yfilter = yfilter;
     }
-    if(value_path == "cos-q-name")
+    if(value_path == "rx-channel")
     {
-        cos_q_name.yfilter = yfilter;
-    }
-    if(value_path == "dropped")
-    {
-        dropped.yfilter = yfilter;
+        rx_channel.yfilter = yfilter;
     }
     if(value_path == "flow-rate")
     {
         flow_rate.yfilter = yfilter;
     }
-    if(value_path == "rx-channel")
+    if(value_path == "burst")
     {
-        rx_channel.yfilter = yfilter;
+        burst.yfilter = yfilter;
+    }
+    if(value_path == "accepted")
+    {
+        accepted.yfilter = yfilter;
+    }
+    if(value_path == "dropped")
+    {
+        dropped.yfilter = yfilter;
     }
 }
 
 bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "index" || name == "accepted" || name == "burst" || name == "cos-q" || name == "cos-q-name" || name == "dropped" || name == "flow-rate" || name == "rx-channel")
+    if(name == "index" || name == "cos-q-name" || name == "cos-q" || name == "rx-channel" || name == "flow-rate" || name == "burst" || name == "accepted" || name == "dropped")
         return true;
     return false;
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::PlatformDrop()
     :
-    idxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes>())
-	,indxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes>())
+    indxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes>())
+	,idxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes>())
 {
-    idxes->parent = this;
     indxes->parent = this;
+    idxes->parent = this;
 
     yang_name = "platform-drop"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -780,15 +780,15 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::~PlatformDrop()
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_data() const
 {
-    return (idxes !=  nullptr && idxes->has_data())
-	|| (indxes !=  nullptr && indxes->has_data());
+    return (indxes !=  nullptr && indxes->has_data())
+	|| (idxes !=  nullptr && idxes->has_data());
 }
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_operation() const
 {
     return is_set(yfilter)
-	|| (idxes !=  nullptr && idxes->has_operation())
-	|| (indxes !=  nullptr && indxes->has_operation());
+	|| (indxes !=  nullptr && indxes->has_operation())
+	|| (idxes !=  nullptr && idxes->has_operation());
 }
 
 std::string HardwareModule::Nodes::Node::Np::PlatformDrop::get_segment_path() const
@@ -809,15 +809,6 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "idxes")
-    {
-        if(idxes == nullptr)
-        {
-            idxes = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes>();
-        }
-        return idxes;
-    }
-
     if(child_yang_name == "indxes")
     {
         if(indxes == nullptr)
@@ -827,20 +818,29 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::get_child
         return indxes;
     }
 
+    if(child_yang_name == "idxes")
+    {
+        if(idxes == nullptr)
+        {
+            idxes = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes>();
+        }
+        return idxes;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(idxes != nullptr)
-    {
-        children["idxes"] = idxes;
-    }
-
     if(indxes != nullptr)
     {
         children["indxes"] = indxes;
+    }
+
+    if(idxes != nullptr)
+    {
+        children["idxes"] = idxes;
     }
 
     return children;
@@ -856,204 +856,7 @@ void HardwareModule::Nodes::Node::Np::PlatformDrop::set_filter(const std::string
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "idxes" || name == "indxes")
-        return true;
-    return false;
-}
-
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idxes()
-{
-
-    yang_name = "idxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::~Idxes()
-{
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_data() const
-{
-    for (std::size_t index=0; index<idx.size(); index++)
-    {
-        if(idx[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_operation() const
-{
-    for (std::size_t index=0; index<idx.size(); index++)
-    {
-        if(idx[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idxes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "idx")
-    {
-        for(auto const & c : idx)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
-        c->parent = this;
-        idx.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : idx)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "idx")
-        return true;
-    return false;
-}
-
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::Idx()
-    :
-    index_{YType::int32, "index"},
-    counters{YType::uint32, "counters"},
-    drop_reason{YType::str, "drop-reason"}
-{
-
-    yang_name = "idx"; yang_parent_name = "idxes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::~Idx()
-{
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_data() const
-{
-    return index_.is_set
-	|| counters.is_set
-	|| drop_reason.is_set;
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(counters.yfilter)
-	|| ydk::is_set(drop_reason.yfilter);
-}
-
-std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idx" <<"[index='" <<index_ <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (counters.is_set || is_set(counters.yfilter)) leaf_name_data.push_back(counters.get_name_leafdata());
-    if (drop_reason.is_set || is_set(drop_reason.yfilter)) leaf_name_data.push_back(drop_reason.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "counters")
-    {
-        counters = value;
-        counters.value_namespace = name_space;
-        counters.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "drop-reason")
-    {
-        drop_reason = value;
-        drop_reason.value_namespace = name_space;
-        drop_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-    if(value_path == "counters")
-    {
-        counters.yfilter = yfilter;
-    }
-    if(value_path == "drop-reason")
-    {
-        drop_reason.yfilter = yfilter;
-    }
-}
-
-bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "index" || name == "counters" || name == "drop-reason")
+    if(name == "indxes" || name == "idxes")
         return true;
     return false;
 }
@@ -1154,18 +957,18 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::has_leaf_or_child_of
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::Indx()
     :
     index_{YType::int32, "index"},
-    buffer_len{YType::uint32, "buffer-len"},
-    captured_pak{YType::str, "captured-pak"},
-    days{YType::uint64, "days"},
-    hours{YType::uint64, "hours"},
-    ifhandle{YType::uint32, "ifhandle"},
-    mins{YType::uint64, "mins"},
-    pkt_index{YType::uint8, "pkt-index"},
-    reason{YType::uint32, "reason"},
-    reason_hi{YType::uint32, "reason-hi"},
-    secs{YType::uint64, "secs"},
     total_captured{YType::uint32, "total-captured"},
-    years{YType::uint64, "years"}
+    captured_pak{YType::str, "captured-pak"},
+    pkt_index{YType::uint8, "pkt-index"},
+    ifhandle{YType::uint32, "ifhandle"},
+    buffer_len{YType::uint32, "buffer-len"},
+    reason_hi{YType::uint32, "reason-hi"},
+    reason{YType::uint32, "reason"},
+    years{YType::uint64, "years"},
+    hours{YType::uint64, "hours"},
+    days{YType::uint64, "days"},
+    mins{YType::uint64, "mins"},
+    secs{YType::uint64, "secs"}
 {
 
     yang_name = "indx"; yang_parent_name = "indxes"; is_top_level_class = false; has_list_ancestor = true;
@@ -1178,36 +981,36 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::~Indx()
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::has_data() const
 {
     return index_.is_set
-	|| buffer_len.is_set
-	|| captured_pak.is_set
-	|| days.is_set
-	|| hours.is_set
-	|| ifhandle.is_set
-	|| mins.is_set
-	|| pkt_index.is_set
-	|| reason.is_set
-	|| reason_hi.is_set
-	|| secs.is_set
 	|| total_captured.is_set
-	|| years.is_set;
+	|| captured_pak.is_set
+	|| pkt_index.is_set
+	|| ifhandle.is_set
+	|| buffer_len.is_set
+	|| reason_hi.is_set
+	|| reason.is_set
+	|| years.is_set
+	|| hours.is_set
+	|| days.is_set
+	|| mins.is_set
+	|| secs.is_set;
 }
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(buffer_len.yfilter)
-	|| ydk::is_set(captured_pak.yfilter)
-	|| ydk::is_set(days.yfilter)
-	|| ydk::is_set(hours.yfilter)
-	|| ydk::is_set(ifhandle.yfilter)
-	|| ydk::is_set(mins.yfilter)
-	|| ydk::is_set(pkt_index.yfilter)
-	|| ydk::is_set(reason.yfilter)
-	|| ydk::is_set(reason_hi.yfilter)
-	|| ydk::is_set(secs.yfilter)
 	|| ydk::is_set(total_captured.yfilter)
-	|| ydk::is_set(years.yfilter);
+	|| ydk::is_set(captured_pak.yfilter)
+	|| ydk::is_set(pkt_index.yfilter)
+	|| ydk::is_set(ifhandle.yfilter)
+	|| ydk::is_set(buffer_len.yfilter)
+	|| ydk::is_set(reason_hi.yfilter)
+	|| ydk::is_set(reason.yfilter)
+	|| ydk::is_set(years.yfilter)
+	|| ydk::is_set(hours.yfilter)
+	|| ydk::is_set(days.yfilter)
+	|| ydk::is_set(mins.yfilter)
+	|| ydk::is_set(secs.yfilter);
 }
 
 std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_segment_path() const
@@ -1222,18 +1025,18 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (buffer_len.is_set || is_set(buffer_len.yfilter)) leaf_name_data.push_back(buffer_len.get_name_leafdata());
-    if (captured_pak.is_set || is_set(captured_pak.yfilter)) leaf_name_data.push_back(captured_pak.get_name_leafdata());
-    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
-    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
-    if (ifhandle.is_set || is_set(ifhandle.yfilter)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
-    if (mins.is_set || is_set(mins.yfilter)) leaf_name_data.push_back(mins.get_name_leafdata());
-    if (pkt_index.is_set || is_set(pkt_index.yfilter)) leaf_name_data.push_back(pkt_index.get_name_leafdata());
-    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
-    if (reason_hi.is_set || is_set(reason_hi.yfilter)) leaf_name_data.push_back(reason_hi.get_name_leafdata());
-    if (secs.is_set || is_set(secs.yfilter)) leaf_name_data.push_back(secs.get_name_leafdata());
     if (total_captured.is_set || is_set(total_captured.yfilter)) leaf_name_data.push_back(total_captured.get_name_leafdata());
+    if (captured_pak.is_set || is_set(captured_pak.yfilter)) leaf_name_data.push_back(captured_pak.get_name_leafdata());
+    if (pkt_index.is_set || is_set(pkt_index.yfilter)) leaf_name_data.push_back(pkt_index.get_name_leafdata());
+    if (ifhandle.is_set || is_set(ifhandle.yfilter)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
+    if (buffer_len.is_set || is_set(buffer_len.yfilter)) leaf_name_data.push_back(buffer_len.get_name_leafdata());
+    if (reason_hi.is_set || is_set(reason_hi.yfilter)) leaf_name_data.push_back(reason_hi.get_name_leafdata());
+    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
     if (years.is_set || is_set(years.yfilter)) leaf_name_data.push_back(years.get_name_leafdata());
+    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
+    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
+    if (mins.is_set || is_set(mins.yfilter)) leaf_name_data.push_back(mins.get_name_leafdata());
+    if (secs.is_set || is_set(secs.yfilter)) leaf_name_data.push_back(secs.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1258,11 +1061,11 @@ void HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::set_value(cons
         index_.value_namespace = name_space;
         index_.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "buffer-len")
+    if(value_path == "total-captured")
     {
-        buffer_len = value;
-        buffer_len.value_namespace = name_space;
-        buffer_len.value_namespace_prefix = name_space_prefix;
+        total_captured = value;
+        total_captured.value_namespace = name_space;
+        total_captured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "captured-pak")
     {
@@ -1270,17 +1073,11 @@ void HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::set_value(cons
         captured_pak.value_namespace = name_space;
         captured_pak.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "days")
+    if(value_path == "pkt-index")
     {
-        days = value;
-        days.value_namespace = name_space;
-        days.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hours")
-    {
-        hours = value;
-        hours.value_namespace = name_space;
-        hours.value_namespace_prefix = name_space_prefix;
+        pkt_index = value;
+        pkt_index.value_namespace = name_space;
+        pkt_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ifhandle")
     {
@@ -1288,23 +1085,11 @@ void HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::set_value(cons
         ifhandle.value_namespace = name_space;
         ifhandle.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mins")
+    if(value_path == "buffer-len")
     {
-        mins = value;
-        mins.value_namespace = name_space;
-        mins.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pkt-index")
-    {
-        pkt_index = value;
-        pkt_index.value_namespace = name_space;
-        pkt_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reason")
-    {
-        reason = value;
-        reason.value_namespace = name_space;
-        reason.value_namespace_prefix = name_space_prefix;
+        buffer_len = value;
+        buffer_len.value_namespace = name_space;
+        buffer_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reason-hi")
     {
@@ -1312,23 +1097,41 @@ void HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::set_value(cons
         reason_hi.value_namespace = name_space;
         reason_hi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "secs")
+    if(value_path == "reason")
     {
-        secs = value;
-        secs.value_namespace = name_space;
-        secs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-captured")
-    {
-        total_captured = value;
-        total_captured.value_namespace = name_space;
-        total_captured.value_namespace_prefix = name_space_prefix;
+        reason = value;
+        reason.value_namespace = name_space;
+        reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "years")
     {
         years = value;
         years.value_namespace = name_space;
         years.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hours")
+    {
+        hours = value;
+        hours.value_namespace = name_space;
+        hours.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "days")
+    {
+        days = value;
+        days.value_namespace = name_space;
+        days.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mins")
+    {
+        mins = value;
+        mins.value_namespace = name_space;
+        mins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secs")
+    {
+        secs = value;
+        secs.value_namespace = name_space;
+        secs.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1338,59 +1141,256 @@ void HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::set_filter(con
     {
         index_.yfilter = yfilter;
     }
-    if(value_path == "buffer-len")
+    if(value_path == "total-captured")
     {
-        buffer_len.yfilter = yfilter;
+        total_captured.yfilter = yfilter;
     }
     if(value_path == "captured-pak")
     {
         captured_pak.yfilter = yfilter;
     }
-    if(value_path == "days")
+    if(value_path == "pkt-index")
     {
-        days.yfilter = yfilter;
-    }
-    if(value_path == "hours")
-    {
-        hours.yfilter = yfilter;
+        pkt_index.yfilter = yfilter;
     }
     if(value_path == "ifhandle")
     {
         ifhandle.yfilter = yfilter;
     }
-    if(value_path == "mins")
+    if(value_path == "buffer-len")
     {
-        mins.yfilter = yfilter;
-    }
-    if(value_path == "pkt-index")
-    {
-        pkt_index.yfilter = yfilter;
-    }
-    if(value_path == "reason")
-    {
-        reason.yfilter = yfilter;
+        buffer_len.yfilter = yfilter;
     }
     if(value_path == "reason-hi")
     {
         reason_hi.yfilter = yfilter;
     }
-    if(value_path == "secs")
+    if(value_path == "reason")
     {
-        secs.yfilter = yfilter;
-    }
-    if(value_path == "total-captured")
-    {
-        total_captured.yfilter = yfilter;
+        reason.yfilter = yfilter;
     }
     if(value_path == "years")
     {
         years.yfilter = yfilter;
     }
+    if(value_path == "hours")
+    {
+        hours.yfilter = yfilter;
+    }
+    if(value_path == "days")
+    {
+        days.yfilter = yfilter;
+    }
+    if(value_path == "mins")
+    {
+        mins.yfilter = yfilter;
+    }
+    if(value_path == "secs")
+    {
+        secs.yfilter = yfilter;
+    }
 }
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "index" || name == "buffer-len" || name == "captured-pak" || name == "days" || name == "hours" || name == "ifhandle" || name == "mins" || name == "pkt-index" || name == "reason" || name == "reason-hi" || name == "secs" || name == "total-captured" || name == "years")
+    if(name == "index" || name == "total-captured" || name == "captured-pak" || name == "pkt-index" || name == "ifhandle" || name == "buffer-len" || name == "reason-hi" || name == "reason" || name == "years" || name == "hours" || name == "days" || name == "mins" || name == "secs")
+        return true;
+    return false;
+}
+
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idxes()
+{
+
+    yang_name = "idxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::~Idxes()
+{
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_data() const
+{
+    for (std::size_t index=0; index<idx.size(); index++)
+    {
+        if(idx[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_operation() const
+{
+    for (std::size_t index=0; index<idx.size(); index++)
+    {
+        if(idx[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idxes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "idx")
+    {
+        for(auto const & c : idx)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
+        c->parent = this;
+        idx.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : idx)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idx")
+        return true;
+    return false;
+}
+
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::Idx()
+    :
+    index_{YType::int32, "index"},
+    drop_reason{YType::str, "drop-reason"},
+    counters{YType::uint32, "counters"}
+{
+
+    yang_name = "idx"; yang_parent_name = "idxes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::~Idx()
+{
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_data() const
+{
+    return index_.is_set
+	|| drop_reason.is_set
+	|| counters.is_set;
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(drop_reason.yfilter)
+	|| ydk::is_set(counters.yfilter);
+}
+
+std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idx" <<"[index='" <<index_ <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (drop_reason.is_set || is_set(drop_reason.yfilter)) leaf_name_data.push_back(drop_reason.get_name_leafdata());
+    if (counters.is_set || is_set(counters.yfilter)) leaf_name_data.push_back(counters.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-reason")
+    {
+        drop_reason = value;
+        drop_reason.value_namespace = name_space;
+        drop_reason.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "counters")
+    {
+        counters = value;
+        counters.value_namespace = name_space;
+        counters.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "drop-reason")
+    {
+        drop_reason.yfilter = yfilter;
+    }
+    if(value_path == "counters")
+    {
+        counters.yfilter = yfilter;
+    }
+}
+
+bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "drop-reason" || name == "counters")
         return true;
     return false;
 }
@@ -1958,15 +1958,15 @@ bool Prm::Nodes::Node::Server::Resource::Indexes::has_leaf_or_child_of_name(cons
 Prm::Nodes::Node::Server::Resource::Indexes::Index_::Index_()
     :
     index_{YType::int32, "index"},
-    availability_status{YType::boolean, "availability-status"},
-    first_available_index{YType::uint32, "first-available-index"},
-    flags{YType::uint8, "flags"},
-    free_num{YType::uint32, "free-num"},
-    inconsistent{YType::boolean, "inconsistent"},
     resource_name{YType::str, "resource-name"},
     resource_type{YType::uint32, "resource-type"},
+    total_num{YType::uint32, "total-num"},
+    free_num{YType::uint32, "free-num"},
+    first_available_index{YType::uint32, "first-available-index"},
     start_index{YType::uint32, "start-index"},
-    total_num{YType::uint32, "total-num"}
+    availability_status{YType::boolean, "availability-status"},
+    flags{YType::uint8, "flags"},
+    inconsistent{YType::boolean, "inconsistent"}
 {
 
     yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
@@ -1979,30 +1979,30 @@ Prm::Nodes::Node::Server::Resource::Indexes::Index_::~Index_()
 bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_data() const
 {
     return index_.is_set
-	|| availability_status.is_set
-	|| first_available_index.is_set
-	|| flags.is_set
-	|| free_num.is_set
-	|| inconsistent.is_set
 	|| resource_name.is_set
 	|| resource_type.is_set
+	|| total_num.is_set
+	|| free_num.is_set
+	|| first_available_index.is_set
 	|| start_index.is_set
-	|| total_num.is_set;
+	|| availability_status.is_set
+	|| flags.is_set
+	|| inconsistent.is_set;
 }
 
 bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(availability_status.yfilter)
-	|| ydk::is_set(first_available_index.yfilter)
-	|| ydk::is_set(flags.yfilter)
-	|| ydk::is_set(free_num.yfilter)
-	|| ydk::is_set(inconsistent.yfilter)
 	|| ydk::is_set(resource_name.yfilter)
 	|| ydk::is_set(resource_type.yfilter)
+	|| ydk::is_set(total_num.yfilter)
+	|| ydk::is_set(free_num.yfilter)
+	|| ydk::is_set(first_available_index.yfilter)
 	|| ydk::is_set(start_index.yfilter)
-	|| ydk::is_set(total_num.yfilter);
+	|| ydk::is_set(availability_status.yfilter)
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(inconsistent.yfilter);
 }
 
 std::string Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_segment_path() const
@@ -2017,15 +2017,15 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resourc
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (availability_status.is_set || is_set(availability_status.yfilter)) leaf_name_data.push_back(availability_status.get_name_leafdata());
-    if (first_available_index.is_set || is_set(first_available_index.yfilter)) leaf_name_data.push_back(first_available_index.get_name_leafdata());
-    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (free_num.is_set || is_set(free_num.yfilter)) leaf_name_data.push_back(free_num.get_name_leafdata());
-    if (inconsistent.is_set || is_set(inconsistent.yfilter)) leaf_name_data.push_back(inconsistent.get_name_leafdata());
     if (resource_name.is_set || is_set(resource_name.yfilter)) leaf_name_data.push_back(resource_name.get_name_leafdata());
     if (resource_type.is_set || is_set(resource_type.yfilter)) leaf_name_data.push_back(resource_type.get_name_leafdata());
-    if (start_index.is_set || is_set(start_index.yfilter)) leaf_name_data.push_back(start_index.get_name_leafdata());
     if (total_num.is_set || is_set(total_num.yfilter)) leaf_name_data.push_back(total_num.get_name_leafdata());
+    if (free_num.is_set || is_set(free_num.yfilter)) leaf_name_data.push_back(free_num.get_name_leafdata());
+    if (first_available_index.is_set || is_set(first_available_index.yfilter)) leaf_name_data.push_back(first_available_index.get_name_leafdata());
+    if (start_index.is_set || is_set(start_index.yfilter)) leaf_name_data.push_back(start_index.get_name_leafdata());
+    if (availability_status.is_set || is_set(availability_status.yfilter)) leaf_name_data.push_back(availability_status.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (inconsistent.is_set || is_set(inconsistent.yfilter)) leaf_name_data.push_back(inconsistent.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2050,36 +2050,6 @@ void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_value(const std::s
         index_.value_namespace = name_space;
         index_.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "availability-status")
-    {
-        availability_status = value;
-        availability_status.value_namespace = name_space;
-        availability_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "first-available-index")
-    {
-        first_available_index = value;
-        first_available_index.value_namespace = name_space;
-        first_available_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flags")
-    {
-        flags = value;
-        flags.value_namespace = name_space;
-        flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-num")
-    {
-        free_num = value;
-        free_num.value_namespace = name_space;
-        free_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "inconsistent")
-    {
-        inconsistent = value;
-        inconsistent.value_namespace = name_space;
-        inconsistent.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "resource-name")
     {
         resource_name = value;
@@ -2092,17 +2062,47 @@ void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_value(const std::s
         resource_type.value_namespace = name_space;
         resource_type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "total-num")
+    {
+        total_num = value;
+        total_num.value_namespace = name_space;
+        total_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free-num")
+    {
+        free_num = value;
+        free_num.value_namespace = name_space;
+        free_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "first-available-index")
+    {
+        first_available_index = value;
+        first_available_index.value_namespace = name_space;
+        first_available_index.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "start-index")
     {
         start_index = value;
         start_index.value_namespace = name_space;
         start_index.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "total-num")
+    if(value_path == "availability-status")
     {
-        total_num = value;
-        total_num.value_namespace = name_space;
-        total_num.value_namespace_prefix = name_space_prefix;
+        availability_status = value;
+        availability_status.value_namespace = name_space;
+        availability_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inconsistent")
+    {
+        inconsistent = value;
+        inconsistent.value_namespace = name_space;
+        inconsistent.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2112,26 +2112,6 @@ void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_filter(const std::
     {
         index_.yfilter = yfilter;
     }
-    if(value_path == "availability-status")
-    {
-        availability_status.yfilter = yfilter;
-    }
-    if(value_path == "first-available-index")
-    {
-        first_available_index.yfilter = yfilter;
-    }
-    if(value_path == "flags")
-    {
-        flags.yfilter = yfilter;
-    }
-    if(value_path == "free-num")
-    {
-        free_num.yfilter = yfilter;
-    }
-    if(value_path == "inconsistent")
-    {
-        inconsistent.yfilter = yfilter;
-    }
     if(value_path == "resource-name")
     {
         resource_name.yfilter = yfilter;
@@ -2140,19 +2120,39 @@ void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_filter(const std::
     {
         resource_type.yfilter = yfilter;
     }
+    if(value_path == "total-num")
+    {
+        total_num.yfilter = yfilter;
+    }
+    if(value_path == "free-num")
+    {
+        free_num.yfilter = yfilter;
+    }
+    if(value_path == "first-available-index")
+    {
+        first_available_index.yfilter = yfilter;
+    }
     if(value_path == "start-index")
     {
         start_index.yfilter = yfilter;
     }
-    if(value_path == "total-num")
+    if(value_path == "availability-status")
     {
-        total_num.yfilter = yfilter;
+        availability_status.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+    if(value_path == "inconsistent")
+    {
+        inconsistent.yfilter = yfilter;
     }
 }
 
 bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "index" || name == "availability-status" || name == "first-available-index" || name == "flags" || name == "free-num" || name == "inconsistent" || name == "resource-name" || name == "resource-type" || name == "start-index" || name == "total-num")
+    if(name == "index" || name == "resource-name" || name == "resource-type" || name == "total-num" || name == "free-num" || name == "first-available-index" || name == "start-index" || name == "availability-status" || name == "flags" || name == "inconsistent")
         return true;
     return false;
 }

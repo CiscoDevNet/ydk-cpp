@@ -96,10 +96,175 @@ class Policies::PolicyEntry::ClassifierEntry : public ydk::Entity
         class FilterEntry; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry
         class ClassifierActionEntryCfg; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg> > classifier_action_entry_cfg;
         std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry> > filter_entry;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg> > classifier_action_entry_cfg;
         
 }; // Policies::PolicyEntry::ClassifierEntry
+
+
+class Policies::PolicyEntry::ClassifierEntry::FilterEntry : public ydk::Entity
+{
+    public:
+        FilterEntry();
+        ~FilterEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf filter_type; //type: FilterType
+        ydk::YLeaf filter_logical_not; //type: boolean
+        class DscpCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg
+        class SourceIpAddressCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg
+        class DestinationIpAddressCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg
+        class SourcePortCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg
+        class DestinationPortCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg
+        class ProtocolCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg
+
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg> > dscp_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg> > source_ip_address_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg> > destination_ip_address_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg> > source_port_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg> > destination_port_cfg;
+        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg> > protocol_cfg;
+        
+}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry
+
+
+class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg : public ydk::Entity
+{
+    public:
+        DscpCfg();
+        ~DscpCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dscp_min; //type: uint8
+        ydk::YLeaf dscp_max; //type: uint8
+
+}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg
+
+
+class Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg : public ydk::Entity
+{
+    public:
+        SourceIpAddressCfg();
+        ~SourceIpAddressCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_ip_addr; //type: string
+
+}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg
+
+
+class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg : public ydk::Entity
+{
+    public:
+        DestinationIpAddressCfg();
+        ~DestinationIpAddressCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf destination_ip_addr; //type: string
+
+}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg
+
+
+class Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg : public ydk::Entity
+{
+    public:
+        SourcePortCfg();
+        ~SourcePortCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_port_min; //type: uint16
+        ydk::YLeaf source_port_max; //type: uint16
+
+}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg
+
+
+class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg : public ydk::Entity
+{
+    public:
+        DestinationPortCfg();
+        ~DestinationPortCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf destination_port_min; //type: uint16
+        ydk::YLeaf destination_port_max; //type: uint16
+
+}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg
+
+
+class Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg : public ydk::Entity
+{
+    public:
+        ProtocolCfg();
+        ~ProtocolCfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf protocol_min; //type: uint8
+        ydk::YLeaf protocol_max; //type: uint8
+
+}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg
 
 
 class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg : public ydk::Entity
@@ -128,37 +293,16 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg : public 
         class TailDropCfg; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg
         class RandomDetectCfg; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg
 
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg> drop_cfg;
         std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg> marking_cfg;
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg> max_rate_cfg;
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg> priority_cfg;
         std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg> meter_cfg;
         std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg> min_rate_cfg;
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg> priority_cfg;
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg> random_detect_cfg;
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg> max_rate_cfg;
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg> drop_cfg;
         std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg> tail_drop_cfg;
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg> random_detect_cfg;
         
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg
-
-
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg : public ydk::Entity
-{
-    public:
-        DropCfg();
-        ~DropCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf drop_action; //type: empty
-
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg
 
 
 class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg : public ydk::Entity
@@ -182,11 +326,11 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingC
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg
 
 
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg : public ydk::Entity
 {
     public:
-        MaxRateCfg();
-        ~MaxRateCfg();
+        PriorityCfg();
+        ~PriorityCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -198,15 +342,39 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateC
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf absolute_rate; //type: uint64
-        ydk::YLeaf burst_size; //type: uint64
-        ydk::YLeaf burst_interval; //type: uint64
+        ydk::YLeaf priority_level; //type: uint8
+        class RateBurst; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst
+
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst> rate_burst;
+        
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg
+
+
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst : public ydk::Entity
+{
+    public:
+        RateBurst();
+        ~RateBurst();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rate; //type: uint64
         ydk::YLeaf absolute_rate_metric; //type: Metric
         ydk::YLeaf absolute_rate_units; //type: RateUnit
         ydk::YLeaf rate_percent; //type: uint8
         ydk::YLeaf rate_ratio; //type: uint32
+        ydk::YLeaf burst_size; //type: uint64
+        ydk::YLeaf burst_interval; //type: uint64
 
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst
 
 
 class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg : public ydk::Entity
@@ -257,8 +425,8 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg
         class FailAction; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction
 
         std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color> color;
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction> fail_action;
         std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction> succeed_action;
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction> fail_action;
         
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList
 
@@ -286,30 +454,6 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color
 
 
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction : public ydk::Entity
-{
-    public:
-        FailAction();
-        ~FailAction();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf meter_action_type; //type: MeterActionType
-        ydk::YLeaf next_meter_id; //type: uint16
-        ydk::YLeaf dscp; //type: uint8
-        ydk::YLeaf drop_action; //type: empty
-
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction
-
-
 class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction : public ydk::Entity
 {
     public:
@@ -332,6 +476,30 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg
         ydk::YLeaf drop_action; //type: empty
 
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction
+
+
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction : public ydk::Entity
+{
+    public:
+        FailAction();
+        ~FailAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf meter_action_type; //type: MeterActionType
+        ydk::YLeaf next_meter_id; //type: uint16
+        ydk::YLeaf dscp; //type: uint8
+        ydk::YLeaf drop_action; //type: empty
+
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction
 
 
 class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg : public ydk::Entity
@@ -387,11 +555,11 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateC
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg
 
 
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg : public ydk::Entity
 {
     public:
-        PriorityCfg();
-        ~PriorityCfg();
+        MaxRateCfg();
+        ~MaxRateCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -403,46 +571,22 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::Priority
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf priority_level; //type: uint8
-        class RateBurst; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst
-
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst> rate_burst;
-        
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg
-
-
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst : public ydk::Entity
-{
-    public:
-        RateBurst();
-        ~RateBurst();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rate; //type: uint64
+        ydk::YLeaf absolute_rate; //type: uint64
+        ydk::YLeaf burst_size; //type: uint64
+        ydk::YLeaf burst_interval; //type: uint64
         ydk::YLeaf absolute_rate_metric; //type: Metric
         ydk::YLeaf absolute_rate_units; //type: RateUnit
         ydk::YLeaf rate_percent; //type: uint8
         ydk::YLeaf rate_ratio; //type: uint32
-        ydk::YLeaf burst_size; //type: uint64
-        ydk::YLeaf burst_interval; //type: uint64
 
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg
 
 
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg : public ydk::Entity
 {
     public:
-        RandomDetectCfg();
-        ~RandomDetectCfg();
+        DropCfg();
+        ~DropCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -454,105 +598,9 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDe
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf exp_weighting_const; //type: uint32
-        ydk::YLeaf mark_probability; //type: uint32
-        class RedMinThresh; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh
-        class RedMaxThresh; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh
+        ydk::YLeaf drop_action; //type: empty
 
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh> red_max_thresh;
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh> red_min_thresh;
-        
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg
-
-
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh : public ydk::Entity
-{
-    public:
-        RedMaxThresh();
-        ~RedMaxThresh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Threshold; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold
-
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold> threshold;
-        
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh
-
-
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold : public ydk::Entity
-{
-    public:
-        Threshold();
-        ~Threshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold_size; //type: uint64
-        ydk::YLeaf threshold_interval; //type: uint64
-
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold
-
-
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh : public ydk::Entity
-{
-    public:
-        RedMinThresh();
-        ~RedMinThresh();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Threshold; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold
-
-        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold> threshold;
-        
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh
-
-
-class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold : public ydk::Entity
-{
-    public:
-        Threshold();
-        ~Threshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold_size; //type: uint64
-        ydk::YLeaf threshold_interval; //type: uint64
-
-}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg
 
 
 class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg : public ydk::Entity
@@ -625,11 +673,11 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDrop
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold
 
 
-class Policies::PolicyEntry::ClassifierEntry::FilterEntry : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg : public ydk::Entity
 {
     public:
-        FilterEntry();
-        ~FilterEntry();
+        RandomDetectCfg();
+        ~RandomDetectCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -641,30 +689,22 @@ class Policies::PolicyEntry::ClassifierEntry::FilterEntry : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf filter_type; //type: FilterType
-        ydk::YLeaf filter_logical_not; //type: boolean
-        class DscpCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg
-        class SourceIpAddressCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg
-        class DestinationIpAddressCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg
-        class SourcePortCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg
-        class DestinationPortCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg
-        class ProtocolCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg
+        ydk::YLeaf exp_weighting_const; //type: uint32
+        ydk::YLeaf mark_probability; //type: uint32
+        class RedMinThresh; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh
+        class RedMaxThresh; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg> > destination_ip_address_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg> > destination_port_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg> > dscp_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg> > protocol_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg> > source_ip_address_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg> > source_port_cfg;
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh> red_min_thresh;
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh> red_max_thresh;
         
-}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg
 
 
-class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh : public ydk::Entity
 {
     public:
-        DestinationIpAddressCfg();
-        ~DestinationIpAddressCfg();
+        RedMinThresh();
+        ~RedMinThresh();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -676,16 +716,18 @@ class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressC
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf destination_ip_addr; //type: string
+        class Threshold; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold
 
-}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold> threshold;
+        
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh
 
 
-class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold : public ydk::Entity
 {
     public:
-        DestinationPortCfg();
-        ~DestinationPortCfg();
+        Threshold();
+        ~Threshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -697,17 +739,17 @@ class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf destination_port_min; //type: uint16
-        ydk::YLeaf destination_port_max; //type: uint16
+        ydk::YLeaf threshold_size; //type: uint64
+        ydk::YLeaf threshold_interval; //type: uint64
 
-}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold
 
 
-class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh : public ydk::Entity
 {
     public:
-        DscpCfg();
-        ~DscpCfg();
+        RedMaxThresh();
+        ~RedMaxThresh();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -719,17 +761,18 @@ class Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp_min; //type: uint8
-        ydk::YLeaf dscp_max; //type: uint8
+        class Threshold; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold
 
-}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg
+        std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold> threshold;
+        
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh
 
 
-class Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg : public ydk::Entity
+class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold : public ydk::Entity
 {
     public:
-        ProtocolCfg();
-        ~ProtocolCfg();
+        Threshold();
+        ~Threshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -741,53 +784,10 @@ class Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf protocol_min; //type: uint8
-        ydk::YLeaf protocol_max; //type: uint8
+        ydk::YLeaf threshold_size; //type: uint64
+        ydk::YLeaf threshold_interval; //type: uint64
 
-}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg
-
-
-class Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg : public ydk::Entity
-{
-    public:
-        SourceIpAddressCfg();
-        ~SourceIpAddressCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_ip_addr; //type: string
-
-}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg
-
-
-class Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg : public ydk::Entity
-{
-    public:
-        SourcePortCfg();
-        ~SourcePortCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_port_min; //type: uint16
-        ydk::YLeaf source_port_max; //type: uint16
-
-}; // Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg
+}; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold
 
 
 }

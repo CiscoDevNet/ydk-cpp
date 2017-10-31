@@ -13,11 +13,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_cfg {
 
 
-class Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable : public ydk::Entity
+class Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource : public ydk::Entity
 {
     public:
-        RpfVectorEnable();
-        ~RpfVectorEnable();
+        CloneSource();
+        ~CloneSource();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -28,19 +28,21 @@ class Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf allow_ebgp; //type: empty
-        ydk::YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf primary; //type: string
+        ydk::YLeaf backup; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
-}; // Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable
+}; // Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource
 
 
-class Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer : public ydk::Entity
+class Pim::DefaultContext::Ipv4::Paths : public ydk::Entity
 {
     public:
-        SgExpiryTimer();
-        ~SgExpiryTimer();
+        Paths();
+        ~Paths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -51,41 +53,20 @@ class Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf interval; //type: uint32
-        ydk::YLeaf access_list_name; //type: string
+        class Path; //type: Pim::DefaultContext::Ipv4::Paths::Path
 
-}; // Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer
-
-
-class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses : public ydk::Entity
-{
-    public:
-        SparseModeRpAddresses();
-        ~SparseModeRpAddresses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SparseModeRpAddress; //type: Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress> > sparse_mode_rp_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Paths::Path> > path;
         
-}; // Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses
+}; // Pim::DefaultContext::Ipv4::Paths
 
 
-class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : public ydk::Entity
+class Pim::DefaultContext::Ipv4::Paths::Path : public ydk::Entity
 {
     public:
-        SparseModeRpAddress();
-        ~SparseModeRpAddress();
+        Path();
+        ~Path();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,19 +77,20 @@ class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : public 
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf rp_address; //type: string
-        ydk::YLeaf access_list_name; //type: string
-        ydk::YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeafList rpf_proxy_address; //type: list of  string
 
-}; // Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
+}; // Pim::DefaultContext::Ipv4::Paths::Path
 
 
-class Pim::Vrfs::Vrf::Ipv6::Ssm : public ydk::Entity
+class Pim::DefaultContext::Ipv4::AllowRp : public ydk::Entity
 {
     public:
-        Ssm();
-        ~Ssm();
+        AllowRp();
+        ~AllowRp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -119,11 +101,35 @@ class Pim::Vrfs::Vrf::Ipv6::Ssm : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf disable; //type: boolean
-        ydk::YLeaf range; //type: string
+        ydk::YLeaf rp_list_name; //type: string
+        ydk::YLeaf group_list_name; //type: string
 
-}; // Pim::Vrfs::Vrf::Ipv6::Ssm
+}; // Pim::DefaultContext::Ipv4::AllowRp
+
+
+class Pim::DefaultContext::Ipv4::Convergence : public ydk::Entity
+{
+    public:
+        Convergence();
+        ~Convergence();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rpf_conflict_join_delay; //type: uint32
+        ydk::YLeaf link_down_prune_delay; //type: uint32
+
+}; // Pim::DefaultContext::Ipv4::Convergence
 
 
 }

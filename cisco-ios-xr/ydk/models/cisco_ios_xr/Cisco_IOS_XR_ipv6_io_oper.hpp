@@ -130,11 +130,62 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic : public ydk::Entity
         class Icmp; //type: Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp
         class Ipv6NodeDiscovery; //type: Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp> icmp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp> icmp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery> ipv6_node_discovery;
         
 }; // Ipv6Io::Nodes::Node::Statistics::Traffic
+
+
+class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total_packets; //type: uint32
+        ydk::YLeaf local_destination_packets; //type: uint32
+        ydk::YLeaf format_errors; //type: uint32
+        ydk::YLeaf truncated_packets; //type: uint32
+        ydk::YLeaf hop_count_exceeded_packets; //type: uint32
+        ydk::YLeaf bad_source_address_packets; //type: uint32
+        ydk::YLeaf bad_header_packets; //type: uint32
+        ydk::YLeaf unknown_option_type_packets; //type: uint32
+        ydk::YLeaf unknown_protocol_packets; //type: uint32
+        ydk::YLeaf fragments; //type: uint32
+        ydk::YLeaf reassembled_packets; //type: uint32
+        ydk::YLeaf reassembly_timeouts; //type: uint32
+        ydk::YLeaf reassembly_failures; //type: uint32
+        ydk::YLeaf reassembly_maximum_drops; //type: uint32
+        ydk::YLeaf generated_packets; //type: uint32
+        ydk::YLeaf forwarded_packets; //type: uint32
+        ydk::YLeaf source_routed_packets; //type: uint32
+        ydk::YLeaf fragmented_packets; //type: uint32
+        ydk::YLeaf fragment_count; //type: uint32
+        ydk::YLeaf fragment_failures; //type: uint32
+        ydk::YLeaf no_route_packets; //type: uint32
+        ydk::YLeaf too_big_packets; //type: uint32
+        ydk::YLeaf received_multicast_packets; //type: uint32
+        ydk::YLeaf sent_multicast_packets; //type: uint32
+        ydk::YLeaf miscellaneous_drops; //type: uint32
+        ydk::YLeaf lisp_v4_encap_packets; //type: uint32
+        ydk::YLeaf lisp_v4_decap_packets; //type: uint32
+        ydk::YLeaf lisp_v6_encap_packets; //type: uint32
+        ydk::YLeaf lisp_v6_decap_packets; //type: uint32
+        ydk::YLeaf lisp_encap_errors; //type: uint32
+        ydk::YLeaf lisp_decap_errors; //type: uint32
+
+}; // Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6
 
 
 class Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp : public ydk::Entity
@@ -193,57 +244,6 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp : public ydk::Entity
         ydk::YLeaf received_unreachable_unknown_type_messages; //type: uint32
 
 }; // Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp
-
-
-class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total_packets; //type: uint32
-        ydk::YLeaf local_destination_packets; //type: uint32
-        ydk::YLeaf format_errors; //type: uint32
-        ydk::YLeaf truncated_packets; //type: uint32
-        ydk::YLeaf hop_count_exceeded_packets; //type: uint32
-        ydk::YLeaf bad_source_address_packets; //type: uint32
-        ydk::YLeaf bad_header_packets; //type: uint32
-        ydk::YLeaf unknown_option_type_packets; //type: uint32
-        ydk::YLeaf unknown_protocol_packets; //type: uint32
-        ydk::YLeaf fragments; //type: uint32
-        ydk::YLeaf reassembled_packets; //type: uint32
-        ydk::YLeaf reassembly_timeouts; //type: uint32
-        ydk::YLeaf reassembly_failures; //type: uint32
-        ydk::YLeaf reassembly_maximum_drops; //type: uint32
-        ydk::YLeaf generated_packets; //type: uint32
-        ydk::YLeaf forwarded_packets; //type: uint32
-        ydk::YLeaf source_routed_packets; //type: uint32
-        ydk::YLeaf fragmented_packets; //type: uint32
-        ydk::YLeaf fragment_count; //type: uint32
-        ydk::YLeaf fragment_failures; //type: uint32
-        ydk::YLeaf no_route_packets; //type: uint32
-        ydk::YLeaf too_big_packets; //type: uint32
-        ydk::YLeaf received_multicast_packets; //type: uint32
-        ydk::YLeaf sent_multicast_packets; //type: uint32
-        ydk::YLeaf miscellaneous_drops; //type: uint32
-        ydk::YLeaf lisp_v4_encap_packets; //type: uint32
-        ydk::YLeaf lisp_v4_decap_packets; //type: uint32
-        ydk::YLeaf lisp_v6_encap_packets; //type: uint32
-        ydk::YLeaf lisp_v6_decap_packets; //type: uint32
-        ydk::YLeaf lisp_encap_errors; //type: uint32
-        ydk::YLeaf lisp_decap_errors; //type: uint32
-
-}; // Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6
 
 
 class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery : public ydk::Entity

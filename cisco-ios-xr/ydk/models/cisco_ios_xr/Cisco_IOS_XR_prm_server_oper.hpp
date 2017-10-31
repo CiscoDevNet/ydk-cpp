@@ -205,56 +205,10 @@ class HardwareModule::Nodes::Node::Np::PlatformDrop : public ydk::Entity
         class Indxes; //type: HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes
         class Idxes; //type: HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes> idxes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes> indxes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes> idxes;
         
 }; // HardwareModule::Nodes::Node::Np::PlatformDrop
-
-
-class HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes : public ydk::Entity
-{
-    public:
-        Idxes();
-        ~Idxes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Idx; //type: HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx> > idx;
-        
-}; // HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes
-
-
-class HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx : public ydk::Entity
-{
-    public:
-        Idx();
-        ~Idx();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf index_; //type: int32
-        ydk::YLeaf drop_reason; //type: string
-        ydk::YLeaf counters; //type: uint32
-
-}; // HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx
 
 
 class HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes : public ydk::Entity
@@ -311,6 +265,52 @@ class HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx : public ydk::
         ydk::YLeaf secs; //type: uint64
 
 }; // HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx
+
+
+class HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes : public ydk::Entity
+{
+    public:
+        Idxes();
+        ~Idxes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Idx; //type: HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx> > idx;
+        
+}; // HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes
+
+
+class HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx : public ydk::Entity
+{
+    public:
+        Idx();
+        ~Idx();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: int32
+        ydk::YLeaf drop_reason; //type: string
+        ydk::YLeaf counters; //type: uint32
+
+}; // HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx
 
 class Prm : public ydk::Entity
 {

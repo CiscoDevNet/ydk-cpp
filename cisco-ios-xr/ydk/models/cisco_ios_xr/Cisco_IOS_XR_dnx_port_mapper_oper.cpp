@@ -220,11 +220,11 @@ Oor::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
     	,
-    interface_names(std::make_shared<Oor::Nodes::Node::InterfaceNames>())
-	,summary(std::make_shared<Oor::Nodes::Node::Summary>())
+    summary(std::make_shared<Oor::Nodes::Node::Summary>())
+	,interface_names(std::make_shared<Oor::Nodes::Node::InterfaceNames>())
 {
-    interface_names->parent = this;
     summary->parent = this;
+    interface_names->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -236,16 +236,16 @@ Oor::Nodes::Node::~Node()
 bool Oor::Nodes::Node::has_data() const
 {
     return node_name.is_set
-	|| (interface_names !=  nullptr && interface_names->has_data())
-	|| (summary !=  nullptr && summary->has_data());
+	|| (summary !=  nullptr && summary->has_data())
+	|| (interface_names !=  nullptr && interface_names->has_data());
 }
 
 bool Oor::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| (interface_names !=  nullptr && interface_names->has_operation())
-	|| (summary !=  nullptr && summary->has_operation());
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (interface_names !=  nullptr && interface_names->has_operation());
 }
 
 std::string Oor::Nodes::Node::get_absolute_path() const
@@ -274,15 +274,6 @@ std::vector<std::pair<std::string, LeafData> > Oor::Nodes::Node::get_name_leaf_d
 
 std::shared_ptr<Entity> Oor::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "interface-names")
-    {
-        if(interface_names == nullptr)
-        {
-            interface_names = std::make_shared<Oor::Nodes::Node::InterfaceNames>();
-        }
-        return interface_names;
-    }
-
     if(child_yang_name == "summary")
     {
         if(summary == nullptr)
@@ -292,20 +283,29 @@ std::shared_ptr<Entity> Oor::Nodes::Node::get_child_by_name(const std::string & 
         return summary;
     }
 
+    if(child_yang_name == "interface-names")
+    {
+        if(interface_names == nullptr)
+        {
+            interface_names = std::make_shared<Oor::Nodes::Node::InterfaceNames>();
+        }
+        return interface_names;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(interface_names != nullptr)
-    {
-        children["interface-names"] = interface_names;
-    }
-
     if(summary != nullptr)
     {
         children["summary"] = summary;
+    }
+
+    if(interface_names != nullptr)
+    {
+        children["interface-names"] = interface_names;
     }
 
     return children;
@@ -331,7 +331,111 @@ void Oor::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilte
 
 bool Oor::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-names" || name == "summary" || name == "node-name")
+    if(name == "summary" || name == "interface-names" || name == "node-name")
+        return true;
+    return false;
+}
+
+Oor::Nodes::Node::Summary::Summary()
+    :
+    red{YType::uint32, "red"},
+    green{YType::uint32, "green"},
+    yel_low{YType::uint32, "yel-low"}
+{
+
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Oor::Nodes::Node::Summary::~Summary()
+{
+}
+
+bool Oor::Nodes::Node::Summary::has_data() const
+{
+    return red.is_set
+	|| green.is_set
+	|| yel_low.is_set;
+}
+
+bool Oor::Nodes::Node::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(red.yfilter)
+	|| ydk::is_set(green.yfilter)
+	|| ydk::is_set(yel_low.yfilter);
+}
+
+std::string Oor::Nodes::Node::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Oor::Nodes::Node::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (red.is_set || is_set(red.yfilter)) leaf_name_data.push_back(red.get_name_leafdata());
+    if (green.is_set || is_set(green.yfilter)) leaf_name_data.push_back(green.get_name_leafdata());
+    if (yel_low.is_set || is_set(yel_low.yfilter)) leaf_name_data.push_back(yel_low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Oor::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Oor::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "red")
+    {
+        red = value;
+        red.value_namespace = name_space;
+        red.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "green")
+    {
+        green = value;
+        green.value_namespace = name_space;
+        green.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "yel-low")
+    {
+        yel_low = value;
+        yel_low.value_namespace = name_space;
+        yel_low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Oor::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "red")
+    {
+        red.yfilter = yfilter;
+    }
+    if(value_path == "green")
+    {
+        green.yfilter = yfilter;
+    }
+    if(value_path == "yel-low")
+    {
+        yel_low.yfilter = yfilter;
+    }
+}
+
+bool Oor::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "red" || name == "green" || name == "yel-low")
         return true;
     return false;
 }
@@ -538,11 +642,11 @@ bool Oor::Nodes::Node::InterfaceNames::InterfaceName::has_leaf_or_child_of_name(
 
 Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::Interface()
     :
-    hardware_resource{YType::str, "hardware-resource"},
     interface_name{YType::str, "interface-name"},
     interface_status{YType::str, "interface-status"},
+    time_stamp{YType::str, "time-stamp"},
     npu_id{YType::str, "npu-id"},
-    time_stamp{YType::str, "time-stamp"}
+    hardware_resource{YType::str, "hardware-resource"}
 {
 
     yang_name = "interface"; yang_parent_name = "interface-name"; is_top_level_class = false; has_list_ancestor = true;
@@ -554,21 +658,21 @@ Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::~Interface()
 
 bool Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::has_data() const
 {
-    return hardware_resource.is_set
-	|| interface_name.is_set
+    return interface_name.is_set
 	|| interface_status.is_set
+	|| time_stamp.is_set
 	|| npu_id.is_set
-	|| time_stamp.is_set;
+	|| hardware_resource.is_set;
 }
 
 bool Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(hardware_resource.yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(interface_status.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| ydk::is_set(npu_id.yfilter)
-	|| ydk::is_set(time_stamp.yfilter);
+	|| ydk::is_set(hardware_resource.yfilter);
 }
 
 std::string Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::get_segment_path() const
@@ -582,11 +686,11 @@ std::vector<std::pair<std::string, LeafData> > Oor::Nodes::Node::InterfaceNames:
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hardware_resource.is_set || is_set(hardware_resource.yfilter)) leaf_name_data.push_back(hardware_resource.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (interface_status.is_set || is_set(interface_status.yfilter)) leaf_name_data.push_back(interface_status.get_name_leafdata());
-    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
     if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (hardware_resource.is_set || is_set(hardware_resource.yfilter)) leaf_name_data.push_back(hardware_resource.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -605,12 +709,6 @@ std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNames:
 
 void Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "hardware-resource")
-    {
-        hardware_resource = value;
-        hardware_resource.value_namespace = name_space;
-        hardware_resource.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
@@ -623,26 +721,28 @@ void Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::set_value(const
         interface_status.value_namespace = name_space;
         interface_status.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "npu-id")
-    {
-        npu_id = value;
-        npu_id.value_namespace = name_space;
-        npu_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
         time_stamp.value_namespace = name_space;
         time_stamp.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "npu-id")
+    {
+        npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-resource")
+    {
+        hardware_resource = value;
+        hardware_resource.value_namespace = name_space;
+        hardware_resource.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "hardware-resource")
-    {
-        hardware_resource.yfilter = yfilter;
-    }
     if(value_path == "interface-name")
     {
         interface_name.yfilter = yfilter;
@@ -651,123 +751,23 @@ void Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::set_filter(cons
     {
         interface_status.yfilter = yfilter;
     }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
     if(value_path == "npu-id")
     {
         npu_id.yfilter = yfilter;
     }
-    if(value_path == "time-stamp")
+    if(value_path == "hardware-resource")
     {
-        time_stamp.yfilter = yfilter;
+        hardware_resource.yfilter = yfilter;
     }
 }
 
 bool Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hardware-resource" || name == "interface-name" || name == "interface-status" || name == "npu-id" || name == "time-stamp")
-        return true;
-    return false;
-}
-
-Oor::Nodes::Node::Summary::Summary()
-    :
-    green{YType::uint32, "green"},
-    red{YType::uint32, "red"},
-    yel_low{YType::uint32, "yel-low"}
-{
-
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Oor::Nodes::Node::Summary::~Summary()
-{
-}
-
-bool Oor::Nodes::Node::Summary::has_data() const
-{
-    return green.is_set
-	|| red.is_set
-	|| yel_low.is_set;
-}
-
-bool Oor::Nodes::Node::Summary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(green.yfilter)
-	|| ydk::is_set(red.yfilter)
-	|| ydk::is_set(yel_low.yfilter);
-}
-
-std::string Oor::Nodes::Node::Summary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "summary";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Oor::Nodes::Node::Summary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (green.is_set || is_set(green.yfilter)) leaf_name_data.push_back(green.get_name_leafdata());
-    if (red.is_set || is_set(red.yfilter)) leaf_name_data.push_back(red.get_name_leafdata());
-    if (yel_low.is_set || is_set(yel_low.yfilter)) leaf_name_data.push_back(yel_low.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::Summary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Oor::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "green")
-    {
-        green = value;
-        green.value_namespace = name_space;
-        green.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "red")
-    {
-        red = value;
-        red.value_namespace = name_space;
-        red.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "yel-low")
-    {
-        yel_low = value;
-        yel_low.value_namespace = name_space;
-        yel_low.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Oor::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "green")
-    {
-        green.yfilter = yfilter;
-    }
-    if(value_path == "red")
-    {
-        red.yfilter = yfilter;
-    }
-    if(value_path == "yel-low")
-    {
-        yel_low.yfilter = yfilter;
-    }
-}
-
-bool Oor::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "green" || name == "red" || name == "yel-low")
+    if(name == "interface-name" || name == "interface-status" || name == "time-stamp" || name == "npu-id" || name == "hardware-resource")
         return true;
     return false;
 }

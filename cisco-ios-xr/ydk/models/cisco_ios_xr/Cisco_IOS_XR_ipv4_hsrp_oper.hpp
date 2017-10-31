@@ -37,92 +37,13 @@ class Hsrp : public ydk::Entity
         class BfdSessions; //type: Hsrp::BfdSessions
         class Summary; //type: Hsrp::Summary
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions> bfd_sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions> mgo_sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions> bfd_sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Summary> summary;
         
 }; // Hsrp
-
-
-class Hsrp::BfdSessions : public ydk::Entity
-{
-    public:
-        BfdSessions();
-        ~BfdSessions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class BfdSession; //type: Hsrp::BfdSessions::BfdSession
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions::BfdSession> > bfd_session;
-        
-}; // Hsrp::BfdSessions
-
-
-class Hsrp::BfdSessions::BfdSession : public ydk::Entity
-{
-    public:
-        BfdSession();
-        ~BfdSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf bfd_interface_name; //type: string
-        ydk::YLeaf session_address_family; //type: HsrpBAf
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf destination_ipv6_address; //type: string
-        ydk::YLeaf bfd_session_state; //type: HsrpBfdSessionState
-        ydk::YLeaf bfd_interval; //type: uint32
-        ydk::YLeaf bfd_multiplier; //type: uint32
-        class Group; //type: Hsrp::BfdSessions::BfdSession::Group
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions::BfdSession::Group> > group;
-        
-}; // Hsrp::BfdSessions::BfdSession
-
-
-class Hsrp::BfdSessions::BfdSession::Group : public ydk::Entity
-{
-    public:
-        Group();
-        ~Group();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf hsrp_group_number; //type: uint32
-
-}; // Hsrp::BfdSessions::BfdSession::Group
 
 
 class Hsrp::Ipv4 : public ydk::Entity
@@ -147,8 +68,8 @@ class Hsrp::Ipv4 : public ydk::Entity
         class Interfaces; //type: Hsrp::Ipv4::Interfaces
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups> groups;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::TrackedInterfaces> tracked_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Interfaces> interfaces;
         
 }; // Hsrp::Ipv4
 
@@ -267,22 +188,22 @@ class Hsrp::Ipv4::Groups::Group : public ydk::Entity
         class GlobalAddress; //type: Hsrp::Ipv4::Groups::Group::GlobalAddress
         class StateChangeHistory; //type: Hsrp::Ipv4::Groups::Group::StateChangeHistory
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::CoupReceivedTime> coup_received_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::CoupSentTime> coup_sent_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::GlobalAddress> > global_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::ResignReceivedTime> resign_received_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::ResignSentTime> resign_sent_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::StateChangeHistory> > state_change_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::ResignReceivedTime> resign_received_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::CoupSentTime> coup_sent_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::CoupReceivedTime> coup_received_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::Statistics> statistics;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::GlobalAddress> > global_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::StateChangeHistory> > state_change_history;
         
 }; // Hsrp::Ipv4::Groups::Group
 
 
-class Hsrp::Ipv4::Groups::Group::CoupReceivedTime : public ydk::Entity
+class Hsrp::Ipv4::Groups::Group::ResignSentTime : public ydk::Entity
 {
     public:
-        CoupReceivedTime();
-        ~CoupReceivedTime();
+        ResignSentTime();
+        ~ResignSentTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -297,50 +218,7 @@ class Hsrp::Ipv4::Groups::Group::CoupReceivedTime : public ydk::Entity
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Hsrp::Ipv4::Groups::Group::CoupReceivedTime
-
-
-class Hsrp::Ipv4::Groups::Group::CoupSentTime : public ydk::Entity
-{
-    public:
-        CoupSentTime();
-        ~CoupSentTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
-
-}; // Hsrp::Ipv4::Groups::Group::CoupSentTime
-
-
-class Hsrp::Ipv4::Groups::Group::GlobalAddress : public ydk::Entity
-{
-    public:
-        GlobalAddress();
-        ~GlobalAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // Hsrp::Ipv4::Groups::Group::GlobalAddress
+}; // Hsrp::Ipv4::Groups::Group::ResignSentTime
 
 
 class Hsrp::Ipv4::Groups::Group::ResignReceivedTime : public ydk::Entity
@@ -365,11 +243,11 @@ class Hsrp::Ipv4::Groups::Group::ResignReceivedTime : public ydk::Entity
 }; // Hsrp::Ipv4::Groups::Group::ResignReceivedTime
 
 
-class Hsrp::Ipv4::Groups::Group::ResignSentTime : public ydk::Entity
+class Hsrp::Ipv4::Groups::Group::CoupSentTime : public ydk::Entity
 {
     public:
-        ResignSentTime();
-        ~ResignSentTime();
+        CoupSentTime();
+        ~CoupSentTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -384,7 +262,85 @@ class Hsrp::Ipv4::Groups::Group::ResignSentTime : public ydk::Entity
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Hsrp::Ipv4::Groups::Group::ResignSentTime
+}; // Hsrp::Ipv4::Groups::Group::CoupSentTime
+
+
+class Hsrp::Ipv4::Groups::Group::CoupReceivedTime : public ydk::Entity
+{
+    public:
+        CoupReceivedTime();
+        ~CoupReceivedTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Hsrp::Ipv4::Groups::Group::CoupReceivedTime
+
+
+class Hsrp::Ipv4::Groups::Group::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf active_transitions; //type: uint32
+        ydk::YLeaf standby_transitions; //type: uint32
+        ydk::YLeaf speak_transitions; //type: uint32
+        ydk::YLeaf listen_transitions; //type: uint32
+        ydk::YLeaf learn_transitions; //type: uint32
+        ydk::YLeaf init_transitions; //type: uint32
+        ydk::YLeaf hello_packets_sent; //type: uint32
+        ydk::YLeaf resign_packets_sent; //type: uint32
+        ydk::YLeaf coup_packets_sent; //type: uint32
+        ydk::YLeaf hello_packets_received; //type: uint32
+        ydk::YLeaf resign_packets_received; //type: uint32
+        ydk::YLeaf coup_packets_received; //type: uint32
+        ydk::YLeaf auth_fail_received; //type: uint32
+        ydk::YLeaf invalid_timer_received; //type: uint32
+        ydk::YLeaf mismatch_virtual_ip_address_received; //type: uint32
+
+}; // Hsrp::Ipv4::Groups::Group::Statistics
+
+
+class Hsrp::Ipv4::Groups::Group::GlobalAddress : public ydk::Entity
+{
+    public:
+        GlobalAddress();
+        ~GlobalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Hsrp::Ipv4::Groups::Group::GlobalAddress
 
 
 class Hsrp::Ipv4::Groups::Group::StateChangeHistory : public ydk::Entity
@@ -435,11 +391,11 @@ class Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time : public ydk::Entity
 }; // Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time
 
 
-class Hsrp::Ipv4::Groups::Group::Statistics : public ydk::Entity
+class Hsrp::Ipv4::TrackedInterfaces : public ydk::Entity
 {
     public:
-        Statistics();
-        ~Statistics();
+        TrackedInterfaces();
+        ~TrackedInterfaces();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -450,24 +406,43 @@ class Hsrp::Ipv4::Groups::Group::Statistics : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf active_transitions; //type: uint32
-        ydk::YLeaf standby_transitions; //type: uint32
-        ydk::YLeaf speak_transitions; //type: uint32
-        ydk::YLeaf listen_transitions; //type: uint32
-        ydk::YLeaf learn_transitions; //type: uint32
-        ydk::YLeaf init_transitions; //type: uint32
-        ydk::YLeaf hello_packets_sent; //type: uint32
-        ydk::YLeaf resign_packets_sent; //type: uint32
-        ydk::YLeaf coup_packets_sent; //type: uint32
-        ydk::YLeaf hello_packets_received; //type: uint32
-        ydk::YLeaf resign_packets_received; //type: uint32
-        ydk::YLeaf coup_packets_received; //type: uint32
-        ydk::YLeaf auth_fail_received; //type: uint32
-        ydk::YLeaf invalid_timer_received; //type: uint32
-        ydk::YLeaf mismatch_virtual_ip_address_received; //type: uint32
+        class TrackedInterface; //type: Hsrp::Ipv4::TrackedInterfaces::TrackedInterface
 
-}; // Hsrp::Ipv4::Groups::Group::Statistics
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        
+}; // Hsrp::Ipv4::TrackedInterfaces
+
+
+class Hsrp::Ipv4::TrackedInterfaces::TrackedInterface : public ydk::Entity
+{
+    public:
+        TrackedInterface();
+        ~TrackedInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf group_number; //type: int32
+        ydk::YLeaf tracked_interface_name; //type: string
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf hsrp_group_number; //type: uint32
+        ydk::YLeaf priority_decrement; //type: uint32
+        ydk::YLeaf interface_up_flag; //type: boolean
+        ydk::YLeaf tracked_interface_name_xr; //type: string
+        ydk::YLeaf is_object; //type: boolean
+
+}; // Hsrp::Ipv4::TrackedInterfaces::TrackedInterface
 
 
 class Hsrp::Ipv4::Interfaces : public ydk::Entity
@@ -550,7 +525,111 @@ class Hsrp::Ipv4::Interfaces::Interface::Statistics : public ydk::Entity
 }; // Hsrp::Ipv4::Interfaces::Interface::Statistics
 
 
-class Hsrp::Ipv4::TrackedInterfaces : public ydk::Entity
+class Hsrp::MgoSessions : public ydk::Entity
+{
+    public:
+        MgoSessions();
+        ~MgoSessions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class MgoSession; //type: Hsrp::MgoSessions::MgoSession
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions::MgoSession> > mgo_session;
+        
+}; // Hsrp::MgoSessions
+
+
+class Hsrp::MgoSessions::MgoSession : public ydk::Entity
+{
+    public:
+        MgoSession();
+        ~MgoSession();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf primary_session_name; //type: string
+        ydk::YLeaf primary_session_interface; //type: string
+        ydk::YLeaf primary_af_name; //type: HsrpBAf
+        ydk::YLeaf primary_session_number; //type: uint32
+        ydk::YLeaf primary_session_state; //type: StandbyGrpState
+        class Slave; //type: Hsrp::MgoSessions::MgoSession::Slave
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions::MgoSession::Slave> > slave;
+        
+}; // Hsrp::MgoSessions::MgoSession
+
+
+class Hsrp::MgoSessions::MgoSession::Slave : public ydk::Entity
+{
+    public:
+        Slave();
+        ~Slave();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf slave_group_interface; //type: string
+        ydk::YLeaf slave_group_number; //type: uint32
+
+}; // Hsrp::MgoSessions::MgoSession::Slave
+
+
+class Hsrp::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TrackedInterfaces; //type: Hsrp::Ipv6::TrackedInterfaces
+        class Groups; //type: Hsrp::Ipv6::Groups
+        class Interfaces; //type: Hsrp::Ipv6::Interfaces
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::TrackedInterfaces> tracked_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups> groups;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Interfaces> interfaces;
+        
+}; // Hsrp::Ipv6
+
+
+class Hsrp::Ipv6::TrackedInterfaces : public ydk::Entity
 {
     public:
         TrackedInterfaces();
@@ -567,14 +646,14 @@ class Hsrp::Ipv4::TrackedInterfaces : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TrackedInterface; //type: Hsrp::Ipv4::TrackedInterfaces::TrackedInterface
+        class TrackedInterface; //type: Hsrp::Ipv6::TrackedInterfaces::TrackedInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::TrackedInterfaces::TrackedInterface> > tracked_interface;
         
-}; // Hsrp::Ipv4::TrackedInterfaces
+}; // Hsrp::Ipv6::TrackedInterfaces
 
 
-class Hsrp::Ipv4::TrackedInterfaces::TrackedInterface : public ydk::Entity
+class Hsrp::Ipv6::TrackedInterfaces::TrackedInterface : public ydk::Entity
 {
     public:
         TrackedInterface();
@@ -601,35 +680,7 @@ class Hsrp::Ipv4::TrackedInterfaces::TrackedInterface : public ydk::Entity
         ydk::YLeaf tracked_interface_name_xr; //type: string
         ydk::YLeaf is_object; //type: boolean
 
-}; // Hsrp::Ipv4::TrackedInterfaces::TrackedInterface
-
-
-class Hsrp::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TrackedInterfaces; //type: Hsrp::Ipv6::TrackedInterfaces
-        class Groups; //type: Hsrp::Ipv6::Groups
-        class Interfaces; //type: Hsrp::Ipv6::Interfaces
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups> groups;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Interfaces> interfaces;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::TrackedInterfaces> tracked_interfaces;
-        
-}; // Hsrp::Ipv6
+}; // Hsrp::Ipv6::TrackedInterfaces::TrackedInterface
 
 
 class Hsrp::Ipv6::Groups : public ydk::Entity
@@ -746,22 +797,22 @@ class Hsrp::Ipv6::Groups::Group : public ydk::Entity
         class GlobalAddress; //type: Hsrp::Ipv6::Groups::Group::GlobalAddress
         class StateChangeHistory; //type: Hsrp::Ipv6::Groups::Group::StateChangeHistory
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::CoupReceivedTime> coup_received_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::CoupSentTime> coup_sent_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::GlobalAddress> > global_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::ResignReceivedTime> resign_received_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::ResignSentTime> resign_sent_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::StateChangeHistory> > state_change_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::ResignReceivedTime> resign_received_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::CoupSentTime> coup_sent_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::CoupReceivedTime> coup_received_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::Statistics> statistics;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::GlobalAddress> > global_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::StateChangeHistory> > state_change_history;
         
 }; // Hsrp::Ipv6::Groups::Group
 
 
-class Hsrp::Ipv6::Groups::Group::CoupReceivedTime : public ydk::Entity
+class Hsrp::Ipv6::Groups::Group::ResignSentTime : public ydk::Entity
 {
     public:
-        CoupReceivedTime();
-        ~CoupReceivedTime();
+        ResignSentTime();
+        ~ResignSentTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -776,50 +827,7 @@ class Hsrp::Ipv6::Groups::Group::CoupReceivedTime : public ydk::Entity
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Hsrp::Ipv6::Groups::Group::CoupReceivedTime
-
-
-class Hsrp::Ipv6::Groups::Group::CoupSentTime : public ydk::Entity
-{
-    public:
-        CoupSentTime();
-        ~CoupSentTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
-
-}; // Hsrp::Ipv6::Groups::Group::CoupSentTime
-
-
-class Hsrp::Ipv6::Groups::Group::GlobalAddress : public ydk::Entity
-{
-    public:
-        GlobalAddress();
-        ~GlobalAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // Hsrp::Ipv6::Groups::Group::GlobalAddress
+}; // Hsrp::Ipv6::Groups::Group::ResignSentTime
 
 
 class Hsrp::Ipv6::Groups::Group::ResignReceivedTime : public ydk::Entity
@@ -844,11 +852,11 @@ class Hsrp::Ipv6::Groups::Group::ResignReceivedTime : public ydk::Entity
 }; // Hsrp::Ipv6::Groups::Group::ResignReceivedTime
 
 
-class Hsrp::Ipv6::Groups::Group::ResignSentTime : public ydk::Entity
+class Hsrp::Ipv6::Groups::Group::CoupSentTime : public ydk::Entity
 {
     public:
-        ResignSentTime();
-        ~ResignSentTime();
+        CoupSentTime();
+        ~CoupSentTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -863,7 +871,85 @@ class Hsrp::Ipv6::Groups::Group::ResignSentTime : public ydk::Entity
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Hsrp::Ipv6::Groups::Group::ResignSentTime
+}; // Hsrp::Ipv6::Groups::Group::CoupSentTime
+
+
+class Hsrp::Ipv6::Groups::Group::CoupReceivedTime : public ydk::Entity
+{
+    public:
+        CoupReceivedTime();
+        ~CoupReceivedTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Hsrp::Ipv6::Groups::Group::CoupReceivedTime
+
+
+class Hsrp::Ipv6::Groups::Group::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf active_transitions; //type: uint32
+        ydk::YLeaf standby_transitions; //type: uint32
+        ydk::YLeaf speak_transitions; //type: uint32
+        ydk::YLeaf listen_transitions; //type: uint32
+        ydk::YLeaf learn_transitions; //type: uint32
+        ydk::YLeaf init_transitions; //type: uint32
+        ydk::YLeaf hello_packets_sent; //type: uint32
+        ydk::YLeaf resign_packets_sent; //type: uint32
+        ydk::YLeaf coup_packets_sent; //type: uint32
+        ydk::YLeaf hello_packets_received; //type: uint32
+        ydk::YLeaf resign_packets_received; //type: uint32
+        ydk::YLeaf coup_packets_received; //type: uint32
+        ydk::YLeaf auth_fail_received; //type: uint32
+        ydk::YLeaf invalid_timer_received; //type: uint32
+        ydk::YLeaf mismatch_virtual_ip_address_received; //type: uint32
+
+}; // Hsrp::Ipv6::Groups::Group::Statistics
+
+
+class Hsrp::Ipv6::Groups::Group::GlobalAddress : public ydk::Entity
+{
+    public:
+        GlobalAddress();
+        ~GlobalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Hsrp::Ipv6::Groups::Group::GlobalAddress
 
 
 class Hsrp::Ipv6::Groups::Group::StateChangeHistory : public ydk::Entity
@@ -912,41 +998,6 @@ class Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time : public ydk::Entity
         ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time
-
-
-class Hsrp::Ipv6::Groups::Group::Statistics : public ydk::Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf active_transitions; //type: uint32
-        ydk::YLeaf standby_transitions; //type: uint32
-        ydk::YLeaf speak_transitions; //type: uint32
-        ydk::YLeaf listen_transitions; //type: uint32
-        ydk::YLeaf learn_transitions; //type: uint32
-        ydk::YLeaf init_transitions; //type: uint32
-        ydk::YLeaf hello_packets_sent; //type: uint32
-        ydk::YLeaf resign_packets_sent; //type: uint32
-        ydk::YLeaf coup_packets_sent; //type: uint32
-        ydk::YLeaf hello_packets_received; //type: uint32
-        ydk::YLeaf resign_packets_received; //type: uint32
-        ydk::YLeaf coup_packets_received; //type: uint32
-        ydk::YLeaf auth_fail_received; //type: uint32
-        ydk::YLeaf invalid_timer_received; //type: uint32
-        ydk::YLeaf mismatch_virtual_ip_address_received; //type: uint32
-
-}; // Hsrp::Ipv6::Groups::Group::Statistics
 
 
 class Hsrp::Ipv6::Interfaces : public ydk::Entity
@@ -1029,11 +1080,11 @@ class Hsrp::Ipv6::Interfaces::Interface::Statistics : public ydk::Entity
 }; // Hsrp::Ipv6::Interfaces::Interface::Statistics
 
 
-class Hsrp::Ipv6::TrackedInterfaces : public ydk::Entity
+class Hsrp::BfdSessions : public ydk::Entity
 {
     public:
-        TrackedInterfaces();
-        ~TrackedInterfaces();
+        BfdSessions();
+        ~BfdSessions();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1046,18 +1097,18 @@ class Hsrp::Ipv6::TrackedInterfaces : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TrackedInterface; //type: Hsrp::Ipv6::TrackedInterfaces::TrackedInterface
+        class BfdSession; //type: Hsrp::BfdSessions::BfdSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::TrackedInterfaces::TrackedInterface> > tracked_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions::BfdSession> > bfd_session;
         
-}; // Hsrp::Ipv6::TrackedInterfaces
+}; // Hsrp::BfdSessions
 
 
-class Hsrp::Ipv6::TrackedInterfaces::TrackedInterface : public ydk::Entity
+class Hsrp::BfdSessions::BfdSession : public ydk::Entity
 {
     public:
-        TrackedInterface();
-        ~TrackedInterface();
+        BfdSession();
+        ~BfdSession();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1071,92 +1122,41 @@ class Hsrp::Ipv6::TrackedInterfaces::TrackedInterface : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf group_number; //type: int32
-        ydk::YLeaf tracked_interface_name; //type: string
-        ydk::YLeaf interface; //type: string
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf bfd_interface_name; //type: string
+        ydk::YLeaf session_address_family; //type: HsrpBAf
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_ipv6_address; //type: string
+        ydk::YLeaf bfd_session_state; //type: HsrpBfdSessionState
+        ydk::YLeaf bfd_interval; //type: uint32
+        ydk::YLeaf bfd_multiplier; //type: uint32
+        class Group; //type: Hsrp::BfdSessions::BfdSession::Group
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions::BfdSession::Group> > group;
+        
+}; // Hsrp::BfdSessions::BfdSession
+
+
+class Hsrp::BfdSessions::BfdSession::Group : public ydk::Entity
+{
+    public:
+        Group();
+        ~Group();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
         ydk::YLeaf hsrp_group_number; //type: uint32
-        ydk::YLeaf priority_decrement; //type: uint32
-        ydk::YLeaf interface_up_flag; //type: boolean
-        ydk::YLeaf tracked_interface_name_xr; //type: string
-        ydk::YLeaf is_object; //type: boolean
 
-}; // Hsrp::Ipv6::TrackedInterfaces::TrackedInterface
-
-
-class Hsrp::MgoSessions : public ydk::Entity
-{
-    public:
-        MgoSessions();
-        ~MgoSessions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class MgoSession; //type: Hsrp::MgoSessions::MgoSession
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions::MgoSession> > mgo_session;
-        
-}; // Hsrp::MgoSessions
-
-
-class Hsrp::MgoSessions::MgoSession : public ydk::Entity
-{
-    public:
-        MgoSession();
-        ~MgoSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf session_name; //type: string
-        ydk::YLeaf primary_session_name; //type: string
-        ydk::YLeaf primary_session_interface; //type: string
-        ydk::YLeaf primary_af_name; //type: HsrpBAf
-        ydk::YLeaf primary_session_number; //type: uint32
-        ydk::YLeaf primary_session_state; //type: StandbyGrpState
-        class Slave; //type: Hsrp::MgoSessions::MgoSession::Slave
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions::MgoSession::Slave> > slave;
-        
-}; // Hsrp::MgoSessions::MgoSession
-
-
-class Hsrp::MgoSessions::MgoSession::Slave : public ydk::Entity
-{
-    public:
-        Slave();
-        ~Slave();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf slave_group_interface; //type: string
-        ydk::YLeaf slave_group_number; //type: uint32
-
-}; // Hsrp::MgoSessions::MgoSession::Slave
+}; // Hsrp::BfdSessions::BfdSession::Group
 
 
 class Hsrp::Summary : public ydk::Entity
@@ -1250,27 +1250,6 @@ class HsrpVmacState : public ydk::Enum
 
 };
 
-class StandbyGrpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_initial;
-        static const ydk::Enum::YLeaf state_learn;
-        static const ydk::Enum::YLeaf state_listen;
-        static const ydk::Enum::YLeaf state_speak;
-        static const ydk::Enum::YLeaf state_standby;
-        static const ydk::Enum::YLeaf state_active;
-
-};
-
-class HsrpBAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf count;
-
-};
-
 class HsrpStateChangeReason : public ydk::Enum
 {
     public:
@@ -1311,6 +1290,27 @@ class HsrpBfdSessionState : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_state_inactive;
         static const ydk::Enum::YLeaf bfd_state_up;
         static const ydk::Enum::YLeaf bfd_state_down;
+
+};
+
+class StandbyGrpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_initial;
+        static const ydk::Enum::YLeaf state_learn;
+        static const ydk::Enum::YLeaf state_listen;
+        static const ydk::Enum::YLeaf state_speak;
+        static const ydk::Enum::YLeaf state_standby;
+        static const ydk::Enum::YLeaf state_active;
+
+};
+
+class HsrpBAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf count;
 
 };
 

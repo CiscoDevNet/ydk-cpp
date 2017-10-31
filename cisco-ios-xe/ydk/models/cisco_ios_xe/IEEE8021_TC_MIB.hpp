@@ -20,23 +20,6 @@ class IEEE8021PriorityCodePoint : public ydk::Enum
 
 };
 
-class IEEE8021PortAcceptableFrameTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf admitAll;
-        static const ydk::Enum::YLeaf admitUntaggedAndPriority;
-        static const ydk::Enum::YLeaf admitTagged;
-
-};
-
-class IEEE8021ServiceSelectorType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlanId;
-        static const ydk::Enum::YLeaf isid;
-
-};
-
 class IEEE8021BridgePortType : public ydk::Enum
 {
     public:
@@ -48,6 +31,23 @@ class IEEE8021BridgePortType : public ydk::Enum
         static const ydk::Enum::YLeaf customerBackbonePort;
         static const ydk::Enum::YLeaf virtualInstancePort;
         static const ydk::Enum::YLeaf dBridgePort;
+
+};
+
+class IEEE8021ServiceSelectorType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vlanId;
+        static const ydk::Enum::YLeaf isid;
+
+};
+
+class IEEE8021PortAcceptableFrameTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf admitAll;
+        static const ydk::Enum::YLeaf admitUntaggedAndPriority;
+        static const ydk::Enum::YLeaf admitTagged;
 
 };
 

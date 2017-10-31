@@ -13,15 +13,15 @@ namespace Cisco_IOS_XR_ipv4_ma_cfg {
 
 Ipv4NetworkGlobal::Ipv4NetworkGlobal()
     :
+    source_route{YType::boolean, "source-route"},
     reassemble_max_packets{YType::uint32, "reassemble-max-packets"},
-    reassemble_time_out{YType::uint32, "reassemble-time-out"},
-    source_route{YType::boolean, "source-route"}
+    reassemble_time_out{YType::uint32, "reassemble-time-out"}
     	,
-    qppb(std::make_shared<Ipv4NetworkGlobal::Qppb>())
-	,unnumbered(std::make_shared<Ipv4NetworkGlobal::Unnumbered>())
+    unnumbered(std::make_shared<Ipv4NetworkGlobal::Unnumbered>())
+	,qppb(std::make_shared<Ipv4NetworkGlobal::Qppb>())
 {
-    qppb->parent = this;
     unnumbered->parent = this;
+    qppb->parent = this;
 
     yang_name = "ipv4-network-global"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -32,21 +32,21 @@ Ipv4NetworkGlobal::~Ipv4NetworkGlobal()
 
 bool Ipv4NetworkGlobal::has_data() const
 {
-    return reassemble_max_packets.is_set
+    return source_route.is_set
+	|| reassemble_max_packets.is_set
 	|| reassemble_time_out.is_set
-	|| source_route.is_set
-	|| (qppb !=  nullptr && qppb->has_data())
-	|| (unnumbered !=  nullptr && unnumbered->has_data());
+	|| (unnumbered !=  nullptr && unnumbered->has_data())
+	|| (qppb !=  nullptr && qppb->has_data());
 }
 
 bool Ipv4NetworkGlobal::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(source_route.yfilter)
 	|| ydk::is_set(reassemble_max_packets.yfilter)
 	|| ydk::is_set(reassemble_time_out.yfilter)
-	|| ydk::is_set(source_route.yfilter)
-	|| (qppb !=  nullptr && qppb->has_operation())
-	|| (unnumbered !=  nullptr && unnumbered->has_operation());
+	|| (unnumbered !=  nullptr && unnumbered->has_operation())
+	|| (qppb !=  nullptr && qppb->has_operation());
 }
 
 std::string Ipv4NetworkGlobal::get_segment_path() const
@@ -60,9 +60,9 @@ std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::get_name_leaf_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (source_route.is_set || is_set(source_route.yfilter)) leaf_name_data.push_back(source_route.get_name_leafdata());
     if (reassemble_max_packets.is_set || is_set(reassemble_max_packets.yfilter)) leaf_name_data.push_back(reassemble_max_packets.get_name_leafdata());
     if (reassemble_time_out.is_set || is_set(reassemble_time_out.yfilter)) leaf_name_data.push_back(reassemble_time_out.get_name_leafdata());
-    if (source_route.is_set || is_set(source_route.yfilter)) leaf_name_data.push_back(source_route.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -70,15 +70,6 @@ std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::get_name_leaf_
 
 std::shared_ptr<Entity> Ipv4NetworkGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "qppb")
-    {
-        if(qppb == nullptr)
-        {
-            qppb = std::make_shared<Ipv4NetworkGlobal::Qppb>();
-        }
-        return qppb;
-    }
-
     if(child_yang_name == "unnumbered")
     {
         if(unnumbered == nullptr)
@@ -88,20 +79,29 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::get_child_by_name(const std::string &
         return unnumbered;
     }
 
+    if(child_yang_name == "qppb")
+    {
+        if(qppb == nullptr)
+        {
+            qppb = std::make_shared<Ipv4NetworkGlobal::Qppb>();
+        }
+        return qppb;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(qppb != nullptr)
-    {
-        children["qppb"] = qppb;
-    }
-
     if(unnumbered != nullptr)
     {
         children["unnumbered"] = unnumbered;
+    }
+
+    if(qppb != nullptr)
+    {
+        children["qppb"] = qppb;
     }
 
     return children;
@@ -109,6 +109,12 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::get_children()
 
 void Ipv4NetworkGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "source-route")
+    {
+        source_route = value;
+        source_route.value_namespace = name_space;
+        source_route.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "reassemble-max-packets")
     {
         reassemble_max_packets = value;
@@ -121,16 +127,14 @@ void Ipv4NetworkGlobal::set_value(const std::string & value_path, const std::str
         reassemble_time_out.value_namespace = name_space;
         reassemble_time_out.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "source-route")
-    {
-        source_route = value;
-        source_route.value_namespace = name_space;
-        source_route.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ipv4NetworkGlobal::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "source-route")
+    {
+        source_route.yfilter = yfilter;
+    }
     if(value_path == "reassemble-max-packets")
     {
         reassemble_max_packets.yfilter = yfilter;
@@ -138,10 +142,6 @@ void Ipv4NetworkGlobal::set_filter(const std::string & value_path, YFilter yfilt
     if(value_path == "reassemble-time-out")
     {
         reassemble_time_out.yfilter = yfilter;
-    }
-    if(value_path == "source-route")
-    {
-        source_route.yfilter = yfilter;
     }
 }
 
@@ -172,104 +172,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ipv4NetworkGlobal::ge
 
 bool Ipv4NetworkGlobal::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "qppb" || name == "unnumbered" || name == "reassemble-max-packets" || name == "reassemble-time-out" || name == "source-route")
-        return true;
-    return false;
-}
-
-Ipv4NetworkGlobal::Qppb::Qppb()
-    :
-    destination{YType::enumeration, "destination"},
-    source{YType::enumeration, "source"}
-{
-
-    yang_name = "qppb"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Ipv4NetworkGlobal::Qppb::~Qppb()
-{
-}
-
-bool Ipv4NetworkGlobal::Qppb::has_data() const
-{
-    return destination.is_set
-	|| source.is_set;
-}
-
-bool Ipv4NetworkGlobal::Qppb::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(source.yfilter);
-}
-
-std::string Ipv4NetworkGlobal::Qppb::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Ipv4NetworkGlobal::Qppb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qppb";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Qppb::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Qppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Qppb::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ipv4NetworkGlobal::Qppb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination")
-    {
-        destination = value;
-        destination.value_namespace = name_space;
-        destination.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-        source.value_namespace = name_space;
-        source.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv4NetworkGlobal::Qppb::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination")
-    {
-        destination.yfilter = yfilter;
-    }
-    if(value_path == "source")
-    {
-        source.yfilter = yfilter;
-    }
-}
-
-bool Ipv4NetworkGlobal::Qppb::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination" || name == "source")
+    if(name == "unnumbered" || name == "qppb" || name == "source-route" || name == "reassemble-max-packets" || name == "reassemble-time-out")
         return true;
     return false;
 }
@@ -527,6 +430,103 @@ void Ipv4NetworkGlobal::Unnumbered::Mpls::Te::set_filter(const std::string & val
 bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
+        return true;
+    return false;
+}
+
+Ipv4NetworkGlobal::Qppb::Qppb()
+    :
+    source{YType::enumeration, "source"},
+    destination{YType::enumeration, "destination"}
+{
+
+    yang_name = "qppb"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv4NetworkGlobal::Qppb::~Qppb()
+{
+}
+
+bool Ipv4NetworkGlobal::Qppb::has_data() const
+{
+    return source.is_set
+	|| destination.is_set;
+}
+
+bool Ipv4NetworkGlobal::Qppb::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(destination.yfilter);
+}
+
+std::string Ipv4NetworkGlobal::Qppb::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv4NetworkGlobal::Qppb::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "qppb";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Qppb::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4NetworkGlobal::Qppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Qppb::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ipv4NetworkGlobal::Qppb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination")
+    {
+        destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4NetworkGlobal::Qppb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+}
+
+bool Ipv4NetworkGlobal::Qppb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "destination")
         return true;
     return false;
 }

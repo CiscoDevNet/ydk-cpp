@@ -11,31 +11,928 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_rcmd_oper {
 
-Rcmd::Process::Ldp::Process_::Process_()
+Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::RemoteNode()
     :
-    process_name{YType::str, "process-name"},
-    protocol_id{YType::enumeration, "protocol-id"}
+    remote_node_id{YType::str, "remote-node-id"},
+    lsr_id{YType::str, "lsr-id"},
+    transport_address{YType::str, "transport-address"},
+    in_use_time{YType::str, "in-use-time"},
+    session_state{YType::enumeration, "session-state"},
+    route_count{YType::uint32, "route-count"},
+    path_count{YType::uint32, "path-count"},
+    remote_label_count{YType::uint32, "remote-label-count"},
+    protected_route_count{YType::uint32, "protected-route-count"},
+    protected_path_count{YType::uint32, "protected-path-count"}
 {
 
-    yang_name = "process"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-node"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Rcmd::Process::Ldp::Process_::~Process_()
+Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::~RemoteNode()
 {
 }
 
-bool Rcmd::Process::Ldp::Process_::has_data() const
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::has_data() const
+{
+    return remote_node_id.is_set
+	|| lsr_id.is_set
+	|| transport_address.is_set
+	|| in_use_time.is_set
+	|| session_state.is_set
+	|| route_count.is_set
+	|| path_count.is_set
+	|| remote_label_count.is_set
+	|| protected_route_count.is_set
+	|| protected_path_count.is_set;
+}
+
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(remote_node_id.yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(transport_address.yfilter)
+	|| ydk::is_set(in_use_time.yfilter)
+	|| ydk::is_set(session_state.yfilter)
+	|| ydk::is_set(route_count.yfilter)
+	|| ydk::is_set(path_count.yfilter)
+	|| ydk::is_set(remote_label_count.yfilter)
+	|| ydk::is_set(protected_route_count.yfilter)
+	|| ydk::is_set(protected_path_count.yfilter);
+}
+
+std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-node";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (remote_node_id.is_set || is_set(remote_node_id.yfilter)) leaf_name_data.push_back(remote_node_id.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (transport_address.is_set || is_set(transport_address.yfilter)) leaf_name_data.push_back(transport_address.get_name_leafdata());
+    if (in_use_time.is_set || is_set(in_use_time.yfilter)) leaf_name_data.push_back(in_use_time.get_name_leafdata());
+    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
+    if (route_count.is_set || is_set(route_count.yfilter)) leaf_name_data.push_back(route_count.get_name_leafdata());
+    if (path_count.is_set || is_set(path_count.yfilter)) leaf_name_data.push_back(path_count.get_name_leafdata());
+    if (remote_label_count.is_set || is_set(remote_label_count.yfilter)) leaf_name_data.push_back(remote_label_count.get_name_leafdata());
+    if (protected_route_count.is_set || is_set(protected_route_count.yfilter)) leaf_name_data.push_back(protected_route_count.get_name_leafdata());
+    if (protected_path_count.is_set || is_set(protected_path_count.yfilter)) leaf_name_data.push_back(protected_path_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "remote-node-id")
+    {
+        remote_node_id = value;
+        remote_node_id.value_namespace = name_space;
+        remote_node_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsr-id")
+    {
+        lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transport-address")
+    {
+        transport_address = value;
+        transport_address.value_namespace = name_space;
+        transport_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-use-time")
+    {
+        in_use_time = value;
+        in_use_time.value_namespace = name_space;
+        in_use_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-state")
+    {
+        session_state = value;
+        session_state.value_namespace = name_space;
+        session_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-count")
+    {
+        route_count = value;
+        route_count.value_namespace = name_space;
+        route_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-count")
+    {
+        path_count = value;
+        path_count.value_namespace = name_space;
+        path_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-label-count")
+    {
+        remote_label_count = value;
+        remote_label_count.value_namespace = name_space;
+        remote_label_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protected-route-count")
+    {
+        protected_route_count = value;
+        protected_route_count.value_namespace = name_space;
+        protected_route_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protected-path-count")
+    {
+        protected_path_count = value;
+        protected_path_count.value_namespace = name_space;
+        protected_path_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "remote-node-id")
+    {
+        remote_node_id.yfilter = yfilter;
+    }
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "transport-address")
+    {
+        transport_address.yfilter = yfilter;
+    }
+    if(value_path == "in-use-time")
+    {
+        in_use_time.yfilter = yfilter;
+    }
+    if(value_path == "session-state")
+    {
+        session_state.yfilter = yfilter;
+    }
+    if(value_path == "route-count")
+    {
+        route_count.yfilter = yfilter;
+    }
+    if(value_path == "path-count")
+    {
+        path_count.yfilter = yfilter;
+    }
+    if(value_path == "remote-label-count")
+    {
+        remote_label_count.yfilter = yfilter;
+    }
+    if(value_path == "protected-route-count")
+    {
+        protected_route_count.yfilter = yfilter;
+    }
+    if(value_path == "protected-path-count")
+    {
+        protected_path_count.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remote-node-id" || name == "lsr-id" || name == "transport-address" || name == "in-use-time" || name == "session-state" || name == "route-count" || name == "path-count" || name == "remote-label-count" || name == "protected-route-count" || name == "protected-path-count")
+        return true;
+    return false;
+}
+
+Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::Logs()
+    :
+    log_time{YType::str, "log-time"},
+    label_coverage_state{YType::enumeration, "label-coverage-state"},
+    route_count{YType::uint32, "route-count"},
+    remote_label_count{YType::uint32, "remote-label-count"}
+{
+
+    yang_name = "logs"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::~Logs()
+{
+}
+
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::has_data() const
+{
+    return log_time.is_set
+	|| label_coverage_state.is_set
+	|| route_count.is_set
+	|| remote_label_count.is_set;
+}
+
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(log_time.yfilter)
+	|| ydk::is_set(label_coverage_state.yfilter)
+	|| ydk::is_set(route_count.yfilter)
+	|| ydk::is_set(remote_label_count.yfilter);
+}
+
+std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (log_time.is_set || is_set(log_time.yfilter)) leaf_name_data.push_back(log_time.get_name_leafdata());
+    if (label_coverage_state.is_set || is_set(label_coverage_state.yfilter)) leaf_name_data.push_back(label_coverage_state.get_name_leafdata());
+    if (route_count.is_set || is_set(route_count.yfilter)) leaf_name_data.push_back(route_count.get_name_leafdata());
+    if (remote_label_count.is_set || is_set(remote_label_count.yfilter)) leaf_name_data.push_back(remote_label_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "log-time")
+    {
+        log_time = value;
+        log_time.value_namespace = name_space;
+        log_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-coverage-state")
+    {
+        label_coverage_state = value;
+        label_coverage_state.value_namespace = name_space;
+        label_coverage_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-count")
+    {
+        route_count = value;
+        route_count.value_namespace = name_space;
+        route_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-label-count")
+    {
+        remote_label_count = value;
+        remote_label_count.value_namespace = name_space;
+        remote_label_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log-time")
+    {
+        log_time.yfilter = yfilter;
+    }
+    if(value_path == "label-coverage-state")
+    {
+        label_coverage_state.yfilter = yfilter;
+    }
+    if(value_path == "route-count")
+    {
+        route_count.yfilter = yfilter;
+    }
+    if(value_path == "remote-label-count")
+    {
+        remote_label_count.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log-time" || name == "label-coverage-state" || name == "route-count" || name == "remote-label-count")
+        return true;
+    return false;
+}
+
+Rcmd::Intf::Intf()
+    :
+    events(std::make_shared<Rcmd::Intf::Events>())
+{
+    events->parent = this;
+
+    yang_name = "intf"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Rcmd::Intf::~Intf()
+{
+}
+
+bool Rcmd::Intf::has_data() const
+{
+    return (events !=  nullptr && events->has_data());
+}
+
+bool Rcmd::Intf::has_operation() const
+{
+    return is_set(yfilter)
+	|| (events !=  nullptr && events->has_operation());
+}
+
+std::string Rcmd::Intf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rcmd::Intf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "intf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Intf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Intf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "events")
+    {
+        if(events == nullptr)
+        {
+            events = std::make_shared<Rcmd::Intf::Events>();
+        }
+        return events;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(events != nullptr)
+    {
+        children["events"] = events;
+    }
+
+    return children;
+}
+
+void Rcmd::Intf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rcmd::Intf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Intf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events")
+        return true;
+    return false;
+}
+
+Rcmd::Intf::Events::Events()
+{
+
+    yang_name = "events"; yang_parent_name = "intf"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Rcmd::Intf::Events::~Events()
+{
+}
+
+bool Rcmd::Intf::Events::has_data() const
+{
+    for (std::size_t index=0; index<event.size(); index++)
+    {
+        if(event[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Rcmd::Intf::Events::has_operation() const
+{
+    for (std::size_t index=0; index<event.size(); index++)
+    {
+        if(event[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Rcmd::Intf::Events::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/intf/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rcmd::Intf::Events::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "events";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Intf::Events::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Intf::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "event")
+    {
+        for(auto const & c : event)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Rcmd::Intf::Events::Event>();
+        c->parent = this;
+        event.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : event)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Rcmd::Intf::Events::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rcmd::Intf::Events::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Intf::Events::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event")
+        return true;
+    return false;
+}
+
+Rcmd::Intf::Events::Event::Event()
+    :
+    event_no{YType::uint32, "event-no"},
+    sequence_no{YType::uint32, "sequence-no"},
+    interface_name{YType::str, "interface-name"},
+    component{YType::enumeration, "component"},
+    event_type{YType::enumeration, "event-type"},
+    event_time{YType::str, "event-time"},
+    primary_address{YType::str, "primary-address"}
+{
+
+    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Rcmd::Intf::Events::Event::~Event()
+{
+}
+
+bool Rcmd::Intf::Events::Event::has_data() const
+{
+    return event_no.is_set
+	|| sequence_no.is_set
+	|| interface_name.is_set
+	|| component.is_set
+	|| event_type.is_set
+	|| event_time.is_set
+	|| primary_address.is_set;
+}
+
+bool Rcmd::Intf::Events::Event::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(event_no.yfilter)
+	|| ydk::is_set(sequence_no.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(component.yfilter)
+	|| ydk::is_set(event_type.yfilter)
+	|| ydk::is_set(event_time.yfilter)
+	|| ydk::is_set(primary_address.yfilter);
+}
+
+std::string Rcmd::Intf::Events::Event::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/intf/events/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rcmd::Intf::Events::Event::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event" <<"[event-no='" <<event_no <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Intf::Events::Event::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (event_no.is_set || is_set(event_no.yfilter)) leaf_name_data.push_back(event_no.get_name_leafdata());
+    if (sequence_no.is_set || is_set(sequence_no.yfilter)) leaf_name_data.push_back(sequence_no.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (component.is_set || is_set(component.yfilter)) leaf_name_data.push_back(component.get_name_leafdata());
+    if (event_type.is_set || is_set(event_type.yfilter)) leaf_name_data.push_back(event_type.get_name_leafdata());
+    if (event_time.is_set || is_set(event_time.yfilter)) leaf_name_data.push_back(event_time.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Intf::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::Event::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Rcmd::Intf::Events::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "event-no")
+    {
+        event_no = value;
+        event_no.value_namespace = name_space;
+        event_no.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sequence-no")
+    {
+        sequence_no = value;
+        sequence_no.value_namespace = name_space;
+        sequence_no.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "component")
+    {
+        component = value;
+        component.value_namespace = name_space;
+        component.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "event-type")
+    {
+        event_type = value;
+        event_type.value_namespace = name_space;
+        event_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "event-time")
+    {
+        event_time = value;
+        event_time.value_namespace = name_space;
+        event_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rcmd::Intf::Events::Event::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-no")
+    {
+        event_no.yfilter = yfilter;
+    }
+    if(value_path == "sequence-no")
+    {
+        sequence_no.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "component")
+    {
+        component.yfilter = yfilter;
+    }
+    if(value_path == "event-type")
+    {
+        event_type.yfilter = yfilter;
+    }
+    if(value_path == "event-time")
+    {
+        event_time.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Intf::Events::Event::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-no" || name == "sequence-no" || name == "interface-name" || name == "component" || name == "event-type" || name == "event-time" || name == "primary-address")
+        return true;
+    return false;
+}
+
+Rcmd::Process::Process()
+    :
+    isis(std::make_shared<Rcmd::Process::Isis>())
+	,ospf(std::make_shared<Rcmd::Process::Ospf>())
+	,ldp(std::make_shared<Rcmd::Process::Ldp>())
+{
+    isis->parent = this;
+    ospf->parent = this;
+    ldp->parent = this;
+
+    yang_name = "process"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Rcmd::Process::~Process()
+{
+}
+
+bool Rcmd::Process::has_data() const
+{
+    return (isis !=  nullptr && isis->has_data())
+	|| (ospf !=  nullptr && ospf->has_data())
+	|| (ldp !=  nullptr && ldp->has_data());
+}
+
+bool Rcmd::Process::has_operation() const
+{
+    return is_set(yfilter)
+	|| (isis !=  nullptr && isis->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
+	|| (ldp !=  nullptr && ldp->has_operation());
+}
+
+std::string Rcmd::Process::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rcmd::Process::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "process";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "isis")
+    {
+        if(isis == nullptr)
+        {
+            isis = std::make_shared<Rcmd::Process::Isis>();
+        }
+        return isis;
+    }
+
+    if(child_yang_name == "ospf")
+    {
+        if(ospf == nullptr)
+        {
+            ospf = std::make_shared<Rcmd::Process::Ospf>();
+        }
+        return ospf;
+    }
+
+    if(child_yang_name == "ldp")
+    {
+        if(ldp == nullptr)
+        {
+            ldp = std::make_shared<Rcmd::Process::Ldp>();
+        }
+        return ldp;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(isis != nullptr)
+    {
+        children["isis"] = isis;
+    }
+
+    if(ospf != nullptr)
+    {
+        children["ospf"] = ospf;
+    }
+
+    if(ldp != nullptr)
+    {
+        children["ldp"] = ldp;
+    }
+
+    return children;
+}
+
+void Rcmd::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rcmd::Process::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Process::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isis" || name == "ospf" || name == "ldp")
+        return true;
+    return false;
+}
+
+Rcmd::Process::Isis::Isis()
+{
+
+    yang_name = "isis"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Rcmd::Process::Isis::~Isis()
+{
+}
+
+bool Rcmd::Process::Isis::has_data() const
+{
+    for (std::size_t index=0; index<process.size(); index++)
+    {
+        if(process[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Rcmd::Process::Isis::has_operation() const
+{
+    for (std::size_t index=0; index<process.size(); index++)
+    {
+        if(process[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Rcmd::Process::Isis::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rcmd::Process::Isis::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "isis";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Process::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "process")
+    {
+        for(auto const & c : process)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Rcmd::Process::Isis::Process_>();
+        c->parent = this;
+        process.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : process)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Rcmd::Process::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rcmd::Process::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Process::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process")
+        return true;
+    return false;
+}
+
+Rcmd::Process::Isis::Process_::Process_()
+    :
+    protocol_id{YType::enumeration, "protocol-id"},
+    process_name{YType::str, "process-name"}
+{
+
+    yang_name = "process"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Rcmd::Process::Isis::Process_::~Process_()
+{
+}
+
+bool Rcmd::Process::Isis::Process_::has_data() const
 {
     for (std::size_t index=0; index<instance_name.size(); index++)
     {
         if(instance_name[index]->has_data())
             return true;
     }
-    return process_name.is_set
-	|| protocol_id.is_set;
+    return protocol_id.is_set
+	|| process_name.is_set;
 }
 
-bool Rcmd::Process::Ldp::Process_::has_operation() const
+bool Rcmd::Process::Isis::Process_::has_operation() const
 {
     for (std::size_t index=0; index<instance_name.size(); index++)
     {
@@ -43,36 +940,36 @@ bool Rcmd::Process::Ldp::Process_::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(process_name.yfilter)
-	|| ydk::is_set(protocol_id.yfilter);
+	|| ydk::is_set(protocol_id.yfilter)
+	|| ydk::is_set(process_name.yfilter);
 }
 
-std::string Rcmd::Process::Ldp::Process_::get_absolute_path() const
+std::string Rcmd::Process::Isis::Process_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/ldp/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/isis/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Rcmd::Process::Ldp::Process_::get_segment_path() const
+std::string Rcmd::Process::Isis::Process_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "process";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::Process_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
     if (protocol_id.is_set || is_set(protocol_id.yfilter)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance-name")
     {
@@ -84,7 +981,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const st
                 return c;
             }
         }
-        auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName>();
+        auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName>();
         c->parent = this;
         instance_name.push_back(c);
         return c;
@@ -93,7 +990,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance_name)
@@ -104,82 +1001,82 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get
     return children;
 }
 
-void Rcmd::Process::Ldp::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rcmd::Process::Isis::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "process-name")
-    {
-        process_name = value;
-        process_name.value_namespace = name_space;
-        process_name.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "protocol-id")
     {
         protocol_id = value;
         protocol_id.value_namespace = name_space;
         protocol_id.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void Rcmd::Process::Ldp::Process_::set_filter(const std::string & value_path, YFilter yfilter)
-{
     if(value_path == "process-name")
     {
-        process_name.yfilter = yfilter;
+        process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Isis::Process_::set_filter(const std::string & value_path, YFilter yfilter)
+{
     if(value_path == "protocol-id")
     {
         protocol_id.yfilter = yfilter;
     }
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
+    }
 }
 
-bool Rcmd::Process::Ldp::Process_::has_leaf_or_child_of_name(const std::string & name) const
+bool Rcmd::Process::Isis::Process_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instance-name" || name == "process-name" || name == "protocol-id")
+    if(name == "instance-name" || name == "protocol-id" || name == "process-name")
         return true;
     return false;
 }
 
-Rcmd::Process::Ldp::Process_::InstanceName::InstanceName()
+Rcmd::Process::Isis::Process_::InstanceName::InstanceName()
     :
-    arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"},
-    arch_spf_event{YType::uint32, "arch-spf-event"},
-    last_update_time{YType::str, "last-update-time"},
-    lsp_regeneration_count{YType::uint32, "lsp-regeneration-count"},
-    lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
     name{YType::str, "name"},
+    last_update_time{YType::str, "last-update-time"},
+    total_spf_nos{YType::uint32, "total-spf-nos"},
+    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
     no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
     not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
-    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
-    total_spf_nos{YType::uint32, "total-spf-nos"}
+    lsp_regeneration_count{YType::uint32, "lsp-regeneration-count"},
+    lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
+    arch_spf_event{YType::uint32, "arch-spf-event"},
+    arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"}
 {
 
     yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rcmd::Process::Ldp::Process_::InstanceName::~InstanceName()
+Rcmd::Process::Isis::Process_::InstanceName::~InstanceName()
 {
 }
 
-bool Rcmd::Process::Ldp::Process_::InstanceName::has_data() const
+bool Rcmd::Process::Isis::Process_::InstanceName::has_data() const
 {
     for (std::size_t index=0; index<instance.size(); index++)
     {
         if(instance[index]->has_data())
             return true;
     }
-    return arch_lsp_regeneration.is_set
-	|| arch_spf_event.is_set
+    return name.is_set
 	|| last_update_time.is_set
-	|| lsp_regeneration_count.is_set
-	|| lsp_regeneration_serial.is_set
-	|| name.is_set
+	|| total_spf_nos.is_set
+	|| route_change_spf_nos.is_set
 	|| no_route_change_spf_nos.is_set
 	|| not_interested_spf_nos.is_set
-	|| route_change_spf_nos.is_set
-	|| total_spf_nos.is_set;
+	|| lsp_regeneration_count.is_set
+	|| lsp_regeneration_serial.is_set
+	|| arch_spf_event.is_set
+	|| arch_lsp_regeneration.is_set;
 }
 
-bool Rcmd::Process::Ldp::Process_::InstanceName::has_operation() const
+bool Rcmd::Process::Isis::Process_::InstanceName::has_operation() const
 {
     for (std::size_t index=0; index<instance.size(); index++)
     {
@@ -187,52 +1084,52 @@ bool Rcmd::Process::Ldp::Process_::InstanceName::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(arch_lsp_regeneration.yfilter)
-	|| ydk::is_set(arch_spf_event.yfilter)
-	|| ydk::is_set(last_update_time.yfilter)
-	|| ydk::is_set(lsp_regeneration_count.yfilter)
-	|| ydk::is_set(lsp_regeneration_serial.yfilter)
 	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
 	|| ydk::is_set(no_route_change_spf_nos.yfilter)
 	|| ydk::is_set(not_interested_spf_nos.yfilter)
-	|| ydk::is_set(route_change_spf_nos.yfilter)
-	|| ydk::is_set(total_spf_nos.yfilter);
+	|| ydk::is_set(lsp_regeneration_count.yfilter)
+	|| ydk::is_set(lsp_regeneration_serial.yfilter)
+	|| ydk::is_set(arch_spf_event.yfilter)
+	|| ydk::is_set(arch_lsp_regeneration.yfilter);
 }
 
-std::string Rcmd::Process::Ldp::Process_::InstanceName::get_absolute_path() const
+std::string Rcmd::Process::Isis::Process_::InstanceName::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/ldp/process/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/isis/process/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Rcmd::Process::Ldp::Process_::InstanceName::get_segment_path() const
+std::string Rcmd::Process::Isis::Process_::InstanceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance-name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::InstanceName::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::Process_::InstanceName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
-    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
-    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
     if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
     if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
+    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
+    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
+    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
@@ -244,7 +1141,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by
                 return c;
             }
         }
-        auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName::Instance>();
+        auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName::Instance>();
         c->parent = this;
         instance.push_back(c);
         return c;
@@ -253,7 +1150,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance)
@@ -264,25 +1161,43 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::Ins
     return children;
 }
 
-void Rcmd::Process::Ldp::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rcmd::Process::Isis::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "arch-lsp-regeneration")
+    if(value_path == "name")
     {
-        arch_lsp_regeneration = value;
-        arch_lsp_regeneration.value_namespace = name_space;
-        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "arch-spf-event")
-    {
-        arch_spf_event = value;
-        arch_spf_event.value_namespace = name_space;
-        arch_spf_event.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
         last_update_time.value_namespace = name_space;
         last_update_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-regeneration-count")
     {
@@ -296,63 +1211,37 @@ void Rcmd::Process::Ldp::Process_::InstanceName::set_value(const std::string & v
         lsp_regeneration_serial.value_namespace = name_space;
         lsp_regeneration_serial.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
+    if(value_path == "arch-spf-event")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        arch_spf_event = value;
+        arch_spf_event.value_namespace = name_space;
+        arch_spf_event.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-route-change-spf-nos")
+    if(value_path == "arch-lsp-regeneration")
     {
-        no_route_change_spf_nos = value;
-        no_route_change_spf_nos.value_namespace = name_space;
-        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "not-interested-spf-nos")
-    {
-        not_interested_spf_nos = value;
-        not_interested_spf_nos.value_namespace = name_space;
-        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-change-spf-nos")
-    {
-        route_change_spf_nos = value;
-        route_change_spf_nos.value_namespace = name_space;
-        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-spf-nos")
-    {
-        total_spf_nos = value;
-        total_spf_nos.value_namespace = name_space;
-        total_spf_nos.value_namespace_prefix = name_space_prefix;
+        arch_lsp_regeneration = value;
+        arch_lsp_regeneration.value_namespace = name_space;
+        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rcmd::Process::Ldp::Process_::InstanceName::set_filter(const std::string & value_path, YFilter yfilter)
+void Rcmd::Process::Isis::Process_::InstanceName::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "arch-lsp-regeneration")
+    if(value_path == "name")
     {
-        arch_lsp_regeneration.yfilter = yfilter;
-    }
-    if(value_path == "arch-spf-event")
-    {
-        arch_spf_event.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
     if(value_path == "last-update-time")
     {
         last_update_time.yfilter = yfilter;
     }
-    if(value_path == "lsp-regeneration-count")
+    if(value_path == "total-spf-nos")
     {
-        lsp_regeneration_count.yfilter = yfilter;
+        total_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "lsp-regeneration-serial")
+    if(value_path == "route-change-spf-nos")
     {
-        lsp_regeneration_serial.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
+        route_change_spf_nos.yfilter = yfilter;
     }
     if(value_path == "no-route-change-spf-nos")
     {
@@ -362,149 +1251,139 @@ void Rcmd::Process::Ldp::Process_::InstanceName::set_filter(const std::string & 
     {
         not_interested_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "route-change-spf-nos")
+    if(value_path == "lsp-regeneration-count")
     {
-        route_change_spf_nos.yfilter = yfilter;
+        lsp_regeneration_count.yfilter = yfilter;
     }
-    if(value_path == "total-spf-nos")
+    if(value_path == "lsp-regeneration-serial")
     {
-        total_spf_nos.yfilter = yfilter;
+        lsp_regeneration_serial.yfilter = yfilter;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event.yfilter = yfilter;
+    }
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration.yfilter = yfilter;
     }
 }
 
-bool Rcmd::Process::Ldp::Process_::InstanceName::has_leaf_or_child_of_name(const std::string & name) const
+bool Rcmd::Process::Isis::Process_::InstanceName::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instance" || name == "arch-lsp-regeneration" || name == "arch-spf-event" || name == "last-update-time" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "name" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "total-spf-nos")
+    if(name == "instance" || name == "name" || name == "last-update-time" || name == "total-spf-nos" || name == "route-change-spf-nos" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "arch-spf-event" || name == "arch-lsp-regeneration")
         return true;
     return false;
 }
 
-Rcmd::Process::Ldp::Process_::InstanceName::Instance::Instance()
+Rcmd::Process::Isis::Process_::InstanceName::Instance::Instance()
     :
-    arch_spf_run{YType::uint32, "arch-spf-run"},
-    fwd_referenced{YType::enumeration, "fwd-referenced"},
-    instance_deleted{YType::enumeration, "instance-deleted"},
     instance_id{YType::uint32, "instance-id"},
     instance_state{YType::enumeration, "instance-state"},
+    instance_deleted{YType::enumeration, "instance-deleted"},
+    fwd_referenced{YType::enumeration, "fwd-referenced"},
     last_update_time{YType::str, "last-update-time"},
-    no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
     node_id{YType::uint32, "node-id"},
-    not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
-    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
     spf_offset{YType::uint32, "spf-offset"},
     total_spf_nos{YType::uint32, "total-spf-nos"},
+    arch_spf_run{YType::uint32, "arch-spf-run"},
+    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
+    no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
+    not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
     total_spt_nos{YType::uint32, "total-spt-nos"}
 {
 
     yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rcmd::Process::Ldp::Process_::InstanceName::Instance::~Instance()
+Rcmd::Process::Isis::Process_::InstanceName::Instance::~Instance()
 {
 }
 
-bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_data() const
+bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_data() const
 {
-    return arch_spf_run.is_set
-	|| fwd_referenced.is_set
-	|| instance_deleted.is_set
-	|| instance_id.is_set
+    return instance_id.is_set
 	|| instance_state.is_set
+	|| instance_deleted.is_set
+	|| fwd_referenced.is_set
 	|| last_update_time.is_set
-	|| no_route_change_spf_nos.is_set
 	|| node_id.is_set
-	|| not_interested_spf_nos.is_set
-	|| route_change_spf_nos.is_set
 	|| spf_offset.is_set
 	|| total_spf_nos.is_set
+	|| arch_spf_run.is_set
+	|| route_change_spf_nos.is_set
+	|| no_route_change_spf_nos.is_set
+	|| not_interested_spf_nos.is_set
 	|| total_spt_nos.is_set;
 }
 
-bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_operation() const
+bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(arch_spf_run.yfilter)
-	|| ydk::is_set(fwd_referenced.yfilter)
-	|| ydk::is_set(instance_deleted.yfilter)
 	|| ydk::is_set(instance_id.yfilter)
 	|| ydk::is_set(instance_state.yfilter)
+	|| ydk::is_set(instance_deleted.yfilter)
+	|| ydk::is_set(fwd_referenced.yfilter)
 	|| ydk::is_set(last_update_time.yfilter)
-	|| ydk::is_set(no_route_change_spf_nos.yfilter)
 	|| ydk::is_set(node_id.yfilter)
-	|| ydk::is_set(not_interested_spf_nos.yfilter)
-	|| ydk::is_set(route_change_spf_nos.yfilter)
 	|| ydk::is_set(spf_offset.yfilter)
 	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(arch_spf_run.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
 	|| ydk::is_set(total_spt_nos.yfilter);
 }
 
-std::string Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_absolute_path() const
+std::string Rcmd::Process::Isis::Process_::InstanceName::Instance::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/ldp/process/instance-name/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/isis/process/instance-name/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_segment_path() const
+std::string Rcmd::Process::Isis::Process_::InstanceName::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::Process_::InstanceName::Instance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
-    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
-    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
     if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
     if (instance_state.is_set || is_set(instance_state.yfilter)) leaf_name_data.push_back(instance_state.get_name_leafdata());
+    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
+    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
     if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
     if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
     if (spf_offset.is_set || is_set(spf_offset.yfilter)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
     if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
     if (total_spt_nos.is_set || is_set(total_spt_nos.yfilter)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rcmd::Process::Isis::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "arch-spf-run")
-    {
-        arch_spf_run = value;
-        arch_spf_run.value_namespace = name_space;
-        arch_spf_run.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fwd-referenced")
-    {
-        fwd_referenced = value;
-        fwd_referenced.value_namespace = name_space;
-        fwd_referenced.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "instance-deleted")
-    {
-        instance_deleted = value;
-        instance_deleted.value_namespace = name_space;
-        instance_deleted.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "instance-id")
     {
         instance_id = value;
@@ -517,35 +1396,29 @@ void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::
         instance_state.value_namespace = name_space;
         instance_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "instance-deleted")
+    {
+        instance_deleted = value;
+        instance_deleted.value_namespace = name_space;
+        instance_deleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fwd-referenced")
+    {
+        fwd_referenced = value;
+        fwd_referenced.value_namespace = name_space;
+        fwd_referenced.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
         last_update_time.value_namespace = name_space;
         last_update_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-route-change-spf-nos")
-    {
-        no_route_change_spf_nos = value;
-        no_route_change_spf_nos.value_namespace = name_space;
-        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "node-id")
     {
         node_id = value;
         node_id.value_namespace = name_space;
         node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "not-interested-spf-nos")
-    {
-        not_interested_spf_nos = value;
-        not_interested_spf_nos.value_namespace = name_space;
-        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-change-spf-nos")
-    {
-        route_change_spf_nos = value;
-        route_change_spf_nos.value_namespace = name_space;
-        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-offset")
     {
@@ -559,6 +1432,30 @@ void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::
         total_spf_nos.value_namespace = name_space;
         total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "arch-spf-run")
+    {
+        arch_spf_run = value;
+        arch_spf_run.value_namespace = name_space;
+        arch_spf_run.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "total-spt-nos")
     {
         total_spt_nos = value;
@@ -567,20 +1464,8 @@ void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::
     }
 }
 
-void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_filter(const std::string & value_path, YFilter yfilter)
+void Rcmd::Process::Isis::Process_::InstanceName::Instance::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "arch-spf-run")
-    {
-        arch_spf_run.yfilter = yfilter;
-    }
-    if(value_path == "fwd-referenced")
-    {
-        fwd_referenced.yfilter = yfilter;
-    }
-    if(value_path == "instance-deleted")
-    {
-        instance_deleted.yfilter = yfilter;
-    }
     if(value_path == "instance-id")
     {
         instance_id.yfilter = yfilter;
@@ -589,25 +1474,21 @@ void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_filter(const std:
     {
         instance_state.yfilter = yfilter;
     }
+    if(value_path == "instance-deleted")
+    {
+        instance_deleted.yfilter = yfilter;
+    }
+    if(value_path == "fwd-referenced")
+    {
+        fwd_referenced.yfilter = yfilter;
+    }
     if(value_path == "last-update-time")
     {
         last_update_time.yfilter = yfilter;
     }
-    if(value_path == "no-route-change-spf-nos")
-    {
-        no_route_change_spf_nos.yfilter = yfilter;
-    }
     if(value_path == "node-id")
     {
         node_id.yfilter = yfilter;
-    }
-    if(value_path == "not-interested-spf-nos")
-    {
-        not_interested_spf_nos.yfilter = yfilter;
-    }
-    if(value_path == "route-change-spf-nos")
-    {
-        route_change_spf_nos.yfilter = yfilter;
     }
     if(value_path == "spf-offset")
     {
@@ -617,15 +1498,31 @@ void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_filter(const std:
     {
         total_spf_nos.yfilter = yfilter;
     }
+    if(value_path == "arch-spf-run")
+    {
+        arch_spf_run.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
     if(value_path == "total-spt-nos")
     {
         total_spt_nos.yfilter = yfilter;
     }
 }
 
-bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_leaf_or_child_of_name(const std::string & name) const
+bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "arch-spf-run" || name == "fwd-referenced" || name == "instance-deleted" || name == "instance-id" || name == "instance-state" || name == "last-update-time" || name == "no-route-change-spf-nos" || name == "node-id" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "spf-offset" || name == "total-spf-nos" || name == "total-spt-nos")
+    if(name == "instance-id" || name == "instance-state" || name == "instance-deleted" || name == "fwd-referenced" || name == "last-update-time" || name == "node-id" || name == "spf-offset" || name == "total-spf-nos" || name == "arch-spf-run" || name == "route-change-spf-nos" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "total-spt-nos")
         return true;
     return false;
 }
@@ -732,8 +1629,8 @@ bool Rcmd::Process::Ospf::has_leaf_or_child_of_name(const std::string & name) co
 
 Rcmd::Process::Ospf::Process_::Process_()
     :
-    process_name{YType::str, "process-name"},
-    protocol_id{YType::enumeration, "protocol-id"}
+    protocol_id{YType::enumeration, "protocol-id"},
+    process_name{YType::str, "process-name"}
 {
 
     yang_name = "process"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
@@ -750,8 +1647,8 @@ bool Rcmd::Process::Ospf::Process_::has_data() const
         if(instance_name[index]->has_data())
             return true;
     }
-    return process_name.is_set
-	|| protocol_id.is_set;
+    return protocol_id.is_set
+	|| process_name.is_set;
 }
 
 bool Rcmd::Process::Ospf::Process_::has_operation() const
@@ -762,8 +1659,8 @@ bool Rcmd::Process::Ospf::Process_::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(process_name.yfilter)
-	|| ydk::is_set(protocol_id.yfilter);
+	|| ydk::is_set(protocol_id.yfilter)
+	|| ydk::is_set(process_name.yfilter);
 }
 
 std::string Rcmd::Process::Ospf::Process_::get_absolute_path() const
@@ -784,8 +1681,8 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ospf::Process_::ge
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
     if (protocol_id.is_set || is_set(protocol_id.yfilter)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -825,51 +1722,51 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::ge
 
 void Rcmd::Process::Ospf::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "process-name")
-    {
-        process_name = value;
-        process_name.value_namespace = name_space;
-        process_name.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "protocol-id")
     {
         protocol_id = value;
         protocol_id.value_namespace = name_space;
         protocol_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "process-name")
+    {
+        process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Rcmd::Process::Ospf::Process_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "process-name")
-    {
-        process_name.yfilter = yfilter;
-    }
     if(value_path == "protocol-id")
     {
         protocol_id.yfilter = yfilter;
+    }
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
     }
 }
 
 bool Rcmd::Process::Ospf::Process_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instance-name" || name == "process-name" || name == "protocol-id")
+    if(name == "instance-name" || name == "protocol-id" || name == "process-name")
         return true;
     return false;
 }
 
 Rcmd::Process::Ospf::Process_::InstanceName::InstanceName()
     :
-    arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"},
-    arch_spf_event{YType::uint32, "arch-spf-event"},
-    last_update_time{YType::str, "last-update-time"},
-    lsp_regeneration_count{YType::uint32, "lsp-regeneration-count"},
-    lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
     name{YType::str, "name"},
+    last_update_time{YType::str, "last-update-time"},
+    total_spf_nos{YType::uint32, "total-spf-nos"},
+    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
     no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
     not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
-    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
-    total_spf_nos{YType::uint32, "total-spf-nos"}
+    lsp_regeneration_count{YType::uint32, "lsp-regeneration-count"},
+    lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
+    arch_spf_event{YType::uint32, "arch-spf-event"},
+    arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"}
 {
 
     yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
@@ -886,16 +1783,16 @@ bool Rcmd::Process::Ospf::Process_::InstanceName::has_data() const
         if(instance[index]->has_data())
             return true;
     }
-    return arch_lsp_regeneration.is_set
-	|| arch_spf_event.is_set
+    return name.is_set
 	|| last_update_time.is_set
-	|| lsp_regeneration_count.is_set
-	|| lsp_regeneration_serial.is_set
-	|| name.is_set
+	|| total_spf_nos.is_set
+	|| route_change_spf_nos.is_set
 	|| no_route_change_spf_nos.is_set
 	|| not_interested_spf_nos.is_set
-	|| route_change_spf_nos.is_set
-	|| total_spf_nos.is_set;
+	|| lsp_regeneration_count.is_set
+	|| lsp_regeneration_serial.is_set
+	|| arch_spf_event.is_set
+	|| arch_lsp_regeneration.is_set;
 }
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::has_operation() const
@@ -906,16 +1803,16 @@ bool Rcmd::Process::Ospf::Process_::InstanceName::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(arch_lsp_regeneration.yfilter)
-	|| ydk::is_set(arch_spf_event.yfilter)
-	|| ydk::is_set(last_update_time.yfilter)
-	|| ydk::is_set(lsp_regeneration_count.yfilter)
-	|| ydk::is_set(lsp_regeneration_serial.yfilter)
 	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
 	|| ydk::is_set(no_route_change_spf_nos.yfilter)
 	|| ydk::is_set(not_interested_spf_nos.yfilter)
-	|| ydk::is_set(route_change_spf_nos.yfilter)
-	|| ydk::is_set(total_spf_nos.yfilter);
+	|| ydk::is_set(lsp_regeneration_count.yfilter)
+	|| ydk::is_set(lsp_regeneration_serial.yfilter)
+	|| ydk::is_set(arch_spf_event.yfilter)
+	|| ydk::is_set(arch_lsp_regeneration.yfilter);
 }
 
 std::string Rcmd::Process::Ospf::Process_::InstanceName::get_absolute_path() const
@@ -936,16 +1833,16 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ospf::Process_::In
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
-    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
-    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
     if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
     if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
+    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
+    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
+    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -985,17 +1882,11 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::In
 
 void Rcmd::Process::Ospf::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "arch-lsp-regeneration")
+    if(value_path == "name")
     {
-        arch_lsp_regeneration = value;
-        arch_lsp_regeneration.value_namespace = name_space;
-        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "arch-spf-event")
-    {
-        arch_spf_event = value;
-        arch_spf_event.value_namespace = name_space;
-        arch_spf_event.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
@@ -1003,23 +1894,17 @@ void Rcmd::Process::Ospf::Process_::InstanceName::set_value(const std::string & 
         last_update_time.value_namespace = name_space;
         last_update_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "lsp-regeneration-count")
+    if(value_path == "total-spf-nos")
     {
-        lsp_regeneration_count = value;
-        lsp_regeneration_count.value_namespace = name_space;
-        lsp_regeneration_count.value_namespace_prefix = name_space_prefix;
+        total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "lsp-regeneration-serial")
+    if(value_path == "route-change-spf-nos")
     {
-        lsp_regeneration_serial = value;
-        lsp_regeneration_serial.value_namespace = name_space;
-        lsp_regeneration_serial.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-route-change-spf-nos")
     {
@@ -1033,45 +1918,49 @@ void Rcmd::Process::Ospf::Process_::InstanceName::set_value(const std::string & 
         not_interested_spf_nos.value_namespace = name_space;
         not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "route-change-spf-nos")
+    if(value_path == "lsp-regeneration-count")
     {
-        route_change_spf_nos = value;
-        route_change_spf_nos.value_namespace = name_space;
-        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+        lsp_regeneration_count = value;
+        lsp_regeneration_count.value_namespace = name_space;
+        lsp_regeneration_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "total-spf-nos")
+    if(value_path == "lsp-regeneration-serial")
     {
-        total_spf_nos = value;
-        total_spf_nos.value_namespace = name_space;
-        total_spf_nos.value_namespace_prefix = name_space_prefix;
+        lsp_regeneration_serial = value;
+        lsp_regeneration_serial.value_namespace = name_space;
+        lsp_regeneration_serial.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event = value;
+        arch_spf_event.value_namespace = name_space;
+        arch_spf_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration = value;
+        arch_lsp_regeneration.value_namespace = name_space;
+        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Rcmd::Process::Ospf::Process_::InstanceName::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "arch-lsp-regeneration")
+    if(value_path == "name")
     {
-        arch_lsp_regeneration.yfilter = yfilter;
-    }
-    if(value_path == "arch-spf-event")
-    {
-        arch_spf_event.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
     if(value_path == "last-update-time")
     {
         last_update_time.yfilter = yfilter;
     }
-    if(value_path == "lsp-regeneration-count")
+    if(value_path == "total-spf-nos")
     {
-        lsp_regeneration_count.yfilter = yfilter;
+        total_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "lsp-regeneration-serial")
+    if(value_path == "route-change-spf-nos")
     {
-        lsp_regeneration_serial.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
+        route_change_spf_nos.yfilter = yfilter;
     }
     if(value_path == "no-route-change-spf-nos")
     {
@@ -1081,37 +1970,45 @@ void Rcmd::Process::Ospf::Process_::InstanceName::set_filter(const std::string &
     {
         not_interested_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "route-change-spf-nos")
+    if(value_path == "lsp-regeneration-count")
     {
-        route_change_spf_nos.yfilter = yfilter;
+        lsp_regeneration_count.yfilter = yfilter;
     }
-    if(value_path == "total-spf-nos")
+    if(value_path == "lsp-regeneration-serial")
     {
-        total_spf_nos.yfilter = yfilter;
+        lsp_regeneration_serial.yfilter = yfilter;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event.yfilter = yfilter;
+    }
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration.yfilter = yfilter;
     }
 }
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instance" || name == "arch-lsp-regeneration" || name == "arch-spf-event" || name == "last-update-time" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "name" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "total-spf-nos")
+    if(name == "instance" || name == "name" || name == "last-update-time" || name == "total-spf-nos" || name == "route-change-spf-nos" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "arch-spf-event" || name == "arch-lsp-regeneration")
         return true;
     return false;
 }
 
 Rcmd::Process::Ospf::Process_::InstanceName::Instance::Instance()
     :
-    arch_spf_run{YType::uint32, "arch-spf-run"},
-    fwd_referenced{YType::enumeration, "fwd-referenced"},
-    instance_deleted{YType::enumeration, "instance-deleted"},
     instance_id{YType::uint32, "instance-id"},
     instance_state{YType::enumeration, "instance-state"},
+    instance_deleted{YType::enumeration, "instance-deleted"},
+    fwd_referenced{YType::enumeration, "fwd-referenced"},
     last_update_time{YType::str, "last-update-time"},
-    no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
     node_id{YType::uint32, "node-id"},
-    not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
-    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
     spf_offset{YType::uint32, "spf-offset"},
     total_spf_nos{YType::uint32, "total-spf-nos"},
+    arch_spf_run{YType::uint32, "arch-spf-run"},
+    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
+    no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
+    not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
     total_spt_nos{YType::uint32, "total-spt-nos"}
 {
 
@@ -1124,36 +2021,36 @@ Rcmd::Process::Ospf::Process_::InstanceName::Instance::~Instance()
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_data() const
 {
-    return arch_spf_run.is_set
-	|| fwd_referenced.is_set
-	|| instance_deleted.is_set
-	|| instance_id.is_set
+    return instance_id.is_set
 	|| instance_state.is_set
+	|| instance_deleted.is_set
+	|| fwd_referenced.is_set
 	|| last_update_time.is_set
-	|| no_route_change_spf_nos.is_set
 	|| node_id.is_set
-	|| not_interested_spf_nos.is_set
-	|| route_change_spf_nos.is_set
 	|| spf_offset.is_set
 	|| total_spf_nos.is_set
+	|| arch_spf_run.is_set
+	|| route_change_spf_nos.is_set
+	|| no_route_change_spf_nos.is_set
+	|| not_interested_spf_nos.is_set
 	|| total_spt_nos.is_set;
 }
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(arch_spf_run.yfilter)
-	|| ydk::is_set(fwd_referenced.yfilter)
-	|| ydk::is_set(instance_deleted.yfilter)
 	|| ydk::is_set(instance_id.yfilter)
 	|| ydk::is_set(instance_state.yfilter)
+	|| ydk::is_set(instance_deleted.yfilter)
+	|| ydk::is_set(fwd_referenced.yfilter)
 	|| ydk::is_set(last_update_time.yfilter)
-	|| ydk::is_set(no_route_change_spf_nos.yfilter)
 	|| ydk::is_set(node_id.yfilter)
-	|| ydk::is_set(not_interested_spf_nos.yfilter)
-	|| ydk::is_set(route_change_spf_nos.yfilter)
 	|| ydk::is_set(spf_offset.yfilter)
 	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(arch_spf_run.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
 	|| ydk::is_set(total_spt_nos.yfilter);
 }
 
@@ -1175,18 +2072,18 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ospf::Process_::In
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
-    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
-    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
     if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
     if (instance_state.is_set || is_set(instance_state.yfilter)) leaf_name_data.push_back(instance_state.get_name_leafdata());
+    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
+    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
     if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
     if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
     if (spf_offset.is_set || is_set(spf_offset.yfilter)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
     if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
     if (total_spt_nos.is_set || is_set(total_spt_nos.yfilter)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
 
     return leaf_name_data;
@@ -1206,24 +2103,6 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::In
 
 void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "arch-spf-run")
-    {
-        arch_spf_run = value;
-        arch_spf_run.value_namespace = name_space;
-        arch_spf_run.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fwd-referenced")
-    {
-        fwd_referenced = value;
-        fwd_referenced.value_namespace = name_space;
-        fwd_referenced.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "instance-deleted")
-    {
-        instance_deleted = value;
-        instance_deleted.value_namespace = name_space;
-        instance_deleted.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "instance-id")
     {
         instance_id = value;
@@ -1236,35 +2115,29 @@ void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_value(const std:
         instance_state.value_namespace = name_space;
         instance_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "instance-deleted")
+    {
+        instance_deleted = value;
+        instance_deleted.value_namespace = name_space;
+        instance_deleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fwd-referenced")
+    {
+        fwd_referenced = value;
+        fwd_referenced.value_namespace = name_space;
+        fwd_referenced.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
         last_update_time.value_namespace = name_space;
         last_update_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-route-change-spf-nos")
-    {
-        no_route_change_spf_nos = value;
-        no_route_change_spf_nos.value_namespace = name_space;
-        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "node-id")
     {
         node_id = value;
         node_id.value_namespace = name_space;
         node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "not-interested-spf-nos")
-    {
-        not_interested_spf_nos = value;
-        not_interested_spf_nos.value_namespace = name_space;
-        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-change-spf-nos")
-    {
-        route_change_spf_nos = value;
-        route_change_spf_nos.value_namespace = name_space;
-        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-offset")
     {
@@ -1278,6 +2151,30 @@ void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_value(const std:
         total_spf_nos.value_namespace = name_space;
         total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "arch-spf-run")
+    {
+        arch_spf_run = value;
+        arch_spf_run.value_namespace = name_space;
+        arch_spf_run.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "total-spt-nos")
     {
         total_spt_nos = value;
@@ -1288,18 +2185,6 @@ void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_value(const std:
 
 void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "arch-spf-run")
-    {
-        arch_spf_run.yfilter = yfilter;
-    }
-    if(value_path == "fwd-referenced")
-    {
-        fwd_referenced.yfilter = yfilter;
-    }
-    if(value_path == "instance-deleted")
-    {
-        instance_deleted.yfilter = yfilter;
-    }
     if(value_path == "instance-id")
     {
         instance_id.yfilter = yfilter;
@@ -1308,25 +2193,21 @@ void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_filter(const std
     {
         instance_state.yfilter = yfilter;
     }
+    if(value_path == "instance-deleted")
+    {
+        instance_deleted.yfilter = yfilter;
+    }
+    if(value_path == "fwd-referenced")
+    {
+        fwd_referenced.yfilter = yfilter;
+    }
     if(value_path == "last-update-time")
     {
         last_update_time.yfilter = yfilter;
     }
-    if(value_path == "no-route-change-spf-nos")
-    {
-        no_route_change_spf_nos.yfilter = yfilter;
-    }
     if(value_path == "node-id")
     {
         node_id.yfilter = yfilter;
-    }
-    if(value_path == "not-interested-spf-nos")
-    {
-        not_interested_spf_nos.yfilter = yfilter;
-    }
-    if(value_path == "route-change-spf-nos")
-    {
-        route_change_spf_nos.yfilter = yfilter;
     }
     if(value_path == "spf-offset")
     {
@@ -1336,6 +2217,22 @@ void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_filter(const std
     {
         total_spf_nos.yfilter = yfilter;
     }
+    if(value_path == "arch-spf-run")
+    {
+        arch_spf_run.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
     if(value_path == "total-spt-nos")
     {
         total_spt_nos.yfilter = yfilter;
@@ -1344,54 +2241,56 @@ void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_filter(const std
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "arch-spf-run" || name == "fwd-referenced" || name == "instance-deleted" || name == "instance-id" || name == "instance-state" || name == "last-update-time" || name == "no-route-change-spf-nos" || name == "node-id" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "spf-offset" || name == "total-spf-nos" || name == "total-spt-nos")
+    if(name == "instance-id" || name == "instance-state" || name == "instance-deleted" || name == "fwd-referenced" || name == "last-update-time" || name == "node-id" || name == "spf-offset" || name == "total-spf-nos" || name == "arch-spf-run" || name == "route-change-spf-nos" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "total-spt-nos")
         return true;
     return false;
 }
 
-Rcmd::Server::Server()
-    :
-    detail(std::make_shared<Rcmd::Server::Detail>())
-	,normal(std::make_shared<Rcmd::Server::Normal>())
+Rcmd::Process::Ldp::Ldp()
 {
-    detail->parent = this;
-    normal->parent = this;
 
-    yang_name = "server"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rcmd::Server::~Server()
+Rcmd::Process::Ldp::~Ldp()
 {
 }
 
-bool Rcmd::Server::has_data() const
+bool Rcmd::Process::Ldp::has_data() const
 {
-    return (detail !=  nullptr && detail->has_data())
-	|| (normal !=  nullptr && normal->has_data());
+    for (std::size_t index=0; index<process.size(); index++)
+    {
+        if(process[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool Rcmd::Server::has_operation() const
+bool Rcmd::Process::Ldp::has_operation() const
 {
-    return is_set(yfilter)
-	|| (detail !=  nullptr && detail->has_operation())
-	|| (normal !=  nullptr && normal->has_operation());
+    for (std::size_t index=0; index<process.size(); index++)
+    {
+        if(process[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string Rcmd::Server::get_absolute_path() const
+std::string Rcmd::Process::Ldp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Rcmd::Server::get_segment_path() const
+std::string Rcmd::Process::Ldp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server";
+    path_buffer << "ldp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1400,232 +2299,11 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Server::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Rcmd::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "detail")
+    if(child_yang_name == "process")
     {
-        if(detail == nullptr)
-        {
-            detail = std::make_shared<Rcmd::Server::Detail>();
-        }
-        return detail;
-    }
-
-    if(child_yang_name == "normal")
-    {
-        if(normal == nullptr)
-        {
-            normal = std::make_shared<Rcmd::Server::Normal>();
-        }
-        return normal;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(detail != nullptr)
-    {
-        children["detail"] = detail;
-    }
-
-    if(normal != nullptr)
-    {
-        children["normal"] = normal;
-    }
-
-    return children;
-}
-
-void Rcmd::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rcmd::Server::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rcmd::Server::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "detail" || name == "normal")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Detail::Detail()
-    :
-    archive_count{YType::uint32, "archive-count"},
-    diag_node_count{YType::uint32, "diag-node-count"},
-    diagnostics_archive_node{YType::str, "diagnostics-archive-node"},
-    diagnostics_archive_path{YType::str, "diagnostics-archive-path"},
-    disabled_node_count{YType::uint32, "disabled-node-count"},
-    event_buffer_size{YType::uint32, "event-buffer-size"},
-    host_name{YType::str, "host-name"},
-    in_active_node_count{YType::uint32, "in-active-node-count"},
-    interface_count{YType::uint32, "interface-count"},
-    last_archival_error{YType::str, "last-archival-error"},
-    last_archival_error_time{YType::str, "last-archival-error-time"},
-    last_archival_status{YType::str, "last-archival-status"},
-    last_process_duration{YType::str, "last-process-duration"},
-    last_process_start_time{YType::str, "last-process-start-time"},
-    last_process_state{YType::enumeration, "last-process-state"},
-    max_events{YType::uint32, "max-events"},
-    max_interface_count{YType::uint32, "max-interface-count"},
-    monitoring_interval{YType::uint32, "monitoring-interval"},
-    next_interval{YType::uint32, "next-interval"},
-    node_lc_count{YType::uint32, "node-lc-count"},
-    node_rp_count{YType::uint32, "node-rp-count"},
-    process_count{YType::uint32, "process-count"},
-    reports_archive_node{YType::str, "reports-archive-node"},
-    reports_archive_path{YType::str, "reports-archive-path"},
-    spf_process_count{YType::uint32, "spf-process-count"},
-    status{YType::enumeration, "status"}
-{
-
-    yang_name = "detail"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Detail::~Detail()
-{
-}
-
-bool Rcmd::Server::Detail::has_data() const
-{
-    for (std::size_t index=0; index<protocol_config.size(); index++)
-    {
-        if(protocol_config[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<server_detail.size(); index++)
-    {
-        if(server_detail[index]->has_data())
-            return true;
-    }
-    return archive_count.is_set
-	|| diag_node_count.is_set
-	|| diagnostics_archive_node.is_set
-	|| diagnostics_archive_path.is_set
-	|| disabled_node_count.is_set
-	|| event_buffer_size.is_set
-	|| host_name.is_set
-	|| in_active_node_count.is_set
-	|| interface_count.is_set
-	|| last_archival_error.is_set
-	|| last_archival_error_time.is_set
-	|| last_archival_status.is_set
-	|| last_process_duration.is_set
-	|| last_process_start_time.is_set
-	|| last_process_state.is_set
-	|| max_events.is_set
-	|| max_interface_count.is_set
-	|| monitoring_interval.is_set
-	|| next_interval.is_set
-	|| node_lc_count.is_set
-	|| node_rp_count.is_set
-	|| process_count.is_set
-	|| reports_archive_node.is_set
-	|| reports_archive_path.is_set
-	|| spf_process_count.is_set
-	|| status.is_set;
-}
-
-bool Rcmd::Server::Detail::has_operation() const
-{
-    for (std::size_t index=0; index<protocol_config.size(); index++)
-    {
-        if(protocol_config[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<server_detail.size(); index++)
-    {
-        if(server_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(archive_count.yfilter)
-	|| ydk::is_set(diag_node_count.yfilter)
-	|| ydk::is_set(diagnostics_archive_node.yfilter)
-	|| ydk::is_set(diagnostics_archive_path.yfilter)
-	|| ydk::is_set(disabled_node_count.yfilter)
-	|| ydk::is_set(event_buffer_size.yfilter)
-	|| ydk::is_set(host_name.yfilter)
-	|| ydk::is_set(in_active_node_count.yfilter)
-	|| ydk::is_set(interface_count.yfilter)
-	|| ydk::is_set(last_archival_error.yfilter)
-	|| ydk::is_set(last_archival_error_time.yfilter)
-	|| ydk::is_set(last_archival_status.yfilter)
-	|| ydk::is_set(last_process_duration.yfilter)
-	|| ydk::is_set(last_process_start_time.yfilter)
-	|| ydk::is_set(last_process_state.yfilter)
-	|| ydk::is_set(max_events.yfilter)
-	|| ydk::is_set(max_interface_count.yfilter)
-	|| ydk::is_set(monitoring_interval.yfilter)
-	|| ydk::is_set(next_interval.yfilter)
-	|| ydk::is_set(node_lc_count.yfilter)
-	|| ydk::is_set(node_rp_count.yfilter)
-	|| ydk::is_set(process_count.yfilter)
-	|| ydk::is_set(reports_archive_node.yfilter)
-	|| ydk::is_set(reports_archive_path.yfilter)
-	|| ydk::is_set(spf_process_count.yfilter)
-	|| ydk::is_set(status.yfilter);
-}
-
-std::string Rcmd::Server::Detail::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Detail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "detail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Detail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (archive_count.is_set || is_set(archive_count.yfilter)) leaf_name_data.push_back(archive_count.get_name_leafdata());
-    if (diag_node_count.is_set || is_set(diag_node_count.yfilter)) leaf_name_data.push_back(diag_node_count.get_name_leafdata());
-    if (diagnostics_archive_node.is_set || is_set(diagnostics_archive_node.yfilter)) leaf_name_data.push_back(diagnostics_archive_node.get_name_leafdata());
-    if (diagnostics_archive_path.is_set || is_set(diagnostics_archive_path.yfilter)) leaf_name_data.push_back(diagnostics_archive_path.get_name_leafdata());
-    if (disabled_node_count.is_set || is_set(disabled_node_count.yfilter)) leaf_name_data.push_back(disabled_node_count.get_name_leafdata());
-    if (event_buffer_size.is_set || is_set(event_buffer_size.yfilter)) leaf_name_data.push_back(event_buffer_size.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (in_active_node_count.is_set || is_set(in_active_node_count.yfilter)) leaf_name_data.push_back(in_active_node_count.get_name_leafdata());
-    if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
-    if (last_archival_error.is_set || is_set(last_archival_error.yfilter)) leaf_name_data.push_back(last_archival_error.get_name_leafdata());
-    if (last_archival_error_time.is_set || is_set(last_archival_error_time.yfilter)) leaf_name_data.push_back(last_archival_error_time.get_name_leafdata());
-    if (last_archival_status.is_set || is_set(last_archival_status.yfilter)) leaf_name_data.push_back(last_archival_status.get_name_leafdata());
-    if (last_process_duration.is_set || is_set(last_process_duration.yfilter)) leaf_name_data.push_back(last_process_duration.get_name_leafdata());
-    if (last_process_start_time.is_set || is_set(last_process_start_time.yfilter)) leaf_name_data.push_back(last_process_start_time.get_name_leafdata());
-    if (last_process_state.is_set || is_set(last_process_state.yfilter)) leaf_name_data.push_back(last_process_state.get_name_leafdata());
-    if (max_events.is_set || is_set(max_events.yfilter)) leaf_name_data.push_back(max_events.get_name_leafdata());
-    if (max_interface_count.is_set || is_set(max_interface_count.yfilter)) leaf_name_data.push_back(max_interface_count.get_name_leafdata());
-    if (monitoring_interval.is_set || is_set(monitoring_interval.yfilter)) leaf_name_data.push_back(monitoring_interval.get_name_leafdata());
-    if (next_interval.is_set || is_set(next_interval.yfilter)) leaf_name_data.push_back(next_interval.get_name_leafdata());
-    if (node_lc_count.is_set || is_set(node_lc_count.yfilter)) leaf_name_data.push_back(node_lc_count.get_name_leafdata());
-    if (node_rp_count.is_set || is_set(node_rp_count.yfilter)) leaf_name_data.push_back(node_rp_count.get_name_leafdata());
-    if (process_count.is_set || is_set(process_count.yfilter)) leaf_name_data.push_back(process_count.get_name_leafdata());
-    if (reports_archive_node.is_set || is_set(reports_archive_node.yfilter)) leaf_name_data.push_back(reports_archive_node.get_name_leafdata());
-    if (reports_archive_path.is_set || is_set(reports_archive_path.yfilter)) leaf_name_data.push_back(reports_archive_path.get_name_leafdata());
-    if (spf_process_count.is_set || is_set(spf_process_count.yfilter)) leaf_name_data.push_back(spf_process_count.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "protocol-config")
-    {
-        for(auto const & c : protocol_config)
+        for(auto const & c : process)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1633,15 +2311,107 @@ std::shared_ptr<Entity> Rcmd::Server::Detail::get_child_by_name(const std::strin
                 return c;
             }
         }
-        auto c = std::make_shared<Rcmd::Server::Detail::ProtocolConfig>();
+        auto c = std::make_shared<Rcmd::Process::Ldp::Process_>();
         c->parent = this;
-        protocol_config.push_back(c);
+        process.push_back(c);
         return c;
     }
 
-    if(child_yang_name == "server-detail")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : process)
     {
-        for(auto const & c : server_detail)
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Rcmd::Process::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rcmd::Process::Ldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Process::Ldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process")
+        return true;
+    return false;
+}
+
+Rcmd::Process::Ldp::Process_::Process_()
+    :
+    protocol_id{YType::enumeration, "protocol-id"},
+    process_name{YType::str, "process-name"}
+{
+
+    yang_name = "process"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Rcmd::Process::Ldp::Process_::~Process_()
+{
+}
+
+bool Rcmd::Process::Ldp::Process_::has_data() const
+{
+    for (std::size_t index=0; index<instance_name.size(); index++)
+    {
+        if(instance_name[index]->has_data())
+            return true;
+    }
+    return protocol_id.is_set
+	|| process_name.is_set;
+}
+
+bool Rcmd::Process::Ldp::Process_::has_operation() const
+{
+    for (std::size_t index=0; index<instance_name.size(); index++)
+    {
+        if(instance_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_id.yfilter)
+	|| ydk::is_set(process_name.yfilter);
+}
+
+std::string Rcmd::Process::Ldp::Process_::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/ldp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rcmd::Process::Ldp::Process_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "process";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (protocol_id.is_set || is_set(protocol_id.yfilter)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance-name")
+    {
+        for(auto const & c : instance_name)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1649,24 +2419,19 @@ std::shared_ptr<Entity> Rcmd::Server::Detail::get_child_by_name(const std::strin
                 return c;
             }
         }
-        auto c = std::make_shared<Rcmd::Server::Detail::ServerDetail>();
+        auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName>();
         c->parent = this;
-        server_detail.push_back(c);
+        instance_name.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : protocol_config)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : server_detail)
+    for (auto const & c : instance_name)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1674,343 +2439,139 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::get_childre
     return children;
 }
 
-void Rcmd::Server::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rcmd::Process::Ldp::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "archive-count")
+    if(value_path == "protocol-id")
     {
-        archive_count = value;
-        archive_count.value_namespace = name_space;
-        archive_count.value_namespace_prefix = name_space_prefix;
+        protocol_id = value;
+        protocol_id.value_namespace = name_space;
+        protocol_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "diag-node-count")
+    if(value_path == "process-name")
     {
-        diag_node_count = value;
-        diag_node_count.value_namespace = name_space;
-        diag_node_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diagnostics-archive-node")
-    {
-        diagnostics_archive_node = value;
-        diagnostics_archive_node.value_namespace = name_space;
-        diagnostics_archive_node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diagnostics-archive-path")
-    {
-        diagnostics_archive_path = value;
-        diagnostics_archive_path.value_namespace = name_space;
-        diagnostics_archive_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disabled-node-count")
-    {
-        disabled_node_count = value;
-        disabled_node_count.value_namespace = name_space;
-        disabled_node_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "event-buffer-size")
-    {
-        event_buffer_size = value;
-        event_buffer_size.value_namespace = name_space;
-        event_buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "host-name")
-    {
-        host_name = value;
-        host_name.value_namespace = name_space;
-        host_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-active-node-count")
-    {
-        in_active_node_count = value;
-        in_active_node_count.value_namespace = name_space;
-        in_active_node_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-count")
-    {
-        interface_count = value;
-        interface_count.value_namespace = name_space;
-        interface_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-archival-error")
-    {
-        last_archival_error = value;
-        last_archival_error.value_namespace = name_space;
-        last_archival_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-archival-error-time")
-    {
-        last_archival_error_time = value;
-        last_archival_error_time.value_namespace = name_space;
-        last_archival_error_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-archival-status")
-    {
-        last_archival_status = value;
-        last_archival_status.value_namespace = name_space;
-        last_archival_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-process-duration")
-    {
-        last_process_duration = value;
-        last_process_duration.value_namespace = name_space;
-        last_process_duration.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-process-start-time")
-    {
-        last_process_start_time = value;
-        last_process_start_time.value_namespace = name_space;
-        last_process_start_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-process-state")
-    {
-        last_process_state = value;
-        last_process_state.value_namespace = name_space;
-        last_process_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-events")
-    {
-        max_events = value;
-        max_events.value_namespace = name_space;
-        max_events.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-interface-count")
-    {
-        max_interface_count = value;
-        max_interface_count.value_namespace = name_space;
-        max_interface_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "monitoring-interval")
-    {
-        monitoring_interval = value;
-        monitoring_interval.value_namespace = name_space;
-        monitoring_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-interval")
-    {
-        next_interval = value;
-        next_interval.value_namespace = name_space;
-        next_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-lc-count")
-    {
-        node_lc_count = value;
-        node_lc_count.value_namespace = name_space;
-        node_lc_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-rp-count")
-    {
-        node_rp_count = value;
-        node_rp_count.value_namespace = name_space;
-        node_rp_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-count")
-    {
-        process_count = value;
-        process_count.value_namespace = name_space;
-        process_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reports-archive-node")
-    {
-        reports_archive_node = value;
-        reports_archive_node.value_namespace = name_space;
-        reports_archive_node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reports-archive-path")
-    {
-        reports_archive_path = value;
-        reports_archive_path.value_namespace = name_space;
-        reports_archive_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-process-count")
-    {
-        spf_process_count = value;
-        spf_process_count.value_namespace = name_space;
-        spf_process_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
+        process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rcmd::Server::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+void Rcmd::Process::Ldp::Process_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "archive-count")
+    if(value_path == "protocol-id")
     {
-        archive_count.yfilter = yfilter;
+        protocol_id.yfilter = yfilter;
     }
-    if(value_path == "diag-node-count")
+    if(value_path == "process-name")
     {
-        diag_node_count.yfilter = yfilter;
-    }
-    if(value_path == "diagnostics-archive-node")
-    {
-        diagnostics_archive_node.yfilter = yfilter;
-    }
-    if(value_path == "diagnostics-archive-path")
-    {
-        diagnostics_archive_path.yfilter = yfilter;
-    }
-    if(value_path == "disabled-node-count")
-    {
-        disabled_node_count.yfilter = yfilter;
-    }
-    if(value_path == "event-buffer-size")
-    {
-        event_buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "host-name")
-    {
-        host_name.yfilter = yfilter;
-    }
-    if(value_path == "in-active-node-count")
-    {
-        in_active_node_count.yfilter = yfilter;
-    }
-    if(value_path == "interface-count")
-    {
-        interface_count.yfilter = yfilter;
-    }
-    if(value_path == "last-archival-error")
-    {
-        last_archival_error.yfilter = yfilter;
-    }
-    if(value_path == "last-archival-error-time")
-    {
-        last_archival_error_time.yfilter = yfilter;
-    }
-    if(value_path == "last-archival-status")
-    {
-        last_archival_status.yfilter = yfilter;
-    }
-    if(value_path == "last-process-duration")
-    {
-        last_process_duration.yfilter = yfilter;
-    }
-    if(value_path == "last-process-start-time")
-    {
-        last_process_start_time.yfilter = yfilter;
-    }
-    if(value_path == "last-process-state")
-    {
-        last_process_state.yfilter = yfilter;
-    }
-    if(value_path == "max-events")
-    {
-        max_events.yfilter = yfilter;
-    }
-    if(value_path == "max-interface-count")
-    {
-        max_interface_count.yfilter = yfilter;
-    }
-    if(value_path == "monitoring-interval")
-    {
-        monitoring_interval.yfilter = yfilter;
-    }
-    if(value_path == "next-interval")
-    {
-        next_interval.yfilter = yfilter;
-    }
-    if(value_path == "node-lc-count")
-    {
-        node_lc_count.yfilter = yfilter;
-    }
-    if(value_path == "node-rp-count")
-    {
-        node_rp_count.yfilter = yfilter;
-    }
-    if(value_path == "process-count")
-    {
-        process_count.yfilter = yfilter;
-    }
-    if(value_path == "reports-archive-node")
-    {
-        reports_archive_node.yfilter = yfilter;
-    }
-    if(value_path == "reports-archive-path")
-    {
-        reports_archive_path.yfilter = yfilter;
-    }
-    if(value_path == "spf-process-count")
-    {
-        spf_process_count.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
+        process_name.yfilter = yfilter;
     }
 }
 
-bool Rcmd::Server::Detail::has_leaf_or_child_of_name(const std::string & name) const
+bool Rcmd::Process::Ldp::Process_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "protocol-config" || name == "server-detail" || name == "archive-count" || name == "diag-node-count" || name == "diagnostics-archive-node" || name == "diagnostics-archive-path" || name == "disabled-node-count" || name == "event-buffer-size" || name == "host-name" || name == "in-active-node-count" || name == "interface-count" || name == "last-archival-error" || name == "last-archival-error-time" || name == "last-archival-status" || name == "last-process-duration" || name == "last-process-start-time" || name == "last-process-state" || name == "max-events" || name == "max-interface-count" || name == "monitoring-interval" || name == "next-interval" || name == "node-lc-count" || name == "node-rp-count" || name == "process-count" || name == "reports-archive-node" || name == "reports-archive-path" || name == "spf-process-count" || name == "status")
+    if(name == "instance-name" || name == "protocol-id" || name == "process-name")
         return true;
     return false;
 }
 
-Rcmd::Server::Detail::ProtocolConfig::ProtocolConfig()
+Rcmd::Process::Ldp::Process_::InstanceName::InstanceName()
     :
-    protocol_name{YType::str, "protocol-name"}
+    name{YType::str, "name"},
+    last_update_time{YType::str, "last-update-time"},
+    total_spf_nos{YType::uint32, "total-spf-nos"},
+    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
+    no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
+    not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
+    lsp_regeneration_count{YType::uint32, "lsp-regeneration-count"},
+    lsp_regeneration_serial{YType::uint32, "lsp-regeneration-serial"},
+    arch_spf_event{YType::uint32, "arch-spf-event"},
+    arch_lsp_regeneration{YType::uint32, "arch-lsp-regeneration"}
 {
 
-    yang_name = "protocol-config"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance-name"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rcmd::Server::Detail::ProtocolConfig::~ProtocolConfig()
+Rcmd::Process::Ldp::Process_::InstanceName::~InstanceName()
 {
 }
 
-bool Rcmd::Server::Detail::ProtocolConfig::has_data() const
+bool Rcmd::Process::Ldp::Process_::InstanceName::has_data() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<instance.size(); index++)
     {
-        if(priority[index]->has_data())
+        if(instance[index]->has_data())
             return true;
     }
-    return protocol_name.is_set;
+    return name.is_set
+	|| last_update_time.is_set
+	|| total_spf_nos.is_set
+	|| route_change_spf_nos.is_set
+	|| no_route_change_spf_nos.is_set
+	|| not_interested_spf_nos.is_set
+	|| lsp_regeneration_count.is_set
+	|| lsp_regeneration_serial.is_set
+	|| arch_spf_event.is_set
+	|| arch_lsp_regeneration.is_set;
 }
 
-bool Rcmd::Server::Detail::ProtocolConfig::has_operation() const
+bool Rcmd::Process::Ldp::Process_::InstanceName::has_operation() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<instance.size(); index++)
     {
-        if(priority[index]->has_operation())
+        if(instance[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(protocol_name.yfilter);
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(lsp_regeneration_count.yfilter)
+	|| ydk::is_set(lsp_regeneration_serial.yfilter)
+	|| ydk::is_set(arch_spf_event.yfilter)
+	|| ydk::is_set(arch_lsp_regeneration.yfilter);
 }
 
-std::string Rcmd::Server::Detail::ProtocolConfig::get_absolute_path() const
+std::string Rcmd::Process::Ldp::Process_::InstanceName::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/detail/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/ldp/process/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Rcmd::Server::Detail::ProtocolConfig::get_segment_path() const
+std::string Rcmd::Process::Ldp::Process_::InstanceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol-config";
+    path_buffer << "instance-name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Detail::ProtocolConfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::InstanceName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
+    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
+    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
+    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rcmd::Server::Detail::ProtocolConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "priority")
+    if(child_yang_name == "instance")
     {
-        for(auto const & c : priority)
+        for(auto const & c : instance)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2018,19 +2579,19 @@ std::shared_ptr<Entity> Rcmd::Server::Detail::ProtocolConfig::get_child_by_name(
                 return c;
             }
         }
-        auto c = std::make_shared<Rcmd::Server::Detail::ProtocolConfig::Priority>();
+        auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName::Instance>();
         c->parent = this;
-        priority.push_back(c);
+        instance.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::ProtocolConfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : priority)
+    for (auto const & c : instance)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2038,1364 +2599,368 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::ProtocolCon
     return children;
 }
 
-void Rcmd::Server::Detail::ProtocolConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rcmd::Process::Ldp::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "protocol-name")
+    if(value_path == "name")
     {
-        protocol_name = value;
-        protocol_name.value_namespace = name_space;
-        protocol_name.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsp-regeneration-count")
+    {
+        lsp_regeneration_count = value;
+        lsp_regeneration_count.value_namespace = name_space;
+        lsp_regeneration_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsp-regeneration-serial")
+    {
+        lsp_regeneration_serial = value;
+        lsp_regeneration_serial.value_namespace = name_space;
+        lsp_regeneration_serial.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event = value;
+        arch_spf_event.value_namespace = name_space;
+        arch_spf_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration = value;
+        arch_lsp_regeneration.value_namespace = name_space;
+        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rcmd::Server::Detail::ProtocolConfig::set_filter(const std::string & value_path, YFilter yfilter)
+void Rcmd::Process::Ldp::Process_::InstanceName::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "protocol-name")
+    if(value_path == "name")
     {
-        protocol_name.yfilter = yfilter;
+        name.yfilter = yfilter;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time.yfilter = yfilter;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-count")
+    {
+        lsp_regeneration_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-serial")
+    {
+        lsp_regeneration_serial.yfilter = yfilter;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event.yfilter = yfilter;
+    }
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration.yfilter = yfilter;
     }
 }
 
-bool Rcmd::Server::Detail::ProtocolConfig::has_leaf_or_child_of_name(const std::string & name) const
+bool Rcmd::Process::Ldp::Process_::InstanceName::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "priority" || name == "protocol-name")
+    if(name == "instance" || name == "name" || name == "last-update-time" || name == "total-spf-nos" || name == "route-change-spf-nos" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "arch-spf-event" || name == "arch-lsp-regeneration")
         return true;
     return false;
 }
 
-Rcmd::Server::Detail::ProtocolConfig::Priority::Priority()
+Rcmd::Process::Ldp::Process_::InstanceName::Instance::Instance()
     :
-    disable{YType::enumeration, "disable"},
-    priority_name{YType::enumeration, "priority-name"},
-    threshold{YType::uint32, "threshold"}
+    instance_id{YType::uint32, "instance-id"},
+    instance_state{YType::enumeration, "instance-state"},
+    instance_deleted{YType::enumeration, "instance-deleted"},
+    fwd_referenced{YType::enumeration, "fwd-referenced"},
+    last_update_time{YType::str, "last-update-time"},
+    node_id{YType::uint32, "node-id"},
+    spf_offset{YType::uint32, "spf-offset"},
+    total_spf_nos{YType::uint32, "total-spf-nos"},
+    arch_spf_run{YType::uint32, "arch-spf-run"},
+    route_change_spf_nos{YType::uint32, "route-change-spf-nos"},
+    no_route_change_spf_nos{YType::uint32, "no-route-change-spf-nos"},
+    not_interested_spf_nos{YType::uint32, "not-interested-spf-nos"},
+    total_spt_nos{YType::uint32, "total-spt-nos"}
 {
 
-    yang_name = "priority"; yang_parent_name = "protocol-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "instance-name"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rcmd::Server::Detail::ProtocolConfig::Priority::~Priority()
+Rcmd::Process::Ldp::Process_::InstanceName::Instance::~Instance()
 {
 }
 
-bool Rcmd::Server::Detail::ProtocolConfig::Priority::has_data() const
+bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_data() const
 {
-    return disable.is_set
-	|| priority_name.is_set
-	|| threshold.is_set;
+    return instance_id.is_set
+	|| instance_state.is_set
+	|| instance_deleted.is_set
+	|| fwd_referenced.is_set
+	|| last_update_time.is_set
+	|| node_id.is_set
+	|| spf_offset.is_set
+	|| total_spf_nos.is_set
+	|| arch_spf_run.is_set
+	|| route_change_spf_nos.is_set
+	|| no_route_change_spf_nos.is_set
+	|| not_interested_spf_nos.is_set
+	|| total_spt_nos.is_set;
 }
 
-bool Rcmd::Server::Detail::ProtocolConfig::Priority::has_operation() const
+bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| ydk::is_set(priority_name.yfilter)
-	|| ydk::is_set(threshold.yfilter);
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instance_state.yfilter)
+	|| ydk::is_set(instance_deleted.yfilter)
+	|| ydk::is_set(fwd_referenced.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(spf_offset.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(arch_spf_run.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(total_spt_nos.yfilter);
 }
 
-std::string Rcmd::Server::Detail::ProtocolConfig::Priority::get_absolute_path() const
+std::string Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/detail/protocol-config/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/process/ldp/process/instance-name/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Rcmd::Server::Detail::ProtocolConfig::Priority::get_segment_path() const
+std::string Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priority";
+    path_buffer << "instance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Detail::ProtocolConfig::Priority::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (priority_name.is_set || is_set(priority_name.yfilter)) leaf_name_data.push_back(priority_name.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
+    if (instance_state.is_set || is_set(instance_state.yfilter)) leaf_name_data.push_back(instance_state.get_name_leafdata());
+    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
+    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (spf_offset.is_set || is_set(spf_offset.yfilter)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (total_spt_nos.is_set || is_set(total_spt_nos.yfilter)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rcmd::Server::Detail::ProtocolConfig::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::ProtocolConfig::Priority::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rcmd::Server::Detail::ProtocolConfig::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "disable")
+    if(value_path == "instance-id")
     {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
+        instance_id = value;
+        instance_id.value_namespace = name_space;
+        instance_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "priority-name")
+    if(value_path == "instance-state")
     {
-        priority_name = value;
-        priority_name.value_namespace = name_space;
-        priority_name.value_namespace_prefix = name_space_prefix;
+        instance_state = value;
+        instance_state.value_namespace = name_space;
+        instance_state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "threshold")
+    if(value_path == "instance-deleted")
     {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
+        instance_deleted = value;
+        instance_deleted.value_namespace = name_space;
+        instance_deleted.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void Rcmd::Server::Detail::ProtocolConfig::Priority::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-    if(value_path == "priority-name")
-    {
-        priority_name.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Rcmd::Server::Detail::ProtocolConfig::Priority::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disable" || name == "priority-name" || name == "threshold")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Detail::ServerDetail::ServerDetail()
-    :
-    memory_suspend{YType::uint32, "memory-suspend"},
-    overload_suspend{YType::uint32, "overload-suspend"}
-{
-
-    yang_name = "server-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Detail::ServerDetail::~ServerDetail()
-{
-}
-
-bool Rcmd::Server::Detail::ServerDetail::has_data() const
-{
-    for (std::size_t index=0; index<trace_information.size(); index++)
-    {
-        if(trace_information[index]->has_data())
-            return true;
-    }
-    return memory_suspend.is_set
-	|| overload_suspend.is_set;
-}
-
-bool Rcmd::Server::Detail::ServerDetail::has_operation() const
-{
-    for (std::size_t index=0; index<trace_information.size(); index++)
-    {
-        if(trace_information[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(memory_suspend.yfilter)
-	|| ydk::is_set(overload_suspend.yfilter);
-}
-
-std::string Rcmd::Server::Detail::ServerDetail::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/detail/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Detail::ServerDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server-detail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Detail::ServerDetail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (memory_suspend.is_set || is_set(memory_suspend.yfilter)) leaf_name_data.push_back(memory_suspend.get_name_leafdata());
-    if (overload_suspend.is_set || is_set(overload_suspend.yfilter)) leaf_name_data.push_back(overload_suspend.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Detail::ServerDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trace-information")
-    {
-        for(auto const & c : trace_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rcmd::Server::Detail::ServerDetail::TraceInformation>();
-        c->parent = this;
-        trace_information.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::ServerDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trace_information)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rcmd::Server::Detail::ServerDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "memory-suspend")
-    {
-        memory_suspend = value;
-        memory_suspend.value_namespace = name_space;
-        memory_suspend.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "overload-suspend")
-    {
-        overload_suspend = value;
-        overload_suspend.value_namespace = name_space;
-        overload_suspend.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rcmd::Server::Detail::ServerDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "memory-suspend")
-    {
-        memory_suspend.yfilter = yfilter;
-    }
-    if(value_path == "overload-suspend")
-    {
-        overload_suspend.yfilter = yfilter;
-    }
-}
-
-bool Rcmd::Server::Detail::ServerDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trace-information" || name == "memory-suspend" || name == "overload-suspend")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Detail::ServerDetail::TraceInformation::TraceInformation()
-    :
-    error_stats{YType::uint32, "error-stats"},
-    last_run_stats{YType::uint32, "last-run-stats"},
-    total_stats{YType::uint32, "total-stats"},
-    trace_name{YType::str, "trace-name"}
-{
-
-    yang_name = "trace-information"; yang_parent_name = "server-detail"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Detail::ServerDetail::TraceInformation::~TraceInformation()
-{
-}
-
-bool Rcmd::Server::Detail::ServerDetail::TraceInformation::has_data() const
-{
-    return error_stats.is_set
-	|| last_run_stats.is_set
-	|| total_stats.is_set
-	|| trace_name.is_set;
-}
-
-bool Rcmd::Server::Detail::ServerDetail::TraceInformation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error_stats.yfilter)
-	|| ydk::is_set(last_run_stats.yfilter)
-	|| ydk::is_set(total_stats.yfilter)
-	|| ydk::is_set(trace_name.yfilter);
-}
-
-std::string Rcmd::Server::Detail::ServerDetail::TraceInformation::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/detail/server-detail/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Detail::ServerDetail::TraceInformation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trace-information";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Detail::ServerDetail::TraceInformation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error_stats.is_set || is_set(error_stats.yfilter)) leaf_name_data.push_back(error_stats.get_name_leafdata());
-    if (last_run_stats.is_set || is_set(last_run_stats.yfilter)) leaf_name_data.push_back(last_run_stats.get_name_leafdata());
-    if (total_stats.is_set || is_set(total_stats.yfilter)) leaf_name_data.push_back(total_stats.get_name_leafdata());
-    if (trace_name.is_set || is_set(trace_name.yfilter)) leaf_name_data.push_back(trace_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Detail::ServerDetail::TraceInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::ServerDetail::TraceInformation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rcmd::Server::Detail::ServerDetail::TraceInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error-stats")
-    {
-        error_stats = value;
-        error_stats.value_namespace = name_space;
-        error_stats.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-run-stats")
-    {
-        last_run_stats = value;
-        last_run_stats.value_namespace = name_space;
-        last_run_stats.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-stats")
-    {
-        total_stats = value;
-        total_stats.value_namespace = name_space;
-        total_stats.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trace-name")
-    {
-        trace_name = value;
-        trace_name.value_namespace = name_space;
-        trace_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rcmd::Server::Detail::ServerDetail::TraceInformation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error-stats")
-    {
-        error_stats.yfilter = yfilter;
-    }
-    if(value_path == "last-run-stats")
-    {
-        last_run_stats.yfilter = yfilter;
-    }
-    if(value_path == "total-stats")
-    {
-        total_stats.yfilter = yfilter;
-    }
-    if(value_path == "trace-name")
-    {
-        trace_name.yfilter = yfilter;
-    }
-}
-
-bool Rcmd::Server::Detail::ServerDetail::TraceInformation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error-stats" || name == "last-run-stats" || name == "total-stats" || name == "trace-name")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Normal::Normal()
-    :
-    archive_count{YType::uint32, "archive-count"},
-    diag_node_count{YType::uint32, "diag-node-count"},
-    diagnostics_archive_node{YType::str, "diagnostics-archive-node"},
-    diagnostics_archive_path{YType::str, "diagnostics-archive-path"},
-    disabled_node_count{YType::uint32, "disabled-node-count"},
-    event_buffer_size{YType::uint32, "event-buffer-size"},
-    host_name{YType::str, "host-name"},
-    in_active_node_count{YType::uint32, "in-active-node-count"},
-    interface_count{YType::uint32, "interface-count"},
-    last_archival_error{YType::str, "last-archival-error"},
-    last_archival_error_time{YType::str, "last-archival-error-time"},
-    last_archival_status{YType::str, "last-archival-status"},
-    last_process_duration{YType::str, "last-process-duration"},
-    last_process_start_time{YType::str, "last-process-start-time"},
-    last_process_state{YType::enumeration, "last-process-state"},
-    max_events{YType::uint32, "max-events"},
-    max_interface_count{YType::uint32, "max-interface-count"},
-    monitoring_interval{YType::uint32, "monitoring-interval"},
-    next_interval{YType::uint32, "next-interval"},
-    node_lc_count{YType::uint32, "node-lc-count"},
-    node_rp_count{YType::uint32, "node-rp-count"},
-    process_count{YType::uint32, "process-count"},
-    reports_archive_node{YType::str, "reports-archive-node"},
-    reports_archive_path{YType::str, "reports-archive-path"},
-    spf_process_count{YType::uint32, "spf-process-count"},
-    status{YType::enumeration, "status"}
-{
-
-    yang_name = "normal"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Normal::~Normal()
-{
-}
-
-bool Rcmd::Server::Normal::has_data() const
-{
-    for (std::size_t index=0; index<protocol_config.size(); index++)
-    {
-        if(protocol_config[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<server_detail.size(); index++)
-    {
-        if(server_detail[index]->has_data())
-            return true;
-    }
-    return archive_count.is_set
-	|| diag_node_count.is_set
-	|| diagnostics_archive_node.is_set
-	|| diagnostics_archive_path.is_set
-	|| disabled_node_count.is_set
-	|| event_buffer_size.is_set
-	|| host_name.is_set
-	|| in_active_node_count.is_set
-	|| interface_count.is_set
-	|| last_archival_error.is_set
-	|| last_archival_error_time.is_set
-	|| last_archival_status.is_set
-	|| last_process_duration.is_set
-	|| last_process_start_time.is_set
-	|| last_process_state.is_set
-	|| max_events.is_set
-	|| max_interface_count.is_set
-	|| monitoring_interval.is_set
-	|| next_interval.is_set
-	|| node_lc_count.is_set
-	|| node_rp_count.is_set
-	|| process_count.is_set
-	|| reports_archive_node.is_set
-	|| reports_archive_path.is_set
-	|| spf_process_count.is_set
-	|| status.is_set;
-}
-
-bool Rcmd::Server::Normal::has_operation() const
-{
-    for (std::size_t index=0; index<protocol_config.size(); index++)
-    {
-        if(protocol_config[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<server_detail.size(); index++)
-    {
-        if(server_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(archive_count.yfilter)
-	|| ydk::is_set(diag_node_count.yfilter)
-	|| ydk::is_set(diagnostics_archive_node.yfilter)
-	|| ydk::is_set(diagnostics_archive_path.yfilter)
-	|| ydk::is_set(disabled_node_count.yfilter)
-	|| ydk::is_set(event_buffer_size.yfilter)
-	|| ydk::is_set(host_name.yfilter)
-	|| ydk::is_set(in_active_node_count.yfilter)
-	|| ydk::is_set(interface_count.yfilter)
-	|| ydk::is_set(last_archival_error.yfilter)
-	|| ydk::is_set(last_archival_error_time.yfilter)
-	|| ydk::is_set(last_archival_status.yfilter)
-	|| ydk::is_set(last_process_duration.yfilter)
-	|| ydk::is_set(last_process_start_time.yfilter)
-	|| ydk::is_set(last_process_state.yfilter)
-	|| ydk::is_set(max_events.yfilter)
-	|| ydk::is_set(max_interface_count.yfilter)
-	|| ydk::is_set(monitoring_interval.yfilter)
-	|| ydk::is_set(next_interval.yfilter)
-	|| ydk::is_set(node_lc_count.yfilter)
-	|| ydk::is_set(node_rp_count.yfilter)
-	|| ydk::is_set(process_count.yfilter)
-	|| ydk::is_set(reports_archive_node.yfilter)
-	|| ydk::is_set(reports_archive_path.yfilter)
-	|| ydk::is_set(spf_process_count.yfilter)
-	|| ydk::is_set(status.yfilter);
-}
-
-std::string Rcmd::Server::Normal::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Normal::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "normal";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Normal::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (archive_count.is_set || is_set(archive_count.yfilter)) leaf_name_data.push_back(archive_count.get_name_leafdata());
-    if (diag_node_count.is_set || is_set(diag_node_count.yfilter)) leaf_name_data.push_back(diag_node_count.get_name_leafdata());
-    if (diagnostics_archive_node.is_set || is_set(diagnostics_archive_node.yfilter)) leaf_name_data.push_back(diagnostics_archive_node.get_name_leafdata());
-    if (diagnostics_archive_path.is_set || is_set(diagnostics_archive_path.yfilter)) leaf_name_data.push_back(diagnostics_archive_path.get_name_leafdata());
-    if (disabled_node_count.is_set || is_set(disabled_node_count.yfilter)) leaf_name_data.push_back(disabled_node_count.get_name_leafdata());
-    if (event_buffer_size.is_set || is_set(event_buffer_size.yfilter)) leaf_name_data.push_back(event_buffer_size.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (in_active_node_count.is_set || is_set(in_active_node_count.yfilter)) leaf_name_data.push_back(in_active_node_count.get_name_leafdata());
-    if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
-    if (last_archival_error.is_set || is_set(last_archival_error.yfilter)) leaf_name_data.push_back(last_archival_error.get_name_leafdata());
-    if (last_archival_error_time.is_set || is_set(last_archival_error_time.yfilter)) leaf_name_data.push_back(last_archival_error_time.get_name_leafdata());
-    if (last_archival_status.is_set || is_set(last_archival_status.yfilter)) leaf_name_data.push_back(last_archival_status.get_name_leafdata());
-    if (last_process_duration.is_set || is_set(last_process_duration.yfilter)) leaf_name_data.push_back(last_process_duration.get_name_leafdata());
-    if (last_process_start_time.is_set || is_set(last_process_start_time.yfilter)) leaf_name_data.push_back(last_process_start_time.get_name_leafdata());
-    if (last_process_state.is_set || is_set(last_process_state.yfilter)) leaf_name_data.push_back(last_process_state.get_name_leafdata());
-    if (max_events.is_set || is_set(max_events.yfilter)) leaf_name_data.push_back(max_events.get_name_leafdata());
-    if (max_interface_count.is_set || is_set(max_interface_count.yfilter)) leaf_name_data.push_back(max_interface_count.get_name_leafdata());
-    if (monitoring_interval.is_set || is_set(monitoring_interval.yfilter)) leaf_name_data.push_back(monitoring_interval.get_name_leafdata());
-    if (next_interval.is_set || is_set(next_interval.yfilter)) leaf_name_data.push_back(next_interval.get_name_leafdata());
-    if (node_lc_count.is_set || is_set(node_lc_count.yfilter)) leaf_name_data.push_back(node_lc_count.get_name_leafdata());
-    if (node_rp_count.is_set || is_set(node_rp_count.yfilter)) leaf_name_data.push_back(node_rp_count.get_name_leafdata());
-    if (process_count.is_set || is_set(process_count.yfilter)) leaf_name_data.push_back(process_count.get_name_leafdata());
-    if (reports_archive_node.is_set || is_set(reports_archive_node.yfilter)) leaf_name_data.push_back(reports_archive_node.get_name_leafdata());
-    if (reports_archive_path.is_set || is_set(reports_archive_path.yfilter)) leaf_name_data.push_back(reports_archive_path.get_name_leafdata());
-    if (spf_process_count.is_set || is_set(spf_process_count.yfilter)) leaf_name_data.push_back(spf_process_count.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Normal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "protocol-config")
-    {
-        for(auto const & c : protocol_config)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rcmd::Server::Normal::ProtocolConfig>();
-        c->parent = this;
-        protocol_config.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "server-detail")
-    {
-        for(auto const & c : server_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rcmd::Server::Normal::ServerDetail>();
-        c->parent = this;
-        server_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : protocol_config)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : server_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rcmd::Server::Normal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "archive-count")
-    {
-        archive_count = value;
-        archive_count.value_namespace = name_space;
-        archive_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diag-node-count")
-    {
-        diag_node_count = value;
-        diag_node_count.value_namespace = name_space;
-        diag_node_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diagnostics-archive-node")
-    {
-        diagnostics_archive_node = value;
-        diagnostics_archive_node.value_namespace = name_space;
-        diagnostics_archive_node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diagnostics-archive-path")
-    {
-        diagnostics_archive_path = value;
-        diagnostics_archive_path.value_namespace = name_space;
-        diagnostics_archive_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disabled-node-count")
-    {
-        disabled_node_count = value;
-        disabled_node_count.value_namespace = name_space;
-        disabled_node_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "event-buffer-size")
-    {
-        event_buffer_size = value;
-        event_buffer_size.value_namespace = name_space;
-        event_buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "host-name")
-    {
-        host_name = value;
-        host_name.value_namespace = name_space;
-        host_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-active-node-count")
-    {
-        in_active_node_count = value;
-        in_active_node_count.value_namespace = name_space;
-        in_active_node_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-count")
-    {
-        interface_count = value;
-        interface_count.value_namespace = name_space;
-        interface_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-archival-error")
-    {
-        last_archival_error = value;
-        last_archival_error.value_namespace = name_space;
-        last_archival_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-archival-error-time")
-    {
-        last_archival_error_time = value;
-        last_archival_error_time.value_namespace = name_space;
-        last_archival_error_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-archival-status")
-    {
-        last_archival_status = value;
-        last_archival_status.value_namespace = name_space;
-        last_archival_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-process-duration")
-    {
-        last_process_duration = value;
-        last_process_duration.value_namespace = name_space;
-        last_process_duration.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-process-start-time")
-    {
-        last_process_start_time = value;
-        last_process_start_time.value_namespace = name_space;
-        last_process_start_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-process-state")
-    {
-        last_process_state = value;
-        last_process_state.value_namespace = name_space;
-        last_process_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-events")
-    {
-        max_events = value;
-        max_events.value_namespace = name_space;
-        max_events.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-interface-count")
-    {
-        max_interface_count = value;
-        max_interface_count.value_namespace = name_space;
-        max_interface_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "monitoring-interval")
-    {
-        monitoring_interval = value;
-        monitoring_interval.value_namespace = name_space;
-        monitoring_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-interval")
-    {
-        next_interval = value;
-        next_interval.value_namespace = name_space;
-        next_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-lc-count")
-    {
-        node_lc_count = value;
-        node_lc_count.value_namespace = name_space;
-        node_lc_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-rp-count")
-    {
-        node_rp_count = value;
-        node_rp_count.value_namespace = name_space;
-        node_rp_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-count")
-    {
-        process_count = value;
-        process_count.value_namespace = name_space;
-        process_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reports-archive-node")
-    {
-        reports_archive_node = value;
-        reports_archive_node.value_namespace = name_space;
-        reports_archive_node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reports-archive-path")
-    {
-        reports_archive_path = value;
-        reports_archive_path.value_namespace = name_space;
-        reports_archive_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-process-count")
-    {
-        spf_process_count = value;
-        spf_process_count.value_namespace = name_space;
-        spf_process_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rcmd::Server::Normal::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "archive-count")
-    {
-        archive_count.yfilter = yfilter;
-    }
-    if(value_path == "diag-node-count")
-    {
-        diag_node_count.yfilter = yfilter;
-    }
-    if(value_path == "diagnostics-archive-node")
-    {
-        diagnostics_archive_node.yfilter = yfilter;
-    }
-    if(value_path == "diagnostics-archive-path")
-    {
-        diagnostics_archive_path.yfilter = yfilter;
-    }
-    if(value_path == "disabled-node-count")
-    {
-        disabled_node_count.yfilter = yfilter;
-    }
-    if(value_path == "event-buffer-size")
-    {
-        event_buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "host-name")
-    {
-        host_name.yfilter = yfilter;
-    }
-    if(value_path == "in-active-node-count")
-    {
-        in_active_node_count.yfilter = yfilter;
-    }
-    if(value_path == "interface-count")
-    {
-        interface_count.yfilter = yfilter;
-    }
-    if(value_path == "last-archival-error")
-    {
-        last_archival_error.yfilter = yfilter;
-    }
-    if(value_path == "last-archival-error-time")
-    {
-        last_archival_error_time.yfilter = yfilter;
-    }
-    if(value_path == "last-archival-status")
-    {
-        last_archival_status.yfilter = yfilter;
-    }
-    if(value_path == "last-process-duration")
-    {
-        last_process_duration.yfilter = yfilter;
-    }
-    if(value_path == "last-process-start-time")
-    {
-        last_process_start_time.yfilter = yfilter;
-    }
-    if(value_path == "last-process-state")
-    {
-        last_process_state.yfilter = yfilter;
-    }
-    if(value_path == "max-events")
-    {
-        max_events.yfilter = yfilter;
-    }
-    if(value_path == "max-interface-count")
-    {
-        max_interface_count.yfilter = yfilter;
-    }
-    if(value_path == "monitoring-interval")
-    {
-        monitoring_interval.yfilter = yfilter;
-    }
-    if(value_path == "next-interval")
-    {
-        next_interval.yfilter = yfilter;
-    }
-    if(value_path == "node-lc-count")
-    {
-        node_lc_count.yfilter = yfilter;
-    }
-    if(value_path == "node-rp-count")
-    {
-        node_rp_count.yfilter = yfilter;
-    }
-    if(value_path == "process-count")
-    {
-        process_count.yfilter = yfilter;
-    }
-    if(value_path == "reports-archive-node")
-    {
-        reports_archive_node.yfilter = yfilter;
-    }
-    if(value_path == "reports-archive-path")
-    {
-        reports_archive_path.yfilter = yfilter;
-    }
-    if(value_path == "spf-process-count")
-    {
-        spf_process_count.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-}
-
-bool Rcmd::Server::Normal::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol-config" || name == "server-detail" || name == "archive-count" || name == "diag-node-count" || name == "diagnostics-archive-node" || name == "diagnostics-archive-path" || name == "disabled-node-count" || name == "event-buffer-size" || name == "host-name" || name == "in-active-node-count" || name == "interface-count" || name == "last-archival-error" || name == "last-archival-error-time" || name == "last-archival-status" || name == "last-process-duration" || name == "last-process-start-time" || name == "last-process-state" || name == "max-events" || name == "max-interface-count" || name == "monitoring-interval" || name == "next-interval" || name == "node-lc-count" || name == "node-rp-count" || name == "process-count" || name == "reports-archive-node" || name == "reports-archive-path" || name == "spf-process-count" || name == "status")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Normal::ProtocolConfig::ProtocolConfig()
-    :
-    protocol_name{YType::str, "protocol-name"}
-{
-
-    yang_name = "protocol-config"; yang_parent_name = "normal"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Normal::ProtocolConfig::~ProtocolConfig()
-{
-}
-
-bool Rcmd::Server::Normal::ProtocolConfig::has_data() const
-{
-    for (std::size_t index=0; index<priority.size(); index++)
-    {
-        if(priority[index]->has_data())
-            return true;
-    }
-    return protocol_name.is_set;
-}
-
-bool Rcmd::Server::Normal::ProtocolConfig::has_operation() const
-{
-    for (std::size_t index=0; index<priority.size(); index++)
-    {
-        if(priority[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(protocol_name.yfilter);
-}
-
-std::string Rcmd::Server::Normal::ProtocolConfig::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/normal/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Normal::ProtocolConfig::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protocol-config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Normal::ProtocolConfig::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Normal::ProtocolConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "priority")
-    {
-        for(auto const & c : priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rcmd::Server::Normal::ProtocolConfig::Priority>();
-        c->parent = this;
-        priority.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::ProtocolConfig::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : priority)
+    if(value_path == "fwd-referenced")
     {
-        children[c->get_segment_path()] = c;
+        fwd_referenced = value;
+        fwd_referenced.value_namespace = name_space;
+        fwd_referenced.value_namespace_prefix = name_space_prefix;
     }
-
-    return children;
-}
-
-void Rcmd::Server::Normal::ProtocolConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocol-name")
-    {
-        protocol_name = value;
-        protocol_name.value_namespace = name_space;
-        protocol_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rcmd::Server::Normal::ProtocolConfig::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocol-name")
-    {
-        protocol_name.yfilter = yfilter;
-    }
-}
-
-bool Rcmd::Server::Normal::ProtocolConfig::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "priority" || name == "protocol-name")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Normal::ProtocolConfig::Priority::Priority()
-    :
-    disable{YType::enumeration, "disable"},
-    priority_name{YType::enumeration, "priority-name"},
-    threshold{YType::uint32, "threshold"}
-{
-
-    yang_name = "priority"; yang_parent_name = "protocol-config"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Normal::ProtocolConfig::Priority::~Priority()
-{
-}
-
-bool Rcmd::Server::Normal::ProtocolConfig::Priority::has_data() const
-{
-    return disable.is_set
-	|| priority_name.is_set
-	|| threshold.is_set;
-}
-
-bool Rcmd::Server::Normal::ProtocolConfig::Priority::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| ydk::is_set(priority_name.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Rcmd::Server::Normal::ProtocolConfig::Priority::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/normal/protocol-config/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Normal::ProtocolConfig::Priority::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Normal::ProtocolConfig::Priority::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (priority_name.is_set || is_set(priority_name.yfilter)) leaf_name_data.push_back(priority_name.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Normal::ProtocolConfig::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::ProtocolConfig::Priority::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rcmd::Server::Normal::ProtocolConfig::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disable")
+    if(value_path == "last-update-time")
     {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
+        last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "priority-name")
+    if(value_path == "node-id")
     {
-        priority_name = value;
-        priority_name.value_namespace = name_space;
-        priority_name.value_namespace_prefix = name_space_prefix;
+        node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "threshold")
+    if(value_path == "spf-offset")
     {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
+        spf_offset = value;
+        spf_offset.value_namespace = name_space;
+        spf_offset.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void Rcmd::Server::Normal::ProtocolConfig::Priority::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
+    if(value_path == "total-spf-nos")
     {
-        disable.yfilter = yfilter;
+        total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "priority-name")
+    if(value_path == "arch-spf-run")
     {
-        priority_name.yfilter = yfilter;
+        arch_spf_run = value;
+        arch_spf_run.value_namespace = name_space;
+        arch_spf_run.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "threshold")
+    if(value_path == "route-change-spf-nos")
     {
-        threshold.yfilter = yfilter;
+        route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
-}
-
-bool Rcmd::Server::Normal::ProtocolConfig::Priority::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disable" || name == "priority-name" || name == "threshold")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Normal::ServerDetail::ServerDetail()
-    :
-    memory_suspend{YType::uint32, "memory-suspend"},
-    overload_suspend{YType::uint32, "overload-suspend"}
-{
-
-    yang_name = "server-detail"; yang_parent_name = "normal"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Normal::ServerDetail::~ServerDetail()
-{
-}
-
-bool Rcmd::Server::Normal::ServerDetail::has_data() const
-{
-    for (std::size_t index=0; index<trace_information.size(); index++)
+    if(value_path == "no-route-change-spf-nos")
     {
-        if(trace_information[index]->has_data())
-            return true;
+        no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
-    return memory_suspend.is_set
-	|| overload_suspend.is_set;
-}
-
-bool Rcmd::Server::Normal::ServerDetail::has_operation() const
-{
-    for (std::size_t index=0; index<trace_information.size(); index++)
+    if(value_path == "not-interested-spf-nos")
     {
-        if(trace_information[index]->has_operation())
-            return true;
+        not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(memory_suspend.yfilter)
-	|| ydk::is_set(overload_suspend.yfilter);
-}
-
-std::string Rcmd::Server::Normal::ServerDetail::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/normal/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Normal::ServerDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server-detail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Normal::ServerDetail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (memory_suspend.is_set || is_set(memory_suspend.yfilter)) leaf_name_data.push_back(memory_suspend.get_name_leafdata());
-    if (overload_suspend.is_set || is_set(overload_suspend.yfilter)) leaf_name_data.push_back(overload_suspend.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Normal::ServerDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trace-information")
+    if(value_path == "total-spt-nos")
     {
-        for(auto const & c : trace_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rcmd::Server::Normal::ServerDetail::TraceInformation>();
-        c->parent = this;
-        trace_information.push_back(c);
-        return c;
+        total_spt_nos = value;
+        total_spt_nos.value_namespace = name_space;
+        total_spt_nos.value_namespace_prefix = name_space_prefix;
     }
-
-    return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::ServerDetail::get_children() const
+void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trace_information)
+    if(value_path == "instance-id")
     {
-        children[c->get_segment_path()] = c;
+        instance_id.yfilter = yfilter;
     }
-
-    return children;
-}
-
-void Rcmd::Server::Normal::ServerDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "memory-suspend")
+    if(value_path == "instance-state")
     {
-        memory_suspend = value;
-        memory_suspend.value_namespace = name_space;
-        memory_suspend.value_namespace_prefix = name_space_prefix;
+        instance_state.yfilter = yfilter;
     }
-    if(value_path == "overload-suspend")
+    if(value_path == "instance-deleted")
     {
-        overload_suspend = value;
-        overload_suspend.value_namespace = name_space;
-        overload_suspend.value_namespace_prefix = name_space_prefix;
+        instance_deleted.yfilter = yfilter;
     }
-}
-
-void Rcmd::Server::Normal::ServerDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "memory-suspend")
+    if(value_path == "fwd-referenced")
     {
-        memory_suspend.yfilter = yfilter;
+        fwd_referenced.yfilter = yfilter;
     }
-    if(value_path == "overload-suspend")
+    if(value_path == "last-update-time")
     {
-        overload_suspend.yfilter = yfilter;
+        last_update_time.yfilter = yfilter;
     }
-}
-
-bool Rcmd::Server::Normal::ServerDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trace-information" || name == "memory-suspend" || name == "overload-suspend")
-        return true;
-    return false;
-}
-
-Rcmd::Server::Normal::ServerDetail::TraceInformation::TraceInformation()
-    :
-    error_stats{YType::uint32, "error-stats"},
-    last_run_stats{YType::uint32, "last-run-stats"},
-    total_stats{YType::uint32, "total-stats"},
-    trace_name{YType::str, "trace-name"}
-{
-
-    yang_name = "trace-information"; yang_parent_name = "server-detail"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Rcmd::Server::Normal::ServerDetail::TraceInformation::~TraceInformation()
-{
-}
-
-bool Rcmd::Server::Normal::ServerDetail::TraceInformation::has_data() const
-{
-    return error_stats.is_set
-	|| last_run_stats.is_set
-	|| total_stats.is_set
-	|| trace_name.is_set;
-}
-
-bool Rcmd::Server::Normal::ServerDetail::TraceInformation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error_stats.yfilter)
-	|| ydk::is_set(last_run_stats.yfilter)
-	|| ydk::is_set(total_stats.yfilter)
-	|| ydk::is_set(trace_name.yfilter);
-}
-
-std::string Rcmd::Server::Normal::ServerDetail::TraceInformation::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rcmd-oper:rcmd/server/normal/server-detail/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rcmd::Server::Normal::ServerDetail::TraceInformation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trace-information";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rcmd::Server::Normal::ServerDetail::TraceInformation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error_stats.is_set || is_set(error_stats.yfilter)) leaf_name_data.push_back(error_stats.get_name_leafdata());
-    if (last_run_stats.is_set || is_set(last_run_stats.yfilter)) leaf_name_data.push_back(last_run_stats.get_name_leafdata());
-    if (total_stats.is_set || is_set(total_stats.yfilter)) leaf_name_data.push_back(total_stats.get_name_leafdata());
-    if (trace_name.is_set || is_set(trace_name.yfilter)) leaf_name_data.push_back(trace_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rcmd::Server::Normal::ServerDetail::TraceInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::ServerDetail::TraceInformation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rcmd::Server::Normal::ServerDetail::TraceInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error-stats")
+    if(value_path == "node-id")
     {
-        error_stats = value;
-        error_stats.value_namespace = name_space;
-        error_stats.value_namespace_prefix = name_space_prefix;
+        node_id.yfilter = yfilter;
     }
-    if(value_path == "last-run-stats")
+    if(value_path == "spf-offset")
     {
-        last_run_stats = value;
-        last_run_stats.value_namespace = name_space;
-        last_run_stats.value_namespace_prefix = name_space_prefix;
+        spf_offset.yfilter = yfilter;
     }
-    if(value_path == "total-stats")
+    if(value_path == "total-spf-nos")
     {
-        total_stats = value;
-        total_stats.value_namespace = name_space;
-        total_stats.value_namespace_prefix = name_space_prefix;
+        total_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "trace-name")
+    if(value_path == "arch-spf-run")
     {
-        trace_name = value;
-        trace_name.value_namespace = name_space;
-        trace_name.value_namespace_prefix = name_space_prefix;
+        arch_spf_run.yfilter = yfilter;
     }
-}
-
-void Rcmd::Server::Normal::ServerDetail::TraceInformation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error-stats")
+    if(value_path == "route-change-spf-nos")
     {
-        error_stats.yfilter = yfilter;
+        route_change_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "last-run-stats")
+    if(value_path == "no-route-change-spf-nos")
     {
-        last_run_stats.yfilter = yfilter;
+        no_route_change_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "total-stats")
+    if(value_path == "not-interested-spf-nos")
     {
-        total_stats.yfilter = yfilter;
+        not_interested_spf_nos.yfilter = yfilter;
     }
-    if(value_path == "trace-name")
+    if(value_path == "total-spt-nos")
     {
-        trace_name.yfilter = yfilter;
+        total_spt_nos.yfilter = yfilter;
     }
 }
 
-bool Rcmd::Server::Normal::ServerDetail::TraceInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "error-stats" || name == "last-run-stats" || name == "total-stats" || name == "trace-name")
+    if(name == "instance-id" || name == "instance-state" || name == "instance-deleted" || name == "fwd-referenced" || name == "last-update-time" || name == "node-id" || name == "spf-offset" || name == "total-spf-nos" || name == "arch-spf-run" || name == "route-change-spf-nos" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "total-spt-nos")
         return true;
     return false;
 }

@@ -209,12 +209,12 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
 
     if(format == ydk::EncodingFormat::JSON)
     {
-        YLOG_DEBUG("Performing encode operation on JSON");
+    	YLOG_DEBUG("Performing encode operation to JSON");
         scheme = LYD_JSON;
     }
     else
     {
-        YLOG_DEBUG("Performing encode operation on XML");
+    	YLOG_DEBUG("Performing encode operation to XML");
     }
 
     struct lyd_node* m_node = nullptr;

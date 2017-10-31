@@ -19,14 +19,14 @@ class EthIfSpeed : public virtual ydk::Identity
 
 }; // EthIfSpeed
 
-class EthIfSpeed100gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+class EthIfSpeed10mb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed100gb();
-        ~EthIfSpeed100gb();
+        EthIfSpeed10mb();
+        ~EthIfSpeed10mb();
 
 
-}; // EthIfSpeed100gb
+}; // EthIfSpeed10mb
 
 class EthIfSpeed100mb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
@@ -37,24 +37,6 @@ class EthIfSpeed100mb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual
 
 }; // EthIfSpeed100mb
 
-class EthIfSpeed10gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
-{
-    public:
-        EthIfSpeed10gb();
-        ~EthIfSpeed10gb();
-
-
-}; // EthIfSpeed10gb
-
-class EthIfSpeed10mb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
-{
-    public:
-        EthIfSpeed10mb();
-        ~EthIfSpeed10mb();
-
-
-}; // EthIfSpeed10mb
-
 class EthIfSpeed1gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
@@ -64,6 +46,15 @@ class EthIfSpeed1gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual y
 
 }; // EthIfSpeed1gb
 
+class EthIfSpeed10gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+{
+    public:
+        EthIfSpeed10gb();
+        ~EthIfSpeed10gb();
+
+
+}; // EthIfSpeed10gb
+
 class EthIfSpeed40gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
@@ -72,6 +63,15 @@ class EthIfSpeed40gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual 
 
 
 }; // EthIfSpeed40gb
+
+class EthIfSpeed100gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+{
+    public:
+        EthIfSpeed100gb();
+        ~EthIfSpeed100gb();
+
+
+}; // EthIfSpeed100gb
 
 
 }

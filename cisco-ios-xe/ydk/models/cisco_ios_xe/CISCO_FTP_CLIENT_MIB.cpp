@@ -138,8 +138,8 @@ CISCOFTPCLIENTMIB::Cfcrequest::Cfcrequest()
     :
     cfcrequestmaximum{YType::uint32, "cfcRequestMaximum"},
     cfcrequests{YType::uint32, "cfcRequests"},
-    cfcrequestsbumped{YType::uint32, "cfcRequestsBumped"},
-    cfcrequestshigh{YType::uint32, "cfcRequestsHigh"}
+    cfcrequestshigh{YType::uint32, "cfcRequestsHigh"},
+    cfcrequestsbumped{YType::uint32, "cfcRequestsBumped"}
 {
 
     yang_name = "cfcRequest"; yang_parent_name = "CISCO-FTP-CLIENT-MIB"; is_top_level_class = false; has_list_ancestor = false;
@@ -153,8 +153,8 @@ bool CISCOFTPCLIENTMIB::Cfcrequest::has_data() const
 {
     return cfcrequestmaximum.is_set
 	|| cfcrequests.is_set
-	|| cfcrequestsbumped.is_set
-	|| cfcrequestshigh.is_set;
+	|| cfcrequestshigh.is_set
+	|| cfcrequestsbumped.is_set;
 }
 
 bool CISCOFTPCLIENTMIB::Cfcrequest::has_operation() const
@@ -162,8 +162,8 @@ bool CISCOFTPCLIENTMIB::Cfcrequest::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(cfcrequestmaximum.yfilter)
 	|| ydk::is_set(cfcrequests.yfilter)
-	|| ydk::is_set(cfcrequestsbumped.yfilter)
-	|| ydk::is_set(cfcrequestshigh.yfilter);
+	|| ydk::is_set(cfcrequestshigh.yfilter)
+	|| ydk::is_set(cfcrequestsbumped.yfilter);
 }
 
 std::string CISCOFTPCLIENTMIB::Cfcrequest::get_absolute_path() const
@@ -186,8 +186,8 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequest::ge
 
     if (cfcrequestmaximum.is_set || is_set(cfcrequestmaximum.yfilter)) leaf_name_data.push_back(cfcrequestmaximum.get_name_leafdata());
     if (cfcrequests.is_set || is_set(cfcrequests.yfilter)) leaf_name_data.push_back(cfcrequests.get_name_leafdata());
-    if (cfcrequestsbumped.is_set || is_set(cfcrequestsbumped.yfilter)) leaf_name_data.push_back(cfcrequestsbumped.get_name_leafdata());
     if (cfcrequestshigh.is_set || is_set(cfcrequestshigh.yfilter)) leaf_name_data.push_back(cfcrequestshigh.get_name_leafdata());
+    if (cfcrequestsbumped.is_set || is_set(cfcrequestsbumped.yfilter)) leaf_name_data.push_back(cfcrequestsbumped.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -218,17 +218,17 @@ void CISCOFTPCLIENTMIB::Cfcrequest::set_value(const std::string & value_path, co
         cfcrequests.value_namespace = name_space;
         cfcrequests.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cfcRequestsBumped")
-    {
-        cfcrequestsbumped = value;
-        cfcrequestsbumped.value_namespace = name_space;
-        cfcrequestsbumped.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cfcRequestsHigh")
     {
         cfcrequestshigh = value;
         cfcrequestshigh.value_namespace = name_space;
         cfcrequestshigh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfcRequestsBumped")
+    {
+        cfcrequestsbumped = value;
+        cfcrequestsbumped.value_namespace = name_space;
+        cfcrequestsbumped.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -242,19 +242,19 @@ void CISCOFTPCLIENTMIB::Cfcrequest::set_filter(const std::string & value_path, Y
     {
         cfcrequests.yfilter = yfilter;
     }
-    if(value_path == "cfcRequestsBumped")
-    {
-        cfcrequestsbumped.yfilter = yfilter;
-    }
     if(value_path == "cfcRequestsHigh")
     {
         cfcrequestshigh.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestsBumped")
+    {
+        cfcrequestsbumped.yfilter = yfilter;
     }
 }
 
 bool CISCOFTPCLIENTMIB::Cfcrequest::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cfcRequestMaximum" || name == "cfcRequests" || name == "cfcRequestsBumped" || name == "cfcRequestsHigh")
+    if(name == "cfcRequestMaximum" || name == "cfcRequests" || name == "cfcRequestsHigh" || name == "cfcRequestsBumped")
         return true;
     return false;
 }
@@ -362,17 +362,17 @@ bool CISCOFTPCLIENTMIB::Cfcrequesttable::has_leaf_or_child_of_name(const std::st
 CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestentry()
     :
     cfcrequestindex{YType::uint32, "cfcRequestIndex"},
-    cfcrequestcompletiontime{YType::uint32, "cfcRequestCompletionTime"},
-    cfcrequestentrystatus{YType::enumeration, "cfcRequestEntryStatus"},
-    cfcrequestlocalfile{YType::str, "cfcRequestLocalFile"},
     cfcrequestoperation{YType::enumeration, "cfcRequestOperation"},
-    cfcrequestoperationstate{YType::enumeration, "cfcRequestOperationState"},
-    cfcrequestpassword{YType::str, "cfcRequestPassword"},
+    cfcrequestlocalfile{YType::str, "cfcRequestLocalFile"},
     cfcrequestremotefile{YType::str, "cfcRequestRemoteFile"},
-    cfcrequestresult{YType::enumeration, "cfcRequestResult"},
     cfcrequestserver{YType::str, "cfcRequestServer"},
+    cfcrequestuser{YType::str, "cfcRequestUser"},
+    cfcrequestpassword{YType::str, "cfcRequestPassword"},
+    cfcrequestresult{YType::enumeration, "cfcRequestResult"},
+    cfcrequestcompletiontime{YType::uint32, "cfcRequestCompletionTime"},
     cfcrequeststop{YType::enumeration, "cfcRequestStop"},
-    cfcrequestuser{YType::str, "cfcRequestUser"}
+    cfcrequestoperationstate{YType::enumeration, "cfcRequestOperationState"},
+    cfcrequestentrystatus{YType::enumeration, "cfcRequestEntryStatus"}
 {
 
     yang_name = "cfcRequestEntry"; yang_parent_name = "cfcRequestTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -385,34 +385,34 @@ CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::~Cfcrequestentry()
 bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_data() const
 {
     return cfcrequestindex.is_set
-	|| cfcrequestcompletiontime.is_set
-	|| cfcrequestentrystatus.is_set
-	|| cfcrequestlocalfile.is_set
 	|| cfcrequestoperation.is_set
-	|| cfcrequestoperationstate.is_set
-	|| cfcrequestpassword.is_set
+	|| cfcrequestlocalfile.is_set
 	|| cfcrequestremotefile.is_set
-	|| cfcrequestresult.is_set
 	|| cfcrequestserver.is_set
+	|| cfcrequestuser.is_set
+	|| cfcrequestpassword.is_set
+	|| cfcrequestresult.is_set
+	|| cfcrequestcompletiontime.is_set
 	|| cfcrequeststop.is_set
-	|| cfcrequestuser.is_set;
+	|| cfcrequestoperationstate.is_set
+	|| cfcrequestentrystatus.is_set;
 }
 
 bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cfcrequestindex.yfilter)
-	|| ydk::is_set(cfcrequestcompletiontime.yfilter)
-	|| ydk::is_set(cfcrequestentrystatus.yfilter)
-	|| ydk::is_set(cfcrequestlocalfile.yfilter)
 	|| ydk::is_set(cfcrequestoperation.yfilter)
-	|| ydk::is_set(cfcrequestoperationstate.yfilter)
-	|| ydk::is_set(cfcrequestpassword.yfilter)
+	|| ydk::is_set(cfcrequestlocalfile.yfilter)
 	|| ydk::is_set(cfcrequestremotefile.yfilter)
-	|| ydk::is_set(cfcrequestresult.yfilter)
 	|| ydk::is_set(cfcrequestserver.yfilter)
+	|| ydk::is_set(cfcrequestuser.yfilter)
+	|| ydk::is_set(cfcrequestpassword.yfilter)
+	|| ydk::is_set(cfcrequestresult.yfilter)
+	|| ydk::is_set(cfcrequestcompletiontime.yfilter)
 	|| ydk::is_set(cfcrequeststop.yfilter)
-	|| ydk::is_set(cfcrequestuser.yfilter);
+	|| ydk::is_set(cfcrequestoperationstate.yfilter)
+	|| ydk::is_set(cfcrequestentrystatus.yfilter);
 }
 
 std::string CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get_absolute_path() const
@@ -434,17 +434,17 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequesttabl
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cfcrequestindex.is_set || is_set(cfcrequestindex.yfilter)) leaf_name_data.push_back(cfcrequestindex.get_name_leafdata());
-    if (cfcrequestcompletiontime.is_set || is_set(cfcrequestcompletiontime.yfilter)) leaf_name_data.push_back(cfcrequestcompletiontime.get_name_leafdata());
-    if (cfcrequestentrystatus.is_set || is_set(cfcrequestentrystatus.yfilter)) leaf_name_data.push_back(cfcrequestentrystatus.get_name_leafdata());
-    if (cfcrequestlocalfile.is_set || is_set(cfcrequestlocalfile.yfilter)) leaf_name_data.push_back(cfcrequestlocalfile.get_name_leafdata());
     if (cfcrequestoperation.is_set || is_set(cfcrequestoperation.yfilter)) leaf_name_data.push_back(cfcrequestoperation.get_name_leafdata());
-    if (cfcrequestoperationstate.is_set || is_set(cfcrequestoperationstate.yfilter)) leaf_name_data.push_back(cfcrequestoperationstate.get_name_leafdata());
-    if (cfcrequestpassword.is_set || is_set(cfcrequestpassword.yfilter)) leaf_name_data.push_back(cfcrequestpassword.get_name_leafdata());
+    if (cfcrequestlocalfile.is_set || is_set(cfcrequestlocalfile.yfilter)) leaf_name_data.push_back(cfcrequestlocalfile.get_name_leafdata());
     if (cfcrequestremotefile.is_set || is_set(cfcrequestremotefile.yfilter)) leaf_name_data.push_back(cfcrequestremotefile.get_name_leafdata());
-    if (cfcrequestresult.is_set || is_set(cfcrequestresult.yfilter)) leaf_name_data.push_back(cfcrequestresult.get_name_leafdata());
     if (cfcrequestserver.is_set || is_set(cfcrequestserver.yfilter)) leaf_name_data.push_back(cfcrequestserver.get_name_leafdata());
-    if (cfcrequeststop.is_set || is_set(cfcrequeststop.yfilter)) leaf_name_data.push_back(cfcrequeststop.get_name_leafdata());
     if (cfcrequestuser.is_set || is_set(cfcrequestuser.yfilter)) leaf_name_data.push_back(cfcrequestuser.get_name_leafdata());
+    if (cfcrequestpassword.is_set || is_set(cfcrequestpassword.yfilter)) leaf_name_data.push_back(cfcrequestpassword.get_name_leafdata());
+    if (cfcrequestresult.is_set || is_set(cfcrequestresult.yfilter)) leaf_name_data.push_back(cfcrequestresult.get_name_leafdata());
+    if (cfcrequestcompletiontime.is_set || is_set(cfcrequestcompletiontime.yfilter)) leaf_name_data.push_back(cfcrequestcompletiontime.get_name_leafdata());
+    if (cfcrequeststop.is_set || is_set(cfcrequeststop.yfilter)) leaf_name_data.push_back(cfcrequeststop.get_name_leafdata());
+    if (cfcrequestoperationstate.is_set || is_set(cfcrequestoperationstate.yfilter)) leaf_name_data.push_back(cfcrequestoperationstate.get_name_leafdata());
+    if (cfcrequestentrystatus.is_set || is_set(cfcrequestentrystatus.yfilter)) leaf_name_data.push_back(cfcrequestentrystatus.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -469,17 +469,11 @@ void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_value(const std::s
         cfcrequestindex.value_namespace = name_space;
         cfcrequestindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cfcRequestCompletionTime")
+    if(value_path == "cfcRequestOperation")
     {
-        cfcrequestcompletiontime = value;
-        cfcrequestcompletiontime.value_namespace = name_space;
-        cfcrequestcompletiontime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cfcRequestEntryStatus")
-    {
-        cfcrequestentrystatus = value;
-        cfcrequestentrystatus.value_namespace = name_space;
-        cfcrequestentrystatus.value_namespace_prefix = name_space_prefix;
+        cfcrequestoperation = value;
+        cfcrequestoperation.value_namespace = name_space;
+        cfcrequestoperation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestLocalFile")
     {
@@ -487,35 +481,11 @@ void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_value(const std::s
         cfcrequestlocalfile.value_namespace = name_space;
         cfcrequestlocalfile.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cfcRequestOperation")
-    {
-        cfcrequestoperation = value;
-        cfcrequestoperation.value_namespace = name_space;
-        cfcrequestoperation.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cfcRequestOperationState")
-    {
-        cfcrequestoperationstate = value;
-        cfcrequestoperationstate.value_namespace = name_space;
-        cfcrequestoperationstate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cfcRequestPassword")
-    {
-        cfcrequestpassword = value;
-        cfcrequestpassword.value_namespace = name_space;
-        cfcrequestpassword.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cfcRequestRemoteFile")
     {
         cfcrequestremotefile = value;
         cfcrequestremotefile.value_namespace = name_space;
         cfcrequestremotefile.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cfcRequestResult")
-    {
-        cfcrequestresult = value;
-        cfcrequestresult.value_namespace = name_space;
-        cfcrequestresult.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestServer")
     {
@@ -523,17 +493,47 @@ void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_value(const std::s
         cfcrequestserver.value_namespace = name_space;
         cfcrequestserver.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cfcRequestUser")
+    {
+        cfcrequestuser = value;
+        cfcrequestuser.value_namespace = name_space;
+        cfcrequestuser.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfcRequestPassword")
+    {
+        cfcrequestpassword = value;
+        cfcrequestpassword.value_namespace = name_space;
+        cfcrequestpassword.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfcRequestResult")
+    {
+        cfcrequestresult = value;
+        cfcrequestresult.value_namespace = name_space;
+        cfcrequestresult.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfcRequestCompletionTime")
+    {
+        cfcrequestcompletiontime = value;
+        cfcrequestcompletiontime.value_namespace = name_space;
+        cfcrequestcompletiontime.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "cfcRequestStop")
     {
         cfcrequeststop = value;
         cfcrequeststop.value_namespace = name_space;
         cfcrequeststop.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cfcRequestUser")
+    if(value_path == "cfcRequestOperationState")
     {
-        cfcrequestuser = value;
-        cfcrequestuser.value_namespace = name_space;
-        cfcrequestuser.value_namespace_prefix = name_space_prefix;
+        cfcrequestoperationstate = value;
+        cfcrequestoperationstate.value_namespace = name_space;
+        cfcrequestoperationstate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cfcRequestEntryStatus")
+    {
+        cfcrequestentrystatus = value;
+        cfcrequestentrystatus.value_namespace = name_space;
+        cfcrequestentrystatus.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -543,55 +543,55 @@ void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_filter(const std::
     {
         cfcrequestindex.yfilter = yfilter;
     }
-    if(value_path == "cfcRequestCompletionTime")
+    if(value_path == "cfcRequestOperation")
     {
-        cfcrequestcompletiontime.yfilter = yfilter;
-    }
-    if(value_path == "cfcRequestEntryStatus")
-    {
-        cfcrequestentrystatus.yfilter = yfilter;
+        cfcrequestoperation.yfilter = yfilter;
     }
     if(value_path == "cfcRequestLocalFile")
     {
         cfcrequestlocalfile.yfilter = yfilter;
     }
-    if(value_path == "cfcRequestOperation")
-    {
-        cfcrequestoperation.yfilter = yfilter;
-    }
-    if(value_path == "cfcRequestOperationState")
-    {
-        cfcrequestoperationstate.yfilter = yfilter;
-    }
-    if(value_path == "cfcRequestPassword")
-    {
-        cfcrequestpassword.yfilter = yfilter;
-    }
     if(value_path == "cfcRequestRemoteFile")
     {
         cfcrequestremotefile.yfilter = yfilter;
-    }
-    if(value_path == "cfcRequestResult")
-    {
-        cfcrequestresult.yfilter = yfilter;
     }
     if(value_path == "cfcRequestServer")
     {
         cfcrequestserver.yfilter = yfilter;
     }
+    if(value_path == "cfcRequestUser")
+    {
+        cfcrequestuser.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestPassword")
+    {
+        cfcrequestpassword.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestResult")
+    {
+        cfcrequestresult.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestCompletionTime")
+    {
+        cfcrequestcompletiontime.yfilter = yfilter;
+    }
     if(value_path == "cfcRequestStop")
     {
         cfcrequeststop.yfilter = yfilter;
     }
-    if(value_path == "cfcRequestUser")
+    if(value_path == "cfcRequestOperationState")
     {
-        cfcrequestuser.yfilter = yfilter;
+        cfcrequestoperationstate.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestEntryStatus")
+    {
+        cfcrequestentrystatus.yfilter = yfilter;
     }
 }
 
 bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cfcRequestIndex" || name == "cfcRequestCompletionTime" || name == "cfcRequestEntryStatus" || name == "cfcRequestLocalFile" || name == "cfcRequestOperation" || name == "cfcRequestOperationState" || name == "cfcRequestPassword" || name == "cfcRequestRemoteFile" || name == "cfcRequestResult" || name == "cfcRequestServer" || name == "cfcRequestStop" || name == "cfcRequestUser")
+    if(name == "cfcRequestIndex" || name == "cfcRequestOperation" || name == "cfcRequestLocalFile" || name == "cfcRequestRemoteFile" || name == "cfcRequestServer" || name == "cfcRequestUser" || name == "cfcRequestPassword" || name == "cfcRequestResult" || name == "cfcRequestCompletionTime" || name == "cfcRequestStop" || name == "cfcRequestOperationState" || name == "cfcRequestEntryStatus")
         return true;
     return false;
 }

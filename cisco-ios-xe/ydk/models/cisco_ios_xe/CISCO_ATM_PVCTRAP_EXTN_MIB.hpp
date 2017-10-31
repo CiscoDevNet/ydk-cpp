@@ -44,130 +44,20 @@ class CISCOATMPVCTRAPEXTNMIB : public ydk::Entity
         class Catmaisrdistatusuppvclrangetable; //type: CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable
         class Catmuppvclrangetable; //type: CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable> catmaisrdistatuschpvclrangetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable> catmaisrdistatusuppvclrangetable;
         std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable> catmcurstatchangepvcltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable> catmcurstatusuppvcltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable> catmdownpvclrangetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable> catmendccstatuschpvclrangetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable> catmendccstatusuppvclrangetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable> catmsegccstatuschpvclrangetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable> catmsegccstatusuppvclrangetable;
         std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable> catmstatuschangepvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable> catmsegccstatuschpvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable> catmendccstatuschpvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable> catmaisrdistatuschpvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable> catmdownpvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable> catmcurstatusuppvcltable;
         std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable> catmstatusuppvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable> catmsegccstatusuppvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable> catmendccstatusuppvclrangetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable> catmaisrdistatusuppvclrangetable;
         std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable> catmuppvclrangetable;
         
 }; // CISCOATMPVCTRAPEXTNMIB
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable : public ydk::Entity
-{
-    public:
-        Catmaisrdistatuschpvclrangetable();
-        ~Catmaisrdistatuschpvclrangetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Catmaisrdistatuschpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry> > catmaisrdistatuschpvclrangeentry;
-        
-}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry : public ydk::Entity
-{
-    public:
-        Catmaisrdistatuschpvclrangeentry();
-        ~Catmaisrdistatuschpvclrangeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
-        ydk::YLeaf catmstatuschangepvclrangeindex;
-        ydk::YLeaf catmpvclaisrdilowerrangevalue; //type: int32
-        ydk::YLeaf catmpvclaisrdihigherrangevalue; //type: int32
-        ydk::YLeaf catmpvclaisrdirangestatuschstart; //type: uint32
-        ydk::YLeaf catmpvclaisrdirangestatuschend; //type: uint32
-
-}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable : public ydk::Entity
-{
-    public:
-        Catmaisrdistatusuppvclrangetable();
-        ~Catmaisrdistatusuppvclrangetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Catmaisrdistatusuppvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry> > catmaisrdistatusuppvclrangeentry;
-        
-}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry : public ydk::Entity
-{
-    public:
-        Catmaisrdistatusuppvclrangeentry();
-        ~Catmaisrdistatusuppvclrangeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
-        ydk::YLeaf catmstatuschangepvclrangeindex;
-        ydk::YLeaf catmpvclaisrdiuplowerrangevalue; //type: int32
-        ydk::YLeaf catmpvclaisrdiuphigherrangevalue; //type: int32
-        ydk::YLeaf catmpvclaisrdirangestatusupstart; //type: uint32
-        ydk::YLeaf catmpvclaisrdirangestatusupend; //type: uint32
-
-}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry
 
 
 class CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable : public ydk::Entity
@@ -236,6 +126,283 @@ class CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvcle
 }; // CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry
 
 
+class CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable : public ydk::Entity
+{
+    public:
+        Catmstatuschangepvclrangetable();
+        ~Catmstatuschangepvclrangetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Catmstatuschangepvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry> > catmstatuschangepvclrangeentry;
+        
+}; // CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry : public ydk::Entity
+{
+    public:
+        Catmstatuschangepvclrangeentry();
+        ~Catmstatuschangepvclrangeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        ydk::YLeaf catmstatuschangepvclrangeindex; //type: int32
+        ydk::YLeaf catmpvcllowerrangevalue; //type: int32
+        ydk::YLeaf catmpvclhigherrangevalue; //type: int32
+        ydk::YLeaf catmpvclrangestatuschangestart; //type: uint32
+        ydk::YLeaf catmpvclrangestatuschangeend; //type: uint32
+
+}; // CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable : public ydk::Entity
+{
+    public:
+        Catmsegccstatuschpvclrangetable();
+        ~Catmsegccstatuschpvclrangetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Catmsegccstatuschpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry> > catmsegccstatuschpvclrangeentry;
+        
+}; // CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry : public ydk::Entity
+{
+    public:
+        Catmsegccstatuschpvclrangeentry();
+        ~Catmsegccstatuschpvclrangeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
+        ydk::YLeaf catmstatuschangepvclrangeindex;
+        ydk::YLeaf catmpvclsegcclowerrangevalue; //type: int32
+        ydk::YLeaf catmpvclsegcchigherrangevalue; //type: int32
+        ydk::YLeaf catmpvclsegccrangestatuschstart; //type: uint32
+        ydk::YLeaf catmpvclsegccrangestatuschend; //type: uint32
+
+}; // CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable : public ydk::Entity
+{
+    public:
+        Catmendccstatuschpvclrangetable();
+        ~Catmendccstatuschpvclrangetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Catmendccstatuschpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry> > catmendccstatuschpvclrangeentry;
+        
+}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry : public ydk::Entity
+{
+    public:
+        Catmendccstatuschpvclrangeentry();
+        ~Catmendccstatuschpvclrangeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
+        ydk::YLeaf catmstatuschangepvclrangeindex;
+        ydk::YLeaf catmpvclendcclowerrangevalue; //type: int32
+        ydk::YLeaf catmpvclendcchigherrangevalue; //type: int32
+        ydk::YLeaf catmpvclendccrangestatuschstart; //type: uint32
+        ydk::YLeaf catmpvclendccrangestatuschend; //type: uint32
+
+}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable : public ydk::Entity
+{
+    public:
+        Catmaisrdistatuschpvclrangetable();
+        ~Catmaisrdistatuschpvclrangetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Catmaisrdistatuschpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry> > catmaisrdistatuschpvclrangeentry;
+        
+}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry : public ydk::Entity
+{
+    public:
+        Catmaisrdistatuschpvclrangeentry();
+        ~Catmaisrdistatuschpvclrangeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
+        ydk::YLeaf catmstatuschangepvclrangeindex;
+        ydk::YLeaf catmpvclaisrdilowerrangevalue; //type: int32
+        ydk::YLeaf catmpvclaisrdihigherrangevalue; //type: int32
+        ydk::YLeaf catmpvclaisrdirangestatuschstart; //type: uint32
+        ydk::YLeaf catmpvclaisrdirangestatuschend; //type: uint32
+
+}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable : public ydk::Entity
+{
+    public:
+        Catmdownpvclrangetable();
+        ~Catmdownpvclrangetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Catmdownpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry> > catmdownpvclrangeentry;
+        
+}; // CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry : public ydk::Entity
+{
+    public:
+        Catmdownpvclrangeentry();
+        ~Catmdownpvclrangeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
+        ydk::YLeaf catmstatuschangepvclrangeindex;
+        ydk::YLeaf catmdownpvcllowerrangevalue; //type: int32
+        ydk::YLeaf catmdownpvclhigherrangevalue; //type: int32
+        ydk::YLeaf catmdownpvclrangestart; //type: uint32
+        ydk::YLeaf catmdownpvclrangeend; //type: uint32
+        ydk::YLeaf catmprevuppvclrangestart; //type: uint32
+        ydk::YLeaf catmprevuppvclrangeend; //type: uint32
+        ydk::YLeaf catmpvclrangefailurereason; //type: CatmOAMFailureType
+
+}; // CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry
+
+
 class CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable : public ydk::Entity
 {
     public:
@@ -302,11 +469,11 @@ class CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry
 }; // CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry
 
 
-class CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable : public ydk::Entity
+class CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable : public ydk::Entity
 {
     public:
-        Catmdownpvclrangetable();
-        ~Catmdownpvclrangetable();
+        Catmstatusuppvclrangetable();
+        ~Catmstatusuppvclrangetable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -319,18 +486,18 @@ class CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Catmdownpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry
+        class Catmstatusuppvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry> > catmdownpvclrangeentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry> > catmstatusuppvclrangeentry;
         
-}; // CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable
+}; // CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable
 
 
-class CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry : public ydk::Entity
+class CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry : public ydk::Entity
 {
     public:
-        Catmdownpvclrangeentry();
-        ~Catmdownpvclrangeentry();
+        Catmstatusuppvclrangeentry();
+        ~Catmstatusuppvclrangeentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -349,180 +516,12 @@ class CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry : p
         ydk::YLeaf atmvclvpi;
         //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
         ydk::YLeaf catmstatuschangepvclrangeindex;
-        ydk::YLeaf catmdownpvcllowerrangevalue; //type: int32
-        ydk::YLeaf catmdownpvclhigherrangevalue; //type: int32
-        ydk::YLeaf catmdownpvclrangestart; //type: uint32
-        ydk::YLeaf catmdownpvclrangeend; //type: uint32
-        ydk::YLeaf catmprevuppvclrangestart; //type: uint32
-        ydk::YLeaf catmprevuppvclrangeend; //type: uint32
-        ydk::YLeaf catmpvclrangefailurereason; //type: CatmOAMFailureType
+        ydk::YLeaf catmpvcluplowerrangevalue; //type: int32
+        ydk::YLeaf catmpvcluphigherrangevalue; //type: int32
+        ydk::YLeaf catmpvclrangestatusupstart; //type: uint32
+        ydk::YLeaf catmpvclrangestatusupend; //type: uint32
 
-}; // CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable : public ydk::Entity
-{
-    public:
-        Catmendccstatuschpvclrangetable();
-        ~Catmendccstatuschpvclrangetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Catmendccstatuschpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry> > catmendccstatuschpvclrangeentry;
-        
-}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry : public ydk::Entity
-{
-    public:
-        Catmendccstatuschpvclrangeentry();
-        ~Catmendccstatuschpvclrangeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
-        ydk::YLeaf catmstatuschangepvclrangeindex;
-        ydk::YLeaf catmpvclendcclowerrangevalue; //type: int32
-        ydk::YLeaf catmpvclendcchigherrangevalue; //type: int32
-        ydk::YLeaf catmpvclendccrangestatuschstart; //type: uint32
-        ydk::YLeaf catmpvclendccrangestatuschend; //type: uint32
-
-}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable : public ydk::Entity
-{
-    public:
-        Catmendccstatusuppvclrangetable();
-        ~Catmendccstatusuppvclrangetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Catmendccstatusuppvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry> > catmendccstatusuppvclrangeentry;
-        
-}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry : public ydk::Entity
-{
-    public:
-        Catmendccstatusuppvclrangeentry();
-        ~Catmendccstatusuppvclrangeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
-        ydk::YLeaf catmstatuschangepvclrangeindex;
-        ydk::YLeaf catmpvclendccuplowerrangevalue; //type: int32
-        ydk::YLeaf catmpvclendccuphigherrangevalue; //type: int32
-        ydk::YLeaf catmpvclendccrangestatusupstart; //type: uint32
-        ydk::YLeaf catmpvclendccrangestatusupend; //type: uint32
-
-}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable : public ydk::Entity
-{
-    public:
-        Catmsegccstatuschpvclrangetable();
-        ~Catmsegccstatuschpvclrangetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Catmsegccstatuschpvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry> > catmsegccstatuschpvclrangeentry;
-        
-}; // CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry : public ydk::Entity
-{
-    public:
-        Catmsegccstatuschpvclrangeentry();
-        ~Catmsegccstatuschpvclrangeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
-        ydk::YLeaf catmstatuschangepvclrangeindex;
-        ydk::YLeaf catmpvclsegcclowerrangevalue; //type: int32
-        ydk::YLeaf catmpvclsegcchigherrangevalue; //type: int32
-        ydk::YLeaf catmpvclsegccrangestatuschstart; //type: uint32
-        ydk::YLeaf catmpvclsegccrangestatuschend; //type: uint32
-
-}; // CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry
+}; // CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry
 
 
 class CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable : public ydk::Entity
@@ -580,11 +579,11 @@ class CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusup
 }; // CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry
 
 
-class CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable : public ydk::Entity
+class CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable : public ydk::Entity
 {
     public:
-        Catmstatuschangepvclrangetable();
-        ~Catmstatuschangepvclrangetable();
+        Catmendccstatusuppvclrangetable();
+        ~Catmendccstatusuppvclrangetable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -597,72 +596,18 @@ class CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Catmstatuschangepvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry
+        class Catmendccstatusuppvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry> > catmstatuschangepvclrangeentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry> > catmendccstatusuppvclrangeentry;
         
-}; // CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable
+}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable
 
 
-class CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry : public ydk::Entity
+class CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry : public ydk::Entity
 {
     public:
-        Catmstatuschangepvclrangeentry();
-        ~Catmstatuschangepvclrangeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        ydk::YLeaf catmstatuschangepvclrangeindex; //type: int32
-        ydk::YLeaf catmpvcllowerrangevalue; //type: int32
-        ydk::YLeaf catmpvclhigherrangevalue; //type: int32
-        ydk::YLeaf catmpvclrangestatuschangestart; //type: uint32
-        ydk::YLeaf catmpvclrangestatuschangeend; //type: uint32
-
-}; // CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable : public ydk::Entity
-{
-    public:
-        Catmstatusuppvclrangetable();
-        ~Catmstatusuppvclrangetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Catmstatusuppvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry> > catmstatusuppvclrangeentry;
-        
-}; // CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable
-
-
-class CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry : public ydk::Entity
-{
-    public:
-        Catmstatusuppvclrangeentry();
-        ~Catmstatusuppvclrangeentry();
+        Catmendccstatusuppvclrangeentry();
+        ~Catmendccstatusuppvclrangeentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -681,12 +626,67 @@ class CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangee
         ydk::YLeaf atmvclvpi;
         //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
         ydk::YLeaf catmstatuschangepvclrangeindex;
-        ydk::YLeaf catmpvcluplowerrangevalue; //type: int32
-        ydk::YLeaf catmpvcluphigherrangevalue; //type: int32
-        ydk::YLeaf catmpvclrangestatusupstart; //type: uint32
-        ydk::YLeaf catmpvclrangestatusupend; //type: uint32
+        ydk::YLeaf catmpvclendccuplowerrangevalue; //type: int32
+        ydk::YLeaf catmpvclendccuphigherrangevalue; //type: int32
+        ydk::YLeaf catmpvclendccrangestatusupstart; //type: uint32
+        ydk::YLeaf catmpvclendccrangestatusupend; //type: uint32
 
-}; // CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry
+}; // CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable : public ydk::Entity
+{
+    public:
+        Catmaisrdistatusuppvclrangetable();
+        ~Catmaisrdistatusuppvclrangetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Catmaisrdistatusuppvclrangeentry; //type: CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry> > catmaisrdistatusuppvclrangeentry;
+        
+}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable
+
+
+class CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry : public ydk::Entity
+{
+    public:
+        Catmaisrdistatusuppvclrangeentry();
+        ~Catmaisrdistatusuppvclrangeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        //type: int32 (refers to cisco_ios_xe::CISCO_ATM_PVCTRAP_EXTN_MIB::CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::catmstatuschangepvclrangeindex)
+        ydk::YLeaf catmstatuschangepvclrangeindex;
+        ydk::YLeaf catmpvclaisrdiuplowerrangevalue; //type: int32
+        ydk::YLeaf catmpvclaisrdiuphigherrangevalue; //type: int32
+        ydk::YLeaf catmpvclaisrdirangestatusupstart; //type: uint32
+        ydk::YLeaf catmpvclaisrdirangestatusupend; //type: uint32
+
+}; // CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry
 
 
 class CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable : public ydk::Entity

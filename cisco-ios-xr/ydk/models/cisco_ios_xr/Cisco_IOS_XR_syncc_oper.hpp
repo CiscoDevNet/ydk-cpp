@@ -84,11 +84,71 @@ class TimingController::Nodes::Node : public ydk::Entity
         class Clock_; //type: TimingController::Nodes::Node::Clock_
         class TimingSource; //type: TimingController::Nodes::Node::TimingSource
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock_> clock_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock_> clock_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::TimingSource> timing_source;
         
 }; // TimingController::Nodes::Node
+
+
+class TimingController::Nodes::Node::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SynccInstance; //type: TimingController::Nodes::Node::State::SynccInstance
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::State::SynccInstance> > syncc_instance;
+        
+}; // TimingController::Nodes::Node::State
+
+
+class TimingController::Nodes::Node::State::SynccInstance : public ydk::Entity
+{
+    public:
+        SynccInstance();
+        ~SynccInstance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf controller_state; //type: SynccStates
+        ydk::YLeaf syncc_node_state; //type: NodeState
+        ydk::YLeaf verbose_level; //type: uint32
+        ydk::YLeaf initial_count; //type: uint32
+        ydk::YLeaf shutdown_count; //type: uint32
+        ydk::YLeaf set_input_count; //type: uint32
+        ydk::YLeaf set_capability_count; //type: uint32
+        ydk::YLeaf get_clock_count; //type: uint32
+        ydk::YLeaf set_clock_out_count; //type: uint32
+        ydk::YLeaf sync_enable_count; //type: uint32
+        ydk::YLeaf sync_disable_count; //type: uint32
+        ydk::YLeaf capability_count; //type: uint32
+        ydk::YLeaf set_quality_level_count; //type: uint32
+        ydk::YLeaf input_notification; //type: uint32
+        ydk::YLeaf capability_notification; //type: uint32
+        ydk::YLeaf status_notification; //type: uint32
+        ydk::YLeaf resync_notification; //type: uint32
+
+}; // TimingController::Nodes::Node::State::SynccInstance
 
 
 class TimingController::Nodes::Node::Clock_ : public ydk::Entity
@@ -205,66 +265,6 @@ class TimingController::Nodes::Node::Clock_::SynccInstance::Clock__ : public ydk
 }; // TimingController::Nodes::Node::Clock_::SynccInstance::Clock__
 
 
-class TimingController::Nodes::Node::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SynccInstance; //type: TimingController::Nodes::Node::State::SynccInstance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::State::SynccInstance> > syncc_instance;
-        
-}; // TimingController::Nodes::Node::State
-
-
-class TimingController::Nodes::Node::State::SynccInstance : public ydk::Entity
-{
-    public:
-        SynccInstance();
-        ~SynccInstance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf controller_state; //type: SynccStates
-        ydk::YLeaf syncc_node_state; //type: NodeState
-        ydk::YLeaf verbose_level; //type: uint32
-        ydk::YLeaf initial_count; //type: uint32
-        ydk::YLeaf shutdown_count; //type: uint32
-        ydk::YLeaf set_input_count; //type: uint32
-        ydk::YLeaf set_capability_count; //type: uint32
-        ydk::YLeaf get_clock_count; //type: uint32
-        ydk::YLeaf set_clock_out_count; //type: uint32
-        ydk::YLeaf sync_enable_count; //type: uint32
-        ydk::YLeaf sync_disable_count; //type: uint32
-        ydk::YLeaf capability_count; //type: uint32
-        ydk::YLeaf set_quality_level_count; //type: uint32
-        ydk::YLeaf input_notification; //type: uint32
-        ydk::YLeaf capability_notification; //type: uint32
-        ydk::YLeaf status_notification; //type: uint32
-        ydk::YLeaf resync_notification; //type: uint32
-
-}; // TimingController::Nodes::Node::State::SynccInstance
-
-
 class TimingController::Nodes::Node::TimingSource : public ydk::Entity
 {
     public:
@@ -308,41 +308,11 @@ class TimingController::Nodes::Node::TimingSource::SynccInstance : public ydk::E
         class TimingStatusT4; //type: TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4
         class TimingStatus1588; //type: TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588> > timing_status1588;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0> > timing_status_t0;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4> > timing_status_t4;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588> > timing_status1588;
         
 }; // TimingController::Nodes::Node::TimingSource::SynccInstance
-
-
-class TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588 : public ydk::Entity
-{
-    public:
-        TimingStatus1588();
-        ~TimingStatus1588();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf input; //type: uint8
-        ydk::YLeaf slot; //type: uint8
-        ydk::YLeaf port; //type: uint8
-        ydk::YLeaf clock_source; //type: Source
-        ydk::YLeaf rank; //type: uint8
-        ydk::YLeaf quality_level_option; //type: uint8
-        ydk::YLeaf quality_level_value; //type: uint8
-        ydk::YLeaf user_priority; //type: uint8
-        ydk::YLeaf clock_state; //type: SourceStateName
-        ydk::YLeaf is_select; //type: boolean
-
-}; // TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588
 
 
 class TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0 : public ydk::Entity
@@ -404,24 +374,35 @@ class TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4
 
 }; // TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4
 
-class InterfaceState : public ydk::Enum
+
+class TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588 : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf admin_down;
+        TimingStatus1588();
+        ~TimingStatus1588();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-class SynccStates : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initializing;
-        static const ydk::Enum::YLeaf running;
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf shutdown;
+        ydk::YLeaf input; //type: uint8
+        ydk::YLeaf slot; //type: uint8
+        ydk::YLeaf port; //type: uint8
+        ydk::YLeaf clock_source; //type: Source
+        ydk::YLeaf rank; //type: uint8
+        ydk::YLeaf quality_level_option; //type: uint8
+        ydk::YLeaf quality_level_value; //type: uint8
+        ydk::YLeaf user_priority; //type: uint8
+        ydk::YLeaf clock_state; //type: SourceStateName
+        ydk::YLeaf is_select; //type: boolean
 
-};
+}; // TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588
 
 class SourceStateName : public ydk::Enum
 {
@@ -432,6 +413,26 @@ class SourceStateName : public ydk::Enum
         static const ydk::Enum::YLeaf failed;
         static const ydk::Enum::YLeaf unmonitored;
         static const ydk::Enum::YLeaf error;
+
+};
+
+class Source : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf ethernet_line_interface;
+        static const ydk::Enum::YLeaf sonet_line_interface;
+        static const ydk::Enum::YLeaf clock_interface;
+        static const ydk::Enum::YLeaf internal;
+
+};
+
+class InterfaceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf admin_down;
 
 };
 
@@ -454,17 +455,6 @@ class Direct : public ydk::Enum
 
 };
 
-class Source : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf ethernet_line_interface;
-        static const ydk::Enum::YLeaf sonet_line_interface;
-        static const ydk::Enum::YLeaf clock_interface;
-        static const ydk::Enum::YLeaf internal;
-
-};
-
 class Smode2 : public ydk::Enum
 {
     public:
@@ -472,6 +462,17 @@ class Smode2 : public ydk::Enum
         static const ydk::Enum::YLeaf b8zs;
         static const ydk::Enum::YLeaf hdb3;
         static const ydk::Enum::YLeaf submode2_none;
+
+};
+
+class Smode1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf extended_super_frame;
+        static const ydk::Enum::YLeaf d4;
+        static const ydk::Enum::YLeaf non_crc4;
+        static const ydk::Enum::YLeaf crc4;
+        static const ydk::Enum::YLeaf submode1_none;
 
 };
 
@@ -496,14 +497,13 @@ class NodeState : public ydk::Enum
 
 };
 
-class Smode1 : public ydk::Enum
+class SynccStates : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf extended_super_frame;
-        static const ydk::Enum::YLeaf d4;
-        static const ydk::Enum::YLeaf non_crc4;
-        static const ydk::Enum::YLeaf crc4;
-        static const ydk::Enum::YLeaf submode1_none;
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf running;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 

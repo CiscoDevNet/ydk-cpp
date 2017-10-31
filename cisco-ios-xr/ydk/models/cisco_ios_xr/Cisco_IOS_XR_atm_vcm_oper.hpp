@@ -87,493 +87,14 @@ class AtmVcm::Nodes::Node : public ydk::Entity
         class Interfaces; //type: AtmVcm::Nodes::Node::Interfaces
         class VpTunnels; //type: AtmVcm::Nodes::Node::VpTunnels
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Vcs> vcs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::CellPacks> cell_packs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps> pvps;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks> class_links;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Interfaces> interfaces;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps> pvps;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Vcs> vcs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::VpTunnels> vp_tunnels;
         
 }; // AtmVcm::Nodes::Node
-
-
-class AtmVcm::Nodes::Node::CellPacks : public ydk::Entity
-{
-    public:
-        CellPacks();
-        ~CellPacks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class CellPack; //type: AtmVcm::Nodes::Node::CellPacks::CellPack
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::CellPacks::CellPack> > cell_pack;
-        
-}; // AtmVcm::Nodes::Node::CellPacks
-
-
-class AtmVcm::Nodes::Node::CellPacks::CellPack : public ydk::Entity
-{
-    public:
-        CellPack();
-        ~CellPack();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf pci; //type: int32
-        ydk::YLeaf sub_interface_name; //type: string
-        ydk::YLeaf cell_packing_mode; //type: VcCellPackingMode
-        ydk::YLeaf vpi; //type: uint32
-        ydk::YLeaf vci; //type: uint32
-        ydk::YLeaf received_average_cells_packets; //type: uint64
-        ydk::YLeaf sent_cells_packets; //type: uint64
-        class CellPacking; //type: AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking> cell_packing;
-        
-}; // AtmVcm::Nodes::Node::CellPacks::CellPack
-
-
-class AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking : public ydk::Entity
-{
-    public:
-        CellPacking();
-        ~CellPacking();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf local_max_cells_packed_per_packet; //type: uint16
-        ydk::YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
-        ydk::YLeaf max_cell_packed_timeout; //type: uint16
-
-}; // AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking
-
-
-class AtmVcm::Nodes::Node::ClassLinks : public ydk::Entity
-{
-    public:
-        ClassLinks();
-        ~ClassLinks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ClassLink; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink> > class_link;
-        
-}; // AtmVcm::Nodes::Node::ClassLinks
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink : public ydk::Entity
-{
-    public:
-        ClassLink();
-        ~ClassLink();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vpi; //type: int32
-        ydk::YLeaf vci; //type: int32
-        ydk::YLeaf sub_interface_name; //type: string
-        class VcClassNotSupported; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported
-        class OamConfig; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig> oam_config;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported> vc_class_not_supported;
-        
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig : public ydk::Entity
-{
-    public:
-        OamConfig();
-        ~OamConfig();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ClassLinkShaping; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping
-        class ClassLinkEncapsulation; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation
-        class OamPvc; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc
-        class OamRetry; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry
-        class AisRdi; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi> ais_rdi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation> class_link_encapsulation;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping> class_link_shaping;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc> oam_pvc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry> oam_retry;
-        
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi : public ydk::Entity
-{
-    public:
-        AisRdi();
-        ~AisRdi();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ais_rdi_up_count; //type: uint32
-        ydk::YLeaf ais_rdi_up_time; //type: uint32
-        ydk::YLeaf ais_rdi_inherit_level; //type: ClassLinkOamInheritLevel
-
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation : public ydk::Entity
-{
-    public:
-        ClassLinkEncapsulation();
-        ~ClassLinkEncapsulation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf encapsulation_type; //type: VcEncap
-        ydk::YLeaf encapsulation_inherit_level; //type: VcInheritLevel
-
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping : public ydk::Entity
-{
-    public:
-        ClassLinkShaping();
-        ~ClassLinkShaping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf shaping_type; //type: VcTrafShaping
-        ydk::YLeaf peak_output_rate; //type: uint32
-        ydk::YLeaf average_output_rate; //type: uint32
-        ydk::YLeaf burst_output_rate; //type: uint32
-        ydk::YLeaf shaping_inherit_level; //type: VcInheritLevel
-
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc : public ydk::Entity
-{
-    public:
-        OamPvc();
-        ~OamPvc();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf manage_level; //type: VcManageLevel
-        ydk::YLeaf pvc_frequency; //type: uint32
-        ydk::YLeaf keep_vc_up; //type: boolean
-        ydk::YLeaf ais_rdi_failure; //type: boolean
-        ydk::YLeaf manage_inherit_level; //type: ClassLinkOamInheritLevel
-
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry : public ydk::Entity
-{
-    public:
-        OamRetry();
-        ~OamRetry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf retry_up_count; //type: uint32
-        ydk::YLeaf down_count; //type: uint32
-        ydk::YLeaf retry_frequency; //type: uint32
-        ydk::YLeaf retry_inherit_level; //type: ClassLinkOamInheritLevel
-
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry
-
-
-class AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported : public ydk::Entity
-{
-    public:
-        VcClassNotSupported();
-        ~VcClassNotSupported();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf encapsulation_not_supported; //type: VcEncap
-        ydk::YLeaf not_supported_inherit_level; //type: VcInheritLevel
-
-}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported
-
-
-class AtmVcm::Nodes::Node::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: AtmVcm::Nodes::Node::Interfaces::Interface
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Interfaces::Interface> > interface;
-        
-}; // AtmVcm::Nodes::Node::Interfaces
-
-
-class AtmVcm::Nodes::Node::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf ilmi_vpi; //type: uint32
-        ydk::YLeaf ilmi_vci; //type: uint32
-        ydk::YLeaf pvc_failures; //type: uint32
-        ydk::YLeaf currently_failing_layer2pv_ps; //type: uint32
-        ydk::YLeaf currently_failing_layer2pv_cs; //type: uint32
-        ydk::YLeaf currently_failing_layer3vp_tunnels; //type: uint32
-        ydk::YLeaf currently_failing_layer3pv_cs; //type: uint32
-        ydk::YLeaf pvc_failures_trap_enable; //type: boolean
-        ydk::YLeaf pvc_notification_interval; //type: uint32
-        ydk::YLeaf configured_layer2pv_ps; //type: uint32
-        ydk::YLeaf configured_layer2pv_cs; //type: uint32
-        ydk::YLeaf configured_layer3vp_tunnels; //type: uint32
-        ydk::YLeaf configured_layer3pv_cs; //type: uint32
-        ydk::YLeaf port_type; //type: VcmPort
-        ydk::YLeaf main_interface; //type: string
-        ydk::YLeaf l2_cell_packing_count; //type: uint16
-        class CellPackingData; //type: AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData> cell_packing_data;
-        
-}; // AtmVcm::Nodes::Node::Interfaces::Interface
-
-
-class AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData : public ydk::Entity
-{
-    public:
-        CellPackingData();
-        ~CellPackingData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf local_max_cells_packed_per_packet; //type: uint16
-        ydk::YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
-        ydk::YLeaf max_cell_packed_timeout; //type: uint16
-
-}; // AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData
-
-
-class AtmVcm::Nodes::Node::Pvps : public ydk::Entity
-{
-    public:
-        Pvps();
-        ~Pvps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Pvp; //type: AtmVcm::Nodes::Node::Pvps::Pvp
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps::Pvp> > pvp;
-        
-}; // AtmVcm::Nodes::Node::Pvps
-
-
-class AtmVcm::Nodes::Node::Pvps::Pvp : public ydk::Entity
-{
-    public:
-        Pvp();
-        ~Pvp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf vpi; //type: int32
-        ydk::YLeaf main_interface; //type: string
-        ydk::YLeaf sub_interface; //type: string
-        ydk::YLeaf vc_interface; //type: string
-        ydk::YLeaf vpi_xr; //type: uint16
-        ydk::YLeaf vci_xr; //type: uint16
-        ydk::YLeaf type; //type: Vc
-        ydk::YLeaf encapsulation; //type: VcEncap
-        ydk::YLeaf shape; //type: VcTrafShaping
-        ydk::YLeaf peak_cell_rate; //type: uint32
-        ydk::YLeaf sustained_cell_rate; //type: uint32
-        ydk::YLeaf burst_rate; //type: uint32
-        ydk::YLeaf encaps_inherit_level; //type: VcInheritLevel
-        ydk::YLeaf qos_inherit_level; //type: VcInheritLevel
-        ydk::YLeaf transmit_mtu; //type: uint32
-        ydk::YLeaf receive_mtu; //type: uint32
-        ydk::YLeaf vc_onvp_tunnel; //type: boolean
-        ydk::YLeaf vc_on_p2p_sub_interface; //type: boolean
-        ydk::YLeaf oper_status; //type: boolean
-        ydk::YLeaf amin_status; //type: boolean
-        ydk::YLeaf internal_state; //type: VcState
-        ydk::YLeaf last_state_change_time; //type: uint32
-        ydk::YLeaf test_mode; //type: VcTestMode
-        class CellPackingData; //type: AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData> cell_packing_data;
-        
-}; // AtmVcm::Nodes::Node::Pvps::Pvp
-
-
-class AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData : public ydk::Entity
-{
-    public:
-        CellPackingData();
-        ~CellPackingData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf local_max_cells_packed_per_packet; //type: uint16
-        ydk::YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
-        ydk::YLeaf max_cell_packed_timeout; //type: uint16
-
-}; // AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData
 
 
 class AtmVcm::Nodes::Node::Vcs : public ydk::Entity
@@ -670,6 +191,485 @@ class AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData : public ydk::Entity
 }; // AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData
 
 
+class AtmVcm::Nodes::Node::CellPacks : public ydk::Entity
+{
+    public:
+        CellPacks();
+        ~CellPacks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class CellPack; //type: AtmVcm::Nodes::Node::CellPacks::CellPack
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::CellPacks::CellPack> > cell_pack;
+        
+}; // AtmVcm::Nodes::Node::CellPacks
+
+
+class AtmVcm::Nodes::Node::CellPacks::CellPack : public ydk::Entity
+{
+    public:
+        CellPack();
+        ~CellPack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf pci; //type: int32
+        ydk::YLeaf sub_interface_name; //type: string
+        ydk::YLeaf cell_packing_mode; //type: VcCellPackingMode
+        ydk::YLeaf vpi; //type: uint32
+        ydk::YLeaf vci; //type: uint32
+        ydk::YLeaf received_average_cells_packets; //type: uint64
+        ydk::YLeaf sent_cells_packets; //type: uint64
+        class CellPacking; //type: AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking> cell_packing;
+        
+}; // AtmVcm::Nodes::Node::CellPacks::CellPack
+
+
+class AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking : public ydk::Entity
+{
+    public:
+        CellPacking();
+        ~CellPacking();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_max_cells_packed_per_packet; //type: uint16
+        ydk::YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
+        ydk::YLeaf max_cell_packed_timeout; //type: uint16
+
+}; // AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking
+
+
+class AtmVcm::Nodes::Node::Pvps : public ydk::Entity
+{
+    public:
+        Pvps();
+        ~Pvps();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Pvp; //type: AtmVcm::Nodes::Node::Pvps::Pvp
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps::Pvp> > pvp;
+        
+}; // AtmVcm::Nodes::Node::Pvps
+
+
+class AtmVcm::Nodes::Node::Pvps::Pvp : public ydk::Entity
+{
+    public:
+        Pvp();
+        ~Pvp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf vpi; //type: int32
+        ydk::YLeaf main_interface; //type: string
+        ydk::YLeaf sub_interface; //type: string
+        ydk::YLeaf vc_interface; //type: string
+        ydk::YLeaf vpi_xr; //type: uint16
+        ydk::YLeaf vci_xr; //type: uint16
+        ydk::YLeaf type; //type: Vc
+        ydk::YLeaf encapsulation; //type: VcEncap
+        ydk::YLeaf shape; //type: VcTrafShaping
+        ydk::YLeaf peak_cell_rate; //type: uint32
+        ydk::YLeaf sustained_cell_rate; //type: uint32
+        ydk::YLeaf burst_rate; //type: uint32
+        ydk::YLeaf encaps_inherit_level; //type: VcInheritLevel
+        ydk::YLeaf qos_inherit_level; //type: VcInheritLevel
+        ydk::YLeaf transmit_mtu; //type: uint32
+        ydk::YLeaf receive_mtu; //type: uint32
+        ydk::YLeaf vc_onvp_tunnel; //type: boolean
+        ydk::YLeaf vc_on_p2p_sub_interface; //type: boolean
+        ydk::YLeaf oper_status; //type: boolean
+        ydk::YLeaf amin_status; //type: boolean
+        ydk::YLeaf internal_state; //type: VcState
+        ydk::YLeaf last_state_change_time; //type: uint32
+        ydk::YLeaf test_mode; //type: VcTestMode
+        class CellPackingData; //type: AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData> cell_packing_data;
+        
+}; // AtmVcm::Nodes::Node::Pvps::Pvp
+
+
+class AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData : public ydk::Entity
+{
+    public:
+        CellPackingData();
+        ~CellPackingData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_max_cells_packed_per_packet; //type: uint16
+        ydk::YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
+        ydk::YLeaf max_cell_packed_timeout; //type: uint16
+
+}; // AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData
+
+
+class AtmVcm::Nodes::Node::ClassLinks : public ydk::Entity
+{
+    public:
+        ClassLinks();
+        ~ClassLinks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ClassLink; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink> > class_link;
+        
+}; // AtmVcm::Nodes::Node::ClassLinks
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink : public ydk::Entity
+{
+    public:
+        ClassLink();
+        ~ClassLink();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vpi; //type: int32
+        ydk::YLeaf vci; //type: int32
+        ydk::YLeaf sub_interface_name; //type: string
+        class VcClassNotSupported; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported
+        class OamConfig; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported> vc_class_not_supported;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig> oam_config;
+        
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported : public ydk::Entity
+{
+    public:
+        VcClassNotSupported();
+        ~VcClassNotSupported();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encapsulation_not_supported; //type: VcEncap
+        ydk::YLeaf not_supported_inherit_level; //type: VcInheritLevel
+
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig : public ydk::Entity
+{
+    public:
+        OamConfig();
+        ~OamConfig();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ClassLinkShaping; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping
+        class ClassLinkEncapsulation; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation
+        class OamPvc; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc
+        class OamRetry; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry
+        class AisRdi; //type: AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping> class_link_shaping;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation> class_link_encapsulation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc> oam_pvc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry> oam_retry;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi> ais_rdi;
+        
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping : public ydk::Entity
+{
+    public:
+        ClassLinkShaping();
+        ~ClassLinkShaping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf shaping_type; //type: VcTrafShaping
+        ydk::YLeaf peak_output_rate; //type: uint32
+        ydk::YLeaf average_output_rate; //type: uint32
+        ydk::YLeaf burst_output_rate; //type: uint32
+        ydk::YLeaf shaping_inherit_level; //type: VcInheritLevel
+
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation : public ydk::Entity
+{
+    public:
+        ClassLinkEncapsulation();
+        ~ClassLinkEncapsulation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encapsulation_type; //type: VcEncap
+        ydk::YLeaf encapsulation_inherit_level; //type: VcInheritLevel
+
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc : public ydk::Entity
+{
+    public:
+        OamPvc();
+        ~OamPvc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf manage_level; //type: VcManageLevel
+        ydk::YLeaf pvc_frequency; //type: uint32
+        ydk::YLeaf keep_vc_up; //type: boolean
+        ydk::YLeaf ais_rdi_failure; //type: boolean
+        ydk::YLeaf manage_inherit_level; //type: ClassLinkOamInheritLevel
+
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry : public ydk::Entity
+{
+    public:
+        OamRetry();
+        ~OamRetry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf retry_up_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf retry_frequency; //type: uint32
+        ydk::YLeaf retry_inherit_level; //type: ClassLinkOamInheritLevel
+
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry
+
+
+class AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi : public ydk::Entity
+{
+    public:
+        AisRdi();
+        ~AisRdi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ais_rdi_up_count; //type: uint32
+        ydk::YLeaf ais_rdi_up_time; //type: uint32
+        ydk::YLeaf ais_rdi_inherit_level; //type: ClassLinkOamInheritLevel
+
+}; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi
+
+
+class AtmVcm::Nodes::Node::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: AtmVcm::Nodes::Node::Interfaces::Interface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Interfaces::Interface> > interface;
+        
+}; // AtmVcm::Nodes::Node::Interfaces
+
+
+class AtmVcm::Nodes::Node::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf ilmi_vpi; //type: uint32
+        ydk::YLeaf ilmi_vci; //type: uint32
+        ydk::YLeaf pvc_failures; //type: uint32
+        ydk::YLeaf currently_failing_layer2pv_ps; //type: uint32
+        ydk::YLeaf currently_failing_layer2pv_cs; //type: uint32
+        ydk::YLeaf currently_failing_layer3vp_tunnels; //type: uint32
+        ydk::YLeaf currently_failing_layer3pv_cs; //type: uint32
+        ydk::YLeaf pvc_failures_trap_enable; //type: boolean
+        ydk::YLeaf pvc_notification_interval; //type: uint32
+        ydk::YLeaf configured_layer2pv_ps; //type: uint32
+        ydk::YLeaf configured_layer2pv_cs; //type: uint32
+        ydk::YLeaf configured_layer3vp_tunnels; //type: uint32
+        ydk::YLeaf configured_layer3pv_cs; //type: uint32
+        ydk::YLeaf port_type; //type: VcmPort
+        ydk::YLeaf main_interface; //type: string
+        ydk::YLeaf l2_cell_packing_count; //type: uint16
+        class CellPackingData; //type: AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData> cell_packing_data;
+        
+}; // AtmVcm::Nodes::Node::Interfaces::Interface
+
+
+class AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData : public ydk::Entity
+{
+    public:
+        CellPackingData();
+        ~CellPackingData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_max_cells_packed_per_packet; //type: uint16
+        ydk::YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
+        ydk::YLeaf max_cell_packed_timeout; //type: uint16
+
+}; // AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData
+
+
 class AtmVcm::Nodes::Node::VpTunnels : public ydk::Entity
 {
     public:
@@ -727,12 +727,39 @@ class AtmVcm::Nodes::Node::VpTunnels::VpTunnel : public ydk::Entity
 
 }; // AtmVcm::Nodes::Node::VpTunnels::VpTunnel
 
+class VcCellPackingMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vp;
+        static const ydk::Enum::YLeaf vc;
+        static const ydk::Enum::YLeaf port_mode;
+
+};
+
 class VcTestMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf test_mode_none;
         static const ydk::Enum::YLeaf loop;
         static const ydk::Enum::YLeaf reserved;
+
+};
+
+class VcState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initialized;
+        static const ydk::Enum::YLeaf modifying;
+        static const ydk::Enum::YLeaf modified;
+        static const ydk::Enum::YLeaf activating;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf not_verified;
+        static const ydk::Enum::YLeaf ready;
+        static const ydk::Enum::YLeaf deactivating;
+        static const ydk::Enum::YLeaf inactive;
+        static const ydk::Enum::YLeaf deleting;
+        static const ydk::Enum::YLeaf deleted;
+        static const ydk::Enum::YLeaf state_unknown;
 
 };
 
@@ -749,12 +776,41 @@ class VcInheritLevel : public ydk::Enum
 
 };
 
-class VcCellPackingMode : public ydk::Enum
+class VcTrafShaping : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vp;
-        static const ydk::Enum::YLeaf vc;
-        static const ydk::Enum::YLeaf port_mode;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf vbr_nrt;
+        static const ydk::Enum::YLeaf vbr_rt;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf ubr_plus;
+        static const ydk::Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf traf_shaping_unknown;
+
+};
+
+class VcEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ilmi;
+        static const ydk::Enum::YLeaf qsaal;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf mux;
+        static const ydk::Enum::YLeaf nlpid;
+        static const ydk::Enum::YLeaf f4oam;
+        static const ydk::Enum::YLeaf aal0;
+        static const ydk::Enum::YLeaf aal5;
+        static const ydk::Enum::YLeaf encap_unknown;
+
+};
+
+class Vc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf layer3_vc;
+        static const ydk::Enum::YLeaf layer2_vc;
+        static const ydk::Enum::YLeaf layer2_vp;
+        static const ydk::Enum::YLeaf vc_type_unknown;
 
 };
 
@@ -770,15 +826,6 @@ class ClassLinkOamInheritLevel : public ydk::Enum
 
 };
 
-class VcmPort : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_type_layer_2;
-        static const ydk::Enum::YLeaf port_type_layer_3;
-        static const ydk::Enum::YLeaf port_type_unknown;
-
-};
-
 class VcManageLevel : public ydk::Enum
 {
     public:
@@ -787,26 +834,12 @@ class VcManageLevel : public ydk::Enum
 
 };
 
-class Vc : public ydk::Enum
+class VcmPort : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf layer3_vc;
-        static const ydk::Enum::YLeaf layer2_vc;
-        static const ydk::Enum::YLeaf layer2_vp;
-        static const ydk::Enum::YLeaf vc_type_unknown;
-
-};
-
-class VcTrafShaping : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cbr;
-        static const ydk::Enum::YLeaf vbr_nrt;
-        static const ydk::Enum::YLeaf vbr_rt;
-        static const ydk::Enum::YLeaf abr;
-        static const ydk::Enum::YLeaf ubr_plus;
-        static const ydk::Enum::YLeaf ubr;
-        static const ydk::Enum::YLeaf traf_shaping_unknown;
+        static const ydk::Enum::YLeaf port_type_layer_2;
+        static const ydk::Enum::YLeaf port_type_layer_3;
+        static const ydk::Enum::YLeaf port_type_unknown;
 
 };
 
@@ -833,39 +866,6 @@ class VpTrafShaping : public ydk::Enum
         static const ydk::Enum::YLeaf vp_ubr_plus;
         static const ydk::Enum::YLeaf vp_ubr;
         static const ydk::Enum::YLeaf vp_traf_shaping_unknown;
-
-};
-
-class VcEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ilmi;
-        static const ydk::Enum::YLeaf qsaal;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf mux;
-        static const ydk::Enum::YLeaf nlpid;
-        static const ydk::Enum::YLeaf f4oam;
-        static const ydk::Enum::YLeaf aal0;
-        static const ydk::Enum::YLeaf aal5;
-        static const ydk::Enum::YLeaf encap_unknown;
-
-};
-
-class VcState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initialized;
-        static const ydk::Enum::YLeaf modifying;
-        static const ydk::Enum::YLeaf modified;
-        static const ydk::Enum::YLeaf activating;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf not_verified;
-        static const ydk::Enum::YLeaf ready;
-        static const ydk::Enum::YLeaf deactivating;
-        static const ydk::Enum::YLeaf inactive;
-        static const ydk::Enum::YLeaf deleting;
-        static const ydk::Enum::YLeaf deleted;
-        static const ydk::Enum::YLeaf state_unknown;
 
 };
 

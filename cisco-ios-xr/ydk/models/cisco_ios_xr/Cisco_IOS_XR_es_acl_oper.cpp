@@ -118,13 +118,13 @@ bool EsAcl::has_leaf_or_child_of_name(const std::string & name) const
 
 EsAcl::Active::Active()
     :
-    list(std::make_shared<EsAcl::Active::List>())
-	,oor(std::make_shared<EsAcl::Active::Oor>())
+    oor(std::make_shared<EsAcl::Active::Oor>())
+	,list(std::make_shared<EsAcl::Active::List>())
 	,oor_acls(std::make_shared<EsAcl::Active::OorAcls>())
 	,usages(std::make_shared<EsAcl::Active::Usages>())
 {
-    list->parent = this;
     oor->parent = this;
+    list->parent = this;
     oor_acls->parent = this;
     usages->parent = this;
 
@@ -137,8 +137,8 @@ EsAcl::Active::~Active()
 
 bool EsAcl::Active::has_data() const
 {
-    return (list !=  nullptr && list->has_data())
-	|| (oor !=  nullptr && oor->has_data())
+    return (oor !=  nullptr && oor->has_data())
+	|| (list !=  nullptr && list->has_data())
 	|| (oor_acls !=  nullptr && oor_acls->has_data())
 	|| (usages !=  nullptr && usages->has_data());
 }
@@ -146,8 +146,8 @@ bool EsAcl::Active::has_data() const
 bool EsAcl::Active::has_operation() const
 {
     return is_set(yfilter)
-	|| (list !=  nullptr && list->has_operation())
 	|| (oor !=  nullptr && oor->has_operation())
+	|| (list !=  nullptr && list->has_operation())
 	|| (oor_acls !=  nullptr && oor_acls->has_operation())
 	|| (usages !=  nullptr && usages->has_operation());
 }
@@ -177,15 +177,6 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::get_name_leaf_data
 
 std::shared_ptr<Entity> EsAcl::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "list")
-    {
-        if(list == nullptr)
-        {
-            list = std::make_shared<EsAcl::Active::List>();
-        }
-        return list;
-    }
-
     if(child_yang_name == "oor")
     {
         if(oor == nullptr)
@@ -193,6 +184,15 @@ std::shared_ptr<Entity> EsAcl::Active::get_child_by_name(const std::string & chi
             oor = std::make_shared<EsAcl::Active::Oor>();
         }
         return oor;
+    }
+
+    if(child_yang_name == "list")
+    {
+        if(list == nullptr)
+        {
+            list = std::make_shared<EsAcl::Active::List>();
+        }
+        return list;
     }
 
     if(child_yang_name == "oor-acls")
@@ -219,14 +219,14 @@ std::shared_ptr<Entity> EsAcl::Active::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(list != nullptr)
-    {
-        children["list"] = list;
-    }
-
     if(oor != nullptr)
     {
         children["oor"] = oor;
+    }
+
+    if(list != nullptr)
+    {
+        children["list"] = list;
     }
 
     if(oor_acls != nullptr)
@@ -252,7 +252,306 @@ void EsAcl::Active::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool EsAcl::Active::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "list" || name == "oor" || name == "oor-acls" || name == "usages")
+    if(name == "oor" || name == "list" || name == "oor-acls" || name == "usages")
+        return true;
+    return false;
+}
+
+EsAcl::Active::Oor::Oor()
+    :
+    acl_summary(std::make_shared<EsAcl::Active::Oor::AclSummary>())
+{
+    acl_summary->parent = this;
+
+    yang_name = "oor"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EsAcl::Active::Oor::~Oor()
+{
+}
+
+bool EsAcl::Active::Oor::has_data() const
+{
+    return (acl_summary !=  nullptr && acl_summary->has_data());
+}
+
+bool EsAcl::Active::Oor::has_operation() const
+{
+    return is_set(yfilter)
+	|| (acl_summary !=  nullptr && acl_summary->has_operation());
+}
+
+std::string EsAcl::Active::Oor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EsAcl::Active::Oor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EsAcl::Active::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-summary")
+    {
+        if(acl_summary == nullptr)
+        {
+            acl_summary = std::make_shared<EsAcl::Active::Oor::AclSummary>();
+        }
+        return acl_summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(acl_summary != nullptr)
+    {
+        children["acl-summary"] = acl_summary;
+    }
+
+    return children;
+}
+
+void EsAcl::Active::Oor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EsAcl::Active::Oor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EsAcl::Active::Oor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-summary")
+        return true;
+    return false;
+}
+
+EsAcl::Active::Oor::AclSummary::AclSummary()
+    :
+    details(std::make_shared<EsAcl::Active::Oor::AclSummary::Details>())
+{
+    details->parent = this;
+
+    yang_name = "acl-summary"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EsAcl::Active::Oor::AclSummary::~AclSummary()
+{
+}
+
+bool EsAcl::Active::Oor::AclSummary::has_data() const
+{
+    return (details !=  nullptr && details->has_data());
+}
+
+bool EsAcl::Active::Oor::AclSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| (details !=  nullptr && details->has_operation());
+}
+
+std::string EsAcl::Active::Oor::AclSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EsAcl::Active::Oor::AclSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "details")
+    {
+        if(details == nullptr)
+        {
+            details = std::make_shared<EsAcl::Active::Oor::AclSummary::Details>();
+        }
+        return details;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(details != nullptr)
+    {
+        children["details"] = details;
+    }
+
+    return children;
+}
+
+void EsAcl::Active::Oor::AclSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EsAcl::Active::Oor::AclSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EsAcl::Active::Oor::AclSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "details")
+        return true;
+    return false;
+}
+
+EsAcl::Active::Oor::AclSummary::Details::Details()
+    :
+    current_configured_ac_ls{YType::uint32, "current-configured-ac-ls"},
+    current_configured_ac_es{YType::uint32, "current-configured-ac-es"},
+    maximum_configurable_ac_ls{YType::uint32, "maximum-configurable-ac-ls"},
+    maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"}
+{
+
+    yang_name = "details"; yang_parent_name = "acl-summary"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EsAcl::Active::Oor::AclSummary::Details::~Details()
+{
+}
+
+bool EsAcl::Active::Oor::AclSummary::Details::has_data() const
+{
+    return current_configured_ac_ls.is_set
+	|| current_configured_ac_es.is_set
+	|| maximum_configurable_ac_ls.is_set
+	|| maximum_configurable_ac_es.is_set;
+}
+
+bool EsAcl::Active::Oor::AclSummary::Details::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(current_configured_ac_ls.yfilter)
+	|| ydk::is_set(current_configured_ac_es.yfilter)
+	|| ydk::is_set(maximum_configurable_ac_ls.yfilter)
+	|| ydk::is_set(maximum_configurable_ac_es.yfilter);
+}
+
+std::string EsAcl::Active::Oor::AclSummary::Details::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/acl-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EsAcl::Active::Oor::AclSummary::Details::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::Details::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (current_configured_ac_ls.is_set || is_set(current_configured_ac_ls.yfilter)) leaf_name_data.push_back(current_configured_ac_ls.get_name_leafdata());
+    if (current_configured_ac_es.is_set || is_set(current_configured_ac_es.yfilter)) leaf_name_data.push_back(current_configured_ac_es.get_name_leafdata());
+    if (maximum_configurable_ac_ls.is_set || is_set(maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_ls.get_name_leafdata());
+    if (maximum_configurable_ac_es.is_set || is_set(maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_es.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::Details::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EsAcl::Active::Oor::AclSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "current-configured-ac-ls")
+    {
+        current_configured_ac_ls = value;
+        current_configured_ac_ls.value_namespace = name_space;
+        current_configured_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "current-configured-ac-es")
+    {
+        current_configured_ac_es = value;
+        current_configured_ac_es.value_namespace = name_space;
+        current_configured_ac_es.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-configurable-ac-ls")
+    {
+        maximum_configurable_ac_ls = value;
+        maximum_configurable_ac_ls.value_namespace = name_space;
+        maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-configurable-ac-es")
+    {
+        maximum_configurable_ac_es = value;
+        maximum_configurable_ac_es.value_namespace = name_space;
+        maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EsAcl::Active::Oor::AclSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-configured-ac-ls")
+    {
+        current_configured_ac_ls.yfilter = yfilter;
+    }
+    if(value_path == "current-configured-ac-es")
+    {
+        current_configured_ac_es.yfilter = yfilter;
+    }
+    if(value_path == "maximum-configurable-ac-ls")
+    {
+        maximum_configurable_ac_ls.yfilter = yfilter;
+    }
+    if(value_path == "maximum-configurable-ac-es")
+    {
+        maximum_configurable_ac_es.yfilter = yfilter;
+    }
+}
+
+bool EsAcl::Active::Oor::AclSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "current-configured-ac-ls" || name == "current-configured-ac-es" || name == "maximum-configurable-ac-ls" || name == "maximum-configurable-ac-es")
         return true;
     return false;
 }
@@ -642,28 +941,28 @@ bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::has_leaf_or_child_of_na
 EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::AclSequenceNumber()
     :
     sequence_number{YType::uint32, "sequence-number"},
-    ace_sequence_number{YType::uint32, "ace-sequence-number"},
     ace_type{YType::enumeration, "ace-type"},
-    acl_name{YType::str, "acl-name"},
-    capture{YType::boolean, "capture"},
-    cos{YType::uint8, "cos"},
-    dei{YType::uint8, "dei"},
+    ace_sequence_number{YType::uint32, "ace-sequence-number"},
+    hits{YType::uint64, "hits"},
+    grant{YType::enumeration, "grant"},
+    source_address{YType::str, "source-address"},
+    source_wild_card_bits{YType::str, "source-wild-card-bits"},
     destination_address{YType::str, "destination-address"},
     destination_wild_card_bits{YType::str, "destination-wild-card-bits"},
     ether_type_number{YType::uint16, "ether-type-number"},
-    grant{YType::enumeration, "grant"},
-    hits{YType::uint64, "hits"},
-    inner_header_cos{YType::uint8, "inner-header-cos"},
-    inner_header_dei{YType::uint8, "inner-header-dei"},
+    vlan1{YType::uint16, "vlan1"},
+    vlan2{YType::uint16, "vlan2"},
+    cos{YType::uint8, "cos"},
+    dei{YType::uint8, "dei"},
     inner_header_vlan1{YType::uint16, "inner-header-vlan1"},
     inner_header_vlan2{YType::uint16, "inner-header-vlan2"},
+    inner_header_cos{YType::uint8, "inner-header-cos"},
+    inner_header_dei{YType::uint8, "inner-header-dei"},
+    capture{YType::boolean, "capture"},
     log_option{YType::uint8, "log-option"},
     remark{YType::str, "remark"},
-    sequence_string{YType::str, "sequence-string"},
-    source_address{YType::str, "source-address"},
-    source_wild_card_bits{YType::str, "source-wild-card-bits"},
-    vlan1{YType::uint16, "vlan1"},
-    vlan2{YType::uint16, "vlan2"}
+    acl_name{YType::str, "acl-name"},
+    sequence_string{YType::str, "sequence-string"}
 {
 
     yang_name = "acl-sequence-number"; yang_parent_name = "acl-sequence-numbers"; is_top_level_class = false; has_list_ancestor = true;
@@ -676,56 +975,56 @@ EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::~AclSeque
 bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::has_data() const
 {
     return sequence_number.is_set
-	|| ace_sequence_number.is_set
 	|| ace_type.is_set
-	|| acl_name.is_set
-	|| capture.is_set
-	|| cos.is_set
-	|| dei.is_set
+	|| ace_sequence_number.is_set
+	|| hits.is_set
+	|| grant.is_set
+	|| source_address.is_set
+	|| source_wild_card_bits.is_set
 	|| destination_address.is_set
 	|| destination_wild_card_bits.is_set
 	|| ether_type_number.is_set
-	|| grant.is_set
-	|| hits.is_set
-	|| inner_header_cos.is_set
-	|| inner_header_dei.is_set
+	|| vlan1.is_set
+	|| vlan2.is_set
+	|| cos.is_set
+	|| dei.is_set
 	|| inner_header_vlan1.is_set
 	|| inner_header_vlan2.is_set
+	|| inner_header_cos.is_set
+	|| inner_header_dei.is_set
+	|| capture.is_set
 	|| log_option.is_set
 	|| remark.is_set
-	|| sequence_string.is_set
-	|| source_address.is_set
-	|| source_wild_card_bits.is_set
-	|| vlan1.is_set
-	|| vlan2.is_set;
+	|| acl_name.is_set
+	|| sequence_string.is_set;
 }
 
 bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequence_number.yfilter)
-	|| ydk::is_set(ace_sequence_number.yfilter)
 	|| ydk::is_set(ace_type.yfilter)
-	|| ydk::is_set(acl_name.yfilter)
-	|| ydk::is_set(capture.yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(ace_sequence_number.yfilter)
+	|| ydk::is_set(hits.yfilter)
+	|| ydk::is_set(grant.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_wild_card_bits.yfilter)
 	|| ydk::is_set(destination_address.yfilter)
 	|| ydk::is_set(destination_wild_card_bits.yfilter)
 	|| ydk::is_set(ether_type_number.yfilter)
-	|| ydk::is_set(grant.yfilter)
-	|| ydk::is_set(hits.yfilter)
-	|| ydk::is_set(inner_header_cos.yfilter)
-	|| ydk::is_set(inner_header_dei.yfilter)
+	|| ydk::is_set(vlan1.yfilter)
+	|| ydk::is_set(vlan2.yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
 	|| ydk::is_set(inner_header_vlan1.yfilter)
 	|| ydk::is_set(inner_header_vlan2.yfilter)
+	|| ydk::is_set(inner_header_cos.yfilter)
+	|| ydk::is_set(inner_header_dei.yfilter)
+	|| ydk::is_set(capture.yfilter)
 	|| ydk::is_set(log_option.yfilter)
 	|| ydk::is_set(remark.yfilter)
-	|| ydk::is_set(sequence_string.yfilter)
-	|| ydk::is_set(source_address.yfilter)
-	|| ydk::is_set(source_wild_card_bits.yfilter)
-	|| ydk::is_set(vlan1.yfilter)
-	|| ydk::is_set(vlan2.yfilter);
+	|| ydk::is_set(acl_name.yfilter)
+	|| ydk::is_set(sequence_string.yfilter);
 }
 
 std::string EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_segment_path() const
@@ -740,28 +1039,28 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::Acl::A
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
-    if (ace_sequence_number.is_set || is_set(ace_sequence_number.yfilter)) leaf_name_data.push_back(ace_sequence_number.get_name_leafdata());
     if (ace_type.is_set || is_set(ace_type.yfilter)) leaf_name_data.push_back(ace_type.get_name_leafdata());
-    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
-    if (capture.is_set || is_set(capture.yfilter)) leaf_name_data.push_back(capture.get_name_leafdata());
-    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (ace_sequence_number.is_set || is_set(ace_sequence_number.yfilter)) leaf_name_data.push_back(ace_sequence_number.get_name_leafdata());
+    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
+    if (grant.is_set || is_set(grant.yfilter)) leaf_name_data.push_back(grant.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_wild_card_bits.is_set || is_set(source_wild_card_bits.yfilter)) leaf_name_data.push_back(source_wild_card_bits.get_name_leafdata());
     if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (destination_wild_card_bits.is_set || is_set(destination_wild_card_bits.yfilter)) leaf_name_data.push_back(destination_wild_card_bits.get_name_leafdata());
     if (ether_type_number.is_set || is_set(ether_type_number.yfilter)) leaf_name_data.push_back(ether_type_number.get_name_leafdata());
-    if (grant.is_set || is_set(grant.yfilter)) leaf_name_data.push_back(grant.get_name_leafdata());
-    if (hits.is_set || is_set(hits.yfilter)) leaf_name_data.push_back(hits.get_name_leafdata());
-    if (inner_header_cos.is_set || is_set(inner_header_cos.yfilter)) leaf_name_data.push_back(inner_header_cos.get_name_leafdata());
-    if (inner_header_dei.is_set || is_set(inner_header_dei.yfilter)) leaf_name_data.push_back(inner_header_dei.get_name_leafdata());
-    if (inner_header_vlan1.is_set || is_set(inner_header_vlan1.yfilter)) leaf_name_data.push_back(inner_header_vlan1.get_name_leafdata());
-    if (inner_header_vlan2.is_set || is_set(inner_header_vlan2.yfilter)) leaf_name_data.push_back(inner_header_vlan2.get_name_leafdata());
-    if (log_option.is_set || is_set(log_option.yfilter)) leaf_name_data.push_back(log_option.get_name_leafdata());
-    if (remark.is_set || is_set(remark.yfilter)) leaf_name_data.push_back(remark.get_name_leafdata());
-    if (sequence_string.is_set || is_set(sequence_string.yfilter)) leaf_name_data.push_back(sequence_string.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_wild_card_bits.is_set || is_set(source_wild_card_bits.yfilter)) leaf_name_data.push_back(source_wild_card_bits.get_name_leafdata());
     if (vlan1.is_set || is_set(vlan1.yfilter)) leaf_name_data.push_back(vlan1.get_name_leafdata());
     if (vlan2.is_set || is_set(vlan2.yfilter)) leaf_name_data.push_back(vlan2.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (inner_header_vlan1.is_set || is_set(inner_header_vlan1.yfilter)) leaf_name_data.push_back(inner_header_vlan1.get_name_leafdata());
+    if (inner_header_vlan2.is_set || is_set(inner_header_vlan2.yfilter)) leaf_name_data.push_back(inner_header_vlan2.get_name_leafdata());
+    if (inner_header_cos.is_set || is_set(inner_header_cos.yfilter)) leaf_name_data.push_back(inner_header_cos.get_name_leafdata());
+    if (inner_header_dei.is_set || is_set(inner_header_dei.yfilter)) leaf_name_data.push_back(inner_header_dei.get_name_leafdata());
+    if (capture.is_set || is_set(capture.yfilter)) leaf_name_data.push_back(capture.get_name_leafdata());
+    if (log_option.is_set || is_set(log_option.yfilter)) leaf_name_data.push_back(log_option.get_name_leafdata());
+    if (remark.is_set || is_set(remark.yfilter)) leaf_name_data.push_back(remark.get_name_leafdata());
+    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
+    if (sequence_string.is_set || is_set(sequence_string.yfilter)) leaf_name_data.push_back(sequence_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -786,41 +1085,41 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
         sequence_number.value_namespace = name_space;
         sequence_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ace-sequence-number")
-    {
-        ace_sequence_number = value;
-        ace_sequence_number.value_namespace = name_space;
-        ace_sequence_number.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ace-type")
     {
         ace_type = value;
         ace_type.value_namespace = name_space;
         ace_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "acl-name")
+    if(value_path == "ace-sequence-number")
     {
-        acl_name = value;
-        acl_name.value_namespace = name_space;
-        acl_name.value_namespace_prefix = name_space_prefix;
+        ace_sequence_number = value;
+        ace_sequence_number.value_namespace = name_space;
+        ace_sequence_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "capture")
+    if(value_path == "hits")
     {
-        capture = value;
-        capture.value_namespace = name_space;
-        capture.value_namespace_prefix = name_space_prefix;
+        hits = value;
+        hits.value_namespace = name_space;
+        hits.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cos")
+    if(value_path == "grant")
     {
-        cos = value;
-        cos.value_namespace = name_space;
-        cos.value_namespace_prefix = name_space_prefix;
+        grant = value;
+        grant.value_namespace = name_space;
+        grant.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dei")
+    if(value_path == "source-address")
     {
-        dei = value;
-        dei.value_namespace = name_space;
-        dei.value_namespace_prefix = name_space_prefix;
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-wild-card-bits")
+    {
+        source_wild_card_bits = value;
+        source_wild_card_bits.value_namespace = name_space;
+        source_wild_card_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
@@ -840,29 +1139,29 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
         ether_type_number.value_namespace = name_space;
         ether_type_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "grant")
+    if(value_path == "vlan1")
     {
-        grant = value;
-        grant.value_namespace = name_space;
-        grant.value_namespace_prefix = name_space_prefix;
+        vlan1 = value;
+        vlan1.value_namespace = name_space;
+        vlan1.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hits")
+    if(value_path == "vlan2")
     {
-        hits = value;
-        hits.value_namespace = name_space;
-        hits.value_namespace_prefix = name_space_prefix;
+        vlan2 = value;
+        vlan2.value_namespace = name_space;
+        vlan2.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "inner-header-cos")
+    if(value_path == "cos")
     {
-        inner_header_cos = value;
-        inner_header_cos.value_namespace = name_space;
-        inner_header_cos.value_namespace_prefix = name_space_prefix;
+        cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "inner-header-dei")
+    if(value_path == "dei")
     {
-        inner_header_dei = value;
-        inner_header_dei.value_namespace = name_space;
-        inner_header_dei.value_namespace_prefix = name_space_prefix;
+        dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inner-header-vlan1")
     {
@@ -876,6 +1175,24 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
         inner_header_vlan2.value_namespace = name_space;
         inner_header_vlan2.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "inner-header-cos")
+    {
+        inner_header_cos = value;
+        inner_header_cos.value_namespace = name_space;
+        inner_header_cos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inner-header-dei")
+    {
+        inner_header_dei = value;
+        inner_header_dei.value_namespace = name_space;
+        inner_header_dei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "capture")
+    {
+        capture = value;
+        capture.value_namespace = name_space;
+        capture.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "log-option")
     {
         log_option = value;
@@ -888,35 +1205,17 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
         remark.value_namespace = name_space;
         remark.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "acl-name")
+    {
+        acl_name = value;
+        acl_name.value_namespace = name_space;
+        acl_name.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "sequence-string")
     {
         sequence_string = value;
         sequence_string.value_namespace = name_space;
         sequence_string.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-address")
-    {
-        source_address = value;
-        source_address.value_namespace = name_space;
-        source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-wild-card-bits")
-    {
-        source_wild_card_bits = value;
-        source_wild_card_bits.value_namespace = name_space;
-        source_wild_card_bits.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan1")
-    {
-        vlan1 = value;
-        vlan1.value_namespace = name_space;
-        vlan1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan2")
-    {
-        vlan2 = value;
-        vlan2.value_namespace = name_space;
-        vlan2.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -926,29 +1225,29 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
     {
         sequence_number.yfilter = yfilter;
     }
-    if(value_path == "ace-sequence-number")
-    {
-        ace_sequence_number.yfilter = yfilter;
-    }
     if(value_path == "ace-type")
     {
         ace_type.yfilter = yfilter;
     }
-    if(value_path == "acl-name")
+    if(value_path == "ace-sequence-number")
     {
-        acl_name.yfilter = yfilter;
+        ace_sequence_number.yfilter = yfilter;
     }
-    if(value_path == "capture")
+    if(value_path == "hits")
     {
-        capture.yfilter = yfilter;
+        hits.yfilter = yfilter;
     }
-    if(value_path == "cos")
+    if(value_path == "grant")
     {
-        cos.yfilter = yfilter;
+        grant.yfilter = yfilter;
     }
-    if(value_path == "dei")
+    if(value_path == "source-address")
     {
-        dei.yfilter = yfilter;
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-wild-card-bits")
+    {
+        source_wild_card_bits.yfilter = yfilter;
     }
     if(value_path == "destination-address")
     {
@@ -962,21 +1261,21 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
     {
         ether_type_number.yfilter = yfilter;
     }
-    if(value_path == "grant")
+    if(value_path == "vlan1")
     {
-        grant.yfilter = yfilter;
+        vlan1.yfilter = yfilter;
     }
-    if(value_path == "hits")
+    if(value_path == "vlan2")
     {
-        hits.yfilter = yfilter;
+        vlan2.yfilter = yfilter;
     }
-    if(value_path == "inner-header-cos")
+    if(value_path == "cos")
     {
-        inner_header_cos.yfilter = yfilter;
+        cos.yfilter = yfilter;
     }
-    if(value_path == "inner-header-dei")
+    if(value_path == "dei")
     {
-        inner_header_dei.yfilter = yfilter;
+        dei.yfilter = yfilter;
     }
     if(value_path == "inner-header-vlan1")
     {
@@ -986,6 +1285,18 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
     {
         inner_header_vlan2.yfilter = yfilter;
     }
+    if(value_path == "inner-header-cos")
+    {
+        inner_header_cos.yfilter = yfilter;
+    }
+    if(value_path == "inner-header-dei")
+    {
+        inner_header_dei.yfilter = yfilter;
+    }
+    if(value_path == "capture")
+    {
+        capture.yfilter = yfilter;
+    }
     if(value_path == "log-option")
     {
         log_option.yfilter = yfilter;
@@ -994,330 +1305,19 @@ void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_
     {
         remark.yfilter = yfilter;
     }
+    if(value_path == "acl-name")
+    {
+        acl_name.yfilter = yfilter;
+    }
     if(value_path == "sequence-string")
     {
         sequence_string.yfilter = yfilter;
-    }
-    if(value_path == "source-address")
-    {
-        source_address.yfilter = yfilter;
-    }
-    if(value_path == "source-wild-card-bits")
-    {
-        source_wild_card_bits.yfilter = yfilter;
-    }
-    if(value_path == "vlan1")
-    {
-        vlan1.yfilter = yfilter;
-    }
-    if(value_path == "vlan2")
-    {
-        vlan2.yfilter = yfilter;
     }
 }
 
 bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sequence-number" || name == "ace-sequence-number" || name == "ace-type" || name == "acl-name" || name == "capture" || name == "cos" || name == "dei" || name == "destination-address" || name == "destination-wild-card-bits" || name == "ether-type-number" || name == "grant" || name == "hits" || name == "inner-header-cos" || name == "inner-header-dei" || name == "inner-header-vlan1" || name == "inner-header-vlan2" || name == "log-option" || name == "remark" || name == "sequence-string" || name == "source-address" || name == "source-wild-card-bits" || name == "vlan1" || name == "vlan2")
-        return true;
-    return false;
-}
-
-EsAcl::Active::Oor::Oor()
-    :
-    acl_summary(std::make_shared<EsAcl::Active::Oor::AclSummary>())
-{
-    acl_summary->parent = this;
-
-    yang_name = "oor"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-EsAcl::Active::Oor::~Oor()
-{
-}
-
-bool EsAcl::Active::Oor::has_data() const
-{
-    return (acl_summary !=  nullptr && acl_summary->has_data());
-}
-
-bool EsAcl::Active::Oor::has_operation() const
-{
-    return is_set(yfilter)
-	|| (acl_summary !=  nullptr && acl_summary->has_operation());
-}
-
-std::string EsAcl::Active::Oor::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string EsAcl::Active::Oor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "oor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> EsAcl::Active::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-summary")
-    {
-        if(acl_summary == nullptr)
-        {
-            acl_summary = std::make_shared<EsAcl::Active::Oor::AclSummary>();
-        }
-        return acl_summary;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(acl_summary != nullptr)
-    {
-        children["acl-summary"] = acl_summary;
-    }
-
-    return children;
-}
-
-void EsAcl::Active::Oor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void EsAcl::Active::Oor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool EsAcl::Active::Oor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-summary")
-        return true;
-    return false;
-}
-
-EsAcl::Active::Oor::AclSummary::AclSummary()
-    :
-    details(std::make_shared<EsAcl::Active::Oor::AclSummary::Details>())
-{
-    details->parent = this;
-
-    yang_name = "acl-summary"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-EsAcl::Active::Oor::AclSummary::~AclSummary()
-{
-}
-
-bool EsAcl::Active::Oor::AclSummary::has_data() const
-{
-    return (details !=  nullptr && details->has_data());
-}
-
-bool EsAcl::Active::Oor::AclSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| (details !=  nullptr && details->has_operation());
-}
-
-std::string EsAcl::Active::Oor::AclSummary::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string EsAcl::Active::Oor::AclSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl-summary";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "details")
-    {
-        if(details == nullptr)
-        {
-            details = std::make_shared<EsAcl::Active::Oor::AclSummary::Details>();
-        }
-        return details;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(details != nullptr)
-    {
-        children["details"] = details;
-    }
-
-    return children;
-}
-
-void EsAcl::Active::Oor::AclSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void EsAcl::Active::Oor::AclSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool EsAcl::Active::Oor::AclSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "details")
-        return true;
-    return false;
-}
-
-EsAcl::Active::Oor::AclSummary::Details::Details()
-    :
-    current_configured_ac_es{YType::uint32, "current-configured-ac-es"},
-    current_configured_ac_ls{YType::uint32, "current-configured-ac-ls"},
-    maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"},
-    maximum_configurable_ac_ls{YType::uint32, "maximum-configurable-ac-ls"}
-{
-
-    yang_name = "details"; yang_parent_name = "acl-summary"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-EsAcl::Active::Oor::AclSummary::Details::~Details()
-{
-}
-
-bool EsAcl::Active::Oor::AclSummary::Details::has_data() const
-{
-    return current_configured_ac_es.is_set
-	|| current_configured_ac_ls.is_set
-	|| maximum_configurable_ac_es.is_set
-	|| maximum_configurable_ac_ls.is_set;
-}
-
-bool EsAcl::Active::Oor::AclSummary::Details::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(current_configured_ac_es.yfilter)
-	|| ydk::is_set(current_configured_ac_ls.yfilter)
-	|| ydk::is_set(maximum_configurable_ac_es.yfilter)
-	|| ydk::is_set(maximum_configurable_ac_ls.yfilter);
-}
-
-std::string EsAcl::Active::Oor::AclSummary::Details::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-es-acl-oper:es-acl/active/oor/acl-summary/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string EsAcl::Active::Oor::AclSummary::Details::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "details";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::Details::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (current_configured_ac_es.is_set || is_set(current_configured_ac_es.yfilter)) leaf_name_data.push_back(current_configured_ac_es.get_name_leafdata());
-    if (current_configured_ac_ls.is_set || is_set(current_configured_ac_ls.yfilter)) leaf_name_data.push_back(current_configured_ac_ls.get_name_leafdata());
-    if (maximum_configurable_ac_es.is_set || is_set(maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_es.get_name_leafdata());
-    if (maximum_configurable_ac_ls.is_set || is_set(maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_ls.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::Details::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void EsAcl::Active::Oor::AclSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "current-configured-ac-es")
-    {
-        current_configured_ac_es = value;
-        current_configured_ac_es.value_namespace = name_space;
-        current_configured_ac_es.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "current-configured-ac-ls")
-    {
-        current_configured_ac_ls = value;
-        current_configured_ac_ls.value_namespace = name_space;
-        current_configured_ac_ls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-configurable-ac-es")
-    {
-        maximum_configurable_ac_es = value;
-        maximum_configurable_ac_es.value_namespace = name_space;
-        maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-configurable-ac-ls")
-    {
-        maximum_configurable_ac_ls = value;
-        maximum_configurable_ac_ls.value_namespace = name_space;
-        maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void EsAcl::Active::Oor::AclSummary::Details::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "current-configured-ac-es")
-    {
-        current_configured_ac_es.yfilter = yfilter;
-    }
-    if(value_path == "current-configured-ac-ls")
-    {
-        current_configured_ac_ls.yfilter = yfilter;
-    }
-    if(value_path == "maximum-configurable-ac-es")
-    {
-        maximum_configurable_ac_es.yfilter = yfilter;
-    }
-    if(value_path == "maximum-configurable-ac-ls")
-    {
-        maximum_configurable_ac_ls.yfilter = yfilter;
-    }
-}
-
-bool EsAcl::Active::Oor::AclSummary::Details::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "current-configured-ac-es" || name == "current-configured-ac-ls" || name == "maximum-configurable-ac-es" || name == "maximum-configurable-ac-ls")
+    if(name == "sequence-number" || name == "ace-type" || name == "ace-sequence-number" || name == "hits" || name == "grant" || name == "source-address" || name == "source-wild-card-bits" || name == "destination-address" || name == "destination-wild-card-bits" || name == "ether-type-number" || name == "vlan1" || name == "vlan2" || name == "cos" || name == "dei" || name == "inner-header-vlan1" || name == "inner-header-vlan2" || name == "inner-header-cos" || name == "inner-header-dei" || name == "capture" || name == "log-option" || name == "remark" || name == "acl-name" || name == "sequence-string")
         return true;
     return false;
 }
@@ -1425,10 +1425,10 @@ bool EsAcl::Active::OorAcls::has_leaf_or_child_of_name(const std::string & name)
 EsAcl::Active::OorAcls::OorAcl::OorAcl()
     :
     name{YType::str, "name"},
-    current_configured_ac_es{YType::uint32, "current-configured-ac-es"},
     current_configured_ac_ls{YType::uint32, "current-configured-ac-ls"},
-    maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"},
-    maximum_configurable_ac_ls{YType::uint32, "maximum-configurable-ac-ls"}
+    current_configured_ac_es{YType::uint32, "current-configured-ac-es"},
+    maximum_configurable_ac_ls{YType::uint32, "maximum-configurable-ac-ls"},
+    maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"}
 {
 
     yang_name = "oor-acl"; yang_parent_name = "oor-acls"; is_top_level_class = false; has_list_ancestor = false;
@@ -1441,20 +1441,20 @@ EsAcl::Active::OorAcls::OorAcl::~OorAcl()
 bool EsAcl::Active::OorAcls::OorAcl::has_data() const
 {
     return name.is_set
-	|| current_configured_ac_es.is_set
 	|| current_configured_ac_ls.is_set
-	|| maximum_configurable_ac_es.is_set
-	|| maximum_configurable_ac_ls.is_set;
+	|| current_configured_ac_es.is_set
+	|| maximum_configurable_ac_ls.is_set
+	|| maximum_configurable_ac_es.is_set;
 }
 
 bool EsAcl::Active::OorAcls::OorAcl::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(current_configured_ac_es.yfilter)
 	|| ydk::is_set(current_configured_ac_ls.yfilter)
-	|| ydk::is_set(maximum_configurable_ac_es.yfilter)
-	|| ydk::is_set(maximum_configurable_ac_ls.yfilter);
+	|| ydk::is_set(current_configured_ac_es.yfilter)
+	|| ydk::is_set(maximum_configurable_ac_ls.yfilter)
+	|| ydk::is_set(maximum_configurable_ac_es.yfilter);
 }
 
 std::string EsAcl::Active::OorAcls::OorAcl::get_absolute_path() const
@@ -1476,10 +1476,10 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::OorAcls::OorAcl::g
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (current_configured_ac_es.is_set || is_set(current_configured_ac_es.yfilter)) leaf_name_data.push_back(current_configured_ac_es.get_name_leafdata());
     if (current_configured_ac_ls.is_set || is_set(current_configured_ac_ls.yfilter)) leaf_name_data.push_back(current_configured_ac_ls.get_name_leafdata());
-    if (maximum_configurable_ac_es.is_set || is_set(maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_es.get_name_leafdata());
+    if (current_configured_ac_es.is_set || is_set(current_configured_ac_es.yfilter)) leaf_name_data.push_back(current_configured_ac_es.get_name_leafdata());
     if (maximum_configurable_ac_ls.is_set || is_set(maximum_configurable_ac_ls.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_ls.get_name_leafdata());
+    if (maximum_configurable_ac_es.is_set || is_set(maximum_configurable_ac_es.yfilter)) leaf_name_data.push_back(maximum_configurable_ac_es.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1504,29 +1504,29 @@ void EsAcl::Active::OorAcls::OorAcl::set_value(const std::string & value_path, c
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "current-configured-ac-es")
-    {
-        current_configured_ac_es = value;
-        current_configured_ac_es.value_namespace = name_space;
-        current_configured_ac_es.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "current-configured-ac-ls")
     {
         current_configured_ac_ls = value;
         current_configured_ac_ls.value_namespace = name_space;
         current_configured_ac_ls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "maximum-configurable-ac-es")
+    if(value_path == "current-configured-ac-es")
     {
-        maximum_configurable_ac_es = value;
-        maximum_configurable_ac_es.value_namespace = name_space;
-        maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
+        current_configured_ac_es = value;
+        current_configured_ac_es.value_namespace = name_space;
+        current_configured_ac_es.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-configurable-ac-ls")
     {
         maximum_configurable_ac_ls = value;
         maximum_configurable_ac_ls.value_namespace = name_space;
         maximum_configurable_ac_ls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-configurable-ac-es")
+    {
+        maximum_configurable_ac_es = value;
+        maximum_configurable_ac_es.value_namespace = name_space;
+        maximum_configurable_ac_es.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1536,27 +1536,27 @@ void EsAcl::Active::OorAcls::OorAcl::set_filter(const std::string & value_path, 
     {
         name.yfilter = yfilter;
     }
-    if(value_path == "current-configured-ac-es")
-    {
-        current_configured_ac_es.yfilter = yfilter;
-    }
     if(value_path == "current-configured-ac-ls")
     {
         current_configured_ac_ls.yfilter = yfilter;
     }
-    if(value_path == "maximum-configurable-ac-es")
+    if(value_path == "current-configured-ac-es")
     {
-        maximum_configurable_ac_es.yfilter = yfilter;
+        current_configured_ac_es.yfilter = yfilter;
     }
     if(value_path == "maximum-configurable-ac-ls")
     {
         maximum_configurable_ac_ls.yfilter = yfilter;
     }
+    if(value_path == "maximum-configurable-ac-es")
+    {
+        maximum_configurable_ac_es.yfilter = yfilter;
+    }
 }
 
 bool EsAcl::Active::OorAcls::OorAcl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "current-configured-ac-es" || name == "current-configured-ac-ls" || name == "maximum-configurable-ac-es" || name == "maximum-configurable-ac-ls")
+    if(name == "name" || name == "current-configured-ac-ls" || name == "current-configured-ac-es" || name == "maximum-configurable-ac-ls" || name == "maximum-configurable-ac-es")
         return true;
     return false;
 }
@@ -1663,8 +1663,8 @@ bool EsAcl::Active::Usages::has_leaf_or_child_of_name(const std::string & name) 
 
 EsAcl::Active::Usages::Usage::Usage()
     :
-    application_id{YType::enumeration, "application-id"},
     location{YType::str, "location"},
+    application_id{YType::enumeration, "application-id"},
     name{YType::str, "name"},
     usage_details{YType::str, "usage-details"}
 {
@@ -1678,8 +1678,8 @@ EsAcl::Active::Usages::Usage::~Usage()
 
 bool EsAcl::Active::Usages::Usage::has_data() const
 {
-    return application_id.is_set
-	|| location.is_set
+    return location.is_set
+	|| application_id.is_set
 	|| name.is_set
 	|| usage_details.is_set;
 }
@@ -1687,8 +1687,8 @@ bool EsAcl::Active::Usages::Usage::has_data() const
 bool EsAcl::Active::Usages::Usage::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(application_id.yfilter)
 	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(application_id.yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(usage_details.yfilter);
 }
@@ -1711,8 +1711,8 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Usages::Usage::get
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (application_id.is_set || is_set(application_id.yfilter)) leaf_name_data.push_back(application_id.get_name_leafdata());
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (application_id.is_set || is_set(application_id.yfilter)) leaf_name_data.push_back(application_id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (usage_details.is_set || is_set(usage_details.yfilter)) leaf_name_data.push_back(usage_details.get_name_leafdata());
 
@@ -1733,17 +1733,17 @@ std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Usages::Usage::get
 
 void EsAcl::Active::Usages::Usage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "application-id")
-    {
-        application_id = value;
-        application_id.value_namespace = name_space;
-        application_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "location")
     {
         location = value;
         location.value_namespace = name_space;
         location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "application-id")
+    {
+        application_id = value;
+        application_id.value_namespace = name_space;
+        application_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
@@ -1761,13 +1761,13 @@ void EsAcl::Active::Usages::Usage::set_value(const std::string & value_path, con
 
 void EsAcl::Active::Usages::Usage::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "application-id")
-    {
-        application_id.yfilter = yfilter;
-    }
     if(value_path == "location")
     {
         location.yfilter = yfilter;
+    }
+    if(value_path == "application-id")
+    {
+        application_id.yfilter = yfilter;
     }
     if(value_path == "name")
     {
@@ -1781,14 +1781,10 @@ void EsAcl::Active::Usages::Usage::set_filter(const std::string & value_path, YF
 
 bool EsAcl::Active::Usages::Usage::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "application-id" || name == "location" || name == "name" || name == "usage-details")
+    if(name == "location" || name == "application-id" || name == "name" || name == "usage-details")
         return true;
     return false;
 }
-
-const Enum::YLeaf AclAce1::normal {0, "normal"};
-const Enum::YLeaf AclAce1::remark {1, "remark"};
-const Enum::YLeaf AclAce1::abf {2, "abf"};
 
 const Enum::YLeaf AclAction::deny {0, "deny"};
 const Enum::YLeaf AclAction::permit {1, "permit"};
@@ -1796,6 +1792,10 @@ const Enum::YLeaf AclAction::encrypt {2, "encrypt"};
 const Enum::YLeaf AclAction::bypass {3, "bypass"};
 const Enum::YLeaf AclAction::fallthrough {4, "fallthrough"};
 const Enum::YLeaf AclAction::invalid {5, "invalid"};
+
+const Enum::YLeaf AclAce1::normal {0, "normal"};
+const Enum::YLeaf AclAce1::remark {1, "remark"};
+const Enum::YLeaf AclAce1::abf {2, "abf"};
 
 const Enum::YLeaf AclAce1_::normal {0, "normal"};
 const Enum::YLeaf AclAce1_::remark {1, "remark"};

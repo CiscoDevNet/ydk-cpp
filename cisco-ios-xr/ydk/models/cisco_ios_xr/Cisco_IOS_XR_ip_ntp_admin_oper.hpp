@@ -178,11 +178,184 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance : public ydk::Entity
         class Associations; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations
         class AssociationsDetail; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status> status;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations> associations;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail> associations_detail;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status> status;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status : public ydk::Entity
+{
+    public:
+        Status();
+        ~Status();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_ntp_enabled; //type: boolean
+        ydk::YLeaf sys_dispersion; //type: string
+        ydk::YLeaf sys_offset; //type: string
+        ydk::YLeaf clock_period; //type: uint32
+        ydk::YLeaf sys_leap; //type: NtpLeap
+        ydk::YLeaf sys_precision; //type: int8
+        ydk::YLeaf sys_stratum; //type: uint8
+        ydk::YLeaf sys_ref_id; //type: string
+        ydk::YLeaf sys_root_delay; //type: string
+        ydk::YLeaf sys_root_dispersion; //type: string
+        ydk::YLeaf loop_filter_state; //type: NtpLoopFilterState
+        ydk::YLeaf poll_interval; //type: uint8
+        ydk::YLeaf is_updated; //type: ClockUpdateNode
+        ydk::YLeaf last_update; //type: int32
+        class SysRefTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime
+        class SysDrift; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime> sys_ref_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift> sys_drift;
+        
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime : public ydk::Entity
+{
+    public:
+        SysRefTime();
+        ~SysRefTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec
+        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec> sec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs> frac_secs;
+        
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec : public ydk::Entity
+{
+    public:
+        Sec();
+        ~Sec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf int_; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs : public ydk::Entity
+{
+    public:
+        FracSecs();
+        ~FracSecs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf frac; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift : public ydk::Entity
+{
+    public:
+        SysDrift();
+        ~SysDrift();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec
+        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec> sec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs> frac_secs;
+        
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec : public ydk::Entity
+{
+    public:
+        Sec();
+        ~Sec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf int_; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs : public ydk::Entity
+{
+    public:
+        FracSecs();
+        ~FracSecs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf frac; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs
 
 
 class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations : public ydk::Entity
@@ -325,104 +498,14 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         class TransmitTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime
         class FilterDetail; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail> > filter_detail;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime> originate_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon> peer_info_common;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime> receive_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime> ref_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime> originate_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime> receive_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime> transmit_time;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail> > filter_detail;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail : public ydk::Entity
-{
-    public:
-        FilterDetail();
-        ~FilterDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf filter_delay; //type: string
-        ydk::YLeaf filter_offset; //type: string
-        ydk::YLeaf filter_disp; //type: string
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime : public ydk::Entity
-{
-    public:
-        OriginateTime();
-        ~OriginateTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec
-        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs> frac_secs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec> sec;
-        
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs : public ydk::Entity
-{
-    public:
-        FracSecs();
-        ~FracSecs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf frac; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec : public ydk::Entity
-{
-    public:
-        Sec();
-        ~Sec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf int_; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec
 
 
 class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon : public ydk::Entity
@@ -457,73 +540,6 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon
 
 
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime : public ydk::Entity
-{
-    public:
-        ReceiveTime();
-        ~ReceiveTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec
-        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs> frac_secs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec> sec;
-        
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs : public ydk::Entity
-{
-    public:
-        FracSecs();
-        ~FracSecs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf frac; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec : public ydk::Entity
-{
-    public:
-        Sec();
-        ~Sec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf int_; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec
-
-
 class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime : public ydk::Entity
 {
     public:
@@ -543,31 +559,10 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs> frac_secs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec> sec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs> frac_secs;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs : public ydk::Entity
-{
-    public:
-        FracSecs();
-        ~FracSecs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf frac; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs
 
 
 class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec : public ydk::Entity
@@ -591,6 +586,161 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec
 
 
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs : public ydk::Entity
+{
+    public:
+        FracSecs();
+        ~FracSecs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf frac; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime : public ydk::Entity
+{
+    public:
+        OriginateTime();
+        ~OriginateTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec
+        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec> sec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs> frac_secs;
+        
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec : public ydk::Entity
+{
+    public:
+        Sec();
+        ~Sec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf int_; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs : public ydk::Entity
+{
+    public:
+        FracSecs();
+        ~FracSecs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf frac; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime : public ydk::Entity
+{
+    public:
+        ReceiveTime();
+        ~ReceiveTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec
+        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec> sec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs> frac_secs;
+        
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec : public ydk::Entity
+{
+    public:
+        Sec();
+        ~Sec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf int_; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec
+
+
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs : public ydk::Entity
+{
+    public:
+        FracSecs();
+        ~FracSecs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf frac; //type: uint32
+
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs
+
+
 class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime : public ydk::Entity
 {
     public:
@@ -610,31 +760,10 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs> frac_secs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec> sec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs> frac_secs;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs : public ydk::Entity
-{
-    public:
-        FracSecs();
-        ~FracSecs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf frac; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs
 
 
 class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec : public ydk::Entity
@@ -658,71 +787,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec
 
 
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status : public ydk::Entity
-{
-    public:
-        Status();
-        ~Status();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_ntp_enabled; //type: boolean
-        ydk::YLeaf sys_dispersion; //type: string
-        ydk::YLeaf sys_offset; //type: string
-        ydk::YLeaf clock_period; //type: uint32
-        ydk::YLeaf sys_leap; //type: NtpLeap
-        ydk::YLeaf sys_precision; //type: int8
-        ydk::YLeaf sys_stratum; //type: uint8
-        ydk::YLeaf sys_ref_id; //type: string
-        ydk::YLeaf sys_root_delay; //type: string
-        ydk::YLeaf sys_root_dispersion; //type: string
-        ydk::YLeaf loop_filter_state; //type: NtpLoopFilterState
-        ydk::YLeaf poll_interval; //type: uint8
-        ydk::YLeaf is_updated; //type: ClockUpdateNode
-        ydk::YLeaf last_update; //type: int32
-        class SysRefTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime
-        class SysDrift; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift> sys_drift;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime> sys_ref_time;
-        
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift : public ydk::Entity
-{
-    public:
-        SysDrift();
-        ~SysDrift();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec
-        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs> frac_secs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec> sec;
-        
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs : public ydk::Entity
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs : public ydk::Entity
 {
     public:
         FracSecs();
@@ -740,14 +805,14 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Frac
 
         ydk::YLeaf frac; //type: uint32
 
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs
 
 
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec : public ydk::Entity
+class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail : public ydk::Entity
 {
     public:
-        Sec();
-        ~Sec();
+        FilterDetail();
+        ~FilterDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -759,84 +824,23 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf int_; //type: uint32
+        ydk::YLeaf filter_delay; //type: string
+        ydk::YLeaf filter_offset; //type: string
+        ydk::YLeaf filter_disp; //type: string
 
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec
+}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail
 
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime : public ydk::Entity
+class NtpPeerStatus : public ydk::Enum
 {
     public:
-        SysRefTime();
-        ~SysRefTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec
-        class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs> frac_secs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec> sec;
-        
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs : public ydk::Entity
-{
-    public:
-        FracSecs();
-        ~FracSecs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf frac; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
-
-
-class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec : public ydk::Entity
-{
-    public:
-        Sec();
-        ~Sec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf int_; //type: uint32
-
-}; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec
-
-class NtpLeap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_leap_no_warning;
-        static const ydk::Enum::YLeaf ntp_leap_addse_cond;
-        static const ydk::Enum::YLeaf ntp_leap_delse_cond;
-        static const ydk::Enum::YLeaf ntp_leap_not_in_sync;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_reject;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_sane;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_correct;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_selcand;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_sync_cand;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_distsys_peer;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_sys_peer;
+        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_pps;
 
 };
 
@@ -855,6 +859,15 @@ class NtpMode : public ydk::Enum
 
 };
 
+class ClockUpdateNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf clk_never_updated;
+        static const ydk::Enum::YLeaf clk_updated;
+        static const ydk::Enum::YLeaf clk_no_update_info;
+
+};
+
 class NtpLoopFilterState : public ydk::Enum
 {
     public:
@@ -867,26 +880,13 @@ class NtpLoopFilterState : public ydk::Enum
 
 };
 
-class ClockUpdateNode : public ydk::Enum
+class NtpLeap : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf clk_never_updated;
-        static const ydk::Enum::YLeaf clk_updated;
-        static const ydk::Enum::YLeaf clk_no_update_info;
-
-};
-
-class NtpPeerStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_reject;
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_sane;
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_correct;
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_selcand;
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_sync_cand;
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_distsys_peer;
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_sys_peer;
-        static const ydk::Enum::YLeaf ntp_ctl_pst_sel_pps;
+        static const ydk::Enum::YLeaf ntp_leap_no_warning;
+        static const ydk::Enum::YLeaf ntp_leap_addse_cond;
+        static const ydk::Enum::YLeaf ntp_leap_delse_cond;
+        static const ydk::Enum::YLeaf ntp_leap_not_in_sync;
 
 };
 

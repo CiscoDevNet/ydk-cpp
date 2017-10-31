@@ -35,71 +35,10 @@ class CISCOIPSLAJITTERMIB : public ydk::Entity
         class Cipslaudpjittertmpltable; //type: CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable
         class Cipslaicmpjittertmpltable; //type: CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable> cipslaicmpjittertmpltable;
         std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable> cipslaudpjittertmpltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable> cipslaicmpjittertmpltable;
         
 }; // CISCOIPSLAJITTERMIB
-
-
-class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable : public ydk::Entity
-{
-    public:
-        Cipslaicmpjittertmpltable();
-        ~Cipslaicmpjittertmpltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cipslaicmpjittertmplentry; //type: CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry> > cipslaicmpjittertmplentry;
-        
-}; // CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable
-
-
-class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry : public ydk::Entity
-{
-    public:
-        Cipslaicmpjittertmplentry();
-        ~Cipslaicmpjittertmplentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cipslaicmpjittertmplname; //type: string
-        ydk::YLeaf cipslaicmpjittertmpldescription; //type: string
-        ydk::YLeaf cipslaicmpjittertmpltimeout; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmplverifydata; //type: boolean
-        ydk::YLeaf cipslaicmpjittertmplnumpkts; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmplinterval; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmplsrcaddrtype; //type: InetAddressType
-        ydk::YLeaf cipslaicmpjittertmplsrcaddr; //type: binary
-        ydk::YLeaf cipslaicmpjittertmpltos; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmplvrfname; //type: string
-        ydk::YLeaf cipslaicmpjittertmplthreshold; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmplstatshours; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmpldistbuckets; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmpldistinterval; //type: uint32
-        ydk::YLeaf cipslaicmpjittertmplstoragetype; //type: StorageType
-        ydk::YLeaf cipslaicmpjittertmplrowstatus; //type: RowStatus
-
-}; // CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
 
 
 class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable : public ydk::Entity
@@ -177,6 +116,67 @@ class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry : 
         class Cipslaudpjittertmplntptoltype;
 
 }; // CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry
+
+
+class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable : public ydk::Entity
+{
+    public:
+        Cipslaicmpjittertmpltable();
+        ~Cipslaicmpjittertmpltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cipslaicmpjittertmplentry; //type: CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_JITTER_MIB::CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry> > cipslaicmpjittertmplentry;
+        
+}; // CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable
+
+
+class CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry : public ydk::Entity
+{
+    public:
+        Cipslaicmpjittertmplentry();
+        ~Cipslaicmpjittertmplentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cipslaicmpjittertmplname; //type: string
+        ydk::YLeaf cipslaicmpjittertmpldescription; //type: string
+        ydk::YLeaf cipslaicmpjittertmpltimeout; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplverifydata; //type: boolean
+        ydk::YLeaf cipslaicmpjittertmplnumpkts; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplinterval; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplsrcaddrtype; //type: InetAddressType
+        ydk::YLeaf cipslaicmpjittertmplsrcaddr; //type: binary
+        ydk::YLeaf cipslaicmpjittertmpltos; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplvrfname; //type: string
+        ydk::YLeaf cipslaicmpjittertmplthreshold; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplstatshours; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmpldistbuckets; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmpldistinterval; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplstoragetype; //type: StorageType
+        ydk::YLeaf cipslaicmpjittertmplrowstatus; //type: RowStatus
+
+}; // CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
 
 class CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplprecision : public ydk::Enum
 {

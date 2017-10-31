@@ -320,15 +320,15 @@ bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::has_leaf_or_c
 
 Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::Ncs1KStatusInfo()
     :
-    must_secure{YType::boolean, "must-secure"},
     replay_window_size{YType::uint32, "replay-window-size"},
+    must_secure{YType::boolean, "must-secure"},
     secure_mode{YType::uint32, "secure-mode"}
     	,
-    decrypt_sc_status(std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus>())
-	,encrypt_sc_status(std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus>())
+    encrypt_sc_status(std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus>())
+	,decrypt_sc_status(std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus>())
 {
-    decrypt_sc_status->parent = this;
     encrypt_sc_status->parent = this;
+    decrypt_sc_status->parent = this;
 
     yang_name = "ncs1k-status-info"; yang_parent_name = "ncs1k-macsec-ctrlr-name"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -339,21 +339,21 @@ Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::~
 
 bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::has_data() const
 {
-    return must_secure.is_set
-	|| replay_window_size.is_set
+    return replay_window_size.is_set
+	|| must_secure.is_set
 	|| secure_mode.is_set
-	|| (decrypt_sc_status !=  nullptr && decrypt_sc_status->has_data())
-	|| (encrypt_sc_status !=  nullptr && encrypt_sc_status->has_data());
+	|| (encrypt_sc_status !=  nullptr && encrypt_sc_status->has_data())
+	|| (decrypt_sc_status !=  nullptr && decrypt_sc_status->has_data());
 }
 
 bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(must_secure.yfilter)
 	|| ydk::is_set(replay_window_size.yfilter)
+	|| ydk::is_set(must_secure.yfilter)
 	|| ydk::is_set(secure_mode.yfilter)
-	|| (decrypt_sc_status !=  nullptr && decrypt_sc_status->has_operation())
-	|| (encrypt_sc_status !=  nullptr && encrypt_sc_status->has_operation());
+	|| (encrypt_sc_status !=  nullptr && encrypt_sc_status->has_operation())
+	|| (decrypt_sc_status !=  nullptr && decrypt_sc_status->has_operation());
 }
 
 std::string Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::get_segment_path() const
@@ -367,8 +367,8 @@ std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlr
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (must_secure.is_set || is_set(must_secure.yfilter)) leaf_name_data.push_back(must_secure.get_name_leafdata());
     if (replay_window_size.is_set || is_set(replay_window_size.yfilter)) leaf_name_data.push_back(replay_window_size.get_name_leafdata());
+    if (must_secure.is_set || is_set(must_secure.yfilter)) leaf_name_data.push_back(must_secure.get_name_leafdata());
     if (secure_mode.is_set || is_set(secure_mode.yfilter)) leaf_name_data.push_back(secure_mode.get_name_leafdata());
 
     return leaf_name_data;
@@ -377,15 +377,6 @@ std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlr
 
 std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "decrypt-sc-status")
-    {
-        if(decrypt_sc_status == nullptr)
-        {
-            decrypt_sc_status = std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus>();
-        }
-        return decrypt_sc_status;
-    }
-
     if(child_yang_name == "encrypt-sc-status")
     {
         if(encrypt_sc_status == nullptr)
@@ -395,20 +386,29 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
         return encrypt_sc_status;
     }
 
+    if(child_yang_name == "decrypt-sc-status")
+    {
+        if(decrypt_sc_status == nullptr)
+        {
+            decrypt_sc_status = std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus>();
+        }
+        return decrypt_sc_status;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(decrypt_sc_status != nullptr)
-    {
-        children["decrypt-sc-status"] = decrypt_sc_status;
-    }
-
     if(encrypt_sc_status != nullptr)
     {
         children["encrypt-sc-status"] = encrypt_sc_status;
+    }
+
+    if(decrypt_sc_status != nullptr)
+    {
+        children["decrypt-sc-status"] = decrypt_sc_status;
     }
 
     return children;
@@ -416,17 +416,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlr
 
 void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "must-secure")
-    {
-        must_secure = value;
-        must_secure.value_namespace = name_space;
-        must_secure.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "replay-window-size")
     {
         replay_window_size = value;
         replay_window_size.value_namespace = name_space;
         replay_window_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "must-secure")
+    {
+        must_secure = value;
+        must_secure.value_namespace = name_space;
+        must_secure.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secure-mode")
     {
@@ -438,13 +438,13 @@ void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
 
 void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "must-secure")
-    {
-        must_secure.yfilter = yfilter;
-    }
     if(value_path == "replay-window-size")
     {
         replay_window_size.yfilter = yfilter;
+    }
+    if(value_path == "must-secure")
+    {
+        must_secure.yfilter = yfilter;
     }
     if(value_path == "secure-mode")
     {
@@ -454,380 +454,21 @@ void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
 
 bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "decrypt-sc-status" || name == "encrypt-sc-status" || name == "must-secure" || name == "replay-window-size" || name == "secure-mode")
-        return true;
-    return false;
-}
-
-Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::DecryptScStatus()
-    :
-    cipher_suite{YType::enumeration, "cipher-suite"},
-    confidentiality_offset{YType::uint32, "confidentiality-offset"},
-    initial_packet_number{YType::uint64, "initial-packet-number"},
-    max_packet_number{YType::uint64, "max-packet-number"},
-    protection_enabled{YType::boolean, "protection-enabled"},
-    recent_packet_number{YType::uint64, "recent-packet-number"},
-    secure_channel_id{YType::uint64, "secure-channel-id"},
-    secure_tag_length{YType::uint32, "secure-tag-length"}
-{
-
-    yang_name = "decrypt-sc-status"; yang_parent_name = "ncs1k-status-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::~DecryptScStatus()
-{
-}
-
-bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::has_data() const
-{
-    for (std::size_t index=0; index<active_association.size(); index++)
-    {
-        if(active_association[index]->has_data())
-            return true;
-    }
-    return cipher_suite.is_set
-	|| confidentiality_offset.is_set
-	|| initial_packet_number.is_set
-	|| max_packet_number.is_set
-	|| protection_enabled.is_set
-	|| recent_packet_number.is_set
-	|| secure_channel_id.is_set
-	|| secure_tag_length.is_set;
-}
-
-bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::has_operation() const
-{
-    for (std::size_t index=0; index<active_association.size(); index++)
-    {
-        if(active_association[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(cipher_suite.yfilter)
-	|| ydk::is_set(confidentiality_offset.yfilter)
-	|| ydk::is_set(initial_packet_number.yfilter)
-	|| ydk::is_set(max_packet_number.yfilter)
-	|| ydk::is_set(protection_enabled.yfilter)
-	|| ydk::is_set(recent_packet_number.yfilter)
-	|| ydk::is_set(secure_channel_id.yfilter)
-	|| ydk::is_set(secure_tag_length.yfilter);
-}
-
-std::string Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "decrypt-sc-status";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
-    if (confidentiality_offset.is_set || is_set(confidentiality_offset.yfilter)) leaf_name_data.push_back(confidentiality_offset.get_name_leafdata());
-    if (initial_packet_number.is_set || is_set(initial_packet_number.yfilter)) leaf_name_data.push_back(initial_packet_number.get_name_leafdata());
-    if (max_packet_number.is_set || is_set(max_packet_number.yfilter)) leaf_name_data.push_back(max_packet_number.get_name_leafdata());
-    if (protection_enabled.is_set || is_set(protection_enabled.yfilter)) leaf_name_data.push_back(protection_enabled.get_name_leafdata());
-    if (recent_packet_number.is_set || is_set(recent_packet_number.yfilter)) leaf_name_data.push_back(recent_packet_number.get_name_leafdata());
-    if (secure_channel_id.is_set || is_set(secure_channel_id.yfilter)) leaf_name_data.push_back(secure_channel_id.get_name_leafdata());
-    if (secure_tag_length.is_set || is_set(secure_tag_length.yfilter)) leaf_name_data.push_back(secure_tag_length.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "active-association")
-    {
-        for(auto const & c : active_association)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation>();
-        c->parent = this;
-        active_association.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : active_association)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cipher-suite")
-    {
-        cipher_suite = value;
-        cipher_suite.value_namespace = name_space;
-        cipher_suite.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "confidentiality-offset")
-    {
-        confidentiality_offset = value;
-        confidentiality_offset.value_namespace = name_space;
-        confidentiality_offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initial-packet-number")
-    {
-        initial_packet_number = value;
-        initial_packet_number.value_namespace = name_space;
-        initial_packet_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-packet-number")
-    {
-        max_packet_number = value;
-        max_packet_number.value_namespace = name_space;
-        max_packet_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protection-enabled")
-    {
-        protection_enabled = value;
-        protection_enabled.value_namespace = name_space;
-        protection_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recent-packet-number")
-    {
-        recent_packet_number = value;
-        recent_packet_number.value_namespace = name_space;
-        recent_packet_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secure-channel-id")
-    {
-        secure_channel_id = value;
-        secure_channel_id.value_namespace = name_space;
-        secure_channel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secure-tag-length")
-    {
-        secure_tag_length = value;
-        secure_tag_length.value_namespace = name_space;
-        secure_tag_length.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cipher-suite")
-    {
-        cipher_suite.yfilter = yfilter;
-    }
-    if(value_path == "confidentiality-offset")
-    {
-        confidentiality_offset.yfilter = yfilter;
-    }
-    if(value_path == "initial-packet-number")
-    {
-        initial_packet_number.yfilter = yfilter;
-    }
-    if(value_path == "max-packet-number")
-    {
-        max_packet_number.yfilter = yfilter;
-    }
-    if(value_path == "protection-enabled")
-    {
-        protection_enabled.yfilter = yfilter;
-    }
-    if(value_path == "recent-packet-number")
-    {
-        recent_packet_number.yfilter = yfilter;
-    }
-    if(value_path == "secure-channel-id")
-    {
-        secure_channel_id.yfilter = yfilter;
-    }
-    if(value_path == "secure-tag-length")
-    {
-        secure_tag_length.yfilter = yfilter;
-    }
-}
-
-bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-association" || name == "cipher-suite" || name == "confidentiality-offset" || name == "initial-packet-number" || name == "max-packet-number" || name == "protection-enabled" || name == "recent-packet-number" || name == "secure-channel-id" || name == "secure-tag-length")
-        return true;
-    return false;
-}
-
-Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::ActiveAssociation()
-    :
-    association_number{YType::uint8, "association-number"},
-    device_association_number{YType::uint8, "device-association-number"},
-    key_crc{YType::str, "key-crc"},
-    programmed_time{YType::str, "programmed-time"},
-    short_secure_channel_id{YType::uint32, "short-secure-channel-id"},
-    xpn_salt{YType::str, "xpn-salt"}
-{
-
-    yang_name = "active-association"; yang_parent_name = "decrypt-sc-status"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::~ActiveAssociation()
-{
-}
-
-bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::has_data() const
-{
-    for (auto const & leaf : xpn_salt.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return association_number.is_set
-	|| device_association_number.is_set
-	|| key_crc.is_set
-	|| programmed_time.is_set
-	|| short_secure_channel_id.is_set;
-}
-
-bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::has_operation() const
-{
-    for (auto const & leaf : xpn_salt.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(association_number.yfilter)
-	|| ydk::is_set(device_association_number.yfilter)
-	|| ydk::is_set(key_crc.yfilter)
-	|| ydk::is_set(programmed_time.yfilter)
-	|| ydk::is_set(short_secure_channel_id.yfilter)
-	|| ydk::is_set(xpn_salt.yfilter);
-}
-
-std::string Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "active-association";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (association_number.is_set || is_set(association_number.yfilter)) leaf_name_data.push_back(association_number.get_name_leafdata());
-    if (device_association_number.is_set || is_set(device_association_number.yfilter)) leaf_name_data.push_back(device_association_number.get_name_leafdata());
-    if (key_crc.is_set || is_set(key_crc.yfilter)) leaf_name_data.push_back(key_crc.get_name_leafdata());
-    if (programmed_time.is_set || is_set(programmed_time.yfilter)) leaf_name_data.push_back(programmed_time.get_name_leafdata());
-    if (short_secure_channel_id.is_set || is_set(short_secure_channel_id.yfilter)) leaf_name_data.push_back(short_secure_channel_id.get_name_leafdata());
-
-    auto xpn_salt_name_datas = xpn_salt.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), xpn_salt_name_datas.begin(), xpn_salt_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "association-number")
-    {
-        association_number = value;
-        association_number.value_namespace = name_space;
-        association_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "device-association-number")
-    {
-        device_association_number = value;
-        device_association_number.value_namespace = name_space;
-        device_association_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-crc")
-    {
-        key_crc = value;
-        key_crc.value_namespace = name_space;
-        key_crc.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "programmed-time")
-    {
-        programmed_time = value;
-        programmed_time.value_namespace = name_space;
-        programmed_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "short-secure-channel-id")
-    {
-        short_secure_channel_id = value;
-        short_secure_channel_id.value_namespace = name_space;
-        short_secure_channel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "xpn-salt")
-    {
-        xpn_salt.append(value);
-    }
-}
-
-void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "association-number")
-    {
-        association_number.yfilter = yfilter;
-    }
-    if(value_path == "device-association-number")
-    {
-        device_association_number.yfilter = yfilter;
-    }
-    if(value_path == "key-crc")
-    {
-        key_crc.yfilter = yfilter;
-    }
-    if(value_path == "programmed-time")
-    {
-        programmed_time.yfilter = yfilter;
-    }
-    if(value_path == "short-secure-channel-id")
-    {
-        short_secure_channel_id.yfilter = yfilter;
-    }
-    if(value_path == "xpn-salt")
-    {
-        xpn_salt.yfilter = yfilter;
-    }
-}
-
-bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "association-number" || name == "device-association-number" || name == "key-crc" || name == "programmed-time" || name == "short-secure-channel-id" || name == "xpn-salt")
+    if(name == "encrypt-sc-status" || name == "decrypt-sc-status" || name == "replay-window-size" || name == "must-secure" || name == "secure-mode")
         return true;
     return false;
 }
 
 Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::EncryptScStatus()
     :
-    cipher_suite{YType::enumeration, "cipher-suite"},
-    confidentiality_offset{YType::uint32, "confidentiality-offset"},
-    initial_packet_number{YType::uint64, "initial-packet-number"},
-    max_packet_number{YType::uint64, "max-packet-number"},
     protection_enabled{YType::boolean, "protection-enabled"},
-    recent_packet_number{YType::uint64, "recent-packet-number"},
     secure_channel_id{YType::uint64, "secure-channel-id"},
-    secure_tag_length{YType::uint32, "secure-tag-length"}
+    confidentiality_offset{YType::uint32, "confidentiality-offset"},
+    cipher_suite{YType::enumeration, "cipher-suite"},
+    initial_packet_number{YType::uint64, "initial-packet-number"},
+    secure_tag_length{YType::uint32, "secure-tag-length"},
+    max_packet_number{YType::uint64, "max-packet-number"},
+    recent_packet_number{YType::uint64, "recent-packet-number"}
 {
 
     yang_name = "encrypt-sc-status"; yang_parent_name = "ncs1k-status-info"; is_top_level_class = false; has_list_ancestor = true;
@@ -844,14 +485,14 @@ bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
         if(active_association[index]->has_data())
             return true;
     }
-    return cipher_suite.is_set
-	|| confidentiality_offset.is_set
-	|| initial_packet_number.is_set
-	|| max_packet_number.is_set
-	|| protection_enabled.is_set
-	|| recent_packet_number.is_set
+    return protection_enabled.is_set
 	|| secure_channel_id.is_set
-	|| secure_tag_length.is_set;
+	|| confidentiality_offset.is_set
+	|| cipher_suite.is_set
+	|| initial_packet_number.is_set
+	|| secure_tag_length.is_set
+	|| max_packet_number.is_set
+	|| recent_packet_number.is_set;
 }
 
 bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::has_operation() const
@@ -862,14 +503,14 @@ bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(cipher_suite.yfilter)
-	|| ydk::is_set(confidentiality_offset.yfilter)
-	|| ydk::is_set(initial_packet_number.yfilter)
-	|| ydk::is_set(max_packet_number.yfilter)
 	|| ydk::is_set(protection_enabled.yfilter)
-	|| ydk::is_set(recent_packet_number.yfilter)
 	|| ydk::is_set(secure_channel_id.yfilter)
-	|| ydk::is_set(secure_tag_length.yfilter);
+	|| ydk::is_set(confidentiality_offset.yfilter)
+	|| ydk::is_set(cipher_suite.yfilter)
+	|| ydk::is_set(initial_packet_number.yfilter)
+	|| ydk::is_set(secure_tag_length.yfilter)
+	|| ydk::is_set(max_packet_number.yfilter)
+	|| ydk::is_set(recent_packet_number.yfilter);
 }
 
 std::string Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::get_segment_path() const
@@ -883,14 +524,14 @@ std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlr
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
-    if (confidentiality_offset.is_set || is_set(confidentiality_offset.yfilter)) leaf_name_data.push_back(confidentiality_offset.get_name_leafdata());
-    if (initial_packet_number.is_set || is_set(initial_packet_number.yfilter)) leaf_name_data.push_back(initial_packet_number.get_name_leafdata());
-    if (max_packet_number.is_set || is_set(max_packet_number.yfilter)) leaf_name_data.push_back(max_packet_number.get_name_leafdata());
     if (protection_enabled.is_set || is_set(protection_enabled.yfilter)) leaf_name_data.push_back(protection_enabled.get_name_leafdata());
-    if (recent_packet_number.is_set || is_set(recent_packet_number.yfilter)) leaf_name_data.push_back(recent_packet_number.get_name_leafdata());
     if (secure_channel_id.is_set || is_set(secure_channel_id.yfilter)) leaf_name_data.push_back(secure_channel_id.get_name_leafdata());
+    if (confidentiality_offset.is_set || is_set(confidentiality_offset.yfilter)) leaf_name_data.push_back(confidentiality_offset.get_name_leafdata());
+    if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
+    if (initial_packet_number.is_set || is_set(initial_packet_number.yfilter)) leaf_name_data.push_back(initial_packet_number.get_name_leafdata());
     if (secure_tag_length.is_set || is_set(secure_tag_length.yfilter)) leaf_name_data.push_back(secure_tag_length.get_name_leafdata());
+    if (max_packet_number.is_set || is_set(max_packet_number.yfilter)) leaf_name_data.push_back(max_packet_number.get_name_leafdata());
+    if (recent_packet_number.is_set || is_set(recent_packet_number.yfilter)) leaf_name_data.push_back(recent_packet_number.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -930,41 +571,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlr
 
 void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cipher-suite")
-    {
-        cipher_suite = value;
-        cipher_suite.value_namespace = name_space;
-        cipher_suite.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "confidentiality-offset")
-    {
-        confidentiality_offset = value;
-        confidentiality_offset.value_namespace = name_space;
-        confidentiality_offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initial-packet-number")
-    {
-        initial_packet_number = value;
-        initial_packet_number.value_namespace = name_space;
-        initial_packet_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-packet-number")
-    {
-        max_packet_number = value;
-        max_packet_number.value_namespace = name_space;
-        max_packet_number.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "protection-enabled")
     {
         protection_enabled = value;
         protection_enabled.value_namespace = name_space;
         protection_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recent-packet-number")
-    {
-        recent_packet_number = value;
-        recent_packet_number.value_namespace = name_space;
-        recent_packet_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secure-channel-id")
     {
@@ -972,53 +583,83 @@ void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
         secure_channel_id.value_namespace = name_space;
         secure_channel_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "confidentiality-offset")
+    {
+        confidentiality_offset = value;
+        confidentiality_offset.value_namespace = name_space;
+        confidentiality_offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipher-suite")
+    {
+        cipher_suite = value;
+        cipher_suite.value_namespace = name_space;
+        cipher_suite.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initial-packet-number")
+    {
+        initial_packet_number = value;
+        initial_packet_number.value_namespace = name_space;
+        initial_packet_number.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "secure-tag-length")
     {
         secure_tag_length = value;
         secure_tag_length.value_namespace = name_space;
         secure_tag_length.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "max-packet-number")
+    {
+        max_packet_number = value;
+        max_packet_number.value_namespace = name_space;
+        max_packet_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "recent-packet-number")
+    {
+        recent_packet_number = value;
+        recent_packet_number.value_namespace = name_space;
+        recent_packet_number.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cipher-suite")
-    {
-        cipher_suite.yfilter = yfilter;
-    }
-    if(value_path == "confidentiality-offset")
-    {
-        confidentiality_offset.yfilter = yfilter;
-    }
-    if(value_path == "initial-packet-number")
-    {
-        initial_packet_number.yfilter = yfilter;
-    }
-    if(value_path == "max-packet-number")
-    {
-        max_packet_number.yfilter = yfilter;
-    }
     if(value_path == "protection-enabled")
     {
         protection_enabled.yfilter = yfilter;
-    }
-    if(value_path == "recent-packet-number")
-    {
-        recent_packet_number.yfilter = yfilter;
     }
     if(value_path == "secure-channel-id")
     {
         secure_channel_id.yfilter = yfilter;
     }
+    if(value_path == "confidentiality-offset")
+    {
+        confidentiality_offset.yfilter = yfilter;
+    }
+    if(value_path == "cipher-suite")
+    {
+        cipher_suite.yfilter = yfilter;
+    }
+    if(value_path == "initial-packet-number")
+    {
+        initial_packet_number.yfilter = yfilter;
+    }
     if(value_path == "secure-tag-length")
     {
         secure_tag_length.yfilter = yfilter;
+    }
+    if(value_path == "max-packet-number")
+    {
+        max_packet_number.yfilter = yfilter;
+    }
+    if(value_path == "recent-packet-number")
+    {
+        recent_packet_number.yfilter = yfilter;
     }
 }
 
 bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "active-association" || name == "cipher-suite" || name == "confidentiality-offset" || name == "initial-packet-number" || name == "max-packet-number" || name == "protection-enabled" || name == "recent-packet-number" || name == "secure-channel-id" || name == "secure-tag-length")
+    if(name == "active-association" || name == "protection-enabled" || name == "secure-channel-id" || name == "confidentiality-offset" || name == "cipher-suite" || name == "initial-packet-number" || name == "secure-tag-length" || name == "max-packet-number" || name == "recent-packet-number")
         return true;
     return false;
 }
@@ -1027,9 +668,9 @@ Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::E
     :
     association_number{YType::uint8, "association-number"},
     device_association_number{YType::uint8, "device-association-number"},
-    key_crc{YType::str, "key-crc"},
-    programmed_time{YType::str, "programmed-time"},
     short_secure_channel_id{YType::uint32, "short-secure-channel-id"},
+    programmed_time{YType::str, "programmed-time"},
+    key_crc{YType::str, "key-crc"},
     xpn_salt{YType::str, "xpn-salt"}
 {
 
@@ -1049,9 +690,9 @@ bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
     }
     return association_number.is_set
 	|| device_association_number.is_set
-	|| key_crc.is_set
+	|| short_secure_channel_id.is_set
 	|| programmed_time.is_set
-	|| short_secure_channel_id.is_set;
+	|| key_crc.is_set;
 }
 
 bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation::has_operation() const
@@ -1064,9 +705,9 @@ bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
     return is_set(yfilter)
 	|| ydk::is_set(association_number.yfilter)
 	|| ydk::is_set(device_association_number.yfilter)
-	|| ydk::is_set(key_crc.yfilter)
-	|| ydk::is_set(programmed_time.yfilter)
 	|| ydk::is_set(short_secure_channel_id.yfilter)
+	|| ydk::is_set(programmed_time.yfilter)
+	|| ydk::is_set(key_crc.yfilter)
 	|| ydk::is_set(xpn_salt.yfilter);
 }
 
@@ -1083,9 +724,9 @@ std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlr
 
     if (association_number.is_set || is_set(association_number.yfilter)) leaf_name_data.push_back(association_number.get_name_leafdata());
     if (device_association_number.is_set || is_set(device_association_number.yfilter)) leaf_name_data.push_back(device_association_number.get_name_leafdata());
-    if (key_crc.is_set || is_set(key_crc.yfilter)) leaf_name_data.push_back(key_crc.get_name_leafdata());
-    if (programmed_time.is_set || is_set(programmed_time.yfilter)) leaf_name_data.push_back(programmed_time.get_name_leafdata());
     if (short_secure_channel_id.is_set || is_set(short_secure_channel_id.yfilter)) leaf_name_data.push_back(short_secure_channel_id.get_name_leafdata());
+    if (programmed_time.is_set || is_set(programmed_time.yfilter)) leaf_name_data.push_back(programmed_time.get_name_leafdata());
+    if (key_crc.is_set || is_set(key_crc.yfilter)) leaf_name_data.push_back(key_crc.get_name_leafdata());
 
     auto xpn_salt_name_datas = xpn_salt.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), xpn_salt_name_datas.begin(), xpn_salt_name_datas.end());
@@ -1118,11 +759,11 @@ void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
         device_association_number.value_namespace = name_space;
         device_association_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "key-crc")
+    if(value_path == "short-secure-channel-id")
     {
-        key_crc = value;
-        key_crc.value_namespace = name_space;
-        key_crc.value_namespace_prefix = name_space_prefix;
+        short_secure_channel_id = value;
+        short_secure_channel_id.value_namespace = name_space;
+        short_secure_channel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "programmed-time")
     {
@@ -1130,11 +771,11 @@ void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
         programmed_time.value_namespace = name_space;
         programmed_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "short-secure-channel-id")
+    if(value_path == "key-crc")
     {
-        short_secure_channel_id = value;
-        short_secure_channel_id.value_namespace = name_space;
-        short_secure_channel_id.value_namespace_prefix = name_space_prefix;
+        key_crc = value;
+        key_crc.value_namespace = name_space;
+        key_crc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xpn-salt")
     {
@@ -1152,17 +793,17 @@ void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
     {
         device_association_number.yfilter = yfilter;
     }
-    if(value_path == "key-crc")
+    if(value_path == "short-secure-channel-id")
     {
-        key_crc.yfilter = yfilter;
+        short_secure_channel_id.yfilter = yfilter;
     }
     if(value_path == "programmed-time")
     {
         programmed_time.yfilter = yfilter;
     }
-    if(value_path == "short-secure-channel-id")
+    if(value_path == "key-crc")
     {
-        short_secure_channel_id.yfilter = yfilter;
+        key_crc.yfilter = yfilter;
     }
     if(value_path == "xpn-salt")
     {
@@ -1172,7 +813,366 @@ void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusIn
 
 bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "association-number" || name == "device-association-number" || name == "key-crc" || name == "programmed-time" || name == "short-secure-channel-id" || name == "xpn-salt")
+    if(name == "association-number" || name == "device-association-number" || name == "short-secure-channel-id" || name == "programmed-time" || name == "key-crc" || name == "xpn-salt")
+        return true;
+    return false;
+}
+
+Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::DecryptScStatus()
+    :
+    protection_enabled{YType::boolean, "protection-enabled"},
+    secure_channel_id{YType::uint64, "secure-channel-id"},
+    confidentiality_offset{YType::uint32, "confidentiality-offset"},
+    cipher_suite{YType::enumeration, "cipher-suite"},
+    initial_packet_number{YType::uint64, "initial-packet-number"},
+    secure_tag_length{YType::uint32, "secure-tag-length"},
+    max_packet_number{YType::uint64, "max-packet-number"},
+    recent_packet_number{YType::uint64, "recent-packet-number"}
+{
+
+    yang_name = "decrypt-sc-status"; yang_parent_name = "ncs1k-status-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::~DecryptScStatus()
+{
+}
+
+bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::has_data() const
+{
+    for (std::size_t index=0; index<active_association.size(); index++)
+    {
+        if(active_association[index]->has_data())
+            return true;
+    }
+    return protection_enabled.is_set
+	|| secure_channel_id.is_set
+	|| confidentiality_offset.is_set
+	|| cipher_suite.is_set
+	|| initial_packet_number.is_set
+	|| secure_tag_length.is_set
+	|| max_packet_number.is_set
+	|| recent_packet_number.is_set;
+}
+
+bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::has_operation() const
+{
+    for (std::size_t index=0; index<active_association.size(); index++)
+    {
+        if(active_association[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(protection_enabled.yfilter)
+	|| ydk::is_set(secure_channel_id.yfilter)
+	|| ydk::is_set(confidentiality_offset.yfilter)
+	|| ydk::is_set(cipher_suite.yfilter)
+	|| ydk::is_set(initial_packet_number.yfilter)
+	|| ydk::is_set(secure_tag_length.yfilter)
+	|| ydk::is_set(max_packet_number.yfilter)
+	|| ydk::is_set(recent_packet_number.yfilter);
+}
+
+std::string Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "decrypt-sc-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (protection_enabled.is_set || is_set(protection_enabled.yfilter)) leaf_name_data.push_back(protection_enabled.get_name_leafdata());
+    if (secure_channel_id.is_set || is_set(secure_channel_id.yfilter)) leaf_name_data.push_back(secure_channel_id.get_name_leafdata());
+    if (confidentiality_offset.is_set || is_set(confidentiality_offset.yfilter)) leaf_name_data.push_back(confidentiality_offset.get_name_leafdata());
+    if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
+    if (initial_packet_number.is_set || is_set(initial_packet_number.yfilter)) leaf_name_data.push_back(initial_packet_number.get_name_leafdata());
+    if (secure_tag_length.is_set || is_set(secure_tag_length.yfilter)) leaf_name_data.push_back(secure_tag_length.get_name_leafdata());
+    if (max_packet_number.is_set || is_set(max_packet_number.yfilter)) leaf_name_data.push_back(max_packet_number.get_name_leafdata());
+    if (recent_packet_number.is_set || is_set(recent_packet_number.yfilter)) leaf_name_data.push_back(recent_packet_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "active-association")
+    {
+        for(auto const & c : active_association)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation>();
+        c->parent = this;
+        active_association.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : active_association)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "protection-enabled")
+    {
+        protection_enabled = value;
+        protection_enabled.value_namespace = name_space;
+        protection_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secure-channel-id")
+    {
+        secure_channel_id = value;
+        secure_channel_id.value_namespace = name_space;
+        secure_channel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "confidentiality-offset")
+    {
+        confidentiality_offset = value;
+        confidentiality_offset.value_namespace = name_space;
+        confidentiality_offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipher-suite")
+    {
+        cipher_suite = value;
+        cipher_suite.value_namespace = name_space;
+        cipher_suite.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initial-packet-number")
+    {
+        initial_packet_number = value;
+        initial_packet_number.value_namespace = name_space;
+        initial_packet_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secure-tag-length")
+    {
+        secure_tag_length = value;
+        secure_tag_length.value_namespace = name_space;
+        secure_tag_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-packet-number")
+    {
+        max_packet_number = value;
+        max_packet_number.value_namespace = name_space;
+        max_packet_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "recent-packet-number")
+    {
+        recent_packet_number = value;
+        recent_packet_number.value_namespace = name_space;
+        recent_packet_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protection-enabled")
+    {
+        protection_enabled.yfilter = yfilter;
+    }
+    if(value_path == "secure-channel-id")
+    {
+        secure_channel_id.yfilter = yfilter;
+    }
+    if(value_path == "confidentiality-offset")
+    {
+        confidentiality_offset.yfilter = yfilter;
+    }
+    if(value_path == "cipher-suite")
+    {
+        cipher_suite.yfilter = yfilter;
+    }
+    if(value_path == "initial-packet-number")
+    {
+        initial_packet_number.yfilter = yfilter;
+    }
+    if(value_path == "secure-tag-length")
+    {
+        secure_tag_length.yfilter = yfilter;
+    }
+    if(value_path == "max-packet-number")
+    {
+        max_packet_number.yfilter = yfilter;
+    }
+    if(value_path == "recent-packet-number")
+    {
+        recent_packet_number.yfilter = yfilter;
+    }
+}
+
+bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-association" || name == "protection-enabled" || name == "secure-channel-id" || name == "confidentiality-offset" || name == "cipher-suite" || name == "initial-packet-number" || name == "secure-tag-length" || name == "max-packet-number" || name == "recent-packet-number")
+        return true;
+    return false;
+}
+
+Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::ActiveAssociation()
+    :
+    association_number{YType::uint8, "association-number"},
+    device_association_number{YType::uint8, "device-association-number"},
+    short_secure_channel_id{YType::uint32, "short-secure-channel-id"},
+    programmed_time{YType::str, "programmed-time"},
+    key_crc{YType::str, "key-crc"},
+    xpn_salt{YType::str, "xpn-salt"}
+{
+
+    yang_name = "active-association"; yang_parent_name = "decrypt-sc-status"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::~ActiveAssociation()
+{
+}
+
+bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::has_data() const
+{
+    for (auto const & leaf : xpn_salt.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return association_number.is_set
+	|| device_association_number.is_set
+	|| short_secure_channel_id.is_set
+	|| programmed_time.is_set
+	|| key_crc.is_set;
+}
+
+bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::has_operation() const
+{
+    for (auto const & leaf : xpn_salt.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(association_number.yfilter)
+	|| ydk::is_set(device_association_number.yfilter)
+	|| ydk::is_set(short_secure_channel_id.yfilter)
+	|| ydk::is_set(programmed_time.yfilter)
+	|| ydk::is_set(key_crc.yfilter)
+	|| ydk::is_set(xpn_salt.yfilter);
+}
+
+std::string Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "active-association";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (association_number.is_set || is_set(association_number.yfilter)) leaf_name_data.push_back(association_number.get_name_leafdata());
+    if (device_association_number.is_set || is_set(device_association_number.yfilter)) leaf_name_data.push_back(device_association_number.get_name_leafdata());
+    if (short_secure_channel_id.is_set || is_set(short_secure_channel_id.yfilter)) leaf_name_data.push_back(short_secure_channel_id.get_name_leafdata());
+    if (programmed_time.is_set || is_set(programmed_time.yfilter)) leaf_name_data.push_back(programmed_time.get_name_leafdata());
+    if (key_crc.is_set || is_set(key_crc.yfilter)) leaf_name_data.push_back(key_crc.get_name_leafdata());
+
+    auto xpn_salt_name_datas = xpn_salt.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), xpn_salt_name_datas.begin(), xpn_salt_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "association-number")
+    {
+        association_number = value;
+        association_number.value_namespace = name_space;
+        association_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "device-association-number")
+    {
+        device_association_number = value;
+        device_association_number.value_namespace = name_space;
+        device_association_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "short-secure-channel-id")
+    {
+        short_secure_channel_id = value;
+        short_secure_channel_id.value_namespace = name_space;
+        short_secure_channel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "programmed-time")
+    {
+        programmed_time = value;
+        programmed_time.value_namespace = name_space;
+        programmed_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-crc")
+    {
+        key_crc = value;
+        key_crc.value_namespace = name_space;
+        key_crc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xpn-salt")
+    {
+        xpn_salt.append(value);
+    }
+}
+
+void Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "association-number")
+    {
+        association_number.yfilter = yfilter;
+    }
+    if(value_path == "device-association-number")
+    {
+        device_association_number.yfilter = yfilter;
+    }
+    if(value_path == "short-secure-channel-id")
+    {
+        short_secure_channel_id.yfilter = yfilter;
+    }
+    if(value_path == "programmed-time")
+    {
+        programmed_time.yfilter = yfilter;
+    }
+    if(value_path == "key-crc")
+    {
+        key_crc.yfilter = yfilter;
+    }
+    if(value_path == "xpn-salt")
+    {
+        xpn_salt.yfilter = yfilter;
+    }
+}
+
+bool Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-number" || name == "device-association-number" || name == "short-secure-channel-id" || name == "programmed-time" || name == "key-crc" || name == "xpn-salt")
         return true;
     return false;
 }

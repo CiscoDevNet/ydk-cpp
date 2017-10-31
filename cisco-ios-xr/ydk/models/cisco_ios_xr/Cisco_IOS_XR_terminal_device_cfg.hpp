@@ -195,20 +195,11 @@ class OpticalChannels::OpticalChannel : public ydk::Entity
 
 }; // OpticalChannels::OpticalChannel
 
-class LogicalLoopbackMode : public ydk::Enum
+class LogicalChannelOtnTtiAuto : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf facility;
-        static const ydk::Enum::YLeaf terminal;
-
-};
-
-class LogicalProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type_ethernet;
-        static const ydk::Enum::YLeaf type_otn;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
@@ -221,19 +212,12 @@ class LogicalAdminState : public ydk::Enum
 
 };
 
-class LogicalChannelOtnTtiAuto : public ydk::Enum
+class LogicalLoopbackMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class LogicalChannelAssignment : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type_logical_channel;
-        static const ydk::Enum::YLeaf type_optical_channel;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf facility;
+        static const ydk::Enum::YLeaf terminal;
 
 };
 
@@ -273,6 +257,22 @@ class LogicalTribProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf trib_proto_type_otu4;
         static const ydk::Enum::YLeaf trib_proto_type_otu_cn;
         static const ydk::Enum::YLeaf trib_proto_type_odu4;
+
+};
+
+class LogicalChannelAssignment : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type_logical_channel;
+        static const ydk::Enum::YLeaf type_optical_channel;
+
+};
+
+class LogicalProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type_ethernet;
+        static const ydk::Enum::YLeaf type_otn;
 
 };
 

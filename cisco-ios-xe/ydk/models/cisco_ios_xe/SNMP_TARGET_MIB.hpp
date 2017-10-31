@@ -36,11 +36,35 @@ class SNMPTARGETMIB : public ydk::Entity
         class Snmptargetaddrtable; //type: SNMPTARGETMIB::Snmptargetaddrtable
         class Snmptargetparamstable; //type: SNMPTARGETMIB::Snmptargetparamstable
 
-        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetaddrtable> snmptargetaddrtable;
         std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetobjects> snmptargetobjects;
+        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetaddrtable> snmptargetaddrtable;
         std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetparamstable> snmptargetparamstable;
         
 }; // SNMPTARGETMIB
+
+
+class SNMPTARGETMIB::Snmptargetobjects : public ydk::Entity
+{
+    public:
+        Snmptargetobjects();
+        ~Snmptargetobjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf snmptargetspinlock; //type: int32
+        ydk::YLeaf snmpunavailablecontexts; //type: uint32
+        ydk::YLeaf snmpunknowncontexts; //type: uint32
+
+}; // SNMPTARGETMIB::Snmptargetobjects
 
 
 class SNMPTARGETMIB::Snmptargetaddrtable : public ydk::Entity
@@ -95,30 +119,6 @@ class SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry : public ydk::Enti
         ydk::YLeaf snmptargetaddrrowstatus; //type: RowStatus
 
 }; // SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry
-
-
-class SNMPTARGETMIB::Snmptargetobjects : public ydk::Entity
-{
-    public:
-        Snmptargetobjects();
-        ~Snmptargetobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf snmptargetspinlock; //type: int32
-        ydk::YLeaf snmpunavailablecontexts; //type: uint32
-        ydk::YLeaf snmpunknowncontexts; //type: uint32
-
-}; // SNMPTARGETMIB::Snmptargetobjects
 
 
 class SNMPTARGETMIB::Snmptargetparamstable : public ydk::Entity

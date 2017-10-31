@@ -133,9 +133,9 @@ EnvironmentSensors::EnvironmentSensor::EnvironmentSensor()
     :
     name{YType::str, "name"},
     location{YType::str, "location"},
+    state{YType::str, "state"},
     current_reading{YType::uint32, "current-reading"},
-    sensor_units{YType::enumeration, "sensor-units"},
-    state{YType::str, "state"}
+    sensor_units{YType::enumeration, "sensor-units"}
 {
 
     yang_name = "environment-sensor"; yang_parent_name = "environment-sensors"; is_top_level_class = false; has_list_ancestor = false;
@@ -149,9 +149,9 @@ bool EnvironmentSensors::EnvironmentSensor::has_data() const
 {
     return name.is_set
 	|| location.is_set
+	|| state.is_set
 	|| current_reading.is_set
-	|| sensor_units.is_set
-	|| state.is_set;
+	|| sensor_units.is_set;
 }
 
 bool EnvironmentSensors::EnvironmentSensor::has_operation() const
@@ -159,9 +159,9 @@ bool EnvironmentSensors::EnvironmentSensor::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(current_reading.yfilter)
-	|| ydk::is_set(sensor_units.yfilter)
-	|| ydk::is_set(state.yfilter);
+	|| ydk::is_set(sensor_units.yfilter);
 }
 
 std::string EnvironmentSensors::EnvironmentSensor::get_absolute_path() const
@@ -184,9 +184,9 @@ std::vector<std::pair<std::string, LeafData> > EnvironmentSensors::EnvironmentSe
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (current_reading.is_set || is_set(current_reading.yfilter)) leaf_name_data.push_back(current_reading.get_name_leafdata());
     if (sensor_units.is_set || is_set(sensor_units.yfilter)) leaf_name_data.push_back(sensor_units.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -217,6 +217,12 @@ void EnvironmentSensors::EnvironmentSensor::set_value(const std::string & value_
         location.value_namespace = name_space;
         location.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "current-reading")
     {
         current_reading = value;
@@ -228,12 +234,6 @@ void EnvironmentSensors::EnvironmentSensor::set_value(const std::string & value_
         sensor_units = value;
         sensor_units.value_namespace = name_space;
         sensor_units.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -247,6 +247,10 @@ void EnvironmentSensors::EnvironmentSensor::set_filter(const std::string & value
     {
         location.yfilter = yfilter;
     }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
     if(value_path == "current-reading")
     {
         current_reading.yfilter = yfilter;
@@ -255,15 +259,11 @@ void EnvironmentSensors::EnvironmentSensor::set_filter(const std::string & value
     {
         sensor_units.yfilter = yfilter;
     }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
 }
 
 bool EnvironmentSensors::EnvironmentSensor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "location" || name == "current-reading" || name == "sensor-units" || name == "state")
+    if(name == "name" || name == "location" || name == "state" || name == "current-reading" || name == "sensor-units")
         return true;
     return false;
 }

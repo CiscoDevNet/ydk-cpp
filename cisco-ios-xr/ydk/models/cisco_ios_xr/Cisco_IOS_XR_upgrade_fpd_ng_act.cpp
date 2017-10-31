@@ -118,9 +118,9 @@ bool UpgradeFpd::has_leaf_or_child_of_name(const std::string & name) const
 
 UpgradeFpd::Input::Input()
     :
-    force{YType::empty, "force"},
+    location{YType::str, "location"},
     fpd{YType::str, "fpd"},
-    location{YType::str, "location"}
+    force{YType::empty, "force"}
 {
 
     yang_name = "input"; yang_parent_name = "upgrade-fpd"; is_top_level_class = false; has_list_ancestor = false;
@@ -132,17 +132,17 @@ UpgradeFpd::Input::~Input()
 
 bool UpgradeFpd::Input::has_data() const
 {
-    return force.is_set
+    return location.is_set
 	|| fpd.is_set
-	|| location.is_set;
+	|| force.is_set;
 }
 
 bool UpgradeFpd::Input::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(force.yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| ydk::is_set(fpd.yfilter)
-	|| ydk::is_set(location.yfilter);
+	|| ydk::is_set(force.yfilter);
 }
 
 std::string UpgradeFpd::Input::get_absolute_path() const
@@ -163,9 +163,9 @@ std::vector<std::pair<std::string, LeafData> > UpgradeFpd::Input::get_name_leaf_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
-    if (fpd.is_set || is_set(fpd.yfilter)) leaf_name_data.push_back(fpd.get_name_leafdata());
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (fpd.is_set || is_set(fpd.yfilter)) leaf_name_data.push_back(fpd.get_name_leafdata());
+    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -184,11 +184,11 @@ std::map<std::string, std::shared_ptr<Entity>> UpgradeFpd::Input::get_children()
 
 void UpgradeFpd::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "force")
+    if(value_path == "location")
     {
-        force = value;
-        force.value_namespace = name_space;
-        force.value_namespace_prefix = name_space_prefix;
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fpd")
     {
@@ -196,33 +196,33 @@ void UpgradeFpd::Input::set_value(const std::string & value_path, const std::str
         fpd.value_namespace = name_space;
         fpd.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "location")
+    if(value_path == "force")
     {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
+        force = value;
+        force.value_namespace = name_space;
+        force.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void UpgradeFpd::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "force")
+    if(value_path == "location")
     {
-        force.yfilter = yfilter;
+        location.yfilter = yfilter;
     }
     if(value_path == "fpd")
     {
         fpd.yfilter = yfilter;
     }
-    if(value_path == "location")
+    if(value_path == "force")
     {
-        location.yfilter = yfilter;
+        force.yfilter = yfilter;
     }
 }
 
 bool UpgradeFpd::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "force" || name == "fpd" || name == "location")
+    if(name == "location" || name == "fpd" || name == "force")
         return true;
     return false;
 }

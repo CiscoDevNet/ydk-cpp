@@ -10,14 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_cfm_datatypes {
 
-class CfmMepDir : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-
-};
-
 class CfmCcmInterval : public ydk::Enum
 {
     public:
@@ -44,6 +36,14 @@ class CfmAisInterval : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf Y_1s;
         static const ydk::Enum::YLeaf Y_1m;
+
+};
+
+class CfmMepDir : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
 
 };
 

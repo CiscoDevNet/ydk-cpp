@@ -36,12 +36,35 @@ class CISCOEMBEDDEDEVENTMGRMIB : public ydk::Entity
         class Ceemhistoryeventtable; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable
         class Ceemregisteredpolicytable; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable> ceemeventmaptable;
         std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory> ceemhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable> ceemeventmaptable;
         std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable> ceemhistoryeventtable;
         std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable> ceemregisteredpolicytable;
         
 }; // CISCOEMBEDDEDEVENTMGRMIB
+
+
+class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory : public ydk::Entity
+{
+    public:
+        Ceemhistory();
+        ~Ceemhistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ceemhistorymaxevententries; //type: int32
+        ydk::YLeaf ceemhistorylastevententry; //type: uint32
+
+}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory
 
 
 class CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable : public ydk::Entity
@@ -90,29 +113,6 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry : public yd
         ydk::YLeaf ceemeventdescrtext; //type: string
 
 }; // CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry
-
-
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory : public ydk::Entity
-{
-    public:
-        Ceemhistory();
-        ~Ceemhistory();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ceemhistorymaxevententries; //type: int32
-        ydk::YLeaf ceemhistorylastevententry; //type: uint32
-
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory
 
 
 class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable : public ydk::Entity

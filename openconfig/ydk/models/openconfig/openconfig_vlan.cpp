@@ -134,12 +134,12 @@ Vlans::Vlan::Vlan()
     vlan_id{YType::str, "vlan-id"}
     	,
     config(std::make_shared<Vlans::Vlan::Config>())
-	,members(std::make_shared<Vlans::Vlan::Members>())
 	,state(std::make_shared<Vlans::Vlan::State>())
+	,members(std::make_shared<Vlans::Vlan::Members>())
 {
     config->parent = this;
-    members->parent = this;
     state->parent = this;
+    members->parent = this;
 
     yang_name = "vlan"; yang_parent_name = "vlans"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -152,8 +152,8 @@ bool Vlans::Vlan::has_data() const
 {
     return vlan_id.is_set
 	|| (config !=  nullptr && config->has_data())
-	|| (members !=  nullptr && members->has_data())
-	|| (state !=  nullptr && state->has_data());
+	|| (state !=  nullptr && state->has_data())
+	|| (members !=  nullptr && members->has_data());
 }
 
 bool Vlans::Vlan::has_operation() const
@@ -161,8 +161,8 @@ bool Vlans::Vlan::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter)
 	|| (config !=  nullptr && config->has_operation())
-	|| (members !=  nullptr && members->has_operation())
-	|| (state !=  nullptr && state->has_operation());
+	|| (state !=  nullptr && state->has_operation())
+	|| (members !=  nullptr && members->has_operation());
 }
 
 std::string Vlans::Vlan::get_absolute_path() const
@@ -200,15 +200,6 @@ std::shared_ptr<Entity> Vlans::Vlan::get_child_by_name(const std::string & child
         return config;
     }
 
-    if(child_yang_name == "members")
-    {
-        if(members == nullptr)
-        {
-            members = std::make_shared<Vlans::Vlan::Members>();
-        }
-        return members;
-    }
-
     if(child_yang_name == "state")
     {
         if(state == nullptr)
@@ -216,6 +207,15 @@ std::shared_ptr<Entity> Vlans::Vlan::get_child_by_name(const std::string & child
             state = std::make_shared<Vlans::Vlan::State>();
         }
         return state;
+    }
+
+    if(child_yang_name == "members")
+    {
+        if(members == nullptr)
+        {
+            members = std::make_shared<Vlans::Vlan::Members>();
+        }
+        return members;
     }
 
     return nullptr;
@@ -229,14 +229,14 @@ std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::get_children() const
         children["config"] = config;
     }
 
-    if(members != nullptr)
-    {
-        children["members"] = members;
-    }
-
     if(state != nullptr)
     {
         children["state"] = state;
+    }
+
+    if(members != nullptr)
+    {
+        children["members"] = members;
     }
 
     return children;
@@ -262,17 +262,17 @@ void Vlans::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Vlans::Vlan::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "members" || name == "state" || name == "vlan-id")
+    if(name == "config" || name == "state" || name == "members" || name == "vlan-id")
         return true;
     return false;
 }
 
 Vlans::Vlan::Config::Config()
     :
+    vlan_id{YType::uint16, "vlan-id"},
     name{YType::str, "name"},
     status{YType::enumeration, "status"},
-    tpid{YType::identityref, "tpid"},
-    vlan_id{YType::uint16, "vlan-id"}
+    tpid{YType::identityref, "tpid"}
 {
 
     yang_name = "config"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
@@ -284,19 +284,19 @@ Vlans::Vlan::Config::~Config()
 
 bool Vlans::Vlan::Config::has_data() const
 {
-    return name.is_set
+    return vlan_id.is_set
+	|| name.is_set
 	|| status.is_set
-	|| tpid.is_set
-	|| vlan_id.is_set;
+	|| tpid.is_set;
 }
 
 bool Vlans::Vlan::Config::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(vlan_id.yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(status.yfilter)
-	|| ydk::is_set(tpid.yfilter)
-	|| ydk::is_set(vlan_id.yfilter);
+	|| ydk::is_set(tpid.yfilter);
 }
 
 std::string Vlans::Vlan::Config::get_segment_path() const
@@ -310,10 +310,10 @@ std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::Config::get_name_lea
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
     if (tpid.is_set || is_set(tpid.yfilter)) leaf_name_data.push_back(tpid.get_name_leafdata());
-    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -332,6 +332,12 @@ std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Config::get_children
 
 void Vlans::Vlan::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "name")
     {
         name = value;
@@ -350,16 +356,14 @@ void Vlans::Vlan::Config::set_value(const std::string & value_path, const std::s
         tpid.value_namespace = name_space;
         tpid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vlan-id")
-    {
-        vlan_id = value;
-        vlan_id.value_namespace = name_space;
-        vlan_id.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Vlans::Vlan::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
     if(value_path == "name")
     {
         name.yfilter = yfilter;
@@ -372,15 +376,129 @@ void Vlans::Vlan::Config::set_filter(const std::string & value_path, YFilter yfi
     {
         tpid.yfilter = yfilter;
     }
-    if(value_path == "vlan-id")
-    {
-        vlan_id.yfilter = yfilter;
-    }
 }
 
 bool Vlans::Vlan::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "status" || name == "tpid" || name == "vlan-id")
+    if(name == "vlan-id" || name == "name" || name == "status" || name == "tpid")
+        return true;
+    return false;
+}
+
+Vlans::Vlan::State::State()
+    :
+    vlan_id{YType::uint16, "vlan-id"},
+    name{YType::str, "name"},
+    status{YType::enumeration, "status"},
+    tpid{YType::identityref, "tpid"}
+{
+
+    yang_name = "state"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vlans::Vlan::State::~State()
+{
+}
+
+bool Vlans::Vlan::State::has_data() const
+{
+    return vlan_id.is_set
+	|| name.is_set
+	|| status.is_set
+	|| tpid.is_set;
+}
+
+bool Vlans::Vlan::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vlan_id.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(tpid.yfilter);
+}
+
+std::string Vlans::Vlan::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (tpid.is_set || is_set(tpid.yfilter)) leaf_name_data.push_back(tpid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlans::Vlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Vlans::Vlan::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tpid")
+    {
+        tpid = value;
+        tpid.value_namespace = name_space;
+        tpid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlans::Vlan::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "tpid")
+    {
+        tpid.yfilter = yfilter;
+    }
+}
+
+bool Vlans::Vlan::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-id" || name == "name" || name == "status" || name == "tpid")
         return true;
     return false;
 }
@@ -724,124 +842,6 @@ void Vlans::Vlan::Members::Member::InterfaceRef::State::set_filter(const std::st
 bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "subinterface")
-        return true;
-    return false;
-}
-
-Vlans::Vlan::State::State()
-    :
-    name{YType::str, "name"},
-    status{YType::enumeration, "status"},
-    tpid{YType::identityref, "tpid"},
-    vlan_id{YType::uint16, "vlan-id"}
-{
-
-    yang_name = "state"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Vlans::Vlan::State::~State()
-{
-}
-
-bool Vlans::Vlan::State::has_data() const
-{
-    return name.is_set
-	|| status.is_set
-	|| tpid.is_set
-	|| vlan_id.is_set;
-}
-
-bool Vlans::Vlan::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(status.yfilter)
-	|| ydk::is_set(tpid.yfilter)
-	|| ydk::is_set(vlan_id.yfilter);
-}
-
-std::string Vlans::Vlan::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (tpid.is_set || is_set(tpid.yfilter)) leaf_name_data.push_back(tpid.get_name_leafdata());
-    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Vlans::Vlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Vlans::Vlan::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tpid")
-    {
-        tpid = value;
-        tpid.value_namespace = name_space;
-        tpid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan-id")
-    {
-        vlan_id = value;
-        vlan_id.value_namespace = name_space;
-        vlan_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vlans::Vlan::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-    if(value_path == "tpid")
-    {
-        tpid.yfilter = yfilter;
-    }
-    if(value_path == "vlan-id")
-    {
-        vlan_id.yfilter = yfilter;
-    }
-}
-
-bool Vlans::Vlan::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "status" || name == "tpid" || name == "vlan-id")
         return true;
     return false;
 }

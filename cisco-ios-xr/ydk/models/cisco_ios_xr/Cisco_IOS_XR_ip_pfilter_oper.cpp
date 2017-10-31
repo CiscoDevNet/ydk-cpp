@@ -320,11 +320,11 @@ bool PfilterMa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name)
 
 PfilterMa::Nodes::Node::Process::Process()
     :
-    ipv4(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4>())
-	,ipv6(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6>())
+    ipv6(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6>())
+	,ipv4(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4>())
 {
-    ipv4->parent = this;
     ipv6->parent = this;
+    ipv4->parent = this;
 
     yang_name = "process"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -335,15 +335,15 @@ PfilterMa::Nodes::Node::Process::~Process()
 
 bool PfilterMa::Nodes::Node::Process::has_data() const
 {
-    return (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data());
+    return (ipv6 !=  nullptr && ipv6->has_data())
+	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
 
 bool PfilterMa::Nodes::Node::Process::has_operation() const
 {
     return is_set(yfilter)
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation());
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
 std::string PfilterMa::Nodes::Node::Process::get_segment_path() const
@@ -364,15 +364,6 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4>();
-        }
-        return ipv4;
-    }
-
     if(child_yang_name == "ipv6")
     {
         if(ipv6 == nullptr)
@@ -382,20 +373,29 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::get_child_by_name(const
         return ipv6;
     }
 
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4>();
+        }
+        return ipv4;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipv4 != nullptr)
-    {
-        children["ipv4"] = ipv4;
-    }
-
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
+    }
+
+    if(ipv4 != nullptr)
+    {
+        children["ipv4"] = ipv4;
     }
 
     return children;
@@ -411,350 +411,7 @@ void PfilterMa::Nodes::Node::Process::set_filter(const std::string & value_path,
 
 bool PfilterMa::Nodes::Node::Process::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::Ipv4()
-    :
-    acl_info_table(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable>())
-{
-    acl_info_table->parent = this;
-
-    yang_name = "ipv4"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::~Ipv4()
-{
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::has_data() const
-{
-    return (acl_info_table !=  nullptr && acl_info_table->has_data());
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| (acl_info_table !=  nullptr && acl_info_table->has_operation());
-}
-
-std::string PfilterMa::Nodes::Node::Process::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-info-table")
-    {
-        if(acl_info_table == nullptr)
-        {
-            acl_info_table = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable>();
-        }
-        return acl_info_table;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(acl_info_table != nullptr)
-    {
-        children["acl-info-table"] = acl_info_table;
-    }
-
-    return children;
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-info-table")
-        return true;
-    return false;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::AclInfoTable()
-    :
-    interface_infos(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos>())
-{
-    interface_infos->parent = this;
-
-    yang_name = "acl-info-table"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::~AclInfoTable()
-{
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_data() const
-{
-    return (interface_infos !=  nullptr && interface_infos->has_data());
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_operation() const
-{
-    return is_set(yfilter)
-	|| (interface_infos !=  nullptr && interface_infos->has_operation());
-}
-
-std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl-info-table";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-infos")
-    {
-        if(interface_infos == nullptr)
-        {
-            interface_infos = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos>();
-        }
-        return interface_infos;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(interface_infos != nullptr)
-    {
-        children["interface-infos"] = interface_infos;
-    }
-
-    return children;
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-infos")
-        return true;
-    return false;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfos()
-{
-
-    yang_name = "interface-infos"; yang_parent_name = "acl-info-table"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::~InterfaceInfos()
-{
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_data() const
-{
-    for (std::size_t index=0; index<interface_info.size(); index++)
-    {
-        if(interface_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_operation() const
-{
-    for (std::size_t index=0; index<interface_info.size(); index++)
-    {
-        if(interface_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-infos";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-info")
-    {
-        for(auto const & c : interface_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo>();
-        c->parent = this;
-        interface_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-info")
-        return true;
-    return false;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::InterfaceInfo()
-    :
-    interface_name{YType::str, "interface-name"},
-    acl_info{YType::str, "acl-info"}
-{
-
-    yang_name = "interface-info"; yang_parent_name = "interface-infos"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::~InterfaceInfo()
-{
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_data() const
-{
-    return interface_name.is_set
-	|| acl_info.is_set;
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(acl_info.yfilter);
-}
-
-std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-info" <<"[interface-name='" <<interface_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (acl_info.is_set || is_set(acl_info.yfilter)) leaf_name_data.push_back(acl_info.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acl-info")
-    {
-        acl_info = value;
-        acl_info.value_namespace = name_space;
-        acl_info.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "acl-info")
-    {
-        acl_info.yfilter = yfilter;
-    }
-}
-
-bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "acl-info")
+    if(name == "ipv6" || name == "ipv4")
         return true;
     return false;
 }
@@ -1096,6 +753,349 @@ void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::Interf
 }
 
 bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "acl-info")
+        return true;
+    return false;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::Ipv4()
+    :
+    acl_info_table(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable>())
+{
+    acl_info_table->parent = this;
+
+    yang_name = "ipv4"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::~Ipv4()
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::has_data() const
+{
+    return (acl_info_table !=  nullptr && acl_info_table->has_data());
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| (acl_info_table !=  nullptr && acl_info_table->has_operation());
+}
+
+std::string PfilterMa::Nodes::Node::Process::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-info-table")
+    {
+        if(acl_info_table == nullptr)
+        {
+            acl_info_table = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable>();
+        }
+        return acl_info_table;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(acl_info_table != nullptr)
+    {
+        children["acl-info-table"] = acl_info_table;
+    }
+
+    return children;
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-info-table")
+        return true;
+    return false;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::AclInfoTable()
+    :
+    interface_infos(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos>())
+{
+    interface_infos->parent = this;
+
+    yang_name = "acl-info-table"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::~AclInfoTable()
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_data() const
+{
+    return (interface_infos !=  nullptr && interface_infos->has_data());
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_operation() const
+{
+    return is_set(yfilter)
+	|| (interface_infos !=  nullptr && interface_infos->has_operation());
+}
+
+std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-info-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-infos")
+    {
+        if(interface_infos == nullptr)
+        {
+            interface_infos = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos>();
+        }
+        return interface_infos;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_infos != nullptr)
+    {
+        children["interface-infos"] = interface_infos;
+    }
+
+    return children;
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-infos")
+        return true;
+    return false;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfos()
+{
+
+    yang_name = "interface-infos"; yang_parent_name = "acl-info-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::~InterfaceInfos()
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_data() const
+{
+    for (std::size_t index=0; index<interface_info.size(); index++)
+    {
+        if(interface_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_operation() const
+{
+    for (std::size_t index=0; index<interface_info.size(); index++)
+    {
+        if(interface_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-infos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-info")
+    {
+        for(auto const & c : interface_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo>();
+        c->parent = this;
+        interface_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-info")
+        return true;
+    return false;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::InterfaceInfo()
+    :
+    interface_name{YType::str, "interface-name"},
+    acl_info{YType::str, "acl-info"}
+{
+
+    yang_name = "interface-info"; yang_parent_name = "interface-infos"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::~InterfaceInfo()
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_data() const
+{
+    return interface_name.is_set
+	|| acl_info.is_set;
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(acl_info.yfilter);
+}
+
+std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-info" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (acl_info.is_set || is_set(acl_info.yfilter)) leaf_name_data.push_back(acl_info.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acl-info")
+    {
+        acl_info = value;
+        acl_info.value_namespace = name_space;
+        acl_info.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "acl-info")
+    {
+        acl_info.yfilter = yfilter;
+    }
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "acl-info")
         return true;
