@@ -31,7 +31,3 @@ script:
     - cd ../..
     - cd openconfig
     - mkdir build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
-
-    - cd ../..
-    - cd cisco-ios-xe
-    - mkdir build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
