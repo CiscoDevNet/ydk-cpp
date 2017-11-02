@@ -15,8 +15,8 @@ IpUdp::IpUdp()
     :
     receive_q{YType::uint32, "receive-q"}
     	,
-    directory(nullptr) // presence node
-	,num_thread(nullptr) // presence node
+    num_thread(nullptr) // presence node
+	,directory(nullptr) // presence node
 {
 
     yang_name = "ip-udp"; yang_parent_name = "Cisco-IOS-XR-ip-udp-cfg"; is_top_level_class = true; has_list_ancestor = false;
@@ -29,16 +29,16 @@ IpUdp::~IpUdp()
 bool IpUdp::has_data() const
 {
     return receive_q.is_set
-	|| (directory !=  nullptr && directory->has_data())
-	|| (num_thread !=  nullptr && num_thread->has_data());
+	|| (num_thread !=  nullptr && num_thread->has_data())
+	|| (directory !=  nullptr && directory->has_data());
 }
 
 bool IpUdp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(receive_q.yfilter)
-	|| (directory !=  nullptr && directory->has_operation())
-	|| (num_thread !=  nullptr && num_thread->has_operation());
+	|| (num_thread !=  nullptr && num_thread->has_operation())
+	|| (directory !=  nullptr && directory->has_operation());
 }
 
 std::string IpUdp::get_segment_path() const
@@ -60,15 +60,6 @@ std::vector<std::pair<std::string, LeafData> > IpUdp::get_name_leaf_data() const
 
 std::shared_ptr<Entity> IpUdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "directory")
-    {
-        if(directory == nullptr)
-        {
-            directory = std::make_shared<IpUdp::Directory>();
-        }
-        return directory;
-    }
-
     if(child_yang_name == "num-thread")
     {
         if(num_thread == nullptr)
@@ -78,20 +69,29 @@ std::shared_ptr<Entity> IpUdp::get_child_by_name(const std::string & child_yang_
         return num_thread;
     }
 
+    if(child_yang_name == "directory")
+    {
+        if(directory == nullptr)
+        {
+            directory = std::make_shared<IpUdp::Directory>();
+        }
+        return directory;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> IpUdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(directory != nullptr)
-    {
-        children["directory"] = directory;
-    }
-
     if(num_thread != nullptr)
     {
         children["num-thread"] = num_thread;
+    }
+
+    if(directory != nullptr)
+    {
+        children["directory"] = directory;
     }
 
     return children;
@@ -142,118 +142,7 @@ std::map<std::pair<std::string, std::string>, std::string> IpUdp::get_namespace_
 
 bool IpUdp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "directory" || name == "num-thread" || name == "receive-q")
-        return true;
-    return false;
-}
-
-IpUdp::Directory::Directory()
-    :
-    directoryname{YType::str, "directoryname"},
-    max_file_size_files{YType::uint32, "max-file-size-files"},
-    max_udp_debug_files{YType::uint32, "max-udp-debug-files"}
-{
-
-    yang_name = "directory"; yang_parent_name = "ip-udp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-IpUdp::Directory::~Directory()
-{
-}
-
-bool IpUdp::Directory::has_data() const
-{
-    return directoryname.is_set
-	|| max_file_size_files.is_set
-	|| max_udp_debug_files.is_set;
-}
-
-bool IpUdp::Directory::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(directoryname.yfilter)
-	|| ydk::is_set(max_file_size_files.yfilter)
-	|| ydk::is_set(max_udp_debug_files.yfilter);
-}
-
-std::string IpUdp::Directory::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-udp-cfg:ip-udp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string IpUdp::Directory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "directory";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IpUdp::Directory::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (directoryname.is_set || is_set(directoryname.yfilter)) leaf_name_data.push_back(directoryname.get_name_leafdata());
-    if (max_file_size_files.is_set || is_set(max_file_size_files.yfilter)) leaf_name_data.push_back(max_file_size_files.get_name_leafdata());
-    if (max_udp_debug_files.is_set || is_set(max_udp_debug_files.yfilter)) leaf_name_data.push_back(max_udp_debug_files.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> IpUdp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpUdp::Directory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpUdp::Directory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "directoryname")
-    {
-        directoryname = value;
-        directoryname.value_namespace = name_space;
-        directoryname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-file-size-files")
-    {
-        max_file_size_files = value;
-        max_file_size_files.value_namespace = name_space;
-        max_file_size_files.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-udp-debug-files")
-    {
-        max_udp_debug_files = value;
-        max_udp_debug_files.value_namespace = name_space;
-        max_udp_debug_files.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpUdp::Directory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "directoryname")
-    {
-        directoryname.yfilter = yfilter;
-    }
-    if(value_path == "max-file-size-files")
-    {
-        max_file_size_files.yfilter = yfilter;
-    }
-    if(value_path == "max-udp-debug-files")
-    {
-        max_udp_debug_files.yfilter = yfilter;
-    }
-}
-
-bool IpUdp::Directory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "directoryname" || name == "max-file-size-files" || name == "max-udp-debug-files")
+    if(name == "num-thread" || name == "directory" || name == "receive-q")
         return true;
     return false;
 }
@@ -351,6 +240,117 @@ void IpUdp::NumThread::set_filter(const std::string & value_path, YFilter yfilte
 bool IpUdp::NumThread::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udp-in-q-threads" || name == "udp-out-q-threads")
+        return true;
+    return false;
+}
+
+IpUdp::Directory::Directory()
+    :
+    directoryname{YType::str, "directoryname"},
+    max_udp_debug_files{YType::uint32, "max-udp-debug-files"},
+    max_file_size_files{YType::uint32, "max-file-size-files"}
+{
+
+    yang_name = "directory"; yang_parent_name = "ip-udp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IpUdp::Directory::~Directory()
+{
+}
+
+bool IpUdp::Directory::has_data() const
+{
+    return directoryname.is_set
+	|| max_udp_debug_files.is_set
+	|| max_file_size_files.is_set;
+}
+
+bool IpUdp::Directory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(directoryname.yfilter)
+	|| ydk::is_set(max_udp_debug_files.yfilter)
+	|| ydk::is_set(max_file_size_files.yfilter);
+}
+
+std::string IpUdp::Directory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-udp-cfg:ip-udp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IpUdp::Directory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "directory";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpUdp::Directory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (directoryname.is_set || is_set(directoryname.yfilter)) leaf_name_data.push_back(directoryname.get_name_leafdata());
+    if (max_udp_debug_files.is_set || is_set(max_udp_debug_files.yfilter)) leaf_name_data.push_back(max_udp_debug_files.get_name_leafdata());
+    if (max_file_size_files.is_set || is_set(max_file_size_files.yfilter)) leaf_name_data.push_back(max_file_size_files.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpUdp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpUdp::Directory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpUdp::Directory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "directoryname")
+    {
+        directoryname = value;
+        directoryname.value_namespace = name_space;
+        directoryname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-udp-debug-files")
+    {
+        max_udp_debug_files = value;
+        max_udp_debug_files.value_namespace = name_space;
+        max_udp_debug_files.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-file-size-files")
+    {
+        max_file_size_files = value;
+        max_file_size_files.value_namespace = name_space;
+        max_file_size_files.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpUdp::Directory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "directoryname")
+    {
+        directoryname.yfilter = yfilter;
+    }
+    if(value_path == "max-udp-debug-files")
+    {
+        max_udp_debug_files.yfilter = yfilter;
+    }
+    if(value_path == "max-file-size-files")
+    {
+        max_file_size_files.yfilter = yfilter;
+    }
+}
+
+bool IpUdp::Directory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "directoryname" || name == "max-udp-debug-files" || name == "max-file-size-files")
         return true;
     return false;
 }

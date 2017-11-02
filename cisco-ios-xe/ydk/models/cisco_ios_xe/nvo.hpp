@@ -10,6 +10,15 @@
 namespace cisco_ios_xe {
 namespace nvo {
 
+class OverlayEncapType : public virtual ydk::Identity
+{
+    public:
+        OverlayEncapType();
+        ~OverlayEncapType();
+
+
+}; // OverlayEncapType
+
 class NvoInstances : public ydk::Entity
 {
     public:
@@ -89,8 +98,8 @@ class NvoInstances::NvoInstance::VirtualNetwork : public ydk::Entity
         ydk::YLeaf end_host_discovery; //type: EndHostDiscovery
         //type: string (refers to ietf::ietf_routing::Routing::RoutingInstance::name)
         ydk::YLeaf routing_instance;
-        class Peers; //type: NvoInstances::NvoInstance::VirtualNetwork::Peers
         class Multicast; //type: NvoInstances::NvoInstance::VirtualNetwork::Multicast
+        class Peers; //type: NvoInstances::NvoInstance::VirtualNetwork::Peers
 
         std::shared_ptr<cisco_ios_xe::nvo::NvoInstances::NvoInstance::VirtualNetwork::Multicast> multicast;
         std::vector<std::shared_ptr<cisco_ios_xe::nvo::NvoInstances::NvoInstance::VirtualNetwork::Peers> > peers;
@@ -141,14 +150,14 @@ class NvoInstances::NvoInstance::VirtualNetwork::Peers : public ydk::Entity
 
 }; // NvoInstances::NvoInstance::VirtualNetwork::Peers
 
-class OverlayEncapType : public virtual ydk::Identity
+class VxlanType : public cisco_ios_xe::nvo::OverlayEncapType, virtual ydk::Identity
 {
     public:
-        OverlayEncapType();
-        ~OverlayEncapType();
+        VxlanType();
+        ~VxlanType();
 
 
-}; // OverlayEncapType
+}; // VxlanType
 
 class NvgreType : public cisco_ios_xe::nvo::OverlayEncapType, virtual ydk::Identity
 {
@@ -158,15 +167,6 @@ class NvgreType : public cisco_ios_xe::nvo::OverlayEncapType, virtual ydk::Ident
 
 
 }; // NvgreType
-
-class VxlanType : public cisco_ios_xe::nvo::OverlayEncapType, virtual ydk::Identity
-{
-    public:
-        VxlanType();
-        ~VxlanType();
-
-
-}; // VxlanType
 
 class NvoInstances::NvoInstance::VirtualNetwork::EndHostDiscovery : public ydk::Enum
 {

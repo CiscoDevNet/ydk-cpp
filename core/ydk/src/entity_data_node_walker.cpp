@@ -71,18 +71,39 @@ path::DataNode& get_data_node_from_entity(Entity & entity, path::RootSchemaNode 
 
 static void walk_children(Entity & entity, path::DataNode & data_node)
 {
-    std::map<string, shared_ptr<Entity>> children = entity.get_children();
+    map<string, shared_ptr<Entity>> children = entity.get_children();
+    vector<string> order = entity.get_order_of_children();
     YLOG_DEBUG("Children count for: {} : {}",get_entity_path(entity, entity.parent).path, children.size());
-    for(auto const& child : children)
+    if(order.size()>0)
     {
-        if(child.second == nullptr)
-            continue;
-        YLOG_DEBUG("==================");
-        YLOG_DEBUG("Looking at child '{}': {}",child.first, get_entity_path(*(child.second), child.second->parent).path);
-        if(child.second->has_operation() || child.second->has_data() || child.second->is_presence_container)
-            populate_data_node(*(child.second), data_node);
-        else
-            YLOG_DEBUG("Child has no data and no operations");
+        for(auto child_seg : order)
+        {
+            YLOG_DEBUG("Inserting in order");
+            auto child = children[child_seg];
+            if(child == nullptr)
+                continue;
+            YLOG_DEBUG("==================");
+            YLOG_DEBUG("Looking at child '{}': {}", child_seg, get_entity_path(*(child), child->parent).path);
+            if(child->has_operation() || child->has_data() || child->is_presence_container)
+                populate_data_node(*(child), data_node);
+            else
+                YLOG_DEBUG("Child has no data and no operations");
+
+        }
+    }
+    else
+    {
+        for(auto const& child : children)
+        {
+            if(child.second == nullptr)
+                continue;
+            YLOG_DEBUG("==================");
+            YLOG_DEBUG("Looking at child '{}': {}",child.first, get_entity_path(*(child.second), child.second->parent).path);
+            if(child.second->has_operation() || child.second->has_data() || child.second->is_presence_container)
+                populate_data_node(*(child.second), data_node);
+            else
+                YLOG_DEBUG("Child has no data and no operations");
+        }
     }
 }
 

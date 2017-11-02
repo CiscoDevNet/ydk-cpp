@@ -12,6 +12,24 @@
 namespace cisco_ios_xe {
 namespace TOKENRING_MIB {
 
+class Dot5Testinsertfunc : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot5Testinsertfunc();
+        ~Dot5Testinsertfunc();
+
+
+}; // Dot5Testinsertfunc
+
+class Dot5Testfullduplexloopback : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot5Testfullduplexloopback();
+        ~Dot5Testfullduplexloopback();
+
+
+}; // Dot5Testfullduplexloopback
+
 class Dot5Chipsetibm16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -39,24 +57,6 @@ class Dot5Chipsettitms380C16 : public ietf::ietf_yang_smiv2::ObjectIdentity, vir
 
 }; // Dot5Chipsettitms380C16
 
-class Dot5Testfullduplexloopback : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot5Testfullduplexloopback();
-        ~Dot5Testfullduplexloopback();
-
-
-}; // Dot5Testfullduplexloopback
-
-class Dot5Testinsertfunc : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot5Testinsertfunc();
-        ~Dot5Testinsertfunc();
-
-
-}; // Dot5Testinsertfunc
-
 class TOKENRINGMIB : public ydk::Entity
 {
     public:
@@ -82,11 +82,71 @@ class TOKENRINGMIB : public ydk::Entity
         class Dot5Statstable; //type: TOKENRINGMIB::Dot5Statstable
         class Dot5Timertable; //type: TOKENRINGMIB::Dot5Timertable
 
-        std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Statstable> dot5statstable;
         std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Table> dot5table;
+        std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Statstable> dot5statstable;
         std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Timertable> dot5timertable;
         
 }; // TOKENRINGMIB
+
+
+class TOKENRINGMIB::Dot5Table : public ydk::Entity
+{
+    public:
+        Dot5Table();
+        ~Dot5Table();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Dot5Entry; //type: TOKENRINGMIB::Dot5Table::Dot5Entry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Table::Dot5Entry> > dot5entry;
+        
+}; // TOKENRINGMIB::Dot5Table
+
+
+class TOKENRINGMIB::Dot5Table::Dot5Entry : public ydk::Entity
+{
+    public:
+        Dot5Entry();
+        ~Dot5Entry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dot5ifindex; //type: int32
+        ydk::YLeaf dot5commands; //type: Dot5Commands
+        ydk::YLeaf dot5ringstatus; //type: int32
+        ydk::YLeaf dot5ringstate; //type: Dot5Ringstate
+        ydk::YLeaf dot5ringopenstatus; //type: Dot5Ringopenstatus
+        ydk::YLeaf dot5ringspeed; //type: Dot5Ringspeed
+        ydk::YLeaf dot5upstream; //type: string
+        ydk::YLeaf dot5actmonparticipate; //type: Dot5Actmonparticipate
+        ydk::YLeaf dot5functional; //type: string
+        ydk::YLeaf dot5lastbeaconsent; //type: uint32
+        class Dot5Commands;
+        class Dot5Ringstate;
+        class Dot5Ringopenstatus;
+        class Dot5Ringspeed;
+        class Dot5Actmonparticipate;
+
+}; // TOKENRINGMIB::Dot5Table::Dot5Entry
 
 
 class TOKENRINGMIB::Dot5Statstable : public ydk::Entity
@@ -151,66 +211,6 @@ class TOKENRINGMIB::Dot5Statstable::Dot5Statsentry : public ydk::Entity
         ydk::YLeaf dot5statsfreqerrors; //type: uint32
 
 }; // TOKENRINGMIB::Dot5Statstable::Dot5Statsentry
-
-
-class TOKENRINGMIB::Dot5Table : public ydk::Entity
-{
-    public:
-        Dot5Table();
-        ~Dot5Table();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Dot5Entry; //type: TOKENRINGMIB::Dot5Table::Dot5Entry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Table::Dot5Entry> > dot5entry;
-        
-}; // TOKENRINGMIB::Dot5Table
-
-
-class TOKENRINGMIB::Dot5Table::Dot5Entry : public ydk::Entity
-{
-    public:
-        Dot5Entry();
-        ~Dot5Entry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf dot5ifindex; //type: int32
-        ydk::YLeaf dot5commands; //type: Dot5Commands
-        ydk::YLeaf dot5ringstatus; //type: int32
-        ydk::YLeaf dot5ringstate; //type: Dot5Ringstate
-        ydk::YLeaf dot5ringopenstatus; //type: Dot5Ringopenstatus
-        ydk::YLeaf dot5ringspeed; //type: Dot5Ringspeed
-        ydk::YLeaf dot5upstream; //type: string
-        ydk::YLeaf dot5actmonparticipate; //type: Dot5Actmonparticipate
-        ydk::YLeaf dot5functional; //type: string
-        ydk::YLeaf dot5lastbeaconsent; //type: uint32
-        class Dot5Commands;
-        class Dot5Ringstate;
-        class Dot5Ringopenstatus;
-        class Dot5Ringspeed;
-        class Dot5Actmonparticipate;
-
-}; // TOKENRINGMIB::Dot5Table::Dot5Entry
 
 
 class TOKENRINGMIB::Dot5Timertable : public ydk::Entity

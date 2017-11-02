@@ -36,8 +36,8 @@ class CISCOENTITYSENSORMIB : public ydk::Entity
         class Entsensorthresholdtable; //type: CISCOENTITYSENSORMIB::Entsensorthresholdtable
 
         std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_SENSOR_MIB::CISCOENTITYSENSORMIB::Entsensorglobalobjects> entsensorglobalobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_SENSOR_MIB::CISCOENTITYSENSORMIB::Entsensorthresholdtable> entsensorthresholdtable;
         std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_SENSOR_MIB::CISCOENTITYSENSORMIB::Entsensorvaluetable> entsensorvaluetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_SENSOR_MIB::CISCOENTITYSENSORMIB::Entsensorthresholdtable> entsensorthresholdtable;
         
 }; // CISCOENTITYSENSORMIB
 
@@ -62,59 +62,6 @@ class CISCOENTITYSENSORMIB::Entsensorglobalobjects : public ydk::Entity
         ydk::YLeaf entsensorthreshnotifglobalenable; //type: boolean
 
 }; // CISCOENTITYSENSORMIB::Entsensorglobalobjects
-
-
-class CISCOENTITYSENSORMIB::Entsensorthresholdtable : public ydk::Entity
-{
-    public:
-        Entsensorthresholdtable();
-        ~Entsensorthresholdtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Entsensorthresholdentry; //type: CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_SENSOR_MIB::CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry> > entsensorthresholdentry;
-        
-}; // CISCOENTITYSENSORMIB::Entsensorthresholdtable
-
-
-class CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry : public ydk::Entity
-{
-    public:
-        Entsensorthresholdentry();
-        ~Entsensorthresholdentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        ydk::YLeaf entphysicalindex;
-        ydk::YLeaf entsensorthresholdindex; //type: int32
-        ydk::YLeaf entsensorthresholdseverity; //type: SensorThresholdSeverity
-        ydk::YLeaf entsensorthresholdrelation; //type: SensorThresholdRelation
-        ydk::YLeaf entsensorthresholdvalue; //type: int32
-        ydk::YLeaf entsensorthresholdevaluation; //type: boolean
-        ydk::YLeaf entsensorthresholdnotificationenable; //type: boolean
-
-}; // CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry
 
 
 class CISCOENTITYSENSORMIB::Entsensorvaluetable : public ydk::Entity
@@ -171,17 +118,58 @@ class CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry : public yd
 
 }; // CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry
 
-class SensorThresholdRelation : public ydk::Enum
+
+class CISCOENTITYSENSORMIB::Entsensorthresholdtable : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf lessThan;
-        static const ydk::Enum::YLeaf lessOrEqual;
-        static const ydk::Enum::YLeaf greaterThan;
-        static const ydk::Enum::YLeaf greaterOrEqual;
-        static const ydk::Enum::YLeaf equalTo;
-        static const ydk::Enum::YLeaf notEqualTo;
+        Entsensorthresholdtable();
+        ~Entsensorthresholdtable();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Entsensorthresholdentry; //type: CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_SENSOR_MIB::CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry> > entsensorthresholdentry;
+        
+}; // CISCOENTITYSENSORMIB::Entsensorthresholdtable
+
+
+class CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry : public ydk::Entity
+{
+    public:
+        Entsensorthresholdentry();
+        ~Entsensorthresholdentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf entsensorthresholdindex; //type: int32
+        ydk::YLeaf entsensorthresholdseverity; //type: SensorThresholdSeverity
+        ydk::YLeaf entsensorthresholdrelation; //type: SensorThresholdRelation
+        ydk::YLeaf entsensorthresholdvalue; //type: int32
+        ydk::YLeaf entsensorthresholdevaluation; //type: boolean
+        ydk::YLeaf entsensorthresholdnotificationenable; //type: boolean
+
+}; // CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry
 
 class SensorDataType : public ydk::Enum
 {
@@ -242,6 +230,18 @@ class SensorThresholdSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf major;
         static const ydk::Enum::YLeaf critical;
+
+};
+
+class SensorThresholdRelation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lessThan;
+        static const ydk::Enum::YLeaf lessOrEqual;
+        static const ydk::Enum::YLeaf greaterThan;
+        static const ydk::Enum::YLeaf greaterOrEqual;
+        static const ydk::Enum::YLeaf equalTo;
+        static const ydk::Enum::YLeaf notEqualTo;
 
 };
 

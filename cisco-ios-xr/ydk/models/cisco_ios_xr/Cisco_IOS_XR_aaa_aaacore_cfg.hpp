@@ -10,15 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_aaacore_cfg {
 
-class AaaServiceAccounting : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf extended;
-        static const ydk::Enum::YLeaf brief;
-
-};
-
 class NasPortValue : public ydk::Enum
 {
     public:
@@ -46,6 +37,15 @@ class NasPortValue : public ydk::Enum
         static const ydk::Enum::YLeaf virtual_ipoeoe;
         static const ydk::Enum::YLeaf virtual_ipoeovlan;
         static const ydk::Enum::YLeaf virtual_ipoeoqinq;
+
+};
+
+class AaaServiceAccounting : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf extended;
+        static const ydk::Enum::YLeaf brief;
 
 };
 

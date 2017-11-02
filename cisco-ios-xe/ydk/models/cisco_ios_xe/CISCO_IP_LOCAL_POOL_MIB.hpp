@@ -39,65 +39,14 @@ class CISCOIPLOCALPOOLMIB : public ydk::Entity
         class Ciplocalpoolstatstable; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable
         class Ciplocalpoolalloctable; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable> ciplocalpoolalloctable;
         std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig> ciplocalpoolconfig;
         std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable> ciplocalpoolconfigtable;
         std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable> ciplocalpoolgroupcontainstable;
         std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable> ciplocalpoolgrouptable;
         std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable> ciplocalpoolstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable> ciplocalpoolalloctable;
         
 }; // CISCOIPLOCALPOOLMIB
-
-
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable : public ydk::Entity
-{
-    public:
-        Ciplocalpoolalloctable();
-        ~Ciplocalpoolalloctable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciplocalpoolallocentry; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry> > ciplocalpoolallocentry;
-        
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable
-
-
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry : public ydk::Entity
-{
-    public:
-        Ciplocalpoolallocentry();
-        ~Ciplocalpoolallocentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::ciplocalpoolname)
-        ydk::YLeaf ciplocalpoolname;
-        ydk::YLeaf ciplocalpoolallocaddrtype; //type: InetAddressType
-        ydk::YLeaf ciplocalpoolallocaddr; //type: binary
-        ydk::YLeaf ciplocalpoolallocifindex; //type: int32
-        ydk::YLeaf ciplocalpoolallocuser; //type: string
-
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry
 
 
 class CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig : public ydk::Entity
@@ -324,6 +273,57 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry : publ
         ydk::YLeaf ciplocalpoolpercentaddrthldhi; //type: uint32
 
 }; // CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry
+
+
+class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable : public ydk::Entity
+{
+    public:
+        Ciplocalpoolalloctable();
+        ~Ciplocalpoolalloctable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciplocalpoolallocentry; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry> > ciplocalpoolallocentry;
+        
+}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable
+
+
+class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry : public ydk::Entity
+{
+    public:
+        Ciplocalpoolallocentry();
+        ~Ciplocalpoolallocentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::ciplocalpoolname)
+        ydk::YLeaf ciplocalpoolname;
+        ydk::YLeaf ciplocalpoolallocaddrtype; //type: InetAddressType
+        ydk::YLeaf ciplocalpoolallocaddr; //type: binary
+        ydk::YLeaf ciplocalpoolallocifindex; //type: int32
+        ydk::YLeaf ciplocalpoolallocuser; //type: string
+
+}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry
 
 
 }

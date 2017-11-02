@@ -11,6 +11,16 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace nvo {
 
+OverlayEncapType::OverlayEncapType()
+     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:overlay-encap-type")
+{
+
+}
+
+OverlayEncapType::~OverlayEncapType()
+{
+}
+
 NvoInstances::NvoInstances()
 {
 
@@ -132,8 +142,8 @@ bool NvoInstances::has_leaf_or_child_of_name(const std::string & name) const
 NvoInstances::NvoInstance::NvoInstance()
     :
     nvo_id{YType::uint16, "nvo-id"},
-    overlay_encapsulation{YType::identityref, "overlay-encapsulation"},
-    source_interface{YType::str, "source-interface"}
+    source_interface{YType::str, "source-interface"},
+    overlay_encapsulation{YType::identityref, "overlay-encapsulation"}
 {
 
     yang_name = "nvo-instance"; yang_parent_name = "nvo-instances"; is_top_level_class = false; has_list_ancestor = false;
@@ -151,8 +161,8 @@ bool NvoInstances::NvoInstance::has_data() const
             return true;
     }
     return nvo_id.is_set
-	|| overlay_encapsulation.is_set
-	|| source_interface.is_set;
+	|| source_interface.is_set
+	|| overlay_encapsulation.is_set;
 }
 
 bool NvoInstances::NvoInstance::has_operation() const
@@ -164,8 +174,8 @@ bool NvoInstances::NvoInstance::has_operation() const
     }
     return is_set(yfilter)
 	|| ydk::is_set(nvo_id.yfilter)
-	|| ydk::is_set(overlay_encapsulation.yfilter)
-	|| ydk::is_set(source_interface.yfilter);
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(overlay_encapsulation.yfilter);
 }
 
 std::string NvoInstances::NvoInstance::get_absolute_path() const
@@ -187,8 +197,8 @@ std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::get_na
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nvo_id.is_set || is_set(nvo_id.yfilter)) leaf_name_data.push_back(nvo_id.get_name_leafdata());
-    if (overlay_encapsulation.is_set || is_set(overlay_encapsulation.yfilter)) leaf_name_data.push_back(overlay_encapsulation.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (overlay_encapsulation.is_set || is_set(overlay_encapsulation.yfilter)) leaf_name_data.push_back(overlay_encapsulation.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -234,17 +244,17 @@ void NvoInstances::NvoInstance::set_value(const std::string & value_path, const 
         nvo_id.value_namespace = name_space;
         nvo_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "overlay-encapsulation")
-    {
-        overlay_encapsulation = value;
-        overlay_encapsulation.value_namespace = name_space;
-        overlay_encapsulation.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "source-interface")
     {
         source_interface = value;
         source_interface.value_namespace = name_space;
         source_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "overlay-encapsulation")
+    {
+        overlay_encapsulation = value;
+        overlay_encapsulation.value_namespace = name_space;
+        overlay_encapsulation.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -254,19 +264,19 @@ void NvoInstances::NvoInstance::set_filter(const std::string & value_path, YFilt
     {
         nvo_id.yfilter = yfilter;
     }
-    if(value_path == "overlay-encapsulation")
-    {
-        overlay_encapsulation.yfilter = yfilter;
-    }
     if(value_path == "source-interface")
     {
         source_interface.yfilter = yfilter;
+    }
+    if(value_path == "overlay-encapsulation")
+    {
+        overlay_encapsulation.yfilter = yfilter;
     }
 }
 
 bool NvoInstances::NvoInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "virtual-network" || name == "nvo-id" || name == "overlay-encapsulation" || name == "source-interface")
+    if(name == "virtual-network" || name == "nvo-id" || name == "source-interface" || name == "overlay-encapsulation")
         return true;
     return false;
 }
@@ -275,10 +285,10 @@ NvoInstances::NvoInstance::VirtualNetwork::VirtualNetwork()
     :
     vni_start{YType::uint32, "vni-start"},
     vni_end{YType::uint32, "vni-end"},
+    suppress_arp{YType::empty, "suppress-arp"},
     bgp{YType::empty, "bgp"},
     end_host_discovery{YType::enumeration, "end-host-discovery"},
-    routing_instance{YType::str, "routing-instance"},
-    suppress_arp{YType::empty, "suppress-arp"}
+    routing_instance{YType::str, "routing-instance"}
     	,
     multicast(std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Multicast>())
 {
@@ -300,10 +310,10 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_data() const
     }
     return vni_start.is_set
 	|| vni_end.is_set
+	|| suppress_arp.is_set
 	|| bgp.is_set
 	|| end_host_discovery.is_set
 	|| routing_instance.is_set
-	|| suppress_arp.is_set
 	|| (multicast !=  nullptr && multicast->has_data());
 }
 
@@ -317,10 +327,10 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(vni_start.yfilter)
 	|| ydk::is_set(vni_end.yfilter)
+	|| ydk::is_set(suppress_arp.yfilter)
 	|| ydk::is_set(bgp.yfilter)
 	|| ydk::is_set(end_host_discovery.yfilter)
 	|| ydk::is_set(routing_instance.yfilter)
-	|| ydk::is_set(suppress_arp.yfilter)
 	|| (multicast !=  nullptr && multicast->has_operation());
 }
 
@@ -337,10 +347,10 @@ std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::Virtua
 
     if (vni_start.is_set || is_set(vni_start.yfilter)) leaf_name_data.push_back(vni_start.get_name_leafdata());
     if (vni_end.is_set || is_set(vni_end.yfilter)) leaf_name_data.push_back(vni_end.get_name_leafdata());
+    if (suppress_arp.is_set || is_set(suppress_arp.yfilter)) leaf_name_data.push_back(suppress_arp.get_name_leafdata());
     if (bgp.is_set || is_set(bgp.yfilter)) leaf_name_data.push_back(bgp.get_name_leafdata());
     if (end_host_discovery.is_set || is_set(end_host_discovery.yfilter)) leaf_name_data.push_back(end_host_discovery.get_name_leafdata());
     if (routing_instance.is_set || is_set(routing_instance.yfilter)) leaf_name_data.push_back(routing_instance.get_name_leafdata());
-    if (suppress_arp.is_set || is_set(suppress_arp.yfilter)) leaf_name_data.push_back(suppress_arp.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -406,6 +416,12 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_value(const std::string & va
         vni_end.value_namespace = name_space;
         vni_end.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "suppress-arp")
+    {
+        suppress_arp = value;
+        suppress_arp.value_namespace = name_space;
+        suppress_arp.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "bgp")
     {
         bgp = value;
@@ -424,12 +440,6 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_value(const std::string & va
         routing_instance.value_namespace = name_space;
         routing_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "suppress-arp")
-    {
-        suppress_arp = value;
-        suppress_arp.value_namespace = name_space;
-        suppress_arp.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void NvoInstances::NvoInstance::VirtualNetwork::set_filter(const std::string & value_path, YFilter yfilter)
@@ -441,6 +451,10 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_filter(const std::string & v
     if(value_path == "vni-end")
     {
         vni_end.yfilter = yfilter;
+    }
+    if(value_path == "suppress-arp")
+    {
+        suppress_arp.yfilter = yfilter;
     }
     if(value_path == "bgp")
     {
@@ -454,23 +468,19 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_filter(const std::string & v
     {
         routing_instance.yfilter = yfilter;
     }
-    if(value_path == "suppress-arp")
-    {
-        suppress_arp.yfilter = yfilter;
-    }
 }
 
 bool NvoInstances::NvoInstance::VirtualNetwork::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "multicast" || name == "peers" || name == "vni-start" || name == "vni-end" || name == "bgp" || name == "end-host-discovery" || name == "routing-instance" || name == "suppress-arp")
+    if(name == "multicast" || name == "peers" || name == "vni-start" || name == "vni-end" || name == "suppress-arp" || name == "bgp" || name == "end-host-discovery" || name == "routing-instance")
         return true;
     return false;
 }
 
 NvoInstances::NvoInstance::VirtualNetwork::Multicast::Multicast()
     :
-    multicast_group_max{YType::str, "multicast-group-max"},
-    multicast_group_min{YType::str, "multicast-group-min"}
+    multicast_group_min{YType::str, "multicast-group-min"},
+    multicast_group_max{YType::str, "multicast-group-max"}
 {
 
     yang_name = "multicast"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = true;
@@ -482,15 +492,15 @@ NvoInstances::NvoInstance::VirtualNetwork::Multicast::~Multicast()
 
 bool NvoInstances::NvoInstance::VirtualNetwork::Multicast::has_data() const
 {
-    return multicast_group_max.is_set
-	|| multicast_group_min.is_set;
+    return multicast_group_min.is_set
+	|| multicast_group_max.is_set;
 }
 
 bool NvoInstances::NvoInstance::VirtualNetwork::Multicast::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(multicast_group_max.yfilter)
-	|| ydk::is_set(multicast_group_min.yfilter);
+	|| ydk::is_set(multicast_group_min.yfilter)
+	|| ydk::is_set(multicast_group_max.yfilter);
 }
 
 std::string NvoInstances::NvoInstance::VirtualNetwork::Multicast::get_segment_path() const
@@ -504,8 +514,8 @@ std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::Virtua
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (multicast_group_max.is_set || is_set(multicast_group_max.yfilter)) leaf_name_data.push_back(multicast_group_max.get_name_leafdata());
     if (multicast_group_min.is_set || is_set(multicast_group_min.yfilter)) leaf_name_data.push_back(multicast_group_min.get_name_leafdata());
+    if (multicast_group_max.is_set || is_set(multicast_group_max.yfilter)) leaf_name_data.push_back(multicast_group_max.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -524,35 +534,35 @@ std::map<std::string, std::shared_ptr<Entity>> NvoInstances::NvoInstance::Virtua
 
 void NvoInstances::NvoInstance::VirtualNetwork::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "multicast-group-max")
-    {
-        multicast_group_max = value;
-        multicast_group_max.value_namespace = name_space;
-        multicast_group_max.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "multicast-group-min")
     {
         multicast_group_min = value;
         multicast_group_min.value_namespace = name_space;
         multicast_group_min.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "multicast-group-max")
+    {
+        multicast_group_max = value;
+        multicast_group_max.value_namespace = name_space;
+        multicast_group_max.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void NvoInstances::NvoInstance::VirtualNetwork::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "multicast-group-max")
-    {
-        multicast_group_max.yfilter = yfilter;
-    }
     if(value_path == "multicast-group-min")
     {
         multicast_group_min.yfilter = yfilter;
+    }
+    if(value_path == "multicast-group-max")
+    {
+        multicast_group_max.yfilter = yfilter;
     }
 }
 
 bool NvoInstances::NvoInstance::VirtualNetwork::Multicast::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "multicast-group-max" || name == "multicast-group-min")
+    if(name == "multicast-group-min" || name == "multicast-group-max")
         return true;
     return false;
 }
@@ -633,13 +643,13 @@ bool NvoInstances::NvoInstance::VirtualNetwork::Peers::has_leaf_or_child_of_name
     return false;
 }
 
-OverlayEncapType::OverlayEncapType()
-     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:overlay-encap-type")
+VxlanType::VxlanType()
+     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:vxlan-type")
 {
 
 }
 
-OverlayEncapType::~OverlayEncapType()
+VxlanType::~VxlanType()
 {
 }
 
@@ -650,16 +660,6 @@ NvgreType::NvgreType()
 }
 
 NvgreType::~NvgreType()
-{
-}
-
-VxlanType::VxlanType()
-     : Identity("urn:ietf:params:xml:ns:yang:nvo", "nvo", "nvo:vxlan-type")
-{
-
-}
-
-VxlanType::~VxlanType()
 {
 }
 

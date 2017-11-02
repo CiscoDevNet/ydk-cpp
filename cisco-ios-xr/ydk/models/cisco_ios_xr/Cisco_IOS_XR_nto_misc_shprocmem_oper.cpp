@@ -414,12 +414,12 @@ bool ProcessesMemory::Nodes::Node::JobIds::has_leaf_or_child_of_name(const std::
 ProcessesMemory::Nodes::Node::JobIds::JobId::JobId()
     :
     job_id{YType::int32, "job-id"},
-    data_seg_size{YType::uint32, "data-seg-size"},
-    jid{YType::uint32, "jid"},
-    malloc_size{YType::uint32, "malloc-size"},
     name{YType::str, "name"},
+    jid{YType::uint32, "jid"},
+    text_seg_size{YType::uint32, "text-seg-size"},
+    data_seg_size{YType::uint32, "data-seg-size"},
     stack_seg_size{YType::uint32, "stack-seg-size"},
-    text_seg_size{YType::uint32, "text-seg-size"}
+    malloc_size{YType::uint32, "malloc-size"}
 {
 
     yang_name = "job-id"; yang_parent_name = "job-ids"; is_top_level_class = false; has_list_ancestor = true;
@@ -432,24 +432,24 @@ ProcessesMemory::Nodes::Node::JobIds::JobId::~JobId()
 bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_data() const
 {
     return job_id.is_set
-	|| data_seg_size.is_set
-	|| jid.is_set
-	|| malloc_size.is_set
 	|| name.is_set
+	|| jid.is_set
+	|| text_seg_size.is_set
+	|| data_seg_size.is_set
 	|| stack_seg_size.is_set
-	|| text_seg_size.is_set;
+	|| malloc_size.is_set;
 }
 
 bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(job_id.yfilter)
-	|| ydk::is_set(data_seg_size.yfilter)
-	|| ydk::is_set(jid.yfilter)
-	|| ydk::is_set(malloc_size.yfilter)
 	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(jid.yfilter)
+	|| ydk::is_set(text_seg_size.yfilter)
+	|| ydk::is_set(data_seg_size.yfilter)
 	|| ydk::is_set(stack_seg_size.yfilter)
-	|| ydk::is_set(text_seg_size.yfilter);
+	|| ydk::is_set(malloc_size.yfilter);
 }
 
 std::string ProcessesMemory::Nodes::Node::JobIds::JobId::get_segment_path() const
@@ -464,12 +464,12 @@ std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::Node::Job
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (job_id.is_set || is_set(job_id.yfilter)) leaf_name_data.push_back(job_id.get_name_leafdata());
-    if (data_seg_size.is_set || is_set(data_seg_size.yfilter)) leaf_name_data.push_back(data_seg_size.get_name_leafdata());
-    if (jid.is_set || is_set(jid.yfilter)) leaf_name_data.push_back(jid.get_name_leafdata());
-    if (malloc_size.is_set || is_set(malloc_size.yfilter)) leaf_name_data.push_back(malloc_size.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (stack_seg_size.is_set || is_set(stack_seg_size.yfilter)) leaf_name_data.push_back(stack_seg_size.get_name_leafdata());
+    if (jid.is_set || is_set(jid.yfilter)) leaf_name_data.push_back(jid.get_name_leafdata());
     if (text_seg_size.is_set || is_set(text_seg_size.yfilter)) leaf_name_data.push_back(text_seg_size.get_name_leafdata());
+    if (data_seg_size.is_set || is_set(data_seg_size.yfilter)) leaf_name_data.push_back(data_seg_size.get_name_leafdata());
+    if (stack_seg_size.is_set || is_set(stack_seg_size.yfilter)) leaf_name_data.push_back(stack_seg_size.get_name_leafdata());
+    if (malloc_size.is_set || is_set(malloc_size.yfilter)) leaf_name_data.push_back(malloc_size.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -494,11 +494,11 @@ void ProcessesMemory::Nodes::Node::JobIds::JobId::set_value(const std::string & 
         job_id.value_namespace = name_space;
         job_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "data-seg-size")
+    if(value_path == "name")
     {
-        data_seg_size = value;
-        data_seg_size.value_namespace = name_space;
-        data_seg_size.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jid")
     {
@@ -506,17 +506,17 @@ void ProcessesMemory::Nodes::Node::JobIds::JobId::set_value(const std::string & 
         jid.value_namespace = name_space;
         jid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "malloc-size")
+    if(value_path == "text-seg-size")
     {
-        malloc_size = value;
-        malloc_size.value_namespace = name_space;
-        malloc_size.value_namespace_prefix = name_space_prefix;
+        text_seg_size = value;
+        text_seg_size.value_namespace = name_space;
+        text_seg_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
+    if(value_path == "data-seg-size")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        data_seg_size = value;
+        data_seg_size.value_namespace = name_space;
+        data_seg_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stack-seg-size")
     {
@@ -524,11 +524,11 @@ void ProcessesMemory::Nodes::Node::JobIds::JobId::set_value(const std::string & 
         stack_seg_size.value_namespace = name_space;
         stack_seg_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "text-seg-size")
+    if(value_path == "malloc-size")
     {
-        text_seg_size = value;
-        text_seg_size.value_namespace = name_space;
-        text_seg_size.value_namespace_prefix = name_space_prefix;
+        malloc_size = value;
+        malloc_size.value_namespace = name_space;
+        malloc_size.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -538,35 +538,35 @@ void ProcessesMemory::Nodes::Node::JobIds::JobId::set_filter(const std::string &
     {
         job_id.yfilter = yfilter;
     }
-    if(value_path == "data-seg-size")
+    if(value_path == "name")
     {
-        data_seg_size.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
     if(value_path == "jid")
     {
         jid.yfilter = yfilter;
     }
-    if(value_path == "malloc-size")
+    if(value_path == "text-seg-size")
     {
-        malloc_size.yfilter = yfilter;
+        text_seg_size.yfilter = yfilter;
     }
-    if(value_path == "name")
+    if(value_path == "data-seg-size")
     {
-        name.yfilter = yfilter;
+        data_seg_size.yfilter = yfilter;
     }
     if(value_path == "stack-seg-size")
     {
         stack_seg_size.yfilter = yfilter;
     }
-    if(value_path == "text-seg-size")
+    if(value_path == "malloc-size")
     {
-        text_seg_size.yfilter = yfilter;
+        malloc_size.yfilter = yfilter;
     }
 }
 
 bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "job-id" || name == "data-seg-size" || name == "jid" || name == "malloc-size" || name == "name" || name == "stack-seg-size" || name == "text-seg-size")
+    if(name == "job-id" || name == "name" || name == "jid" || name == "text-seg-size" || name == "data-seg-size" || name == "stack-seg-size" || name == "malloc-size")
         return true;
     return false;
 }

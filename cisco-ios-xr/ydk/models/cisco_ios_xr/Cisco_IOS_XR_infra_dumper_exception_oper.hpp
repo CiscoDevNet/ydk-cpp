@@ -73,7 +73,6 @@ class Exception::Enter : public ydk::Entity
         class ProcSize; //type: Exception::Enter::ProcSize
         class Qsize; //type: Exception::Enter::Qsize
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::CoreSize> core_size;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::DisplayConfig1> display_config1;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::DisplayConfig2> display_config2;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::DisplayConfig3> display_config3;
@@ -82,33 +81,12 @@ class Exception::Enter : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::DisplayFallBackConfig3> display_fall_back_config3;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::KernelConfig> kernel_config;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::KernelRouteConfig> kernel_route_config;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::CoreSize> core_size;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::MemoryThreshold> memory_threshold;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::ProcSize> proc_size;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_exception_oper::Exception::Enter::Qsize> qsize;
         
 }; // Exception::Enter
-
-
-class Exception::Enter::CoreSize : public ydk::Entity
-{
-    public:
-        CoreSize();
-        ~CoreSize();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf string; //type: string
-
-}; // Exception::Enter::CoreSize
 
 
 class Exception::Enter::DisplayConfig1 : public ydk::Entity
@@ -326,6 +304,28 @@ class Exception::Enter::KernelRouteConfig : public ydk::Entity
         ydk::YLeaf next_hop; //type: string
 
 }; // Exception::Enter::KernelRouteConfig
+
+
+class Exception::Enter::CoreSize : public ydk::Entity
+{
+    public:
+        CoreSize();
+        ~CoreSize();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf string; //type: string
+
+}; // Exception::Enter::CoreSize
 
 
 class Exception::Enter::MemoryThreshold : public ydk::Entity

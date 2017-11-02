@@ -35,33 +35,10 @@ class CISCOPIMMIB : public ydk::Entity
         class Cpim; //type: CISCOPIMMIB::Cpim
         class Ciscopimmibnotificationobjects; //type: CISCOPIMMIB::Ciscopimmibnotificationobjects
 
-        std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::Ciscopimmibnotificationobjects> ciscopimmibnotificationobjects;
         std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::Cpim> cpim;
+        std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::Ciscopimmibnotificationobjects> ciscopimmibnotificationobjects;
         
 }; // CISCOPIMMIB
-
-
-class CISCOPIMMIB::Ciscopimmibnotificationobjects : public ydk::Entity
-{
-    public:
-        Ciscopimmibnotificationobjects();
-        ~Ciscopimmibnotificationobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cpimrpmappingchangetype; //type: Cpimrpmappingchangetype
-        class Cpimrpmappingchangetype;
-
-}; // CISCOPIMMIB::Ciscopimmibnotificationobjects
 
 
 class CISCOPIMMIB::Cpim : public ydk::Entity
@@ -94,15 +71,28 @@ class CISCOPIMMIB::Cpim : public ydk::Entity
 
 }; // CISCOPIMMIB::Cpim
 
-class CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype : public ydk::Enum
+
+class CISCOPIMMIB::Ciscopimmibnotificationobjects : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf newMapping;
-        static const ydk::Enum::YLeaf deletedMapping;
-        static const ydk::Enum::YLeaf modifiedOldMapping;
-        static const ydk::Enum::YLeaf modifiedNewMapping;
+        Ciscopimmibnotificationobjects();
+        ~Ciscopimmibnotificationobjects();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cpimrpmappingchangetype; //type: Cpimrpmappingchangetype
+        class Cpimrpmappingchangetype;
+
+}; // CISCOPIMMIB::Ciscopimmibnotificationobjects
 
 class CISCOPIMMIB::Cpim::Cpimlasterrortype : public ydk::Enum
 {
@@ -110,6 +100,16 @@ class CISCOPIMMIB::Cpim::Cpimlasterrortype : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf invalidRegister;
         static const ydk::Enum::YLeaf invalidJoinPrune;
+
+};
+
+class CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf newMapping;
+        static const ydk::Enum::YLeaf deletedMapping;
+        static const ydk::Enum::YLeaf modifiedOldMapping;
+        static const ydk::Enum::YLeaf modifiedNewMapping;
 
 };
 

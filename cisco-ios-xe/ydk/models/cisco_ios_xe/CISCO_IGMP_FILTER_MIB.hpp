@@ -37,12 +37,35 @@ class CISCOIGMPFILTERMIB : public ydk::Entity
         class Cigmpfiltertable; //type: CISCOIGMPFILTERMIB::Cigmpfiltertable
         class Cigmpfilterinterfacetable; //type: CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltereditor> cigmpfiltereditor;
         std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltergeneral> cigmpfiltergeneral;
-        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable> cigmpfilterinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltereditor> cigmpfiltereditor;
         std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltertable> cigmpfiltertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable> cigmpfilterinterfacetable;
         
 }; // CISCOIGMPFILTERMIB
+
+
+class CISCOIGMPFILTERMIB::Cigmpfiltergeneral : public ydk::Entity
+{
+    public:
+        Cigmpfiltergeneral();
+        ~Cigmpfiltergeneral();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cigmpfilterenable; //type: boolean
+        ydk::YLeaf cigmpfiltermaxprofiles; //type: uint32
+
+}; // CISCOIGMPFILTERMIB::Cigmpfiltergeneral
 
 
 class CISCOIGMPFILTERMIB::Cigmpfiltereditor : public ydk::Entity
@@ -76,77 +99,6 @@ class CISCOIGMPFILTERMIB::Cigmpfiltereditor : public ydk::Entity
         class Cigmpfilterapplystatus;
 
 }; // CISCOIGMPFILTERMIB::Cigmpfiltereditor
-
-
-class CISCOIGMPFILTERMIB::Cigmpfiltergeneral : public ydk::Entity
-{
-    public:
-        Cigmpfiltergeneral();
-        ~Cigmpfiltergeneral();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cigmpfilterenable; //type: boolean
-        ydk::YLeaf cigmpfiltermaxprofiles; //type: uint32
-
-}; // CISCOIGMPFILTERMIB::Cigmpfiltergeneral
-
-
-class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable : public ydk::Entity
-{
-    public:
-        Cigmpfilterinterfacetable();
-        ~Cigmpfilterinterfacetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cigmpfilterinterfaceentry; //type: CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry> > cigmpfilterinterfaceentry;
-        
-}; // CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable
-
-
-class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry : public ydk::Entity
-{
-    public:
-        Cigmpfilterinterfaceentry();
-        ~Cigmpfilterinterfaceentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf cigmpfilterinterfaceprofileindex; //type: uint32
-
-}; // CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry
 
 
 class CISCOIGMPFILTERMIB::Cigmpfiltertable : public ydk::Entity
@@ -199,6 +151,54 @@ class CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry : public ydk::Entit
         class Cigmpfilterprofileaction;
 
 }; // CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry
+
+
+class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable : public ydk::Entity
+{
+    public:
+        Cigmpfilterinterfacetable();
+        ~Cigmpfilterinterfacetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cigmpfilterinterfaceentry; //type: CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry> > cigmpfilterinterfaceentry;
+        
+}; // CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable
+
+
+class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry : public ydk::Entity
+{
+    public:
+        Cigmpfilterinterfaceentry();
+        ~Cigmpfilterinterfaceentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cigmpfilterinterfaceprofileindex; //type: uint32
+
+}; // CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry
 
 class CISCOIGMPFILTERMIB::Cigmpfiltereditor::Cigmpfiltereditprofileaction : public ydk::Enum
 {

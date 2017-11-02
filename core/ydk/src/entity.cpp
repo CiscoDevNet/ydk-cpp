@@ -78,6 +78,11 @@ std::string Entity::get_bundle_name() const
     return "";
 }
 
+std::vector<std::string> Entity::get_order_of_children() const
+{
+    return {};
+}
+
 std::map<std::pair<std::string, std::string>, std::string> Entity::get_namespace_identity_lookup() const
 {
     return {};

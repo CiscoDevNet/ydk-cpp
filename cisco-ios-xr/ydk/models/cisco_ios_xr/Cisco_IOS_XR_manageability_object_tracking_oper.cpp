@@ -13,23 +13,23 @@ namespace Cisco_IOS_XR_manageability_object_tracking_oper {
 
 ObjectTracking::ObjectTracking()
     :
-    track_briefs(std::make_shared<ObjectTracking::TrackBriefs>())
-	,track_type_interface(std::make_shared<ObjectTracking::TrackTypeInterface>())
-	,track_type_interface_brief(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief>())
-	,track_type_ipv4_route(std::make_shared<ObjectTracking::TrackTypeIpv4Route>())
-	,track_type_ipv4_route_brief(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief>())
+    track_type_interface(std::make_shared<ObjectTracking::TrackTypeInterface>())
+	,track_briefs(std::make_shared<ObjectTracking::TrackBriefs>())
 	,track_type_rtr_reachability(std::make_shared<ObjectTracking::TrackTypeRtrReachability>())
 	,track_type_rtr_reachability_brief(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief>())
 	,tracks(std::make_shared<ObjectTracking::Tracks>())
+	,track_type_ipv4_route_brief(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief>())
+	,track_type_ipv4_route(std::make_shared<ObjectTracking::TrackTypeIpv4Route>())
+	,track_type_interface_brief(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief>())
 {
-    track_briefs->parent = this;
     track_type_interface->parent = this;
-    track_type_interface_brief->parent = this;
-    track_type_ipv4_route->parent = this;
-    track_type_ipv4_route_brief->parent = this;
+    track_briefs->parent = this;
     track_type_rtr_reachability->parent = this;
     track_type_rtr_reachability_brief->parent = this;
     tracks->parent = this;
+    track_type_ipv4_route_brief->parent = this;
+    track_type_ipv4_route->parent = this;
+    track_type_interface_brief->parent = this;
 
     yang_name = "object-tracking"; yang_parent_name = "Cisco-IOS-XR-manageability-object-tracking-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -40,27 +40,27 @@ ObjectTracking::~ObjectTracking()
 
 bool ObjectTracking::has_data() const
 {
-    return (track_briefs !=  nullptr && track_briefs->has_data())
-	|| (track_type_interface !=  nullptr && track_type_interface->has_data())
-	|| (track_type_interface_brief !=  nullptr && track_type_interface_brief->has_data())
-	|| (track_type_ipv4_route !=  nullptr && track_type_ipv4_route->has_data())
-	|| (track_type_ipv4_route_brief !=  nullptr && track_type_ipv4_route_brief->has_data())
+    return (track_type_interface !=  nullptr && track_type_interface->has_data())
+	|| (track_briefs !=  nullptr && track_briefs->has_data())
 	|| (track_type_rtr_reachability !=  nullptr && track_type_rtr_reachability->has_data())
 	|| (track_type_rtr_reachability_brief !=  nullptr && track_type_rtr_reachability_brief->has_data())
-	|| (tracks !=  nullptr && tracks->has_data());
+	|| (tracks !=  nullptr && tracks->has_data())
+	|| (track_type_ipv4_route_brief !=  nullptr && track_type_ipv4_route_brief->has_data())
+	|| (track_type_ipv4_route !=  nullptr && track_type_ipv4_route->has_data())
+	|| (track_type_interface_brief !=  nullptr && track_type_interface_brief->has_data());
 }
 
 bool ObjectTracking::has_operation() const
 {
     return is_set(yfilter)
-	|| (track_briefs !=  nullptr && track_briefs->has_operation())
 	|| (track_type_interface !=  nullptr && track_type_interface->has_operation())
-	|| (track_type_interface_brief !=  nullptr && track_type_interface_brief->has_operation())
-	|| (track_type_ipv4_route !=  nullptr && track_type_ipv4_route->has_operation())
-	|| (track_type_ipv4_route_brief !=  nullptr && track_type_ipv4_route_brief->has_operation())
+	|| (track_briefs !=  nullptr && track_briefs->has_operation())
 	|| (track_type_rtr_reachability !=  nullptr && track_type_rtr_reachability->has_operation())
 	|| (track_type_rtr_reachability_brief !=  nullptr && track_type_rtr_reachability_brief->has_operation())
-	|| (tracks !=  nullptr && tracks->has_operation());
+	|| (tracks !=  nullptr && tracks->has_operation())
+	|| (track_type_ipv4_route_brief !=  nullptr && track_type_ipv4_route_brief->has_operation())
+	|| (track_type_ipv4_route !=  nullptr && track_type_ipv4_route->has_operation())
+	|| (track_type_interface_brief !=  nullptr && track_type_interface_brief->has_operation());
 }
 
 std::string ObjectTracking::get_segment_path() const
@@ -81,15 +81,6 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::get_name_leaf_dat
 
 std::shared_ptr<Entity> ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "track-briefs")
-    {
-        if(track_briefs == nullptr)
-        {
-            track_briefs = std::make_shared<ObjectTracking::TrackBriefs>();
-        }
-        return track_briefs;
-    }
-
     if(child_yang_name == "track-type-interface")
     {
         if(track_type_interface == nullptr)
@@ -99,31 +90,13 @@ std::shared_ptr<Entity> ObjectTracking::get_child_by_name(const std::string & ch
         return track_type_interface;
     }
 
-    if(child_yang_name == "track-type-interface-brief")
+    if(child_yang_name == "track-briefs")
     {
-        if(track_type_interface_brief == nullptr)
+        if(track_briefs == nullptr)
         {
-            track_type_interface_brief = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief>();
+            track_briefs = std::make_shared<ObjectTracking::TrackBriefs>();
         }
-        return track_type_interface_brief;
-    }
-
-    if(child_yang_name == "track-type-ipv4-route")
-    {
-        if(track_type_ipv4_route == nullptr)
-        {
-            track_type_ipv4_route = std::make_shared<ObjectTracking::TrackTypeIpv4Route>();
-        }
-        return track_type_ipv4_route;
-    }
-
-    if(child_yang_name == "track-type-ipv4-route-brief")
-    {
-        if(track_type_ipv4_route_brief == nullptr)
-        {
-            track_type_ipv4_route_brief = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief>();
-        }
-        return track_type_ipv4_route_brief;
+        return track_briefs;
     }
 
     if(child_yang_name == "track-type-rtr-reachability")
@@ -153,35 +126,47 @@ std::shared_ptr<Entity> ObjectTracking::get_child_by_name(const std::string & ch
         return tracks;
     }
 
+    if(child_yang_name == "track-type-ipv4-route-brief")
+    {
+        if(track_type_ipv4_route_brief == nullptr)
+        {
+            track_type_ipv4_route_brief = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief>();
+        }
+        return track_type_ipv4_route_brief;
+    }
+
+    if(child_yang_name == "track-type-ipv4-route")
+    {
+        if(track_type_ipv4_route == nullptr)
+        {
+            track_type_ipv4_route = std::make_shared<ObjectTracking::TrackTypeIpv4Route>();
+        }
+        return track_type_ipv4_route;
+    }
+
+    if(child_yang_name == "track-type-interface-brief")
+    {
+        if(track_type_interface_brief == nullptr)
+        {
+            track_type_interface_brief = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief>();
+        }
+        return track_type_interface_brief;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(track_briefs != nullptr)
-    {
-        children["track-briefs"] = track_briefs;
-    }
-
     if(track_type_interface != nullptr)
     {
         children["track-type-interface"] = track_type_interface;
     }
 
-    if(track_type_interface_brief != nullptr)
+    if(track_briefs != nullptr)
     {
-        children["track-type-interface-brief"] = track_type_interface_brief;
-    }
-
-    if(track_type_ipv4_route != nullptr)
-    {
-        children["track-type-ipv4-route"] = track_type_ipv4_route;
-    }
-
-    if(track_type_ipv4_route_brief != nullptr)
-    {
-        children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
+        children["track-briefs"] = track_briefs;
     }
 
     if(track_type_rtr_reachability != nullptr)
@@ -197,6 +182,21 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::get_children() co
     if(tracks != nullptr)
     {
         children["tracks"] = tracks;
+    }
+
+    if(track_type_ipv4_route_brief != nullptr)
+    {
+        children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
+    }
+
+    if(track_type_ipv4_route != nullptr)
+    {
+        children["track-type-ipv4-route"] = track_type_ipv4_route;
+    }
+
+    if(track_type_interface_brief != nullptr)
+    {
+        children["track-type-interface-brief"] = track_type_interface_brief;
     }
 
     return children;
@@ -237,7 +237,1667 @@ std::map<std::pair<std::string, std::string>, std::string> ObjectTracking::get_n
 
 bool ObjectTracking::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "track-briefs" || name == "track-type-interface" || name == "track-type-interface-brief" || name == "track-type-ipv4-route" || name == "track-type-ipv4-route-brief" || name == "track-type-rtr-reachability" || name == "track-type-rtr-reachability-brief" || name == "tracks")
+    if(name == "track-type-interface" || name == "track-briefs" || name == "track-type-rtr-reachability" || name == "track-type-rtr-reachability-brief" || name == "tracks" || name == "track-type-ipv4-route-brief" || name == "track-type-ipv4-route" || name == "track-type-interface-brief")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackTypeInterface()
+{
+
+    yang_name = "track-type-interface"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::~TrackTypeInterface()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::has_data() const
+{
+    for (std::size_t index=0; index<track_info.size(); index++)
+    {
+        if(track_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeInterface::has_operation() const
+{
+    for (std::size_t index=0; index<track_info.size(); index++)
+    {
+        if(track_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-info")
+    {
+        for(auto const & c : track_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo>();
+        c->parent = this;
+        track_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : track_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackInfo()
+    :
+    tracke_name{YType::str, "tracke-name"},
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"},
+    state_change_counter{YType::uint32, "state-change-counter"},
+    seconds_last_change{YType::uint64, "seconds-last-change"},
+    threshold_up{YType::uint32, "threshold-up"},
+    threshold_down{YType::uint32, "threshold-down"}
+    	,
+    track_type_info(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo>())
+	,bool_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks>())
+	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks>())
+	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>())
+	,delayed(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::Delayed>())
+{
+    track_type_info->parent = this;
+    bool_tracks->parent = this;
+    threshold_tracks->parent = this;
+    tracking_interaces->parent = this;
+    delayed->parent = this;
+
+    yang_name = "track-info"; yang_parent_name = "track-type-interface"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::~TrackInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::has_data() const
+{
+    return tracke_name.is_set
+	|| type.is_set
+	|| track_state.is_set
+	|| state_change_counter.is_set
+	|| seconds_last_change.is_set
+	|| threshold_up.is_set
+	|| threshold_down.is_set
+	|| (track_type_info !=  nullptr && track_type_info->has_data())
+	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data())
+	|| (delayed !=  nullptr && delayed->has_data());
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tracke_name.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(state_change_counter.yfilter)
+	|| ydk::is_set(seconds_last_change.yfilter)
+	|| ydk::is_set(threshold_up.yfilter)
+	|| ydk::is_set(threshold_down.yfilter)
+	|| (track_type_info !=  nullptr && track_type_info->has_operation())
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
+    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
+    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
+    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-type-info")
+    {
+        if(track_type_info == nullptr)
+        {
+            track_type_info = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo>();
+        }
+        return track_type_info;
+    }
+
+    if(child_yang_name == "bool-tracks")
+    {
+        if(bool_tracks == nullptr)
+        {
+            bool_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks>();
+        }
+        return bool_tracks;
+    }
+
+    if(child_yang_name == "threshold-tracks")
+    {
+        if(threshold_tracks == nullptr)
+        {
+            threshold_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks>();
+        }
+        return threshold_tracks;
+    }
+
+    if(child_yang_name == "tracking-interaces")
+    {
+        if(tracking_interaces == nullptr)
+        {
+            tracking_interaces = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>();
+        }
+        return tracking_interaces;
+    }
+
+    if(child_yang_name == "delayed")
+    {
+        if(delayed == nullptr)
+        {
+            delayed = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::Delayed>();
+        }
+        return delayed;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
+    {
+        children["track-type-info"] = track_type_info;
+    }
+
+    if(bool_tracks != nullptr)
+    {
+        children["bool-tracks"] = bool_tracks;
+    }
+
+    if(threshold_tracks != nullptr)
+    {
+        children["threshold-tracks"] = threshold_tracks;
+    }
+
+    if(tracking_interaces != nullptr)
+    {
+        children["tracking-interaces"] = tracking_interaces;
+    }
+
+    if(delayed != nullptr)
+    {
+        children["delayed"] = delayed;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name = value;
+        tracke_name.value_namespace = name_space;
+        tracke_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter = value;
+        state_change_counter.value_namespace = name_space;
+        state_change_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change = value;
+        seconds_last_change.value_namespace = name_space;
+        seconds_last_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up = value;
+        threshold_up.value_namespace = name_space;
+        threshold_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down = value;
+        threshold_down.value_namespace = name_space;
+        threshold_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter.yfilter = yfilter;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change.yfilter = yfilter;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up.yfilter = yfilter;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-type-info" || name == "bool-tracks" || name == "threshold-tracks" || name == "tracking-interaces" || name == "delayed" || name == "tracke-name" || name == "type" || name == "track-state" || name == "state-change-counter" || name == "seconds-last-change" || name == "threshold-up" || name == "threshold-down")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::TrackTypeInfo()
+    :
+    discriminant{YType::enumeration, "discriminant"}
+    	,
+    interface_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks>())
+	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks>())
+{
+    interface_tracks->parent = this;
+    route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
+
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_data() const
+{
+    return discriminant.is_set
+	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discriminant.yfilter)
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracks")
+    {
+        if(interface_tracks == nullptr)
+        {
+            interface_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks>();
+        }
+        return interface_tracks;
+    }
+
+    if(child_yang_name == "route-tracks")
+    {
+        if(route_tracks == nullptr)
+        {
+            route_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>();
+        }
+        return route_tracks;
+    }
+
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_tracks != nullptr)
+    {
+        children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
+    }
+
+    if(ipsla_tracks != nullptr)
+    {
+        children["ipsla-tracks"] = ipsla_tracks;
+    }
+
+    if(bfd_tracks != nullptr)
+    {
+        children["bfd-tracks"] = bfd_tracks;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant = value;
+        discriminant.value_namespace = name_space;
+        discriminant.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
+    :
+    ipsla_op_id{YType::uint32, "ipsla-op-id"},
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
+{
+
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
+{
+    return ipsla_op_id.is_set
+	|| rtt.is_set
+	|| return_code.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipsla_op_id.yfilter)
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipsla-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
+    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id = value;
+        ipsla_op_id.value_namespace = name_space;
+        ipsla_op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt")
+    {
+        rtt = value;
+        rtt.value_namespace = name_space;
+        rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id.yfilter = yfilter;
+    }
+    if(value_path == "rtt")
+    {
+        rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
+    :
+    interface_name{YType::str, "interface-name"},
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
+{
+
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
+{
+    return interface_name.is_set
+	|| destination_address.is_set
+	|| rate.is_set
+	|| debounce_count.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTracks()
+{
+
+    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::~BoolTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_data() const
+{
+    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    {
+        if(bool_track_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_operation() const
+{
+    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    {
+        if(bool_track_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bool-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bool-track-info")
+    {
+        for(auto const & c : bool_track_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo>();
+        c->parent = this;
+        bool_track_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bool_track_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bool-track-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::BoolTrackInfo()
+    :
+    object_name{YType::str, "object-name"},
+    track_state{YType::boolean, "track-state"},
+    with_not{YType::boolean, "with-not"}
+{
+
+    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
+{
+    return object_name.is_set
+	|| track_state.is_set
+	|| with_not.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(with_not.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/bool-tracks/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bool-track-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (with_not.is_set || is_set(with_not.yfilter)) leaf_name_data.push_back(with_not.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-name")
+    {
+        object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "with-not")
+    {
+        with_not = value;
+        with_not.value_namespace = name_space;
+        with_not.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "with-not")
+    {
+        with_not.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "track-state" || name == "with-not")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTracks()
+{
+
+    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::~ThresholdTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_data() const
+{
+    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    {
+        if(threshold_track_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_operation() const
+{
+    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    {
+        if(threshold_track_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold-track-info")
+    {
+        for(auto const & c : threshold_track_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
+        c->parent = this;
+        threshold_track_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : threshold_track_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-track-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::ThresholdTrackInfo()
+    :
+    object_name{YType::str, "object-name"},
+    track_state{YType::boolean, "track-state"},
+    weight{YType::uint32, "weight"}
+{
+
+    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
+{
+    return object_name.is_set
+	|| track_state.is_set
+	|| weight.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(weight.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/threshold-tracks/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold-track-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-name")
+    {
+        object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "track-state" || name == "weight")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::TrackingInteraces()
+{
+
+    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::~TrackingInteraces()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_data() const
+{
+    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    {
+        if(interface_tracking_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_operation() const
+{
+    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    {
+        if(interface_tracking_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tracking-interaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracking-info")
+    {
+        for(auto const & c : interface_tracking_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
+        c->parent = this;
+        interface_tracking_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface_tracking_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracking-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::InterfaceTrackingInfo()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/tracking-interaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracking-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::Delayed()
+    :
+    time_remaining{YType::uint32, "time-remaining"},
+    track_state{YType::boolean, "track-state"}
+{
+
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::~Delayed()
+{
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_data() const
+{
+    return time_remaining.is_set
+	|| track_state.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
+	|| ydk::is_set(track_state.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delayed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-remaining" || name == "track-state")
         return true;
     return false;
 }
@@ -458,9 +2118,9 @@ bool ObjectTracking::TrackBriefs::TrackBrief::has_leaf_or_child_of_name(const st
 
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackInfoBrief()
     :
-    track_state{YType::boolean, "track-state"},
     tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"}
     	,
     track_type_info(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo>())
 {
@@ -475,18 +2135,18 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::~TrackInfoBrief()
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::has_data() const
 {
-    return track_state.is_set
-	|| tracke_name.is_set
+    return tracke_name.is_set
 	|| type.is_set
+	|| track_state.is_set
 	|| (track_type_info !=  nullptr && track_type_info->has_data());
 }
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(track_state.yfilter)
 	|| ydk::is_set(tracke_name.yfilter)
 	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(track_state.yfilter)
 	|| (track_type_info !=  nullptr && track_type_info->has_operation());
 }
 
@@ -501,9 +2161,9 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
     if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -536,12 +2196,6 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::Trac
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name = value;
@@ -554,14 +2208,16 @@ void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::set_value(const st
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name.yfilter = yfilter;
@@ -570,11 +2226,15 @@ void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::set_filter(const s
     {
         type.yfilter = yfilter;
     }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "track-type-info" || name == "track-state" || name == "tracke-name" || name == "type")
+    if(name == "track-type-info" || name == "tracke-name" || name == "type" || name == "track-state")
         return true;
     return false;
 }
@@ -583,15 +2243,15 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::TrackTyp
     :
     discriminant{YType::enumeration, "discriminant"}
     	,
-    bfd_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+    interface_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
 	,route_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
 {
-    bfd_tracks->parent = this;
     interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
     route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -603,20 +2263,20 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::~TrackTy
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
 {
     return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
 	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
 }
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
 	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
 	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
@@ -638,15 +2298,6 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
     if(child_yang_name == "interface-tracks")
     {
         if(interface_tracks == nullptr)
@@ -654,15 +2305,6 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief:
             interface_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
         }
         return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
@@ -674,20 +2316,38 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief:
         return route_tracks;
     }
 
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
     if(interface_tracks != nullptr)
     {
         children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
@@ -695,9 +2355,9 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::Trac
         children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(route_tracks != nullptr)
+    if(bfd_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        children["bfd-tracks"] = bfd_tracks;
     }
 
     return children;
@@ -723,125 +2383,7 @@ void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::set
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
-    interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
-{
-
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
-{
-}
-
-bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
-{
-    return debounce_count.is_set
-	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
-}
-
-bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count = value;
-        debounce_count.value_namespace = name_space;
-        debounce_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
         return true;
     return false;
 }
@@ -922,11 +2464,129 @@ bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Int
     return false;
 }
 
+ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
 ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::IpslaTracks()
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
@@ -939,16 +2599,16 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
 {
     return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
+	|| rtt.is_set
+	|| return_code.is_set;
 }
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
 }
 
 std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_segment_path() const
@@ -963,8 +2623,8 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -989,17 +2649,17 @@ void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ips
         ipsla_op_id.value_namespace = name_space;
         ipsla_op_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "rtt")
     {
         rtt = value;
         rtt.value_namespace = name_space;
         rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1009,1251 +2669,93 @@ void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ips
     {
         ipsla_op_id.yfilter = yfilter;
     }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
     if(value_path == "rtt")
     {
         rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
     }
 }
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
         return true;
     return false;
 }
 
-ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
+ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
     :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
-{
-}
-
-bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
-{
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
-}
-
-bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackTypeInterface()
-{
-
-    yang_name = "track-type-interface"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::~TrackTypeInterface()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::has_data() const
-{
-    for (std::size_t index=0; index<track_info.size(); index++)
-    {
-        if(track_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeInterface::has_operation() const
-{
-    for (std::size_t index=0; index<track_info.size(); index++)
-    {
-        if(track_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "track-info")
-    {
-        for(auto const & c : track_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo>();
-        c->parent = this;
-        track_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : track_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "track-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackInfo()
-    :
-    seconds_last_change{YType::uint64, "seconds-last-change"},
-    state_change_counter{YType::uint32, "state-change-counter"},
-    threshold_down{YType::uint32, "threshold-down"},
-    threshold_up{YType::uint32, "threshold-up"},
-    track_state{YType::boolean, "track-state"},
-    tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
-    	,
-    bool_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks>())
-	,delayed(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::Delayed>())
-	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks>())
-	,track_type_info(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo>())
-	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>())
-{
-    bool_tracks->parent = this;
-    delayed->parent = this;
-    threshold_tracks->parent = this;
-    track_type_info->parent = this;
-    tracking_interaces->parent = this;
-
-    yang_name = "track-info"; yang_parent_name = "track-type-interface"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::~TrackInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::has_data() const
-{
-    return seconds_last_change.is_set
-	|| state_change_counter.is_set
-	|| threshold_down.is_set
-	|| threshold_up.is_set
-	|| track_state.is_set
-	|| tracke_name.is_set
-	|| type.is_set
-	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
-	|| (delayed !=  nullptr && delayed->has_data())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
-	|| (track_type_info !=  nullptr && track_type_info->has_data())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data());
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds_last_change.yfilter)
-	|| ydk::is_set(state_change_counter.yfilter)
-	|| ydk::is_set(threshold_down.yfilter)
-	|| ydk::is_set(threshold_up.yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(tracke_name.yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
-	|| (delayed !=  nullptr && delayed->has_operation())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
-	|| (track_type_info !=  nullptr && track_type_info->has_operation())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
-    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
-    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bool-tracks")
-    {
-        if(bool_tracks == nullptr)
-        {
-            bool_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks>();
-        }
-        return bool_tracks;
-    }
-
-    if(child_yang_name == "delayed")
-    {
-        if(delayed == nullptr)
-        {
-            delayed = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::Delayed>();
-        }
-        return delayed;
-    }
-
-    if(child_yang_name == "threshold-tracks")
-    {
-        if(threshold_tracks == nullptr)
-        {
-            threshold_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks>();
-        }
-        return threshold_tracks;
-    }
-
-    if(child_yang_name == "track-type-info")
-    {
-        if(track_type_info == nullptr)
-        {
-            track_type_info = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo>();
-        }
-        return track_type_info;
-    }
-
-    if(child_yang_name == "tracking-interaces")
-    {
-        if(tracking_interaces == nullptr)
-        {
-            tracking_interaces = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>();
-        }
-        return tracking_interaces;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bool_tracks != nullptr)
-    {
-        children["bool-tracks"] = bool_tracks;
-    }
-
-    if(delayed != nullptr)
-    {
-        children["delayed"] = delayed;
-    }
-
-    if(threshold_tracks != nullptr)
-    {
-        children["threshold-tracks"] = threshold_tracks;
-    }
-
-    if(track_type_info != nullptr)
-    {
-        children["track-type-info"] = track_type_info;
-    }
-
-    if(tracking_interaces != nullptr)
-    {
-        children["tracking-interaces"] = tracking_interaces;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change = value;
-        seconds_last_change.value_namespace = name_space;
-        seconds_last_change.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter = value;
-        state_change_counter.value_namespace = name_space;
-        state_change_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down = value;
-        threshold_down.value_namespace = name_space;
-        threshold_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up = value;
-        threshold_up.value_namespace = name_space;
-        threshold_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name = value;
-        tracke_name.value_namespace = name_space;
-        tracke_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change.yfilter = yfilter;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter.yfilter = yfilter;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down.yfilter = yfilter;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bool-tracks" || name == "delayed" || name == "threshold-tracks" || name == "track-type-info" || name == "tracking-interaces" || name == "seconds-last-change" || name == "state-change-counter" || name == "threshold-down" || name == "threshold-up" || name == "track-state" || name == "tracke-name" || name == "type")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTracks()
-{
-
-    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::~BoolTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_data() const
-{
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
-    {
-        if(bool_track_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_operation() const
-{
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
-    {
-        if(bool_track_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bool-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bool-track-info")
-    {
-        for(auto const & c : bool_track_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo>();
-        c->parent = this;
-        bool_track_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bool_track_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bool-track-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::BoolTrackInfo()
-    :
-    object_name{YType::str, "object-name"},
-    track_state{YType::boolean, "track-state"},
-    with_not{YType::boolean, "with-not"}
-{
-
-    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
-{
-    return object_name.is_set
-	|| track_state.is_set
-	|| with_not.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(object_name.yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(with_not.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/bool-tracks/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bool-track-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (with_not.is_set || is_set(with_not.yfilter)) leaf_name_data.push_back(with_not.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "object-name")
-    {
-        object_name = value;
-        object_name.value_namespace = name_space;
-        object_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "with-not")
-    {
-        with_not = value;
-        with_not.value_namespace = name_space;
-        with_not.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "object-name")
-    {
-        object_name.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "with-not")
-    {
-        with_not.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "object-name" || name == "track-state" || name == "with-not")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::Delayed()
-    :
-    time_remaining{YType::uint32, "time-remaining"},
-    track_state{YType::boolean, "track-state"}
-{
-
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::~Delayed()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_data() const
-{
-    return time_remaining.is_set
-	|| track_state.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_remaining.yfilter)
-	|| ydk::is_set(track_state.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delayed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining = value;
-        time_remaining.value_namespace = name_space;
-        time_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-remaining" || name == "track-state")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTracks()
-{
-
-    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::~ThresholdTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_data() const
-{
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
-    {
-        if(threshold_track_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_operation() const
-{
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
-    {
-        if(threshold_track_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "threshold-track-info")
-    {
-        for(auto const & c : threshold_track_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
-        c->parent = this;
-        threshold_track_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : threshold_track_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-track-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::ThresholdTrackInfo()
-    :
-    object_name{YType::str, "object-name"},
-    track_state{YType::boolean, "track-state"},
-    weight{YType::uint32, "weight"}
-{
-
-    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
-{
-    return object_name.is_set
-	|| track_state.is_set
-	|| weight.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(object_name.yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(weight.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/threshold-tracks/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-track-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "object-name")
-    {
-        object_name = value;
-        object_name.value_namespace = name_space;
-        object_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight")
-    {
-        weight = value;
-        weight.value_namespace = name_space;
-        weight.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "object-name")
-    {
-        object_name.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "weight")
-    {
-        weight.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "object-name" || name == "track-state" || name == "weight")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::TrackTypeInfo()
-    :
-    discriminant{YType::enumeration, "discriminant"}
-    	,
-    bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>())
-{
-    bfd_tracks->parent = this;
-    interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
-    route_tracks->parent = this;
-
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_data() const
-{
-    return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
-    if(child_yang_name == "interface-tracks")
-    {
-        if(interface_tracks == nullptr)
-        {
-            interface_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-        }
-        return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
-    }
-
-    if(child_yang_name == "route-tracks")
-    {
-        if(route_tracks == nullptr)
-        {
-            route_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>();
-        }
-        return route_tracks;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
-    if(interface_tracks != nullptr)
-    {
-        children["interface-tracks"] = interface_tracks;
-    }
-
-    if(ipsla_tracks != nullptr)
-    {
-        children["ipsla-tracks"] = ipsla_tracks;
-    }
-
-    if(route_tracks != nullptr)
-    {
-        children["route-tracks"] = route_tracks;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant = value;
-        discriminant.value_namespace = name_space;
-        discriminant.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
     interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
+ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
 {
 }
 
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
+bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
 {
-    return debounce_count.is_set
+    return interface_name.is_set
 	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
+	|| rate.is_set
+	|| debounce_count.is_set;
 }
 
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
+bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
 }
 
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
+std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-tracks";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "debounce-count")
+    if(value_path == "interface-name")
     {
-        debounce_count = value;
-        debounce_count.value_namespace = name_space;
-        debounce_count.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
@@ -2261,3865 +2763,43 @@ void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::se
         destination_address.value_namespace = name_space;
         destination_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "rate")
     {
         rate = value;
         rate.value_namespace = name_space;
         rate.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
-    :
-    ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
-{
-
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
-{
-    return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipsla-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
-    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id = value;
-        ipsla_op_id.value_namespace = name_space;
-        ipsla_op_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtt")
-    {
-        rtt = value;
-        rtt.value_namespace = name_space;
-        rtt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id.yfilter = yfilter;
-    }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
-    if(value_path == "rtt")
-    {
-        rtt.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
-    :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
-{
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::TrackingInteraces()
-{
-
-    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::~TrackingInteraces()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_data() const
-{
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
-    {
-        if(interface_tracking_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_operation() const
-{
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
-    {
-        if(interface_tracking_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tracking-interaces";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-tracking-info")
-    {
-        for(auto const & c : interface_tracking_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
-        c->parent = this;
-        interface_tracking_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_tracking_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-tracking-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::InterfaceTrackingInfo()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface/track-info/tracking-interaces/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracking-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackTypeInterfaceBrief()
-{
-
-    yang_name = "track-type-interface-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::~TrackTypeInterfaceBrief()
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::has_data() const
-{
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
-    {
-        if(track_info_brief[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::has_operation() const
-{
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
-    {
-        if(track_info_brief[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-interface-brief";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "track-info-brief")
-    {
-        for(auto const & c : track_info_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief>();
-        c->parent = this;
-        track_info_brief.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : track_info_brief)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "track-info-brief")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackInfoBrief()
-    :
-    track_state{YType::boolean, "track-state"},
-    tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
-    	,
-    track_type_info(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo>())
-{
-    track_type_info->parent = this;
-
-    yang_name = "track-info-brief"; yang_parent_name = "track-type-interface-brief"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::~TrackInfoBrief()
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_data() const
-{
-    return track_state.is_set
-	|| tracke_name.is_set
-	|| type.is_set
-	|| (track_type_info !=  nullptr && track_type_info->has_data());
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(tracke_name.yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| (track_type_info !=  nullptr && track_type_info->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-info-brief";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "track-type-info")
-    {
-        if(track_type_info == nullptr)
-        {
-            track_type_info = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo>();
-        }
-        return track_type_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(track_type_info != nullptr)
-    {
-        children["track-type-info"] = track_type_info;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name = value;
-        tracke_name.value_namespace = name_space;
-        tracke_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "track-type-info" || name == "track-state" || name == "tracke-name" || name == "type")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
-    :
-    discriminant{YType::enumeration, "discriminant"}
-    	,
-    bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
-{
-    bfd_tracks->parent = this;
-    interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
-    route_tracks->parent = this;
-
-    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
-{
-    return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
-    if(child_yang_name == "interface-tracks")
-    {
-        if(interface_tracks == nullptr)
-        {
-            interface_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
-        }
-        return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
-    }
-
-    if(child_yang_name == "route-tracks")
-    {
-        if(route_tracks == nullptr)
-        {
-            route_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
-        }
-        return route_tracks;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
-    if(interface_tracks != nullptr)
-    {
-        children["interface-tracks"] = interface_tracks;
-    }
-
-    if(ipsla_tracks != nullptr)
-    {
-        children["ipsla-tracks"] = ipsla_tracks;
-    }
-
-    if(route_tracks != nullptr)
-    {
-        children["route-tracks"] = route_tracks;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant = value;
-        discriminant.value_namespace = name_space;
-        discriminant.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
-    interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
-{
-
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
-{
-    return debounce_count.is_set
-	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
     if(value_path == "debounce-count")
     {
         debounce_count = value;
         debounce_count.value_namespace = name_space;
         debounce_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "debounce-count")
+    if(value_path == "interface-name")
     {
-        debounce_count.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
     if(value_path == "destination-address")
     {
         destination_address.yfilter = yfilter;
     }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
     if(value_path == "rate")
     {
         rate.yfilter = yfilter;
     }
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::IpslaTracks()
-    :
-    ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
-{
-
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
-{
-    return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipsla-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
-    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id = value;
-        ipsla_op_id.value_namespace = name_space;
-        ipsla_op_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtt")
-    {
-        rtt = value;
-        rtt.value_namespace = name_space;
-        rtt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id.yfilter = yfilter;
-    }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
-    if(value_path == "rtt")
-    {
-        rtt.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
-    :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
-{
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackTypeIpv4Route()
-{
-
-    yang_name = "track-type-ipv4-route"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::~TrackTypeIpv4Route()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::has_data() const
-{
-    for (std::size_t index=0; index<track_info.size(); index++)
-    {
-        if(track_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::has_operation() const
-{
-    for (std::size_t index=0; index<track_info.size(); index++)
-    {
-        if(track_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-ipv4-route";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "track-info")
-    {
-        for(auto const & c : track_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo>();
-        c->parent = this;
-        track_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : track_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeIpv4Route::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "track-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackInfo()
-    :
-    seconds_last_change{YType::uint64, "seconds-last-change"},
-    state_change_counter{YType::uint32, "state-change-counter"},
-    threshold_down{YType::uint32, "threshold-down"},
-    threshold_up{YType::uint32, "threshold-up"},
-    track_state{YType::boolean, "track-state"},
-    tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
-    	,
-    bool_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks>())
-	,delayed(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed>())
-	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks>())
-	,track_type_info(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo>())
-	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>())
-{
-    bool_tracks->parent = this;
-    delayed->parent = this;
-    threshold_tracks->parent = this;
-    track_type_info->parent = this;
-    tracking_interaces->parent = this;
-
-    yang_name = "track-info"; yang_parent_name = "track-type-ipv4-route"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::~TrackInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_data() const
-{
-    return seconds_last_change.is_set
-	|| state_change_counter.is_set
-	|| threshold_down.is_set
-	|| threshold_up.is_set
-	|| track_state.is_set
-	|| tracke_name.is_set
-	|| type.is_set
-	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
-	|| (delayed !=  nullptr && delayed->has_data())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
-	|| (track_type_info !=  nullptr && track_type_info->has_data())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data());
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds_last_change.yfilter)
-	|| ydk::is_set(state_change_counter.yfilter)
-	|| ydk::is_set(threshold_down.yfilter)
-	|| ydk::is_set(threshold_up.yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(tracke_name.yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
-	|| (delayed !=  nullptr && delayed->has_operation())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
-	|| (track_type_info !=  nullptr && track_type_info->has_operation())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
-    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
-    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bool-tracks")
-    {
-        if(bool_tracks == nullptr)
-        {
-            bool_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks>();
-        }
-        return bool_tracks;
-    }
-
-    if(child_yang_name == "delayed")
-    {
-        if(delayed == nullptr)
-        {
-            delayed = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed>();
-        }
-        return delayed;
-    }
-
-    if(child_yang_name == "threshold-tracks")
-    {
-        if(threshold_tracks == nullptr)
-        {
-            threshold_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks>();
-        }
-        return threshold_tracks;
-    }
-
-    if(child_yang_name == "track-type-info")
-    {
-        if(track_type_info == nullptr)
-        {
-            track_type_info = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo>();
-        }
-        return track_type_info;
-    }
-
-    if(child_yang_name == "tracking-interaces")
-    {
-        if(tracking_interaces == nullptr)
-        {
-            tracking_interaces = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>();
-        }
-        return tracking_interaces;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bool_tracks != nullptr)
-    {
-        children["bool-tracks"] = bool_tracks;
-    }
-
-    if(delayed != nullptr)
-    {
-        children["delayed"] = delayed;
-    }
-
-    if(threshold_tracks != nullptr)
-    {
-        children["threshold-tracks"] = threshold_tracks;
-    }
-
-    if(track_type_info != nullptr)
-    {
-        children["track-type-info"] = track_type_info;
-    }
-
-    if(tracking_interaces != nullptr)
-    {
-        children["tracking-interaces"] = tracking_interaces;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change = value;
-        seconds_last_change.value_namespace = name_space;
-        seconds_last_change.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter = value;
-        state_change_counter.value_namespace = name_space;
-        state_change_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down = value;
-        threshold_down.value_namespace = name_space;
-        threshold_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up = value;
-        threshold_up.value_namespace = name_space;
-        threshold_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name = value;
-        tracke_name.value_namespace = name_space;
-        tracke_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change.yfilter = yfilter;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter.yfilter = yfilter;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down.yfilter = yfilter;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bool-tracks" || name == "delayed" || name == "threshold-tracks" || name == "track-type-info" || name == "tracking-interaces" || name == "seconds-last-change" || name == "state-change-counter" || name == "threshold-down" || name == "threshold-up" || name == "track-state" || name == "tracke-name" || name == "type")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTracks()
-{
-
-    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::~BoolTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_data() const
-{
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
-    {
-        if(bool_track_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_operation() const
-{
-    for (std::size_t index=0; index<bool_track_info.size(); index++)
-    {
-        if(bool_track_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bool-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bool-track-info")
-    {
-        for(auto const & c : bool_track_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo>();
-        c->parent = this;
-        bool_track_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bool_track_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bool-track-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::BoolTrackInfo()
-    :
-    object_name{YType::str, "object-name"},
-    track_state{YType::boolean, "track-state"},
-    with_not{YType::boolean, "with-not"}
-{
-
-    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
-{
-    return object_name.is_set
-	|| track_state.is_set
-	|| with_not.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(object_name.yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(with_not.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/bool-tracks/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bool-track-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (with_not.is_set || is_set(with_not.yfilter)) leaf_name_data.push_back(with_not.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "object-name")
-    {
-        object_name = value;
-        object_name.value_namespace = name_space;
-        object_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "with-not")
-    {
-        with_not = value;
-        with_not.value_namespace = name_space;
-        with_not.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "object-name")
-    {
-        object_name.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "with-not")
-    {
-        with_not.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "object-name" || name == "track-state" || name == "with-not")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::Delayed()
-    :
-    time_remaining{YType::uint32, "time-remaining"},
-    track_state{YType::boolean, "track-state"}
-{
-
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::~Delayed()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_data() const
-{
-    return time_remaining.is_set
-	|| track_state.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_remaining.yfilter)
-	|| ydk::is_set(track_state.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delayed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining = value;
-        time_remaining.value_namespace = name_space;
-        time_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-remaining" || name == "track-state")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTracks()
-{
-
-    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::~ThresholdTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_data() const
-{
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
-    {
-        if(threshold_track_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_operation() const
-{
-    for (std::size_t index=0; index<threshold_track_info.size(); index++)
-    {
-        if(threshold_track_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "threshold-track-info")
-    {
-        for(auto const & c : threshold_track_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
-        c->parent = this;
-        threshold_track_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : threshold_track_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-track-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::ThresholdTrackInfo()
-    :
-    object_name{YType::str, "object-name"},
-    track_state{YType::boolean, "track-state"},
-    weight{YType::uint32, "weight"}
-{
-
-    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
-{
-    return object_name.is_set
-	|| track_state.is_set
-	|| weight.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(object_name.yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(weight.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/threshold-tracks/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-track-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "object-name")
-    {
-        object_name = value;
-        object_name.value_namespace = name_space;
-        object_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight")
-    {
-        weight = value;
-        weight.value_namespace = name_space;
-        weight.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "object-name")
-    {
-        object_name.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "weight")
-    {
-        weight.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "object-name" || name == "track-state" || name == "weight")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::TrackTypeInfo()
-    :
-    discriminant{YType::enumeration, "discriminant"}
-    	,
-    bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>())
-{
-    bfd_tracks->parent = this;
-    interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
-    route_tracks->parent = this;
-
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_data() const
-{
-    return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
-    if(child_yang_name == "interface-tracks")
-    {
-        if(interface_tracks == nullptr)
-        {
-            interface_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-        }
-        return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
-    }
-
-    if(child_yang_name == "route-tracks")
-    {
-        if(route_tracks == nullptr)
-        {
-            route_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>();
-        }
-        return route_tracks;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
-    if(interface_tracks != nullptr)
-    {
-        children["interface-tracks"] = interface_tracks;
-    }
-
-    if(ipsla_tracks != nullptr)
-    {
-        children["ipsla-tracks"] = ipsla_tracks;
-    }
-
-    if(route_tracks != nullptr)
-    {
-        children["route-tracks"] = route_tracks;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant = value;
-        discriminant.value_namespace = name_space;
-        discriminant.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
-    interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
-{
-
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
-{
-    return debounce_count.is_set
-	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count = value;
-        debounce_count.value_namespace = name_space;
-        debounce_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
     if(value_path == "debounce-count")
     {
         debounce_count.yfilter = yfilter;
     }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
 }
 
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
+bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
-    :
-    ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
-{
-
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
-{
-    return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipsla-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
-    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id = value;
-        ipsla_op_id.value_namespace = name_space;
-        ipsla_op_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtt")
-    {
-        rtt = value;
-        rtt.value_namespace = name_space;
-        rtt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id.yfilter = yfilter;
-    }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
-    if(value_path == "rtt")
-    {
-        rtt.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
-    :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
-{
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::TrackingInteraces()
-{
-
-    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::~TrackingInteraces()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_data() const
-{
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
-    {
-        if(interface_tracking_info[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_operation() const
-{
-    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
-    {
-        if(interface_tracking_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tracking-interaces";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-tracking-info")
-    {
-        for(auto const & c : interface_tracking_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
-        c->parent = this;
-        interface_tracking_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_tracking_info)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-tracking-info")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::InterfaceTrackingInfo()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/tracking-interaces/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracking-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackTypeIpv4RouteBrief()
-{
-
-    yang_name = "track-type-ipv4-route-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::~TrackTypeIpv4RouteBrief()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::has_data() const
-{
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
-    {
-        if(track_info_brief[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::has_operation() const
-{
-    for (std::size_t index=0; index<track_info_brief.size(); index++)
-    {
-        if(track_info_brief[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-ipv4-route-brief";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "track-info-brief")
-    {
-        for(auto const & c : track_info_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief>();
-        c->parent = this;
-        track_info_brief.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : track_info_brief)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "track-info-brief")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackInfoBrief()
-    :
-    track_state{YType::boolean, "track-state"},
-    tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
-    	,
-    track_type_info(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo>())
-{
-    track_type_info->parent = this;
-
-    yang_name = "track-info-brief"; yang_parent_name = "track-type-ipv4-route-brief"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::~TrackInfoBrief()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_data() const
-{
-    return track_state.is_set
-	|| tracke_name.is_set
-	|| type.is_set
-	|| (track_type_info !=  nullptr && track_type_info->has_data());
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(track_state.yfilter)
-	|| ydk::is_set(tracke_name.yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| (track_type_info !=  nullptr && track_type_info->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-info-brief";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "track-type-info")
-    {
-        if(track_type_info == nullptr)
-        {
-            track_type_info = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo>();
-        }
-        return track_type_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(track_type_info != nullptr)
-    {
-        children["track-type-info"] = track_type_info;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name = value;
-        tracke_name.value_namespace = name_space;
-        tracke_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-    if(value_path == "tracke-name")
-    {
-        tracke_name.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "track-type-info" || name == "track-state" || name == "tracke-name" || name == "type")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
-    :
-    discriminant{YType::enumeration, "discriminant"}
-    	,
-    bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
-{
-    bfd_tracks->parent = this;
-    interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
-    route_tracks->parent = this;
-
-    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
-{
-    return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
-    if(child_yang_name == "interface-tracks")
-    {
-        if(interface_tracks == nullptr)
-        {
-            interface_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
-        }
-        return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
-    }
-
-    if(child_yang_name == "route-tracks")
-    {
-        if(route_tracks == nullptr)
-        {
-            route_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
-        }
-        return route_tracks;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
-    if(interface_tracks != nullptr)
-    {
-        children["interface-tracks"] = interface_tracks;
-    }
-
-    if(ipsla_tracks != nullptr)
-    {
-        children["ipsla-tracks"] = ipsla_tracks;
-    }
-
-    if(route_tracks != nullptr)
-    {
-        children["route-tracks"] = route_tracks;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant = value;
-        discriminant.value_namespace = name_space;
-        discriminant.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
-    interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
-{
-
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
-{
-    return debounce_count.is_set
-	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count = value;
-        debounce_count.value_namespace = name_space;
-        debounce_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::IpslaTracks()
-    :
-    ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
-{
-
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
-{
-    return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipsla-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
-    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id = value;
-        ipsla_op_id.value_namespace = name_space;
-        ipsla_op_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtt")
-    {
-        rtt = value;
-        rtt.value_namespace = name_space;
-        rtt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id.yfilter = yfilter;
-    }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
-    if(value_path == "rtt")
-    {
-        rtt.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
-    :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
-{
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
         return true;
     return false;
 }
@@ -6226,25 +2906,25 @@ bool ObjectTracking::TrackTypeRtrReachability::has_leaf_or_child_of_name(const s
 
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackInfo()
     :
-    seconds_last_change{YType::uint64, "seconds-last-change"},
-    state_change_counter{YType::uint32, "state-change-counter"},
-    threshold_down{YType::uint32, "threshold-down"},
-    threshold_up{YType::uint32, "threshold-up"},
-    track_state{YType::boolean, "track-state"},
     tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"},
+    state_change_counter{YType::uint32, "state-change-counter"},
+    seconds_last_change{YType::uint64, "seconds-last-change"},
+    threshold_up{YType::uint32, "threshold-up"},
+    threshold_down{YType::uint32, "threshold-down"}
     	,
-    bool_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks>())
-	,delayed(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed>())
+    track_type_info(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo>())
+	,bool_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks>())
 	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks>())
-	,track_type_info(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo>())
 	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces>())
+	,delayed(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed>())
 {
-    bool_tracks->parent = this;
-    delayed->parent = this;
-    threshold_tracks->parent = this;
     track_type_info->parent = this;
+    bool_tracks->parent = this;
+    threshold_tracks->parent = this;
     tracking_interaces->parent = this;
+    delayed->parent = this;
 
     yang_name = "track-info"; yang_parent_name = "track-type-rtr-reachability"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -6255,35 +2935,35 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::~TrackInfo()
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::has_data() const
 {
-    return seconds_last_change.is_set
-	|| state_change_counter.is_set
-	|| threshold_down.is_set
-	|| threshold_up.is_set
-	|| track_state.is_set
-	|| tracke_name.is_set
+    return tracke_name.is_set
 	|| type.is_set
-	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
-	|| (delayed !=  nullptr && delayed->has_data())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
+	|| track_state.is_set
+	|| state_change_counter.is_set
+	|| seconds_last_change.is_set
+	|| threshold_up.is_set
+	|| threshold_down.is_set
 	|| (track_type_info !=  nullptr && track_type_info->has_data())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data());
+	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data())
+	|| (delayed !=  nullptr && delayed->has_data());
 }
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(seconds_last_change.yfilter)
-	|| ydk::is_set(state_change_counter.yfilter)
-	|| ydk::is_set(threshold_down.yfilter)
-	|| ydk::is_set(threshold_up.yfilter)
-	|| ydk::is_set(track_state.yfilter)
 	|| ydk::is_set(tracke_name.yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
-	|| (delayed !=  nullptr && delayed->has_operation())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(state_change_counter.yfilter)
+	|| ydk::is_set(seconds_last_change.yfilter)
+	|| ydk::is_set(threshold_up.yfilter)
+	|| ydk::is_set(threshold_down.yfilter)
 	|| (track_type_info !=  nullptr && track_type_info->has_operation())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_absolute_path() const
@@ -6304,13 +2984,13 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
-    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
-    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
     if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
+    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
+    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
+    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6318,6 +2998,15 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "track-type-info")
+    {
+        if(track_type_info == nullptr)
+        {
+            track_type_info = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo>();
+        }
+        return track_type_info;
+    }
+
     if(child_yang_name == "bool-tracks")
     {
         if(bool_tracks == nullptr)
@@ -6325,15 +3014,6 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get
             bool_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks>();
         }
         return bool_tracks;
-    }
-
-    if(child_yang_name == "delayed")
-    {
-        if(delayed == nullptr)
-        {
-            delayed = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed>();
-        }
-        return delayed;
     }
 
     if(child_yang_name == "threshold-tracks")
@@ -6345,15 +3025,6 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get
         return threshold_tracks;
     }
 
-    if(child_yang_name == "track-type-info")
-    {
-        if(track_type_info == nullptr)
-        {
-            track_type_info = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo>();
-        }
-        return track_type_info;
-    }
-
     if(child_yang_name == "tracking-interaces")
     {
         if(tracking_interaces == nullptr)
@@ -6363,20 +3034,29 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get
         return tracking_interaces;
     }
 
+    if(child_yang_name == "delayed")
+    {
+        if(delayed == nullptr)
+        {
+            delayed = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed>();
+        }
+        return delayed;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
+    {
+        children["track-type-info"] = track_type_info;
+    }
+
     if(bool_tracks != nullptr)
     {
         children["bool-tracks"] = bool_tracks;
-    }
-
-    if(delayed != nullptr)
-    {
-        children["delayed"] = delayed;
     }
 
     if(threshold_tracks != nullptr)
@@ -6384,14 +3064,14 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
         children["threshold-tracks"] = threshold_tracks;
     }
 
-    if(track_type_info != nullptr)
-    {
-        children["track-type-info"] = track_type_info;
-    }
-
     if(tracking_interaces != nullptr)
     {
         children["tracking-interaces"] = tracking_interaces;
+    }
+
+    if(delayed != nullptr)
+    {
+        children["delayed"] = delayed;
     }
 
     return children;
@@ -6399,36 +3079,6 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change = value;
-        seconds_last_change.value_namespace = name_space;
-        seconds_last_change.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter = value;
-        state_change_counter.value_namespace = name_space;
-        state_change_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down = value;
-        threshold_down.value_namespace = name_space;
-        threshold_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up = value;
-        threshold_up.value_namespace = name_space;
-        threshold_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name = value;
@@ -6441,30 +3091,40 @@ void ObjectTracking::TrackTypeRtrReachability::TrackInfo::set_value(const std::s
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter = value;
+        state_change_counter.value_namespace = name_space;
+        state_change_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change = value;
+        seconds_last_change.value_namespace = name_space;
+        seconds_last_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up = value;
+        threshold_up.value_namespace = name_space;
+        threshold_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down = value;
+        threshold_down.value_namespace = name_space;
+        threshold_down.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change.yfilter = yfilter;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter.yfilter = yfilter;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down.yfilter = yfilter;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name.yfilter = yfilter;
@@ -6473,11 +3133,631 @@ void ObjectTracking::TrackTypeRtrReachability::TrackInfo::set_filter(const std::
     {
         type.yfilter = yfilter;
     }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter.yfilter = yfilter;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change.yfilter = yfilter;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up.yfilter = yfilter;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bool-tracks" || name == "delayed" || name == "threshold-tracks" || name == "track-type-info" || name == "tracking-interaces" || name == "seconds-last-change" || name == "state-change-counter" || name == "threshold-down" || name == "threshold-up" || name == "track-state" || name == "tracke-name" || name == "type")
+    if(name == "track-type-info" || name == "bool-tracks" || name == "threshold-tracks" || name == "tracking-interaces" || name == "delayed" || name == "tracke-name" || name == "type" || name == "track-state" || name == "state-change-counter" || name == "seconds-last-change" || name == "threshold-up" || name == "threshold-down")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::TrackTypeInfo()
+    :
+    discriminant{YType::enumeration, "discriminant"}
+    	,
+    interface_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks>())
+	,route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks>())
+{
+    interface_tracks->parent = this;
+    route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
+
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_data() const
+{
+    return discriminant.is_set
+	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discriminant.yfilter)
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracks")
+    {
+        if(interface_tracks == nullptr)
+        {
+            interface_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks>();
+        }
+        return interface_tracks;
+    }
+
+    if(child_yang_name == "route-tracks")
+    {
+        if(route_tracks == nullptr)
+        {
+            route_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>();
+        }
+        return route_tracks;
+    }
+
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_tracks != nullptr)
+    {
+        children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
+    }
+
+    if(ipsla_tracks != nullptr)
+    {
+        children["ipsla-tracks"] = ipsla_tracks;
+    }
+
+    if(bfd_tracks != nullptr)
+    {
+        children["bfd-tracks"] = bfd_tracks;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant = value;
+        discriminant.value_namespace = name_space;
+        discriminant.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
+    :
+    ipsla_op_id{YType::uint32, "ipsla-op-id"},
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
+{
+
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
+{
+    return ipsla_op_id.is_set
+	|| rtt.is_set
+	|| return_code.is_set;
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipsla_op_id.yfilter)
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipsla-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
+    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id = value;
+        ipsla_op_id.value_namespace = name_space;
+        ipsla_op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt")
+    {
+        rtt = value;
+        rtt.value_namespace = name_space;
+        rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id.yfilter = yfilter;
+    }
+    if(value_path == "rtt")
+    {
+        rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
+    :
+    interface_name{YType::str, "interface-name"},
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
+{
+
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
+{
+    return interface_name.is_set
+	|| destination_address.is_set
+	|| rate.is_set
+	|| debounce_count.is_set;
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
         return true;
     return false;
 }
@@ -6693,103 +3973,6 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackI
     return false;
 }
 
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::Delayed()
-    :
-    time_remaining{YType::uint32, "time-remaining"},
-    track_state{YType::boolean, "track-state"}
-{
-
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::~Delayed()
-{
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_data() const
-{
-    return time_remaining.is_set
-	|| track_state.is_set;
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_remaining.yfilter)
-	|| ydk::is_set(track_state.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delayed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining = value;
-        time_remaining.value_namespace = name_space;
-        time_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-remaining" || name == "track-state")
-        return true;
-    return false;
-}
-
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTracks()
 {
 
@@ -7001,606 +4184,6 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::Thres
     return false;
 }
 
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::TrackTypeInfo()
-    :
-    discriminant{YType::enumeration, "discriminant"}
-    	,
-    bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>())
-{
-    bfd_tracks->parent = this;
-    interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
-    route_tracks->parent = this;
-
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
-{
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_data() const
-{
-    return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
-    if(child_yang_name == "interface-tracks")
-    {
-        if(interface_tracks == nullptr)
-        {
-            interface_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-        }
-        return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
-    }
-
-    if(child_yang_name == "route-tracks")
-    {
-        if(route_tracks == nullptr)
-        {
-            route_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>();
-        }
-        return route_tracks;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
-    if(interface_tracks != nullptr)
-    {
-        children["interface-tracks"] = interface_tracks;
-    }
-
-    if(ipsla_tracks != nullptr)
-    {
-        children["ipsla-tracks"] = ipsla_tracks;
-    }
-
-    if(route_tracks != nullptr)
-    {
-        children["route-tracks"] = route_tracks;
-    }
-
-    return children;
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant = value;
-        discriminant.value_namespace = name_space;
-        discriminant.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
-    interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
-{
-
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
-{
-    return debounce_count.is_set
-	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count = value;
-        debounce_count.value_namespace = name_space;
-        debounce_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
-    :
-    ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
-{
-
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
-{
-    return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipsla-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
-    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id = value;
-        ipsla_op_id.value_namespace = name_space;
-        ipsla_op_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtt")
-    {
-        rtt = value;
-        rtt.value_namespace = name_space;
-        rtt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id.yfilter = yfilter;
-    }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
-    if(value_path == "rtt")
-    {
-        rtt.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
-    :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
-{
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
-        return true;
-    return false;
-}
-
 ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::TrackingInteraces()
 {
 
@@ -7784,6 +4367,103 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::Int
     return false;
 }
 
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::Delayed()
+    :
+    time_remaining{YType::uint32, "time-remaining"},
+    track_state{YType::boolean, "track-state"}
+{
+
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::~Delayed()
+{
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_data() const
+{
+    return time_remaining.is_set
+	|| track_state.is_set;
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
+	|| ydk::is_set(track_state.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delayed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-remaining" || name == "track-state")
+        return true;
+    return false;
+}
+
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackTypeRtrReachabilityBrief()
 {
 
@@ -7886,9 +4566,9 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::has_leaf_or_child_of_name(co
 
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackInfoBrief()
     :
-    track_state{YType::boolean, "track-state"},
     tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"}
     	,
     track_type_info(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo>())
 {
@@ -7903,18 +4583,18 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::~TrackInfoBrief()
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::has_data() const
 {
-    return track_state.is_set
-	|| tracke_name.is_set
+    return tracke_name.is_set
 	|| type.is_set
+	|| track_state.is_set
 	|| (track_type_info !=  nullptr && track_type_info->has_data());
 }
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(track_state.yfilter)
 	|| ydk::is_set(tracke_name.yfilter)
 	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(track_state.yfilter)
 	|| (track_type_info !=  nullptr && track_type_info->has_operation());
 }
 
@@ -7936,9 +4616,9 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
     if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7971,12 +4651,6 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name = value;
@@ -7989,14 +4663,16 @@ void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::set_value(co
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name.yfilter = yfilter;
@@ -8005,11 +4681,15 @@ void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::set_filter(c
     {
         type.yfilter = yfilter;
     }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "track-type-info" || name == "track-state" || name == "tracke-name" || name == "type")
+    if(name == "track-type-info" || name == "tracke-name" || name == "type" || name == "track-state")
         return true;
     return false;
 }
@@ -8018,15 +4698,15 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Tr
     :
     discriminant{YType::enumeration, "discriminant"}
     	,
-    bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+    interface_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
 	,route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
 {
-    bfd_tracks->parent = this;
     interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
     route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -8038,20 +4718,20 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::~T
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
 {
     return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
 	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
 	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
 }
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
 	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
 	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_absolute_path() const
@@ -8080,15 +4760,6 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
     if(child_yang_name == "interface-tracks")
     {
         if(interface_tracks == nullptr)
@@ -8096,15 +4767,6 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfo
             interface_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
         }
         return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
@@ -8116,20 +4778,38 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfo
         return route_tracks;
     }
 
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
     if(interface_tracks != nullptr)
     {
         children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
@@ -8137,9 +4817,9 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReach
         children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(route_tracks != nullptr)
+    if(bfd_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        children["bfd-tracks"] = bfd_tracks;
     }
 
     return children;
@@ -8165,132 +4845,7 @@ void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
-    interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
-{
-
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
-{
-}
-
-bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
-{
-    return debounce_count.is_set
-	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
-}
-
-bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability-brief/track-info-brief/track-type-info/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count = value;
-        debounce_count.value_namespace = name_space;
-        debounce_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
         return true;
     return false;
 }
@@ -8378,11 +4933,136 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
     return false;
 }
 
+ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
 ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::IpslaTracks()
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
@@ -8395,16 +5075,16 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Ip
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
 {
     return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
+	|| rtt.is_set
+	|| return_code.is_set;
 }
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
 }
 
 std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
@@ -8426,8 +5106,8 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8452,17 +5132,17 @@ void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
         ipsla_op_id.value_namespace = name_space;
         ipsla_op_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "rtt")
     {
         rtt = value;
         rtt.value_namespace = name_space;
         rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -8472,144 +5152,144 @@ void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
     {
         ipsla_op_id.yfilter = yfilter;
     }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
     if(value_path == "rtt")
     {
         rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
     }
 }
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
         return true;
     return false;
 }
 
-ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
+ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
     :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
+    interface_name{YType::str, "interface-name"},
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
 {
 
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
+ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
 {
 }
 
-bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
+bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
 {
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
+    return interface_name.is_set
+	|| destination_address.is_set
+	|| rate.is_set
+	|| debounce_count.is_set;
 }
 
-bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
+bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
 }
 
-std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_absolute_path() const
+std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-rtr-reachability-brief/track-info-brief/track-type-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
+std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
+    path_buffer << "bfd-tracks";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "next-hop")
+    if(value_path == "interface-name")
     {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix")
+    if(value_path == "destination-address")
     {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-length")
+    if(value_path == "rate")
     {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vrf")
+    if(value_path == "debounce-count")
     {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "next-hop")
+    if(value_path == "interface-name")
     {
-        next_hop.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
-    if(value_path == "prefix")
+    if(value_path == "destination-address")
     {
-        prefix.yfilter = yfilter;
+        destination_address.yfilter = yfilter;
     }
-    if(value_path == "prefix-length")
+    if(value_path == "rate")
     {
-        prefix_length.yfilter = yfilter;
+        rate.yfilter = yfilter;
     }
-    if(value_path == "vrf")
+    if(value_path == "debounce-count")
     {
-        vrf.yfilter = yfilter;
+        debounce_count.yfilter = yfilter;
     }
 }
 
-bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
         return true;
     return false;
 }
@@ -8830,25 +5510,25 @@ bool ObjectTracking::Tracks::Track::has_leaf_or_child_of_name(const std::string 
 
 ObjectTracking::Tracks::Track::TrackInfo::TrackInfo()
     :
-    seconds_last_change{YType::uint64, "seconds-last-change"},
-    state_change_counter{YType::uint32, "state-change-counter"},
-    threshold_down{YType::uint32, "threshold-down"},
-    threshold_up{YType::uint32, "threshold-up"},
-    track_state{YType::boolean, "track-state"},
     tracke_name{YType::str, "tracke-name"},
-    type{YType::enumeration, "type"}
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"},
+    state_change_counter{YType::uint32, "state-change-counter"},
+    seconds_last_change{YType::uint64, "seconds-last-change"},
+    threshold_up{YType::uint32, "threshold-up"},
+    threshold_down{YType::uint32, "threshold-down"}
     	,
-    bool_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks>())
-	,delayed(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::Delayed>())
+    track_type_info(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo>())
+	,bool_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks>())
 	,threshold_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks>())
-	,track_type_info(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo>())
 	,tracking_interaces(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces>())
+	,delayed(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::Delayed>())
 {
-    bool_tracks->parent = this;
-    delayed->parent = this;
-    threshold_tracks->parent = this;
     track_type_info->parent = this;
+    bool_tracks->parent = this;
+    threshold_tracks->parent = this;
     tracking_interaces->parent = this;
+    delayed->parent = this;
 
     yang_name = "track-info"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -8859,35 +5539,35 @@ ObjectTracking::Tracks::Track::TrackInfo::~TrackInfo()
 
 bool ObjectTracking::Tracks::Track::TrackInfo::has_data() const
 {
-    return seconds_last_change.is_set
-	|| state_change_counter.is_set
-	|| threshold_down.is_set
-	|| threshold_up.is_set
-	|| track_state.is_set
-	|| tracke_name.is_set
+    return tracke_name.is_set
 	|| type.is_set
-	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
-	|| (delayed !=  nullptr && delayed->has_data())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
+	|| track_state.is_set
+	|| state_change_counter.is_set
+	|| seconds_last_change.is_set
+	|| threshold_up.is_set
+	|| threshold_down.is_set
 	|| (track_type_info !=  nullptr && track_type_info->has_data())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data());
+	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data())
+	|| (delayed !=  nullptr && delayed->has_data());
 }
 
 bool ObjectTracking::Tracks::Track::TrackInfo::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(seconds_last_change.yfilter)
-	|| ydk::is_set(state_change_counter.yfilter)
-	|| ydk::is_set(threshold_down.yfilter)
-	|| ydk::is_set(threshold_up.yfilter)
-	|| ydk::is_set(track_state.yfilter)
 	|| ydk::is_set(tracke_name.yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
-	|| (delayed !=  nullptr && delayed->has_operation())
-	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(state_change_counter.yfilter)
+	|| ydk::is_set(seconds_last_change.yfilter)
+	|| ydk::is_set(threshold_up.yfilter)
+	|| ydk::is_set(threshold_down.yfilter)
 	|| (track_type_info !=  nullptr && track_type_info->has_operation())
-	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation());
 }
 
 std::string ObjectTracking::Tracks::Track::TrackInfo::get_segment_path() const
@@ -8901,13 +5581,13 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
-    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
-    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
     if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
+    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
+    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
+    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8915,6 +5595,15 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "track-type-info")
+    {
+        if(track_type_info == nullptr)
+        {
+            track_type_info = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo>();
+        }
+        return track_type_info;
+    }
+
     if(child_yang_name == "bool-tracks")
     {
         if(bool_tracks == nullptr)
@@ -8922,15 +5611,6 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_n
             bool_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks>();
         }
         return bool_tracks;
-    }
-
-    if(child_yang_name == "delayed")
-    {
-        if(delayed == nullptr)
-        {
-            delayed = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::Delayed>();
-        }
-        return delayed;
     }
 
     if(child_yang_name == "threshold-tracks")
@@ -8942,15 +5622,6 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_n
         return threshold_tracks;
     }
 
-    if(child_yang_name == "track-type-info")
-    {
-        if(track_type_info == nullptr)
-        {
-            track_type_info = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo>();
-        }
-        return track_type_info;
-    }
-
     if(child_yang_name == "tracking-interaces")
     {
         if(tracking_interaces == nullptr)
@@ -8960,20 +5631,29 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_n
         return tracking_interaces;
     }
 
+    if(child_yang_name == "delayed")
+    {
+        if(delayed == nullptr)
+        {
+            delayed = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::Delayed>();
+        }
+        return delayed;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
+    {
+        children["track-type-info"] = track_type_info;
+    }
+
     if(bool_tracks != nullptr)
     {
         children["bool-tracks"] = bool_tracks;
-    }
-
-    if(delayed != nullptr)
-    {
-        children["delayed"] = delayed;
     }
 
     if(threshold_tracks != nullptr)
@@ -8981,14 +5661,14 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::Tr
         children["threshold-tracks"] = threshold_tracks;
     }
 
-    if(track_type_info != nullptr)
-    {
-        children["track-type-info"] = track_type_info;
-    }
-
     if(tracking_interaces != nullptr)
     {
         children["tracking-interaces"] = tracking_interaces;
+    }
+
+    if(delayed != nullptr)
+    {
+        children["delayed"] = delayed;
     }
 
     return children;
@@ -8996,36 +5676,6 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::Tr
 
 void ObjectTracking::Tracks::Track::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change = value;
-        seconds_last_change.value_namespace = name_space;
-        seconds_last_change.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter = value;
-        state_change_counter.value_namespace = name_space;
-        state_change_counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down = value;
-        threshold_down.value_namespace = name_space;
-        threshold_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up = value;
-        threshold_up.value_namespace = name_space;
-        threshold_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name = value;
@@ -9038,30 +5688,40 @@ void ObjectTracking::Tracks::Track::TrackInfo::set_value(const std::string & val
         type.value_namespace = name_space;
         type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter = value;
+        state_change_counter.value_namespace = name_space;
+        state_change_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change = value;
+        seconds_last_change.value_namespace = name_space;
+        seconds_last_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up = value;
+        threshold_up.value_namespace = name_space;
+        threshold_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down = value;
+        threshold_down.value_namespace = name_space;
+        threshold_down.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "seconds-last-change")
-    {
-        seconds_last_change.yfilter = yfilter;
-    }
-    if(value_path == "state-change-counter")
-    {
-        state_change_counter.yfilter = yfilter;
-    }
-    if(value_path == "threshold-down")
-    {
-        threshold_down.yfilter = yfilter;
-    }
-    if(value_path == "threshold-up")
-    {
-        threshold_up.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
     if(value_path == "tracke-name")
     {
         tracke_name.yfilter = yfilter;
@@ -9070,11 +5730,596 @@ void ObjectTracking::Tracks::Track::TrackInfo::set_filter(const std::string & va
     {
         type.yfilter = yfilter;
     }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter.yfilter = yfilter;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change.yfilter = yfilter;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up.yfilter = yfilter;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::Tracks::Track::TrackInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bool-tracks" || name == "delayed" || name == "threshold-tracks" || name == "track-type-info" || name == "tracking-interaces" || name == "seconds-last-change" || name == "state-change-counter" || name == "threshold-down" || name == "threshold-up" || name == "track-state" || name == "tracke-name" || name == "type")
+    if(name == "track-type-info" || name == "bool-tracks" || name == "threshold-tracks" || name == "tracking-interaces" || name == "delayed" || name == "tracke-name" || name == "type" || name == "track-state" || name == "state-change-counter" || name == "seconds-last-change" || name == "threshold-up" || name == "threshold-down")
+        return true;
+    return false;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::TrackTypeInfo()
+    :
+    discriminant{YType::enumeration, "discriminant"}
+    	,
+    interface_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks>())
+	,route_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks>())
+{
+    interface_tracks->parent = this;
+    route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
+
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
+{
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_data() const
+{
+    return discriminant.is_set
+	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discriminant.yfilter)
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
+}
+
+std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracks")
+    {
+        if(interface_tracks == nullptr)
+        {
+            interface_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks>();
+        }
+        return interface_tracks;
+    }
+
+    if(child_yang_name == "route-tracks")
+    {
+        if(route_tracks == nullptr)
+        {
+            route_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>();
+        }
+        return route_tracks;
+    }
+
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_tracks != nullptr)
+    {
+        children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
+    }
+
+    if(ipsla_tracks != nullptr)
+    {
+        children["ipsla-tracks"] = ipsla_tracks;
+    }
+
+    if(bfd_tracks != nullptr)
+    {
+        children["bfd-tracks"] = bfd_tracks;
+    }
+
+    return children;
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant = value;
+        discriminant.value_namespace = name_space;
+        discriminant.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
+        return true;
+    return false;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
+{
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
+    :
+    ipsla_op_id{YType::uint32, "ipsla-op-id"},
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
+{
+
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
+{
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
+{
+    return ipsla_op_id.is_set
+	|| rtt.is_set
+	|| return_code.is_set;
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipsla_op_id.yfilter)
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
+}
+
+std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipsla-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
+    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id = value;
+        ipsla_op_id.value_namespace = name_space;
+        ipsla_op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt")
+    {
+        rtt = value;
+        rtt.value_namespace = name_space;
+        rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id.yfilter = yfilter;
+    }
+    if(value_path == "rtt")
+    {
+        rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+        return true;
+    return false;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
+    :
+    interface_name{YType::str, "interface-name"},
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
+{
+
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
+{
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
+{
+    return interface_name.is_set
+	|| destination_address.is_set
+	|| rate.is_set
+	|| debounce_count.is_set;
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
+}
+
+std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
         return true;
     return false;
 }
@@ -9276,96 +6521,6 @@ bool ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::has_le
     return false;
 }
 
-ObjectTracking::Tracks::Track::TrackInfo::Delayed::Delayed()
-    :
-    time_remaining{YType::uint32, "time-remaining"},
-    track_state{YType::boolean, "track-state"}
-{
-
-    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::Delayed::~Delayed()
-{
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_data() const
-{
-    return time_remaining.is_set
-	|| track_state.is_set;
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_remaining.yfilter)
-	|| ydk::is_set(track_state.yfilter);
-}
-
-std::string ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delayed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
-    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining = value;
-        time_remaining.value_namespace = name_space;
-        time_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-state")
-    {
-        track_state = value;
-        track_state.value_namespace = name_space;
-        track_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-remaining")
-    {
-        time_remaining.yfilter = yfilter;
-    }
-    if(value_path == "track-state")
-    {
-        track_state.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-remaining" || name == "track-state")
-        return true;
-    return false;
-}
-
 ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTracks()
 {
 
@@ -9563,571 +6718,6 @@ bool ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackIn
     return false;
 }
 
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::TrackTypeInfo()
-    :
-    discriminant{YType::enumeration, "discriminant"}
-    	,
-    bfd_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks>())
-	,interface_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks>())
-	,ipsla_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks>())
-	,route_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>())
-{
-    bfd_tracks->parent = this;
-    interface_tracks->parent = this;
-    ipsla_tracks->parent = this;
-    route_tracks->parent = this;
-
-    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
-{
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_data() const
-{
-    return discriminant.is_set
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
-	|| (route_tracks !=  nullptr && route_tracks->has_data());
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discriminant.yfilter)
-	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
-	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
-	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
-	|| (route_tracks !=  nullptr && route_tracks->has_operation());
-}
-
-std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "track-type-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-tracks")
-    {
-        if(bfd_tracks == nullptr)
-        {
-            bfd_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks>();
-        }
-        return bfd_tracks;
-    }
-
-    if(child_yang_name == "interface-tracks")
-    {
-        if(interface_tracks == nullptr)
-        {
-            interface_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-        }
-        return interface_tracks;
-    }
-
-    if(child_yang_name == "ipsla-tracks")
-    {
-        if(ipsla_tracks == nullptr)
-        {
-            ipsla_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks>();
-        }
-        return ipsla_tracks;
-    }
-
-    if(child_yang_name == "route-tracks")
-    {
-        if(route_tracks == nullptr)
-        {
-            route_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>();
-        }
-        return route_tracks;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_tracks != nullptr)
-    {
-        children["bfd-tracks"] = bfd_tracks;
-    }
-
-    if(interface_tracks != nullptr)
-    {
-        children["interface-tracks"] = interface_tracks;
-    }
-
-    if(ipsla_tracks != nullptr)
-    {
-        children["ipsla-tracks"] = ipsla_tracks;
-    }
-
-    if(route_tracks != nullptr)
-    {
-        children["route-tracks"] = route_tracks;
-    }
-
-    return children;
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant = value;
-        discriminant.value_namespace = name_space;
-        discriminant.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discriminant")
-    {
-        discriminant.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-tracks" || name == "interface-tracks" || name == "ipsla-tracks" || name == "route-tracks" || name == "discriminant")
-        return true;
-    return false;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
-    :
-    debounce_count{YType::uint32, "debounce-count"},
-    destination_address{YType::uint32, "destination-address"},
-    interface_name{YType::str, "interface-name"},
-    rate{YType::uint32, "rate"}
-{
-
-    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
-{
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
-{
-    return debounce_count.is_set
-	|| destination_address.is_set
-	|| interface_name.is_set
-	|| rate.is_set;
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debounce_count.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count = value;
-        debounce_count.value_namespace = name_space;
-        debounce_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debounce-count")
-    {
-        debounce_count.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debounce-count" || name == "destination-address" || name == "interface-name" || name == "rate")
-        return true;
-    return false;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
-    :
-    interface_name{YType::str, "interface-name"}
-{
-
-    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
-{
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
-{
-    return interface_name.is_set;
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name")
-        return true;
-    return false;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
-    :
-    ipsla_op_id{YType::uint32, "ipsla-op-id"},
-    return_code{YType::uint32, "return-code"},
-    rtt{YType::uint32, "rtt"}
-{
-
-    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
-{
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
-{
-    return ipsla_op_id.is_set
-	|| return_code.is_set
-	|| rtt.is_set;
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipsla_op_id.yfilter)
-	|| ydk::is_set(return_code.yfilter)
-	|| ydk::is_set(rtt.yfilter);
-}
-
-std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipsla-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
-    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
-    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id = value;
-        ipsla_op_id.value_namespace = name_space;
-        ipsla_op_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "return-code")
-    {
-        return_code = value;
-        return_code.value_namespace = name_space;
-        return_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtt")
-    {
-        rtt = value;
-        rtt.value_namespace = name_space;
-        rtt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipsla-op-id")
-    {
-        ipsla_op_id.yfilter = yfilter;
-    }
-    if(value_path == "return-code")
-    {
-        return_code.yfilter = yfilter;
-    }
-    if(value_path == "rtt")
-    {
-        rtt.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipsla-op-id" || name == "return-code" || name == "rtt")
-        return true;
-    return false;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
-    :
-    next_hop{YType::str, "next-hop"},
-    prefix{YType::uint32, "prefix"},
-    prefix_length{YType::uint32, "prefix-length"},
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
-{
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
-{
-    return next_hop.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| vrf.is_set;
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-tracks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-        next_hop.value_namespace = name_space;
-        next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop")
-    {
-        next_hop.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "prefix" || name == "prefix-length" || name == "vrf")
-        return true;
-    return false;
-}
-
 ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::TrackingInteraces()
 {
 
@@ -10293,6 +6883,3416 @@ void ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrack
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::Delayed::Delayed()
+    :
+    time_remaining{YType::uint32, "time-remaining"},
+    track_state{YType::boolean, "track-state"}
+{
+
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectTracking::Tracks::Track::TrackInfo::Delayed::~Delayed()
+{
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_data() const
+{
+    return time_remaining.is_set
+	|| track_state.is_set;
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
+	|| ydk::is_set(track_state.yfilter);
+}
+
+std::string ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delayed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::Tracks::Track::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::Tracks::Track::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-remaining" || name == "track-state")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackTypeIpv4RouteBrief()
+{
+
+    yang_name = "track-type-ipv4-route-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::~TrackTypeIpv4RouteBrief()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::has_data() const
+{
+    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    {
+        if(track_info_brief[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::has_operation() const
+{
+    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    {
+        if(track_info_brief[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-ipv4-route-brief";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-info-brief")
+    {
+        for(auto const & c : track_info_brief)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief>();
+        c->parent = this;
+        track_info_brief.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : track_info_brief)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-info-brief")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackInfoBrief()
+    :
+    tracke_name{YType::str, "tracke-name"},
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"}
+    	,
+    track_type_info(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo>())
+{
+    track_type_info->parent = this;
+
+    yang_name = "track-info-brief"; yang_parent_name = "track-type-ipv4-route-brief"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::~TrackInfoBrief()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_data() const
+{
+    return tracke_name.is_set
+	|| type.is_set
+	|| track_state.is_set
+	|| (track_type_info !=  nullptr && track_type_info->has_data());
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tracke_name.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| (track_type_info !=  nullptr && track_type_info->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-info-brief";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-type-info")
+    {
+        if(track_type_info == nullptr)
+        {
+            track_type_info = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo>();
+        }
+        return track_type_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
+    {
+        children["track-type-info"] = track_type_info;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name = value;
+        tracke_name.value_namespace = name_space;
+        tracke_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-type-info" || name == "tracke-name" || name == "type" || name == "track-state")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
+    :
+    discriminant{YType::enumeration, "discriminant"}
+    	,
+    interface_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
+	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
+{
+    interface_tracks->parent = this;
+    route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
+
+    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
+{
+    return discriminant.is_set
+	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discriminant.yfilter)
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracks")
+    {
+        if(interface_tracks == nullptr)
+        {
+            interface_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
+        }
+        return interface_tracks;
+    }
+
+    if(child_yang_name == "route-tracks")
+    {
+        if(route_tracks == nullptr)
+        {
+            route_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
+        }
+        return route_tracks;
+    }
+
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_tracks != nullptr)
+    {
+        children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
+    }
+
+    if(ipsla_tracks != nullptr)
+    {
+        children["ipsla-tracks"] = ipsla_tracks;
+    }
+
+    if(bfd_tracks != nullptr)
+    {
+        children["bfd-tracks"] = bfd_tracks;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant = value;
+        discriminant.value_namespace = name_space;
+        discriminant.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::IpslaTracks()
+    :
+    ipsla_op_id{YType::uint32, "ipsla-op-id"},
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
+{
+
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
+{
+    return ipsla_op_id.is_set
+	|| rtt.is_set
+	|| return_code.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipsla_op_id.yfilter)
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipsla-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
+    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id = value;
+        ipsla_op_id.value_namespace = name_space;
+        ipsla_op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt")
+    {
+        rtt = value;
+        rtt.value_namespace = name_space;
+        rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id.yfilter = yfilter;
+    }
+    if(value_path == "rtt")
+    {
+        rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
+    :
+    interface_name{YType::str, "interface-name"},
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
+{
+
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
+{
+    return interface_name.is_set
+	|| destination_address.is_set
+	|| rate.is_set
+	|| debounce_count.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackTypeIpv4Route()
+{
+
+    yang_name = "track-type-ipv4-route"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::~TrackTypeIpv4Route()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::has_data() const
+{
+    for (std::size_t index=0; index<track_info.size(); index++)
+    {
+        if(track_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::has_operation() const
+{
+    for (std::size_t index=0; index<track_info.size(); index++)
+    {
+        if(track_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-ipv4-route";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-info")
+    {
+        for(auto const & c : track_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo>();
+        c->parent = this;
+        track_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : track_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeIpv4Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackInfo()
+    :
+    tracke_name{YType::str, "tracke-name"},
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"},
+    state_change_counter{YType::uint32, "state-change-counter"},
+    seconds_last_change{YType::uint64, "seconds-last-change"},
+    threshold_up{YType::uint32, "threshold-up"},
+    threshold_down{YType::uint32, "threshold-down"}
+    	,
+    track_type_info(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo>())
+	,bool_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks>())
+	,threshold_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks>())
+	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>())
+	,delayed(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed>())
+{
+    track_type_info->parent = this;
+    bool_tracks->parent = this;
+    threshold_tracks->parent = this;
+    tracking_interaces->parent = this;
+    delayed->parent = this;
+
+    yang_name = "track-info"; yang_parent_name = "track-type-ipv4-route"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::~TrackInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_data() const
+{
+    return tracke_name.is_set
+	|| type.is_set
+	|| track_state.is_set
+	|| state_change_counter.is_set
+	|| seconds_last_change.is_set
+	|| threshold_up.is_set
+	|| threshold_down.is_set
+	|| (track_type_info !=  nullptr && track_type_info->has_data())
+	|| (bool_tracks !=  nullptr && bool_tracks->has_data())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_data())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_data())
+	|| (delayed !=  nullptr && delayed->has_data());
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tracke_name.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(state_change_counter.yfilter)
+	|| ydk::is_set(seconds_last_change.yfilter)
+	|| ydk::is_set(threshold_up.yfilter)
+	|| ydk::is_set(threshold_down.yfilter)
+	|| (track_type_info !=  nullptr && track_type_info->has_operation())
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (state_change_counter.is_set || is_set(state_change_counter.yfilter)) leaf_name_data.push_back(state_change_counter.get_name_leafdata());
+    if (seconds_last_change.is_set || is_set(seconds_last_change.yfilter)) leaf_name_data.push_back(seconds_last_change.get_name_leafdata());
+    if (threshold_up.is_set || is_set(threshold_up.yfilter)) leaf_name_data.push_back(threshold_up.get_name_leafdata());
+    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-type-info")
+    {
+        if(track_type_info == nullptr)
+        {
+            track_type_info = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo>();
+        }
+        return track_type_info;
+    }
+
+    if(child_yang_name == "bool-tracks")
+    {
+        if(bool_tracks == nullptr)
+        {
+            bool_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks>();
+        }
+        return bool_tracks;
+    }
+
+    if(child_yang_name == "threshold-tracks")
+    {
+        if(threshold_tracks == nullptr)
+        {
+            threshold_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks>();
+        }
+        return threshold_tracks;
+    }
+
+    if(child_yang_name == "tracking-interaces")
+    {
+        if(tracking_interaces == nullptr)
+        {
+            tracking_interaces = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>();
+        }
+        return tracking_interaces;
+    }
+
+    if(child_yang_name == "delayed")
+    {
+        if(delayed == nullptr)
+        {
+            delayed = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed>();
+        }
+        return delayed;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
+    {
+        children["track-type-info"] = track_type_info;
+    }
+
+    if(bool_tracks != nullptr)
+    {
+        children["bool-tracks"] = bool_tracks;
+    }
+
+    if(threshold_tracks != nullptr)
+    {
+        children["threshold-tracks"] = threshold_tracks;
+    }
+
+    if(tracking_interaces != nullptr)
+    {
+        children["tracking-interaces"] = tracking_interaces;
+    }
+
+    if(delayed != nullptr)
+    {
+        children["delayed"] = delayed;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name = value;
+        tracke_name.value_namespace = name_space;
+        tracke_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter = value;
+        state_change_counter.value_namespace = name_space;
+        state_change_counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change = value;
+        seconds_last_change.value_namespace = name_space;
+        seconds_last_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up = value;
+        threshold_up.value_namespace = name_space;
+        threshold_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down = value;
+        threshold_down.value_namespace = name_space;
+        threshold_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "state-change-counter")
+    {
+        state_change_counter.yfilter = yfilter;
+    }
+    if(value_path == "seconds-last-change")
+    {
+        seconds_last_change.yfilter = yfilter;
+    }
+    if(value_path == "threshold-up")
+    {
+        threshold_up.yfilter = yfilter;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-type-info" || name == "bool-tracks" || name == "threshold-tracks" || name == "tracking-interaces" || name == "delayed" || name == "tracke-name" || name == "type" || name == "track-state" || name == "state-change-counter" || name == "seconds-last-change" || name == "threshold-up" || name == "threshold-down")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::TrackTypeInfo()
+    :
+    discriminant{YType::enumeration, "discriminant"}
+    	,
+    interface_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks>())
+	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks>())
+{
+    interface_tracks->parent = this;
+    route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
+
+    yang_name = "track-type-info"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::~TrackTypeInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_data() const
+{
+    return discriminant.is_set
+	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discriminant.yfilter)
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracks")
+    {
+        if(interface_tracks == nullptr)
+        {
+            interface_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks>();
+        }
+        return interface_tracks;
+    }
+
+    if(child_yang_name == "route-tracks")
+    {
+        if(route_tracks == nullptr)
+        {
+            route_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>();
+        }
+        return route_tracks;
+    }
+
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_tracks != nullptr)
+    {
+        children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
+    }
+
+    if(ipsla_tracks != nullptr)
+    {
+        children["ipsla-tracks"] = ipsla_tracks;
+    }
+
+    if(bfd_tracks != nullptr)
+    {
+        children["bfd-tracks"] = bfd_tracks;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant = value;
+        discriminant.value_namespace = name_space;
+        discriminant.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTracks()
+    :
+    ipsla_op_id{YType::uint32, "ipsla-op-id"},
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
+{
+
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::~IpslaTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_data() const
+{
+    return ipsla_op_id.is_set
+	|| rtt.is_set
+	|| return_code.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipsla_op_id.yfilter)
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipsla-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
+    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id = value;
+        ipsla_op_id.value_namespace = name_space;
+        ipsla_op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt")
+    {
+        rtt = value;
+        rtt.value_namespace = name_space;
+        rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id.yfilter = yfilter;
+    }
+    if(value_path == "rtt")
+    {
+        rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::BfdTracks()
+    :
+    interface_name{YType::str, "interface-name"},
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
+{
+
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::~BfdTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::has_data() const
+{
+    return interface_name.is_set
+	|| destination_address.is_set
+	|| rate.is_set
+	|| debounce_count.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTracks()
+{
+
+    yang_name = "bool-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::~BoolTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_data() const
+{
+    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    {
+        if(bool_track_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_operation() const
+{
+    for (std::size_t index=0; index<bool_track_info.size(); index++)
+    {
+        if(bool_track_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bool-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bool-track-info")
+    {
+        for(auto const & c : bool_track_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo>();
+        c->parent = this;
+        bool_track_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bool_track_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bool-track-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::BoolTrackInfo()
+    :
+    object_name{YType::str, "object-name"},
+    track_state{YType::boolean, "track-state"},
+    with_not{YType::boolean, "with-not"}
+{
+
+    yang_name = "bool-track-info"; yang_parent_name = "bool-tracks"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::~BoolTrackInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::has_data() const
+{
+    return object_name.is_set
+	|| track_state.is_set
+	|| with_not.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(with_not.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/bool-tracks/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bool-track-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (with_not.is_set || is_set(with_not.yfilter)) leaf_name_data.push_back(with_not.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-name")
+    {
+        object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "with-not")
+    {
+        with_not = value;
+        with_not.value_namespace = name_space;
+        with_not.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "with-not")
+    {
+        with_not.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "track-state" || name == "with-not")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTracks()
+{
+
+    yang_name = "threshold-tracks"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::~ThresholdTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_data() const
+{
+    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    {
+        if(threshold_track_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_operation() const
+{
+    for (std::size_t index=0; index<threshold_track_info.size(); index++)
+    {
+        if(threshold_track_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold-track-info")
+    {
+        for(auto const & c : threshold_track_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
+        c->parent = this;
+        threshold_track_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : threshold_track_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-track-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::ThresholdTrackInfo()
+    :
+    object_name{YType::str, "object-name"},
+    track_state{YType::boolean, "track-state"},
+    weight{YType::uint32, "weight"}
+{
+
+    yang_name = "threshold-track-info"; yang_parent_name = "threshold-tracks"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::~ThresholdTrackInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_data() const
+{
+    return object_name.is_set
+	|| track_state.is_set
+	|| weight.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| ydk::is_set(weight.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/threshold-tracks/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold-track-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-name")
+    {
+        object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "track-state" || name == "weight")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::TrackingInteraces()
+{
+
+    yang_name = "tracking-interaces"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::~TrackingInteraces()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_data() const
+{
+    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    {
+        if(interface_tracking_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_operation() const
+{
+    for (std::size_t index=0; index<interface_tracking_info.size(); index++)
+    {
+        if(interface_tracking_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tracking-interaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracking-info")
+    {
+        for(auto const & c : interface_tracking_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
+        c->parent = this;
+        interface_tracking_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface_tracking_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracking-info")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::InterfaceTrackingInfo()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracking-info"; yang_parent_name = "tracking-interaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::~InterfaceTrackingInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/tracking-interaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracking-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::Delayed()
+    :
+    time_remaining{YType::uint32, "time-remaining"},
+    track_state{YType::boolean, "track-state"}
+{
+
+    yang_name = "delayed"; yang_parent_name = "track-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::~Delayed()
+{
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_data() const
+{
+    return time_remaining.is_set
+	|| track_state.is_set;
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
+	|| ydk::is_set(track_state.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-ipv4-route/track-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delayed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-remaining" || name == "track-state")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackTypeInterfaceBrief()
+{
+
+    yang_name = "track-type-interface-brief"; yang_parent_name = "object-tracking"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::~TrackTypeInterfaceBrief()
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::has_data() const
+{
+    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    {
+        if(track_info_brief[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::has_operation() const
+{
+    for (std::size_t index=0; index<track_info_brief.size(); index++)
+    {
+        if(track_info_brief[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-interface-brief";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-info-brief")
+    {
+        for(auto const & c : track_info_brief)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief>();
+        c->parent = this;
+        track_info_brief.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : track_info_brief)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-info-brief")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackInfoBrief()
+    :
+    tracke_name{YType::str, "tracke-name"},
+    type{YType::enumeration, "type"},
+    track_state{YType::boolean, "track-state"}
+    	,
+    track_type_info(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo>())
+{
+    track_type_info->parent = this;
+
+    yang_name = "track-info-brief"; yang_parent_name = "track-type-interface-brief"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::~TrackInfoBrief()
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_data() const
+{
+    return tracke_name.is_set
+	|| type.is_set
+	|| track_state.is_set
+	|| (track_type_info !=  nullptr && track_type_info->has_data());
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tracke_name.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(track_state.yfilter)
+	|| (track_type_info !=  nullptr && track_type_info->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-info-brief";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tracke_name.is_set || is_set(tracke_name.yfilter)) leaf_name_data.push_back(tracke_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (track_state.is_set || is_set(track_state.yfilter)) leaf_name_data.push_back(track_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "track-type-info")
+    {
+        if(track_type_info == nullptr)
+        {
+            track_type_info = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo>();
+        }
+        return track_type_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
+    {
+        children["track-type-info"] = track_type_info;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name = value;
+        tracke_name.value_namespace = name_space;
+        tracke_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-state")
+    {
+        track_state = value;
+        track_state.value_namespace = name_space;
+        track_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tracke-name")
+    {
+        tracke_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "track-state")
+    {
+        track_state.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-type-info" || name == "tracke-name" || name == "type" || name == "track-state")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::TrackTypeInfo()
+    :
+    discriminant{YType::enumeration, "discriminant"}
+    	,
+    interface_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>())
+	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
+	,ipsla_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>())
+	,bfd_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>())
+{
+    interface_tracks->parent = this;
+    route_tracks->parent = this;
+    ipsla_tracks->parent = this;
+    bfd_tracks->parent = this;
+
+    yang_name = "track-type-info"; yang_parent_name = "track-info-brief"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::~TrackTypeInfo()
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has_data() const
+{
+    return discriminant.is_set
+	|| (interface_tracks !=  nullptr && interface_tracks->has_data())
+	|| (route_tracks !=  nullptr && route_tracks->has_data())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_data())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_data());
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discriminant.yfilter)
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation());
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-type-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discriminant.is_set || is_set(discriminant.yfilter)) leaf_name_data.push_back(discriminant.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-tracks")
+    {
+        if(interface_tracks == nullptr)
+        {
+            interface_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
+        }
+        return interface_tracks;
+    }
+
+    if(child_yang_name == "route-tracks")
+    {
+        if(route_tracks == nullptr)
+        {
+            route_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
+        }
+        return route_tracks;
+    }
+
+    if(child_yang_name == "ipsla-tracks")
+    {
+        if(ipsla_tracks == nullptr)
+        {
+            ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
+        }
+        return ipsla_tracks;
+    }
+
+    if(child_yang_name == "bfd-tracks")
+    {
+        if(bfd_tracks == nullptr)
+        {
+            bfd_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
+        }
+        return bfd_tracks;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_tracks != nullptr)
+    {
+        children["interface-tracks"] = interface_tracks;
+    }
+
+    if(route_tracks != nullptr)
+    {
+        children["route-tracks"] = route_tracks;
+    }
+
+    if(ipsla_tracks != nullptr)
+    {
+        children["ipsla-tracks"] = ipsla_tracks;
+    }
+
+    if(bfd_tracks != nullptr)
+    {
+        children["bfd-tracks"] = bfd_tracks;
+    }
+
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant = value;
+        discriminant.value_namespace = name_space;
+        discriminant.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discriminant")
+    {
+        discriminant.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-tracks" || name == "route-tracks" || name == "ipsla-tracks" || name == "bfd-tracks" || name == "discriminant")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::InterfaceTracks()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "interface-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::~InterfaceTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_data() const
+{
+    return interface_name.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::RouteTracks()
+    :
+    prefix{YType::uint32, "prefix"},
+    prefix_length{YType::uint32, "prefix-length"},
+    vrf{YType::str, "vrf"},
+    next_hop{YType::str, "next-hop"}
+{
+
+    yang_name = "route-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::~RouteTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| vrf.is_set
+	|| next_hop.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "vrf" || name == "next-hop")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::IpslaTracks()
+    :
+    ipsla_op_id{YType::uint32, "ipsla-op-id"},
+    rtt{YType::uint32, "rtt"},
+    return_code{YType::uint32, "return-code"}
+{
+
+    yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::~IpslaTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_data() const
+{
+    return ipsla_op_id.is_set
+	|| rtt.is_set
+	|| return_code.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipsla_op_id.yfilter)
+	|| ydk::is_set(rtt.yfilter)
+	|| ydk::is_set(return_code.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipsla-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
+    if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
+    if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id = value;
+        ipsla_op_id.value_namespace = name_space;
+        ipsla_op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtt")
+    {
+        rtt = value;
+        rtt.value_namespace = name_space;
+        rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "return-code")
+    {
+        return_code = value;
+        return_code.value_namespace = name_space;
+        return_code.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipsla-op-id")
+    {
+        ipsla_op_id.yfilter = yfilter;
+    }
+    if(value_path == "rtt")
+    {
+        rtt.yfilter = yfilter;
+    }
+    if(value_path == "return-code")
+    {
+        return_code.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+        return true;
+    return false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::BfdTracks()
+    :
+    interface_name{YType::str, "interface-name"},
+    destination_address{YType::uint32, "destination-address"},
+    rate{YType::uint32, "rate"},
+    debounce_count{YType::uint32, "debounce-count"}
+{
+
+    yang_name = "bfd-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::~BfdTracks()
+{
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_data() const
+{
+    return interface_name.is_set
+	|| destination_address.is_set
+	|| rate.is_set
+	|| debounce_count.is_set;
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| ydk::is_set(debounce_count.yfilter);
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-manageability-object-tracking-oper:object-tracking/track-type-interface-brief/track-info-brief/track-type-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tracks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (debounce_count.is_set || is_set(debounce_count.yfilter)) leaf_name_data.push_back(debounce_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count = value;
+        debounce_count.value_namespace = name_space;
+        debounce_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+    if(value_path == "debounce-count")
+    {
+        debounce_count.yfilter = yfilter;
+    }
+}
+
+bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "destination-address" || name == "rate" || name == "debounce-count")
         return true;
     return false;
 }

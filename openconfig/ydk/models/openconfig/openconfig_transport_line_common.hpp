@@ -19,6 +19,24 @@ class OPTICALLINEPORTTYPE : public virtual ydk::Identity
 
 }; // OPTICALLINEPORTTYPE
 
+class INGRESS : public openconfig::openconfig_transport_line_common::OPTICALLINEPORTTYPE, virtual ydk::Identity
+{
+    public:
+        INGRESS();
+        ~INGRESS();
+
+
+}; // INGRESS
+
+class EGRESS : public openconfig::openconfig_transport_line_common::OPTICALLINEPORTTYPE, virtual ydk::Identity
+{
+    public:
+        EGRESS();
+        ~EGRESS();
+
+
+}; // EGRESS
+
 class ADD : public openconfig::openconfig_transport_line_common::OPTICALLINEPORTTYPE, virtual ydk::Identity
 {
     public:
@@ -36,24 +54,6 @@ class DROP : public openconfig::openconfig_transport_line_common::OPTICALLINEPOR
 
 
 }; // DROP
-
-class EGRESS : public openconfig::openconfig_transport_line_common::OPTICALLINEPORTTYPE, virtual ydk::Identity
-{
-    public:
-        EGRESS();
-        ~EGRESS();
-
-
-}; // EGRESS
-
-class INGRESS : public openconfig::openconfig_transport_line_common::OPTICALLINEPORTTYPE, virtual ydk::Identity
-{
-    public:
-        INGRESS();
-        ~INGRESS();
-
-
-}; // INGRESS
 
 class MONITOR : public openconfig::openconfig_transport_line_common::OPTICALLINEPORTTYPE, virtual ydk::Identity
 {

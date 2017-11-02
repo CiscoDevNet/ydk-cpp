@@ -36,11 +36,40 @@ class Lacp : public ydk::Entity
 
 }; // Lacp
 
-class MlacpMaximizeParameter : public ydk::Enum
+class BfdMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf links;
-        static const ydk::Enum::YLeaf bandwidth;
+        static const ydk::Enum::YLeaf no_cfg;
+        static const ydk::Enum::YLeaf cisco;
+        static const ydk::Enum::YLeaf ietf;
+
+};
+
+class ChurnLogging : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf actor;
+        static const ydk::Enum::YLeaf partner;
+        static const ydk::Enum::YLeaf both;
+
+};
+
+class BundleMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf passive;
+
+};
+
+class BundleMinimumBandwidthRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf kbps;
+        static const ydk::Enum::YLeaf mbps;
+        static const ydk::Enum::YLeaf gbps;
 
 };
 
@@ -59,28 +88,19 @@ class BundleCiscoExtTypes : public ydk::Enum
 
 };
 
-class BundleMode : public ydk::Enum
+class BundleMaximumActiveLinksMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf hot_standby;
 
 };
 
-class BfdMode : public ydk::Enum
+class MlacpSwitchover : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_cfg;
-        static const ydk::Enum::YLeaf cisco;
-        static const ydk::Enum::YLeaf ietf;
-
-};
-
-class BundlePeriod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf brute_force;
+        static const ydk::Enum::YLeaf revertive;
 
 };
 
@@ -95,24 +115,6 @@ class BundleLoadBalance : public ydk::Enum
 
 };
 
-class BundleMinimumBandwidthRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf kbps;
-        static const ydk::Enum::YLeaf mbps;
-        static const ydk::Enum::YLeaf gbps;
-
-};
-
-class MlacpSwitchover : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf brute_force;
-        static const ydk::Enum::YLeaf revertive;
-
-};
-
 class BundlePortActivity : public ydk::Enum
 {
     public:
@@ -123,20 +125,18 @@ class BundlePortActivity : public ydk::Enum
 
 };
 
-class ChurnLogging : public ydk::Enum
+class MlacpMaximizeParameter : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf actor;
-        static const ydk::Enum::YLeaf partner;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf links;
+        static const ydk::Enum::YLeaf bandwidth;
 
 };
 
-class BundleMaximumActiveLinksMode : public ydk::Enum
+class BundlePeriod : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf hot_standby;
+        static const ydk::Enum::YLeaf true_;
 
 };
 

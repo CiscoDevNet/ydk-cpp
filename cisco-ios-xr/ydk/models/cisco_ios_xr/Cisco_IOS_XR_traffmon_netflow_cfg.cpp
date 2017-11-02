@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_traffmon_netflow_cfg {
 NetFlow::NetFlow()
     :
     flow_exporter_maps(std::make_shared<NetFlow::FlowExporterMaps>())
-	,flow_monitor_map_performance_table(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable>())
-	,flow_monitor_map_table(std::make_shared<NetFlow::FlowMonitorMapTable>())
 	,flow_sampler_maps(std::make_shared<NetFlow::FlowSamplerMaps>())
+	,flow_monitor_map_table(std::make_shared<NetFlow::FlowMonitorMapTable>())
+	,flow_monitor_map_performance_table(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable>())
 {
     flow_exporter_maps->parent = this;
-    flow_monitor_map_performance_table->parent = this;
-    flow_monitor_map_table->parent = this;
     flow_sampler_maps->parent = this;
+    flow_monitor_map_table->parent = this;
+    flow_monitor_map_performance_table->parent = this;
 
     yang_name = "net-flow"; yang_parent_name = "Cisco-IOS-XR-traffmon-netflow-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -33,18 +33,18 @@ NetFlow::~NetFlow()
 bool NetFlow::has_data() const
 {
     return (flow_exporter_maps !=  nullptr && flow_exporter_maps->has_data())
-	|| (flow_monitor_map_performance_table !=  nullptr && flow_monitor_map_performance_table->has_data())
+	|| (flow_sampler_maps !=  nullptr && flow_sampler_maps->has_data())
 	|| (flow_monitor_map_table !=  nullptr && flow_monitor_map_table->has_data())
-	|| (flow_sampler_maps !=  nullptr && flow_sampler_maps->has_data());
+	|| (flow_monitor_map_performance_table !=  nullptr && flow_monitor_map_performance_table->has_data());
 }
 
 bool NetFlow::has_operation() const
 {
     return is_set(yfilter)
 	|| (flow_exporter_maps !=  nullptr && flow_exporter_maps->has_operation())
-	|| (flow_monitor_map_performance_table !=  nullptr && flow_monitor_map_performance_table->has_operation())
+	|| (flow_sampler_maps !=  nullptr && flow_sampler_maps->has_operation())
 	|| (flow_monitor_map_table !=  nullptr && flow_monitor_map_table->has_operation())
-	|| (flow_sampler_maps !=  nullptr && flow_sampler_maps->has_operation());
+	|| (flow_monitor_map_performance_table !=  nullptr && flow_monitor_map_performance_table->has_operation());
 }
 
 std::string NetFlow::get_segment_path() const
@@ -74,13 +74,13 @@ std::shared_ptr<Entity> NetFlow::get_child_by_name(const std::string & child_yan
         return flow_exporter_maps;
     }
 
-    if(child_yang_name == "flow-monitor-map-performance-table")
+    if(child_yang_name == "flow-sampler-maps")
     {
-        if(flow_monitor_map_performance_table == nullptr)
+        if(flow_sampler_maps == nullptr)
         {
-            flow_monitor_map_performance_table = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable>();
+            flow_sampler_maps = std::make_shared<NetFlow::FlowSamplerMaps>();
         }
-        return flow_monitor_map_performance_table;
+        return flow_sampler_maps;
     }
 
     if(child_yang_name == "flow-monitor-map-table")
@@ -92,13 +92,13 @@ std::shared_ptr<Entity> NetFlow::get_child_by_name(const std::string & child_yan
         return flow_monitor_map_table;
     }
 
-    if(child_yang_name == "flow-sampler-maps")
+    if(child_yang_name == "flow-monitor-map-performance-table")
     {
-        if(flow_sampler_maps == nullptr)
+        if(flow_monitor_map_performance_table == nullptr)
         {
-            flow_sampler_maps = std::make_shared<NetFlow::FlowSamplerMaps>();
+            flow_monitor_map_performance_table = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable>();
         }
-        return flow_sampler_maps;
+        return flow_monitor_map_performance_table;
     }
 
     return nullptr;
@@ -112,9 +112,9 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::get_children() const
         children["flow-exporter-maps"] = flow_exporter_maps;
     }
 
-    if(flow_monitor_map_performance_table != nullptr)
+    if(flow_sampler_maps != nullptr)
     {
-        children["flow-monitor-map-performance-table"] = flow_monitor_map_performance_table;
+        children["flow-sampler-maps"] = flow_sampler_maps;
     }
 
     if(flow_monitor_map_table != nullptr)
@@ -122,9 +122,9 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::get_children() const
         children["flow-monitor-map-table"] = flow_monitor_map_table;
     }
 
-    if(flow_sampler_maps != nullptr)
+    if(flow_monitor_map_performance_table != nullptr)
     {
-        children["flow-sampler-maps"] = flow_sampler_maps;
+        children["flow-monitor-map-performance-table"] = flow_monitor_map_performance_table;
     }
 
     return children;
@@ -165,7 +165,7 @@ std::map<std::pair<std::string, std::string>, std::string> NetFlow::get_namespac
 
 bool NetFlow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flow-exporter-maps" || name == "flow-monitor-map-performance-table" || name == "flow-monitor-map-table" || name == "flow-sampler-maps")
+    if(name == "flow-exporter-maps" || name == "flow-sampler-maps" || name == "flow-monitor-map-table" || name == "flow-monitor-map-performance-table")
         return true;
     return false;
 }
@@ -273,17 +273,17 @@ bool NetFlow::FlowExporterMaps::has_leaf_or_child_of_name(const std::string & na
 NetFlow::FlowExporterMaps::FlowExporterMap::FlowExporterMap()
     :
     exporter_map_name{YType::str, "exporter-map-name"},
+    source_interface{YType::str, "source-interface"},
     dscp{YType::uint32, "dscp"},
-    packet_length{YType::uint32, "packet-length"},
-    source_interface{YType::str, "source-interface"}
+    packet_length{YType::uint32, "packet-length"}
     	,
-    destination(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>())
-	,udp(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Udp>())
+    udp(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Udp>())
 	,versions(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions>())
+	,destination(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>())
 {
-    destination->parent = this;
     udp->parent = this;
     versions->parent = this;
+    destination->parent = this;
 
     yang_name = "flow-exporter-map"; yang_parent_name = "flow-exporter-maps"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -295,24 +295,24 @@ NetFlow::FlowExporterMaps::FlowExporterMap::~FlowExporterMap()
 bool NetFlow::FlowExporterMaps::FlowExporterMap::has_data() const
 {
     return exporter_map_name.is_set
+	|| source_interface.is_set
 	|| dscp.is_set
 	|| packet_length.is_set
-	|| source_interface.is_set
-	|| (destination !=  nullptr && destination->has_data())
 	|| (udp !=  nullptr && udp->has_data())
-	|| (versions !=  nullptr && versions->has_data());
+	|| (versions !=  nullptr && versions->has_data())
+	|| (destination !=  nullptr && destination->has_data());
 }
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(exporter_map_name.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
 	|| ydk::is_set(dscp.yfilter)
 	|| ydk::is_set(packet_length.yfilter)
-	|| ydk::is_set(source_interface.yfilter)
-	|| (destination !=  nullptr && destination->has_operation())
 	|| (udp !=  nullptr && udp->has_operation())
-	|| (versions !=  nullptr && versions->has_operation());
+	|| (versions !=  nullptr && versions->has_operation())
+	|| (destination !=  nullptr && destination->has_operation());
 }
 
 std::string NetFlow::FlowExporterMaps::FlowExporterMap::get_absolute_path() const
@@ -334,9 +334,9 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowEx
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (exporter_map_name.is_set || is_set(exporter_map_name.yfilter)) leaf_name_data.push_back(exporter_map_name.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
     if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
     if (packet_length.is_set || is_set(packet_length.yfilter)) leaf_name_data.push_back(packet_length.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -344,15 +344,6 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowEx
 
 std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "destination")
-    {
-        if(destination == nullptr)
-        {
-            destination = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>();
-        }
-        return destination;
-    }
-
     if(child_yang_name == "udp")
     {
         if(udp == nullptr)
@@ -371,17 +362,21 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::get_child_by
         return versions;
     }
 
+    if(child_yang_name == "destination")
+    {
+        if(destination == nullptr)
+        {
+            destination = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>();
+        }
+        return destination;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(destination != nullptr)
-    {
-        children["destination"] = destination;
-    }
-
     if(udp != nullptr)
     {
         children["udp"] = udp;
@@ -390,6 +385,11 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowEx
     if(versions != nullptr)
     {
         children["versions"] = versions;
+    }
+
+    if(destination != nullptr)
+    {
+        children["destination"] = destination;
     }
 
     return children;
@@ -403,6 +403,12 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::set_value(const std::string & v
         exporter_map_name.value_namespace = name_space;
         exporter_map_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "source-interface")
+    {
+        source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "dscp")
     {
         dscp = value;
@@ -415,12 +421,6 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::set_value(const std::string & v
         packet_length.value_namespace = name_space;
         packet_length.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "source-interface")
-    {
-        source_interface = value;
-        source_interface.value_namespace = name_space;
-        source_interface.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void NetFlow::FlowExporterMaps::FlowExporterMap::set_filter(const std::string & value_path, YFilter yfilter)
@@ -428,6 +428,10 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::set_filter(const std::string & 
     if(value_path == "exporter-map-name")
     {
         exporter_map_name.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
     }
     if(value_path == "dscp")
     {
@@ -437,119 +441,11 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::set_filter(const std::string & 
     {
         packet_length.yfilter = yfilter;
     }
-    if(value_path == "source-interface")
-    {
-        source_interface.yfilter = yfilter;
-    }
 }
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "udp" || name == "versions" || name == "exporter-map-name" || name == "dscp" || name == "packet-length" || name == "source-interface")
-        return true;
-    return false;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Destination::Destination()
-    :
-    ip_address{YType::str, "ip-address"},
-    ipv6_address{YType::str, "ipv6-address"},
-    vrf_name{YType::str, "vrf-name"}
-{
-
-    yang_name = "destination"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Destination::~Destination()
-{
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_data() const
-{
-    return ip_address.is_set
-	|| ipv6_address.is_set
-	|| vrf_name.is_set;
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Destination::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-address" || name == "ipv6-address" || name == "vrf-name")
+    if(name == "udp" || name == "versions" || name == "destination" || name == "exporter-map-name" || name == "source-interface" || name == "dscp" || name == "packet-length")
         return true;
     return false;
 }
@@ -726,9 +622,9 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::has_leaf_or_child_of_
 NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Version()
     :
     version_number{YType::uint32, "version-number"},
+    options_template_timeout{YType::uint32, "options-template-timeout"},
     common_template_timeout{YType::uint32, "common-template-timeout"},
-    data_template_timeout{YType::uint32, "data-template-timeout"},
-    options_template_timeout{YType::uint32, "options-template-timeout"}
+    data_template_timeout{YType::uint32, "data-template-timeout"}
     	,
     options(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options>())
 {
@@ -744,9 +640,9 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::~Version()
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::has_data() const
 {
     return version_number.is_set
+	|| options_template_timeout.is_set
 	|| common_template_timeout.is_set
 	|| data_template_timeout.is_set
-	|| options_template_timeout.is_set
 	|| (options !=  nullptr && options->has_data());
 }
 
@@ -754,9 +650,9 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::has_operatio
 {
     return is_set(yfilter)
 	|| ydk::is_set(version_number.yfilter)
+	|| ydk::is_set(options_template_timeout.yfilter)
 	|| ydk::is_set(common_template_timeout.yfilter)
 	|| ydk::is_set(data_template_timeout.yfilter)
-	|| ydk::is_set(options_template_timeout.yfilter)
 	|| (options !=  nullptr && options->has_operation());
 }
 
@@ -772,9 +668,9 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowEx
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (version_number.is_set || is_set(version_number.yfilter)) leaf_name_data.push_back(version_number.get_name_leafdata());
+    if (options_template_timeout.is_set || is_set(options_template_timeout.yfilter)) leaf_name_data.push_back(options_template_timeout.get_name_leafdata());
     if (common_template_timeout.is_set || is_set(common_template_timeout.yfilter)) leaf_name_data.push_back(common_template_timeout.get_name_leafdata());
     if (data_template_timeout.is_set || is_set(data_template_timeout.yfilter)) leaf_name_data.push_back(data_template_timeout.get_name_leafdata());
-    if (options_template_timeout.is_set || is_set(options_template_timeout.yfilter)) leaf_name_data.push_back(options_template_timeout.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -813,6 +709,12 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::set_value(co
         version_number.value_namespace = name_space;
         version_number.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "options-template-timeout")
+    {
+        options_template_timeout = value;
+        options_template_timeout.value_namespace = name_space;
+        options_template_timeout.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "common-template-timeout")
     {
         common_template_timeout = value;
@@ -825,12 +727,6 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::set_value(co
         data_template_timeout.value_namespace = name_space;
         data_template_timeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "options-template-timeout")
-    {
-        options_template_timeout = value;
-        options_template_timeout.value_namespace = name_space;
-        options_template_timeout.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::set_filter(const std::string & value_path, YFilter yfilter)
@@ -838,6 +734,10 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::set_filter(c
     if(value_path == "version-number")
     {
         version_number.yfilter = yfilter;
+    }
+    if(value_path == "options-template-timeout")
+    {
+        options_template_timeout.yfilter = yfilter;
     }
     if(value_path == "common-template-timeout")
     {
@@ -847,15 +747,11 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::set_filter(c
     {
         data_template_timeout.yfilter = yfilter;
     }
-    if(value_path == "options-template-timeout")
-    {
-        options_template_timeout.yfilter = yfilter;
-    }
 }
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "options" || name == "version-number" || name == "common-template-timeout" || name == "data-template-timeout" || name == "options-template-timeout")
+    if(name == "options" || name == "version-number" || name == "options-template-timeout" || name == "common-template-timeout" || name == "data-template-timeout")
         return true;
     return false;
 }
@@ -964,1398 +860,106 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::has
     return false;
 }
 
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMapPerformanceTable()
-{
-
-    yang_name = "flow-monitor-map-performance-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::~FlowMonitorMapPerformanceTable()
-{
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::has_data() const
-{
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
-    {
-        if(flow_monitor_map[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::has_operation() const
-{
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
-    {
-        if(flow_monitor_map[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapPerformanceTable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string NetFlow::FlowMonitorMapPerformanceTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow-monitor-map-performance-table";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flow-monitor-map")
-    {
-        for(auto const & c : flow_monitor_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap>();
-        c->parent = this;
-        flow_monitor_map.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : flow_monitor_map)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow-monitor-map")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::FlowMonitorMap()
+NetFlow::FlowExporterMaps::FlowExporterMap::Destination::Destination()
     :
-    monitor_map_name{YType::str, "monitor-map-name"},
-    cache_active_aging_timeout{YType::uint32, "cache-active-aging-timeout"},
-    cache_aging_mode{YType::enumeration, "cache-aging-mode"},
-    cache_entries{YType::uint32, "cache-entries"},
-    cache_inactive_aging_timeout{YType::uint32, "cache-inactive-aging-timeout"},
-    cache_timeout_rate_limit{YType::uint32, "cache-timeout-rate-limit"},
-    cache_update_aging_timeout{YType::uint32, "cache-update-aging-timeout"}
-    	,
-    exporters(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters>())
-	,option(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option>())
-	,record(nullptr) // presence node
+    ip_address{YType::str, "ip-address"},
+    ipv6_address{YType::str, "ipv6-address"},
+    vrf_name{YType::str, "vrf-name"}
 {
-    exporters->parent = this;
-    option->parent = this;
 
-    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-performance-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::~FlowMonitorMap()
+NetFlow::FlowExporterMaps::FlowExporterMap::Destination::~Destination()
 {
 }
 
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_data() const
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_data() const
 {
-    return monitor_map_name.is_set
-	|| cache_active_aging_timeout.is_set
-	|| cache_aging_mode.is_set
-	|| cache_entries.is_set
-	|| cache_inactive_aging_timeout.is_set
-	|| cache_timeout_rate_limit.is_set
-	|| cache_update_aging_timeout.is_set
-	|| (exporters !=  nullptr && exporters->has_data())
-	|| (option !=  nullptr && option->has_data())
-	|| (record !=  nullptr && record->has_data());
+    return ip_address.is_set
+	|| ipv6_address.is_set
+	|| vrf_name.is_set;
 }
 
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_operation() const
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(monitor_map_name.yfilter)
-	|| ydk::is_set(cache_active_aging_timeout.yfilter)
-	|| ydk::is_set(cache_aging_mode.yfilter)
-	|| ydk::is_set(cache_entries.yfilter)
-	|| ydk::is_set(cache_inactive_aging_timeout.yfilter)
-	|| ydk::is_set(cache_timeout_rate_limit.yfilter)
-	|| ydk::is_set(cache_update_aging_timeout.yfilter)
-	|| (exporters !=  nullptr && exporters->has_operation())
-	|| (option !=  nullptr && option->has_operation())
-	|| (record !=  nullptr && record->has_operation());
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
-std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_absolute_path() const
+std::string NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/flow-monitor-map-performance-table/" << get_segment_path();
+    path_buffer << "destination";
     return path_buffer.str();
 }
 
-std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow-monitor-map" <<"[monitor-map-name='" <<monitor_map_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (cache_active_aging_timeout.is_set || is_set(cache_active_aging_timeout.yfilter)) leaf_name_data.push_back(cache_active_aging_timeout.get_name_leafdata());
-    if (cache_aging_mode.is_set || is_set(cache_aging_mode.yfilter)) leaf_name_data.push_back(cache_aging_mode.get_name_leafdata());
-    if (cache_entries.is_set || is_set(cache_entries.yfilter)) leaf_name_data.push_back(cache_entries.get_name_leafdata());
-    if (cache_inactive_aging_timeout.is_set || is_set(cache_inactive_aging_timeout.yfilter)) leaf_name_data.push_back(cache_inactive_aging_timeout.get_name_leafdata());
-    if (cache_timeout_rate_limit.is_set || is_set(cache_timeout_rate_limit.yfilter)) leaf_name_data.push_back(cache_timeout_rate_limit.get_name_leafdata());
-    if (cache_update_aging_timeout.is_set || is_set(cache_update_aging_timeout.yfilter)) leaf_name_data.push_back(cache_update_aging_timeout.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "exporters")
-    {
-        if(exporters == nullptr)
-        {
-            exporters = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters>();
-        }
-        return exporters;
-    }
-
-    if(child_yang_name == "option")
-    {
-        if(option == nullptr)
-        {
-            option = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option>();
-        }
-        return option;
-    }
-
-    if(child_yang_name == "record")
-    {
-        if(record == nullptr)
-        {
-            record = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record>();
-        }
-        return record;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(exporters != nullptr)
-    {
-        children["exporters"] = exporters;
-    }
-
-    if(option != nullptr)
-    {
-        children["option"] = option;
-    }
-
-    if(record != nullptr)
-    {
-        children["record"] = record;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "monitor-map-name")
-    {
-        monitor_map_name = value;
-        monitor_map_name.value_namespace = name_space;
-        monitor_map_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-active-aging-timeout")
-    {
-        cache_active_aging_timeout = value;
-        cache_active_aging_timeout.value_namespace = name_space;
-        cache_active_aging_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-aging-mode")
-    {
-        cache_aging_mode = value;
-        cache_aging_mode.value_namespace = name_space;
-        cache_aging_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-entries")
-    {
-        cache_entries = value;
-        cache_entries.value_namespace = name_space;
-        cache_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-inactive-aging-timeout")
-    {
-        cache_inactive_aging_timeout = value;
-        cache_inactive_aging_timeout.value_namespace = name_space;
-        cache_inactive_aging_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-timeout-rate-limit")
-    {
-        cache_timeout_rate_limit = value;
-        cache_timeout_rate_limit.value_namespace = name_space;
-        cache_timeout_rate_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-update-aging-timeout")
-    {
-        cache_update_aging_timeout = value;
-        cache_update_aging_timeout.value_namespace = name_space;
-        cache_update_aging_timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "monitor-map-name")
-    {
-        monitor_map_name.yfilter = yfilter;
-    }
-    if(value_path == "cache-active-aging-timeout")
-    {
-        cache_active_aging_timeout.yfilter = yfilter;
-    }
-    if(value_path == "cache-aging-mode")
-    {
-        cache_aging_mode.yfilter = yfilter;
-    }
-    if(value_path == "cache-entries")
-    {
-        cache_entries.yfilter = yfilter;
-    }
-    if(value_path == "cache-inactive-aging-timeout")
-    {
-        cache_inactive_aging_timeout.yfilter = yfilter;
-    }
-    if(value_path == "cache-timeout-rate-limit")
-    {
-        cache_timeout_rate_limit.yfilter = yfilter;
-    }
-    if(value_path == "cache-update-aging-timeout")
-    {
-        cache_update_aging_timeout.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exporters" || name == "option" || name == "record" || name == "monitor-map-name" || name == "cache-active-aging-timeout" || name == "cache-aging-mode" || name == "cache-entries" || name == "cache-inactive-aging-timeout" || name == "cache-timeout-rate-limit" || name == "cache-update-aging-timeout")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporters()
-{
-
-    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::~Exporters()
-{
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_data() const
-{
-    for (std::size_t index=0; index<exporter.size(); index++)
-    {
-        if(exporter[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_operation() const
-{
-    for (std::size_t index=0; index<exporter.size(); index++)
-    {
-        if(exporter[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "exporters";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "exporter")
-    {
-        for(auto const & c : exporter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter>();
-        c->parent = this;
-        exporter.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : exporter)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exporter")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::Exporter()
-    :
-    exporter_name{YType::str, "exporter-name"}
-{
-
-    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::~Exporter()
-{
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::has_data() const
-{
-    return exporter_name.is_set;
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(exporter_name.yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "exporter" <<"[exporter-name='" <<exporter_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (exporter_name.is_set || is_set(exporter_name.yfilter)) leaf_name_data.push_back(exporter_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NetFlow::FlowExporterMaps::FlowExporterMap::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "exporter-name")
+    if(value_path == "ip-address")
     {
-        exporter_name = value;
-        exporter_name.value_namespace = name_space;
-        exporter_name.value_namespace_prefix = name_space_prefix;
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::set_filter(const std::string & value_path, YFilter yfilter)
+void NetFlow::FlowExporterMaps::FlowExporterMap::Destination::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "exporter-name")
+    if(value_path == "ip-address")
     {
-        exporter_name.yfilter = yfilter;
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
     }
 }
 
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::has_leaf_or_child_of_name(const std::string & name) const
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "exporter-name")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::Option()
-    :
-    bgp_attr{YType::empty, "bgp-attr"},
-    filtered{YType::empty, "filtered"},
-    out_bundle_member{YType::empty, "out-bundle-member"},
-    out_phys_int{YType::empty, "out-phys-int"}
-{
-
-    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::~Option()
-{
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_data() const
-{
-    return bgp_attr.is_set
-	|| filtered.is_set
-	|| out_bundle_member.is_set
-	|| out_phys_int.is_set;
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bgp_attr.yfilter)
-	|| ydk::is_set(filtered.yfilter)
-	|| ydk::is_set(out_bundle_member.yfilter)
-	|| ydk::is_set(out_phys_int.yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "option";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bgp_attr.is_set || is_set(bgp_attr.yfilter)) leaf_name_data.push_back(bgp_attr.get_name_leafdata());
-    if (filtered.is_set || is_set(filtered.yfilter)) leaf_name_data.push_back(filtered.get_name_leafdata());
-    if (out_bundle_member.is_set || is_set(out_bundle_member.yfilter)) leaf_name_data.push_back(out_bundle_member.get_name_leafdata());
-    if (out_phys_int.is_set || is_set(out_phys_int.yfilter)) leaf_name_data.push_back(out_phys_int.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bgp-attr")
-    {
-        bgp_attr = value;
-        bgp_attr.value_namespace = name_space;
-        bgp_attr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "filtered")
-    {
-        filtered = value;
-        filtered.value_namespace = name_space;
-        filtered.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-bundle-member")
-    {
-        out_bundle_member = value;
-        out_bundle_member.value_namespace = name_space;
-        out_bundle_member.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-phys-int")
-    {
-        out_phys_int = value;
-        out_phys_int.value_namespace = name_space;
-        out_phys_int.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bgp-attr")
-    {
-        bgp_attr.yfilter = yfilter;
-    }
-    if(value_path == "filtered")
-    {
-        filtered.yfilter = yfilter;
-    }
-    if(value_path == "out-bundle-member")
-    {
-        out_bundle_member.yfilter = yfilter;
-    }
-    if(value_path == "out-phys-int")
-    {
-        out_phys_int.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bgp-attr" || name == "filtered" || name == "out-bundle-member" || name == "out-phys-int")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::Record()
-    :
-    label{YType::uint32, "label"},
-    record_name{YType::str, "record-name"}
-{
-
-    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::~Record()
-{
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_data() const
-{
-    return label.is_set
-	|| record_name.is_set;
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(label.yfilter)
-	|| ydk::is_set(record_name.yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "record";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (record_name.is_set || is_set(record_name.yfilter)) leaf_name_data.push_back(record_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "label")
-    {
-        label = value;
-        label.value_namespace = name_space;
-        label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "record-name")
-    {
-        record_name = value;
-        record_name.value_namespace = name_space;
-        record_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "label")
-    {
-        label.yfilter = yfilter;
-    }
-    if(value_path == "record-name")
-    {
-        record_name.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "label" || name == "record-name")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMapTable()
-{
-
-    yang_name = "flow-monitor-map-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-NetFlow::FlowMonitorMapTable::~FlowMonitorMapTable()
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::has_data() const
-{
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
-    {
-        if(flow_monitor_map[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NetFlow::FlowMonitorMapTable::has_operation() const
-{
-    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
-    {
-        if(flow_monitor_map[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapTable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string NetFlow::FlowMonitorMapTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow-monitor-map-table";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flow-monitor-map")
-    {
-        for(auto const & c : flow_monitor_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap>();
-        c->parent = this;
-        flow_monitor_map.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : flow_monitor_map)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowMonitorMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NetFlow::FlowMonitorMapTable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow-monitor-map")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::FlowMonitorMap()
-    :
-    monitor_map_name{YType::str, "monitor-map-name"},
-    cache_active_aging_timeout{YType::uint32, "cache-active-aging-timeout"},
-    cache_aging_mode{YType::enumeration, "cache-aging-mode"},
-    cache_entries{YType::uint32, "cache-entries"},
-    cache_inactive_aging_timeout{YType::uint32, "cache-inactive-aging-timeout"},
-    cache_timeout_rate_limit{YType::uint32, "cache-timeout-rate-limit"},
-    cache_update_aging_timeout{YType::uint32, "cache-update-aging-timeout"}
-    	,
-    exporters(std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters>())
-	,option(std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option>())
-	,record(nullptr) // presence node
-{
-    exporters->parent = this;
-    option->parent = this;
-
-    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-table"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::~FlowMonitorMap()
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_data() const
-{
-    return monitor_map_name.is_set
-	|| cache_active_aging_timeout.is_set
-	|| cache_aging_mode.is_set
-	|| cache_entries.is_set
-	|| cache_inactive_aging_timeout.is_set
-	|| cache_timeout_rate_limit.is_set
-	|| cache_update_aging_timeout.is_set
-	|| (exporters !=  nullptr && exporters->has_data())
-	|| (option !=  nullptr && option->has_data())
-	|| (record !=  nullptr && record->has_data());
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(monitor_map_name.yfilter)
-	|| ydk::is_set(cache_active_aging_timeout.yfilter)
-	|| ydk::is_set(cache_aging_mode.yfilter)
-	|| ydk::is_set(cache_entries.yfilter)
-	|| ydk::is_set(cache_inactive_aging_timeout.yfilter)
-	|| ydk::is_set(cache_timeout_rate_limit.yfilter)
-	|| ydk::is_set(cache_update_aging_timeout.yfilter)
-	|| (exporters !=  nullptr && exporters->has_operation())
-	|| (option !=  nullptr && option->has_operation())
-	|| (record !=  nullptr && record->has_operation());
-}
-
-std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/flow-monitor-map-table/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow-monitor-map" <<"[monitor-map-name='" <<monitor_map_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (cache_active_aging_timeout.is_set || is_set(cache_active_aging_timeout.yfilter)) leaf_name_data.push_back(cache_active_aging_timeout.get_name_leafdata());
-    if (cache_aging_mode.is_set || is_set(cache_aging_mode.yfilter)) leaf_name_data.push_back(cache_aging_mode.get_name_leafdata());
-    if (cache_entries.is_set || is_set(cache_entries.yfilter)) leaf_name_data.push_back(cache_entries.get_name_leafdata());
-    if (cache_inactive_aging_timeout.is_set || is_set(cache_inactive_aging_timeout.yfilter)) leaf_name_data.push_back(cache_inactive_aging_timeout.get_name_leafdata());
-    if (cache_timeout_rate_limit.is_set || is_set(cache_timeout_rate_limit.yfilter)) leaf_name_data.push_back(cache_timeout_rate_limit.get_name_leafdata());
-    if (cache_update_aging_timeout.is_set || is_set(cache_update_aging_timeout.yfilter)) leaf_name_data.push_back(cache_update_aging_timeout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "exporters")
-    {
-        if(exporters == nullptr)
-        {
-            exporters = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters>();
-        }
-        return exporters;
-    }
-
-    if(child_yang_name == "option")
-    {
-        if(option == nullptr)
-        {
-            option = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option>();
-        }
-        return option;
-    }
-
-    if(child_yang_name == "record")
-    {
-        if(record == nullptr)
-        {
-            record = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record>();
-        }
-        return record;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(exporters != nullptr)
-    {
-        children["exporters"] = exporters;
-    }
-
-    if(option != nullptr)
-    {
-        children["option"] = option;
-    }
-
-    if(record != nullptr)
-    {
-        children["record"] = record;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "monitor-map-name")
-    {
-        monitor_map_name = value;
-        monitor_map_name.value_namespace = name_space;
-        monitor_map_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-active-aging-timeout")
-    {
-        cache_active_aging_timeout = value;
-        cache_active_aging_timeout.value_namespace = name_space;
-        cache_active_aging_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-aging-mode")
-    {
-        cache_aging_mode = value;
-        cache_aging_mode.value_namespace = name_space;
-        cache_aging_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-entries")
-    {
-        cache_entries = value;
-        cache_entries.value_namespace = name_space;
-        cache_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-inactive-aging-timeout")
-    {
-        cache_inactive_aging_timeout = value;
-        cache_inactive_aging_timeout.value_namespace = name_space;
-        cache_inactive_aging_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-timeout-rate-limit")
-    {
-        cache_timeout_rate_limit = value;
-        cache_timeout_rate_limit.value_namespace = name_space;
-        cache_timeout_rate_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-update-aging-timeout")
-    {
-        cache_update_aging_timeout = value;
-        cache_update_aging_timeout.value_namespace = name_space;
-        cache_update_aging_timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "monitor-map-name")
-    {
-        monitor_map_name.yfilter = yfilter;
-    }
-    if(value_path == "cache-active-aging-timeout")
-    {
-        cache_active_aging_timeout.yfilter = yfilter;
-    }
-    if(value_path == "cache-aging-mode")
-    {
-        cache_aging_mode.yfilter = yfilter;
-    }
-    if(value_path == "cache-entries")
-    {
-        cache_entries.yfilter = yfilter;
-    }
-    if(value_path == "cache-inactive-aging-timeout")
-    {
-        cache_inactive_aging_timeout.yfilter = yfilter;
-    }
-    if(value_path == "cache-timeout-rate-limit")
-    {
-        cache_timeout_rate_limit.yfilter = yfilter;
-    }
-    if(value_path == "cache-update-aging-timeout")
-    {
-        cache_update_aging_timeout.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exporters" || name == "option" || name == "record" || name == "monitor-map-name" || name == "cache-active-aging-timeout" || name == "cache-aging-mode" || name == "cache-entries" || name == "cache-inactive-aging-timeout" || name == "cache-timeout-rate-limit" || name == "cache-update-aging-timeout")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporters()
-{
-
-    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::~Exporters()
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_data() const
-{
-    for (std::size_t index=0; index<exporter.size(); index++)
-    {
-        if(exporter[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_operation() const
-{
-    for (std::size_t index=0; index<exporter.size(); index++)
-    {
-        if(exporter[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "exporters";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "exporter")
-    {
-        for(auto const & c : exporter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter>();
-        c->parent = this;
-        exporter.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : exporter)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exporter")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::Exporter()
-    :
-    exporter_name{YType::str, "exporter-name"}
-{
-
-    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::~Exporter()
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_data() const
-{
-    return exporter_name.is_set;
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(exporter_name.yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "exporter" <<"[exporter-name='" <<exporter_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (exporter_name.is_set || is_set(exporter_name.yfilter)) leaf_name_data.push_back(exporter_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "exporter-name")
-    {
-        exporter_name = value;
-        exporter_name.value_namespace = name_space;
-        exporter_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "exporter-name")
-    {
-        exporter_name.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exporter-name")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::Option()
-    :
-    bgp_attr{YType::empty, "bgp-attr"},
-    filtered{YType::empty, "filtered"},
-    out_bundle_member{YType::empty, "out-bundle-member"},
-    out_phys_int{YType::empty, "out-phys-int"}
-{
-
-    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::~Option()
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_data() const
-{
-    return bgp_attr.is_set
-	|| filtered.is_set
-	|| out_bundle_member.is_set
-	|| out_phys_int.is_set;
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bgp_attr.yfilter)
-	|| ydk::is_set(filtered.yfilter)
-	|| ydk::is_set(out_bundle_member.yfilter)
-	|| ydk::is_set(out_phys_int.yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "option";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bgp_attr.is_set || is_set(bgp_attr.yfilter)) leaf_name_data.push_back(bgp_attr.get_name_leafdata());
-    if (filtered.is_set || is_set(filtered.yfilter)) leaf_name_data.push_back(filtered.get_name_leafdata());
-    if (out_bundle_member.is_set || is_set(out_bundle_member.yfilter)) leaf_name_data.push_back(out_bundle_member.get_name_leafdata());
-    if (out_phys_int.is_set || is_set(out_phys_int.yfilter)) leaf_name_data.push_back(out_phys_int.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bgp-attr")
-    {
-        bgp_attr = value;
-        bgp_attr.value_namespace = name_space;
-        bgp_attr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "filtered")
-    {
-        filtered = value;
-        filtered.value_namespace = name_space;
-        filtered.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-bundle-member")
-    {
-        out_bundle_member = value;
-        out_bundle_member.value_namespace = name_space;
-        out_bundle_member.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-phys-int")
-    {
-        out_phys_int = value;
-        out_phys_int.value_namespace = name_space;
-        out_phys_int.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bgp-attr")
-    {
-        bgp_attr.yfilter = yfilter;
-    }
-    if(value_path == "filtered")
-    {
-        filtered.yfilter = yfilter;
-    }
-    if(value_path == "out-bundle-member")
-    {
-        out_bundle_member.yfilter = yfilter;
-    }
-    if(value_path == "out-phys-int")
-    {
-        out_phys_int.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bgp-attr" || name == "filtered" || name == "out-bundle-member" || name == "out-phys-int")
-        return true;
-    return false;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::Record()
-    :
-    label{YType::uint32, "label"},
-    record_name{YType::str, "record-name"}
-{
-
-    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::~Record()
-{
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_data() const
-{
-    return label.is_set
-	|| record_name.is_set;
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(label.yfilter)
-	|| ydk::is_set(record_name.yfilter);
-}
-
-std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "record";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (record_name.is_set || is_set(record_name.yfilter)) leaf_name_data.push_back(record_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "label")
-    {
-        label = value;
-        label.value_namespace = name_space;
-        label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "record-name")
-    {
-        record_name = value;
-        record_name.value_namespace = name_space;
-        record_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "label")
-    {
-        label.yfilter = yfilter;
-    }
-    if(value_path == "record-name")
-    {
-        record_name.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "label" || name == "record-name")
+    if(name == "ip-address" || name == "ipv6-address" || name == "vrf-name")
         return true;
     return false;
 }
@@ -2658,8 +1262,8 @@ bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::has_leaf_or_child_
 NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::SamplingMode()
     :
     mode{YType::enumeration, "mode"},
-    interval{YType::uint32, "interval"},
-    sample_number{YType::uint32, "sample-number"}
+    sample_number{YType::uint32, "sample-number"},
+    interval{YType::uint32, "interval"}
 {
 
     yang_name = "sampling-mode"; yang_parent_name = "sampling-modes"; is_top_level_class = false; has_list_ancestor = true;
@@ -2672,16 +1276,16 @@ NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::~Sampling
 bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::has_data() const
 {
     return mode.is_set
-	|| interval.is_set
-	|| sample_number.is_set;
+	|| sample_number.is_set
+	|| interval.is_set;
 }
 
 bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mode.yfilter)
-	|| ydk::is_set(interval.yfilter)
-	|| ydk::is_set(sample_number.yfilter);
+	|| ydk::is_set(sample_number.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::get_segment_path() const
@@ -2696,8 +1300,8 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::FlowSamplerMaps::FlowSam
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
     if (sample_number.is_set || is_set(sample_number.yfilter)) leaf_name_data.push_back(sample_number.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2722,17 +1326,17 @@ void NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::set_
         mode.value_namespace = name_space;
         mode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "sample-number")
     {
         sample_number = value;
         sample_number.value_namespace = name_space;
         sample_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2742,28 +1346,1424 @@ void NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::set_
     {
         mode.yfilter = yfilter;
     }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
     if(value_path == "sample-number")
     {
         sample_number.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
     }
 }
 
 bool NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mode" || name == "interval" || name == "sample-number")
+    if(name == "mode" || name == "sample-number" || name == "interval")
         return true;
     return false;
 }
 
-const Enum::YLeaf NfSamplingMode::random {2, "random"};
+NetFlow::FlowMonitorMapTable::FlowMonitorMapTable()
+{
+
+    yang_name = "flow-monitor-map-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetFlow::FlowMonitorMapTable::~FlowMonitorMapTable()
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::has_data() const
+{
+    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    {
+        if(flow_monitor_map[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NetFlow::FlowMonitorMapTable::has_operation() const
+{
+    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    {
+        if(flow_monitor_map[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetFlow::FlowMonitorMapTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flow-monitor-map-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "flow-monitor-map")
+    {
+        for(auto const & c : flow_monitor_map)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap>();
+        c->parent = this;
+        flow_monitor_map.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : flow_monitor_map)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NetFlow::FlowMonitorMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NetFlow::FlowMonitorMapTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-map")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::FlowMonitorMap()
+    :
+    monitor_map_name{YType::str, "monitor-map-name"},
+    cache_update_aging_timeout{YType::uint32, "cache-update-aging-timeout"},
+    cache_entries{YType::uint32, "cache-entries"},
+    cache_inactive_aging_timeout{YType::uint32, "cache-inactive-aging-timeout"},
+    cache_active_aging_timeout{YType::uint32, "cache-active-aging-timeout"},
+    cache_timeout_rate_limit{YType::uint32, "cache-timeout-rate-limit"},
+    cache_aging_mode{YType::enumeration, "cache-aging-mode"}
+    	,
+    option(std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option>())
+	,exporters(std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters>())
+	,record(nullptr) // presence node
+{
+    option->parent = this;
+    exporters->parent = this;
+
+    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-table"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::~FlowMonitorMap()
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_data() const
+{
+    return monitor_map_name.is_set
+	|| cache_update_aging_timeout.is_set
+	|| cache_entries.is_set
+	|| cache_inactive_aging_timeout.is_set
+	|| cache_active_aging_timeout.is_set
+	|| cache_timeout_rate_limit.is_set
+	|| cache_aging_mode.is_set
+	|| (option !=  nullptr && option->has_data())
+	|| (exporters !=  nullptr && exporters->has_data())
+	|| (record !=  nullptr && record->has_data());
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(cache_update_aging_timeout.yfilter)
+	|| ydk::is_set(cache_entries.yfilter)
+	|| ydk::is_set(cache_inactive_aging_timeout.yfilter)
+	|| ydk::is_set(cache_active_aging_timeout.yfilter)
+	|| ydk::is_set(cache_timeout_rate_limit.yfilter)
+	|| ydk::is_set(cache_aging_mode.yfilter)
+	|| (option !=  nullptr && option->has_operation())
+	|| (exporters !=  nullptr && exporters->has_operation())
+	|| (record !=  nullptr && record->has_operation());
+}
+
+std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/flow-monitor-map-table/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flow-monitor-map" <<"[monitor-map-name='" <<monitor_map_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (cache_update_aging_timeout.is_set || is_set(cache_update_aging_timeout.yfilter)) leaf_name_data.push_back(cache_update_aging_timeout.get_name_leafdata());
+    if (cache_entries.is_set || is_set(cache_entries.yfilter)) leaf_name_data.push_back(cache_entries.get_name_leafdata());
+    if (cache_inactive_aging_timeout.is_set || is_set(cache_inactive_aging_timeout.yfilter)) leaf_name_data.push_back(cache_inactive_aging_timeout.get_name_leafdata());
+    if (cache_active_aging_timeout.is_set || is_set(cache_active_aging_timeout.yfilter)) leaf_name_data.push_back(cache_active_aging_timeout.get_name_leafdata());
+    if (cache_timeout_rate_limit.is_set || is_set(cache_timeout_rate_limit.yfilter)) leaf_name_data.push_back(cache_timeout_rate_limit.get_name_leafdata());
+    if (cache_aging_mode.is_set || is_set(cache_aging_mode.yfilter)) leaf_name_data.push_back(cache_aging_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "option")
+    {
+        if(option == nullptr)
+        {
+            option = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option>();
+        }
+        return option;
+    }
+
+    if(child_yang_name == "exporters")
+    {
+        if(exporters == nullptr)
+        {
+            exporters = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters>();
+        }
+        return exporters;
+    }
+
+    if(child_yang_name == "record")
+    {
+        if(record == nullptr)
+        {
+            record = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record>();
+        }
+        return record;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(option != nullptr)
+    {
+        children["option"] = option;
+    }
+
+    if(exporters != nullptr)
+    {
+        children["exporters"] = exporters;
+    }
+
+    if(record != nullptr)
+    {
+        children["record"] = record;
+    }
+
+    return children;
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-update-aging-timeout")
+    {
+        cache_update_aging_timeout = value;
+        cache_update_aging_timeout.value_namespace = name_space;
+        cache_update_aging_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-entries")
+    {
+        cache_entries = value;
+        cache_entries.value_namespace = name_space;
+        cache_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-inactive-aging-timeout")
+    {
+        cache_inactive_aging_timeout = value;
+        cache_inactive_aging_timeout.value_namespace = name_space;
+        cache_inactive_aging_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-active-aging-timeout")
+    {
+        cache_active_aging_timeout = value;
+        cache_active_aging_timeout.value_namespace = name_space;
+        cache_active_aging_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-timeout-rate-limit")
+    {
+        cache_timeout_rate_limit = value;
+        cache_timeout_rate_limit.value_namespace = name_space;
+        cache_timeout_rate_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-aging-mode")
+    {
+        cache_aging_mode = value;
+        cache_aging_mode.value_namespace = name_space;
+        cache_aging_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "cache-update-aging-timeout")
+    {
+        cache_update_aging_timeout.yfilter = yfilter;
+    }
+    if(value_path == "cache-entries")
+    {
+        cache_entries.yfilter = yfilter;
+    }
+    if(value_path == "cache-inactive-aging-timeout")
+    {
+        cache_inactive_aging_timeout.yfilter = yfilter;
+    }
+    if(value_path == "cache-active-aging-timeout")
+    {
+        cache_active_aging_timeout.yfilter = yfilter;
+    }
+    if(value_path == "cache-timeout-rate-limit")
+    {
+        cache_timeout_rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "cache-aging-mode")
+    {
+        cache_aging_mode.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option" || name == "exporters" || name == "record" || name == "monitor-map-name" || name == "cache-update-aging-timeout" || name == "cache-entries" || name == "cache-inactive-aging-timeout" || name == "cache-active-aging-timeout" || name == "cache-timeout-rate-limit" || name == "cache-aging-mode")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::Option()
+    :
+    filtered{YType::empty, "filtered"},
+    out_bundle_member{YType::empty, "out-bundle-member"},
+    out_phys_int{YType::empty, "out-phys-int"},
+    bgp_attr{YType::empty, "bgp-attr"}
+{
+
+    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::~Option()
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_data() const
+{
+    return filtered.is_set
+	|| out_bundle_member.is_set
+	|| out_phys_int.is_set
+	|| bgp_attr.is_set;
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(filtered.yfilter)
+	|| ydk::is_set(out_bundle_member.yfilter)
+	|| ydk::is_set(out_phys_int.yfilter)
+	|| ydk::is_set(bgp_attr.yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (filtered.is_set || is_set(filtered.yfilter)) leaf_name_data.push_back(filtered.get_name_leafdata());
+    if (out_bundle_member.is_set || is_set(out_bundle_member.yfilter)) leaf_name_data.push_back(out_bundle_member.get_name_leafdata());
+    if (out_phys_int.is_set || is_set(out_phys_int.yfilter)) leaf_name_data.push_back(out_phys_int.get_name_leafdata());
+    if (bgp_attr.is_set || is_set(bgp_attr.yfilter)) leaf_name_data.push_back(bgp_attr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "filtered")
+    {
+        filtered = value;
+        filtered.value_namespace = name_space;
+        filtered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-bundle-member")
+    {
+        out_bundle_member = value;
+        out_bundle_member.value_namespace = name_space;
+        out_bundle_member.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-phys-int")
+    {
+        out_phys_int = value;
+        out_phys_int.value_namespace = name_space;
+        out_phys_int.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bgp-attr")
+    {
+        bgp_attr = value;
+        bgp_attr.value_namespace = name_space;
+        bgp_attr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filtered")
+    {
+        filtered.yfilter = yfilter;
+    }
+    if(value_path == "out-bundle-member")
+    {
+        out_bundle_member.yfilter = yfilter;
+    }
+    if(value_path == "out-phys-int")
+    {
+        out_phys_int.yfilter = yfilter;
+    }
+    if(value_path == "bgp-attr")
+    {
+        bgp_attr.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filtered" || name == "out-bundle-member" || name == "out-phys-int" || name == "bgp-attr")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporters()
+{
+
+    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::~Exporters()
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_data() const
+{
+    for (std::size_t index=0; index<exporter.size(); index++)
+    {
+        if(exporter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_operation() const
+{
+    for (std::size_t index=0; index<exporter.size(); index++)
+    {
+        if(exporter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "exporters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "exporter")
+    {
+        for(auto const & c : exporter)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter>();
+        c->parent = this;
+        exporter.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : exporter)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exporter")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::Exporter()
+    :
+    exporter_name{YType::str, "exporter-name"}
+{
+
+    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::~Exporter()
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_data() const
+{
+    return exporter_name.is_set;
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(exporter_name.yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "exporter" <<"[exporter-name='" <<exporter_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (exporter_name.is_set || is_set(exporter_name.yfilter)) leaf_name_data.push_back(exporter_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "exporter-name")
+    {
+        exporter_name = value;
+        exporter_name.value_namespace = name_space;
+        exporter_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exporter-name")
+    {
+        exporter_name.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exporter-name")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::Record()
+    :
+    record_name{YType::str, "record-name"},
+    label{YType::uint32, "label"}
+{
+
+    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::~Record()
+{
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_data() const
+{
+    return record_name.is_set
+	|| label.is_set;
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(record_name.yfilter)
+	|| ydk::is_set(label.yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "record";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (record_name.is_set || is_set(record_name.yfilter)) leaf_name_data.push_back(record_name.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "record-name")
+    {
+        record_name = value;
+        record_name.value_namespace = name_space;
+        record_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "record-name")
+    {
+        record_name.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "record-name" || name == "label")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMapPerformanceTable()
+{
+
+    yang_name = "flow-monitor-map-performance-table"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::~FlowMonitorMapPerformanceTable()
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::has_data() const
+{
+    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    {
+        if(flow_monitor_map[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::has_operation() const
+{
+    for (std::size_t index=0; index<flow_monitor_map.size(); index++)
+    {
+        if(flow_monitor_map[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flow-monitor-map-performance-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "flow-monitor-map")
+    {
+        for(auto const & c : flow_monitor_map)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap>();
+        c->parent = this;
+        flow_monitor_map.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : flow_monitor_map)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-map")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::FlowMonitorMap()
+    :
+    monitor_map_name{YType::str, "monitor-map-name"},
+    cache_update_aging_timeout{YType::uint32, "cache-update-aging-timeout"},
+    cache_entries{YType::uint32, "cache-entries"},
+    cache_inactive_aging_timeout{YType::uint32, "cache-inactive-aging-timeout"},
+    cache_active_aging_timeout{YType::uint32, "cache-active-aging-timeout"},
+    cache_timeout_rate_limit{YType::uint32, "cache-timeout-rate-limit"},
+    cache_aging_mode{YType::enumeration, "cache-aging-mode"}
+    	,
+    option(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option>())
+	,exporters(std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters>())
+	,record(nullptr) // presence node
+{
+    option->parent = this;
+    exporters->parent = this;
+
+    yang_name = "flow-monitor-map"; yang_parent_name = "flow-monitor-map-performance-table"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::~FlowMonitorMap()
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_data() const
+{
+    return monitor_map_name.is_set
+	|| cache_update_aging_timeout.is_set
+	|| cache_entries.is_set
+	|| cache_inactive_aging_timeout.is_set
+	|| cache_active_aging_timeout.is_set
+	|| cache_timeout_rate_limit.is_set
+	|| cache_aging_mode.is_set
+	|| (option !=  nullptr && option->has_data())
+	|| (exporters !=  nullptr && exporters->has_data())
+	|| (record !=  nullptr && record->has_data());
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(cache_update_aging_timeout.yfilter)
+	|| ydk::is_set(cache_entries.yfilter)
+	|| ydk::is_set(cache_inactive_aging_timeout.yfilter)
+	|| ydk::is_set(cache_active_aging_timeout.yfilter)
+	|| ydk::is_set(cache_timeout_rate_limit.yfilter)
+	|| ydk::is_set(cache_aging_mode.yfilter)
+	|| (option !=  nullptr && option->has_operation())
+	|| (exporters !=  nullptr && exporters->has_operation())
+	|| (record !=  nullptr && record->has_operation());
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow/flow-monitor-map-performance-table/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flow-monitor-map" <<"[monitor-map-name='" <<monitor_map_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (cache_update_aging_timeout.is_set || is_set(cache_update_aging_timeout.yfilter)) leaf_name_data.push_back(cache_update_aging_timeout.get_name_leafdata());
+    if (cache_entries.is_set || is_set(cache_entries.yfilter)) leaf_name_data.push_back(cache_entries.get_name_leafdata());
+    if (cache_inactive_aging_timeout.is_set || is_set(cache_inactive_aging_timeout.yfilter)) leaf_name_data.push_back(cache_inactive_aging_timeout.get_name_leafdata());
+    if (cache_active_aging_timeout.is_set || is_set(cache_active_aging_timeout.yfilter)) leaf_name_data.push_back(cache_active_aging_timeout.get_name_leafdata());
+    if (cache_timeout_rate_limit.is_set || is_set(cache_timeout_rate_limit.yfilter)) leaf_name_data.push_back(cache_timeout_rate_limit.get_name_leafdata());
+    if (cache_aging_mode.is_set || is_set(cache_aging_mode.yfilter)) leaf_name_data.push_back(cache_aging_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "option")
+    {
+        if(option == nullptr)
+        {
+            option = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option>();
+        }
+        return option;
+    }
+
+    if(child_yang_name == "exporters")
+    {
+        if(exporters == nullptr)
+        {
+            exporters = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters>();
+        }
+        return exporters;
+    }
+
+    if(child_yang_name == "record")
+    {
+        if(record == nullptr)
+        {
+            record = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record>();
+        }
+        return record;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(option != nullptr)
+    {
+        children["option"] = option;
+    }
+
+    if(exporters != nullptr)
+    {
+        children["exporters"] = exporters;
+    }
+
+    if(record != nullptr)
+    {
+        children["record"] = record;
+    }
+
+    return children;
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-update-aging-timeout")
+    {
+        cache_update_aging_timeout = value;
+        cache_update_aging_timeout.value_namespace = name_space;
+        cache_update_aging_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-entries")
+    {
+        cache_entries = value;
+        cache_entries.value_namespace = name_space;
+        cache_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-inactive-aging-timeout")
+    {
+        cache_inactive_aging_timeout = value;
+        cache_inactive_aging_timeout.value_namespace = name_space;
+        cache_inactive_aging_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-active-aging-timeout")
+    {
+        cache_active_aging_timeout = value;
+        cache_active_aging_timeout.value_namespace = name_space;
+        cache_active_aging_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-timeout-rate-limit")
+    {
+        cache_timeout_rate_limit = value;
+        cache_timeout_rate_limit.value_namespace = name_space;
+        cache_timeout_rate_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-aging-mode")
+    {
+        cache_aging_mode = value;
+        cache_aging_mode.value_namespace = name_space;
+        cache_aging_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "cache-update-aging-timeout")
+    {
+        cache_update_aging_timeout.yfilter = yfilter;
+    }
+    if(value_path == "cache-entries")
+    {
+        cache_entries.yfilter = yfilter;
+    }
+    if(value_path == "cache-inactive-aging-timeout")
+    {
+        cache_inactive_aging_timeout.yfilter = yfilter;
+    }
+    if(value_path == "cache-active-aging-timeout")
+    {
+        cache_active_aging_timeout.yfilter = yfilter;
+    }
+    if(value_path == "cache-timeout-rate-limit")
+    {
+        cache_timeout_rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "cache-aging-mode")
+    {
+        cache_aging_mode.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option" || name == "exporters" || name == "record" || name == "monitor-map-name" || name == "cache-update-aging-timeout" || name == "cache-entries" || name == "cache-inactive-aging-timeout" || name == "cache-active-aging-timeout" || name == "cache-timeout-rate-limit" || name == "cache-aging-mode")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::Option()
+    :
+    filtered{YType::empty, "filtered"},
+    out_bundle_member{YType::empty, "out-bundle-member"},
+    out_phys_int{YType::empty, "out-phys-int"},
+    bgp_attr{YType::empty, "bgp-attr"}
+{
+
+    yang_name = "option"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::~Option()
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_data() const
+{
+    return filtered.is_set
+	|| out_bundle_member.is_set
+	|| out_phys_int.is_set
+	|| bgp_attr.is_set;
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(filtered.yfilter)
+	|| ydk::is_set(out_bundle_member.yfilter)
+	|| ydk::is_set(out_phys_int.yfilter)
+	|| ydk::is_set(bgp_attr.yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (filtered.is_set || is_set(filtered.yfilter)) leaf_name_data.push_back(filtered.get_name_leafdata());
+    if (out_bundle_member.is_set || is_set(out_bundle_member.yfilter)) leaf_name_data.push_back(out_bundle_member.get_name_leafdata());
+    if (out_phys_int.is_set || is_set(out_phys_int.yfilter)) leaf_name_data.push_back(out_phys_int.get_name_leafdata());
+    if (bgp_attr.is_set || is_set(bgp_attr.yfilter)) leaf_name_data.push_back(bgp_attr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "filtered")
+    {
+        filtered = value;
+        filtered.value_namespace = name_space;
+        filtered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-bundle-member")
+    {
+        out_bundle_member = value;
+        out_bundle_member.value_namespace = name_space;
+        out_bundle_member.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-phys-int")
+    {
+        out_phys_int = value;
+        out_phys_int.value_namespace = name_space;
+        out_phys_int.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bgp-attr")
+    {
+        bgp_attr = value;
+        bgp_attr.value_namespace = name_space;
+        bgp_attr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filtered")
+    {
+        filtered.yfilter = yfilter;
+    }
+    if(value_path == "out-bundle-member")
+    {
+        out_bundle_member.yfilter = yfilter;
+    }
+    if(value_path == "out-phys-int")
+    {
+        out_phys_int.yfilter = yfilter;
+    }
+    if(value_path == "bgp-attr")
+    {
+        bgp_attr.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filtered" || name == "out-bundle-member" || name == "out-phys-int" || name == "bgp-attr")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporters()
+{
+
+    yang_name = "exporters"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::~Exporters()
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_data() const
+{
+    for (std::size_t index=0; index<exporter.size(); index++)
+    {
+        if(exporter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_operation() const
+{
+    for (std::size_t index=0; index<exporter.size(); index++)
+    {
+        if(exporter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "exporters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "exporter")
+    {
+        for(auto const & c : exporter)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter>();
+        c->parent = this;
+        exporter.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : exporter)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exporter")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::Exporter()
+    :
+    exporter_name{YType::str, "exporter-name"}
+{
+
+    yang_name = "exporter"; yang_parent_name = "exporters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::~Exporter()
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::has_data() const
+{
+    return exporter_name.is_set;
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(exporter_name.yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "exporter" <<"[exporter-name='" <<exporter_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (exporter_name.is_set || is_set(exporter_name.yfilter)) leaf_name_data.push_back(exporter_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "exporter-name")
+    {
+        exporter_name = value;
+        exporter_name.value_namespace = name_space;
+        exporter_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exporter-name")
+    {
+        exporter_name.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exporter-name")
+        return true;
+    return false;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::Record()
+    :
+    record_name{YType::str, "record-name"},
+    label{YType::uint32, "label"}
+{
+
+    yang_name = "record"; yang_parent_name = "flow-monitor-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::~Record()
+{
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_data() const
+{
+    return record_name.is_set
+	|| label.is_set;
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(record_name.yfilter)
+	|| ydk::is_set(label.yfilter);
+}
+
+std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "record";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (record_name.is_set || is_set(record_name.yfilter)) leaf_name_data.push_back(record_name.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "record-name")
+    {
+        record_name = value;
+        record_name.value_namespace = name_space;
+        record_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "record-name")
+    {
+        record_name.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "record-name" || name == "label")
+        return true;
+    return false;
+}
 
 const Enum::YLeaf NfCacheAgingMode::normal {0, "normal"};
 const Enum::YLeaf NfCacheAgingMode::permanent {1, "permanent"};
 const Enum::YLeaf NfCacheAgingMode::immediate {2, "immediate"};
+
+const Enum::YLeaf NfSamplingMode::random {2, "random"};
 
 
 }

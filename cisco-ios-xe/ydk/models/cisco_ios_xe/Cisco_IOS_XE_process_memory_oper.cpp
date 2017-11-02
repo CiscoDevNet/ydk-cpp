@@ -133,12 +133,12 @@ MemoryUsageProcesses::MemoryUsageProcess::MemoryUsageProcess()
     :
     pid{YType::uint32, "pid"},
     name{YType::str, "name"},
+    tty{YType::uint16, "tty"},
     allocated_memory{YType::uint64, "allocated-memory"},
     freed_memory{YType::uint64, "freed-memory"},
-    get_buffers{YType::uint32, "get-buffers"},
     holding_memory{YType::uint64, "holding-memory"},
-    ret_buffers{YType::uint32, "ret-buffers"},
-    tty{YType::uint16, "tty"}
+    get_buffers{YType::uint32, "get-buffers"},
+    ret_buffers{YType::uint32, "ret-buffers"}
 {
 
     yang_name = "memory-usage-process"; yang_parent_name = "memory-usage-processes"; is_top_level_class = false; has_list_ancestor = false;
@@ -152,12 +152,12 @@ bool MemoryUsageProcesses::MemoryUsageProcess::has_data() const
 {
     return pid.is_set
 	|| name.is_set
+	|| tty.is_set
 	|| allocated_memory.is_set
 	|| freed_memory.is_set
-	|| get_buffers.is_set
 	|| holding_memory.is_set
-	|| ret_buffers.is_set
-	|| tty.is_set;
+	|| get_buffers.is_set
+	|| ret_buffers.is_set;
 }
 
 bool MemoryUsageProcesses::MemoryUsageProcess::has_operation() const
@@ -165,12 +165,12 @@ bool MemoryUsageProcesses::MemoryUsageProcess::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(pid.yfilter)
 	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(tty.yfilter)
 	|| ydk::is_set(allocated_memory.yfilter)
 	|| ydk::is_set(freed_memory.yfilter)
-	|| ydk::is_set(get_buffers.yfilter)
 	|| ydk::is_set(holding_memory.yfilter)
-	|| ydk::is_set(ret_buffers.yfilter)
-	|| ydk::is_set(tty.yfilter);
+	|| ydk::is_set(get_buffers.yfilter)
+	|| ydk::is_set(ret_buffers.yfilter);
 }
 
 std::string MemoryUsageProcesses::MemoryUsageProcess::get_absolute_path() const
@@ -193,12 +193,12 @@ std::vector<std::pair<std::string, LeafData> > MemoryUsageProcesses::MemoryUsage
 
     if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (tty.is_set || is_set(tty.yfilter)) leaf_name_data.push_back(tty.get_name_leafdata());
     if (allocated_memory.is_set || is_set(allocated_memory.yfilter)) leaf_name_data.push_back(allocated_memory.get_name_leafdata());
     if (freed_memory.is_set || is_set(freed_memory.yfilter)) leaf_name_data.push_back(freed_memory.get_name_leafdata());
-    if (get_buffers.is_set || is_set(get_buffers.yfilter)) leaf_name_data.push_back(get_buffers.get_name_leafdata());
     if (holding_memory.is_set || is_set(holding_memory.yfilter)) leaf_name_data.push_back(holding_memory.get_name_leafdata());
+    if (get_buffers.is_set || is_set(get_buffers.yfilter)) leaf_name_data.push_back(get_buffers.get_name_leafdata());
     if (ret_buffers.is_set || is_set(ret_buffers.yfilter)) leaf_name_data.push_back(ret_buffers.get_name_leafdata());
-    if (tty.is_set || is_set(tty.yfilter)) leaf_name_data.push_back(tty.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -229,6 +229,12 @@ void MemoryUsageProcesses::MemoryUsageProcess::set_value(const std::string & val
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "tty")
+    {
+        tty = value;
+        tty.value_namespace = name_space;
+        tty.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "allocated-memory")
     {
         allocated_memory = value;
@@ -241,29 +247,23 @@ void MemoryUsageProcesses::MemoryUsageProcess::set_value(const std::string & val
         freed_memory.value_namespace = name_space;
         freed_memory.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "get-buffers")
-    {
-        get_buffers = value;
-        get_buffers.value_namespace = name_space;
-        get_buffers.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "holding-memory")
     {
         holding_memory = value;
         holding_memory.value_namespace = name_space;
         holding_memory.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "get-buffers")
+    {
+        get_buffers = value;
+        get_buffers.value_namespace = name_space;
+        get_buffers.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ret-buffers")
     {
         ret_buffers = value;
         ret_buffers.value_namespace = name_space;
         ret_buffers.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tty")
-    {
-        tty = value;
-        tty.value_namespace = name_space;
-        tty.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -277,6 +277,10 @@ void MemoryUsageProcesses::MemoryUsageProcess::set_filter(const std::string & va
     {
         name.yfilter = yfilter;
     }
+    if(value_path == "tty")
+    {
+        tty.yfilter = yfilter;
+    }
     if(value_path == "allocated-memory")
     {
         allocated_memory.yfilter = yfilter;
@@ -285,27 +289,23 @@ void MemoryUsageProcesses::MemoryUsageProcess::set_filter(const std::string & va
     {
         freed_memory.yfilter = yfilter;
     }
-    if(value_path == "get-buffers")
-    {
-        get_buffers.yfilter = yfilter;
-    }
     if(value_path == "holding-memory")
     {
         holding_memory.yfilter = yfilter;
+    }
+    if(value_path == "get-buffers")
+    {
+        get_buffers.yfilter = yfilter;
     }
     if(value_path == "ret-buffers")
     {
         ret_buffers.yfilter = yfilter;
     }
-    if(value_path == "tty")
-    {
-        tty.yfilter = yfilter;
-    }
 }
 
 bool MemoryUsageProcesses::MemoryUsageProcess::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pid" || name == "name" || name == "allocated-memory" || name == "freed-memory" || name == "get-buffers" || name == "holding-memory" || name == "ret-buffers" || name == "tty")
+    if(name == "pid" || name == "name" || name == "tty" || name == "allocated-memory" || name == "freed-memory" || name == "holding-memory" || name == "get-buffers" || name == "ret-buffers")
         return true;
     return false;
 }

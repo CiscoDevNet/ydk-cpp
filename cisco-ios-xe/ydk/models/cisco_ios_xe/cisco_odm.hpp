@@ -19,15 +19,6 @@ class Parsername : public virtual ydk::Identity
 
 }; // Parsername
 
-class BFDNeighbors : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
-{
-    public:
-        BFDNeighbors();
-        ~BFDNeighbors();
-
-
-}; // BFDNeighbors
-
 class BGP : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
@@ -36,6 +27,33 @@ class BGP : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 
 
 }; // BGP
+
+class IPRoute : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
+{
+    public:
+        IPRoute();
+        ~IPRoute();
+
+
+}; // IPRoute
+
+class FlowMonitor : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
+{
+    public:
+        FlowMonitor();
+        ~FlowMonitor();
+
+
+}; // FlowMonitor
+
+class BFDNeighbors : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
+{
+    public:
+        BFDNeighbors();
+        ~BFDNeighbors();
+
+
+}; // BFDNeighbors
 
 class BridgeDomain : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 {
@@ -55,41 +73,14 @@ class Diffserv : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identi
 
 }; // Diffserv
 
-class EthernetCFMStats : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
+class VirtualService : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        EthernetCFMStats();
-        ~EthernetCFMStats();
+        VirtualService();
+        ~VirtualService();
 
 
-}; // EthernetCFMStats
-
-class FlowMonitor : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
-{
-    public:
-        FlowMonitor();
-        ~FlowMonitor();
-
-
-}; // FlowMonitor
-
-class IPRoute : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
-{
-    public:
-        IPRoute();
-        ~IPRoute();
-
-
-}; // IPRoute
-
-class MPLSForwardingTable : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
-{
-    public:
-        MPLSForwardingTable();
-        ~MPLSForwardingTable();
-
-
-}; // MPLSForwardingTable
+}; // VirtualService
 
 class MPLSLDPNeighbors : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 {
@@ -100,6 +91,15 @@ class MPLSLDPNeighbors : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk
 
 }; // MPLSLDPNeighbors
 
+class PlatformSoftware : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
+{
+    public:
+        PlatformSoftware();
+        ~PlatformSoftware();
+
+
+}; // PlatformSoftware
+
 class MPLSStaticBinding : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
@@ -108,6 +108,15 @@ class MPLSStaticBinding : public cisco_ios_xe::cisco_odm::Parsername, virtual yd
 
 
 }; // MPLSStaticBinding
+
+class MPLSForwardingTable : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
+{
+    public:
+        MPLSForwardingTable();
+        ~MPLSForwardingTable();
+
+
+}; // MPLSForwardingTable
 
 class OSPF : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 {
@@ -118,23 +127,14 @@ class OSPF : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 
 }; // OSPF
 
-class PlatformSoftware : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
+class EthernetCFMStats : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        PlatformSoftware();
-        ~PlatformSoftware();
+        EthernetCFMStats();
+        ~EthernetCFMStats();
 
 
-}; // PlatformSoftware
-
-class VirtualService : public cisco_ios_xe::cisco_odm::Parsername, virtual ydk::Identity
-{
-    public:
-        VirtualService();
-        ~VirtualService();
-
-
-}; // VirtualService
+}; // EthernetCFMStats
 
 
 }

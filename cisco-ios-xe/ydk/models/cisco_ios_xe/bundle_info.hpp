@@ -27,7 +27,7 @@
 
 namespace ydk
 {
-#define ydk_cisco_ios_xe_models_path "/usr/local/share/cisco_ios_xe@16.6.1"
+#define ydk_cisco_ios_xe_models_path "/usr/local/share/cisco_ios_xe@16.6.1-post1"
 }
 
 #endif /* _BUNDLE_INFO_HPP_ */

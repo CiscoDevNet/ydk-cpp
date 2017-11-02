@@ -233,11 +233,11 @@ bool ControllerPortMode::OpticsName::has_leaf_or_child_of_name(const std::string
 
 ControllerPortMode::OpticsName::PortModeInfo::PortModeInfo()
     :
-    diff{YType::str, "diff"},
-    fec{YType::str, "fec"},
     intf_name{YType::str, "intf-name"},
-    modulation{YType::str, "modulation"},
-    speed{YType::str, "speed"}
+    speed{YType::str, "speed"},
+    fec{YType::str, "fec"},
+    diff{YType::str, "diff"},
+    modulation{YType::str, "modulation"}
 {
 
     yang_name = "port-mode-info"; yang_parent_name = "optics-name"; is_top_level_class = false; has_list_ancestor = true;
@@ -249,21 +249,21 @@ ControllerPortMode::OpticsName::PortModeInfo::~PortModeInfo()
 
 bool ControllerPortMode::OpticsName::PortModeInfo::has_data() const
 {
-    return diff.is_set
+    return intf_name.is_set
+	|| speed.is_set
 	|| fec.is_set
-	|| intf_name.is_set
-	|| modulation.is_set
-	|| speed.is_set;
+	|| diff.is_set
+	|| modulation.is_set;
 }
 
 bool ControllerPortMode::OpticsName::PortModeInfo::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(diff.yfilter)
-	|| ydk::is_set(fec.yfilter)
 	|| ydk::is_set(intf_name.yfilter)
-	|| ydk::is_set(modulation.yfilter)
-	|| ydk::is_set(speed.yfilter);
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(fec.yfilter)
+	|| ydk::is_set(diff.yfilter)
+	|| ydk::is_set(modulation.yfilter);
 }
 
 std::string ControllerPortMode::OpticsName::PortModeInfo::get_segment_path() const
@@ -277,11 +277,11 @@ std::vector<std::pair<std::string, LeafData> > ControllerPortMode::OpticsName::P
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (diff.is_set || is_set(diff.yfilter)) leaf_name_data.push_back(diff.get_name_leafdata());
-    if (fec.is_set || is_set(fec.yfilter)) leaf_name_data.push_back(fec.get_name_leafdata());
     if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
-    if (modulation.is_set || is_set(modulation.yfilter)) leaf_name_data.push_back(modulation.get_name_leafdata());
     if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (fec.is_set || is_set(fec.yfilter)) leaf_name_data.push_back(fec.get_name_leafdata());
+    if (diff.is_set || is_set(diff.yfilter)) leaf_name_data.push_back(diff.get_name_leafdata());
+    if (modulation.is_set || is_set(modulation.yfilter)) leaf_name_data.push_back(modulation.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -300,29 +300,11 @@ std::map<std::string, std::shared_ptr<Entity>> ControllerPortMode::OpticsName::P
 
 void ControllerPortMode::OpticsName::PortModeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "diff")
-    {
-        diff = value;
-        diff.value_namespace = name_space;
-        diff.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fec")
-    {
-        fec = value;
-        fec.value_namespace = name_space;
-        fec.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "intf-name")
     {
         intf_name = value;
         intf_name.value_namespace = name_space;
         intf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "modulation")
-    {
-        modulation = value;
-        modulation.value_namespace = name_space;
-        modulation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "speed")
     {
@@ -330,35 +312,53 @@ void ControllerPortMode::OpticsName::PortModeInfo::set_value(const std::string &
         speed.value_namespace = name_space;
         speed.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "fec")
+    {
+        fec = value;
+        fec.value_namespace = name_space;
+        fec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "diff")
+    {
+        diff = value;
+        diff.value_namespace = name_space;
+        diff.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "modulation")
+    {
+        modulation = value;
+        modulation.value_namespace = name_space;
+        modulation.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ControllerPortMode::OpticsName::PortModeInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "diff")
-    {
-        diff.yfilter = yfilter;
-    }
-    if(value_path == "fec")
-    {
-        fec.yfilter = yfilter;
-    }
     if(value_path == "intf-name")
     {
         intf_name.yfilter = yfilter;
-    }
-    if(value_path == "modulation")
-    {
-        modulation.yfilter = yfilter;
     }
     if(value_path == "speed")
     {
         speed.yfilter = yfilter;
     }
+    if(value_path == "fec")
+    {
+        fec.yfilter = yfilter;
+    }
+    if(value_path == "diff")
+    {
+        diff.yfilter = yfilter;
+    }
+    if(value_path == "modulation")
+    {
+        modulation.yfilter = yfilter;
+    }
 }
 
 bool ControllerPortMode::OpticsName::PortModeInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "diff" || name == "fec" || name == "intf-name" || name == "modulation" || name == "speed")
+    if(name == "intf-name" || name == "speed" || name == "fec" || name == "diff" || name == "modulation")
         return true;
     return false;
 }

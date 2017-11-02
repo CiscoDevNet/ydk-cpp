@@ -37,118 +37,12 @@ class CISCOIPSLAAUTOMEASUREMIB : public ydk::Entity
         class Cipslareacttable; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable
         class Cipslaautogroupschedtable; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable> cipslaautogroupdesttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable> cipslaautogroupschedtable;
         std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable> cipslaautogrouptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable> cipslaautogroupdesttable;
         std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable> cipslareacttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable> cipslaautogroupschedtable;
         
 }; // CISCOIPSLAAUTOMEASUREMIB
-
-
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable : public ydk::Entity
-{
-    public:
-        Cipslaautogroupdesttable();
-        ~Cipslaautogroupdesttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cipslaautogroupdestentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry> > cipslaautogroupdestentry;
-        
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable
-
-
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry : public ydk::Entity
-{
-    public:
-        Cipslaautogroupdestentry();
-        ~Cipslaautogroupdestentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cipslaautogroupdestname; //type: string
-        ydk::YLeaf cipslaautogroupdestipaddrtype; //type: InetAddressType
-        ydk::YLeaf cipslaautogroupdestipaddr; //type: binary
-        ydk::YLeaf cipslaautogroupdestport; //type: uint16
-        ydk::YLeaf cipslaautogroupdeststoragetype; //type: StorageType
-        ydk::YLeaf cipslaautogroupdestrowstatus; //type: RowStatus
-
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry
-
-
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable : public ydk::Entity
-{
-    public:
-        Cipslaautogroupschedtable();
-        ~Cipslaautogroupschedtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cipslaautogroupschedentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry> > cipslaautogroupschedentry;
-        
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable
-
-
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry : public ydk::Entity
-{
-    public:
-        Cipslaautogroupschedentry();
-        ~Cipslaautogroupschedentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cipslaautogroupschedid; //type: string
-        ydk::YLeaf cipslaautogroupschedperiod; //type: uint32
-        ydk::YLeaf cipslaautogroupschedinterval; //type: uint32
-        ydk::YLeaf cipslaautogroupschedlife; //type: uint32
-        ydk::YLeaf cipslaautogroupschedageout; //type: uint32
-        ydk::YLeaf cipslaautogroupschedmaxinterval; //type: uint32
-        ydk::YLeaf cipslaautogroupschedmininterval; //type: uint32
-        ydk::YLeaf cipslaautogroupschedstarttime; //type: uint32
-        ydk::YLeaf cipslaautogroupschedstoragetype; //type: StorageType
-        ydk::YLeaf cipslaautogroupschedrowstatus; //type: RowStatus
-
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry
 
 
 class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable : public ydk::Entity
@@ -209,6 +103,57 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry : pub
 }; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry
 
 
+class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable : public ydk::Entity
+{
+    public:
+        Cipslaautogroupdesttable();
+        ~Cipslaautogroupdesttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cipslaautogroupdestentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry> > cipslaautogroupdestentry;
+        
+}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable
+
+
+class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry : public ydk::Entity
+{
+    public:
+        Cipslaautogroupdestentry();
+        ~Cipslaautogroupdestentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cipslaautogroupdestname; //type: string
+        ydk::YLeaf cipslaautogroupdestipaddrtype; //type: InetAddressType
+        ydk::YLeaf cipslaautogroupdestipaddr; //type: binary
+        ydk::YLeaf cipslaautogroupdestport; //type: uint16
+        ydk::YLeaf cipslaautogroupdeststoragetype; //type: StorageType
+        ydk::YLeaf cipslaautogroupdestrowstatus; //type: RowStatus
+
+}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry
+
+
 class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable : public ydk::Entity
 {
     public:
@@ -267,6 +212,61 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry : public ydk:
         class Cipslareactactiontype;
 
 }; // CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry
+
+
+class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable : public ydk::Entity
+{
+    public:
+        Cipslaautogroupschedtable();
+        ~Cipslaautogroupschedtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cipslaautogroupschedentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry> > cipslaautogroupschedentry;
+        
+}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable
+
+
+class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry : public ydk::Entity
+{
+    public:
+        Cipslaautogroupschedentry();
+        ~Cipslaautogroupschedentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cipslaautogroupschedid; //type: string
+        ydk::YLeaf cipslaautogroupschedperiod; //type: uint32
+        ydk::YLeaf cipslaautogroupschedinterval; //type: uint32
+        ydk::YLeaf cipslaautogroupschedlife; //type: uint32
+        ydk::YLeaf cipslaautogroupschedageout; //type: uint32
+        ydk::YLeaf cipslaautogroupschedmaxinterval; //type: uint32
+        ydk::YLeaf cipslaautogroupschedmininterval; //type: uint32
+        ydk::YLeaf cipslaautogroupschedstarttime; //type: uint32
+        ydk::YLeaf cipslaautogroupschedstoragetype; //type: StorageType
+        ydk::YLeaf cipslaautogroupschedrowstatus; //type: RowStatus
+
+}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry
 
 class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactthresholdtype : public ydk::Enum
 {

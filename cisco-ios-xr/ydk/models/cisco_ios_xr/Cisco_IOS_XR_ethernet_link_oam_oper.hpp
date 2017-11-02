@@ -39,10 +39,10 @@ class EtherLinkOam : public ydk::Entity
         class StatsInterfaces; //type: EtherLinkOam::StatsInterfaces
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::DiscoveryInfoInterfaces> discovery_info_interfaces;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces> event_log_entry_interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::InterfaceStateInterfaces> interface_state_interfaces;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::Nodes> nodes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::RunningConfigInterfaces> running_config_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces> event_log_entry_interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::StatsInterfaces> stats_interfaces;
         
 }; // EtherLinkOam
@@ -143,118 +143,6 @@ class EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface : public ydk
 }; // EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface
 
 
-class EtherLinkOam::EventLogEntryInterfaces : public ydk::Entity
-{
-    public:
-        EventLogEntryInterfaces();
-        ~EventLogEntryInterfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class EventLogEntryInterface; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface> > event_log_entry_interface;
-        
-}; // EtherLinkOam::EventLogEntryInterfaces
-
-
-class EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface : public ydk::Entity
-{
-    public:
-        EventLogEntryInterface();
-        ~EventLogEntryInterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf member_interface; //type: string
-        class EventLogEntryIndexes; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes> event_log_entry_indexes;
-        
-}; // EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface
-
-
-class EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes : public ydk::Entity
-{
-    public:
-        EventLogEntryIndexes();
-        ~EventLogEntryIndexes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class EventLogEntryIndex; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex> > event_log_entry_index;
-        
-}; // EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes
-
-
-class EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex : public ydk::Entity
-{
-    public:
-        EventLogEntryIndex();
-        ~EventLogEntryIndex();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf event_log_entry_index; //type: string
-        ydk::YLeaf index_; //type: uint32
-        ydk::YLeaf handle; //type: string
-        ydk::YLeaf oui; //type: string
-        ydk::YLeaf timestamp; //type: uint64
-        ydk::YLeaf type; //type: Log
-        ydk::YLeaf location; //type: LogLocation
-        ydk::YLeaf event_total; //type: uint32
-        ydk::YLeaf action_taken; //type: Action
-        ydk::YLeaf window; //type: uint64
-        ydk::YLeaf threshold; //type: uint64
-        ydk::YLeaf local_high_threshold; //type: uint64
-        ydk::YLeaf value_; //type: uint64
-        ydk::YLeaf running_total; //type: uint64
-        ydk::YLeaf window_config_units; //type: uint64
-        ydk::YLeaf window_units; //type: uint8
-        ydk::YLeaf threshold_config_units; //type: uint64
-        ydk::YLeaf threshold_units; //type: uint8
-        ydk::YLeaf local_high_threshold_config_units; //type: uint64
-        ydk::YLeaf value_config_units; //type: uint64
-
-}; // EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex
-
-
 class EtherLinkOam::InterfaceStateInterfaces : public ydk::Entity
 {
     public:
@@ -305,35 +193,10 @@ class EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface : public y
         class Errors; //type: EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors
         class EfdTriggers; //type: EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers> efd_triggers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors> errors;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers> efd_triggers;
         
 }; // EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface
-
-
-class EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers : public ydk::Entity
-{
-    public:
-        EfdTriggers();
-        ~EfdTriggers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_fault_received; //type: boolean
-        ydk::YLeaf discovery_timed_out; //type: boolean
-        ydk::YLeaf capabilities_conflict; //type: boolean
-        ydk::YLeaf wiring_conflict; //type: boolean
-        ydk::YLeaf session_down; //type: boolean
-
-}; // EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers
 
 
 class EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors : public ydk::Entity
@@ -366,60 +229,11 @@ class EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors : 
 }; // EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors
 
 
-class EtherLinkOam::Nodes : public ydk::Entity
+class EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers : public ydk::Entity
 {
     public:
-        Nodes();
-        ~Nodes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Node; //type: EtherLinkOam::Nodes::Node
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::Nodes::Node> > node;
-        
-}; // EtherLinkOam::Nodes
-
-
-class EtherLinkOam::Nodes::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf node_name; //type: string
-        class Summary; //type: EtherLinkOam::Nodes::Node::Summary
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::Nodes::Node::Summary> summary;
-        
-}; // EtherLinkOam::Nodes::Node
-
-
-class EtherLinkOam::Nodes::Node::Summary : public ydk::Entity
-{
-    public:
-        Summary();
-        ~Summary();
+        EfdTriggers();
+        ~EfdTriggers();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -431,30 +245,13 @@ class EtherLinkOam::Nodes::Node::Summary : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interfaces; //type: uint32
-        ydk::YLeaf port_down; //type: uint32
-        ydk::YLeaf passive_wait; //type: uint32
-        ydk::YLeaf active_send; //type: uint32
-        ydk::YLeaf evaluating; //type: uint32
-        ydk::YLeaf local_accept; //type: uint32
-        ydk::YLeaf local_reject; //type: uint32
-        ydk::YLeaf remote_reject; //type: uint32
-        ydk::YLeaf operational; //type: uint32
-        ydk::YLeaf loopback_mode; //type: uint32
-        ydk::YLeaf miswired_connections; //type: uint32
-        ydk::YLeaf events; //type: uint64
-        ydk::YLeaf local_events; //type: uint64
-        ydk::YLeaf local_symbol_period; //type: uint64
-        ydk::YLeaf local_frame; //type: uint64
-        ydk::YLeaf local_frame_period; //type: uint64
-        ydk::YLeaf local_frame_seconds; //type: uint64
-        ydk::YLeaf remote_events; //type: uint64
-        ydk::YLeaf remote_symbol_period; //type: uint64
-        ydk::YLeaf remote_frame; //type: uint64
-        ydk::YLeaf remote_frame_period; //type: uint64
-        ydk::YLeaf remote_frame_seconds; //type: uint64
+        ydk::YLeaf link_fault_received; //type: boolean
+        ydk::YLeaf discovery_timed_out; //type: boolean
+        ydk::YLeaf capabilities_conflict; //type: boolean
+        ydk::YLeaf wiring_conflict; //type: boolean
+        ydk::YLeaf session_down; //type: boolean
 
-}; // EtherLinkOam::Nodes::Node::Summary
+}; // EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers
 
 
 class EtherLinkOam::RunningConfigInterfaces : public ydk::Entity
@@ -581,6 +378,209 @@ class EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface : public ydk
 }; // EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface
 
 
+class EtherLinkOam::Nodes : public ydk::Entity
+{
+    public:
+        Nodes();
+        ~Nodes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Node; //type: EtherLinkOam::Nodes::Node
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::Nodes::Node> > node;
+        
+}; // EtherLinkOam::Nodes
+
+
+class EtherLinkOam::Nodes::Node : public ydk::Entity
+{
+    public:
+        Node();
+        ~Node();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf node_name; //type: string
+        class Summary; //type: EtherLinkOam::Nodes::Node::Summary
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::Nodes::Node::Summary> summary;
+        
+}; // EtherLinkOam::Nodes::Node
+
+
+class EtherLinkOam::Nodes::Node::Summary : public ydk::Entity
+{
+    public:
+        Summary();
+        ~Summary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interfaces; //type: uint32
+        ydk::YLeaf port_down; //type: uint32
+        ydk::YLeaf passive_wait; //type: uint32
+        ydk::YLeaf active_send; //type: uint32
+        ydk::YLeaf evaluating; //type: uint32
+        ydk::YLeaf local_accept; //type: uint32
+        ydk::YLeaf local_reject; //type: uint32
+        ydk::YLeaf remote_reject; //type: uint32
+        ydk::YLeaf operational; //type: uint32
+        ydk::YLeaf loopback_mode; //type: uint32
+        ydk::YLeaf miswired_connections; //type: uint32
+        ydk::YLeaf events; //type: uint64
+        ydk::YLeaf local_events; //type: uint64
+        ydk::YLeaf local_symbol_period; //type: uint64
+        ydk::YLeaf local_frame; //type: uint64
+        ydk::YLeaf local_frame_period; //type: uint64
+        ydk::YLeaf local_frame_seconds; //type: uint64
+        ydk::YLeaf remote_events; //type: uint64
+        ydk::YLeaf remote_symbol_period; //type: uint64
+        ydk::YLeaf remote_frame; //type: uint64
+        ydk::YLeaf remote_frame_period; //type: uint64
+        ydk::YLeaf remote_frame_seconds; //type: uint64
+
+}; // EtherLinkOam::Nodes::Node::Summary
+
+
+class EtherLinkOam::EventLogEntryInterfaces : public ydk::Entity
+{
+    public:
+        EventLogEntryInterfaces();
+        ~EventLogEntryInterfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class EventLogEntryInterface; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface> > event_log_entry_interface;
+        
+}; // EtherLinkOam::EventLogEntryInterfaces
+
+
+class EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface : public ydk::Entity
+{
+    public:
+        EventLogEntryInterface();
+        ~EventLogEntryInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf member_interface; //type: string
+        class EventLogEntryIndexes; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes> event_log_entry_indexes;
+        
+}; // EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface
+
+
+class EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes : public ydk::Entity
+{
+    public:
+        EventLogEntryIndexes();
+        ~EventLogEntryIndexes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class EventLogEntryIndex; //type: EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_link_oam_oper::EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex> > event_log_entry_index;
+        
+}; // EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes
+
+
+class EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex : public ydk::Entity
+{
+    public:
+        EventLogEntryIndex();
+        ~EventLogEntryIndex();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf event_log_entry_index; //type: string
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf handle; //type: string
+        ydk::YLeaf oui; //type: string
+        ydk::YLeaf timestamp; //type: uint64
+        ydk::YLeaf type; //type: Log
+        ydk::YLeaf location; //type: LogLocation
+        ydk::YLeaf event_total; //type: uint32
+        ydk::YLeaf action_taken; //type: Action
+        ydk::YLeaf window; //type: uint64
+        ydk::YLeaf threshold; //type: uint64
+        ydk::YLeaf local_high_threshold; //type: uint64
+        ydk::YLeaf value_; //type: uint64
+        ydk::YLeaf running_total; //type: uint64
+        ydk::YLeaf window_config_units; //type: uint64
+        ydk::YLeaf window_units; //type: uint8
+        ydk::YLeaf threshold_config_units; //type: uint64
+        ydk::YLeaf threshold_units; //type: uint8
+        ydk::YLeaf local_high_threshold_config_units; //type: uint64
+        ydk::YLeaf value_config_units; //type: uint64
+
+}; // EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex
+
+
 class EtherLinkOam::StatsInterfaces : public ydk::Entity
 {
     public:
@@ -652,27 +652,24 @@ class EtherLinkOam::StatsInterfaces::StatsInterface : public ydk::Entity
 
 }; // EtherLinkOam::StatsInterfaces::StatsInterface
 
-class OperationalState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf link_fault;
-        static const ydk::Enum::YLeaf passive_wait;
-        static const ydk::Enum::YLeaf active_send_local;
-        static const ydk::Enum::YLeaf send_local_and_remote;
-        static const ydk::Enum::YLeaf send_local_and_remote_ok;
-        static const ydk::Enum::YLeaf peering_locally_rejected;
-        static const ydk::Enum::YLeaf peering_remotely_rejected;
-        static const ydk::Enum::YLeaf operational;
-        static const ydk::Enum::YLeaf operational_half_duplex;
-
-};
-
 class LogLocation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf log_location_local;
         static const ydk::Enum::YLeaf log_location_remote;
+
+};
+
+class Log : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf log_type_symbol_event;
+        static const ydk::Enum::YLeaf log_type_period_event;
+        static const ydk::Enum::YLeaf log_type_frame_event;
+        static const ydk::Enum::YLeaf log_type_secs_event;
+        static const ydk::Enum::YLeaf log_type_link_fault;
+        static const ydk::Enum::YLeaf log_type_dying_gasp;
+        static const ydk::Enum::YLeaf log_type_critical_event;
 
 };
 
@@ -708,19 +705,6 @@ class Mode : public ydk::Enum
 
 };
 
-class Log : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf log_type_symbol_event;
-        static const ydk::Enum::YLeaf log_type_period_event;
-        static const ydk::Enum::YLeaf log_type_frame_event;
-        static const ydk::Enum::YLeaf log_type_secs_event;
-        static const ydk::Enum::YLeaf log_type_link_fault;
-        static const ydk::Enum::YLeaf log_type_dying_gasp;
-        static const ydk::Enum::YLeaf log_type_critical_event;
-
-};
-
 class LoopbackStatus : public ydk::Enum
 {
     public:
@@ -730,6 +714,22 @@ class LoopbackStatus : public ydk::Enum
         static const ydk::Enum::YLeaf terminating;
         static const ydk::Enum::YLeaf local_loopback;
         static const ydk::Enum::YLeaf unknown;
+
+};
+
+class OperationalState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf link_fault;
+        static const ydk::Enum::YLeaf passive_wait;
+        static const ydk::Enum::YLeaf active_send_local;
+        static const ydk::Enum::YLeaf send_local_and_remote;
+        static const ydk::Enum::YLeaf send_local_and_remote_ok;
+        static const ydk::Enum::YLeaf peering_locally_rejected;
+        static const ydk::Enum::YLeaf peering_remotely_rejected;
+        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf operational_half_duplex;
 
 };
 

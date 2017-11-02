@@ -668,30 +668,30 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::has_leaf_or_child_of_name(const std
 
 Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::NodeDetail()
     :
-    board_state{YType::enumeration, "board-state"},
-    chip_hardware_revision{YType::str, "chip-hardware-revision"},
-    clei{YType::str, "clei"},
-    cpu0{YType::enumeration, "cpu0"},
     description{YType::str, "description"},
-    monlib{YType::str, "monlib"},
-    new_deviation_number{YType::uint32, "new-deviation-number"},
-    pid{YType::str, "pid"},
-    pld_motherboard{YType::str, "pld-motherboard"},
-    pld_power{YType::str, "pld-power"},
-    rommon{YType::str, "rommon"},
     serial_number{YType::str, "serial-number"},
     tan{YType::str, "tan"},
-    vid{YType::str, "vid"}
+    pid{YType::str, "pid"},
+    vid{YType::str, "vid"},
+    chip_hardware_revision{YType::str, "chip-hardware-revision"},
+    new_deviation_number{YType::uint32, "new-deviation-number"},
+    clei{YType::str, "clei"},
+    board_state{YType::enumeration, "board-state"},
+    pld_motherboard{YType::str, "pld-motherboard"},
+    pld_power{YType::str, "pld-power"},
+    monlib{YType::str, "monlib"},
+    rommon{YType::str, "rommon"},
+    cpu0{YType::enumeration, "cpu0"}
     	,
-    cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition>())
-	,cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition>())
+    pld(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld>())
 	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision>())
-	,pld(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld>())
+	,cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition>())
+	,cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition>())
 {
+    pld->parent = this;
+    hardware_revision->parent = this;
     cbc_active_partition->parent = this;
     cbc_inactive_partition->parent = this;
-    hardware_revision->parent = this;
-    pld->parent = this;
 
     yang_name = "node-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -702,47 +702,47 @@ Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::~NodeDetail()
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::has_data() const
 {
-    return board_state.is_set
-	|| chip_hardware_revision.is_set
-	|| clei.is_set
-	|| cpu0.is_set
-	|| description.is_set
-	|| monlib.is_set
-	|| new_deviation_number.is_set
-	|| pid.is_set
-	|| pld_motherboard.is_set
-	|| pld_power.is_set
-	|| rommon.is_set
+    return description.is_set
 	|| serial_number.is_set
 	|| tan.is_set
+	|| pid.is_set
 	|| vid.is_set
-	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_data())
-	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_data())
+	|| chip_hardware_revision.is_set
+	|| new_deviation_number.is_set
+	|| clei.is_set
+	|| board_state.is_set
+	|| pld_motherboard.is_set
+	|| pld_power.is_set
+	|| monlib.is_set
+	|| rommon.is_set
+	|| cpu0.is_set
+	|| (pld !=  nullptr && pld->has_data())
 	|| (hardware_revision !=  nullptr && hardware_revision->has_data())
-	|| (pld !=  nullptr && pld->has_data());
+	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_data())
+	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_data());
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(board_state.yfilter)
-	|| ydk::is_set(chip_hardware_revision.yfilter)
-	|| ydk::is_set(clei.yfilter)
-	|| ydk::is_set(cpu0.yfilter)
 	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(monlib.yfilter)
-	|| ydk::is_set(new_deviation_number.yfilter)
-	|| ydk::is_set(pid.yfilter)
-	|| ydk::is_set(pld_motherboard.yfilter)
-	|| ydk::is_set(pld_power.yfilter)
-	|| ydk::is_set(rommon.yfilter)
 	|| ydk::is_set(serial_number.yfilter)
 	|| ydk::is_set(tan.yfilter)
+	|| ydk::is_set(pid.yfilter)
 	|| ydk::is_set(vid.yfilter)
-	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_operation())
-	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_operation())
+	|| ydk::is_set(chip_hardware_revision.yfilter)
+	|| ydk::is_set(new_deviation_number.yfilter)
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(board_state.yfilter)
+	|| ydk::is_set(pld_motherboard.yfilter)
+	|| ydk::is_set(pld_power.yfilter)
+	|| ydk::is_set(monlib.yfilter)
+	|| ydk::is_set(rommon.yfilter)
+	|| ydk::is_set(cpu0.yfilter)
+	|| (pld !=  nullptr && pld->has_operation())
 	|| (hardware_revision !=  nullptr && hardware_revision->has_operation())
-	|| (pld !=  nullptr && pld->has_operation());
+	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_operation())
+	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::get_segment_path() const
@@ -756,20 +756,20 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::D
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (board_state.is_set || is_set(board_state.yfilter)) leaf_name_data.push_back(board_state.get_name_leafdata());
-    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
-    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (cpu0.is_set || is_set(cpu0.yfilter)) leaf_name_data.push_back(cpu0.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (monlib.is_set || is_set(monlib.yfilter)) leaf_name_data.push_back(monlib.get_name_leafdata());
-    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
-    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
-    if (pld_motherboard.is_set || is_set(pld_motherboard.yfilter)) leaf_name_data.push_back(pld_motherboard.get_name_leafdata());
-    if (pld_power.is_set || is_set(pld_power.yfilter)) leaf_name_data.push_back(pld_power.get_name_leafdata());
-    if (rommon.is_set || is_set(rommon.yfilter)) leaf_name_data.push_back(rommon.get_name_leafdata());
     if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
     if (tan.is_set || is_set(tan.yfilter)) leaf_name_data.push_back(tan.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
     if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
+    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (board_state.is_set || is_set(board_state.yfilter)) leaf_name_data.push_back(board_state.get_name_leafdata());
+    if (pld_motherboard.is_set || is_set(pld_motherboard.yfilter)) leaf_name_data.push_back(pld_motherboard.get_name_leafdata());
+    if (pld_power.is_set || is_set(pld_power.yfilter)) leaf_name_data.push_back(pld_power.get_name_leafdata());
+    if (monlib.is_set || is_set(monlib.yfilter)) leaf_name_data.push_back(monlib.get_name_leafdata());
+    if (rommon.is_set || is_set(rommon.yfilter)) leaf_name_data.push_back(rommon.get_name_leafdata());
+    if (cpu0.is_set || is_set(cpu0.yfilter)) leaf_name_data.push_back(cpu0.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -777,6 +777,24 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::D
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "pld")
+    {
+        if(pld == nullptr)
+        {
+            pld = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld>();
+        }
+        return pld;
+    }
+
+    if(child_yang_name == "hardware-revision")
+    {
+        if(hardware_revision == nullptr)
+        {
+            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision>();
+        }
+        return hardware_revision;
+    }
+
     if(child_yang_name == "cbc-active-partition")
     {
         if(cbc_active_partition == nullptr)
@@ -795,30 +813,22 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::get_
         return cbc_inactive_partition;
     }
 
-    if(child_yang_name == "hardware-revision")
-    {
-        if(hardware_revision == nullptr)
-        {
-            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision>();
-        }
-        return hardware_revision;
-    }
-
-    if(child_yang_name == "pld")
-    {
-        if(pld == nullptr)
-        {
-            pld = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld>();
-        }
-        return pld;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pld != nullptr)
+    {
+        children["pld"] = pld;
+    }
+
+    if(hardware_revision != nullptr)
+    {
+        children["hardware-revision"] = hardware_revision;
+    }
+
     if(cbc_active_partition != nullptr)
     {
         children["cbc-active-partition"] = cbc_active_partition;
@@ -829,86 +839,16 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::D
         children["cbc-inactive-partition"] = cbc_inactive_partition;
     }
 
-    if(hardware_revision != nullptr)
-    {
-        children["hardware-revision"] = hardware_revision;
-    }
-
-    if(pld != nullptr)
-    {
-        children["pld"] = pld;
-    }
-
     return children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "board-state")
-    {
-        board_state = value;
-        board_state.value_namespace = name_space;
-        board_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision = value;
-        chip_hardware_revision.value_namespace = name_space;
-        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "clei")
-    {
-        clei = value;
-        clei.value_namespace = name_space;
-        clei.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpu0")
-    {
-        cpu0 = value;
-        cpu0.value_namespace = name_space;
-        cpu0.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "description")
     {
         description = value;
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "monlib")
-    {
-        monlib = value;
-        monlib.value_namespace = name_space;
-        monlib.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number = value;
-        new_deviation_number.value_namespace = name_space;
-        new_deviation_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pid")
-    {
-        pid = value;
-        pid.value_namespace = name_space;
-        pid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pld-motherboard")
-    {
-        pld_motherboard = value;
-        pld_motherboard.value_namespace = name_space;
-        pld_motherboard.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pld-power")
-    {
-        pld_power = value;
-        pld_power.value_namespace = name_space;
-        pld_power.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rommon")
-    {
-        rommon = value;
-        rommon.value_namespace = name_space;
-        rommon.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
@@ -922,59 +862,79 @@ void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::set_value(const std::st
         tan.value_namespace = name_space;
         tan.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "pid")
+    {
+        pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "vid")
     {
         vid = value;
         vid.value_namespace = name_space;
         vid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision = value;
+        chip_hardware_revision.value_namespace = name_space;
+        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number = value;
+        new_deviation_number.value_namespace = name_space;
+        new_deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clei")
+    {
+        clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "board-state")
+    {
+        board_state = value;
+        board_state.value_namespace = name_space;
+        board_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pld-motherboard")
+    {
+        pld_motherboard = value;
+        pld_motherboard.value_namespace = name_space;
+        pld_motherboard.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pld-power")
+    {
+        pld_power = value;
+        pld_power.value_namespace = name_space;
+        pld_power.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "monlib")
+    {
+        monlib = value;
+        monlib.value_namespace = name_space;
+        monlib.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rommon")
+    {
+        rommon = value;
+        rommon.value_namespace = name_space;
+        rommon.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpu0")
+    {
+        cpu0 = value;
+        cpu0.value_namespace = name_space;
+        cpu0.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "board-state")
-    {
-        board_state.yfilter = yfilter;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "clei")
-    {
-        clei.yfilter = yfilter;
-    }
-    if(value_path == "cpu0")
-    {
-        cpu0.yfilter = yfilter;
-    }
     if(value_path == "description")
     {
         description.yfilter = yfilter;
-    }
-    if(value_path == "monlib")
-    {
-        monlib.yfilter = yfilter;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number.yfilter = yfilter;
-    }
-    if(value_path == "pid")
-    {
-        pid.yfilter = yfilter;
-    }
-    if(value_path == "pld-motherboard")
-    {
-        pld_motherboard.yfilter = yfilter;
-    }
-    if(value_path == "pld-power")
-    {
-        pld_power.yfilter = yfilter;
-    }
-    if(value_path == "rommon")
-    {
-        rommon.yfilter = yfilter;
     }
     if(value_path == "serial-number")
     {
@@ -984,15 +944,925 @@ void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::set_filter(const std::s
     {
         tan.yfilter = yfilter;
     }
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
     if(value_path == "vid")
     {
         vid.yfilter = yfilter;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "board-state")
+    {
+        board_state.yfilter = yfilter;
+    }
+    if(value_path == "pld-motherboard")
+    {
+        pld_motherboard.yfilter = yfilter;
+    }
+    if(value_path == "pld-power")
+    {
+        pld_power.yfilter = yfilter;
+    }
+    if(value_path == "monlib")
+    {
+        monlib.yfilter = yfilter;
+    }
+    if(value_path == "rommon")
+    {
+        rommon.yfilter = yfilter;
+    }
+    if(value_path == "cpu0")
+    {
+        cpu0.yfilter = yfilter;
     }
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cbc-active-partition" || name == "cbc-inactive-partition" || name == "hardware-revision" || name == "pld" || name == "board-state" || name == "chip-hardware-revision" || name == "clei" || name == "cpu0" || name == "description" || name == "monlib" || name == "new-deviation-number" || name == "pid" || name == "pld-motherboard" || name == "pld-power" || name == "rommon" || name == "serial-number" || name == "tan" || name == "vid")
+    if(name == "pld" || name == "hardware-revision" || name == "cbc-active-partition" || name == "cbc-inactive-partition" || name == "description" || name == "serial-number" || name == "tan" || name == "pid" || name == "vid" || name == "chip-hardware-revision" || name == "new-deviation-number" || name == "clei" || name == "board-state" || name == "pld-motherboard" || name == "pld-power" || name == "monlib" || name == "rommon" || name == "cpu0")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::Pld()
+    :
+    type{YType::uint32, "type"},
+    processor_higher_version{YType::uint32, "processor-higher-version"},
+    processor_lower_version{YType::uint32, "processor-lower-version"}
+{
+
+    yang_name = "pld"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::~Pld()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_data() const
+{
+    return type.is_set
+	|| processor_higher_version.is_set
+	|| processor_lower_version.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(processor_higher_version.yfilter)
+	|| ydk::is_set(processor_lower_version.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pld";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (processor_higher_version.is_set || is_set(processor_higher_version.yfilter)) leaf_name_data.push_back(processor_higher_version.get_name_leafdata());
+    if (processor_lower_version.is_set || is_set(processor_lower_version.yfilter)) leaf_name_data.push_back(processor_lower_version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "processor-higher-version")
+    {
+        processor_higher_version = value;
+        processor_higher_version.value_namespace = name_space;
+        processor_higher_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "processor-lower-version")
+    {
+        processor_lower_version = value;
+        processor_lower_version.value_namespace = name_space;
+        processor_lower_version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "processor-higher-version")
+    {
+        processor_higher_version.yfilter = yfilter;
+    }
+    if(value_path == "processor-lower-version")
+    {
+        processor_lower_version.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "processor-higher-version" || name == "processor-lower-version")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision()
+{
+
+    yang_name = "hardware-revision"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::~HardwareRevision()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_data() const
+{
+    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    {
+        if(hardware_revision[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_operation() const
+{
+    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    {
+        if(hardware_revision[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hardware-revision";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hardware-revision")
+    {
+        for(auto const & c : hardware_revision)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_>();
+        c->parent = this;
+        hardware_revision.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hardware_revision)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hardware-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HardwareRevision_()
+    :
+    node_description{YType::str, "node-description"},
+    version{YType::str, "version"}
+    	,
+    hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev>())
+	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev>())
+	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev>())
+	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev>())
+	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev>())
+{
+    hw_rev->parent = this;
+    fw_rev->parent = this;
+    sw_rev->parent = this;
+    dimm_rev->parent = this;
+    ssd_rev->parent = this;
+
+    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::~HardwareRevision_()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::has_data() const
+{
+    return node_description.is_set
+	|| version.is_set
+	|| (hw_rev !=  nullptr && hw_rev->has_data())
+	|| (fw_rev !=  nullptr && fw_rev->has_data())
+	|| (sw_rev !=  nullptr && sw_rev->has_data())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_data());
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_description.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| (hw_rev !=  nullptr && hw_rev->has_operation())
+	|| (fw_rev !=  nullptr && fw_rev->has_operation())
+	|| (sw_rev !=  nullptr && sw_rev->has_operation())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_operation());
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hardware-revision";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_description.is_set || is_set(node_description.yfilter)) leaf_name_data.push_back(node_description.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hw-rev")
+    {
+        if(hw_rev == nullptr)
+        {
+            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev>();
+        }
+        return hw_rev;
+    }
+
+    if(child_yang_name == "fw-rev")
+    {
+        if(fw_rev == nullptr)
+        {
+            fw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev>();
+        }
+        return fw_rev;
+    }
+
+    if(child_yang_name == "sw-rev")
+    {
+        if(sw_rev == nullptr)
+        {
+            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev>();
+        }
+        return sw_rev;
+    }
+
+    if(child_yang_name == "dimm-rev")
+    {
+        if(dimm_rev == nullptr)
+        {
+            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev>();
+        }
+        return dimm_rev;
+    }
+
+    if(child_yang_name == "ssd-rev")
+    {
+        if(ssd_rev == nullptr)
+        {
+            ssd_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev>();
+        }
+        return ssd_rev;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hw_rev != nullptr)
+    {
+        children["hw-rev"] = hw_rev;
+    }
+
+    if(fw_rev != nullptr)
+    {
+        children["fw-rev"] = fw_rev;
+    }
+
+    if(sw_rev != nullptr)
+    {
+        children["sw-rev"] = sw_rev;
+    }
+
+    if(dimm_rev != nullptr)
+    {
+        children["dimm-rev"] = dimm_rev;
+    }
+
+    if(ssd_rev != nullptr)
+    {
+        children["ssd-rev"] = ssd_rev;
+    }
+
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-description")
+    {
+        node_description = value;
+        node_description.value_namespace = name_space;
+        node_description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-description")
+    {
+        node_description.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hw-rev" || name == "fw-rev" || name == "sw-rev" || name == "dimm-rev" || name == "ssd-rev" || name == "node-description" || name == "version")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::HwRev()
+    :
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
+{
+
+    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::has_data() const
+{
+    return major_revision.is_set
+	|| minor_revision.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hw-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision.yfilter = yfilter;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "major-revision" || name == "minor-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::FwRev()
+    :
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
+{
+
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::has_data() const
+{
+    return major_revision.is_set
+	|| minor_revision.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fw-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision.yfilter = yfilter;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "major-revision" || name == "minor-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::SwRev()
+    :
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
+{
+
+    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::has_data() const
+{
+    return major_revision.is_set
+	|| minor_revision.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sw-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision.yfilter = yfilter;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "major-revision" || name == "minor-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
+    :
+    size{YType::uint32, "size"},
+    speed{YType::uint32, "speed"},
+    locator{YType::str, "locator"},
+    cas{YType::uint32, "cas"}
+{
+
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
+{
+    return size.is_set
+	|| speed.is_set
+	|| locator.is_set
+	|| cas.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(locator.yfilter)
+	|| ydk::is_set(cas.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dimm-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "size")
+    {
+        size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "speed")
+    {
+        speed = value;
+        speed.value_namespace = name_space;
+        speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "locator")
+    {
+        locator = value;
+        locator.value_namespace = name_space;
+        locator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cas")
+    {
+        cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "speed")
+    {
+        speed.yfilter = yfilter;
+    }
+    if(value_path == "locator")
+    {
+        locator.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "size" || name == "speed" || name == "locator" || name == "cas")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
+    :
+    number{YType::str, "number"},
+    fw_rev{YType::str, "fw-rev"},
+    serial_number{YType::str, "serial-number"}
+{
+
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
+{
+    return number.is_set
+	|| fw_rev.is_set
+	|| serial_number.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(fw_rev.yfilter)
+	|| ydk::is_set(serial_number.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssd-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fw-rev")
+    {
+        fw_rev = value;
+        fw_rev.value_namespace = name_space;
+        fw_rev.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "fw-rev")
+    {
+        fw_rev.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number" || name == "fw-rev" || name == "serial-number")
         return true;
     return false;
 }
@@ -1177,892 +2047,22 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition::h
     return false;
 }
 
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision()
-{
-
-    yang_name = "hardware-revision"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::~HardwareRevision()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_data() const
-{
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
-    {
-        if(hardware_revision[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_operation() const
-{
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
-    {
-        if(hardware_revision[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hardware-revision";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hardware-revision")
-    {
-        for(auto const & c : hardware_revision)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_>();
-        c->parent = this;
-        hardware_revision.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hardware_revision)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hardware-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HardwareRevision_()
-    :
-    node_description{YType::str, "node-description"},
-    version{YType::str, "version"}
-    	,
-    dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev>())
-	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev>())
-	,hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev>())
-	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev>())
-{
-    dimm_rev->parent = this;
-    fw_rev->parent = this;
-    hw_rev->parent = this;
-    ssd_rev->parent = this;
-    sw_rev->parent = this;
-
-    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::~HardwareRevision_()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::has_data() const
-{
-    return node_description.is_set
-	|| version.is_set
-	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
-	|| (fw_rev !=  nullptr && fw_rev->has_data())
-	|| (hw_rev !=  nullptr && hw_rev->has_data())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_data())
-	|| (sw_rev !=  nullptr && sw_rev->has_data());
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node_description.yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
-	|| (fw_rev !=  nullptr && fw_rev->has_operation())
-	|| (hw_rev !=  nullptr && hw_rev->has_operation())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_operation())
-	|| (sw_rev !=  nullptr && sw_rev->has_operation());
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hardware-revision";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node_description.is_set || is_set(node_description.yfilter)) leaf_name_data.push_back(node_description.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dimm-rev")
-    {
-        if(dimm_rev == nullptr)
-        {
-            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev>();
-        }
-        return dimm_rev;
-    }
-
-    if(child_yang_name == "fw-rev")
-    {
-        if(fw_rev == nullptr)
-        {
-            fw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev>();
-        }
-        return fw_rev;
-    }
-
-    if(child_yang_name == "hw-rev")
-    {
-        if(hw_rev == nullptr)
-        {
-            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev>();
-        }
-        return hw_rev;
-    }
-
-    if(child_yang_name == "ssd-rev")
-    {
-        if(ssd_rev == nullptr)
-        {
-            ssd_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev>();
-        }
-        return ssd_rev;
-    }
-
-    if(child_yang_name == "sw-rev")
-    {
-        if(sw_rev == nullptr)
-        {
-            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev>();
-        }
-        return sw_rev;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dimm_rev != nullptr)
-    {
-        children["dimm-rev"] = dimm_rev;
-    }
-
-    if(fw_rev != nullptr)
-    {
-        children["fw-rev"] = fw_rev;
-    }
-
-    if(hw_rev != nullptr)
-    {
-        children["hw-rev"] = hw_rev;
-    }
-
-    if(ssd_rev != nullptr)
-    {
-        children["ssd-rev"] = ssd_rev;
-    }
-
-    if(sw_rev != nullptr)
-    {
-        children["sw-rev"] = sw_rev;
-    }
-
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "node-description")
-    {
-        node_description = value;
-        node_description.value_namespace = name_space;
-        node_description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "node-description")
-    {
-        node_description.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dimm-rev" || name == "fw-rev" || name == "hw-rev" || name == "ssd-rev" || name == "sw-rev" || name == "node-description" || name == "version")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
-    :
-    cas{YType::uint32, "cas"},
-    locator{YType::str, "locator"},
-    size{YType::uint32, "size"},
-    speed{YType::uint32, "speed"}
-{
-
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
-{
-    return cas.is_set
-	|| locator.is_set
-	|| size.is_set
-	|| speed.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cas.yfilter)
-	|| ydk::is_set(locator.yfilter)
-	|| ydk::is_set(size.yfilter)
-	|| ydk::is_set(speed.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dimm-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
-    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
-    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cas")
-    {
-        cas = value;
-        cas.value_namespace = name_space;
-        cas.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "locator")
-    {
-        locator = value;
-        locator.value_namespace = name_space;
-        locator.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "size")
-    {
-        size = value;
-        size.value_namespace = name_space;
-        size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "speed")
-    {
-        speed = value;
-        speed.value_namespace = name_space;
-        speed.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cas")
-    {
-        cas.yfilter = yfilter;
-    }
-    if(value_path == "locator")
-    {
-        locator.yfilter = yfilter;
-    }
-    if(value_path == "size")
-    {
-        size.yfilter = yfilter;
-    }
-    if(value_path == "speed")
-    {
-        speed.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cas" || name == "locator" || name == "size" || name == "speed")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::FwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::HwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
-    :
-    fw_rev{YType::str, "fw-rev"},
-    number{YType::str, "number"},
-    serial_number{YType::str, "serial-number"}
-{
-
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
-{
-    return fw_rev.is_set
-	|| number.is_set
-	|| serial_number.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fw_rev.yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(serial_number.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ssd-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fw-rev")
-    {
-        fw_rev = value;
-        fw_rev.value_namespace = name_space;
-        fw_rev.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fw-rev")
-    {
-        fw_rev.yfilter = yfilter;
-    }
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fw-rev" || name == "number" || name == "serial-number")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::SwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::Pld()
-    :
-    processor_higher_version{YType::uint32, "processor-higher-version"},
-    processor_lower_version{YType::uint32, "processor-lower-version"},
-    type{YType::uint32, "type"}
-{
-
-    yang_name = "pld"; yang_parent_name = "node-detail"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::~Pld()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_data() const
-{
-    return processor_higher_version.is_set
-	|| processor_lower_version.is_set
-	|| type.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(processor_higher_version.yfilter)
-	|| ydk::is_set(processor_lower_version.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pld";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (processor_higher_version.is_set || is_set(processor_higher_version.yfilter)) leaf_name_data.push_back(processor_higher_version.get_name_leafdata());
-    if (processor_lower_version.is_set || is_set(processor_lower_version.yfilter)) leaf_name_data.push_back(processor_lower_version.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "processor-higher-version")
-    {
-        processor_higher_version = value;
-        processor_higher_version.value_namespace = name_space;
-        processor_higher_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "processor-lower-version")
-    {
-        processor_lower_version = value;
-        processor_lower_version.value_namespace = name_space;
-        processor_lower_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "processor-higher-version")
-    {
-        processor_higher_version.yfilter = yfilter;
-    }
-    if(value_path == "processor-lower-version")
-    {
-        processor_lower_version.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "processor-higher-version" || name == "processor-lower-version" || name == "type")
-        return true;
-    return false;
-}
-
 Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::SpaDetail()
     :
-    clei{YType::str, "clei"},
-    name{YType::str, "name"},
     node{YType::str, "node"},
-    node_state{YType::enumeration, "node-state"},
-    pca_revision{YType::str, "pca-revision"},
+    name{YType::str, "name"},
     pca_unit_number{YType::str, "pca-unit-number"},
+    pca_revision{YType::str, "pca-revision"},
     pid{YType::str, "pid"},
-    vid{YType::str, "vid"}
+    vid{YType::str, "vid"},
+    clei{YType::str, "clei"},
+    node_state{YType::enumeration, "node-state"}
     	,
-    hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision>())
-	,main(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main>())
+    main(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main>())
+	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision>())
 {
-    hardware_revision->parent = this;
     main->parent = this;
+    hardware_revision->parent = this;
 
     yang_name = "spa-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -2073,31 +2073,31 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::~SpaDetail()
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::has_data() const
 {
-    return clei.is_set
+    return node.is_set
 	|| name.is_set
-	|| node.is_set
-	|| node_state.is_set
-	|| pca_revision.is_set
 	|| pca_unit_number.is_set
+	|| pca_revision.is_set
 	|| pid.is_set
 	|| vid.is_set
-	|| (hardware_revision !=  nullptr && hardware_revision->has_data())
-	|| (main !=  nullptr && main->has_data());
+	|| clei.is_set
+	|| node_state.is_set
+	|| (main !=  nullptr && main->has_data())
+	|| (hardware_revision !=  nullptr && hardware_revision->has_data());
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(clei.yfilter)
-	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(node_state.yfilter)
-	|| ydk::is_set(pca_revision.yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(pca_unit_number.yfilter)
+	|| ydk::is_set(pca_revision.yfilter)
 	|| ydk::is_set(pid.yfilter)
 	|| ydk::is_set(vid.yfilter)
-	|| (hardware_revision !=  nullptr && hardware_revision->has_operation())
-	|| (main !=  nullptr && main->has_operation());
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(node_state.yfilter)
+	|| (main !=  nullptr && main->has_operation())
+	|| (hardware_revision !=  nullptr && hardware_revision->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::get_segment_path() const
@@ -2111,14 +2111,14 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::D
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (node_state.is_set || is_set(node_state.yfilter)) leaf_name_data.push_back(node_state.get_name_leafdata());
-    if (pca_revision.is_set || is_set(pca_revision.yfilter)) leaf_name_data.push_back(pca_revision.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (pca_unit_number.is_set || is_set(pca_unit_number.yfilter)) leaf_name_data.push_back(pca_unit_number.get_name_leafdata());
+    if (pca_revision.is_set || is_set(pca_revision.yfilter)) leaf_name_data.push_back(pca_revision.get_name_leafdata());
     if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
     if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (node_state.is_set || is_set(node_state.yfilter)) leaf_name_data.push_back(node_state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2126,15 +2126,6 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::D
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "hardware-revision")
-    {
-        if(hardware_revision == nullptr)
-        {
-            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision>();
-        }
-        return hardware_revision;
-    }
-
     if(child_yang_name == "main")
     {
         if(main == nullptr)
@@ -2144,20 +2135,29 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::get_c
         return main;
     }
 
+    if(child_yang_name == "hardware-revision")
+    {
+        if(hardware_revision == nullptr)
+        {
+            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision>();
+        }
+        return hardware_revision;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(hardware_revision != nullptr)
-    {
-        children["hardware-revision"] = hardware_revision;
-    }
-
     if(main != nullptr)
     {
         children["main"] = main;
+    }
+
+    if(hardware_revision != nullptr)
+    {
+        children["hardware-revision"] = hardware_revision;
     }
 
     return children;
@@ -2165,11 +2165,11 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::D
 
 void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "clei")
+    if(value_path == "node")
     {
-        clei = value;
-        clei.value_namespace = name_space;
-        clei.value_namespace_prefix = name_space_prefix;
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
@@ -2177,29 +2177,17 @@ void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::set_value(const std::str
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "node")
+    if(value_path == "pca-unit-number")
     {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-state")
-    {
-        node_state = value;
-        node_state.value_namespace = name_space;
-        node_state.value_namespace_prefix = name_space_prefix;
+        pca_unit_number = value;
+        pca_unit_number.value_namespace = name_space;
+        pca_unit_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pca-revision")
     {
         pca_revision = value;
         pca_revision.value_namespace = name_space;
         pca_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pca-unit-number")
-    {
-        pca_unit_number = value;
-        pca_unit_number.value_namespace = name_space;
-        pca_unit_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pid")
     {
@@ -2213,33 +2201,37 @@ void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::set_value(const std::str
         vid.value_namespace = name_space;
         vid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "clei")
+    {
+        clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-state")
+    {
+        node_state = value;
+        node_state.value_namespace = name_space;
+        node_state.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "clei")
+    if(value_path == "node")
     {
-        clei.yfilter = yfilter;
+        node.yfilter = yfilter;
     }
     if(value_path == "name")
     {
         name.yfilter = yfilter;
     }
-    if(value_path == "node")
+    if(value_path == "pca-unit-number")
     {
-        node.yfilter = yfilter;
-    }
-    if(value_path == "node-state")
-    {
-        node_state.yfilter = yfilter;
+        pca_unit_number.yfilter = yfilter;
     }
     if(value_path == "pca-revision")
     {
         pca_revision.yfilter = yfilter;
-    }
-    if(value_path == "pca-unit-number")
-    {
-        pca_unit_number.yfilter = yfilter;
     }
     if(value_path == "pid")
     {
@@ -2249,11 +2241,151 @@ void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::set_filter(const std::st
     {
         vid.yfilter = yfilter;
     }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "node-state")
+    {
+        node_state.yfilter = yfilter;
+    }
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hardware-revision" || name == "main" || name == "clei" || name == "name" || name == "node" || name == "node-state" || name == "pca-revision" || name == "pca-unit-number" || name == "pid" || name == "vid")
+    if(name == "main" || name == "hardware-revision" || name == "node" || name == "name" || name == "pca-unit-number" || name == "pca-revision" || name == "pid" || name == "vid" || name == "clei" || name == "node-state")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::Main()
+    :
+    board_type{YType::uint32, "board-type"},
+    tan{YType::str, "tan"},
+    tan_revision{YType::str, "tan-revision"},
+    deviation_number{YType::uint32, "deviation-number"},
+    serial_number{YType::str, "serial-number"}
+{
+
+    yang_name = "main"; yang_parent_name = "spa-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::~Main()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_data() const
+{
+    return board_type.is_set
+	|| tan.is_set
+	|| tan_revision.is_set
+	|| deviation_number.is_set
+	|| serial_number.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(board_type.yfilter)
+	|| ydk::is_set(tan.yfilter)
+	|| ydk::is_set(tan_revision.yfilter)
+	|| ydk::is_set(deviation_number.yfilter)
+	|| ydk::is_set(serial_number.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "main";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (board_type.is_set || is_set(board_type.yfilter)) leaf_name_data.push_back(board_type.get_name_leafdata());
+    if (tan.is_set || is_set(tan.yfilter)) leaf_name_data.push_back(tan.get_name_leafdata());
+    if (tan_revision.is_set || is_set(tan_revision.yfilter)) leaf_name_data.push_back(tan_revision.get_name_leafdata());
+    if (deviation_number.is_set || is_set(deviation_number.yfilter)) leaf_name_data.push_back(deviation_number.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "board-type")
+    {
+        board_type = value;
+        board_type.value_namespace = name_space;
+        board_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tan")
+    {
+        tan = value;
+        tan.value_namespace = name_space;
+        tan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tan-revision")
+    {
+        tan_revision = value;
+        tan_revision.value_namespace = name_space;
+        tan_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deviation-number")
+    {
+        deviation_number = value;
+        deviation_number.value_namespace = name_space;
+        deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "board-type")
+    {
+        board_type.yfilter = yfilter;
+    }
+    if(value_path == "tan")
+    {
+        tan.yfilter = yfilter;
+    }
+    if(value_path == "tan-revision")
+    {
+        tan_revision.yfilter = yfilter;
+    }
+    if(value_path == "deviation-number")
+    {
+        deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "board-type" || name == "tan" || name == "tan-revision" || name == "deviation-number" || name == "serial-number")
         return true;
     return false;
 }
@@ -2356,17 +2488,17 @@ Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRev
     node_description{YType::str, "node-description"},
     version{YType::str, "version"}
     	,
-    dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev>())
+    hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev>())
 	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev>())
-	,hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev>())
 	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev>())
+	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev>())
+	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev>())
 {
-    dimm_rev->parent = this;
-    fw_rev->parent = this;
     hw_rev->parent = this;
-    ssd_rev->parent = this;
+    fw_rev->parent = this;
     sw_rev->parent = this;
+    dimm_rev->parent = this;
+    ssd_rev->parent = this;
 
     yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -2379,11 +2511,11 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::Hardwa
 {
     return node_description.is_set
 	|| version.is_set
-	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
-	|| (fw_rev !=  nullptr && fw_rev->has_data())
 	|| (hw_rev !=  nullptr && hw_rev->has_data())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_data())
-	|| (sw_rev !=  nullptr && sw_rev->has_data());
+	|| (fw_rev !=  nullptr && fw_rev->has_data())
+	|| (sw_rev !=  nullptr && sw_rev->has_data())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_data());
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::has_operation() const
@@ -2391,11 +2523,11 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::Hardwa
     return is_set(yfilter)
 	|| ydk::is_set(node_description.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
-	|| (fw_rev !=  nullptr && fw_rev->has_operation())
 	|| (hw_rev !=  nullptr && hw_rev->has_operation())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_operation())
-	|| (sw_rev !=  nullptr && sw_rev->has_operation());
+	|| (fw_rev !=  nullptr && fw_rev->has_operation())
+	|| (sw_rev !=  nullptr && sw_rev->has_operation())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::get_segment_path() const
@@ -2418,13 +2550,13 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::D
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dimm-rev")
+    if(child_yang_name == "hw-rev")
     {
-        if(dimm_rev == nullptr)
+        if(hw_rev == nullptr)
         {
-            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev>();
+            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev>();
         }
-        return dimm_rev;
+        return hw_rev;
     }
 
     if(child_yang_name == "fw-rev")
@@ -2436,13 +2568,22 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
         return fw_rev;
     }
 
-    if(child_yang_name == "hw-rev")
+    if(child_yang_name == "sw-rev")
     {
-        if(hw_rev == nullptr)
+        if(sw_rev == nullptr)
         {
-            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev>();
+            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev>();
         }
-        return hw_rev;
+        return sw_rev;
+    }
+
+    if(child_yang_name == "dimm-rev")
+    {
+        if(dimm_rev == nullptr)
+        {
+            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev>();
+        }
+        return dimm_rev;
     }
 
     if(child_yang_name == "ssd-rev")
@@ -2454,24 +2595,15 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
         return ssd_rev;
     }
 
-    if(child_yang_name == "sw-rev")
-    {
-        if(sw_rev == nullptr)
-        {
-            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev>();
-        }
-        return sw_rev;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dimm_rev != nullptr)
+    if(hw_rev != nullptr)
     {
-        children["dimm-rev"] = dimm_rev;
+        children["hw-rev"] = hw_rev;
     }
 
     if(fw_rev != nullptr)
@@ -2479,19 +2611,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::D
         children["fw-rev"] = fw_rev;
     }
 
-    if(hw_rev != nullptr)
+    if(sw_rev != nullptr)
     {
-        children["hw-rev"] = hw_rev;
+        children["sw-rev"] = sw_rev;
+    }
+
+    if(dimm_rev != nullptr)
+    {
+        children["dimm-rev"] = dimm_rev;
     }
 
     if(ssd_rev != nullptr)
     {
         children["ssd-rev"] = ssd_rev;
-    }
-
-    if(sw_rev != nullptr)
-    {
-        children["sw-rev"] = sw_rev;
     }
 
     return children;
@@ -2527,215 +2659,7 @@ void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::Hardwa
 
 bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dimm-rev" || name == "fw-rev" || name == "hw-rev" || name == "ssd-rev" || name == "sw-rev" || name == "node-description" || name == "version")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
-    :
-    cas{YType::uint32, "cas"},
-    locator{YType::str, "locator"},
-    size{YType::uint32, "size"},
-    speed{YType::uint32, "speed"}
-{
-
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
-{
-    return cas.is_set
-	|| locator.is_set
-	|| size.is_set
-	|| speed.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cas.yfilter)
-	|| ydk::is_set(locator.yfilter)
-	|| ydk::is_set(size.yfilter)
-	|| ydk::is_set(speed.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dimm-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
-    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
-    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cas")
-    {
-        cas = value;
-        cas.value_namespace = name_space;
-        cas.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "locator")
-    {
-        locator = value;
-        locator.value_namespace = name_space;
-        locator.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "size")
-    {
-        size = value;
-        size.value_namespace = name_space;
-        size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "speed")
-    {
-        speed = value;
-        speed.value_namespace = name_space;
-        speed.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cas")
-    {
-        cas.yfilter = yfilter;
-    }
-    if(value_path == "locator")
-    {
-        locator.yfilter = yfilter;
-    }
-    if(value_path == "size")
-    {
-        size.yfilter = yfilter;
-    }
-    if(value_path == "speed")
-    {
-        speed.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cas" || name == "locator" || name == "size" || name == "speed")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::FwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
+    if(name == "hw-rev" || name == "fw-rev" || name == "sw-rev" || name == "dimm-rev" || name == "ssd-rev" || name == "node-description" || name == "version")
         return true;
     return false;
 }
@@ -2830,106 +2754,92 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::Hardwa
     return false;
 }
 
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::FwRev()
     :
-    fw_rev{YType::str, "fw-rev"},
-    number{YType::str, "number"},
-    serial_number{YType::str, "serial-number"}
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
 {
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::has_data() const
 {
-    return fw_rev.is_set
-	|| number.is_set
-	|| serial_number.is_set;
+    return major_revision.is_set
+	|| minor_revision.is_set;
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(fw_rev.yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(serial_number.yfilter);
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
 }
 
-std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
+std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssd-rev";
+    path_buffer << "fw-rev";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "fw-rev")
+    if(value_path == "major-revision")
     {
-        fw_rev = value;
-        fw_rev.value_namespace = name_space;
-        fw_rev.value_namespace_prefix = name_space_prefix;
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "number")
+    if(value_path == "minor-revision")
     {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "fw-rev")
+    if(value_path == "major-revision")
     {
-        fw_rev.yfilter = yfilter;
+        major_revision.yfilter = yfilter;
     }
-    if(value_path == "number")
+    if(value_path == "minor-revision")
     {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
+        minor_revision.yfilter = yfilter;
     }
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fw-rev" || name == "number" || name == "serial-number")
+    if(name == "major-revision" || name == "minor-revision")
         return true;
     return false;
 }
@@ -3024,86 +2934,196 @@ bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::Hardwa
     return false;
 }
 
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::Main()
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
     :
-    board_type{YType::uint32, "board-type"},
-    deviation_number{YType::uint32, "deviation-number"},
-    serial_number{YType::str, "serial-number"},
-    tan{YType::str, "tan"},
-    tan_revision{YType::str, "tan-revision"}
+    size{YType::uint32, "size"},
+    speed{YType::uint32, "speed"},
+    locator{YType::str, "locator"},
+    cas{YType::uint32, "cas"}
 {
 
-    yang_name = "main"; yang_parent_name = "spa-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::~Main()
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
 {
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_data() const
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
 {
-    return board_type.is_set
-	|| deviation_number.is_set
-	|| serial_number.is_set
-	|| tan.is_set
-	|| tan_revision.is_set;
+    return size.is_set
+	|| speed.is_set
+	|| locator.is_set
+	|| cas.is_set;
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_operation() const
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(board_type.yfilter)
-	|| ydk::is_set(deviation_number.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(tan.yfilter)
-	|| ydk::is_set(tan_revision.yfilter);
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(locator.yfilter)
+	|| ydk::is_set(cas.yfilter);
 }
 
-std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_segment_path() const
+std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "main";
+    path_buffer << "dimm-rev";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (board_type.is_set || is_set(board_type.yfilter)) leaf_name_data.push_back(board_type.get_name_leafdata());
-    if (deviation_number.is_set || is_set(deviation_number.yfilter)) leaf_name_data.push_back(deviation_number.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (tan.is_set || is_set(tan.yfilter)) leaf_name_data.push_back(tan.get_name_leafdata());
-    if (tan_revision.is_set || is_set(tan_revision.yfilter)) leaf_name_data.push_back(tan_revision.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "board-type")
+    if(value_path == "size")
     {
-        board_type = value;
-        board_type.value_namespace = name_space;
-        board_type.value_namespace_prefix = name_space_prefix;
+        size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "deviation-number")
+    if(value_path == "speed")
     {
-        deviation_number = value;
-        deviation_number.value_namespace = name_space;
-        deviation_number.value_namespace_prefix = name_space_prefix;
+        speed = value;
+        speed.value_namespace = name_space;
+        speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "locator")
+    {
+        locator = value;
+        locator.value_namespace = name_space;
+        locator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cas")
+    {
+        cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "speed")
+    {
+        speed.yfilter = yfilter;
+    }
+    if(value_path == "locator")
+    {
+        locator.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "size" || name == "speed" || name == "locator" || name == "cas")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
+    :
+    number{YType::str, "number"},
+    fw_rev{YType::str, "fw-rev"},
+    serial_number{YType::str, "serial-number"}
+{
+
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
+{
+    return number.is_set
+	|| fw_rev.is_set
+	|| serial_number.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(fw_rev.yfilter)
+	|| ydk::is_set(serial_number.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssd-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fw-rev")
+    {
+        fw_rev = value;
+        fw_rev.value_namespace = name_space;
+        fw_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
@@ -3111,47 +3131,27 @@ void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::set_value(const st
         serial_number.value_namespace = name_space;
         serial_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tan")
-    {
-        tan = value;
-        tan.value_namespace = name_space;
-        tan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tan-revision")
-    {
-        tan_revision = value;
-        tan_revision.value_namespace = name_space;
-        tan_revision.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "board-type")
+    if(value_path == "number")
     {
-        board_type.yfilter = yfilter;
+        number.yfilter = yfilter;
     }
-    if(value_path == "deviation-number")
+    if(value_path == "fw-rev")
     {
-        deviation_number.yfilter = yfilter;
+        fw_rev.yfilter = yfilter;
     }
     if(value_path == "serial-number")
     {
         serial_number.yfilter = yfilter;
     }
-    if(value_path == "tan")
-    {
-        tan.yfilter = yfilter;
-    }
-    if(value_path == "tan-revision")
-    {
-        tan_revision.yfilter = yfilter;
-    }
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "board-type" || name == "deviation-number" || name == "serial-number" || name == "tan" || name == "tan-revision")
+    if(name == "number" || name == "fw-rev" || name == "serial-number")
         return true;
     return false;
 }
@@ -3444,30 +3444,30 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::has_leaf_or_ch
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Node()
     :
-    board_state{YType::enumeration, "board-state"},
-    chip_hardware_revision{YType::str, "chip-hardware-revision"},
-    clei{YType::str, "clei"},
-    cpu0{YType::enumeration, "cpu0"},
     description{YType::str, "description"},
-    monlib{YType::str, "monlib"},
-    new_deviation_number{YType::uint32, "new-deviation-number"},
-    pid{YType::str, "pid"},
-    pld_motherboard{YType::str, "pld-motherboard"},
-    pld_power{YType::str, "pld-power"},
-    rommon{YType::str, "rommon"},
     serial_number{YType::str, "serial-number"},
     tan{YType::str, "tan"},
-    vid{YType::str, "vid"}
+    pid{YType::str, "pid"},
+    vid{YType::str, "vid"},
+    chip_hardware_revision{YType::str, "chip-hardware-revision"},
+    new_deviation_number{YType::uint32, "new-deviation-number"},
+    clei{YType::str, "clei"},
+    board_state{YType::enumeration, "board-state"},
+    pld_motherboard{YType::str, "pld-motherboard"},
+    pld_power{YType::str, "pld-power"},
+    monlib{YType::str, "monlib"},
+    rommon{YType::str, "rommon"},
+    cpu0{YType::enumeration, "cpu0"}
     	,
-    cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePartition>())
-	,cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePartition>())
+    pld(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld>())
 	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision>())
-	,pld(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld>())
+	,cbc_active_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePartition>())
+	,cbc_inactive_partition(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePartition>())
 {
+    pld->parent = this;
+    hardware_revision->parent = this;
     cbc_active_partition->parent = this;
     cbc_inactive_partition->parent = this;
-    hardware_revision->parent = this;
-    pld->parent = this;
 
     yang_name = "node"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -3478,47 +3478,47 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::~Node()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::has_data() const
 {
-    return board_state.is_set
-	|| chip_hardware_revision.is_set
-	|| clei.is_set
-	|| cpu0.is_set
-	|| description.is_set
-	|| monlib.is_set
-	|| new_deviation_number.is_set
-	|| pid.is_set
-	|| pld_motherboard.is_set
-	|| pld_power.is_set
-	|| rommon.is_set
+    return description.is_set
 	|| serial_number.is_set
 	|| tan.is_set
+	|| pid.is_set
 	|| vid.is_set
-	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_data())
-	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_data())
+	|| chip_hardware_revision.is_set
+	|| new_deviation_number.is_set
+	|| clei.is_set
+	|| board_state.is_set
+	|| pld_motherboard.is_set
+	|| pld_power.is_set
+	|| monlib.is_set
+	|| rommon.is_set
+	|| cpu0.is_set
+	|| (pld !=  nullptr && pld->has_data())
 	|| (hardware_revision !=  nullptr && hardware_revision->has_data())
-	|| (pld !=  nullptr && pld->has_data());
+	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_data())
+	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_data());
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(board_state.yfilter)
-	|| ydk::is_set(chip_hardware_revision.yfilter)
-	|| ydk::is_set(clei.yfilter)
-	|| ydk::is_set(cpu0.yfilter)
 	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(monlib.yfilter)
-	|| ydk::is_set(new_deviation_number.yfilter)
-	|| ydk::is_set(pid.yfilter)
-	|| ydk::is_set(pld_motherboard.yfilter)
-	|| ydk::is_set(pld_power.yfilter)
-	|| ydk::is_set(rommon.yfilter)
 	|| ydk::is_set(serial_number.yfilter)
 	|| ydk::is_set(tan.yfilter)
+	|| ydk::is_set(pid.yfilter)
 	|| ydk::is_set(vid.yfilter)
-	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_operation())
-	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_operation())
+	|| ydk::is_set(chip_hardware_revision.yfilter)
+	|| ydk::is_set(new_deviation_number.yfilter)
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(board_state.yfilter)
+	|| ydk::is_set(pld_motherboard.yfilter)
+	|| ydk::is_set(pld_power.yfilter)
+	|| ydk::is_set(monlib.yfilter)
+	|| ydk::is_set(rommon.yfilter)
+	|| ydk::is_set(cpu0.yfilter)
+	|| (pld !=  nullptr && pld->has_operation())
 	|| (hardware_revision !=  nullptr && hardware_revision->has_operation())
-	|| (pld !=  nullptr && pld->has_operation());
+	|| (cbc_active_partition !=  nullptr && cbc_active_partition->has_operation())
+	|| (cbc_inactive_partition !=  nullptr && cbc_inactive_partition->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::get_segment_path() const
@@ -3532,20 +3532,20 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (board_state.is_set || is_set(board_state.yfilter)) leaf_name_data.push_back(board_state.get_name_leafdata());
-    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
-    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (cpu0.is_set || is_set(cpu0.yfilter)) leaf_name_data.push_back(cpu0.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (monlib.is_set || is_set(monlib.yfilter)) leaf_name_data.push_back(monlib.get_name_leafdata());
-    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
-    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
-    if (pld_motherboard.is_set || is_set(pld_motherboard.yfilter)) leaf_name_data.push_back(pld_motherboard.get_name_leafdata());
-    if (pld_power.is_set || is_set(pld_power.yfilter)) leaf_name_data.push_back(pld_power.get_name_leafdata());
-    if (rommon.is_set || is_set(rommon.yfilter)) leaf_name_data.push_back(rommon.get_name_leafdata());
     if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
     if (tan.is_set || is_set(tan.yfilter)) leaf_name_data.push_back(tan.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
     if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
+    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (board_state.is_set || is_set(board_state.yfilter)) leaf_name_data.push_back(board_state.get_name_leafdata());
+    if (pld_motherboard.is_set || is_set(pld_motherboard.yfilter)) leaf_name_data.push_back(pld_motherboard.get_name_leafdata());
+    if (pld_power.is_set || is_set(pld_power.yfilter)) leaf_name_data.push_back(pld_power.get_name_leafdata());
+    if (monlib.is_set || is_set(monlib.yfilter)) leaf_name_data.push_back(monlib.get_name_leafdata());
+    if (rommon.is_set || is_set(rommon.yfilter)) leaf_name_data.push_back(rommon.get_name_leafdata());
+    if (cpu0.is_set || is_set(cpu0.yfilter)) leaf_name_data.push_back(cpu0.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3553,6 +3553,24 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "pld")
+    {
+        if(pld == nullptr)
+        {
+            pld = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld>();
+        }
+        return pld;
+    }
+
+    if(child_yang_name == "hardware-revision")
+    {
+        if(hardware_revision == nullptr)
+        {
+            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision>();
+        }
+        return hardware_revision;
+    }
+
     if(child_yang_name == "cbc-active-partition")
     {
         if(cbc_active_partition == nullptr)
@@ -3571,30 +3589,22 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
         return cbc_inactive_partition;
     }
 
-    if(child_yang_name == "hardware-revision")
-    {
-        if(hardware_revision == nullptr)
-        {
-            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision>();
-        }
-        return hardware_revision;
-    }
-
-    if(child_yang_name == "pld")
-    {
-        if(pld == nullptr)
-        {
-            pld = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld>();
-        }
-        return pld;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pld != nullptr)
+    {
+        children["pld"] = pld;
+    }
+
+    if(hardware_revision != nullptr)
+    {
+        children["hardware-revision"] = hardware_revision;
+    }
+
     if(cbc_active_partition != nullptr)
     {
         children["cbc-active-partition"] = cbc_active_partition;
@@ -3605,86 +3615,16 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
         children["cbc-inactive-partition"] = cbc_inactive_partition;
     }
 
-    if(hardware_revision != nullptr)
-    {
-        children["hardware-revision"] = hardware_revision;
-    }
-
-    if(pld != nullptr)
-    {
-        children["pld"] = pld;
-    }
-
     return children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "board-state")
-    {
-        board_state = value;
-        board_state.value_namespace = name_space;
-        board_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision = value;
-        chip_hardware_revision.value_namespace = name_space;
-        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "clei")
-    {
-        clei = value;
-        clei.value_namespace = name_space;
-        clei.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cpu0")
-    {
-        cpu0 = value;
-        cpu0.value_namespace = name_space;
-        cpu0.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "description")
     {
         description = value;
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "monlib")
-    {
-        monlib = value;
-        monlib.value_namespace = name_space;
-        monlib.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number = value;
-        new_deviation_number.value_namespace = name_space;
-        new_deviation_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pid")
-    {
-        pid = value;
-        pid.value_namespace = name_space;
-        pid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pld-motherboard")
-    {
-        pld_motherboard = value;
-        pld_motherboard.value_namespace = name_space;
-        pld_motherboard.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pld-power")
-    {
-        pld_power = value;
-        pld_power.value_namespace = name_space;
-        pld_power.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rommon")
-    {
-        rommon = value;
-        rommon.value_namespace = name_space;
-        rommon.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
@@ -3698,59 +3638,79 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::set_valu
         tan.value_namespace = name_space;
         tan.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "pid")
+    {
+        pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "vid")
     {
         vid = value;
         vid.value_namespace = name_space;
         vid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision = value;
+        chip_hardware_revision.value_namespace = name_space;
+        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number = value;
+        new_deviation_number.value_namespace = name_space;
+        new_deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clei")
+    {
+        clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "board-state")
+    {
+        board_state = value;
+        board_state.value_namespace = name_space;
+        board_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pld-motherboard")
+    {
+        pld_motherboard = value;
+        pld_motherboard.value_namespace = name_space;
+        pld_motherboard.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pld-power")
+    {
+        pld_power = value;
+        pld_power.value_namespace = name_space;
+        pld_power.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "monlib")
+    {
+        monlib = value;
+        monlib.value_namespace = name_space;
+        monlib.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rommon")
+    {
+        rommon = value;
+        rommon.value_namespace = name_space;
+        rommon.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cpu0")
+    {
+        cpu0 = value;
+        cpu0.value_namespace = name_space;
+        cpu0.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "board-state")
-    {
-        board_state.yfilter = yfilter;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "clei")
-    {
-        clei.yfilter = yfilter;
-    }
-    if(value_path == "cpu0")
-    {
-        cpu0.yfilter = yfilter;
-    }
     if(value_path == "description")
     {
         description.yfilter = yfilter;
-    }
-    if(value_path == "monlib")
-    {
-        monlib.yfilter = yfilter;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number.yfilter = yfilter;
-    }
-    if(value_path == "pid")
-    {
-        pid.yfilter = yfilter;
-    }
-    if(value_path == "pld-motherboard")
-    {
-        pld_motherboard.yfilter = yfilter;
-    }
-    if(value_path == "pld-power")
-    {
-        pld_power.yfilter = yfilter;
-    }
-    if(value_path == "rommon")
-    {
-        rommon.yfilter = yfilter;
     }
     if(value_path == "serial-number")
     {
@@ -3760,15 +3720,925 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::set_filt
     {
         tan.yfilter = yfilter;
     }
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
     if(value_path == "vid")
     {
         vid.yfilter = yfilter;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "board-state")
+    {
+        board_state.yfilter = yfilter;
+    }
+    if(value_path == "pld-motherboard")
+    {
+        pld_motherboard.yfilter = yfilter;
+    }
+    if(value_path == "pld-power")
+    {
+        pld_power.yfilter = yfilter;
+    }
+    if(value_path == "monlib")
+    {
+        monlib.yfilter = yfilter;
+    }
+    if(value_path == "rommon")
+    {
+        rommon.yfilter = yfilter;
+    }
+    if(value_path == "cpu0")
+    {
+        cpu0.yfilter = yfilter;
     }
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cbc-active-partition" || name == "cbc-inactive-partition" || name == "hardware-revision" || name == "pld" || name == "board-state" || name == "chip-hardware-revision" || name == "clei" || name == "cpu0" || name == "description" || name == "monlib" || name == "new-deviation-number" || name == "pid" || name == "pld-motherboard" || name == "pld-power" || name == "rommon" || name == "serial-number" || name == "tan" || name == "vid")
+    if(name == "pld" || name == "hardware-revision" || name == "cbc-active-partition" || name == "cbc-inactive-partition" || name == "description" || name == "serial-number" || name == "tan" || name == "pid" || name == "vid" || name == "chip-hardware-revision" || name == "new-deviation-number" || name == "clei" || name == "board-state" || name == "pld-motherboard" || name == "pld-power" || name == "monlib" || name == "rommon" || name == "cpu0")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::Pld()
+    :
+    type{YType::uint32, "type"},
+    processor_higher_version{YType::uint32, "processor-higher-version"},
+    processor_lower_version{YType::uint32, "processor-lower-version"}
+{
+
+    yang_name = "pld"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::~Pld()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has_data() const
+{
+    return type.is_set
+	|| processor_higher_version.is_set
+	|| processor_lower_version.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(processor_higher_version.yfilter)
+	|| ydk::is_set(processor_lower_version.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pld";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (processor_higher_version.is_set || is_set(processor_higher_version.yfilter)) leaf_name_data.push_back(processor_higher_version.get_name_leafdata());
+    if (processor_lower_version.is_set || is_set(processor_lower_version.yfilter)) leaf_name_data.push_back(processor_lower_version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "processor-higher-version")
+    {
+        processor_higher_version = value;
+        processor_higher_version.value_namespace = name_space;
+        processor_higher_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "processor-lower-version")
+    {
+        processor_lower_version = value;
+        processor_lower_version.value_namespace = name_space;
+        processor_lower_version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "processor-higher-version")
+    {
+        processor_higher_version.yfilter = yfilter;
+    }
+    if(value_path == "processor-lower-version")
+    {
+        processor_lower_version.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "processor-higher-version" || name == "processor-lower-version")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision()
+{
+
+    yang_name = "hardware-revision"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::~HardwareRevision()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_data() const
+{
+    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    {
+        if(hardware_revision[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_operation() const
+{
+    for (std::size_t index=0; index<hardware_revision.size(); index++)
+    {
+        if(hardware_revision[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hardware-revision";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hardware-revision")
+    {
+        for(auto const & c : hardware_revision)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_>();
+        c->parent = this;
+        hardware_revision.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hardware_revision)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hardware-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HardwareRevision_()
+    :
+    node_description{YType::str, "node-description"},
+    version{YType::str, "version"}
+    	,
+    hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev>())
+	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev>())
+	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev>())
+	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev>())
+	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev>())
+{
+    hw_rev->parent = this;
+    fw_rev->parent = this;
+    sw_rev->parent = this;
+    dimm_rev->parent = this;
+    ssd_rev->parent = this;
+
+    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::~HardwareRevision_()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::has_data() const
+{
+    return node_description.is_set
+	|| version.is_set
+	|| (hw_rev !=  nullptr && hw_rev->has_data())
+	|| (fw_rev !=  nullptr && fw_rev->has_data())
+	|| (sw_rev !=  nullptr && sw_rev->has_data())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_data());
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_description.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| (hw_rev !=  nullptr && hw_rev->has_operation())
+	|| (fw_rev !=  nullptr && fw_rev->has_operation())
+	|| (sw_rev !=  nullptr && sw_rev->has_operation())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_operation());
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hardware-revision";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_description.is_set || is_set(node_description.yfilter)) leaf_name_data.push_back(node_description.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hw-rev")
+    {
+        if(hw_rev == nullptr)
+        {
+            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev>();
+        }
+        return hw_rev;
+    }
+
+    if(child_yang_name == "fw-rev")
+    {
+        if(fw_rev == nullptr)
+        {
+            fw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev>();
+        }
+        return fw_rev;
+    }
+
+    if(child_yang_name == "sw-rev")
+    {
+        if(sw_rev == nullptr)
+        {
+            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev>();
+        }
+        return sw_rev;
+    }
+
+    if(child_yang_name == "dimm-rev")
+    {
+        if(dimm_rev == nullptr)
+        {
+            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev>();
+        }
+        return dimm_rev;
+    }
+
+    if(child_yang_name == "ssd-rev")
+    {
+        if(ssd_rev == nullptr)
+        {
+            ssd_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev>();
+        }
+        return ssd_rev;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hw_rev != nullptr)
+    {
+        children["hw-rev"] = hw_rev;
+    }
+
+    if(fw_rev != nullptr)
+    {
+        children["fw-rev"] = fw_rev;
+    }
+
+    if(sw_rev != nullptr)
+    {
+        children["sw-rev"] = sw_rev;
+    }
+
+    if(dimm_rev != nullptr)
+    {
+        children["dimm-rev"] = dimm_rev;
+    }
+
+    if(ssd_rev != nullptr)
+    {
+        children["ssd-rev"] = ssd_rev;
+    }
+
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-description")
+    {
+        node_description = value;
+        node_description.value_namespace = name_space;
+        node_description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-description")
+    {
+        node_description.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hw-rev" || name == "fw-rev" || name == "sw-rev" || name == "dimm-rev" || name == "ssd-rev" || name == "node-description" || name == "version")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::HwRev()
+    :
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
+{
+
+    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::has_data() const
+{
+    return major_revision.is_set
+	|| minor_revision.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hw-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision.yfilter = yfilter;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "major-revision" || name == "minor-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::FwRev()
+    :
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
+{
+
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::has_data() const
+{
+    return major_revision.is_set
+	|| minor_revision.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fw-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision.yfilter = yfilter;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "major-revision" || name == "minor-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::SwRev()
+    :
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
+{
+
+    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::has_data() const
+{
+    return major_revision.is_set
+	|| minor_revision.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sw-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "major-revision")
+    {
+        major_revision.yfilter = yfilter;
+    }
+    if(value_path == "minor-revision")
+    {
+        minor_revision.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "major-revision" || name == "minor-revision")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
+    :
+    size{YType::uint32, "size"},
+    speed{YType::uint32, "speed"},
+    locator{YType::str, "locator"},
+    cas{YType::uint32, "cas"}
+{
+
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
+{
+    return size.is_set
+	|| speed.is_set
+	|| locator.is_set
+	|| cas.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(locator.yfilter)
+	|| ydk::is_set(cas.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dimm-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "size")
+    {
+        size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "speed")
+    {
+        speed = value;
+        speed.value_namespace = name_space;
+        speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "locator")
+    {
+        locator = value;
+        locator.value_namespace = name_space;
+        locator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cas")
+    {
+        cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "speed")
+    {
+        speed.yfilter = yfilter;
+    }
+    if(value_path == "locator")
+    {
+        locator.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "size" || name == "speed" || name == "locator" || name == "cas")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
+    :
+    number{YType::str, "number"},
+    fw_rev{YType::str, "fw-rev"},
+    serial_number{YType::str, "serial-number"}
+{
+
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
+{
+    return number.is_set
+	|| fw_rev.is_set
+	|| serial_number.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(fw_rev.yfilter)
+	|| ydk::is_set(serial_number.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssd-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fw-rev")
+    {
+        fw_rev = value;
+        fw_rev.value_namespace = name_space;
+        fw_rev.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "fw-rev")
+    {
+        fw_rev.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number" || name == "fw-rev" || name == "serial-number")
         return true;
     return false;
 }
@@ -3953,892 +4823,22 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInact
     return false;
 }
 
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision()
-{
-
-    yang_name = "hardware-revision"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::~HardwareRevision()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_data() const
-{
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
-    {
-        if(hardware_revision[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_operation() const
-{
-    for (std::size_t index=0; index<hardware_revision.size(); index++)
-    {
-        if(hardware_revision[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hardware-revision";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hardware-revision")
-    {
-        for(auto const & c : hardware_revision)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_>();
-        c->parent = this;
-        hardware_revision.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hardware_revision)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hardware-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HardwareRevision_()
-    :
-    node_description{YType::str, "node-description"},
-    version{YType::str, "version"}
-    	,
-    dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev>())
-	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev>())
-	,hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev>())
-	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev>())
-{
-    dimm_rev->parent = this;
-    fw_rev->parent = this;
-    hw_rev->parent = this;
-    ssd_rev->parent = this;
-    sw_rev->parent = this;
-
-    yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::~HardwareRevision_()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::has_data() const
-{
-    return node_description.is_set
-	|| version.is_set
-	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
-	|| (fw_rev !=  nullptr && fw_rev->has_data())
-	|| (hw_rev !=  nullptr && hw_rev->has_data())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_data())
-	|| (sw_rev !=  nullptr && sw_rev->has_data());
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node_description.yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
-	|| (fw_rev !=  nullptr && fw_rev->has_operation())
-	|| (hw_rev !=  nullptr && hw_rev->has_operation())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_operation())
-	|| (sw_rev !=  nullptr && sw_rev->has_operation());
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hardware-revision";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node_description.is_set || is_set(node_description.yfilter)) leaf_name_data.push_back(node_description.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dimm-rev")
-    {
-        if(dimm_rev == nullptr)
-        {
-            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev>();
-        }
-        return dimm_rev;
-    }
-
-    if(child_yang_name == "fw-rev")
-    {
-        if(fw_rev == nullptr)
-        {
-            fw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev>();
-        }
-        return fw_rev;
-    }
-
-    if(child_yang_name == "hw-rev")
-    {
-        if(hw_rev == nullptr)
-        {
-            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev>();
-        }
-        return hw_rev;
-    }
-
-    if(child_yang_name == "ssd-rev")
-    {
-        if(ssd_rev == nullptr)
-        {
-            ssd_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev>();
-        }
-        return ssd_rev;
-    }
-
-    if(child_yang_name == "sw-rev")
-    {
-        if(sw_rev == nullptr)
-        {
-            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev>();
-        }
-        return sw_rev;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dimm_rev != nullptr)
-    {
-        children["dimm-rev"] = dimm_rev;
-    }
-
-    if(fw_rev != nullptr)
-    {
-        children["fw-rev"] = fw_rev;
-    }
-
-    if(hw_rev != nullptr)
-    {
-        children["hw-rev"] = hw_rev;
-    }
-
-    if(ssd_rev != nullptr)
-    {
-        children["ssd-rev"] = ssd_rev;
-    }
-
-    if(sw_rev != nullptr)
-    {
-        children["sw-rev"] = sw_rev;
-    }
-
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "node-description")
-    {
-        node_description = value;
-        node_description.value_namespace = name_space;
-        node_description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "node-description")
-    {
-        node_description.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dimm-rev" || name == "fw-rev" || name == "hw-rev" || name == "ssd-rev" || name == "sw-rev" || name == "node-description" || name == "version")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
-    :
-    cas{YType::uint32, "cas"},
-    locator{YType::str, "locator"},
-    size{YType::uint32, "size"},
-    speed{YType::uint32, "speed"}
-{
-
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
-{
-    return cas.is_set
-	|| locator.is_set
-	|| size.is_set
-	|| speed.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cas.yfilter)
-	|| ydk::is_set(locator.yfilter)
-	|| ydk::is_set(size.yfilter)
-	|| ydk::is_set(speed.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dimm-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
-    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
-    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cas")
-    {
-        cas = value;
-        cas.value_namespace = name_space;
-        cas.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "locator")
-    {
-        locator = value;
-        locator.value_namespace = name_space;
-        locator.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "size")
-    {
-        size = value;
-        size.value_namespace = name_space;
-        size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "speed")
-    {
-        speed = value;
-        speed.value_namespace = name_space;
-        speed.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cas")
-    {
-        cas.yfilter = yfilter;
-    }
-    if(value_path == "locator")
-    {
-        locator.yfilter = yfilter;
-    }
-    if(value_path == "size")
-    {
-        size.yfilter = yfilter;
-    }
-    if(value_path == "speed")
-    {
-        speed.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cas" || name == "locator" || name == "size" || name == "speed")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::FwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::HwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "hw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::~HwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
-    :
-    fw_rev{YType::str, "fw-rev"},
-    number{YType::str, "number"},
-    serial_number{YType::str, "serial-number"}
-{
-
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
-{
-    return fw_rev.is_set
-	|| number.is_set
-	|| serial_number.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fw_rev.yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(serial_number.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ssd-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fw-rev")
-    {
-        fw_rev = value;
-        fw_rev.value_namespace = name_space;
-        fw_rev.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fw-rev")
-    {
-        fw_rev.yfilter = yfilter;
-    }
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fw-rev" || name == "number" || name == "serial-number")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::SwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "sw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::~SwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::Pld()
-    :
-    processor_higher_version{YType::uint32, "processor-higher-version"},
-    processor_lower_version{YType::uint32, "processor-lower-version"},
-    type{YType::uint32, "type"}
-{
-
-    yang_name = "pld"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::~Pld()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has_data() const
-{
-    return processor_higher_version.is_set
-	|| processor_lower_version.is_set
-	|| type.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(processor_higher_version.yfilter)
-	|| ydk::is_set(processor_lower_version.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pld";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (processor_higher_version.is_set || is_set(processor_higher_version.yfilter)) leaf_name_data.push_back(processor_higher_version.get_name_leafdata());
-    if (processor_lower_version.is_set || is_set(processor_lower_version.yfilter)) leaf_name_data.push_back(processor_lower_version.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "processor-higher-version")
-    {
-        processor_higher_version = value;
-        processor_higher_version.value_namespace = name_space;
-        processor_higher_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "processor-lower-version")
-    {
-        processor_lower_version = value;
-        processor_lower_version.value_namespace = name_space;
-        processor_lower_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "processor-higher-version")
-    {
-        processor_higher_version.yfilter = yfilter;
-    }
-    if(value_path == "processor-lower-version")
-    {
-        processor_lower_version.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "processor-higher-version" || name == "processor-lower-version" || name == "type")
-        return true;
-    return false;
-}
-
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Spa()
     :
-    clei{YType::str, "clei"},
-    name{YType::str, "name"},
     node{YType::str, "node"},
-    node_state{YType::enumeration, "node-state"},
-    pca_revision{YType::str, "pca-revision"},
+    name{YType::str, "name"},
     pca_unit_number{YType::str, "pca-unit-number"},
+    pca_revision{YType::str, "pca-revision"},
     pid{YType::str, "pid"},
-    vid{YType::str, "vid"}
+    vid{YType::str, "vid"},
+    clei{YType::str, "clei"},
+    node_state{YType::enumeration, "node-state"}
     	,
-    hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision>())
-	,main(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main>())
+    main(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main>())
+	,hardware_revision(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision>())
 {
-    hardware_revision->parent = this;
     main->parent = this;
+    hardware_revision->parent = this;
 
     yang_name = "spa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -4849,31 +4849,31 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::~Spa()
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::has_data() const
 {
-    return clei.is_set
+    return node.is_set
 	|| name.is_set
-	|| node.is_set
-	|| node_state.is_set
-	|| pca_revision.is_set
 	|| pca_unit_number.is_set
+	|| pca_revision.is_set
 	|| pid.is_set
 	|| vid.is_set
-	|| (hardware_revision !=  nullptr && hardware_revision->has_data())
-	|| (main !=  nullptr && main->has_data());
+	|| clei.is_set
+	|| node_state.is_set
+	|| (main !=  nullptr && main->has_data())
+	|| (hardware_revision !=  nullptr && hardware_revision->has_data());
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(clei.yfilter)
-	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(node_state.yfilter)
-	|| ydk::is_set(pca_revision.yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(pca_unit_number.yfilter)
+	|| ydk::is_set(pca_revision.yfilter)
 	|| ydk::is_set(pid.yfilter)
 	|| ydk::is_set(vid.yfilter)
-	|| (hardware_revision !=  nullptr && hardware_revision->has_operation())
-	|| (main !=  nullptr && main->has_operation());
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(node_state.yfilter)
+	|| (main !=  nullptr && main->has_operation())
+	|| (hardware_revision !=  nullptr && hardware_revision->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::get_segment_path() const
@@ -4887,14 +4887,14 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (node_state.is_set || is_set(node_state.yfilter)) leaf_name_data.push_back(node_state.get_name_leafdata());
-    if (pca_revision.is_set || is_set(pca_revision.yfilter)) leaf_name_data.push_back(pca_revision.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (pca_unit_number.is_set || is_set(pca_unit_number.yfilter)) leaf_name_data.push_back(pca_unit_number.get_name_leafdata());
+    if (pca_revision.is_set || is_set(pca_revision.yfilter)) leaf_name_data.push_back(pca_revision.get_name_leafdata());
     if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
     if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (node_state.is_set || is_set(node_state.yfilter)) leaf_name_data.push_back(node_state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4902,15 +4902,6 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "hardware-revision")
-    {
-        if(hardware_revision == nullptr)
-        {
-            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision>();
-        }
-        return hardware_revision;
-    }
-
     if(child_yang_name == "main")
     {
         if(main == nullptr)
@@ -4920,20 +4911,29 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
         return main;
     }
 
+    if(child_yang_name == "hardware-revision")
+    {
+        if(hardware_revision == nullptr)
+        {
+            hardware_revision = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision>();
+        }
+        return hardware_revision;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(hardware_revision != nullptr)
-    {
-        children["hardware-revision"] = hardware_revision;
-    }
-
     if(main != nullptr)
     {
         children["main"] = main;
+    }
+
+    if(hardware_revision != nullptr)
+    {
+        children["hardware-revision"] = hardware_revision;
     }
 
     return children;
@@ -4941,11 +4941,11 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "clei")
+    if(value_path == "node")
     {
-        clei = value;
-        clei.value_namespace = name_space;
-        clei.value_namespace_prefix = name_space_prefix;
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
@@ -4953,29 +4953,17 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::set_value
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "node")
+    if(value_path == "pca-unit-number")
     {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-state")
-    {
-        node_state = value;
-        node_state.value_namespace = name_space;
-        node_state.value_namespace_prefix = name_space_prefix;
+        pca_unit_number = value;
+        pca_unit_number.value_namespace = name_space;
+        pca_unit_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pca-revision")
     {
         pca_revision = value;
         pca_revision.value_namespace = name_space;
         pca_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pca-unit-number")
-    {
-        pca_unit_number = value;
-        pca_unit_number.value_namespace = name_space;
-        pca_unit_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pid")
     {
@@ -4989,33 +4977,37 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::set_value
         vid.value_namespace = name_space;
         vid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "clei")
+    {
+        clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-state")
+    {
+        node_state = value;
+        node_state.value_namespace = name_space;
+        node_state.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "clei")
+    if(value_path == "node")
     {
-        clei.yfilter = yfilter;
+        node.yfilter = yfilter;
     }
     if(value_path == "name")
     {
         name.yfilter = yfilter;
     }
-    if(value_path == "node")
+    if(value_path == "pca-unit-number")
     {
-        node.yfilter = yfilter;
-    }
-    if(value_path == "node-state")
-    {
-        node_state.yfilter = yfilter;
+        pca_unit_number.yfilter = yfilter;
     }
     if(value_path == "pca-revision")
     {
         pca_revision.yfilter = yfilter;
-    }
-    if(value_path == "pca-unit-number")
-    {
-        pca_unit_number.yfilter = yfilter;
     }
     if(value_path == "pid")
     {
@@ -5025,11 +5017,151 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::set_filte
     {
         vid.yfilter = yfilter;
     }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "node-state")
+    {
+        node_state.yfilter = yfilter;
+    }
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hardware-revision" || name == "main" || name == "clei" || name == "name" || name == "node" || name == "node-state" || name == "pca-revision" || name == "pca-unit-number" || name == "pid" || name == "vid")
+    if(name == "main" || name == "hardware-revision" || name == "node" || name == "name" || name == "pca-unit-number" || name == "pca-revision" || name == "pid" || name == "vid" || name == "clei" || name == "node-state")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::Main()
+    :
+    board_type{YType::uint32, "board-type"},
+    tan{YType::str, "tan"},
+    tan_revision{YType::str, "tan-revision"},
+    deviation_number{YType::uint32, "deviation-number"},
+    serial_number{YType::str, "serial-number"}
+{
+
+    yang_name = "main"; yang_parent_name = "spa"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::~Main()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has_data() const
+{
+    return board_type.is_set
+	|| tan.is_set
+	|| tan_revision.is_set
+	|| deviation_number.is_set
+	|| serial_number.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(board_type.yfilter)
+	|| ydk::is_set(tan.yfilter)
+	|| ydk::is_set(tan_revision.yfilter)
+	|| ydk::is_set(deviation_number.yfilter)
+	|| ydk::is_set(serial_number.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "main";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (board_type.is_set || is_set(board_type.yfilter)) leaf_name_data.push_back(board_type.get_name_leafdata());
+    if (tan.is_set || is_set(tan.yfilter)) leaf_name_data.push_back(tan.get_name_leafdata());
+    if (tan_revision.is_set || is_set(tan_revision.yfilter)) leaf_name_data.push_back(tan_revision.get_name_leafdata());
+    if (deviation_number.is_set || is_set(deviation_number.yfilter)) leaf_name_data.push_back(deviation_number.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "board-type")
+    {
+        board_type = value;
+        board_type.value_namespace = name_space;
+        board_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tan")
+    {
+        tan = value;
+        tan.value_namespace = name_space;
+        tan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tan-revision")
+    {
+        tan_revision = value;
+        tan_revision.value_namespace = name_space;
+        tan_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deviation-number")
+    {
+        deviation_number = value;
+        deviation_number.value_namespace = name_space;
+        deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "board-type")
+    {
+        board_type.yfilter = yfilter;
+    }
+    if(value_path == "tan")
+    {
+        tan.yfilter = yfilter;
+    }
+    if(value_path == "tan-revision")
+    {
+        tan_revision.yfilter = yfilter;
+    }
+    if(value_path == "deviation-number")
+    {
+        deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "board-type" || name == "tan" || name == "tan-revision" || name == "deviation-number" || name == "serial-number")
         return true;
     return false;
 }
@@ -5132,17 +5264,17 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevisi
     node_description{YType::str, "node-description"},
     version{YType::str, "version"}
     	,
-    dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev>())
+    hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev>())
 	,fw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev>())
-	,hw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev>())
-	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev>())
 	,sw_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev>())
+	,dimm_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev>())
+	,ssd_rev(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev>())
 {
-    dimm_rev->parent = this;
-    fw_rev->parent = this;
     hw_rev->parent = this;
-    ssd_rev->parent = this;
+    fw_rev->parent = this;
     sw_rev->parent = this;
+    dimm_rev->parent = this;
+    ssd_rev->parent = this;
 
     yang_name = "hardware-revision"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -5155,11 +5287,11 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareR
 {
     return node_description.is_set
 	|| version.is_set
-	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
-	|| (fw_rev !=  nullptr && fw_rev->has_data())
 	|| (hw_rev !=  nullptr && hw_rev->has_data())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_data())
-	|| (sw_rev !=  nullptr && sw_rev->has_data());
+	|| (fw_rev !=  nullptr && fw_rev->has_data())
+	|| (sw_rev !=  nullptr && sw_rev->has_data())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_data())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_data());
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::has_operation() const
@@ -5167,11 +5299,11 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareR
     return is_set(yfilter)
 	|| ydk::is_set(node_description.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
-	|| (fw_rev !=  nullptr && fw_rev->has_operation())
 	|| (hw_rev !=  nullptr && hw_rev->has_operation())
-	|| (ssd_rev !=  nullptr && ssd_rev->has_operation())
-	|| (sw_rev !=  nullptr && sw_rev->has_operation());
+	|| (fw_rev !=  nullptr && fw_rev->has_operation())
+	|| (sw_rev !=  nullptr && sw_rev->has_operation())
+	|| (dimm_rev !=  nullptr && dimm_rev->has_operation())
+	|| (ssd_rev !=  nullptr && ssd_rev->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::get_segment_path() const
@@ -5194,13 +5326,13 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dimm-rev")
+    if(child_yang_name == "hw-rev")
     {
-        if(dimm_rev == nullptr)
+        if(hw_rev == nullptr)
         {
-            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev>();
+            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev>();
         }
-        return dimm_rev;
+        return hw_rev;
     }
 
     if(child_yang_name == "fw-rev")
@@ -5212,13 +5344,22 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
         return fw_rev;
     }
 
-    if(child_yang_name == "hw-rev")
+    if(child_yang_name == "sw-rev")
     {
-        if(hw_rev == nullptr)
+        if(sw_rev == nullptr)
         {
-            hw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev>();
+            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev>();
         }
-        return hw_rev;
+        return sw_rev;
+    }
+
+    if(child_yang_name == "dimm-rev")
+    {
+        if(dimm_rev == nullptr)
+        {
+            dimm_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev>();
+        }
+        return dimm_rev;
     }
 
     if(child_yang_name == "ssd-rev")
@@ -5230,24 +5371,15 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
         return ssd_rev;
     }
 
-    if(child_yang_name == "sw-rev")
-    {
-        if(sw_rev == nullptr)
-        {
-            sw_rev = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev>();
-        }
-        return sw_rev;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dimm_rev != nullptr)
+    if(hw_rev != nullptr)
     {
-        children["dimm-rev"] = dimm_rev;
+        children["hw-rev"] = hw_rev;
     }
 
     if(fw_rev != nullptr)
@@ -5255,19 +5387,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
         children["fw-rev"] = fw_rev;
     }
 
-    if(hw_rev != nullptr)
+    if(sw_rev != nullptr)
     {
-        children["hw-rev"] = hw_rev;
+        children["sw-rev"] = sw_rev;
+    }
+
+    if(dimm_rev != nullptr)
+    {
+        children["dimm-rev"] = dimm_rev;
     }
 
     if(ssd_rev != nullptr)
     {
         children["ssd-rev"] = ssd_rev;
-    }
-
-    if(sw_rev != nullptr)
-    {
-        children["sw-rev"] = sw_rev;
     }
 
     return children;
@@ -5303,215 +5435,7 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareR
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dimm-rev" || name == "fw-rev" || name == "hw-rev" || name == "ssd-rev" || name == "sw-rev" || name == "node-description" || name == "version")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
-    :
-    cas{YType::uint32, "cas"},
-    locator{YType::str, "locator"},
-    size{YType::uint32, "size"},
-    speed{YType::uint32, "speed"}
-{
-
-    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
-{
-    return cas.is_set
-	|| locator.is_set
-	|| size.is_set
-	|| speed.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cas.yfilter)
-	|| ydk::is_set(locator.yfilter)
-	|| ydk::is_set(size.yfilter)
-	|| ydk::is_set(speed.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dimm-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
-    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
-    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cas")
-    {
-        cas = value;
-        cas.value_namespace = name_space;
-        cas.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "locator")
-    {
-        locator = value;
-        locator.value_namespace = name_space;
-        locator.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "size")
-    {
-        size = value;
-        size.value_namespace = name_space;
-        size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "speed")
-    {
-        speed = value;
-        speed.value_namespace = name_space;
-        speed.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cas")
-    {
-        cas.yfilter = yfilter;
-    }
-    if(value_path == "locator")
-    {
-        locator.yfilter = yfilter;
-    }
-    if(value_path == "size")
-    {
-        size.yfilter = yfilter;
-    }
-    if(value_path == "speed")
-    {
-        speed.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cas" || name == "locator" || name == "size" || name == "speed")
-        return true;
-    return false;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::FwRev()
-    :
-    major_revision{YType::uint32, "major-revision"},
-    minor_revision{YType::uint32, "minor-revision"}
-{
-
-    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
-{
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::has_data() const
-{
-    return major_revision.is_set
-	|| minor_revision.is_set;
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(major_revision.yfilter)
-	|| ydk::is_set(minor_revision.yfilter);
-}
-
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fw-rev";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
-    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision = value;
-        major_revision.value_namespace = name_space;
-        major_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision = value;
-        minor_revision.value_namespace = name_space;
-        minor_revision.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "major-revision")
-    {
-        major_revision.yfilter = yfilter;
-    }
-    if(value_path == "minor-revision")
-    {
-        minor_revision.yfilter = yfilter;
-    }
-}
-
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-revision" || name == "minor-revision")
+    if(name == "hw-rev" || name == "fw-rev" || name == "sw-rev" || name == "dimm-rev" || name == "ssd-rev" || name == "node-description" || name == "version")
         return true;
     return false;
 }
@@ -5606,106 +5530,92 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareR
     return false;
 }
 
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::FwRev()
     :
-    fw_rev{YType::str, "fw-rev"},
-    number{YType::str, "number"},
-    serial_number{YType::str, "serial-number"}
+    major_revision{YType::uint32, "major-revision"},
+    minor_revision{YType::uint32, "minor-revision"}
 {
 
-    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fw-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::~FwRev()
 {
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::has_data() const
 {
-    return fw_rev.is_set
-	|| number.is_set
-	|| serial_number.is_set;
+    return major_revision.is_set
+	|| minor_revision.is_set;
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(fw_rev.yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(serial_number.yfilter);
+	|| ydk::is_set(major_revision.yfilter)
+	|| ydk::is_set(minor_revision.yfilter);
 }
 
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssd-rev";
+    path_buffer << "fw-rev";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (major_revision.is_set || is_set(major_revision.yfilter)) leaf_name_data.push_back(major_revision.get_name_leafdata());
+    if (minor_revision.is_set || is_set(minor_revision.yfilter)) leaf_name_data.push_back(minor_revision.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "fw-rev")
+    if(value_path == "major-revision")
     {
-        fw_rev = value;
-        fw_rev.value_namespace = name_space;
-        fw_rev.value_namespace_prefix = name_space_prefix;
+        major_revision = value;
+        major_revision.value_namespace = name_space;
+        major_revision.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "number")
+    if(value_path == "minor-revision")
     {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
+        minor_revision = value;
+        minor_revision.value_namespace = name_space;
+        minor_revision.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "fw-rev")
+    if(value_path == "major-revision")
     {
-        fw_rev.yfilter = yfilter;
+        major_revision.yfilter = yfilter;
     }
-    if(value_path == "number")
+    if(value_path == "minor-revision")
     {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
+        minor_revision.yfilter = yfilter;
     }
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fw-rev" || name == "number" || name == "serial-number")
+    if(name == "major-revision" || name == "minor-revision")
         return true;
     return false;
 }
@@ -5800,86 +5710,196 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareR
     return false;
 }
 
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::Main()
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::DimmRev()
     :
-    board_type{YType::uint32, "board-type"},
-    deviation_number{YType::uint32, "deviation-number"},
-    serial_number{YType::str, "serial-number"},
-    tan{YType::str, "tan"},
-    tan_revision{YType::str, "tan-revision"}
+    size{YType::uint32, "size"},
+    speed{YType::uint32, "speed"},
+    locator{YType::str, "locator"},
+    cas{YType::uint32, "cas"}
 {
 
-    yang_name = "main"; yang_parent_name = "spa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dimm-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::~Main()
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::~DimmRev()
 {
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has_data() const
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::has_data() const
 {
-    return board_type.is_set
-	|| deviation_number.is_set
-	|| serial_number.is_set
-	|| tan.is_set
-	|| tan_revision.is_set;
+    return size.is_set
+	|| speed.is_set
+	|| locator.is_set
+	|| cas.is_set;
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has_operation() const
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(board_type.yfilter)
-	|| ydk::is_set(deviation_number.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(tan.yfilter)
-	|| ydk::is_set(tan_revision.yfilter);
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(speed.yfilter)
+	|| ydk::is_set(locator.yfilter)
+	|| ydk::is_set(cas.yfilter);
 }
 
-std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_segment_path() const
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "main";
+    path_buffer << "dimm-rev";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (board_type.is_set || is_set(board_type.yfilter)) leaf_name_data.push_back(board_type.get_name_leafdata());
-    if (deviation_number.is_set || is_set(deviation_number.yfilter)) leaf_name_data.push_back(deviation_number.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (tan.is_set || is_set(tan.yfilter)) leaf_name_data.push_back(tan.get_name_leafdata());
-    if (tan_revision.is_set || is_set(tan_revision.yfilter)) leaf_name_data.push_back(tan_revision.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
+    if (locator.is_set || is_set(locator.yfilter)) leaf_name_data.push_back(locator.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "board-type")
+    if(value_path == "size")
     {
-        board_type = value;
-        board_type.value_namespace = name_space;
-        board_type.value_namespace_prefix = name_space_prefix;
+        size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "deviation-number")
+    if(value_path == "speed")
     {
-        deviation_number = value;
-        deviation_number.value_namespace = name_space;
-        deviation_number.value_namespace_prefix = name_space_prefix;
+        speed = value;
+        speed.value_namespace = name_space;
+        speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "locator")
+    {
+        locator = value;
+        locator.value_namespace = name_space;
+        locator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cas")
+    {
+        cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "speed")
+    {
+        speed.yfilter = yfilter;
+    }
+    if(value_path == "locator")
+    {
+        locator.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "size" || name == "speed" || name == "locator" || name == "cas")
+        return true;
+    return false;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::SsdRev()
+    :
+    number{YType::str, "number"},
+    fw_rev{YType::str, "fw-rev"},
+    serial_number{YType::str, "serial-number"}
+{
+
+    yang_name = "ssd-rev"; yang_parent_name = "hardware-revision"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::~SsdRev()
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::has_data() const
+{
+    return number.is_set
+	|| fw_rev.is_set
+	|| serial_number.is_set;
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(fw_rev.yfilter)
+	|| ydk::is_set(serial_number.yfilter);
+}
+
+std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssd-rev";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (fw_rev.is_set || is_set(fw_rev.yfilter)) leaf_name_data.push_back(fw_rev.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fw-rev")
+    {
+        fw_rev = value;
+        fw_rev.value_namespace = name_space;
+        fw_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
@@ -5887,47 +5907,27 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::set
         serial_number.value_namespace = name_space;
         serial_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tan")
-    {
-        tan = value;
-        tan.value_namespace = name_space;
-        tan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tan-revision")
-    {
-        tan_revision = value;
-        tan_revision.value_namespace = name_space;
-        tan_revision.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "board-type")
+    if(value_path == "number")
     {
-        board_type.yfilter = yfilter;
+        number.yfilter = yfilter;
     }
-    if(value_path == "deviation-number")
+    if(value_path == "fw-rev")
     {
-        deviation_number.yfilter = yfilter;
+        fw_rev.yfilter = yfilter;
     }
     if(value_path == "serial-number")
     {
         serial_number.yfilter = yfilter;
     }
-    if(value_path == "tan")
-    {
-        tan.yfilter = yfilter;
-    }
-    if(value_path == "tan-revision")
-    {
-        tan_revision.yfilter = yfilter;
-    }
 }
 
-bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "board-type" || name == "deviation-number" || name == "serial-number" || name == "tan" || name == "tan-revision")
+    if(name == "number" || name == "fw-rev" || name == "serial-number")
         return true;
     return false;
 }
@@ -6027,10 +6027,10 @@ bool Diag::Racks::Rack::Summary::has_leaf_or_child_of_name(const std::string & n
 
 Diag::Racks::Rack::Summary::Summary_::Summary_()
     :
-    description{YType::str, "description"},
+    type{YType::enumeration, "type"},
     node{YType::str, "node"},
     slot_type{YType::enumeration, "slot-type"},
-    type{YType::enumeration, "type"}
+    description{YType::str, "description"}
 {
 
     yang_name = "summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
@@ -6042,19 +6042,19 @@ Diag::Racks::Rack::Summary::Summary_::~Summary_()
 
 bool Diag::Racks::Rack::Summary::Summary_::has_data() const
 {
-    return description.is_set
+    return type.is_set
 	|| node.is_set
 	|| slot_type.is_set
-	|| type.is_set;
+	|| description.is_set;
 }
 
 bool Diag::Racks::Rack::Summary::Summary_::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(node.yfilter)
 	|| ydk::is_set(slot_type.yfilter)
-	|| ydk::is_set(type.yfilter);
+	|| ydk::is_set(description.yfilter);
 }
 
 std::string Diag::Racks::Rack::Summary::Summary_::get_segment_path() const
@@ -6068,10 +6068,10 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Summary::Summa
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
     if (slot_type.is_set || is_set(slot_type.yfilter)) leaf_name_data.push_back(slot_type.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6090,11 +6090,11 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Summary::Summa
 
 void Diag::Racks::Rack::Summary::Summary_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "description")
+    if(value_path == "type")
     {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node")
     {
@@ -6108,19 +6108,19 @@ void Diag::Racks::Rack::Summary::Summary_::set_value(const std::string & value_p
         slot_type.value_namespace = name_space;
         slot_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "type")
+    if(value_path == "description")
     {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Diag::Racks::Rack::Summary::Summary_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "description")
+    if(value_path == "type")
     {
-        description.yfilter = yfilter;
+        type.yfilter = yfilter;
     }
     if(value_path == "node")
     {
@@ -6130,18 +6130,22 @@ void Diag::Racks::Rack::Summary::Summary_::set_filter(const std::string & value_
     {
         slot_type.yfilter = yfilter;
     }
-    if(value_path == "type")
+    if(value_path == "description")
     {
-        type.yfilter = yfilter;
+        description.yfilter = yfilter;
     }
 }
 
 bool Diag::Racks::Rack::Summary::Summary_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "node" || name == "slot-type" || name == "type")
+    if(name == "type" || name == "node" || name == "slot-type" || name == "description")
         return true;
     return false;
 }
+
+const Enum::YLeaf DiagSlot::fan_tray {0, "fan-tray"};
+const Enum::YLeaf DiagSlot::power_module {1, "power-module"};
+const Enum::YLeaf DiagSlot::module {2, "module"};
 
 const Enum::YLeaf DiagNode::node {0, "node"};
 const Enum::YLeaf DiagNode::spa {1, "spa"};
@@ -6199,10 +6203,6 @@ const Enum::YLeaf NodeState::up {47, "up"};
 const Enum::YLeaf NodeState::down {48, "down"};
 const Enum::YLeaf NodeState::max {49, "max"};
 const Enum::YLeaf NodeState::unknown {50, "unknown"};
-
-const Enum::YLeaf DiagSlot::fan_tray {0, "fan-tray"};
-const Enum::YLeaf DiagSlot::power_module {1, "power-module"};
-const Enum::YLeaf DiagSlot::module {2, "module"};
 
 
 }

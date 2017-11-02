@@ -35,192 +35,11 @@ class MplsOam : public ydk::Entity
         class Packet; //type: MplsOam::Packet
         class Global; //type: MplsOam::Global
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global> global;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface> interface;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet> packet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global> global;
         
 }; // MplsOam
-
-
-class MplsOam::Global : public ydk::Entity
-{
-    public:
-        Global();
-        ~Global();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf total_clients; //type: uint32
-        class MessageStatistics; //type: MplsOam::Global::MessageStatistics
-        class CollaboratorStatistics; //type: MplsOam::Global::CollaboratorStatistics
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics> collaborator_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::MessageStatistics> message_statistics;
-        
-}; // MplsOam::Global
-
-
-class MplsOam::Global::CollaboratorStatistics : public ydk::Entity
-{
-    public:
-        CollaboratorStatistics();
-        ~CollaboratorStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class CollaboratorIParm; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorIParm
-        class CollaboratorIm; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorIm
-        class CollaboratorNetIo; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo
-        class CollaboratorRib; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorRib
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorIParm> collaborator_i_parm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorIm> collaborator_im;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo> collaborator_net_io;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorRib> collaborator_rib;
-        
-}; // MplsOam::Global::CollaboratorStatistics
-
-
-class MplsOam::Global::CollaboratorStatistics::CollaboratorIParm : public ydk::Entity
-{
-    public:
-        CollaboratorIParm();
-        ~CollaboratorIParm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ups; //type: uint32
-        ydk::YLeaf downs; //type: uint32
-
-}; // MplsOam::Global::CollaboratorStatistics::CollaboratorIParm
-
-
-class MplsOam::Global::CollaboratorStatistics::CollaboratorIm : public ydk::Entity
-{
-    public:
-        CollaboratorIm();
-        ~CollaboratorIm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ups; //type: uint32
-        ydk::YLeaf downs; //type: uint32
-
-}; // MplsOam::Global::CollaboratorStatistics::CollaboratorIm
-
-
-class MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo : public ydk::Entity
-{
-    public:
-        CollaboratorNetIo();
-        ~CollaboratorNetIo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ups; //type: uint32
-        ydk::YLeaf downs; //type: uint32
-
-}; // MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo
-
-
-class MplsOam::Global::CollaboratorStatistics::CollaboratorRib : public ydk::Entity
-{
-    public:
-        CollaboratorRib();
-        ~CollaboratorRib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ups; //type: uint32
-        ydk::YLeaf downs; //type: uint32
-
-}; // MplsOam::Global::CollaboratorStatistics::CollaboratorRib
-
-
-class MplsOam::Global::MessageStatistics : public ydk::Entity
-{
-    public:
-        MessageStatistics();
-        ~MessageStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf register_messages; //type: uint32
-        ydk::YLeaf unregister_messages; //type: uint32
-        ydk::YLeaf echo_submit_messages; //type: uint32
-        ydk::YLeaf echo_cancel_messages; //type: uint32
-        ydk::YLeaf get_result_messages; //type: uint32
-        ydk::YLeaf get_config_messages; //type: uint32
-        ydk::YLeaf get_response_messages; //type: uint32
-        ydk::YLeaf property_response_messages; //type: uint32
-        ydk::YLeaf property_request_messages; //type: uint32
-        ydk::YLeaf property_block_messages; //type: uint32
-        ydk::YLeaf thread_request_messages; //type: uint32
-
-}; // MplsOam::Global::MessageStatistics
 
 
 class MplsOam::Interface : public ydk::Entity
@@ -403,248 +222,14 @@ class MplsOam::Interface::Details::Detail::PacketStatistics : public ydk::Entity
         class ProtectReqSent; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
         class ProtectRepSent; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent> protect_rep_sent;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent> protect_req_sent;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received> received;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent> sent;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent> working_rep_sent;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent> working_req_sent;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent> working_rep_sent;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent> protect_req_sent;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent> protect_rep_sent;
         
 }; // MplsOam::Interface::Details::Detail::PacketStatistics
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent : public ydk::Entity
-{
-    public:
-        ProtectRepSent();
-        ~ProtectRepSent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class TransmitGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood
-        class TransmitDrop; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop
-        class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood
-        class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop> transmit_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood> transmit_good;
-        
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop : public ydk::Entity
-{
-    public:
-        TransmitDrop();
-        ~TransmitDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood : public ydk::Entity
-{
-    public:
-        TransmitGood();
-        ~TransmitGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent : public ydk::Entity
-{
-    public:
-        ProtectReqSent();
-        ~ProtectReqSent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class TransmitGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood
-        class TransmitDrop; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop
-        class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood
-        class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop> transmit_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood> transmit_good;
-        
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop : public ydk::Entity
-{
-    public:
-        TransmitDrop();
-        ~TransmitDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood : public ydk::Entity
-{
-    public:
-        TransmitGood();
-        ~TransmitGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::Received : public ydk::Entity
@@ -678,29 +263,29 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received : public y
         class ReceivedGoodBfdRequest; //type: MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest
         class ReceivedGoodBfdReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply> protect_protocol_received_good_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest> protect_protocol_received_good_request;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral> received_error_general;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest> received_good_request;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply> received_good_reply;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown> received_unknown;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader> received_error_ip_header;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader> received_error_udp_header;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt> received_error_runt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull> received_error_queue_full;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral> received_error_general;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface> received_error_no_interface;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory> received_error_no_memory;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull> received_error_queue_full;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt> received_error_runt;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader> received_error_udp_header;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply> received_good_bfd_reply;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest> protect_protocol_received_good_request;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply> protect_protocol_received_good_reply;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest> received_good_bfd_request;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply> received_good_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest> received_good_request;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown> received_unknown;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply> received_good_bfd_reply;
         
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest : public ydk::Entity
 {
     public:
-        ProtectProtocolReceivedGoodReply();
-        ~ProtectProtocolReceivedGoodReply();
+        ReceivedGoodRequest();
+        ~ReceivedGoodRequest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -715,14 +300,14 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPr
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply : public ydk::Entity
 {
     public:
-        ProtectProtocolReceivedGoodRequest();
-        ~ProtectProtocolReceivedGoodRequest();
+        ReceivedGoodReply();
+        ~ReceivedGoodReply();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -737,14 +322,14 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPr
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown : public ydk::Entity
 {
     public:
-        ReceivedErrorGeneral();
-        ~ReceivedErrorGeneral();
+        ReceivedUnknown();
+        ~ReceivedUnknown();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -759,7 +344,7 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedE
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader : public ydk::Entity
@@ -782,6 +367,94 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedE
         ydk::YLeaf bytes; //type: uint64
 
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader : public ydk::Entity
+{
+    public:
+        ReceivedErrorUdpHeader();
+        ~ReceivedErrorUdpHeader();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt : public ydk::Entity
+{
+    public:
+        ReceivedErrorRunt();
+        ~ReceivedErrorRunt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull : public ydk::Entity
+{
+    public:
+        ReceivedErrorQueueFull();
+        ~ReceivedErrorQueueFull();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral : public ydk::Entity
+{
+    public:
+        ReceivedErrorGeneral();
+        ~ReceivedErrorGeneral();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface : public ydk::Entity
@@ -828,11 +501,11 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedE
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest : public ydk::Entity
 {
     public:
-        ReceivedErrorQueueFull();
-        ~ReceivedErrorQueueFull();
+        ProtectProtocolReceivedGoodRequest();
+        ~ProtectProtocolReceivedGoodRequest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -847,14 +520,14 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedE
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply : public ydk::Entity
 {
     public:
-        ReceivedErrorRunt();
-        ~ReceivedErrorRunt();
+        ProtectProtocolReceivedGoodReply();
+        ~ProtectProtocolReceivedGoodReply();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -869,51 +542,7 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedE
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader : public ydk::Entity
-{
-    public:
-        ReceivedErrorUdpHeader();
-        ~ReceivedErrorUdpHeader();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply : public ydk::Entity
-{
-    public:
-        ReceivedGoodBfdReply();
-        ~ReceivedGoodBfdReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest : public ydk::Entity
@@ -938,11 +567,11 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedG
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply : public ydk::Entity
 {
     public:
-        ReceivedGoodReply();
-        ~ReceivedGoodReply();
+        ReceivedGoodBfdReply();
+        ~ReceivedGoodBfdReply();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -957,51 +586,7 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedG
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest : public ydk::Entity
-{
-    public:
-        ReceivedGoodRequest();
-        ~ReceivedGoodRequest();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown : public ydk::Entity
-{
-    public:
-        ReceivedUnknown();
-        ~ReceivedUnknown();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::Sent : public ydk::Entity
@@ -1025,78 +610,12 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Sent : public ydk::
         class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood
         class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop> transmit_drop;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply> bfd_no_reply;
         
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop : public ydk::Entity
-{
-    public:
-        TransmitDrop();
-        ~TransmitDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood : public ydk::Entity
@@ -1121,80 +640,7 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood 
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent : public ydk::Entity
-{
-    public:
-        WorkingRepSent();
-        ~WorkingRepSent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class TransmitGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood
-        class TransmitDrop; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop
-        class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood
-        class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop> transmit_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood> transmit_good;
-        
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop : public ydk::Entity
 {
     public:
         TransmitDrop();
@@ -1213,14 +659,14 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::Tra
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood : public ydk::Entity
 {
     public:
-        TransmitGood();
-        ~TransmitGood();
+        TransmitBfdGood();
+        ~TransmitBfdGood();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1235,7 +681,29 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::Tra
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent : public ydk::Entity
@@ -1259,19 +727,19 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent : pu
         class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood
         class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop> transmit_drop;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply> bfd_no_reply;
         
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood : public ydk::Entity
 {
     public:
-        BfdNoReply();
-        ~BfdNoReply();
+        TransmitGood();
+        ~TransmitGood();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1286,29 +754,7 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Bfd
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply
-
-
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood
 
 
 class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop : public ydk::Entity
@@ -1333,7 +779,80 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Tra
 }; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop
 
 
-class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood : public ydk::Entity
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent : public ydk::Entity
+{
+    public:
+        WorkingRepSent();
+        ~WorkingRepSent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TransmitGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood
+        class TransmitDrop; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop
+        class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood
+        class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply> bfd_no_reply;
+        
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood : public ydk::Entity
 {
     public:
         TransmitGood();
@@ -1352,7 +871,307 @@ class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Tra
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop : public ydk::Entity
+{
+    public:
+        TransmitDrop();
+        ~TransmitDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent : public ydk::Entity
+{
+    public:
+        ProtectReqSent();
+        ~ProtectReqSent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TransmitGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood
+        class TransmitDrop; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop
+        class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood
+        class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply> bfd_no_reply;
+        
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood : public ydk::Entity
+{
+    public:
+        TransmitGood();
+        ~TransmitGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop : public ydk::Entity
+{
+    public:
+        TransmitDrop();
+        ~TransmitDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent : public ydk::Entity
+{
+    public:
+        ProtectRepSent();
+        ~ProtectRepSent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TransmitGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood
+        class TransmitDrop; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop
+        class TransmitBfdGood; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood
+        class BfdNoReply; //type: MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply> bfd_no_reply;
+        
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood : public ydk::Entity
+{
+    public:
+        TransmitGood();
+        ~TransmitGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop : public ydk::Entity
+{
+    public:
+        TransmitDrop();
+        ~TransmitDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood
+
+
+class MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply
 
 
 class MplsOam::Packet : public ydk::Entity
@@ -1379,258 +1198,14 @@ class MplsOam::Packet : public ydk::Entity
         class ProtectReqSent; //type: MplsOam::Packet::ProtectReqSent
         class ProtectRepSent; //type: MplsOam::Packet::ProtectRepSent
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent> protect_rep_sent;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent> protect_req_sent;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received> received;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent> sent;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent> working_rep_sent;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent> working_req_sent;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent> working_rep_sent;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent> protect_req_sent;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent> protect_rep_sent;
         
 }; // MplsOam::Packet
-
-
-class MplsOam::Packet::ProtectRepSent : public ydk::Entity
-{
-    public:
-        ProtectRepSent();
-        ~ProtectRepSent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TransmitGood; //type: MplsOam::Packet::ProtectRepSent::TransmitGood
-        class TransmitDrop; //type: MplsOam::Packet::ProtectRepSent::TransmitDrop
-        class TransmitBfdGood; //type: MplsOam::Packet::ProtectRepSent::TransmitBfdGood
-        class BfdNoReply; //type: MplsOam::Packet::ProtectRepSent::BfdNoReply
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::TransmitDrop> transmit_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::TransmitGood> transmit_good;
-        
-}; // MplsOam::Packet::ProtectRepSent
-
-
-class MplsOam::Packet::ProtectRepSent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectRepSent::BfdNoReply
-
-
-class MplsOam::Packet::ProtectRepSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectRepSent::TransmitBfdGood
-
-
-class MplsOam::Packet::ProtectRepSent::TransmitDrop : public ydk::Entity
-{
-    public:
-        TransmitDrop();
-        ~TransmitDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectRepSent::TransmitDrop
-
-
-class MplsOam::Packet::ProtectRepSent::TransmitGood : public ydk::Entity
-{
-    public:
-        TransmitGood();
-        ~TransmitGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectRepSent::TransmitGood
-
-
-class MplsOam::Packet::ProtectReqSent : public ydk::Entity
-{
-    public:
-        ProtectReqSent();
-        ~ProtectReqSent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TransmitGood; //type: MplsOam::Packet::ProtectReqSent::TransmitGood
-        class TransmitDrop; //type: MplsOam::Packet::ProtectReqSent::TransmitDrop
-        class TransmitBfdGood; //type: MplsOam::Packet::ProtectReqSent::TransmitBfdGood
-        class BfdNoReply; //type: MplsOam::Packet::ProtectReqSent::BfdNoReply
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::TransmitDrop> transmit_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::TransmitGood> transmit_good;
-        
-}; // MplsOam::Packet::ProtectReqSent
-
-
-class MplsOam::Packet::ProtectReqSent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectReqSent::BfdNoReply
-
-
-class MplsOam::Packet::ProtectReqSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectReqSent::TransmitBfdGood
-
-
-class MplsOam::Packet::ProtectReqSent::TransmitDrop : public ydk::Entity
-{
-    public:
-        TransmitDrop();
-        ~TransmitDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectReqSent::TransmitDrop
-
-
-class MplsOam::Packet::ProtectReqSent::TransmitGood : public ydk::Entity
-{
-    public:
-        TransmitGood();
-        ~TransmitGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::ProtectReqSent::TransmitGood
 
 
 class MplsOam::Packet::Received : public ydk::Entity
@@ -1665,29 +1240,29 @@ class MplsOam::Packet::Received : public ydk::Entity
         class ReceivedGoodBfdRequest; //type: MplsOam::Packet::Received::ReceivedGoodBfdRequest
         class ReceivedGoodBfdReply; //type: MplsOam::Packet::Received::ReceivedGoodBfdReply
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply> protect_protocol_received_good_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest> protect_protocol_received_good_request;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorGeneral> received_error_general;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedGoodRequest> received_good_request;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedGoodReply> received_good_reply;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedUnknown> received_unknown;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorIpHeader> received_error_ip_header;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorUdpHeader> received_error_udp_header;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorRunt> received_error_runt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorQueueFull> received_error_queue_full;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorGeneral> received_error_general;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorNoInterface> received_error_no_interface;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorNoMemory> received_error_no_memory;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorQueueFull> received_error_queue_full;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorRunt> received_error_runt;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedErrorUdpHeader> received_error_udp_header;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedGoodBfdReply> received_good_bfd_reply;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest> protect_protocol_received_good_request;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply> protect_protocol_received_good_reply;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedGoodBfdRequest> received_good_bfd_request;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedGoodReply> received_good_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedGoodRequest> received_good_request;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedUnknown> received_unknown;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Received::ReceivedGoodBfdReply> received_good_bfd_reply;
         
 }; // MplsOam::Packet::Received
 
 
-class MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply : public ydk::Entity
+class MplsOam::Packet::Received::ReceivedGoodRequest : public ydk::Entity
 {
     public:
-        ProtectProtocolReceivedGoodReply();
-        ~ProtectProtocolReceivedGoodReply();
+        ReceivedGoodRequest();
+        ~ReceivedGoodRequest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1703,14 +1278,14 @@ class MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply : public ydk::
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply
+}; // MplsOam::Packet::Received::ReceivedGoodRequest
 
 
-class MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest : public ydk::Entity
+class MplsOam::Packet::Received::ReceivedGoodReply : public ydk::Entity
 {
     public:
-        ProtectProtocolReceivedGoodRequest();
-        ~ProtectProtocolReceivedGoodRequest();
+        ReceivedGoodReply();
+        ~ReceivedGoodReply();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1726,14 +1301,14 @@ class MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest : public ydk
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest
+}; // MplsOam::Packet::Received::ReceivedGoodReply
 
 
-class MplsOam::Packet::Received::ReceivedErrorGeneral : public ydk::Entity
+class MplsOam::Packet::Received::ReceivedUnknown : public ydk::Entity
 {
     public:
-        ReceivedErrorGeneral();
-        ~ReceivedErrorGeneral();
+        ReceivedUnknown();
+        ~ReceivedUnknown();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1749,7 +1324,7 @@ class MplsOam::Packet::Received::ReceivedErrorGeneral : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::Received::ReceivedErrorGeneral
+}; // MplsOam::Packet::Received::ReceivedUnknown
 
 
 class MplsOam::Packet::Received::ReceivedErrorIpHeader : public ydk::Entity
@@ -1773,6 +1348,98 @@ class MplsOam::Packet::Received::ReceivedErrorIpHeader : public ydk::Entity
         ydk::YLeaf bytes; //type: uint64
 
 }; // MplsOam::Packet::Received::ReceivedErrorIpHeader
+
+
+class MplsOam::Packet::Received::ReceivedErrorUdpHeader : public ydk::Entity
+{
+    public:
+        ReceivedErrorUdpHeader();
+        ~ReceivedErrorUdpHeader();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::Received::ReceivedErrorUdpHeader
+
+
+class MplsOam::Packet::Received::ReceivedErrorRunt : public ydk::Entity
+{
+    public:
+        ReceivedErrorRunt();
+        ~ReceivedErrorRunt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::Received::ReceivedErrorRunt
+
+
+class MplsOam::Packet::Received::ReceivedErrorQueueFull : public ydk::Entity
+{
+    public:
+        ReceivedErrorQueueFull();
+        ~ReceivedErrorQueueFull();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::Received::ReceivedErrorQueueFull
+
+
+class MplsOam::Packet::Received::ReceivedErrorGeneral : public ydk::Entity
+{
+    public:
+        ReceivedErrorGeneral();
+        ~ReceivedErrorGeneral();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::Received::ReceivedErrorGeneral
 
 
 class MplsOam::Packet::Received::ReceivedErrorNoInterface : public ydk::Entity
@@ -1821,11 +1488,11 @@ class MplsOam::Packet::Received::ReceivedErrorNoMemory : public ydk::Entity
 }; // MplsOam::Packet::Received::ReceivedErrorNoMemory
 
 
-class MplsOam::Packet::Received::ReceivedErrorQueueFull : public ydk::Entity
+class MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest : public ydk::Entity
 {
     public:
-        ReceivedErrorQueueFull();
-        ~ReceivedErrorQueueFull();
+        ProtectProtocolReceivedGoodRequest();
+        ~ProtectProtocolReceivedGoodRequest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1841,14 +1508,14 @@ class MplsOam::Packet::Received::ReceivedErrorQueueFull : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::Received::ReceivedErrorQueueFull
+}; // MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest
 
 
-class MplsOam::Packet::Received::ReceivedErrorRunt : public ydk::Entity
+class MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply : public ydk::Entity
 {
     public:
-        ReceivedErrorRunt();
-        ~ReceivedErrorRunt();
+        ProtectProtocolReceivedGoodReply();
+        ~ProtectProtocolReceivedGoodReply();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1864,53 +1531,7 @@ class MplsOam::Packet::Received::ReceivedErrorRunt : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::Received::ReceivedErrorRunt
-
-
-class MplsOam::Packet::Received::ReceivedErrorUdpHeader : public ydk::Entity
-{
-    public:
-        ReceivedErrorUdpHeader();
-        ~ReceivedErrorUdpHeader();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::Received::ReceivedErrorUdpHeader
-
-
-class MplsOam::Packet::Received::ReceivedGoodBfdReply : public ydk::Entity
-{
-    public:
-        ReceivedGoodBfdReply();
-        ~ReceivedGoodBfdReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::Received::ReceivedGoodBfdReply
+}; // MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply
 
 
 class MplsOam::Packet::Received::ReceivedGoodBfdRequest : public ydk::Entity
@@ -1936,11 +1557,11 @@ class MplsOam::Packet::Received::ReceivedGoodBfdRequest : public ydk::Entity
 }; // MplsOam::Packet::Received::ReceivedGoodBfdRequest
 
 
-class MplsOam::Packet::Received::ReceivedGoodReply : public ydk::Entity
+class MplsOam::Packet::Received::ReceivedGoodBfdReply : public ydk::Entity
 {
     public:
-        ReceivedGoodReply();
-        ~ReceivedGoodReply();
+        ReceivedGoodBfdReply();
+        ~ReceivedGoodBfdReply();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1956,53 +1577,7 @@ class MplsOam::Packet::Received::ReceivedGoodReply : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::Received::ReceivedGoodReply
-
-
-class MplsOam::Packet::Received::ReceivedGoodRequest : public ydk::Entity
-{
-    public:
-        ReceivedGoodRequest();
-        ~ReceivedGoodRequest();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::Received::ReceivedGoodRequest
-
-
-class MplsOam::Packet::Received::ReceivedUnknown : public ydk::Entity
-{
-    public:
-        ReceivedUnknown();
-        ~ReceivedUnknown();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::Received::ReceivedUnknown
+}; // MplsOam::Packet::Received::ReceivedGoodBfdReply
 
 
 class MplsOam::Packet::Sent : public ydk::Entity
@@ -2027,81 +1602,12 @@ class MplsOam::Packet::Sent : public ydk::Entity
         class TransmitBfdGood; //type: MplsOam::Packet::Sent::TransmitBfdGood
         class BfdNoReply; //type: MplsOam::Packet::Sent::BfdNoReply
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent::TransmitDrop> transmit_drop;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::Sent::BfdNoReply> bfd_no_reply;
         
 }; // MplsOam::Packet::Sent
-
-
-class MplsOam::Packet::Sent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::Sent::BfdNoReply
-
-
-class MplsOam::Packet::Sent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::Sent::TransmitBfdGood
-
-
-class MplsOam::Packet::Sent::TransmitDrop : public ydk::Entity
-{
-    public:
-        TransmitDrop();
-        ~TransmitDrop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::Sent::TransmitDrop
 
 
 class MplsOam::Packet::Sent::TransmitGood : public ydk::Entity
@@ -2127,83 +1633,7 @@ class MplsOam::Packet::Sent::TransmitGood : public ydk::Entity
 }; // MplsOam::Packet::Sent::TransmitGood
 
 
-class MplsOam::Packet::WorkingRepSent : public ydk::Entity
-{
-    public:
-        WorkingRepSent();
-        ~WorkingRepSent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TransmitGood; //type: MplsOam::Packet::WorkingRepSent::TransmitGood
-        class TransmitDrop; //type: MplsOam::Packet::WorkingRepSent::TransmitDrop
-        class TransmitBfdGood; //type: MplsOam::Packet::WorkingRepSent::TransmitBfdGood
-        class BfdNoReply; //type: MplsOam::Packet::WorkingRepSent::BfdNoReply
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::TransmitDrop> transmit_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::TransmitGood> transmit_good;
-        
-}; // MplsOam::Packet::WorkingRepSent
-
-
-class MplsOam::Packet::WorkingRepSent::BfdNoReply : public ydk::Entity
-{
-    public:
-        BfdNoReply();
-        ~BfdNoReply();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::WorkingRepSent::BfdNoReply
-
-
-class MplsOam::Packet::WorkingRepSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::WorkingRepSent::TransmitBfdGood
-
-
-class MplsOam::Packet::WorkingRepSent::TransmitDrop : public ydk::Entity
+class MplsOam::Packet::Sent::TransmitDrop : public ydk::Entity
 {
     public:
         TransmitDrop();
@@ -2223,14 +1653,14 @@ class MplsOam::Packet::WorkingRepSent::TransmitDrop : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::WorkingRepSent::TransmitDrop
+}; // MplsOam::Packet::Sent::TransmitDrop
 
 
-class MplsOam::Packet::WorkingRepSent::TransmitGood : public ydk::Entity
+class MplsOam::Packet::Sent::TransmitBfdGood : public ydk::Entity
 {
     public:
-        TransmitGood();
-        ~TransmitGood();
+        TransmitBfdGood();
+        ~TransmitBfdGood();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2246,7 +1676,30 @@ class MplsOam::Packet::WorkingRepSent::TransmitGood : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::WorkingRepSent::TransmitGood
+}; // MplsOam::Packet::Sent::TransmitBfdGood
+
+
+class MplsOam::Packet::Sent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::Sent::BfdNoReply
 
 
 class MplsOam::Packet::WorkingReqSent : public ydk::Entity
@@ -2271,19 +1724,19 @@ class MplsOam::Packet::WorkingReqSent : public ydk::Entity
         class TransmitBfdGood; //type: MplsOam::Packet::WorkingReqSent::TransmitBfdGood
         class BfdNoReply; //type: MplsOam::Packet::WorkingReqSent::BfdNoReply
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent::BfdNoReply> bfd_no_reply;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent::TransmitBfdGood> transmit_bfd_good;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent::TransmitDrop> transmit_drop;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingReqSent::BfdNoReply> bfd_no_reply;
         
 }; // MplsOam::Packet::WorkingReqSent
 
 
-class MplsOam::Packet::WorkingReqSent::BfdNoReply : public ydk::Entity
+class MplsOam::Packet::WorkingReqSent::TransmitGood : public ydk::Entity
 {
     public:
-        BfdNoReply();
-        ~BfdNoReply();
+        TransmitGood();
+        ~TransmitGood();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2299,30 +1752,7 @@ class MplsOam::Packet::WorkingReqSent::BfdNoReply : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::WorkingReqSent::BfdNoReply
-
-
-class MplsOam::Packet::WorkingReqSent::TransmitBfdGood : public ydk::Entity
-{
-    public:
-        TransmitBfdGood();
-        ~TransmitBfdGood();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf packets; //type: uint64
-        ydk::YLeaf bytes; //type: uint64
-
-}; // MplsOam::Packet::WorkingReqSent::TransmitBfdGood
+}; // MplsOam::Packet::WorkingReqSent::TransmitGood
 
 
 class MplsOam::Packet::WorkingReqSent::TransmitDrop : public ydk::Entity
@@ -2348,7 +1778,83 @@ class MplsOam::Packet::WorkingReqSent::TransmitDrop : public ydk::Entity
 }; // MplsOam::Packet::WorkingReqSent::TransmitDrop
 
 
-class MplsOam::Packet::WorkingReqSent::TransmitGood : public ydk::Entity
+class MplsOam::Packet::WorkingReqSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::WorkingReqSent::TransmitBfdGood
+
+
+class MplsOam::Packet::WorkingReqSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::WorkingReqSent::BfdNoReply
+
+
+class MplsOam::Packet::WorkingRepSent : public ydk::Entity
+{
+    public:
+        WorkingRepSent();
+        ~WorkingRepSent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TransmitGood; //type: MplsOam::Packet::WorkingRepSent::TransmitGood
+        class TransmitDrop; //type: MplsOam::Packet::WorkingRepSent::TransmitDrop
+        class TransmitBfdGood; //type: MplsOam::Packet::WorkingRepSent::TransmitBfdGood
+        class BfdNoReply; //type: MplsOam::Packet::WorkingRepSent::BfdNoReply
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::WorkingRepSent::BfdNoReply> bfd_no_reply;
+        
+}; // MplsOam::Packet::WorkingRepSent
+
+
+class MplsOam::Packet::WorkingRepSent::TransmitGood : public ydk::Entity
 {
     public:
         TransmitGood();
@@ -2368,7 +1874,501 @@ class MplsOam::Packet::WorkingReqSent::TransmitGood : public ydk::Entity
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // MplsOam::Packet::WorkingReqSent::TransmitGood
+}; // MplsOam::Packet::WorkingRepSent::TransmitGood
+
+
+class MplsOam::Packet::WorkingRepSent::TransmitDrop : public ydk::Entity
+{
+    public:
+        TransmitDrop();
+        ~TransmitDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::WorkingRepSent::TransmitDrop
+
+
+class MplsOam::Packet::WorkingRepSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::WorkingRepSent::TransmitBfdGood
+
+
+class MplsOam::Packet::WorkingRepSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::WorkingRepSent::BfdNoReply
+
+
+class MplsOam::Packet::ProtectReqSent : public ydk::Entity
+{
+    public:
+        ProtectReqSent();
+        ~ProtectReqSent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TransmitGood; //type: MplsOam::Packet::ProtectReqSent::TransmitGood
+        class TransmitDrop; //type: MplsOam::Packet::ProtectReqSent::TransmitDrop
+        class TransmitBfdGood; //type: MplsOam::Packet::ProtectReqSent::TransmitBfdGood
+        class BfdNoReply; //type: MplsOam::Packet::ProtectReqSent::BfdNoReply
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectReqSent::BfdNoReply> bfd_no_reply;
+        
+}; // MplsOam::Packet::ProtectReqSent
+
+
+class MplsOam::Packet::ProtectReqSent::TransmitGood : public ydk::Entity
+{
+    public:
+        TransmitGood();
+        ~TransmitGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectReqSent::TransmitGood
+
+
+class MplsOam::Packet::ProtectReqSent::TransmitDrop : public ydk::Entity
+{
+    public:
+        TransmitDrop();
+        ~TransmitDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectReqSent::TransmitDrop
+
+
+class MplsOam::Packet::ProtectReqSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectReqSent::TransmitBfdGood
+
+
+class MplsOam::Packet::ProtectReqSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectReqSent::BfdNoReply
+
+
+class MplsOam::Packet::ProtectRepSent : public ydk::Entity
+{
+    public:
+        ProtectRepSent();
+        ~ProtectRepSent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TransmitGood; //type: MplsOam::Packet::ProtectRepSent::TransmitGood
+        class TransmitDrop; //type: MplsOam::Packet::ProtectRepSent::TransmitDrop
+        class TransmitBfdGood; //type: MplsOam::Packet::ProtectRepSent::TransmitBfdGood
+        class BfdNoReply; //type: MplsOam::Packet::ProtectRepSent::BfdNoReply
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::TransmitGood> transmit_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::TransmitDrop> transmit_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::TransmitBfdGood> transmit_bfd_good;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Packet::ProtectRepSent::BfdNoReply> bfd_no_reply;
+        
+}; // MplsOam::Packet::ProtectRepSent
+
+
+class MplsOam::Packet::ProtectRepSent::TransmitGood : public ydk::Entity
+{
+    public:
+        TransmitGood();
+        ~TransmitGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectRepSent::TransmitGood
+
+
+class MplsOam::Packet::ProtectRepSent::TransmitDrop : public ydk::Entity
+{
+    public:
+        TransmitDrop();
+        ~TransmitDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectRepSent::TransmitDrop
+
+
+class MplsOam::Packet::ProtectRepSent::TransmitBfdGood : public ydk::Entity
+{
+    public:
+        TransmitBfdGood();
+        ~TransmitBfdGood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectRepSent::TransmitBfdGood
+
+
+class MplsOam::Packet::ProtectRepSent::BfdNoReply : public ydk::Entity
+{
+    public:
+        BfdNoReply();
+        ~BfdNoReply();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf packets; //type: uint64
+        ydk::YLeaf bytes; //type: uint64
+
+}; // MplsOam::Packet::ProtectRepSent::BfdNoReply
+
+
+class MplsOam::Global : public ydk::Entity
+{
+    public:
+        Global();
+        ~Global();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf total_clients; //type: uint32
+        class MessageStatistics; //type: MplsOam::Global::MessageStatistics
+        class CollaboratorStatistics; //type: MplsOam::Global::CollaboratorStatistics
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::MessageStatistics> message_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics> collaborator_statistics;
+        
+}; // MplsOam::Global
+
+
+class MplsOam::Global::MessageStatistics : public ydk::Entity
+{
+    public:
+        MessageStatistics();
+        ~MessageStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf register_messages; //type: uint32
+        ydk::YLeaf unregister_messages; //type: uint32
+        ydk::YLeaf echo_submit_messages; //type: uint32
+        ydk::YLeaf echo_cancel_messages; //type: uint32
+        ydk::YLeaf get_result_messages; //type: uint32
+        ydk::YLeaf get_config_messages; //type: uint32
+        ydk::YLeaf get_response_messages; //type: uint32
+        ydk::YLeaf property_response_messages; //type: uint32
+        ydk::YLeaf property_request_messages; //type: uint32
+        ydk::YLeaf property_block_messages; //type: uint32
+        ydk::YLeaf thread_request_messages; //type: uint32
+
+}; // MplsOam::Global::MessageStatistics
+
+
+class MplsOam::Global::CollaboratorStatistics : public ydk::Entity
+{
+    public:
+        CollaboratorStatistics();
+        ~CollaboratorStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class CollaboratorIParm; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorIParm
+        class CollaboratorIm; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorIm
+        class CollaboratorNetIo; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo
+        class CollaboratorRib; //type: MplsOam::Global::CollaboratorStatistics::CollaboratorRib
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorIParm> collaborator_i_parm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorIm> collaborator_im;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo> collaborator_net_io;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_oam_oper::MplsOam::Global::CollaboratorStatistics::CollaboratorRib> collaborator_rib;
+        
+}; // MplsOam::Global::CollaboratorStatistics
+
+
+class MplsOam::Global::CollaboratorStatistics::CollaboratorIParm : public ydk::Entity
+{
+    public:
+        CollaboratorIParm();
+        ~CollaboratorIParm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ups; //type: uint32
+        ydk::YLeaf downs; //type: uint32
+
+}; // MplsOam::Global::CollaboratorStatistics::CollaboratorIParm
+
+
+class MplsOam::Global::CollaboratorStatistics::CollaboratorIm : public ydk::Entity
+{
+    public:
+        CollaboratorIm();
+        ~CollaboratorIm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ups; //type: uint32
+        ydk::YLeaf downs; //type: uint32
+
+}; // MplsOam::Global::CollaboratorStatistics::CollaboratorIm
+
+
+class MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo : public ydk::Entity
+{
+    public:
+        CollaboratorNetIo();
+        ~CollaboratorNetIo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ups; //type: uint32
+        ydk::YLeaf downs; //type: uint32
+
+}; // MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo
+
+
+class MplsOam::Global::CollaboratorStatistics::CollaboratorRib : public ydk::Entity
+{
+    public:
+        CollaboratorRib();
+        ~CollaboratorRib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ups; //type: uint32
+        ydk::YLeaf downs; //type: uint32
+
+}; // MplsOam::Global::CollaboratorStatistics::CollaboratorRib
 
 class LspvBagInterfaceState : public ydk::Enum
 {

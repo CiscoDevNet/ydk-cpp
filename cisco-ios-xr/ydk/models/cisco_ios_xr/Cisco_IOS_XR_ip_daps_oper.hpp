@@ -194,103 +194,11 @@ class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange 
         class EndAddress; //type: AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress
         class DefaultRouter; //type: AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter> default_router;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress> end_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr> start_address_xr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress> end_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter> default_router;
         
 }; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter : public ydk::Entity
-{
-    public:
-        DefaultRouter();
-        ~DefaultRouter();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address> address;
-        
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: IpAddr
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress : public ydk::Entity
-{
-    public:
-        EndAddress();
-        ~EndAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address> address;
-        
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: IpAddr
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address
 
 
 class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr : public ydk::Entity
@@ -339,6 +247,98 @@ class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange:
 }; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address
 
 
+class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress : public ydk::Entity
+{
+    public:
+        EndAddress();
+        ~EndAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address> address;
+        
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_family; //type: IpAddr
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter : public ydk::Entity
+{
+    public:
+        DefaultRouter();
+        ~DefaultRouter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address> address;
+        
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_family; //type: IpAddr
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address
+
+
 class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses : public ydk::Entity
 {
     public:
@@ -359,201 +359,11 @@ class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses : public 
         class AddressRange; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange
         class InUseAddress; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations> pool_allocations;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange> > address_range;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress> > in_use_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations> pool_allocations;
         
 }; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange : public ydk::Entity
-{
-    public:
-        AddressRange();
-        ~AddressRange();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf used; //type: uint32
-        ydk::YLeaf excluded; //type: uint32
-        ydk::YLeaf free; //type: uint32
-        class StartAddress; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress
-        class EndAddress; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress> end_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress> start_address;
-        
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress : public ydk::Entity
-{
-    public:
-        EndAddress();
-        ~EndAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address> address;
-        
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: IpAddr
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress : public ydk::Entity
-{
-    public:
-        StartAddress();
-        ~StartAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address> address;
-        
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: IpAddr
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress : public ydk::Entity
-{
-    public:
-        InUseAddress();
-        ~InUseAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf client_type; //type: DapsClient
-        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address> address;
-        
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Address_; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_> address;
-        
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address
-
-
-class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_ : public ydk::Entity
-{
-    public:
-        Address_();
-        ~Address_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: IpAddr
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_
 
 
 class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations : public ydk::Entity
@@ -631,6 +441,196 @@ class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllo
         ydk::YLeaf time_last_crossed; //type: string
 
 }; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange : public ydk::Entity
+{
+    public:
+        AddressRange();
+        ~AddressRange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf used; //type: uint32
+        ydk::YLeaf excluded; //type: uint32
+        ydk::YLeaf free; //type: uint32
+        class StartAddress; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress
+        class EndAddress; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress> start_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress> end_address;
+        
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress : public ydk::Entity
+{
+    public:
+        StartAddress();
+        ~StartAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address> address;
+        
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_family; //type: IpAddr
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress : public ydk::Entity
+{
+    public:
+        EndAddress();
+        ~EndAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address> address;
+        
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_family; //type: IpAddr
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress : public ydk::Entity
+{
+    public:
+        InUseAddress();
+        ~InUseAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf client_type; //type: DapsClient
+        class Address; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address> address;
+        
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Address_; //type: AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_> address;
+        
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_ : public ydk::Entity
+{
+    public:
+        Address_();
+        ~Address_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_family; //type: IpAddr
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_
 
 
 class AddressPoolService::Nodes::Node::Pools::Pool::Configuration : public ydk::Entity
@@ -890,14 +890,6 @@ class AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools : public ydk::Enti
 
 }; // AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools
 
-class IpAddr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class DapsClient : public ydk::Enum
 {
     public:
@@ -906,6 +898,14 @@ class DapsClient : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp;
         static const ydk::Enum::YLeaf dhcpv6;
         static const ydk::Enum::YLeaf ipv6nd;
+
+};
+
+class IpAddr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

@@ -14,22 +14,22 @@ namespace RSVP_MIB {
 RSVPMIB::RSVPMIB()
     :
     rsvpgenobjects(std::make_shared<RSVPMIB::Rsvpgenobjects>())
+	,rsvpsessiontable(std::make_shared<RSVPMIB::Rsvpsessiontable>())
+	,rsvpsendertable(std::make_shared<RSVPMIB::Rsvpsendertable>())
+	,rsvpsenderoutinterfacetable(std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable>())
+	,rsvpresvtable(std::make_shared<RSVPMIB::Rsvpresvtable>())
+	,rsvpresvfwdtable(std::make_shared<RSVPMIB::Rsvpresvfwdtable>())
 	,rsvpiftable(std::make_shared<RSVPMIB::Rsvpiftable>())
 	,rsvpnbrtable(std::make_shared<RSVPMIB::Rsvpnbrtable>())
-	,rsvpresvfwdtable(std::make_shared<RSVPMIB::Rsvpresvfwdtable>())
-	,rsvpresvtable(std::make_shared<RSVPMIB::Rsvpresvtable>())
-	,rsvpsenderoutinterfacetable(std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable>())
-	,rsvpsendertable(std::make_shared<RSVPMIB::Rsvpsendertable>())
-	,rsvpsessiontable(std::make_shared<RSVPMIB::Rsvpsessiontable>())
 {
     rsvpgenobjects->parent = this;
+    rsvpsessiontable->parent = this;
+    rsvpsendertable->parent = this;
+    rsvpsenderoutinterfacetable->parent = this;
+    rsvpresvtable->parent = this;
+    rsvpresvfwdtable->parent = this;
     rsvpiftable->parent = this;
     rsvpnbrtable->parent = this;
-    rsvpresvfwdtable->parent = this;
-    rsvpresvtable->parent = this;
-    rsvpsenderoutinterfacetable->parent = this;
-    rsvpsendertable->parent = this;
-    rsvpsessiontable->parent = this;
 
     yang_name = "RSVP-MIB"; yang_parent_name = "RSVP-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -41,26 +41,26 @@ RSVPMIB::~RSVPMIB()
 bool RSVPMIB::has_data() const
 {
     return (rsvpgenobjects !=  nullptr && rsvpgenobjects->has_data())
-	|| (rsvpiftable !=  nullptr && rsvpiftable->has_data())
-	|| (rsvpnbrtable !=  nullptr && rsvpnbrtable->has_data())
-	|| (rsvpresvfwdtable !=  nullptr && rsvpresvfwdtable->has_data())
-	|| (rsvpresvtable !=  nullptr && rsvpresvtable->has_data())
-	|| (rsvpsenderoutinterfacetable !=  nullptr && rsvpsenderoutinterfacetable->has_data())
+	|| (rsvpsessiontable !=  nullptr && rsvpsessiontable->has_data())
 	|| (rsvpsendertable !=  nullptr && rsvpsendertable->has_data())
-	|| (rsvpsessiontable !=  nullptr && rsvpsessiontable->has_data());
+	|| (rsvpsenderoutinterfacetable !=  nullptr && rsvpsenderoutinterfacetable->has_data())
+	|| (rsvpresvtable !=  nullptr && rsvpresvtable->has_data())
+	|| (rsvpresvfwdtable !=  nullptr && rsvpresvfwdtable->has_data())
+	|| (rsvpiftable !=  nullptr && rsvpiftable->has_data())
+	|| (rsvpnbrtable !=  nullptr && rsvpnbrtable->has_data());
 }
 
 bool RSVPMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (rsvpgenobjects !=  nullptr && rsvpgenobjects->has_operation())
-	|| (rsvpiftable !=  nullptr && rsvpiftable->has_operation())
-	|| (rsvpnbrtable !=  nullptr && rsvpnbrtable->has_operation())
-	|| (rsvpresvfwdtable !=  nullptr && rsvpresvfwdtable->has_operation())
-	|| (rsvpresvtable !=  nullptr && rsvpresvtable->has_operation())
-	|| (rsvpsenderoutinterfacetable !=  nullptr && rsvpsenderoutinterfacetable->has_operation())
+	|| (rsvpsessiontable !=  nullptr && rsvpsessiontable->has_operation())
 	|| (rsvpsendertable !=  nullptr && rsvpsendertable->has_operation())
-	|| (rsvpsessiontable !=  nullptr && rsvpsessiontable->has_operation());
+	|| (rsvpsenderoutinterfacetable !=  nullptr && rsvpsenderoutinterfacetable->has_operation())
+	|| (rsvpresvtable !=  nullptr && rsvpresvtable->has_operation())
+	|| (rsvpresvfwdtable !=  nullptr && rsvpresvfwdtable->has_operation())
+	|| (rsvpiftable !=  nullptr && rsvpiftable->has_operation())
+	|| (rsvpnbrtable !=  nullptr && rsvpnbrtable->has_operation());
 }
 
 std::string RSVPMIB::get_segment_path() const
@@ -90,6 +90,51 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
         return rsvpgenobjects;
     }
 
+    if(child_yang_name == "rsvpSessionTable")
+    {
+        if(rsvpsessiontable == nullptr)
+        {
+            rsvpsessiontable = std::make_shared<RSVPMIB::Rsvpsessiontable>();
+        }
+        return rsvpsessiontable;
+    }
+
+    if(child_yang_name == "rsvpSenderTable")
+    {
+        if(rsvpsendertable == nullptr)
+        {
+            rsvpsendertable = std::make_shared<RSVPMIB::Rsvpsendertable>();
+        }
+        return rsvpsendertable;
+    }
+
+    if(child_yang_name == "rsvpSenderOutInterfaceTable")
+    {
+        if(rsvpsenderoutinterfacetable == nullptr)
+        {
+            rsvpsenderoutinterfacetable = std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable>();
+        }
+        return rsvpsenderoutinterfacetable;
+    }
+
+    if(child_yang_name == "rsvpResvTable")
+    {
+        if(rsvpresvtable == nullptr)
+        {
+            rsvpresvtable = std::make_shared<RSVPMIB::Rsvpresvtable>();
+        }
+        return rsvpresvtable;
+    }
+
+    if(child_yang_name == "rsvpResvFwdTable")
+    {
+        if(rsvpresvfwdtable == nullptr)
+        {
+            rsvpresvfwdtable = std::make_shared<RSVPMIB::Rsvpresvfwdtable>();
+        }
+        return rsvpresvfwdtable;
+    }
+
     if(child_yang_name == "rsvpIfTable")
     {
         if(rsvpiftable == nullptr)
@@ -108,51 +153,6 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
         return rsvpnbrtable;
     }
 
-    if(child_yang_name == "rsvpResvFwdTable")
-    {
-        if(rsvpresvfwdtable == nullptr)
-        {
-            rsvpresvfwdtable = std::make_shared<RSVPMIB::Rsvpresvfwdtable>();
-        }
-        return rsvpresvfwdtable;
-    }
-
-    if(child_yang_name == "rsvpResvTable")
-    {
-        if(rsvpresvtable == nullptr)
-        {
-            rsvpresvtable = std::make_shared<RSVPMIB::Rsvpresvtable>();
-        }
-        return rsvpresvtable;
-    }
-
-    if(child_yang_name == "rsvpSenderOutInterfaceTable")
-    {
-        if(rsvpsenderoutinterfacetable == nullptr)
-        {
-            rsvpsenderoutinterfacetable = std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable>();
-        }
-        return rsvpsenderoutinterfacetable;
-    }
-
-    if(child_yang_name == "rsvpSenderTable")
-    {
-        if(rsvpsendertable == nullptr)
-        {
-            rsvpsendertable = std::make_shared<RSVPMIB::Rsvpsendertable>();
-        }
-        return rsvpsendertable;
-    }
-
-    if(child_yang_name == "rsvpSessionTable")
-    {
-        if(rsvpsessiontable == nullptr)
-        {
-            rsvpsessiontable = std::make_shared<RSVPMIB::Rsvpsessiontable>();
-        }
-        return rsvpsessiontable;
-    }
-
     return nullptr;
 }
 
@@ -164,6 +164,31 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::get_children() const
         children["rsvpGenObjects"] = rsvpgenobjects;
     }
 
+    if(rsvpsessiontable != nullptr)
+    {
+        children["rsvpSessionTable"] = rsvpsessiontable;
+    }
+
+    if(rsvpsendertable != nullptr)
+    {
+        children["rsvpSenderTable"] = rsvpsendertable;
+    }
+
+    if(rsvpsenderoutinterfacetable != nullptr)
+    {
+        children["rsvpSenderOutInterfaceTable"] = rsvpsenderoutinterfacetable;
+    }
+
+    if(rsvpresvtable != nullptr)
+    {
+        children["rsvpResvTable"] = rsvpresvtable;
+    }
+
+    if(rsvpresvfwdtable != nullptr)
+    {
+        children["rsvpResvFwdTable"] = rsvpresvfwdtable;
+    }
+
     if(rsvpiftable != nullptr)
     {
         children["rsvpIfTable"] = rsvpiftable;
@@ -172,31 +197,6 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::get_children() const
     if(rsvpnbrtable != nullptr)
     {
         children["rsvpNbrTable"] = rsvpnbrtable;
-    }
-
-    if(rsvpresvfwdtable != nullptr)
-    {
-        children["rsvpResvFwdTable"] = rsvpresvfwdtable;
-    }
-
-    if(rsvpresvtable != nullptr)
-    {
-        children["rsvpResvTable"] = rsvpresvtable;
-    }
-
-    if(rsvpsenderoutinterfacetable != nullptr)
-    {
-        children["rsvpSenderOutInterfaceTable"] = rsvpsenderoutinterfacetable;
-    }
-
-    if(rsvpsendertable != nullptr)
-    {
-        children["rsvpSenderTable"] = rsvpsendertable;
-    }
-
-    if(rsvpsessiontable != nullptr)
-    {
-        children["rsvpSessionTable"] = rsvpsessiontable;
     }
 
     return children;
@@ -237,7 +237,7 @@ std::map<std::pair<std::string, std::string>, std::string> RSVPMIB::get_namespac
 
 bool RSVPMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpGenObjects" || name == "rsvpIfTable" || name == "rsvpNbrTable" || name == "rsvpResvFwdTable" || name == "rsvpResvTable" || name == "rsvpSenderOutInterfaceTable" || name == "rsvpSenderTable" || name == "rsvpSessionTable")
+    if(name == "rsvpGenObjects" || name == "rsvpSessionTable" || name == "rsvpSenderTable" || name == "rsvpSenderOutInterfaceTable" || name == "rsvpResvTable" || name == "rsvpResvFwdTable" || name == "rsvpIfTable" || name == "rsvpNbrTable")
         return true;
     return false;
 }
@@ -245,9 +245,9 @@ bool RSVPMIB::has_leaf_or_child_of_name(const std::string & name) const
 RSVPMIB::Rsvpgenobjects::Rsvpgenobjects()
     :
     rsvpbadpackets{YType::uint32, "rsvpBadPackets"},
-    rsvpresvfwdnewindex{YType::int32, "rsvpResvFwdNewIndex"},
-    rsvpresvnewindex{YType::int32, "rsvpResvNewIndex"},
     rsvpsendernewindex{YType::int32, "rsvpSenderNewIndex"},
+    rsvpresvnewindex{YType::int32, "rsvpResvNewIndex"},
+    rsvpresvfwdnewindex{YType::int32, "rsvpResvFwdNewIndex"},
     rsvpsessionnewindex{YType::int32, "rsvpSessionNewIndex"}
 {
 
@@ -261,9 +261,9 @@ RSVPMIB::Rsvpgenobjects::~Rsvpgenobjects()
 bool RSVPMIB::Rsvpgenobjects::has_data() const
 {
     return rsvpbadpackets.is_set
-	|| rsvpresvfwdnewindex.is_set
-	|| rsvpresvnewindex.is_set
 	|| rsvpsendernewindex.is_set
+	|| rsvpresvnewindex.is_set
+	|| rsvpresvfwdnewindex.is_set
 	|| rsvpsessionnewindex.is_set;
 }
 
@@ -271,9 +271,9 @@ bool RSVPMIB::Rsvpgenobjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpbadpackets.yfilter)
-	|| ydk::is_set(rsvpresvfwdnewindex.yfilter)
-	|| ydk::is_set(rsvpresvnewindex.yfilter)
 	|| ydk::is_set(rsvpsendernewindex.yfilter)
+	|| ydk::is_set(rsvpresvnewindex.yfilter)
+	|| ydk::is_set(rsvpresvfwdnewindex.yfilter)
 	|| ydk::is_set(rsvpsessionnewindex.yfilter);
 }
 
@@ -296,9 +296,9 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpgenobjects::get_name
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rsvpbadpackets.is_set || is_set(rsvpbadpackets.yfilter)) leaf_name_data.push_back(rsvpbadpackets.get_name_leafdata());
-    if (rsvpresvfwdnewindex.is_set || is_set(rsvpresvfwdnewindex.yfilter)) leaf_name_data.push_back(rsvpresvfwdnewindex.get_name_leafdata());
-    if (rsvpresvnewindex.is_set || is_set(rsvpresvnewindex.yfilter)) leaf_name_data.push_back(rsvpresvnewindex.get_name_leafdata());
     if (rsvpsendernewindex.is_set || is_set(rsvpsendernewindex.yfilter)) leaf_name_data.push_back(rsvpsendernewindex.get_name_leafdata());
+    if (rsvpresvnewindex.is_set || is_set(rsvpresvnewindex.yfilter)) leaf_name_data.push_back(rsvpresvnewindex.get_name_leafdata());
+    if (rsvpresvfwdnewindex.is_set || is_set(rsvpresvfwdnewindex.yfilter)) leaf_name_data.push_back(rsvpresvfwdnewindex.get_name_leafdata());
     if (rsvpsessionnewindex.is_set || is_set(rsvpsessionnewindex.yfilter)) leaf_name_data.push_back(rsvpsessionnewindex.get_name_leafdata());
 
     return leaf_name_data;
@@ -324,11 +324,11 @@ void RSVPMIB::Rsvpgenobjects::set_value(const std::string & value_path, const st
         rsvpbadpackets.value_namespace = name_space;
         rsvpbadpackets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdNewIndex")
+    if(value_path == "rsvpSenderNewIndex")
     {
-        rsvpresvfwdnewindex = value;
-        rsvpresvfwdnewindex.value_namespace = name_space;
-        rsvpresvfwdnewindex.value_namespace_prefix = name_space_prefix;
+        rsvpsendernewindex = value;
+        rsvpsendernewindex.value_namespace = name_space;
+        rsvpsendernewindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rsvpResvNewIndex")
     {
@@ -336,11 +336,11 @@ void RSVPMIB::Rsvpgenobjects::set_value(const std::string & value_path, const st
         rsvpresvnewindex.value_namespace = name_space;
         rsvpresvnewindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderNewIndex")
+    if(value_path == "rsvpResvFwdNewIndex")
     {
-        rsvpsendernewindex = value;
-        rsvpsendernewindex.value_namespace = name_space;
-        rsvpsendernewindex.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwdnewindex = value;
+        rsvpresvfwdnewindex.value_namespace = name_space;
+        rsvpresvfwdnewindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rsvpSessionNewIndex")
     {
@@ -356,17 +356,17 @@ void RSVPMIB::Rsvpgenobjects::set_filter(const std::string & value_path, YFilter
     {
         rsvpbadpackets.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdNewIndex")
+    if(value_path == "rsvpSenderNewIndex")
     {
-        rsvpresvfwdnewindex.yfilter = yfilter;
+        rsvpsendernewindex.yfilter = yfilter;
     }
     if(value_path == "rsvpResvNewIndex")
     {
         rsvpresvnewindex.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderNewIndex")
+    if(value_path == "rsvpResvFwdNewIndex")
     {
-        rsvpsendernewindex.yfilter = yfilter;
+        rsvpresvfwdnewindex.yfilter = yfilter;
     }
     if(value_path == "rsvpSessionNewIndex")
     {
@@ -376,56 +376,56 @@ void RSVPMIB::Rsvpgenobjects::set_filter(const std::string & value_path, YFilter
 
 bool RSVPMIB::Rsvpgenobjects::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpBadPackets" || name == "rsvpResvFwdNewIndex" || name == "rsvpResvNewIndex" || name == "rsvpSenderNewIndex" || name == "rsvpSessionNewIndex")
+    if(name == "rsvpBadPackets" || name == "rsvpSenderNewIndex" || name == "rsvpResvNewIndex" || name == "rsvpResvFwdNewIndex" || name == "rsvpSessionNewIndex")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpiftable::Rsvpiftable()
+RSVPMIB::Rsvpsessiontable::Rsvpsessiontable()
 {
 
-    yang_name = "rsvpIfTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSessionTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpiftable::~Rsvpiftable()
+RSVPMIB::Rsvpsessiontable::~Rsvpsessiontable()
 {
 }
 
-bool RSVPMIB::Rsvpiftable::has_data() const
+bool RSVPMIB::Rsvpsessiontable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
     {
-        if(rsvpifentry[index]->has_data())
+        if(rsvpsessionentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool RSVPMIB::Rsvpiftable::has_operation() const
+bool RSVPMIB::Rsvpsessiontable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
     {
-        if(rsvpifentry[index]->has_operation())
+        if(rsvpsessionentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpiftable::get_absolute_path() const
+std::string RSVPMIB::Rsvpsessiontable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpiftable::get_segment_path() const
+std::string RSVPMIB::Rsvpsessiontable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpIfTable";
+    path_buffer << "rsvpSessionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -434,11 +434,11 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::get_name_le
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rsvpIfEntry")
+    if(child_yang_name == "rsvpSessionEntry")
     {
-        for(auto const & c : rsvpifentry)
+        for(auto const & c : rsvpsessionentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -446,19 +446,19 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::get_child_by_name(const std::strin
                 return c;
             }
         }
-        auto c = std::make_shared<RSVPMIB::Rsvpiftable::Rsvpifentry>();
+        auto c = std::make_shared<RSVPMIB::Rsvpsessiontable::Rsvpsessionentry>();
         c->parent = this;
-        rsvpifentry.push_back(c);
+        rsvpsessionentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpifentry)
+    for (auto const & c : rsvpsessionentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -466,762 +466,112 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::get_childre
     return children;
 }
 
-void RSVPMIB::Rsvpiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpsessiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpiftable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpsessiontable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpiftable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpsessiontable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpIfEntry")
+    if(name == "rsvpSessionEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpiftable::Rsvpifentry::Rsvpifentry()
+RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::Rsvpsessionentry()
     :
-    ifindex{YType::str, "ifIndex"},
-    rsvpifenabled{YType::boolean, "rsvpIfEnabled"},
-    rsvpifipnbrs{YType::uint32, "rsvpIfIpNbrs"},
-    rsvpifnbrs{YType::uint32, "rsvpIfNbrs"},
-    rsvpifrefreshblockademultiple{YType::int32, "rsvpIfRefreshBlockadeMultiple"},
-    rsvpifrefreshinterval{YType::int32, "rsvpIfRefreshInterval"},
-    rsvpifrefreshmultiple{YType::int32, "rsvpIfRefreshMultiple"},
-    rsvpifroutedelay{YType::int32, "rsvpIfRouteDelay"},
-    rsvpifstatus{YType::enumeration, "rsvpIfStatus"},
-    rsvpifttl{YType::int32, "rsvpIfTTL"},
-    rsvpifudpnbrs{YType::uint32, "rsvpIfUdpNbrs"},
-    rsvpifudprequired{YType::boolean, "rsvpIfUdpRequired"}
+    rsvpsessionnumber{YType::int32, "rsvpSessionNumber"},
+    rsvpsessiontype{YType::int32, "rsvpSessionType"},
+    rsvpsessiondestaddr{YType::str, "rsvpSessionDestAddr"},
+    rsvpsessiondestaddrlength{YType::int32, "rsvpSessionDestAddrLength"},
+    rsvpsessionprotocol{YType::int32, "rsvpSessionProtocol"},
+    rsvpsessionport{YType::str, "rsvpSessionPort"},
+    rsvpsessionsenders{YType::uint32, "rsvpSessionSenders"},
+    rsvpsessionreceivers{YType::uint32, "rsvpSessionReceivers"},
+    rsvpsessionrequests{YType::uint32, "rsvpSessionRequests"}
 {
 
-    yang_name = "rsvpIfEntry"; yang_parent_name = "rsvpIfTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSessionEntry"; yang_parent_name = "rsvpSessionTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpiftable::Rsvpifentry::~Rsvpifentry()
+RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::~Rsvpsessionentry()
 {
 }
 
-bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_data() const
-{
-    return ifindex.is_set
-	|| rsvpifenabled.is_set
-	|| rsvpifipnbrs.is_set
-	|| rsvpifnbrs.is_set
-	|| rsvpifrefreshblockademultiple.is_set
-	|| rsvpifrefreshinterval.is_set
-	|| rsvpifrefreshmultiple.is_set
-	|| rsvpifroutedelay.is_set
-	|| rsvpifstatus.is_set
-	|| rsvpifttl.is_set
-	|| rsvpifudpnbrs.is_set
-	|| rsvpifudprequired.is_set;
-}
-
-bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ifindex.yfilter)
-	|| ydk::is_set(rsvpifenabled.yfilter)
-	|| ydk::is_set(rsvpifipnbrs.yfilter)
-	|| ydk::is_set(rsvpifnbrs.yfilter)
-	|| ydk::is_set(rsvpifrefreshblockademultiple.yfilter)
-	|| ydk::is_set(rsvpifrefreshinterval.yfilter)
-	|| ydk::is_set(rsvpifrefreshmultiple.yfilter)
-	|| ydk::is_set(rsvpifroutedelay.yfilter)
-	|| ydk::is_set(rsvpifstatus.yfilter)
-	|| ydk::is_set(rsvpifttl.yfilter)
-	|| ydk::is_set(rsvpifudpnbrs.yfilter)
-	|| ydk::is_set(rsvpifudprequired.yfilter);
-}
-
-std::string RSVPMIB::Rsvpiftable::Rsvpifentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpIfTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string RSVPMIB::Rsvpiftable::Rsvpifentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvpIfEntry" <<"[ifIndex='" <<ifindex <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::Rsvpifentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (rsvpifenabled.is_set || is_set(rsvpifenabled.yfilter)) leaf_name_data.push_back(rsvpifenabled.get_name_leafdata());
-    if (rsvpifipnbrs.is_set || is_set(rsvpifipnbrs.yfilter)) leaf_name_data.push_back(rsvpifipnbrs.get_name_leafdata());
-    if (rsvpifnbrs.is_set || is_set(rsvpifnbrs.yfilter)) leaf_name_data.push_back(rsvpifnbrs.get_name_leafdata());
-    if (rsvpifrefreshblockademultiple.is_set || is_set(rsvpifrefreshblockademultiple.yfilter)) leaf_name_data.push_back(rsvpifrefreshblockademultiple.get_name_leafdata());
-    if (rsvpifrefreshinterval.is_set || is_set(rsvpifrefreshinterval.yfilter)) leaf_name_data.push_back(rsvpifrefreshinterval.get_name_leafdata());
-    if (rsvpifrefreshmultiple.is_set || is_set(rsvpifrefreshmultiple.yfilter)) leaf_name_data.push_back(rsvpifrefreshmultiple.get_name_leafdata());
-    if (rsvpifroutedelay.is_set || is_set(rsvpifroutedelay.yfilter)) leaf_name_data.push_back(rsvpifroutedelay.get_name_leafdata());
-    if (rsvpifstatus.is_set || is_set(rsvpifstatus.yfilter)) leaf_name_data.push_back(rsvpifstatus.get_name_leafdata());
-    if (rsvpifttl.is_set || is_set(rsvpifttl.yfilter)) leaf_name_data.push_back(rsvpifttl.get_name_leafdata());
-    if (rsvpifudpnbrs.is_set || is_set(rsvpifudpnbrs.yfilter)) leaf_name_data.push_back(rsvpifudpnbrs.get_name_leafdata());
-    if (rsvpifudprequired.is_set || is_set(rsvpifudprequired.yfilter)) leaf_name_data.push_back(rsvpifudprequired.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::Rsvpifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::Rsvpifentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void RSVPMIB::Rsvpiftable::Rsvpifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ifIndex")
-    {
-        ifindex = value;
-        ifindex.value_namespace = name_space;
-        ifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfEnabled")
-    {
-        rsvpifenabled = value;
-        rsvpifenabled.value_namespace = name_space;
-        rsvpifenabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfIpNbrs")
-    {
-        rsvpifipnbrs = value;
-        rsvpifipnbrs.value_namespace = name_space;
-        rsvpifipnbrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfNbrs")
-    {
-        rsvpifnbrs = value;
-        rsvpifnbrs.value_namespace = name_space;
-        rsvpifnbrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfRefreshBlockadeMultiple")
-    {
-        rsvpifrefreshblockademultiple = value;
-        rsvpifrefreshblockademultiple.value_namespace = name_space;
-        rsvpifrefreshblockademultiple.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfRefreshInterval")
-    {
-        rsvpifrefreshinterval = value;
-        rsvpifrefreshinterval.value_namespace = name_space;
-        rsvpifrefreshinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfRefreshMultiple")
-    {
-        rsvpifrefreshmultiple = value;
-        rsvpifrefreshmultiple.value_namespace = name_space;
-        rsvpifrefreshmultiple.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfRouteDelay")
-    {
-        rsvpifroutedelay = value;
-        rsvpifroutedelay.value_namespace = name_space;
-        rsvpifroutedelay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfStatus")
-    {
-        rsvpifstatus = value;
-        rsvpifstatus.value_namespace = name_space;
-        rsvpifstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfTTL")
-    {
-        rsvpifttl = value;
-        rsvpifttl.value_namespace = name_space;
-        rsvpifttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfUdpNbrs")
-    {
-        rsvpifudpnbrs = value;
-        rsvpifudpnbrs.value_namespace = name_space;
-        rsvpifudpnbrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpIfUdpRequired")
-    {
-        rsvpifudprequired = value;
-        rsvpifudprequired.value_namespace = name_space;
-        rsvpifudprequired.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RSVPMIB::Rsvpiftable::Rsvpifentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ifIndex")
-    {
-        ifindex.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfEnabled")
-    {
-        rsvpifenabled.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfIpNbrs")
-    {
-        rsvpifipnbrs.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfNbrs")
-    {
-        rsvpifnbrs.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfRefreshBlockadeMultiple")
-    {
-        rsvpifrefreshblockademultiple.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfRefreshInterval")
-    {
-        rsvpifrefreshinterval.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfRefreshMultiple")
-    {
-        rsvpifrefreshmultiple.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfRouteDelay")
-    {
-        rsvpifroutedelay.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfStatus")
-    {
-        rsvpifstatus.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfTTL")
-    {
-        rsvpifttl.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfUdpNbrs")
-    {
-        rsvpifudpnbrs.yfilter = yfilter;
-    }
-    if(value_path == "rsvpIfUdpRequired")
-    {
-        rsvpifudprequired.yfilter = yfilter;
-    }
-}
-
-bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ifIndex" || name == "rsvpIfEnabled" || name == "rsvpIfIpNbrs" || name == "rsvpIfNbrs" || name == "rsvpIfRefreshBlockadeMultiple" || name == "rsvpIfRefreshInterval" || name == "rsvpIfRefreshMultiple" || name == "rsvpIfRouteDelay" || name == "rsvpIfStatus" || name == "rsvpIfTTL" || name == "rsvpIfUdpNbrs" || name == "rsvpIfUdpRequired")
-        return true;
-    return false;
-}
-
-RSVPMIB::Rsvpnbrtable::Rsvpnbrtable()
-{
-
-    yang_name = "rsvpNbrTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-RSVPMIB::Rsvpnbrtable::~Rsvpnbrtable()
-{
-}
-
-bool RSVPMIB::Rsvpnbrtable::has_data() const
-{
-    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
-    {
-        if(rsvpnbrentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool RSVPMIB::Rsvpnbrtable::has_operation() const
-{
-    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
-    {
-        if(rsvpnbrentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string RSVPMIB::Rsvpnbrtable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string RSVPMIB::Rsvpnbrtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvpNbrTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rsvpNbrEntry")
-    {
-        for(auto const & c : rsvpnbrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<RSVPMIB::Rsvpnbrtable::Rsvpnbrentry>();
-        c->parent = this;
-        rsvpnbrentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpnbrentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void RSVPMIB::Rsvpnbrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void RSVPMIB::Rsvpnbrtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool RSVPMIB::Rsvpnbrtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rsvpNbrEntry")
-        return true;
-    return false;
-}
-
-RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::Rsvpnbrentry()
-    :
-    ifindex{YType::str, "ifIndex"},
-    rsvpnbraddress{YType::str, "rsvpNbrAddress"},
-    rsvpnbrprotocol{YType::enumeration, "rsvpNbrProtocol"},
-    rsvpnbrstatus{YType::enumeration, "rsvpNbrStatus"}
-{
-
-    yang_name = "rsvpNbrEntry"; yang_parent_name = "rsvpNbrTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::~Rsvpnbrentry()
-{
-}
-
-bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_data() const
-{
-    return ifindex.is_set
-	|| rsvpnbraddress.is_set
-	|| rsvpnbrprotocol.is_set
-	|| rsvpnbrstatus.is_set;
-}
-
-bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ifindex.yfilter)
-	|| ydk::is_set(rsvpnbraddress.yfilter)
-	|| ydk::is_set(rsvpnbrprotocol.yfilter)
-	|| ydk::is_set(rsvpnbrstatus.yfilter);
-}
-
-std::string RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpNbrTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvpNbrEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[rsvpNbrAddress='" <<rsvpnbraddress <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (rsvpnbraddress.is_set || is_set(rsvpnbraddress.yfilter)) leaf_name_data.push_back(rsvpnbraddress.get_name_leafdata());
-    if (rsvpnbrprotocol.is_set || is_set(rsvpnbrprotocol.yfilter)) leaf_name_data.push_back(rsvpnbrprotocol.get_name_leafdata());
-    if (rsvpnbrstatus.is_set || is_set(rsvpnbrstatus.yfilter)) leaf_name_data.push_back(rsvpnbrstatus.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ifIndex")
-    {
-        ifindex = value;
-        ifindex.value_namespace = name_space;
-        ifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpNbrAddress")
-    {
-        rsvpnbraddress = value;
-        rsvpnbraddress.value_namespace = name_space;
-        rsvpnbraddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpNbrProtocol")
-    {
-        rsvpnbrprotocol = value;
-        rsvpnbrprotocol.value_namespace = name_space;
-        rsvpnbrprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpNbrStatus")
-    {
-        rsvpnbrstatus = value;
-        rsvpnbrstatus.value_namespace = name_space;
-        rsvpnbrstatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ifIndex")
-    {
-        ifindex.yfilter = yfilter;
-    }
-    if(value_path == "rsvpNbrAddress")
-    {
-        rsvpnbraddress.yfilter = yfilter;
-    }
-    if(value_path == "rsvpNbrProtocol")
-    {
-        rsvpnbrprotocol.yfilter = yfilter;
-    }
-    if(value_path == "rsvpNbrStatus")
-    {
-        rsvpnbrstatus.yfilter = yfilter;
-    }
-}
-
-bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ifIndex" || name == "rsvpNbrAddress" || name == "rsvpNbrProtocol" || name == "rsvpNbrStatus")
-        return true;
-    return false;
-}
-
-RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdtable()
-{
-
-    yang_name = "rsvpResvFwdTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-RSVPMIB::Rsvpresvfwdtable::~Rsvpresvfwdtable()
-{
-}
-
-bool RSVPMIB::Rsvpresvfwdtable::has_data() const
-{
-    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
-    {
-        if(rsvpresvfwdentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool RSVPMIB::Rsvpresvfwdtable::has_operation() const
-{
-    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
-    {
-        if(rsvpresvfwdentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string RSVPMIB::Rsvpresvfwdtable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string RSVPMIB::Rsvpresvfwdtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvpResvFwdTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rsvpResvFwdEntry")
-    {
-        for(auto const & c : rsvpresvfwdentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry>();
-        c->parent = this;
-        rsvpresvfwdentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpresvfwdentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void RSVPMIB::Rsvpresvfwdtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void RSVPMIB::Rsvpresvfwdtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool RSVPMIB::Rsvpresvfwdtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rsvpResvFwdEntry")
-        return true;
-    return false;
-}
-
-RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::Rsvpresvfwdentry()
-    :
-    rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
-    rsvpresvfwdnumber{YType::int32, "rsvpResvFwdNumber"},
-    rsvpresvfwddestaddr{YType::str, "rsvpResvFwdDestAddr"},
-    rsvpresvfwddestaddrlength{YType::int32, "rsvpResvFwdDestAddrLength"},
-    rsvpresvfwddestport{YType::str, "rsvpResvFwdDestPort"},
-    rsvpresvfwdexplicit{YType::boolean, "rsvpResvFwdExplicit"},
-    rsvpresvfwdflowid{YType::int32, "rsvpResvFwdFlowId"},
-    rsvpresvfwdhopaddr{YType::str, "rsvpResvFwdHopAddr"},
-    rsvpresvfwdhoplih{YType::int32, "rsvpResvFwdHopLih"},
-    rsvpresvfwdinterface{YType::int32, "rsvpResvFwdInterface"},
-    rsvpresvfwdinterval{YType::int32, "rsvpResvFwdInterval"},
-    rsvpresvfwdlastchange{YType::uint32, "rsvpResvFwdLastChange"},
-    rsvpresvfwdpolicy{YType::str, "rsvpResvFwdPolicy"},
-    rsvpresvfwdport{YType::str, "rsvpResvFwdPort"},
-    rsvpresvfwdprotocol{YType::int32, "rsvpResvFwdProtocol"},
-    rsvpresvfwdrspecrate{YType::int32, "rsvpResvFwdRSpecRate"},
-    rsvpresvfwdrspecslack{YType::int32, "rsvpResvFwdRSpecSlack"},
-    rsvpresvfwdrsvphop{YType::boolean, "rsvpResvFwdRSVPHop"},
-    rsvpresvfwdscope{YType::str, "rsvpResvFwdScope"},
-    rsvpresvfwdsenderaddr{YType::str, "rsvpResvFwdSenderAddr"},
-    rsvpresvfwdsenderaddrlength{YType::int32, "rsvpResvFwdSenderAddrLength"},
-    rsvpresvfwdservice{YType::enumeration, "rsvpResvFwdService"},
-    rsvpresvfwdshared{YType::boolean, "rsvpResvFwdShared"},
-    rsvpresvfwdstatus{YType::enumeration, "rsvpResvFwdStatus"},
-    rsvpresvfwdtspecburst{YType::int32, "rsvpResvFwdTSpecBurst"},
-    rsvpresvfwdtspecmaxtu{YType::int32, "rsvpResvFwdTSpecMaxTU"},
-    rsvpresvfwdtspecmintu{YType::int32, "rsvpResvFwdTSpecMinTU"},
-    rsvpresvfwdtspecpeakrate{YType::int32, "rsvpResvFwdTSpecPeakRate"},
-    rsvpresvfwdtspecrate{YType::int32, "rsvpResvFwdTSpecRate"},
-    rsvpresvfwdttl{YType::int32, "rsvpResvFwdTTL"},
-    rsvpresvfwdtype{YType::int32, "rsvpResvFwdType"}
-{
-
-    yang_name = "rsvpResvFwdEntry"; yang_parent_name = "rsvpResvFwdTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::~Rsvpresvfwdentry()
-{
-}
-
-bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_data() const
+bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_data() const
 {
     return rsvpsessionnumber.is_set
-	|| rsvpresvfwdnumber.is_set
-	|| rsvpresvfwddestaddr.is_set
-	|| rsvpresvfwddestaddrlength.is_set
-	|| rsvpresvfwddestport.is_set
-	|| rsvpresvfwdexplicit.is_set
-	|| rsvpresvfwdflowid.is_set
-	|| rsvpresvfwdhopaddr.is_set
-	|| rsvpresvfwdhoplih.is_set
-	|| rsvpresvfwdinterface.is_set
-	|| rsvpresvfwdinterval.is_set
-	|| rsvpresvfwdlastchange.is_set
-	|| rsvpresvfwdpolicy.is_set
-	|| rsvpresvfwdport.is_set
-	|| rsvpresvfwdprotocol.is_set
-	|| rsvpresvfwdrspecrate.is_set
-	|| rsvpresvfwdrspecslack.is_set
-	|| rsvpresvfwdrsvphop.is_set
-	|| rsvpresvfwdscope.is_set
-	|| rsvpresvfwdsenderaddr.is_set
-	|| rsvpresvfwdsenderaddrlength.is_set
-	|| rsvpresvfwdservice.is_set
-	|| rsvpresvfwdshared.is_set
-	|| rsvpresvfwdstatus.is_set
-	|| rsvpresvfwdtspecburst.is_set
-	|| rsvpresvfwdtspecmaxtu.is_set
-	|| rsvpresvfwdtspecmintu.is_set
-	|| rsvpresvfwdtspecpeakrate.is_set
-	|| rsvpresvfwdtspecrate.is_set
-	|| rsvpresvfwdttl.is_set
-	|| rsvpresvfwdtype.is_set;
+	|| rsvpsessiontype.is_set
+	|| rsvpsessiondestaddr.is_set
+	|| rsvpsessiondestaddrlength.is_set
+	|| rsvpsessionprotocol.is_set
+	|| rsvpsessionport.is_set
+	|| rsvpsessionsenders.is_set
+	|| rsvpsessionreceivers.is_set
+	|| rsvpsessionrequests.is_set;
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_operation() const
+bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
-	|| ydk::is_set(rsvpresvfwdnumber.yfilter)
-	|| ydk::is_set(rsvpresvfwddestaddr.yfilter)
-	|| ydk::is_set(rsvpresvfwddestaddrlength.yfilter)
-	|| ydk::is_set(rsvpresvfwddestport.yfilter)
-	|| ydk::is_set(rsvpresvfwdexplicit.yfilter)
-	|| ydk::is_set(rsvpresvfwdflowid.yfilter)
-	|| ydk::is_set(rsvpresvfwdhopaddr.yfilter)
-	|| ydk::is_set(rsvpresvfwdhoplih.yfilter)
-	|| ydk::is_set(rsvpresvfwdinterface.yfilter)
-	|| ydk::is_set(rsvpresvfwdinterval.yfilter)
-	|| ydk::is_set(rsvpresvfwdlastchange.yfilter)
-	|| ydk::is_set(rsvpresvfwdpolicy.yfilter)
-	|| ydk::is_set(rsvpresvfwdport.yfilter)
-	|| ydk::is_set(rsvpresvfwdprotocol.yfilter)
-	|| ydk::is_set(rsvpresvfwdrspecrate.yfilter)
-	|| ydk::is_set(rsvpresvfwdrspecslack.yfilter)
-	|| ydk::is_set(rsvpresvfwdrsvphop.yfilter)
-	|| ydk::is_set(rsvpresvfwdscope.yfilter)
-	|| ydk::is_set(rsvpresvfwdsenderaddr.yfilter)
-	|| ydk::is_set(rsvpresvfwdsenderaddrlength.yfilter)
-	|| ydk::is_set(rsvpresvfwdservice.yfilter)
-	|| ydk::is_set(rsvpresvfwdshared.yfilter)
-	|| ydk::is_set(rsvpresvfwdstatus.yfilter)
-	|| ydk::is_set(rsvpresvfwdtspecburst.yfilter)
-	|| ydk::is_set(rsvpresvfwdtspecmaxtu.yfilter)
-	|| ydk::is_set(rsvpresvfwdtspecmintu.yfilter)
-	|| ydk::is_set(rsvpresvfwdtspecpeakrate.yfilter)
-	|| ydk::is_set(rsvpresvfwdtspecrate.yfilter)
-	|| ydk::is_set(rsvpresvfwdttl.yfilter)
-	|| ydk::is_set(rsvpresvfwdtype.yfilter);
+	|| ydk::is_set(rsvpsessiontype.yfilter)
+	|| ydk::is_set(rsvpsessiondestaddr.yfilter)
+	|| ydk::is_set(rsvpsessiondestaddrlength.yfilter)
+	|| ydk::is_set(rsvpsessionprotocol.yfilter)
+	|| ydk::is_set(rsvpsessionport.yfilter)
+	|| ydk::is_set(rsvpsessionsenders.yfilter)
+	|| ydk::is_set(rsvpsessionreceivers.yfilter)
+	|| ydk::is_set(rsvpsessionrequests.yfilter);
 }
 
-std::string RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_absolute_path() const
+std::string RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpResvFwdTable/" << get_segment_path();
+    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpSessionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_segment_path() const
+std::string RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpResvFwdEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpResvFwdNumber='" <<rsvpresvfwdnumber <<"']";
+    path_buffer << "rsvpSessionEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rsvpsessionnumber.is_set || is_set(rsvpsessionnumber.yfilter)) leaf_name_data.push_back(rsvpsessionnumber.get_name_leafdata());
-    if (rsvpresvfwdnumber.is_set || is_set(rsvpresvfwdnumber.yfilter)) leaf_name_data.push_back(rsvpresvfwdnumber.get_name_leafdata());
-    if (rsvpresvfwddestaddr.is_set || is_set(rsvpresvfwddestaddr.yfilter)) leaf_name_data.push_back(rsvpresvfwddestaddr.get_name_leafdata());
-    if (rsvpresvfwddestaddrlength.is_set || is_set(rsvpresvfwddestaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvfwddestaddrlength.get_name_leafdata());
-    if (rsvpresvfwddestport.is_set || is_set(rsvpresvfwddestport.yfilter)) leaf_name_data.push_back(rsvpresvfwddestport.get_name_leafdata());
-    if (rsvpresvfwdexplicit.is_set || is_set(rsvpresvfwdexplicit.yfilter)) leaf_name_data.push_back(rsvpresvfwdexplicit.get_name_leafdata());
-    if (rsvpresvfwdflowid.is_set || is_set(rsvpresvfwdflowid.yfilter)) leaf_name_data.push_back(rsvpresvfwdflowid.get_name_leafdata());
-    if (rsvpresvfwdhopaddr.is_set || is_set(rsvpresvfwdhopaddr.yfilter)) leaf_name_data.push_back(rsvpresvfwdhopaddr.get_name_leafdata());
-    if (rsvpresvfwdhoplih.is_set || is_set(rsvpresvfwdhoplih.yfilter)) leaf_name_data.push_back(rsvpresvfwdhoplih.get_name_leafdata());
-    if (rsvpresvfwdinterface.is_set || is_set(rsvpresvfwdinterface.yfilter)) leaf_name_data.push_back(rsvpresvfwdinterface.get_name_leafdata());
-    if (rsvpresvfwdinterval.is_set || is_set(rsvpresvfwdinterval.yfilter)) leaf_name_data.push_back(rsvpresvfwdinterval.get_name_leafdata());
-    if (rsvpresvfwdlastchange.is_set || is_set(rsvpresvfwdlastchange.yfilter)) leaf_name_data.push_back(rsvpresvfwdlastchange.get_name_leafdata());
-    if (rsvpresvfwdpolicy.is_set || is_set(rsvpresvfwdpolicy.yfilter)) leaf_name_data.push_back(rsvpresvfwdpolicy.get_name_leafdata());
-    if (rsvpresvfwdport.is_set || is_set(rsvpresvfwdport.yfilter)) leaf_name_data.push_back(rsvpresvfwdport.get_name_leafdata());
-    if (rsvpresvfwdprotocol.is_set || is_set(rsvpresvfwdprotocol.yfilter)) leaf_name_data.push_back(rsvpresvfwdprotocol.get_name_leafdata());
-    if (rsvpresvfwdrspecrate.is_set || is_set(rsvpresvfwdrspecrate.yfilter)) leaf_name_data.push_back(rsvpresvfwdrspecrate.get_name_leafdata());
-    if (rsvpresvfwdrspecslack.is_set || is_set(rsvpresvfwdrspecslack.yfilter)) leaf_name_data.push_back(rsvpresvfwdrspecslack.get_name_leafdata());
-    if (rsvpresvfwdrsvphop.is_set || is_set(rsvpresvfwdrsvphop.yfilter)) leaf_name_data.push_back(rsvpresvfwdrsvphop.get_name_leafdata());
-    if (rsvpresvfwdscope.is_set || is_set(rsvpresvfwdscope.yfilter)) leaf_name_data.push_back(rsvpresvfwdscope.get_name_leafdata());
-    if (rsvpresvfwdsenderaddr.is_set || is_set(rsvpresvfwdsenderaddr.yfilter)) leaf_name_data.push_back(rsvpresvfwdsenderaddr.get_name_leafdata());
-    if (rsvpresvfwdsenderaddrlength.is_set || is_set(rsvpresvfwdsenderaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvfwdsenderaddrlength.get_name_leafdata());
-    if (rsvpresvfwdservice.is_set || is_set(rsvpresvfwdservice.yfilter)) leaf_name_data.push_back(rsvpresvfwdservice.get_name_leafdata());
-    if (rsvpresvfwdshared.is_set || is_set(rsvpresvfwdshared.yfilter)) leaf_name_data.push_back(rsvpresvfwdshared.get_name_leafdata());
-    if (rsvpresvfwdstatus.is_set || is_set(rsvpresvfwdstatus.yfilter)) leaf_name_data.push_back(rsvpresvfwdstatus.get_name_leafdata());
-    if (rsvpresvfwdtspecburst.is_set || is_set(rsvpresvfwdtspecburst.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecburst.get_name_leafdata());
-    if (rsvpresvfwdtspecmaxtu.is_set || is_set(rsvpresvfwdtspecmaxtu.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecmaxtu.get_name_leafdata());
-    if (rsvpresvfwdtspecmintu.is_set || is_set(rsvpresvfwdtspecmintu.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecmintu.get_name_leafdata());
-    if (rsvpresvfwdtspecpeakrate.is_set || is_set(rsvpresvfwdtspecpeakrate.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecpeakrate.get_name_leafdata());
-    if (rsvpresvfwdtspecrate.is_set || is_set(rsvpresvfwdtspecrate.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecrate.get_name_leafdata());
-    if (rsvpresvfwdttl.is_set || is_set(rsvpresvfwdttl.yfilter)) leaf_name_data.push_back(rsvpresvfwdttl.get_name_leafdata());
-    if (rsvpresvfwdtype.is_set || is_set(rsvpresvfwdtype.yfilter)) leaf_name_data.push_back(rsvpresvfwdtype.get_name_leafdata());
+    if (rsvpsessiontype.is_set || is_set(rsvpsessiontype.yfilter)) leaf_name_data.push_back(rsvpsessiontype.get_name_leafdata());
+    if (rsvpsessiondestaddr.is_set || is_set(rsvpsessiondestaddr.yfilter)) leaf_name_data.push_back(rsvpsessiondestaddr.get_name_leafdata());
+    if (rsvpsessiondestaddrlength.is_set || is_set(rsvpsessiondestaddrlength.yfilter)) leaf_name_data.push_back(rsvpsessiondestaddrlength.get_name_leafdata());
+    if (rsvpsessionprotocol.is_set || is_set(rsvpsessionprotocol.yfilter)) leaf_name_data.push_back(rsvpsessionprotocol.get_name_leafdata());
+    if (rsvpsessionport.is_set || is_set(rsvpsessionport.yfilter)) leaf_name_data.push_back(rsvpsessionport.get_name_leafdata());
+    if (rsvpsessionsenders.is_set || is_set(rsvpsessionsenders.yfilter)) leaf_name_data.push_back(rsvpsessionsenders.get_name_leafdata());
+    if (rsvpsessionreceivers.is_set || is_set(rsvpsessionreceivers.yfilter)) leaf_name_data.push_back(rsvpsessionreceivers.get_name_leafdata());
+    if (rsvpsessionrequests.is_set || is_set(rsvpsessionrequests.yfilter)) leaf_name_data.push_back(rsvpsessionrequests.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -1229,368 +579,148 @@ void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_value(const std::string & 
         rsvpsessionnumber.value_namespace = name_space;
         rsvpsessionnumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdNumber")
+    if(value_path == "rsvpSessionType")
     {
-        rsvpresvfwdnumber = value;
-        rsvpresvfwdnumber.value_namespace = name_space;
-        rsvpresvfwdnumber.value_namespace_prefix = name_space_prefix;
+        rsvpsessiontype = value;
+        rsvpsessiontype.value_namespace = name_space;
+        rsvpsessiontype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdDestAddr")
+    if(value_path == "rsvpSessionDestAddr")
     {
-        rsvpresvfwddestaddr = value;
-        rsvpresvfwddestaddr.value_namespace = name_space;
-        rsvpresvfwddestaddr.value_namespace_prefix = name_space_prefix;
+        rsvpsessiondestaddr = value;
+        rsvpsessiondestaddr.value_namespace = name_space;
+        rsvpsessiondestaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdDestAddrLength")
+    if(value_path == "rsvpSessionDestAddrLength")
     {
-        rsvpresvfwddestaddrlength = value;
-        rsvpresvfwddestaddrlength.value_namespace = name_space;
-        rsvpresvfwddestaddrlength.value_namespace_prefix = name_space_prefix;
+        rsvpsessiondestaddrlength = value;
+        rsvpsessiondestaddrlength.value_namespace = name_space;
+        rsvpsessiondestaddrlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdDestPort")
+    if(value_path == "rsvpSessionProtocol")
     {
-        rsvpresvfwddestport = value;
-        rsvpresvfwddestport.value_namespace = name_space;
-        rsvpresvfwddestport.value_namespace_prefix = name_space_prefix;
+        rsvpsessionprotocol = value;
+        rsvpsessionprotocol.value_namespace = name_space;
+        rsvpsessionprotocol.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdExplicit")
+    if(value_path == "rsvpSessionPort")
     {
-        rsvpresvfwdexplicit = value;
-        rsvpresvfwdexplicit.value_namespace = name_space;
-        rsvpresvfwdexplicit.value_namespace_prefix = name_space_prefix;
+        rsvpsessionport = value;
+        rsvpsessionport.value_namespace = name_space;
+        rsvpsessionport.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdFlowId")
+    if(value_path == "rsvpSessionSenders")
     {
-        rsvpresvfwdflowid = value;
-        rsvpresvfwdflowid.value_namespace = name_space;
-        rsvpresvfwdflowid.value_namespace_prefix = name_space_prefix;
+        rsvpsessionsenders = value;
+        rsvpsessionsenders.value_namespace = name_space;
+        rsvpsessionsenders.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdHopAddr")
+    if(value_path == "rsvpSessionReceivers")
     {
-        rsvpresvfwdhopaddr = value;
-        rsvpresvfwdhopaddr.value_namespace = name_space;
-        rsvpresvfwdhopaddr.value_namespace_prefix = name_space_prefix;
+        rsvpsessionreceivers = value;
+        rsvpsessionreceivers.value_namespace = name_space;
+        rsvpsessionreceivers.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFwdHopLih")
+    if(value_path == "rsvpSessionRequests")
     {
-        rsvpresvfwdhoplih = value;
-        rsvpresvfwdhoplih.value_namespace = name_space;
-        rsvpresvfwdhoplih.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdInterface")
-    {
-        rsvpresvfwdinterface = value;
-        rsvpresvfwdinterface.value_namespace = name_space;
-        rsvpresvfwdinterface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdInterval")
-    {
-        rsvpresvfwdinterval = value;
-        rsvpresvfwdinterval.value_namespace = name_space;
-        rsvpresvfwdinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdLastChange")
-    {
-        rsvpresvfwdlastchange = value;
-        rsvpresvfwdlastchange.value_namespace = name_space;
-        rsvpresvfwdlastchange.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdPolicy")
-    {
-        rsvpresvfwdpolicy = value;
-        rsvpresvfwdpolicy.value_namespace = name_space;
-        rsvpresvfwdpolicy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdPort")
-    {
-        rsvpresvfwdport = value;
-        rsvpresvfwdport.value_namespace = name_space;
-        rsvpresvfwdport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdProtocol")
-    {
-        rsvpresvfwdprotocol = value;
-        rsvpresvfwdprotocol.value_namespace = name_space;
-        rsvpresvfwdprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdRSpecRate")
-    {
-        rsvpresvfwdrspecrate = value;
-        rsvpresvfwdrspecrate.value_namespace = name_space;
-        rsvpresvfwdrspecrate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdRSpecSlack")
-    {
-        rsvpresvfwdrspecslack = value;
-        rsvpresvfwdrspecslack.value_namespace = name_space;
-        rsvpresvfwdrspecslack.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdRSVPHop")
-    {
-        rsvpresvfwdrsvphop = value;
-        rsvpresvfwdrsvphop.value_namespace = name_space;
-        rsvpresvfwdrsvphop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdScope")
-    {
-        rsvpresvfwdscope = value;
-        rsvpresvfwdscope.value_namespace = name_space;
-        rsvpresvfwdscope.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdSenderAddr")
-    {
-        rsvpresvfwdsenderaddr = value;
-        rsvpresvfwdsenderaddr.value_namespace = name_space;
-        rsvpresvfwdsenderaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdSenderAddrLength")
-    {
-        rsvpresvfwdsenderaddrlength = value;
-        rsvpresvfwdsenderaddrlength.value_namespace = name_space;
-        rsvpresvfwdsenderaddrlength.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdService")
-    {
-        rsvpresvfwdservice = value;
-        rsvpresvfwdservice.value_namespace = name_space;
-        rsvpresvfwdservice.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdShared")
-    {
-        rsvpresvfwdshared = value;
-        rsvpresvfwdshared.value_namespace = name_space;
-        rsvpresvfwdshared.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdStatus")
-    {
-        rsvpresvfwdstatus = value;
-        rsvpresvfwdstatus.value_namespace = name_space;
-        rsvpresvfwdstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdTSpecBurst")
-    {
-        rsvpresvfwdtspecburst = value;
-        rsvpresvfwdtspecburst.value_namespace = name_space;
-        rsvpresvfwdtspecburst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdTSpecMaxTU")
-    {
-        rsvpresvfwdtspecmaxtu = value;
-        rsvpresvfwdtspecmaxtu.value_namespace = name_space;
-        rsvpresvfwdtspecmaxtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdTSpecMinTU")
-    {
-        rsvpresvfwdtspecmintu = value;
-        rsvpresvfwdtspecmintu.value_namespace = name_space;
-        rsvpresvfwdtspecmintu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdTSpecPeakRate")
-    {
-        rsvpresvfwdtspecpeakrate = value;
-        rsvpresvfwdtspecpeakrate.value_namespace = name_space;
-        rsvpresvfwdtspecpeakrate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdTSpecRate")
-    {
-        rsvpresvfwdtspecrate = value;
-        rsvpresvfwdtspecrate.value_namespace = name_space;
-        rsvpresvfwdtspecrate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdTTL")
-    {
-        rsvpresvfwdttl = value;
-        rsvpresvfwdttl.value_namespace = name_space;
-        rsvpresvfwdttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpResvFwdType")
-    {
-        rsvpresvfwdtype = value;
-        rsvpresvfwdtype.value_namespace = name_space;
-        rsvpresvfwdtype.value_namespace_prefix = name_space_prefix;
+        rsvpsessionrequests = value;
+        rsvpsessionrequests.value_namespace = name_space;
+        rsvpsessionrequests.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
         rsvpsessionnumber.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdNumber")
+    if(value_path == "rsvpSessionType")
     {
-        rsvpresvfwdnumber.yfilter = yfilter;
+        rsvpsessiontype.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdDestAddr")
+    if(value_path == "rsvpSessionDestAddr")
     {
-        rsvpresvfwddestaddr.yfilter = yfilter;
+        rsvpsessiondestaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdDestAddrLength")
+    if(value_path == "rsvpSessionDestAddrLength")
     {
-        rsvpresvfwddestaddrlength.yfilter = yfilter;
+        rsvpsessiondestaddrlength.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdDestPort")
+    if(value_path == "rsvpSessionProtocol")
     {
-        rsvpresvfwddestport.yfilter = yfilter;
+        rsvpsessionprotocol.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdExplicit")
+    if(value_path == "rsvpSessionPort")
     {
-        rsvpresvfwdexplicit.yfilter = yfilter;
+        rsvpsessionport.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdFlowId")
+    if(value_path == "rsvpSessionSenders")
     {
-        rsvpresvfwdflowid.yfilter = yfilter;
+        rsvpsessionsenders.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdHopAddr")
+    if(value_path == "rsvpSessionReceivers")
     {
-        rsvpresvfwdhopaddr.yfilter = yfilter;
+        rsvpsessionreceivers.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFwdHopLih")
+    if(value_path == "rsvpSessionRequests")
     {
-        rsvpresvfwdhoplih.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdInterface")
-    {
-        rsvpresvfwdinterface.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdInterval")
-    {
-        rsvpresvfwdinterval.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdLastChange")
-    {
-        rsvpresvfwdlastchange.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdPolicy")
-    {
-        rsvpresvfwdpolicy.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdPort")
-    {
-        rsvpresvfwdport.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdProtocol")
-    {
-        rsvpresvfwdprotocol.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdRSpecRate")
-    {
-        rsvpresvfwdrspecrate.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdRSpecSlack")
-    {
-        rsvpresvfwdrspecslack.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdRSVPHop")
-    {
-        rsvpresvfwdrsvphop.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdScope")
-    {
-        rsvpresvfwdscope.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdSenderAddr")
-    {
-        rsvpresvfwdsenderaddr.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdSenderAddrLength")
-    {
-        rsvpresvfwdsenderaddrlength.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdService")
-    {
-        rsvpresvfwdservice.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdShared")
-    {
-        rsvpresvfwdshared.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdStatus")
-    {
-        rsvpresvfwdstatus.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdTSpecBurst")
-    {
-        rsvpresvfwdtspecburst.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdTSpecMaxTU")
-    {
-        rsvpresvfwdtspecmaxtu.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdTSpecMinTU")
-    {
-        rsvpresvfwdtspecmintu.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdTSpecPeakRate")
-    {
-        rsvpresvfwdtspecpeakrate.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdTSpecRate")
-    {
-        rsvpresvfwdtspecrate.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdTTL")
-    {
-        rsvpresvfwdttl.yfilter = yfilter;
-    }
-    if(value_path == "rsvpResvFwdType")
-    {
-        rsvpresvfwdtype.yfilter = yfilter;
+        rsvpsessionrequests.yfilter = yfilter;
     }
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpSessionNumber" || name == "rsvpResvFwdNumber" || name == "rsvpResvFwdDestAddr" || name == "rsvpResvFwdDestAddrLength" || name == "rsvpResvFwdDestPort" || name == "rsvpResvFwdExplicit" || name == "rsvpResvFwdFlowId" || name == "rsvpResvFwdHopAddr" || name == "rsvpResvFwdHopLih" || name == "rsvpResvFwdInterface" || name == "rsvpResvFwdInterval" || name == "rsvpResvFwdLastChange" || name == "rsvpResvFwdPolicy" || name == "rsvpResvFwdPort" || name == "rsvpResvFwdProtocol" || name == "rsvpResvFwdRSpecRate" || name == "rsvpResvFwdRSpecSlack" || name == "rsvpResvFwdRSVPHop" || name == "rsvpResvFwdScope" || name == "rsvpResvFwdSenderAddr" || name == "rsvpResvFwdSenderAddrLength" || name == "rsvpResvFwdService" || name == "rsvpResvFwdShared" || name == "rsvpResvFwdStatus" || name == "rsvpResvFwdTSpecBurst" || name == "rsvpResvFwdTSpecMaxTU" || name == "rsvpResvFwdTSpecMinTU" || name == "rsvpResvFwdTSpecPeakRate" || name == "rsvpResvFwdTSpecRate" || name == "rsvpResvFwdTTL" || name == "rsvpResvFwdType")
+    if(name == "rsvpSessionNumber" || name == "rsvpSessionType" || name == "rsvpSessionDestAddr" || name == "rsvpSessionDestAddrLength" || name == "rsvpSessionProtocol" || name == "rsvpSessionPort" || name == "rsvpSessionSenders" || name == "rsvpSessionReceivers" || name == "rsvpSessionRequests")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpresvtable::Rsvpresvtable()
+RSVPMIB::Rsvpsendertable::Rsvpsendertable()
 {
 
-    yang_name = "rsvpResvTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSenderTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpresvtable::~Rsvpresvtable()
+RSVPMIB::Rsvpsendertable::~Rsvpsendertable()
 {
 }
 
-bool RSVPMIB::Rsvpresvtable::has_data() const
+bool RSVPMIB::Rsvpsendertable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpresventry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
     {
-        if(rsvpresventry[index]->has_data())
+        if(rsvpsenderentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool RSVPMIB::Rsvpresvtable::has_operation() const
+bool RSVPMIB::Rsvpsendertable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpresventry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
     {
-        if(rsvpresventry[index]->has_operation())
+        if(rsvpsenderentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpresvtable::get_absolute_path() const
+std::string RSVPMIB::Rsvpsendertable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpresvtable::get_segment_path() const
+std::string RSVPMIB::Rsvpsendertable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpResvTable";
+    path_buffer << "rsvpSenderTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1599,11 +729,11 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::get_name_
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rsvpResvEntry")
+    if(child_yang_name == "rsvpSenderEntry")
     {
-        for(auto const & c : rsvpresventry)
+        for(auto const & c : rsvpsenderentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1611,19 +741,19 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::get_child_by_name(const std::str
                 return c;
             }
         }
-        auto c = std::make_shared<RSVPMIB::Rsvpresvtable::Rsvpresventry>();
+        auto c = std::make_shared<RSVPMIB::Rsvpsendertable::Rsvpsenderentry>();
         c->parent = this;
-        rsvpresventry.push_back(c);
+        rsvpsenderentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpresventry)
+    for (auto const & c : rsvpsenderentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1631,200 +761,260 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::get_child
     return children;
 }
 
-void RSVPMIB::Rsvpresvtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpsendertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpresvtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpsendertable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpresvtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpsendertable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpResvEntry")
+    if(name == "rsvpSenderEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpresvtable::Rsvpresventry::Rsvpresventry()
+RSVPMIB::Rsvpsendertable::Rsvpsenderentry::Rsvpsenderentry()
     :
     rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
-    rsvpresvnumber{YType::int32, "rsvpResvNumber"},
-    rsvpresvdestaddr{YType::str, "rsvpResvDestAddr"},
-    rsvpresvdestaddrlength{YType::int32, "rsvpResvDestAddrLength"},
-    rsvpresvdestport{YType::str, "rsvpResvDestPort"},
-    rsvpresvexplicit{YType::boolean, "rsvpResvExplicit"},
-    rsvpresvflowid{YType::int32, "rsvpResvFlowId"},
-    rsvpresvhopaddr{YType::str, "rsvpResvHopAddr"},
-    rsvpresvhoplih{YType::int32, "rsvpResvHopLih"},
-    rsvpresvinterface{YType::int32, "rsvpResvInterface"},
-    rsvpresvinterval{YType::int32, "rsvpResvInterval"},
-    rsvpresvlastchange{YType::uint32, "rsvpResvLastChange"},
-    rsvpresvpolicy{YType::str, "rsvpResvPolicy"},
-    rsvpresvport{YType::str, "rsvpResvPort"},
-    rsvpresvprotocol{YType::int32, "rsvpResvProtocol"},
-    rsvpresvrspecrate{YType::int32, "rsvpResvRSpecRate"},
-    rsvpresvrspecslack{YType::int32, "rsvpResvRSpecSlack"},
-    rsvpresvrsvphop{YType::boolean, "rsvpResvRSVPHop"},
-    rsvpresvscope{YType::str, "rsvpResvScope"},
-    rsvpresvsenderaddr{YType::str, "rsvpResvSenderAddr"},
-    rsvpresvsenderaddrlength{YType::int32, "rsvpResvSenderAddrLength"},
-    rsvpresvservice{YType::enumeration, "rsvpResvService"},
-    rsvpresvshared{YType::boolean, "rsvpResvShared"},
-    rsvpresvstatus{YType::enumeration, "rsvpResvStatus"},
-    rsvpresvtspecburst{YType::int32, "rsvpResvTSpecBurst"},
-    rsvpresvtspecmaxtu{YType::int32, "rsvpResvTSpecMaxTU"},
-    rsvpresvtspecmintu{YType::int32, "rsvpResvTSpecMinTU"},
-    rsvpresvtspecpeakrate{YType::int32, "rsvpResvTSpecPeakRate"},
-    rsvpresvtspecrate{YType::int32, "rsvpResvTSpecRate"},
-    rsvpresvttl{YType::int32, "rsvpResvTTL"},
-    rsvpresvtype{YType::int32, "rsvpResvType"}
+    rsvpsendernumber{YType::int32, "rsvpSenderNumber"},
+    rsvpsendertype{YType::int32, "rsvpSenderType"},
+    rsvpsenderdestaddr{YType::str, "rsvpSenderDestAddr"},
+    rsvpsenderaddr{YType::str, "rsvpSenderAddr"},
+    rsvpsenderdestaddrlength{YType::int32, "rsvpSenderDestAddrLength"},
+    rsvpsenderaddrlength{YType::int32, "rsvpSenderAddrLength"},
+    rsvpsenderprotocol{YType::int32, "rsvpSenderProtocol"},
+    rsvpsenderdestport{YType::str, "rsvpSenderDestPort"},
+    rsvpsenderport{YType::str, "rsvpSenderPort"},
+    rsvpsenderflowid{YType::int32, "rsvpSenderFlowId"},
+    rsvpsenderhopaddr{YType::str, "rsvpSenderHopAddr"},
+    rsvpsenderhoplih{YType::int32, "rsvpSenderHopLih"},
+    rsvpsenderinterface{YType::int32, "rsvpSenderInterface"},
+    rsvpsendertspecrate{YType::int32, "rsvpSenderTSpecRate"},
+    rsvpsendertspecpeakrate{YType::int32, "rsvpSenderTSpecPeakRate"},
+    rsvpsendertspecburst{YType::int32, "rsvpSenderTSpecBurst"},
+    rsvpsendertspecmintu{YType::int32, "rsvpSenderTSpecMinTU"},
+    rsvpsendertspecmaxtu{YType::int32, "rsvpSenderTSpecMaxTU"},
+    rsvpsenderinterval{YType::int32, "rsvpSenderInterval"},
+    rsvpsenderrsvphop{YType::boolean, "rsvpSenderRSVPHop"},
+    rsvpsenderlastchange{YType::uint32, "rsvpSenderLastChange"},
+    rsvpsenderpolicy{YType::str, "rsvpSenderPolicy"},
+    rsvpsenderadspecbreak{YType::boolean, "rsvpSenderAdspecBreak"},
+    rsvpsenderadspechopcount{YType::int32, "rsvpSenderAdspecHopCount"},
+    rsvpsenderadspecpathbw{YType::int32, "rsvpSenderAdspecPathBw"},
+    rsvpsenderadspecminlatency{YType::int32, "rsvpSenderAdspecMinLatency"},
+    rsvpsenderadspecmtu{YType::int32, "rsvpSenderAdspecMtu"},
+    rsvpsenderadspecguaranteedsvc{YType::boolean, "rsvpSenderAdspecGuaranteedSvc"},
+    rsvpsenderadspecguaranteedbreak{YType::boolean, "rsvpSenderAdspecGuaranteedBreak"},
+    rsvpsenderadspecguaranteedctot{YType::int32, "rsvpSenderAdspecGuaranteedCtot"},
+    rsvpsenderadspecguaranteeddtot{YType::int32, "rsvpSenderAdspecGuaranteedDtot"},
+    rsvpsenderadspecguaranteedcsum{YType::int32, "rsvpSenderAdspecGuaranteedCsum"},
+    rsvpsenderadspecguaranteeddsum{YType::int32, "rsvpSenderAdspecGuaranteedDsum"},
+    rsvpsenderadspecguaranteedhopcount{YType::int32, "rsvpSenderAdspecGuaranteedHopCount"},
+    rsvpsenderadspecguaranteedpathbw{YType::int32, "rsvpSenderAdspecGuaranteedPathBw"},
+    rsvpsenderadspecguaranteedminlatency{YType::int32, "rsvpSenderAdspecGuaranteedMinLatency"},
+    rsvpsenderadspecguaranteedmtu{YType::int32, "rsvpSenderAdspecGuaranteedMtu"},
+    rsvpsenderadspecctrlloadsvc{YType::boolean, "rsvpSenderAdspecCtrlLoadSvc"},
+    rsvpsenderadspecctrlloadbreak{YType::boolean, "rsvpSenderAdspecCtrlLoadBreak"},
+    rsvpsenderadspecctrlloadhopcount{YType::int32, "rsvpSenderAdspecCtrlLoadHopCount"},
+    rsvpsenderadspecctrlloadpathbw{YType::int32, "rsvpSenderAdspecCtrlLoadPathBw"},
+    rsvpsenderadspecctrlloadminlatency{YType::int32, "rsvpSenderAdspecCtrlLoadMinLatency"},
+    rsvpsenderadspecctrlloadmtu{YType::int32, "rsvpSenderAdspecCtrlLoadMtu"},
+    rsvpsenderstatus{YType::enumeration, "rsvpSenderStatus"},
+    rsvpsenderttl{YType::int32, "rsvpSenderTTL"}
 {
 
-    yang_name = "rsvpResvEntry"; yang_parent_name = "rsvpResvTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSenderEntry"; yang_parent_name = "rsvpSenderTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpresvtable::Rsvpresventry::~Rsvpresventry()
+RSVPMIB::Rsvpsendertable::Rsvpsenderentry::~Rsvpsenderentry()
 {
 }
 
-bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_data() const
+bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_data() const
 {
     return rsvpsessionnumber.is_set
-	|| rsvpresvnumber.is_set
-	|| rsvpresvdestaddr.is_set
-	|| rsvpresvdestaddrlength.is_set
-	|| rsvpresvdestport.is_set
-	|| rsvpresvexplicit.is_set
-	|| rsvpresvflowid.is_set
-	|| rsvpresvhopaddr.is_set
-	|| rsvpresvhoplih.is_set
-	|| rsvpresvinterface.is_set
-	|| rsvpresvinterval.is_set
-	|| rsvpresvlastchange.is_set
-	|| rsvpresvpolicy.is_set
-	|| rsvpresvport.is_set
-	|| rsvpresvprotocol.is_set
-	|| rsvpresvrspecrate.is_set
-	|| rsvpresvrspecslack.is_set
-	|| rsvpresvrsvphop.is_set
-	|| rsvpresvscope.is_set
-	|| rsvpresvsenderaddr.is_set
-	|| rsvpresvsenderaddrlength.is_set
-	|| rsvpresvservice.is_set
-	|| rsvpresvshared.is_set
-	|| rsvpresvstatus.is_set
-	|| rsvpresvtspecburst.is_set
-	|| rsvpresvtspecmaxtu.is_set
-	|| rsvpresvtspecmintu.is_set
-	|| rsvpresvtspecpeakrate.is_set
-	|| rsvpresvtspecrate.is_set
-	|| rsvpresvttl.is_set
-	|| rsvpresvtype.is_set;
+	|| rsvpsendernumber.is_set
+	|| rsvpsendertype.is_set
+	|| rsvpsenderdestaddr.is_set
+	|| rsvpsenderaddr.is_set
+	|| rsvpsenderdestaddrlength.is_set
+	|| rsvpsenderaddrlength.is_set
+	|| rsvpsenderprotocol.is_set
+	|| rsvpsenderdestport.is_set
+	|| rsvpsenderport.is_set
+	|| rsvpsenderflowid.is_set
+	|| rsvpsenderhopaddr.is_set
+	|| rsvpsenderhoplih.is_set
+	|| rsvpsenderinterface.is_set
+	|| rsvpsendertspecrate.is_set
+	|| rsvpsendertspecpeakrate.is_set
+	|| rsvpsendertspecburst.is_set
+	|| rsvpsendertspecmintu.is_set
+	|| rsvpsendertspecmaxtu.is_set
+	|| rsvpsenderinterval.is_set
+	|| rsvpsenderrsvphop.is_set
+	|| rsvpsenderlastchange.is_set
+	|| rsvpsenderpolicy.is_set
+	|| rsvpsenderadspecbreak.is_set
+	|| rsvpsenderadspechopcount.is_set
+	|| rsvpsenderadspecpathbw.is_set
+	|| rsvpsenderadspecminlatency.is_set
+	|| rsvpsenderadspecmtu.is_set
+	|| rsvpsenderadspecguaranteedsvc.is_set
+	|| rsvpsenderadspecguaranteedbreak.is_set
+	|| rsvpsenderadspecguaranteedctot.is_set
+	|| rsvpsenderadspecguaranteeddtot.is_set
+	|| rsvpsenderadspecguaranteedcsum.is_set
+	|| rsvpsenderadspecguaranteeddsum.is_set
+	|| rsvpsenderadspecguaranteedhopcount.is_set
+	|| rsvpsenderadspecguaranteedpathbw.is_set
+	|| rsvpsenderadspecguaranteedminlatency.is_set
+	|| rsvpsenderadspecguaranteedmtu.is_set
+	|| rsvpsenderadspecctrlloadsvc.is_set
+	|| rsvpsenderadspecctrlloadbreak.is_set
+	|| rsvpsenderadspecctrlloadhopcount.is_set
+	|| rsvpsenderadspecctrlloadpathbw.is_set
+	|| rsvpsenderadspecctrlloadminlatency.is_set
+	|| rsvpsenderadspecctrlloadmtu.is_set
+	|| rsvpsenderstatus.is_set
+	|| rsvpsenderttl.is_set;
 }
 
-bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_operation() const
+bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
-	|| ydk::is_set(rsvpresvnumber.yfilter)
-	|| ydk::is_set(rsvpresvdestaddr.yfilter)
-	|| ydk::is_set(rsvpresvdestaddrlength.yfilter)
-	|| ydk::is_set(rsvpresvdestport.yfilter)
-	|| ydk::is_set(rsvpresvexplicit.yfilter)
-	|| ydk::is_set(rsvpresvflowid.yfilter)
-	|| ydk::is_set(rsvpresvhopaddr.yfilter)
-	|| ydk::is_set(rsvpresvhoplih.yfilter)
-	|| ydk::is_set(rsvpresvinterface.yfilter)
-	|| ydk::is_set(rsvpresvinterval.yfilter)
-	|| ydk::is_set(rsvpresvlastchange.yfilter)
-	|| ydk::is_set(rsvpresvpolicy.yfilter)
-	|| ydk::is_set(rsvpresvport.yfilter)
-	|| ydk::is_set(rsvpresvprotocol.yfilter)
-	|| ydk::is_set(rsvpresvrspecrate.yfilter)
-	|| ydk::is_set(rsvpresvrspecslack.yfilter)
-	|| ydk::is_set(rsvpresvrsvphop.yfilter)
-	|| ydk::is_set(rsvpresvscope.yfilter)
-	|| ydk::is_set(rsvpresvsenderaddr.yfilter)
-	|| ydk::is_set(rsvpresvsenderaddrlength.yfilter)
-	|| ydk::is_set(rsvpresvservice.yfilter)
-	|| ydk::is_set(rsvpresvshared.yfilter)
-	|| ydk::is_set(rsvpresvstatus.yfilter)
-	|| ydk::is_set(rsvpresvtspecburst.yfilter)
-	|| ydk::is_set(rsvpresvtspecmaxtu.yfilter)
-	|| ydk::is_set(rsvpresvtspecmintu.yfilter)
-	|| ydk::is_set(rsvpresvtspecpeakrate.yfilter)
-	|| ydk::is_set(rsvpresvtspecrate.yfilter)
-	|| ydk::is_set(rsvpresvttl.yfilter)
-	|| ydk::is_set(rsvpresvtype.yfilter);
+	|| ydk::is_set(rsvpsendernumber.yfilter)
+	|| ydk::is_set(rsvpsendertype.yfilter)
+	|| ydk::is_set(rsvpsenderdestaddr.yfilter)
+	|| ydk::is_set(rsvpsenderaddr.yfilter)
+	|| ydk::is_set(rsvpsenderdestaddrlength.yfilter)
+	|| ydk::is_set(rsvpsenderaddrlength.yfilter)
+	|| ydk::is_set(rsvpsenderprotocol.yfilter)
+	|| ydk::is_set(rsvpsenderdestport.yfilter)
+	|| ydk::is_set(rsvpsenderport.yfilter)
+	|| ydk::is_set(rsvpsenderflowid.yfilter)
+	|| ydk::is_set(rsvpsenderhopaddr.yfilter)
+	|| ydk::is_set(rsvpsenderhoplih.yfilter)
+	|| ydk::is_set(rsvpsenderinterface.yfilter)
+	|| ydk::is_set(rsvpsendertspecrate.yfilter)
+	|| ydk::is_set(rsvpsendertspecpeakrate.yfilter)
+	|| ydk::is_set(rsvpsendertspecburst.yfilter)
+	|| ydk::is_set(rsvpsendertspecmintu.yfilter)
+	|| ydk::is_set(rsvpsendertspecmaxtu.yfilter)
+	|| ydk::is_set(rsvpsenderinterval.yfilter)
+	|| ydk::is_set(rsvpsenderrsvphop.yfilter)
+	|| ydk::is_set(rsvpsenderlastchange.yfilter)
+	|| ydk::is_set(rsvpsenderpolicy.yfilter)
+	|| ydk::is_set(rsvpsenderadspecbreak.yfilter)
+	|| ydk::is_set(rsvpsenderadspechopcount.yfilter)
+	|| ydk::is_set(rsvpsenderadspecpathbw.yfilter)
+	|| ydk::is_set(rsvpsenderadspecminlatency.yfilter)
+	|| ydk::is_set(rsvpsenderadspecmtu.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedsvc.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedbreak.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedctot.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteeddtot.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedcsum.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteeddsum.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedhopcount.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedpathbw.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedminlatency.yfilter)
+	|| ydk::is_set(rsvpsenderadspecguaranteedmtu.yfilter)
+	|| ydk::is_set(rsvpsenderadspecctrlloadsvc.yfilter)
+	|| ydk::is_set(rsvpsenderadspecctrlloadbreak.yfilter)
+	|| ydk::is_set(rsvpsenderadspecctrlloadhopcount.yfilter)
+	|| ydk::is_set(rsvpsenderadspecctrlloadpathbw.yfilter)
+	|| ydk::is_set(rsvpsenderadspecctrlloadminlatency.yfilter)
+	|| ydk::is_set(rsvpsenderadspecctrlloadmtu.yfilter)
+	|| ydk::is_set(rsvpsenderstatus.yfilter)
+	|| ydk::is_set(rsvpsenderttl.yfilter);
 }
 
-std::string RSVPMIB::Rsvpresvtable::Rsvpresventry::get_absolute_path() const
+std::string RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpResvTable/" << get_segment_path();
+    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpSenderTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpresvtable::Rsvpresventry::get_segment_path() const
+std::string RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpResvEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpResvNumber='" <<rsvpresvnumber <<"']";
+    path_buffer << "rsvpSenderEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpSenderNumber='" <<rsvpsendernumber <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::Rsvpresventry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rsvpsessionnumber.is_set || is_set(rsvpsessionnumber.yfilter)) leaf_name_data.push_back(rsvpsessionnumber.get_name_leafdata());
-    if (rsvpresvnumber.is_set || is_set(rsvpresvnumber.yfilter)) leaf_name_data.push_back(rsvpresvnumber.get_name_leafdata());
-    if (rsvpresvdestaddr.is_set || is_set(rsvpresvdestaddr.yfilter)) leaf_name_data.push_back(rsvpresvdestaddr.get_name_leafdata());
-    if (rsvpresvdestaddrlength.is_set || is_set(rsvpresvdestaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvdestaddrlength.get_name_leafdata());
-    if (rsvpresvdestport.is_set || is_set(rsvpresvdestport.yfilter)) leaf_name_data.push_back(rsvpresvdestport.get_name_leafdata());
-    if (rsvpresvexplicit.is_set || is_set(rsvpresvexplicit.yfilter)) leaf_name_data.push_back(rsvpresvexplicit.get_name_leafdata());
-    if (rsvpresvflowid.is_set || is_set(rsvpresvflowid.yfilter)) leaf_name_data.push_back(rsvpresvflowid.get_name_leafdata());
-    if (rsvpresvhopaddr.is_set || is_set(rsvpresvhopaddr.yfilter)) leaf_name_data.push_back(rsvpresvhopaddr.get_name_leafdata());
-    if (rsvpresvhoplih.is_set || is_set(rsvpresvhoplih.yfilter)) leaf_name_data.push_back(rsvpresvhoplih.get_name_leafdata());
-    if (rsvpresvinterface.is_set || is_set(rsvpresvinterface.yfilter)) leaf_name_data.push_back(rsvpresvinterface.get_name_leafdata());
-    if (rsvpresvinterval.is_set || is_set(rsvpresvinterval.yfilter)) leaf_name_data.push_back(rsvpresvinterval.get_name_leafdata());
-    if (rsvpresvlastchange.is_set || is_set(rsvpresvlastchange.yfilter)) leaf_name_data.push_back(rsvpresvlastchange.get_name_leafdata());
-    if (rsvpresvpolicy.is_set || is_set(rsvpresvpolicy.yfilter)) leaf_name_data.push_back(rsvpresvpolicy.get_name_leafdata());
-    if (rsvpresvport.is_set || is_set(rsvpresvport.yfilter)) leaf_name_data.push_back(rsvpresvport.get_name_leafdata());
-    if (rsvpresvprotocol.is_set || is_set(rsvpresvprotocol.yfilter)) leaf_name_data.push_back(rsvpresvprotocol.get_name_leafdata());
-    if (rsvpresvrspecrate.is_set || is_set(rsvpresvrspecrate.yfilter)) leaf_name_data.push_back(rsvpresvrspecrate.get_name_leafdata());
-    if (rsvpresvrspecslack.is_set || is_set(rsvpresvrspecslack.yfilter)) leaf_name_data.push_back(rsvpresvrspecslack.get_name_leafdata());
-    if (rsvpresvrsvphop.is_set || is_set(rsvpresvrsvphop.yfilter)) leaf_name_data.push_back(rsvpresvrsvphop.get_name_leafdata());
-    if (rsvpresvscope.is_set || is_set(rsvpresvscope.yfilter)) leaf_name_data.push_back(rsvpresvscope.get_name_leafdata());
-    if (rsvpresvsenderaddr.is_set || is_set(rsvpresvsenderaddr.yfilter)) leaf_name_data.push_back(rsvpresvsenderaddr.get_name_leafdata());
-    if (rsvpresvsenderaddrlength.is_set || is_set(rsvpresvsenderaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvsenderaddrlength.get_name_leafdata());
-    if (rsvpresvservice.is_set || is_set(rsvpresvservice.yfilter)) leaf_name_data.push_back(rsvpresvservice.get_name_leafdata());
-    if (rsvpresvshared.is_set || is_set(rsvpresvshared.yfilter)) leaf_name_data.push_back(rsvpresvshared.get_name_leafdata());
-    if (rsvpresvstatus.is_set || is_set(rsvpresvstatus.yfilter)) leaf_name_data.push_back(rsvpresvstatus.get_name_leafdata());
-    if (rsvpresvtspecburst.is_set || is_set(rsvpresvtspecburst.yfilter)) leaf_name_data.push_back(rsvpresvtspecburst.get_name_leafdata());
-    if (rsvpresvtspecmaxtu.is_set || is_set(rsvpresvtspecmaxtu.yfilter)) leaf_name_data.push_back(rsvpresvtspecmaxtu.get_name_leafdata());
-    if (rsvpresvtspecmintu.is_set || is_set(rsvpresvtspecmintu.yfilter)) leaf_name_data.push_back(rsvpresvtspecmintu.get_name_leafdata());
-    if (rsvpresvtspecpeakrate.is_set || is_set(rsvpresvtspecpeakrate.yfilter)) leaf_name_data.push_back(rsvpresvtspecpeakrate.get_name_leafdata());
-    if (rsvpresvtspecrate.is_set || is_set(rsvpresvtspecrate.yfilter)) leaf_name_data.push_back(rsvpresvtspecrate.get_name_leafdata());
-    if (rsvpresvttl.is_set || is_set(rsvpresvttl.yfilter)) leaf_name_data.push_back(rsvpresvttl.get_name_leafdata());
-    if (rsvpresvtype.is_set || is_set(rsvpresvtype.yfilter)) leaf_name_data.push_back(rsvpresvtype.get_name_leafdata());
+    if (rsvpsendernumber.is_set || is_set(rsvpsendernumber.yfilter)) leaf_name_data.push_back(rsvpsendernumber.get_name_leafdata());
+    if (rsvpsendertype.is_set || is_set(rsvpsendertype.yfilter)) leaf_name_data.push_back(rsvpsendertype.get_name_leafdata());
+    if (rsvpsenderdestaddr.is_set || is_set(rsvpsenderdestaddr.yfilter)) leaf_name_data.push_back(rsvpsenderdestaddr.get_name_leafdata());
+    if (rsvpsenderaddr.is_set || is_set(rsvpsenderaddr.yfilter)) leaf_name_data.push_back(rsvpsenderaddr.get_name_leafdata());
+    if (rsvpsenderdestaddrlength.is_set || is_set(rsvpsenderdestaddrlength.yfilter)) leaf_name_data.push_back(rsvpsenderdestaddrlength.get_name_leafdata());
+    if (rsvpsenderaddrlength.is_set || is_set(rsvpsenderaddrlength.yfilter)) leaf_name_data.push_back(rsvpsenderaddrlength.get_name_leafdata());
+    if (rsvpsenderprotocol.is_set || is_set(rsvpsenderprotocol.yfilter)) leaf_name_data.push_back(rsvpsenderprotocol.get_name_leafdata());
+    if (rsvpsenderdestport.is_set || is_set(rsvpsenderdestport.yfilter)) leaf_name_data.push_back(rsvpsenderdestport.get_name_leafdata());
+    if (rsvpsenderport.is_set || is_set(rsvpsenderport.yfilter)) leaf_name_data.push_back(rsvpsenderport.get_name_leafdata());
+    if (rsvpsenderflowid.is_set || is_set(rsvpsenderflowid.yfilter)) leaf_name_data.push_back(rsvpsenderflowid.get_name_leafdata());
+    if (rsvpsenderhopaddr.is_set || is_set(rsvpsenderhopaddr.yfilter)) leaf_name_data.push_back(rsvpsenderhopaddr.get_name_leafdata());
+    if (rsvpsenderhoplih.is_set || is_set(rsvpsenderhoplih.yfilter)) leaf_name_data.push_back(rsvpsenderhoplih.get_name_leafdata());
+    if (rsvpsenderinterface.is_set || is_set(rsvpsenderinterface.yfilter)) leaf_name_data.push_back(rsvpsenderinterface.get_name_leafdata());
+    if (rsvpsendertspecrate.is_set || is_set(rsvpsendertspecrate.yfilter)) leaf_name_data.push_back(rsvpsendertspecrate.get_name_leafdata());
+    if (rsvpsendertspecpeakrate.is_set || is_set(rsvpsendertspecpeakrate.yfilter)) leaf_name_data.push_back(rsvpsendertspecpeakrate.get_name_leafdata());
+    if (rsvpsendertspecburst.is_set || is_set(rsvpsendertspecburst.yfilter)) leaf_name_data.push_back(rsvpsendertspecburst.get_name_leafdata());
+    if (rsvpsendertspecmintu.is_set || is_set(rsvpsendertspecmintu.yfilter)) leaf_name_data.push_back(rsvpsendertspecmintu.get_name_leafdata());
+    if (rsvpsendertspecmaxtu.is_set || is_set(rsvpsendertspecmaxtu.yfilter)) leaf_name_data.push_back(rsvpsendertspecmaxtu.get_name_leafdata());
+    if (rsvpsenderinterval.is_set || is_set(rsvpsenderinterval.yfilter)) leaf_name_data.push_back(rsvpsenderinterval.get_name_leafdata());
+    if (rsvpsenderrsvphop.is_set || is_set(rsvpsenderrsvphop.yfilter)) leaf_name_data.push_back(rsvpsenderrsvphop.get_name_leafdata());
+    if (rsvpsenderlastchange.is_set || is_set(rsvpsenderlastchange.yfilter)) leaf_name_data.push_back(rsvpsenderlastchange.get_name_leafdata());
+    if (rsvpsenderpolicy.is_set || is_set(rsvpsenderpolicy.yfilter)) leaf_name_data.push_back(rsvpsenderpolicy.get_name_leafdata());
+    if (rsvpsenderadspecbreak.is_set || is_set(rsvpsenderadspecbreak.yfilter)) leaf_name_data.push_back(rsvpsenderadspecbreak.get_name_leafdata());
+    if (rsvpsenderadspechopcount.is_set || is_set(rsvpsenderadspechopcount.yfilter)) leaf_name_data.push_back(rsvpsenderadspechopcount.get_name_leafdata());
+    if (rsvpsenderadspecpathbw.is_set || is_set(rsvpsenderadspecpathbw.yfilter)) leaf_name_data.push_back(rsvpsenderadspecpathbw.get_name_leafdata());
+    if (rsvpsenderadspecminlatency.is_set || is_set(rsvpsenderadspecminlatency.yfilter)) leaf_name_data.push_back(rsvpsenderadspecminlatency.get_name_leafdata());
+    if (rsvpsenderadspecmtu.is_set || is_set(rsvpsenderadspecmtu.yfilter)) leaf_name_data.push_back(rsvpsenderadspecmtu.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedsvc.is_set || is_set(rsvpsenderadspecguaranteedsvc.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedsvc.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedbreak.is_set || is_set(rsvpsenderadspecguaranteedbreak.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedbreak.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedctot.is_set || is_set(rsvpsenderadspecguaranteedctot.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedctot.get_name_leafdata());
+    if (rsvpsenderadspecguaranteeddtot.is_set || is_set(rsvpsenderadspecguaranteeddtot.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteeddtot.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedcsum.is_set || is_set(rsvpsenderadspecguaranteedcsum.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedcsum.get_name_leafdata());
+    if (rsvpsenderadspecguaranteeddsum.is_set || is_set(rsvpsenderadspecguaranteeddsum.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteeddsum.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedhopcount.is_set || is_set(rsvpsenderadspecguaranteedhopcount.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedhopcount.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedpathbw.is_set || is_set(rsvpsenderadspecguaranteedpathbw.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedpathbw.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedminlatency.is_set || is_set(rsvpsenderadspecguaranteedminlatency.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedminlatency.get_name_leafdata());
+    if (rsvpsenderadspecguaranteedmtu.is_set || is_set(rsvpsenderadspecguaranteedmtu.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedmtu.get_name_leafdata());
+    if (rsvpsenderadspecctrlloadsvc.is_set || is_set(rsvpsenderadspecctrlloadsvc.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadsvc.get_name_leafdata());
+    if (rsvpsenderadspecctrlloadbreak.is_set || is_set(rsvpsenderadspecctrlloadbreak.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadbreak.get_name_leafdata());
+    if (rsvpsenderadspecctrlloadhopcount.is_set || is_set(rsvpsenderadspecctrlloadhopcount.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadhopcount.get_name_leafdata());
+    if (rsvpsenderadspecctrlloadpathbw.is_set || is_set(rsvpsenderadspecctrlloadpathbw.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadpathbw.get_name_leafdata());
+    if (rsvpsenderadspecctrlloadminlatency.is_set || is_set(rsvpsenderadspecctrlloadminlatency.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadminlatency.get_name_leafdata());
+    if (rsvpsenderadspecctrlloadmtu.is_set || is_set(rsvpsenderadspecctrlloadmtu.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadmtu.get_name_leafdata());
+    if (rsvpsenderstatus.is_set || is_set(rsvpsenderstatus.yfilter)) leaf_name_data.push_back(rsvpsenderstatus.get_name_leafdata());
+    if (rsvpsenderttl.is_set || is_set(rsvpsenderttl.yfilter)) leaf_name_data.push_back(rsvpsenderttl.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -1832,319 +1022,469 @@ void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_value(const std::string & value_
         rsvpsessionnumber.value_namespace = name_space;
         rsvpsessionnumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvNumber")
+    if(value_path == "rsvpSenderNumber")
     {
-        rsvpresvnumber = value;
-        rsvpresvnumber.value_namespace = name_space;
-        rsvpresvnumber.value_namespace_prefix = name_space_prefix;
+        rsvpsendernumber = value;
+        rsvpsendernumber.value_namespace = name_space;
+        rsvpsendernumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvDestAddr")
+    if(value_path == "rsvpSenderType")
     {
-        rsvpresvdestaddr = value;
-        rsvpresvdestaddr.value_namespace = name_space;
-        rsvpresvdestaddr.value_namespace_prefix = name_space_prefix;
+        rsvpsendertype = value;
+        rsvpsendertype.value_namespace = name_space;
+        rsvpsendertype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvDestAddrLength")
+    if(value_path == "rsvpSenderDestAddr")
     {
-        rsvpresvdestaddrlength = value;
-        rsvpresvdestaddrlength.value_namespace = name_space;
-        rsvpresvdestaddrlength.value_namespace_prefix = name_space_prefix;
+        rsvpsenderdestaddr = value;
+        rsvpsenderdestaddr.value_namespace = name_space;
+        rsvpsenderdestaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvDestPort")
+    if(value_path == "rsvpSenderAddr")
     {
-        rsvpresvdestport = value;
-        rsvpresvdestport.value_namespace = name_space;
-        rsvpresvdestport.value_namespace_prefix = name_space_prefix;
+        rsvpsenderaddr = value;
+        rsvpsenderaddr.value_namespace = name_space;
+        rsvpsenderaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvExplicit")
+    if(value_path == "rsvpSenderDestAddrLength")
     {
-        rsvpresvexplicit = value;
-        rsvpresvexplicit.value_namespace = name_space;
-        rsvpresvexplicit.value_namespace_prefix = name_space_prefix;
+        rsvpsenderdestaddrlength = value;
+        rsvpsenderdestaddrlength.value_namespace = name_space;
+        rsvpsenderdestaddrlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvFlowId")
+    if(value_path == "rsvpSenderAddrLength")
     {
-        rsvpresvflowid = value;
-        rsvpresvflowid.value_namespace = name_space;
-        rsvpresvflowid.value_namespace_prefix = name_space_prefix;
+        rsvpsenderaddrlength = value;
+        rsvpsenderaddrlength.value_namespace = name_space;
+        rsvpsenderaddrlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvHopAddr")
+    if(value_path == "rsvpSenderProtocol")
     {
-        rsvpresvhopaddr = value;
-        rsvpresvhopaddr.value_namespace = name_space;
-        rsvpresvhopaddr.value_namespace_prefix = name_space_prefix;
+        rsvpsenderprotocol = value;
+        rsvpsenderprotocol.value_namespace = name_space;
+        rsvpsenderprotocol.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvHopLih")
+    if(value_path == "rsvpSenderDestPort")
     {
-        rsvpresvhoplih = value;
-        rsvpresvhoplih.value_namespace = name_space;
-        rsvpresvhoplih.value_namespace_prefix = name_space_prefix;
+        rsvpsenderdestport = value;
+        rsvpsenderdestport.value_namespace = name_space;
+        rsvpsenderdestport.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvInterface")
+    if(value_path == "rsvpSenderPort")
     {
-        rsvpresvinterface = value;
-        rsvpresvinterface.value_namespace = name_space;
-        rsvpresvinterface.value_namespace_prefix = name_space_prefix;
+        rsvpsenderport = value;
+        rsvpsenderport.value_namespace = name_space;
+        rsvpsenderport.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvInterval")
+    if(value_path == "rsvpSenderFlowId")
     {
-        rsvpresvinterval = value;
-        rsvpresvinterval.value_namespace = name_space;
-        rsvpresvinterval.value_namespace_prefix = name_space_prefix;
+        rsvpsenderflowid = value;
+        rsvpsenderflowid.value_namespace = name_space;
+        rsvpsenderflowid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvLastChange")
+    if(value_path == "rsvpSenderHopAddr")
     {
-        rsvpresvlastchange = value;
-        rsvpresvlastchange.value_namespace = name_space;
-        rsvpresvlastchange.value_namespace_prefix = name_space_prefix;
+        rsvpsenderhopaddr = value;
+        rsvpsenderhopaddr.value_namespace = name_space;
+        rsvpsenderhopaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvPolicy")
+    if(value_path == "rsvpSenderHopLih")
     {
-        rsvpresvpolicy = value;
-        rsvpresvpolicy.value_namespace = name_space;
-        rsvpresvpolicy.value_namespace_prefix = name_space_prefix;
+        rsvpsenderhoplih = value;
+        rsvpsenderhoplih.value_namespace = name_space;
+        rsvpsenderhoplih.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvPort")
+    if(value_path == "rsvpSenderInterface")
     {
-        rsvpresvport = value;
-        rsvpresvport.value_namespace = name_space;
-        rsvpresvport.value_namespace_prefix = name_space_prefix;
+        rsvpsenderinterface = value;
+        rsvpsenderinterface.value_namespace = name_space;
+        rsvpsenderinterface.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvProtocol")
+    if(value_path == "rsvpSenderTSpecRate")
     {
-        rsvpresvprotocol = value;
-        rsvpresvprotocol.value_namespace = name_space;
-        rsvpresvprotocol.value_namespace_prefix = name_space_prefix;
+        rsvpsendertspecrate = value;
+        rsvpsendertspecrate.value_namespace = name_space;
+        rsvpsendertspecrate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvRSpecRate")
+    if(value_path == "rsvpSenderTSpecPeakRate")
     {
-        rsvpresvrspecrate = value;
-        rsvpresvrspecrate.value_namespace = name_space;
-        rsvpresvrspecrate.value_namespace_prefix = name_space_prefix;
+        rsvpsendertspecpeakrate = value;
+        rsvpsendertspecpeakrate.value_namespace = name_space;
+        rsvpsendertspecpeakrate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvRSpecSlack")
+    if(value_path == "rsvpSenderTSpecBurst")
     {
-        rsvpresvrspecslack = value;
-        rsvpresvrspecslack.value_namespace = name_space;
-        rsvpresvrspecslack.value_namespace_prefix = name_space_prefix;
+        rsvpsendertspecburst = value;
+        rsvpsendertspecburst.value_namespace = name_space;
+        rsvpsendertspecburst.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvRSVPHop")
+    if(value_path == "rsvpSenderTSpecMinTU")
     {
-        rsvpresvrsvphop = value;
-        rsvpresvrsvphop.value_namespace = name_space;
-        rsvpresvrsvphop.value_namespace_prefix = name_space_prefix;
+        rsvpsendertspecmintu = value;
+        rsvpsendertspecmintu.value_namespace = name_space;
+        rsvpsendertspecmintu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvScope")
+    if(value_path == "rsvpSenderTSpecMaxTU")
     {
-        rsvpresvscope = value;
-        rsvpresvscope.value_namespace = name_space;
-        rsvpresvscope.value_namespace_prefix = name_space_prefix;
+        rsvpsendertspecmaxtu = value;
+        rsvpsendertspecmaxtu.value_namespace = name_space;
+        rsvpsendertspecmaxtu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvSenderAddr")
+    if(value_path == "rsvpSenderInterval")
     {
-        rsvpresvsenderaddr = value;
-        rsvpresvsenderaddr.value_namespace = name_space;
-        rsvpresvsenderaddr.value_namespace_prefix = name_space_prefix;
+        rsvpsenderinterval = value;
+        rsvpsenderinterval.value_namespace = name_space;
+        rsvpsenderinterval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvSenderAddrLength")
+    if(value_path == "rsvpSenderRSVPHop")
     {
-        rsvpresvsenderaddrlength = value;
-        rsvpresvsenderaddrlength.value_namespace = name_space;
-        rsvpresvsenderaddrlength.value_namespace_prefix = name_space_prefix;
+        rsvpsenderrsvphop = value;
+        rsvpsenderrsvphop.value_namespace = name_space;
+        rsvpsenderrsvphop.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvService")
+    if(value_path == "rsvpSenderLastChange")
     {
-        rsvpresvservice = value;
-        rsvpresvservice.value_namespace = name_space;
-        rsvpresvservice.value_namespace_prefix = name_space_prefix;
+        rsvpsenderlastchange = value;
+        rsvpsenderlastchange.value_namespace = name_space;
+        rsvpsenderlastchange.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvShared")
+    if(value_path == "rsvpSenderPolicy")
     {
-        rsvpresvshared = value;
-        rsvpresvshared.value_namespace = name_space;
-        rsvpresvshared.value_namespace_prefix = name_space_prefix;
+        rsvpsenderpolicy = value;
+        rsvpsenderpolicy.value_namespace = name_space;
+        rsvpsenderpolicy.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvStatus")
+    if(value_path == "rsvpSenderAdspecBreak")
     {
-        rsvpresvstatus = value;
-        rsvpresvstatus.value_namespace = name_space;
-        rsvpresvstatus.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspecbreak = value;
+        rsvpsenderadspecbreak.value_namespace = name_space;
+        rsvpsenderadspecbreak.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvTSpecBurst")
+    if(value_path == "rsvpSenderAdspecHopCount")
     {
-        rsvpresvtspecburst = value;
-        rsvpresvtspecburst.value_namespace = name_space;
-        rsvpresvtspecburst.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspechopcount = value;
+        rsvpsenderadspechopcount.value_namespace = name_space;
+        rsvpsenderadspechopcount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvTSpecMaxTU")
+    if(value_path == "rsvpSenderAdspecPathBw")
     {
-        rsvpresvtspecmaxtu = value;
-        rsvpresvtspecmaxtu.value_namespace = name_space;
-        rsvpresvtspecmaxtu.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspecpathbw = value;
+        rsvpsenderadspecpathbw.value_namespace = name_space;
+        rsvpsenderadspecpathbw.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvTSpecMinTU")
+    if(value_path == "rsvpSenderAdspecMinLatency")
     {
-        rsvpresvtspecmintu = value;
-        rsvpresvtspecmintu.value_namespace = name_space;
-        rsvpresvtspecmintu.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspecminlatency = value;
+        rsvpsenderadspecminlatency.value_namespace = name_space;
+        rsvpsenderadspecminlatency.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvTSpecPeakRate")
+    if(value_path == "rsvpSenderAdspecMtu")
     {
-        rsvpresvtspecpeakrate = value;
-        rsvpresvtspecpeakrate.value_namespace = name_space;
-        rsvpresvtspecpeakrate.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspecmtu = value;
+        rsvpsenderadspecmtu.value_namespace = name_space;
+        rsvpsenderadspecmtu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvTSpecRate")
+    if(value_path == "rsvpSenderAdspecGuaranteedSvc")
     {
-        rsvpresvtspecrate = value;
-        rsvpresvtspecrate.value_namespace = name_space;
-        rsvpresvtspecrate.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspecguaranteedsvc = value;
+        rsvpsenderadspecguaranteedsvc.value_namespace = name_space;
+        rsvpsenderadspecguaranteedsvc.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvTTL")
+    if(value_path == "rsvpSenderAdspecGuaranteedBreak")
     {
-        rsvpresvttl = value;
-        rsvpresvttl.value_namespace = name_space;
-        rsvpresvttl.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspecguaranteedbreak = value;
+        rsvpsenderadspecguaranteedbreak.value_namespace = name_space;
+        rsvpsenderadspecguaranteedbreak.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpResvType")
+    if(value_path == "rsvpSenderAdspecGuaranteedCtot")
     {
-        rsvpresvtype = value;
-        rsvpresvtype.value_namespace = name_space;
-        rsvpresvtype.value_namespace_prefix = name_space_prefix;
+        rsvpsenderadspecguaranteedctot = value;
+        rsvpsenderadspecguaranteedctot.value_namespace = name_space;
+        rsvpsenderadspecguaranteedctot.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedDtot")
+    {
+        rsvpsenderadspecguaranteeddtot = value;
+        rsvpsenderadspecguaranteeddtot.value_namespace = name_space;
+        rsvpsenderadspecguaranteeddtot.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedCsum")
+    {
+        rsvpsenderadspecguaranteedcsum = value;
+        rsvpsenderadspecguaranteedcsum.value_namespace = name_space;
+        rsvpsenderadspecguaranteedcsum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedDsum")
+    {
+        rsvpsenderadspecguaranteeddsum = value;
+        rsvpsenderadspecguaranteeddsum.value_namespace = name_space;
+        rsvpsenderadspecguaranteeddsum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedHopCount")
+    {
+        rsvpsenderadspecguaranteedhopcount = value;
+        rsvpsenderadspecguaranteedhopcount.value_namespace = name_space;
+        rsvpsenderadspecguaranteedhopcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedPathBw")
+    {
+        rsvpsenderadspecguaranteedpathbw = value;
+        rsvpsenderadspecguaranteedpathbw.value_namespace = name_space;
+        rsvpsenderadspecguaranteedpathbw.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedMinLatency")
+    {
+        rsvpsenderadspecguaranteedminlatency = value;
+        rsvpsenderadspecguaranteedminlatency.value_namespace = name_space;
+        rsvpsenderadspecguaranteedminlatency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedMtu")
+    {
+        rsvpsenderadspecguaranteedmtu = value;
+        rsvpsenderadspecguaranteedmtu.value_namespace = name_space;
+        rsvpsenderadspecguaranteedmtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadSvc")
+    {
+        rsvpsenderadspecctrlloadsvc = value;
+        rsvpsenderadspecctrlloadsvc.value_namespace = name_space;
+        rsvpsenderadspecctrlloadsvc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadBreak")
+    {
+        rsvpsenderadspecctrlloadbreak = value;
+        rsvpsenderadspecctrlloadbreak.value_namespace = name_space;
+        rsvpsenderadspecctrlloadbreak.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadHopCount")
+    {
+        rsvpsenderadspecctrlloadhopcount = value;
+        rsvpsenderadspecctrlloadhopcount.value_namespace = name_space;
+        rsvpsenderadspecctrlloadhopcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadPathBw")
+    {
+        rsvpsenderadspecctrlloadpathbw = value;
+        rsvpsenderadspecctrlloadpathbw.value_namespace = name_space;
+        rsvpsenderadspecctrlloadpathbw.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadMinLatency")
+    {
+        rsvpsenderadspecctrlloadminlatency = value;
+        rsvpsenderadspecctrlloadminlatency.value_namespace = name_space;
+        rsvpsenderadspecctrlloadminlatency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadMtu")
+    {
+        rsvpsenderadspecctrlloadmtu = value;
+        rsvpsenderadspecctrlloadmtu.value_namespace = name_space;
+        rsvpsenderadspecctrlloadmtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderStatus")
+    {
+        rsvpsenderstatus = value;
+        rsvpsenderstatus.value_namespace = name_space;
+        rsvpsenderstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpSenderTTL")
+    {
+        rsvpsenderttl = value;
+        rsvpsenderttl.value_namespace = name_space;
+        rsvpsenderttl.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
         rsvpsessionnumber.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvNumber")
+    if(value_path == "rsvpSenderNumber")
     {
-        rsvpresvnumber.yfilter = yfilter;
+        rsvpsendernumber.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvDestAddr")
+    if(value_path == "rsvpSenderType")
     {
-        rsvpresvdestaddr.yfilter = yfilter;
+        rsvpsendertype.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvDestAddrLength")
+    if(value_path == "rsvpSenderDestAddr")
     {
-        rsvpresvdestaddrlength.yfilter = yfilter;
+        rsvpsenderdestaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvDestPort")
+    if(value_path == "rsvpSenderAddr")
     {
-        rsvpresvdestport.yfilter = yfilter;
+        rsvpsenderaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvExplicit")
+    if(value_path == "rsvpSenderDestAddrLength")
     {
-        rsvpresvexplicit.yfilter = yfilter;
+        rsvpsenderdestaddrlength.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvFlowId")
+    if(value_path == "rsvpSenderAddrLength")
     {
-        rsvpresvflowid.yfilter = yfilter;
+        rsvpsenderaddrlength.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvHopAddr")
+    if(value_path == "rsvpSenderProtocol")
     {
-        rsvpresvhopaddr.yfilter = yfilter;
+        rsvpsenderprotocol.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvHopLih")
+    if(value_path == "rsvpSenderDestPort")
     {
-        rsvpresvhoplih.yfilter = yfilter;
+        rsvpsenderdestport.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvInterface")
+    if(value_path == "rsvpSenderPort")
     {
-        rsvpresvinterface.yfilter = yfilter;
+        rsvpsenderport.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvInterval")
+    if(value_path == "rsvpSenderFlowId")
     {
-        rsvpresvinterval.yfilter = yfilter;
+        rsvpsenderflowid.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvLastChange")
+    if(value_path == "rsvpSenderHopAddr")
     {
-        rsvpresvlastchange.yfilter = yfilter;
+        rsvpsenderhopaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvPolicy")
+    if(value_path == "rsvpSenderHopLih")
     {
-        rsvpresvpolicy.yfilter = yfilter;
+        rsvpsenderhoplih.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvPort")
+    if(value_path == "rsvpSenderInterface")
     {
-        rsvpresvport.yfilter = yfilter;
+        rsvpsenderinterface.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvProtocol")
+    if(value_path == "rsvpSenderTSpecRate")
     {
-        rsvpresvprotocol.yfilter = yfilter;
+        rsvpsendertspecrate.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvRSpecRate")
+    if(value_path == "rsvpSenderTSpecPeakRate")
     {
-        rsvpresvrspecrate.yfilter = yfilter;
+        rsvpsendertspecpeakrate.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvRSpecSlack")
+    if(value_path == "rsvpSenderTSpecBurst")
     {
-        rsvpresvrspecslack.yfilter = yfilter;
+        rsvpsendertspecburst.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvRSVPHop")
+    if(value_path == "rsvpSenderTSpecMinTU")
     {
-        rsvpresvrsvphop.yfilter = yfilter;
+        rsvpsendertspecmintu.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvScope")
+    if(value_path == "rsvpSenderTSpecMaxTU")
     {
-        rsvpresvscope.yfilter = yfilter;
+        rsvpsendertspecmaxtu.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvSenderAddr")
+    if(value_path == "rsvpSenderInterval")
     {
-        rsvpresvsenderaddr.yfilter = yfilter;
+        rsvpsenderinterval.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvSenderAddrLength")
+    if(value_path == "rsvpSenderRSVPHop")
     {
-        rsvpresvsenderaddrlength.yfilter = yfilter;
+        rsvpsenderrsvphop.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvService")
+    if(value_path == "rsvpSenderLastChange")
     {
-        rsvpresvservice.yfilter = yfilter;
+        rsvpsenderlastchange.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvShared")
+    if(value_path == "rsvpSenderPolicy")
     {
-        rsvpresvshared.yfilter = yfilter;
+        rsvpsenderpolicy.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvStatus")
+    if(value_path == "rsvpSenderAdspecBreak")
     {
-        rsvpresvstatus.yfilter = yfilter;
+        rsvpsenderadspecbreak.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvTSpecBurst")
+    if(value_path == "rsvpSenderAdspecHopCount")
     {
-        rsvpresvtspecburst.yfilter = yfilter;
+        rsvpsenderadspechopcount.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvTSpecMaxTU")
+    if(value_path == "rsvpSenderAdspecPathBw")
     {
-        rsvpresvtspecmaxtu.yfilter = yfilter;
+        rsvpsenderadspecpathbw.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvTSpecMinTU")
+    if(value_path == "rsvpSenderAdspecMinLatency")
     {
-        rsvpresvtspecmintu.yfilter = yfilter;
+        rsvpsenderadspecminlatency.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvTSpecPeakRate")
+    if(value_path == "rsvpSenderAdspecMtu")
     {
-        rsvpresvtspecpeakrate.yfilter = yfilter;
+        rsvpsenderadspecmtu.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvTSpecRate")
+    if(value_path == "rsvpSenderAdspecGuaranteedSvc")
     {
-        rsvpresvtspecrate.yfilter = yfilter;
+        rsvpsenderadspecguaranteedsvc.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvTTL")
+    if(value_path == "rsvpSenderAdspecGuaranteedBreak")
     {
-        rsvpresvttl.yfilter = yfilter;
+        rsvpsenderadspecguaranteedbreak.yfilter = yfilter;
     }
-    if(value_path == "rsvpResvType")
+    if(value_path == "rsvpSenderAdspecGuaranteedCtot")
     {
-        rsvpresvtype.yfilter = yfilter;
+        rsvpsenderadspecguaranteedctot.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedDtot")
+    {
+        rsvpsenderadspecguaranteeddtot.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedCsum")
+    {
+        rsvpsenderadspecguaranteedcsum.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedDsum")
+    {
+        rsvpsenderadspecguaranteeddsum.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedHopCount")
+    {
+        rsvpsenderadspecguaranteedhopcount.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedPathBw")
+    {
+        rsvpsenderadspecguaranteedpathbw.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedMinLatency")
+    {
+        rsvpsenderadspecguaranteedminlatency.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecGuaranteedMtu")
+    {
+        rsvpsenderadspecguaranteedmtu.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadSvc")
+    {
+        rsvpsenderadspecctrlloadsvc.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadBreak")
+    {
+        rsvpsenderadspecctrlloadbreak.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadHopCount")
+    {
+        rsvpsenderadspecctrlloadhopcount.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadPathBw")
+    {
+        rsvpsenderadspecctrlloadpathbw.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadMinLatency")
+    {
+        rsvpsenderadspecctrlloadminlatency.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderAdspecCtrlLoadMtu")
+    {
+        rsvpsenderadspecctrlloadmtu.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderStatus")
+    {
+        rsvpsenderstatus.yfilter = yfilter;
+    }
+    if(value_path == "rsvpSenderTTL")
+    {
+        rsvpsenderttl.yfilter = yfilter;
     }
 }
 
-bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpSessionNumber" || name == "rsvpResvNumber" || name == "rsvpResvDestAddr" || name == "rsvpResvDestAddrLength" || name == "rsvpResvDestPort" || name == "rsvpResvExplicit" || name == "rsvpResvFlowId" || name == "rsvpResvHopAddr" || name == "rsvpResvHopLih" || name == "rsvpResvInterface" || name == "rsvpResvInterval" || name == "rsvpResvLastChange" || name == "rsvpResvPolicy" || name == "rsvpResvPort" || name == "rsvpResvProtocol" || name == "rsvpResvRSpecRate" || name == "rsvpResvRSpecSlack" || name == "rsvpResvRSVPHop" || name == "rsvpResvScope" || name == "rsvpResvSenderAddr" || name == "rsvpResvSenderAddrLength" || name == "rsvpResvService" || name == "rsvpResvShared" || name == "rsvpResvStatus" || name == "rsvpResvTSpecBurst" || name == "rsvpResvTSpecMaxTU" || name == "rsvpResvTSpecMinTU" || name == "rsvpResvTSpecPeakRate" || name == "rsvpResvTSpecRate" || name == "rsvpResvTTL" || name == "rsvpResvType")
+    if(name == "rsvpSessionNumber" || name == "rsvpSenderNumber" || name == "rsvpSenderType" || name == "rsvpSenderDestAddr" || name == "rsvpSenderAddr" || name == "rsvpSenderDestAddrLength" || name == "rsvpSenderAddrLength" || name == "rsvpSenderProtocol" || name == "rsvpSenderDestPort" || name == "rsvpSenderPort" || name == "rsvpSenderFlowId" || name == "rsvpSenderHopAddr" || name == "rsvpSenderHopLih" || name == "rsvpSenderInterface" || name == "rsvpSenderTSpecRate" || name == "rsvpSenderTSpecPeakRate" || name == "rsvpSenderTSpecBurst" || name == "rsvpSenderTSpecMinTU" || name == "rsvpSenderTSpecMaxTU" || name == "rsvpSenderInterval" || name == "rsvpSenderRSVPHop" || name == "rsvpSenderLastChange" || name == "rsvpSenderPolicy" || name == "rsvpSenderAdspecBreak" || name == "rsvpSenderAdspecHopCount" || name == "rsvpSenderAdspecPathBw" || name == "rsvpSenderAdspecMinLatency" || name == "rsvpSenderAdspecMtu" || name == "rsvpSenderAdspecGuaranteedSvc" || name == "rsvpSenderAdspecGuaranteedBreak" || name == "rsvpSenderAdspecGuaranteedCtot" || name == "rsvpSenderAdspecGuaranteedDtot" || name == "rsvpSenderAdspecGuaranteedCsum" || name == "rsvpSenderAdspecGuaranteedDsum" || name == "rsvpSenderAdspecGuaranteedHopCount" || name == "rsvpSenderAdspecGuaranteedPathBw" || name == "rsvpSenderAdspecGuaranteedMinLatency" || name == "rsvpSenderAdspecGuaranteedMtu" || name == "rsvpSenderAdspecCtrlLoadSvc" || name == "rsvpSenderAdspecCtrlLoadBreak" || name == "rsvpSenderAdspecCtrlLoadHopCount" || name == "rsvpSenderAdspecCtrlLoadPathBw" || name == "rsvpSenderAdspecCtrlLoadMinLatency" || name == "rsvpSenderAdspecCtrlLoadMtu" || name == "rsvpSenderStatus" || name == "rsvpSenderTTL")
         return true;
     return false;
 }
@@ -2374,51 +1714,51 @@ bool RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::has_leaf
     return false;
 }
 
-RSVPMIB::Rsvpsendertable::Rsvpsendertable()
+RSVPMIB::Rsvpresvtable::Rsvpresvtable()
 {
 
-    yang_name = "rsvpSenderTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpsendertable::~Rsvpsendertable()
+RSVPMIB::Rsvpresvtable::~Rsvpresvtable()
 {
 }
 
-bool RSVPMIB::Rsvpsendertable::has_data() const
+bool RSVPMIB::Rsvpresvtable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
+    for (std::size_t index=0; index<rsvpresventry.size(); index++)
     {
-        if(rsvpsenderentry[index]->has_data())
+        if(rsvpresventry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool RSVPMIB::Rsvpsendertable::has_operation() const
+bool RSVPMIB::Rsvpresvtable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
+    for (std::size_t index=0; index<rsvpresventry.size(); index++)
     {
-        if(rsvpsenderentry[index]->has_operation())
+        if(rsvpresventry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpsendertable::get_absolute_path() const
+std::string RSVPMIB::Rsvpresvtable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsendertable::get_segment_path() const
+std::string RSVPMIB::Rsvpresvtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpSenderTable";
+    path_buffer << "rsvpResvTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2427,11 +1767,11 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::get_nam
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rsvpSenderEntry")
+    if(child_yang_name == "rsvpResvEntry")
     {
-        for(auto const & c : rsvpsenderentry)
+        for(auto const & c : rsvpresventry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2439,19 +1779,19 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::get_child_by_name(const std::s
                 return c;
             }
         }
-        auto c = std::make_shared<RSVPMIB::Rsvpsendertable::Rsvpsenderentry>();
+        auto c = std::make_shared<RSVPMIB::Rsvpresvtable::Rsvpresventry>();
         c->parent = this;
-        rsvpsenderentry.push_back(c);
+        rsvpresventry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpsenderentry)
+    for (auto const & c : rsvpresventry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2459,260 +1799,200 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::get_chi
     return children;
 }
 
-void RSVPMIB::Rsvpsendertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpresvtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpsendertable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpresvtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpsendertable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpresvtable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpSenderEntry")
+    if(name == "rsvpResvEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsendertable::Rsvpsenderentry::Rsvpsenderentry()
+RSVPMIB::Rsvpresvtable::Rsvpresventry::Rsvpresventry()
     :
     rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
-    rsvpsendernumber{YType::int32, "rsvpSenderNumber"},
-    rsvpsenderaddr{YType::str, "rsvpSenderAddr"},
-    rsvpsenderaddrlength{YType::int32, "rsvpSenderAddrLength"},
-    rsvpsenderadspecbreak{YType::boolean, "rsvpSenderAdspecBreak"},
-    rsvpsenderadspecctrlloadbreak{YType::boolean, "rsvpSenderAdspecCtrlLoadBreak"},
-    rsvpsenderadspecctrlloadhopcount{YType::int32, "rsvpSenderAdspecCtrlLoadHopCount"},
-    rsvpsenderadspecctrlloadminlatency{YType::int32, "rsvpSenderAdspecCtrlLoadMinLatency"},
-    rsvpsenderadspecctrlloadmtu{YType::int32, "rsvpSenderAdspecCtrlLoadMtu"},
-    rsvpsenderadspecctrlloadpathbw{YType::int32, "rsvpSenderAdspecCtrlLoadPathBw"},
-    rsvpsenderadspecctrlloadsvc{YType::boolean, "rsvpSenderAdspecCtrlLoadSvc"},
-    rsvpsenderadspecguaranteedbreak{YType::boolean, "rsvpSenderAdspecGuaranteedBreak"},
-    rsvpsenderadspecguaranteedcsum{YType::int32, "rsvpSenderAdspecGuaranteedCsum"},
-    rsvpsenderadspecguaranteedctot{YType::int32, "rsvpSenderAdspecGuaranteedCtot"},
-    rsvpsenderadspecguaranteeddsum{YType::int32, "rsvpSenderAdspecGuaranteedDsum"},
-    rsvpsenderadspecguaranteeddtot{YType::int32, "rsvpSenderAdspecGuaranteedDtot"},
-    rsvpsenderadspecguaranteedhopcount{YType::int32, "rsvpSenderAdspecGuaranteedHopCount"},
-    rsvpsenderadspecguaranteedminlatency{YType::int32, "rsvpSenderAdspecGuaranteedMinLatency"},
-    rsvpsenderadspecguaranteedmtu{YType::int32, "rsvpSenderAdspecGuaranteedMtu"},
-    rsvpsenderadspecguaranteedpathbw{YType::int32, "rsvpSenderAdspecGuaranteedPathBw"},
-    rsvpsenderadspecguaranteedsvc{YType::boolean, "rsvpSenderAdspecGuaranteedSvc"},
-    rsvpsenderadspechopcount{YType::int32, "rsvpSenderAdspecHopCount"},
-    rsvpsenderadspecminlatency{YType::int32, "rsvpSenderAdspecMinLatency"},
-    rsvpsenderadspecmtu{YType::int32, "rsvpSenderAdspecMtu"},
-    rsvpsenderadspecpathbw{YType::int32, "rsvpSenderAdspecPathBw"},
-    rsvpsenderdestaddr{YType::str, "rsvpSenderDestAddr"},
-    rsvpsenderdestaddrlength{YType::int32, "rsvpSenderDestAddrLength"},
-    rsvpsenderdestport{YType::str, "rsvpSenderDestPort"},
-    rsvpsenderflowid{YType::int32, "rsvpSenderFlowId"},
-    rsvpsenderhopaddr{YType::str, "rsvpSenderHopAddr"},
-    rsvpsenderhoplih{YType::int32, "rsvpSenderHopLih"},
-    rsvpsenderinterface{YType::int32, "rsvpSenderInterface"},
-    rsvpsenderinterval{YType::int32, "rsvpSenderInterval"},
-    rsvpsenderlastchange{YType::uint32, "rsvpSenderLastChange"},
-    rsvpsenderpolicy{YType::str, "rsvpSenderPolicy"},
-    rsvpsenderport{YType::str, "rsvpSenderPort"},
-    rsvpsenderprotocol{YType::int32, "rsvpSenderProtocol"},
-    rsvpsenderrsvphop{YType::boolean, "rsvpSenderRSVPHop"},
-    rsvpsenderstatus{YType::enumeration, "rsvpSenderStatus"},
-    rsvpsendertspecburst{YType::int32, "rsvpSenderTSpecBurst"},
-    rsvpsendertspecmaxtu{YType::int32, "rsvpSenderTSpecMaxTU"},
-    rsvpsendertspecmintu{YType::int32, "rsvpSenderTSpecMinTU"},
-    rsvpsendertspecpeakrate{YType::int32, "rsvpSenderTSpecPeakRate"},
-    rsvpsendertspecrate{YType::int32, "rsvpSenderTSpecRate"},
-    rsvpsenderttl{YType::int32, "rsvpSenderTTL"},
-    rsvpsendertype{YType::int32, "rsvpSenderType"}
+    rsvpresvnumber{YType::int32, "rsvpResvNumber"},
+    rsvpresvtype{YType::int32, "rsvpResvType"},
+    rsvpresvdestaddr{YType::str, "rsvpResvDestAddr"},
+    rsvpresvsenderaddr{YType::str, "rsvpResvSenderAddr"},
+    rsvpresvdestaddrlength{YType::int32, "rsvpResvDestAddrLength"},
+    rsvpresvsenderaddrlength{YType::int32, "rsvpResvSenderAddrLength"},
+    rsvpresvprotocol{YType::int32, "rsvpResvProtocol"},
+    rsvpresvdestport{YType::str, "rsvpResvDestPort"},
+    rsvpresvport{YType::str, "rsvpResvPort"},
+    rsvpresvhopaddr{YType::str, "rsvpResvHopAddr"},
+    rsvpresvhoplih{YType::int32, "rsvpResvHopLih"},
+    rsvpresvinterface{YType::int32, "rsvpResvInterface"},
+    rsvpresvservice{YType::enumeration, "rsvpResvService"},
+    rsvpresvtspecrate{YType::int32, "rsvpResvTSpecRate"},
+    rsvpresvtspecpeakrate{YType::int32, "rsvpResvTSpecPeakRate"},
+    rsvpresvtspecburst{YType::int32, "rsvpResvTSpecBurst"},
+    rsvpresvtspecmintu{YType::int32, "rsvpResvTSpecMinTU"},
+    rsvpresvtspecmaxtu{YType::int32, "rsvpResvTSpecMaxTU"},
+    rsvpresvrspecrate{YType::int32, "rsvpResvRSpecRate"},
+    rsvpresvrspecslack{YType::int32, "rsvpResvRSpecSlack"},
+    rsvpresvinterval{YType::int32, "rsvpResvInterval"},
+    rsvpresvscope{YType::str, "rsvpResvScope"},
+    rsvpresvshared{YType::boolean, "rsvpResvShared"},
+    rsvpresvexplicit{YType::boolean, "rsvpResvExplicit"},
+    rsvpresvrsvphop{YType::boolean, "rsvpResvRSVPHop"},
+    rsvpresvlastchange{YType::uint32, "rsvpResvLastChange"},
+    rsvpresvpolicy{YType::str, "rsvpResvPolicy"},
+    rsvpresvstatus{YType::enumeration, "rsvpResvStatus"},
+    rsvpresvttl{YType::int32, "rsvpResvTTL"},
+    rsvpresvflowid{YType::int32, "rsvpResvFlowId"}
 {
 
-    yang_name = "rsvpSenderEntry"; yang_parent_name = "rsvpSenderTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvEntry"; yang_parent_name = "rsvpResvTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpsendertable::Rsvpsenderentry::~Rsvpsenderentry()
+RSVPMIB::Rsvpresvtable::Rsvpresventry::~Rsvpresventry()
 {
 }
 
-bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_data() const
+bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_data() const
 {
     return rsvpsessionnumber.is_set
-	|| rsvpsendernumber.is_set
-	|| rsvpsenderaddr.is_set
-	|| rsvpsenderaddrlength.is_set
-	|| rsvpsenderadspecbreak.is_set
-	|| rsvpsenderadspecctrlloadbreak.is_set
-	|| rsvpsenderadspecctrlloadhopcount.is_set
-	|| rsvpsenderadspecctrlloadminlatency.is_set
-	|| rsvpsenderadspecctrlloadmtu.is_set
-	|| rsvpsenderadspecctrlloadpathbw.is_set
-	|| rsvpsenderadspecctrlloadsvc.is_set
-	|| rsvpsenderadspecguaranteedbreak.is_set
-	|| rsvpsenderadspecguaranteedcsum.is_set
-	|| rsvpsenderadspecguaranteedctot.is_set
-	|| rsvpsenderadspecguaranteeddsum.is_set
-	|| rsvpsenderadspecguaranteeddtot.is_set
-	|| rsvpsenderadspecguaranteedhopcount.is_set
-	|| rsvpsenderadspecguaranteedminlatency.is_set
-	|| rsvpsenderadspecguaranteedmtu.is_set
-	|| rsvpsenderadspecguaranteedpathbw.is_set
-	|| rsvpsenderadspecguaranteedsvc.is_set
-	|| rsvpsenderadspechopcount.is_set
-	|| rsvpsenderadspecminlatency.is_set
-	|| rsvpsenderadspecmtu.is_set
-	|| rsvpsenderadspecpathbw.is_set
-	|| rsvpsenderdestaddr.is_set
-	|| rsvpsenderdestaddrlength.is_set
-	|| rsvpsenderdestport.is_set
-	|| rsvpsenderflowid.is_set
-	|| rsvpsenderhopaddr.is_set
-	|| rsvpsenderhoplih.is_set
-	|| rsvpsenderinterface.is_set
-	|| rsvpsenderinterval.is_set
-	|| rsvpsenderlastchange.is_set
-	|| rsvpsenderpolicy.is_set
-	|| rsvpsenderport.is_set
-	|| rsvpsenderprotocol.is_set
-	|| rsvpsenderrsvphop.is_set
-	|| rsvpsenderstatus.is_set
-	|| rsvpsendertspecburst.is_set
-	|| rsvpsendertspecmaxtu.is_set
-	|| rsvpsendertspecmintu.is_set
-	|| rsvpsendertspecpeakrate.is_set
-	|| rsvpsendertspecrate.is_set
-	|| rsvpsenderttl.is_set
-	|| rsvpsendertype.is_set;
+	|| rsvpresvnumber.is_set
+	|| rsvpresvtype.is_set
+	|| rsvpresvdestaddr.is_set
+	|| rsvpresvsenderaddr.is_set
+	|| rsvpresvdestaddrlength.is_set
+	|| rsvpresvsenderaddrlength.is_set
+	|| rsvpresvprotocol.is_set
+	|| rsvpresvdestport.is_set
+	|| rsvpresvport.is_set
+	|| rsvpresvhopaddr.is_set
+	|| rsvpresvhoplih.is_set
+	|| rsvpresvinterface.is_set
+	|| rsvpresvservice.is_set
+	|| rsvpresvtspecrate.is_set
+	|| rsvpresvtspecpeakrate.is_set
+	|| rsvpresvtspecburst.is_set
+	|| rsvpresvtspecmintu.is_set
+	|| rsvpresvtspecmaxtu.is_set
+	|| rsvpresvrspecrate.is_set
+	|| rsvpresvrspecslack.is_set
+	|| rsvpresvinterval.is_set
+	|| rsvpresvscope.is_set
+	|| rsvpresvshared.is_set
+	|| rsvpresvexplicit.is_set
+	|| rsvpresvrsvphop.is_set
+	|| rsvpresvlastchange.is_set
+	|| rsvpresvpolicy.is_set
+	|| rsvpresvstatus.is_set
+	|| rsvpresvttl.is_set
+	|| rsvpresvflowid.is_set;
 }
 
-bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_operation() const
+bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
-	|| ydk::is_set(rsvpsendernumber.yfilter)
-	|| ydk::is_set(rsvpsenderaddr.yfilter)
-	|| ydk::is_set(rsvpsenderaddrlength.yfilter)
-	|| ydk::is_set(rsvpsenderadspecbreak.yfilter)
-	|| ydk::is_set(rsvpsenderadspecctrlloadbreak.yfilter)
-	|| ydk::is_set(rsvpsenderadspecctrlloadhopcount.yfilter)
-	|| ydk::is_set(rsvpsenderadspecctrlloadminlatency.yfilter)
-	|| ydk::is_set(rsvpsenderadspecctrlloadmtu.yfilter)
-	|| ydk::is_set(rsvpsenderadspecctrlloadpathbw.yfilter)
-	|| ydk::is_set(rsvpsenderadspecctrlloadsvc.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedbreak.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedcsum.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedctot.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteeddsum.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteeddtot.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedhopcount.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedminlatency.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedmtu.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedpathbw.yfilter)
-	|| ydk::is_set(rsvpsenderadspecguaranteedsvc.yfilter)
-	|| ydk::is_set(rsvpsenderadspechopcount.yfilter)
-	|| ydk::is_set(rsvpsenderadspecminlatency.yfilter)
-	|| ydk::is_set(rsvpsenderadspecmtu.yfilter)
-	|| ydk::is_set(rsvpsenderadspecpathbw.yfilter)
-	|| ydk::is_set(rsvpsenderdestaddr.yfilter)
-	|| ydk::is_set(rsvpsenderdestaddrlength.yfilter)
-	|| ydk::is_set(rsvpsenderdestport.yfilter)
-	|| ydk::is_set(rsvpsenderflowid.yfilter)
-	|| ydk::is_set(rsvpsenderhopaddr.yfilter)
-	|| ydk::is_set(rsvpsenderhoplih.yfilter)
-	|| ydk::is_set(rsvpsenderinterface.yfilter)
-	|| ydk::is_set(rsvpsenderinterval.yfilter)
-	|| ydk::is_set(rsvpsenderlastchange.yfilter)
-	|| ydk::is_set(rsvpsenderpolicy.yfilter)
-	|| ydk::is_set(rsvpsenderport.yfilter)
-	|| ydk::is_set(rsvpsenderprotocol.yfilter)
-	|| ydk::is_set(rsvpsenderrsvphop.yfilter)
-	|| ydk::is_set(rsvpsenderstatus.yfilter)
-	|| ydk::is_set(rsvpsendertspecburst.yfilter)
-	|| ydk::is_set(rsvpsendertspecmaxtu.yfilter)
-	|| ydk::is_set(rsvpsendertspecmintu.yfilter)
-	|| ydk::is_set(rsvpsendertspecpeakrate.yfilter)
-	|| ydk::is_set(rsvpsendertspecrate.yfilter)
-	|| ydk::is_set(rsvpsenderttl.yfilter)
-	|| ydk::is_set(rsvpsendertype.yfilter);
+	|| ydk::is_set(rsvpresvnumber.yfilter)
+	|| ydk::is_set(rsvpresvtype.yfilter)
+	|| ydk::is_set(rsvpresvdestaddr.yfilter)
+	|| ydk::is_set(rsvpresvsenderaddr.yfilter)
+	|| ydk::is_set(rsvpresvdestaddrlength.yfilter)
+	|| ydk::is_set(rsvpresvsenderaddrlength.yfilter)
+	|| ydk::is_set(rsvpresvprotocol.yfilter)
+	|| ydk::is_set(rsvpresvdestport.yfilter)
+	|| ydk::is_set(rsvpresvport.yfilter)
+	|| ydk::is_set(rsvpresvhopaddr.yfilter)
+	|| ydk::is_set(rsvpresvhoplih.yfilter)
+	|| ydk::is_set(rsvpresvinterface.yfilter)
+	|| ydk::is_set(rsvpresvservice.yfilter)
+	|| ydk::is_set(rsvpresvtspecrate.yfilter)
+	|| ydk::is_set(rsvpresvtspecpeakrate.yfilter)
+	|| ydk::is_set(rsvpresvtspecburst.yfilter)
+	|| ydk::is_set(rsvpresvtspecmintu.yfilter)
+	|| ydk::is_set(rsvpresvtspecmaxtu.yfilter)
+	|| ydk::is_set(rsvpresvrspecrate.yfilter)
+	|| ydk::is_set(rsvpresvrspecslack.yfilter)
+	|| ydk::is_set(rsvpresvinterval.yfilter)
+	|| ydk::is_set(rsvpresvscope.yfilter)
+	|| ydk::is_set(rsvpresvshared.yfilter)
+	|| ydk::is_set(rsvpresvexplicit.yfilter)
+	|| ydk::is_set(rsvpresvrsvphop.yfilter)
+	|| ydk::is_set(rsvpresvlastchange.yfilter)
+	|| ydk::is_set(rsvpresvpolicy.yfilter)
+	|| ydk::is_set(rsvpresvstatus.yfilter)
+	|| ydk::is_set(rsvpresvttl.yfilter)
+	|| ydk::is_set(rsvpresvflowid.yfilter);
 }
 
-std::string RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_absolute_path() const
+std::string RSVPMIB::Rsvpresvtable::Rsvpresventry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpSenderTable/" << get_segment_path();
+    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpResvTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_segment_path() const
+std::string RSVPMIB::Rsvpresvtable::Rsvpresventry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpSenderEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpSenderNumber='" <<rsvpsendernumber <<"']";
+    path_buffer << "rsvpResvEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpResvNumber='" <<rsvpresvnumber <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::Rsvpresventry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rsvpsessionnumber.is_set || is_set(rsvpsessionnumber.yfilter)) leaf_name_data.push_back(rsvpsessionnumber.get_name_leafdata());
-    if (rsvpsendernumber.is_set || is_set(rsvpsendernumber.yfilter)) leaf_name_data.push_back(rsvpsendernumber.get_name_leafdata());
-    if (rsvpsenderaddr.is_set || is_set(rsvpsenderaddr.yfilter)) leaf_name_data.push_back(rsvpsenderaddr.get_name_leafdata());
-    if (rsvpsenderaddrlength.is_set || is_set(rsvpsenderaddrlength.yfilter)) leaf_name_data.push_back(rsvpsenderaddrlength.get_name_leafdata());
-    if (rsvpsenderadspecbreak.is_set || is_set(rsvpsenderadspecbreak.yfilter)) leaf_name_data.push_back(rsvpsenderadspecbreak.get_name_leafdata());
-    if (rsvpsenderadspecctrlloadbreak.is_set || is_set(rsvpsenderadspecctrlloadbreak.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadbreak.get_name_leafdata());
-    if (rsvpsenderadspecctrlloadhopcount.is_set || is_set(rsvpsenderadspecctrlloadhopcount.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadhopcount.get_name_leafdata());
-    if (rsvpsenderadspecctrlloadminlatency.is_set || is_set(rsvpsenderadspecctrlloadminlatency.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadminlatency.get_name_leafdata());
-    if (rsvpsenderadspecctrlloadmtu.is_set || is_set(rsvpsenderadspecctrlloadmtu.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadmtu.get_name_leafdata());
-    if (rsvpsenderadspecctrlloadpathbw.is_set || is_set(rsvpsenderadspecctrlloadpathbw.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadpathbw.get_name_leafdata());
-    if (rsvpsenderadspecctrlloadsvc.is_set || is_set(rsvpsenderadspecctrlloadsvc.yfilter)) leaf_name_data.push_back(rsvpsenderadspecctrlloadsvc.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedbreak.is_set || is_set(rsvpsenderadspecguaranteedbreak.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedbreak.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedcsum.is_set || is_set(rsvpsenderadspecguaranteedcsum.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedcsum.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedctot.is_set || is_set(rsvpsenderadspecguaranteedctot.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedctot.get_name_leafdata());
-    if (rsvpsenderadspecguaranteeddsum.is_set || is_set(rsvpsenderadspecguaranteeddsum.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteeddsum.get_name_leafdata());
-    if (rsvpsenderadspecguaranteeddtot.is_set || is_set(rsvpsenderadspecguaranteeddtot.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteeddtot.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedhopcount.is_set || is_set(rsvpsenderadspecguaranteedhopcount.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedhopcount.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedminlatency.is_set || is_set(rsvpsenderadspecguaranteedminlatency.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedminlatency.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedmtu.is_set || is_set(rsvpsenderadspecguaranteedmtu.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedmtu.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedpathbw.is_set || is_set(rsvpsenderadspecguaranteedpathbw.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedpathbw.get_name_leafdata());
-    if (rsvpsenderadspecguaranteedsvc.is_set || is_set(rsvpsenderadspecguaranteedsvc.yfilter)) leaf_name_data.push_back(rsvpsenderadspecguaranteedsvc.get_name_leafdata());
-    if (rsvpsenderadspechopcount.is_set || is_set(rsvpsenderadspechopcount.yfilter)) leaf_name_data.push_back(rsvpsenderadspechopcount.get_name_leafdata());
-    if (rsvpsenderadspecminlatency.is_set || is_set(rsvpsenderadspecminlatency.yfilter)) leaf_name_data.push_back(rsvpsenderadspecminlatency.get_name_leafdata());
-    if (rsvpsenderadspecmtu.is_set || is_set(rsvpsenderadspecmtu.yfilter)) leaf_name_data.push_back(rsvpsenderadspecmtu.get_name_leafdata());
-    if (rsvpsenderadspecpathbw.is_set || is_set(rsvpsenderadspecpathbw.yfilter)) leaf_name_data.push_back(rsvpsenderadspecpathbw.get_name_leafdata());
-    if (rsvpsenderdestaddr.is_set || is_set(rsvpsenderdestaddr.yfilter)) leaf_name_data.push_back(rsvpsenderdestaddr.get_name_leafdata());
-    if (rsvpsenderdestaddrlength.is_set || is_set(rsvpsenderdestaddrlength.yfilter)) leaf_name_data.push_back(rsvpsenderdestaddrlength.get_name_leafdata());
-    if (rsvpsenderdestport.is_set || is_set(rsvpsenderdestport.yfilter)) leaf_name_data.push_back(rsvpsenderdestport.get_name_leafdata());
-    if (rsvpsenderflowid.is_set || is_set(rsvpsenderflowid.yfilter)) leaf_name_data.push_back(rsvpsenderflowid.get_name_leafdata());
-    if (rsvpsenderhopaddr.is_set || is_set(rsvpsenderhopaddr.yfilter)) leaf_name_data.push_back(rsvpsenderhopaddr.get_name_leafdata());
-    if (rsvpsenderhoplih.is_set || is_set(rsvpsenderhoplih.yfilter)) leaf_name_data.push_back(rsvpsenderhoplih.get_name_leafdata());
-    if (rsvpsenderinterface.is_set || is_set(rsvpsenderinterface.yfilter)) leaf_name_data.push_back(rsvpsenderinterface.get_name_leafdata());
-    if (rsvpsenderinterval.is_set || is_set(rsvpsenderinterval.yfilter)) leaf_name_data.push_back(rsvpsenderinterval.get_name_leafdata());
-    if (rsvpsenderlastchange.is_set || is_set(rsvpsenderlastchange.yfilter)) leaf_name_data.push_back(rsvpsenderlastchange.get_name_leafdata());
-    if (rsvpsenderpolicy.is_set || is_set(rsvpsenderpolicy.yfilter)) leaf_name_data.push_back(rsvpsenderpolicy.get_name_leafdata());
-    if (rsvpsenderport.is_set || is_set(rsvpsenderport.yfilter)) leaf_name_data.push_back(rsvpsenderport.get_name_leafdata());
-    if (rsvpsenderprotocol.is_set || is_set(rsvpsenderprotocol.yfilter)) leaf_name_data.push_back(rsvpsenderprotocol.get_name_leafdata());
-    if (rsvpsenderrsvphop.is_set || is_set(rsvpsenderrsvphop.yfilter)) leaf_name_data.push_back(rsvpsenderrsvphop.get_name_leafdata());
-    if (rsvpsenderstatus.is_set || is_set(rsvpsenderstatus.yfilter)) leaf_name_data.push_back(rsvpsenderstatus.get_name_leafdata());
-    if (rsvpsendertspecburst.is_set || is_set(rsvpsendertspecburst.yfilter)) leaf_name_data.push_back(rsvpsendertspecburst.get_name_leafdata());
-    if (rsvpsendertspecmaxtu.is_set || is_set(rsvpsendertspecmaxtu.yfilter)) leaf_name_data.push_back(rsvpsendertspecmaxtu.get_name_leafdata());
-    if (rsvpsendertspecmintu.is_set || is_set(rsvpsendertspecmintu.yfilter)) leaf_name_data.push_back(rsvpsendertspecmintu.get_name_leafdata());
-    if (rsvpsendertspecpeakrate.is_set || is_set(rsvpsendertspecpeakrate.yfilter)) leaf_name_data.push_back(rsvpsendertspecpeakrate.get_name_leafdata());
-    if (rsvpsendertspecrate.is_set || is_set(rsvpsendertspecrate.yfilter)) leaf_name_data.push_back(rsvpsendertspecrate.get_name_leafdata());
-    if (rsvpsenderttl.is_set || is_set(rsvpsenderttl.yfilter)) leaf_name_data.push_back(rsvpsenderttl.get_name_leafdata());
-    if (rsvpsendertype.is_set || is_set(rsvpsendertype.yfilter)) leaf_name_data.push_back(rsvpsendertype.get_name_leafdata());
+    if (rsvpresvnumber.is_set || is_set(rsvpresvnumber.yfilter)) leaf_name_data.push_back(rsvpresvnumber.get_name_leafdata());
+    if (rsvpresvtype.is_set || is_set(rsvpresvtype.yfilter)) leaf_name_data.push_back(rsvpresvtype.get_name_leafdata());
+    if (rsvpresvdestaddr.is_set || is_set(rsvpresvdestaddr.yfilter)) leaf_name_data.push_back(rsvpresvdestaddr.get_name_leafdata());
+    if (rsvpresvsenderaddr.is_set || is_set(rsvpresvsenderaddr.yfilter)) leaf_name_data.push_back(rsvpresvsenderaddr.get_name_leafdata());
+    if (rsvpresvdestaddrlength.is_set || is_set(rsvpresvdestaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvdestaddrlength.get_name_leafdata());
+    if (rsvpresvsenderaddrlength.is_set || is_set(rsvpresvsenderaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvsenderaddrlength.get_name_leafdata());
+    if (rsvpresvprotocol.is_set || is_set(rsvpresvprotocol.yfilter)) leaf_name_data.push_back(rsvpresvprotocol.get_name_leafdata());
+    if (rsvpresvdestport.is_set || is_set(rsvpresvdestport.yfilter)) leaf_name_data.push_back(rsvpresvdestport.get_name_leafdata());
+    if (rsvpresvport.is_set || is_set(rsvpresvport.yfilter)) leaf_name_data.push_back(rsvpresvport.get_name_leafdata());
+    if (rsvpresvhopaddr.is_set || is_set(rsvpresvhopaddr.yfilter)) leaf_name_data.push_back(rsvpresvhopaddr.get_name_leafdata());
+    if (rsvpresvhoplih.is_set || is_set(rsvpresvhoplih.yfilter)) leaf_name_data.push_back(rsvpresvhoplih.get_name_leafdata());
+    if (rsvpresvinterface.is_set || is_set(rsvpresvinterface.yfilter)) leaf_name_data.push_back(rsvpresvinterface.get_name_leafdata());
+    if (rsvpresvservice.is_set || is_set(rsvpresvservice.yfilter)) leaf_name_data.push_back(rsvpresvservice.get_name_leafdata());
+    if (rsvpresvtspecrate.is_set || is_set(rsvpresvtspecrate.yfilter)) leaf_name_data.push_back(rsvpresvtspecrate.get_name_leafdata());
+    if (rsvpresvtspecpeakrate.is_set || is_set(rsvpresvtspecpeakrate.yfilter)) leaf_name_data.push_back(rsvpresvtspecpeakrate.get_name_leafdata());
+    if (rsvpresvtspecburst.is_set || is_set(rsvpresvtspecburst.yfilter)) leaf_name_data.push_back(rsvpresvtspecburst.get_name_leafdata());
+    if (rsvpresvtspecmintu.is_set || is_set(rsvpresvtspecmintu.yfilter)) leaf_name_data.push_back(rsvpresvtspecmintu.get_name_leafdata());
+    if (rsvpresvtspecmaxtu.is_set || is_set(rsvpresvtspecmaxtu.yfilter)) leaf_name_data.push_back(rsvpresvtspecmaxtu.get_name_leafdata());
+    if (rsvpresvrspecrate.is_set || is_set(rsvpresvrspecrate.yfilter)) leaf_name_data.push_back(rsvpresvrspecrate.get_name_leafdata());
+    if (rsvpresvrspecslack.is_set || is_set(rsvpresvrspecslack.yfilter)) leaf_name_data.push_back(rsvpresvrspecslack.get_name_leafdata());
+    if (rsvpresvinterval.is_set || is_set(rsvpresvinterval.yfilter)) leaf_name_data.push_back(rsvpresvinterval.get_name_leafdata());
+    if (rsvpresvscope.is_set || is_set(rsvpresvscope.yfilter)) leaf_name_data.push_back(rsvpresvscope.get_name_leafdata());
+    if (rsvpresvshared.is_set || is_set(rsvpresvshared.yfilter)) leaf_name_data.push_back(rsvpresvshared.get_name_leafdata());
+    if (rsvpresvexplicit.is_set || is_set(rsvpresvexplicit.yfilter)) leaf_name_data.push_back(rsvpresvexplicit.get_name_leafdata());
+    if (rsvpresvrsvphop.is_set || is_set(rsvpresvrsvphop.yfilter)) leaf_name_data.push_back(rsvpresvrsvphop.get_name_leafdata());
+    if (rsvpresvlastchange.is_set || is_set(rsvpresvlastchange.yfilter)) leaf_name_data.push_back(rsvpresvlastchange.get_name_leafdata());
+    if (rsvpresvpolicy.is_set || is_set(rsvpresvpolicy.yfilter)) leaf_name_data.push_back(rsvpresvpolicy.get_name_leafdata());
+    if (rsvpresvstatus.is_set || is_set(rsvpresvstatus.yfilter)) leaf_name_data.push_back(rsvpresvstatus.get_name_leafdata());
+    if (rsvpresvttl.is_set || is_set(rsvpresvttl.yfilter)) leaf_name_data.push_back(rsvpresvttl.get_name_leafdata());
+    if (rsvpresvflowid.is_set || is_set(rsvpresvflowid.yfilter)) leaf_name_data.push_back(rsvpresvflowid.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -2720,518 +2000,368 @@ void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_value(const std::string & va
         rsvpsessionnumber.value_namespace = name_space;
         rsvpsessionnumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderNumber")
+    if(value_path == "rsvpResvNumber")
     {
-        rsvpsendernumber = value;
-        rsvpsendernumber.value_namespace = name_space;
-        rsvpsendernumber.value_namespace_prefix = name_space_prefix;
+        rsvpresvnumber = value;
+        rsvpresvnumber.value_namespace = name_space;
+        rsvpresvnumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAddr")
+    if(value_path == "rsvpResvType")
     {
-        rsvpsenderaddr = value;
-        rsvpsenderaddr.value_namespace = name_space;
-        rsvpsenderaddr.value_namespace_prefix = name_space_prefix;
+        rsvpresvtype = value;
+        rsvpresvtype.value_namespace = name_space;
+        rsvpresvtype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAddrLength")
+    if(value_path == "rsvpResvDestAddr")
     {
-        rsvpsenderaddrlength = value;
-        rsvpsenderaddrlength.value_namespace = name_space;
-        rsvpsenderaddrlength.value_namespace_prefix = name_space_prefix;
+        rsvpresvdestaddr = value;
+        rsvpresvdestaddr.value_namespace = name_space;
+        rsvpresvdestaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecBreak")
+    if(value_path == "rsvpResvSenderAddr")
     {
-        rsvpsenderadspecbreak = value;
-        rsvpsenderadspecbreak.value_namespace = name_space;
-        rsvpsenderadspecbreak.value_namespace_prefix = name_space_prefix;
+        rsvpresvsenderaddr = value;
+        rsvpresvsenderaddr.value_namespace = name_space;
+        rsvpresvsenderaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadBreak")
+    if(value_path == "rsvpResvDestAddrLength")
     {
-        rsvpsenderadspecctrlloadbreak = value;
-        rsvpsenderadspecctrlloadbreak.value_namespace = name_space;
-        rsvpsenderadspecctrlloadbreak.value_namespace_prefix = name_space_prefix;
+        rsvpresvdestaddrlength = value;
+        rsvpresvdestaddrlength.value_namespace = name_space;
+        rsvpresvdestaddrlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadHopCount")
+    if(value_path == "rsvpResvSenderAddrLength")
     {
-        rsvpsenderadspecctrlloadhopcount = value;
-        rsvpsenderadspecctrlloadhopcount.value_namespace = name_space;
-        rsvpsenderadspecctrlloadhopcount.value_namespace_prefix = name_space_prefix;
+        rsvpresvsenderaddrlength = value;
+        rsvpresvsenderaddrlength.value_namespace = name_space;
+        rsvpresvsenderaddrlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadMinLatency")
+    if(value_path == "rsvpResvProtocol")
     {
-        rsvpsenderadspecctrlloadminlatency = value;
-        rsvpsenderadspecctrlloadminlatency.value_namespace = name_space;
-        rsvpsenderadspecctrlloadminlatency.value_namespace_prefix = name_space_prefix;
+        rsvpresvprotocol = value;
+        rsvpresvprotocol.value_namespace = name_space;
+        rsvpresvprotocol.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadMtu")
+    if(value_path == "rsvpResvDestPort")
     {
-        rsvpsenderadspecctrlloadmtu = value;
-        rsvpsenderadspecctrlloadmtu.value_namespace = name_space;
-        rsvpsenderadspecctrlloadmtu.value_namespace_prefix = name_space_prefix;
+        rsvpresvdestport = value;
+        rsvpresvdestport.value_namespace = name_space;
+        rsvpresvdestport.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadPathBw")
+    if(value_path == "rsvpResvPort")
     {
-        rsvpsenderadspecctrlloadpathbw = value;
-        rsvpsenderadspecctrlloadpathbw.value_namespace = name_space;
-        rsvpsenderadspecctrlloadpathbw.value_namespace_prefix = name_space_prefix;
+        rsvpresvport = value;
+        rsvpresvport.value_namespace = name_space;
+        rsvpresvport.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadSvc")
+    if(value_path == "rsvpResvHopAddr")
     {
-        rsvpsenderadspecctrlloadsvc = value;
-        rsvpsenderadspecctrlloadsvc.value_namespace = name_space;
-        rsvpsenderadspecctrlloadsvc.value_namespace_prefix = name_space_prefix;
+        rsvpresvhopaddr = value;
+        rsvpresvhopaddr.value_namespace = name_space;
+        rsvpresvhopaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedBreak")
+    if(value_path == "rsvpResvHopLih")
     {
-        rsvpsenderadspecguaranteedbreak = value;
-        rsvpsenderadspecguaranteedbreak.value_namespace = name_space;
-        rsvpsenderadspecguaranteedbreak.value_namespace_prefix = name_space_prefix;
+        rsvpresvhoplih = value;
+        rsvpresvhoplih.value_namespace = name_space;
+        rsvpresvhoplih.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedCsum")
+    if(value_path == "rsvpResvInterface")
     {
-        rsvpsenderadspecguaranteedcsum = value;
-        rsvpsenderadspecguaranteedcsum.value_namespace = name_space;
-        rsvpsenderadspecguaranteedcsum.value_namespace_prefix = name_space_prefix;
+        rsvpresvinterface = value;
+        rsvpresvinterface.value_namespace = name_space;
+        rsvpresvinterface.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedCtot")
+    if(value_path == "rsvpResvService")
     {
-        rsvpsenderadspecguaranteedctot = value;
-        rsvpsenderadspecguaranteedctot.value_namespace = name_space;
-        rsvpsenderadspecguaranteedctot.value_namespace_prefix = name_space_prefix;
+        rsvpresvservice = value;
+        rsvpresvservice.value_namespace = name_space;
+        rsvpresvservice.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedDsum")
+    if(value_path == "rsvpResvTSpecRate")
     {
-        rsvpsenderadspecguaranteeddsum = value;
-        rsvpsenderadspecguaranteeddsum.value_namespace = name_space;
-        rsvpsenderadspecguaranteeddsum.value_namespace_prefix = name_space_prefix;
+        rsvpresvtspecrate = value;
+        rsvpresvtspecrate.value_namespace = name_space;
+        rsvpresvtspecrate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedDtot")
+    if(value_path == "rsvpResvTSpecPeakRate")
     {
-        rsvpsenderadspecguaranteeddtot = value;
-        rsvpsenderadspecguaranteeddtot.value_namespace = name_space;
-        rsvpsenderadspecguaranteeddtot.value_namespace_prefix = name_space_prefix;
+        rsvpresvtspecpeakrate = value;
+        rsvpresvtspecpeakrate.value_namespace = name_space;
+        rsvpresvtspecpeakrate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedHopCount")
+    if(value_path == "rsvpResvTSpecBurst")
     {
-        rsvpsenderadspecguaranteedhopcount = value;
-        rsvpsenderadspecguaranteedhopcount.value_namespace = name_space;
-        rsvpsenderadspecguaranteedhopcount.value_namespace_prefix = name_space_prefix;
+        rsvpresvtspecburst = value;
+        rsvpresvtspecburst.value_namespace = name_space;
+        rsvpresvtspecburst.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedMinLatency")
+    if(value_path == "rsvpResvTSpecMinTU")
     {
-        rsvpsenderadspecguaranteedminlatency = value;
-        rsvpsenderadspecguaranteedminlatency.value_namespace = name_space;
-        rsvpsenderadspecguaranteedminlatency.value_namespace_prefix = name_space_prefix;
+        rsvpresvtspecmintu = value;
+        rsvpresvtspecmintu.value_namespace = name_space;
+        rsvpresvtspecmintu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedMtu")
+    if(value_path == "rsvpResvTSpecMaxTU")
     {
-        rsvpsenderadspecguaranteedmtu = value;
-        rsvpsenderadspecguaranteedmtu.value_namespace = name_space;
-        rsvpsenderadspecguaranteedmtu.value_namespace_prefix = name_space_prefix;
+        rsvpresvtspecmaxtu = value;
+        rsvpresvtspecmaxtu.value_namespace = name_space;
+        rsvpresvtspecmaxtu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedPathBw")
+    if(value_path == "rsvpResvRSpecRate")
     {
-        rsvpsenderadspecguaranteedpathbw = value;
-        rsvpsenderadspecguaranteedpathbw.value_namespace = name_space;
-        rsvpsenderadspecguaranteedpathbw.value_namespace_prefix = name_space_prefix;
+        rsvpresvrspecrate = value;
+        rsvpresvrspecrate.value_namespace = name_space;
+        rsvpresvrspecrate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedSvc")
+    if(value_path == "rsvpResvRSpecSlack")
     {
-        rsvpsenderadspecguaranteedsvc = value;
-        rsvpsenderadspecguaranteedsvc.value_namespace = name_space;
-        rsvpsenderadspecguaranteedsvc.value_namespace_prefix = name_space_prefix;
+        rsvpresvrspecslack = value;
+        rsvpresvrspecslack.value_namespace = name_space;
+        rsvpresvrspecslack.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecHopCount")
+    if(value_path == "rsvpResvInterval")
     {
-        rsvpsenderadspechopcount = value;
-        rsvpsenderadspechopcount.value_namespace = name_space;
-        rsvpsenderadspechopcount.value_namespace_prefix = name_space_prefix;
+        rsvpresvinterval = value;
+        rsvpresvinterval.value_namespace = name_space;
+        rsvpresvinterval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecMinLatency")
+    if(value_path == "rsvpResvScope")
     {
-        rsvpsenderadspecminlatency = value;
-        rsvpsenderadspecminlatency.value_namespace = name_space;
-        rsvpsenderadspecminlatency.value_namespace_prefix = name_space_prefix;
+        rsvpresvscope = value;
+        rsvpresvscope.value_namespace = name_space;
+        rsvpresvscope.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecMtu")
+    if(value_path == "rsvpResvShared")
     {
-        rsvpsenderadspecmtu = value;
-        rsvpsenderadspecmtu.value_namespace = name_space;
-        rsvpsenderadspecmtu.value_namespace_prefix = name_space_prefix;
+        rsvpresvshared = value;
+        rsvpresvshared.value_namespace = name_space;
+        rsvpresvshared.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderAdspecPathBw")
+    if(value_path == "rsvpResvExplicit")
     {
-        rsvpsenderadspecpathbw = value;
-        rsvpsenderadspecpathbw.value_namespace = name_space;
-        rsvpsenderadspecpathbw.value_namespace_prefix = name_space_prefix;
+        rsvpresvexplicit = value;
+        rsvpresvexplicit.value_namespace = name_space;
+        rsvpresvexplicit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderDestAddr")
+    if(value_path == "rsvpResvRSVPHop")
     {
-        rsvpsenderdestaddr = value;
-        rsvpsenderdestaddr.value_namespace = name_space;
-        rsvpsenderdestaddr.value_namespace_prefix = name_space_prefix;
+        rsvpresvrsvphop = value;
+        rsvpresvrsvphop.value_namespace = name_space;
+        rsvpresvrsvphop.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderDestAddrLength")
+    if(value_path == "rsvpResvLastChange")
     {
-        rsvpsenderdestaddrlength = value;
-        rsvpsenderdestaddrlength.value_namespace = name_space;
-        rsvpsenderdestaddrlength.value_namespace_prefix = name_space_prefix;
+        rsvpresvlastchange = value;
+        rsvpresvlastchange.value_namespace = name_space;
+        rsvpresvlastchange.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderDestPort")
+    if(value_path == "rsvpResvPolicy")
     {
-        rsvpsenderdestport = value;
-        rsvpsenderdestport.value_namespace = name_space;
-        rsvpsenderdestport.value_namespace_prefix = name_space_prefix;
+        rsvpresvpolicy = value;
+        rsvpresvpolicy.value_namespace = name_space;
+        rsvpresvpolicy.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderFlowId")
+    if(value_path == "rsvpResvStatus")
     {
-        rsvpsenderflowid = value;
-        rsvpsenderflowid.value_namespace = name_space;
-        rsvpsenderflowid.value_namespace_prefix = name_space_prefix;
+        rsvpresvstatus = value;
+        rsvpresvstatus.value_namespace = name_space;
+        rsvpresvstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderHopAddr")
+    if(value_path == "rsvpResvTTL")
     {
-        rsvpsenderhopaddr = value;
-        rsvpsenderhopaddr.value_namespace = name_space;
-        rsvpsenderhopaddr.value_namespace_prefix = name_space_prefix;
+        rsvpresvttl = value;
+        rsvpresvttl.value_namespace = name_space;
+        rsvpresvttl.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSenderHopLih")
+    if(value_path == "rsvpResvFlowId")
     {
-        rsvpsenderhoplih = value;
-        rsvpsenderhoplih.value_namespace = name_space;
-        rsvpsenderhoplih.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderInterface")
-    {
-        rsvpsenderinterface = value;
-        rsvpsenderinterface.value_namespace = name_space;
-        rsvpsenderinterface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderInterval")
-    {
-        rsvpsenderinterval = value;
-        rsvpsenderinterval.value_namespace = name_space;
-        rsvpsenderinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderLastChange")
-    {
-        rsvpsenderlastchange = value;
-        rsvpsenderlastchange.value_namespace = name_space;
-        rsvpsenderlastchange.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderPolicy")
-    {
-        rsvpsenderpolicy = value;
-        rsvpsenderpolicy.value_namespace = name_space;
-        rsvpsenderpolicy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderPort")
-    {
-        rsvpsenderport = value;
-        rsvpsenderport.value_namespace = name_space;
-        rsvpsenderport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderProtocol")
-    {
-        rsvpsenderprotocol = value;
-        rsvpsenderprotocol.value_namespace = name_space;
-        rsvpsenderprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderRSVPHop")
-    {
-        rsvpsenderrsvphop = value;
-        rsvpsenderrsvphop.value_namespace = name_space;
-        rsvpsenderrsvphop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderStatus")
-    {
-        rsvpsenderstatus = value;
-        rsvpsenderstatus.value_namespace = name_space;
-        rsvpsenderstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderTSpecBurst")
-    {
-        rsvpsendertspecburst = value;
-        rsvpsendertspecburst.value_namespace = name_space;
-        rsvpsendertspecburst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderTSpecMaxTU")
-    {
-        rsvpsendertspecmaxtu = value;
-        rsvpsendertspecmaxtu.value_namespace = name_space;
-        rsvpsendertspecmaxtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderTSpecMinTU")
-    {
-        rsvpsendertspecmintu = value;
-        rsvpsendertspecmintu.value_namespace = name_space;
-        rsvpsendertspecmintu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderTSpecPeakRate")
-    {
-        rsvpsendertspecpeakrate = value;
-        rsvpsendertspecpeakrate.value_namespace = name_space;
-        rsvpsendertspecpeakrate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderTSpecRate")
-    {
-        rsvpsendertspecrate = value;
-        rsvpsendertspecrate.value_namespace = name_space;
-        rsvpsendertspecrate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderTTL")
-    {
-        rsvpsenderttl = value;
-        rsvpsenderttl.value_namespace = name_space;
-        rsvpsenderttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvpSenderType")
-    {
-        rsvpsendertype = value;
-        rsvpsendertype.value_namespace = name_space;
-        rsvpsendertype.value_namespace_prefix = name_space_prefix;
+        rsvpresvflowid = value;
+        rsvpresvflowid.value_namespace = name_space;
+        rsvpresvflowid.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
         rsvpsessionnumber.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderNumber")
+    if(value_path == "rsvpResvNumber")
     {
-        rsvpsendernumber.yfilter = yfilter;
+        rsvpresvnumber.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAddr")
+    if(value_path == "rsvpResvType")
     {
-        rsvpsenderaddr.yfilter = yfilter;
+        rsvpresvtype.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAddrLength")
+    if(value_path == "rsvpResvDestAddr")
     {
-        rsvpsenderaddrlength.yfilter = yfilter;
+        rsvpresvdestaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecBreak")
+    if(value_path == "rsvpResvSenderAddr")
     {
-        rsvpsenderadspecbreak.yfilter = yfilter;
+        rsvpresvsenderaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadBreak")
+    if(value_path == "rsvpResvDestAddrLength")
     {
-        rsvpsenderadspecctrlloadbreak.yfilter = yfilter;
+        rsvpresvdestaddrlength.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadHopCount")
+    if(value_path == "rsvpResvSenderAddrLength")
     {
-        rsvpsenderadspecctrlloadhopcount.yfilter = yfilter;
+        rsvpresvsenderaddrlength.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadMinLatency")
+    if(value_path == "rsvpResvProtocol")
     {
-        rsvpsenderadspecctrlloadminlatency.yfilter = yfilter;
+        rsvpresvprotocol.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadMtu")
+    if(value_path == "rsvpResvDestPort")
     {
-        rsvpsenderadspecctrlloadmtu.yfilter = yfilter;
+        rsvpresvdestport.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadPathBw")
+    if(value_path == "rsvpResvPort")
     {
-        rsvpsenderadspecctrlloadpathbw.yfilter = yfilter;
+        rsvpresvport.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecCtrlLoadSvc")
+    if(value_path == "rsvpResvHopAddr")
     {
-        rsvpsenderadspecctrlloadsvc.yfilter = yfilter;
+        rsvpresvhopaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedBreak")
+    if(value_path == "rsvpResvHopLih")
     {
-        rsvpsenderadspecguaranteedbreak.yfilter = yfilter;
+        rsvpresvhoplih.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedCsum")
+    if(value_path == "rsvpResvInterface")
     {
-        rsvpsenderadspecguaranteedcsum.yfilter = yfilter;
+        rsvpresvinterface.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedCtot")
+    if(value_path == "rsvpResvService")
     {
-        rsvpsenderadspecguaranteedctot.yfilter = yfilter;
+        rsvpresvservice.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedDsum")
+    if(value_path == "rsvpResvTSpecRate")
     {
-        rsvpsenderadspecguaranteeddsum.yfilter = yfilter;
+        rsvpresvtspecrate.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedDtot")
+    if(value_path == "rsvpResvTSpecPeakRate")
     {
-        rsvpsenderadspecguaranteeddtot.yfilter = yfilter;
+        rsvpresvtspecpeakrate.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedHopCount")
+    if(value_path == "rsvpResvTSpecBurst")
     {
-        rsvpsenderadspecguaranteedhopcount.yfilter = yfilter;
+        rsvpresvtspecburst.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedMinLatency")
+    if(value_path == "rsvpResvTSpecMinTU")
     {
-        rsvpsenderadspecguaranteedminlatency.yfilter = yfilter;
+        rsvpresvtspecmintu.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedMtu")
+    if(value_path == "rsvpResvTSpecMaxTU")
     {
-        rsvpsenderadspecguaranteedmtu.yfilter = yfilter;
+        rsvpresvtspecmaxtu.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedPathBw")
+    if(value_path == "rsvpResvRSpecRate")
     {
-        rsvpsenderadspecguaranteedpathbw.yfilter = yfilter;
+        rsvpresvrspecrate.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecGuaranteedSvc")
+    if(value_path == "rsvpResvRSpecSlack")
     {
-        rsvpsenderadspecguaranteedsvc.yfilter = yfilter;
+        rsvpresvrspecslack.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecHopCount")
+    if(value_path == "rsvpResvInterval")
     {
-        rsvpsenderadspechopcount.yfilter = yfilter;
+        rsvpresvinterval.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecMinLatency")
+    if(value_path == "rsvpResvScope")
     {
-        rsvpsenderadspecminlatency.yfilter = yfilter;
+        rsvpresvscope.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecMtu")
+    if(value_path == "rsvpResvShared")
     {
-        rsvpsenderadspecmtu.yfilter = yfilter;
+        rsvpresvshared.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderAdspecPathBw")
+    if(value_path == "rsvpResvExplicit")
     {
-        rsvpsenderadspecpathbw.yfilter = yfilter;
+        rsvpresvexplicit.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderDestAddr")
+    if(value_path == "rsvpResvRSVPHop")
     {
-        rsvpsenderdestaddr.yfilter = yfilter;
+        rsvpresvrsvphop.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderDestAddrLength")
+    if(value_path == "rsvpResvLastChange")
     {
-        rsvpsenderdestaddrlength.yfilter = yfilter;
+        rsvpresvlastchange.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderDestPort")
+    if(value_path == "rsvpResvPolicy")
     {
-        rsvpsenderdestport.yfilter = yfilter;
+        rsvpresvpolicy.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderFlowId")
+    if(value_path == "rsvpResvStatus")
     {
-        rsvpsenderflowid.yfilter = yfilter;
+        rsvpresvstatus.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderHopAddr")
+    if(value_path == "rsvpResvTTL")
     {
-        rsvpsenderhopaddr.yfilter = yfilter;
+        rsvpresvttl.yfilter = yfilter;
     }
-    if(value_path == "rsvpSenderHopLih")
+    if(value_path == "rsvpResvFlowId")
     {
-        rsvpsenderhoplih.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderInterface")
-    {
-        rsvpsenderinterface.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderInterval")
-    {
-        rsvpsenderinterval.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderLastChange")
-    {
-        rsvpsenderlastchange.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderPolicy")
-    {
-        rsvpsenderpolicy.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderPort")
-    {
-        rsvpsenderport.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderProtocol")
-    {
-        rsvpsenderprotocol.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderRSVPHop")
-    {
-        rsvpsenderrsvphop.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderStatus")
-    {
-        rsvpsenderstatus.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderTSpecBurst")
-    {
-        rsvpsendertspecburst.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderTSpecMaxTU")
-    {
-        rsvpsendertspecmaxtu.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderTSpecMinTU")
-    {
-        rsvpsendertspecmintu.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderTSpecPeakRate")
-    {
-        rsvpsendertspecpeakrate.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderTSpecRate")
-    {
-        rsvpsendertspecrate.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderTTL")
-    {
-        rsvpsenderttl.yfilter = yfilter;
-    }
-    if(value_path == "rsvpSenderType")
-    {
-        rsvpsendertype.yfilter = yfilter;
+        rsvpresvflowid.yfilter = yfilter;
     }
 }
 
-bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpSessionNumber" || name == "rsvpSenderNumber" || name == "rsvpSenderAddr" || name == "rsvpSenderAddrLength" || name == "rsvpSenderAdspecBreak" || name == "rsvpSenderAdspecCtrlLoadBreak" || name == "rsvpSenderAdspecCtrlLoadHopCount" || name == "rsvpSenderAdspecCtrlLoadMinLatency" || name == "rsvpSenderAdspecCtrlLoadMtu" || name == "rsvpSenderAdspecCtrlLoadPathBw" || name == "rsvpSenderAdspecCtrlLoadSvc" || name == "rsvpSenderAdspecGuaranteedBreak" || name == "rsvpSenderAdspecGuaranteedCsum" || name == "rsvpSenderAdspecGuaranteedCtot" || name == "rsvpSenderAdspecGuaranteedDsum" || name == "rsvpSenderAdspecGuaranteedDtot" || name == "rsvpSenderAdspecGuaranteedHopCount" || name == "rsvpSenderAdspecGuaranteedMinLatency" || name == "rsvpSenderAdspecGuaranteedMtu" || name == "rsvpSenderAdspecGuaranteedPathBw" || name == "rsvpSenderAdspecGuaranteedSvc" || name == "rsvpSenderAdspecHopCount" || name == "rsvpSenderAdspecMinLatency" || name == "rsvpSenderAdspecMtu" || name == "rsvpSenderAdspecPathBw" || name == "rsvpSenderDestAddr" || name == "rsvpSenderDestAddrLength" || name == "rsvpSenderDestPort" || name == "rsvpSenderFlowId" || name == "rsvpSenderHopAddr" || name == "rsvpSenderHopLih" || name == "rsvpSenderInterface" || name == "rsvpSenderInterval" || name == "rsvpSenderLastChange" || name == "rsvpSenderPolicy" || name == "rsvpSenderPort" || name == "rsvpSenderProtocol" || name == "rsvpSenderRSVPHop" || name == "rsvpSenderStatus" || name == "rsvpSenderTSpecBurst" || name == "rsvpSenderTSpecMaxTU" || name == "rsvpSenderTSpecMinTU" || name == "rsvpSenderTSpecPeakRate" || name == "rsvpSenderTSpecRate" || name == "rsvpSenderTTL" || name == "rsvpSenderType")
+    if(name == "rsvpSessionNumber" || name == "rsvpResvNumber" || name == "rsvpResvType" || name == "rsvpResvDestAddr" || name == "rsvpResvSenderAddr" || name == "rsvpResvDestAddrLength" || name == "rsvpResvSenderAddrLength" || name == "rsvpResvProtocol" || name == "rsvpResvDestPort" || name == "rsvpResvPort" || name == "rsvpResvHopAddr" || name == "rsvpResvHopLih" || name == "rsvpResvInterface" || name == "rsvpResvService" || name == "rsvpResvTSpecRate" || name == "rsvpResvTSpecPeakRate" || name == "rsvpResvTSpecBurst" || name == "rsvpResvTSpecMinTU" || name == "rsvpResvTSpecMaxTU" || name == "rsvpResvRSpecRate" || name == "rsvpResvRSpecSlack" || name == "rsvpResvInterval" || name == "rsvpResvScope" || name == "rsvpResvShared" || name == "rsvpResvExplicit" || name == "rsvpResvRSVPHop" || name == "rsvpResvLastChange" || name == "rsvpResvPolicy" || name == "rsvpResvStatus" || name == "rsvpResvTTL" || name == "rsvpResvFlowId")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsessiontable::Rsvpsessiontable()
+RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdtable()
 {
 
-    yang_name = "rsvpSessionTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvFwdTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpsessiontable::~Rsvpsessiontable()
+RSVPMIB::Rsvpresvfwdtable::~Rsvpresvfwdtable()
 {
 }
 
-bool RSVPMIB::Rsvpsessiontable::has_data() const
+bool RSVPMIB::Rsvpresvfwdtable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
+    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
     {
-        if(rsvpsessionentry[index]->has_data())
+        if(rsvpresvfwdentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool RSVPMIB::Rsvpsessiontable::has_operation() const
+bool RSVPMIB::Rsvpresvfwdtable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
+    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
     {
-        if(rsvpsessionentry[index]->has_operation())
+        if(rsvpresvfwdentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpsessiontable::get_absolute_path() const
+std::string RSVPMIB::Rsvpresvfwdtable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsessiontable::get_segment_path() const
+std::string RSVPMIB::Rsvpresvfwdtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpSessionTable";
+    path_buffer << "rsvpResvFwdTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3240,11 +2370,11 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::get_na
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rsvpSessionEntry")
+    if(child_yang_name == "rsvpResvFwdEntry")
     {
-        for(auto const & c : rsvpsessionentry)
+        for(auto const & c : rsvpresvfwdentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3252,19 +2382,19 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::get_child_by_name(const std::
                 return c;
             }
         }
-        auto c = std::make_shared<RSVPMIB::Rsvpsessiontable::Rsvpsessionentry>();
+        auto c = std::make_shared<RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry>();
         c->parent = this;
-        rsvpsessionentry.push_back(c);
+        rsvpresvfwdentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rsvpsessionentry)
+    for (auto const & c : rsvpresvfwdentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3272,112 +2402,200 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::get_ch
     return children;
 }
 
-void RSVPMIB::Rsvpsessiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpresvfwdtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpsessiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpresvfwdtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpsessiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpresvfwdtable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpSessionEntry")
+    if(name == "rsvpResvFwdEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::Rsvpsessionentry()
+RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::Rsvpresvfwdentry()
     :
-    rsvpsessionnumber{YType::int32, "rsvpSessionNumber"},
-    rsvpsessiondestaddr{YType::str, "rsvpSessionDestAddr"},
-    rsvpsessiondestaddrlength{YType::int32, "rsvpSessionDestAddrLength"},
-    rsvpsessionport{YType::str, "rsvpSessionPort"},
-    rsvpsessionprotocol{YType::int32, "rsvpSessionProtocol"},
-    rsvpsessionreceivers{YType::uint32, "rsvpSessionReceivers"},
-    rsvpsessionrequests{YType::uint32, "rsvpSessionRequests"},
-    rsvpsessionsenders{YType::uint32, "rsvpSessionSenders"},
-    rsvpsessiontype{YType::int32, "rsvpSessionType"}
+    rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
+    rsvpresvfwdnumber{YType::int32, "rsvpResvFwdNumber"},
+    rsvpresvfwdtype{YType::int32, "rsvpResvFwdType"},
+    rsvpresvfwddestaddr{YType::str, "rsvpResvFwdDestAddr"},
+    rsvpresvfwdsenderaddr{YType::str, "rsvpResvFwdSenderAddr"},
+    rsvpresvfwddestaddrlength{YType::int32, "rsvpResvFwdDestAddrLength"},
+    rsvpresvfwdsenderaddrlength{YType::int32, "rsvpResvFwdSenderAddrLength"},
+    rsvpresvfwdprotocol{YType::int32, "rsvpResvFwdProtocol"},
+    rsvpresvfwddestport{YType::str, "rsvpResvFwdDestPort"},
+    rsvpresvfwdport{YType::str, "rsvpResvFwdPort"},
+    rsvpresvfwdhopaddr{YType::str, "rsvpResvFwdHopAddr"},
+    rsvpresvfwdhoplih{YType::int32, "rsvpResvFwdHopLih"},
+    rsvpresvfwdinterface{YType::int32, "rsvpResvFwdInterface"},
+    rsvpresvfwdservice{YType::enumeration, "rsvpResvFwdService"},
+    rsvpresvfwdtspecrate{YType::int32, "rsvpResvFwdTSpecRate"},
+    rsvpresvfwdtspecpeakrate{YType::int32, "rsvpResvFwdTSpecPeakRate"},
+    rsvpresvfwdtspecburst{YType::int32, "rsvpResvFwdTSpecBurst"},
+    rsvpresvfwdtspecmintu{YType::int32, "rsvpResvFwdTSpecMinTU"},
+    rsvpresvfwdtspecmaxtu{YType::int32, "rsvpResvFwdTSpecMaxTU"},
+    rsvpresvfwdrspecrate{YType::int32, "rsvpResvFwdRSpecRate"},
+    rsvpresvfwdrspecslack{YType::int32, "rsvpResvFwdRSpecSlack"},
+    rsvpresvfwdinterval{YType::int32, "rsvpResvFwdInterval"},
+    rsvpresvfwdscope{YType::str, "rsvpResvFwdScope"},
+    rsvpresvfwdshared{YType::boolean, "rsvpResvFwdShared"},
+    rsvpresvfwdexplicit{YType::boolean, "rsvpResvFwdExplicit"},
+    rsvpresvfwdrsvphop{YType::boolean, "rsvpResvFwdRSVPHop"},
+    rsvpresvfwdlastchange{YType::uint32, "rsvpResvFwdLastChange"},
+    rsvpresvfwdpolicy{YType::str, "rsvpResvFwdPolicy"},
+    rsvpresvfwdstatus{YType::enumeration, "rsvpResvFwdStatus"},
+    rsvpresvfwdttl{YType::int32, "rsvpResvFwdTTL"},
+    rsvpresvfwdflowid{YType::int32, "rsvpResvFwdFlowId"}
 {
 
-    yang_name = "rsvpSessionEntry"; yang_parent_name = "rsvpSessionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvFwdEntry"; yang_parent_name = "rsvpResvFwdTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::~Rsvpsessionentry()
+RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::~Rsvpresvfwdentry()
 {
 }
 
-bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_data() const
+bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_data() const
 {
     return rsvpsessionnumber.is_set
-	|| rsvpsessiondestaddr.is_set
-	|| rsvpsessiondestaddrlength.is_set
-	|| rsvpsessionport.is_set
-	|| rsvpsessionprotocol.is_set
-	|| rsvpsessionreceivers.is_set
-	|| rsvpsessionrequests.is_set
-	|| rsvpsessionsenders.is_set
-	|| rsvpsessiontype.is_set;
+	|| rsvpresvfwdnumber.is_set
+	|| rsvpresvfwdtype.is_set
+	|| rsvpresvfwddestaddr.is_set
+	|| rsvpresvfwdsenderaddr.is_set
+	|| rsvpresvfwddestaddrlength.is_set
+	|| rsvpresvfwdsenderaddrlength.is_set
+	|| rsvpresvfwdprotocol.is_set
+	|| rsvpresvfwddestport.is_set
+	|| rsvpresvfwdport.is_set
+	|| rsvpresvfwdhopaddr.is_set
+	|| rsvpresvfwdhoplih.is_set
+	|| rsvpresvfwdinterface.is_set
+	|| rsvpresvfwdservice.is_set
+	|| rsvpresvfwdtspecrate.is_set
+	|| rsvpresvfwdtspecpeakrate.is_set
+	|| rsvpresvfwdtspecburst.is_set
+	|| rsvpresvfwdtspecmintu.is_set
+	|| rsvpresvfwdtspecmaxtu.is_set
+	|| rsvpresvfwdrspecrate.is_set
+	|| rsvpresvfwdrspecslack.is_set
+	|| rsvpresvfwdinterval.is_set
+	|| rsvpresvfwdscope.is_set
+	|| rsvpresvfwdshared.is_set
+	|| rsvpresvfwdexplicit.is_set
+	|| rsvpresvfwdrsvphop.is_set
+	|| rsvpresvfwdlastchange.is_set
+	|| rsvpresvfwdpolicy.is_set
+	|| rsvpresvfwdstatus.is_set
+	|| rsvpresvfwdttl.is_set
+	|| rsvpresvfwdflowid.is_set;
 }
 
-bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_operation() const
+bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
-	|| ydk::is_set(rsvpsessiondestaddr.yfilter)
-	|| ydk::is_set(rsvpsessiondestaddrlength.yfilter)
-	|| ydk::is_set(rsvpsessionport.yfilter)
-	|| ydk::is_set(rsvpsessionprotocol.yfilter)
-	|| ydk::is_set(rsvpsessionreceivers.yfilter)
-	|| ydk::is_set(rsvpsessionrequests.yfilter)
-	|| ydk::is_set(rsvpsessionsenders.yfilter)
-	|| ydk::is_set(rsvpsessiontype.yfilter);
+	|| ydk::is_set(rsvpresvfwdnumber.yfilter)
+	|| ydk::is_set(rsvpresvfwdtype.yfilter)
+	|| ydk::is_set(rsvpresvfwddestaddr.yfilter)
+	|| ydk::is_set(rsvpresvfwdsenderaddr.yfilter)
+	|| ydk::is_set(rsvpresvfwddestaddrlength.yfilter)
+	|| ydk::is_set(rsvpresvfwdsenderaddrlength.yfilter)
+	|| ydk::is_set(rsvpresvfwdprotocol.yfilter)
+	|| ydk::is_set(rsvpresvfwddestport.yfilter)
+	|| ydk::is_set(rsvpresvfwdport.yfilter)
+	|| ydk::is_set(rsvpresvfwdhopaddr.yfilter)
+	|| ydk::is_set(rsvpresvfwdhoplih.yfilter)
+	|| ydk::is_set(rsvpresvfwdinterface.yfilter)
+	|| ydk::is_set(rsvpresvfwdservice.yfilter)
+	|| ydk::is_set(rsvpresvfwdtspecrate.yfilter)
+	|| ydk::is_set(rsvpresvfwdtspecpeakrate.yfilter)
+	|| ydk::is_set(rsvpresvfwdtspecburst.yfilter)
+	|| ydk::is_set(rsvpresvfwdtspecmintu.yfilter)
+	|| ydk::is_set(rsvpresvfwdtspecmaxtu.yfilter)
+	|| ydk::is_set(rsvpresvfwdrspecrate.yfilter)
+	|| ydk::is_set(rsvpresvfwdrspecslack.yfilter)
+	|| ydk::is_set(rsvpresvfwdinterval.yfilter)
+	|| ydk::is_set(rsvpresvfwdscope.yfilter)
+	|| ydk::is_set(rsvpresvfwdshared.yfilter)
+	|| ydk::is_set(rsvpresvfwdexplicit.yfilter)
+	|| ydk::is_set(rsvpresvfwdrsvphop.yfilter)
+	|| ydk::is_set(rsvpresvfwdlastchange.yfilter)
+	|| ydk::is_set(rsvpresvfwdpolicy.yfilter)
+	|| ydk::is_set(rsvpresvfwdstatus.yfilter)
+	|| ydk::is_set(rsvpresvfwdttl.yfilter)
+	|| ydk::is_set(rsvpresvfwdflowid.yfilter);
 }
 
-std::string RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_absolute_path() const
+std::string RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpSessionTable/" << get_segment_path();
+    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpResvFwdTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_segment_path() const
+std::string RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpSessionEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']";
+    path_buffer << "rsvpResvFwdEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpResvFwdNumber='" <<rsvpresvfwdnumber <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rsvpsessionnumber.is_set || is_set(rsvpsessionnumber.yfilter)) leaf_name_data.push_back(rsvpsessionnumber.get_name_leafdata());
-    if (rsvpsessiondestaddr.is_set || is_set(rsvpsessiondestaddr.yfilter)) leaf_name_data.push_back(rsvpsessiondestaddr.get_name_leafdata());
-    if (rsvpsessiondestaddrlength.is_set || is_set(rsvpsessiondestaddrlength.yfilter)) leaf_name_data.push_back(rsvpsessiondestaddrlength.get_name_leafdata());
-    if (rsvpsessionport.is_set || is_set(rsvpsessionport.yfilter)) leaf_name_data.push_back(rsvpsessionport.get_name_leafdata());
-    if (rsvpsessionprotocol.is_set || is_set(rsvpsessionprotocol.yfilter)) leaf_name_data.push_back(rsvpsessionprotocol.get_name_leafdata());
-    if (rsvpsessionreceivers.is_set || is_set(rsvpsessionreceivers.yfilter)) leaf_name_data.push_back(rsvpsessionreceivers.get_name_leafdata());
-    if (rsvpsessionrequests.is_set || is_set(rsvpsessionrequests.yfilter)) leaf_name_data.push_back(rsvpsessionrequests.get_name_leafdata());
-    if (rsvpsessionsenders.is_set || is_set(rsvpsessionsenders.yfilter)) leaf_name_data.push_back(rsvpsessionsenders.get_name_leafdata());
-    if (rsvpsessiontype.is_set || is_set(rsvpsessiontype.yfilter)) leaf_name_data.push_back(rsvpsessiontype.get_name_leafdata());
+    if (rsvpresvfwdnumber.is_set || is_set(rsvpresvfwdnumber.yfilter)) leaf_name_data.push_back(rsvpresvfwdnumber.get_name_leafdata());
+    if (rsvpresvfwdtype.is_set || is_set(rsvpresvfwdtype.yfilter)) leaf_name_data.push_back(rsvpresvfwdtype.get_name_leafdata());
+    if (rsvpresvfwddestaddr.is_set || is_set(rsvpresvfwddestaddr.yfilter)) leaf_name_data.push_back(rsvpresvfwddestaddr.get_name_leafdata());
+    if (rsvpresvfwdsenderaddr.is_set || is_set(rsvpresvfwdsenderaddr.yfilter)) leaf_name_data.push_back(rsvpresvfwdsenderaddr.get_name_leafdata());
+    if (rsvpresvfwddestaddrlength.is_set || is_set(rsvpresvfwddestaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvfwddestaddrlength.get_name_leafdata());
+    if (rsvpresvfwdsenderaddrlength.is_set || is_set(rsvpresvfwdsenderaddrlength.yfilter)) leaf_name_data.push_back(rsvpresvfwdsenderaddrlength.get_name_leafdata());
+    if (rsvpresvfwdprotocol.is_set || is_set(rsvpresvfwdprotocol.yfilter)) leaf_name_data.push_back(rsvpresvfwdprotocol.get_name_leafdata());
+    if (rsvpresvfwddestport.is_set || is_set(rsvpresvfwddestport.yfilter)) leaf_name_data.push_back(rsvpresvfwddestport.get_name_leafdata());
+    if (rsvpresvfwdport.is_set || is_set(rsvpresvfwdport.yfilter)) leaf_name_data.push_back(rsvpresvfwdport.get_name_leafdata());
+    if (rsvpresvfwdhopaddr.is_set || is_set(rsvpresvfwdhopaddr.yfilter)) leaf_name_data.push_back(rsvpresvfwdhopaddr.get_name_leafdata());
+    if (rsvpresvfwdhoplih.is_set || is_set(rsvpresvfwdhoplih.yfilter)) leaf_name_data.push_back(rsvpresvfwdhoplih.get_name_leafdata());
+    if (rsvpresvfwdinterface.is_set || is_set(rsvpresvfwdinterface.yfilter)) leaf_name_data.push_back(rsvpresvfwdinterface.get_name_leafdata());
+    if (rsvpresvfwdservice.is_set || is_set(rsvpresvfwdservice.yfilter)) leaf_name_data.push_back(rsvpresvfwdservice.get_name_leafdata());
+    if (rsvpresvfwdtspecrate.is_set || is_set(rsvpresvfwdtspecrate.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecrate.get_name_leafdata());
+    if (rsvpresvfwdtspecpeakrate.is_set || is_set(rsvpresvfwdtspecpeakrate.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecpeakrate.get_name_leafdata());
+    if (rsvpresvfwdtspecburst.is_set || is_set(rsvpresvfwdtspecburst.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecburst.get_name_leafdata());
+    if (rsvpresvfwdtspecmintu.is_set || is_set(rsvpresvfwdtspecmintu.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecmintu.get_name_leafdata());
+    if (rsvpresvfwdtspecmaxtu.is_set || is_set(rsvpresvfwdtspecmaxtu.yfilter)) leaf_name_data.push_back(rsvpresvfwdtspecmaxtu.get_name_leafdata());
+    if (rsvpresvfwdrspecrate.is_set || is_set(rsvpresvfwdrspecrate.yfilter)) leaf_name_data.push_back(rsvpresvfwdrspecrate.get_name_leafdata());
+    if (rsvpresvfwdrspecslack.is_set || is_set(rsvpresvfwdrspecslack.yfilter)) leaf_name_data.push_back(rsvpresvfwdrspecslack.get_name_leafdata());
+    if (rsvpresvfwdinterval.is_set || is_set(rsvpresvfwdinterval.yfilter)) leaf_name_data.push_back(rsvpresvfwdinterval.get_name_leafdata());
+    if (rsvpresvfwdscope.is_set || is_set(rsvpresvfwdscope.yfilter)) leaf_name_data.push_back(rsvpresvfwdscope.get_name_leafdata());
+    if (rsvpresvfwdshared.is_set || is_set(rsvpresvfwdshared.yfilter)) leaf_name_data.push_back(rsvpresvfwdshared.get_name_leafdata());
+    if (rsvpresvfwdexplicit.is_set || is_set(rsvpresvfwdexplicit.yfilter)) leaf_name_data.push_back(rsvpresvfwdexplicit.get_name_leafdata());
+    if (rsvpresvfwdrsvphop.is_set || is_set(rsvpresvfwdrsvphop.yfilter)) leaf_name_data.push_back(rsvpresvfwdrsvphop.get_name_leafdata());
+    if (rsvpresvfwdlastchange.is_set || is_set(rsvpresvfwdlastchange.yfilter)) leaf_name_data.push_back(rsvpresvfwdlastchange.get_name_leafdata());
+    if (rsvpresvfwdpolicy.is_set || is_set(rsvpresvfwdpolicy.yfilter)) leaf_name_data.push_back(rsvpresvfwdpolicy.get_name_leafdata());
+    if (rsvpresvfwdstatus.is_set || is_set(rsvpresvfwdstatus.yfilter)) leaf_name_data.push_back(rsvpresvfwdstatus.get_name_leafdata());
+    if (rsvpresvfwdttl.is_set || is_set(rsvpresvfwdttl.yfilter)) leaf_name_data.push_back(rsvpresvfwdttl.get_name_leafdata());
+    if (rsvpresvfwdflowid.is_set || is_set(rsvpresvfwdflowid.yfilter)) leaf_name_data.push_back(rsvpresvfwdflowid.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -3385,99 +2603,881 @@ void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_value(const std::string & 
         rsvpsessionnumber.value_namespace = name_space;
         rsvpsessionnumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionDestAddr")
+    if(value_path == "rsvpResvFwdNumber")
     {
-        rsvpsessiondestaddr = value;
-        rsvpsessiondestaddr.value_namespace = name_space;
-        rsvpsessiondestaddr.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwdnumber = value;
+        rsvpresvfwdnumber.value_namespace = name_space;
+        rsvpresvfwdnumber.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionDestAddrLength")
+    if(value_path == "rsvpResvFwdType")
     {
-        rsvpsessiondestaddrlength = value;
-        rsvpsessiondestaddrlength.value_namespace = name_space;
-        rsvpsessiondestaddrlength.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwdtype = value;
+        rsvpresvfwdtype.value_namespace = name_space;
+        rsvpresvfwdtype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionPort")
+    if(value_path == "rsvpResvFwdDestAddr")
     {
-        rsvpsessionport = value;
-        rsvpsessionport.value_namespace = name_space;
-        rsvpsessionport.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwddestaddr = value;
+        rsvpresvfwddestaddr.value_namespace = name_space;
+        rsvpresvfwddestaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionProtocol")
+    if(value_path == "rsvpResvFwdSenderAddr")
     {
-        rsvpsessionprotocol = value;
-        rsvpsessionprotocol.value_namespace = name_space;
-        rsvpsessionprotocol.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwdsenderaddr = value;
+        rsvpresvfwdsenderaddr.value_namespace = name_space;
+        rsvpresvfwdsenderaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionReceivers")
+    if(value_path == "rsvpResvFwdDestAddrLength")
     {
-        rsvpsessionreceivers = value;
-        rsvpsessionreceivers.value_namespace = name_space;
-        rsvpsessionreceivers.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwddestaddrlength = value;
+        rsvpresvfwddestaddrlength.value_namespace = name_space;
+        rsvpresvfwddestaddrlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionRequests")
+    if(value_path == "rsvpResvFwdSenderAddrLength")
     {
-        rsvpsessionrequests = value;
-        rsvpsessionrequests.value_namespace = name_space;
-        rsvpsessionrequests.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwdsenderaddrlength = value;
+        rsvpresvfwdsenderaddrlength.value_namespace = name_space;
+        rsvpresvfwdsenderaddrlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionSenders")
+    if(value_path == "rsvpResvFwdProtocol")
     {
-        rsvpsessionsenders = value;
-        rsvpsessionsenders.value_namespace = name_space;
-        rsvpsessionsenders.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwdprotocol = value;
+        rsvpresvfwdprotocol.value_namespace = name_space;
+        rsvpresvfwdprotocol.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rsvpSessionType")
+    if(value_path == "rsvpResvFwdDestPort")
     {
-        rsvpsessiontype = value;
-        rsvpsessiontype.value_namespace = name_space;
-        rsvpsessiontype.value_namespace_prefix = name_space_prefix;
+        rsvpresvfwddestport = value;
+        rsvpresvfwddestport.value_namespace = name_space;
+        rsvpresvfwddestport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdPort")
+    {
+        rsvpresvfwdport = value;
+        rsvpresvfwdport.value_namespace = name_space;
+        rsvpresvfwdport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdHopAddr")
+    {
+        rsvpresvfwdhopaddr = value;
+        rsvpresvfwdhopaddr.value_namespace = name_space;
+        rsvpresvfwdhopaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdHopLih")
+    {
+        rsvpresvfwdhoplih = value;
+        rsvpresvfwdhoplih.value_namespace = name_space;
+        rsvpresvfwdhoplih.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdInterface")
+    {
+        rsvpresvfwdinterface = value;
+        rsvpresvfwdinterface.value_namespace = name_space;
+        rsvpresvfwdinterface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdService")
+    {
+        rsvpresvfwdservice = value;
+        rsvpresvfwdservice.value_namespace = name_space;
+        rsvpresvfwdservice.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdTSpecRate")
+    {
+        rsvpresvfwdtspecrate = value;
+        rsvpresvfwdtspecrate.value_namespace = name_space;
+        rsvpresvfwdtspecrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdTSpecPeakRate")
+    {
+        rsvpresvfwdtspecpeakrate = value;
+        rsvpresvfwdtspecpeakrate.value_namespace = name_space;
+        rsvpresvfwdtspecpeakrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdTSpecBurst")
+    {
+        rsvpresvfwdtspecburst = value;
+        rsvpresvfwdtspecburst.value_namespace = name_space;
+        rsvpresvfwdtspecburst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdTSpecMinTU")
+    {
+        rsvpresvfwdtspecmintu = value;
+        rsvpresvfwdtspecmintu.value_namespace = name_space;
+        rsvpresvfwdtspecmintu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdTSpecMaxTU")
+    {
+        rsvpresvfwdtspecmaxtu = value;
+        rsvpresvfwdtspecmaxtu.value_namespace = name_space;
+        rsvpresvfwdtspecmaxtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdRSpecRate")
+    {
+        rsvpresvfwdrspecrate = value;
+        rsvpresvfwdrspecrate.value_namespace = name_space;
+        rsvpresvfwdrspecrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdRSpecSlack")
+    {
+        rsvpresvfwdrspecslack = value;
+        rsvpresvfwdrspecslack.value_namespace = name_space;
+        rsvpresvfwdrspecslack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdInterval")
+    {
+        rsvpresvfwdinterval = value;
+        rsvpresvfwdinterval.value_namespace = name_space;
+        rsvpresvfwdinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdScope")
+    {
+        rsvpresvfwdscope = value;
+        rsvpresvfwdscope.value_namespace = name_space;
+        rsvpresvfwdscope.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdShared")
+    {
+        rsvpresvfwdshared = value;
+        rsvpresvfwdshared.value_namespace = name_space;
+        rsvpresvfwdshared.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdExplicit")
+    {
+        rsvpresvfwdexplicit = value;
+        rsvpresvfwdexplicit.value_namespace = name_space;
+        rsvpresvfwdexplicit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdRSVPHop")
+    {
+        rsvpresvfwdrsvphop = value;
+        rsvpresvfwdrsvphop.value_namespace = name_space;
+        rsvpresvfwdrsvphop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdLastChange")
+    {
+        rsvpresvfwdlastchange = value;
+        rsvpresvfwdlastchange.value_namespace = name_space;
+        rsvpresvfwdlastchange.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdPolicy")
+    {
+        rsvpresvfwdpolicy = value;
+        rsvpresvfwdpolicy.value_namespace = name_space;
+        rsvpresvfwdpolicy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdStatus")
+    {
+        rsvpresvfwdstatus = value;
+        rsvpresvfwdstatus.value_namespace = name_space;
+        rsvpresvfwdstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdTTL")
+    {
+        rsvpresvfwdttl = value;
+        rsvpresvfwdttl.value_namespace = name_space;
+        rsvpresvfwdttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpResvFwdFlowId")
+    {
+        rsvpresvfwdflowid = value;
+        rsvpresvfwdflowid.value_namespace = name_space;
+        rsvpresvfwdflowid.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
         rsvpsessionnumber.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionDestAddr")
+    if(value_path == "rsvpResvFwdNumber")
     {
-        rsvpsessiondestaddr.yfilter = yfilter;
+        rsvpresvfwdnumber.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionDestAddrLength")
+    if(value_path == "rsvpResvFwdType")
     {
-        rsvpsessiondestaddrlength.yfilter = yfilter;
+        rsvpresvfwdtype.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionPort")
+    if(value_path == "rsvpResvFwdDestAddr")
     {
-        rsvpsessionport.yfilter = yfilter;
+        rsvpresvfwddestaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionProtocol")
+    if(value_path == "rsvpResvFwdSenderAddr")
     {
-        rsvpsessionprotocol.yfilter = yfilter;
+        rsvpresvfwdsenderaddr.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionReceivers")
+    if(value_path == "rsvpResvFwdDestAddrLength")
     {
-        rsvpsessionreceivers.yfilter = yfilter;
+        rsvpresvfwddestaddrlength.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionRequests")
+    if(value_path == "rsvpResvFwdSenderAddrLength")
     {
-        rsvpsessionrequests.yfilter = yfilter;
+        rsvpresvfwdsenderaddrlength.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionSenders")
+    if(value_path == "rsvpResvFwdProtocol")
     {
-        rsvpsessionsenders.yfilter = yfilter;
+        rsvpresvfwdprotocol.yfilter = yfilter;
     }
-    if(value_path == "rsvpSessionType")
+    if(value_path == "rsvpResvFwdDestPort")
     {
-        rsvpsessiontype.yfilter = yfilter;
+        rsvpresvfwddestport.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdPort")
+    {
+        rsvpresvfwdport.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdHopAddr")
+    {
+        rsvpresvfwdhopaddr.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdHopLih")
+    {
+        rsvpresvfwdhoplih.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdInterface")
+    {
+        rsvpresvfwdinterface.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdService")
+    {
+        rsvpresvfwdservice.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdTSpecRate")
+    {
+        rsvpresvfwdtspecrate.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdTSpecPeakRate")
+    {
+        rsvpresvfwdtspecpeakrate.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdTSpecBurst")
+    {
+        rsvpresvfwdtspecburst.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdTSpecMinTU")
+    {
+        rsvpresvfwdtspecmintu.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdTSpecMaxTU")
+    {
+        rsvpresvfwdtspecmaxtu.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdRSpecRate")
+    {
+        rsvpresvfwdrspecrate.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdRSpecSlack")
+    {
+        rsvpresvfwdrspecslack.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdInterval")
+    {
+        rsvpresvfwdinterval.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdScope")
+    {
+        rsvpresvfwdscope.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdShared")
+    {
+        rsvpresvfwdshared.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdExplicit")
+    {
+        rsvpresvfwdexplicit.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdRSVPHop")
+    {
+        rsvpresvfwdrsvphop.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdLastChange")
+    {
+        rsvpresvfwdlastchange.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdPolicy")
+    {
+        rsvpresvfwdpolicy.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdStatus")
+    {
+        rsvpresvfwdstatus.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdTTL")
+    {
+        rsvpresvfwdttl.yfilter = yfilter;
+    }
+    if(value_path == "rsvpResvFwdFlowId")
+    {
+        rsvpresvfwdflowid.yfilter = yfilter;
     }
 }
 
-bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvpSessionNumber" || name == "rsvpSessionDestAddr" || name == "rsvpSessionDestAddrLength" || name == "rsvpSessionPort" || name == "rsvpSessionProtocol" || name == "rsvpSessionReceivers" || name == "rsvpSessionRequests" || name == "rsvpSessionSenders" || name == "rsvpSessionType")
+    if(name == "rsvpSessionNumber" || name == "rsvpResvFwdNumber" || name == "rsvpResvFwdType" || name == "rsvpResvFwdDestAddr" || name == "rsvpResvFwdSenderAddr" || name == "rsvpResvFwdDestAddrLength" || name == "rsvpResvFwdSenderAddrLength" || name == "rsvpResvFwdProtocol" || name == "rsvpResvFwdDestPort" || name == "rsvpResvFwdPort" || name == "rsvpResvFwdHopAddr" || name == "rsvpResvFwdHopLih" || name == "rsvpResvFwdInterface" || name == "rsvpResvFwdService" || name == "rsvpResvFwdTSpecRate" || name == "rsvpResvFwdTSpecPeakRate" || name == "rsvpResvFwdTSpecBurst" || name == "rsvpResvFwdTSpecMinTU" || name == "rsvpResvFwdTSpecMaxTU" || name == "rsvpResvFwdRSpecRate" || name == "rsvpResvFwdRSpecSlack" || name == "rsvpResvFwdInterval" || name == "rsvpResvFwdScope" || name == "rsvpResvFwdShared" || name == "rsvpResvFwdExplicit" || name == "rsvpResvFwdRSVPHop" || name == "rsvpResvFwdLastChange" || name == "rsvpResvFwdPolicy" || name == "rsvpResvFwdStatus" || name == "rsvpResvFwdTTL" || name == "rsvpResvFwdFlowId")
+        return true;
+    return false;
+}
+
+RSVPMIB::Rsvpiftable::Rsvpiftable()
+{
+
+    yang_name = "rsvpIfTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RSVPMIB::Rsvpiftable::~Rsvpiftable()
+{
+}
+
+bool RSVPMIB::Rsvpiftable::has_data() const
+{
+    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    {
+        if(rsvpifentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool RSVPMIB::Rsvpiftable::has_operation() const
+{
+    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    {
+        if(rsvpifentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string RSVPMIB::Rsvpiftable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RSVPMIB::Rsvpiftable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvpIfTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rsvpIfEntry")
+    {
+        for(auto const & c : rsvpifentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RSVPMIB::Rsvpiftable::Rsvpifentry>();
+        c->parent = this;
+        rsvpifentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rsvpifentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void RSVPMIB::Rsvpiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RSVPMIB::Rsvpiftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RSVPMIB::Rsvpiftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvpIfEntry")
+        return true;
+    return false;
+}
+
+RSVPMIB::Rsvpiftable::Rsvpifentry::Rsvpifentry()
+    :
+    ifindex{YType::str, "ifIndex"},
+    rsvpifudpnbrs{YType::uint32, "rsvpIfUdpNbrs"},
+    rsvpifipnbrs{YType::uint32, "rsvpIfIpNbrs"},
+    rsvpifnbrs{YType::uint32, "rsvpIfNbrs"},
+    rsvpifrefreshblockademultiple{YType::int32, "rsvpIfRefreshBlockadeMultiple"},
+    rsvpifrefreshmultiple{YType::int32, "rsvpIfRefreshMultiple"},
+    rsvpifttl{YType::int32, "rsvpIfTTL"},
+    rsvpifrefreshinterval{YType::int32, "rsvpIfRefreshInterval"},
+    rsvpifroutedelay{YType::int32, "rsvpIfRouteDelay"},
+    rsvpifenabled{YType::boolean, "rsvpIfEnabled"},
+    rsvpifudprequired{YType::boolean, "rsvpIfUdpRequired"},
+    rsvpifstatus{YType::enumeration, "rsvpIfStatus"}
+{
+
+    yang_name = "rsvpIfEntry"; yang_parent_name = "rsvpIfTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RSVPMIB::Rsvpiftable::Rsvpifentry::~Rsvpifentry()
+{
+}
+
+bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_data() const
+{
+    return ifindex.is_set
+	|| rsvpifudpnbrs.is_set
+	|| rsvpifipnbrs.is_set
+	|| rsvpifnbrs.is_set
+	|| rsvpifrefreshblockademultiple.is_set
+	|| rsvpifrefreshmultiple.is_set
+	|| rsvpifttl.is_set
+	|| rsvpifrefreshinterval.is_set
+	|| rsvpifroutedelay.is_set
+	|| rsvpifenabled.is_set
+	|| rsvpifudprequired.is_set
+	|| rsvpifstatus.is_set;
+}
+
+bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(rsvpifudpnbrs.yfilter)
+	|| ydk::is_set(rsvpifipnbrs.yfilter)
+	|| ydk::is_set(rsvpifnbrs.yfilter)
+	|| ydk::is_set(rsvpifrefreshblockademultiple.yfilter)
+	|| ydk::is_set(rsvpifrefreshmultiple.yfilter)
+	|| ydk::is_set(rsvpifttl.yfilter)
+	|| ydk::is_set(rsvpifrefreshinterval.yfilter)
+	|| ydk::is_set(rsvpifroutedelay.yfilter)
+	|| ydk::is_set(rsvpifenabled.yfilter)
+	|| ydk::is_set(rsvpifudprequired.yfilter)
+	|| ydk::is_set(rsvpifstatus.yfilter);
+}
+
+std::string RSVPMIB::Rsvpiftable::Rsvpifentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpIfTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RSVPMIB::Rsvpiftable::Rsvpifentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvpIfEntry" <<"[ifIndex='" <<ifindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::Rsvpifentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (rsvpifudpnbrs.is_set || is_set(rsvpifudpnbrs.yfilter)) leaf_name_data.push_back(rsvpifudpnbrs.get_name_leafdata());
+    if (rsvpifipnbrs.is_set || is_set(rsvpifipnbrs.yfilter)) leaf_name_data.push_back(rsvpifipnbrs.get_name_leafdata());
+    if (rsvpifnbrs.is_set || is_set(rsvpifnbrs.yfilter)) leaf_name_data.push_back(rsvpifnbrs.get_name_leafdata());
+    if (rsvpifrefreshblockademultiple.is_set || is_set(rsvpifrefreshblockademultiple.yfilter)) leaf_name_data.push_back(rsvpifrefreshblockademultiple.get_name_leafdata());
+    if (rsvpifrefreshmultiple.is_set || is_set(rsvpifrefreshmultiple.yfilter)) leaf_name_data.push_back(rsvpifrefreshmultiple.get_name_leafdata());
+    if (rsvpifttl.is_set || is_set(rsvpifttl.yfilter)) leaf_name_data.push_back(rsvpifttl.get_name_leafdata());
+    if (rsvpifrefreshinterval.is_set || is_set(rsvpifrefreshinterval.yfilter)) leaf_name_data.push_back(rsvpifrefreshinterval.get_name_leafdata());
+    if (rsvpifroutedelay.is_set || is_set(rsvpifroutedelay.yfilter)) leaf_name_data.push_back(rsvpifroutedelay.get_name_leafdata());
+    if (rsvpifenabled.is_set || is_set(rsvpifenabled.yfilter)) leaf_name_data.push_back(rsvpifenabled.get_name_leafdata());
+    if (rsvpifudprequired.is_set || is_set(rsvpifudprequired.yfilter)) leaf_name_data.push_back(rsvpifudprequired.get_name_leafdata());
+    if (rsvpifstatus.is_set || is_set(rsvpifstatus.yfilter)) leaf_name_data.push_back(rsvpifstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::Rsvpifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::Rsvpifentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RSVPMIB::Rsvpiftable::Rsvpifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfUdpNbrs")
+    {
+        rsvpifudpnbrs = value;
+        rsvpifudpnbrs.value_namespace = name_space;
+        rsvpifudpnbrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfIpNbrs")
+    {
+        rsvpifipnbrs = value;
+        rsvpifipnbrs.value_namespace = name_space;
+        rsvpifipnbrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfNbrs")
+    {
+        rsvpifnbrs = value;
+        rsvpifnbrs.value_namespace = name_space;
+        rsvpifnbrs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfRefreshBlockadeMultiple")
+    {
+        rsvpifrefreshblockademultiple = value;
+        rsvpifrefreshblockademultiple.value_namespace = name_space;
+        rsvpifrefreshblockademultiple.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfRefreshMultiple")
+    {
+        rsvpifrefreshmultiple = value;
+        rsvpifrefreshmultiple.value_namespace = name_space;
+        rsvpifrefreshmultiple.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfTTL")
+    {
+        rsvpifttl = value;
+        rsvpifttl.value_namespace = name_space;
+        rsvpifttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfRefreshInterval")
+    {
+        rsvpifrefreshinterval = value;
+        rsvpifrefreshinterval.value_namespace = name_space;
+        rsvpifrefreshinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfRouteDelay")
+    {
+        rsvpifroutedelay = value;
+        rsvpifroutedelay.value_namespace = name_space;
+        rsvpifroutedelay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfEnabled")
+    {
+        rsvpifenabled = value;
+        rsvpifenabled.value_namespace = name_space;
+        rsvpifenabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfUdpRequired")
+    {
+        rsvpifudprequired = value;
+        rsvpifudprequired.value_namespace = name_space;
+        rsvpifudprequired.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpIfStatus")
+    {
+        rsvpifstatus = value;
+        rsvpifstatus.value_namespace = name_space;
+        rsvpifstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RSVPMIB::Rsvpiftable::Rsvpifentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfUdpNbrs")
+    {
+        rsvpifudpnbrs.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfIpNbrs")
+    {
+        rsvpifipnbrs.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfNbrs")
+    {
+        rsvpifnbrs.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfRefreshBlockadeMultiple")
+    {
+        rsvpifrefreshblockademultiple.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfRefreshMultiple")
+    {
+        rsvpifrefreshmultiple.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfTTL")
+    {
+        rsvpifttl.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfRefreshInterval")
+    {
+        rsvpifrefreshinterval.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfRouteDelay")
+    {
+        rsvpifroutedelay.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfEnabled")
+    {
+        rsvpifenabled.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfUdpRequired")
+    {
+        rsvpifudprequired.yfilter = yfilter;
+    }
+    if(value_path == "rsvpIfStatus")
+    {
+        rsvpifstatus.yfilter = yfilter;
+    }
+}
+
+bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "rsvpIfUdpNbrs" || name == "rsvpIfIpNbrs" || name == "rsvpIfNbrs" || name == "rsvpIfRefreshBlockadeMultiple" || name == "rsvpIfRefreshMultiple" || name == "rsvpIfTTL" || name == "rsvpIfRefreshInterval" || name == "rsvpIfRouteDelay" || name == "rsvpIfEnabled" || name == "rsvpIfUdpRequired" || name == "rsvpIfStatus")
+        return true;
+    return false;
+}
+
+RSVPMIB::Rsvpnbrtable::Rsvpnbrtable()
+{
+
+    yang_name = "rsvpNbrTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RSVPMIB::Rsvpnbrtable::~Rsvpnbrtable()
+{
+}
+
+bool RSVPMIB::Rsvpnbrtable::has_data() const
+{
+    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
+    {
+        if(rsvpnbrentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool RSVPMIB::Rsvpnbrtable::has_operation() const
+{
+    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
+    {
+        if(rsvpnbrentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string RSVPMIB::Rsvpnbrtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RSVPMIB::Rsvpnbrtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvpNbrTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rsvpNbrEntry")
+    {
+        for(auto const & c : rsvpnbrentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RSVPMIB::Rsvpnbrtable::Rsvpnbrentry>();
+        c->parent = this;
+        rsvpnbrentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rsvpnbrentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void RSVPMIB::Rsvpnbrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RSVPMIB::Rsvpnbrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RSVPMIB::Rsvpnbrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvpNbrEntry")
+        return true;
+    return false;
+}
+
+RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::Rsvpnbrentry()
+    :
+    ifindex{YType::str, "ifIndex"},
+    rsvpnbraddress{YType::str, "rsvpNbrAddress"},
+    rsvpnbrprotocol{YType::enumeration, "rsvpNbrProtocol"},
+    rsvpnbrstatus{YType::enumeration, "rsvpNbrStatus"}
+{
+
+    yang_name = "rsvpNbrEntry"; yang_parent_name = "rsvpNbrTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::~Rsvpnbrentry()
+{
+}
+
+bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_data() const
+{
+    return ifindex.is_set
+	|| rsvpnbraddress.is_set
+	|| rsvpnbrprotocol.is_set
+	|| rsvpnbrstatus.is_set;
+}
+
+bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(rsvpnbraddress.yfilter)
+	|| ydk::is_set(rsvpnbrprotocol.yfilter)
+	|| ydk::is_set(rsvpnbrstatus.yfilter);
+}
+
+std::string RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RSVP-MIB:RSVP-MIB/rsvpNbrTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvpNbrEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[rsvpNbrAddress='" <<rsvpnbraddress <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (rsvpnbraddress.is_set || is_set(rsvpnbraddress.yfilter)) leaf_name_data.push_back(rsvpnbraddress.get_name_leafdata());
+    if (rsvpnbrprotocol.is_set || is_set(rsvpnbrprotocol.yfilter)) leaf_name_data.push_back(rsvpnbrprotocol.get_name_leafdata());
+    if (rsvpnbrstatus.is_set || is_set(rsvpnbrstatus.yfilter)) leaf_name_data.push_back(rsvpnbrstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpNbrAddress")
+    {
+        rsvpnbraddress = value;
+        rsvpnbraddress.value_namespace = name_space;
+        rsvpnbraddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpNbrProtocol")
+    {
+        rsvpnbrprotocol = value;
+        rsvpnbrprotocol.value_namespace = name_space;
+        rsvpnbrprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rsvpNbrStatus")
+    {
+        rsvpnbrstatus = value;
+        rsvpnbrstatus.value_namespace = name_space;
+        rsvpnbrstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "rsvpNbrAddress")
+    {
+        rsvpnbraddress.yfilter = yfilter;
+    }
+    if(value_path == "rsvpNbrProtocol")
+    {
+        rsvpnbrprotocol.yfilter = yfilter;
+    }
+    if(value_path == "rsvpNbrStatus")
+    {
+        rsvpnbrstatus.yfilter = yfilter;
+    }
+}
+
+bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "rsvpNbrAddress" || name == "rsvpNbrProtocol" || name == "rsvpNbrStatus")
         return true;
     return false;
 }

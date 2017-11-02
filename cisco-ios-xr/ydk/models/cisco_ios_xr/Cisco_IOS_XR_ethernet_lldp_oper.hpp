@@ -137,138 +137,11 @@ class Lldp::Nodes::Node : public ydk::Entity
         class Interfaces; //type: Lldp::Nodes::Node::Interfaces
         class Statistics; //type: Lldp::Nodes::Node::Statistics
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors> neighbors;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Statistics> statistics;
         
 }; // Lldp::Nodes::Node
-
-
-class Lldp::Nodes::Node::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: Lldp::Nodes::Node::Interfaces::Interface
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface> > interface;
-        
-}; // Lldp::Nodes::Node::Interfaces
-
-
-class Lldp::Nodes::Node::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_name_xr; //type: string
-        ydk::YLeaf tx_enabled; //type: uint8
-        ydk::YLeaf rx_enabled; //type: uint8
-        ydk::YLeaf tx_state; //type: string
-        ydk::YLeaf rx_state; //type: string
-        ydk::YLeaf if_index; //type: uint32
-        ydk::YLeaf port_id; //type: string
-        ydk::YLeaf port_id_sub_type; //type: uint8
-        ydk::YLeaf port_description; //type: string
-        class LocalNetworkAddresses; //type: Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses> local_network_addresses;
-        
-}; // Lldp::Nodes::Node::Interfaces::Interface
-
-
-class Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses : public ydk::Entity
-{
-    public:
-        LocalNetworkAddresses();
-        ~LocalNetworkAddresses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class LldpAddrEntry; //type: Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
-        
-}; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses
-
-
-class Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry : public ydk::Entity
-{
-    public:
-        LldpAddrEntry();
-        ~LldpAddrEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ma_subtype; //type: uint8
-        ydk::YLeaf if_num; //type: uint32
-        class Address; //type: Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address> address;
-        
-}; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry
-
-
-class Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_type; //type: LldpL3AddrProtocol
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address
 
 
 class Lldp::Nodes::Node::Neighbors : public ydk::Entity
@@ -291,323 +164,11 @@ class Lldp::Nodes::Node::Neighbors : public ydk::Entity
         class Details; //type: Lldp::Nodes::Node::Neighbors::Details
         class Summaries; //type: Lldp::Nodes::Node::Neighbors::Summaries
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details> details;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices> devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details> details;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries> summaries;
         
 }; // Lldp::Nodes::Node::Neighbors
-
-
-class Lldp::Nodes::Node::Neighbors::Details : public ydk::Entity
-{
-    public:
-        Details();
-        ~Details();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Detail; //type: Lldp::Nodes::Node::Neighbors::Details::Detail
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail> > detail;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail : public ydk::Entity
-{
-    public:
-        Detail();
-        ~Detail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf device_id; //type: string
-        class LldpNeighbor; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor> > lldp_neighbor;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor : public ydk::Entity
-{
-    public:
-        LldpNeighbor();
-        ~LldpNeighbor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf receiving_interface_name; //type: string
-        ydk::YLeaf receiving_parent_interface_name; //type: string
-        ydk::YLeaf device_id; //type: string
-        ydk::YLeaf chassis_id; //type: string
-        ydk::YLeaf port_id_detail; //type: string
-        ydk::YLeaf header_version; //type: uint8
-        ydk::YLeaf hold_time; //type: uint16
-        ydk::YLeaf enabled_capabilities; //type: string
-        ydk::YLeaf platform; //type: string
-        class Detail_; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_
-        class Mib; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_> detail;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib> mib;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_ : public ydk::Entity
-{
-    public:
-        Detail_();
-        ~Detail_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf peer_mac_address; //type: string
-        ydk::YLeaf port_description; //type: string
-        ydk::YLeaf system_name; //type: string
-        ydk::YLeaf system_description; //type: string
-        ydk::YLeaf time_remaining; //type: uint32
-        ydk::YLeaf system_capabilities; //type: string
-        ydk::YLeaf enabled_capabilities; //type: string
-        ydk::YLeaf auto_negotiation; //type: string
-        ydk::YLeaf physical_media_capabilities; //type: string
-        ydk::YLeaf media_attachment_unit_type; //type: uint32
-        ydk::YLeaf port_vlan_id; //type: uint32
-        class NetworkAddresses; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses> network_addresses;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses : public ydk::Entity
-{
-    public:
-        NetworkAddresses();
-        ~NetworkAddresses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class LldpAddrEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry : public ydk::Entity
-{
-    public:
-        LldpAddrEntry();
-        ~LldpAddrEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ma_subtype; //type: uint8
-        ydk::YLeaf if_num; //type: uint32
-        class Address; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address> address;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_type; //type: LldpL3AddrProtocol
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib : public ydk::Entity
-{
-    public:
-        Mib();
-        ~Mib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rem_time_mark; //type: uint32
-        ydk::YLeaf rem_local_port_num; //type: uint32
-        ydk::YLeaf rem_index; //type: uint32
-        ydk::YLeaf chassis_id_sub_type; //type: uint8
-        ydk::YLeaf chassis_id_len; //type: uint16
-        ydk::YLeaf port_id_sub_type; //type: uint8
-        ydk::YLeaf port_id_len; //type: uint16
-        ydk::YLeaf combined_capabilities; //type: uint32
-        class UnknownTlvList; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
-        class OrgDefTlvList; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList> org_def_tlv_list;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList> unknown_tlv_list;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList : public ydk::Entity
-{
-    public:
-        OrgDefTlvList();
-        ~OrgDefTlvList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class LldpOrgDefTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry> > lldp_org_def_tlv_entry;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry : public ydk::Entity
-{
-    public:
-        LldpOrgDefTlvEntry();
-        ~LldpOrgDefTlvEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf oui; //type: uint32
-        ydk::YLeaf tlv_subtype; //type: uint8
-        ydk::YLeaf tlv_info_indes; //type: uint32
-        ydk::YLeaf tlv_value; //type: string
-
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList : public ydk::Entity
-{
-    public:
-        UnknownTlvList();
-        ~UnknownTlvList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
-        
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
-
-
-class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry : public ydk::Entity
-{
-    public:
-        LldpUnknownTlvEntry();
-        ~LldpUnknownTlvEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tlv_type; //type: uint8
-        ydk::YLeaf tlv_value; //type: string
-
-}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
 
 
 class Lldp::Nodes::Node::Neighbors::Devices : public ydk::Entity
@@ -824,10 +385,55 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib : public 
         class UnknownTlvList; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList
         class OrgDefTlvList; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList> org_def_tlv_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList> unknown_tlv_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList> org_def_tlv_list;
         
 }; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib
+
+
+class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList : public ydk::Entity
+{
+    public:
+        UnknownTlvList();
+        ~UnknownTlvList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
+        
+}; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList
+
+
+class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry : public ydk::Entity
+{
+    public:
+        LldpUnknownTlvEntry();
+        ~LldpUnknownTlvEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tlv_type; //type: uint8
+        ydk::YLeaf tlv_value; //type: string
+
+}; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
 
 
 class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList : public ydk::Entity
@@ -877,7 +483,227 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTl
 }; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
 
 
-class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList : public ydk::Entity
+class Lldp::Nodes::Node::Neighbors::Details : public ydk::Entity
+{
+    public:
+        Details();
+        ~Details();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Detail; //type: Lldp::Nodes::Node::Neighbors::Details::Detail
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail> > detail;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail : public ydk::Entity
+{
+    public:
+        Detail();
+        ~Detail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf device_id; //type: string
+        class LldpNeighbor; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor> > lldp_neighbor;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor : public ydk::Entity
+{
+    public:
+        LldpNeighbor();
+        ~LldpNeighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf receiving_interface_name; //type: string
+        ydk::YLeaf receiving_parent_interface_name; //type: string
+        ydk::YLeaf device_id; //type: string
+        ydk::YLeaf chassis_id; //type: string
+        ydk::YLeaf port_id_detail; //type: string
+        ydk::YLeaf header_version; //type: uint8
+        ydk::YLeaf hold_time; //type: uint16
+        ydk::YLeaf enabled_capabilities; //type: string
+        ydk::YLeaf platform; //type: string
+        class Detail_; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_
+        class Mib; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_> detail;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib> mib;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_ : public ydk::Entity
+{
+    public:
+        Detail_();
+        ~Detail_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf peer_mac_address; //type: string
+        ydk::YLeaf port_description; //type: string
+        ydk::YLeaf system_name; //type: string
+        ydk::YLeaf system_description; //type: string
+        ydk::YLeaf time_remaining; //type: uint32
+        ydk::YLeaf system_capabilities; //type: string
+        ydk::YLeaf enabled_capabilities; //type: string
+        ydk::YLeaf auto_negotiation; //type: string
+        ydk::YLeaf physical_media_capabilities; //type: string
+        ydk::YLeaf media_attachment_unit_type; //type: uint32
+        ydk::YLeaf port_vlan_id; //type: uint32
+        class NetworkAddresses; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses> network_addresses;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses : public ydk::Entity
+{
+    public:
+        NetworkAddresses();
+        ~NetworkAddresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LldpAddrEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry : public ydk::Entity
+{
+    public:
+        LldpAddrEntry();
+        ~LldpAddrEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ma_subtype; //type: uint8
+        ydk::YLeaf if_num; //type: uint32
+        class Address; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address> address;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_type; //type: LldpL3AddrProtocol
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib : public ydk::Entity
+{
+    public:
+        Mib();
+        ~Mib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rem_time_mark; //type: uint32
+        ydk::YLeaf rem_local_port_num; //type: uint32
+        ydk::YLeaf rem_index; //type: uint32
+        ydk::YLeaf chassis_id_sub_type; //type: uint8
+        ydk::YLeaf chassis_id_len; //type: uint16
+        ydk::YLeaf port_id_sub_type; //type: uint8
+        ydk::YLeaf port_id_len; //type: uint16
+        ydk::YLeaf combined_capabilities; //type: uint32
+        class UnknownTlvList; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
+        class OrgDefTlvList; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList> unknown_tlv_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList> org_def_tlv_list;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList : public ydk::Entity
 {
     public:
         UnknownTlvList();
@@ -893,14 +719,14 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownT
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
+        class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
         
-}; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
 
 
-class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry : public ydk::Entity
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry : public ydk::Entity
 {
     public:
         LldpUnknownTlvEntry();
@@ -919,7 +745,54 @@ class Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownT
         ydk::YLeaf tlv_type; //type: uint8
         ydk::YLeaf tlv_value; //type: string
 
-}; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList : public ydk::Entity
+{
+    public:
+        OrgDefTlvList();
+        ~OrgDefTlvList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LldpOrgDefTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry> > lldp_org_def_tlv_entry;
+        
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList
+
+
+class Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry : public ydk::Entity
+{
+    public:
+        LldpOrgDefTlvEntry();
+        ~LldpOrgDefTlvEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf oui; //type: uint32
+        ydk::YLeaf tlv_subtype; //type: uint8
+        ydk::YLeaf tlv_info_indes; //type: uint32
+        ydk::YLeaf tlv_value; //type: string
+
+}; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
 
 
 class Lldp::Nodes::Node::Neighbors::Summaries : public ydk::Entity
@@ -1136,10 +1009,55 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib : publ
         class UnknownTlvList; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList
         class OrgDefTlvList; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList> org_def_tlv_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList> unknown_tlv_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList> org_def_tlv_list;
         
 }; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib
+
+
+class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList : public ydk::Entity
+{
+    public:
+        UnknownTlvList();
+        ~UnknownTlvList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
+        
+}; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList
+
+
+class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry : public ydk::Entity
+{
+    public:
+        LldpUnknownTlvEntry();
+        ~LldpUnknownTlvEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tlv_type; //type: uint8
+        ydk::YLeaf tlv_value; //type: string
+
+}; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
 
 
 class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList : public ydk::Entity
@@ -1189,11 +1107,11 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDe
 }; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry
 
 
-class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList : public ydk::Entity
+class Lldp::Nodes::Node::Interfaces : public ydk::Entity
 {
     public:
-        UnknownTlvList();
-        ~UnknownTlvList();
+        Interfaces();
+        ~Interfaces();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1205,18 +1123,18 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Unkno
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LldpUnknownTlvEntry; //type: Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
+        class Interface; //type: Lldp::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry> > lldp_unknown_tlv_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface> > interface;
         
-}; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList
+}; // Lldp::Nodes::Node::Interfaces
 
 
-class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry : public ydk::Entity
+class Lldp::Nodes::Node::Interfaces::Interface : public ydk::Entity
 {
     public:
-        LldpUnknownTlvEntry();
-        ~LldpUnknownTlvEntry();
+        Interface();
+        ~Interface();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1228,10 +1146,92 @@ class Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Unkno
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tlv_type; //type: uint8
-        ydk::YLeaf tlv_value; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf tx_enabled; //type: uint8
+        ydk::YLeaf rx_enabled; //type: uint8
+        ydk::YLeaf tx_state; //type: string
+        ydk::YLeaf rx_state; //type: string
+        ydk::YLeaf if_index; //type: uint32
+        ydk::YLeaf port_id; //type: string
+        ydk::YLeaf port_id_sub_type; //type: uint8
+        ydk::YLeaf port_description; //type: string
+        class LocalNetworkAddresses; //type: Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses
 
-}; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses> local_network_addresses;
+        
+}; // Lldp::Nodes::Node::Interfaces::Interface
+
+
+class Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses : public ydk::Entity
+{
+    public:
+        LocalNetworkAddresses();
+        ~LocalNetworkAddresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LldpAddrEntry; //type: Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
+        
+}; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses
+
+
+class Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry : public ydk::Entity
+{
+    public:
+        LldpAddrEntry();
+        ~LldpAddrEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ma_subtype; //type: uint8
+        ydk::YLeaf if_num; //type: uint32
+        class Address; //type: Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ethernet_lldp_oper::Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address> address;
+        
+}; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry
+
+
+class Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_type; //type: LldpL3AddrProtocol
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address
 
 
 class Lldp::Nodes::Node::Statistics : public ydk::Entity

@@ -38,8 +38,8 @@ class FRAMERELAYDTEMIB : public ydk::Entity
         class Frerrtable; //type: FRAMERELAYDTEMIB::Frerrtable
 
         std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Framerelaytrapcontrol> framerelaytrapcontrol;
-        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frcircuittable> frcircuittable;
         std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frdlcmitable> frdlcmitable;
+        std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frcircuittable> frcircuittable;
         std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frerrtable> frerrtable;
         
 }; // FRAMERELAYDTEMIB
@@ -67,6 +67,68 @@ class FRAMERELAYDTEMIB::Framerelaytrapcontrol : public ydk::Entity
         class Frtrapstate;
 
 }; // FRAMERELAYDTEMIB::Framerelaytrapcontrol
+
+
+class FRAMERELAYDTEMIB::Frdlcmitable : public ydk::Entity
+{
+    public:
+        Frdlcmitable();
+        ~Frdlcmitable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Frdlcmientry; //type: FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry> > frdlcmientry;
+        
+}; // FRAMERELAYDTEMIB::Frdlcmitable
+
+
+class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry : public ydk::Entity
+{
+    public:
+        Frdlcmientry();
+        ~Frdlcmientry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf frdlcmiifindex; //type: int32
+        ydk::YLeaf frdlcmistate; //type: Frdlcmistate
+        ydk::YLeaf frdlcmiaddress; //type: Frdlcmiaddress
+        ydk::YLeaf frdlcmiaddresslen; //type: Frdlcmiaddresslen
+        ydk::YLeaf frdlcmipollinginterval; //type: int32
+        ydk::YLeaf frdlcmifullenquiryinterval; //type: int32
+        ydk::YLeaf frdlcmierrorthreshold; //type: int32
+        ydk::YLeaf frdlcmimonitoredevents; //type: int32
+        ydk::YLeaf frdlcmimaxsupportedvcs; //type: int32
+        ydk::YLeaf frdlcmimulticast; //type: Frdlcmimulticast
+        ydk::YLeaf frdlcmistatus; //type: Frdlcmistatus
+        ydk::YLeaf frdlcmirowstatus; //type: RowStatus
+        class Frdlcmistate;
+        class Frdlcmiaddress;
+        class Frdlcmiaddresslen;
+        class Frdlcmimulticast;
+        class Frdlcmistatus;
+
+}; // FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry
 
 
 class FRAMERELAYDTEMIB::Frcircuittable : public ydk::Entity
@@ -138,68 +200,6 @@ class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry : public ydk::Entity
 }; // FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry
 
 
-class FRAMERELAYDTEMIB::Frdlcmitable : public ydk::Entity
-{
-    public:
-        Frdlcmitable();
-        ~Frdlcmitable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Frdlcmientry; //type: FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::FRAME_RELAY_DTE_MIB::FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry> > frdlcmientry;
-        
-}; // FRAMERELAYDTEMIB::Frdlcmitable
-
-
-class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry : public ydk::Entity
-{
-    public:
-        Frdlcmientry();
-        ~Frdlcmientry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf frdlcmiifindex; //type: int32
-        ydk::YLeaf frdlcmistate; //type: Frdlcmistate
-        ydk::YLeaf frdlcmiaddress; //type: Frdlcmiaddress
-        ydk::YLeaf frdlcmiaddresslen; //type: Frdlcmiaddresslen
-        ydk::YLeaf frdlcmipollinginterval; //type: int32
-        ydk::YLeaf frdlcmifullenquiryinterval; //type: int32
-        ydk::YLeaf frdlcmierrorthreshold; //type: int32
-        ydk::YLeaf frdlcmimonitoredevents; //type: int32
-        ydk::YLeaf frdlcmimaxsupportedvcs; //type: int32
-        ydk::YLeaf frdlcmimulticast; //type: Frdlcmimulticast
-        ydk::YLeaf frdlcmistatus; //type: Frdlcmistatus
-        ydk::YLeaf frdlcmirowstatus; //type: RowStatus
-        class Frdlcmistate;
-        class Frdlcmiaddress;
-        class Frdlcmiaddresslen;
-        class Frdlcmimulticast;
-        class Frdlcmistatus;
-
-}; // FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry
-
-
 class FRAMERELAYDTEMIB::Frerrtable : public ydk::Entity
 {
     public:
@@ -259,33 +259,6 @@ class FRAMERELAYDTEMIB::Framerelaytrapcontrol::Frtrapstate : public ydk::Enum
 
 };
 
-class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitstate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf inactive;
-
-};
-
-class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitmulticast : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf oneWay;
-        static const ydk::Enum::YLeaf twoWay;
-        static const ydk::Enum::YLeaf nWay;
-
-};
-
-class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuittype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf dynamic;
-
-};
-
 class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::Enum
 {
     public:
@@ -331,6 +304,33 @@ class FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::Frdlcmistatus : public ydk::
         static const ydk::Enum::YLeaf running;
         static const ydk::Enum::YLeaf fault;
         static const ydk::Enum::YLeaf initializing;
+
+};
+
+class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitstate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf inactive;
+
+};
+
+class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuitmulticast : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf oneWay;
+        static const ydk::Enum::YLeaf twoWay;
+        static const ydk::Enum::YLeaf nWay;
+
+};
+
+class FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::Frcircuittype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dynamic;
 
 };
 

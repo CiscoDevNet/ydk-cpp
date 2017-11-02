@@ -38,8 +38,8 @@ class TCPMIB : public ydk::Entity
         class Tcplistenertable; //type: TCPMIB::Tcplistenertable
 
         std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcp> tcp;
-        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconnectiontable> tcpconnectiontable;
         std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconntable> tcpconntable;
+        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconnectiontable> tcpconnectiontable;
         std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcplistenertable> tcplistenertable;
         
 }; // TCPMIB
@@ -81,6 +81,57 @@ class TCPMIB::Tcp : public ydk::Entity
         class Tcprtoalgorithm;
 
 }; // TCPMIB::Tcp
+
+
+class TCPMIB::Tcpconntable : public ydk::Entity
+{
+    public:
+        Tcpconntable();
+        ~Tcpconntable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Tcpconnentry; //type: TCPMIB::Tcpconntable::Tcpconnentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconntable::Tcpconnentry> > tcpconnentry;
+        
+}; // TCPMIB::Tcpconntable
+
+
+class TCPMIB::Tcpconntable::Tcpconnentry : public ydk::Entity
+{
+    public:
+        Tcpconnentry();
+        ~Tcpconnentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tcpconnlocaladdress; //type: string
+        ydk::YLeaf tcpconnlocalport; //type: int32
+        ydk::YLeaf tcpconnremaddress; //type: string
+        ydk::YLeaf tcpconnremport; //type: int32
+        ydk::YLeaf tcpconnstate; //type: Tcpconnstate
+        class Tcpconnstate;
+
+}; // TCPMIB::Tcpconntable::Tcpconnentry
 
 
 class TCPMIB::Tcpconnectiontable : public ydk::Entity
@@ -135,57 +186,6 @@ class TCPMIB::Tcpconnectiontable::Tcpconnectionentry : public ydk::Entity
         class Tcpconnectionstate;
 
 }; // TCPMIB::Tcpconnectiontable::Tcpconnectionentry
-
-
-class TCPMIB::Tcpconntable : public ydk::Entity
-{
-    public:
-        Tcpconntable();
-        ~Tcpconntable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Tcpconnentry; //type: TCPMIB::Tcpconntable::Tcpconnentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconntable::Tcpconnentry> > tcpconnentry;
-        
-}; // TCPMIB::Tcpconntable
-
-
-class TCPMIB::Tcpconntable::Tcpconnentry : public ydk::Entity
-{
-    public:
-        Tcpconnentry();
-        ~Tcpconnentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf tcpconnlocaladdress; //type: string
-        ydk::YLeaf tcpconnlocalport; //type: int32
-        ydk::YLeaf tcpconnremaddress; //type: string
-        ydk::YLeaf tcpconnremport; //type: int32
-        ydk::YLeaf tcpconnstate; //type: Tcpconnstate
-        class Tcpconnstate;
-
-}; // TCPMIB::Tcpconntable::Tcpconnentry
 
 
 class TCPMIB::Tcplistenertable : public ydk::Entity
@@ -247,7 +247,7 @@ class TCPMIB::Tcp::Tcprtoalgorithm : public ydk::Enum
 
 };
 
-class TCPMIB::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate : public ydk::Enum
+class TCPMIB::Tcpconntable::Tcpconnentry::Tcpconnstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf closed;
@@ -265,7 +265,7 @@ class TCPMIB::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate : publi
 
 };
 
-class TCPMIB::Tcpconntable::Tcpconnentry::Tcpconnstate : public ydk::Enum
+class TCPMIB::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf closed;

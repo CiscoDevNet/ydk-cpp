@@ -11,46 +11,17 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_RTTMON_TC_MIB {
 
-const Enum::YLeaf RttMonLSPPingReplyMode::replyIpv4Udp {1, "replyIpv4Udp"};
-const Enum::YLeaf RttMonLSPPingReplyMode::replyIpv4UdpRA {2, "replyIpv4UdpRA"};
+const Enum::YLeaf RttReset::ready {1, "ready"};
+const Enum::YLeaf RttReset::reset {2, "reset"};
 
-const Enum::YLeaf RttMonReactVar::rtt {1, "rtt"};
-const Enum::YLeaf RttMonReactVar::jitterSDAvg {2, "jitterSDAvg"};
-const Enum::YLeaf RttMonReactVar::jitterDSAvg {3, "jitterDSAvg"};
-const Enum::YLeaf RttMonReactVar::packetLossSD {4, "packetLossSD"};
-const Enum::YLeaf RttMonReactVar::packetLossDS {5, "packetLossDS"};
-const Enum::YLeaf RttMonReactVar::mos {6, "mos"};
-const Enum::YLeaf RttMonReactVar::timeout {7, "timeout"};
-const Enum::YLeaf RttMonReactVar::connectionLoss {8, "connectionLoss"};
-const Enum::YLeaf RttMonReactVar::verifyError {9, "verifyError"};
-const Enum::YLeaf RttMonReactVar::jitterAvg {10, "jitterAvg"};
-const Enum::YLeaf RttMonReactVar::icpif {11, "icpif"};
-const Enum::YLeaf RttMonReactVar::packetMIA {12, "packetMIA"};
-const Enum::YLeaf RttMonReactVar::packetLateArrival {13, "packetLateArrival"};
-const Enum::YLeaf RttMonReactVar::packetOutOfSequence {14, "packetOutOfSequence"};
-const Enum::YLeaf RttMonReactVar::maxOfPositiveSD {15, "maxOfPositiveSD"};
-const Enum::YLeaf RttMonReactVar::maxOfNegativeSD {16, "maxOfNegativeSD"};
-const Enum::YLeaf RttMonReactVar::maxOfPositiveDS {17, "maxOfPositiveDS"};
-const Enum::YLeaf RttMonReactVar::maxOfNegativeDS {18, "maxOfNegativeDS"};
-const Enum::YLeaf RttMonReactVar::iaJitterDS {19, "iaJitterDS"};
-const Enum::YLeaf RttMonReactVar::frameLossDS {20, "frameLossDS"};
-const Enum::YLeaf RttMonReactVar::mosLQDS {21, "mosLQDS"};
-const Enum::YLeaf RttMonReactVar::mosCQDS {22, "mosCQDS"};
-const Enum::YLeaf RttMonReactVar::rFactorDS {23, "rFactorDS"};
-const Enum::YLeaf RttMonReactVar::successivePacketLoss {24, "successivePacketLoss"};
-const Enum::YLeaf RttMonReactVar::maxOfLatencyDS {25, "maxOfLatencyDS"};
-const Enum::YLeaf RttMonReactVar::maxOfLatencySD {26, "maxOfLatencySD"};
-const Enum::YLeaf RttMonReactVar::latencyDSAvg {27, "latencyDSAvg"};
-const Enum::YLeaf RttMonReactVar::latencySDAvg {28, "latencySDAvg"};
-const Enum::YLeaf RttMonReactVar::packetLoss {29, "packetLoss"};
-const Enum::YLeaf RttMonReactVar::iaJitterSD {30, "iaJitterSD"};
-const Enum::YLeaf RttMonReactVar::mosCQSD {31, "mosCQSD"};
-const Enum::YLeaf RttMonReactVar::rFactorSD {32, "rFactorSD"};
-
-const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::unknown {1, "unknown"};
-const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::up {2, "up"};
-const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::partial {3, "partial"};
-const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::down {4, "down"};
+const Enum::YLeaf RttMonOperation::notApplicable {0, "notApplicable"};
+const Enum::YLeaf RttMonOperation::httpGet {1, "httpGet"};
+const Enum::YLeaf RttMonOperation::httpRaw {2, "httpRaw"};
+const Enum::YLeaf RttMonOperation::ftpGet {3, "ftpGet"};
+const Enum::YLeaf RttMonOperation::ftpPassive {4, "ftpPassive"};
+const Enum::YLeaf RttMonOperation::ftpActive {5, "ftpActive"};
+const Enum::YLeaf RttMonOperation::voipDTAlertRinging {6, "voipDTAlertRinging"};
+const Enum::YLeaf RttMonOperation::voipDTConnectOK {7, "voipDTConnectOK"};
 
 const Enum::YLeaf RttResponseSense::other {0, "other"};
 const Enum::YLeaf RttResponseSense::ok {1, "ok"};
@@ -92,6 +63,37 @@ const Enum::YLeaf RttResponseSense::statsRetrieveAuthFail {36, "statsRetrieveAut
 const Enum::YLeaf RttResponseSense::statsRetrieveFormatError {37, "statsRetrieveFormatError"};
 const Enum::YLeaf RttResponseSense::statsRetrievePortInUse {38, "statsRetrievePortInUse"};
 
+const Enum::YLeaf RttMonRttType::none {0, "none"};
+const Enum::YLeaf RttMonRttType::echo {1, "echo"};
+const Enum::YLeaf RttMonRttType::pathEcho {2, "pathEcho"};
+const Enum::YLeaf RttMonRttType::fileIO {3, "fileIO"};
+const Enum::YLeaf RttMonRttType::script {4, "script"};
+const Enum::YLeaf RttMonRttType::udpEcho {5, "udpEcho"};
+const Enum::YLeaf RttMonRttType::tcpConnect {6, "tcpConnect"};
+const Enum::YLeaf RttMonRttType::http {7, "http"};
+const Enum::YLeaf RttMonRttType::dns {8, "dns"};
+const Enum::YLeaf RttMonRttType::jitter {9, "jitter"};
+const Enum::YLeaf RttMonRttType::dlsw {10, "dlsw"};
+const Enum::YLeaf RttMonRttType::dhcp {11, "dhcp"};
+const Enum::YLeaf RttMonRttType::ftp {12, "ftp"};
+const Enum::YLeaf RttMonRttType::voip {13, "voip"};
+const Enum::YLeaf RttMonRttType::rtp {14, "rtp"};
+const Enum::YLeaf RttMonRttType::lspGroup {15, "lspGroup"};
+const Enum::YLeaf RttMonRttType::icmpjitter {16, "icmpjitter"};
+const Enum::YLeaf RttMonRttType::lspPing {17, "lspPing"};
+const Enum::YLeaf RttMonRttType::lspTrace {18, "lspTrace"};
+const Enum::YLeaf RttMonRttType::ethernetPing {19, "ethernetPing"};
+const Enum::YLeaf RttMonRttType::ethernetJitter {20, "ethernetJitter"};
+const Enum::YLeaf RttMonRttType::lspPingPseudowire {21, "lspPingPseudowire"};
+const Enum::YLeaf RttMonRttType::video {22, "video"};
+const Enum::YLeaf RttMonRttType::y1731Delay {23, "y1731Delay"};
+const Enum::YLeaf RttMonRttType::y1731Loss {24, "y1731Loss"};
+const Enum::YLeaf RttMonRttType::mcastJitter {25, "mcastJitter"};
+
+const Enum::YLeaf RttMplsVpnMonRttType::jitter {1, "jitter"};
+const Enum::YLeaf RttMplsVpnMonRttType::echo {2, "echo"};
+const Enum::YLeaf RttMplsVpnMonRttType::pathEcho {3, "pathEcho"};
+
 const Enum::YLeaf RttMplsVpnMonLpdFailureSense::unknown {1, "unknown"};
 const Enum::YLeaf RttMplsVpnMonLpdFailureSense::noPath {2, "noPath"};
 const Enum::YLeaf RttMplsVpnMonLpdFailureSense::allPathsBroken {3, "allPathsBroken"};
@@ -100,17 +102,10 @@ const Enum::YLeaf RttMplsVpnMonLpdFailureSense::allPathsBrokenOrUnexplorable {5,
 const Enum::YLeaf RttMplsVpnMonLpdFailureSense::timeout {6, "timeout"};
 const Enum::YLeaf RttMplsVpnMonLpdFailureSense::error {7, "error"};
 
-const Enum::YLeaf RttReset::ready {1, "ready"};
-const Enum::YLeaf RttReset::reset {2, "reset"};
-
-const Enum::YLeaf RttMonOperation::notApplicable {0, "notApplicable"};
-const Enum::YLeaf RttMonOperation::httpGet {1, "httpGet"};
-const Enum::YLeaf RttMonOperation::httpRaw {2, "httpRaw"};
-const Enum::YLeaf RttMonOperation::ftpGet {3, "ftpGet"};
-const Enum::YLeaf RttMonOperation::ftpPassive {4, "ftpPassive"};
-const Enum::YLeaf RttMonOperation::ftpActive {5, "ftpActive"};
-const Enum::YLeaf RttMonOperation::voipDTAlertRinging {6, "voipDTAlertRinging"};
-const Enum::YLeaf RttMonOperation::voipDTConnectOK {7, "voipDTConnectOK"};
+const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::unknown {1, "unknown"};
+const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::up {2, "up"};
+const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::partial {3, "partial"};
+const Enum::YLeaf RttMplsVpnMonLpdGrpStatus::down {4, "down"};
 
 const Enum::YLeaf RttMonProtocol::none {0, "none"};
 const Enum::YLeaf RttMonProtocol::notApplicable {1, "notApplicable"};
@@ -157,41 +152,46 @@ const Enum::YLeaf RttMonProtocol::mcastJitterAppl {41, "mcastJitterAppl"};
 const Enum::YLeaf RttMonProtocol::y1731slm {42, "y1731slm"};
 const Enum::YLeaf RttMonProtocol::y1731dmmv1 {43, "y1731dmmv1"};
 
-const Enum::YLeaf RttMonRttType::none {0, "none"};
-const Enum::YLeaf RttMonRttType::echo {1, "echo"};
-const Enum::YLeaf RttMonRttType::pathEcho {2, "pathEcho"};
-const Enum::YLeaf RttMonRttType::fileIO {3, "fileIO"};
-const Enum::YLeaf RttMonRttType::script {4, "script"};
-const Enum::YLeaf RttMonRttType::udpEcho {5, "udpEcho"};
-const Enum::YLeaf RttMonRttType::tcpConnect {6, "tcpConnect"};
-const Enum::YLeaf RttMonRttType::http {7, "http"};
-const Enum::YLeaf RttMonRttType::dns {8, "dns"};
-const Enum::YLeaf RttMonRttType::jitter {9, "jitter"};
-const Enum::YLeaf RttMonRttType::dlsw {10, "dlsw"};
-const Enum::YLeaf RttMonRttType::dhcp {11, "dhcp"};
-const Enum::YLeaf RttMonRttType::ftp {12, "ftp"};
-const Enum::YLeaf RttMonRttType::voip {13, "voip"};
-const Enum::YLeaf RttMonRttType::rtp {14, "rtp"};
-const Enum::YLeaf RttMonRttType::lspGroup {15, "lspGroup"};
-const Enum::YLeaf RttMonRttType::icmpjitter {16, "icmpjitter"};
-const Enum::YLeaf RttMonRttType::lspPing {17, "lspPing"};
-const Enum::YLeaf RttMonRttType::lspTrace {18, "lspTrace"};
-const Enum::YLeaf RttMonRttType::ethernetPing {19, "ethernetPing"};
-const Enum::YLeaf RttMonRttType::ethernetJitter {20, "ethernetJitter"};
-const Enum::YLeaf RttMonRttType::lspPingPseudowire {21, "lspPingPseudowire"};
-const Enum::YLeaf RttMonRttType::video {22, "video"};
-const Enum::YLeaf RttMonRttType::y1731Delay {23, "y1731Delay"};
-const Enum::YLeaf RttMonRttType::y1731Loss {24, "y1731Loss"};
-const Enum::YLeaf RttMonRttType::mcastJitter {25, "mcastJitter"};
-
 const Enum::YLeaf RttMonCodecType::notApplicable {0, "notApplicable"};
 const Enum::YLeaf RttMonCodecType::g711ulaw {1, "g711ulaw"};
 const Enum::YLeaf RttMonCodecType::g711alaw {2, "g711alaw"};
 const Enum::YLeaf RttMonCodecType::g729a {3, "g729a"};
 
-const Enum::YLeaf RttMplsVpnMonRttType::jitter {1, "jitter"};
-const Enum::YLeaf RttMplsVpnMonRttType::echo {2, "echo"};
-const Enum::YLeaf RttMplsVpnMonRttType::pathEcho {3, "pathEcho"};
+const Enum::YLeaf RttMonLSPPingReplyMode::replyIpv4Udp {1, "replyIpv4Udp"};
+const Enum::YLeaf RttMonLSPPingReplyMode::replyIpv4UdpRA {2, "replyIpv4UdpRA"};
+
+const Enum::YLeaf RttMonReactVar::rtt {1, "rtt"};
+const Enum::YLeaf RttMonReactVar::jitterSDAvg {2, "jitterSDAvg"};
+const Enum::YLeaf RttMonReactVar::jitterDSAvg {3, "jitterDSAvg"};
+const Enum::YLeaf RttMonReactVar::packetLossSD {4, "packetLossSD"};
+const Enum::YLeaf RttMonReactVar::packetLossDS {5, "packetLossDS"};
+const Enum::YLeaf RttMonReactVar::mos {6, "mos"};
+const Enum::YLeaf RttMonReactVar::timeout {7, "timeout"};
+const Enum::YLeaf RttMonReactVar::connectionLoss {8, "connectionLoss"};
+const Enum::YLeaf RttMonReactVar::verifyError {9, "verifyError"};
+const Enum::YLeaf RttMonReactVar::jitterAvg {10, "jitterAvg"};
+const Enum::YLeaf RttMonReactVar::icpif {11, "icpif"};
+const Enum::YLeaf RttMonReactVar::packetMIA {12, "packetMIA"};
+const Enum::YLeaf RttMonReactVar::packetLateArrival {13, "packetLateArrival"};
+const Enum::YLeaf RttMonReactVar::packetOutOfSequence {14, "packetOutOfSequence"};
+const Enum::YLeaf RttMonReactVar::maxOfPositiveSD {15, "maxOfPositiveSD"};
+const Enum::YLeaf RttMonReactVar::maxOfNegativeSD {16, "maxOfNegativeSD"};
+const Enum::YLeaf RttMonReactVar::maxOfPositiveDS {17, "maxOfPositiveDS"};
+const Enum::YLeaf RttMonReactVar::maxOfNegativeDS {18, "maxOfNegativeDS"};
+const Enum::YLeaf RttMonReactVar::iaJitterDS {19, "iaJitterDS"};
+const Enum::YLeaf RttMonReactVar::frameLossDS {20, "frameLossDS"};
+const Enum::YLeaf RttMonReactVar::mosLQDS {21, "mosLQDS"};
+const Enum::YLeaf RttMonReactVar::mosCQDS {22, "mosCQDS"};
+const Enum::YLeaf RttMonReactVar::rFactorDS {23, "rFactorDS"};
+const Enum::YLeaf RttMonReactVar::successivePacketLoss {24, "successivePacketLoss"};
+const Enum::YLeaf RttMonReactVar::maxOfLatencyDS {25, "maxOfLatencyDS"};
+const Enum::YLeaf RttMonReactVar::maxOfLatencySD {26, "maxOfLatencySD"};
+const Enum::YLeaf RttMonReactVar::latencyDSAvg {27, "latencyDSAvg"};
+const Enum::YLeaf RttMonReactVar::latencySDAvg {28, "latencySDAvg"};
+const Enum::YLeaf RttMonReactVar::packetLoss {29, "packetLoss"};
+const Enum::YLeaf RttMonReactVar::iaJitterSD {30, "iaJitterSD"};
+const Enum::YLeaf RttMonReactVar::mosCQSD {31, "mosCQSD"};
+const Enum::YLeaf RttMonReactVar::rFactorSD {32, "rFactorSD"};
 
 
 }

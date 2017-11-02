@@ -521,31 +521,31 @@ bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_leaf_or_child_of_name(const s
 LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::Entry()
     :
     entry{YType::int32, "entry"},
-    accepts{YType::uint64, "accepts"},
-    deliver_list_long{YType::str, "deliver-list-long"},
-    deliver_list_short{YType::str, "deliver-list-short"},
-    destination_addr{YType::str, "destination-addr"},
     destination_type{YType::str, "destination-type"},
     destination_value{YType::str, "destination-value"},
-    drops{YType::uint64, "drops"},
-    flow_type{YType::str, "flow-type"},
-    ifib_program_time{YType::str, "ifib-program-time"},
-    intf_handle{YType::uint32, "intf-handle"},
-    intf_name{YType::str, "intf-name"},
-    is_fgid{YType::uint8, "is-fgid"},
-    is_syn{YType::uint8, "is-syn"},
+    source_port{YType::str, "source-port"},
+    destination_addr{YType::str, "destination-addr"},
+    source_addr{YType::str, "source-addr"},
+    vrf_name{YType::str, "vrf-name"},
+    vid{YType::uint32, "vid"},
     l3protocol{YType::uint32, "l3protocol"},
     l4protocol{YType::uint32, "l4protocol"},
+    intf_name{YType::str, "intf-name"},
+    intf_handle{YType::uint32, "intf-handle"},
+    is_syn{YType::uint8, "is-syn"},
+    opcode{YType::str, "opcode"},
+    accepts{YType::uint64, "accepts"},
+    drops{YType::uint64, "drops"},
+    flow_type{YType::str, "flow-type"},
     listener_tag{YType::str, "listener-tag"},
     local_flag{YType::uint8, "local-flag"},
+    is_fgid{YType::uint8, "is-fgid"},
+    deliver_list_short{YType::str, "deliver-list-short"},
+    deliver_list_long{YType::str, "deliver-list-long"},
     min_ttl{YType::uint8, "min-ttl"},
-    opcode{YType::str, "opcode"},
     pending_ifibq_delay{YType::uint32, "pending-ifibq-delay"},
     sl_ifibq_delay{YType::uint32, "sl-ifibq-delay"},
-    source_addr{YType::str, "source-addr"},
-    source_port{YType::str, "source-port"},
-    vid{YType::uint32, "vid"},
-    vrf_name{YType::str, "vrf-name"}
+    ifib_program_time{YType::str, "ifib-program-time"}
 {
 
     yang_name = "entry"; yang_parent_name = "slice-id"; is_top_level_class = false; has_list_ancestor = true;
@@ -558,62 +558,62 @@ LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::~Entry()
 bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_data() const
 {
     return entry.is_set
-	|| accepts.is_set
-	|| deliver_list_long.is_set
-	|| deliver_list_short.is_set
-	|| destination_addr.is_set
 	|| destination_type.is_set
 	|| destination_value.is_set
-	|| drops.is_set
-	|| flow_type.is_set
-	|| ifib_program_time.is_set
-	|| intf_handle.is_set
-	|| intf_name.is_set
-	|| is_fgid.is_set
-	|| is_syn.is_set
+	|| source_port.is_set
+	|| destination_addr.is_set
+	|| source_addr.is_set
+	|| vrf_name.is_set
+	|| vid.is_set
 	|| l3protocol.is_set
 	|| l4protocol.is_set
+	|| intf_name.is_set
+	|| intf_handle.is_set
+	|| is_syn.is_set
+	|| opcode.is_set
+	|| accepts.is_set
+	|| drops.is_set
+	|| flow_type.is_set
 	|| listener_tag.is_set
 	|| local_flag.is_set
+	|| is_fgid.is_set
+	|| deliver_list_short.is_set
+	|| deliver_list_long.is_set
 	|| min_ttl.is_set
-	|| opcode.is_set
 	|| pending_ifibq_delay.is_set
 	|| sl_ifibq_delay.is_set
-	|| source_addr.is_set
-	|| source_port.is_set
-	|| vid.is_set
-	|| vrf_name.is_set;
+	|| ifib_program_time.is_set;
 }
 
 bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter)
-	|| ydk::is_set(accepts.yfilter)
-	|| ydk::is_set(deliver_list_long.yfilter)
-	|| ydk::is_set(deliver_list_short.yfilter)
-	|| ydk::is_set(destination_addr.yfilter)
 	|| ydk::is_set(destination_type.yfilter)
 	|| ydk::is_set(destination_value.yfilter)
-	|| ydk::is_set(drops.yfilter)
-	|| ydk::is_set(flow_type.yfilter)
-	|| ydk::is_set(ifib_program_time.yfilter)
-	|| ydk::is_set(intf_handle.yfilter)
-	|| ydk::is_set(intf_name.yfilter)
-	|| ydk::is_set(is_fgid.yfilter)
-	|| ydk::is_set(is_syn.yfilter)
+	|| ydk::is_set(source_port.yfilter)
+	|| ydk::is_set(destination_addr.yfilter)
+	|| ydk::is_set(source_addr.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(vid.yfilter)
 	|| ydk::is_set(l3protocol.yfilter)
 	|| ydk::is_set(l4protocol.yfilter)
+	|| ydk::is_set(intf_name.yfilter)
+	|| ydk::is_set(intf_handle.yfilter)
+	|| ydk::is_set(is_syn.yfilter)
+	|| ydk::is_set(opcode.yfilter)
+	|| ydk::is_set(accepts.yfilter)
+	|| ydk::is_set(drops.yfilter)
+	|| ydk::is_set(flow_type.yfilter)
 	|| ydk::is_set(listener_tag.yfilter)
 	|| ydk::is_set(local_flag.yfilter)
+	|| ydk::is_set(is_fgid.yfilter)
+	|| ydk::is_set(deliver_list_short.yfilter)
+	|| ydk::is_set(deliver_list_long.yfilter)
 	|| ydk::is_set(min_ttl.yfilter)
-	|| ydk::is_set(opcode.yfilter)
 	|| ydk::is_set(pending_ifibq_delay.yfilter)
 	|| ydk::is_set(sl_ifibq_delay.yfilter)
-	|| ydk::is_set(source_addr.yfilter)
-	|| ydk::is_set(source_port.yfilter)
-	|| ydk::is_set(vid.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(ifib_program_time.yfilter);
 }
 
 std::string LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_segment_path() const
@@ -628,31 +628,31 @@ std::vector<std::pair<std::string, LeafData> > LptsIfib::Nodes::Node::SliceIds::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-    if (accepts.is_set || is_set(accepts.yfilter)) leaf_name_data.push_back(accepts.get_name_leafdata());
-    if (deliver_list_long.is_set || is_set(deliver_list_long.yfilter)) leaf_name_data.push_back(deliver_list_long.get_name_leafdata());
-    if (deliver_list_short.is_set || is_set(deliver_list_short.yfilter)) leaf_name_data.push_back(deliver_list_short.get_name_leafdata());
-    if (destination_addr.is_set || is_set(destination_addr.yfilter)) leaf_name_data.push_back(destination_addr.get_name_leafdata());
     if (destination_type.is_set || is_set(destination_type.yfilter)) leaf_name_data.push_back(destination_type.get_name_leafdata());
     if (destination_value.is_set || is_set(destination_value.yfilter)) leaf_name_data.push_back(destination_value.get_name_leafdata());
-    if (drops.is_set || is_set(drops.yfilter)) leaf_name_data.push_back(drops.get_name_leafdata());
-    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
-    if (ifib_program_time.is_set || is_set(ifib_program_time.yfilter)) leaf_name_data.push_back(ifib_program_time.get_name_leafdata());
-    if (intf_handle.is_set || is_set(intf_handle.yfilter)) leaf_name_data.push_back(intf_handle.get_name_leafdata());
-    if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
-    if (is_fgid.is_set || is_set(is_fgid.yfilter)) leaf_name_data.push_back(is_fgid.get_name_leafdata());
-    if (is_syn.is_set || is_set(is_syn.yfilter)) leaf_name_data.push_back(is_syn.get_name_leafdata());
+    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
+    if (destination_addr.is_set || is_set(destination_addr.yfilter)) leaf_name_data.push_back(destination_addr.get_name_leafdata());
+    if (source_addr.is_set || is_set(source_addr.yfilter)) leaf_name_data.push_back(source_addr.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
     if (l3protocol.is_set || is_set(l3protocol.yfilter)) leaf_name_data.push_back(l3protocol.get_name_leafdata());
     if (l4protocol.is_set || is_set(l4protocol.yfilter)) leaf_name_data.push_back(l4protocol.get_name_leafdata());
+    if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
+    if (intf_handle.is_set || is_set(intf_handle.yfilter)) leaf_name_data.push_back(intf_handle.get_name_leafdata());
+    if (is_syn.is_set || is_set(is_syn.yfilter)) leaf_name_data.push_back(is_syn.get_name_leafdata());
+    if (opcode.is_set || is_set(opcode.yfilter)) leaf_name_data.push_back(opcode.get_name_leafdata());
+    if (accepts.is_set || is_set(accepts.yfilter)) leaf_name_data.push_back(accepts.get_name_leafdata());
+    if (drops.is_set || is_set(drops.yfilter)) leaf_name_data.push_back(drops.get_name_leafdata());
+    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
     if (listener_tag.is_set || is_set(listener_tag.yfilter)) leaf_name_data.push_back(listener_tag.get_name_leafdata());
     if (local_flag.is_set || is_set(local_flag.yfilter)) leaf_name_data.push_back(local_flag.get_name_leafdata());
+    if (is_fgid.is_set || is_set(is_fgid.yfilter)) leaf_name_data.push_back(is_fgid.get_name_leafdata());
+    if (deliver_list_short.is_set || is_set(deliver_list_short.yfilter)) leaf_name_data.push_back(deliver_list_short.get_name_leafdata());
+    if (deliver_list_long.is_set || is_set(deliver_list_long.yfilter)) leaf_name_data.push_back(deliver_list_long.get_name_leafdata());
     if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
-    if (opcode.is_set || is_set(opcode.yfilter)) leaf_name_data.push_back(opcode.get_name_leafdata());
     if (pending_ifibq_delay.is_set || is_set(pending_ifibq_delay.yfilter)) leaf_name_data.push_back(pending_ifibq_delay.get_name_leafdata());
     if (sl_ifibq_delay.is_set || is_set(sl_ifibq_delay.yfilter)) leaf_name_data.push_back(sl_ifibq_delay.get_name_leafdata());
-    if (source_addr.is_set || is_set(source_addr.yfilter)) leaf_name_data.push_back(source_addr.get_name_leafdata());
-    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
-    if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ifib_program_time.is_set || is_set(ifib_program_time.yfilter)) leaf_name_data.push_back(ifib_program_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -677,30 +677,6 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_value(const std::strin
         entry.value_namespace = name_space;
         entry.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "accepts")
-    {
-        accepts = value;
-        accepts.value_namespace = name_space;
-        accepts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "deliver-list-long")
-    {
-        deliver_list_long = value;
-        deliver_list_long.value_namespace = name_space;
-        deliver_list_long.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "deliver-list-short")
-    {
-        deliver_list_short = value;
-        deliver_list_short.value_namespace = name_space;
-        deliver_list_short.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-addr")
-    {
-        destination_addr = value;
-        destination_addr.value_namespace = name_space;
-        destination_addr.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "destination-type")
     {
         destination_type = value;
@@ -713,47 +689,35 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_value(const std::strin
         destination_value.value_namespace = name_space;
         destination_value.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "drops")
+    if(value_path == "source-port")
     {
-        drops = value;
-        drops.value_namespace = name_space;
-        drops.value_namespace_prefix = name_space_prefix;
+        source_port = value;
+        source_port.value_namespace = name_space;
+        source_port.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "flow-type")
+    if(value_path == "destination-addr")
     {
-        flow_type = value;
-        flow_type.value_namespace = name_space;
-        flow_type.value_namespace_prefix = name_space_prefix;
+        destination_addr = value;
+        destination_addr.value_namespace = name_space;
+        destination_addr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ifib-program-time")
+    if(value_path == "source-addr")
     {
-        ifib_program_time = value;
-        ifib_program_time.value_namespace = name_space;
-        ifib_program_time.value_namespace_prefix = name_space_prefix;
+        source_addr = value;
+        source_addr.value_namespace = name_space;
+        source_addr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "intf-handle")
+    if(value_path == "vrf-name")
     {
-        intf_handle = value;
-        intf_handle.value_namespace = name_space;
-        intf_handle.value_namespace_prefix = name_space_prefix;
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "intf-name")
+    if(value_path == "vid")
     {
-        intf_name = value;
-        intf_name.value_namespace = name_space;
-        intf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-fgid")
-    {
-        is_fgid = value;
-        is_fgid.value_namespace = name_space;
-        is_fgid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-syn")
-    {
-        is_syn = value;
-        is_syn.value_namespace = name_space;
-        is_syn.value_namespace_prefix = name_space_prefix;
+        vid = value;
+        vid.value_namespace = name_space;
+        vid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l3protocol")
     {
@@ -767,6 +731,48 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_value(const std::strin
         l4protocol.value_namespace = name_space;
         l4protocol.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "intf-name")
+    {
+        intf_name = value;
+        intf_name.value_namespace = name_space;
+        intf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intf-handle")
+    {
+        intf_handle = value;
+        intf_handle.value_namespace = name_space;
+        intf_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-syn")
+    {
+        is_syn = value;
+        is_syn.value_namespace = name_space;
+        is_syn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "opcode")
+    {
+        opcode = value;
+        opcode.value_namespace = name_space;
+        opcode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accepts")
+    {
+        accepts = value;
+        accepts.value_namespace = name_space;
+        accepts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drops")
+    {
+        drops = value;
+        drops.value_namespace = name_space;
+        drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow-type")
+    {
+        flow_type = value;
+        flow_type.value_namespace = name_space;
+        flow_type.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "listener-tag")
     {
         listener_tag = value;
@@ -779,17 +785,29 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_value(const std::strin
         local_flag.value_namespace = name_space;
         local_flag.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-fgid")
+    {
+        is_fgid = value;
+        is_fgid.value_namespace = name_space;
+        is_fgid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deliver-list-short")
+    {
+        deliver_list_short = value;
+        deliver_list_short.value_namespace = name_space;
+        deliver_list_short.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deliver-list-long")
+    {
+        deliver_list_long = value;
+        deliver_list_long.value_namespace = name_space;
+        deliver_list_long.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "min-ttl")
     {
         min_ttl = value;
         min_ttl.value_namespace = name_space;
         min_ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "opcode")
-    {
-        opcode = value;
-        opcode.value_namespace = name_space;
-        opcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pending-ifibq-delay")
     {
@@ -803,29 +821,11 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_value(const std::strin
         sl_ifibq_delay.value_namespace = name_space;
         sl_ifibq_delay.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "source-addr")
+    if(value_path == "ifib-program-time")
     {
-        source_addr = value;
-        source_addr.value_namespace = name_space;
-        source_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-port")
-    {
-        source_port = value;
-        source_port.value_namespace = name_space;
-        source_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vid")
-    {
-        vid = value;
-        vid.value_namespace = name_space;
-        vid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
+        ifib_program_time = value;
+        ifib_program_time.value_namespace = name_space;
+        ifib_program_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -835,22 +835,6 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_filter(const std::stri
     {
         entry.yfilter = yfilter;
     }
-    if(value_path == "accepts")
-    {
-        accepts.yfilter = yfilter;
-    }
-    if(value_path == "deliver-list-long")
-    {
-        deliver_list_long.yfilter = yfilter;
-    }
-    if(value_path == "deliver-list-short")
-    {
-        deliver_list_short.yfilter = yfilter;
-    }
-    if(value_path == "destination-addr")
-    {
-        destination_addr.yfilter = yfilter;
-    }
     if(value_path == "destination-type")
     {
         destination_type.yfilter = yfilter;
@@ -859,33 +843,25 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_filter(const std::stri
     {
         destination_value.yfilter = yfilter;
     }
-    if(value_path == "drops")
+    if(value_path == "source-port")
     {
-        drops.yfilter = yfilter;
+        source_port.yfilter = yfilter;
     }
-    if(value_path == "flow-type")
+    if(value_path == "destination-addr")
     {
-        flow_type.yfilter = yfilter;
+        destination_addr.yfilter = yfilter;
     }
-    if(value_path == "ifib-program-time")
+    if(value_path == "source-addr")
     {
-        ifib_program_time.yfilter = yfilter;
+        source_addr.yfilter = yfilter;
     }
-    if(value_path == "intf-handle")
+    if(value_path == "vrf-name")
     {
-        intf_handle.yfilter = yfilter;
+        vrf_name.yfilter = yfilter;
     }
-    if(value_path == "intf-name")
+    if(value_path == "vid")
     {
-        intf_name.yfilter = yfilter;
-    }
-    if(value_path == "is-fgid")
-    {
-        is_fgid.yfilter = yfilter;
-    }
-    if(value_path == "is-syn")
-    {
-        is_syn.yfilter = yfilter;
+        vid.yfilter = yfilter;
     }
     if(value_path == "l3protocol")
     {
@@ -895,6 +871,34 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_filter(const std::stri
     {
         l4protocol.yfilter = yfilter;
     }
+    if(value_path == "intf-name")
+    {
+        intf_name.yfilter = yfilter;
+    }
+    if(value_path == "intf-handle")
+    {
+        intf_handle.yfilter = yfilter;
+    }
+    if(value_path == "is-syn")
+    {
+        is_syn.yfilter = yfilter;
+    }
+    if(value_path == "opcode")
+    {
+        opcode.yfilter = yfilter;
+    }
+    if(value_path == "accepts")
+    {
+        accepts.yfilter = yfilter;
+    }
+    if(value_path == "drops")
+    {
+        drops.yfilter = yfilter;
+    }
+    if(value_path == "flow-type")
+    {
+        flow_type.yfilter = yfilter;
+    }
     if(value_path == "listener-tag")
     {
         listener_tag.yfilter = yfilter;
@@ -903,13 +907,21 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_filter(const std::stri
     {
         local_flag.yfilter = yfilter;
     }
+    if(value_path == "is-fgid")
+    {
+        is_fgid.yfilter = yfilter;
+    }
+    if(value_path == "deliver-list-short")
+    {
+        deliver_list_short.yfilter = yfilter;
+    }
+    if(value_path == "deliver-list-long")
+    {
+        deliver_list_long.yfilter = yfilter;
+    }
     if(value_path == "min-ttl")
     {
         min_ttl.yfilter = yfilter;
-    }
-    if(value_path == "opcode")
-    {
-        opcode.yfilter = yfilter;
     }
     if(value_path == "pending-ifibq-delay")
     {
@@ -919,27 +931,15 @@ void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_filter(const std::stri
     {
         sl_ifibq_delay.yfilter = yfilter;
     }
-    if(value_path == "source-addr")
+    if(value_path == "ifib-program-time")
     {
-        source_addr.yfilter = yfilter;
-    }
-    if(value_path == "source-port")
-    {
-        source_port.yfilter = yfilter;
-    }
-    if(value_path == "vid")
-    {
-        vid.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
+        ifib_program_time.yfilter = yfilter;
     }
 }
 
 bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "entry" || name == "accepts" || name == "deliver-list-long" || name == "deliver-list-short" || name == "destination-addr" || name == "destination-type" || name == "destination-value" || name == "drops" || name == "flow-type" || name == "ifib-program-time" || name == "intf-handle" || name == "intf-name" || name == "is-fgid" || name == "is-syn" || name == "l3protocol" || name == "l4protocol" || name == "listener-tag" || name == "local-flag" || name == "min-ttl" || name == "opcode" || name == "pending-ifibq-delay" || name == "sl-ifibq-delay" || name == "source-addr" || name == "source-port" || name == "vid" || name == "vrf-name")
+    if(name == "entry" || name == "destination-type" || name == "destination-value" || name == "source-port" || name == "destination-addr" || name == "source-addr" || name == "vrf-name" || name == "vid" || name == "l3protocol" || name == "l4protocol" || name == "intf-name" || name == "intf-handle" || name == "is-syn" || name == "opcode" || name == "accepts" || name == "drops" || name == "flow-type" || name == "listener-tag" || name == "local-flag" || name == "is-fgid" || name == "deliver-list-short" || name == "deliver-list-long" || name == "min-ttl" || name == "pending-ifibq-delay" || name == "sl-ifibq-delay" || name == "ifib-program-time")
         return true;
     return false;
 }

@@ -123,12 +123,35 @@ class NvSatellites::NvSatellite : public ydk::Entity
         class ConnectionInfo; //type: NvSatellites::NvSatellite::ConnectionInfo
         class Redundancy; //type: NvSatellites::NvSatellite::Redundancy
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::UpgradeOnConnect> upgrade_on_connect;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::CandidateFabricPorts> candidate_fabric_ports;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::ConnectionInfo> connection_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::Redundancy> redundancy;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::UpgradeOnConnect> upgrade_on_connect;
         
 }; // NvSatellites::NvSatellite
+
+
+class NvSatellites::NvSatellite::UpgradeOnConnect : public ydk::Entity
+{
+    public:
+        UpgradeOnConnect();
+        ~UpgradeOnConnect();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf connect_type; //type: ConnectType
+        ydk::YLeaf reference; //type: string
+        class ConnectType;
+
+}; // NvSatellites::NvSatellite::UpgradeOnConnect
 
 
 class NvSatellites::NvSatellite::CandidateFabricPorts : public ydk::Entity
@@ -219,29 +242,6 @@ class NvSatellites::NvSatellite::Redundancy : public ydk::Entity
         ydk::YLeaf host_priority; //type: uint32
 
 }; // NvSatellites::NvSatellite::Redundancy
-
-
-class NvSatellites::NvSatellite::UpgradeOnConnect : public ydk::Entity
-{
-    public:
-        UpgradeOnConnect();
-        ~UpgradeOnConnect();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf connect_type; //type: ConnectType
-        ydk::YLeaf reference; //type: string
-        class ConnectType;
-
-}; // NvSatellites::NvSatellite::UpgradeOnConnect
 
 class NvSatellites::NvSatellite::UpgradeOnConnect::ConnectType : public ydk::Enum
 {

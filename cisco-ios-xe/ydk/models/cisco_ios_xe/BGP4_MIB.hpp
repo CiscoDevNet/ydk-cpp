@@ -37,9 +37,9 @@ class BGP4MIB : public ydk::Entity
         class Bgp4Pathattrtable; //type: BGP4MIB::Bgp4Pathattrtable
 
         std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp> bgp;
-        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp4Pathattrtable> bgp4pathattrtable;
         std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable> bgppeertable;
         std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgprcvdpathattrtable> bgprcvdpathattrtable;
+        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp4Pathattrtable> bgp4pathattrtable;
         
 }; // BGP4MIB
 
@@ -66,68 +66,6 @@ class BGP4MIB::Bgp : public ydk::Entity
         ydk::YLeaf bgpidentifier; //type: string
 
 }; // BGP4MIB::Bgp
-
-
-class BGP4MIB::Bgp4Pathattrtable : public ydk::Entity
-{
-    public:
-        Bgp4Pathattrtable();
-        ~Bgp4Pathattrtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Bgp4Pathattrentry; //type: BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry> > bgp4pathattrentry;
-        
-}; // BGP4MIB::Bgp4Pathattrtable
-
-
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry : public ydk::Entity
-{
-    public:
-        Bgp4Pathattrentry();
-        ~Bgp4Pathattrentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf bgp4pathattripaddrprefix; //type: string
-        ydk::YLeaf bgp4pathattripaddrprefixlen; //type: int32
-        ydk::YLeaf bgp4pathattrpeer; //type: string
-        ydk::YLeaf bgp4pathattrorigin; //type: Bgp4Pathattrorigin
-        ydk::YLeaf bgp4pathattraspathsegment; //type: binary
-        ydk::YLeaf bgp4pathattrnexthop; //type: string
-        ydk::YLeaf bgp4pathattrmultiexitdisc; //type: int32
-        ydk::YLeaf bgp4pathattrlocalpref; //type: int32
-        ydk::YLeaf bgp4pathattratomicaggregate; //type: Bgp4Pathattratomicaggregate
-        ydk::YLeaf bgp4pathattraggregatoras; //type: int32
-        ydk::YLeaf bgp4pathattraggregatoraddr; //type: string
-        ydk::YLeaf bgp4pathattrcalclocalpref; //type: int32
-        ydk::YLeaf bgp4pathattrbest; //type: Bgp4Pathattrbest
-        ydk::YLeaf bgp4pathattrunknown; //type: binary
-        class Bgp4Pathattrorigin;
-        class Bgp4Pathattratomicaggregate;
-        class Bgp4Pathattrbest;
-
-}; // BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry
 
 
 class BGP4MIB::Bgppeertable : public ydk::Entity
@@ -261,30 +199,67 @@ class BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry : public ydk::Entity
 
 }; // BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry
 
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin : public ydk::Enum
+
+class BGP4MIB::Bgp4Pathattrtable : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf igp;
-        static const ydk::Enum::YLeaf egp;
-        static const ydk::Enum::YLeaf incomplete;
+        Bgp4Pathattrtable();
+        ~Bgp4Pathattrtable();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate : public ydk::Enum
+        class Bgp4Pathattrentry; //type: BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry> > bgp4pathattrentry;
+        
+}; // BGP4MIB::Bgp4Pathattrtable
+
+
+class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf lessSpecificRrouteNotSelected;
-        static const ydk::Enum::YLeaf lessSpecificRouteSelected;
+        Bgp4Pathattrentry();
+        ~Bgp4Pathattrentry();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrbest : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
+        ydk::YLeaf bgp4pathattripaddrprefix; //type: string
+        ydk::YLeaf bgp4pathattripaddrprefixlen; //type: int32
+        ydk::YLeaf bgp4pathattrpeer; //type: string
+        ydk::YLeaf bgp4pathattrorigin; //type: Bgp4Pathattrorigin
+        ydk::YLeaf bgp4pathattraspathsegment; //type: binary
+        ydk::YLeaf bgp4pathattrnexthop; //type: string
+        ydk::YLeaf bgp4pathattrmultiexitdisc; //type: int32
+        ydk::YLeaf bgp4pathattrlocalpref; //type: int32
+        ydk::YLeaf bgp4pathattratomicaggregate; //type: Bgp4Pathattratomicaggregate
+        ydk::YLeaf bgp4pathattraggregatoras; //type: int32
+        ydk::YLeaf bgp4pathattraggregatoraddr; //type: string
+        ydk::YLeaf bgp4pathattrcalclocalpref; //type: int32
+        ydk::YLeaf bgp4pathattrbest; //type: Bgp4Pathattrbest
+        ydk::YLeaf bgp4pathattrunknown; //type: binary
+        class Bgp4Pathattrorigin;
+        class Bgp4Pathattratomicaggregate;
+        class Bgp4Pathattrbest;
 
-};
+}; // BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry
 
 class BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate : public ydk::Enum
 {
@@ -325,6 +300,31 @@ class BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin : publi
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf egp;
         static const ydk::Enum::YLeaf incomplete;
+
+};
+
+class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf igp;
+        static const ydk::Enum::YLeaf egp;
+        static const ydk::Enum::YLeaf incomplete;
+
+};
+
+class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lessSpecificRrouteNotSelected;
+        static const ydk::Enum::YLeaf lessSpecificRouteSelected;
+
+};
+
+class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrbest : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 

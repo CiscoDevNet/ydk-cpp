@@ -10,17 +10,18 @@
 #include "Cisco_IOS_XE_native_0.hpp"
 #include "Cisco_IOS_XE_native_87.hpp"
 #include "Cisco_IOS_XE_native_88.hpp"
+#include "Cisco_IOS_XE_native_90.hpp"
 #include "Cisco_IOS_XE_native_91.hpp"
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetPrecTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_ : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Bgp_();
+        ~Bgp_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,18 +33,72 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf always_compare_med; //type: empty
+        ydk::YLeaf aggregate_timer; //type: uint8
+        ydk::YLeaf advertise_best_external; //type: empty
+        ydk::YLeaf cluster_id; //type: one of string, uint32
+        ydk::YLeaf deterministic_med; //type: empty
+        ydk::YLeaf dmzlink_bw; //type: empty
+        ydk::YLeaf enforce_first_as; //type: empty
+        ydk::YLeaf enhanced_error; //type: empty
+        ydk::YLeaf fast_external_fallover; //type: boolean
+        ydk::YLeaf log_neighbor_changes; //type: empty
+        ydk::YLeaf maxas_limit; //type: uint16
+        ydk::YLeaf maxcommunity_limit; //type: uint16
+        ydk::YLeaf redistribute_internal; //type: empty
+        ydk::YLeaf scan_time; //type: uint8
+        ydk::YLeaf soft_reconfig_backup; //type: empty
+        ydk::YLeaf suppress_inactive; //type: empty
+        ydk::YLeaf update_delay; //type: uint16
+        class Asnotation; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Asnotation
+        class NopeerupDelay; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::NopeerupDelay
+        class Recursion; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Recursion
+        class AdditionalPaths; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths
+        class Bestpath; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath
+        class ClientToClient; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ClientToClient
+        class Confederation; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation
+        class ConsistencyChecker; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker
+        class Dampening; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening
+        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_
+        class GracefulRestart; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::GracefulRestart
+        class HaMode; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode
+        class InjectMap; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::InjectMap
+        class RouteMap; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::RouteMap
+        class SlowPeer; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer
+        class UpdateGroup; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup
+        class Nexthop; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop
+        class Regexp; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Regexp
+        class Transport; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Transport
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetPrecTransmit::ExceedAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Asnotation> asnotation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::NopeerupDelay> nopeerup_delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Recursion> recursion;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths> additional_paths;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath> bestpath;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ClientToClient> client_to_client;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation> confederation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker> consistency_checker;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening> dampening; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::GracefulRestart> graceful_restart; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode> ha_mode;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::InjectMap> > inject_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::RouteMap> route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer> slow_peer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup> update_group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop> nexthop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Regexp> regexp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Transport> transport;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Asnotation : public ydk::Entity
 {
     public:
-        ExceedSetQosTransmit();
-        ~ExceedSetQosTransmit();
+        Asnotation();
+        ~Asnotation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,18 +110,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::ExceedAction
+        ydk::YLeaf dot; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::ExceedAction> exceed_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Asnotation
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::NopeerupDelay : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        NopeerupDelay();
+        ~NopeerupDelay();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -78,16 +131,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf cold_boot; //type: uint16
+        ydk::YLeaf nsf_switchover; //type: uint16
+        ydk::YLeaf post_boot; //type: uint16
+        ydk::YLeaf user_initiated; //type: uint16
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedSetQosTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::NopeerupDelay
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Recursion : public ydk::Entity
 {
     public:
-        ExceedTransmit();
-        ~ExceedTransmit();
+        Recursion();
+        ~Recursion();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -99,18 +155,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::ExceedAction
+        ydk::YLeaf host; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::ExceedAction> exceed_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Recursion
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        AdditionalPaths();
+        ~AdditionalPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -122,16 +176,22 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transmit; //type: empty
+        ydk::YLeaf install; //type: empty
+        ydk::YLeaf receive; //type: empty
+        class Select; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select
+        class Send; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Send
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ExceedTransmit::ExceedAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select> select;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Send> send; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select : public ydk::Entity
 {
     public:
-        ViolateDrop();
-        ~ViolateDrop();
+        Select();
+        ~Select();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,18 +203,26 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::ViolateAction
+        class All; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All
+        class Backup; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Backup
+        class Best; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best
+        class BestExternal; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::BestExternal
+        class GroupBest; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::GroupBest
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All> all; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Backup> backup; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best> best;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::BestExternal> best_external; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::GroupBest> group_best; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        All();
+        ~All();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,16 +234,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf drop; //type: empty
+        class Best; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best
+        class GroupBest; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::GroupBest
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateDrop::ViolateAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best> best;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::GroupBest> group_best; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best : public ydk::Entity
 {
     public:
-        ViolateSetClpTransmit();
-        ~ViolateSetClpTransmit();
+        Best();
+        ~Best();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -187,18 +259,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::ViolateAction
+        class Range; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::ViolateAction> violate_action;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best::Range> > range;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best::Range : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -210,16 +282,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_clp_transmit; //type: empty
+        ydk::YLeaf range; //type: uint8
+        ydk::YLeaf group_best; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetClpTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::Best::Range
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::GroupBest : public ydk::Entity
 {
     public:
-        ViolateSetCosTransmit();
-        ~ViolateSetCosTransmit();
+        GroupBest();
+        ~GroupBest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -231,18 +304,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::ViolateAction
+        ydk::YLeaf best; //type: uint8
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::All::GroupBest
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Backup : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Backup();
+        ~Backup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -254,18 +325,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf best_external; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetCosTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Backup
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best : public ydk::Entity
 {
     public:
-        ViolateSetDiscardClassTransmit();
-        ~ViolateSetDiscardClassTransmit();
+        Best();
+        ~Best();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -277,18 +346,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+        class Range; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::ViolateAction> violate_action;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range> > range;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -300,16 +369,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_discard_class_transmit; //type: uint8
+        ydk::YLeaf range; //type: uint8
+        ydk::YLeaf all; //type: empty
+        class GroupBest; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range::GroupBest
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range::GroupBest> group_best; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range::GroupBest : public ydk::Entity
 {
     public:
-        ViolateSetDscpTransmit();
-        ~ViolateSetDscpTransmit();
+        GroupBest();
+        ~GroupBest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -321,18 +394,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::ViolateAction
+        ydk::YLeaf all; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::Best::Range::GroupBest
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::BestExternal : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        BestExternal();
+        ~BestExternal();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -344,18 +415,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf backup; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetDscpTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::BestExternal
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::GroupBest : public ydk::Entity
 {
     public:
-        ViolateSetFrdeTransmit();
-        ~ViolateSetFrdeTransmit();
+        GroupBest();
+        ~GroupBest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -367,18 +436,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::ViolateAction
+        ydk::YLeaf all; //type: empty
+        ydk::YLeaf best; //type: uint8
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Select::GroupBest
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Send : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Send();
+        ~Send();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -390,16 +458,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_frde_transmit; //type: empty
+        ydk::YLeaf receive; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetFrdeTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::AdditionalPaths::Send
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath : public ydk::Entity
 {
     public:
-        ViolateSetMplsExpImpositionTransmit();
-        ~ViolateSetMplsExpImpositionTransmit();
+        Bestpath();
+        ~Bestpath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -411,18 +479,23 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+        ydk::YLeaf compare_routerid; //type: empty
+        class CostCommunity; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::CostCommunity
+        class IgpMetric; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::IgpMetric
+        class Med; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::CostCommunity> cost_community;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::IgpMetric> igp_metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med> med;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::CostCommunity : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        CostCommunity();
+        ~CostCommunity();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -434,16 +507,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf ignore; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::CostCommunity
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::IgpMetric : public ydk::Entity
 {
     public:
-        ViolateSetMplsExpTopmostTransmit();
-        ~ViolateSetMplsExpTopmostTransmit();
+        IgpMetric();
+        ~IgpMetric();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -455,18 +528,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+        ydk::YLeaf ignore; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::IgpMetric
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Med();
+        ~Med();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -478,16 +549,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf missing_at_worst; //type: empty
+        class Confed; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med::Confed
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med::Confed> confed; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med::Confed : public ydk::Entity
 {
     public:
-        ViolateSetPrecTransmit();
-        ~ViolateSetPrecTransmit();
+        Confed();
+        ~Confed();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -499,18 +573,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::ViolateAction
+        ydk::YLeaf missing_at_worst; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::Med::Confed
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ClientToClient : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        ClientToClient();
+        ~ClientToClient();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -522,18 +594,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf reflection; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetPrecTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ClientToClient
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation : public ydk::Entity
 {
     public:
-        ViolateSetQosTransmit();
-        ~ViolateSetQosTransmit();
+        Confederation();
+        ~Confederation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -545,18 +615,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::ViolateAction
+        ydk::YLeaf identifier; //type: uint32
+        class Peers; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation::Peers
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation::Peers> peers;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation::Peers : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Peers();
+        ~Peers();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -568,16 +639,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeafList peers_as; //type: list of  uint32
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateSetQosTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation::Peers
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker : public ydk::Entity
 {
     public:
-        ViolateTransmit();
-        ~ViolateTransmit();
+        ConsistencyChecker();
+        ~ConsistencyChecker();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -589,18 +660,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::ViolateAction
+        class AutoRepair; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::AutoRepair
+        class ErrorMessage; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::ErrorMessage
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::AutoRepair> auto_repair; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::ErrorMessage> error_message; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::AutoRepair : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        AutoRepair();
+        ~AutoRepair();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -612,16 +685,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transmit; //type: empty
+        ydk::YLeaf interval; //type: uint16
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::Actions::ViolateTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::AutoRepair
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::PeakBurstMs : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::ErrorMessage : public ydk::Entity
 {
     public:
-        PeakBurstMs();
-        ~PeakBurstMs();
+        ErrorMessage();
+        ~ErrorMessage();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -633,16 +706,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ms; //type: empty
+        ydk::YLeaf interval; //type: uint16
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::PeakBurstMs
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker::ErrorMessage
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::PeakRate : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening : public ydk::Entity
 {
     public:
-        PeakRate();
-        ~PeakRate();
+        Dampening();
+        ~Dampening();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -654,16 +727,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf percent; //type: uint8
+        ydk::YLeaf route_map; //type: string
+        class Dampen; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening::Dampen
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRatePercent::Police::Rate::Percent::PeakRate
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening::Dampen> dampen;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening::Dampen : public ydk::Entity
 {
     public:
-        PoliceRateUnit();
-        ~PoliceRateUnit();
+        Dampen();
+        ~Dampen();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -675,18 +751,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Police; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police
+        ydk::YLeaf half_life_time; //type: uint8
+        ydk::YLeaf reuse_time; //type: uint16
+        ydk::YLeaf suppress_time; //type: uint16
+        ydk::YLeaf max_suppress_time; //type: uint8
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police> police;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening::Dampen
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_ : public ydk::Entity
 {
     public:
-        Police();
-        ~Police();
+        Default_();
+        ~Default_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -698,18 +775,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Rate; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate
+        ydk::YLeaf ipv4_unicast; //type: boolean
+        ydk::YLeaf ipv6_nexthop; //type: empty
+        ydk::YLeaf local_preference; //type: uint32
+        ydk::YLeaf route_target; //type: RouteTarget
+        class RouteTarget;
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate> rate;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::GracefulRestart : public ydk::Entity
 {
     public:
-        Rate();
-        ~Rate();
+        GracefulRestart();
+        ~GracefulRestart();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -721,129 +800,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf units; //type: uint64
-        ydk::YLeaf xps; //type: PolicePpsBpsType
-        class Burst; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Burst
-        class PeakRate; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakRate
-        class PeakBurst; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakBurst
-        class Actions; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions
+        ydk::YLeaf extended; //type: empty
+        ydk::YLeaf restart_time; //type: uint16
+        ydk::YLeaf stalepath_time; //type: uint16
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions> actions;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Burst> burst;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakBurst> peak_burst;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakRate> peak_rate;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate
-
-
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions : public ydk::Entity
-{
-    public:
-        Actions();
-        ~Actions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ConformSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit
-        class ConformSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit
-        class ConformSetCosTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable
-        class ConformSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit
-        class ConformSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit
-        class ConformSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable
-        class ConformSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit
-        class ConformSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit
-        class ConformSetMplsExpImpositionTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable
-        class ConformSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit
-        class ConformSetMplsExpTopmostTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable
-        class ConformSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit
-        class ConformSetPrecTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable
-        class ConformSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit
-        class ConformSetQosTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable
-        class ConformTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit
-        class ConformDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop
-        class ExceedDscp; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp
-        class ExceedSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit
-        class ExceedSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit
-        class ExceedSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit
-        class ExceedSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit
-        class ExceedSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable
-        class ExceedSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit
-        class ExceedSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit
-        class ExceedSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit
-        class ExceedSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit
-        class ExceedSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit
-        class ExceedTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit
-        class ExceedDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop
-        class ViolateSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit
-        class ViolateSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit
-        class ViolateSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit
-        class ViolateSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit
-        class ViolateSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit
-        class ViolateSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit
-        class ViolateSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit
-        class ViolateSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit
-        class ViolateSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit
-        class ViolateTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit
-        class ViolateDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop> conform_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit> conform_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit> conform_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable> conform_set_cos_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit> conform_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit> conform_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable> conform_set_dscp_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit> conform_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit> conform_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable> conform_set_mpls_exp_imposition_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit> conform_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable> conform_set_mpls_exp_topmost_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit> conform_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable> conform_set_prec_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit> conform_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable> conform_set_qos_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit> conform_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop> exceed_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp> exceed_dscp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit> exceed_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit> exceed_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit> exceed_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit> exceed_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable> exceed_set_dscp_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit> exceed_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit> exceed_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit> exceed_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit> exceed_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit> exceed_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit> exceed_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop> violate_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit> violate_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit> violate_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit> violate_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit> violate_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit> violate_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit> violate_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit> violate_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit> violate_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit> violate_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit> violate_transmit;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::GracefulRestart
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode : public ydk::Entity
 {
     public:
-        ConformDrop();
-        ~ConformDrop();
+        HaMode();
+        ~HaMode();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -855,18 +823,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop::ConformAction
+        class Sso; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode::Sso
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode::Sso> sso; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode::Sso : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Sso();
+        ~Sso();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -878,16 +846,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf drop; //type: empty
+        ydk::YLeaf prefer; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformDrop::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode::Sso
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::InjectMap : public ydk::Entity
 {
     public:
-        ConformSetClpTransmit();
-        ~ConformSetClpTransmit();
+        InjectMap();
+        ~InjectMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -899,18 +867,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit::ConformAction
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf exist_map; //type: string
+        ydk::YLeaf copy_attributes; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::InjectMap
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::RouteMap : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        RouteMap();
+        ~RouteMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -922,16 +890,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_clp_transmit; //type: empty
+        ydk::YLeaf priority; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetClpTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::RouteMap
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer : public ydk::Entity
 {
     public:
-        ConformSetCosTransmit();
-        ~ConformSetCosTransmit();
+        SlowPeer();
+        ~SlowPeer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -943,18 +911,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit::ConformAction
+        class Detection; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::Detection
+        class SplitUpdateGroup; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::Detection> detection; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup> split_update_group;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::Detection : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Detection();
+        ~Detection();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -966,16 +936,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf threshold; //type: uint16
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::Detection
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup : public ydk::Entity
 {
     public:
-        ConformSetCosTransmitTable();
-        ~ConformSetCosTransmitTable();
+        SplitUpdateGroup();
+        ~SplitUpdateGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -987,18 +958,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable::ConformAction
+        class Dynamic; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic> dynamic; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Dynamic();
+        ~Dynamic();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1010,18 +981,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf permanent; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetCosTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup : public ydk::Entity
 {
     public:
-        ConformSetDiscardClassTransmit();
-        ~ConformSetDiscardClassTransmit();
+        UpdateGroup();
+        ~UpdateGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1033,18 +1002,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit::ConformAction
+        class Split; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup::Split
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup::Split> split;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup::Split : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Split();
+        ~Split();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1056,16 +1025,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_discard_class_transmit; //type: uint8
+        ydk::YLeaf as_override; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDiscardClassTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup::Split
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop : public ydk::Entity
 {
     public:
-        ConformSetDscpTransmit();
-        ~ConformSetDscpTransmit();
+        Nexthop();
+        ~Nexthop();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1077,18 +1046,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit::ConformAction
+        ydk::YLeaf route_map; //type: string
+        class Trigger; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop::Trigger
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop::Trigger> trigger;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop::Trigger : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Trigger();
+        ~Trigger();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1100,16 +1070,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf delay; //type: uint8
+        ydk::YLeaf enable; //type: boolean
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop::Trigger
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Regexp : public ydk::Entity
 {
     public:
-        ConformSetDscpTransmitTable();
-        ~ConformSetDscpTransmitTable();
+        Regexp();
+        ~Regexp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1121,18 +1092,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable::ConformAction
+        ydk::YLeaf deterministic; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Regexp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Transport : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Transport();
+        ~Transport();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1144,18 +1113,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf path_mtu_discovery; //type: boolean
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetDscpTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Transport
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DefaultInformation : public ydk::Entity
 {
     public:
-        ConformSetFrdeTransmit();
-        ~ConformSetFrdeTransmit();
+        DefaultInformation();
+        ~DefaultInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1167,18 +1134,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit::ConformAction
+        ydk::YLeaf originate; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DefaultInformation
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Distance();
+        ~Distance();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1190,16 +1155,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_frde_transmit; //type: empty
+        class Bgp_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::Bgp_
+        class AdmDistance; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::AdmDistance
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetFrdeTransmit::ConformAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::Bgp_> bgp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::AdmDistance> > adm_distance;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::Bgp_ : public ydk::Entity
 {
     public:
-        ConformSetMplsExpImpositionTransmit();
-        ~ConformSetMplsExpImpositionTransmit();
+        Bgp_();
+        ~Bgp_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1211,18 +1180,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
+        ydk::YLeaf extern_as; //type: uint16
+        ydk::YLeaf internal_as; //type: uint16
+        ydk::YLeaf local; //type: uint16
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::Bgp_
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::AdmDistance : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        AdmDistance();
+        ~AdmDistance();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1234,16 +1203,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf distance; //type: uint16
+        ydk::YLeaf srcip; //type: string
+        ydk::YLeaf wildbits; //type: string
+        ydk::YLeaf acl; //type: one of uint16, string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::AdmDistance
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList : public ydk::Entity
 {
     public:
-        ConformSetMplsExpImpositionTransmitTable();
-        ~ConformSetMplsExpImpositionTransmitTable();
+        DistributeList();
+        ~DistributeList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1255,18 +1227,21 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
+        ydk::YLeaf id; //type: one of uint16, string
+        class In; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::In
+        class Out; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::Out
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::In> in; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::Out> out; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::In : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        In();
+        ~In();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1278,18 +1253,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf interface; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::In
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::Out : public ydk::Entity
 {
     public:
-        ConformSetMplsExpTopmostTransmit();
-        ~ConformSetMplsExpTopmostTransmit();
+        Out();
+        ~Out();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1301,18 +1274,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
+        ydk::YLeaf interface; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::Out
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        MaximumPaths();
+        ~MaximumPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1324,16 +1295,23 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf eibgp; //type: uint16
+        class MaxPath; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::MaxPath
+        class ExternalRtfilter; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::ExternalRtfilter
+        class Ibgp; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::Ibgp
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::MaxPath> max_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::ExternalRtfilter> external_rtfilter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::Ibgp> ibgp;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::MaxPath : public ydk::Entity
 {
     public:
-        ConformSetMplsExpTopmostTransmitTable();
-        ~ConformSetMplsExpTopmostTransmitTable();
+        MaxPath();
+        ~MaxPath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1345,18 +1323,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
+        ydk::YLeaf max; //type: uint16
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::MaxPath
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::ExternalRtfilter : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        ExternalRtfilter();
+        ~ExternalRtfilter();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1368,18 +1344,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf max; //type: uint16
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::ExternalRtfilter
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::Ibgp : public ydk::Entity
 {
     public:
-        ConformSetPrecTransmit();
-        ~ConformSetPrecTransmit();
+        Ibgp();
+        ~Ibgp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1391,18 +1365,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit::ConformAction
+        ydk::YLeaf unequal_cost; //type: uint16
+        ydk::YLeaf max; //type: uint16
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::Ibgp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Neighbor();
+        ~Neighbor();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1414,16 +1387,99 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf remote_as; //type: one of string, uint32
+        ydk::YLeaf activate; //type: empty
+        ydk::YLeaf allow_policy; //type: empty
+        ydk::YLeaf advertisement_interval; //type: uint16
+        ydk::YLeaf cluster_id; //type: one of string, uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf disable_connected_check; //type: empty
+        ydk::YLeaf dmzlink_bw; //type: empty
+        ydk::YLeaf next_hop_self; //type: empty
+        ydk::YLeaf next_hop_unchanged; //type: empty
+        ydk::YLeaf remove_private_as; //type: empty
+        ydk::YLeaf route_reflector_client; //type: empty
+        ydk::YLeaf route_reflector_cluster_id; //type: one of string, uint32
+        ydk::YLeaf soo; //type: string
+        ydk::YLeaf shutdown; //type: empty
+        ydk::YLeaf soft_reconfiguration; //type: SoftReconfiguration
+        ydk::YLeaf unsuppress_map; //type: string
+        ydk::YLeaf version; //type: uint16
+        ydk::YLeaf weight; //type: uint16
+        class PeerGroup; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PeerGroup
+        class LocalAs; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LocalAs
+        class AdditionalPaths; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths
+        class Advertise; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise
+        class AdvertiseMap; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap
+        class Aigp; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp
+        class Announce; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce
+        class AllowasIn; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AllowasIn
+        class AsOverride; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AsOverride
+        class Capability; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability
+        class DefaultOriginate; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DefaultOriginate
+        class DistributeList; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DistributeList
+        class EbgpMultihop; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::EbgpMultihop
+        class FallOver; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver
+        class FilterList; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FilterList
+        class Inherit; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Inherit
+        class LogNeighborChanges; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LogNeighborChanges
+        class MaximumPrefix; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::MaximumPrefix
+        class Password; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Password
+        class PrefixList; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PrefixList
+        class PathAttribute; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute
+        class RouteMap; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RouteMap
+        class SendCommunity; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendCommunity
+        class SendLabel; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendLabel
+        class SlowPeer; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer
+        class Timers; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Timers
+        class TranslateUpdate; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate
+        class Transport; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport
+        class TtlSecurity; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TtlSecurity
+        class UpdateSource; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource
+        class HaMode; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmit::ConformAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PeerGroup> peer_group; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LocalAs> local_as; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths> additional_paths;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise> advertise;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap> advertise_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp> aigp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce> announce;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AllowasIn> allowas_in; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AsOverride> as_override; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability> capability;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DefaultOriginate> default_originate; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DistributeList> > distribute_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::EbgpMultihop> ebgp_multihop; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver> fall_over;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FilterList> > filter_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Inherit> inherit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LogNeighborChanges> log_neighbor_changes; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::MaximumPrefix> maximum_prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Password> password;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PrefixList> > prefix_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute> path_attribute;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RouteMap> > route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendCommunity> send_community; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendLabel> send_label;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer> slow_peer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Timers> timers;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate> translate_update;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport> transport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TtlSecurity> ttl_security;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource> update_source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode> ha_mode;
+                class SoftReconfiguration;
 
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable : public ydk::Entity
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PeerGroup : public ydk::Entity
 {
     public:
-        ConformSetPrecTransmitTable();
-        ~ConformSetPrecTransmitTable();
+        PeerGroup();
+        ~PeerGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1435,18 +1491,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable::ConformAction
+        ydk::YLeaf peer_group_name; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PeerGroup
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LocalAs : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        LocalAs();
+        ~LocalAs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1458,18 +1512,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf as_no; //type: one of string, uint32
+        ydk::YLeaf no_prepend; //type: empty
+        ydk::YLeaf replace_as; //type: empty
+        ydk::YLeaf dual_as; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetPrecTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LocalAs
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths : public ydk::Entity
 {
     public:
-        ConformSetQosTransmit();
-        ~ConformSetQosTransmit();
+        AdditionalPaths();
+        ~AdditionalPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1481,18 +1536,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit::ConformAction
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf receive; //type: empty
+        class Send; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths::Send
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths::Send> send; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths::Send : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Send();
+        ~Send();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1504,16 +1561,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf receive; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths::Send
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise : public ydk::Entity
 {
     public:
-        ConformSetQosTransmitTable();
-        ~ConformSetQosTransmitTable();
+        Advertise();
+        ~Advertise();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1525,18 +1582,21 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable::ConformAction
+        ydk::YLeaf best_external; //type: empty
+        class AdditionalPaths; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths
+        class DiversePath; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths> additional_paths;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath> diverse_path;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        AdditionalPaths();
+        ~AdditionalPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1548,18 +1608,22 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        class All; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All
+        class Best; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best
+        class GroupBest; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::GroupBest
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformSetQosTransmitTable::ConformAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All> all; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best> best;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::GroupBest> group_best; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All : public ydk::Entity
 {
     public:
-        ConformTransmit();
-        ~ConformTransmit();
+        All();
+        ~All();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1571,18 +1635,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit::ConformAction
+        class Best; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best
+        class GroupBest; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::GroupBest
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best> best;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::GroupBest> group_best; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Best();
+        ~Best();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1594,16 +1660,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transmit; //type: empty
+        class BestRange; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ConformTransmit::ConformAction
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange> > best_range;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange : public ydk::Entity
 {
     public:
-        ExceedDrop();
-        ~ExceedDrop();
+        BestRange();
+        ~BestRange();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1615,18 +1683,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop::ExceedAction
+        ydk::YLeaf range; //type: uint8
+        ydk::YLeaf group_best; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop::ExceedAction> exceed_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::GroupBest : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        GroupBest();
+        ~GroupBest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1638,16 +1705,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf drop; //type: empty
+        ydk::YLeaf best; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDrop::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::GroupBest
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best : public ydk::Entity
 {
     public:
-        ExceedDscp();
-        ~ExceedDscp();
+        Best();
+        ~Best();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1659,18 +1726,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp::ExceedAction
+        class BestRange; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp::ExceedAction> exceed_action;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange> > best_range;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        BestRange();
+        ~BestRange();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1682,16 +1749,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp; //type: one of enumeration, uint8
+        ydk::YLeaf range; //type: uint8
+        ydk::YLeaf all; //type: empty
+        class GroupBest; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedDscp::ExceedAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest> group_best; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest : public ydk::Entity
 {
     public:
-        ExceedSetClpTransmit();
-        ~ExceedSetClpTransmit();
+        GroupBest();
+        ~GroupBest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1703,18 +1774,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit::ExceedAction
+        ydk::YLeaf all; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit::ExceedAction> exceed_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::GroupBest : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        GroupBest();
+        ~GroupBest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1726,16 +1795,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_clp_transmit; //type: empty
+        ydk::YLeaf all; //type: empty
+        ydk::YLeaf best; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetClpTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::GroupBest
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath : public ydk::Entity
 {
     public:
-        ExceedSetCosTransmit();
-        ~ExceedSetCosTransmit();
+        DiversePath();
+        ~DiversePath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1747,18 +1817,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit::ExceedAction
+        ydk::YLeaf mpath; //type: empty
+        class Backup; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath::Backup
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath::Backup> backup; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath::Backup : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Backup();
+        ~Backup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1770,18 +1841,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf mpath; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetCosTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath::Backup
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap : public ydk::Entity
 {
     public:
-        ExceedSetDiscardClassTransmit();
-        ~ExceedSetDiscardClassTransmit();
+        AdvertiseMap();
+        ~AdvertiseMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1793,18 +1862,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit::ExceedAction
+        class Name; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap::Name
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit::ExceedAction> exceed_action;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap::Name> > name;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap::Name : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Name();
+        ~Name();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1816,16 +1885,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_discard_class_transmit; //type: uint8
+        ydk::YLeaf word; //type: string
+        ydk::YLeaf exist_map; //type: string
+        ydk::YLeaf non_exist_map; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDiscardClassTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap::Name
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp : public ydk::Entity
 {
     public:
-        ExceedSetDscpTransmit();
-        ~ExceedSetDscpTransmit();
+        Aigp();
+        ~Aigp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1837,18 +1908,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction
+        class Send; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send> send;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Send();
+        ~Send();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1860,18 +1931,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
+        ydk::YLeaf med; //type: empty
+        class CostCommunity; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit> set_dscp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity> cost_community;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity : public ydk::Entity
 {
     public:
-        SetDscpTransmit();
-        ~SetDscpTransmit();
+        CostCommunity();
+        ~CostCommunity();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1883,18 +1955,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dscp; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
+        class CcRange; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp> dscp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange> > cc_range;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange : public ydk::Entity
 {
     public:
-        Dscp();
-        ~Dscp();
+        CcRange();
+        ~CcRange();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1906,17 +1978,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf table; //type: Table
-        class Table;
+        ydk::YLeaf range; //type: uint8
+        class Poi; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi> poi;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi : public ydk::Entity
 {
     public:
-        ExceedSetDscpTransmitTable();
-        ~ExceedSetDscpTransmitTable();
+        Poi();
+        ~Poi();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1928,18 +2002,41 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable::ExceedAction
+        class IgpCost; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::IgpCost
+        class PreBestpath; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::PreBestpath
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::IgpCost> igp_cost; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::PreBestpath> pre_bestpath; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi
+
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::IgpCost : public ydk::Entity
+{
+    public:
+        IgpCost();
+        ~IgpCost();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf transitive; //type: empty
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable::ExceedAction : public ydk::Entity
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::IgpCost
+
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::PreBestpath : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        PreBestpath();
+        ~PreBestpath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1951,18 +2048,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf transitive; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmitTable::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::PreBestpath
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce : public ydk::Entity
 {
     public:
-        ExceedSetFrdeTransmit();
-        ~ExceedSetFrdeTransmit();
+        Announce();
+        ~Announce();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1974,18 +2069,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit::ExceedAction
+        class Rpki; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce::Rpki
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce::Rpki> rpki;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce::Rpki : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Rpki();
+        ~Rpki();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1997,16 +2092,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_frde_transmit; //type: empty
+        ydk::YLeaf state; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetFrdeTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce::Rpki
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AllowasIn : public ydk::Entity
 {
     public:
-        ExceedSetMplsExpImpositionTransmit();
-        ~ExceedSetMplsExpImpositionTransmit();
+        AllowasIn();
+        ~AllowasIn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2018,18 +2113,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
+        ydk::YLeaf as_number; //type: uint8
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction> exceed_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AllowasIn
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AsOverride : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        AsOverride();
+        ~AsOverride();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2041,16 +2134,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf disable; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AsOverride
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability : public ydk::Entity
 {
     public:
-        ExceedSetMplsExpTopmostTransmit();
-        ~ExceedSetMplsExpTopmostTransmit();
+        Capability();
+        ~Capability();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2062,18 +2155,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
+        class Orf; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability::Orf
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability::Orf> orf;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability::Orf : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Orf();
+        ~Orf();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2085,16 +2178,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeafList prefix_list; //type: list of  PrefixList
+        class PrefixList;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability::Orf
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DefaultOriginate : public ydk::Entity
 {
     public:
-        ExceedSetPrecTransmit();
-        ~ExceedSetPrecTransmit();
+        DefaultOriginate();
+        ~DefaultOriginate();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2106,18 +2200,39 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit::ExceedAction
+        ydk::YLeaf route_map; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit::ExceedAction> exceed_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DefaultOriginate
+
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DistributeList : public ydk::Entity
+{
+    public:
+        DistributeList();
+        ~DistributeList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf inout; //type: Inout
+        ydk::YLeaf accesslist; //type: one of uint16, string
+        class Inout;
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit::ExceedAction : public ydk::Entity
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DistributeList
+
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::EbgpMultihop : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        EbgpMultihop();
+        ~EbgpMultihop();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2129,18 +2244,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf max_hop; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetPrecTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::EbgpMultihop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver : public ydk::Entity
 {
     public:
-        ExceedSetQosTransmit();
-        ~ExceedSetQosTransmit();
+        FallOver();
+        ~FallOver();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2152,18 +2265,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit::ExceedAction
+        class Bfd; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver::Bfd
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver::Bfd> bfd; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver::Bfd : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Bfd();
+        ~Bfd();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2175,16 +2288,15 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetQosTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver::Bfd
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FilterList : public ydk::Entity
 {
     public:
-        ExceedTransmit();
-        ~ExceedTransmit();
+        FilterList();
+        ~FilterList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2196,18 +2308,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit::ExceedAction
+        ydk::YLeaf inout; //type: Inout
+        ydk::YLeaf as_path_list; //type: uint16
+        class Inout;
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit::ExceedAction> exceed_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FilterList
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit::ExceedAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Inherit : public ydk::Entity
 {
     public:
-        ExceedAction();
-        ~ExceedAction();
+        Inherit();
+        ~Inherit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2219,16 +2331,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transmit; //type: empty
+        ydk::YLeaf peer_policy; //type: string
+        ydk::YLeaf peer_session; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedTransmit::ExceedAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Inherit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LogNeighborChanges : public ydk::Entity
 {
     public:
-        ViolateDrop();
-        ~ViolateDrop();
+        LogNeighborChanges();
+        ~LogNeighborChanges();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2240,18 +2353,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop::ViolateAction
+        ydk::YLeaf disable; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LogNeighborChanges
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::MaximumPrefix : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        MaximumPrefix();
+        ~MaximumPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2263,16 +2374,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf drop; //type: empty
+        ydk::YLeaf max_prefix_no; //type: uint32
+        ydk::YLeaf threshold; //type: uint8
+        ydk::YLeaf restart; //type: uint16
+        ydk::YLeaf warning_only; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateDrop::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::MaximumPrefix
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Password : public ydk::Entity
 {
     public:
-        ViolateSetClpTransmit();
-        ~ViolateSetClpTransmit();
+        Password();
+        ~Password();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2284,18 +2398,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit::ViolateAction
+        ydk::YLeaf enctype; //type: uint8
+        ydk::YLeaf text; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Password
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PrefixList : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        PrefixList();
+        ~PrefixList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2307,16 +2420,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_clp_transmit; //type: empty
+        ydk::YLeaf inout; //type: Inout
+        ydk::YLeaf prefix_list_name; //type: string
+        class Inout;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetClpTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PrefixList
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute : public ydk::Entity
 {
     public:
-        ViolateSetCosTransmit();
-        ~ViolateSetCosTransmit();
+        PathAttribute();
+        ~PathAttribute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2328,18 +2443,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit::ViolateAction
+        class Discard; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard
+        class TreatAsWithdraw; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard> discard;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw> treat_as_withdraw;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Discard();
+        ~Discard();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2351,18 +2468,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        class AttibuteType; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::AttibuteType
+        class Range; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::Range
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetCosTransmit::ViolateAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::AttibuteType> attibute_type;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::Range> range;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::AttibuteType : public ydk::Entity
 {
     public:
-        ViolateSetDiscardClassTransmit();
-        ~ViolateSetDiscardClassTransmit();
+        AttibuteType();
+        ~AttibuteType();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2374,18 +2493,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf in; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::AttibuteType
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::Range : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2397,16 +2515,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_discard_class_transmit; //type: uint8
+        ydk::YLeaf start_value; //type: uint8
+        ydk::YLeaf end_value; //type: uint8
+        ydk::YLeaf in; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::Range
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw : public ydk::Entity
 {
     public:
-        ViolateSetDscpTransmit();
-        ~ViolateSetDscpTransmit();
+        TreatAsWithdraw();
+        ~TreatAsWithdraw();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2418,18 +2538,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit::ViolateAction
+        class AttibuteType; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::AttibuteType
+        class Range; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::AttibuteType> attibute_type;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::Range> range;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::AttibuteType : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        AttibuteType();
+        ~AttibuteType();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2441,18 +2563,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf in; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetDscpTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::AttibuteType
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::Range : public ydk::Entity
 {
     public:
-        ViolateSetFrdeTransmit();
-        ~ViolateSetFrdeTransmit();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2464,18 +2585,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit::ViolateAction
+        ydk::YLeaf start_value; //type: uint8
+        ydk::YLeaf end_value; //type: uint8
+        ydk::YLeaf in; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::Range
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RouteMap : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        RouteMap();
+        ~RouteMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2487,16 +2608,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_frde_transmit; //type: empty
+        ydk::YLeaf inout; //type: Inout
+        ydk::YLeaf route_map_name; //type: string
+        class Inout;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetFrdeTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RouteMap
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendCommunity : public ydk::Entity
 {
     public:
-        ViolateSetMplsExpImpositionTransmit();
-        ~ViolateSetMplsExpImpositionTransmit();
+        SendCommunity();
+        ~SendCommunity();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2508,18 +2631,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+        ydk::YLeaf send_community_where; //type: SendCommunityWhere
+        class SendCommunityWhere;
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendCommunity
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendLabel : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        SendLabel();
+        ~SendLabel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2531,16 +2653,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf send_label_explicit; //type: SendLabelExplicit
+        class SendLabelExplicit;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendLabel
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer : public ydk::Entity
 {
     public:
-        ViolateSetMplsExpTopmostTransmit();
-        ~ViolateSetMplsExpTopmostTransmit();
+        SlowPeer();
+        ~SlowPeer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2552,18 +2675,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+        class Detection; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::Detection
+        class SplitUpdateGroup; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::Detection> detection; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup> split_update_group;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::Detection : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Detection();
+        ~Detection();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2575,16 +2700,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf threshold; //type: uint16
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::Detection
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup : public ydk::Entity
 {
     public:
-        ViolateSetPrecTransmit();
-        ~ViolateSetPrecTransmit();
+        SplitUpdateGroup();
+        ~SplitUpdateGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2596,18 +2721,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit::ViolateAction
+        class Dynamic; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic> dynamic; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Dynamic();
+        ~Dynamic();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2619,18 +2744,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf permanent; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetPrecTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Timers : public ydk::Entity
 {
     public:
-        ViolateSetQosTransmit();
-        ~ViolateSetQosTransmit();
+        Timers();
+        ~Timers();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2642,18 +2765,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit::ViolateAction
+        ydk::YLeaf keepalive_interval; //type: uint16
+        ydk::YLeaf holdtime; //type: uint16
+        ydk::YLeaf minimum_neighbor_hold; //type: uint16
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit::ViolateAction> violate_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Timers
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        TranslateUpdate();
+        ~TranslateUpdate();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2665,16 +2788,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
+        class Ipv4; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateSetQosTransmit::ViolateAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4> ipv4;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4 : public ydk::Entity
 {
     public:
-        ViolateTransmit();
-        ~ViolateTransmit();
+        Ipv4();
+        ~Ipv4();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2686,18 +2811,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit::ViolateAction
+        class Multicast; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4::Multicast
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4::Multicast> multicast; // presence node
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit::ViolateAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4::Multicast : public ydk::Entity
 {
     public:
-        ViolateAction();
-        ~ViolateAction();
+        Multicast();
+        ~Multicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2709,16 +2834,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transmit; //type: empty
+        ydk::YLeaf unicast; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ViolateTransmit::ViolateAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4::Multicast
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Burst : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport : public ydk::Entity
 {
     public:
-        Burst();
-        ~Burst();
+        Transport();
+        ~Transport();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2730,17 +2855,21 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf burst_value; //type: uint32
-        ydk::YLeaf burst_type; //type: PolicePacketsBytesType
+        ydk::YLeaf connection_mode; //type: ConnectionMode
+        ydk::YLeaf multi_session; //type: empty
+        class PathMtuDiscovery; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport::PathMtuDiscovery
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Burst
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport::PathMtuDiscovery> path_mtu_discovery; // presence node
+                class ConnectionMode;
 
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakBurst : public ydk::Entity
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport::PathMtuDiscovery : public ydk::Entity
 {
     public:
-        PeakBurst();
-        ~PeakBurst();
+        PathMtuDiscovery();
+        ~PathMtuDiscovery();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2752,17 +2881,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf burst_value; //type: uint32
-        ydk::YLeaf burst_type; //type: PolicePacketsBytesType
+        ydk::YLeaf disable; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakBurst
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport::PathMtuDiscovery
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakRate : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TtlSecurity : public ydk::Entity
 {
     public:
-        PeakRate();
-        ~PeakRate();
+        TtlSecurity();
+        ~TtlSecurity();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2774,17 +2902,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf peak_rate_value; //type: uint32
-        ydk::YLeaf xps; //type: PolicePpsBpsType
+        ydk::YLeaf hops; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::PeakRate
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TtlSecurity
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource : public ydk::Entity
 {
     public:
-        PoliceSwitch();
-        ~PoliceSwitch();
+        UpdateSource();
+        ~UpdateSource();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2796,18 +2923,51 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Police; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police
+        ydk::YLeaf appnav_compress; //type: uint16
+        ydk::YLeaf appnav_uncompress; //type: uint16
+        ydk::YLeaf atm; //type: string
+        ydk::YLeaf atm_acr; //type: string
+        ydk::YLeaf bdi; //type: string
+        ydk::YLeaf cem; //type: string
+        ydk::YLeaf cem_acr; //type: uint8
+        ydk::YLeaf embedded_service_engine; //type: string
+        ydk::YLeaf fastethernet; //type: string
+        ydk::YLeaf gigabitethernet; //type: string
+        ydk::YLeaf lisp; //type: string
+        ydk::YLeaf loopback; //type: uint32
+        ydk::YLeaf multilink; //type: uint16
+        ydk::YLeaf nve; //type: uint16
+        ydk::YLeaf overlay; //type: uint16
+        ydk::YLeaf port_channel; //type: uint32
+        ydk::YLeaf pseudowire; //type: uint32
+        ydk::YLeaf sm; //type: string
+        ydk::YLeaf cellular; //type: string
+        ydk::YLeaf serial; //type: string
+        ydk::YLeaf tengigabitethernet; //type: string
+        ydk::YLeaf tunnel; //type: uint32
+        ydk::YLeaf virtual_template; //type: uint16
+        ydk::YLeaf vlan; //type: uint16
+        ydk::YLeaf virtualportgroup; //type: uint16
+        ydk::YLeaf vasileft; //type: uint16
+        ydk::YLeaf vasiright; //type: uint16
+        class ATMSubinterface; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMSubinterface
+        class ATMACRsubinterface; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMACRsubinterface
+        class LISPSubinterface; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::LISPSubinterface
+        class PortChannelSubinterface; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::PortChannelSubinterface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police> police;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMSubinterface> atm_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMACRsubinterface> atm_acrsubinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::LISPSubinterface> lisp_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::PortChannelSubinterface> port_channel_subinterface;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMSubinterface : public ydk::Entity
 {
     public:
-        Police();
-        ~Police();
+        ATMSubinterface();
+        ~ATMSubinterface();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2819,19 +2979,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf cir; //type: uint32
-        ydk::YLeaf bc; //type: uint32
-        ydk::YLeaf exceed_action; //type: ExceedAction
-        class ExceedAction;
+        ydk::YLeaf atm; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMSubinterface
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMACRsubinterface : public ydk::Entity
 {
     public:
-        PoliceTargetBitrate();
-        ~PoliceTargetBitrate();
+        ATMACRsubinterface();
+        ~ATMACRsubinterface();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2843,18 +3000,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Police; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
+        ydk::YLeaf atm_acr; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police> police;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMACRsubinterface
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::LISPSubinterface : public ydk::Entity
 {
     public:
-        Police();
-        ~Police();
+        LISPSubinterface();
+        ~LISPSubinterface();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2866,131 +3021,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bit_rate; //type: uint64
-        ydk::YLeaf confirm_burst_byte; //type: uint64
-        ydk::YLeaf excess_burst_byte; //type: uint64
-        ydk::YLeaf conform_action; //type: empty
-        ydk::YLeaf transmit; //type: empty
-        ydk::YLeaf exceed_action; //type: empty
-        ydk::YLeaf drop; //type: empty
-        ydk::YLeaf set_dscp_transmit; //type: empty
-        ydk::YLeaf dscp; //type: empty
-        ydk::YLeaf table; //type: string
-        class Actions; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions
+        ydk::YLeaf lisp; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions> actions;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
-
-
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions : public ydk::Entity
-{
-    public:
-        Actions();
-        ~Actions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ConformSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit
-        class ConformSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit
-        class ConformSetCosTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable
-        class ConformSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit
-        class ConformSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit
-        class ConformSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable
-        class ConformSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit
-        class ConformSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit
-        class ConformSetMplsExpImpositionTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable
-        class ConformSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit
-        class ConformSetMplsExpTopmostTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable
-        class ConformSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmit
-        class ConformSetPrecTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmitTable
-        class ConformSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetQosTransmit
-        class ConformSetQosTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetQosTransmitTable
-        class ConformTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformTransmit
-        class ConformDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop
-        class ExceedDscp; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedDscp
-        class ExceedSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetClpTransmit
-        class ExceedSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetCosTransmit
-        class ExceedSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetDiscardClassTransmit
-        class ExceedSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetDscpTransmit
-        class ExceedSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetDscpTransmitTable
-        class ExceedSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetFrdeTransmit
-        class ExceedSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetMplsExpImpositionTransmit
-        class ExceedSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetMplsExpTopmostTransmit
-        class ExceedSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetPrecTransmit
-        class ExceedSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetQosTransmit
-        class ExceedTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedTransmit
-        class ExceedDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedDrop
-        class ViolateSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetClpTransmit
-        class ViolateSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetCosTransmit
-        class ViolateSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetDiscardClassTransmit
-        class ViolateSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetDscpTransmit
-        class ViolateSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetFrdeTransmit
-        class ViolateSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetMplsExpImpositionTransmit
-        class ViolateSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetMplsExpTopmostTransmit
-        class ViolateSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetPrecTransmit
-        class ViolateSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetQosTransmit
-        class ViolateTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateTransmit
-        class ViolateDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateDrop
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop> conform_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit> conform_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit> conform_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable> conform_set_cos_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit> conform_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit> conform_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable> conform_set_dscp_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit> conform_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit> conform_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable> conform_set_mpls_exp_imposition_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit> conform_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable> conform_set_mpls_exp_topmost_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmit> conform_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmitTable> conform_set_prec_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetQosTransmit> conform_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetQosTransmitTable> conform_set_qos_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformTransmit> conform_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedDrop> exceed_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedDscp> exceed_dscp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetClpTransmit> exceed_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetCosTransmit> exceed_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetDiscardClassTransmit> exceed_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetDscpTransmit> exceed_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetDscpTransmitTable> exceed_set_dscp_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetFrdeTransmit> exceed_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetMplsExpImpositionTransmit> exceed_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetMplsExpTopmostTransmit> exceed_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetPrecTransmit> exceed_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedSetQosTransmit> exceed_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ExceedTransmit> exceed_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateDrop> violate_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetClpTransmit> violate_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetCosTransmit> violate_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetDiscardClassTransmit> violate_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetDscpTransmit> violate_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetFrdeTransmit> violate_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetMplsExpImpositionTransmit> violate_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetMplsExpTopmostTransmit> violate_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetPrecTransmit> violate_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateSetQosTransmit> violate_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ViolateTransmit> violate_transmit;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::LISPSubinterface
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::PortChannelSubinterface : public ydk::Entity
 {
     public:
-        ConformDrop();
-        ~ConformDrop();
+        PortChannelSubinterface();
+        ~PortChannelSubinterface();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3002,18 +3042,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop::ConformAction
+        ydk::YLeaf port_channel; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::PortChannelSubinterface
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        HaMode();
+        ~HaMode();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3025,16 +3063,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf drop; //type: empty
+        class GracefulRestart; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::GracefulRestart
+        class Sso; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::Sso
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformDrop::ConformAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::GracefulRestart> graceful_restart; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::Sso> sso; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::GracefulRestart : public ydk::Entity
 {
     public:
-        ConformSetClpTransmit();
-        ~ConformSetClpTransmit();
+        GracefulRestart();
+        ~GracefulRestart();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3046,18 +3088,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit::ConformAction
+        ydk::YLeaf disable; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::GracefulRestart
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::Sso : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Sso();
+        ~Sso();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3069,16 +3109,16 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_clp_transmit; //type: empty
+        ydk::YLeaf disable; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetClpTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::Sso
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Network : public ydk::Entity
 {
     public:
-        ConformSetCosTransmit();
-        ~ConformSetCosTransmit();
+        Network();
+        ~Network();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3090,18 +3130,19 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit::ConformAction
+        ydk::YLeaf number; //type: string
+        ydk::YLeaf backdoor; //type: empty
+        ydk::YLeaf mask; //type: string
+        ydk::YLeaf route_map; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Network
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Redistribute();
+        ~Redistribute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3113,16 +3154,42 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
+        class Application; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application
+        class Bgp_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Bgp_
+        class Connected; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Connected
+        class Dvmrp; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Dvmrp
+        class Eigrp; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Eigrp
+        class Isis; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis
+        class Lisp; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Lisp
+        class IsoIgrp; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp
+        class Mobile; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Mobile
+        class Odr; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Odr
+        class Ospf; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf
+        class Rip; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Rip
+        class Static_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmit::ConformAction
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application> application; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Bgp_> bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Connected> connected; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Dvmrp> dvmrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Eigrp> eigrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis> isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Lisp> lisp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp> iso_igrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Mobile> mobile; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Odr> odr; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf> > ospf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Rip> rip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_> static_; // presence node
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application : public ydk::Entity
 {
     public:
-        ConformSetCosTransmitTable();
-        ~ConformSetCosTransmitTable();
+        Application();
+        ~Application();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3134,18 +3201,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable::ConformAction
+        class Name; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application::Name
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable::ConformAction> conform_action;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application::Name> > name;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application::Name : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Name();
+        ~Name();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3157,18 +3224,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetCosTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application::Name
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Bgp_ : public ydk::Entity
 {
     public:
-        ConformSetDiscardClassTransmit();
-        ~ConformSetDiscardClassTransmit();
+        Bgp_();
+        ~Bgp_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3180,18 +3247,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit::ConformAction
+        ydk::YLeaf as_no; //type: one of string, uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Bgp_
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Connected : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Connected();
+        ~Connected();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3203,16 +3270,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_discard_class_transmit; //type: uint8
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDiscardClassTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Connected
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Dvmrp : public ydk::Entity
 {
     public:
-        ConformSetDscpTransmit();
-        ~ConformSetDscpTransmit();
+        Dvmrp();
+        ~Dvmrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3224,18 +3292,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit::ConformAction
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf metric; //type: uint32
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Dvmrp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Eigrp : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Eigrp();
+        ~Eigrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3247,16 +3314,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf as_no; //type: uint16
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Eigrp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis : public ydk::Entity
 {
     public:
-        ConformSetDscpTransmitTable();
-        ~ConformSetDscpTransmitTable();
+        Isis();
+        ~Isis();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3268,18 +3337,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable::ConformAction
+        class IsisArea; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea
+        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable::ConformAction> conform_action;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea> > isis_area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_> default_;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        IsisArea();
+        ~IsisArea();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3291,18 +3362,22 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf ip; //type: empty
+        ydk::YLeaf clns; //type: empty
+        ydk::YLeaf routes; //type: Routes
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
+        class Routes;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetDscpTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_ : public ydk::Entity
 {
     public:
-        ConformSetFrdeTransmit();
-        ~ConformSetFrdeTransmit();
+        Default_();
+        ~Default_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3314,18 +3389,21 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit::ConformAction
+        ydk::YLeaf ip; //type: empty
+        ydk::YLeaf clns; //type: empty
+        ydk::YLeaf routes; //type: Routes
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
+        class Routes;
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Lisp : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Lisp();
+        ~Lisp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3337,16 +3415,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_frde_transmit; //type: empty
+        ydk::YLeaf include_connected; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetFrdeTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Lisp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp : public ydk::Entity
 {
     public:
-        ConformSetMplsExpImpositionTransmit();
-        ~ConformSetMplsExpImpositionTransmit();
+        IsoIgrp();
+        ~IsoIgrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3358,18 +3438,20 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
+        class IsoIgrpArea; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::IsoIgrpArea
+        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction> conform_action;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::IsoIgrpArea> > iso_igrp_area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_> default_;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::IsoIgrpArea : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        IsoIgrpArea();
+        ~IsoIgrpArea();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3381,16 +3463,18 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf metric; //type: uint32
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::IsoIgrpArea
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_ : public ydk::Entity
 {
     public:
-        ConformSetMplsExpImpositionTransmitTable();
-        ~ConformSetMplsExpImpositionTransmitTable();
+        Default_();
+        ~Default_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3402,18 +3486,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf metric; //type: uint32
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Mobile : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Mobile();
+        ~Mobile();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3425,18 +3508,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Mobile
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Odr : public ydk::Entity
 {
     public:
-        ConformSetMplsExpTopmostTransmit();
-        ~ConformSetMplsExpTopmostTransmit();
+        Odr();
+        ~Odr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3448,18 +3530,17 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction> conform_action;
-        
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Odr
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Ospf();
+        ~Ospf();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3471,16 +3552,21 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
+        ydk::YLeaf id; //type: uint16
+        class Vrf; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf
+        class NonVrf; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf> > vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf> non_vrf;
+        
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf : public ydk::Entity
 {
     public:
-        ConformSetMplsExpTopmostTransmitTable();
-        ~ConformSetMplsExpTopmostTransmitTable();
+        Vrf();
+        ~Vrf();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3492,18 +3578,21 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
+        class Match; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf::Match
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf::Match> match;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf::Match : public ydk::Entity
 {
     public:
-        ConformAction();
-        ~ConformAction();
+        Match();
+        ~Match();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3515,18 +3604,15 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
-        //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
-        ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf::Match
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmit : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf : public ydk::Entity
 {
     public:
-        ConformSetPrecTransmit();
-        ~ConformSetPrecTransmit();
+        NonVrf();
+        ~NonVrf();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3538,24 +3624,108 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmit::ConformAction
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf route_map; //type: string
+        class Match; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf::Match
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf::Match> match;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceTargetBitrate::Police::Actions::ConformSetPrecTransmit
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceRateUnit::Police::Rate::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::Table : public ydk::Enum
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_::RouteTarget : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf policed_dscp;
+        static const ydk::Enum::YLeaf filter;
 
 };
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police::ExceedAction : public ydk::Enum
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SoftReconfiguration : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf policed_dscp_transmit;
+        static const ydk::Enum::YLeaf inbound;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability::Orf::PrefixList : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf send;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DistributeList::Inout : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FilterList::Inout : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PrefixList::Inout : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RouteMap::Inout : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendCommunity::SendCommunityWhere : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf extended;
+        static const ydk::Enum::YLeaf standard;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendLabel::SendLabelExplicit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf explicit_null;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport::ConnectionMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf passive;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea::Routes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level_1;
+        static const ydk::Enum::YLeaf level_2;
+        static const ydk::Enum::YLeaf level_1_2;
+
+};
+
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::Routes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level_1;
+        static const ydk::Enum::YLeaf level_2;
+        static const ydk::Enum::YLeaf level_1_2;
 
 };
 

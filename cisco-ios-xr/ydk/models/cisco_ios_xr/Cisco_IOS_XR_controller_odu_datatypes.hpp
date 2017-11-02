@@ -10,38 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_controller_odu_datatypes {
 
-class OtnSendTtiTypeOs : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf send_tti_os_ascii__FWD_SLASH__os_ascii;
-        static const ydk::Enum::YLeaf send_tti_os_hex__FWD_SLASH__os_hex;
-
-};
-
-class OtnFlexMapping : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf gfp_f_fixed;
-        static const ydk::Enum::YLeaf gfp_resizable;
-        static const ydk::Enum::YLeaf cbr;
-
-};
-
-class OtnExpTtiTypeDapi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exp_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
-
-};
-
-class OtnExpTtiTypeFull : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exp_tti_full_ascii__FWD_SLASH__full_ascii;
-        static const ydk::Enum::YLeaf exp_tti_hex__FWD_SLASH__hex;
-
-};
-
 class OtnChildControllerName : public ydk::Enum
 {
     public:
@@ -57,14 +25,6 @@ class OtnChildControllerName : public ydk::Enum
 
 };
 
-class Otntcmca : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
 class OtnChildFlexControllerName : public ydk::Enum
 {
     public:
@@ -72,36 +32,37 @@ class OtnChildFlexControllerName : public ydk::Enum
 
 };
 
-class OtnLoopback : public ydk::Enum
+class OtnFlexMapping : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf gfp_f_fixed;
+        static const ydk::Enum::YLeaf gfp_resizable;
+        static const ydk::Enum::YLeaf cbr;
 
 };
 
-class OtnMapping : public ydk::Enum
+class OtntcmMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf gfp_f;
-        static const ydk::Enum::YLeaf bmp;
-        static const ydk::Enum::YLeaf gmp;
-        static const ydk::Enum::YLeaf gfp_f_ext;
+        static const ydk::Enum::YLeaf transparent;
+        static const ydk::Enum::YLeaf nim;
+        static const ydk::Enum::YLeaf operational;
 
 };
 
-class OtnTermination : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ether;
-
-};
-
-class Otnpmtimca : public ydk::Enum
+class OtnPerMon : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
+
+};
+
+class OduTimeSlotGranularity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1__DOT__25g;
+        static const ydk::Enum::YLeaf Y_2__DOT__5g;
 
 };
 
@@ -115,6 +76,28 @@ class Mode : public ydk::Enum
 
 };
 
+class OtnSendTtiTypeOs : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf send_tti_os_ascii__FWD_SLASH__os_ascii;
+        static const ydk::Enum::YLeaf send_tti_os_hex__FWD_SLASH__os_hex;
+
+};
+
+class OtnExpTtiTypeSapi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exp_tti_sapi_ascii__FWD_SLASH__sapi_ascii;
+
+};
+
+class OtnTermination : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ether;
+
+};
+
 class OtnSendTtiTypeSapi : public ydk::Enum
 {
     public:
@@ -122,11 +105,21 @@ class OtnSendTtiTypeSapi : public ydk::Enum
 
 };
 
-class OduTimeSlotGranularity : public ydk::Enum
+class OtnSecAdminState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Y_1__DOT__25g;
-        static const ydk::Enum::YLeaf Y_2__DOT__5g;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf maintenance;
+
+};
+
+class OtnMapping : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gfp_f;
+        static const ydk::Enum::YLeaf bmp;
+        static const ydk::Enum::YLeaf gmp;
+        static const ydk::Enum::YLeaf gfp_f_ext;
 
 };
 
@@ -138,11 +131,27 @@ class OtnExpTtiTypeOs : public ydk::Enum
 
 };
 
-class OtnPerMon : public ydk::Enum
+class OduDelay : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
+
+};
+
+class OtnLoopback : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf internal;
+
+};
+
+class OtnExpTtiTypeFull : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exp_tti_full_ascii__FWD_SLASH__full_ascii;
+        static const ydk::Enum::YLeaf exp_tti_hex__FWD_SLASH__hex;
 
 };
 
@@ -154,11 +163,25 @@ class OtnSendTtiTypeFull : public ydk::Enum
 
 };
 
-class OtnSecAdminState : public ydk::Enum
+class OtnExpTtiTypeDapi : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf exp_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
+
+};
+
+class OtnSendTtiTypeDapi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf send_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
+
+};
+
+class Otntcmca : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
@@ -174,34 +197,11 @@ class Pattern : public ydk::Enum
 
 };
 
-class OtnSendTtiTypeDapi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf send_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
-
-};
-
-class OtnExpTtiTypeSapi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exp_tti_sapi_ascii__FWD_SLASH__sapi_ascii;
-
-};
-
-class OduDelay : public ydk::Enum
+class Otnpmtimca : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
-
-};
-
-class OtntcmMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf transparent;
-        static const ydk::Enum::YLeaf nim;
-        static const ydk::Enum::YLeaf operational;
 
 };
 

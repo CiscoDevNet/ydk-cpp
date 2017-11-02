@@ -219,12 +219,12 @@ bool ENTITYSENSORMIB::Entphysensortable::has_leaf_or_child_of_name(const std::st
 ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::Entphysensorentry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
-    entphysensoroperstatus{YType::enumeration, "entPhySensorOperStatus"},
-    entphysensorprecision{YType::int32, "entPhySensorPrecision"},
-    entphysensorscale{YType::enumeration, "entPhySensorScale"},
     entphysensortype{YType::enumeration, "entPhySensorType"},
-    entphysensorunitsdisplay{YType::str, "entPhySensorUnitsDisplay"},
+    entphysensorscale{YType::enumeration, "entPhySensorScale"},
+    entphysensorprecision{YType::int32, "entPhySensorPrecision"},
     entphysensorvalue{YType::int32, "entPhySensorValue"},
+    entphysensoroperstatus{YType::enumeration, "entPhySensorOperStatus"},
+    entphysensorunitsdisplay{YType::str, "entPhySensorUnitsDisplay"},
     entphysensorvaluetimestamp{YType::uint32, "entPhySensorValueTimeStamp"},
     entphysensorvalueupdaterate{YType::uint32, "entPhySensorValueUpdateRate"}
 {
@@ -239,12 +239,12 @@ ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::~Entphysensorentry()
 bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_data() const
 {
     return entphysicalindex.is_set
-	|| entphysensoroperstatus.is_set
-	|| entphysensorprecision.is_set
-	|| entphysensorscale.is_set
 	|| entphysensortype.is_set
-	|| entphysensorunitsdisplay.is_set
+	|| entphysensorscale.is_set
+	|| entphysensorprecision.is_set
 	|| entphysensorvalue.is_set
+	|| entphysensoroperstatus.is_set
+	|| entphysensorunitsdisplay.is_set
 	|| entphysensorvaluetimestamp.is_set
 	|| entphysensorvalueupdaterate.is_set;
 }
@@ -253,12 +253,12 @@ bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_operation() cons
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
-	|| ydk::is_set(entphysensoroperstatus.yfilter)
-	|| ydk::is_set(entphysensorprecision.yfilter)
-	|| ydk::is_set(entphysensorscale.yfilter)
 	|| ydk::is_set(entphysensortype.yfilter)
-	|| ydk::is_set(entphysensorunitsdisplay.yfilter)
+	|| ydk::is_set(entphysensorscale.yfilter)
+	|| ydk::is_set(entphysensorprecision.yfilter)
 	|| ydk::is_set(entphysensorvalue.yfilter)
+	|| ydk::is_set(entphysensoroperstatus.yfilter)
+	|| ydk::is_set(entphysensorunitsdisplay.yfilter)
 	|| ydk::is_set(entphysensorvaluetimestamp.yfilter)
 	|| ydk::is_set(entphysensorvalueupdaterate.yfilter);
 }
@@ -282,12 +282,12 @@ std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::Entphysensortabl
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (entphysensoroperstatus.is_set || is_set(entphysensoroperstatus.yfilter)) leaf_name_data.push_back(entphysensoroperstatus.get_name_leafdata());
-    if (entphysensorprecision.is_set || is_set(entphysensorprecision.yfilter)) leaf_name_data.push_back(entphysensorprecision.get_name_leafdata());
-    if (entphysensorscale.is_set || is_set(entphysensorscale.yfilter)) leaf_name_data.push_back(entphysensorscale.get_name_leafdata());
     if (entphysensortype.is_set || is_set(entphysensortype.yfilter)) leaf_name_data.push_back(entphysensortype.get_name_leafdata());
-    if (entphysensorunitsdisplay.is_set || is_set(entphysensorunitsdisplay.yfilter)) leaf_name_data.push_back(entphysensorunitsdisplay.get_name_leafdata());
+    if (entphysensorscale.is_set || is_set(entphysensorscale.yfilter)) leaf_name_data.push_back(entphysensorscale.get_name_leafdata());
+    if (entphysensorprecision.is_set || is_set(entphysensorprecision.yfilter)) leaf_name_data.push_back(entphysensorprecision.get_name_leafdata());
     if (entphysensorvalue.is_set || is_set(entphysensorvalue.yfilter)) leaf_name_data.push_back(entphysensorvalue.get_name_leafdata());
+    if (entphysensoroperstatus.is_set || is_set(entphysensoroperstatus.yfilter)) leaf_name_data.push_back(entphysensoroperstatus.get_name_leafdata());
+    if (entphysensorunitsdisplay.is_set || is_set(entphysensorunitsdisplay.yfilter)) leaf_name_data.push_back(entphysensorunitsdisplay.get_name_leafdata());
     if (entphysensorvaluetimestamp.is_set || is_set(entphysensorvaluetimestamp.yfilter)) leaf_name_data.push_back(entphysensorvaluetimestamp.get_name_leafdata());
     if (entphysensorvalueupdaterate.is_set || is_set(entphysensorvalueupdaterate.yfilter)) leaf_name_data.push_back(entphysensorvalueupdaterate.get_name_leafdata());
 
@@ -314,17 +314,11 @@ void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_value(const std:
         entphysicalindex.value_namespace = name_space;
         entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "entPhySensorOperStatus")
+    if(value_path == "entPhySensorType")
     {
-        entphysensoroperstatus = value;
-        entphysensoroperstatus.value_namespace = name_space;
-        entphysensoroperstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "entPhySensorPrecision")
-    {
-        entphysensorprecision = value;
-        entphysensorprecision.value_namespace = name_space;
-        entphysensorprecision.value_namespace_prefix = name_space_prefix;
+        entphysensortype = value;
+        entphysensortype.value_namespace = name_space;
+        entphysensortype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhySensorScale")
     {
@@ -332,23 +326,29 @@ void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_value(const std:
         entphysensorscale.value_namespace = name_space;
         entphysensorscale.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "entPhySensorType")
+    if(value_path == "entPhySensorPrecision")
     {
-        entphysensortype = value;
-        entphysensortype.value_namespace = name_space;
-        entphysensortype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "entPhySensorUnitsDisplay")
-    {
-        entphysensorunitsdisplay = value;
-        entphysensorunitsdisplay.value_namespace = name_space;
-        entphysensorunitsdisplay.value_namespace_prefix = name_space_prefix;
+        entphysensorprecision = value;
+        entphysensorprecision.value_namespace = name_space;
+        entphysensorprecision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhySensorValue")
     {
         entphysensorvalue = value;
         entphysensorvalue.value_namespace = name_space;
         entphysensorvalue.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "entPhySensorOperStatus")
+    {
+        entphysensoroperstatus = value;
+        entphysensoroperstatus.value_namespace = name_space;
+        entphysensoroperstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "entPhySensorUnitsDisplay")
+    {
+        entphysensorunitsdisplay = value;
+        entphysensorunitsdisplay.value_namespace = name_space;
+        entphysensorunitsdisplay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhySensorValueTimeStamp")
     {
@@ -370,29 +370,29 @@ void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_filter(const std
     {
         entphysicalindex.yfilter = yfilter;
     }
-    if(value_path == "entPhySensorOperStatus")
+    if(value_path == "entPhySensorType")
     {
-        entphysensoroperstatus.yfilter = yfilter;
-    }
-    if(value_path == "entPhySensorPrecision")
-    {
-        entphysensorprecision.yfilter = yfilter;
+        entphysensortype.yfilter = yfilter;
     }
     if(value_path == "entPhySensorScale")
     {
         entphysensorscale.yfilter = yfilter;
     }
-    if(value_path == "entPhySensorType")
+    if(value_path == "entPhySensorPrecision")
     {
-        entphysensortype.yfilter = yfilter;
-    }
-    if(value_path == "entPhySensorUnitsDisplay")
-    {
-        entphysensorunitsdisplay.yfilter = yfilter;
+        entphysensorprecision.yfilter = yfilter;
     }
     if(value_path == "entPhySensorValue")
     {
         entphysensorvalue.yfilter = yfilter;
+    }
+    if(value_path == "entPhySensorOperStatus")
+    {
+        entphysensoroperstatus.yfilter = yfilter;
+    }
+    if(value_path == "entPhySensorUnitsDisplay")
+    {
+        entphysensorunitsdisplay.yfilter = yfilter;
     }
     if(value_path == "entPhySensorValueTimeStamp")
     {
@@ -406,7 +406,7 @@ void ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::set_filter(const std
 
 bool ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "entPhysicalIndex" || name == "entPhySensorOperStatus" || name == "entPhySensorPrecision" || name == "entPhySensorScale" || name == "entPhySensorType" || name == "entPhySensorUnitsDisplay" || name == "entPhySensorValue" || name == "entPhySensorValueTimeStamp" || name == "entPhySensorValueUpdateRate")
+    if(name == "entPhysicalIndex" || name == "entPhySensorType" || name == "entPhySensorScale" || name == "entPhySensorPrecision" || name == "entPhySensorValue" || name == "entPhySensorOperStatus" || name == "entPhySensorUnitsDisplay" || name == "entPhySensorValueTimeStamp" || name == "entPhySensorValueUpdateRate")
         return true;
     return false;
 }
@@ -423,10 +423,6 @@ const Enum::YLeaf EntitySensorDataType::percentRH {9, "percentRH"};
 const Enum::YLeaf EntitySensorDataType::rpm {10, "rpm"};
 const Enum::YLeaf EntitySensorDataType::cmm {11, "cmm"};
 const Enum::YLeaf EntitySensorDataType::truthvalue {12, "truthvalue"};
-
-const Enum::YLeaf EntitySensorStatus::ok {1, "ok"};
-const Enum::YLeaf EntitySensorStatus::unavailable {2, "unavailable"};
-const Enum::YLeaf EntitySensorStatus::nonoperational {3, "nonoperational"};
 
 const Enum::YLeaf EntitySensorDataScale::yocto {1, "yocto"};
 const Enum::YLeaf EntitySensorDataScale::zepto {2, "zepto"};
@@ -445,6 +441,10 @@ const Enum::YLeaf EntitySensorDataScale::exa {14, "exa"};
 const Enum::YLeaf EntitySensorDataScale::peta {15, "peta"};
 const Enum::YLeaf EntitySensorDataScale::zetta {16, "zetta"};
 const Enum::YLeaf EntitySensorDataScale::yotta {17, "yotta"};
+
+const Enum::YLeaf EntitySensorStatus::ok {1, "ok"};
+const Enum::YLeaf EntitySensorStatus::unavailable {2, "unavailable"};
+const Enum::YLeaf EntitySensorStatus::nonoperational {3, "nonoperational"};
 
 
 }

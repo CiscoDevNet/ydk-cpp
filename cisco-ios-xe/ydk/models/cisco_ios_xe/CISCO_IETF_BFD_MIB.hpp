@@ -39,10 +39,10 @@ class CISCOIETFBFDMIB : public ydk::Entity
         class Ciscobfdsessipmaptable; //type: CISCOIETFBFDMIB::Ciscobfdsessipmaptable
 
         std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdscalarobjects> ciscobfdscalarobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable> ciscobfdsesstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsessmaptable> ciscobfdsessmaptable;
         std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable> ciscobfdsessdiscmaptable;
         std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsessipmaptable> ciscobfdsessipmaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsessmaptable> ciscobfdsessmaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable> ciscobfdsesstable;
         
 }; // CISCOIETFBFDMIB
 
@@ -70,6 +70,142 @@ class CISCOIETFBFDMIB::Ciscobfdscalarobjects : public ydk::Entity
         class Ciscobfdadminstatus;
 
 }; // CISCOIETFBFDMIB::Ciscobfdscalarobjects
+
+
+class CISCOIETFBFDMIB::Ciscobfdsesstable : public ydk::Entity
+{
+    public:
+        Ciscobfdsesstable();
+        ~Ciscobfdsesstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciscobfdsessentry; //type: CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry> > ciscobfdsessentry;
+        
+}; // CISCOIETFBFDMIB::Ciscobfdsesstable
+
+
+class CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry : public ydk::Entity
+{
+    public:
+        Ciscobfdsessentry();
+        ~Ciscobfdsessentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ciscobfdsessindex; //type: uint32
+        ydk::YLeaf ciscobfdsessapplicationid; //type: uint32
+        ydk::YLeaf ciscobfdsessdiscriminator; //type: uint32
+        ydk::YLeaf ciscobfdsessremotediscr; //type: uint32
+        ydk::YLeaf ciscobfdsessudpport; //type: uint16
+        ydk::YLeaf ciscobfdsessstate; //type: Ciscobfdsessstate
+        ydk::YLeaf ciscobfdsessremoteheardflag; //type: boolean
+        ydk::YLeaf ciscobfdsessdiag; //type: CiscoBfdDiag
+        ydk::YLeaf ciscobfdsessopermode; //type: Ciscobfdsessopermode
+        ydk::YLeaf ciscobfdsessdemandmodedesiredflag; //type: boolean
+        ydk::YLeaf ciscobfdsessechofuncmodedesiredflag; //type: boolean
+        ydk::YLeaf ciscobfdsesscontrolplanindepflag; //type: boolean
+        ydk::YLeaf ciscobfdsessaddrtype; //type: InetAddressType
+        ydk::YLeaf ciscobfdsessaddr; //type: binary
+        ydk::YLeaf ciscobfdsessdesiredmintxinterval; //type: uint32
+        ydk::YLeaf ciscobfdsessreqminrxinterval; //type: uint32
+        ydk::YLeaf ciscobfdsessreqminechorxinterval; //type: uint32
+        ydk::YLeaf ciscobfdsessdetectmult; //type: uint32
+        ydk::YLeaf ciscobfdsessstortype; //type: StorageType
+        ydk::YLeaf ciscobfdsessrowstatus; //type: RowStatus
+        ydk::YLeaf ciscobfdsessauthpresflag; //type: boolean
+        ydk::YLeaf ciscobfdsessauthenticationtype; //type: Ciscobfdsessauthenticationtype
+        ydk::YLeaf ciscobfdsessversionnumber; //type: uint32
+        ydk::YLeaf ciscobfdsesstype; //type: Ciscobfdsesstype
+        ydk::YLeaf ciscobfdsessinterface; //type: int32
+        ydk::YLeaf ciscobfdsessperfpktin; //type: uint32
+        ydk::YLeaf ciscobfdsessperfpktout; //type: uint32
+        ydk::YLeaf ciscobfdsessuptime; //type: uint32
+        ydk::YLeaf ciscobfdsessperflastsessdowntime; //type: uint32
+        ydk::YLeaf ciscobfdsessperflastcommlostdiag; //type: CiscoBfdDiag
+        ydk::YLeaf ciscobfdsessperfsessupcount; //type: uint32
+        ydk::YLeaf ciscobfdsessperfdisctime; //type: uint32
+        ydk::YLeaf ciscobfdsessperfpktinhc; //type: uint64
+        ydk::YLeaf ciscobfdsessperfpktouthc; //type: uint64
+        class Ciscobfdsessstate;
+        class Ciscobfdsessopermode;
+        class Ciscobfdsessauthenticationtype;
+        class Ciscobfdsesstype;
+
+}; // CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry
+
+
+class CISCOIETFBFDMIB::Ciscobfdsessmaptable : public ydk::Entity
+{
+    public:
+        Ciscobfdsessmaptable();
+        ~Ciscobfdsessmaptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ciscobfdsessmapentry; //type: CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry> > ciscobfdsessmapentry;
+        
+}; // CISCOIETFBFDMIB::Ciscobfdsessmaptable
+
+
+class CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry : public ydk::Entity
+{
+    public:
+        Ciscobfdsessmapentry();
+        ~Ciscobfdsessmapentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::ciscobfdsessapplicationid)
+        ydk::YLeaf ciscobfdsessapplicationid;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::ciscobfdsessdiscriminator)
+        ydk::YLeaf ciscobfdsessdiscriminator;
+        ydk::YLeaf ciscobfdsessaddrtype; //type: InetAddressType
+        //type: binary (refers to cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::ciscobfdsessaddr)
+        ydk::YLeaf ciscobfdsessaddr;
+        ydk::YLeaf ciscobfdsessmapbfdindex; //type: uint32
+
+}; // CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry
 
 
 class CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable : public ydk::Entity
@@ -169,142 +305,6 @@ class CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry : public y
         ydk::YLeaf ciscobfdsessipmapindex; //type: uint32
 
 }; // CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry
-
-
-class CISCOIETFBFDMIB::Ciscobfdsessmaptable : public ydk::Entity
-{
-    public:
-        Ciscobfdsessmaptable();
-        ~Ciscobfdsessmaptable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciscobfdsessmapentry; //type: CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry> > ciscobfdsessmapentry;
-        
-}; // CISCOIETFBFDMIB::Ciscobfdsessmaptable
-
-
-class CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry : public ydk::Entity
-{
-    public:
-        Ciscobfdsessmapentry();
-        ~Ciscobfdsessmapentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::ciscobfdsessapplicationid)
-        ydk::YLeaf ciscobfdsessapplicationid;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::ciscobfdsessdiscriminator)
-        ydk::YLeaf ciscobfdsessdiscriminator;
-        ydk::YLeaf ciscobfdsessaddrtype; //type: InetAddressType
-        //type: binary (refers to cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::ciscobfdsessaddr)
-        ydk::YLeaf ciscobfdsessaddr;
-        ydk::YLeaf ciscobfdsessmapbfdindex; //type: uint32
-
-}; // CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry
-
-
-class CISCOIETFBFDMIB::Ciscobfdsesstable : public ydk::Entity
-{
-    public:
-        Ciscobfdsesstable();
-        ~Ciscobfdsesstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ciscobfdsessentry; //type: CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_BFD_MIB::CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry> > ciscobfdsessentry;
-        
-}; // CISCOIETFBFDMIB::Ciscobfdsesstable
-
-
-class CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry : public ydk::Entity
-{
-    public:
-        Ciscobfdsessentry();
-        ~Ciscobfdsessentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ciscobfdsessindex; //type: uint32
-        ydk::YLeaf ciscobfdsessapplicationid; //type: uint32
-        ydk::YLeaf ciscobfdsessdiscriminator; //type: uint32
-        ydk::YLeaf ciscobfdsessremotediscr; //type: uint32
-        ydk::YLeaf ciscobfdsessudpport; //type: uint16
-        ydk::YLeaf ciscobfdsessstate; //type: Ciscobfdsessstate
-        ydk::YLeaf ciscobfdsessremoteheardflag; //type: boolean
-        ydk::YLeaf ciscobfdsessdiag; //type: CiscoBfdDiag
-        ydk::YLeaf ciscobfdsessopermode; //type: Ciscobfdsessopermode
-        ydk::YLeaf ciscobfdsessdemandmodedesiredflag; //type: boolean
-        ydk::YLeaf ciscobfdsessechofuncmodedesiredflag; //type: boolean
-        ydk::YLeaf ciscobfdsesscontrolplanindepflag; //type: boolean
-        ydk::YLeaf ciscobfdsessaddrtype; //type: InetAddressType
-        ydk::YLeaf ciscobfdsessaddr; //type: binary
-        ydk::YLeaf ciscobfdsessdesiredmintxinterval; //type: uint32
-        ydk::YLeaf ciscobfdsessreqminrxinterval; //type: uint32
-        ydk::YLeaf ciscobfdsessreqminechorxinterval; //type: uint32
-        ydk::YLeaf ciscobfdsessdetectmult; //type: uint32
-        ydk::YLeaf ciscobfdsessstortype; //type: StorageType
-        ydk::YLeaf ciscobfdsessrowstatus; //type: RowStatus
-        ydk::YLeaf ciscobfdsessauthpresflag; //type: boolean
-        ydk::YLeaf ciscobfdsessauthenticationtype; //type: Ciscobfdsessauthenticationtype
-        ydk::YLeaf ciscobfdsessversionnumber; //type: uint32
-        ydk::YLeaf ciscobfdsesstype; //type: Ciscobfdsesstype
-        ydk::YLeaf ciscobfdsessinterface; //type: int32
-        ydk::YLeaf ciscobfdsessperfpktin; //type: uint32
-        ydk::YLeaf ciscobfdsessperfpktout; //type: uint32
-        ydk::YLeaf ciscobfdsessuptime; //type: uint32
-        ydk::YLeaf ciscobfdsessperflastsessdowntime; //type: uint32
-        ydk::YLeaf ciscobfdsessperflastcommlostdiag; //type: CiscoBfdDiag
-        ydk::YLeaf ciscobfdsessperfsessupcount; //type: uint32
-        ydk::YLeaf ciscobfdsessperfdisctime; //type: uint32
-        ydk::YLeaf ciscobfdsessperfpktinhc; //type: uint64
-        ydk::YLeaf ciscobfdsessperfpktouthc; //type: uint64
-        class Ciscobfdsessstate;
-        class Ciscobfdsessopermode;
-        class Ciscobfdsessauthenticationtype;
-        class Ciscobfdsesstype;
-
-}; // CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry
 
 class CiscoBfdDiag : public ydk::Enum
 {

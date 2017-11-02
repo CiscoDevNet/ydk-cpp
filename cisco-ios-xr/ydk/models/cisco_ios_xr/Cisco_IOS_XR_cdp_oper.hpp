@@ -84,59 +84,11 @@ class Cdp::Nodes::Node : public ydk::Entity
         class Statistics; //type: Cdp::Nodes::Node::Statistics
         class Interfaces; //type: Cdp::Nodes::Node::Interfaces
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors> neighbors;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Interfaces> interfaces;
         
 }; // Cdp::Nodes::Node
-
-
-class Cdp::Nodes::Node::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: Cdp::Nodes::Node::Interfaces::Interface
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Interfaces::Interface> > interface;
-        
-}; // Cdp::Nodes::Node::Interfaces
-
-
-class Cdp::Nodes::Node::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_handle; //type: string
-        ydk::YLeaf basecaps_state; //type: uint32
-        ydk::YLeaf cdp_protocol_state; //type: uint32
-        ydk::YLeaf interface_encaps; //type: string
-
-}; // Cdp::Nodes::Node::Interfaces::Interface
 
 
 class Cdp::Nodes::Node::Neighbors : public ydk::Entity
@@ -860,6 +812,54 @@ class Cdp::Nodes::Node::Statistics : public ydk::Entity
         ydk::YLeaf open_file_errors; //type: uint32
 
 }; // Cdp::Nodes::Node::Statistics
+
+
+class Cdp::Nodes::Node::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: Cdp::Nodes::Node::Interfaces::Interface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Interfaces::Interface> > interface;
+        
+}; // Cdp::Nodes::Node::Interfaces
+
+
+class Cdp::Nodes::Node::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf basecaps_state; //type: uint32
+        ydk::YLeaf cdp_protocol_state; //type: uint32
+        ydk::YLeaf interface_encaps; //type: string
+
+}; // Cdp::Nodes::Node::Interfaces::Interface
 
 class CdpDuplex : public ydk::Enum
 {

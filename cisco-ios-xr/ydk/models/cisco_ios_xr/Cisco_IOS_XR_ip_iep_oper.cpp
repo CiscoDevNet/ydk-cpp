@@ -364,11 +364,11 @@ bool ExplicitPaths::Identifiers::Identifier::has_leaf_or_child_of_name(const std
 
 ExplicitPaths::Identifiers::Identifier::Address::Address()
     :
-    address{YType::str, "address"},
+    index_{YType::uint32, "index"},
+    if_index{YType::uint32, "if-index"},
     address_type{YType::enumeration, "address-type"},
     hop_type{YType::enumeration, "hop-type"},
-    if_index{YType::uint32, "if-index"},
-    index_{YType::uint32, "index"},
+    address{YType::str, "address"},
     mpls_label{YType::uint32, "mpls-label"}
 {
 
@@ -381,22 +381,22 @@ ExplicitPaths::Identifiers::Identifier::Address::~Address()
 
 bool ExplicitPaths::Identifiers::Identifier::Address::has_data() const
 {
-    return address.is_set
+    return index_.is_set
+	|| if_index.is_set
 	|| address_type.is_set
 	|| hop_type.is_set
-	|| if_index.is_set
-	|| index_.is_set
+	|| address.is_set
 	|| mpls_label.is_set;
 }
 
 bool ExplicitPaths::Identifiers::Identifier::Address::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(if_index.yfilter)
 	|| ydk::is_set(address_type.yfilter)
 	|| ydk::is_set(hop_type.yfilter)
-	|| ydk::is_set(if_index.yfilter)
-	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(mpls_label.yfilter);
 }
 
@@ -411,11 +411,11 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Identifiers::Ident
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
     if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
     if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
 
     return leaf_name_data;
@@ -435,11 +435,17 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Ident
 
 void ExplicitPaths::Identifiers::Identifier::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address")
+    if(value_path == "index")
     {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "if-index")
+    {
+        if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-type")
     {
@@ -453,17 +459,11 @@ void ExplicitPaths::Identifiers::Identifier::Address::set_value(const std::strin
         hop_type.value_namespace = name_space;
         hop_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "if-index")
+    if(value_path == "address")
     {
-        if_index = value;
-        if_index.value_namespace = name_space;
-        if_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
@@ -475,9 +475,13 @@ void ExplicitPaths::Identifiers::Identifier::Address::set_value(const std::strin
 
 void ExplicitPaths::Identifiers::Identifier::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address")
+    if(value_path == "index")
     {
-        address.yfilter = yfilter;
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
     }
     if(value_path == "address-type")
     {
@@ -487,13 +491,9 @@ void ExplicitPaths::Identifiers::Identifier::Address::set_filter(const std::stri
     {
         hop_type.yfilter = yfilter;
     }
-    if(value_path == "if-index")
+    if(value_path == "address")
     {
-        if_index.yfilter = yfilter;
-    }
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
+        address.yfilter = yfilter;
     }
     if(value_path == "mpls-label")
     {
@@ -503,7 +503,7 @@ void ExplicitPaths::Identifiers::Identifier::Address::set_filter(const std::stri
 
 bool ExplicitPaths::Identifiers::Identifier::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address" || name == "address-type" || name == "hop-type" || name == "if-index" || name == "index" || name == "mpls-label")
+    if(name == "index" || name == "if-index" || name == "address-type" || name == "hop-type" || name == "address" || name == "mpls-label")
         return true;
     return false;
 }
@@ -738,11 +738,11 @@ bool ExplicitPaths::Names::Name::has_leaf_or_child_of_name(const std::string & n
 
 ExplicitPaths::Names::Name::Address::Address()
     :
-    address{YType::str, "address"},
+    index_{YType::uint32, "index"},
+    if_index{YType::uint32, "if-index"},
     address_type{YType::enumeration, "address-type"},
     hop_type{YType::enumeration, "hop-type"},
-    if_index{YType::uint32, "if-index"},
-    index_{YType::uint32, "index"},
+    address{YType::str, "address"},
     mpls_label{YType::uint32, "mpls-label"}
 {
 
@@ -755,22 +755,22 @@ ExplicitPaths::Names::Name::Address::~Address()
 
 bool ExplicitPaths::Names::Name::Address::has_data() const
 {
-    return address.is_set
+    return index_.is_set
+	|| if_index.is_set
 	|| address_type.is_set
 	|| hop_type.is_set
-	|| if_index.is_set
-	|| index_.is_set
+	|| address.is_set
 	|| mpls_label.is_set;
 }
 
 bool ExplicitPaths::Names::Name::Address::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(if_index.yfilter)
 	|| ydk::is_set(address_type.yfilter)
 	|| ydk::is_set(hop_type.yfilter)
-	|| ydk::is_set(if_index.yfilter)
-	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(mpls_label.yfilter);
 }
 
@@ -785,11 +785,11 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Names::Name::Addre
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
     if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
     if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
 
     return leaf_name_data;
@@ -809,11 +809,17 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::Addre
 
 void ExplicitPaths::Names::Name::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address")
+    if(value_path == "index")
     {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "if-index")
+    {
+        if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-type")
     {
@@ -827,17 +833,11 @@ void ExplicitPaths::Names::Name::Address::set_value(const std::string & value_pa
         hop_type.value_namespace = name_space;
         hop_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "if-index")
+    if(value_path == "address")
     {
-        if_index = value;
-        if_index.value_namespace = name_space;
-        if_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
@@ -849,9 +849,13 @@ void ExplicitPaths::Names::Name::Address::set_value(const std::string & value_pa
 
 void ExplicitPaths::Names::Name::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address")
+    if(value_path == "index")
     {
-        address.yfilter = yfilter;
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
     }
     if(value_path == "address-type")
     {
@@ -861,13 +865,9 @@ void ExplicitPaths::Names::Name::Address::set_filter(const std::string & value_p
     {
         hop_type.yfilter = yfilter;
     }
-    if(value_path == "if-index")
+    if(value_path == "address")
     {
-        if_index.yfilter = yfilter;
-    }
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
+        address.yfilter = yfilter;
     }
     if(value_path == "mpls-label")
     {
@@ -877,7 +877,7 @@ void ExplicitPaths::Names::Name::Address::set_filter(const std::string & value_p
 
 bool ExplicitPaths::Names::Name::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address" || name == "address-type" || name == "hop-type" || name == "if-index" || name == "index" || name == "mpls-label")
+    if(name == "index" || name == "if-index" || name == "address-type" || name == "hop-type" || name == "address" || name == "mpls-label")
         return true;
     return false;
 }
@@ -885,12 +885,12 @@ bool ExplicitPaths::Names::Name::Address::has_leaf_or_child_of_name(const std::s
 const Enum::YLeaf IepHop::strict {0, "strict"};
 const Enum::YLeaf IepHop::loose {1, "loose"};
 
-const Enum::YLeaf IepStatus::enabled {0, "enabled"};
-const Enum::YLeaf IepStatus::disabled {1, "disabled"};
-
 const Enum::YLeaf IepAddress::next {0, "next"};
 const Enum::YLeaf IepAddress::exclude {1, "exclude"};
 const Enum::YLeaf IepAddress::exclude_srlg {2, "exclude-srlg"};
+
+const Enum::YLeaf IepStatus::enabled {0, "enabled"};
+const Enum::YLeaf IepStatus::disabled {1, "disabled"};
 
 
 }

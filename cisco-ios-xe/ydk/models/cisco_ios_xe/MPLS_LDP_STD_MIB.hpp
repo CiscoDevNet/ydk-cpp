@@ -45,27 +45,27 @@ class MPLSLDPSTDMIB : public ydk::Entity
         class Mplsldplspfectable; //type: MPLSLDPSTDMIB::Mplsldplspfectable
         class Mplsldpsessionpeeraddrtable; //type: MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable
 
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfecobjects> mplsfecobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfectable> mplsfectable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsinsegmentldplsptable> mplsinsegmentldplsptable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentityobjects> mplsldpentityobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable> mplsldpentitytable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldphelloadjacencytable> mplsldphelloadjacencytable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplspfectable> mplsldplspfectable;
         std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplsrobjects> mplsldplsrobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable> mplsldppeertable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentityobjects> mplsldpentityobjects;
         std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionobjects> mplsldpsessionobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable> mplsldpsessionpeeraddrtable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfecobjects> mplsfecobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable> mplsldpentitytable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable> mplsldppeertable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldphelloadjacencytable> mplsldphelloadjacencytable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsinsegmentldplsptable> mplsinsegmentldplsptable;
         std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsoutsegmentldplsptable> mplsoutsegmentldplsptable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfectable> mplsfectable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplspfectable> mplsldplspfectable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable> mplsldpsessionpeeraddrtable;
         
 }; // MPLSLDPSTDMIB
 
 
-class MPLSLDPSTDMIB::Mplsfecobjects : public ydk::Entity
+class MPLSLDPSTDMIB::Mplsldplsrobjects : public ydk::Entity
 {
     public:
-        Mplsfecobjects();
-        ~Mplsfecobjects();
+        Mplsldplsrobjects();
+        ~Mplsldplsrobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -78,117 +78,11 @@ class MPLSLDPSTDMIB::Mplsfecobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf mplsfeclastchange; //type: uint32
-        ydk::YLeaf mplsfecindexnext; //type: uint32
+        ydk::YLeaf mplsldplsrid; //type: binary
+        ydk::YLeaf mplsldplsrloopdetectioncapable; //type: Mplsldplsrloopdetectioncapable
+        class Mplsldplsrloopdetectioncapable;
 
-}; // MPLSLDPSTDMIB::Mplsfecobjects
-
-
-class MPLSLDPSTDMIB::Mplsfectable : public ydk::Entity
-{
-    public:
-        Mplsfectable();
-        ~Mplsfectable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Mplsfecentry; //type: MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry> > mplsfecentry;
-        
-}; // MPLSLDPSTDMIB::Mplsfectable
-
-
-class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry : public ydk::Entity
-{
-    public:
-        Mplsfecentry();
-        ~Mplsfecentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf mplsfecindex; //type: uint32
-        ydk::YLeaf mplsfectype; //type: Mplsfectype
-        ydk::YLeaf mplsfecaddrprefixlength; //type: uint32
-        ydk::YLeaf mplsfecaddrtype; //type: InetAddressType
-        ydk::YLeaf mplsfecaddr; //type: binary
-        ydk::YLeaf mplsfecstoragetype; //type: StorageType
-        ydk::YLeaf mplsfecrowstatus; //type: RowStatus
-        class Mplsfectype;
-
-}; // MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry
-
-
-class MPLSLDPSTDMIB::Mplsinsegmentldplsptable : public ydk::Entity
-{
-    public:
-        Mplsinsegmentldplsptable();
-        ~Mplsinsegmentldplsptable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Mplsinsegmentldplspentry; //type: MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry> > mplsinsegmentldplspentry;
-        
-}; // MPLSLDPSTDMIB::Mplsinsegmentldplsptable
-
-
-class MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry : public ydk::Entity
-{
-    public:
-        Mplsinsegmentldplspentry();
-        ~Mplsinsegmentldplspentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
-        ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
-        ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
-        ydk::YLeaf mplsldppeerldpid;
-        ydk::YLeaf mplsinsegmentldplspindex; //type: binary
-        ydk::YLeaf mplsinsegmentldplsplabeltype; //type: MplsLdpLabelType
-        ydk::YLeaf mplsinsegmentldplsptype; //type: MplsLspType
-
-}; // MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry
+}; // MPLSLDPSTDMIB::Mplsldplsrobjects
 
 
 class MPLSLDPSTDMIB::Mplsldpentityobjects : public ydk::Entity
@@ -212,6 +106,52 @@ class MPLSLDPSTDMIB::Mplsldpentityobjects : public ydk::Entity
         ydk::YLeaf mplsldpentityindexnext; //type: uint32
 
 }; // MPLSLDPSTDMIB::Mplsldpentityobjects
+
+
+class MPLSLDPSTDMIB::Mplsldpsessionobjects : public ydk::Entity
+{
+    public:
+        Mplsldpsessionobjects();
+        ~Mplsldpsessionobjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mplsldppeerlastchange; //type: uint32
+        ydk::YLeaf mplsldplspfeclastchange; //type: uint32
+
+}; // MPLSLDPSTDMIB::Mplsldpsessionobjects
+
+
+class MPLSLDPSTDMIB::Mplsfecobjects : public ydk::Entity
+{
+    public:
+        Mplsfecobjects();
+        ~Mplsfecobjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mplsfeclastchange; //type: uint32
+        ydk::YLeaf mplsfecindexnext; //type: uint32
+
+}; // MPLSLDPSTDMIB::Mplsfecobjects
 
 
 class MPLSLDPSTDMIB::Mplsldpentitytable : public ydk::Entity
@@ -298,143 +238,6 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry : public ydk::Entity
 }; // MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry
 
 
-class MPLSLDPSTDMIB::Mplsldphelloadjacencytable : public ydk::Entity
-{
-    public:
-        Mplsldphelloadjacencytable();
-        ~Mplsldphelloadjacencytable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Mplsldphelloadjacencyentry; //type: MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry> > mplsldphelloadjacencyentry;
-        
-}; // MPLSLDPSTDMIB::Mplsldphelloadjacencytable
-
-
-class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry : public ydk::Entity
-{
-    public:
-        Mplsldphelloadjacencyentry();
-        ~Mplsldphelloadjacencyentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
-        ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
-        ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
-        ydk::YLeaf mplsldppeerldpid;
-        ydk::YLeaf mplsldphelloadjacencyindex; //type: uint32
-        ydk::YLeaf mplsldphelloadjacencyholdtimerem; //type: int32
-        ydk::YLeaf mplsldphelloadjacencyholdtime; //type: uint32
-        ydk::YLeaf mplsldphelloadjacencytype; //type: Mplsldphelloadjacencytype
-        class Mplsldphelloadjacencytype;
-
-}; // MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry
-
-
-class MPLSLDPSTDMIB::Mplsldplspfectable : public ydk::Entity
-{
-    public:
-        Mplsldplspfectable();
-        ~Mplsldplspfectable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Mplsldplspfecentry; //type: MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry> > mplsldplspfecentry;
-        
-}; // MPLSLDPSTDMIB::Mplsldplspfectable
-
-
-class MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry : public ydk::Entity
-{
-    public:
-        Mplsldplspfecentry();
-        ~Mplsldplspfecentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
-        ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
-        ydk::YLeaf mplsldpentityindex;
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
-        ydk::YLeaf mplsldppeerldpid;
-        ydk::YLeaf mplsldplspfecsegment; //type: Mplsldplspfecsegment
-        ydk::YLeaf mplsldplspfecsegmentindex; //type: binary
-        ydk::YLeaf mplsldplspfecindex; //type: uint32
-        ydk::YLeaf mplsldplspfecstoragetype; //type: StorageType
-        ydk::YLeaf mplsldplspfecrowstatus; //type: RowStatus
-        class Mplsldplspfecsegment;
-
-}; // MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry
-
-
-class MPLSLDPSTDMIB::Mplsldplsrobjects : public ydk::Entity
-{
-    public:
-        Mplsldplsrobjects();
-        ~Mplsldplsrobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf mplsldplsrid; //type: binary
-        ydk::YLeaf mplsldplsrloopdetectioncapable; //type: Mplsldplsrloopdetectioncapable
-        class Mplsldplsrloopdetectioncapable;
-
-}; // MPLSLDPSTDMIB::Mplsldplsrobjects
-
-
 class MPLSLDPSTDMIB::Mplsldppeertable : public ydk::Entity
 {
     public:
@@ -501,11 +304,11 @@ class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry : public ydk::Entity
 }; // MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry
 
 
-class MPLSLDPSTDMIB::Mplsldpsessionobjects : public ydk::Entity
+class MPLSLDPSTDMIB::Mplsldphelloadjacencytable : public ydk::Entity
 {
     public:
-        Mplsldpsessionobjects();
-        ~Mplsldpsessionobjects();
+        Mplsldphelloadjacencytable();
+        ~Mplsldphelloadjacencytable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -518,41 +321,18 @@ class MPLSLDPSTDMIB::Mplsldpsessionobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf mplsldppeerlastchange; //type: uint32
-        ydk::YLeaf mplsldplspfeclastchange; //type: uint32
+        class Mplsldphelloadjacencyentry; //type: MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry
 
-}; // MPLSLDPSTDMIB::Mplsldpsessionobjects
-
-
-class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable : public ydk::Entity
-{
-    public:
-        Mplsldpsessionpeeraddrtable();
-        ~Mplsldpsessionpeeraddrtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Mplsldpsessionpeeraddrentry; //type: MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry> > mplsldpsessionpeeraddrentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry> > mplsldphelloadjacencyentry;
         
-}; // MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable
+}; // MPLSLDPSTDMIB::Mplsldphelloadjacencytable
 
 
-class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry : public ydk::Entity
+class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry : public ydk::Entity
 {
     public:
-        Mplsldpsessionpeeraddrentry();
-        ~Mplsldpsessionpeeraddrentry();
+        Mplsldphelloadjacencyentry();
+        ~Mplsldphelloadjacencyentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -571,11 +351,67 @@ class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry : 
         ydk::YLeaf mplsldpentityindex;
         //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
         ydk::YLeaf mplsldppeerldpid;
-        ydk::YLeaf mplsldpsessionpeeraddrindex; //type: uint32
-        ydk::YLeaf mplsldpsessionpeernexthopaddrtype; //type: InetAddressType
-        ydk::YLeaf mplsldpsessionpeernexthopaddr; //type: binary
+        ydk::YLeaf mplsldphelloadjacencyindex; //type: uint32
+        ydk::YLeaf mplsldphelloadjacencyholdtimerem; //type: int32
+        ydk::YLeaf mplsldphelloadjacencyholdtime; //type: uint32
+        ydk::YLeaf mplsldphelloadjacencytype; //type: Mplsldphelloadjacencytype
+        class Mplsldphelloadjacencytype;
 
-}; // MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry
+}; // MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry
+
+
+class MPLSLDPSTDMIB::Mplsinsegmentldplsptable : public ydk::Entity
+{
+    public:
+        Mplsinsegmentldplsptable();
+        ~Mplsinsegmentldplsptable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mplsinsegmentldplspentry; //type: MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry> > mplsinsegmentldplspentry;
+        
+}; // MPLSLDPSTDMIB::Mplsinsegmentldplsptable
+
+
+class MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry : public ydk::Entity
+{
+    public:
+        Mplsinsegmentldplspentry();
+        ~Mplsinsegmentldplspentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        ydk::YLeaf mplsldpentityldpid;
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        ydk::YLeaf mplsldpentityindex;
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        ydk::YLeaf mplsldppeerldpid;
+        ydk::YLeaf mplsinsegmentldplspindex; //type: binary
+        ydk::YLeaf mplsinsegmentldplsplabeltype; //type: MplsLdpLabelType
+        ydk::YLeaf mplsinsegmentldplsptype; //type: MplsLspType
+
+}; // MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry
 
 
 class MPLSLDPSTDMIB::Mplsoutsegmentldplsptable : public ydk::Entity
@@ -631,11 +467,178 @@ class MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry : publ
 
 }; // MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry
 
-class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry::Mplsfectype : public ydk::Enum
+
+class MPLSLDPSTDMIB::Mplsfectable : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf prefix;
-        static const ydk::Enum::YLeaf hostAddress;
+        Mplsfectable();
+        ~Mplsfectable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mplsfecentry; //type: MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry> > mplsfecentry;
+        
+}; // MPLSLDPSTDMIB::Mplsfectable
+
+
+class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry : public ydk::Entity
+{
+    public:
+        Mplsfecentry();
+        ~Mplsfecentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mplsfecindex; //type: uint32
+        ydk::YLeaf mplsfectype; //type: Mplsfectype
+        ydk::YLeaf mplsfecaddrprefixlength; //type: uint32
+        ydk::YLeaf mplsfecaddrtype; //type: InetAddressType
+        ydk::YLeaf mplsfecaddr; //type: binary
+        ydk::YLeaf mplsfecstoragetype; //type: StorageType
+        ydk::YLeaf mplsfecrowstatus; //type: RowStatus
+        class Mplsfectype;
+
+}; // MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry
+
+
+class MPLSLDPSTDMIB::Mplsldplspfectable : public ydk::Entity
+{
+    public:
+        Mplsldplspfectable();
+        ~Mplsldplspfectable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mplsldplspfecentry; //type: MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry> > mplsldplspfecentry;
+        
+}; // MPLSLDPSTDMIB::Mplsldplspfectable
+
+
+class MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry : public ydk::Entity
+{
+    public:
+        Mplsldplspfecentry();
+        ~Mplsldplspfecentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        ydk::YLeaf mplsldpentityldpid;
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        ydk::YLeaf mplsldpentityindex;
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        ydk::YLeaf mplsldppeerldpid;
+        ydk::YLeaf mplsldplspfecsegment; //type: Mplsldplspfecsegment
+        ydk::YLeaf mplsldplspfecsegmentindex; //type: binary
+        ydk::YLeaf mplsldplspfecindex; //type: uint32
+        ydk::YLeaf mplsldplspfecstoragetype; //type: StorageType
+        ydk::YLeaf mplsldplspfecrowstatus; //type: RowStatus
+        class Mplsldplspfecsegment;
+
+}; // MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry
+
+
+class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable : public ydk::Entity
+{
+    public:
+        Mplsldpsessionpeeraddrtable();
+        ~Mplsldpsessionpeeraddrtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Mplsldpsessionpeeraddrentry; //type: MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry> > mplsldpsessionpeeraddrentry;
+        
+}; // MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable
+
+
+class MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry : public ydk::Entity
+{
+    public:
+        Mplsldpsessionpeeraddrentry();
+        ~Mplsldpsessionpeeraddrentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        ydk::YLeaf mplsldpentityldpid;
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        ydk::YLeaf mplsldpentityindex;
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::mplsldppeerldpid)
+        ydk::YLeaf mplsldppeerldpid;
+        ydk::YLeaf mplsldpsessionpeeraddrindex; //type: uint32
+        ydk::YLeaf mplsldpsessionpeernexthopaddrtype; //type: InetAddressType
+        ydk::YLeaf mplsldpsessionpeernexthopaddr; //type: binary
+
+}; // MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry
+
+class MPLSLDPSTDMIB::Mplsldplsrobjects::Mplsldplsrloopdetectioncapable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf hopCount;
+        static const ydk::Enum::YLeaf pathVector;
+        static const ydk::Enum::YLeaf hopCountAndPathVector;
 
 };
 
@@ -664,33 +667,6 @@ class MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::Mplsldpentitytransp
 
 };
 
-class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry::Mplsldphelloadjacencytype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link;
-        static const ydk::Enum::YLeaf targeted;
-
-};
-
-class MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry::Mplsldplspfecsegment : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inSegment;
-        static const ydk::Enum::YLeaf outSegment;
-
-};
-
-class MPLSLDPSTDMIB::Mplsldplsrobjects::Mplsldplsrloopdetectioncapable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf hopCount;
-        static const ydk::Enum::YLeaf pathVector;
-        static const ydk::Enum::YLeaf hopCountAndPathVector;
-
-};
-
 class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::Mplsldpsessionstate : public ydk::Enum
 {
     public:
@@ -708,6 +684,30 @@ class MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::Mplsldpsessionrole : pu
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf passive;
+
+};
+
+class MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry::Mplsldphelloadjacencytype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link;
+        static const ydk::Enum::YLeaf targeted;
+
+};
+
+class MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry::Mplsfectype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf prefix;
+        static const ydk::Enum::YLeaf hostAddress;
+
+};
+
+class MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry::Mplsldplspfecsegment : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inSegment;
+        static const ydk::Enum::YLeaf outSegment;
 
 };
 

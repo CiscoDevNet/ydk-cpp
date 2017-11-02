@@ -26,8 +26,8 @@
 #include "args_parser.h"
 
 using namespace ydk;
-using namespace ydk::Cisco_IOS_XR_clns_isis_cfg;
-using namespace ydk::Cisco_IOS_XR_clns_isis_datatypes;
+using namespace cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg;
+using namespace cisco_ios_xr::Cisco_IOS_XR_clns_isis_datatypes;
 using namespace std;
 
 void config_isis(Isis* isis)
@@ -115,6 +115,6 @@ int main(int argc, char* argv[])
     config_isis(isis.get());
     bool reply = crud.create(provider, *isis);
 
-    if(reply) cout << "Create yfilter success" << endl << endl; else cout << "Operation failed" << endl << endl;
+    if(reply) cout << "Create operation success" << endl << endl; else cout << "Operation failed" << endl << endl;
 
 }

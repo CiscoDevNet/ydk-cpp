@@ -260,17 +260,17 @@ bool Traceroute::Input::has_leaf_or_child_of_name(const std::string & name) cons
 Traceroute::Input::Destination::Destination()
     :
     destination{YType::str, "destination"},
-    max_ttl{YType::uint16, "max-ttl"},
-    min_ttl{YType::uint16, "min-ttl"},
-    numeric{YType::boolean, "numeric"},
-    outgoing_interface{YType::str, "outgoing-interface"},
-    port{YType::uint32, "port"},
-    priority{YType::uint16, "priority"},
-    probe{YType::uint16, "probe"},
     source{YType::str, "source"},
     timeout{YType::uint32, "timeout"},
+    probe{YType::uint16, "probe"},
+    numeric{YType::boolean, "numeric"},
+    vrf_name{YType::str, "vrf-name"},
+    min_ttl{YType::uint16, "min-ttl"},
+    max_ttl{YType::uint16, "max-ttl"},
+    port{YType::uint32, "port"},
     verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
+    priority{YType::uint16, "priority"},
+    outgoing_interface{YType::str, "outgoing-interface"}
 {
 
     yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
@@ -283,34 +283,34 @@ Traceroute::Input::Destination::~Destination()
 bool Traceroute::Input::Destination::has_data() const
 {
     return destination.is_set
-	|| max_ttl.is_set
-	|| min_ttl.is_set
-	|| numeric.is_set
-	|| outgoing_interface.is_set
-	|| port.is_set
-	|| priority.is_set
-	|| probe.is_set
 	|| source.is_set
 	|| timeout.is_set
+	|| probe.is_set
+	|| numeric.is_set
+	|| vrf_name.is_set
+	|| min_ttl.is_set
+	|| max_ttl.is_set
+	|| port.is_set
 	|| verbose.is_set
-	|| vrf_name.is_set;
+	|| priority.is_set
+	|| outgoing_interface.is_set;
 }
 
 bool Traceroute::Input::Destination::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(max_ttl.yfilter)
-	|| ydk::is_set(min_ttl.yfilter)
-	|| ydk::is_set(numeric.yfilter)
-	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(probe.yfilter)
 	|| ydk::is_set(source.yfilter)
 	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(probe.yfilter)
+	|| ydk::is_set(numeric.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(min_ttl.yfilter)
+	|| ydk::is_set(max_ttl.yfilter)
+	|| ydk::is_set(port.yfilter)
 	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(outgoing_interface.yfilter);
 }
 
 std::string Traceroute::Input::Destination::get_absolute_path() const
@@ -332,17 +332,17 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Destination::g
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
-    if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
-    if (numeric.is_set || is_set(numeric.yfilter)) leaf_name_data.push_back(numeric.get_name_leafdata());
-    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (probe.is_set || is_set(probe.yfilter)) leaf_name_data.push_back(probe.get_name_leafdata());
     if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (probe.is_set || is_set(probe.yfilter)) leaf_name_data.push_back(probe.get_name_leafdata());
+    if (numeric.is_set || is_set(numeric.yfilter)) leaf_name_data.push_back(numeric.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
+    if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -367,48 +367,6 @@ void Traceroute::Input::Destination::set_value(const std::string & value_path, c
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "max-ttl")
-    {
-        max_ttl = value;
-        max_ttl.value_namespace = name_space;
-        max_ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min-ttl")
-    {
-        min_ttl = value;
-        min_ttl.value_namespace = name_space;
-        min_ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "numeric")
-    {
-        numeric = value;
-        numeric.value_namespace = name_space;
-        numeric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-        outgoing_interface.value_namespace = name_space;
-        outgoing_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "probe")
-    {
-        probe = value;
-        probe.value_namespace = name_space;
-        probe.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "source")
     {
         source = value;
@@ -421,17 +379,59 @@ void Traceroute::Input::Destination::set_value(const std::string & value_path, c
         timeout.value_namespace = name_space;
         timeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verbose")
+    if(value_path == "probe")
     {
-        verbose = value;
-        verbose.value_namespace = name_space;
-        verbose.value_namespace_prefix = name_space_prefix;
+        probe = value;
+        probe.value_namespace = name_space;
+        probe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "numeric")
+    {
+        numeric = value;
+        numeric.value_namespace = name_space;
+        numeric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-ttl")
+    {
+        min_ttl = value;
+        min_ttl.value_namespace = name_space;
+        min_ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-ttl")
+    {
+        max_ttl = value;
+        max_ttl.value_namespace = name_space;
+        max_ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+        verbose.value_namespace = name_space;
+        verbose.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+        outgoing_interface.value_namespace = name_space;
+        outgoing_interface.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -441,34 +441,6 @@ void Traceroute::Input::Destination::set_filter(const std::string & value_path, 
     {
         destination.yfilter = yfilter;
     }
-    if(value_path == "max-ttl")
-    {
-        max_ttl.yfilter = yfilter;
-    }
-    if(value_path == "min-ttl")
-    {
-        min_ttl.yfilter = yfilter;
-    }
-    if(value_path == "numeric")
-    {
-        numeric.yfilter = yfilter;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "probe")
-    {
-        probe.yfilter = yfilter;
-    }
     if(value_path == "source")
     {
         source.yfilter = yfilter;
@@ -477,19 +449,47 @@ void Traceroute::Input::Destination::set_filter(const std::string & value_path, 
     {
         timeout.yfilter = yfilter;
     }
-    if(value_path == "verbose")
+    if(value_path == "probe")
     {
-        verbose.yfilter = yfilter;
+        probe.yfilter = yfilter;
+    }
+    if(value_path == "numeric")
+    {
+        numeric.yfilter = yfilter;
     }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "min-ttl")
+    {
+        min_ttl.yfilter = yfilter;
+    }
+    if(value_path == "max-ttl")
+    {
+        max_ttl.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "verbose")
+    {
+        verbose.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface.yfilter = yfilter;
+    }
 }
 
 bool Traceroute::Input::Destination::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "max-ttl" || name == "min-ttl" || name == "numeric" || name == "outgoing-interface" || name == "port" || name == "priority" || name == "probe" || name == "source" || name == "timeout" || name == "verbose" || name == "vrf-name")
+    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose" || name == "priority" || name == "outgoing-interface")
         return true;
     return false;
 }
@@ -497,15 +497,15 @@ bool Traceroute::Input::Destination::has_leaf_or_child_of_name(const std::string
 Traceroute::Input::Ipv4::Ipv4()
     :
     destination{YType::str, "destination"},
-    max_ttl{YType::uint16, "max-ttl"},
-    min_ttl{YType::uint16, "min-ttl"},
-    numeric{YType::boolean, "numeric"},
-    port{YType::uint32, "port"},
-    probe{YType::uint16, "probe"},
     source{YType::str, "source"},
     timeout{YType::uint32, "timeout"},
-    verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
+    probe{YType::uint16, "probe"},
+    numeric{YType::boolean, "numeric"},
+    vrf_name{YType::str, "vrf-name"},
+    min_ttl{YType::uint16, "min-ttl"},
+    max_ttl{YType::uint16, "max-ttl"},
+    port{YType::uint32, "port"},
+    verbose{YType::boolean, "verbose"}
 {
 
     yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
@@ -518,30 +518,30 @@ Traceroute::Input::Ipv4::~Ipv4()
 bool Traceroute::Input::Ipv4::has_data() const
 {
     return destination.is_set
-	|| max_ttl.is_set
-	|| min_ttl.is_set
-	|| numeric.is_set
-	|| port.is_set
-	|| probe.is_set
 	|| source.is_set
 	|| timeout.is_set
-	|| verbose.is_set
-	|| vrf_name.is_set;
+	|| probe.is_set
+	|| numeric.is_set
+	|| vrf_name.is_set
+	|| min_ttl.is_set
+	|| max_ttl.is_set
+	|| port.is_set
+	|| verbose.is_set;
 }
 
 bool Traceroute::Input::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(max_ttl.yfilter)
-	|| ydk::is_set(min_ttl.yfilter)
-	|| ydk::is_set(numeric.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(probe.yfilter)
 	|| ydk::is_set(source.yfilter)
 	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(probe.yfilter)
+	|| ydk::is_set(numeric.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(min_ttl.yfilter)
+	|| ydk::is_set(max_ttl.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(verbose.yfilter);
 }
 
 std::string Traceroute::Input::Ipv4::get_absolute_path() const
@@ -563,15 +563,15 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Ipv4::get_name
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
-    if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
-    if (numeric.is_set || is_set(numeric.yfilter)) leaf_name_data.push_back(numeric.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (probe.is_set || is_set(probe.yfilter)) leaf_name_data.push_back(probe.get_name_leafdata());
     if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (probe.is_set || is_set(probe.yfilter)) leaf_name_data.push_back(probe.get_name_leafdata());
+    if (numeric.is_set || is_set(numeric.yfilter)) leaf_name_data.push_back(numeric.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
+    if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -596,36 +596,6 @@ void Traceroute::Input::Ipv4::set_value(const std::string & value_path, const st
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "max-ttl")
-    {
-        max_ttl = value;
-        max_ttl.value_namespace = name_space;
-        max_ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min-ttl")
-    {
-        min_ttl = value;
-        min_ttl.value_namespace = name_space;
-        min_ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "numeric")
-    {
-        numeric = value;
-        numeric.value_namespace = name_space;
-        numeric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "probe")
-    {
-        probe = value;
-        probe.value_namespace = name_space;
-        probe.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "source")
     {
         source = value;
@@ -638,17 +608,47 @@ void Traceroute::Input::Ipv4::set_value(const std::string & value_path, const st
         timeout.value_namespace = name_space;
         timeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verbose")
+    if(value_path == "probe")
     {
-        verbose = value;
-        verbose.value_namespace = name_space;
-        verbose.value_namespace_prefix = name_space_prefix;
+        probe = value;
+        probe.value_namespace = name_space;
+        probe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "numeric")
+    {
+        numeric = value;
+        numeric.value_namespace = name_space;
+        numeric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-ttl")
+    {
+        min_ttl = value;
+        min_ttl.value_namespace = name_space;
+        min_ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-ttl")
+    {
+        max_ttl = value;
+        max_ttl.value_namespace = name_space;
+        max_ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+        verbose.value_namespace = name_space;
+        verbose.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -658,26 +658,6 @@ void Traceroute::Input::Ipv4::set_filter(const std::string & value_path, YFilter
     {
         destination.yfilter = yfilter;
     }
-    if(value_path == "max-ttl")
-    {
-        max_ttl.yfilter = yfilter;
-    }
-    if(value_path == "min-ttl")
-    {
-        min_ttl.yfilter = yfilter;
-    }
-    if(value_path == "numeric")
-    {
-        numeric.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "probe")
-    {
-        probe.yfilter = yfilter;
-    }
     if(value_path == "source")
     {
         source.yfilter = yfilter;
@@ -686,19 +666,39 @@ void Traceroute::Input::Ipv4::set_filter(const std::string & value_path, YFilter
     {
         timeout.yfilter = yfilter;
     }
-    if(value_path == "verbose")
+    if(value_path == "probe")
     {
-        verbose.yfilter = yfilter;
+        probe.yfilter = yfilter;
+    }
+    if(value_path == "numeric")
+    {
+        numeric.yfilter = yfilter;
     }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "min-ttl")
+    {
+        min_ttl.yfilter = yfilter;
+    }
+    if(value_path == "max-ttl")
+    {
+        max_ttl.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "verbose")
+    {
+        verbose.yfilter = yfilter;
+    }
 }
 
 bool Traceroute::Input::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "max-ttl" || name == "min-ttl" || name == "numeric" || name == "port" || name == "probe" || name == "source" || name == "timeout" || name == "verbose" || name == "vrf-name")
+    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose")
         return true;
     return false;
 }
@@ -706,17 +706,17 @@ bool Traceroute::Input::Ipv4::has_leaf_or_child_of_name(const std::string & name
 Traceroute::Input::Ipv6::Ipv6()
     :
     destination{YType::str, "destination"},
-    max_ttl{YType::uint16, "max-ttl"},
-    min_ttl{YType::uint16, "min-ttl"},
-    numeric{YType::boolean, "numeric"},
-    outgoing_interface{YType::str, "outgoing-interface"},
-    port{YType::uint32, "port"},
-    priority{YType::uint16, "priority"},
-    probe{YType::uint16, "probe"},
     source{YType::str, "source"},
     timeout{YType::uint32, "timeout"},
+    probe{YType::uint16, "probe"},
+    numeric{YType::boolean, "numeric"},
+    vrf_name{YType::str, "vrf-name"},
+    min_ttl{YType::uint16, "min-ttl"},
+    max_ttl{YType::uint16, "max-ttl"},
+    port{YType::uint32, "port"},
     verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
+    priority{YType::uint16, "priority"},
+    outgoing_interface{YType::str, "outgoing-interface"}
 {
 
     yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
@@ -729,34 +729,34 @@ Traceroute::Input::Ipv6::~Ipv6()
 bool Traceroute::Input::Ipv6::has_data() const
 {
     return destination.is_set
-	|| max_ttl.is_set
-	|| min_ttl.is_set
-	|| numeric.is_set
-	|| outgoing_interface.is_set
-	|| port.is_set
-	|| priority.is_set
-	|| probe.is_set
 	|| source.is_set
 	|| timeout.is_set
+	|| probe.is_set
+	|| numeric.is_set
+	|| vrf_name.is_set
+	|| min_ttl.is_set
+	|| max_ttl.is_set
+	|| port.is_set
 	|| verbose.is_set
-	|| vrf_name.is_set;
+	|| priority.is_set
+	|| outgoing_interface.is_set;
 }
 
 bool Traceroute::Input::Ipv6::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(destination.yfilter)
-	|| ydk::is_set(max_ttl.yfilter)
-	|| ydk::is_set(min_ttl.yfilter)
-	|| ydk::is_set(numeric.yfilter)
-	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(probe.yfilter)
 	|| ydk::is_set(source.yfilter)
 	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(probe.yfilter)
+	|| ydk::is_set(numeric.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(min_ttl.yfilter)
+	|| ydk::is_set(max_ttl.yfilter)
+	|| ydk::is_set(port.yfilter)
 	|| ydk::is_set(verbose.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(outgoing_interface.yfilter);
 }
 
 std::string Traceroute::Input::Ipv6::get_absolute_path() const
@@ -778,17 +778,17 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Ipv6::get_name
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
-    if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
-    if (numeric.is_set || is_set(numeric.yfilter)) leaf_name_data.push_back(numeric.get_name_leafdata());
-    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (probe.is_set || is_set(probe.yfilter)) leaf_name_data.push_back(probe.get_name_leafdata());
     if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (probe.is_set || is_set(probe.yfilter)) leaf_name_data.push_back(probe.get_name_leafdata());
+    if (numeric.is_set || is_set(numeric.yfilter)) leaf_name_data.push_back(numeric.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
+    if (max_ttl.is_set || is_set(max_ttl.yfilter)) leaf_name_data.push_back(max_ttl.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -813,48 +813,6 @@ void Traceroute::Input::Ipv6::set_value(const std::string & value_path, const st
         destination.value_namespace = name_space;
         destination.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "max-ttl")
-    {
-        max_ttl = value;
-        max_ttl.value_namespace = name_space;
-        max_ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min-ttl")
-    {
-        min_ttl = value;
-        min_ttl.value_namespace = name_space;
-        min_ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "numeric")
-    {
-        numeric = value;
-        numeric.value_namespace = name_space;
-        numeric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-        outgoing_interface.value_namespace = name_space;
-        outgoing_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "probe")
-    {
-        probe = value;
-        probe.value_namespace = name_space;
-        probe.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "source")
     {
         source = value;
@@ -867,17 +825,59 @@ void Traceroute::Input::Ipv6::set_value(const std::string & value_path, const st
         timeout.value_namespace = name_space;
         timeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verbose")
+    if(value_path == "probe")
     {
-        verbose = value;
-        verbose.value_namespace = name_space;
-        verbose.value_namespace_prefix = name_space_prefix;
+        probe = value;
+        probe.value_namespace = name_space;
+        probe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "numeric")
+    {
+        numeric = value;
+        numeric.value_namespace = name_space;
+        numeric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-ttl")
+    {
+        min_ttl = value;
+        min_ttl.value_namespace = name_space;
+        min_ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-ttl")
+    {
+        max_ttl = value;
+        max_ttl.value_namespace = name_space;
+        max_ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+        verbose.value_namespace = name_space;
+        verbose.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+        outgoing_interface.value_namespace = name_space;
+        outgoing_interface.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -887,34 +887,6 @@ void Traceroute::Input::Ipv6::set_filter(const std::string & value_path, YFilter
     {
         destination.yfilter = yfilter;
     }
-    if(value_path == "max-ttl")
-    {
-        max_ttl.yfilter = yfilter;
-    }
-    if(value_path == "min-ttl")
-    {
-        min_ttl.yfilter = yfilter;
-    }
-    if(value_path == "numeric")
-    {
-        numeric.yfilter = yfilter;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "probe")
-    {
-        probe.yfilter = yfilter;
-    }
     if(value_path == "source")
     {
         source.yfilter = yfilter;
@@ -923,19 +895,47 @@ void Traceroute::Input::Ipv6::set_filter(const std::string & value_path, YFilter
     {
         timeout.yfilter = yfilter;
     }
-    if(value_path == "verbose")
+    if(value_path == "probe")
     {
-        verbose.yfilter = yfilter;
+        probe.yfilter = yfilter;
+    }
+    if(value_path == "numeric")
+    {
+        numeric.yfilter = yfilter;
     }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "min-ttl")
+    {
+        min_ttl.yfilter = yfilter;
+    }
+    if(value_path == "max-ttl")
+    {
+        max_ttl.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "verbose")
+    {
+        verbose.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface.yfilter = yfilter;
+    }
 }
 
 bool Traceroute::Input::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "max-ttl" || name == "min-ttl" || name == "numeric" || name == "outgoing-interface" || name == "port" || name == "priority" || name == "probe" || name == "source" || name == "timeout" || name == "verbose" || name == "vrf-name")
+    if(name == "destination" || name == "source" || name == "timeout" || name == "probe" || name == "numeric" || name == "vrf-name" || name == "min-ttl" || name == "max-ttl" || name == "port" || name == "verbose" || name == "priority" || name == "outgoing-interface")
         return true;
     return false;
 }
@@ -1405,10 +1405,10 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::has_leaf_or_child_of_na
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::Probes()
     :
     probe_index{YType::uint32, "probe-index"},
+    result{YType::str, "result"},
     delta_time{YType::uint32, "delta-time"},
     hop_address{YType::str, "hop-address"},
-    hop_hostname{YType::str, "hop-hostname"},
-    result{YType::str, "result"}
+    hop_hostname{YType::str, "hop-hostname"}
 {
 
     yang_name = "probes"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
@@ -1421,20 +1421,20 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::~Probes()
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::has_data() const
 {
     return probe_index.is_set
+	|| result.is_set
 	|| delta_time.is_set
 	|| hop_address.is_set
-	|| hop_hostname.is_set
-	|| result.is_set;
+	|| hop_hostname.is_set;
 }
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(probe_index.yfilter)
+	|| ydk::is_set(result.yfilter)
 	|| ydk::is_set(delta_time.yfilter)
 	|| ydk::is_set(hop_address.yfilter)
-	|| ydk::is_set(hop_hostname.yfilter)
-	|| ydk::is_set(result.yfilter);
+	|| ydk::is_set(hop_hostname.yfilter);
 }
 
 std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::get_segment_path() const
@@ -1449,10 +1449,10 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteRes
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (probe_index.is_set || is_set(probe_index.yfilter)) leaf_name_data.push_back(probe_index.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
     if (delta_time.is_set || is_set(delta_time.yfilter)) leaf_name_data.push_back(delta_time.get_name_leafdata());
     if (hop_address.is_set || is_set(hop_address.yfilter)) leaf_name_data.push_back(hop_address.get_name_leafdata());
     if (hop_hostname.is_set || is_set(hop_hostname.yfilter)) leaf_name_data.push_back(hop_hostname.get_name_leafdata());
-    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1477,6 +1477,12 @@ void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::set_value(const
         probe_index.value_namespace = name_space;
         probe_index.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "result")
+    {
+        result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "delta-time")
     {
         delta_time = value;
@@ -1495,12 +1501,6 @@ void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::set_value(const
         hop_hostname.value_namespace = name_space;
         hop_hostname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "result")
-    {
-        result = value;
-        result.value_namespace = name_space;
-        result.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1508,6 +1508,10 @@ void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::set_filter(cons
     if(value_path == "probe-index")
     {
         probe_index.yfilter = yfilter;
+    }
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
     }
     if(value_path == "delta-time")
     {
@@ -1521,15 +1525,11 @@ void Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::set_filter(cons
     {
         hop_hostname.yfilter = yfilter;
     }
-    if(value_path == "result")
-    {
-        result.yfilter = yfilter;
-    }
 }
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "probe-index" || name == "delta-time" || name == "hop-address" || name == "hop-hostname" || name == "result")
+    if(name == "probe-index" || name == "result" || name == "delta-time" || name == "hop-address" || name == "hop-hostname")
         return true;
     return false;
 }
@@ -1807,10 +1807,10 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::has_leaf_or_child_of_na
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::Probes()
     :
     probe_index{YType::uint32, "probe-index"},
+    result{YType::str, "result"},
     delta_time{YType::uint32, "delta-time"},
     hop_address{YType::str, "hop-address"},
-    hop_hostname{YType::str, "hop-hostname"},
-    result{YType::str, "result"}
+    hop_hostname{YType::str, "hop-hostname"}
 {
 
     yang_name = "probes"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
@@ -1823,20 +1823,20 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::~Probes()
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::has_data() const
 {
     return probe_index.is_set
+	|| result.is_set
 	|| delta_time.is_set
 	|| hop_address.is_set
-	|| hop_hostname.is_set
-	|| result.is_set;
+	|| hop_hostname.is_set;
 }
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(probe_index.yfilter)
+	|| ydk::is_set(result.yfilter)
 	|| ydk::is_set(delta_time.yfilter)
 	|| ydk::is_set(hop_address.yfilter)
-	|| ydk::is_set(hop_hostname.yfilter)
-	|| ydk::is_set(result.yfilter);
+	|| ydk::is_set(hop_hostname.yfilter);
 }
 
 std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::get_segment_path() const
@@ -1851,10 +1851,10 @@ std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteRes
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (probe_index.is_set || is_set(probe_index.yfilter)) leaf_name_data.push_back(probe_index.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
     if (delta_time.is_set || is_set(delta_time.yfilter)) leaf_name_data.push_back(delta_time.get_name_leafdata());
     if (hop_address.is_set || is_set(hop_address.yfilter)) leaf_name_data.push_back(hop_address.get_name_leafdata());
     if (hop_hostname.is_set || is_set(hop_hostname.yfilter)) leaf_name_data.push_back(hop_hostname.get_name_leafdata());
-    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1879,6 +1879,12 @@ void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::set_value(const
         probe_index.value_namespace = name_space;
         probe_index.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "result")
+    {
+        result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "delta-time")
     {
         delta_time = value;
@@ -1897,12 +1903,6 @@ void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::set_value(const
         hop_hostname.value_namespace = name_space;
         hop_hostname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "result")
-    {
-        result = value;
-        result.value_namespace = name_space;
-        result.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1910,6 +1910,10 @@ void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::set_filter(cons
     if(value_path == "probe-index")
     {
         probe_index.yfilter = yfilter;
+    }
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
     }
     if(value_path == "delta-time")
     {
@@ -1923,15 +1927,11 @@ void Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::set_filter(cons
     {
         hop_hostname.yfilter = yfilter;
     }
-    if(value_path == "result")
-    {
-        result.yfilter = yfilter;
-    }
 }
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "probe-index" || name == "delta-time" || name == "hop-address" || name == "hop-hostname" || name == "result")
+    if(name == "probe-index" || name == "result" || name == "delta-time" || name == "hop-address" || name == "hop-hostname")
         return true;
     return false;
 }

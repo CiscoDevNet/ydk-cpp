@@ -10,6 +10,21 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_ldp_cfg_datatypes {
 
+class MplsLdpNbrPassword : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf specified;
+
+};
+
+class MplsLdpDownstreamOnDemand : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf peer_acl;
+
+};
+
 class MplsLdpRouterId : public ydk::Enum
 {
     public:
@@ -22,21 +37,6 @@ class MplsLdpafName : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class MplsLdpDownstreamOnDemand : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf peer_acl;
-
-};
-
-class MplsLdpNbrPassword : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf specified;
 
 };
 

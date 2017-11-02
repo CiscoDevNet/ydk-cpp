@@ -434,10 +434,10 @@ bool CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::has_leaf_or_child_of_name(const s
 CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::Ipsecpolmapentry()
     :
     ipsecpolmaptunindex{YType::int32, "ipSecPolMapTunIndex"},
-    ipsecpolmapacestring{YType::str, "ipSecPolMapAceString"},
-    ipsecpolmapaclstring{YType::str, "ipSecPolMapAclString"},
     ipsecpolmapcryptomapname{YType::str, "ipSecPolMapCryptoMapName"},
-    ipsecpolmapcryptomapnum{YType::int32, "ipSecPolMapCryptoMapNum"}
+    ipsecpolmapcryptomapnum{YType::int32, "ipSecPolMapCryptoMapNum"},
+    ipsecpolmapaclstring{YType::str, "ipSecPolMapAclString"},
+    ipsecpolmapacestring{YType::str, "ipSecPolMapAceString"}
 {
 
     yang_name = "ipSecPolMapEntry"; yang_parent_name = "ipSecPolMapTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -450,20 +450,20 @@ CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::~Ipsecpolmapentry()
 bool CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::has_data() const
 {
     return ipsecpolmaptunindex.is_set
-	|| ipsecpolmapacestring.is_set
-	|| ipsecpolmapaclstring.is_set
 	|| ipsecpolmapcryptomapname.is_set
-	|| ipsecpolmapcryptomapnum.is_set;
+	|| ipsecpolmapcryptomapnum.is_set
+	|| ipsecpolmapaclstring.is_set
+	|| ipsecpolmapacestring.is_set;
 }
 
 bool CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipsecpolmaptunindex.yfilter)
-	|| ydk::is_set(ipsecpolmapacestring.yfilter)
-	|| ydk::is_set(ipsecpolmapaclstring.yfilter)
 	|| ydk::is_set(ipsecpolmapcryptomapname.yfilter)
-	|| ydk::is_set(ipsecpolmapcryptomapnum.yfilter);
+	|| ydk::is_set(ipsecpolmapcryptomapnum.yfilter)
+	|| ydk::is_set(ipsecpolmapaclstring.yfilter)
+	|| ydk::is_set(ipsecpolmapacestring.yfilter);
 }
 
 std::string CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::get_absolute_path() const
@@ -485,10 +485,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECPOLICYMAPMIB::Ipsecpolm
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipsecpolmaptunindex.is_set || is_set(ipsecpolmaptunindex.yfilter)) leaf_name_data.push_back(ipsecpolmaptunindex.get_name_leafdata());
-    if (ipsecpolmapacestring.is_set || is_set(ipsecpolmapacestring.yfilter)) leaf_name_data.push_back(ipsecpolmapacestring.get_name_leafdata());
-    if (ipsecpolmapaclstring.is_set || is_set(ipsecpolmapaclstring.yfilter)) leaf_name_data.push_back(ipsecpolmapaclstring.get_name_leafdata());
     if (ipsecpolmapcryptomapname.is_set || is_set(ipsecpolmapcryptomapname.yfilter)) leaf_name_data.push_back(ipsecpolmapcryptomapname.get_name_leafdata());
     if (ipsecpolmapcryptomapnum.is_set || is_set(ipsecpolmapcryptomapnum.yfilter)) leaf_name_data.push_back(ipsecpolmapcryptomapnum.get_name_leafdata());
+    if (ipsecpolmapaclstring.is_set || is_set(ipsecpolmapaclstring.yfilter)) leaf_name_data.push_back(ipsecpolmapaclstring.get_name_leafdata());
+    if (ipsecpolmapacestring.is_set || is_set(ipsecpolmapacestring.yfilter)) leaf_name_data.push_back(ipsecpolmapacestring.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -513,18 +513,6 @@ void CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::set_value(const
         ipsecpolmaptunindex.value_namespace = name_space;
         ipsecpolmaptunindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipSecPolMapAceString")
-    {
-        ipsecpolmapacestring = value;
-        ipsecpolmapacestring.value_namespace = name_space;
-        ipsecpolmapacestring.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipSecPolMapAclString")
-    {
-        ipsecpolmapaclstring = value;
-        ipsecpolmapaclstring.value_namespace = name_space;
-        ipsecpolmapaclstring.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ipSecPolMapCryptoMapName")
     {
         ipsecpolmapcryptomapname = value;
@@ -537,6 +525,18 @@ void CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::set_value(const
         ipsecpolmapcryptomapnum.value_namespace = name_space;
         ipsecpolmapcryptomapnum.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipSecPolMapAclString")
+    {
+        ipsecpolmapaclstring = value;
+        ipsecpolmapaclstring.value_namespace = name_space;
+        ipsecpolmapaclstring.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipSecPolMapAceString")
+    {
+        ipsecpolmapacestring = value;
+        ipsecpolmapacestring.value_namespace = name_space;
+        ipsecpolmapacestring.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::set_filter(const std::string & value_path, YFilter yfilter)
@@ -544,14 +544,6 @@ void CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::set_filter(cons
     if(value_path == "ipSecPolMapTunIndex")
     {
         ipsecpolmaptunindex.yfilter = yfilter;
-    }
-    if(value_path == "ipSecPolMapAceString")
-    {
-        ipsecpolmapacestring.yfilter = yfilter;
-    }
-    if(value_path == "ipSecPolMapAclString")
-    {
-        ipsecpolmapaclstring.yfilter = yfilter;
     }
     if(value_path == "ipSecPolMapCryptoMapName")
     {
@@ -561,11 +553,19 @@ void CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::set_filter(cons
     {
         ipsecpolmapcryptomapnum.yfilter = yfilter;
     }
+    if(value_path == "ipSecPolMapAclString")
+    {
+        ipsecpolmapaclstring.yfilter = yfilter;
+    }
+    if(value_path == "ipSecPolMapAceString")
+    {
+        ipsecpolmapacestring.yfilter = yfilter;
+    }
 }
 
 bool CISCOIPSECPOLICYMAPMIB::Ipsecpolmaptable::Ipsecpolmapentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipSecPolMapTunIndex" || name == "ipSecPolMapAceString" || name == "ipSecPolMapAclString" || name == "ipSecPolMapCryptoMapName" || name == "ipSecPolMapCryptoMapNum")
+    if(name == "ipSecPolMapTunIndex" || name == "ipSecPolMapCryptoMapName" || name == "ipSecPolMapCryptoMapNum" || name == "ipSecPolMapAclString" || name == "ipSecPolMapAceString")
         return true;
     return false;
 }

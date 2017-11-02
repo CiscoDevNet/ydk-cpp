@@ -817,9 +817,9 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::has_l
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::ClassStat()
     :
-    class_id{YType::uint32, "class-id"},
+    counter_validity_bitmask{YType::uint64, "counter-validity-bitmask"},
     class_name{YType::str, "class-name"},
-    counter_validity_bitmask{YType::uint64, "counter-validity-bitmask"}
+    class_id{YType::uint32, "class-id"}
     	,
     general_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats>())
 	,httpr_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats>())
@@ -836,9 +836,9 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::has_data() const
 {
-    return class_id.is_set
+    return counter_validity_bitmask.is_set
 	|| class_name.is_set
-	|| counter_validity_bitmask.is_set
+	|| class_id.is_set
 	|| (general_stats !=  nullptr && general_stats->has_data())
 	|| (httpr_stats !=  nullptr && httpr_stats->has_data());
 }
@@ -846,9 +846,9 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(class_id.yfilter)
-	|| ydk::is_set(class_name.yfilter)
 	|| ydk::is_set(counter_validity_bitmask.yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(class_id.yfilter)
 	|| (general_stats !=  nullptr && general_stats->has_operation())
 	|| (httpr_stats !=  nullptr && httpr_stats->has_operation());
 }
@@ -864,9 +864,9 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_id.is_set || is_set(class_id.yfilter)) leaf_name_data.push_back(class_id.get_name_leafdata());
-    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
     if (counter_validity_bitmask.is_set || is_set(counter_validity_bitmask.yfilter)) leaf_name_data.push_back(counter_validity_bitmask.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (class_id.is_set || is_set(class_id.yfilter)) leaf_name_data.push_back(class_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -913,11 +913,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Inte
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "class-id")
+    if(value_path == "counter-validity-bitmask")
     {
-        class_id = value;
-        class_id.value_namespace = name_space;
-        class_id.value_namespace_prefix = name_space_prefix;
+        counter_validity_bitmask = value;
+        counter_validity_bitmask.value_namespace = name_space;
+        counter_validity_bitmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name")
     {
@@ -925,48 +925,48 @@ void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
         class_name.value_namespace = name_space;
         class_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "counter-validity-bitmask")
+    if(value_path == "class-id")
     {
-        counter_validity_bitmask = value;
-        counter_validity_bitmask.value_namespace = name_space;
-        counter_validity_bitmask.value_namespace_prefix = name_space_prefix;
+        class_id = value;
+        class_id.value_namespace = name_space;
+        class_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "class-id")
+    if(value_path == "counter-validity-bitmask")
     {
-        class_id.yfilter = yfilter;
+        counter_validity_bitmask.yfilter = yfilter;
     }
     if(value_path == "class-name")
     {
         class_name.yfilter = yfilter;
     }
-    if(value_path == "counter-validity-bitmask")
+    if(value_path == "class-id")
     {
-        counter_validity_bitmask.yfilter = yfilter;
+        class_id.yfilter = yfilter;
     }
 }
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "general-stats" || name == "httpr-stats" || name == "class-id" || name == "class-name" || name == "counter-validity-bitmask")
+    if(name == "general-stats" || name == "httpr-stats" || name == "counter-validity-bitmask" || name == "class-name" || name == "class-id")
         return true;
     return false;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::GeneralStats()
     :
-    match_data_rate{YType::uint32, "match-data-rate"},
-    pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"},
-    pre_policy_matched_packets{YType::uint64, "pre-policy-matched-packets"},
-    total_drop_bytes{YType::uint64, "total-drop-bytes"},
-    total_drop_packets{YType::uint64, "total-drop-packets"},
-    total_drop_rate{YType::uint32, "total-drop-rate"},
-    total_transmit_rate{YType::uint32, "total-transmit-rate"},
+    transmit_packets{YType::uint64, "transmit-packets"},
     transmit_bytes{YType::uint64, "transmit-bytes"},
-    transmit_packets{YType::uint64, "transmit-packets"}
+    total_drop_packets{YType::uint64, "total-drop-packets"},
+    total_drop_bytes{YType::uint64, "total-drop-bytes"},
+    total_drop_rate{YType::uint32, "total-drop-rate"},
+    match_data_rate{YType::uint32, "match-data-rate"},
+    total_transmit_rate{YType::uint32, "total-transmit-rate"},
+    pre_policy_matched_packets{YType::uint64, "pre-policy-matched-packets"},
+    pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
     yang_name = "general-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true;
@@ -978,29 +978,29 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::has_data() const
 {
-    return match_data_rate.is_set
-	|| pre_policy_matched_bytes.is_set
-	|| pre_policy_matched_packets.is_set
-	|| total_drop_bytes.is_set
-	|| total_drop_packets.is_set
-	|| total_drop_rate.is_set
-	|| total_transmit_rate.is_set
+    return transmit_packets.is_set
 	|| transmit_bytes.is_set
-	|| transmit_packets.is_set;
+	|| total_drop_packets.is_set
+	|| total_drop_bytes.is_set
+	|| total_drop_rate.is_set
+	|| match_data_rate.is_set
+	|| total_transmit_rate.is_set
+	|| pre_policy_matched_packets.is_set
+	|| pre_policy_matched_bytes.is_set;
 }
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(match_data_rate.yfilter)
-	|| ydk::is_set(pre_policy_matched_bytes.yfilter)
-	|| ydk::is_set(pre_policy_matched_packets.yfilter)
-	|| ydk::is_set(total_drop_bytes.yfilter)
-	|| ydk::is_set(total_drop_packets.yfilter)
-	|| ydk::is_set(total_drop_rate.yfilter)
-	|| ydk::is_set(total_transmit_rate.yfilter)
+	|| ydk::is_set(transmit_packets.yfilter)
 	|| ydk::is_set(transmit_bytes.yfilter)
-	|| ydk::is_set(transmit_packets.yfilter);
+	|| ydk::is_set(total_drop_packets.yfilter)
+	|| ydk::is_set(total_drop_bytes.yfilter)
+	|| ydk::is_set(total_drop_rate.yfilter)
+	|| ydk::is_set(match_data_rate.yfilter)
+	|| ydk::is_set(total_transmit_rate.yfilter)
+	|| ydk::is_set(pre_policy_matched_packets.yfilter)
+	|| ydk::is_set(pre_policy_matched_bytes.yfilter);
 }
 
 std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_segment_path() const
@@ -1014,15 +1014,15 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (match_data_rate.is_set || is_set(match_data_rate.yfilter)) leaf_name_data.push_back(match_data_rate.get_name_leafdata());
-    if (pre_policy_matched_bytes.is_set || is_set(pre_policy_matched_bytes.yfilter)) leaf_name_data.push_back(pre_policy_matched_bytes.get_name_leafdata());
-    if (pre_policy_matched_packets.is_set || is_set(pre_policy_matched_packets.yfilter)) leaf_name_data.push_back(pre_policy_matched_packets.get_name_leafdata());
-    if (total_drop_bytes.is_set || is_set(total_drop_bytes.yfilter)) leaf_name_data.push_back(total_drop_bytes.get_name_leafdata());
-    if (total_drop_packets.is_set || is_set(total_drop_packets.yfilter)) leaf_name_data.push_back(total_drop_packets.get_name_leafdata());
-    if (total_drop_rate.is_set || is_set(total_drop_rate.yfilter)) leaf_name_data.push_back(total_drop_rate.get_name_leafdata());
-    if (total_transmit_rate.is_set || is_set(total_transmit_rate.yfilter)) leaf_name_data.push_back(total_transmit_rate.get_name_leafdata());
-    if (transmit_bytes.is_set || is_set(transmit_bytes.yfilter)) leaf_name_data.push_back(transmit_bytes.get_name_leafdata());
     if (transmit_packets.is_set || is_set(transmit_packets.yfilter)) leaf_name_data.push_back(transmit_packets.get_name_leafdata());
+    if (transmit_bytes.is_set || is_set(transmit_bytes.yfilter)) leaf_name_data.push_back(transmit_bytes.get_name_leafdata());
+    if (total_drop_packets.is_set || is_set(total_drop_packets.yfilter)) leaf_name_data.push_back(total_drop_packets.get_name_leafdata());
+    if (total_drop_bytes.is_set || is_set(total_drop_bytes.yfilter)) leaf_name_data.push_back(total_drop_bytes.get_name_leafdata());
+    if (total_drop_rate.is_set || is_set(total_drop_rate.yfilter)) leaf_name_data.push_back(total_drop_rate.get_name_leafdata());
+    if (match_data_rate.is_set || is_set(match_data_rate.yfilter)) leaf_name_data.push_back(match_data_rate.get_name_leafdata());
+    if (total_transmit_rate.is_set || is_set(total_transmit_rate.yfilter)) leaf_name_data.push_back(total_transmit_rate.get_name_leafdata());
+    if (pre_policy_matched_packets.is_set || is_set(pre_policy_matched_packets.yfilter)) leaf_name_data.push_back(pre_policy_matched_packets.get_name_leafdata());
+    if (pre_policy_matched_bytes.is_set || is_set(pre_policy_matched_bytes.yfilter)) leaf_name_data.push_back(pre_policy_matched_bytes.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1041,47 +1041,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Inte
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "match-data-rate")
+    if(value_path == "transmit-packets")
     {
-        match_data_rate = value;
-        match_data_rate.value_namespace = name_space;
-        match_data_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-policy-matched-bytes")
-    {
-        pre_policy_matched_bytes = value;
-        pre_policy_matched_bytes.value_namespace = name_space;
-        pre_policy_matched_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-policy-matched-packets")
-    {
-        pre_policy_matched_packets = value;
-        pre_policy_matched_packets.value_namespace = name_space;
-        pre_policy_matched_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-drop-bytes")
-    {
-        total_drop_bytes = value;
-        total_drop_bytes.value_namespace = name_space;
-        total_drop_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-drop-packets")
-    {
-        total_drop_packets = value;
-        total_drop_packets.value_namespace = name_space;
-        total_drop_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-drop-rate")
-    {
-        total_drop_rate = value;
-        total_drop_rate.value_namespace = name_space;
-        total_drop_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-transmit-rate")
-    {
-        total_transmit_rate = value;
-        total_transmit_rate.value_namespace = name_space;
-        total_transmit_rate.value_namespace_prefix = name_space_prefix;
+        transmit_packets = value;
+        transmit_packets.value_namespace = name_space;
+        transmit_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-bytes")
     {
@@ -1089,69 +1053,105 @@ void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
         transmit_bytes.value_namespace = name_space;
         transmit_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "transmit-packets")
+    if(value_path == "total-drop-packets")
     {
-        transmit_packets = value;
-        transmit_packets.value_namespace = name_space;
-        transmit_packets.value_namespace_prefix = name_space_prefix;
+        total_drop_packets = value;
+        total_drop_packets.value_namespace = name_space;
+        total_drop_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-drop-bytes")
+    {
+        total_drop_bytes = value;
+        total_drop_bytes.value_namespace = name_space;
+        total_drop_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-drop-rate")
+    {
+        total_drop_rate = value;
+        total_drop_rate.value_namespace = name_space;
+        total_drop_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "match-data-rate")
+    {
+        match_data_rate = value;
+        match_data_rate.value_namespace = name_space;
+        match_data_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-transmit-rate")
+    {
+        total_transmit_rate = value;
+        total_transmit_rate.value_namespace = name_space;
+        total_transmit_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-policy-matched-packets")
+    {
+        pre_policy_matched_packets = value;
+        pre_policy_matched_packets.value_namespace = name_space;
+        pre_policy_matched_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-policy-matched-bytes")
+    {
+        pre_policy_matched_bytes = value;
+        pre_policy_matched_bytes.value_namespace = name_space;
+        pre_policy_matched_bytes.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "match-data-rate")
+    if(value_path == "transmit-packets")
     {
-        match_data_rate.yfilter = yfilter;
-    }
-    if(value_path == "pre-policy-matched-bytes")
-    {
-        pre_policy_matched_bytes.yfilter = yfilter;
-    }
-    if(value_path == "pre-policy-matched-packets")
-    {
-        pre_policy_matched_packets.yfilter = yfilter;
-    }
-    if(value_path == "total-drop-bytes")
-    {
-        total_drop_bytes.yfilter = yfilter;
-    }
-    if(value_path == "total-drop-packets")
-    {
-        total_drop_packets.yfilter = yfilter;
-    }
-    if(value_path == "total-drop-rate")
-    {
-        total_drop_rate.yfilter = yfilter;
-    }
-    if(value_path == "total-transmit-rate")
-    {
-        total_transmit_rate.yfilter = yfilter;
+        transmit_packets.yfilter = yfilter;
     }
     if(value_path == "transmit-bytes")
     {
         transmit_bytes.yfilter = yfilter;
     }
-    if(value_path == "transmit-packets")
+    if(value_path == "total-drop-packets")
     {
-        transmit_packets.yfilter = yfilter;
+        total_drop_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-drop-bytes")
+    {
+        total_drop_bytes.yfilter = yfilter;
+    }
+    if(value_path == "total-drop-rate")
+    {
+        total_drop_rate.yfilter = yfilter;
+    }
+    if(value_path == "match-data-rate")
+    {
+        match_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "total-transmit-rate")
+    {
+        total_transmit_rate.yfilter = yfilter;
+    }
+    if(value_path == "pre-policy-matched-packets")
+    {
+        pre_policy_matched_packets.yfilter = yfilter;
+    }
+    if(value_path == "pre-policy-matched-bytes")
+    {
+        pre_policy_matched_bytes.yfilter = yfilter;
     }
 }
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "match-data-rate" || name == "pre-policy-matched-bytes" || name == "pre-policy-matched-packets" || name == "total-drop-bytes" || name == "total-drop-packets" || name == "total-drop-rate" || name == "total-transmit-rate" || name == "transmit-bytes" || name == "transmit-packets")
+    if(name == "transmit-packets" || name == "transmit-bytes" || name == "total-drop-packets" || name == "total-drop-bytes" || name == "total-drop-rate" || name == "match-data-rate" || name == "total-transmit-rate" || name == "pre-policy-matched-packets" || name == "pre-policy-matched-bytes")
         return true;
     return false;
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::HttprStats()
     :
-    drop_bytes{YType::uint64, "drop-bytes"},
-    drop_packets{YType::uint64, "drop-packets"},
-    resp_sent_bytes{YType::uint64, "resp-sent-bytes"},
-    resp_sent_packets{YType::uint64, "resp-sent-packets"},
+    rqst_rcvd_packets{YType::uint64, "rqst-rcvd-packets"},
     rqst_rcvd_bytes{YType::uint64, "rqst-rcvd-bytes"},
-    rqst_rcvd_packets{YType::uint64, "rqst-rcvd-packets"}
+    drop_packets{YType::uint64, "drop-packets"},
+    drop_bytes{YType::uint64, "drop-bytes"},
+    resp_sent_packets{YType::uint64, "resp-sent-packets"},
+    resp_sent_bytes{YType::uint64, "resp-sent-bytes"}
 {
 
     yang_name = "httpr-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true;
@@ -1163,23 +1163,23 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::has_data() const
 {
-    return drop_bytes.is_set
-	|| drop_packets.is_set
-	|| resp_sent_bytes.is_set
-	|| resp_sent_packets.is_set
+    return rqst_rcvd_packets.is_set
 	|| rqst_rcvd_bytes.is_set
-	|| rqst_rcvd_packets.is_set;
+	|| drop_packets.is_set
+	|| drop_bytes.is_set
+	|| resp_sent_packets.is_set
+	|| resp_sent_bytes.is_set;
 }
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(drop_bytes.yfilter)
-	|| ydk::is_set(drop_packets.yfilter)
-	|| ydk::is_set(resp_sent_bytes.yfilter)
-	|| ydk::is_set(resp_sent_packets.yfilter)
+	|| ydk::is_set(rqst_rcvd_packets.yfilter)
 	|| ydk::is_set(rqst_rcvd_bytes.yfilter)
-	|| ydk::is_set(rqst_rcvd_packets.yfilter);
+	|| ydk::is_set(drop_packets.yfilter)
+	|| ydk::is_set(drop_bytes.yfilter)
+	|| ydk::is_set(resp_sent_packets.yfilter)
+	|| ydk::is_set(resp_sent_bytes.yfilter);
 }
 
 std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_segment_path() const
@@ -1193,12 +1193,12 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
-    if (drop_packets.is_set || is_set(drop_packets.yfilter)) leaf_name_data.push_back(drop_packets.get_name_leafdata());
-    if (resp_sent_bytes.is_set || is_set(resp_sent_bytes.yfilter)) leaf_name_data.push_back(resp_sent_bytes.get_name_leafdata());
-    if (resp_sent_packets.is_set || is_set(resp_sent_packets.yfilter)) leaf_name_data.push_back(resp_sent_packets.get_name_leafdata());
-    if (rqst_rcvd_bytes.is_set || is_set(rqst_rcvd_bytes.yfilter)) leaf_name_data.push_back(rqst_rcvd_bytes.get_name_leafdata());
     if (rqst_rcvd_packets.is_set || is_set(rqst_rcvd_packets.yfilter)) leaf_name_data.push_back(rqst_rcvd_packets.get_name_leafdata());
+    if (rqst_rcvd_bytes.is_set || is_set(rqst_rcvd_bytes.yfilter)) leaf_name_data.push_back(rqst_rcvd_bytes.get_name_leafdata());
+    if (drop_packets.is_set || is_set(drop_packets.yfilter)) leaf_name_data.push_back(drop_packets.get_name_leafdata());
+    if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
+    if (resp_sent_packets.is_set || is_set(resp_sent_packets.yfilter)) leaf_name_data.push_back(resp_sent_packets.get_name_leafdata());
+    if (resp_sent_bytes.is_set || is_set(resp_sent_bytes.yfilter)) leaf_name_data.push_back(resp_sent_bytes.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1217,29 +1217,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Inte
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "drop-bytes")
+    if(value_path == "rqst-rcvd-packets")
     {
-        drop_bytes = value;
-        drop_bytes.value_namespace = name_space;
-        drop_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "drop-packets")
-    {
-        drop_packets = value;
-        drop_packets.value_namespace = name_space;
-        drop_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "resp-sent-bytes")
-    {
-        resp_sent_bytes = value;
-        resp_sent_bytes.value_namespace = name_space;
-        resp_sent_bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "resp-sent-packets")
-    {
-        resp_sent_packets = value;
-        resp_sent_packets.value_namespace = name_space;
-        resp_sent_packets.value_namespace_prefix = name_space_prefix;
+        rqst_rcvd_packets = value;
+        rqst_rcvd_packets.value_namespace = name_space;
+        rqst_rcvd_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rqst-rcvd-bytes")
     {
@@ -1247,45 +1229,63 @@ void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
         rqst_rcvd_bytes.value_namespace = name_space;
         rqst_rcvd_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rqst-rcvd-packets")
+    if(value_path == "drop-packets")
     {
-        rqst_rcvd_packets = value;
-        rqst_rcvd_packets.value_namespace = name_space;
-        rqst_rcvd_packets.value_namespace_prefix = name_space_prefix;
+        drop_packets = value;
+        drop_packets.value_namespace = name_space;
+        drop_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-bytes")
+    {
+        drop_bytes = value;
+        drop_bytes.value_namespace = name_space;
+        drop_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resp-sent-packets")
+    {
+        resp_sent_packets = value;
+        resp_sent_packets.value_namespace = name_space;
+        resp_sent_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resp-sent-bytes")
+    {
+        resp_sent_bytes = value;
+        resp_sent_bytes.value_namespace = name_space;
+        resp_sent_bytes.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "drop-bytes")
+    if(value_path == "rqst-rcvd-packets")
     {
-        drop_bytes.yfilter = yfilter;
-    }
-    if(value_path == "drop-packets")
-    {
-        drop_packets.yfilter = yfilter;
-    }
-    if(value_path == "resp-sent-bytes")
-    {
-        resp_sent_bytes.yfilter = yfilter;
-    }
-    if(value_path == "resp-sent-packets")
-    {
-        resp_sent_packets.yfilter = yfilter;
+        rqst_rcvd_packets.yfilter = yfilter;
     }
     if(value_path == "rqst-rcvd-bytes")
     {
         rqst_rcvd_bytes.yfilter = yfilter;
     }
-    if(value_path == "rqst-rcvd-packets")
+    if(value_path == "drop-packets")
     {
-        rqst_rcvd_packets.yfilter = yfilter;
+        drop_packets.yfilter = yfilter;
+    }
+    if(value_path == "drop-bytes")
+    {
+        drop_bytes.yfilter = yfilter;
+    }
+    if(value_path == "resp-sent-packets")
+    {
+        resp_sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "resp-sent-bytes")
+    {
+        resp_sent_bytes.yfilter = yfilter;
     }
 }
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "drop-bytes" || name == "drop-packets" || name == "resp-sent-bytes" || name == "resp-sent-packets" || name == "rqst-rcvd-bytes" || name == "rqst-rcvd-packets")
+    if(name == "rqst-rcvd-packets" || name == "rqst-rcvd-bytes" || name == "drop-packets" || name == "drop-bytes" || name == "resp-sent-packets" || name == "resp-sent-bytes")
         return true;
     return false;
 }

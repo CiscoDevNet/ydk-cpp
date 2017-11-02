@@ -10,26 +10,6 @@
 namespace cisco_ios_xe {
 namespace ENTITY_STATE_TC_MIB {
 
-class EntityUsageState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf busy;
-
-};
-
-class EntityStandbyStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf hotStandby;
-        static const ydk::Enum::YLeaf coldStandby;
-        static const ydk::Enum::YLeaf providingService;
-
-};
-
 class EntityAdminState : public ydk::Enum
 {
     public:
@@ -47,6 +27,26 @@ class EntityOperState : public ydk::Enum
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf testing;
+
+};
+
+class EntityUsageState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf busy;
+
+};
+
+class EntityStandbyStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf hotStandby;
+        static const ydk::Enum::YLeaf coldStandby;
+        static const ydk::Enum::YLeaf providingService;
 
 };
 

@@ -12,6 +12,24 @@
 namespace cisco_ios_xe {
 namespace SNMP_FRAMEWORK_MIB {
 
+class Snmpauthprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Snmpauthprotocols();
+        ~Snmpauthprotocols();
+
+
+}; // Snmpauthprotocols
+
+class Snmpprivprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Snmpprivprotocols();
+        ~Snmpprivprotocols();
+
+
+}; // Snmpprivprotocols
+
 class SNMPFRAMEWORKMIB : public ydk::Entity
 {
     public:
@@ -63,24 +81,6 @@ class SNMPFRAMEWORKMIB::Snmpengine : public ydk::Entity
         ydk::YLeaf snmpenginemaxmessagesize; //type: int32
 
 }; // SNMPFRAMEWORKMIB::Snmpengine
-
-class Snmpauthprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Snmpauthprotocols();
-        ~Snmpauthprotocols();
-
-
-}; // Snmpauthprotocols
-
-class Snmpprivprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Snmpprivprotocols();
-        ~Snmpprivprotocols();
-
-
-}; // Snmpprivprotocols
 
 class SnmpSecurityLevel : public ydk::Enum
 {

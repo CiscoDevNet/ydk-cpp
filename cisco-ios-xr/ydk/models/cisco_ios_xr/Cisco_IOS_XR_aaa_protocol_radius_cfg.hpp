@@ -10,38 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_protocol_radius_cfg {
 
-class AaaSelectKey : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf server_key;
-        static const ydk::Enum::YLeaf session_key;
-
-};
-
-class AaaAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf accept;
-        static const ydk::Enum::YLeaf reject;
-
-};
-
-class AaaDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inbound;
-        static const ydk::Enum::YLeaf outbound;
-
-};
-
-class AaaConfig : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
 class AaaDscpValue : public ydk::Enum
 {
     public:
@@ -69,12 +37,44 @@ class AaaDscpValue : public ydk::Enum
 
 };
 
+class AaaAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf accept;
+        static const ydk::Enum::YLeaf reject;
+
+};
+
 class AaaAuthentication : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf session_key;
+
+};
+
+class AaaSelectKey : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf server_key;
+        static const ydk::Enum::YLeaf session_key;
+
+};
+
+class AaaDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inbound;
+        static const ydk::Enum::YLeaf outbound;
+
+};
+
+class AaaConfig : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 

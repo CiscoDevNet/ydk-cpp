@@ -220,11 +220,11 @@ Aaa::Usernames::Username::Username()
     :
     name{YType::str, "name"}
     	,
-    secret(std::make_shared<Aaa::Usernames::Username::Secret>())
-	,usergroup_under_usernames(std::make_shared<Aaa::Usernames::Username::UsergroupUnderUsernames>())
+    usergroup_under_usernames(std::make_shared<Aaa::Usernames::Username::UsergroupUnderUsernames>())
+	,secret(std::make_shared<Aaa::Usernames::Username::Secret>())
 {
-    secret->parent = this;
     usergroup_under_usernames->parent = this;
+    secret->parent = this;
 
     yang_name = "username"; yang_parent_name = "usernames"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -236,16 +236,16 @@ Aaa::Usernames::Username::~Username()
 bool Aaa::Usernames::Username::has_data() const
 {
     return name.is_set
-	|| (secret !=  nullptr && secret->has_data())
-	|| (usergroup_under_usernames !=  nullptr && usergroup_under_usernames->has_data());
+	|| (usergroup_under_usernames !=  nullptr && usergroup_under_usernames->has_data())
+	|| (secret !=  nullptr && secret->has_data());
 }
 
 bool Aaa::Usernames::Username::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| (secret !=  nullptr && secret->has_operation())
-	|| (usergroup_under_usernames !=  nullptr && usergroup_under_usernames->has_operation());
+	|| (usergroup_under_usernames !=  nullptr && usergroup_under_usernames->has_operation())
+	|| (secret !=  nullptr && secret->has_operation());
 }
 
 std::string Aaa::Usernames::Username::get_absolute_path() const
@@ -274,15 +274,6 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Usernames::Username::get_nam
 
 std::shared_ptr<Entity> Aaa::Usernames::Username::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "secret")
-    {
-        if(secret == nullptr)
-        {
-            secret = std::make_shared<Aaa::Usernames::Username::Secret>();
-        }
-        return secret;
-    }
-
     if(child_yang_name == "usergroup-under-usernames")
     {
         if(usergroup_under_usernames == nullptr)
@@ -292,20 +283,29 @@ std::shared_ptr<Entity> Aaa::Usernames::Username::get_child_by_name(const std::s
         return usergroup_under_usernames;
     }
 
+    if(child_yang_name == "secret")
+    {
+        if(secret == nullptr)
+        {
+            secret = std::make_shared<Aaa::Usernames::Username::Secret>();
+        }
+        return secret;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(secret != nullptr)
-    {
-        children["secret"] = secret;
-    }
-
     if(usergroup_under_usernames != nullptr)
     {
         children["usergroup-under-usernames"] = usergroup_under_usernames;
+    }
+
+    if(secret != nullptr)
+    {
+        children["secret"] = secret;
     }
 
     return children;
@@ -331,125 +331,7 @@ void Aaa::Usernames::Username::set_filter(const std::string & value_path, YFilte
 
 bool Aaa::Usernames::Username::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "secret" || name == "usergroup-under-usernames" || name == "name")
-        return true;
-    return false;
-}
-
-Aaa::Usernames::Username::Secret::Secret()
-    :
-    secret5{YType::str, "secret5"},
-    secret8{YType::str, "secret8"},
-    secret9{YType::str, "secret9"},
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "secret"; yang_parent_name = "username"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Aaa::Usernames::Username::Secret::~Secret()
-{
-}
-
-bool Aaa::Usernames::Username::Secret::has_data() const
-{
-    return secret5.is_set
-	|| secret8.is_set
-	|| secret9.is_set
-	|| type.is_set;
-}
-
-bool Aaa::Usernames::Username::Secret::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(secret5.yfilter)
-	|| ydk::is_set(secret8.yfilter)
-	|| ydk::is_set(secret9.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Aaa::Usernames::Username::Secret::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "secret";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Usernames::Username::Secret::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (secret5.is_set || is_set(secret5.yfilter)) leaf_name_data.push_back(secret5.get_name_leafdata());
-    if (secret8.is_set || is_set(secret8.yfilter)) leaf_name_data.push_back(secret8.get_name_leafdata());
-    if (secret9.is_set || is_set(secret9.yfilter)) leaf_name_data.push_back(secret9.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usernames::Username::Secret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::Secret::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Usernames::Username::Secret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "secret5")
-    {
-        secret5 = value;
-        secret5.value_namespace = name_space;
-        secret5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secret8")
-    {
-        secret8 = value;
-        secret8.value_namespace = name_space;
-        secret8.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secret9")
-    {
-        secret9 = value;
-        secret9.value_namespace = name_space;
-        secret9.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Usernames::Username::Secret::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "secret5")
-    {
-        secret5.yfilter = yfilter;
-    }
-    if(value_path == "secret8")
-    {
-        secret8.yfilter = yfilter;
-    }
-    if(value_path == "secret9")
-    {
-        secret9.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Usernames::Username::Secret::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "secret5" || name == "secret8" || name == "secret9" || name == "type")
+    if(name == "usergroup-under-usernames" || name == "secret" || name == "name")
         return true;
     return false;
 }
@@ -619,6 +501,124 @@ void Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::
 bool Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
+        return true;
+    return false;
+}
+
+Aaa::Usernames::Username::Secret::Secret()
+    :
+    type{YType::enumeration, "type"},
+    secret5{YType::str, "secret5"},
+    secret8{YType::str, "secret8"},
+    secret9{YType::str, "secret9"}
+{
+
+    yang_name = "secret"; yang_parent_name = "username"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usernames::Username::Secret::~Secret()
+{
+}
+
+bool Aaa::Usernames::Username::Secret::has_data() const
+{
+    return type.is_set
+	|| secret5.is_set
+	|| secret8.is_set
+	|| secret9.is_set;
+}
+
+bool Aaa::Usernames::Username::Secret::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(secret5.yfilter)
+	|| ydk::is_set(secret8.yfilter)
+	|| ydk::is_set(secret9.yfilter);
+}
+
+std::string Aaa::Usernames::Username::Secret::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "secret";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usernames::Username::Secret::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (secret5.is_set || is_set(secret5.yfilter)) leaf_name_data.push_back(secret5.get_name_leafdata());
+    if (secret8.is_set || is_set(secret8.yfilter)) leaf_name_data.push_back(secret8.get_name_leafdata());
+    if (secret9.is_set || is_set(secret9.yfilter)) leaf_name_data.push_back(secret9.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usernames::Username::Secret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::Secret::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Usernames::Username::Secret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secret5")
+    {
+        secret5 = value;
+        secret5.value_namespace = name_space;
+        secret5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secret8")
+    {
+        secret8 = value;
+        secret8.value_namespace = name_space;
+        secret8.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secret9")
+    {
+        secret9 = value;
+        secret9.value_namespace = name_space;
+        secret9.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Usernames::Username::Secret::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "secret5")
+    {
+        secret5.yfilter = yfilter;
+    }
+    if(value_path == "secret8")
+    {
+        secret8.yfilter = yfilter;
+    }
+    if(value_path == "secret9")
+    {
+        secret9.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usernames::Username::Secret::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "secret5" || name == "secret8" || name == "secret9")
         return true;
     return false;
 }

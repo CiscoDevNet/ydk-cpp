@@ -10,6 +10,45 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_diameter_oper {
 
+class PeerStateValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_none;
+        static const ydk::Enum::YLeaf closed;
+        static const ydk::Enum::YLeaf wait_connection_ack;
+        static const ydk::Enum::YLeaf wait_cea;
+        static const ydk::Enum::YLeaf state_open;
+        static const ydk::Enum::YLeaf closing;
+        static const ydk::Enum::YLeaf suspect;
+
+};
+
+class WhoInitiatedDisconnect : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf host;
+        static const ydk::Enum::YLeaf peer;
+
+};
+
+class DisconnectCause : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reboot;
+        static const ydk::Enum::YLeaf busy;
+        static const ydk::Enum::YLeaf do_not_wait_to_talk;
+
+};
+
+class Peer : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf server;
+
+};
+
 class SecurityTypeValue : public ydk::Enum
 {
     public:
@@ -24,45 +63,6 @@ class ProtocolTypeValue : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf protocol_none;
         static const ydk::Enum::YLeaf tcp;
-
-};
-
-class DisconnectCause : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reboot;
-        static const ydk::Enum::YLeaf busy;
-        static const ydk::Enum::YLeaf do_not_wait_to_talk;
-
-};
-
-class PeerStateValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_none;
-        static const ydk::Enum::YLeaf closed;
-        static const ydk::Enum::YLeaf wait_connection_ack;
-        static const ydk::Enum::YLeaf wait_cea;
-        static const ydk::Enum::YLeaf state_open;
-        static const ydk::Enum::YLeaf closing;
-        static const ydk::Enum::YLeaf suspect;
-
-};
-
-class Peer : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf undefined;
-        static const ydk::Enum::YLeaf server;
-
-};
-
-class WhoInitiatedDisconnect : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf host;
-        static const ydk::Enum::YLeaf peer;
 
 };
 

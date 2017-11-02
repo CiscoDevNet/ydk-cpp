@@ -38,8 +38,8 @@ class Dhcpv6 : public ydk::Entity
         class Interfaces; //type: Dhcpv6::Interfaces
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Database> database;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles> profiles;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces> interfaces;
         
 }; // Dhcpv6
 
@@ -68,168 +68,6 @@ class Dhcpv6::Database : public ydk::Entity
         ydk::YLeaf incremental_write_interval; //type: uint32
 
 }; // Dhcpv6::Database
-
-
-class Dhcpv6::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Interface; //type: Dhcpv6::Interfaces::Interface
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface> > interface;
-        
-}; // Dhcpv6::Interfaces
-
-
-class Dhcpv6::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        class Pppoe; //type: Dhcpv6::Interfaces::Interface::Pppoe
-        class Proxy; //type: Dhcpv6::Interfaces::Interface::Proxy
-        class Base; //type: Dhcpv6::Interfaces::Interface::Base
-        class Server; //type: Dhcpv6::Interfaces::Interface::Server
-        class Relay; //type: Dhcpv6::Interfaces::Interface::Relay
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Base> base;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Pppoe> pppoe;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Proxy> proxy;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Relay> relay;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Server> server;
-        
-}; // Dhcpv6::Interfaces::Interface
-
-
-class Dhcpv6::Interfaces::Interface::Base : public ydk::Entity
-{
-    public:
-        Base();
-        ~Base();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile; //type: string
-
-}; // Dhcpv6::Interfaces::Interface::Base
-
-
-class Dhcpv6::Interfaces::Interface::Pppoe : public ydk::Entity
-{
-    public:
-        Pppoe();
-        ~Pppoe();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile; //type: string
-
-}; // Dhcpv6::Interfaces::Interface::Pppoe
-
-
-class Dhcpv6::Interfaces::Interface::Proxy : public ydk::Entity
-{
-    public:
-        Proxy();
-        ~Proxy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile; //type: string
-
-}; // Dhcpv6::Interfaces::Interface::Proxy
-
-
-class Dhcpv6::Interfaces::Interface::Relay : public ydk::Entity
-{
-    public:
-        Relay();
-        ~Relay();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile; //type: string
-
-}; // Dhcpv6::Interfaces::Interface::Relay
-
-
-class Dhcpv6::Interfaces::Interface::Server : public ydk::Entity
-{
-    public:
-        Server();
-        ~Server();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile; //type: string
-
-}; // Dhcpv6::Interfaces::Interface::Server
 
 
 class Dhcpv6::Profiles : public ydk::Entity
@@ -279,12 +117,82 @@ class Dhcpv6::Profiles::Profile : public ydk::Entity
         class Proxy; //type: Dhcpv6::Profiles::Profile::Proxy
         class Server; //type: Dhcpv6::Profiles::Profile::Server
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay> relay; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base> base; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy> proxy; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay> relay; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server> server; // presence node
         
 }; // Dhcpv6::Profiles::Profile
+
+
+class Dhcpv6::Profiles::Profile::Relay : public ydk::Entity
+{
+    public:
+        Relay();
+        ~Relay();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf iana_route_add; //type: empty
+        class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Relay::HelperAddresses
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay::HelperAddresses> helper_addresses;
+        
+}; // Dhcpv6::Profiles::Profile::Relay
+
+
+class Dhcpv6::Profiles::Profile::Relay::HelperAddresses : public ydk::Entity
+{
+    public:
+        HelperAddresses();
+        ~HelperAddresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class HelperAddress; //type: Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress> > helper_address;
+        
+}; // Dhcpv6::Profiles::Profile::Relay::HelperAddresses
+
+
+class Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress : public ydk::Entity
+{
+    public:
+        HelperAddress();
+        ~HelperAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf helper_address; //type: string
+
+}; // Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress
 
 
 class Dhcpv6::Profiles::Profile::Base : public ydk::Entity
@@ -480,128 +388,14 @@ class Dhcpv6::Profiles::Profile::Proxy : public ydk::Entity
         class Classes; //type: Dhcpv6::Profiles::Profile::Proxy::Classes
         class Sessions; //type: Dhcpv6::Profiles::Profile::Proxy::Sessions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes> classes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Relay> relay;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Sessions> sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Vrfs> vrfs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes> classes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Sessions> sessions;
         
 }; // Dhcpv6::Profiles::Profile::Proxy
-
-
-class Dhcpv6::Profiles::Profile::Proxy::Authentication : public ydk::Entity
-{
-    public:
-        Authentication();
-        ~Authentication();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf username; //type: empty
-
-}; // Dhcpv6::Profiles::Profile::Proxy::Authentication
-
-
-class Dhcpv6::Profiles::Profile::Proxy::Classes : public ydk::Entity
-{
-    public:
-        Classes();
-        ~Classes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Class_; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_> > class_;
-        
-}; // Dhcpv6::Profiles::Profile::Proxy::Classes
-
-
-class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_ : public ydk::Entity
-{
-    public:
-        Class_();
-        ~Class_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf class_name; //type: string
-        ydk::YLeaf link_address; //type: string
-        class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses> helper_addresses;
-        
-}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_
-
-
-class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses : public ydk::Entity
-{
-    public:
-        HelperAddresses();
-        ~HelperAddresses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class HelperAddress; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress> > helper_address;
-        
-}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses
-
-
-class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress : public ydk::Entity
-{
-    public:
-        HelperAddress();
-        ~HelperAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf helper_address; //type: string
-
-}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress
 
 
 class Dhcpv6::Profiles::Profile::Proxy::Interfaces : public ydk::Entity
@@ -720,75 +514,6 @@ class Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId : public ydk:
 }; // Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId
 
 
-class Dhcpv6::Profiles::Profile::Proxy::Sessions : public ydk::Entity
-{
-    public:
-        Sessions();
-        ~Sessions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mac; //type: Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac> mac;
-        
-}; // Dhcpv6::Profiles::Profile::Proxy::Sessions
-
-
-class Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac : public ydk::Entity
-{
-    public:
-        Mac();
-        ~Mac();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Throttle; //type: Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle> throttle;
-        
-}; // Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac
-
-
-class Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle : public ydk::Entity
-{
-    public:
-        Throttle();
-        ~Throttle();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf limit; //type: uint32
-        ydk::YLeaf request; //type: uint32
-        ydk::YLeaf block; //type: uint32
-
-}; // Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle
-
-
 class Dhcpv6::Profiles::Profile::Proxy::Vrfs : public ydk::Entity
 {
     public:
@@ -882,11 +607,11 @@ class Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddres
 }; // Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress
 
 
-class Dhcpv6::Profiles::Profile::Relay : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Proxy::Authentication : public ydk::Entity
 {
     public:
-        Relay();
-        ~Relay();
+        Authentication();
+        ~Authentication();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -898,16 +623,60 @@ class Dhcpv6::Profiles::Profile::Relay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf iana_route_add; //type: empty
-        class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Relay::HelperAddresses
+        ydk::YLeaf username; //type: empty
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay::HelperAddresses> helper_addresses;
+}; // Dhcpv6::Profiles::Profile::Proxy::Authentication
+
+
+class Dhcpv6::Profiles::Profile::Proxy::Classes : public ydk::Entity
+{
+    public:
+        Classes();
+        ~Classes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Class_; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_> > class_;
         
-}; // Dhcpv6::Profiles::Profile::Relay
+}; // Dhcpv6::Profiles::Profile::Proxy::Classes
 
 
-class Dhcpv6::Profiles::Profile::Relay::HelperAddresses : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_ : public ydk::Entity
+{
+    public:
+        Class_();
+        ~Class_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf link_address; //type: string
+        class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses> helper_addresses;
+        
+}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_
+
+
+class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses : public ydk::Entity
 {
     public:
         HelperAddresses();
@@ -923,14 +692,14 @@ class Dhcpv6::Profiles::Profile::Relay::HelperAddresses : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HelperAddress; //type: Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress
+        class HelperAddress; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress> > helper_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress> > helper_address;
         
-}; // Dhcpv6::Profiles::Profile::Relay::HelperAddresses
+}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses
 
 
-class Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress : public ydk::Entity
 {
     public:
         HelperAddress();
@@ -949,7 +718,76 @@ class Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress : public 
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf helper_address; //type: string
 
-}; // Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress
+}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress
+
+
+class Dhcpv6::Profiles::Profile::Proxy::Sessions : public ydk::Entity
+{
+    public:
+        Sessions();
+        ~Sessions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mac; //type: Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac> mac;
+        
+}; // Dhcpv6::Profiles::Profile::Proxy::Sessions
+
+
+class Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac : public ydk::Entity
+{
+    public:
+        Mac();
+        ~Mac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Throttle; //type: Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle> throttle;
+        
+}; // Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac
+
+
+class Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle : public ydk::Entity
+{
+    public:
+        Throttle();
+        ~Throttle();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf limit; //type: uint32
+        ydk::YLeaf request; //type: uint32
+        ydk::YLeaf block; //type: uint32
+
+}; // Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle
 
 
 class Dhcpv6::Profiles::Profile::Server : public ydk::Entity
@@ -981,13 +819,103 @@ class Dhcpv6::Profiles::Profile::Server : public ydk::Entity
         class Lease; //type: Dhcpv6::Profiles::Profile::Server::Lease
         class Dhcpv6Options; //type: Dhcpv6::Profiles::Profile::Server::Dhcpv6Options
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes> classes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Dhcpv6Options> dhcpv6_options;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::DnsServers> dns_servers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Lease> lease;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Sessions> sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::DnsServers> dns_servers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes> classes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Lease> lease;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Dhcpv6Options> dhcpv6_options;
         
 }; // Dhcpv6::Profiles::Profile::Server
+
+
+class Dhcpv6::Profiles::Profile::Server::Sessions : public ydk::Entity
+{
+    public:
+        Sessions();
+        ~Sessions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mac; //type: Dhcpv6::Profiles::Profile::Server::Sessions::Mac
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Sessions::Mac> mac;
+        
+}; // Dhcpv6::Profiles::Profile::Server::Sessions
+
+
+class Dhcpv6::Profiles::Profile::Server::Sessions::Mac : public ydk::Entity
+{
+    public:
+        Mac();
+        ~Mac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Throttle; //type: Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle> throttle;
+        
+}; // Dhcpv6::Profiles::Profile::Server::Sessions::Mac
+
+
+class Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle : public ydk::Entity
+{
+    public:
+        Throttle();
+        ~Throttle();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf limit; //type: uint32
+        ydk::YLeaf request; //type: uint32
+        ydk::YLeaf block; //type: uint32
+
+}; // Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle
+
+
+class Dhcpv6::Profiles::Profile::Server::DnsServers : public ydk::Entity
+{
+    public:
+        DnsServers();
+        ~DnsServers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList dns_server; //type: list of  string
+
+}; // Dhcpv6::Profiles::Profile::Server::DnsServers
 
 
 class Dhcpv6::Profiles::Profile::Server::Classes : public ydk::Entity
@@ -1062,6 +990,30 @@ class Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers : public yd
 }; // Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers
 
 
+class Dhcpv6::Profiles::Profile::Server::Lease : public ydk::Entity
+{
+    public:
+        Lease();
+        ~Lease();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf days; //type: uint32
+        ydk::YLeaf hours; //type: uint32
+        ydk::YLeaf minutes; //type: uint32
+        ydk::YLeaf infinite; //type: string
+
+}; // Dhcpv6::Profiles::Profile::Server::Lease
+
+
 class Dhcpv6::Profiles::Profile::Server::Dhcpv6Options : public ydk::Entity
 {
     public:
@@ -1107,11 +1059,11 @@ class Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions : public y
 }; // Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions
 
 
-class Dhcpv6::Profiles::Profile::Server::DnsServers : public ydk::Entity
+class Dhcpv6::Interfaces : public ydk::Entity
 {
     public:
-        DnsServers();
-        ~DnsServers();
+        Interfaces();
+        ~Interfaces();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1122,64 +1074,20 @@ class Dhcpv6::Profiles::Profile::Server::DnsServers : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeafList dns_server; //type: list of  string
+        class Interface; //type: Dhcpv6::Interfaces::Interface
 
-}; // Dhcpv6::Profiles::Profile::Server::DnsServers
-
-
-class Dhcpv6::Profiles::Profile::Server::Lease : public ydk::Entity
-{
-    public:
-        Lease();
-        ~Lease();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf days; //type: uint32
-        ydk::YLeaf hours; //type: uint32
-        ydk::YLeaf minutes; //type: uint32
-        ydk::YLeaf infinite; //type: string
-
-}; // Dhcpv6::Profiles::Profile::Server::Lease
-
-
-class Dhcpv6::Profiles::Profile::Server::Sessions : public ydk::Entity
-{
-    public:
-        Sessions();
-        ~Sessions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mac; //type: Dhcpv6::Profiles::Profile::Server::Sessions::Mac
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Sessions::Mac> mac;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface> > interface;
         
-}; // Dhcpv6::Profiles::Profile::Server::Sessions
+}; // Dhcpv6::Interfaces
 
 
-class Dhcpv6::Profiles::Profile::Server::Sessions::Mac : public ydk::Entity
+class Dhcpv6::Interfaces::Interface : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Interface();
+        ~Interface();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1190,19 +1098,29 @@ class Dhcpv6::Profiles::Profile::Server::Sessions::Mac : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Throttle; //type: Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle
+        ydk::YLeaf interface_name; //type: string
+        class Pppoe; //type: Dhcpv6::Interfaces::Interface::Pppoe
+        class Proxy; //type: Dhcpv6::Interfaces::Interface::Proxy
+        class Base; //type: Dhcpv6::Interfaces::Interface::Base
+        class Server; //type: Dhcpv6::Interfaces::Interface::Server
+        class Relay; //type: Dhcpv6::Interfaces::Interface::Relay
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle> throttle;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Pppoe> pppoe;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Proxy> proxy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Server> server;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface::Relay> relay;
         
-}; // Dhcpv6::Profiles::Profile::Server::Sessions::Mac
+}; // Dhcpv6::Interfaces::Interface
 
 
-class Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle : public ydk::Entity
+class Dhcpv6::Interfaces::Interface::Pppoe : public ydk::Entity
 {
     public:
-        Throttle();
-        ~Throttle();
+        Pppoe();
+        ~Pppoe();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1214,11 +1132,102 @@ class Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf limit; //type: uint32
-        ydk::YLeaf request; //type: uint32
-        ydk::YLeaf block; //type: uint32
+        ydk::YLeaf profile; //type: string
 
-}; // Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle
+}; // Dhcpv6::Interfaces::Interface::Pppoe
+
+
+class Dhcpv6::Interfaces::Interface::Proxy : public ydk::Entity
+{
+    public:
+        Proxy();
+        ~Proxy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile; //type: string
+
+}; // Dhcpv6::Interfaces::Interface::Proxy
+
+
+class Dhcpv6::Interfaces::Interface::Base : public ydk::Entity
+{
+    public:
+        Base();
+        ~Base();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile; //type: string
+
+}; // Dhcpv6::Interfaces::Interface::Base
+
+
+class Dhcpv6::Interfaces::Interface::Server : public ydk::Entity
+{
+    public:
+        Server();
+        ~Server();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile; //type: string
+
+}; // Dhcpv6::Interfaces::Interface::Server
+
+
+class Dhcpv6::Interfaces::Interface::Relay : public ydk::Entity
+{
+    public:
+        Relay();
+        ~Relay();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile; //type: string
+
+}; // Dhcpv6::Interfaces::Interface::Relay
+
+class Insert : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf received;
+        static const ydk::Enum::YLeaf pppoe;
+
+};
 
 class SubscriberId : public ydk::Enum
 {
@@ -1231,15 +1240,6 @@ class LinkLayerAddr : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf set;
-
-};
-
-class Insert : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf received;
-        static const ydk::Enum::YLeaf pppoe;
 
 };
 

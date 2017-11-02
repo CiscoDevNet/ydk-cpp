@@ -21,16 +21,6 @@ Parsername::~Parsername()
 {
 }
 
-BFDNeighbors::BFDNeighbors()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BFDNeighbors")
-{
-
-}
-
-BFDNeighbors::~BFDNeighbors()
-{
-}
-
 BGP::BGP()
      : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BGP")
 {
@@ -38,6 +28,36 @@ BGP::BGP()
 }
 
 BGP::~BGP()
+{
+}
+
+IPRoute::IPRoute()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:IPRoute")
+{
+
+}
+
+IPRoute::~IPRoute()
+{
+}
+
+FlowMonitor::FlowMonitor()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:FlowMonitor")
+{
+
+}
+
+FlowMonitor::~FlowMonitor()
+{
+}
+
+BFDNeighbors::BFDNeighbors()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BFDNeighbors")
+{
+
+}
+
+BFDNeighbors::~BFDNeighbors()
 {
 }
 
@@ -61,43 +81,13 @@ Diffserv::~Diffserv()
 {
 }
 
-EthernetCFMStats::EthernetCFMStats()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:EthernetCFMStats")
+VirtualService::VirtualService()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:VirtualService")
 {
 
 }
 
-EthernetCFMStats::~EthernetCFMStats()
-{
-}
-
-FlowMonitor::FlowMonitor()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:FlowMonitor")
-{
-
-}
-
-FlowMonitor::~FlowMonitor()
-{
-}
-
-IPRoute::IPRoute()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:IPRoute")
-{
-
-}
-
-IPRoute::~IPRoute()
-{
-}
-
-MPLSForwardingTable::MPLSForwardingTable()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSForwardingTable")
-{
-
-}
-
-MPLSForwardingTable::~MPLSForwardingTable()
+VirtualService::~VirtualService()
 {
 }
 
@@ -111,6 +101,16 @@ MPLSLDPNeighbors::~MPLSLDPNeighbors()
 {
 }
 
+PlatformSoftware::PlatformSoftware()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:PlatformSoftware")
+{
+
+}
+
+PlatformSoftware::~PlatformSoftware()
+{
+}
+
 MPLSStaticBinding::MPLSStaticBinding()
      : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSStaticBinding")
 {
@@ -118,6 +118,16 @@ MPLSStaticBinding::MPLSStaticBinding()
 }
 
 MPLSStaticBinding::~MPLSStaticBinding()
+{
+}
+
+MPLSForwardingTable::MPLSForwardingTable()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSForwardingTable")
+{
+
+}
+
+MPLSForwardingTable::~MPLSForwardingTable()
 {
 }
 
@@ -131,23 +141,13 @@ OSPF::~OSPF()
 {
 }
 
-PlatformSoftware::PlatformSoftware()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:PlatformSoftware")
+EthernetCFMStats::EthernetCFMStats()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:EthernetCFMStats")
 {
 
 }
 
-PlatformSoftware::~PlatformSoftware()
-{
-}
-
-VirtualService::VirtualService()
-     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:VirtualService")
-{
-
-}
-
-VirtualService::~VirtualService()
+EthernetCFMStats::~EthernetCFMStats()
 {
 }
 

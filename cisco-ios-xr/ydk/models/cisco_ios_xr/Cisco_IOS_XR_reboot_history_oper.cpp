@@ -245,10 +245,10 @@ bool RebootHistory::Node::has_leaf_or_child_of_name(const std::string & name) co
 
 RebootHistory::Node::RebootHistory_::RebootHistory_()
     :
-    cause_code{YType::uint32, "cause-code"},
     no{YType::uint32, "no"},
-    reason{YType::str, "reason"},
-    time{YType::str, "time"}
+    time{YType::str, "time"},
+    cause_code{YType::uint32, "cause-code"},
+    reason{YType::str, "reason"}
 {
 
     yang_name = "reboot-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
@@ -260,19 +260,19 @@ RebootHistory::Node::RebootHistory_::~RebootHistory_()
 
 bool RebootHistory::Node::RebootHistory_::has_data() const
 {
-    return cause_code.is_set
-	|| no.is_set
-	|| reason.is_set
-	|| time.is_set;
+    return no.is_set
+	|| time.is_set
+	|| cause_code.is_set
+	|| reason.is_set;
 }
 
 bool RebootHistory::Node::RebootHistory_::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(cause_code.yfilter)
 	|| ydk::is_set(no.yfilter)
-	|| ydk::is_set(reason.yfilter)
-	|| ydk::is_set(time.yfilter);
+	|| ydk::is_set(time.yfilter)
+	|| ydk::is_set(cause_code.yfilter)
+	|| ydk::is_set(reason.yfilter);
 }
 
 std::string RebootHistory::Node::RebootHistory_::get_segment_path() const
@@ -286,10 +286,10 @@ std::vector<std::pair<std::string, LeafData> > RebootHistory::Node::RebootHistor
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cause_code.is_set || is_set(cause_code.yfilter)) leaf_name_data.push_back(cause_code.get_name_leafdata());
     if (no.is_set || is_set(no.yfilter)) leaf_name_data.push_back(no.get_name_leafdata());
-    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
     if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
+    if (cause_code.is_set || is_set(cause_code.yfilter)) leaf_name_data.push_back(cause_code.get_name_leafdata());
+    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -308,23 +308,11 @@ std::map<std::string, std::shared_ptr<Entity>> RebootHistory::Node::RebootHistor
 
 void RebootHistory::Node::RebootHistory_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cause-code")
-    {
-        cause_code = value;
-        cause_code.value_namespace = name_space;
-        cause_code.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "no")
     {
         no = value;
         no.value_namespace = name_space;
         no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reason")
-    {
-        reason = value;
-        reason.value_namespace = name_space;
-        reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time")
     {
@@ -332,31 +320,43 @@ void RebootHistory::Node::RebootHistory_::set_value(const std::string & value_pa
         time.value_namespace = name_space;
         time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cause-code")
+    {
+        cause_code = value;
+        cause_code.value_namespace = name_space;
+        cause_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reason")
+    {
+        reason = value;
+        reason.value_namespace = name_space;
+        reason.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void RebootHistory::Node::RebootHistory_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cause-code")
-    {
-        cause_code.yfilter = yfilter;
-    }
     if(value_path == "no")
     {
         no.yfilter = yfilter;
-    }
-    if(value_path == "reason")
-    {
-        reason.yfilter = yfilter;
     }
     if(value_path == "time")
     {
         time.yfilter = yfilter;
     }
+    if(value_path == "cause-code")
+    {
+        cause_code.yfilter = yfilter;
+    }
+    if(value_path == "reason")
+    {
+        reason.yfilter = yfilter;
+    }
 }
 
 bool RebootHistory::Node::RebootHistory_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cause-code" || name == "no" || name == "reason" || name == "time")
+    if(name == "no" || name == "time" || name == "cause-code" || name == "reason")
         return true;
     return false;
 }

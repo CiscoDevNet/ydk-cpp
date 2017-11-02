@@ -49,154 +49,24 @@ class CISCOUNIFIEDFIREWALLMIB : public ydk::Entity
         class Cufwinspectiontable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable
         class Cufwurlfservertable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals> cufwaaicglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats> cufwaaichttpprotocolstats;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable> cufwappconnsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp> cufwapplinspectiongrp;
         std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals> cufwconnectionglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings> cufwconnectionreportsettings;
         std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources> cufwconnectionresources;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable> cufwconnsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable> cufwinspectiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals> cufwl2fwglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp> cufwnotifcntlgrp;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable> cufwpolicyappconnsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable> cufwpolicyconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings> cufwconnectionreportsettings;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp> cufwapplinspectiongrp;
         std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals> cufwurlfilterglobals;
         std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage> cufwurlfilterresourceusage;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals> cufwaaicglobals;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats> cufwaaichttpprotocolstats;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals> cufwl2fwglobals;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp> cufwnotifcntlgrp;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable> cufwconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable> cufwappconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable> cufwpolicyconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable> cufwpolicyappconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable> cufwinspectiontable;
         std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable> cufwurlfservertable;
         
 }; // CISCOUNIFIEDFIREWALLMIB
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals : public ydk::Entity
-{
-    public:
-        Cufwaaicglobals();
-        ~Cufwaaicglobals();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwaaicglobalnumbadprotocolops; //type: uint64
-        ydk::YLeaf cufwaaicglobalnumbadpdusize; //type: uint64
-        ydk::YLeaf cufwaaicglobalnumbadportrange; //type: uint64
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats : public ydk::Entity
-{
-    public:
-        Cufwaaichttpprotocolstats();
-        ~Cufwaaichttpprotocolstats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwaaichttpnumbadprotocolops; //type: uint64
-        ydk::YLeaf cufwaaichttpnumbadpdusize; //type: uint64
-        ydk::YLeaf cufwaaichttpnumtunneledconns; //type: uint64
-        ydk::YLeaf cufwaaichttpnumlargeuris; //type: uint64
-        ydk::YLeaf cufwaaichttpnumbadcontent; //type: uint64
-        ydk::YLeaf cufwaaichttpnummismatchcontent; //type: uint64
-        ydk::YLeaf cufwaaichttpnumdoubleencodedpkts; //type: uint64
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable : public ydk::Entity
-{
-    public:
-        Cufwappconnsummarytable();
-        ~Cufwappconnsummarytable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cufwappconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry> > cufwappconnsummaryentry;
-        
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry : public ydk::Entity
-{
-    public:
-        Cufwappconnsummaryentry();
-        ~Cufwappconnsummaryentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwappconnprotocol; //type: CFWApplicationProtocol
-        ydk::YLeaf cufwappconnnumattempted; //type: uint64
-        ydk::YLeaf cufwappconnnumsetupsaborted; //type: uint64
-        ydk::YLeaf cufwappconnnumpolicydeclined; //type: uint64
-        ydk::YLeaf cufwappconnnumresdeclined; //type: uint64
-        ydk::YLeaf cufwappconnnumhalfopen; //type: uint32
-        ydk::YLeaf cufwappconnnumactive; //type: uint32
-        ydk::YLeaf cufwappconnnumaborted; //type: uint64
-        ydk::YLeaf cufwappconnsetuprate1; //type: uint32
-        ydk::YLeaf cufwappconnsetuprate5; //type: uint32
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp : public ydk::Entity
-{
-    public:
-        Cufwapplinspectiongrp();
-        ~Cufwapplinspectiongrp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwaiaudittrailenabled; //type: boolean
-        ydk::YLeaf cufwaialertenabled; //type: boolean
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp
 
 
 class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals : public ydk::Entity
@@ -232,29 +102,6 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals : public ydk::Entity
 }; // CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings : public ydk::Entity
-{
-    public:
-        Cufwconnectionreportsettings();
-        ~Cufwconnectionreportsettings();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwconnreptappstats; //type: boolean
-        ydk::YLeaf cufwconnreptappstatslastchanged; //type: uint32
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings
-
-
 class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources : public ydk::Entity
 {
     public:
@@ -280,11 +127,11 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources : public ydk::Entity
 }; // CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings : public ydk::Entity
 {
     public:
-        Cufwconnsummarytable();
-        ~Cufwconnsummarytable();
+        Cufwconnectionreportsettings();
+        ~Cufwconnectionreportsettings();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -297,18 +144,17 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cufwconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry
+        ydk::YLeaf cufwconnreptappstats; //type: boolean
+        ydk::YLeaf cufwconnreptappstatslastchanged; //type: uint32
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry> > cufwconnsummaryentry;
-        
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp : public ydk::Entity
 {
     public:
-        Cufwconnsummaryentry();
-        ~Cufwconnsummaryentry();
+        Cufwapplinspectiongrp();
+        ~Cufwapplinspectiongrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -321,232 +167,10 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cufwconnprotocol; //type: CFWNetworkProtocol
-        ydk::YLeaf cufwconnnumattempted; //type: uint64
-        ydk::YLeaf cufwconnnumsetupsaborted; //type: uint64
-        ydk::YLeaf cufwconnnumpolicydeclined; //type: uint64
-        ydk::YLeaf cufwconnnumresdeclined; //type: uint64
-        ydk::YLeaf cufwconnnumhalfopen; //type: uint32
-        ydk::YLeaf cufwconnnumactive; //type: uint32
-        ydk::YLeaf cufwconnnumaborted; //type: uint64
-        ydk::YLeaf cufwconnsetuprate1; //type: uint32
-        ydk::YLeaf cufwconnsetuprate5; //type: uint32
+        ydk::YLeaf cufwaiaudittrailenabled; //type: boolean
+        ydk::YLeaf cufwaialertenabled; //type: boolean
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable : public ydk::Entity
-{
-    public:
-        Cufwinspectiontable();
-        ~Cufwinspectiontable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cufwinspectionentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry> > cufwinspectionentry;
-        
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry : public ydk::Entity
-{
-    public:
-        Cufwinspectionentry();
-        ~Cufwinspectionentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwinspectionpolicyname; //type: binary
-        ydk::YLeaf cufwinspectionprotocol; //type: CFWApplicationProtocol
-        ydk::YLeaf cufwinspectionstatus; //type: boolean
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals : public ydk::Entity
-{
-    public:
-        Cufwl2Fwglobals();
-        ~Cufwl2Fwglobals();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwl2globalenablestealthmode; //type: boolean
-        ydk::YLeaf cufwl2globalarpcachesize; //type: int32
-        ydk::YLeaf cufwl2globalenablearpinspection; //type: boolean
-        ydk::YLeaf cufwl2globalnumarprequests; //type: uint64
-        ydk::YLeaf cufwl2globalnumicmprequests; //type: uint64
-        ydk::YLeaf cufwl2globalnumfloods; //type: uint64
-        ydk::YLeaf cufwl2globalnumdrops; //type: uint64
-        ydk::YLeaf cufwl2globalarpoverflowrate5; //type: uint32
-        ydk::YLeaf cufwl2globalnumbadarpresponses; //type: uint64
-        ydk::YLeaf cufwl2globalnumspoofedarpresps; //type: uint64
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp : public ydk::Entity
-{
-    public:
-        Cufwnotifcntlgrp();
-        ~Cufwnotifcntlgrp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwcntlurlfserverstatuschange; //type: boolean
-        ydk::YLeaf cufwcntll2staticmacaddressmoved; //type: boolean
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable : public ydk::Entity
-{
-    public:
-        Cufwpolicyappconnsummarytable();
-        ~Cufwpolicyappconnsummarytable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cufwpolicyappconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry> > cufwpolicyappconnsummaryentry;
-        
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry : public ydk::Entity
-{
-    public:
-        Cufwpolicyappconnsummaryentry();
-        ~Cufwpolicyappconnsummaryentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwpolappconnpolicy; //type: binary
-        ydk::YLeaf cufwpolappconnpolicytargettype; //type: CFWPolicyTargetType
-        ydk::YLeaf cufwpolappconnpolicytarget; //type: binary
-        ydk::YLeaf cufwpolappconnprotocol; //type: CFWApplicationProtocol
-        ydk::YLeaf cufwpolappconnnumattempted; //type: uint64
-        ydk::YLeaf cufwpolappconnnumsetupsaborted; //type: uint64
-        ydk::YLeaf cufwpolappconnnumpolicydeclined; //type: uint64
-        ydk::YLeaf cufwpolappconnnumresdeclined; //type: uint64
-        ydk::YLeaf cufwpolappconnnumhalfopen; //type: uint32
-        ydk::YLeaf cufwpolappconnnumactive; //type: uint32
-        ydk::YLeaf cufwpolappconnnumaborted; //type: uint64
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable : public ydk::Entity
-{
-    public:
-        Cufwpolicyconnsummarytable();
-        ~Cufwpolicyconnsummarytable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cufwpolicyconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry> > cufwpolicyconnsummaryentry;
-        
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable
-
-
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry : public ydk::Entity
-{
-    public:
-        Cufwpolicyconnsummaryentry();
-        ~Cufwpolicyconnsummaryentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cufwpolconnpolicy; //type: binary
-        ydk::YLeaf cufwpolconnpolicytargettype; //type: CFWPolicyTargetType
-        ydk::YLeaf cufwpolconnpolicytarget; //type: binary
-        ydk::YLeaf cufwpolconnprotocol; //type: CFWNetworkProtocol
-        ydk::YLeaf cufwpolconnnumattempted; //type: uint64
-        ydk::YLeaf cufwpolconnnumsetupsaborted; //type: uint64
-        ydk::YLeaf cufwpolconnnumpolicydeclined; //type: uint64
-        ydk::YLeaf cufwpolconnnumresdeclined; //type: uint64
-        ydk::YLeaf cufwpolconnnumhalfopen; //type: uint32
-        ydk::YLeaf cufwpolconnnumactive; //type: uint32
-        ydk::YLeaf cufwpolconnnumaborted; //type: uint64
-
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp
 
 
 class CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals : public ydk::Entity
@@ -610,6 +234,382 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage : public ydk::Entity
         ydk::YLeaf cufwurlfrestotalrespcachesize; //type: uint32
 
 }; // CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals : public ydk::Entity
+{
+    public:
+        Cufwaaicglobals();
+        ~Cufwaaicglobals();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwaaicglobalnumbadprotocolops; //type: uint64
+        ydk::YLeaf cufwaaicglobalnumbadpdusize; //type: uint64
+        ydk::YLeaf cufwaaicglobalnumbadportrange; //type: uint64
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats : public ydk::Entity
+{
+    public:
+        Cufwaaichttpprotocolstats();
+        ~Cufwaaichttpprotocolstats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwaaichttpnumbadprotocolops; //type: uint64
+        ydk::YLeaf cufwaaichttpnumbadpdusize; //type: uint64
+        ydk::YLeaf cufwaaichttpnumtunneledconns; //type: uint64
+        ydk::YLeaf cufwaaichttpnumlargeuris; //type: uint64
+        ydk::YLeaf cufwaaichttpnumbadcontent; //type: uint64
+        ydk::YLeaf cufwaaichttpnummismatchcontent; //type: uint64
+        ydk::YLeaf cufwaaichttpnumdoubleencodedpkts; //type: uint64
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals : public ydk::Entity
+{
+    public:
+        Cufwl2Fwglobals();
+        ~Cufwl2Fwglobals();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwl2globalenablestealthmode; //type: boolean
+        ydk::YLeaf cufwl2globalarpcachesize; //type: int32
+        ydk::YLeaf cufwl2globalenablearpinspection; //type: boolean
+        ydk::YLeaf cufwl2globalnumarprequests; //type: uint64
+        ydk::YLeaf cufwl2globalnumicmprequests; //type: uint64
+        ydk::YLeaf cufwl2globalnumfloods; //type: uint64
+        ydk::YLeaf cufwl2globalnumdrops; //type: uint64
+        ydk::YLeaf cufwl2globalarpoverflowrate5; //type: uint32
+        ydk::YLeaf cufwl2globalnumbadarpresponses; //type: uint64
+        ydk::YLeaf cufwl2globalnumspoofedarpresps; //type: uint64
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp : public ydk::Entity
+{
+    public:
+        Cufwnotifcntlgrp();
+        ~Cufwnotifcntlgrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwcntlurlfserverstatuschange; //type: boolean
+        ydk::YLeaf cufwcntll2staticmacaddressmoved; //type: boolean
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable : public ydk::Entity
+{
+    public:
+        Cufwconnsummarytable();
+        ~Cufwconnsummarytable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cufwconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry> > cufwconnsummaryentry;
+        
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry : public ydk::Entity
+{
+    public:
+        Cufwconnsummaryentry();
+        ~Cufwconnsummaryentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwconnprotocol; //type: CFWNetworkProtocol
+        ydk::YLeaf cufwconnnumattempted; //type: uint64
+        ydk::YLeaf cufwconnnumsetupsaborted; //type: uint64
+        ydk::YLeaf cufwconnnumpolicydeclined; //type: uint64
+        ydk::YLeaf cufwconnnumresdeclined; //type: uint64
+        ydk::YLeaf cufwconnnumhalfopen; //type: uint32
+        ydk::YLeaf cufwconnnumactive; //type: uint32
+        ydk::YLeaf cufwconnnumaborted; //type: uint64
+        ydk::YLeaf cufwconnsetuprate1; //type: uint32
+        ydk::YLeaf cufwconnsetuprate5; //type: uint32
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable : public ydk::Entity
+{
+    public:
+        Cufwappconnsummarytable();
+        ~Cufwappconnsummarytable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cufwappconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry> > cufwappconnsummaryentry;
+        
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry : public ydk::Entity
+{
+    public:
+        Cufwappconnsummaryentry();
+        ~Cufwappconnsummaryentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwappconnprotocol; //type: CFWApplicationProtocol
+        ydk::YLeaf cufwappconnnumattempted; //type: uint64
+        ydk::YLeaf cufwappconnnumsetupsaborted; //type: uint64
+        ydk::YLeaf cufwappconnnumpolicydeclined; //type: uint64
+        ydk::YLeaf cufwappconnnumresdeclined; //type: uint64
+        ydk::YLeaf cufwappconnnumhalfopen; //type: uint32
+        ydk::YLeaf cufwappconnnumactive; //type: uint32
+        ydk::YLeaf cufwappconnnumaborted; //type: uint64
+        ydk::YLeaf cufwappconnsetuprate1; //type: uint32
+        ydk::YLeaf cufwappconnsetuprate5; //type: uint32
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable : public ydk::Entity
+{
+    public:
+        Cufwpolicyconnsummarytable();
+        ~Cufwpolicyconnsummarytable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cufwpolicyconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry> > cufwpolicyconnsummaryentry;
+        
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry : public ydk::Entity
+{
+    public:
+        Cufwpolicyconnsummaryentry();
+        ~Cufwpolicyconnsummaryentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwpolconnpolicy; //type: binary
+        ydk::YLeaf cufwpolconnpolicytargettype; //type: CFWPolicyTargetType
+        ydk::YLeaf cufwpolconnpolicytarget; //type: binary
+        ydk::YLeaf cufwpolconnprotocol; //type: CFWNetworkProtocol
+        ydk::YLeaf cufwpolconnnumattempted; //type: uint64
+        ydk::YLeaf cufwpolconnnumsetupsaborted; //type: uint64
+        ydk::YLeaf cufwpolconnnumpolicydeclined; //type: uint64
+        ydk::YLeaf cufwpolconnnumresdeclined; //type: uint64
+        ydk::YLeaf cufwpolconnnumhalfopen; //type: uint32
+        ydk::YLeaf cufwpolconnnumactive; //type: uint32
+        ydk::YLeaf cufwpolconnnumaborted; //type: uint64
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable : public ydk::Entity
+{
+    public:
+        Cufwpolicyappconnsummarytable();
+        ~Cufwpolicyappconnsummarytable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cufwpolicyappconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry> > cufwpolicyappconnsummaryentry;
+        
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry : public ydk::Entity
+{
+    public:
+        Cufwpolicyappconnsummaryentry();
+        ~Cufwpolicyappconnsummaryentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwpolappconnpolicy; //type: binary
+        ydk::YLeaf cufwpolappconnpolicytargettype; //type: CFWPolicyTargetType
+        ydk::YLeaf cufwpolappconnpolicytarget; //type: binary
+        ydk::YLeaf cufwpolappconnprotocol; //type: CFWApplicationProtocol
+        ydk::YLeaf cufwpolappconnnumattempted; //type: uint64
+        ydk::YLeaf cufwpolappconnnumsetupsaborted; //type: uint64
+        ydk::YLeaf cufwpolappconnnumpolicydeclined; //type: uint64
+        ydk::YLeaf cufwpolappconnnumresdeclined; //type: uint64
+        ydk::YLeaf cufwpolappconnnumhalfopen; //type: uint32
+        ydk::YLeaf cufwpolappconnnumactive; //type: uint32
+        ydk::YLeaf cufwpolappconnnumaborted; //type: uint64
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable : public ydk::Entity
+{
+    public:
+        Cufwinspectiontable();
+        ~Cufwinspectiontable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cufwinspectionentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry> > cufwinspectionentry;
+        
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable
+
+
+class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry : public ydk::Entity
+{
+    public:
+        Cufwinspectionentry();
+        ~Cufwinspectionentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cufwinspectionpolicyname; //type: binary
+        ydk::YLeaf cufwinspectionprotocol; //type: CFWApplicationProtocol
+        ydk::YLeaf cufwinspectionstatus; //type: boolean
+
+}; // CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry
 
 
 class CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable : public ydk::Entity

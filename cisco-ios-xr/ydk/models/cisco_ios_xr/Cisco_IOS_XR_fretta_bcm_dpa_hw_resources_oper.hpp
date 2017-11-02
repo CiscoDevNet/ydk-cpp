@@ -109,12 +109,122 @@ class Dpa::Stats::Nodes::Node : public ydk::Entity
         class NpuNumbers; //type: Dpa::Stats::Nodes::Node::NpuNumbers
         class NpuIds; //type: Dpa::Stats::Nodes::Node::NpuIds
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics> asic_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas> hw_resources_datas;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuIds> npu_ids;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics> asic_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers> npu_numbers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuIds> npu_ids;
         
 }; // Dpa::Stats::Nodes::Node
+
+
+class Dpa::Stats::Nodes::Node::HwResourcesDatas : public ydk::Entity
+{
+    public:
+        HwResourcesDatas();
+        ~HwResourcesDatas();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class HwResourcesData; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData> > hw_resources_data;
+        
+}; // Dpa::Stats::Nodes::Node::HwResourcesDatas
+
+
+class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData : public ydk::Entity
+{
+    public:
+        HwResourcesData();
+        ~HwResourcesData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf resource; //type: Resource
+        ydk::YLeaf resource_id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf num_npus; //type: uint32
+        class NpuHwr; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr> > npu_hwr;
+        
+}; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData
+
+
+class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr : public ydk::Entity
+{
+    public:
+        NpuHwr();
+        ~NpuHwr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_allowed; //type: uint32
+        ydk::YLeaf npu_id; //type: uint32
+        ydk::YLeaf max_entries; //type: uint32
+        ydk::YLeaf red_oor_threshold; //type: uint32
+        ydk::YLeaf red_oor_threshold_percent; //type: uint32
+        ydk::YLeaf yellow_oor_threshold; //type: uint32
+        ydk::YLeaf yellow_oor_threshold_percent; //type: uint32
+        ydk::YLeaf inuse_objects; //type: uint32
+        ydk::YLeaf num_lt; //type: uint32
+        ydk::YLeaf oor_change_count; //type: uint32
+        ydk::YLeaf oor_state_change_time1; //type: string
+        ydk::YLeaf oor_state_change_time2; //type: string
+        ydk::YLeaf oor_state; //type: string
+        class LtHwr; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr> > lt_hwr;
+        
+}; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr
+
+
+class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr : public ydk::Entity
+{
+    public:
+        LtHwr();
+        ~LtHwr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf lt_id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hw_entries; //type: uint32
+        ydk::YLeaf sw_entries; //type: uint32
+
+}; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr
 
 
 class Dpa::Stats::Nodes::Node::AsicStatistics : public ydk::Entity
@@ -136,134 +246,10 @@ class Dpa::Stats::Nodes::Node::AsicStatistics : public ydk::Entity
         class AsicStatisticsForNpuIds; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds
         class AsicStatisticsDetailForNpuIds; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds> asic_statistics_detail_for_npu_ids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds> asic_statistics_for_npu_ids;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds> asic_statistics_detail_for_npu_ids;
         
 }; // Dpa::Stats::Nodes::Node::AsicStatistics
-
-
-class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds : public ydk::Entity
-{
-    public:
-        AsicStatisticsDetailForNpuIds();
-        ~AsicStatisticsDetailForNpuIds();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AsicStatisticsDetailForNpuId; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId> > asic_statistics_detail_for_npu_id;
-        
-}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds
-
-
-class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId : public ydk::Entity
-{
-    public:
-        AsicStatisticsDetailForNpuId();
-        ~AsicStatisticsDetailForNpuId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf npu_id; //type: int32
-        ydk::YLeaf valid; //type: boolean
-        ydk::YLeaf rack_number; //type: uint32
-        ydk::YLeaf slot_number; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf chip_version; //type: uint16
-        class Statistics; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics> statistics;
-        
-}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId
-
-
-class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics : public ydk::Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf num_blocks; //type: uint8
-        class BlockInfo; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo> > block_info;
-        
-}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics
-
-
-class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo : public ydk::Entity
-{
-    public:
-        BlockInfo();
-        ~BlockInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf block_name; //type: string
-        ydk::YLeaf num_fields; //type: uint8
-        class FieldInfo; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo> > field_info;
-        
-}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo
-
-
-class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo : public ydk::Entity
-{
-    public:
-        FieldInfo();
-        ~FieldInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf field_name; //type: string
-        ydk::YLeaf field_value; //type: uint64
-        ydk::YLeaf is_overflow; //type: boolean
-
-}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo
 
 
 class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds : public ydk::Entity
@@ -399,11 +385,11 @@ class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStat
 }; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics
 
 
-class Dpa::Stats::Nodes::Node::HwResourcesDatas : public ydk::Entity
+class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds : public ydk::Entity
 {
     public:
-        HwResourcesDatas();
-        ~HwResourcesDatas();
+        AsicStatisticsDetailForNpuIds();
+        ~AsicStatisticsDetailForNpuIds();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -415,18 +401,18 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HwResourcesData; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData
+        class AsicStatisticsDetailForNpuId; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData> > hw_resources_data;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId> > asic_statistics_detail_for_npu_id;
         
-}; // Dpa::Stats::Nodes::Node::HwResourcesDatas
+}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds
 
 
-class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData : public ydk::Entity
+class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId : public ydk::Entity
 {
     public:
-        HwResourcesData();
-        ~HwResourcesData();
+        AsicStatisticsDetailForNpuId();
+        ~AsicStatisticsDetailForNpuId();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -438,22 +424,24 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf resource; //type: Resource
-        ydk::YLeaf resource_id; //type: uint32
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf num_npus; //type: uint32
-        class NpuHwr; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr
+        ydk::YLeaf npu_id; //type: int32
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf rack_number; //type: uint32
+        ydk::YLeaf slot_number; //type: uint32
+        ydk::YLeaf asic_instance; //type: uint32
+        ydk::YLeaf chip_version; //type: uint16
+        class Statistics; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr> > npu_hwr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics> statistics;
         
-}; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData
+}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId
 
 
-class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr : public ydk::Entity
+class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics : public ydk::Entity
 {
     public:
-        NpuHwr();
-        ~NpuHwr();
+        Statistics();
+        ~Statistics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -465,31 +453,19 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf max_allowed; //type: uint32
-        ydk::YLeaf npu_id; //type: uint32
-        ydk::YLeaf max_entries; //type: uint32
-        ydk::YLeaf red_oor_threshold; //type: uint32
-        ydk::YLeaf red_oor_threshold_percent; //type: uint32
-        ydk::YLeaf yellow_oor_threshold; //type: uint32
-        ydk::YLeaf yellow_oor_threshold_percent; //type: uint32
-        ydk::YLeaf inuse_objects; //type: uint32
-        ydk::YLeaf num_lt; //type: uint32
-        ydk::YLeaf oor_change_count; //type: uint32
-        ydk::YLeaf oor_state_change_time1; //type: string
-        ydk::YLeaf oor_state_change_time2; //type: string
-        ydk::YLeaf oor_state; //type: string
-        class LtHwr; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr
+        ydk::YLeaf num_blocks; //type: uint8
+        class BlockInfo; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr> > lt_hwr;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo> > block_info;
         
-}; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr
+}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics
 
 
-class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr : public ydk::Entity
+class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo : public ydk::Entity
 {
     public:
-        LtHwr();
-        ~LtHwr();
+        BlockInfo();
+        ~BlockInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -501,12 +477,337 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lt_id; //type: uint32
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf hw_entries; //type: uint32
-        ydk::YLeaf sw_entries; //type: uint32
+        ydk::YLeaf block_name; //type: string
+        ydk::YLeaf num_fields; //type: uint8
+        class FieldInfo; //type: Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo
 
-}; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo> > field_info;
+        
+}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo
+
+
+class Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo : public ydk::Entity
+{
+    public:
+        FieldInfo();
+        ~FieldInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf field_name; //type: string
+        ydk::YLeaf field_value; //type: uint64
+        ydk::YLeaf is_overflow; //type: boolean
+
+}; // Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers : public ydk::Entity
+{
+    public:
+        NpuNumbers();
+        ~NpuNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class NpuNumber; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber> > npu_number;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber : public ydk::Entity
+{
+    public:
+        NpuNumber();
+        ~NpuNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf npu_id; //type: int32
+        class Display; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display> display;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display : public ydk::Entity
+{
+    public:
+        Display();
+        ~Display();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BaseNumbers; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers
+        class TrapIds; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds
+        class InterfaceHandles; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers> base_numbers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds> trap_ids;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles> interface_handles;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers : public ydk::Entity
+{
+    public:
+        BaseNumbers();
+        ~BaseNumbers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BaseNumber; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber> > base_number;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber : public ydk::Entity
+{
+    public:
+        BaseNumber();
+        ~BaseNumber();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf base_number; //type: uint32
+        ydk::YLeaf in_use; //type: boolean
+        ydk::YLeaf rack_num; //type: uint8
+        ydk::YLeaf slot_num; //type: uint8
+        ydk::YLeaf npu_num; //type: uint8
+        ydk::YLeaf npu_core; //type: uint8
+        ydk::YLeaf port_num; //type: uint8
+        ydk::YLeaf if_handle; //type: uint32
+        ydk::YLeaf sys_port; //type: uint32
+        ydk::YLeaf pp_port; //type: uint32
+        ydk::YLeaf port_speed; //type: uint32
+        ydk::YLeaf voq_base; //type: uint32
+        ydk::YLeaf connector_id; //type: uint32
+        ydk::YLeaf is_local_port; //type: boolean
+        class VoqStat; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat> > voq_stat;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat : public ydk::Entity
+{
+    public:
+        VoqStat();
+        ~VoqStat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf received_bytes; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf dropped_bytes; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
+
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds : public ydk::Entity
+{
+    public:
+        TrapIds();
+        ~TrapIds();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TrapId; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId> > trap_id;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId : public ydk::Entity
+{
+    public:
+        TrapId();
+        ~TrapId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf trap_id; //type: uint32
+        ydk::YLeaf trap_strength; //type: uint32
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf trap_id_xr; //type: uint32
+        ydk::YLeaf gport; //type: uint32
+        ydk::YLeaf fec_id; //type: uint32
+        ydk::YLeaf policer_id; //type: uint32
+        ydk::YLeaf stats_id; //type: uint32
+        ydk::YLeaf encap_id; //type: uint32
+        ydk::YLeaf mc_group; //type: uint32
+        ydk::YLeaf trap_string; //type: string
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf offset; //type: uint64
+        ydk::YLeaf npu_id; //type: uint64
+        ydk::YLeaf packet_dropped; //type: uint64
+        ydk::YLeaf packet_accepted; //type: uint64
+
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles : public ydk::Entity
+{
+    public:
+        InterfaceHandles();
+        ~InterfaceHandles();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class InterfaceHandle; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle> > interface_handle;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle : public ydk::Entity
+{
+    public:
+        InterfaceHandle();
+        ~InterfaceHandle();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf in_use; //type: boolean
+        ydk::YLeaf rack_num; //type: uint8
+        ydk::YLeaf slot_num; //type: uint8
+        ydk::YLeaf npu_num; //type: uint8
+        ydk::YLeaf npu_core; //type: uint8
+        ydk::YLeaf port_num; //type: uint8
+        ydk::YLeaf if_handle; //type: uint32
+        ydk::YLeaf sys_port; //type: uint32
+        ydk::YLeaf pp_port; //type: uint32
+        ydk::YLeaf port_speed; //type: uint32
+        ydk::YLeaf voq_base; //type: uint32
+        ydk::YLeaf connector_id; //type: uint32
+        ydk::YLeaf is_local_port; //type: boolean
+        class VoqStat; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat> > voq_stat;
+        
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle
+
+
+class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat : public ydk::Entity
+{
+    public:
+        VoqStat();
+        ~VoqStat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf received_bytes; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf dropped_bytes; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
+
+}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat
 
 
 class Dpa::Stats::Nodes::Node::NpuIds : public ydk::Entity
@@ -605,307 +906,6 @@ class Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo : public ydk:
         ydk::YLeaf num_cntrs_used; //type: uint32
 
 }; // Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers : public ydk::Entity
-{
-    public:
-        NpuNumbers();
-        ~NpuNumbers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class NpuNumber; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber> > npu_number;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber : public ydk::Entity
-{
-    public:
-        NpuNumber();
-        ~NpuNumber();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf npu_id; //type: int32
-        class Display; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display> display;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display : public ydk::Entity
-{
-    public:
-        Display();
-        ~Display();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class BaseNumbers; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers
-        class TrapIds; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds
-        class InterfaceHandles; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers> base_numbers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles> interface_handles;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds> trap_ids;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers : public ydk::Entity
-{
-    public:
-        BaseNumbers();
-        ~BaseNumbers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class BaseNumber; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber> > base_number;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber : public ydk::Entity
-{
-    public:
-        BaseNumber();
-        ~BaseNumber();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf base_number; //type: uint32
-        ydk::YLeaf in_use; //type: boolean
-        ydk::YLeaf rack_num; //type: uint8
-        ydk::YLeaf slot_num; //type: uint8
-        ydk::YLeaf npu_num; //type: uint8
-        ydk::YLeaf npu_core; //type: uint8
-        ydk::YLeaf port_num; //type: uint8
-        ydk::YLeaf if_handle; //type: uint32
-        ydk::YLeaf sys_port; //type: uint32
-        ydk::YLeaf pp_port; //type: uint32
-        ydk::YLeaf port_speed; //type: uint32
-        ydk::YLeaf voq_base; //type: uint32
-        ydk::YLeaf connector_id; //type: uint32
-        ydk::YLeaf is_local_port; //type: boolean
-        class VoqStat; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat> > voq_stat;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat : public ydk::Entity
-{
-    public:
-        VoqStat();
-        ~VoqStat();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf received_bytes; //type: uint64
-        ydk::YLeaf received_packets; //type: uint64
-        ydk::YLeaf dropped_bytes; //type: uint64
-        ydk::YLeaf dropped_packets; //type: uint64
-
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles : public ydk::Entity
-{
-    public:
-        InterfaceHandles();
-        ~InterfaceHandles();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class InterfaceHandle; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle> > interface_handle;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle : public ydk::Entity
-{
-    public:
-        InterfaceHandle();
-        ~InterfaceHandle();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_handle; //type: uint32
-        ydk::YLeaf in_use; //type: boolean
-        ydk::YLeaf rack_num; //type: uint8
-        ydk::YLeaf slot_num; //type: uint8
-        ydk::YLeaf npu_num; //type: uint8
-        ydk::YLeaf npu_core; //type: uint8
-        ydk::YLeaf port_num; //type: uint8
-        ydk::YLeaf if_handle; //type: uint32
-        ydk::YLeaf sys_port; //type: uint32
-        ydk::YLeaf pp_port; //type: uint32
-        ydk::YLeaf port_speed; //type: uint32
-        ydk::YLeaf voq_base; //type: uint32
-        ydk::YLeaf connector_id; //type: uint32
-        ydk::YLeaf is_local_port; //type: boolean
-        class VoqStat; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat> > voq_stat;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat : public ydk::Entity
-{
-    public:
-        VoqStat();
-        ~VoqStat();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf received_bytes; //type: uint64
-        ydk::YLeaf received_packets; //type: uint64
-        ydk::YLeaf dropped_bytes; //type: uint64
-        ydk::YLeaf dropped_packets; //type: uint64
-
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds : public ydk::Entity
-{
-    public:
-        TrapIds();
-        ~TrapIds();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class TrapId; //type: Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId> > trap_id;
-        
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds
-
-
-class Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId : public ydk::Entity
-{
-    public:
-        TrapId();
-        ~TrapId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf trap_id; //type: uint32
-        ydk::YLeaf trap_strength; //type: uint32
-        ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf trap_id_xr; //type: uint32
-        ydk::YLeaf gport; //type: uint32
-        ydk::YLeaf fec_id; //type: uint32
-        ydk::YLeaf policer_id; //type: uint32
-        ydk::YLeaf stats_id; //type: uint32
-        ydk::YLeaf encap_id; //type: uint32
-        ydk::YLeaf mc_group; //type: uint32
-        ydk::YLeaf trap_string; //type: string
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf offset; //type: uint64
-        ydk::YLeaf npu_id; //type: uint64
-        ydk::YLeaf packet_dropped; //type: uint64
-        ydk::YLeaf packet_accepted; //type: uint64
-
-}; // Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId
 
 class Resource : public ydk::Enum
 {

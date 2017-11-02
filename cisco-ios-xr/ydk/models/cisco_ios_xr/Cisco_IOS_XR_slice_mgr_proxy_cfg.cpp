@@ -327,9 +327,9 @@ bool NodePath::Node::SliceIds::has_leaf_or_child_of_name(const std::string & nam
 NodePath::Node::SliceIds::SliceId::SliceId()
     :
     slice_id{YType::uint32, "slice-id"},
+    state{YType::int32, "state"},
     breakout{YType::int32, "breakout"},
-    mode{YType::int32, "mode"},
-    state{YType::int32, "state"}
+    mode{YType::int32, "mode"}
 {
 
     yang_name = "slice-id"; yang_parent_name = "slice-ids"; is_top_level_class = false; has_list_ancestor = true;
@@ -342,18 +342,18 @@ NodePath::Node::SliceIds::SliceId::~SliceId()
 bool NodePath::Node::SliceIds::SliceId::has_data() const
 {
     return slice_id.is_set
+	|| state.is_set
 	|| breakout.is_set
-	|| mode.is_set
-	|| state.is_set;
+	|| mode.is_set;
 }
 
 bool NodePath::Node::SliceIds::SliceId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(slice_id.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(breakout.yfilter)
-	|| ydk::is_set(mode.yfilter)
-	|| ydk::is_set(state.yfilter);
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string NodePath::Node::SliceIds::SliceId::get_segment_path() const
@@ -368,9 +368,9 @@ std::vector<std::pair<std::string, LeafData> > NodePath::Node::SliceIds::SliceId
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slice_id.is_set || is_set(slice_id.yfilter)) leaf_name_data.push_back(slice_id.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (breakout.is_set || is_set(breakout.yfilter)) leaf_name_data.push_back(breakout.get_name_leafdata());
     if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -395,6 +395,12 @@ void NodePath::Node::SliceIds::SliceId::set_value(const std::string & value_path
         slice_id.value_namespace = name_space;
         slice_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "breakout")
     {
         breakout = value;
@@ -407,12 +413,6 @@ void NodePath::Node::SliceIds::SliceId::set_value(const std::string & value_path
         mode.value_namespace = name_space;
         mode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void NodePath::Node::SliceIds::SliceId::set_filter(const std::string & value_path, YFilter yfilter)
@@ -420,6 +420,10 @@ void NodePath::Node::SliceIds::SliceId::set_filter(const std::string & value_pat
     if(value_path == "slice-id")
     {
         slice_id.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
     }
     if(value_path == "breakout")
     {
@@ -429,15 +433,11 @@ void NodePath::Node::SliceIds::SliceId::set_filter(const std::string & value_pat
     {
         mode.yfilter = yfilter;
     }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
 }
 
 bool NodePath::Node::SliceIds::SliceId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "slice-id" || name == "breakout" || name == "mode" || name == "state")
+    if(name == "slice-id" || name == "state" || name == "breakout" || name == "mode")
         return true;
     return false;
 }

@@ -355,9 +355,9 @@ bool HardwareModule::Node::Slice::has_leaf_or_child_of_name(const std::string & 
 HardwareModule::Node::Slice::Values::Values()
     :
     client_rate{YType::enumeration, "client-rate"},
-    encrypted{YType::boolean, "encrypted"},
+    trunk_rate{YType::enumeration, "trunk-rate"},
     fec{YType::enumeration, "fec"},
-    trunk_rate{YType::enumeration, "trunk-rate"}
+    encrypted{YType::boolean, "encrypted"}
 {
 
     yang_name = "values"; yang_parent_name = "slice"; is_top_level_class = false; has_list_ancestor = true;
@@ -370,18 +370,18 @@ HardwareModule::Node::Slice::Values::~Values()
 bool HardwareModule::Node::Slice::Values::has_data() const
 {
     return client_rate.is_set
-	|| encrypted.is_set
+	|| trunk_rate.is_set
 	|| fec.is_set
-	|| trunk_rate.is_set;
+	|| encrypted.is_set;
 }
 
 bool HardwareModule::Node::Slice::Values::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(client_rate.yfilter)
-	|| ydk::is_set(encrypted.yfilter)
+	|| ydk::is_set(trunk_rate.yfilter)
 	|| ydk::is_set(fec.yfilter)
-	|| ydk::is_set(trunk_rate.yfilter);
+	|| ydk::is_set(encrypted.yfilter);
 }
 
 std::string HardwareModule::Node::Slice::Values::get_segment_path() const
@@ -396,9 +396,9 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slice::Valu
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (client_rate.is_set || is_set(client_rate.yfilter)) leaf_name_data.push_back(client_rate.get_name_leafdata());
-    if (encrypted.is_set || is_set(encrypted.yfilter)) leaf_name_data.push_back(encrypted.get_name_leafdata());
-    if (fec.is_set || is_set(fec.yfilter)) leaf_name_data.push_back(fec.get_name_leafdata());
     if (trunk_rate.is_set || is_set(trunk_rate.yfilter)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
+    if (fec.is_set || is_set(fec.yfilter)) leaf_name_data.push_back(fec.get_name_leafdata());
+    if (encrypted.is_set || is_set(encrypted.yfilter)) leaf_name_data.push_back(encrypted.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -423,11 +423,11 @@ void HardwareModule::Node::Slice::Values::set_value(const std::string & value_pa
         client_rate.value_namespace = name_space;
         client_rate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "encrypted")
+    if(value_path == "trunk-rate")
     {
-        encrypted = value;
-        encrypted.value_namespace = name_space;
-        encrypted.value_namespace_prefix = name_space_prefix;
+        trunk_rate = value;
+        trunk_rate.value_namespace = name_space;
+        trunk_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fec")
     {
@@ -435,11 +435,11 @@ void HardwareModule::Node::Slice::Values::set_value(const std::string & value_pa
         fec.value_namespace = name_space;
         fec.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "trunk-rate")
+    if(value_path == "encrypted")
     {
-        trunk_rate = value;
-        trunk_rate.value_namespace = name_space;
-        trunk_rate.value_namespace_prefix = name_space_prefix;
+        encrypted = value;
+        encrypted.value_namespace = name_space;
+        encrypted.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -449,38 +449,38 @@ void HardwareModule::Node::Slice::Values::set_filter(const std::string & value_p
     {
         client_rate.yfilter = yfilter;
     }
-    if(value_path == "encrypted")
+    if(value_path == "trunk-rate")
     {
-        encrypted.yfilter = yfilter;
+        trunk_rate.yfilter = yfilter;
     }
     if(value_path == "fec")
     {
         fec.yfilter = yfilter;
     }
-    if(value_path == "trunk-rate")
+    if(value_path == "encrypted")
     {
-        trunk_rate.yfilter = yfilter;
+        encrypted.yfilter = yfilter;
     }
 }
 
 bool HardwareModule::Node::Slice::Values::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-rate" || name == "encrypted" || name == "fec" || name == "trunk-rate")
+    if(name == "client-rate" || name == "trunk-rate" || name == "fec" || name == "encrypted")
         return true;
     return false;
 }
 
-const Enum::YLeaf Fec::sd7 {1, "sd7"};
-const Enum::YLeaf Fec::sd20 {2, "sd20"};
+const Enum::YLeaf TrunkDataRate::hundred_gig {2, "hundred-gig"};
+const Enum::YLeaf TrunkDataRate::two_hundred_gig {3, "two-hundred-gig"};
+const Enum::YLeaf TrunkDataRate::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
 
 const Enum::YLeaf ClientDataRate::ten_gig {1, "ten-gig"};
 const Enum::YLeaf ClientDataRate::forty_gig {2, "forty-gig"};
 const Enum::YLeaf ClientDataRate::hundred_gig {3, "hundred-gig"};
 const Enum::YLeaf ClientDataRate::ten_and_hundred_gig {4, "ten-and-hundred-gig"};
 
-const Enum::YLeaf TrunkDataRate::hundred_gig {2, "hundred-gig"};
-const Enum::YLeaf TrunkDataRate::two_hundred_gig {3, "two-hundred-gig"};
-const Enum::YLeaf TrunkDataRate::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
+const Enum::YLeaf Fec::sd7 {1, "sd7"};
+const Enum::YLeaf Fec::sd20 {2, "sd20"};
 
 
 }

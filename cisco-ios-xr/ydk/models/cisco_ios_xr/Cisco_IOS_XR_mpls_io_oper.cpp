@@ -414,10 +414,10 @@ bool MplsEa::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::strin
 MplsEa::Nodes::Node::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
-    bkp_label_stack_depth{YType::uint8, "bkp-label-stack-depth"},
     mtu{YType::uint32, "mtu"},
-    pri_label_stack_depth{YType::uint8, "pri-label-stack-depth"},
-    srte_label_stack_depth{YType::uint8, "srte-label-stack-depth"}
+    bkp_label_stack_depth{YType::uint8, "bkp-label-stack-depth"},
+    srte_label_stack_depth{YType::uint8, "srte-label-stack-depth"},
+    pri_label_stack_depth{YType::uint8, "pri-label-stack-depth"}
 {
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
@@ -430,20 +430,20 @@ MplsEa::Nodes::Node::Interfaces::Interface::~Interface()
 bool MplsEa::Nodes::Node::Interfaces::Interface::has_data() const
 {
     return interface_name.is_set
-	|| bkp_label_stack_depth.is_set
 	|| mtu.is_set
-	|| pri_label_stack_depth.is_set
-	|| srte_label_stack_depth.is_set;
+	|| bkp_label_stack_depth.is_set
+	|| srte_label_stack_depth.is_set
+	|| pri_label_stack_depth.is_set;
 }
 
 bool MplsEa::Nodes::Node::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(bkp_label_stack_depth.yfilter)
 	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(pri_label_stack_depth.yfilter)
-	|| ydk::is_set(srte_label_stack_depth.yfilter);
+	|| ydk::is_set(bkp_label_stack_depth.yfilter)
+	|| ydk::is_set(srte_label_stack_depth.yfilter)
+	|| ydk::is_set(pri_label_stack_depth.yfilter);
 }
 
 std::string MplsEa::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -458,10 +458,10 @@ std::vector<std::pair<std::string, LeafData> > MplsEa::Nodes::Node::Interfaces::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bkp_label_stack_depth.is_set || is_set(bkp_label_stack_depth.yfilter)) leaf_name_data.push_back(bkp_label_stack_depth.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (pri_label_stack_depth.is_set || is_set(pri_label_stack_depth.yfilter)) leaf_name_data.push_back(pri_label_stack_depth.get_name_leafdata());
+    if (bkp_label_stack_depth.is_set || is_set(bkp_label_stack_depth.yfilter)) leaf_name_data.push_back(bkp_label_stack_depth.get_name_leafdata());
     if (srte_label_stack_depth.is_set || is_set(srte_label_stack_depth.yfilter)) leaf_name_data.push_back(srte_label_stack_depth.get_name_leafdata());
+    if (pri_label_stack_depth.is_set || is_set(pri_label_stack_depth.yfilter)) leaf_name_data.push_back(pri_label_stack_depth.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -486,29 +486,29 @@ void MplsEa::Nodes::Node::Interfaces::Interface::set_value(const std::string & v
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bkp-label-stack-depth")
-    {
-        bkp_label_stack_depth = value;
-        bkp_label_stack_depth.value_namespace = name_space;
-        bkp_label_stack_depth.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mtu")
     {
         mtu = value;
         mtu.value_namespace = name_space;
         mtu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pri-label-stack-depth")
+    if(value_path == "bkp-label-stack-depth")
     {
-        pri_label_stack_depth = value;
-        pri_label_stack_depth.value_namespace = name_space;
-        pri_label_stack_depth.value_namespace_prefix = name_space_prefix;
+        bkp_label_stack_depth = value;
+        bkp_label_stack_depth.value_namespace = name_space;
+        bkp_label_stack_depth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srte-label-stack-depth")
     {
         srte_label_stack_depth = value;
         srte_label_stack_depth.value_namespace = name_space;
         srte_label_stack_depth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pri-label-stack-depth")
+    {
+        pri_label_stack_depth = value;
+        pri_label_stack_depth.value_namespace = name_space;
+        pri_label_stack_depth.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -518,27 +518,27 @@ void MplsEa::Nodes::Node::Interfaces::Interface::set_filter(const std::string & 
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "bkp-label-stack-depth")
-    {
-        bkp_label_stack_depth.yfilter = yfilter;
-    }
     if(value_path == "mtu")
     {
         mtu.yfilter = yfilter;
     }
-    if(value_path == "pri-label-stack-depth")
+    if(value_path == "bkp-label-stack-depth")
     {
-        pri_label_stack_depth.yfilter = yfilter;
+        bkp_label_stack_depth.yfilter = yfilter;
     }
     if(value_path == "srte-label-stack-depth")
     {
         srte_label_stack_depth.yfilter = yfilter;
     }
+    if(value_path == "pri-label-stack-depth")
+    {
+        pri_label_stack_depth.yfilter = yfilter;
+    }
 }
 
 bool MplsEa::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "bkp-label-stack-depth" || name == "mtu" || name == "pri-label-stack-depth" || name == "srte-label-stack-depth")
+    if(name == "interface-name" || name == "mtu" || name == "bkp-label-stack-depth" || name == "srte-label-stack-depth" || name == "pri-label-stack-depth")
         return true;
     return false;
 }
@@ -946,10 +946,10 @@ bool MplsMa::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::strin
 MplsMa::Nodes::Node::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
-    bkp_label_stack_depth{YType::uint8, "bkp-label-stack-depth"},
     mtu{YType::uint32, "mtu"},
-    pri_label_stack_depth{YType::uint8, "pri-label-stack-depth"},
-    srte_label_stack_depth{YType::uint8, "srte-label-stack-depth"}
+    bkp_label_stack_depth{YType::uint8, "bkp-label-stack-depth"},
+    srte_label_stack_depth{YType::uint8, "srte-label-stack-depth"},
+    pri_label_stack_depth{YType::uint8, "pri-label-stack-depth"}
 {
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
@@ -962,20 +962,20 @@ MplsMa::Nodes::Node::Interfaces::Interface::~Interface()
 bool MplsMa::Nodes::Node::Interfaces::Interface::has_data() const
 {
     return interface_name.is_set
-	|| bkp_label_stack_depth.is_set
 	|| mtu.is_set
-	|| pri_label_stack_depth.is_set
-	|| srte_label_stack_depth.is_set;
+	|| bkp_label_stack_depth.is_set
+	|| srte_label_stack_depth.is_set
+	|| pri_label_stack_depth.is_set;
 }
 
 bool MplsMa::Nodes::Node::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(bkp_label_stack_depth.yfilter)
 	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(pri_label_stack_depth.yfilter)
-	|| ydk::is_set(srte_label_stack_depth.yfilter);
+	|| ydk::is_set(bkp_label_stack_depth.yfilter)
+	|| ydk::is_set(srte_label_stack_depth.yfilter)
+	|| ydk::is_set(pri_label_stack_depth.yfilter);
 }
 
 std::string MplsMa::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -990,10 +990,10 @@ std::vector<std::pair<std::string, LeafData> > MplsMa::Nodes::Node::Interfaces::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bkp_label_stack_depth.is_set || is_set(bkp_label_stack_depth.yfilter)) leaf_name_data.push_back(bkp_label_stack_depth.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (pri_label_stack_depth.is_set || is_set(pri_label_stack_depth.yfilter)) leaf_name_data.push_back(pri_label_stack_depth.get_name_leafdata());
+    if (bkp_label_stack_depth.is_set || is_set(bkp_label_stack_depth.yfilter)) leaf_name_data.push_back(bkp_label_stack_depth.get_name_leafdata());
     if (srte_label_stack_depth.is_set || is_set(srte_label_stack_depth.yfilter)) leaf_name_data.push_back(srte_label_stack_depth.get_name_leafdata());
+    if (pri_label_stack_depth.is_set || is_set(pri_label_stack_depth.yfilter)) leaf_name_data.push_back(pri_label_stack_depth.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1018,29 +1018,29 @@ void MplsMa::Nodes::Node::Interfaces::Interface::set_value(const std::string & v
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bkp-label-stack-depth")
-    {
-        bkp_label_stack_depth = value;
-        bkp_label_stack_depth.value_namespace = name_space;
-        bkp_label_stack_depth.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mtu")
     {
         mtu = value;
         mtu.value_namespace = name_space;
         mtu.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pri-label-stack-depth")
+    if(value_path == "bkp-label-stack-depth")
     {
-        pri_label_stack_depth = value;
-        pri_label_stack_depth.value_namespace = name_space;
-        pri_label_stack_depth.value_namespace_prefix = name_space_prefix;
+        bkp_label_stack_depth = value;
+        bkp_label_stack_depth.value_namespace = name_space;
+        bkp_label_stack_depth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srte-label-stack-depth")
     {
         srte_label_stack_depth = value;
         srte_label_stack_depth.value_namespace = name_space;
         srte_label_stack_depth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pri-label-stack-depth")
+    {
+        pri_label_stack_depth = value;
+        pri_label_stack_depth.value_namespace = name_space;
+        pri_label_stack_depth.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1050,27 +1050,27 @@ void MplsMa::Nodes::Node::Interfaces::Interface::set_filter(const std::string & 
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "bkp-label-stack-depth")
-    {
-        bkp_label_stack_depth.yfilter = yfilter;
-    }
     if(value_path == "mtu")
     {
         mtu.yfilter = yfilter;
     }
-    if(value_path == "pri-label-stack-depth")
+    if(value_path == "bkp-label-stack-depth")
     {
-        pri_label_stack_depth.yfilter = yfilter;
+        bkp_label_stack_depth.yfilter = yfilter;
     }
     if(value_path == "srte-label-stack-depth")
     {
         srte_label_stack_depth.yfilter = yfilter;
     }
+    if(value_path == "pri-label-stack-depth")
+    {
+        pri_label_stack_depth.yfilter = yfilter;
+    }
 }
 
 bool MplsMa::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "bkp-label-stack-depth" || name == "mtu" || name == "pri-label-stack-depth" || name == "srte-label-stack-depth")
+    if(name == "interface-name" || name == "mtu" || name == "bkp-label-stack-depth" || name == "srte-label-stack-depth" || name == "pri-label-stack-depth")
         return true;
     return false;
 }

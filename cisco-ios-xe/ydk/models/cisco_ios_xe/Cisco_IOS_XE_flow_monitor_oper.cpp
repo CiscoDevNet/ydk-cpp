@@ -349,8 +349,8 @@ FlowMonitors::FlowMonitor::Flows::Flow::Flow()
     destination_port{YType::int64, "destination-port"},
     ip_tos{YType::str, "ip-tos"},
     ip_protocol{YType::int64, "ip-protocol"},
-    bytes{YType::int64, "bytes"},
     interface_output{YType::str, "interface-output"},
+    bytes{YType::int64, "bytes"},
     packets{YType::int64, "packets"}
 {
 
@@ -372,8 +372,8 @@ bool FlowMonitors::FlowMonitor::Flows::Flow::has_data() const
 	|| destination_port.is_set
 	|| ip_tos.is_set
 	|| ip_protocol.is_set
-	|| bytes.is_set
 	|| interface_output.is_set
+	|| bytes.is_set
 	|| packets.is_set;
 }
 
@@ -389,8 +389,8 @@ bool FlowMonitors::FlowMonitor::Flows::Flow::has_operation() const
 	|| ydk::is_set(destination_port.yfilter)
 	|| ydk::is_set(ip_tos.yfilter)
 	|| ydk::is_set(ip_protocol.yfilter)
-	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(interface_output.yfilter)
+	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
@@ -414,8 +414,8 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitor::Flows:
     if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
     if (ip_tos.is_set || is_set(ip_tos.yfilter)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
     if (ip_protocol.is_set || is_set(ip_protocol.yfilter)) leaf_name_data.push_back(ip_protocol.get_name_leafdata());
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (interface_output.is_set || is_set(interface_output.yfilter)) leaf_name_data.push_back(interface_output.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
     return leaf_name_data;
@@ -489,17 +489,17 @@ void FlowMonitors::FlowMonitor::Flows::Flow::set_value(const std::string & value
         ip_protocol.value_namespace = name_space;
         ip_protocol.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "interface-output")
     {
         interface_output = value;
         interface_output.value_namespace = name_space;
         interface_output.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
@@ -547,13 +547,13 @@ void FlowMonitors::FlowMonitor::Flows::Flow::set_filter(const std::string & valu
     {
         ip_protocol.yfilter = yfilter;
     }
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
     if(value_path == "interface-output")
     {
         interface_output.yfilter = yfilter;
+    }
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
     }
     if(value_path == "packets")
     {
@@ -563,7 +563,7 @@ void FlowMonitors::FlowMonitor::Flows::Flow::set_filter(const std::string & valu
 
 bool FlowMonitors::FlowMonitor::Flows::Flow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source-address" || name == "destination-address" || name == "interface-input" || name == "is-multicast" || name == "vrf-id-input" || name == "source-port" || name == "destination-port" || name == "ip-tos" || name == "ip-protocol" || name == "bytes" || name == "interface-output" || name == "packets")
+    if(name == "source-address" || name == "destination-address" || name == "interface-input" || name == "is-multicast" || name == "vrf-id-input" || name == "source-port" || name == "destination-port" || name == "ip-tos" || name == "ip-protocol" || name == "interface-output" || name == "bytes" || name == "packets")
         return true;
     return false;
 }

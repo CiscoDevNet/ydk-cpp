@@ -319,22 +319,22 @@ CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::Citapstreamentry()
     :
     ctap2mediationcontentid{YType::str, "cTap2MediationContentId"},
     ctap2streamindex{YType::str, "cTap2StreamIndex"},
+    citapstreaminterface{YType::int32, "citapStreamInterface"},
     citapstreamaddrtype{YType::enumeration, "citapStreamAddrType"},
     citapstreamdestinationaddress{YType::str, "citapStreamDestinationAddress"},
     citapstreamdestinationlength{YType::uint32, "citapStreamDestinationLength"},
-    citapstreamdestl4portmax{YType::uint16, "citapStreamDestL4PortMax"},
-    citapstreamdestl4portmin{YType::uint16, "citapStreamDestL4PortMin"},
-    citapstreamflowid{YType::int32, "citapStreamFlowId"},
-    citapstreaminterface{YType::int32, "citapStreamInterface"},
-    citapstreamprotocol{YType::int32, "citapStreamProtocol"},
     citapstreamsourceaddress{YType::str, "citapStreamSourceAddress"},
-    citapstreamsourcel4portmax{YType::uint16, "citapStreamSourceL4PortMax"},
-    citapstreamsourcel4portmin{YType::uint16, "citapStreamSourceL4PortMin"},
     citapstreamsourcelength{YType::uint32, "citapStreamSourceLength"},
-    citapstreamstatus{YType::enumeration, "citapStreamStatus"},
     citapstreamtosbyte{YType::int32, "citapStreamTosByte"},
     citapstreamtosbytemask{YType::int32, "citapStreamTosByteMask"},
-    citapstreamvrf{YType::str, "citapStreamVRF"}
+    citapstreamflowid{YType::int32, "citapStreamFlowId"},
+    citapstreamprotocol{YType::int32, "citapStreamProtocol"},
+    citapstreamdestl4portmin{YType::uint16, "citapStreamDestL4PortMin"},
+    citapstreamdestl4portmax{YType::uint16, "citapStreamDestL4PortMax"},
+    citapstreamsourcel4portmin{YType::uint16, "citapStreamSourceL4PortMin"},
+    citapstreamsourcel4portmax{YType::uint16, "citapStreamSourceL4PortMax"},
+    citapstreamvrf{YType::str, "citapStreamVRF"},
+    citapstreamstatus{YType::enumeration, "citapStreamStatus"}
 {
 
     yang_name = "citapStreamEntry"; yang_parent_name = "citapStreamTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -348,22 +348,22 @@ bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_data() const
 {
     return ctap2mediationcontentid.is_set
 	|| ctap2streamindex.is_set
+	|| citapstreaminterface.is_set
 	|| citapstreamaddrtype.is_set
 	|| citapstreamdestinationaddress.is_set
 	|| citapstreamdestinationlength.is_set
-	|| citapstreamdestl4portmax.is_set
-	|| citapstreamdestl4portmin.is_set
-	|| citapstreamflowid.is_set
-	|| citapstreaminterface.is_set
-	|| citapstreamprotocol.is_set
 	|| citapstreamsourceaddress.is_set
-	|| citapstreamsourcel4portmax.is_set
-	|| citapstreamsourcel4portmin.is_set
 	|| citapstreamsourcelength.is_set
-	|| citapstreamstatus.is_set
 	|| citapstreamtosbyte.is_set
 	|| citapstreamtosbytemask.is_set
-	|| citapstreamvrf.is_set;
+	|| citapstreamflowid.is_set
+	|| citapstreamprotocol.is_set
+	|| citapstreamdestl4portmin.is_set
+	|| citapstreamdestl4portmax.is_set
+	|| citapstreamsourcel4portmin.is_set
+	|| citapstreamsourcel4portmax.is_set
+	|| citapstreamvrf.is_set
+	|| citapstreamstatus.is_set;
 }
 
 bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_operation() const
@@ -371,22 +371,22 @@ bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(ctap2mediationcontentid.yfilter)
 	|| ydk::is_set(ctap2streamindex.yfilter)
+	|| ydk::is_set(citapstreaminterface.yfilter)
 	|| ydk::is_set(citapstreamaddrtype.yfilter)
 	|| ydk::is_set(citapstreamdestinationaddress.yfilter)
 	|| ydk::is_set(citapstreamdestinationlength.yfilter)
-	|| ydk::is_set(citapstreamdestl4portmax.yfilter)
-	|| ydk::is_set(citapstreamdestl4portmin.yfilter)
-	|| ydk::is_set(citapstreamflowid.yfilter)
-	|| ydk::is_set(citapstreaminterface.yfilter)
-	|| ydk::is_set(citapstreamprotocol.yfilter)
 	|| ydk::is_set(citapstreamsourceaddress.yfilter)
-	|| ydk::is_set(citapstreamsourcel4portmax.yfilter)
-	|| ydk::is_set(citapstreamsourcel4portmin.yfilter)
 	|| ydk::is_set(citapstreamsourcelength.yfilter)
-	|| ydk::is_set(citapstreamstatus.yfilter)
 	|| ydk::is_set(citapstreamtosbyte.yfilter)
 	|| ydk::is_set(citapstreamtosbytemask.yfilter)
-	|| ydk::is_set(citapstreamvrf.yfilter);
+	|| ydk::is_set(citapstreamflowid.yfilter)
+	|| ydk::is_set(citapstreamprotocol.yfilter)
+	|| ydk::is_set(citapstreamdestl4portmin.yfilter)
+	|| ydk::is_set(citapstreamdestl4portmax.yfilter)
+	|| ydk::is_set(citapstreamsourcel4portmin.yfilter)
+	|| ydk::is_set(citapstreamsourcel4portmax.yfilter)
+	|| ydk::is_set(citapstreamvrf.yfilter)
+	|| ydk::is_set(citapstreamstatus.yfilter);
 }
 
 std::string CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::get_absolute_path() const
@@ -409,22 +409,22 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::Citapstreamtable::
 
     if (ctap2mediationcontentid.is_set || is_set(ctap2mediationcontentid.yfilter)) leaf_name_data.push_back(ctap2mediationcontentid.get_name_leafdata());
     if (ctap2streamindex.is_set || is_set(ctap2streamindex.yfilter)) leaf_name_data.push_back(ctap2streamindex.get_name_leafdata());
+    if (citapstreaminterface.is_set || is_set(citapstreaminterface.yfilter)) leaf_name_data.push_back(citapstreaminterface.get_name_leafdata());
     if (citapstreamaddrtype.is_set || is_set(citapstreamaddrtype.yfilter)) leaf_name_data.push_back(citapstreamaddrtype.get_name_leafdata());
     if (citapstreamdestinationaddress.is_set || is_set(citapstreamdestinationaddress.yfilter)) leaf_name_data.push_back(citapstreamdestinationaddress.get_name_leafdata());
     if (citapstreamdestinationlength.is_set || is_set(citapstreamdestinationlength.yfilter)) leaf_name_data.push_back(citapstreamdestinationlength.get_name_leafdata());
-    if (citapstreamdestl4portmax.is_set || is_set(citapstreamdestl4portmax.yfilter)) leaf_name_data.push_back(citapstreamdestl4portmax.get_name_leafdata());
-    if (citapstreamdestl4portmin.is_set || is_set(citapstreamdestl4portmin.yfilter)) leaf_name_data.push_back(citapstreamdestl4portmin.get_name_leafdata());
-    if (citapstreamflowid.is_set || is_set(citapstreamflowid.yfilter)) leaf_name_data.push_back(citapstreamflowid.get_name_leafdata());
-    if (citapstreaminterface.is_set || is_set(citapstreaminterface.yfilter)) leaf_name_data.push_back(citapstreaminterface.get_name_leafdata());
-    if (citapstreamprotocol.is_set || is_set(citapstreamprotocol.yfilter)) leaf_name_data.push_back(citapstreamprotocol.get_name_leafdata());
     if (citapstreamsourceaddress.is_set || is_set(citapstreamsourceaddress.yfilter)) leaf_name_data.push_back(citapstreamsourceaddress.get_name_leafdata());
-    if (citapstreamsourcel4portmax.is_set || is_set(citapstreamsourcel4portmax.yfilter)) leaf_name_data.push_back(citapstreamsourcel4portmax.get_name_leafdata());
-    if (citapstreamsourcel4portmin.is_set || is_set(citapstreamsourcel4portmin.yfilter)) leaf_name_data.push_back(citapstreamsourcel4portmin.get_name_leafdata());
     if (citapstreamsourcelength.is_set || is_set(citapstreamsourcelength.yfilter)) leaf_name_data.push_back(citapstreamsourcelength.get_name_leafdata());
-    if (citapstreamstatus.is_set || is_set(citapstreamstatus.yfilter)) leaf_name_data.push_back(citapstreamstatus.get_name_leafdata());
     if (citapstreamtosbyte.is_set || is_set(citapstreamtosbyte.yfilter)) leaf_name_data.push_back(citapstreamtosbyte.get_name_leafdata());
     if (citapstreamtosbytemask.is_set || is_set(citapstreamtosbytemask.yfilter)) leaf_name_data.push_back(citapstreamtosbytemask.get_name_leafdata());
+    if (citapstreamflowid.is_set || is_set(citapstreamflowid.yfilter)) leaf_name_data.push_back(citapstreamflowid.get_name_leafdata());
+    if (citapstreamprotocol.is_set || is_set(citapstreamprotocol.yfilter)) leaf_name_data.push_back(citapstreamprotocol.get_name_leafdata());
+    if (citapstreamdestl4portmin.is_set || is_set(citapstreamdestl4portmin.yfilter)) leaf_name_data.push_back(citapstreamdestl4portmin.get_name_leafdata());
+    if (citapstreamdestl4portmax.is_set || is_set(citapstreamdestl4portmax.yfilter)) leaf_name_data.push_back(citapstreamdestl4portmax.get_name_leafdata());
+    if (citapstreamsourcel4portmin.is_set || is_set(citapstreamsourcel4portmin.yfilter)) leaf_name_data.push_back(citapstreamsourcel4portmin.get_name_leafdata());
+    if (citapstreamsourcel4portmax.is_set || is_set(citapstreamsourcel4portmax.yfilter)) leaf_name_data.push_back(citapstreamsourcel4portmax.get_name_leafdata());
     if (citapstreamvrf.is_set || is_set(citapstreamvrf.yfilter)) leaf_name_data.push_back(citapstreamvrf.get_name_leafdata());
+    if (citapstreamstatus.is_set || is_set(citapstreamstatus.yfilter)) leaf_name_data.push_back(citapstreamstatus.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -455,6 +455,12 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_value(const std::str
         ctap2streamindex.value_namespace = name_space;
         ctap2streamindex.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "citapStreamInterface")
+    {
+        citapstreaminterface = value;
+        citapstreaminterface.value_namespace = name_space;
+        citapstreaminterface.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "citapStreamAddrType")
     {
         citapstreamaddrtype = value;
@@ -473,65 +479,17 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_value(const std::str
         citapstreamdestinationlength.value_namespace = name_space;
         citapstreamdestinationlength.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "citapStreamDestL4PortMax")
-    {
-        citapstreamdestl4portmax = value;
-        citapstreamdestl4portmax.value_namespace = name_space;
-        citapstreamdestl4portmax.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "citapStreamDestL4PortMin")
-    {
-        citapstreamdestl4portmin = value;
-        citapstreamdestl4portmin.value_namespace = name_space;
-        citapstreamdestl4portmin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "citapStreamFlowId")
-    {
-        citapstreamflowid = value;
-        citapstreamflowid.value_namespace = name_space;
-        citapstreamflowid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "citapStreamInterface")
-    {
-        citapstreaminterface = value;
-        citapstreaminterface.value_namespace = name_space;
-        citapstreaminterface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "citapStreamProtocol")
-    {
-        citapstreamprotocol = value;
-        citapstreamprotocol.value_namespace = name_space;
-        citapstreamprotocol.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "citapStreamSourceAddress")
     {
         citapstreamsourceaddress = value;
         citapstreamsourceaddress.value_namespace = name_space;
         citapstreamsourceaddress.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "citapStreamSourceL4PortMax")
-    {
-        citapstreamsourcel4portmax = value;
-        citapstreamsourcel4portmax.value_namespace = name_space;
-        citapstreamsourcel4portmax.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "citapStreamSourceL4PortMin")
-    {
-        citapstreamsourcel4portmin = value;
-        citapstreamsourcel4portmin.value_namespace = name_space;
-        citapstreamsourcel4portmin.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "citapStreamSourceLength")
     {
         citapstreamsourcelength = value;
         citapstreamsourcelength.value_namespace = name_space;
         citapstreamsourcelength.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "citapStreamStatus")
-    {
-        citapstreamstatus = value;
-        citapstreamstatus.value_namespace = name_space;
-        citapstreamstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "citapStreamTosByte")
     {
@@ -545,11 +503,53 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_value(const std::str
         citapstreamtosbytemask.value_namespace = name_space;
         citapstreamtosbytemask.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "citapStreamFlowId")
+    {
+        citapstreamflowid = value;
+        citapstreamflowid.value_namespace = name_space;
+        citapstreamflowid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "citapStreamProtocol")
+    {
+        citapstreamprotocol = value;
+        citapstreamprotocol.value_namespace = name_space;
+        citapstreamprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "citapStreamDestL4PortMin")
+    {
+        citapstreamdestl4portmin = value;
+        citapstreamdestl4portmin.value_namespace = name_space;
+        citapstreamdestl4portmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "citapStreamDestL4PortMax")
+    {
+        citapstreamdestl4portmax = value;
+        citapstreamdestl4portmax.value_namespace = name_space;
+        citapstreamdestl4portmax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "citapStreamSourceL4PortMin")
+    {
+        citapstreamsourcel4portmin = value;
+        citapstreamsourcel4portmin.value_namespace = name_space;
+        citapstreamsourcel4portmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "citapStreamSourceL4PortMax")
+    {
+        citapstreamsourcel4portmax = value;
+        citapstreamsourcel4portmax.value_namespace = name_space;
+        citapstreamsourcel4portmax.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "citapStreamVRF")
     {
         citapstreamvrf = value;
         citapstreamvrf.value_namespace = name_space;
         citapstreamvrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "citapStreamStatus")
+    {
+        citapstreamstatus = value;
+        citapstreamstatus.value_namespace = name_space;
+        citapstreamstatus.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -563,6 +563,10 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_filter(const std::st
     {
         ctap2streamindex.yfilter = yfilter;
     }
+    if(value_path == "citapStreamInterface")
+    {
+        citapstreaminterface.yfilter = yfilter;
+    }
     if(value_path == "citapStreamAddrType")
     {
         citapstreamaddrtype.yfilter = yfilter;
@@ -575,45 +579,13 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_filter(const std::st
     {
         citapstreamdestinationlength.yfilter = yfilter;
     }
-    if(value_path == "citapStreamDestL4PortMax")
-    {
-        citapstreamdestl4portmax.yfilter = yfilter;
-    }
-    if(value_path == "citapStreamDestL4PortMin")
-    {
-        citapstreamdestl4portmin.yfilter = yfilter;
-    }
-    if(value_path == "citapStreamFlowId")
-    {
-        citapstreamflowid.yfilter = yfilter;
-    }
-    if(value_path == "citapStreamInterface")
-    {
-        citapstreaminterface.yfilter = yfilter;
-    }
-    if(value_path == "citapStreamProtocol")
-    {
-        citapstreamprotocol.yfilter = yfilter;
-    }
     if(value_path == "citapStreamSourceAddress")
     {
         citapstreamsourceaddress.yfilter = yfilter;
     }
-    if(value_path == "citapStreamSourceL4PortMax")
-    {
-        citapstreamsourcel4portmax.yfilter = yfilter;
-    }
-    if(value_path == "citapStreamSourceL4PortMin")
-    {
-        citapstreamsourcel4portmin.yfilter = yfilter;
-    }
     if(value_path == "citapStreamSourceLength")
     {
         citapstreamsourcelength.yfilter = yfilter;
-    }
-    if(value_path == "citapStreamStatus")
-    {
-        citapstreamstatus.yfilter = yfilter;
     }
     if(value_path == "citapStreamTosByte")
     {
@@ -623,15 +595,43 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_filter(const std::st
     {
         citapstreamtosbytemask.yfilter = yfilter;
     }
+    if(value_path == "citapStreamFlowId")
+    {
+        citapstreamflowid.yfilter = yfilter;
+    }
+    if(value_path == "citapStreamProtocol")
+    {
+        citapstreamprotocol.yfilter = yfilter;
+    }
+    if(value_path == "citapStreamDestL4PortMin")
+    {
+        citapstreamdestl4portmin.yfilter = yfilter;
+    }
+    if(value_path == "citapStreamDestL4PortMax")
+    {
+        citapstreamdestl4portmax.yfilter = yfilter;
+    }
+    if(value_path == "citapStreamSourceL4PortMin")
+    {
+        citapstreamsourcel4portmin.yfilter = yfilter;
+    }
+    if(value_path == "citapStreamSourceL4PortMax")
+    {
+        citapstreamsourcel4portmax.yfilter = yfilter;
+    }
     if(value_path == "citapStreamVRF")
     {
         citapstreamvrf.yfilter = yfilter;
+    }
+    if(value_path == "citapStreamStatus")
+    {
+        citapstreamstatus.yfilter = yfilter;
     }
 }
 
 bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cTap2MediationContentId" || name == "cTap2StreamIndex" || name == "citapStreamAddrType" || name == "citapStreamDestinationAddress" || name == "citapStreamDestinationLength" || name == "citapStreamDestL4PortMax" || name == "citapStreamDestL4PortMin" || name == "citapStreamFlowId" || name == "citapStreamInterface" || name == "citapStreamProtocol" || name == "citapStreamSourceAddress" || name == "citapStreamSourceL4PortMax" || name == "citapStreamSourceL4PortMin" || name == "citapStreamSourceLength" || name == "citapStreamStatus" || name == "citapStreamTosByte" || name == "citapStreamTosByteMask" || name == "citapStreamVRF")
+    if(name == "cTap2MediationContentId" || name == "cTap2StreamIndex" || name == "citapStreamInterface" || name == "citapStreamAddrType" || name == "citapStreamDestinationAddress" || name == "citapStreamDestinationLength" || name == "citapStreamSourceAddress" || name == "citapStreamSourceLength" || name == "citapStreamTosByte" || name == "citapStreamTosByteMask" || name == "citapStreamFlowId" || name == "citapStreamProtocol" || name == "citapStreamDestL4PortMin" || name == "citapStreamDestL4PortMax" || name == "citapStreamSourceL4PortMin" || name == "citapStreamSourceL4PortMax" || name == "citapStreamVRF" || name == "citapStreamStatus")
         return true;
     return false;
 }

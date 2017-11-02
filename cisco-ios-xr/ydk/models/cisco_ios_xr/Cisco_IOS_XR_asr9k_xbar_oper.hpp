@@ -258,408 +258,21 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat : public yd
         class PeMcStats; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats
         class PeCcStats; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats> ca_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats> ma_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats> pe_cc_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats> pe_mc_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats> pe_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats> pe_uc_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats> pi_cc_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats> pi_mc_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats> pi_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats> pi_uc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats> ua0_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats> ua1_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats> ua2_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats> ma_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats> ca_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats> pi_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats> pe_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats> pi_uc_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats> pi_mc_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats> pi_cc_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats> pe_uc_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats> pe_mc_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats> pe_cc_stats;
         
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats : public ydk::Entity
-{
-    public:
-        CaStats();
-        ~CaStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dest_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf src_dest_pkt_cnt; //type: uint64
-        ydk::YLeaf dest_src_pkt_cnt; //type: uint64
-        ydk::YLeaf rcv_pkt_cnt; //type: uint64
-        ydk::YLeaf tx_pkt_cnt; //type: uint64
-        ydk::YLeaf rx_drop_pkt_cnt; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats : public ydk::Entity
-{
-    public:
-        MaStats();
-        ~MaStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dest_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf src_dest_pkt_cnt; //type: uint64
-        ydk::YLeaf dest_src_pkt_cnt; //type: uint64
-        ydk::YLeaf rcv_pkt_cnt; //type: uint64
-        ydk::YLeaf tx_pkt_cnt; //type: uint64
-        ydk::YLeaf rx_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf rx_re_transmit_cnt; //type: uint64
-        ydk::YLeaf rx_fabric_to_cnt; //type: uint64
-        ydk::YLeaf rx_hol_to_cnt; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats : public ydk::Entity
-{
-    public:
-        PeCcStats();
-        ~PeCcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf in_pkt_cnt; //type: uint64
-        ydk::YLeaf out_path0_pkt_cnt; //type: uint64
-        ydk::YLeaf out_path1_pkt_cnt; //type: uint64
-        ydk::YLeaf xbar_ecc_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf mem0_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf mem1_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf congn_pkt_cnt; //type: uint64
-        ydk::YLeaf xbar_ecc_single_err_cnt; //type: uint64
-        ydk::YLeaf xbar_ecc_double_err_cnt; //type: uint64
-        ydk::YLeaf mem0_ecc_single_err_cnt; //type: uint64
-        ydk::YLeaf mem0_ecc_double_err_cnt; //type: uint64
-        ydk::YLeaf mem1_ecc_single_err_cnt; //type: uint64
-        ydk::YLeaf mem1_ecc_double_err_cnt; //type: uint64
-        ydk::YLeaf fc_cc_0_1_trans_cnt; //type: uint64
-        ydk::YLeaf rate_cnt; //type: uint64
-        ydk::YLeaf calc_rate; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats : public ydk::Entity
-{
-    public:
-        PeMcStats();
-        ~PeMcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf in_pkt_mc_cnt; //type: uint64
-        ydk::YLeaf in_full_line_mc_cnt; //type: uint64
-        ydk::YLeaf pkt_trunc_eop_mc_cnt; //type: uint64
-        ydk::YLeaf pkt_sop_drop_mc_cnt; //type: uint64
-        ydk::YLeaf pkt_ecc_err_drop_mc_cnt; //type: uint64
-        ydk::YLeaf pkt_ecc_err_trunc_cnt_mc_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_mc0_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_mc1_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_mc2_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_mc0_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_mc1_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_mc2_cnt; //type: uint64
-        ydk::YLeaf out_pkt_mc_cnt; //type: uint64
-        ydk::YLeaf fe_mc_sop_eop_pack_cnt; //type: uint64
-        ydk::YLeaf fc_mc_0_1_trans_cnt; //type: uint64
-        ydk::YLeaf rate_cnt; //type: uint64
-        ydk::YLeaf calc_rate; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats : public ydk::Entity
-{
-    public:
-        PeStats();
-        ~PeStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total_rate1_cnt; //type: uint64
-        ydk::YLeaf total_rate2_cnt; //type: uint64
-        ydk::YLeaf total_rate3_cnt; //type: uint64
-        ydk::YLeaf total_calc_rate; //type: uint64
-        ydk::YLeaf mc2uc_preempt_cnt; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats : public ydk::Entity
-{
-    public:
-        PeUcStats();
-        ~PeUcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf in_pkt_uc0_cnt; //type: uint64
-        ydk::YLeaf in_pkt_uc1_cnt; //type: uint64
-        ydk::YLeaf in_pkt_uc2_cnt; //type: uint64
-        ydk::YLeaf in_full_line_uc0_cnt; //type: uint64
-        ydk::YLeaf in_full_line_uc1_cnt; //type: uint64
-        ydk::YLeaf in_full_line_uc2_cnt; //type: uint64
-        ydk::YLeaf pkt_trunc_eop_uc0_cnt; //type: uint64
-        ydk::YLeaf pkt_trunc_eop_uc1_cnt; //type: uint64
-        ydk::YLeaf pkt_trunc_eop_uc2_cnt; //type: uint64
-        ydk::YLeaf pkt_sop_drop_uc0_cnt; //type: uint64
-        ydk::YLeaf pkt_sop_drop_uc1_cnt; //type: uint64
-        ydk::YLeaf pkt_sop_drop_uc2_cnt; //type: uint64
-        ydk::YLeaf pkt_ecc_err_drop_uc_cnt; //type: uint64
-        ydk::YLeaf pkt_ecc_trunc_cnt_uc_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_uc0_0_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_uc0_1_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_uc1_0_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_uc1_1_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_uc2_0_cnt; //type: uint64
-        ydk::YLeaf ecc_1bit_err_uc2_1_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_uc0_0_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_uc0_1_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_uc1_0_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_uc1_1_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_uc2_0_cnt; //type: uint64
-        ydk::YLeaf ecc_2bit_err_uc2_1_cnt; //type: uint64
-        ydk::YLeaf out_pkt_uc_cnt; //type: uint64
-        ydk::YLeaf fe_uc_sop_eop_pack_cnt; //type: uint64
-        ydk::YLeaf fc_uc_0_1_trans_cnt; //type: uint64
-        ydk::YLeaf rate_cnt; //type: uint64
-        ydk::YLeaf calc_rate; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats : public ydk::Entity
-{
-    public:
-        PiCcStats();
-        ~PiCcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf in0_ecc_serr_cnt; //type: uint64
-        ydk::YLeaf in0_ecc_derr_cnt; //type: uint64
-        ydk::YLeaf in1_ecc_serr_cnt; //type: uint64
-        ydk::YLeaf in1_ecc_derr_cnt; //type: uint64
-        ydk::YLeaf data_mem_ecc_serr_cnt; //type: uint64
-        ydk::YLeaf data_mem_ecc_derr_cnt; //type: uint64
-        ydk::YLeaf data_mem_ovf0_cnt; //type: uint64
-        ydk::YLeaf data_mem_ovf1_cnt; //type: uint64
-        ydk::YLeaf fpoe_mem_ecc_serr_cnt; //type: uint64
-        ydk::YLeaf fpoe_mem_ecc_derr_cnt; //type: uint64
-        ydk::YLeaf null_poe_cnt; //type: uint64
-        ydk::YLeaf shut_ack_cnt; //type: uint64
-        ydk::YLeaf in0_fnc_err_cnt; //type: uint64
-        ydk::YLeaf in1_fnc_err_cnt; //type: uint64
-        ydk::YLeaf in0_drop_cnt; //type: uint64
-        ydk::YLeaf in1_drop_cnt; //type: uint64
-        ydk::YLeaf in0_cong_cnt; //type: uint64
-        ydk::YLeaf in1_cong_cnt; //type: uint64
-        ydk::YLeaf in0_shut_cnt; //type: uint64
-        ydk::YLeaf in1_shut_cnt; //type: uint64
-        ydk::YLeaf tail_drop_msg_cnt; //type: uint64
-        ydk::YLeaf in0_pkt_cnt; //type: uint64
-        ydk::YLeaf in1_pkt_cnt; //type: uint64
-        ydk::YLeaf dmem_rd_cnt; //type: uint64
-        ydk::YLeaf in_dmem0_cnt; //type: uint64
-        ydk::YLeaf in_dmem1_cnt; //type: uint64
-        ydk::YLeaf out_pkt_cnt; //type: uint64
-        ydk::YLeaf stop_thrsh_hit_cnt; //type: uint64
-        ydk::YLeaf rate_cnt; //type: uint64
-        ydk::YLeaf calc_rate; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats : public ydk::Entity
-{
-    public:
-        PiMcStats();
-        ~PiMcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pkt_rcv_cnt; //type: uint64
-        ydk::YLeaf pkt_seq_err_cnt; //type: uint64
-        ydk::YLeaf in_coming_pkt_err_cnt; //type: uint64
-        ydk::YLeaf min_pkt_len_err_cnt; //type: uint64
-        ydk::YLeaf max_pkt_len_err_cnt; //type: uint64
-        ydk::YLeaf line_err_drp_pkt; //type: uint64
-        ydk::YLeaf pkt_crc_err_cnt; //type: uint64
-        ydk::YLeaf pkt_cfh_crc_err_cnt; //type: uint64
-        ydk::YLeaf line_s_written_in_mem; //type: uint64
-        ydk::YLeaf tail_drp_pkt_cnt; //type: uint64
-        ydk::YLeaf data_mem0_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf data_mem1_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf data_mem2_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf data_mem0_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf data_mem1_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf data_mem2_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf diag_pkt_cnt; //type: uint64
-        ydk::YLeaf pkt_sent_to_disabled_port; //type: uint64
-        ydk::YLeaf pkt_fpoe_match_hit_cnt; //type: uint64
-        ydk::YLeaf pkt_null_poe_sent_cnt; //type: uint64
-        ydk::YLeaf pkt_fpoe_addr_rng_hit_cnt; //type: uint64
-        ydk::YLeaf di_hdr_len_err_pkt_cnt; //type: uint64
-        ydk::YLeaf di_err_pkt_cnt; //type: uint64
-        ydk::YLeaf fpoe_mem_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf fpoe_mem_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf pkts_sent_to_mx_cnt; //type: uint64
-        ydk::YLeaf cpp_head_drop_pkt_from_ma_cnt; //type: uint64
-        ydk::YLeaf tr_head_drop_pkt_from_ma_cnt; //type: uint64
-        ydk::YLeaf tr_pkt_sent_to_mx; //type: uint64
-        ydk::YLeaf stop_thrsh_hit_cnt; //type: uint64
-        ydk::YLeaf rate_cnt; //type: uint64
-        ydk::YLeaf calc_rate; //type: uint64
-        ydk::YLeaf crc_stomp_pkt_cnt; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats : public ydk::Entity
-{
-    public:
-        PiStats();
-        ~PiStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total_rate1_cnt; //type: uint64
-        ydk::YLeaf total_rate2_cnt; //type: uint64
-        ydk::YLeaf total_rate3_cnt; //type: uint64
-        ydk::YLeaf total_calc_rate; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats
-
-
-class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats : public ydk::Entity
-{
-    public:
-        PiUcStats();
-        ~PiUcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pkt_rcv_cnt; //type: uint64
-        ydk::YLeaf pkt_seq_err_cnt; //type: uint64
-        ydk::YLeaf in_coming_pkt_err_cnt; //type: uint64
-        ydk::YLeaf min_pkt_len_err_cnt; //type: uint64
-        ydk::YLeaf max_pkt_len_err_cnt; //type: uint64
-        ydk::YLeaf line_err_drp_pkt; //type: uint64
-        ydk::YLeaf pkt_crc_err_cnt; //type: uint64
-        ydk::YLeaf pkt_cfh_crc_err_cnt; //type: uint64
-        ydk::YLeaf line_s_written_in_mem0; //type: uint64
-        ydk::YLeaf line_s_written_in_mem1; //type: uint64
-        ydk::YLeaf line_s_written_in_mem2; //type: uint64
-        ydk::YLeaf tail_drp_pkt_cnt; //type: uint64
-        ydk::YLeaf uc0_data_mem_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf uc1_data_mem_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf uc2_data_mem_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf uc0_data_mem_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf uc1_data_mem_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf uc2_data_mem_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf diag_pkt_cnt; //type: uint64
-        ydk::YLeaf pkt_sent_to_disabled_port_cnt; //type: uint64
-        ydk::YLeaf pkt_null_poe_sent_ua0_cnt; //type: uint64
-        ydk::YLeaf pkt_null_poe_sent_ua1_cnt; //type: uint64
-        ydk::YLeaf pkt_null_poe_sent_ua2_cnt; //type: uint64
-        ydk::YLeaf pkt_fpoe_addr_rng_hit_cnt; //type: uint64
-        ydk::YLeaf fpoe_mem_ecc_1bit_err_cnt; //type: uint64
-        ydk::YLeaf fpoe_mem_ecc_2bit_err_cnt; //type: uint64
-        ydk::YLeaf pkts_sent_to_ux0_cnt; //type: uint64
-        ydk::YLeaf pkts_sent_to_ux1_cnt; //type: uint64
-        ydk::YLeaf pkts_sent_to_ux2_cnt; //type: uint64
-        ydk::YLeaf cpp_head_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf tr_head_drop_pkt_cnt; //type: uint64
-        ydk::YLeaf tr_pkt_sent_to_ux; //type: uint64
-        ydk::YLeaf stop_thrsh_hit_cnt; //type: uint64
-        ydk::YLeaf rate_cnt; //type: uint64
-        ydk::YLeaf calc_rate; //type: uint64
-        ydk::YLeaf crc_stomp_pkt_cnt; //type: uint64
-
-}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats
 
 
 class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats : public ydk::Entity
@@ -744,6 +357,393 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats :
         ydk::YLeaf ack_wait_cnt; //type: uint64
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats : public ydk::Entity
+{
+    public:
+        MaStats();
+        ~MaStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dest_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf src_dest_pkt_cnt; //type: uint64
+        ydk::YLeaf dest_src_pkt_cnt; //type: uint64
+        ydk::YLeaf rcv_pkt_cnt; //type: uint64
+        ydk::YLeaf tx_pkt_cnt; //type: uint64
+        ydk::YLeaf rx_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf rx_re_transmit_cnt; //type: uint64
+        ydk::YLeaf rx_fabric_to_cnt; //type: uint64
+        ydk::YLeaf rx_hol_to_cnt; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats : public ydk::Entity
+{
+    public:
+        CaStats();
+        ~CaStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dest_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf src_dest_pkt_cnt; //type: uint64
+        ydk::YLeaf dest_src_pkt_cnt; //type: uint64
+        ydk::YLeaf rcv_pkt_cnt; //type: uint64
+        ydk::YLeaf tx_pkt_cnt; //type: uint64
+        ydk::YLeaf rx_drop_pkt_cnt; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats : public ydk::Entity
+{
+    public:
+        PiStats();
+        ~PiStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total_rate1_cnt; //type: uint64
+        ydk::YLeaf total_rate2_cnt; //type: uint64
+        ydk::YLeaf total_rate3_cnt; //type: uint64
+        ydk::YLeaf total_calc_rate; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats : public ydk::Entity
+{
+    public:
+        PeStats();
+        ~PeStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total_rate1_cnt; //type: uint64
+        ydk::YLeaf total_rate2_cnt; //type: uint64
+        ydk::YLeaf total_rate3_cnt; //type: uint64
+        ydk::YLeaf total_calc_rate; //type: uint64
+        ydk::YLeaf mc2uc_preempt_cnt; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats : public ydk::Entity
+{
+    public:
+        PiUcStats();
+        ~PiUcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pkt_rcv_cnt; //type: uint64
+        ydk::YLeaf pkt_seq_err_cnt; //type: uint64
+        ydk::YLeaf in_coming_pkt_err_cnt; //type: uint64
+        ydk::YLeaf min_pkt_len_err_cnt; //type: uint64
+        ydk::YLeaf max_pkt_len_err_cnt; //type: uint64
+        ydk::YLeaf line_err_drp_pkt; //type: uint64
+        ydk::YLeaf pkt_crc_err_cnt; //type: uint64
+        ydk::YLeaf pkt_cfh_crc_err_cnt; //type: uint64
+        ydk::YLeaf line_s_written_in_mem0; //type: uint64
+        ydk::YLeaf line_s_written_in_mem1; //type: uint64
+        ydk::YLeaf line_s_written_in_mem2; //type: uint64
+        ydk::YLeaf tail_drp_pkt_cnt; //type: uint64
+        ydk::YLeaf uc0_data_mem_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf uc1_data_mem_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf uc2_data_mem_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf uc0_data_mem_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf uc1_data_mem_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf uc2_data_mem_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf diag_pkt_cnt; //type: uint64
+        ydk::YLeaf pkt_sent_to_disabled_port_cnt; //type: uint64
+        ydk::YLeaf pkt_null_poe_sent_ua0_cnt; //type: uint64
+        ydk::YLeaf pkt_null_poe_sent_ua1_cnt; //type: uint64
+        ydk::YLeaf pkt_null_poe_sent_ua2_cnt; //type: uint64
+        ydk::YLeaf pkt_fpoe_addr_rng_hit_cnt; //type: uint64
+        ydk::YLeaf fpoe_mem_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf fpoe_mem_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf pkts_sent_to_ux0_cnt; //type: uint64
+        ydk::YLeaf pkts_sent_to_ux1_cnt; //type: uint64
+        ydk::YLeaf pkts_sent_to_ux2_cnt; //type: uint64
+        ydk::YLeaf cpp_head_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf tr_head_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf tr_pkt_sent_to_ux; //type: uint64
+        ydk::YLeaf stop_thrsh_hit_cnt; //type: uint64
+        ydk::YLeaf rate_cnt; //type: uint64
+        ydk::YLeaf calc_rate; //type: uint64
+        ydk::YLeaf crc_stomp_pkt_cnt; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats : public ydk::Entity
+{
+    public:
+        PiMcStats();
+        ~PiMcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pkt_rcv_cnt; //type: uint64
+        ydk::YLeaf pkt_seq_err_cnt; //type: uint64
+        ydk::YLeaf in_coming_pkt_err_cnt; //type: uint64
+        ydk::YLeaf min_pkt_len_err_cnt; //type: uint64
+        ydk::YLeaf max_pkt_len_err_cnt; //type: uint64
+        ydk::YLeaf line_err_drp_pkt; //type: uint64
+        ydk::YLeaf pkt_crc_err_cnt; //type: uint64
+        ydk::YLeaf pkt_cfh_crc_err_cnt; //type: uint64
+        ydk::YLeaf line_s_written_in_mem; //type: uint64
+        ydk::YLeaf tail_drp_pkt_cnt; //type: uint64
+        ydk::YLeaf data_mem0_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf data_mem1_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf data_mem2_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf data_mem0_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf data_mem1_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf data_mem2_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf diag_pkt_cnt; //type: uint64
+        ydk::YLeaf pkt_sent_to_disabled_port; //type: uint64
+        ydk::YLeaf pkt_fpoe_match_hit_cnt; //type: uint64
+        ydk::YLeaf pkt_null_poe_sent_cnt; //type: uint64
+        ydk::YLeaf pkt_fpoe_addr_rng_hit_cnt; //type: uint64
+        ydk::YLeaf di_hdr_len_err_pkt_cnt; //type: uint64
+        ydk::YLeaf di_err_pkt_cnt; //type: uint64
+        ydk::YLeaf fpoe_mem_ecc_1bit_err_cnt; //type: uint64
+        ydk::YLeaf fpoe_mem_ecc_2bit_err_cnt; //type: uint64
+        ydk::YLeaf pkts_sent_to_mx_cnt; //type: uint64
+        ydk::YLeaf cpp_head_drop_pkt_from_ma_cnt; //type: uint64
+        ydk::YLeaf tr_head_drop_pkt_from_ma_cnt; //type: uint64
+        ydk::YLeaf tr_pkt_sent_to_mx; //type: uint64
+        ydk::YLeaf stop_thrsh_hit_cnt; //type: uint64
+        ydk::YLeaf rate_cnt; //type: uint64
+        ydk::YLeaf calc_rate; //type: uint64
+        ydk::YLeaf crc_stomp_pkt_cnt; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats : public ydk::Entity
+{
+    public:
+        PiCcStats();
+        ~PiCcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf in0_ecc_serr_cnt; //type: uint64
+        ydk::YLeaf in0_ecc_derr_cnt; //type: uint64
+        ydk::YLeaf in1_ecc_serr_cnt; //type: uint64
+        ydk::YLeaf in1_ecc_derr_cnt; //type: uint64
+        ydk::YLeaf data_mem_ecc_serr_cnt; //type: uint64
+        ydk::YLeaf data_mem_ecc_derr_cnt; //type: uint64
+        ydk::YLeaf data_mem_ovf0_cnt; //type: uint64
+        ydk::YLeaf data_mem_ovf1_cnt; //type: uint64
+        ydk::YLeaf fpoe_mem_ecc_serr_cnt; //type: uint64
+        ydk::YLeaf fpoe_mem_ecc_derr_cnt; //type: uint64
+        ydk::YLeaf null_poe_cnt; //type: uint64
+        ydk::YLeaf shut_ack_cnt; //type: uint64
+        ydk::YLeaf in0_fnc_err_cnt; //type: uint64
+        ydk::YLeaf in1_fnc_err_cnt; //type: uint64
+        ydk::YLeaf in0_drop_cnt; //type: uint64
+        ydk::YLeaf in1_drop_cnt; //type: uint64
+        ydk::YLeaf in0_cong_cnt; //type: uint64
+        ydk::YLeaf in1_cong_cnt; //type: uint64
+        ydk::YLeaf in0_shut_cnt; //type: uint64
+        ydk::YLeaf in1_shut_cnt; //type: uint64
+        ydk::YLeaf tail_drop_msg_cnt; //type: uint64
+        ydk::YLeaf in0_pkt_cnt; //type: uint64
+        ydk::YLeaf in1_pkt_cnt; //type: uint64
+        ydk::YLeaf dmem_rd_cnt; //type: uint64
+        ydk::YLeaf in_dmem0_cnt; //type: uint64
+        ydk::YLeaf in_dmem1_cnt; //type: uint64
+        ydk::YLeaf out_pkt_cnt; //type: uint64
+        ydk::YLeaf stop_thrsh_hit_cnt; //type: uint64
+        ydk::YLeaf rate_cnt; //type: uint64
+        ydk::YLeaf calc_rate; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats : public ydk::Entity
+{
+    public:
+        PeUcStats();
+        ~PeUcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf in_pkt_uc0_cnt; //type: uint64
+        ydk::YLeaf in_pkt_uc1_cnt; //type: uint64
+        ydk::YLeaf in_pkt_uc2_cnt; //type: uint64
+        ydk::YLeaf in_full_line_uc0_cnt; //type: uint64
+        ydk::YLeaf in_full_line_uc1_cnt; //type: uint64
+        ydk::YLeaf in_full_line_uc2_cnt; //type: uint64
+        ydk::YLeaf pkt_trunc_eop_uc0_cnt; //type: uint64
+        ydk::YLeaf pkt_trunc_eop_uc1_cnt; //type: uint64
+        ydk::YLeaf pkt_trunc_eop_uc2_cnt; //type: uint64
+        ydk::YLeaf pkt_sop_drop_uc0_cnt; //type: uint64
+        ydk::YLeaf pkt_sop_drop_uc1_cnt; //type: uint64
+        ydk::YLeaf pkt_sop_drop_uc2_cnt; //type: uint64
+        ydk::YLeaf pkt_ecc_err_drop_uc_cnt; //type: uint64
+        ydk::YLeaf pkt_ecc_trunc_cnt_uc_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_uc0_0_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_uc0_1_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_uc1_0_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_uc1_1_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_uc2_0_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_uc2_1_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_uc0_0_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_uc0_1_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_uc1_0_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_uc1_1_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_uc2_0_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_uc2_1_cnt; //type: uint64
+        ydk::YLeaf out_pkt_uc_cnt; //type: uint64
+        ydk::YLeaf fe_uc_sop_eop_pack_cnt; //type: uint64
+        ydk::YLeaf fc_uc_0_1_trans_cnt; //type: uint64
+        ydk::YLeaf rate_cnt; //type: uint64
+        ydk::YLeaf calc_rate; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats : public ydk::Entity
+{
+    public:
+        PeMcStats();
+        ~PeMcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf in_pkt_mc_cnt; //type: uint64
+        ydk::YLeaf in_full_line_mc_cnt; //type: uint64
+        ydk::YLeaf pkt_trunc_eop_mc_cnt; //type: uint64
+        ydk::YLeaf pkt_sop_drop_mc_cnt; //type: uint64
+        ydk::YLeaf pkt_ecc_err_drop_mc_cnt; //type: uint64
+        ydk::YLeaf pkt_ecc_err_trunc_cnt_mc_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_mc0_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_mc1_cnt; //type: uint64
+        ydk::YLeaf ecc_1bit_err_mc2_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_mc0_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_mc1_cnt; //type: uint64
+        ydk::YLeaf ecc_2bit_err_mc2_cnt; //type: uint64
+        ydk::YLeaf out_pkt_mc_cnt; //type: uint64
+        ydk::YLeaf fe_mc_sop_eop_pack_cnt; //type: uint64
+        ydk::YLeaf fc_mc_0_1_trans_cnt; //type: uint64
+        ydk::YLeaf rate_cnt; //type: uint64
+        ydk::YLeaf calc_rate; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats
+
+
+class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats : public ydk::Entity
+{
+    public:
+        PeCcStats();
+        ~PeCcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf in_pkt_cnt; //type: uint64
+        ydk::YLeaf out_path0_pkt_cnt; //type: uint64
+        ydk::YLeaf out_path1_pkt_cnt; //type: uint64
+        ydk::YLeaf xbar_ecc_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf mem0_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf mem1_drop_pkt_cnt; //type: uint64
+        ydk::YLeaf congn_pkt_cnt; //type: uint64
+        ydk::YLeaf xbar_ecc_single_err_cnt; //type: uint64
+        ydk::YLeaf xbar_ecc_double_err_cnt; //type: uint64
+        ydk::YLeaf mem0_ecc_single_err_cnt; //type: uint64
+        ydk::YLeaf mem0_ecc_double_err_cnt; //type: uint64
+        ydk::YLeaf mem1_ecc_single_err_cnt; //type: uint64
+        ydk::YLeaf mem1_ecc_double_err_cnt; //type: uint64
+        ydk::YLeaf fc_cc_0_1_trans_cnt; //type: uint64
+        ydk::YLeaf rate_cnt; //type: uint64
+        ydk::YLeaf calc_rate; //type: uint64
+
+}; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats
 
 
 }

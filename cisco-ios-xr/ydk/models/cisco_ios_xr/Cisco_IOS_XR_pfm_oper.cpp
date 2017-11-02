@@ -1233,8 +1233,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     :
     severity_critical_count{YType::int32, "severity-critical-count"},
     severity_emergency_or_alert_count{YType::int32, "severity-emergency-or-alert-count"},
-    severity_error_count{YType::int32, "severity-error-count"},
-    total{YType::int32, "total"}
+    total{YType::int32, "total"},
+    severity_error_count{YType::int32, "severity-error-count"}
 {
 
     yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
@@ -1248,8 +1248,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 {
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
-	|| severity_error_count.is_set
-	|| total.is_set;
+	|| total.is_set
+	|| severity_error_count.is_set;
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
@@ -1257,8 +1257,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter)
 	|| ydk::is_set(severity_critical_count.yfilter)
 	|| ydk::is_set(severity_emergency_or_alert_count.yfilter)
-	|| ydk::is_set(severity_error_count.yfilter)
-	|| ydk::is_set(total.yfilter);
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(severity_error_count.yfilter);
 }
 
 std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
@@ -1274,8 +1274,8 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
     if (severity_emergency_or_alert_count.is_set || is_set(severity_emergency_or_alert_count.yfilter)) leaf_name_data.push_back(severity_emergency_or_alert_count.get_name_leafdata());
-    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1306,17 +1306,17 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
         severity_emergency_or_alert_count.value_namespace = name_space;
         severity_emergency_or_alert_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count = value;
-        severity_error_count.value_namespace = name_space;
-        severity_error_count.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "total")
     {
         total = value;
         total.value_namespace = name_space;
         total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count = value;
+        severity_error_count.value_namespace = name_space;
+        severity_error_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1330,19 +1330,19 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     {
         severity_emergency_or_alert_count.yfilter = yfilter;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count.yfilter = yfilter;
-    }
     if(value_path == "total")
     {
         total.yfilter = yfilter;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "severity-error-count" || name == "total")
+    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "total" || name == "severity-error-count")
         return true;
     return false;
 }
@@ -1552,12 +1552,12 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     hw_fault_type{YType::str, "hw-fault-type"},
     condition_description{YType::str, "condition-description"},
     condition_name{YType::str, "condition-name"},
-    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
-    condition_severity{YType::str, "condition-severity"},
-    device_description{YType::str, "device-description"},
     device_key{YType::str, "device-key"},
     device_version{YType::int32, "device-version"},
-    process_id{YType::int32, "process-id"}
+    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
+    process_id{YType::int32, "process-id"},
+    device_description{YType::str, "device-description"},
+    condition_severity{YType::str, "condition-severity"}
 {
 
     yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
@@ -1572,12 +1572,12 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
-	|| condition_raised_timestamp.is_set
-	|| condition_severity.is_set
-	|| device_description.is_set
 	|| device_key.is_set
 	|| device_version.is_set
-	|| process_id.is_set;
+	|| condition_raised_timestamp.is_set
+	|| process_id.is_set
+	|| device_description.is_set
+	|| condition_severity.is_set;
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
@@ -1586,12 +1586,12 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(hw_fault_type.yfilter)
 	|| ydk::is_set(condition_description.yfilter)
 	|| ydk::is_set(condition_name.yfilter)
-	|| ydk::is_set(condition_raised_timestamp.yfilter)
-	|| ydk::is_set(condition_severity.yfilter)
-	|| ydk::is_set(device_description.yfilter)
 	|| ydk::is_set(device_key.yfilter)
 	|| ydk::is_set(device_version.yfilter)
-	|| ydk::is_set(process_id.yfilter);
+	|| ydk::is_set(condition_raised_timestamp.yfilter)
+	|| ydk::is_set(process_id.yfilter)
+	|| ydk::is_set(device_description.yfilter)
+	|| ydk::is_set(condition_severity.yfilter);
 }
 
 std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
@@ -1608,12 +1608,12 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
     if (condition_description.is_set || is_set(condition_description.yfilter)) leaf_name_data.push_back(condition_description.get_name_leafdata());
     if (condition_name.is_set || is_set(condition_name.yfilter)) leaf_name_data.push_back(condition_name.get_name_leafdata());
-    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
-    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
-    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
     if (device_key.is_set || is_set(device_key.yfilter)) leaf_name_data.push_back(device_key.get_name_leafdata());
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
+    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
+    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
+    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1650,24 +1650,6 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
         condition_name.value_namespace = name_space;
         condition_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp = value;
-        condition_raised_timestamp.value_namespace = name_space;
-        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity = value;
-        condition_severity.value_namespace = name_space;
-        condition_severity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "device-description")
-    {
-        device_description = value;
-        device_description.value_namespace = name_space;
-        device_description.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "device-key")
     {
         device_key = value;
@@ -1680,11 +1662,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
         device_version.value_namespace = name_space;
         device_version.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp = value;
+        condition_raised_timestamp.value_namespace = name_space;
+        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "process-id")
     {
         process_id = value;
         process_id.value_namespace = name_space;
         process_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "device-description")
+    {
+        device_description = value;
+        device_description.value_namespace = name_space;
+        device_description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity = value;
+        condition_severity.value_namespace = name_space;
+        condition_severity.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1702,18 +1702,6 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     {
         condition_name.yfilter = yfilter;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp.yfilter = yfilter;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity.yfilter = yfilter;
-    }
-    if(value_path == "device-description")
-    {
-        device_description.yfilter = yfilter;
-    }
     if(value_path == "device-key")
     {
         device_key.yfilter = yfilter;
@@ -1722,15 +1710,27 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     {
         device_version.yfilter = yfilter;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp.yfilter = yfilter;
+    }
     if(value_path == "process-id")
     {
         process_id.yfilter = yfilter;
+    }
+    if(value_path == "device-description")
+    {
+        device_description.yfilter = yfilter;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "condition-raised-timestamp" || name == "condition-severity" || name == "device-description" || name == "device-key" || name == "device-version" || name == "process-id")
+    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "device-key" || name == "device-version" || name == "condition-raised-timestamp" || name == "process-id" || name == "device-description" || name == "condition-severity")
         return true;
     return false;
 }
@@ -2133,8 +2133,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     :
     severity_critical_count{YType::int32, "severity-critical-count"},
     severity_emergency_or_alert_count{YType::int32, "severity-emergency-or-alert-count"},
-    severity_error_count{YType::int32, "severity-error-count"},
-    total{YType::int32, "total"}
+    total{YType::int32, "total"},
+    severity_error_count{YType::int32, "severity-error-count"}
 {
 
     yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
@@ -2148,8 +2148,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 {
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
-	|| severity_error_count.is_set
-	|| total.is_set;
+	|| total.is_set
+	|| severity_error_count.is_set;
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
@@ -2157,8 +2157,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter)
 	|| ydk::is_set(severity_critical_count.yfilter)
 	|| ydk::is_set(severity_emergency_or_alert_count.yfilter)
-	|| ydk::is_set(severity_error_count.yfilter)
-	|| ydk::is_set(total.yfilter);
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(severity_error_count.yfilter);
 }
 
 std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
@@ -2174,8 +2174,8 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
     if (severity_emergency_or_alert_count.is_set || is_set(severity_emergency_or_alert_count.yfilter)) leaf_name_data.push_back(severity_emergency_or_alert_count.get_name_leafdata());
-    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2206,17 +2206,17 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
         severity_emergency_or_alert_count.value_namespace = name_space;
         severity_emergency_or_alert_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count = value;
-        severity_error_count.value_namespace = name_space;
-        severity_error_count.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "total")
     {
         total = value;
         total.value_namespace = name_space;
         total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count = value;
+        severity_error_count.value_namespace = name_space;
+        severity_error_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2230,19 +2230,19 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     {
         severity_emergency_or_alert_count.yfilter = yfilter;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count.yfilter = yfilter;
-    }
     if(value_path == "total")
     {
         total.yfilter = yfilter;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "severity-error-count" || name == "total")
+    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "total" || name == "severity-error-count")
         return true;
     return false;
 }
@@ -2452,12 +2452,12 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     hw_fault_type{YType::str, "hw-fault-type"},
     condition_description{YType::str, "condition-description"},
     condition_name{YType::str, "condition-name"},
-    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
-    condition_severity{YType::str, "condition-severity"},
-    device_description{YType::str, "device-description"},
     device_key{YType::str, "device-key"},
     device_version{YType::int32, "device-version"},
-    process_id{YType::int32, "process-id"}
+    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
+    process_id{YType::int32, "process-id"},
+    device_description{YType::str, "device-description"},
+    condition_severity{YType::str, "condition-severity"}
 {
 
     yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
@@ -2472,12 +2472,12 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
-	|| condition_raised_timestamp.is_set
-	|| condition_severity.is_set
-	|| device_description.is_set
 	|| device_key.is_set
 	|| device_version.is_set
-	|| process_id.is_set;
+	|| condition_raised_timestamp.is_set
+	|| process_id.is_set
+	|| device_description.is_set
+	|| condition_severity.is_set;
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
@@ -2486,12 +2486,12 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(hw_fault_type.yfilter)
 	|| ydk::is_set(condition_description.yfilter)
 	|| ydk::is_set(condition_name.yfilter)
-	|| ydk::is_set(condition_raised_timestamp.yfilter)
-	|| ydk::is_set(condition_severity.yfilter)
-	|| ydk::is_set(device_description.yfilter)
 	|| ydk::is_set(device_key.yfilter)
 	|| ydk::is_set(device_version.yfilter)
-	|| ydk::is_set(process_id.yfilter);
+	|| ydk::is_set(condition_raised_timestamp.yfilter)
+	|| ydk::is_set(process_id.yfilter)
+	|| ydk::is_set(device_description.yfilter)
+	|| ydk::is_set(condition_severity.yfilter);
 }
 
 std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
@@ -2508,12 +2508,12 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
     if (condition_description.is_set || is_set(condition_description.yfilter)) leaf_name_data.push_back(condition_description.get_name_leafdata());
     if (condition_name.is_set || is_set(condition_name.yfilter)) leaf_name_data.push_back(condition_name.get_name_leafdata());
-    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
-    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
-    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
     if (device_key.is_set || is_set(device_key.yfilter)) leaf_name_data.push_back(device_key.get_name_leafdata());
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
+    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
+    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
+    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2550,24 +2550,6 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
         condition_name.value_namespace = name_space;
         condition_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp = value;
-        condition_raised_timestamp.value_namespace = name_space;
-        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity = value;
-        condition_severity.value_namespace = name_space;
-        condition_severity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "device-description")
-    {
-        device_description = value;
-        device_description.value_namespace = name_space;
-        device_description.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "device-key")
     {
         device_key = value;
@@ -2580,11 +2562,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
         device_version.value_namespace = name_space;
         device_version.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp = value;
+        condition_raised_timestamp.value_namespace = name_space;
+        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "process-id")
     {
         process_id = value;
         process_id.value_namespace = name_space;
         process_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "device-description")
+    {
+        device_description = value;
+        device_description.value_namespace = name_space;
+        device_description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity = value;
+        condition_severity.value_namespace = name_space;
+        condition_severity.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2602,18 +2602,6 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     {
         condition_name.yfilter = yfilter;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp.yfilter = yfilter;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity.yfilter = yfilter;
-    }
-    if(value_path == "device-description")
-    {
-        device_description.yfilter = yfilter;
-    }
     if(value_path == "device-key")
     {
         device_key.yfilter = yfilter;
@@ -2622,15 +2610,27 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     {
         device_version.yfilter = yfilter;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp.yfilter = yfilter;
+    }
     if(value_path == "process-id")
     {
         process_id.yfilter = yfilter;
+    }
+    if(value_path == "device-description")
+    {
+        device_description.yfilter = yfilter;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "condition-raised-timestamp" || name == "condition-severity" || name == "device-description" || name == "device-key" || name == "device-version" || name == "process-id")
+    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "device-key" || name == "device-version" || name == "condition-raised-timestamp" || name == "process-id" || name == "device-description" || name == "condition-severity")
         return true;
     return false;
 }
@@ -3033,8 +3033,8 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
     :
     severity_critical_count{YType::int32, "severity-critical-count"},
     severity_emergency_or_alert_count{YType::int32, "severity-emergency-or-alert-count"},
-    severity_error_count{YType::int32, "severity-error-count"},
-    total{YType::int32, "total"}
+    total{YType::int32, "total"},
+    severity_error_count{YType::int32, "severity-error-count"}
 {
 
     yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
@@ -3048,8 +3048,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 {
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
-	|| severity_error_count.is_set
-	|| total.is_set;
+	|| total.is_set
+	|| severity_error_count.is_set;
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
@@ -3057,8 +3057,8 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     return is_set(yfilter)
 	|| ydk::is_set(severity_critical_count.yfilter)
 	|| ydk::is_set(severity_emergency_or_alert_count.yfilter)
-	|| ydk::is_set(severity_error_count.yfilter)
-	|| ydk::is_set(total.yfilter);
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(severity_error_count.yfilter);
 }
 
 std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
@@ -3074,8 +3074,8 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
     if (severity_emergency_or_alert_count.is_set || is_set(severity_emergency_or_alert_count.yfilter)) leaf_name_data.push_back(severity_emergency_or_alert_count.get_name_leafdata());
-    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3106,17 +3106,17 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
         severity_emergency_or_alert_count.value_namespace = name_space;
         severity_emergency_or_alert_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count = value;
-        severity_error_count.value_namespace = name_space;
-        severity_error_count.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "total")
     {
         total = value;
         total.value_namespace = name_space;
         total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count = value;
+        severity_error_count.value_namespace = name_space;
+        severity_error_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3130,19 +3130,19 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     {
         severity_emergency_or_alert_count.yfilter = yfilter;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count.yfilter = yfilter;
-    }
     if(value_path == "total")
     {
         total.yfilter = yfilter;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "severity-error-count" || name == "total")
+    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "total" || name == "severity-error-count")
         return true;
     return false;
 }
@@ -3352,12 +3352,12 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
     hw_fault_type{YType::str, "hw-fault-type"},
     condition_description{YType::str, "condition-description"},
     condition_name{YType::str, "condition-name"},
-    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
-    condition_severity{YType::str, "condition-severity"},
-    device_description{YType::str, "device-description"},
     device_key{YType::str, "device-key"},
     device_version{YType::int32, "device-version"},
-    process_id{YType::int32, "process-id"}
+    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
+    process_id{YType::int32, "process-id"},
+    device_description{YType::str, "device-description"},
+    condition_severity{YType::str, "condition-severity"}
 {
 
     yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
@@ -3372,12 +3372,12 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
-	|| condition_raised_timestamp.is_set
-	|| condition_severity.is_set
-	|| device_description.is_set
 	|| device_key.is_set
 	|| device_version.is_set
-	|| process_id.is_set;
+	|| condition_raised_timestamp.is_set
+	|| process_id.is_set
+	|| device_description.is_set
+	|| condition_severity.is_set;
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
@@ -3386,12 +3386,12 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 	|| ydk::is_set(hw_fault_type.yfilter)
 	|| ydk::is_set(condition_description.yfilter)
 	|| ydk::is_set(condition_name.yfilter)
-	|| ydk::is_set(condition_raised_timestamp.yfilter)
-	|| ydk::is_set(condition_severity.yfilter)
-	|| ydk::is_set(device_description.yfilter)
 	|| ydk::is_set(device_key.yfilter)
 	|| ydk::is_set(device_version.yfilter)
-	|| ydk::is_set(process_id.yfilter);
+	|| ydk::is_set(condition_raised_timestamp.yfilter)
+	|| ydk::is_set(process_id.yfilter)
+	|| ydk::is_set(device_description.yfilter)
+	|| ydk::is_set(condition_severity.yfilter);
 }
 
 std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
@@ -3408,12 +3408,12 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
     if (condition_description.is_set || is_set(condition_description.yfilter)) leaf_name_data.push_back(condition_description.get_name_leafdata());
     if (condition_name.is_set || is_set(condition_name.yfilter)) leaf_name_data.push_back(condition_name.get_name_leafdata());
-    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
-    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
-    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
     if (device_key.is_set || is_set(device_key.yfilter)) leaf_name_data.push_back(device_key.get_name_leafdata());
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
+    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
+    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
+    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3450,24 +3450,6 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
         condition_name.value_namespace = name_space;
         condition_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp = value;
-        condition_raised_timestamp.value_namespace = name_space;
-        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity = value;
-        condition_severity.value_namespace = name_space;
-        condition_severity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "device-description")
-    {
-        device_description = value;
-        device_description.value_namespace = name_space;
-        device_description.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "device-key")
     {
         device_key = value;
@@ -3480,11 +3462,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
         device_version.value_namespace = name_space;
         device_version.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp = value;
+        condition_raised_timestamp.value_namespace = name_space;
+        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "process-id")
     {
         process_id = value;
         process_id.value_namespace = name_space;
         process_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "device-description")
+    {
+        device_description = value;
+        device_description.value_namespace = name_space;
+        device_description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity = value;
+        condition_severity.value_namespace = name_space;
+        condition_severity.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -3502,18 +3502,6 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     {
         condition_name.yfilter = yfilter;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp.yfilter = yfilter;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity.yfilter = yfilter;
-    }
-    if(value_path == "device-description")
-    {
-        device_description.yfilter = yfilter;
-    }
     if(value_path == "device-key")
     {
         device_key.yfilter = yfilter;
@@ -3522,15 +3510,27 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     {
         device_version.yfilter = yfilter;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp.yfilter = yfilter;
+    }
     if(value_path == "process-id")
     {
         process_id.yfilter = yfilter;
+    }
+    if(value_path == "device-description")
+    {
+        device_description.yfilter = yfilter;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "condition-raised-timestamp" || name == "condition-severity" || name == "device-description" || name == "device-key" || name == "device-version" || name == "process-id")
+    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "device-key" || name == "device-version" || name == "condition-raised-timestamp" || name == "process-id" || name == "device-description" || name == "condition-severity")
         return true;
     return false;
 }
@@ -3947,8 +3947,8 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
     :
     severity_critical_count{YType::int32, "severity-critical-count"},
     severity_emergency_or_alert_count{YType::int32, "severity-emergency-or-alert-count"},
-    severity_error_count{YType::int32, "severity-error-count"},
-    total{YType::int32, "total"}
+    total{YType::int32, "total"},
+    severity_error_count{YType::int32, "severity-error-count"}
 {
 
     yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
@@ -3962,8 +3962,8 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::has_data() co
 {
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
-	|| severity_error_count.is_set
-	|| total.is_set;
+	|| total.is_set
+	|| severity_error_count.is_set;
 }
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
@@ -3971,8 +3971,8 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::has_operation
     return is_set(yfilter)
 	|| ydk::is_set(severity_critical_count.yfilter)
 	|| ydk::is_set(severity_emergency_or_alert_count.yfilter)
-	|| ydk::is_set(severity_error_count.yfilter)
-	|| ydk::is_set(total.yfilter);
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(severity_error_count.yfilter);
 }
 
 std::string PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
@@ -3988,8 +3988,8 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack
 
     if (severity_critical_count.is_set || is_set(severity_critical_count.yfilter)) leaf_name_data.push_back(severity_critical_count.get_name_leafdata());
     if (severity_emergency_or_alert_count.is_set || is_set(severity_emergency_or_alert_count.yfilter)) leaf_name_data.push_back(severity_emergency_or_alert_count.get_name_leafdata());
-    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (severity_error_count.is_set || is_set(severity_error_count.yfilter)) leaf_name_data.push_back(severity_error_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4020,17 +4020,17 @@ void PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::set_value(con
         severity_emergency_or_alert_count.value_namespace = name_space;
         severity_emergency_or_alert_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count = value;
-        severity_error_count.value_namespace = name_space;
-        severity_error_count.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "total")
     {
         total = value;
         total.value_namespace = name_space;
         total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count = value;
+        severity_error_count.value_namespace = name_space;
+        severity_error_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -4044,19 +4044,19 @@ void PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::set_filter(co
     {
         severity_emergency_or_alert_count.yfilter = yfilter;
     }
-    if(value_path == "severity-error-count")
-    {
-        severity_error_count.yfilter = yfilter;
-    }
     if(value_path == "total")
     {
         total.yfilter = yfilter;
+    }
+    if(value_path == "severity-error-count")
+    {
+        severity_error_count.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "severity-error-count" || name == "total")
+    if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "total" || name == "severity-error-count")
         return true;
     return false;
 }
@@ -4266,12 +4266,12 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFa
     hw_fault_type{YType::str, "hw-fault-type"},
     condition_description{YType::str, "condition-description"},
     condition_name{YType::str, "condition-name"},
-    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
-    condition_severity{YType::str, "condition-severity"},
-    device_description{YType::str, "device-description"},
     device_key{YType::str, "device-key"},
     device_version{YType::int32, "device-version"},
-    process_id{YType::int32, "process-id"}
+    condition_raised_timestamp{YType::str, "condition-raised-timestamp"},
+    process_id{YType::int32, "process-id"},
+    device_description{YType::str, "device-description"},
+    condition_severity{YType::str, "condition-severity"}
 {
 
     yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
@@ -4286,12 +4286,12 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
-	|| condition_raised_timestamp.is_set
-	|| condition_severity.is_set
-	|| device_description.is_set
 	|| device_key.is_set
 	|| device_version.is_set
-	|| process_id.is_set;
+	|| condition_raised_timestamp.is_set
+	|| process_id.is_set
+	|| device_description.is_set
+	|| condition_severity.is_set;
 }
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
@@ -4300,12 +4300,12 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
 	|| ydk::is_set(hw_fault_type.yfilter)
 	|| ydk::is_set(condition_description.yfilter)
 	|| ydk::is_set(condition_name.yfilter)
-	|| ydk::is_set(condition_raised_timestamp.yfilter)
-	|| ydk::is_set(condition_severity.yfilter)
-	|| ydk::is_set(device_description.yfilter)
 	|| ydk::is_set(device_key.yfilter)
 	|| ydk::is_set(device_version.yfilter)
-	|| ydk::is_set(process_id.yfilter);
+	|| ydk::is_set(condition_raised_timestamp.yfilter)
+	|| ydk::is_set(process_id.yfilter)
+	|| ydk::is_set(device_description.yfilter)
+	|| ydk::is_set(condition_severity.yfilter);
 }
 
 std::string PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
@@ -4322,12 +4322,12 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Racks::Rack
     if (hw_fault_type.is_set || is_set(hw_fault_type.yfilter)) leaf_name_data.push_back(hw_fault_type.get_name_leafdata());
     if (condition_description.is_set || is_set(condition_description.yfilter)) leaf_name_data.push_back(condition_description.get_name_leafdata());
     if (condition_name.is_set || is_set(condition_name.yfilter)) leaf_name_data.push_back(condition_name.get_name_leafdata());
-    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
-    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
-    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
     if (device_key.is_set || is_set(device_key.yfilter)) leaf_name_data.push_back(device_key.get_name_leafdata());
     if (device_version.is_set || is_set(device_version.yfilter)) leaf_name_data.push_back(device_version.get_name_leafdata());
+    if (condition_raised_timestamp.is_set || is_set(condition_raised_timestamp.yfilter)) leaf_name_data.push_back(condition_raised_timestamp.get_name_leafdata());
     if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
+    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
+    if (condition_severity.is_set || is_set(condition_severity.yfilter)) leaf_name_data.push_back(condition_severity.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4364,24 +4364,6 @@ void PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
         condition_name.value_namespace = name_space;
         condition_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp = value;
-        condition_raised_timestamp.value_namespace = name_space;
-        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity = value;
-        condition_severity.value_namespace = name_space;
-        condition_severity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "device-description")
-    {
-        device_description = value;
-        device_description.value_namespace = name_space;
-        device_description.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "device-key")
     {
         device_key = value;
@@ -4394,11 +4376,29 @@ void PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
         device_version.value_namespace = name_space;
         device_version.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp = value;
+        condition_raised_timestamp.value_namespace = name_space;
+        condition_raised_timestamp.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "process-id")
     {
         process_id = value;
         process_id.value_namespace = name_space;
         process_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "device-description")
+    {
+        device_description = value;
+        device_description.value_namespace = name_space;
+        device_description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity = value;
+        condition_severity.value_namespace = name_space;
+        condition_severity.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -4416,18 +4416,6 @@ void PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
     {
         condition_name.yfilter = yfilter;
     }
-    if(value_path == "condition-raised-timestamp")
-    {
-        condition_raised_timestamp.yfilter = yfilter;
-    }
-    if(value_path == "condition-severity")
-    {
-        condition_severity.yfilter = yfilter;
-    }
-    if(value_path == "device-description")
-    {
-        device_description.yfilter = yfilter;
-    }
     if(value_path == "device-key")
     {
         device_key.yfilter = yfilter;
@@ -4436,15 +4424,27 @@ void PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
     {
         device_version.yfilter = yfilter;
     }
+    if(value_path == "condition-raised-timestamp")
+    {
+        condition_raised_timestamp.yfilter = yfilter;
+    }
     if(value_path == "process-id")
     {
         process_id.yfilter = yfilter;
+    }
+    if(value_path == "device-description")
+    {
+        device_description.yfilter = yfilter;
+    }
+    if(value_path == "condition-severity")
+    {
+        condition_severity.yfilter = yfilter;
     }
 }
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "condition-raised-timestamp" || name == "condition-severity" || name == "device-description" || name == "device-key" || name == "device-version" || name == "process-id")
+    if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "device-key" || name == "device-version" || name == "condition-raised-timestamp" || name == "process-id" || name == "device-description" || name == "condition-severity")
         return true;
     return false;
 }

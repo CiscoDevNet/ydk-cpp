@@ -11,6 +11,495 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace tailf_netconf_query {
 
+StartQuery::StartQuery()
+    :
+    input(std::make_shared<StartQuery::Input>())
+	,output(std::make_shared<StartQuery::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "start-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+StartQuery::~StartQuery()
+{
+}
+
+bool StartQuery::has_data() const
+{
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool StartQuery::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string StartQuery::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:start-query";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > StartQuery::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> StartQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<StartQuery::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<StartQuery::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> StartQuery::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void StartQuery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void StartQuery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> StartQuery::clone_ptr() const
+{
+    return std::make_shared<StartQuery>();
+}
+
+std::string StartQuery::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string StartQuery::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function StartQuery::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> StartQuery::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool StartQuery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+StartQuery::Input::Input()
+    :
+    foreach{YType::str, "foreach"},
+    sort_by{YType::str, "sort-by"},
+    limit{YType::uint32, "limit"},
+    offset{YType::uint32, "offset"}
+{
+
+    yang_name = "input"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+StartQuery::Input::~Input()
+{
+}
+
+bool StartQuery::Input::has_data() const
+{
+    for (std::size_t index=0; index<select.size(); index++)
+    {
+        if(select[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : sort_by.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return foreach.is_set
+	|| limit.is_set
+	|| offset.is_set;
+}
+
+bool StartQuery::Input::has_operation() const
+{
+    for (std::size_t index=0; index<select.size(); index++)
+    {
+        if(select[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : sort_by.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(foreach.yfilter)
+	|| ydk::is_set(sort_by.yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(offset.yfilter);
+}
+
+std::string StartQuery::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:start-query/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string StartQuery::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > StartQuery::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (foreach.is_set || is_set(foreach.yfilter)) leaf_name_data.push_back(foreach.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+
+    auto sort_by_name_datas = sort_by.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sort_by_name_datas.begin(), sort_by_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> StartQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "select")
+    {
+        for(auto const & c : select)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<StartQuery::Input::Select>();
+        c->parent = this;
+        select.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : select)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void StartQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "foreach")
+    {
+        foreach = value;
+        foreach.value_namespace = name_space;
+        foreach.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sort-by")
+    {
+        sort_by.append(value);
+    }
+    if(value_path == "limit")
+    {
+        limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void StartQuery::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "foreach")
+    {
+        foreach.yfilter = yfilter;
+    }
+    if(value_path == "sort-by")
+    {
+        sort_by.yfilter = yfilter;
+    }
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+}
+
+bool StartQuery::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "select" || name == "foreach" || name == "sort-by" || name == "limit" || name == "offset")
+        return true;
+    return false;
+}
+
+StartQuery::Input::Select::Select()
+    :
+    label{YType::str, "label"},
+    expression{YType::str, "expression"},
+    result_type{YType::enumeration, "result-type"}
+{
+
+    yang_name = "select"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+StartQuery::Input::Select::~Select()
+{
+}
+
+bool StartQuery::Input::Select::has_data() const
+{
+    for (auto const & leaf : result_type.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return label.is_set
+	|| expression.is_set;
+}
+
+bool StartQuery::Input::Select::has_operation() const
+{
+    for (auto const & leaf : result_type.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(expression.yfilter)
+	|| ydk::is_set(result_type.yfilter);
+}
+
+std::string StartQuery::Input::Select::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:start-query/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string StartQuery::Input::Select::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "select";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > StartQuery::Input::Select::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (expression.is_set || is_set(expression.yfilter)) leaf_name_data.push_back(expression.get_name_leafdata());
+
+    auto result_type_name_datas = result_type.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), result_type_name_datas.begin(), result_type_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> StartQuery::Input::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::Select::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void StartQuery::Input::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expression")
+    {
+        expression = value;
+        expression.value_namespace = name_space;
+        expression.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "result-type")
+    {
+        result_type.append(value);
+    }
+}
+
+void StartQuery::Input::Select::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "expression")
+    {
+        expression.yfilter = yfilter;
+    }
+    if(value_path == "result-type")
+    {
+        result_type.yfilter = yfilter;
+    }
+}
+
+bool StartQuery::Input::Select::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label" || name == "expression" || name == "result-type")
+        return true;
+    return false;
+}
+
+StartQuery::Output::Output()
+    :
+    query_handle{YType::uint32, "query-handle"}
+{
+
+    yang_name = "output"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+StartQuery::Output::~Output()
+{
+}
+
+bool StartQuery::Output::has_data() const
+{
+    return query_handle.is_set;
+}
+
+bool StartQuery::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(query_handle.yfilter);
+}
+
+std::string StartQuery::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-query:start-query/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string StartQuery::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > StartQuery::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (query_handle.is_set || is_set(query_handle.yfilter)) leaf_name_data.push_back(query_handle.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> StartQuery::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> StartQuery::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void StartQuery::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "query-handle")
+    {
+        query_handle = value;
+        query_handle.value_namespace = name_space;
+        query_handle.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void StartQuery::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "query-handle")
+    {
+        query_handle.yfilter = yfilter;
+    }
+}
+
+bool StartQuery::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "query-handle")
+        return true;
+    return false;
+}
+
 FetchQueryResult::FetchQueryResult()
     :
     input(std::make_shared<FetchQueryResult::Input>())
@@ -506,10 +995,10 @@ bool FetchQueryResult::Output::QueryResult::Result::has_leaf_or_child_of_name(co
 
 FetchQueryResult::Output::QueryResult::Result::Select::Select()
     :
-    data{YType::str, "data"},
     label{YType::str, "label"},
     path{YType::str, "path"},
-    value_{YType::str, "value"}
+    value_{YType::str, "value"},
+    data{YType::str, "data"}
 {
 
     yang_name = "select"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = false;
@@ -521,19 +1010,19 @@ FetchQueryResult::Output::QueryResult::Result::Select::~Select()
 
 bool FetchQueryResult::Output::QueryResult::Result::Select::has_data() const
 {
-    return data.is_set
-	|| label.is_set
+    return label.is_set
 	|| path.is_set
-	|| value_.is_set;
+	|| value_.is_set
+	|| data.is_set;
 }
 
 bool FetchQueryResult::Output::QueryResult::Result::Select::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
 	|| ydk::is_set(label.yfilter)
 	|| ydk::is_set(path.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(data.yfilter);
 }
 
 std::string FetchQueryResult::Output::QueryResult::Result::Select::get_absolute_path() const
@@ -554,10 +1043,10 @@ std::vector<std::pair<std::string, LeafData> > FetchQueryResult::Output::QueryRe
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
     if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
     if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -576,12 +1065,6 @@ std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryRe
 
 void FetchQueryResult::Output::QueryResult::Result::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "label")
     {
         label = value;
@@ -600,14 +1083,16 @@ void FetchQueryResult::Output::QueryResult::Result::Select::set_value(const std:
         value_.value_namespace = name_space;
         value_.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void FetchQueryResult::Output::QueryResult::Result::Select::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
     if(value_path == "label")
     {
         label.yfilter = yfilter;
@@ -620,11 +1105,15 @@ void FetchQueryResult::Output::QueryResult::Result::Select::set_filter(const std
     {
         value_.yfilter = yfilter;
     }
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
 }
 
 bool FetchQueryResult::Output::QueryResult::Result::Select::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "data" || name == "label" || name == "path" || name == "value")
+    if(name == "label" || name == "path" || name == "value" || name == "data")
         return true;
     return false;
 }
@@ -736,8 +1225,8 @@ bool ResetQuery::has_leaf_or_child_of_name(const std::string & name) const
 
 ResetQuery::Input::Input()
     :
-    offset{YType::uint32, "offset"},
-    query_handle{YType::uint32, "query-handle"}
+    query_handle{YType::uint32, "query-handle"},
+    offset{YType::uint32, "offset"}
 {
 
     yang_name = "input"; yang_parent_name = "reset-query"; is_top_level_class = false; has_list_ancestor = false;
@@ -749,15 +1238,15 @@ ResetQuery::Input::~Input()
 
 bool ResetQuery::Input::has_data() const
 {
-    return offset.is_set
-	|| query_handle.is_set;
+    return query_handle.is_set
+	|| offset.is_set;
 }
 
 bool ResetQuery::Input::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(offset.yfilter)
-	|| ydk::is_set(query_handle.yfilter);
+	|| ydk::is_set(query_handle.yfilter)
+	|| ydk::is_set(offset.yfilter);
 }
 
 std::string ResetQuery::Input::get_absolute_path() const
@@ -778,8 +1267,8 @@ std::vector<std::pair<std::string, LeafData> > ResetQuery::Input::get_name_leaf_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
     if (query_handle.is_set || is_set(query_handle.yfilter)) leaf_name_data.push_back(query_handle.get_name_leafdata());
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -798,524 +1287,35 @@ std::map<std::string, std::shared_ptr<Entity>> ResetQuery::Input::get_children()
 
 void ResetQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "offset")
-    {
-        offset = value;
-        offset.value_namespace = name_space;
-        offset.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "query-handle")
     {
         query_handle = value;
         query_handle.value_namespace = name_space;
         query_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void ResetQuery::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "offset")
-    {
-        offset.yfilter = yfilter;
-    }
     if(value_path == "query-handle")
     {
         query_handle.yfilter = yfilter;
+    }
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
     }
 }
 
 bool ResetQuery::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "offset" || name == "query-handle")
-        return true;
-    return false;
-}
-
-StartQuery::StartQuery()
-    :
-    input(std::make_shared<StartQuery::Input>())
-	,output(std::make_shared<StartQuery::Output>())
-{
-    input->parent = this;
-    output->parent = this;
-
-    yang_name = "start-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-StartQuery::~StartQuery()
-{
-}
-
-bool StartQuery::has_data() const
-{
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
-}
-
-bool StartQuery::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
-}
-
-std::string StartQuery::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tailf-netconf-query:start-query";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > StartQuery::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> StartQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<StartQuery::Input>();
-        }
-        return input;
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output == nullptr)
-        {
-            output = std::make_shared<StartQuery::Output>();
-        }
-        return output;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    if(output != nullptr)
-    {
-        children["output"] = output;
-    }
-
-    return children;
-}
-
-void StartQuery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void StartQuery::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> StartQuery::clone_ptr() const
-{
-    return std::make_shared<StartQuery>();
-}
-
-std::string StartQuery::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xe_models_path;
-}
-
-std::string StartQuery::get_bundle_name() const
-{
-    return "cisco_ios_xe";
-}
-
-augment_capabilities_function StartQuery::get_augment_capabilities_function() const
-{
-    return cisco_ios_xe_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> StartQuery::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xe_namespace_identity_lookup;
-}
-
-bool StartQuery::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-StartQuery::Input::Input()
-    :
-    foreach{YType::str, "foreach"},
-    limit{YType::uint32, "limit"},
-    offset{YType::uint32, "offset"},
-    sort_by{YType::str, "sort-by"}
-{
-
-    yang_name = "input"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-StartQuery::Input::~Input()
-{
-}
-
-bool StartQuery::Input::has_data() const
-{
-    for (std::size_t index=0; index<select.size(); index++)
-    {
-        if(select[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : sort_by.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return foreach.is_set
-	|| limit.is_set
-	|| offset.is_set;
-}
-
-bool StartQuery::Input::has_operation() const
-{
-    for (std::size_t index=0; index<select.size(); index++)
-    {
-        if(select[index]->has_operation())
-            return true;
-    }
-    for (auto const & leaf : sort_by.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(foreach.yfilter)
-	|| ydk::is_set(limit.yfilter)
-	|| ydk::is_set(offset.yfilter)
-	|| ydk::is_set(sort_by.yfilter);
-}
-
-std::string StartQuery::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tailf-netconf-query:start-query/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string StartQuery::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > StartQuery::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (foreach.is_set || is_set(foreach.yfilter)) leaf_name_data.push_back(foreach.get_name_leafdata());
-    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
-
-    auto sort_by_name_datas = sort_by.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sort_by_name_datas.begin(), sort_by_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> StartQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "select")
-    {
-        for(auto const & c : select)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<StartQuery::Input::Select>();
-        c->parent = this;
-        select.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : select)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void StartQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "foreach")
-    {
-        foreach = value;
-        foreach.value_namespace = name_space;
-        foreach.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "limit")
-    {
-        limit = value;
-        limit.value_namespace = name_space;
-        limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "offset")
-    {
-        offset = value;
-        offset.value_namespace = name_space;
-        offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sort-by")
-    {
-        sort_by.append(value);
-    }
-}
-
-void StartQuery::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "foreach")
-    {
-        foreach.yfilter = yfilter;
-    }
-    if(value_path == "limit")
-    {
-        limit.yfilter = yfilter;
-    }
-    if(value_path == "offset")
-    {
-        offset.yfilter = yfilter;
-    }
-    if(value_path == "sort-by")
-    {
-        sort_by.yfilter = yfilter;
-    }
-}
-
-bool StartQuery::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "select" || name == "foreach" || name == "limit" || name == "offset" || name == "sort-by")
-        return true;
-    return false;
-}
-
-StartQuery::Input::Select::Select()
-    :
-    expression{YType::str, "expression"},
-    label{YType::str, "label"},
-    result_type{YType::enumeration, "result-type"}
-{
-
-    yang_name = "select"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-StartQuery::Input::Select::~Select()
-{
-}
-
-bool StartQuery::Input::Select::has_data() const
-{
-    for (auto const & leaf : result_type.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return expression.is_set
-	|| label.is_set;
-}
-
-bool StartQuery::Input::Select::has_operation() const
-{
-    for (auto const & leaf : result_type.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(expression.yfilter)
-	|| ydk::is_set(label.yfilter)
-	|| ydk::is_set(result_type.yfilter);
-}
-
-std::string StartQuery::Input::Select::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tailf-netconf-query:start-query/input/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string StartQuery::Input::Select::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "select";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > StartQuery::Input::Select::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (expression.is_set || is_set(expression.yfilter)) leaf_name_data.push_back(expression.get_name_leafdata());
-    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
-
-    auto result_type_name_datas = result_type.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), result_type_name_datas.begin(), result_type_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> StartQuery::Input::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::Select::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void StartQuery::Input::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "expression")
-    {
-        expression = value;
-        expression.value_namespace = name_space;
-        expression.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label")
-    {
-        label = value;
-        label.value_namespace = name_space;
-        label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "result-type")
-    {
-        result_type.append(value);
-    }
-}
-
-void StartQuery::Input::Select::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "expression")
-    {
-        expression.yfilter = yfilter;
-    }
-    if(value_path == "label")
-    {
-        label.yfilter = yfilter;
-    }
-    if(value_path == "result-type")
-    {
-        result_type.yfilter = yfilter;
-    }
-}
-
-bool StartQuery::Input::Select::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "expression" || name == "label" || name == "result-type")
-        return true;
-    return false;
-}
-
-StartQuery::Output::Output()
-    :
-    query_handle{YType::uint32, "query-handle"}
-{
-
-    yang_name = "output"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-StartQuery::Output::~Output()
-{
-}
-
-bool StartQuery::Output::has_data() const
-{
-    return query_handle.is_set;
-}
-
-bool StartQuery::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(query_handle.yfilter);
-}
-
-std::string StartQuery::Output::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tailf-netconf-query:start-query/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string StartQuery::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > StartQuery::Output::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (query_handle.is_set || is_set(query_handle.yfilter)) leaf_name_data.push_back(query_handle.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> StartQuery::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::Output::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void StartQuery::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "query-handle")
-    {
-        query_handle = value;
-        query_handle.value_namespace = name_space;
-        query_handle.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void StartQuery::Output::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "query-handle")
-    {
-        query_handle.yfilter = yfilter;
-    }
-}
-
-bool StartQuery::Output::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "query-handle")
+    if(name == "query-handle" || name == "offset")
         return true;
     return false;
 }

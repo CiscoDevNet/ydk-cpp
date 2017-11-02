@@ -10,6 +10,14 @@
 namespace cisco_ios_xe {
 namespace SNMPv2_TC {
 
+class TruthValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+
+};
+
 class RowStatus : public ydk::Enum
 {
     public:
@@ -19,14 +27,6 @@ class RowStatus : public ydk::Enum
         static const ydk::Enum::YLeaf createAndGo;
         static const ydk::Enum::YLeaf createAndWait;
         static const ydk::Enum::YLeaf destroy;
-
-};
-
-class TruthValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf true_;
-        static const ydk::Enum::YLeaf false_;
 
 };
 

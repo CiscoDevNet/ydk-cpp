@@ -43,13 +43,13 @@ class DS3MIB : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Configtable> dsx3configtable;
         std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Currenttable> dsx3currenttable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Intervaltable> dsx3intervaltable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Totaltable> dsx3totaltable;
         std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendconfigtable> dsx3farendconfigtable;
         std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendcurrenttable> dsx3farendcurrenttable;
         std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendintervaltable> dsx3farendintervaltable;
         std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendtotaltable> dsx3farendtotaltable;
         std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Fractable> dsx3fractable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Intervaltable> dsx3intervaltable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Totaltable> dsx3totaltable;
         
 }; // DS3MIB
 
@@ -178,6 +178,120 @@ class DS3MIB::Dsx3Currenttable::Dsx3Currententry : public ydk::Entity
         ydk::YLeaf dsx3currentcsess; //type: uint32
 
 }; // DS3MIB::Dsx3Currenttable::Dsx3Currententry
+
+
+class DS3MIB::Dsx3Intervaltable : public ydk::Entity
+{
+    public:
+        Dsx3Intervaltable();
+        ~Dsx3Intervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Dsx3Intervalentry; //type: DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry> > dsx3intervalentry;
+        
+}; // DS3MIB::Dsx3Intervaltable
+
+
+class DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry : public ydk::Entity
+{
+    public:
+        Dsx3Intervalentry();
+        ~Dsx3Intervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dsx3intervalindex; //type: int32
+        ydk::YLeaf dsx3intervalnumber; //type: int32
+        ydk::YLeaf dsx3intervalpess; //type: uint32
+        ydk::YLeaf dsx3intervalpsess; //type: uint32
+        ydk::YLeaf dsx3intervalsefss; //type: uint32
+        ydk::YLeaf dsx3intervaluass; //type: uint32
+        ydk::YLeaf dsx3intervallcvs; //type: uint32
+        ydk::YLeaf dsx3intervalpcvs; //type: uint32
+        ydk::YLeaf dsx3intervalless; //type: uint32
+        ydk::YLeaf dsx3intervalccvs; //type: uint32
+        ydk::YLeaf dsx3intervalcess; //type: uint32
+        ydk::YLeaf dsx3intervalcsess; //type: uint32
+        ydk::YLeaf dsx3intervalvaliddata; //type: boolean
+
+}; // DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry
+
+
+class DS3MIB::Dsx3Totaltable : public ydk::Entity
+{
+    public:
+        Dsx3Totaltable();
+        ~Dsx3Totaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Dsx3Totalentry; //type: DS3MIB::Dsx3Totaltable::Dsx3Totalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Totaltable::Dsx3Totalentry> > dsx3totalentry;
+        
+}; // DS3MIB::Dsx3Totaltable
+
+
+class DS3MIB::Dsx3Totaltable::Dsx3Totalentry : public ydk::Entity
+{
+    public:
+        Dsx3Totalentry();
+        ~Dsx3Totalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf dsx3totalindex; //type: int32
+        ydk::YLeaf dsx3totalpess; //type: uint32
+        ydk::YLeaf dsx3totalpsess; //type: uint32
+        ydk::YLeaf dsx3totalsefss; //type: uint32
+        ydk::YLeaf dsx3totaluass; //type: uint32
+        ydk::YLeaf dsx3totallcvs; //type: uint32
+        ydk::YLeaf dsx3totalpcvs; //type: uint32
+        ydk::YLeaf dsx3totalless; //type: uint32
+        ydk::YLeaf dsx3totalccvs; //type: uint32
+        ydk::YLeaf dsx3totalcess; //type: uint32
+        ydk::YLeaf dsx3totalcsess; //type: uint32
+
+}; // DS3MIB::Dsx3Totaltable::Dsx3Totalentry
 
 
 class DS3MIB::Dsx3Farendconfigtable : public ydk::Entity
@@ -432,120 +546,6 @@ class DS3MIB::Dsx3Fractable::Dsx3Fracentry : public ydk::Entity
         ydk::YLeaf dsx3fracifindex; //type: int32
 
 }; // DS3MIB::Dsx3Fractable::Dsx3Fracentry
-
-
-class DS3MIB::Dsx3Intervaltable : public ydk::Entity
-{
-    public:
-        Dsx3Intervaltable();
-        ~Dsx3Intervaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Dsx3Intervalentry; //type: DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry> > dsx3intervalentry;
-        
-}; // DS3MIB::Dsx3Intervaltable
-
-
-class DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry : public ydk::Entity
-{
-    public:
-        Dsx3Intervalentry();
-        ~Dsx3Intervalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf dsx3intervalindex; //type: int32
-        ydk::YLeaf dsx3intervalnumber; //type: int32
-        ydk::YLeaf dsx3intervalpess; //type: uint32
-        ydk::YLeaf dsx3intervalpsess; //type: uint32
-        ydk::YLeaf dsx3intervalsefss; //type: uint32
-        ydk::YLeaf dsx3intervaluass; //type: uint32
-        ydk::YLeaf dsx3intervallcvs; //type: uint32
-        ydk::YLeaf dsx3intervalpcvs; //type: uint32
-        ydk::YLeaf dsx3intervalless; //type: uint32
-        ydk::YLeaf dsx3intervalccvs; //type: uint32
-        ydk::YLeaf dsx3intervalcess; //type: uint32
-        ydk::YLeaf dsx3intervalcsess; //type: uint32
-        ydk::YLeaf dsx3intervalvaliddata; //type: boolean
-
-}; // DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry
-
-
-class DS3MIB::Dsx3Totaltable : public ydk::Entity
-{
-    public:
-        Dsx3Totaltable();
-        ~Dsx3Totaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Dsx3Totalentry; //type: DS3MIB::Dsx3Totaltable::Dsx3Totalentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Totaltable::Dsx3Totalentry> > dsx3totalentry;
-        
-}; // DS3MIB::Dsx3Totaltable
-
-
-class DS3MIB::Dsx3Totaltable::Dsx3Totalentry : public ydk::Entity
-{
-    public:
-        Dsx3Totalentry();
-        ~Dsx3Totalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf dsx3totalindex; //type: int32
-        ydk::YLeaf dsx3totalpess; //type: uint32
-        ydk::YLeaf dsx3totalpsess; //type: uint32
-        ydk::YLeaf dsx3totalsefss; //type: uint32
-        ydk::YLeaf dsx3totaluass; //type: uint32
-        ydk::YLeaf dsx3totallcvs; //type: uint32
-        ydk::YLeaf dsx3totalpcvs; //type: uint32
-        ydk::YLeaf dsx3totalless; //type: uint32
-        ydk::YLeaf dsx3totalccvs; //type: uint32
-        ydk::YLeaf dsx3totalcess; //type: uint32
-        ydk::YLeaf dsx3totalcsess; //type: uint32
-
-}; // DS3MIB::Dsx3Totaltable::Dsx3Totalentry
 
 class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype : public ydk::Enum
 {

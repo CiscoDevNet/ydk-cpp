@@ -12,14 +12,23 @@
 namespace cisco_ios_xe {
 namespace ATM_TC_MIB {
 
-class Atmclpnotaggingmcr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnotrafficdescriptor : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Atmclpnotaggingmcr();
-        ~Atmclpnotaggingmcr();
+        Atmnotrafficdescriptor();
+        ~Atmnotrafficdescriptor();
 
 
-}; // Atmclpnotaggingmcr
+}; // Atmnotrafficdescriptor
+
+class Atmnoclpnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Atmnoclpnoscr();
+        ~Atmnoclpnoscr();
+
+
+}; // Atmnoclpnoscr
 
 class Atmclpnotaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -30,24 +39,6 @@ class Atmclpnotaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtu
 
 }; // Atmclpnotaggingnoscr
 
-class Atmclpnotaggingscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Atmclpnotaggingscr();
-        ~Atmclpnotaggingscr();
-
-
-}; // Atmclpnotaggingscr
-
-class Atmclpnotaggingscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Atmclpnotaggingscrcdvt();
-        ~Atmclpnotaggingscrcdvt();
-
-
-}; // Atmclpnotaggingscrcdvt
-
 class Atmclptaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -56,6 +47,24 @@ class Atmclptaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual
 
 
 }; // Atmclptaggingnoscr
+
+class Atmnoclpscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Atmnoclpscr();
+        ~Atmnoclpscr();
+
+
+}; // Atmnoclpscr
+
+class Atmclpnotaggingscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Atmclpnotaggingscr();
+        ~Atmclpnotaggingscr();
+
+
+}; // Atmclpnotaggingscr
 
 class Atmclptaggingscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -66,14 +75,14 @@ class Atmclptaggingscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual y
 
 }; // Atmclptaggingscr
 
-class Atmclptaggingscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclpnotaggingmcr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Atmclptaggingscrcdvt();
-        ~Atmclptaggingscrcdvt();
+        Atmclpnotaggingmcr();
+        ~Atmclpnotaggingmcr();
 
 
-}; // Atmclptaggingscrcdvt
+}; // Atmclpnotaggingmcr
 
 class Atmclptransparentnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -93,14 +102,14 @@ class Atmclptransparentscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtu
 
 }; // Atmclptransparentscr
 
-class Atmnoclpnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmnoclptaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Atmnoclpnoscr();
-        ~Atmnoclpnoscr();
+        Atmnoclptaggingnoscr();
+        ~Atmnoclptaggingnoscr();
 
 
-}; // Atmnoclpnoscr
+}; // Atmnoclptaggingnoscr
 
 class Atmnoclpnoscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -111,15 +120,6 @@ class Atmnoclpnoscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual 
 
 }; // Atmnoclpnoscrcdvt
 
-class Atmnoclpscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Atmnoclpscr();
-        ~Atmnoclpscr();
-
-
-}; // Atmnoclpscr
-
 class Atmnoclpscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -129,31 +129,23 @@ class Atmnoclpscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual yd
 
 }; // Atmnoclpscrcdvt
 
-class Atmnoclptaggingnoscr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclpnotaggingscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Atmnoclptaggingnoscr();
-        ~Atmnoclptaggingnoscr();
+        Atmclpnotaggingscrcdvt();
+        ~Atmclpnotaggingscrcdvt();
 
 
-}; // Atmnoclptaggingnoscr
+}; // Atmclpnotaggingscrcdvt
 
-class Atmnotrafficdescriptor : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Atmclptaggingscrcdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Atmnotrafficdescriptor();
-        ~Atmnotrafficdescriptor();
+        Atmclptaggingscrcdvt();
+        ~Atmclptaggingscrcdvt();
 
 
-}; // Atmnotrafficdescriptor
-
-class AtmVorXAdminStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-
-};
+}; // Atmclptaggingscrcdvt
 
 class AtmConnCastType : public ydk::Enum
 {
@@ -172,15 +164,6 @@ class AtmConnKind : public ydk::Enum
         static const ydk::Enum::YLeaf svcOutgoing;
         static const ydk::Enum::YLeaf spvcInitiator;
         static const ydk::Enum::YLeaf spvcTarget;
-
-};
-
-class AtmVorXOperStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -212,6 +195,23 @@ class AtmServiceCategory : public ydk::Enum
         static const ydk::Enum::YLeaf nrtVbr;
         static const ydk::Enum::YLeaf abr;
         static const ydk::Enum::YLeaf ubr;
+
+};
+
+class AtmVorXAdminStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+
+};
+
+class AtmVorXOperStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 

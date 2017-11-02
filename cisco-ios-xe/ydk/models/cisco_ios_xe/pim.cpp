@@ -21,16 +21,6 @@ GroupToRpMappingMode::~GroupToRpMappingMode()
 {
 }
 
-AsmMappingMode::AsmMappingMode()
-     : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:asm-mapping-mode")
-{
-
-}
-
-AsmMappingMode::~AsmMappingMode()
-{
-}
-
 DmMappingMode::DmMappingMode()
      : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:dm-mapping-mode")
 {
@@ -38,26 +28,6 @@ DmMappingMode::DmMappingMode()
 }
 
 DmMappingMode::~DmMappingMode()
-{
-}
-
-OtherMappingMode::OtherMappingMode()
-     : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:other-mapping-mode")
-{
-
-}
-
-OtherMappingMode::~OtherMappingMode()
-{
-}
-
-PimBidirMappingMode::PimBidirMappingMode()
-     : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:pim-bidir-mapping-mode")
-{
-
-}
-
-PimBidirMappingMode::~PimBidirMappingMode()
 {
 }
 
@@ -71,6 +41,16 @@ SmMappingMode::~SmMappingMode()
 {
 }
 
+PimBidirMappingMode::PimBidirMappingMode()
+     : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:pim-bidir-mapping-mode")
+{
+
+}
+
+PimBidirMappingMode::~PimBidirMappingMode()
+{
+}
+
 SsmMappingMode::SsmMappingMode()
      : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:ssm-mapping-mode")
 {
@@ -78,6 +58,26 @@ SsmMappingMode::SsmMappingMode()
 }
 
 SsmMappingMode::~SsmMappingMode()
+{
+}
+
+AsmMappingMode::AsmMappingMode()
+     : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:asm-mapping-mode")
+{
+
+}
+
+AsmMappingMode::~AsmMappingMode()
+{
+}
+
+OtherMappingMode::OtherMappingMode()
+     : Identity("urn:cisco:params:xml:ns:yang:pim", "pim", "pim:other-mapping-mode")
+{
+
+}
+
+OtherMappingMode::~OtherMappingMode()
 {
 }
 
@@ -112,6 +112,12 @@ const Enum::YLeaf MrouteProtocolType::igmpOnly {10, "igmpOnly"};
 const Enum::YLeaf MrouteProtocolType::bgmp {11, "bgmp"};
 const Enum::YLeaf MrouteProtocolType::msdp {12, "msdp"};
 
+const Enum::YLeaf PimMode::sparse {1, "sparse"};
+const Enum::YLeaf PimMode::dense {2, "dense"};
+const Enum::YLeaf PimMode::sparse_dense {3, "sparse-dense"};
+const Enum::YLeaf PimMode::dm_proxy {4, "dm-proxy"};
+const Enum::YLeaf PimMode::none {5, "none"};
+
 const Enum::YLeaf Origin::other_origin {1, "other-origin"};
 const Enum::YLeaf Origin::pim_request {2, "pim-request"};
 const Enum::YLeaf Origin::ssm_request {3, "ssm-request"};
@@ -122,12 +128,6 @@ const Enum::YLeaf Origin::config_ssm {7, "config-ssm"};
 const Enum::YLeaf Origin::auto_rp {8, "auto-rp"};
 const Enum::YLeaf Origin::bsr {9, "bsr"};
 const Enum::YLeaf Origin::msdp {10, "msdp"};
-
-const Enum::YLeaf PimMode::sparse {1, "sparse"};
-const Enum::YLeaf PimMode::dense {2, "dense"};
-const Enum::YLeaf PimMode::sparse_dense {3, "sparse-dense"};
-const Enum::YLeaf PimMode::dm_proxy {4, "dm-proxy"};
-const Enum::YLeaf PimMode::none {5, "none"};
 
 
 }

@@ -37,62 +37,13 @@ class Eem : public ydk::Entity
         class RegPolicies; //type: Eem::RegPolicies
         class AvlPolicies; //type: Eem::AvlPolicies
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::AvlPolicies> avl_policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::DirUser> dir_user;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::EnvVariables> env_variables;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::RefreshTime> refresh_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::RegPolicies> reg_policies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::AvlPolicies> avl_policies;
         
 }; // Eem
-
-
-class Eem::AvlPolicies : public ydk::Entity
-{
-    public:
-        AvlPolicies();
-        ~AvlPolicies();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AvlPolicy; //type: Eem::AvlPolicies::AvlPolicy
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::AvlPolicies::AvlPolicy> > avl_policy;
-        
-}; // Eem::AvlPolicies
-
-
-class Eem::AvlPolicies::AvlPolicy : public ydk::Entity
-{
-    public:
-        AvlPolicy();
-        ~AvlPolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf type; //type: string
-        ydk::YLeaf time_created; //type: string
-        ydk::YLeaf policy_name; //type: string
-
-}; // Eem::AvlPolicies::AvlPolicy
 
 
 class Eem::DirUser : public ydk::Entity
@@ -290,6 +241,55 @@ class Eem::RegPolicies::RegPolicy : public ydk::Entity
         ydk::YLeaf description; //type: string
 
 }; // Eem::RegPolicies::RegPolicy
+
+
+class Eem::AvlPolicies : public ydk::Entity
+{
+    public:
+        AvlPolicies();
+        ~AvlPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AvlPolicy; //type: Eem::AvlPolicies::AvlPolicy
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::AvlPolicies::AvlPolicy> > avl_policy;
+        
+}; // Eem::AvlPolicies
+
+
+class Eem::AvlPolicies::AvlPolicy : public ydk::Entity
+{
+    public:
+        AvlPolicy();
+        ~AvlPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf type; //type: string
+        ydk::YLeaf time_created; //type: string
+        ydk::YLeaf policy_name; //type: string
+
+}; // Eem::AvlPolicies::AvlPolicy
 
 
 }

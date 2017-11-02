@@ -92,105 +92,10 @@ class IpDomain::Vrfs::Vrf : public ydk::Entity
         class Server; //type: IpDomain::Vrfs::Vrf::Server
         class Hosts; //type: IpDomain::Vrfs::Vrf::Hosts
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts> hosts;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Server> server;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts> hosts;
         
 }; // IpDomain::Vrfs::Vrf
-
-
-class IpDomain::Vrfs::Vrf::Hosts : public ydk::Entity
-{
-    public:
-        Hosts();
-        ~Hosts();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Host; //type: IpDomain::Vrfs::Vrf::Hosts::Host
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host> > host;
-        
-}; // IpDomain::Vrfs::Vrf::Hosts
-
-
-class IpDomain::Vrfs::Vrf::Hosts::Host : public ydk::Entity
-{
-    public:
-        Host();
-        ~Host();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf host_name; //type: string
-        ydk::YLeaf af_name; //type: HostAddressBase
-        ydk::YLeaf age; //type: uint16
-        class HostAliasList; //type: IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList
-        class HostAddress; //type: IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress> > host_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList> host_alias_list;
-        
-}; // IpDomain::Vrfs::Vrf::Hosts::Host
-
-
-class IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress : public ydk::Entity
-{
-    public:
-        HostAddress();
-        ~HostAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf af_name; //type: HostAddressBase
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress
-
-
-class IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList : public ydk::Entity
-{
-    public:
-        HostAliasList();
-        ~HostAliasList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList host_alias; //type: list of  string
-
-}; // IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList
 
 
 class IpDomain::Vrfs::Vrf::Server : public ydk::Entity
@@ -240,6 +145,101 @@ class IpDomain::Vrfs::Vrf::Server::ServerAddress : public ydk::Entity
         ydk::YLeaf ipv6_address; //type: string
 
 }; // IpDomain::Vrfs::Vrf::Server::ServerAddress
+
+
+class IpDomain::Vrfs::Vrf::Hosts : public ydk::Entity
+{
+    public:
+        Hosts();
+        ~Hosts();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Host; //type: IpDomain::Vrfs::Vrf::Hosts::Host
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host> > host;
+        
+}; // IpDomain::Vrfs::Vrf::Hosts
+
+
+class IpDomain::Vrfs::Vrf::Hosts::Host : public ydk::Entity
+{
+    public:
+        Host();
+        ~Host();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf host_name; //type: string
+        ydk::YLeaf af_name; //type: HostAddressBase
+        ydk::YLeaf age; //type: uint16
+        class HostAliasList; //type: IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList
+        class HostAddress; //type: IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList> host_alias_list;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress> > host_address;
+        
+}; // IpDomain::Vrfs::Vrf::Hosts::Host
+
+
+class IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList : public ydk::Entity
+{
+    public:
+        HostAliasList();
+        ~HostAliasList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList host_alias; //type: list of  string
+
+}; // IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList
+
+
+class IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress : public ydk::Entity
+{
+    public:
+        HostAddress();
+        ~HostAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: HostAddressBase
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress
 
 class Ipv4 : public cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::HostAddressBase, virtual ydk::Identity
 {

@@ -13,11 +13,11 @@ namespace Cisco_IOS_XR_infra_objmgr_oper {
 
 ObjectGroup::ObjectGroup()
     :
-    network(std::make_shared<ObjectGroup::Network>())
-	,port(std::make_shared<ObjectGroup::Port>())
+    port(std::make_shared<ObjectGroup::Port>())
+	,network(std::make_shared<ObjectGroup::Network>())
 {
-    network->parent = this;
     port->parent = this;
+    network->parent = this;
 
     yang_name = "object-group"; yang_parent_name = "Cisco-IOS-XR-infra-objmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -28,15 +28,15 @@ ObjectGroup::~ObjectGroup()
 
 bool ObjectGroup::has_data() const
 {
-    return (network !=  nullptr && network->has_data())
-	|| (port !=  nullptr && port->has_data());
+    return (port !=  nullptr && port->has_data())
+	|| (network !=  nullptr && network->has_data());
 }
 
 bool ObjectGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| (network !=  nullptr && network->has_operation())
-	|| (port !=  nullptr && port->has_operation());
+	|| (port !=  nullptr && port->has_operation())
+	|| (network !=  nullptr && network->has_operation());
 }
 
 std::string ObjectGroup::get_segment_path() const
@@ -57,15 +57,6 @@ std::vector<std::pair<std::string, LeafData> > ObjectGroup::get_name_leaf_data()
 
 std::shared_ptr<Entity> ObjectGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "network")
-    {
-        if(network == nullptr)
-        {
-            network = std::make_shared<ObjectGroup::Network>();
-        }
-        return network;
-    }
-
     if(child_yang_name == "port")
     {
         if(port == nullptr)
@@ -75,20 +66,29 @@ std::shared_ptr<Entity> ObjectGroup::get_child_by_name(const std::string & child
         return port;
     }
 
+    if(child_yang_name == "network")
+    {
+        if(network == nullptr)
+        {
+            network = std::make_shared<ObjectGroup::Network>();
+        }
+        return network;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(network != nullptr)
-    {
-        children["network"] = network;
-    }
-
     if(port != nullptr)
     {
         children["port"] = port;
+    }
+
+    if(network != nullptr)
+    {
+        children["network"] = network;
     }
 
     return children;
@@ -129,2776 +129,7 @@ std::map<std::pair<std::string, std::string>, std::string> ObjectGroup::get_name
 
 bool ObjectGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "network" || name == "port")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Network()
-    :
-    ipv4(std::make_shared<ObjectGroup::Network::Ipv4>())
-	,ipv6(std::make_shared<ObjectGroup::Network::Ipv6>())
-{
-    ipv4->parent = this;
-    ipv6->parent = this;
-
-    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectGroup::Network::~Network()
-{
-}
-
-bool ObjectGroup::Network::has_data() const
-{
-    return (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data());
-}
-
-bool ObjectGroup::Network::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation());
-}
-
-std::string ObjectGroup::Network::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectGroup::Network::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<ObjectGroup::Network::Ipv4>();
-        }
-        return ipv4;
-    }
-
-    if(child_yang_name == "ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<ObjectGroup::Network::Ipv6>();
-        }
-        return ipv6;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipv4 != nullptr)
-    {
-        children["ipv4"] = ipv4;
-    }
-
-    if(ipv6 != nullptr)
-    {
-        children["ipv6"] = ipv6;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Ipv4()
-    :
-    objects(std::make_shared<ObjectGroup::Network::Ipv4::Objects>())
-{
-    objects->parent = this;
-
-    yang_name = "ipv4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectGroup::Network::Ipv4::~Ipv4()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::has_data() const
-{
-    return (objects !=  nullptr && objects->has_data());
-}
-
-bool ObjectGroup::Network::Ipv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| (objects !=  nullptr && objects->has_operation());
-}
-
-std::string ObjectGroup::Network::Ipv4::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectGroup::Network::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "objects")
-    {
-        if(objects == nullptr)
-        {
-            objects = std::make_shared<ObjectGroup::Network::Ipv4::Objects>();
-        }
-        return objects;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(objects != nullptr)
-    {
-        children["objects"] = objects;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "objects")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Objects()
-{
-
-    yang_name = "objects"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::~Objects()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::has_data() const
-{
-    for (std::size_t index=0; index<object.size(); index++)
-    {
-        if(object[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::has_operation() const
-{
-    for (std::size_t index=0; index<object.size(); index++)
-    {
-        if(object[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv4/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "objects";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "object")
-    {
-        for(auto const & c : object)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object>();
-        c->parent = this;
-        object.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : object)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv4::Objects::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "object")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Object()
-    :
-    object_name{YType::str, "object-name"}
-    	,
-    address_ranges(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges>())
-	,addresses(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses>())
-	,hosts(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts>())
-	,nested_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups>())
-	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>())
-{
-    address_ranges->parent = this;
-    addresses->parent = this;
-    hosts->parent = this;
-    nested_groups->parent = this;
-    parent_groups->parent = this;
-
-    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::~Object()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::has_data() const
-{
-    return object_name.is_set
-	|| (address_ranges !=  nullptr && address_ranges->has_data())
-	|| (addresses !=  nullptr && addresses->has_data())
-	|| (hosts !=  nullptr && hosts->has_data())
-	|| (nested_groups !=  nullptr && nested_groups->has_data())
-	|| (parent_groups !=  nullptr && parent_groups->has_data());
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(object_name.yfilter)
-	|| (address_ranges !=  nullptr && address_ranges->has_operation())
-	|| (addresses !=  nullptr && addresses->has_operation())
-	|| (hosts !=  nullptr && hosts->has_operation())
-	|| (nested_groups !=  nullptr && nested_groups->has_operation())
-	|| (parent_groups !=  nullptr && parent_groups->has_operation());
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv4/objects/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "object" <<"[object-name='" <<object_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-ranges")
-    {
-        if(address_ranges == nullptr)
-        {
-            address_ranges = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges>();
-        }
-        return address_ranges;
-    }
-
-    if(child_yang_name == "addresses")
-    {
-        if(addresses == nullptr)
-        {
-            addresses = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses>();
-        }
-        return addresses;
-    }
-
-    if(child_yang_name == "hosts")
-    {
-        if(hosts == nullptr)
-        {
-            hosts = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts>();
-        }
-        return hosts;
-    }
-
-    if(child_yang_name == "nested-groups")
-    {
-        if(nested_groups == nullptr)
-        {
-            nested_groups = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups>();
-        }
-        return nested_groups;
-    }
-
-    if(child_yang_name == "parent-groups")
-    {
-        if(parent_groups == nullptr)
-        {
-            parent_groups = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>();
-        }
-        return parent_groups;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_ranges != nullptr)
-    {
-        children["address-ranges"] = address_ranges;
-    }
-
-    if(addresses != nullptr)
-    {
-        children["addresses"] = addresses;
-    }
-
-    if(hosts != nullptr)
-    {
-        children["hosts"] = hosts;
-    }
-
-    if(nested_groups != nullptr)
-    {
-        children["nested-groups"] = nested_groups;
-    }
-
-    if(parent_groups != nullptr)
-    {
-        children["parent-groups"] = parent_groups;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "object-name")
-    {
-        object_name = value;
-        object_name.value_namespace = name_space;
-        object_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "object-name")
-    {
-        object_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-ranges" || name == "addresses" || name == "hosts" || name == "nested-groups" || name == "parent-groups" || name == "object-name")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRanges()
-{
-
-    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::~AddressRanges()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_data() const
-{
-    for (std::size_t index=0; index<address_range.size(); index++)
-    {
-        if(address_range[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_operation() const
-{
-    for (std::size_t index=0; index<address_range.size(); index++)
-    {
-        if(address_range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-ranges";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-range")
-    {
-        for(auto const & c : address_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange>();
-        c->parent = this;
-        address_range.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : address_range)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-range")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::AddressRange()
-    :
-    end_address{YType::str, "end-address"},
-    end_address_xr{YType::str, "end-address-xr"},
-    start_address{YType::str, "start-address"},
-    start_address_xr{YType::str, "start-address-xr"}
-{
-
-    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::~AddressRange()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::has_data() const
-{
-    return end_address.is_set
-	|| end_address_xr.is_set
-	|| start_address.is_set
-	|| start_address_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end_address.yfilter)
-	|| ydk::is_set(end_address_xr.yfilter)
-	|| ydk::is_set(start_address.yfilter)
-	|| ydk::is_set(start_address_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-range";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end_address.is_set || is_set(end_address.yfilter)) leaf_name_data.push_back(end_address.get_name_leafdata());
-    if (end_address_xr.is_set || is_set(end_address_xr.yfilter)) leaf_name_data.push_back(end_address_xr.get_name_leafdata());
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-    if (start_address_xr.is_set || is_set(start_address_xr.yfilter)) leaf_name_data.push_back(start_address_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end-address")
-    {
-        end_address = value;
-        end_address.value_namespace = name_space;
-        end_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-address-xr")
-    {
-        end_address_xr = value;
-        end_address_xr.value_namespace = name_space;
-        end_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-address")
-    {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-address-xr")
-    {
-        start_address_xr = value;
-        start_address_xr.value_namespace = name_space;
-        start_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end-address")
-    {
-        end_address.yfilter = yfilter;
-    }
-    if(value_path == "end-address-xr")
-    {
-        end_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "start-address")
-    {
-        start_address.yfilter = yfilter;
-    }
-    if(value_path == "start-address-xr")
-    {
-        start_address_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end-address" || name == "end-address-xr" || name == "start-address" || name == "start-address-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Addresses()
-{
-
-    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Addresses::~Addresses()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_data() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_operation() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "addresses";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address>();
-        c->parent = this;
-        address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::Address()
-    :
-    prefix{YType::str, "prefix"},
-    prefix_length{YType::uint8, "prefix-length"},
-    prefix_length_xr{YType::uint32, "prefix-length-xr"},
-    prefix_xr{YType::str, "prefix-xr"}
-{
-
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::~Address()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_data() const
-{
-    return prefix.is_set
-	|| prefix_length.is_set
-	|| prefix_length_xr.is_set
-	|| prefix_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(prefix_length_xr.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (prefix_length_xr.is_set || is_set(prefix_length_xr.yfilter)) leaf_name_data.push_back(prefix_length_xr.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length-xr")
-    {
-        prefix_length_xr = value;
-        prefix_length_xr.value_namespace = name_space;
-        prefix_length_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length-xr")
-    {
-        prefix_length_xr.yfilter = yfilter;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix" || name == "prefix-length" || name == "prefix-length-xr" || name == "prefix-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Hosts()
-{
-
-    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Hosts::~Hosts()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_data() const
-{
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_operation() const
-{
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hosts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "host")
-    {
-        for(auto const & c : host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host>();
-        c->parent = this;
-        host.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : host)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::Host()
-    :
-    host_address{YType::str, "host-address"},
-    host_address_xr{YType::str, "host-address-xr"}
-{
-
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::~Host()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_data() const
-{
-    return host_address.is_set
-	|| host_address_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(host_address.yfilter)
-	|| ydk::is_set(host_address_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (host_address.is_set || is_set(host_address.yfilter)) leaf_name_data.push_back(host_address.get_name_leafdata());
-    if (host_address_xr.is_set || is_set(host_address_xr.yfilter)) leaf_name_data.push_back(host_address_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "host-address")
-    {
-        host_address = value;
-        host_address.value_namespace = name_space;
-        host_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "host-address-xr")
-    {
-        host_address_xr = value;
-        host_address_xr.value_namespace = name_space;
-        host_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "host-address")
-    {
-        host_address.yfilter = yfilter;
-    }
-    if(value_path == "host-address-xr")
-    {
-        host_address_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host-address" || name == "host-address-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroups()
-{
-
-    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::~NestedGroups()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_data() const
-{
-    for (std::size_t index=0; index<nested_group.size(); index++)
-    {
-        if(nested_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_operation() const
-{
-    for (std::size_t index=0; index<nested_group.size(); index++)
-    {
-        if(nested_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nested-groups";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nested-group")
-    {
-        for(auto const & c : nested_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup>();
-        c->parent = this;
-        nested_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nested_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nested-group")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::NestedGroup()
-    :
-    nested_group_name{YType::str, "nested-group-name"},
-    nested_group_name_xr{YType::str, "nested-group-name-xr"}
-{
-
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has_data() const
-{
-    return nested_group_name.is_set
-	|| nested_group_name_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nested_group_name.yfilter)
-	|| ydk::is_set(nested_group_name_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nested_group_name.is_set || is_set(nested_group_name.yfilter)) leaf_name_data.push_back(nested_group_name.get_name_leafdata());
-    if (nested_group_name_xr.is_set || is_set(nested_group_name_xr.yfilter)) leaf_name_data.push_back(nested_group_name_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nested-group-name")
-    {
-        nested_group_name = value;
-        nested_group_name.value_namespace = name_space;
-        nested_group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nested-group-name-xr")
-    {
-        nested_group_name_xr = value;
-        nested_group_name_xr.value_namespace = name_space;
-        nested_group_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nested-group-name")
-    {
-        nested_group_name.yfilter = yfilter;
-    }
-    if(value_path == "nested-group-name-xr")
-    {
-        nested_group_name_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nested-group-name" || name == "nested-group-name-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroups()
-{
-
-    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::~ParentGroups()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_data() const
-{
-    for (std::size_t index=0; index<parent_group.size(); index++)
-    {
-        if(parent_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_operation() const
-{
-    for (std::size_t index=0; index<parent_group.size(); index++)
-    {
-        if(parent_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parent-groups";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parent-group")
-    {
-        for(auto const & c : parent_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup>();
-        c->parent = this;
-        parent_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : parent_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parent-group")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::ParentGroup()
-    :
-    parent_group_name{YType::str, "parent-group-name"},
-    parent_name{YType::str, "parent-name"}
-{
-
-    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
-{
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has_data() const
-{
-    return parent_group_name.is_set
-	|| parent_name.is_set;
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(parent_group_name.yfilter)
-	|| ydk::is_set(parent_name.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parent-group" <<"[parent-group-name='" <<parent_group_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (parent_group_name.is_set || is_set(parent_group_name.yfilter)) leaf_name_data.push_back(parent_group_name.get_name_leafdata());
-    if (parent_name.is_set || is_set(parent_name.yfilter)) leaf_name_data.push_back(parent_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "parent-group-name")
-    {
-        parent_group_name = value;
-        parent_group_name.value_namespace = name_space;
-        parent_group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-name")
-    {
-        parent_name = value;
-        parent_name.value_namespace = name_space;
-        parent_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "parent-group-name")
-    {
-        parent_group_name.yfilter = yfilter;
-    }
-    if(value_path == "parent-name")
-    {
-        parent_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parent-group-name" || name == "parent-name")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Ipv6()
-    :
-    objects(std::make_shared<ObjectGroup::Network::Ipv6::Objects>())
-{
-    objects->parent = this;
-
-    yang_name = "ipv6"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectGroup::Network::Ipv6::~Ipv6()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::has_data() const
-{
-    return (objects !=  nullptr && objects->has_data());
-}
-
-bool ObjectGroup::Network::Ipv6::has_operation() const
-{
-    return is_set(yfilter)
-	|| (objects !=  nullptr && objects->has_operation());
-}
-
-std::string ObjectGroup::Network::Ipv6::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectGroup::Network::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "objects")
-    {
-        if(objects == nullptr)
-        {
-            objects = std::make_shared<ObjectGroup::Network::Ipv6::Objects>();
-        }
-        return objects;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(objects != nullptr)
-    {
-        children["objects"] = objects;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "objects")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Objects()
-{
-
-    yang_name = "objects"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::~Objects()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::has_data() const
-{
-    for (std::size_t index=0; index<object.size(); index++)
-    {
-        if(object[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::has_operation() const
-{
-    for (std::size_t index=0; index<object.size(); index++)
-    {
-        if(object[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv6/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "objects";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "object")
-    {
-        for(auto const & c : object)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object>();
-        c->parent = this;
-        object.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : object)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv6::Objects::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "object")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Object()
-    :
-    object_name{YType::str, "object-name"}
-    	,
-    address_ranges(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges>())
-	,addresses(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses>())
-	,hosts(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts>())
-	,nested_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups>())
-	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>())
-{
-    address_ranges->parent = this;
-    addresses->parent = this;
-    hosts->parent = this;
-    nested_groups->parent = this;
-    parent_groups->parent = this;
-
-    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::~Object()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::has_data() const
-{
-    return object_name.is_set
-	|| (address_ranges !=  nullptr && address_ranges->has_data())
-	|| (addresses !=  nullptr && addresses->has_data())
-	|| (hosts !=  nullptr && hosts->has_data())
-	|| (nested_groups !=  nullptr && nested_groups->has_data())
-	|| (parent_groups !=  nullptr && parent_groups->has_data());
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(object_name.yfilter)
-	|| (address_ranges !=  nullptr && address_ranges->has_operation())
-	|| (addresses !=  nullptr && addresses->has_operation())
-	|| (hosts !=  nullptr && hosts->has_operation())
-	|| (nested_groups !=  nullptr && nested_groups->has_operation())
-	|| (parent_groups !=  nullptr && parent_groups->has_operation());
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv6/objects/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "object" <<"[object-name='" <<object_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-ranges")
-    {
-        if(address_ranges == nullptr)
-        {
-            address_ranges = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges>();
-        }
-        return address_ranges;
-    }
-
-    if(child_yang_name == "addresses")
-    {
-        if(addresses == nullptr)
-        {
-            addresses = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses>();
-        }
-        return addresses;
-    }
-
-    if(child_yang_name == "hosts")
-    {
-        if(hosts == nullptr)
-        {
-            hosts = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts>();
-        }
-        return hosts;
-    }
-
-    if(child_yang_name == "nested-groups")
-    {
-        if(nested_groups == nullptr)
-        {
-            nested_groups = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups>();
-        }
-        return nested_groups;
-    }
-
-    if(child_yang_name == "parent-groups")
-    {
-        if(parent_groups == nullptr)
-        {
-            parent_groups = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>();
-        }
-        return parent_groups;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_ranges != nullptr)
-    {
-        children["address-ranges"] = address_ranges;
-    }
-
-    if(addresses != nullptr)
-    {
-        children["addresses"] = addresses;
-    }
-
-    if(hosts != nullptr)
-    {
-        children["hosts"] = hosts;
-    }
-
-    if(nested_groups != nullptr)
-    {
-        children["nested-groups"] = nested_groups;
-    }
-
-    if(parent_groups != nullptr)
-    {
-        children["parent-groups"] = parent_groups;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "object-name")
-    {
-        object_name = value;
-        object_name.value_namespace = name_space;
-        object_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "object-name")
-    {
-        object_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-ranges" || name == "addresses" || name == "hosts" || name == "nested-groups" || name == "parent-groups" || name == "object-name")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRanges()
-{
-
-    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::~AddressRanges()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_data() const
-{
-    for (std::size_t index=0; index<address_range.size(); index++)
-    {
-        if(address_range[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_operation() const
-{
-    for (std::size_t index=0; index<address_range.size(); index++)
-    {
-        if(address_range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-ranges";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-range")
-    {
-        for(auto const & c : address_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange>();
-        c->parent = this;
-        address_range.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : address_range)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-range")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::AddressRange()
-    :
-    end_address{YType::str, "end-address"},
-    end_address_xr{YType::str, "end-address-xr"},
-    start_address{YType::str, "start-address"},
-    start_address_xr{YType::str, "start-address-xr"}
-{
-
-    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::~AddressRange()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::has_data() const
-{
-    return end_address.is_set
-	|| end_address_xr.is_set
-	|| start_address.is_set
-	|| start_address_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end_address.yfilter)
-	|| ydk::is_set(end_address_xr.yfilter)
-	|| ydk::is_set(start_address.yfilter)
-	|| ydk::is_set(start_address_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-range";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end_address.is_set || is_set(end_address.yfilter)) leaf_name_data.push_back(end_address.get_name_leafdata());
-    if (end_address_xr.is_set || is_set(end_address_xr.yfilter)) leaf_name_data.push_back(end_address_xr.get_name_leafdata());
-    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
-    if (start_address_xr.is_set || is_set(start_address_xr.yfilter)) leaf_name_data.push_back(start_address_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end-address")
-    {
-        end_address = value;
-        end_address.value_namespace = name_space;
-        end_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-address-xr")
-    {
-        end_address_xr = value;
-        end_address_xr.value_namespace = name_space;
-        end_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-address")
-    {
-        start_address = value;
-        start_address.value_namespace = name_space;
-        start_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-address-xr")
-    {
-        start_address_xr = value;
-        start_address_xr.value_namespace = name_space;
-        start_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end-address")
-    {
-        end_address.yfilter = yfilter;
-    }
-    if(value_path == "end-address-xr")
-    {
-        end_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "start-address")
-    {
-        start_address.yfilter = yfilter;
-    }
-    if(value_path == "start-address-xr")
-    {
-        start_address_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end-address" || name == "end-address-xr" || name == "start-address" || name == "start-address-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Addresses()
-{
-
-    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Addresses::~Addresses()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_data() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_operation() const
-{
-    for (std::size_t index=0; index<address.size(); index++)
-    {
-        if(address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "addresses";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address>();
-        c->parent = this;
-        address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::Address()
-    :
-    prefix{YType::str, "prefix"},
-    prefix_length{YType::uint8, "prefix-length"},
-    prefix_length_xr{YType::uint32, "prefix-length-xr"},
-    prefix_xr{YType::str, "prefix-xr"}
-{
-
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::~Address()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_data() const
-{
-    return prefix.is_set
-	|| prefix_length.is_set
-	|| prefix_length_xr.is_set
-	|| prefix_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(prefix_length_xr.yfilter)
-	|| ydk::is_set(prefix_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (prefix_length_xr.is_set || is_set(prefix_length_xr.yfilter)) leaf_name_data.push_back(prefix_length_xr.get_name_leafdata());
-    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length-xr")
-    {
-        prefix_length_xr = value;
-        prefix_length_xr.value_namespace = name_space;
-        prefix_length_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr = value;
-        prefix_xr.value_namespace = name_space;
-        prefix_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length-xr")
-    {
-        prefix_length_xr.yfilter = yfilter;
-    }
-    if(value_path == "prefix-xr")
-    {
-        prefix_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix" || name == "prefix-length" || name == "prefix-length-xr" || name == "prefix-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Hosts()
-{
-
-    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Hosts::~Hosts()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_data() const
-{
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_operation() const
-{
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hosts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "host")
-    {
-        for(auto const & c : host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host>();
-        c->parent = this;
-        host.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : host)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::Host()
-    :
-    host_address{YType::str, "host-address"},
-    host_address_xr{YType::str, "host-address-xr"}
-{
-
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::~Host()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_data() const
-{
-    return host_address.is_set
-	|| host_address_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(host_address.yfilter)
-	|| ydk::is_set(host_address_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (host_address.is_set || is_set(host_address.yfilter)) leaf_name_data.push_back(host_address.get_name_leafdata());
-    if (host_address_xr.is_set || is_set(host_address_xr.yfilter)) leaf_name_data.push_back(host_address_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "host-address")
-    {
-        host_address = value;
-        host_address.value_namespace = name_space;
-        host_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "host-address-xr")
-    {
-        host_address_xr = value;
-        host_address_xr.value_namespace = name_space;
-        host_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "host-address")
-    {
-        host_address.yfilter = yfilter;
-    }
-    if(value_path == "host-address-xr")
-    {
-        host_address_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host-address" || name == "host-address-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroups()
-{
-
-    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::~NestedGroups()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_data() const
-{
-    for (std::size_t index=0; index<nested_group.size(); index++)
-    {
-        if(nested_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_operation() const
-{
-    for (std::size_t index=0; index<nested_group.size(); index++)
-    {
-        if(nested_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nested-groups";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nested-group")
-    {
-        for(auto const & c : nested_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup>();
-        c->parent = this;
-        nested_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : nested_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nested-group")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::NestedGroup()
-    :
-    nested_group_name{YType::str, "nested-group-name"},
-    nested_group_name_xr{YType::str, "nested-group-name-xr"}
-{
-
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has_data() const
-{
-    return nested_group_name.is_set
-	|| nested_group_name_xr.is_set;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nested_group_name.yfilter)
-	|| ydk::is_set(nested_group_name_xr.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nested_group_name.is_set || is_set(nested_group_name.yfilter)) leaf_name_data.push_back(nested_group_name.get_name_leafdata());
-    if (nested_group_name_xr.is_set || is_set(nested_group_name_xr.yfilter)) leaf_name_data.push_back(nested_group_name_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nested-group-name")
-    {
-        nested_group_name = value;
-        nested_group_name.value_namespace = name_space;
-        nested_group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nested-group-name-xr")
-    {
-        nested_group_name_xr = value;
-        nested_group_name_xr.value_namespace = name_space;
-        nested_group_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nested-group-name")
-    {
-        nested_group_name.yfilter = yfilter;
-    }
-    if(value_path == "nested-group-name-xr")
-    {
-        nested_group_name_xr.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nested-group-name" || name == "nested-group-name-xr")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroups()
-{
-
-    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::~ParentGroups()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_data() const
-{
-    for (std::size_t index=0; index<parent_group.size(); index++)
-    {
-        if(parent_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_operation() const
-{
-    for (std::size_t index=0; index<parent_group.size(); index++)
-    {
-        if(parent_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parent-groups";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parent-group")
-    {
-        for(auto const & c : parent_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup>();
-        c->parent = this;
-        parent_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : parent_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parent-group")
-        return true;
-    return false;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::ParentGroup()
-    :
-    parent_group_name{YType::str, "parent-group-name"},
-    parent_name{YType::str, "parent-name"}
-{
-
-    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
-{
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has_data() const
-{
-    return parent_group_name.is_set
-	|| parent_name.is_set;
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(parent_group_name.yfilter)
-	|| ydk::is_set(parent_name.yfilter);
-}
-
-std::string ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parent-group" <<"[parent-group-name='" <<parent_group_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (parent_group_name.is_set || is_set(parent_group_name.yfilter)) leaf_name_data.push_back(parent_group_name.get_name_leafdata());
-    if (parent_name.is_set || is_set(parent_name.yfilter)) leaf_name_data.push_back(parent_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "parent-group-name")
-    {
-        parent_group_name = value;
-        parent_group_name.value_namespace = name_space;
-        parent_group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-name")
-    {
-        parent_name = value;
-        parent_name.value_namespace = name_space;
-        parent_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "parent-group-name")
-    {
-        parent_group_name.yfilter = yfilter;
-    }
-    if(value_path == "parent-name")
-    {
-        parent_name.yfilter = yfilter;
-    }
-}
-
-bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parent-group-name" || name == "parent-name")
+    if(name == "port" || name == "network")
         return true;
     return false;
 }
@@ -3096,13 +327,13 @@ ObjectGroup::Port::Objects::Object::Object()
     	,
     nested_groups(std::make_shared<ObjectGroup::Port::Objects::Object::NestedGroups>())
 	,operators(std::make_shared<ObjectGroup::Port::Objects::Object::Operators>())
-	,parent_groups(std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups>())
 	,port_ranges(std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges>())
+	,parent_groups(std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups>())
 {
     nested_groups->parent = this;
     operators->parent = this;
-    parent_groups->parent = this;
     port_ranges->parent = this;
+    parent_groups->parent = this;
 
     yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -3116,8 +347,8 @@ bool ObjectGroup::Port::Objects::Object::has_data() const
     return object_name.is_set
 	|| (nested_groups !=  nullptr && nested_groups->has_data())
 	|| (operators !=  nullptr && operators->has_data())
-	|| (parent_groups !=  nullptr && parent_groups->has_data())
-	|| (port_ranges !=  nullptr && port_ranges->has_data());
+	|| (port_ranges !=  nullptr && port_ranges->has_data())
+	|| (parent_groups !=  nullptr && parent_groups->has_data());
 }
 
 bool ObjectGroup::Port::Objects::Object::has_operation() const
@@ -3126,8 +357,8 @@ bool ObjectGroup::Port::Objects::Object::has_operation() const
 	|| ydk::is_set(object_name.yfilter)
 	|| (nested_groups !=  nullptr && nested_groups->has_operation())
 	|| (operators !=  nullptr && operators->has_operation())
-	|| (parent_groups !=  nullptr && parent_groups->has_operation())
-	|| (port_ranges !=  nullptr && port_ranges->has_operation());
+	|| (port_ranges !=  nullptr && port_ranges->has_operation())
+	|| (parent_groups !=  nullptr && parent_groups->has_operation());
 }
 
 std::string ObjectGroup::Port::Objects::Object::get_absolute_path() const
@@ -3174,15 +405,6 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::get_child_by_name(co
         return operators;
     }
 
-    if(child_yang_name == "parent-groups")
-    {
-        if(parent_groups == nullptr)
-        {
-            parent_groups = std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups>();
-        }
-        return parent_groups;
-    }
-
     if(child_yang_name == "port-ranges")
     {
         if(port_ranges == nullptr)
@@ -3190,6 +412,15 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::get_child_by_name(co
             port_ranges = std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges>();
         }
         return port_ranges;
+    }
+
+    if(child_yang_name == "parent-groups")
+    {
+        if(parent_groups == nullptr)
+        {
+            parent_groups = std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups>();
+        }
+        return parent_groups;
     }
 
     return nullptr;
@@ -3208,14 +439,14 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Objec
         children["operators"] = operators;
     }
 
-    if(parent_groups != nullptr)
-    {
-        children["parent-groups"] = parent_groups;
-    }
-
     if(port_ranges != nullptr)
     {
         children["port-ranges"] = port_ranges;
+    }
+
+    if(parent_groups != nullptr)
+    {
+        children["parent-groups"] = parent_groups;
     }
 
     return children;
@@ -3241,7 +472,7 @@ void ObjectGroup::Port::Objects::Object::set_filter(const std::string & value_pa
 
 bool ObjectGroup::Port::Objects::Object::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nested-groups" || name == "operators" || name == "parent-groups" || name == "port-ranges" || name == "object-name")
+    if(name == "nested-groups" || name == "operators" || name == "port-ranges" || name == "parent-groups" || name == "object-name")
         return true;
     return false;
 }
@@ -3525,8 +756,8 @@ bool ObjectGroup::Port::Objects::Object::Operators::has_leaf_or_child_of_name(co
 ObjectGroup::Port::Objects::Object::Operators::Operator_::Operator_()
     :
     operator_type{YType::enumeration, "operator-type"},
-    operator_type_xr{YType::uint32, "operator-type-xr"},
     port{YType::str, "port"},
+    operator_type_xr{YType::uint32, "operator-type-xr"},
     port_xr{YType::uint32, "port-xr"}
 {
 
@@ -3540,8 +771,8 @@ ObjectGroup::Port::Objects::Object::Operators::Operator_::~Operator_()
 bool ObjectGroup::Port::Objects::Object::Operators::Operator_::has_data() const
 {
     return operator_type.is_set
-	|| operator_type_xr.is_set
 	|| port.is_set
+	|| operator_type_xr.is_set
 	|| port_xr.is_set;
 }
 
@@ -3549,8 +780,8 @@ bool ObjectGroup::Port::Objects::Object::Operators::Operator_::has_operation() c
 {
     return is_set(yfilter)
 	|| ydk::is_set(operator_type.yfilter)
-	|| ydk::is_set(operator_type_xr.yfilter)
 	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(operator_type_xr.yfilter)
 	|| ydk::is_set(port_xr.yfilter);
 }
 
@@ -3566,8 +797,8 @@ std::vector<std::pair<std::string, LeafData> > ObjectGroup::Port::Objects::Objec
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (operator_type.is_set || is_set(operator_type.yfilter)) leaf_name_data.push_back(operator_type.get_name_leafdata());
-    if (operator_type_xr.is_set || is_set(operator_type_xr.yfilter)) leaf_name_data.push_back(operator_type_xr.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (operator_type_xr.is_set || is_set(operator_type_xr.yfilter)) leaf_name_data.push_back(operator_type_xr.get_name_leafdata());
     if (port_xr.is_set || is_set(port_xr.yfilter)) leaf_name_data.push_back(port_xr.get_name_leafdata());
 
     return leaf_name_data;
@@ -3593,17 +824,17 @@ void ObjectGroup::Port::Objects::Object::Operators::Operator_::set_value(const s
         operator_type.value_namespace = name_space;
         operator_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "operator-type-xr")
-    {
-        operator_type_xr = value;
-        operator_type_xr.value_namespace = name_space;
-        operator_type_xr.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "port")
     {
         port = value;
         port.value_namespace = name_space;
         port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operator-type-xr")
+    {
+        operator_type_xr = value;
+        operator_type_xr.value_namespace = name_space;
+        operator_type_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-xr")
     {
@@ -3619,13 +850,13 @@ void ObjectGroup::Port::Objects::Object::Operators::Operator_::set_filter(const 
     {
         operator_type.yfilter = yfilter;
     }
-    if(value_path == "operator-type-xr")
-    {
-        operator_type_xr.yfilter = yfilter;
-    }
     if(value_path == "port")
     {
         port.yfilter = yfilter;
+    }
+    if(value_path == "operator-type-xr")
+    {
+        operator_type_xr.yfilter = yfilter;
     }
     if(value_path == "port-xr")
     {
@@ -3635,7 +866,218 @@ void ObjectGroup::Port::Objects::Object::Operators::Operator_::set_filter(const 
 
 bool ObjectGroup::Port::Objects::Object::Operators::Operator_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "operator-type" || name == "operator-type-xr" || name == "port" || name == "port-xr")
+    if(name == "operator-type" || name == "port" || name == "operator-type-xr" || name == "port-xr")
+        return true;
+    return false;
+}
+
+ObjectGroup::Port::Objects::Object::PortRanges::PortRanges()
+{
+
+    yang_name = "port-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Port::Objects::Object::PortRanges::~PortRanges()
+{
+}
+
+bool ObjectGroup::Port::Objects::Object::PortRanges::has_data() const
+{
+    for (std::size_t index=0; index<port_range.size(); index++)
+    {
+        if(port_range[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Port::Objects::Object::PortRanges::has_operation() const
+{
+    for (std::size_t index=0; index<port_range.size(); index++)
+    {
+        if(port_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Port::Objects::Object::PortRanges::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-ranges";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Port::Objects::Object::PortRanges::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "port-range")
+    {
+        for(auto const & c : port_range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges::PortRange>();
+        c->parent = this;
+        port_range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::PortRanges::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : port_range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Port::Objects::Object::PortRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Port::Objects::Object::PortRanges::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Port::Objects::Object::PortRanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-range")
+        return true;
+    return false;
+}
+
+ObjectGroup::Port::Objects::Object::PortRanges::PortRange::PortRange()
+    :
+    start_port{YType::str, "start-port"},
+    end_port{YType::str, "end-port"},
+    start_port_xr{YType::uint32, "start-port-xr"},
+    end_port_xr{YType::uint32, "end-port-xr"}
+{
+
+    yang_name = "port-range"; yang_parent_name = "port-ranges"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Port::Objects::Object::PortRanges::PortRange::~PortRange()
+{
+}
+
+bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_data() const
+{
+    return start_port.is_set
+	|| end_port.is_set
+	|| start_port_xr.is_set
+	|| end_port_xr.is_set;
+}
+
+bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_port.yfilter)
+	|| ydk::is_set(end_port.yfilter)
+	|| ydk::is_set(start_port_xr.yfilter)
+	|| ydk::is_set(end_port_xr.yfilter);
+}
+
+std::string ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_port.is_set || is_set(start_port.yfilter)) leaf_name_data.push_back(start_port.get_name_leafdata());
+    if (end_port.is_set || is_set(end_port.yfilter)) leaf_name_data.push_back(end_port.get_name_leafdata());
+    if (start_port_xr.is_set || is_set(start_port_xr.yfilter)) leaf_name_data.push_back(start_port_xr.get_name_leafdata());
+    if (end_port_xr.is_set || is_set(end_port_xr.yfilter)) leaf_name_data.push_back(end_port_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Port::Objects::Object::PortRanges::PortRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-port")
+    {
+        start_port = value;
+        start_port.value_namespace = name_space;
+        start_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-port")
+    {
+        end_port = value;
+        end_port.value_namespace = name_space;
+        end_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-port-xr")
+    {
+        start_port_xr = value;
+        start_port_xr.value_namespace = name_space;
+        start_port_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-port-xr")
+    {
+        end_port_xr = value;
+        end_port_xr.value_namespace = name_space;
+        end_port_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Port::Objects::Object::PortRanges::PortRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-port")
+    {
+        start_port.yfilter = yfilter;
+    }
+    if(value_path == "end-port")
+    {
+        end_port.yfilter = yfilter;
+    }
+    if(value_path == "start-port-xr")
+    {
+        start_port_xr.yfilter = yfilter;
+    }
+    if(value_path == "end-port-xr")
+    {
+        end_port_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-port" || name == "end-port" || name == "start-port-xr" || name == "end-port-xr")
         return true;
     return false;
 }
@@ -3823,44 +1265,49 @@ bool ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::has_leaf_or_
     return false;
 }
 
-ObjectGroup::Port::Objects::Object::PortRanges::PortRanges()
+ObjectGroup::Network::Network()
+    :
+    ipv6(std::make_shared<ObjectGroup::Network::Ipv6>())
+	,ipv4(std::make_shared<ObjectGroup::Network::Ipv4>())
 {
+    ipv6->parent = this;
+    ipv4->parent = this;
 
-    yang_name = "port-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ObjectGroup::Port::Objects::Object::PortRanges::~PortRanges()
+ObjectGroup::Network::~Network()
 {
 }
 
-bool ObjectGroup::Port::Objects::Object::PortRanges::has_data() const
+bool ObjectGroup::Network::has_data() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
-    {
-        if(port_range[index]->has_data())
-            return true;
-    }
-    return false;
+    return (ipv6 !=  nullptr && ipv6->has_data())
+	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
 
-bool ObjectGroup::Port::Objects::Object::PortRanges::has_operation() const
+bool ObjectGroup::Network::has_operation() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
-    {
-        if(port_range[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
-std::string ObjectGroup::Port::Objects::Object::PortRanges::get_segment_path() const
+std::string ObjectGroup::Network::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-ranges";
+    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Port::Objects::Object::PortRanges::get_name_leaf_data() const
+std::string ObjectGroup::Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3869,11 +1316,205 @@ std::vector<std::pair<std::string, LeafData> > ObjectGroup::Port::Objects::Objec
 
 }
 
-std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ObjectGroup::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "port-range")
+    if(child_yang_name == "ipv6")
     {
-        for(auto const & c : port_range)
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<ObjectGroup::Network::Ipv6>();
+        }
+        return ipv6;
+    }
+
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<ObjectGroup::Network::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv6 != nullptr)
+    {
+        children["ipv6"] = ipv6;
+    }
+
+    if(ipv4 != nullptr)
+    {
+        children["ipv4"] = ipv4;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6" || name == "ipv4")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Ipv6()
+    :
+    objects(std::make_shared<ObjectGroup::Network::Ipv6::Objects>())
+{
+    objects->parent = this;
+
+    yang_name = "ipv6"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectGroup::Network::Ipv6::~Ipv6()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::has_data() const
+{
+    return (objects !=  nullptr && objects->has_data());
+}
+
+bool ObjectGroup::Network::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| (objects !=  nullptr && objects->has_operation());
+}
+
+std::string ObjectGroup::Network::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectGroup::Network::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "objects")
+    {
+        if(objects == nullptr)
+        {
+            objects = std::make_shared<ObjectGroup::Network::Ipv6::Objects>();
+        }
+        return objects;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(objects != nullptr)
+    {
+        children["objects"] = objects;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "objects")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Objects()
+{
+
+    yang_name = "objects"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::~Objects()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::has_data() const
+{
+    for (std::size_t index=0; index<object.size(); index++)
+    {
+        if(object[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::has_operation() const
+{
+    for (std::size_t index=0; index<object.size(); index++)
+    {
+        if(object[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "objects";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "object")
+    {
+        for(auto const & c : object)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3881,19 +1522,19 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::get_chil
                 return c;
             }
         }
-        auto c = std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges::PortRange>();
+        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object>();
         c->parent = this;
-        port_range.push_back(c);
+        object.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::PortRanges::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : port_range)
+    for (auto const & c : object)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3901,173 +1542,2497 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Objec
     return children;
 }
 
-void ObjectGroup::Port::Objects::Object::PortRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ObjectGroup::Network::Ipv6::Objects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ObjectGroup::Port::Objects::Object::PortRanges::set_filter(const std::string & value_path, YFilter yfilter)
+void ObjectGroup::Network::Ipv6::Objects::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ObjectGroup::Port::Objects::Object::PortRanges::has_leaf_or_child_of_name(const std::string & name) const
+bool ObjectGroup::Network::Ipv6::Objects::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "port-range")
+    if(name == "object")
         return true;
     return false;
 }
 
-ObjectGroup::Port::Objects::Object::PortRanges::PortRange::PortRange()
+ObjectGroup::Network::Ipv6::Objects::Object::Object()
     :
-    end_port{YType::str, "end-port"},
-    end_port_xr{YType::uint32, "end-port-xr"},
-    start_port{YType::str, "start-port"},
-    start_port_xr{YType::uint32, "start-port-xr"}
+    object_name{YType::str, "object-name"}
+    	,
+    nested_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups>())
+	,addresses(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses>())
+	,address_ranges(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges>())
+	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>())
+	,hosts(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts>())
 {
+    nested_groups->parent = this;
+    addresses->parent = this;
+    address_ranges->parent = this;
+    parent_groups->parent = this;
+    hosts->parent = this;
 
-    yang_name = "port-range"; yang_parent_name = "port-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ObjectGroup::Port::Objects::Object::PortRanges::PortRange::~PortRange()
+ObjectGroup::Network::Ipv6::Objects::Object::~Object()
 {
 }
 
-bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_data() const
+bool ObjectGroup::Network::Ipv6::Objects::Object::has_data() const
 {
-    return end_port.is_set
-	|| end_port_xr.is_set
-	|| start_port.is_set
-	|| start_port_xr.is_set;
+    return object_name.is_set
+	|| (nested_groups !=  nullptr && nested_groups->has_data())
+	|| (addresses !=  nullptr && addresses->has_data())
+	|| (address_ranges !=  nullptr && address_ranges->has_data())
+	|| (parent_groups !=  nullptr && parent_groups->has_data())
+	|| (hosts !=  nullptr && hosts->has_data());
 }
 
-bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_operation() const
+bool ObjectGroup::Network::Ipv6::Objects::Object::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(end_port.yfilter)
-	|| ydk::is_set(end_port_xr.yfilter)
-	|| ydk::is_set(start_port.yfilter)
-	|| ydk::is_set(start_port_xr.yfilter);
+	|| ydk::is_set(object_name.yfilter)
+	|| (nested_groups !=  nullptr && nested_groups->has_operation())
+	|| (addresses !=  nullptr && addresses->has_operation())
+	|| (address_ranges !=  nullptr && address_ranges->has_operation())
+	|| (parent_groups !=  nullptr && parent_groups->has_operation())
+	|| (hosts !=  nullptr && hosts->has_operation());
 }
 
-std::string ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_segment_path() const
+std::string ObjectGroup::Network::Ipv6::Objects::Object::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-range";
+    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv6/objects/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_name_leaf_data() const
+std::string ObjectGroup::Network::Ipv6::Objects::Object::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object" <<"[object-name='" <<object_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_port.is_set || is_set(end_port.yfilter)) leaf_name_data.push_back(end_port.get_name_leafdata());
-    if (end_port_xr.is_set || is_set(end_port_xr.yfilter)) leaf_name_data.push_back(end_port_xr.get_name_leafdata());
-    if (start_port.is_set || is_set(start_port.yfilter)) leaf_name_data.push_back(start_port.get_name_leafdata());
-    if (start_port_xr.is_set || is_set(start_port_xr.yfilter)) leaf_name_data.push_back(start_port_xr.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nested-groups")
+    {
+        if(nested_groups == nullptr)
+        {
+            nested_groups = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups>();
+        }
+        return nested_groups;
+    }
+
+    if(child_yang_name == "addresses")
+    {
+        if(addresses == nullptr)
+        {
+            addresses = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses>();
+        }
+        return addresses;
+    }
+
+    if(child_yang_name == "address-ranges")
+    {
+        if(address_ranges == nullptr)
+        {
+            address_ranges = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges>();
+        }
+        return address_ranges;
+    }
+
+    if(child_yang_name == "parent-groups")
+    {
+        if(parent_groups == nullptr)
+        {
+            parent_groups = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>();
+        }
+        return parent_groups;
+    }
+
+    if(child_yang_name == "hosts")
+    {
+        if(hosts == nullptr)
+        {
+            hosts = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts>();
+        }
+        return hosts;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nested_groups != nullptr)
+    {
+        children["nested-groups"] = nested_groups;
+    }
+
+    if(addresses != nullptr)
+    {
+        children["addresses"] = addresses;
+    }
+
+    if(address_ranges != nullptr)
+    {
+        children["address-ranges"] = address_ranges;
+    }
+
+    if(parent_groups != nullptr)
+    {
+        children["parent-groups"] = parent_groups;
+    }
+
+    if(hosts != nullptr)
+    {
+        children["hosts"] = hosts;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-name")
+    {
+        object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nested-groups" || name == "addresses" || name == "address-ranges" || name == "parent-groups" || name == "hosts" || name == "object-name")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroups()
+{
+
+    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::~NestedGroups()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_data() const
+{
+    for (std::size_t index=0; index<nested_group.size(); index++)
+    {
+        if(nested_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_operation() const
+{
+    for (std::size_t index=0; index<nested_group.size(); index++)
+    {
+        if(nested_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nested-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nested-group")
+    {
+        for(auto const & c : nested_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup>();
+        c->parent = this;
+        nested_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : nested_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nested-group")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::NestedGroup()
+    :
+    nested_group_name{YType::str, "nested-group-name"},
+    nested_group_name_xr{YType::str, "nested-group-name-xr"}
+{
+
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has_data() const
+{
+    return nested_group_name.is_set
+	|| nested_group_name_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nested_group_name.yfilter)
+	|| ydk::is_set(nested_group_name_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nested_group_name.is_set || is_set(nested_group_name.yfilter)) leaf_name_data.push_back(nested_group_name.get_name_leafdata());
+    if (nested_group_name_xr.is_set || is_set(nested_group_name_xr.yfilter)) leaf_name_data.push_back(nested_group_name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ObjectGroup::Port::Objects::Object::PortRanges::PortRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "end-port")
+    if(value_path == "nested-group-name")
     {
-        end_port = value;
-        end_port.value_namespace = name_space;
-        end_port.value_namespace_prefix = name_space_prefix;
+        nested_group_name = value;
+        nested_group_name.value_namespace = name_space;
+        nested_group_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "end-port-xr")
+    if(value_path == "nested-group-name-xr")
     {
-        end_port_xr = value;
-        end_port_xr.value_namespace = name_space;
-        end_port_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-port")
-    {
-        start_port = value;
-        start_port.value_namespace = name_space;
-        start_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-port-xr")
-    {
-        start_port_xr = value;
-        start_port_xr.value_namespace = name_space;
-        start_port_xr.value_namespace_prefix = name_space_prefix;
+        nested_group_name_xr = value;
+        nested_group_name_xr.value_namespace = name_space;
+        nested_group_name_xr.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ObjectGroup::Port::Objects::Object::PortRanges::PortRange::set_filter(const std::string & value_path, YFilter yfilter)
+void ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "end-port")
+    if(value_path == "nested-group-name")
     {
-        end_port.yfilter = yfilter;
+        nested_group_name.yfilter = yfilter;
     }
-    if(value_path == "end-port-xr")
+    if(value_path == "nested-group-name-xr")
     {
-        end_port_xr.yfilter = yfilter;
-    }
-    if(value_path == "start-port")
-    {
-        start_port.yfilter = yfilter;
-    }
-    if(value_path == "start-port-xr")
-    {
-        start_port_xr.yfilter = yfilter;
+        nested_group_name_xr.yfilter = yfilter;
     }
 }
 
-bool ObjectGroup::Port::Objects::Object::PortRanges::PortRange::has_leaf_or_child_of_name(const std::string & name) const
+bool ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "end-port" || name == "end-port-xr" || name == "start-port" || name == "start-port-xr")
+    if(name == "nested-group-name" || name == "nested-group-name-xr")
         return true;
     return false;
 }
 
-const Enum::YLeaf Port::echo {7, "echo"};
-const Enum::YLeaf Port::discard {9, "discard"};
-const Enum::YLeaf Port::daytime {13, "daytime"};
-const Enum::YLeaf Port::chargen {19, "chargen"};
-const Enum::YLeaf Port::ftp_data {20, "ftp-data"};
-const Enum::YLeaf Port::ftp {21, "ftp"};
-const Enum::YLeaf Port::ssh {22, "ssh"};
-const Enum::YLeaf Port::telnet {23, "telnet"};
-const Enum::YLeaf Port::smtp {25, "smtp"};
-const Enum::YLeaf Port::time {37, "time"};
-const Enum::YLeaf Port::nicname {43, "nicname"};
-const Enum::YLeaf Port::tacacs {49, "tacacs"};
-const Enum::YLeaf Port::domain {53, "domain"};
-const Enum::YLeaf Port::gopher {70, "gopher"};
-const Enum::YLeaf Port::finger {79, "finger"};
-const Enum::YLeaf Port::www {80, "www"};
-const Enum::YLeaf Port::host_name {101, "host-name"};
-const Enum::YLeaf Port::pop2 {109, "pop2"};
-const Enum::YLeaf Port::pop3 {110, "pop3"};
-const Enum::YLeaf Port::sun_rpc {111, "sun-rpc"};
-const Enum::YLeaf Port::ident {113, "ident"};
-const Enum::YLeaf Port::nntp {119, "nntp"};
-const Enum::YLeaf Port::bgp {179, "bgp"};
-const Enum::YLeaf Port::irc {194, "irc"};
-const Enum::YLeaf Port::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::YLeaf Port::exec {512, "exec"};
-const Enum::YLeaf Port::login {513, "login"};
-const Enum::YLeaf Port::cmd {514, "cmd"};
-const Enum::YLeaf Port::lpd {515, "lpd"};
-const Enum::YLeaf Port::uucp {540, "uucp"};
-const Enum::YLeaf Port::klogin {543, "klogin"};
-const Enum::YLeaf Port::kshell {544, "kshell"};
-const Enum::YLeaf Port::talk {517, "talk"};
-const Enum::YLeaf Port::ldp {646, "ldp"};
+ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Addresses()
+{
+
+    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::Addresses::~Addresses()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_data() const
+{
+    for (std::size_t index=0; index<address.size(); index++)
+    {
+        if(address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_operation() const
+{
+    for (std::size_t index=0; index<address.size(); index++)
+    {
+        if(address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        for(auto const & c : address)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address>();
+        c->parent = this;
+        address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::Address()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"},
+    prefix_xr{YType::str, "prefix-xr"},
+    prefix_length_xr{YType::uint32, "prefix-length-xr"}
+{
+
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::~Address()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| prefix_xr.is_set
+	|| prefix_length_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(prefix_length_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (prefix_length_xr.is_set || is_set(prefix_length_xr.yfilter)) leaf_name_data.push_back(prefix_length_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length-xr")
+    {
+        prefix_length_xr = value;
+        prefix_length_xr.value_namespace = name_space;
+        prefix_length_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length-xr")
+    {
+        prefix_length_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "prefix-xr" || name == "prefix-length-xr")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRanges()
+{
+
+    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::~AddressRanges()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_data() const
+{
+    for (std::size_t index=0; index<address_range.size(); index++)
+    {
+        if(address_range[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_operation() const
+{
+    for (std::size_t index=0; index<address_range.size(); index++)
+    {
+        if(address_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-ranges";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-range")
+    {
+        for(auto const & c : address_range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange>();
+        c->parent = this;
+        address_range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : address_range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-range")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::AddressRange()
+    :
+    start_address{YType::str, "start-address"},
+    end_address{YType::str, "end-address"},
+    start_address_xr{YType::str, "start-address-xr"},
+    end_address_xr{YType::str, "end-address-xr"}
+{
+
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::~AddressRange()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::has_data() const
+{
+    return start_address.is_set
+	|| end_address.is_set
+	|| start_address_xr.is_set
+	|| end_address_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_address.yfilter)
+	|| ydk::is_set(end_address.yfilter)
+	|| ydk::is_set(start_address_xr.yfilter)
+	|| ydk::is_set(end_address_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+    if (end_address.is_set || is_set(end_address.yfilter)) leaf_name_data.push_back(end_address.get_name_leafdata());
+    if (start_address_xr.is_set || is_set(start_address_xr.yfilter)) leaf_name_data.push_back(start_address_xr.get_name_leafdata());
+    if (end_address_xr.is_set || is_set(end_address_xr.yfilter)) leaf_name_data.push_back(end_address_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-address")
+    {
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-address")
+    {
+        end_address = value;
+        end_address.value_namespace = name_space;
+        end_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-address-xr")
+    {
+        start_address_xr = value;
+        start_address_xr.value_namespace = name_space;
+        start_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-address-xr")
+    {
+        end_address_xr = value;
+        end_address_xr.value_namespace = name_space;
+        end_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+    if(value_path == "end-address")
+    {
+        end_address.yfilter = yfilter;
+    }
+    if(value_path == "start-address-xr")
+    {
+        start_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "end-address-xr")
+    {
+        end_address_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-address" || name == "end-address" || name == "start-address-xr" || name == "end-address-xr")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroups()
+{
+
+    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::~ParentGroups()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_data() const
+{
+    for (std::size_t index=0; index<parent_group.size(); index++)
+    {
+        if(parent_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_operation() const
+{
+    for (std::size_t index=0; index<parent_group.size(); index++)
+    {
+        if(parent_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parent-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "parent-group")
+    {
+        for(auto const & c : parent_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup>();
+        c->parent = this;
+        parent_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : parent_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parent-group")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::ParentGroup()
+    :
+    parent_group_name{YType::str, "parent-group-name"},
+    parent_name{YType::str, "parent-name"}
+{
+
+    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has_data() const
+{
+    return parent_group_name.is_set
+	|| parent_name.is_set;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(parent_group_name.yfilter)
+	|| ydk::is_set(parent_name.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parent-group" <<"[parent-group-name='" <<parent_group_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (parent_group_name.is_set || is_set(parent_group_name.yfilter)) leaf_name_data.push_back(parent_group_name.get_name_leafdata());
+    if (parent_name.is_set || is_set(parent_name.yfilter)) leaf_name_data.push_back(parent_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "parent-group-name")
+    {
+        parent_group_name = value;
+        parent_group_name.value_namespace = name_space;
+        parent_group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-name")
+    {
+        parent_name = value;
+        parent_name.value_namespace = name_space;
+        parent_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "parent-group-name")
+    {
+        parent_group_name.yfilter = yfilter;
+    }
+    if(value_path == "parent-name")
+    {
+        parent_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parent-group-name" || name == "parent-name")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Hosts()
+{
+
+    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::Hosts::~Hosts()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_data() const
+{
+    for (std::size_t index=0; index<host.size(); index++)
+    {
+        if(host[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_operation() const
+{
+    for (std::size_t index=0; index<host.size(); index++)
+    {
+        if(host[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hosts";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "host")
+    {
+        for(auto const & c : host)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host>();
+        c->parent = this;
+        host.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : host)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::Host()
+    :
+    host_address{YType::str, "host-address"},
+    host_address_xr{YType::str, "host-address-xr"}
+{
+
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::~Host()
+{
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_data() const
+{
+    return host_address.is_set
+	|| host_address_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(host_address.yfilter)
+	|| ydk::is_set(host_address_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (host_address.is_set || is_set(host_address.yfilter)) leaf_name_data.push_back(host_address.get_name_leafdata());
+    if (host_address_xr.is_set || is_set(host_address_xr.yfilter)) leaf_name_data.push_back(host_address_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "host-address")
+    {
+        host_address = value;
+        host_address.value_namespace = name_space;
+        host_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "host-address-xr")
+    {
+        host_address_xr = value;
+        host_address_xr.value_namespace = name_space;
+        host_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host-address")
+    {
+        host_address.yfilter = yfilter;
+    }
+    if(value_path == "host-address-xr")
+    {
+        host_address_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-address" || name == "host-address-xr")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Ipv4()
+    :
+    objects(std::make_shared<ObjectGroup::Network::Ipv4::Objects>())
+{
+    objects->parent = this;
+
+    yang_name = "ipv4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectGroup::Network::Ipv4::~Ipv4()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::has_data() const
+{
+    return (objects !=  nullptr && objects->has_data());
+}
+
+bool ObjectGroup::Network::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| (objects !=  nullptr && objects->has_operation());
+}
+
+std::string ObjectGroup::Network::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectGroup::Network::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "objects")
+    {
+        if(objects == nullptr)
+        {
+            objects = std::make_shared<ObjectGroup::Network::Ipv4::Objects>();
+        }
+        return objects;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(objects != nullptr)
+    {
+        children["objects"] = objects;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "objects")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Objects()
+{
+
+    yang_name = "objects"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::~Objects()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::has_data() const
+{
+    for (std::size_t index=0; index<object.size(); index++)
+    {
+        if(object[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::has_operation() const
+{
+    for (std::size_t index=0; index<object.size(); index++)
+    {
+        if(object[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "objects";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "object")
+    {
+        for(auto const & c : object)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object>();
+        c->parent = this;
+        object.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : object)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv4::Objects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Object()
+    :
+    object_name{YType::str, "object-name"}
+    	,
+    nested_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups>())
+	,addresses(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses>())
+	,address_ranges(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges>())
+	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>())
+	,hosts(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts>())
+{
+    nested_groups->parent = this;
+    addresses->parent = this;
+    address_ranges->parent = this;
+    parent_groups->parent = this;
+    hosts->parent = this;
+
+    yang_name = "object"; yang_parent_name = "objects"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::~Object()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::has_data() const
+{
+    return object_name.is_set
+	|| (nested_groups !=  nullptr && nested_groups->has_data())
+	|| (addresses !=  nullptr && addresses->has_data())
+	|| (address_ranges !=  nullptr && address_ranges->has_data())
+	|| (parent_groups !=  nullptr && parent_groups->has_data())
+	|| (hosts !=  nullptr && hosts->has_data());
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| (nested_groups !=  nullptr && nested_groups->has_operation())
+	|| (addresses !=  nullptr && addresses->has_operation())
+	|| (address_ranges !=  nullptr && address_ranges->has_operation())
+	|| (parent_groups !=  nullptr && parent_groups->has_operation())
+	|| (hosts !=  nullptr && hosts->has_operation());
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-objmgr-oper:object-group/network/ipv4/objects/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "object" <<"[object-name='" <<object_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nested-groups")
+    {
+        if(nested_groups == nullptr)
+        {
+            nested_groups = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups>();
+        }
+        return nested_groups;
+    }
+
+    if(child_yang_name == "addresses")
+    {
+        if(addresses == nullptr)
+        {
+            addresses = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses>();
+        }
+        return addresses;
+    }
+
+    if(child_yang_name == "address-ranges")
+    {
+        if(address_ranges == nullptr)
+        {
+            address_ranges = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges>();
+        }
+        return address_ranges;
+    }
+
+    if(child_yang_name == "parent-groups")
+    {
+        if(parent_groups == nullptr)
+        {
+            parent_groups = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>();
+        }
+        return parent_groups;
+    }
+
+    if(child_yang_name == "hosts")
+    {
+        if(hosts == nullptr)
+        {
+            hosts = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts>();
+        }
+        return hosts;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nested_groups != nullptr)
+    {
+        children["nested-groups"] = nested_groups;
+    }
+
+    if(addresses != nullptr)
+    {
+        children["addresses"] = addresses;
+    }
+
+    if(address_ranges != nullptr)
+    {
+        children["address-ranges"] = address_ranges;
+    }
+
+    if(parent_groups != nullptr)
+    {
+        children["parent-groups"] = parent_groups;
+    }
+
+    if(hosts != nullptr)
+    {
+        children["hosts"] = hosts;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "object-name")
+    {
+        object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nested-groups" || name == "addresses" || name == "address-ranges" || name == "parent-groups" || name == "hosts" || name == "object-name")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroups()
+{
+
+    yang_name = "nested-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::~NestedGroups()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_data() const
+{
+    for (std::size_t index=0; index<nested_group.size(); index++)
+    {
+        if(nested_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_operation() const
+{
+    for (std::size_t index=0; index<nested_group.size(); index++)
+    {
+        if(nested_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nested-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nested-group")
+    {
+        for(auto const & c : nested_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup>();
+        c->parent = this;
+        nested_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : nested_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nested-group")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::NestedGroup()
+    :
+    nested_group_name{YType::str, "nested-group-name"},
+    nested_group_name_xr{YType::str, "nested-group-name-xr"}
+{
+
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::~NestedGroup()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has_data() const
+{
+    return nested_group_name.is_set
+	|| nested_group_name_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nested_group_name.yfilter)
+	|| ydk::is_set(nested_group_name_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nested_group_name.is_set || is_set(nested_group_name.yfilter)) leaf_name_data.push_back(nested_group_name.get_name_leafdata());
+    if (nested_group_name_xr.is_set || is_set(nested_group_name_xr.yfilter)) leaf_name_data.push_back(nested_group_name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nested-group-name")
+    {
+        nested_group_name = value;
+        nested_group_name.value_namespace = name_space;
+        nested_group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nested-group-name-xr")
+    {
+        nested_group_name_xr = value;
+        nested_group_name_xr.value_namespace = name_space;
+        nested_group_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nested-group-name")
+    {
+        nested_group_name.yfilter = yfilter;
+    }
+    if(value_path == "nested-group-name-xr")
+    {
+        nested_group_name_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nested-group-name" || name == "nested-group-name-xr")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Addresses()
+{
+
+    yang_name = "addresses"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Addresses::~Addresses()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_data() const
+{
+    for (std::size_t index=0; index<address.size(); index++)
+    {
+        if(address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_operation() const
+{
+    for (std::size_t index=0; index<address.size(); index++)
+    {
+        if(address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        for(auto const & c : address)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address>();
+        c->parent = this;
+        address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::Address()
+    :
+    prefix{YType::str, "prefix"},
+    prefix_length{YType::uint8, "prefix-length"},
+    prefix_xr{YType::str, "prefix-xr"},
+    prefix_length_xr{YType::uint32, "prefix-length-xr"}
+{
+
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::~Address()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_data() const
+{
+    return prefix.is_set
+	|| prefix_length.is_set
+	|| prefix_xr.is_set
+	|| prefix_length_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(prefix_xr.yfilter)
+	|| ydk::is_set(prefix_length_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix_xr.is_set || is_set(prefix_xr.yfilter)) leaf_name_data.push_back(prefix_xr.get_name_leafdata());
+    if (prefix_length_xr.is_set || is_set(prefix_length_xr.yfilter)) leaf_name_data.push_back(prefix_length_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr = value;
+        prefix_xr.value_namespace = name_space;
+        prefix_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length-xr")
+    {
+        prefix_length_xr = value;
+        prefix_length_xr.value_namespace = name_space;
+        prefix_length_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "prefix-xr")
+    {
+        prefix_xr.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length-xr")
+    {
+        prefix_length_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "prefix-xr" || name == "prefix-length-xr")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRanges()
+{
+
+    yang_name = "address-ranges"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::~AddressRanges()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_data() const
+{
+    for (std::size_t index=0; index<address_range.size(); index++)
+    {
+        if(address_range[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_operation() const
+{
+    for (std::size_t index=0; index<address_range.size(); index++)
+    {
+        if(address_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-ranges";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-range")
+    {
+        for(auto const & c : address_range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange>();
+        c->parent = this;
+        address_range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : address_range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-range")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::AddressRange()
+    :
+    start_address{YType::str, "start-address"},
+    end_address{YType::str, "end-address"},
+    start_address_xr{YType::str, "start-address-xr"},
+    end_address_xr{YType::str, "end-address-xr"}
+{
+
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::~AddressRange()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::has_data() const
+{
+    return start_address.is_set
+	|| end_address.is_set
+	|| start_address_xr.is_set
+	|| end_address_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_address.yfilter)
+	|| ydk::is_set(end_address.yfilter)
+	|| ydk::is_set(start_address_xr.yfilter)
+	|| ydk::is_set(end_address_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+    if (end_address.is_set || is_set(end_address.yfilter)) leaf_name_data.push_back(end_address.get_name_leafdata());
+    if (start_address_xr.is_set || is_set(start_address_xr.yfilter)) leaf_name_data.push_back(start_address_xr.get_name_leafdata());
+    if (end_address_xr.is_set || is_set(end_address_xr.yfilter)) leaf_name_data.push_back(end_address_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-address")
+    {
+        start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-address")
+    {
+        end_address = value;
+        end_address.value_namespace = name_space;
+        end_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-address-xr")
+    {
+        start_address_xr = value;
+        start_address_xr.value_namespace = name_space;
+        start_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-address-xr")
+    {
+        end_address_xr = value;
+        end_address_xr.value_namespace = name_space;
+        end_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+    if(value_path == "end-address")
+    {
+        end_address.yfilter = yfilter;
+    }
+    if(value_path == "start-address-xr")
+    {
+        start_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "end-address-xr")
+    {
+        end_address_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-address" || name == "end-address" || name == "start-address-xr" || name == "end-address-xr")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroups()
+{
+
+    yang_name = "parent-groups"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::~ParentGroups()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_data() const
+{
+    for (std::size_t index=0; index<parent_group.size(); index++)
+    {
+        if(parent_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_operation() const
+{
+    for (std::size_t index=0; index<parent_group.size(); index++)
+    {
+        if(parent_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parent-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "parent-group")
+    {
+        for(auto const & c : parent_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup>();
+        c->parent = this;
+        parent_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : parent_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parent-group")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::ParentGroup()
+    :
+    parent_group_name{YType::str, "parent-group-name"},
+    parent_name{YType::str, "parent-name"}
+{
+
+    yang_name = "parent-group"; yang_parent_name = "parent-groups"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::~ParentGroup()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has_data() const
+{
+    return parent_group_name.is_set
+	|| parent_name.is_set;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(parent_group_name.yfilter)
+	|| ydk::is_set(parent_name.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parent-group" <<"[parent-group-name='" <<parent_group_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (parent_group_name.is_set || is_set(parent_group_name.yfilter)) leaf_name_data.push_back(parent_group_name.get_name_leafdata());
+    if (parent_name.is_set || is_set(parent_name.yfilter)) leaf_name_data.push_back(parent_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "parent-group-name")
+    {
+        parent_group_name = value;
+        parent_group_name.value_namespace = name_space;
+        parent_group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-name")
+    {
+        parent_name = value;
+        parent_name.value_namespace = name_space;
+        parent_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "parent-group-name")
+    {
+        parent_group_name.yfilter = yfilter;
+    }
+    if(value_path == "parent-name")
+    {
+        parent_name.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parent-group-name" || name == "parent-name")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Hosts()
+{
+
+    yang_name = "hosts"; yang_parent_name = "object"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Hosts::~Hosts()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_data() const
+{
+    for (std::size_t index=0; index<host.size(); index++)
+    {
+        if(host[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_operation() const
+{
+    for (std::size_t index=0; index<host.size(); index++)
+    {
+        if(host[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hosts";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "host")
+    {
+        for(auto const & c : host)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host>();
+        c->parent = this;
+        host.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : host)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host")
+        return true;
+    return false;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::Host()
+    :
+    host_address{YType::str, "host-address"},
+    host_address_xr{YType::str, "host-address-xr"}
+{
+
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::~Host()
+{
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_data() const
+{
+    return host_address.is_set
+	|| host_address_xr.is_set;
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(host_address.yfilter)
+	|| ydk::is_set(host_address_xr.yfilter);
+}
+
+std::string ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (host_address.is_set || is_set(host_address.yfilter)) leaf_name_data.push_back(host_address.get_name_leafdata());
+    if (host_address_xr.is_set || is_set(host_address_xr.yfilter)) leaf_name_data.push_back(host_address_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "host-address")
+    {
+        host_address = value;
+        host_address.value_namespace = name_space;
+        host_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "host-address-xr")
+    {
+        host_address_xr = value;
+        host_address_xr.value_namespace = name_space;
+        host_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host-address")
+    {
+        host_address.yfilter = yfilter;
+    }
+    if(value_path == "host-address-xr")
+    {
+        host_address_xr.yfilter = yfilter;
+    }
+}
+
+bool ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-address" || name == "host-address-xr")
+        return true;
+    return false;
+}
 
 const Enum::YLeaf StartPort::echo {7, "echo"};
 const Enum::YLeaf StartPort::discard {9, "discard"};
@@ -4104,6 +4069,46 @@ const Enum::YLeaf StartPort::kshell {544, "kshell"};
 const Enum::YLeaf StartPort::talk {517, "talk"};
 const Enum::YLeaf StartPort::ldp {646, "ldp"};
 
+const Enum::YLeaf PortOperator::equal {0, "equal"};
+const Enum::YLeaf PortOperator::not_equal {1, "not-equal"};
+const Enum::YLeaf PortOperator::greater_than {2, "greater-than"};
+const Enum::YLeaf PortOperator::less_than {3, "less-than"};
+
+const Enum::YLeaf Port::echo {7, "echo"};
+const Enum::YLeaf Port::discard {9, "discard"};
+const Enum::YLeaf Port::daytime {13, "daytime"};
+const Enum::YLeaf Port::chargen {19, "chargen"};
+const Enum::YLeaf Port::ftp_data {20, "ftp-data"};
+const Enum::YLeaf Port::ftp {21, "ftp"};
+const Enum::YLeaf Port::ssh {22, "ssh"};
+const Enum::YLeaf Port::telnet {23, "telnet"};
+const Enum::YLeaf Port::smtp {25, "smtp"};
+const Enum::YLeaf Port::time {37, "time"};
+const Enum::YLeaf Port::nicname {43, "nicname"};
+const Enum::YLeaf Port::tacacs {49, "tacacs"};
+const Enum::YLeaf Port::domain {53, "domain"};
+const Enum::YLeaf Port::gopher {70, "gopher"};
+const Enum::YLeaf Port::finger {79, "finger"};
+const Enum::YLeaf Port::www {80, "www"};
+const Enum::YLeaf Port::host_name {101, "host-name"};
+const Enum::YLeaf Port::pop2 {109, "pop2"};
+const Enum::YLeaf Port::pop3 {110, "pop3"};
+const Enum::YLeaf Port::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf Port::ident {113, "ident"};
+const Enum::YLeaf Port::nntp {119, "nntp"};
+const Enum::YLeaf Port::bgp {179, "bgp"};
+const Enum::YLeaf Port::irc {194, "irc"};
+const Enum::YLeaf Port::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf Port::exec {512, "exec"};
+const Enum::YLeaf Port::login {513, "login"};
+const Enum::YLeaf Port::cmd {514, "cmd"};
+const Enum::YLeaf Port::lpd {515, "lpd"};
+const Enum::YLeaf Port::uucp {540, "uucp"};
+const Enum::YLeaf Port::klogin {543, "klogin"};
+const Enum::YLeaf Port::kshell {544, "kshell"};
+const Enum::YLeaf Port::talk {517, "talk"};
+const Enum::YLeaf Port::ldp {646, "ldp"};
+
 const Enum::YLeaf EndPort::echo {7, "echo"};
 const Enum::YLeaf EndPort::discard {9, "discard"};
 const Enum::YLeaf EndPort::daytime {13, "daytime"};
@@ -4138,11 +4143,6 @@ const Enum::YLeaf EndPort::klogin {543, "klogin"};
 const Enum::YLeaf EndPort::kshell {544, "kshell"};
 const Enum::YLeaf EndPort::talk {517, "talk"};
 const Enum::YLeaf EndPort::ldp {646, "ldp"};
-
-const Enum::YLeaf PortOperator::equal {0, "equal"};
-const Enum::YLeaf PortOperator::not_equal {1, "not-equal"};
-const Enum::YLeaf PortOperator::greater_than {2, "greater-than"};
-const Enum::YLeaf PortOperator::less_than {3, "less-than"};
 
 
 }

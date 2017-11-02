@@ -10,6 +10,184 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_correlator_oper {
 
+class Suppression : public ydk::Entity
+{
+    public:
+        Suppression();
+        ~Suppression();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class RuleSummaries; //type: Suppression::RuleSummaries
+        class RuleDetails; //type: Suppression::RuleDetails
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleSummaries> rule_summaries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails> rule_details;
+        
+}; // Suppression
+
+
+class Suppression::RuleSummaries : public ydk::Entity
+{
+    public:
+        RuleSummaries();
+        ~RuleSummaries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RuleSummary; //type: Suppression::RuleSummaries::RuleSummary
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleSummaries::RuleSummary> > rule_summary;
+        
+}; // Suppression::RuleSummaries
+
+
+class Suppression::RuleSummaries::RuleSummary : public ydk::Entity
+{
+    public:
+        RuleSummary();
+        ~RuleSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf suppressed_alarms_count; //type: uint32
+
+}; // Suppression::RuleSummaries::RuleSummary
+
+
+class Suppression::RuleDetails : public ydk::Entity
+{
+    public:
+        RuleDetails();
+        ~RuleDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RuleDetail; //type: Suppression::RuleDetails::RuleDetail
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail> > rule_detail;
+        
+}; // Suppression::RuleDetails
+
+
+class Suppression::RuleDetails::RuleDetail : public ydk::Entity
+{
+    public:
+        RuleDetail();
+        ~RuleDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf all_alarms; //type: boolean
+        ydk::YLeaf alarm_severity; //type: AlAlarmSeverity
+        ydk::YLeafList apply_source; //type: list of  string
+        class RuleSummary; //type: Suppression::RuleDetails::RuleDetail::RuleSummary
+        class Codes; //type: Suppression::RuleDetails::RuleDetail::Codes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::RuleSummary> rule_summary;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::Codes> > codes;
+        
+}; // Suppression::RuleDetails::RuleDetail
+
+
+class Suppression::RuleDetails::RuleDetail::RuleSummary : public ydk::Entity
+{
+    public:
+        RuleSummary();
+        ~RuleSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf suppressed_alarms_count; //type: uint32
+
+}; // Suppression::RuleDetails::RuleDetail::RuleSummary
+
+
+class Suppression::RuleDetails::RuleDetail::Codes : public ydk::Entity
+{
+    public:
+        Codes();
+        ~Codes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf code; //type: string
+
+}; // Suppression::RuleDetails::RuleDetail::Codes
+
 class Correlator : public ydk::Entity
 {
     public:
@@ -39,15 +217,115 @@ class Correlator : public ydk::Entity
         class RuleDetails; //type: Correlator::RuleDetails
         class RuleSummaries; //type: Correlator::RuleSummaries
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Alarms> alarms;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::BufferStatus> buffer_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails> rule_details;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetDetails> rule_set_details;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetSummaries> rule_set_summaries;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSummaries> rule_summaries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules> rules;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::BufferStatus> buffer_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Alarms> alarms;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetSummaries> rule_set_summaries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetDetails> rule_set_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails> rule_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSummaries> rule_summaries;
         
 }; // Correlator
+
+
+class Correlator::Rules : public ydk::Entity
+{
+    public:
+        Rules();
+        ~Rules();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rule; //type: Correlator::Rules::Rule
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule> > rule;
+        
+}; // Correlator::Rules
+
+
+class Correlator::Rules::Rule : public ydk::Entity
+{
+    public:
+        Rule();
+        ~Rule();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeafList apply_location; //type: list of  string
+        ydk::YLeafList apply_context; //type: list of  string
+        class Codes; //type: Correlator::Rules::Rule::Codes
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule::Codes> > codes;
+        
+}; // Correlator::Rules::Rule
+
+
+class Correlator::Rules::Rule::Codes : public ydk::Entity
+{
+    public:
+        Codes();
+        ~Codes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf code; //type: string
+
+}; // Correlator::Rules::Rule::Codes
+
+
+class Correlator::BufferStatus : public ydk::Entity
+{
+    public:
+        BufferStatus();
+        ~BufferStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf current_size; //type: uint32
+        ydk::YLeaf configured_size; //type: uint32
+
+}; // Correlator::BufferStatus
 
 
 class Correlator::Alarms : public ydk::Entity
@@ -131,11 +409,11 @@ class Correlator::Alarms::Alarm::AlarmInfo : public ydk::Entity
 }; // Correlator::Alarms::Alarm::AlarmInfo
 
 
-class Correlator::BufferStatus : public ydk::Entity
+class Correlator::RuleSetSummaries : public ydk::Entity
 {
     public:
-        BufferStatus();
-        ~BufferStatus();
+        RuleSetSummaries();
+        ~RuleSetSummaries();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -148,41 +426,18 @@ class Correlator::BufferStatus : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf current_size; //type: uint32
-        ydk::YLeaf configured_size; //type: uint32
+        class RuleSetSummary; //type: Correlator::RuleSetSummaries::RuleSetSummary
 
-}; // Correlator::BufferStatus
-
-
-class Correlator::RuleDetails : public ydk::Entity
-{
-    public:
-        RuleDetails();
-        ~RuleDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RuleDetail; //type: Correlator::RuleDetails::RuleDetail
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail> > rule_detail;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetSummaries::RuleSetSummary> > rule_set_summary;
         
-}; // Correlator::RuleDetails
+}; // Correlator::RuleSetSummaries
 
 
-class Correlator::RuleDetails::RuleDetail : public ydk::Entity
+class Correlator::RuleSetSummaries::RuleSetSummary : public ydk::Entity
 {
     public:
-        RuleDetail();
-        ~RuleDetail();
+        RuleSetSummary();
+        ~RuleSetSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -195,69 +450,10 @@ class Correlator::RuleDetails::RuleDetail : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rule_name; //type: string
-        ydk::YLeaf timeout; //type: uint32
-        ydk::YLeaf root_cause_timeout; //type: uint32
-        ydk::YLeaf internal; //type: boolean
-        ydk::YLeaf reissue_non_bistate; //type: boolean
-        ydk::YLeaf reparent; //type: boolean
-        ydk::YLeaf context_correlation; //type: boolean
-        ydk::YLeafList apply_location; //type: list of  string
-        ydk::YLeafList apply_context; //type: list of  string
-        class RuleSummary; //type: Correlator::RuleDetails::RuleDetail::RuleSummary
-        class Codes; //type: Correlator::RuleDetails::RuleDetail::Codes
+        ydk::YLeaf rule_set_name; //type: string
+        ydk::YLeaf rule_set_name_xr; //type: string
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::Codes> > codes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::RuleSummary> rule_summary;
-        
-}; // Correlator::RuleDetails::RuleDetail
-
-
-class Correlator::RuleDetails::RuleDetail::Codes : public ydk::Entity
-{
-    public:
-        Codes();
-        ~Codes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf category; //type: string
-        ydk::YLeaf group; //type: string
-        ydk::YLeaf code; //type: string
-
-}; // Correlator::RuleDetails::RuleDetail::Codes
-
-
-class Correlator::RuleDetails::RuleDetail::RuleSummary : public ydk::Entity
-{
-    public:
-        RuleSummary();
-        ~RuleSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rule_name_xr; //type: string
-        ydk::YLeaf stateful; //type: boolean
-        ydk::YLeaf rule_state; //type: AcRuleState
-        ydk::YLeaf buffered_alarms_count; //type: uint32
-
-}; // Correlator::RuleDetails::RuleDetail::RuleSummary
+}; // Correlator::RuleSetSummaries::RuleSetSummary
 
 
 class Correlator::RuleSetDetails : public ydk::Entity
@@ -334,11 +530,11 @@ class Correlator::RuleSetDetails::RuleSetDetail::Rules : public ydk::Entity
 }; // Correlator::RuleSetDetails::RuleSetDetail::Rules
 
 
-class Correlator::RuleSetSummaries : public ydk::Entity
+class Correlator::RuleDetails : public ydk::Entity
 {
     public:
-        RuleSetSummaries();
-        ~RuleSetSummaries();
+        RuleDetails();
+        ~RuleDetails();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -351,18 +547,18 @@ class Correlator::RuleSetSummaries : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RuleSetSummary; //type: Correlator::RuleSetSummaries::RuleSetSummary
+        class RuleDetail; //type: Correlator::RuleDetails::RuleDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetSummaries::RuleSetSummary> > rule_set_summary;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail> > rule_detail;
         
-}; // Correlator::RuleSetSummaries
+}; // Correlator::RuleDetails
 
 
-class Correlator::RuleSetSummaries::RuleSetSummary : public ydk::Entity
+class Correlator::RuleDetails::RuleDetail : public ydk::Entity
 {
     public:
-        RuleSetSummary();
-        ~RuleSetSummary();
+        RuleDetail();
+        ~RuleDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -375,10 +571,69 @@ class Correlator::RuleSetSummaries::RuleSetSummary : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rule_set_name; //type: string
-        ydk::YLeaf rule_set_name_xr; //type: string
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf root_cause_timeout; //type: uint32
+        ydk::YLeaf internal; //type: boolean
+        ydk::YLeaf reissue_non_bistate; //type: boolean
+        ydk::YLeaf reparent; //type: boolean
+        ydk::YLeaf context_correlation; //type: boolean
+        ydk::YLeafList apply_location; //type: list of  string
+        ydk::YLeafList apply_context; //type: list of  string
+        class RuleSummary; //type: Correlator::RuleDetails::RuleDetail::RuleSummary
+        class Codes; //type: Correlator::RuleDetails::RuleDetail::Codes
 
-}; // Correlator::RuleSetSummaries::RuleSetSummary
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::RuleSummary> rule_summary;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::Codes> > codes;
+        
+}; // Correlator::RuleDetails::RuleDetail
+
+
+class Correlator::RuleDetails::RuleDetail::RuleSummary : public ydk::Entity
+{
+    public:
+        RuleSummary();
+        ~RuleSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf stateful; //type: boolean
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf buffered_alarms_count; //type: uint32
+
+}; // Correlator::RuleDetails::RuleDetail::RuleSummary
+
+
+class Correlator::RuleDetails::RuleDetail::Codes : public ydk::Entity
+{
+    public:
+        Codes();
+        ~Codes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf code; //type: string
+
+}; // Correlator::RuleDetails::RuleDetail::Codes
 
 
 class Correlator::RuleSummaries : public ydk::Entity
@@ -429,261 +684,6 @@ class Correlator::RuleSummaries::RuleSummary : public ydk::Entity
         ydk::YLeaf buffered_alarms_count; //type: uint32
 
 }; // Correlator::RuleSummaries::RuleSummary
-
-
-class Correlator::Rules : public ydk::Entity
-{
-    public:
-        Rules();
-        ~Rules();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Rule; //type: Correlator::Rules::Rule
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule> > rule;
-        
-}; // Correlator::Rules
-
-
-class Correlator::Rules::Rule : public ydk::Entity
-{
-    public:
-        Rule();
-        ~Rule();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf rule_name; //type: string
-        ydk::YLeaf rule_name_xr; //type: string
-        ydk::YLeaf timeout; //type: uint32
-        ydk::YLeaf rule_state; //type: AcRuleState
-        ydk::YLeafList apply_location; //type: list of  string
-        ydk::YLeafList apply_context; //type: list of  string
-        class Codes; //type: Correlator::Rules::Rule::Codes
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule::Codes> > codes;
-        
-}; // Correlator::Rules::Rule
-
-
-class Correlator::Rules::Rule::Codes : public ydk::Entity
-{
-    public:
-        Codes();
-        ~Codes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf category; //type: string
-        ydk::YLeaf group; //type: string
-        ydk::YLeaf code; //type: string
-
-}; // Correlator::Rules::Rule::Codes
-
-class Suppression : public ydk::Entity
-{
-    public:
-        Suppression();
-        ~Suppression();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-        class RuleSummaries; //type: Suppression::RuleSummaries
-        class RuleDetails; //type: Suppression::RuleDetails
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails> rule_details;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleSummaries> rule_summaries;
-        
-}; // Suppression
-
-
-class Suppression::RuleDetails : public ydk::Entity
-{
-    public:
-        RuleDetails();
-        ~RuleDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RuleDetail; //type: Suppression::RuleDetails::RuleDetail
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail> > rule_detail;
-        
-}; // Suppression::RuleDetails
-
-
-class Suppression::RuleDetails::RuleDetail : public ydk::Entity
-{
-    public:
-        RuleDetail();
-        ~RuleDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf rule_name; //type: string
-        ydk::YLeaf all_alarms; //type: boolean
-        ydk::YLeaf alarm_severity; //type: AlAlarmSeverity
-        ydk::YLeafList apply_source; //type: list of  string
-        class RuleSummary; //type: Suppression::RuleDetails::RuleDetail::RuleSummary
-        class Codes; //type: Suppression::RuleDetails::RuleDetail::Codes
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::Codes> > codes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::RuleSummary> rule_summary;
-        
-}; // Suppression::RuleDetails::RuleDetail
-
-
-class Suppression::RuleDetails::RuleDetail::Codes : public ydk::Entity
-{
-    public:
-        Codes();
-        ~Codes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf category; //type: string
-        ydk::YLeaf group; //type: string
-        ydk::YLeaf code; //type: string
-
-}; // Suppression::RuleDetails::RuleDetail::Codes
-
-
-class Suppression::RuleDetails::RuleDetail::RuleSummary : public ydk::Entity
-{
-    public:
-        RuleSummary();
-        ~RuleSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rule_name_xr; //type: string
-        ydk::YLeaf rule_state; //type: AcRuleState
-        ydk::YLeaf suppressed_alarms_count; //type: uint32
-
-}; // Suppression::RuleDetails::RuleDetail::RuleSummary
-
-
-class Suppression::RuleSummaries : public ydk::Entity
-{
-    public:
-        RuleSummaries();
-        ~RuleSummaries();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RuleSummary; //type: Suppression::RuleSummaries::RuleSummary
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleSummaries::RuleSummary> > rule_summary;
-        
-}; // Suppression::RuleSummaries
-
-
-class Suppression::RuleSummaries::RuleSummary : public ydk::Entity
-{
-    public:
-        RuleSummary();
-        ~RuleSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf rule_name; //type: string
-        ydk::YLeaf rule_name_xr; //type: string
-        ydk::YLeaf rule_state; //type: AcRuleState
-        ydk::YLeaf suppressed_alarms_count; //type: uint32
-
-}; // Suppression::RuleSummaries::RuleSummary
 
 class AlAlarmBistate : public ydk::Enum
 {

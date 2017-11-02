@@ -39,134 +39,14 @@ class CISCOCONFIGMANMIB : public ydk::Entity
         class Ccmhistoryeventtable; //type: CISCOCONFIGMANMIB::Ccmhistoryeventtable
         class Ccmclihistorycommandtable; //type: CISCOCONFIGMANMIB::Ccmclihistorycommandtable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclicfg> ccmclicfg;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistory> ccmclihistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistorycommandtable> ccmclihistorycommandtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmctidobjects> ccmctidobjects;
         std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistory> ccmhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistory> ccmclihistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclicfg> ccmclicfg;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmctidobjects> ccmctidobjects;
         std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistoryeventtable> ccmhistoryeventtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistorycommandtable> ccmclihistorycommandtable;
         
 }; // CISCOCONFIGMANMIB
-
-
-class CISCOCONFIGMANMIB::Ccmclicfg : public ydk::Entity
-{
-    public:
-        Ccmclicfg();
-        ~Ccmclicfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ccmclicfgrunconfnotifenable; //type: boolean
-
-}; // CISCOCONFIGMANMIB::Ccmclicfg
-
-
-class CISCOCONFIGMANMIB::Ccmclihistory : public ydk::Entity
-{
-    public:
-        Ccmclihistory();
-        ~Ccmclihistory();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ccmclihistorymaxcmdentries; //type: uint32
-        ydk::YLeaf ccmclihistorycmdentries; //type: uint32
-        ydk::YLeaf ccmclihistorycmdentriesallowed; //type: uint32
-
-}; // CISCOCONFIGMANMIB::Ccmclihistory
-
-
-class CISCOCONFIGMANMIB::Ccmclihistorycommandtable : public ydk::Entity
-{
-    public:
-        Ccmclihistorycommandtable();
-        ~Ccmclihistorycommandtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ccmclihistorycommandentry; //type: CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry> > ccmclihistorycommandentry;
-        
-}; // CISCOCONFIGMANMIB::Ccmclihistorycommandtable
-
-
-class CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry : public ydk::Entity
-{
-    public:
-        Ccmclihistorycommandentry();
-        ~Ccmclihistorycommandentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::ccmhistoryeventindex)
-        ydk::YLeaf ccmhistoryeventindex;
-        ydk::YLeaf ccmclihistorycommandindex; //type: uint32
-        ydk::YLeaf ccmclihistorycommand; //type: string
-
-}; // CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry
-
-
-class CISCOCONFIGMANMIB::Ccmctidobjects : public ydk::Entity
-{
-    public:
-        Ccmctidobjects();
-        ~Ccmctidobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ccmctid; //type: uint64
-        ydk::YLeaf ccmctidlastchangetime; //type: string
-        ydk::YLeaf ccmctidwhochanged; //type: string
-        ydk::YLeaf ccmctidrolledovernotifenable; //type: boolean
-
-}; // CISCOCONFIGMANMIB::Ccmctidobjects
 
 
 class CISCOCONFIGMANMIB::Ccmhistory : public ydk::Entity
@@ -193,6 +73,77 @@ class CISCOCONFIGMANMIB::Ccmhistory : public ydk::Entity
         ydk::YLeaf ccmhistoryevententriesbumped; //type: uint32
 
 }; // CISCOCONFIGMANMIB::Ccmhistory
+
+
+class CISCOCONFIGMANMIB::Ccmclihistory : public ydk::Entity
+{
+    public:
+        Ccmclihistory();
+        ~Ccmclihistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ccmclihistorymaxcmdentries; //type: uint32
+        ydk::YLeaf ccmclihistorycmdentries; //type: uint32
+        ydk::YLeaf ccmclihistorycmdentriesallowed; //type: uint32
+
+}; // CISCOCONFIGMANMIB::Ccmclihistory
+
+
+class CISCOCONFIGMANMIB::Ccmclicfg : public ydk::Entity
+{
+    public:
+        Ccmclicfg();
+        ~Ccmclicfg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ccmclicfgrunconfnotifenable; //type: boolean
+
+}; // CISCOCONFIGMANMIB::Ccmclicfg
+
+
+class CISCOCONFIGMANMIB::Ccmctidobjects : public ydk::Entity
+{
+    public:
+        Ccmctidobjects();
+        ~Ccmctidobjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ccmctid; //type: uint64
+        ydk::YLeaf ccmctidlastchangetime; //type: string
+        ydk::YLeaf ccmctidwhochanged; //type: string
+        ydk::YLeaf ccmctidrolledovernotifenable; //type: boolean
+
+}; // CISCOCONFIGMANMIB::Ccmctidobjects
 
 
 class CISCOCONFIGMANMIB::Ccmhistoryeventtable : public ydk::Entity
@@ -259,6 +210,55 @@ class CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry : public ydk
         class Ccmhistoryeventterminaltype;
 
 }; // CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry
+
+
+class CISCOCONFIGMANMIB::Ccmclihistorycommandtable : public ydk::Entity
+{
+    public:
+        Ccmclihistorycommandtable();
+        ~Ccmclihistorycommandtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ccmclihistorycommandentry; //type: CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry> > ccmclihistorycommandentry;
+        
+}; // CISCOCONFIGMANMIB::Ccmclihistorycommandtable
+
+
+class CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry : public ydk::Entity
+{
+    public:
+        Ccmclihistorycommandentry();
+        ~Ccmclihistorycommandentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_CONFIG_MAN_MIB::CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::ccmhistoryeventindex)
+        ydk::YLeaf ccmhistoryeventindex;
+        ydk::YLeaf ccmclihistorycommandindex; //type: uint32
+        ydk::YLeaf ccmclihistorycommand; //type: string
+
+}; // CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry
 
 class HistoryEventMedium : public ydk::Enum
 {

@@ -13,15 +13,15 @@ namespace Cisco_IOS_XR_wd_cfg {
 
 Watchdog::Watchdog()
     :
+    threshold_memory_switchover{YType::uint32, "threshold-memory-switchover"},
+    restart_deadlock_disable{YType::empty, "restart-deadlock-disable"},
+    monitor_qnet_timeout{YType::uint32, "monitor-qnet-timeout"},
     monitor_cpuhog_timeout{YType::uint32, "monitor-cpuhog-timeout"},
     monitor_procnto_timeout{YType::uint32, "monitor-procnto-timeout"},
-    monitor_qnet_timeout{YType::uint32, "monitor-qnet-timeout"},
     overload_notification{YType::empty, "overload-notification"},
-    overload_throttle_timeout{YType::uint32, "overload-throttle-timeout"},
     restart_cpuhog_disable{YType::empty, "restart-cpuhog-disable"},
-    restart_deadlock_disable{YType::empty, "restart-deadlock-disable"},
     restart_memoryhog_disable{YType::empty, "restart-memoryhog-disable"},
-    threshold_memory_switchover{YType::uint32, "threshold-memory-switchover"}
+    overload_throttle_timeout{YType::uint32, "overload-throttle-timeout"}
     	,
     threshold_memory(std::make_shared<Watchdog::ThresholdMemory>())
 {
@@ -36,30 +36,30 @@ Watchdog::~Watchdog()
 
 bool Watchdog::has_data() const
 {
-    return monitor_cpuhog_timeout.is_set
-	|| monitor_procnto_timeout.is_set
-	|| monitor_qnet_timeout.is_set
-	|| overload_notification.is_set
-	|| overload_throttle_timeout.is_set
-	|| restart_cpuhog_disable.is_set
+    return threshold_memory_switchover.is_set
 	|| restart_deadlock_disable.is_set
+	|| monitor_qnet_timeout.is_set
+	|| monitor_cpuhog_timeout.is_set
+	|| monitor_procnto_timeout.is_set
+	|| overload_notification.is_set
+	|| restart_cpuhog_disable.is_set
 	|| restart_memoryhog_disable.is_set
-	|| threshold_memory_switchover.is_set
+	|| overload_throttle_timeout.is_set
 	|| (threshold_memory !=  nullptr && threshold_memory->has_data());
 }
 
 bool Watchdog::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(threshold_memory_switchover.yfilter)
+	|| ydk::is_set(restart_deadlock_disable.yfilter)
+	|| ydk::is_set(monitor_qnet_timeout.yfilter)
 	|| ydk::is_set(monitor_cpuhog_timeout.yfilter)
 	|| ydk::is_set(monitor_procnto_timeout.yfilter)
-	|| ydk::is_set(monitor_qnet_timeout.yfilter)
 	|| ydk::is_set(overload_notification.yfilter)
-	|| ydk::is_set(overload_throttle_timeout.yfilter)
 	|| ydk::is_set(restart_cpuhog_disable.yfilter)
-	|| ydk::is_set(restart_deadlock_disable.yfilter)
 	|| ydk::is_set(restart_memoryhog_disable.yfilter)
-	|| ydk::is_set(threshold_memory_switchover.yfilter)
+	|| ydk::is_set(overload_throttle_timeout.yfilter)
 	|| (threshold_memory !=  nullptr && threshold_memory->has_operation());
 }
 
@@ -74,15 +74,15 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::get_name_leaf_data() co
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (threshold_memory_switchover.is_set || is_set(threshold_memory_switchover.yfilter)) leaf_name_data.push_back(threshold_memory_switchover.get_name_leafdata());
+    if (restart_deadlock_disable.is_set || is_set(restart_deadlock_disable.yfilter)) leaf_name_data.push_back(restart_deadlock_disable.get_name_leafdata());
+    if (monitor_qnet_timeout.is_set || is_set(monitor_qnet_timeout.yfilter)) leaf_name_data.push_back(monitor_qnet_timeout.get_name_leafdata());
     if (monitor_cpuhog_timeout.is_set || is_set(monitor_cpuhog_timeout.yfilter)) leaf_name_data.push_back(monitor_cpuhog_timeout.get_name_leafdata());
     if (monitor_procnto_timeout.is_set || is_set(monitor_procnto_timeout.yfilter)) leaf_name_data.push_back(monitor_procnto_timeout.get_name_leafdata());
-    if (monitor_qnet_timeout.is_set || is_set(monitor_qnet_timeout.yfilter)) leaf_name_data.push_back(monitor_qnet_timeout.get_name_leafdata());
     if (overload_notification.is_set || is_set(overload_notification.yfilter)) leaf_name_data.push_back(overload_notification.get_name_leafdata());
-    if (overload_throttle_timeout.is_set || is_set(overload_throttle_timeout.yfilter)) leaf_name_data.push_back(overload_throttle_timeout.get_name_leafdata());
     if (restart_cpuhog_disable.is_set || is_set(restart_cpuhog_disable.yfilter)) leaf_name_data.push_back(restart_cpuhog_disable.get_name_leafdata());
-    if (restart_deadlock_disable.is_set || is_set(restart_deadlock_disable.yfilter)) leaf_name_data.push_back(restart_deadlock_disable.get_name_leafdata());
     if (restart_memoryhog_disable.is_set || is_set(restart_memoryhog_disable.yfilter)) leaf_name_data.push_back(restart_memoryhog_disable.get_name_leafdata());
-    if (threshold_memory_switchover.is_set || is_set(threshold_memory_switchover.yfilter)) leaf_name_data.push_back(threshold_memory_switchover.get_name_leafdata());
+    if (overload_throttle_timeout.is_set || is_set(overload_throttle_timeout.yfilter)) leaf_name_data.push_back(overload_throttle_timeout.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -115,6 +115,24 @@ std::map<std::string, std::shared_ptr<Entity>> Watchdog::get_children() const
 
 void Watchdog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "threshold-memory-switchover")
+    {
+        threshold_memory_switchover = value;
+        threshold_memory_switchover.value_namespace = name_space;
+        threshold_memory_switchover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-deadlock-disable")
+    {
+        restart_deadlock_disable = value;
+        restart_deadlock_disable.value_namespace = name_space;
+        restart_deadlock_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "monitor-qnet-timeout")
+    {
+        monitor_qnet_timeout = value;
+        monitor_qnet_timeout.value_namespace = name_space;
+        monitor_qnet_timeout.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "monitor-cpuhog-timeout")
     {
         monitor_cpuhog_timeout = value;
@@ -127,23 +145,11 @@ void Watchdog::set_value(const std::string & value_path, const std::string & val
         monitor_procnto_timeout.value_namespace = name_space;
         monitor_procnto_timeout.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "monitor-qnet-timeout")
-    {
-        monitor_qnet_timeout = value;
-        monitor_qnet_timeout.value_namespace = name_space;
-        monitor_qnet_timeout.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "overload-notification")
     {
         overload_notification = value;
         overload_notification.value_namespace = name_space;
         overload_notification.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "overload-throttle-timeout")
-    {
-        overload_throttle_timeout = value;
-        overload_throttle_timeout.value_namespace = name_space;
-        overload_throttle_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "restart-cpuhog-disable")
     {
@@ -151,28 +157,34 @@ void Watchdog::set_value(const std::string & value_path, const std::string & val
         restart_cpuhog_disable.value_namespace = name_space;
         restart_cpuhog_disable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "restart-deadlock-disable")
-    {
-        restart_deadlock_disable = value;
-        restart_deadlock_disable.value_namespace = name_space;
-        restart_deadlock_disable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "restart-memoryhog-disable")
     {
         restart_memoryhog_disable = value;
         restart_memoryhog_disable.value_namespace = name_space;
         restart_memoryhog_disable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "threshold-memory-switchover")
+    if(value_path == "overload-throttle-timeout")
     {
-        threshold_memory_switchover = value;
-        threshold_memory_switchover.value_namespace = name_space;
-        threshold_memory_switchover.value_namespace_prefix = name_space_prefix;
+        overload_throttle_timeout = value;
+        overload_throttle_timeout.value_namespace = name_space;
+        overload_throttle_timeout.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Watchdog::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "threshold-memory-switchover")
+    {
+        threshold_memory_switchover.yfilter = yfilter;
+    }
+    if(value_path == "restart-deadlock-disable")
+    {
+        restart_deadlock_disable.yfilter = yfilter;
+    }
+    if(value_path == "monitor-qnet-timeout")
+    {
+        monitor_qnet_timeout.yfilter = yfilter;
+    }
     if(value_path == "monitor-cpuhog-timeout")
     {
         monitor_cpuhog_timeout.yfilter = yfilter;
@@ -181,33 +193,21 @@ void Watchdog::set_filter(const std::string & value_path, YFilter yfilter)
     {
         monitor_procnto_timeout.yfilter = yfilter;
     }
-    if(value_path == "monitor-qnet-timeout")
-    {
-        monitor_qnet_timeout.yfilter = yfilter;
-    }
     if(value_path == "overload-notification")
     {
         overload_notification.yfilter = yfilter;
-    }
-    if(value_path == "overload-throttle-timeout")
-    {
-        overload_throttle_timeout.yfilter = yfilter;
     }
     if(value_path == "restart-cpuhog-disable")
     {
         restart_cpuhog_disable.yfilter = yfilter;
     }
-    if(value_path == "restart-deadlock-disable")
-    {
-        restart_deadlock_disable.yfilter = yfilter;
-    }
     if(value_path == "restart-memoryhog-disable")
     {
         restart_memoryhog_disable.yfilter = yfilter;
     }
-    if(value_path == "threshold-memory-switchover")
+    if(value_path == "overload-throttle-timeout")
     {
-        threshold_memory_switchover.yfilter = yfilter;
+        overload_throttle_timeout.yfilter = yfilter;
     }
 }
 
@@ -238,16 +238,16 @@ std::map<std::pair<std::string, std::string>, std::string> Watchdog::get_namespa
 
 bool Watchdog::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "threshold-memory" || name == "monitor-cpuhog-timeout" || name == "monitor-procnto-timeout" || name == "monitor-qnet-timeout" || name == "overload-notification" || name == "overload-throttle-timeout" || name == "restart-cpuhog-disable" || name == "restart-deadlock-disable" || name == "restart-memoryhog-disable" || name == "threshold-memory-switchover")
+    if(name == "threshold-memory" || name == "threshold-memory-switchover" || name == "restart-deadlock-disable" || name == "monitor-qnet-timeout" || name == "monitor-cpuhog-timeout" || name == "monitor-procnto-timeout" || name == "overload-notification" || name == "restart-cpuhog-disable" || name == "restart-memoryhog-disable" || name == "overload-throttle-timeout")
         return true;
     return false;
 }
 
 Watchdog::ThresholdMemory::ThresholdMemory()
     :
-    critical{YType::uint32, "critical"},
     minor{YType::uint32, "minor"},
-    severe{YType::uint32, "severe"}
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
 {
 
     yang_name = "threshold-memory"; yang_parent_name = "watchdog"; is_top_level_class = false; has_list_ancestor = false;
@@ -259,17 +259,17 @@ Watchdog::ThresholdMemory::~ThresholdMemory()
 
 bool Watchdog::ThresholdMemory::has_data() const
 {
-    return critical.is_set
-	|| minor.is_set
-	|| severe.is_set;
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
 }
 
 bool Watchdog::ThresholdMemory::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(critical.yfilter)
 	|| ydk::is_set(minor.yfilter)
-	|| ydk::is_set(severe.yfilter);
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
 }
 
 std::string Watchdog::ThresholdMemory::get_absolute_path() const
@@ -290,9 +290,9 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::ThresholdMemory::get_na
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
     if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
     if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -311,12 +311,6 @@ std::map<std::string, std::shared_ptr<Entity>> Watchdog::ThresholdMemory::get_ch
 
 void Watchdog::ThresholdMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "critical")
-    {
-        critical = value;
-        critical.value_namespace = name_space;
-        critical.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minor")
     {
         minor = value;
@@ -329,14 +323,16 @@ void Watchdog::ThresholdMemory::set_value(const std::string & value_path, const 
         severe.value_namespace = name_space;
         severe.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Watchdog::ThresholdMemory::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "critical")
-    {
-        critical.yfilter = yfilter;
-    }
     if(value_path == "minor")
     {
         minor.yfilter = yfilter;
@@ -345,11 +341,15 @@ void Watchdog::ThresholdMemory::set_filter(const std::string & value_path, YFilt
     {
         severe.yfilter = yfilter;
     }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
 }
 
 bool Watchdog::ThresholdMemory::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "critical" || name == "minor" || name == "severe")
+    if(name == "minor" || name == "severe" || name == "critical")
         return true;
     return false;
 }

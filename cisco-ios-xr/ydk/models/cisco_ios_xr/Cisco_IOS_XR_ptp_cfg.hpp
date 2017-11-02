@@ -43,8 +43,8 @@ class Ptp : public ydk::Entity
         class TransparentClock; //type: Ptp::TransparentClock
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock_> clock_;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles> profiles;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::TransparentClock> transparent_clock;
         
 }; // Ptp
@@ -76,34 +76,10 @@ class Ptp::Clock_ : public ydk::Entity
         class Profile; //type: Ptp::Clock_::Profile
         class Identity; //type: Ptp::Clock_::Identity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock_::Identity> identity;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock_::Profile> profile;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock_::Identity> identity;
         
 }; // Ptp::Clock_
-
-
-class Ptp::Clock_::Identity : public ydk::Entity
-{
-    public:
-        Identity();
-        ~Identity();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf clock_id_type; //type: PtpClockId
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf eui; //type: string
-
-}; // Ptp::Clock_::Identity
 
 
 class Ptp::Clock_::Profile : public ydk::Entity
@@ -129,11 +105,11 @@ class Ptp::Clock_::Profile : public ydk::Entity
 }; // Ptp::Clock_::Profile
 
 
-class Ptp::Logging : public ydk::Entity
+class Ptp::Clock_::Identity : public ydk::Entity
 {
     public:
-        Logging();
-        ~Logging();
+        Identity();
+        ~Identity();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -146,57 +122,11 @@ class Ptp::Logging : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class BestMasterClock; //type: Ptp::Logging::BestMasterClock
-        class Servo; //type: Ptp::Logging::Servo
+        ydk::YLeaf clock_id_type; //type: PtpClockId
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf eui; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging::BestMasterClock> best_master_clock;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging::Servo> servo;
-        
-}; // Ptp::Logging
-
-
-class Ptp::Logging::BestMasterClock : public ydk::Entity
-{
-    public:
-        BestMasterClock();
-        ~BestMasterClock();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf changes; //type: empty
-
-}; // Ptp::Logging::BestMasterClock
-
-
-class Ptp::Logging::Servo : public ydk::Entity
-{
-    public:
-        Servo();
-        ~Servo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf events; //type: empty
-
-}; // Ptp::Logging::Servo
+}; // Ptp::Clock_::Identity
 
 
 class Ptp::Profiles : public ydk::Entity
@@ -267,13 +197,13 @@ class Ptp::Profiles::Profile : public ydk::Entity
         class SourceIpv6Address; //type: Ptp::Profiles::Profile::SourceIpv6Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::AnnounceInterval> announce_interval;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::SourceIpv4Address> source_ipv4_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves> slaves;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::SyncInterval> sync_interval;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Masters> masters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Communication> communication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::DelayRequestMinimumInterval> delay_request_minimum_interval;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Masters> masters;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves> slaves;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::SourceIpv4Address> source_ipv4_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::SourceIpv6Address> source_ipv6_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::SyncInterval> sync_interval;
         
 }; // Ptp::Profiles::Profile
 
@@ -300,11 +230,11 @@ class Ptp::Profiles::Profile::AnnounceInterval : public ydk::Entity
 }; // Ptp::Profiles::Profile::AnnounceInterval
 
 
-class Ptp::Profiles::Profile::Communication : public ydk::Entity
+class Ptp::Profiles::Profile::SourceIpv4Address : public ydk::Entity
 {
     public:
-        Communication();
-        ~Communication();
+        SourceIpv4Address();
+        ~SourceIpv4Address();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -316,18 +246,110 @@ class Ptp::Profiles::Profile::Communication : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf model; //type: PtpTransport
-        ydk::YLeaf target_address_set; //type: boolean
-        ydk::YLeaf target_address; //type: string
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf source_ip; //type: string
 
-}; // Ptp::Profiles::Profile::Communication
+}; // Ptp::Profiles::Profile::SourceIpv4Address
 
 
-class Ptp::Profiles::Profile::DelayRequestMinimumInterval : public ydk::Entity
+class Ptp::Profiles::Profile::Slaves : public ydk::Entity
 {
     public:
-        DelayRequestMinimumInterval();
-        ~DelayRequestMinimumInterval();
+        Slaves();
+        ~Slaves();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Slave; //type: Ptp::Profiles::Profile::Slaves::Slave
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave> > slave;
+        
+}; // Ptp::Profiles::Profile::Slaves
+
+
+class Ptp::Profiles::Profile::Slaves::Slave : public ydk::Entity
+{
+    public:
+        Slave();
+        ~Slave();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf transport; //type: PtpEncap
+        class Ethernet; //type: Ptp::Profiles::Profile::Slaves::Slave::Ethernet
+        class Ipv4OrIpv6; //type: Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave::Ethernet> > ethernet;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6> > ipv4_or_ipv6;
+        
+}; // Ptp::Profiles::Profile::Slaves::Slave
+
+
+class Ptp::Profiles::Profile::Slaves::Slave::Ethernet : public ydk::Entity
+{
+    public:
+        Ethernet();
+        ~Ethernet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf slave_mac_address; //type: string
+        ydk::YLeaf non_negotiated; //type: boolean
+
+}; // Ptp::Profiles::Profile::Slaves::Slave::Ethernet
+
+
+class Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6 : public ydk::Entity
+{
+    public:
+        Ipv4OrIpv6();
+        ~Ipv4OrIpv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf slave_ip_address; //type: string
+        ydk::YLeaf non_negotiated; //type: boolean
+
+}; // Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6
+
+
+class Ptp::Profiles::Profile::SyncInterval : public ydk::Entity
+{
+    public:
+        SyncInterval();
+        ~SyncInterval();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -342,7 +364,7 @@ class Ptp::Profiles::Profile::DelayRequestMinimumInterval : public ydk::Entity
         ydk::YLeaf time_type; //type: PtpTime
         ydk::YLeaf time_period; //type: PtpTimePeriod
 
-}; // Ptp::Profiles::Profile::DelayRequestMinimumInterval
+}; // Ptp::Profiles::Profile::SyncInterval
 
 
 class Ptp::Profiles::Profile::Masters : public ydk::Entity
@@ -494,11 +516,11 @@ class Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::DelayAsymmetry : publ
 }; // Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::DelayAsymmetry
 
 
-class Ptp::Profiles::Profile::Slaves : public ydk::Entity
+class Ptp::Profiles::Profile::Communication : public ydk::Entity
 {
     public:
-        Slaves();
-        ~Slaves();
+        Communication();
+        ~Communication();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -510,18 +532,18 @@ class Ptp::Profiles::Profile::Slaves : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Slave; //type: Ptp::Profiles::Profile::Slaves::Slave
+        ydk::YLeaf model; //type: PtpTransport
+        ydk::YLeaf target_address_set; //type: boolean
+        ydk::YLeaf target_address; //type: string
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave> > slave;
-        
-}; // Ptp::Profiles::Profile::Slaves
+}; // Ptp::Profiles::Profile::Communication
 
 
-class Ptp::Profiles::Profile::Slaves::Slave : public ydk::Entity
+class Ptp::Profiles::Profile::DelayRequestMinimumInterval : public ydk::Entity
 {
     public:
-        Slave();
-        ~Slave();
+        DelayRequestMinimumInterval();
+        ~DelayRequestMinimumInterval();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -533,80 +555,10 @@ class Ptp::Profiles::Profile::Slaves::Slave : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport; //type: PtpEncap
-        class Ethernet; //type: Ptp::Profiles::Profile::Slaves::Slave::Ethernet
-        class Ipv4OrIpv6; //type: Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6
+        ydk::YLeaf time_type; //type: PtpTime
+        ydk::YLeaf time_period; //type: PtpTimePeriod
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave::Ethernet> > ethernet;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6> > ipv4_or_ipv6;
-        
-}; // Ptp::Profiles::Profile::Slaves::Slave
-
-
-class Ptp::Profiles::Profile::Slaves::Slave::Ethernet : public ydk::Entity
-{
-    public:
-        Ethernet();
-        ~Ethernet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf slave_mac_address; //type: string
-        ydk::YLeaf non_negotiated; //type: boolean
-
-}; // Ptp::Profiles::Profile::Slaves::Slave::Ethernet
-
-
-class Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6 : public ydk::Entity
-{
-    public:
-        Ipv4OrIpv6();
-        ~Ipv4OrIpv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf slave_ip_address; //type: string
-        ydk::YLeaf non_negotiated; //type: boolean
-
-}; // Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6
-
-
-class Ptp::Profiles::Profile::SourceIpv4Address : public ydk::Entity
-{
-    public:
-        SourceIpv4Address();
-        ~SourceIpv4Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: boolean
-        ydk::YLeaf source_ip; //type: string
-
-}; // Ptp::Profiles::Profile::SourceIpv4Address
+}; // Ptp::Profiles::Profile::DelayRequestMinimumInterval
 
 
 class Ptp::Profiles::Profile::SourceIpv6Address : public ydk::Entity
@@ -631,11 +583,11 @@ class Ptp::Profiles::Profile::SourceIpv6Address : public ydk::Entity
 }; // Ptp::Profiles::Profile::SourceIpv6Address
 
 
-class Ptp::Profiles::Profile::SyncInterval : public ydk::Entity
+class Ptp::Logging : public ydk::Entity
 {
     public:
-        SyncInterval();
-        ~SyncInterval();
+        Logging();
+        ~Logging();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -646,11 +598,59 @@ class Ptp::Profiles::Profile::SyncInterval : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf time_type; //type: PtpTime
-        ydk::YLeaf time_period; //type: PtpTimePeriod
+        class BestMasterClock; //type: Ptp::Logging::BestMasterClock
+        class Servo; //type: Ptp::Logging::Servo
 
-}; // Ptp::Profiles::Profile::SyncInterval
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging::BestMasterClock> best_master_clock;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging::Servo> servo;
+        
+}; // Ptp::Logging
+
+
+class Ptp::Logging::BestMasterClock : public ydk::Entity
+{
+    public:
+        BestMasterClock();
+        ~BestMasterClock();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf changes; //type: empty
+
+}; // Ptp::Logging::BestMasterClock
+
+
+class Ptp::Logging::Servo : public ydk::Entity
+{
+    public:
+        Servo();
+        ~Servo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf events; //type: empty
+
+}; // Ptp::Logging::Servo
 
 
 class Ptp::TransparentClock : public ydk::Entity

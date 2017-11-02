@@ -71,16 +71,6 @@ BGP::~BGP()
 {
 }
 
-DIRECTLYCONNECTED::DIRECTLYCONNECTED()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:DIRECTLY_CONNECTED")
-{
-
-}
-
-DIRECTLYCONNECTED::~DIRECTLYCONNECTED()
-{
-}
-
 ISIS::ISIS()
      : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:ISIS")
 {
@@ -88,16 +78,6 @@ ISIS::ISIS()
 }
 
 ISIS::~ISIS()
-{
-}
-
-LOCALAGGREGATE::LOCALAGGREGATE()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:LOCAL_AGGREGATE")
-{
-
-}
-
-LOCALAGGREGATE::~LOCALAGGREGATE()
 {
 }
 
@@ -128,6 +108,26 @@ STATIC_::STATIC_()
 }
 
 STATIC_::~STATIC_()
+{
+}
+
+DIRECTLYCONNECTED::DIRECTLYCONNECTED()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:DIRECTLY_CONNECTED")
+{
+
+}
+
+DIRECTLYCONNECTED::~DIRECTLYCONNECTED()
+{
+}
+
+LOCALAGGREGATE::LOCALAGGREGATE()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:LOCAL_AGGREGATE")
+{
+
+}
+
+LOCALAGGREGATE::~LOCALAGGREGATE()
 {
 }
 

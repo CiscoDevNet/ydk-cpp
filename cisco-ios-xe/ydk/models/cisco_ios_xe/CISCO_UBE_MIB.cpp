@@ -119,8 +119,8 @@ bool CISCOUBEMIB::has_leaf_or_child_of_name(const std::string & name) const
 CISCOUBEMIB::Ciscoubemibobjects::Ciscoubemibobjects()
     :
     cubeenabled{YType::boolean, "cubeEnabled"},
-    cubetotalsessionallowed{YType::uint32, "cubeTotalSessionAllowed"},
-    cubeversion{YType::str, "cubeVersion"}
+    cubeversion{YType::str, "cubeVersion"},
+    cubetotalsessionallowed{YType::uint32, "cubeTotalSessionAllowed"}
 {
 
     yang_name = "ciscoUbeMIBObjects"; yang_parent_name = "CISCO-UBE-MIB"; is_top_level_class = false; has_list_ancestor = false;
@@ -133,16 +133,16 @@ CISCOUBEMIB::Ciscoubemibobjects::~Ciscoubemibobjects()
 bool CISCOUBEMIB::Ciscoubemibobjects::has_data() const
 {
     return cubeenabled.is_set
-	|| cubetotalsessionallowed.is_set
-	|| cubeversion.is_set;
+	|| cubeversion.is_set
+	|| cubetotalsessionallowed.is_set;
 }
 
 bool CISCOUBEMIB::Ciscoubemibobjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cubeenabled.yfilter)
-	|| ydk::is_set(cubetotalsessionallowed.yfilter)
-	|| ydk::is_set(cubeversion.yfilter);
+	|| ydk::is_set(cubeversion.yfilter)
+	|| ydk::is_set(cubetotalsessionallowed.yfilter);
 }
 
 std::string CISCOUBEMIB::Ciscoubemibobjects::get_absolute_path() const
@@ -164,8 +164,8 @@ std::vector<std::pair<std::string, LeafData> > CISCOUBEMIB::Ciscoubemibobjects::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cubeenabled.is_set || is_set(cubeenabled.yfilter)) leaf_name_data.push_back(cubeenabled.get_name_leafdata());
-    if (cubetotalsessionallowed.is_set || is_set(cubetotalsessionallowed.yfilter)) leaf_name_data.push_back(cubetotalsessionallowed.get_name_leafdata());
     if (cubeversion.is_set || is_set(cubeversion.yfilter)) leaf_name_data.push_back(cubeversion.get_name_leafdata());
+    if (cubetotalsessionallowed.is_set || is_set(cubetotalsessionallowed.yfilter)) leaf_name_data.push_back(cubetotalsessionallowed.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -190,17 +190,17 @@ void CISCOUBEMIB::Ciscoubemibobjects::set_value(const std::string & value_path, 
         cubeenabled.value_namespace = name_space;
         cubeenabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cubeTotalSessionAllowed")
-    {
-        cubetotalsessionallowed = value;
-        cubetotalsessionallowed.value_namespace = name_space;
-        cubetotalsessionallowed.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cubeVersion")
     {
         cubeversion = value;
         cubeversion.value_namespace = name_space;
         cubeversion.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cubeTotalSessionAllowed")
+    {
+        cubetotalsessionallowed = value;
+        cubetotalsessionallowed.value_namespace = name_space;
+        cubetotalsessionallowed.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -210,19 +210,19 @@ void CISCOUBEMIB::Ciscoubemibobjects::set_filter(const std::string & value_path,
     {
         cubeenabled.yfilter = yfilter;
     }
-    if(value_path == "cubeTotalSessionAllowed")
-    {
-        cubetotalsessionallowed.yfilter = yfilter;
-    }
     if(value_path == "cubeVersion")
     {
         cubeversion.yfilter = yfilter;
+    }
+    if(value_path == "cubeTotalSessionAllowed")
+    {
+        cubetotalsessionallowed.yfilter = yfilter;
     }
 }
 
 bool CISCOUBEMIB::Ciscoubemibobjects::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cubeEnabled" || name == "cubeTotalSessionAllowed" || name == "cubeVersion")
+    if(name == "cubeEnabled" || name == "cubeVersion" || name == "cubeTotalSessionAllowed")
         return true;
     return false;
 }

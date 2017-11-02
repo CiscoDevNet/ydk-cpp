@@ -10,6 +10,15 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_diffserv_target_oper {
 
+class Direction : public virtual ydk::Identity
+{
+    public:
+        Direction();
+        ~Direction();
+
+
+}; // Direction
+
 class DiffservInterfacesState : public ydk::Entity
 {
     public:
@@ -214,15 +223,6 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
         ydk::YLeaf early_drop_bytes; //type: uint64
 
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats
-
-class Direction : public virtual ydk::Identity
-{
-    public:
-        Direction();
-        ~Direction();
-
-
-}; // Direction
 
 class Inbound : public cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::Direction, virtual ydk::Identity
 {

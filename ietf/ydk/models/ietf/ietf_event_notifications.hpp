@@ -11,131 +11,41 @@
 namespace ietf {
 namespace ietf_event_notifications {
 
-class CreateSubscription : public ydk::Entity
+class Stream : public virtual ydk::Identity
 {
     public:
-        CreateSubscription();
-        ~CreateSubscription();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-        class Input; //type: CreateSubscription::Input
-
-        std::shared_ptr<ietf::ietf_event_notifications::CreateSubscription::Input> input;
-        
-}; // CreateSubscription
+        Stream();
+        ~Stream();
 
 
-class CreateSubscription::Input : public ydk::Entity
+}; // Stream
+
+class SubscriptionResult : public virtual ydk::Identity
 {
     public:
-        Input();
-        ~Input();
+        SubscriptionResult();
+        ~SubscriptionResult();
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf stream; //type: Stream
-        ydk::YLeaf encoding; //type: Encodings
-        ydk::YLeaf filter; //type: string
-        ydk::YLeaf starttime; //type: string
-        ydk::YLeaf stoptime; //type: string
+}; // SubscriptionResult
 
-}; // CreateSubscription::Input
-
-class DeleteSubscription : public ydk::Entity
+class SubscriptionStreamStatus : public virtual ydk::Identity
 {
     public:
-        DeleteSubscription();
-        ~DeleteSubscription();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::shared_ptr<ydk::Entity> clone_ptr() const override;
-        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
-        std::string get_bundle_yang_models_location() const override;
-        std::string get_bundle_name() const override;
-        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
-
-        class Input; //type: DeleteSubscription::Input
-        class Output; //type: DeleteSubscription::Output
-
-        std::shared_ptr<ietf::ietf_event_notifications::DeleteSubscription::Input> input;
-        std::shared_ptr<ietf::ietf_event_notifications::DeleteSubscription::Output> output;
-        
-}; // DeleteSubscription
+        SubscriptionStreamStatus();
+        ~SubscriptionStreamStatus();
 
 
-class DeleteSubscription::Input : public ydk::Entity
+}; // SubscriptionStreamStatus
+
+class SubscriptionErrors : public virtual ydk::Identity
 {
     public:
-        Input();
-        ~Input();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf subscription_id; //type: uint32
-
-}; // DeleteSubscription::Input
+        SubscriptionErrors();
+        ~SubscriptionErrors();
 
 
-class DeleteSubscription::Output : public ydk::Entity
-{
-    public:
-        Output();
-        ~Output();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf subscription_result; //type: SubscriptionResult
-
-}; // DeleteSubscription::Output
+}; // SubscriptionErrors
 
 class Encodings : public virtual ydk::Identity
 {
@@ -145,6 +55,15 @@ class Encodings : public virtual ydk::Identity
 
 
 }; // Encodings
+
+class Transport : public virtual ydk::Identity
+{
+    public:
+        Transport();
+        ~Transport();
+
+
+}; // Transport
 
 class EstablishSubscription : public ydk::Entity
 {
@@ -253,11 +172,11 @@ class EstablishSubscription::Output : public ydk::Entity
 
 }; // EstablishSubscription::Output
 
-class Filters : public ydk::Entity
+class CreateSubscription : public ydk::Entity
 {
     public:
-        Filters();
-        ~Filters();
+        CreateSubscription();
+        ~CreateSubscription();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -274,18 +193,18 @@ class Filters : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Filter; //type: Filters::Filter
+        class Input; //type: CreateSubscription::Input
 
-        std::vector<std::shared_ptr<ietf::ietf_event_notifications::Filters::Filter> > filter;
+        std::shared_ptr<ietf::ietf_event_notifications::CreateSubscription::Input> input;
         
-}; // Filters
+}; // CreateSubscription
 
 
-class Filters::Filter : public ydk::Entity
+class CreateSubscription::Input : public ydk::Entity
 {
     public:
-        Filter();
-        ~Filter();
+        Input();
+        ~Input();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -298,12 +217,13 @@ class Filters::Filter : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf filter_id; //type: uint32
+        ydk::YLeaf stream; //type: Stream
+        ydk::YLeaf encoding; //type: Encodings
         ydk::YLeaf filter; //type: string
-        ydk::YLeaf subtree_filter; //type: string
-        ydk::YLeaf xpath_filter; //type: string
+        ydk::YLeaf starttime; //type: string
+        ydk::YLeaf stoptime; //type: string
 
-}; // Filters::Filter
+}; // CreateSubscription::Input
 
 class ModifySubscription : public ydk::Entity
 {
@@ -408,14 +328,78 @@ class ModifySubscription::Output : public ydk::Entity
 
 }; // ModifySubscription::Output
 
-class Stream : public virtual ydk::Identity
+class DeleteSubscription : public ydk::Entity
 {
     public:
-        Stream();
-        ~Stream();
+        DeleteSubscription();
+        ~DeleteSubscription();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Input; //type: DeleteSubscription::Input
+        class Output; //type: DeleteSubscription::Output
+
+        std::shared_ptr<ietf::ietf_event_notifications::DeleteSubscription::Input> input;
+        std::shared_ptr<ietf::ietf_event_notifications::DeleteSubscription::Output> output;
+        
+}; // DeleteSubscription
 
 
-}; // Stream
+class DeleteSubscription::Input : public ydk::Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf subscription_id; //type: uint32
+
+}; // DeleteSubscription::Input
+
+
+class DeleteSubscription::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf subscription_result; //type: SubscriptionResult
+
+}; // DeleteSubscription::Output
 
 class Streams : public ydk::Entity
 {
@@ -441,6 +425,58 @@ class Streams : public ydk::Entity
         ydk::YLeafList stream; //type: list of  Stream
 
 }; // Streams
+
+class Filters : public ydk::Entity
+{
+    public:
+        Filters();
+        ~Filters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Filter; //type: Filters::Filter
+
+        std::vector<std::shared_ptr<ietf::ietf_event_notifications::Filters::Filter> > filter;
+        
+}; // Filters
+
+
+class Filters::Filter : public ydk::Entity
+{
+    public:
+        Filter();
+        ~Filter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf filter_id; //type: uint32
+        ydk::YLeaf filter; //type: string
+        ydk::YLeaf subtree_filter; //type: string
+        ydk::YLeaf xpath_filter; //type: string
+
+}; // Filters::Filter
 
 class SubscriptionConfig : public ydk::Entity
 {
@@ -555,38 +591,11 @@ class SubscriptionConfig::Subscription::Receivers::Receiver : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of union, string
+        ydk::YLeaf address; //type: one of string, union
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf protocol; //type: Transport
 
 }; // SubscriptionConfig::Subscription::Receivers::Receiver
-
-class SubscriptionErrors : public virtual ydk::Identity
-{
-    public:
-        SubscriptionErrors();
-        ~SubscriptionErrors();
-
-
-}; // SubscriptionErrors
-
-class SubscriptionResult : public virtual ydk::Identity
-{
-    public:
-        SubscriptionResult();
-        ~SubscriptionResult();
-
-
-}; // SubscriptionResult
-
-class SubscriptionStreamStatus : public virtual ydk::Identity
-{
-    public:
-        SubscriptionStreamStatus();
-        ~SubscriptionStreamStatus();
-
-
-}; // SubscriptionStreamStatus
 
 class Subscriptions : public ydk::Entity
 {
@@ -703,128 +712,11 @@ class Subscriptions::Subscription::Receivers::Receiver : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of union, string
+        ydk::YLeaf address; //type: one of string, union
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf protocol; //type: Transport
 
 }; // Subscriptions::Subscription::Receivers::Receiver
-
-class Transport : public virtual ydk::Identity
-{
-    public:
-        Transport();
-        ~Transport();
-
-
-}; // Transport
-
-class Active : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
-{
-    public:
-        Active();
-        ~Active();
-
-
-}; // Active
-
-class EncodeJson : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
-{
-    public:
-        EncodeJson();
-        ~EncodeJson();
-
-
-}; // EncodeJson
-
-class EncodeXml : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
-{
-    public:
-        EncodeXml();
-        ~EncodeXml();
-
-
-}; // EncodeXml
-
-class Error : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
-{
-    public:
-        Error();
-        ~Error();
-
-
-}; // Error
-
-class ErrorConfiguredSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
-{
-    public:
-        ErrorConfiguredSubscription();
-        ~ErrorConfiguredSubscription();
-
-
-}; // ErrorConfiguredSubscription
-
-class ErrorInsufficientResources : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
-{
-    public:
-        ErrorInsufficientResources();
-        ~ErrorInsufficientResources();
-
-
-}; // ErrorInsufficientResources
-
-class ErrorNoSuchOption : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
-{
-    public:
-        ErrorNoSuchOption();
-        ~ErrorNoSuchOption();
-
-
-}; // ErrorNoSuchOption
-
-class ErrorNoSuchSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
-{
-    public:
-        ErrorNoSuchSubscription();
-        ~ErrorNoSuchSubscription();
-
-
-}; // ErrorNoSuchSubscription
-
-class ErrorOther : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
-{
-    public:
-        ErrorOther();
-        ~ErrorOther();
-
-
-}; // ErrorOther
-
-class InError : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
-{
-    public:
-        InError();
-        ~InError();
-
-
-}; // InError
-
-class Inactive : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
-{
-    public:
-        Inactive();
-        ~Inactive();
-
-
-}; // Inactive
-
-class InternalError : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
-{
-    public:
-        InternalError();
-        ~InternalError();
-
-
-}; // InternalError
 
 class NETCONF : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
@@ -835,14 +727,113 @@ class NETCONF : public ietf::ietf_event_notifications::Stream, virtual ydk::Iden
 
 }; // NETCONF
 
-class Netconf : public ietf::ietf_event_notifications::Transport, virtual ydk::Identity
+class Ok : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
 {
     public:
-        Netconf();
-        ~Netconf();
+        Ok();
+        ~Ok();
 
 
-}; // Netconf
+}; // Ok
+
+class Error : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
+{
+    public:
+        Error();
+        ~Error();
+
+
+}; // Error
+
+class ErrorNoSuchSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorNoSuchSubscription();
+        ~ErrorNoSuchSubscription();
+
+
+}; // ErrorNoSuchSubscription
+
+class ErrorNoSuchOption : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorNoSuchOption();
+        ~ErrorNoSuchOption();
+
+
+}; // ErrorNoSuchOption
+
+class ErrorInsufficientResources : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorInsufficientResources();
+        ~ErrorInsufficientResources();
+
+
+}; // ErrorInsufficientResources
+
+class ErrorConfiguredSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorConfiguredSubscription();
+        ~ErrorConfiguredSubscription();
+
+
+}; // ErrorConfiguredSubscription
+
+class ErrorOther : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorOther();
+        ~ErrorOther();
+
+
+}; // ErrorOther
+
+class Active : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
+{
+    public:
+        Active();
+        ~Active();
+
+
+}; // Active
+
+class Inactive : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
+{
+    public:
+        Inactive();
+        ~Inactive();
+
+
+}; // Inactive
+
+class Suspended : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
+{
+    public:
+        Suspended();
+        ~Suspended();
+
+
+}; // Suspended
+
+class InError : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
+{
+    public:
+        InError();
+        ~InError();
+
+
+}; // InError
+
+class InternalError : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
+{
+    public:
+        InternalError();
+        ~InternalError();
+
+
+}; // InternalError
 
 class NoResources : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
 {
@@ -853,14 +844,14 @@ class NoResources : public ietf::ietf_event_notifications::SubscriptionErrors, v
 
 }; // NoResources
 
-class Ok : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
+class SubscriptionDeleted : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
 {
     public:
-        Ok();
-        ~Ok();
+        SubscriptionDeleted();
+        ~SubscriptionDeleted();
 
 
-}; // Ok
+}; // SubscriptionDeleted
 
 class Other : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
 {
@@ -871,23 +862,32 @@ class Other : public ietf::ietf_event_notifications::SubscriptionErrors, virtual
 
 }; // Other
 
-class SubscriptionDeleted : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
+class EncodeXml : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
 {
     public:
-        SubscriptionDeleted();
-        ~SubscriptionDeleted();
+        EncodeXml();
+        ~EncodeXml();
 
 
-}; // SubscriptionDeleted
+}; // EncodeXml
 
-class Suspended : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
+class EncodeJson : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
 {
     public:
-        Suspended();
-        ~Suspended();
+        EncodeJson();
+        ~EncodeJson();
 
 
-}; // Suspended
+}; // EncodeJson
+
+class Netconf : public ietf::ietf_event_notifications::Transport, virtual ydk::Identity
+{
+    public:
+        Netconf();
+        ~Netconf();
+
+
+}; // Netconf
 
 class PushSource : public ydk::Enum
 {

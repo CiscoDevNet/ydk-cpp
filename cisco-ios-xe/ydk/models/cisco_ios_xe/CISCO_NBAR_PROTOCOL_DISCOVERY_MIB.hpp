@@ -41,75 +41,16 @@ class CISCONBARPROTOCOLDISCOVERYMIB : public ydk::Entity
         class Cnpdthresholdhistorytable; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable
         class Cnpdsupportedprotocolstable; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable> cnpdallstatstable;
         std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig> cnpdnotificationsconfig;
         std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable> cnpdstatustable;
-        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable> cnpdsupportedprotocolstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable> cnpdthresholdconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable> cnpdthresholdhistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable> cnpdallstatstable;
         std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable> cnpdtopnconfigtable;
         std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable> cnpdtopnstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable> cnpdthresholdconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable> cnpdthresholdhistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable> cnpdsupportedprotocolstable;
         
 }; // CISCONBARPROTOCOLDISCOVERYMIB
-
-
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable : public ydk::Entity
-{
-    public:
-        Cnpdallstatstable();
-        ~Cnpdallstatstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cnpdallstatsentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry> > cnpdallstatsentry;
-        
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable
-
-
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry : public ydk::Entity
-{
-    public:
-        Cnpdallstatsentry();
-        ~Cnpdallstatsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf cnpdallstatsprotocolsindex; //type: uint32
-        ydk::YLeaf cnpdallstatsprotocolname; //type: binary
-        ydk::YLeaf cnpdallstatsinpkts; //type: uint32
-        ydk::YLeaf cnpdallstatsoutpkts; //type: uint32
-        ydk::YLeaf cnpdallstatsinbytes; //type: uint32
-        ydk::YLeaf cnpdallstatsoutbytes; //type: uint32
-        ydk::YLeaf cnpdallstatshcinpkts; //type: uint64
-        ydk::YLeaf cnpdallstatshcoutpkts; //type: uint64
-        ydk::YLeaf cnpdallstatshcinbytes; //type: uint64
-        ydk::YLeaf cnpdallstatshcoutbytes; //type: uint64
-        ydk::YLeaf cnpdallstatsinbitrate; //type: uint32
-        ydk::YLeaf cnpdallstatsoutbitrate; //type: uint32
-
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry
 
 
 class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdnotificationsconfig : public ydk::Entity
@@ -183,11 +124,11 @@ class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry : public y
 }; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdstatustable::Cnpdstatusentry
 
 
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable : public ydk::Entity
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable : public ydk::Entity
 {
     public:
-        Cnpdsupportedprotocolstable();
-        ~Cnpdsupportedprotocolstable();
+        Cnpdallstatstable();
+        ~Cnpdallstatstable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -200,18 +141,18 @@ class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cnpdsupportedprotocolsentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry
+        class Cnpdallstatsentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry> > cnpdsupportedprotocolsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry> > cnpdallstatsentry;
         
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable
 
 
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry : public ydk::Entity
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry : public ydk::Entity
 {
     public:
-        Cnpdsupportedprotocolsentry();
-        ~Cnpdsupportedprotocolsentry();
+        Cnpdallstatsentry();
+        ~Cnpdallstatsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -224,10 +165,126 @@ class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedp
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cnpdsupportedprotocolsindex; //type: uint32
-        ydk::YLeaf cnpdsupportedprotocolsname; //type: binary
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cnpdallstatsprotocolsindex; //type: uint32
+        ydk::YLeaf cnpdallstatsprotocolname; //type: binary
+        ydk::YLeaf cnpdallstatsinpkts; //type: uint32
+        ydk::YLeaf cnpdallstatsoutpkts; //type: uint32
+        ydk::YLeaf cnpdallstatsinbytes; //type: uint32
+        ydk::YLeaf cnpdallstatsoutbytes; //type: uint32
+        ydk::YLeaf cnpdallstatshcinpkts; //type: uint64
+        ydk::YLeaf cnpdallstatshcoutpkts; //type: uint64
+        ydk::YLeaf cnpdallstatshcinbytes; //type: uint64
+        ydk::YLeaf cnpdallstatshcoutbytes; //type: uint64
+        ydk::YLeaf cnpdallstatsinbitrate; //type: uint32
+        ydk::YLeaf cnpdallstatsoutbitrate; //type: uint32
 
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdallstatstable::Cnpdallstatsentry
+
+
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable : public ydk::Entity
+{
+    public:
+        Cnpdtopnconfigtable();
+        ~Cnpdtopnconfigtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cnpdtopnconfigentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry> > cnpdtopnconfigentry;
+        
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable
+
+
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry : public ydk::Entity
+{
+    public:
+        Cnpdtopnconfigentry();
+        ~Cnpdtopnconfigentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cnpdtopnconfigindex; //type: uint32
+        ydk::YLeaf cnpdtopnconfigifindex; //type: int32
+        ydk::YLeaf cnpdtopnconfigstatsselect; //type: CiscoPdDataType
+        ydk::YLeaf cnpdtopnconfigsampletime; //type: uint32
+        ydk::YLeaf cnpdtopnconfigrequestedsize; //type: uint32
+        ydk::YLeaf cnpdtopnconfiggrantedsize; //type: uint32
+        ydk::YLeaf cnpdtopnconfigtime; //type: uint32
+        ydk::YLeaf cnpdtopnconfigstatus; //type: RowStatus
+
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry
+
+
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable : public ydk::Entity
+{
+    public:
+        Cnpdtopnstatstable();
+        ~Cnpdtopnstatstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cnpdtopnstatsentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry> > cnpdtopnstatsentry;
+        
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable
+
+
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry : public ydk::Entity
+{
+    public:
+        Cnpdtopnstatsentry();
+        ~Cnpdtopnstatsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::cnpdtopnconfigindex)
+        ydk::YLeaf cnpdtopnconfigindex;
+        ydk::YLeaf cnpdtopnstatsindex; //type: uint32
+        ydk::YLeaf cnpdtopnstatsprotocolname; //type: binary
+        ydk::YLeaf cnpdtopnstatsrate; //type: uint32
+        ydk::YLeaf cnpdtopnstatshcrate; //type: uint64
+
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry
 
 
 class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdconfigtable : public ydk::Entity
@@ -341,11 +398,11 @@ class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhis
 }; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdthresholdhistorytable::Cnpdthresholdhistoryentry
 
 
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable : public ydk::Entity
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable : public ydk::Entity
 {
     public:
-        Cnpdtopnconfigtable();
-        ~Cnpdtopnconfigtable();
+        Cnpdsupportedprotocolstable();
+        ~Cnpdsupportedprotocolstable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -358,18 +415,18 @@ class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cnpdtopnconfigentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry
+        class Cnpdsupportedprotocolsentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry> > cnpdtopnconfigentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry> > cnpdsupportedprotocolsentry;
         
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable
 
 
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry : public ydk::Entity
+class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry : public ydk::Entity
 {
     public:
-        Cnpdtopnconfigentry();
-        ~Cnpdtopnconfigentry();
+        Cnpdsupportedprotocolsentry();
+        ~Cnpdsupportedprotocolsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -382,67 +439,10 @@ class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cnpdtopnconfigindex; //type: uint32
-        ydk::YLeaf cnpdtopnconfigifindex; //type: int32
-        ydk::YLeaf cnpdtopnconfigstatsselect; //type: CiscoPdDataType
-        ydk::YLeaf cnpdtopnconfigsampletime; //type: uint32
-        ydk::YLeaf cnpdtopnconfigrequestedsize; //type: uint32
-        ydk::YLeaf cnpdtopnconfiggrantedsize; //type: uint32
-        ydk::YLeaf cnpdtopnconfigtime; //type: uint32
-        ydk::YLeaf cnpdtopnconfigstatus; //type: RowStatus
+        ydk::YLeaf cnpdsupportedprotocolsindex; //type: uint32
+        ydk::YLeaf cnpdsupportedprotocolsname; //type: binary
 
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry
-
-
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable : public ydk::Entity
-{
-    public:
-        Cnpdtopnstatstable();
-        ~Cnpdtopnstatstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cnpdtopnstatsentry; //type: CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry> > cnpdtopnstatsentry;
-        
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable
-
-
-class CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry : public ydk::Entity
-{
-    public:
-        Cnpdtopnstatsentry();
-        ~Cnpdtopnstatsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: uint32 (refers to cisco_ios_xe::CISCO_NBAR_PROTOCOL_DISCOVERY_MIB::CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnconfigtable::Cnpdtopnconfigentry::cnpdtopnconfigindex)
-        ydk::YLeaf cnpdtopnconfigindex;
-        ydk::YLeaf cnpdtopnstatsindex; //type: uint32
-        ydk::YLeaf cnpdtopnstatsprotocolname; //type: binary
-        ydk::YLeaf cnpdtopnstatsrate; //type: uint32
-        ydk::YLeaf cnpdtopnstatshcrate; //type: uint64
-
-}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdtopnstatstable::Cnpdtopnstatsentry
+}; // CISCONBARPROTOCOLDISCOVERYMIB::Cnpdsupportedprotocolstable::Cnpdsupportedprotocolsentry
 
 class CiscoPdDataType : public ydk::Enum
 {

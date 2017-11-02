@@ -134,19 +134,19 @@ class Fib::Platform::LabelSwitchedMulticast : public ydk::Entity
 
 }; // Fib::Platform::LabelSwitchedMulticast
 
+class FibPbtsForwardClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
+
+};
+
 class FibPbtsFallback : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf list;
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf drop;
-
-};
-
-class FibPbtsForwardClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf any;
 
 };
 

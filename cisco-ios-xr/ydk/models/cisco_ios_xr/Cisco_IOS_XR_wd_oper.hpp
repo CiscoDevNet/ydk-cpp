@@ -84,11 +84,130 @@ class Watchdog::Nodes::Node : public ydk::Entity
         class MemoryState; //type: Watchdog::Nodes::Node::MemoryState
         class OverloadState; //type: Watchdog::Nodes::Node::OverloadState
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory> threshold_memory;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::MemoryState> memory_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState> overload_state;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory> threshold_memory;
         
 }; // Watchdog::Nodes::Node
+
+
+class Watchdog::Nodes::Node::ThresholdMemory : public ydk::Entity
+{
+    public:
+        ThresholdMemory();
+        ~ThresholdMemory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Default_; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_
+        class Configured; //type: Watchdog::Nodes::Node::ThresholdMemory::Configured
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_> default_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Configured> configured;
+        
+}; // Watchdog::Nodes::Node::ThresholdMemory
+
+
+class Watchdog::Nodes::Node::ThresholdMemory::Default_ : public ydk::Entity
+{
+    public:
+        Default_();
+        ~Default_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ConfiguredMemory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
+        class Memory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory> configured_memory;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory> memory;
+        
+}; // Watchdog::Nodes::Node::ThresholdMemory::Default_
+
+
+class Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory : public ydk::Entity
+{
+    public:
+        ConfiguredMemory();
+        ~ConfiguredMemory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf severe; //type: uint32
+        ydk::YLeaf critical; //type: uint64
+
+}; // Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
+
+
+class Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory : public ydk::Entity
+{
+    public:
+        Memory();
+        ~Memory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf physical_memory; //type: uint32
+        ydk::YLeaf free_memory; //type: uint64
+        ydk::YLeaf memory_state; //type: MemoryState
+
+}; // Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
+
+
+class Watchdog::Nodes::Node::ThresholdMemory::Configured : public ydk::Entity
+{
+    public:
+        Configured();
+        ~Configured();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf severe; //type: uint32
+        ydk::YLeaf critical; //type: uint64
+
+}; // Watchdog::Nodes::Node::ThresholdMemory::Configured
 
 
 class Watchdog::Nodes::Node::MemoryState : public ydk::Entity
@@ -186,124 +305,13 @@ class Watchdog::Nodes::Node::OverloadState::LastThrottle : public ydk::Entity
 
 }; // Watchdog::Nodes::Node::OverloadState::LastThrottle
 
-
-class Watchdog::Nodes::Node::ThresholdMemory : public ydk::Entity
+class OverloadCtrlNotif : public ydk::Enum
 {
     public:
-        ThresholdMemory();
-        ~ThresholdMemory();
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Default_; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_
-        class Configured; //type: Watchdog::Nodes::Node::ThresholdMemory::Configured
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Configured> configured;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_> default_;
-        
-}; // Watchdog::Nodes::Node::ThresholdMemory
-
-
-class Watchdog::Nodes::Node::ThresholdMemory::Configured : public ydk::Entity
-{
-    public:
-        Configured();
-        ~Configured();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minor; //type: uint32
-        ydk::YLeaf severe; //type: uint32
-        ydk::YLeaf critical; //type: uint64
-
-}; // Watchdog::Nodes::Node::ThresholdMemory::Configured
-
-
-class Watchdog::Nodes::Node::ThresholdMemory::Default_ : public ydk::Entity
-{
-    public:
-        Default_();
-        ~Default_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ConfiguredMemory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
-        class Memory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory> configured_memory;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory> memory;
-        
-}; // Watchdog::Nodes::Node::ThresholdMemory::Default_
-
-
-class Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory : public ydk::Entity
-{
-    public:
-        ConfiguredMemory();
-        ~ConfiguredMemory();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minor; //type: uint32
-        ydk::YLeaf severe; //type: uint32
-        ydk::YLeaf critical; //type: uint64
-
-}; // Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
-
-
-class Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory : public ydk::Entity
-{
-    public:
-        Memory();
-        ~Memory();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf physical_memory; //type: uint32
-        ydk::YLeaf free_memory; //type: uint64
-        ydk::YLeaf memory_state; //type: MemoryState
-
-}; // Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
+};
 
 class MemoryState : public ydk::Enum
 {
@@ -313,14 +321,6 @@ class MemoryState : public ydk::Enum
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf severe;
         static const ydk::Enum::YLeaf critical;
-
-};
-
-class OverloadCtrlNotif : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
 
 };
 

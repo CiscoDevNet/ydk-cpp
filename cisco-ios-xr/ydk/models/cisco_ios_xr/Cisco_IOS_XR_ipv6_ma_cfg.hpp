@@ -10,16 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ma_cfg {
 
-class Ipv6Qppb : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ip_precedence;
-        static const ydk::Enum::YLeaf qos_group;
-        static const ydk::Enum::YLeaf both;
-
-};
-
 class Ipv6SelfPing : public ydk::Enum
 {
     public:
@@ -41,6 +31,16 @@ class Ipv6DefaultPing : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled;
+
+};
+
+class Ipv6Qppb : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ip_precedence;
+        static const ydk::Enum::YLeaf qos_group;
+        static const ydk::Enum::YLeaf both;
 
 };
 

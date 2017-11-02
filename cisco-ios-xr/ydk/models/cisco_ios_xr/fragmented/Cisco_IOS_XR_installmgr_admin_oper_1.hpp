@@ -13,11 +13,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_installmgr_admin_oper {
 
 
-class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath : public ydk::Entity
+class Install::Logs::Log::Communication::LogContents::V3 : public ydk::Entity
 {
     public:
-        LoadPath();
-        ~LoadPath();
+        V3();
+        ~V3();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -29,20 +29,20 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf version; //type: string
-        ydk::YLeaf build_information; //type: string
-        class Package; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
+        ydk::YLeaf category; //type: InstmgrBagLogEntryUserMsgCategory
+        ydk::YLeaf message; //type: string
+        class Scope; //type: Install::Logs::Log::Communication::LogContents::V3::Scope
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package> package;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Communication::LogContents::V3::Scope> scope;
         
-}; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath
+}; // Install::Logs::Log::Communication::LogContents::V3
 
 
-class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package : public ydk::Entity
+class Install::Logs::Log::Communication::LogContents::V3::Scope : public ydk::Entity
 {
     public:
-        Package();
-        ~Package();
+        Scope();
+        ~Scope();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -54,10 +54,10 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf device_name; //type: string
-        ydk::YLeaf name; //type: string
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
-}; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
+}; // Install::Logs::Log::Communication::LogContents::V3::Scope
 
 
 }

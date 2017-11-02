@@ -11,10 +11,46 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_TC {
 
+const Enum::YLeaf CiscoNetworkProtocol::ip {1, "ip"};
+const Enum::YLeaf CiscoNetworkProtocol::decnet {2, "decnet"};
+const Enum::YLeaf CiscoNetworkProtocol::pup {3, "pup"};
+const Enum::YLeaf CiscoNetworkProtocol::chaos {4, "chaos"};
+const Enum::YLeaf CiscoNetworkProtocol::xns {5, "xns"};
+const Enum::YLeaf CiscoNetworkProtocol::x121 {6, "x121"};
+const Enum::YLeaf CiscoNetworkProtocol::appletalk {7, "appletalk"};
+const Enum::YLeaf CiscoNetworkProtocol::clns {8, "clns"};
+const Enum::YLeaf CiscoNetworkProtocol::lat {9, "lat"};
+const Enum::YLeaf CiscoNetworkProtocol::vines {10, "vines"};
+const Enum::YLeaf CiscoNetworkProtocol::cons {11, "cons"};
+const Enum::YLeaf CiscoNetworkProtocol::apollo {12, "apollo"};
+const Enum::YLeaf CiscoNetworkProtocol::stun {13, "stun"};
+const Enum::YLeaf CiscoNetworkProtocol::novell {14, "novell"};
+const Enum::YLeaf CiscoNetworkProtocol::qllc {15, "qllc"};
+const Enum::YLeaf CiscoNetworkProtocol::snapshot {16, "snapshot"};
+const Enum::YLeaf CiscoNetworkProtocol::atmIlmi {17, "atmIlmi"};
+const Enum::YLeaf CiscoNetworkProtocol::bstun {18, "bstun"};
+const Enum::YLeaf CiscoNetworkProtocol::x25pvc {19, "x25pvc"};
+const Enum::YLeaf CiscoNetworkProtocol::ipv6 {20, "ipv6"};
+const Enum::YLeaf CiscoNetworkProtocol::cdm {21, "cdm"};
+const Enum::YLeaf CiscoNetworkProtocol::nbf {22, "nbf"};
+const Enum::YLeaf CiscoNetworkProtocol::bpxIgx {23, "bpxIgx"};
+const Enum::YLeaf CiscoNetworkProtocol::clnsPfx {24, "clnsPfx"};
+const Enum::YLeaf CiscoNetworkProtocol::http {25, "http"};
+const Enum::YLeaf CiscoNetworkProtocol::unknown {65535, "unknown"};
+
 const Enum::YLeaf CiscoRowOperStatus::active {1, "active"};
 const Enum::YLeaf CiscoRowOperStatus::activeDependencies {2, "activeDependencies"};
 const Enum::YLeaf CiscoRowOperStatus::inactiveDependency {3, "inactiveDependency"};
 const Enum::YLeaf CiscoRowOperStatus::missingDependency {4, "missingDependency"};
+
+const Enum::YLeaf CiscoLocationClass::chassis {1, "chassis"};
+const Enum::YLeaf CiscoLocationClass::shelf {2, "shelf"};
+const Enum::YLeaf CiscoLocationClass::slot {3, "slot"};
+const Enum::YLeaf CiscoLocationClass::subSlot {4, "subSlot"};
+const Enum::YLeaf CiscoLocationClass::port {5, "port"};
+const Enum::YLeaf CiscoLocationClass::subPort {6, "subPort"};
+const Enum::YLeaf CiscoLocationClass::channel {7, "channel"};
+const Enum::YLeaf CiscoLocationClass::subChannel {8, "subChannel"};
 
 const Enum::YLeaf CiscoAlarmSeverity::cleared {1, "cleared"};
 const Enum::YLeaf CiscoAlarmSeverity::indeterminate {2, "indeterminate"};
@@ -301,42 +337,6 @@ const Enum::YLeaf IfOperStatusReason::sfpFcCompliantErr {265, "sfpFcCompliantErr
 const Enum::YLeaf IfOperStatusReason::ethIntfNotLicensed {266, "ethIntfNotLicensed"};
 const Enum::YLeaf IfOperStatusReason::domainIdsInvalid {267, "domainIdsInvalid"};
 const Enum::YLeaf IfOperStatusReason::fabricNameInvalid {268, "fabricNameInvalid"};
-
-const Enum::YLeaf CiscoNetworkProtocol::ip {1, "ip"};
-const Enum::YLeaf CiscoNetworkProtocol::decnet {2, "decnet"};
-const Enum::YLeaf CiscoNetworkProtocol::pup {3, "pup"};
-const Enum::YLeaf CiscoNetworkProtocol::chaos {4, "chaos"};
-const Enum::YLeaf CiscoNetworkProtocol::xns {5, "xns"};
-const Enum::YLeaf CiscoNetworkProtocol::x121 {6, "x121"};
-const Enum::YLeaf CiscoNetworkProtocol::appletalk {7, "appletalk"};
-const Enum::YLeaf CiscoNetworkProtocol::clns {8, "clns"};
-const Enum::YLeaf CiscoNetworkProtocol::lat {9, "lat"};
-const Enum::YLeaf CiscoNetworkProtocol::vines {10, "vines"};
-const Enum::YLeaf CiscoNetworkProtocol::cons {11, "cons"};
-const Enum::YLeaf CiscoNetworkProtocol::apollo {12, "apollo"};
-const Enum::YLeaf CiscoNetworkProtocol::stun {13, "stun"};
-const Enum::YLeaf CiscoNetworkProtocol::novell {14, "novell"};
-const Enum::YLeaf CiscoNetworkProtocol::qllc {15, "qllc"};
-const Enum::YLeaf CiscoNetworkProtocol::snapshot {16, "snapshot"};
-const Enum::YLeaf CiscoNetworkProtocol::atmIlmi {17, "atmIlmi"};
-const Enum::YLeaf CiscoNetworkProtocol::bstun {18, "bstun"};
-const Enum::YLeaf CiscoNetworkProtocol::x25pvc {19, "x25pvc"};
-const Enum::YLeaf CiscoNetworkProtocol::ipv6 {20, "ipv6"};
-const Enum::YLeaf CiscoNetworkProtocol::cdm {21, "cdm"};
-const Enum::YLeaf CiscoNetworkProtocol::nbf {22, "nbf"};
-const Enum::YLeaf CiscoNetworkProtocol::bpxIgx {23, "bpxIgx"};
-const Enum::YLeaf CiscoNetworkProtocol::clnsPfx {24, "clnsPfx"};
-const Enum::YLeaf CiscoNetworkProtocol::http {25, "http"};
-const Enum::YLeaf CiscoNetworkProtocol::unknown {65535, "unknown"};
-
-const Enum::YLeaf CiscoLocationClass::chassis {1, "chassis"};
-const Enum::YLeaf CiscoLocationClass::shelf {2, "shelf"};
-const Enum::YLeaf CiscoLocationClass::slot {3, "slot"};
-const Enum::YLeaf CiscoLocationClass::subSlot {4, "subSlot"};
-const Enum::YLeaf CiscoLocationClass::port {5, "port"};
-const Enum::YLeaf CiscoLocationClass::subPort {6, "subPort"};
-const Enum::YLeaf CiscoLocationClass::channel {7, "channel"};
-const Enum::YLeaf CiscoLocationClass::subChannel {8, "subChannel"};
 
 
 }

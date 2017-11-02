@@ -220,13 +220,13 @@ SessionMon::Nodes::Node::Node()
     :
     node_id{YType::str, "node-id"}
     	,
-    interface_all_statistics(std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics>())
+    session_mon_statistics(std::make_shared<SessionMon::Nodes::Node::SessionMonStatistics>())
+	,interface_all_statistics(std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics>())
 	,license_statistics(std::make_shared<SessionMon::Nodes::Node::LicenseStatistics>())
-	,session_mon_statistics(std::make_shared<SessionMon::Nodes::Node::SessionMonStatistics>())
 {
+    session_mon_statistics->parent = this;
     interface_all_statistics->parent = this;
     license_statistics->parent = this;
-    session_mon_statistics->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -238,18 +238,18 @@ SessionMon::Nodes::Node::~Node()
 bool SessionMon::Nodes::Node::has_data() const
 {
     return node_id.is_set
+	|| (session_mon_statistics !=  nullptr && session_mon_statistics->has_data())
 	|| (interface_all_statistics !=  nullptr && interface_all_statistics->has_data())
-	|| (license_statistics !=  nullptr && license_statistics->has_data())
-	|| (session_mon_statistics !=  nullptr && session_mon_statistics->has_data());
+	|| (license_statistics !=  nullptr && license_statistics->has_data());
 }
 
 bool SessionMon::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (session_mon_statistics !=  nullptr && session_mon_statistics->has_operation())
 	|| (interface_all_statistics !=  nullptr && interface_all_statistics->has_operation())
-	|| (license_statistics !=  nullptr && license_statistics->has_operation())
-	|| (session_mon_statistics !=  nullptr && session_mon_statistics->has_operation());
+	|| (license_statistics !=  nullptr && license_statistics->has_operation());
 }
 
 std::string SessionMon::Nodes::Node::get_absolute_path() const
@@ -278,6 +278,15 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::get_name
 
 std::shared_ptr<Entity> SessionMon::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "session-mon-statistics")
+    {
+        if(session_mon_statistics == nullptr)
+        {
+            session_mon_statistics = std::make_shared<SessionMon::Nodes::Node::SessionMonStatistics>();
+        }
+        return session_mon_statistics;
+    }
+
     if(child_yang_name == "interface-all-statistics")
     {
         if(interface_all_statistics == nullptr)
@@ -296,21 +305,17 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::get_child_by_name(const std::st
         return license_statistics;
     }
 
-    if(child_yang_name == "session-mon-statistics")
-    {
-        if(session_mon_statistics == nullptr)
-        {
-            session_mon_statistics = std::make_shared<SessionMon::Nodes::Node::SessionMonStatistics>();
-        }
-        return session_mon_statistics;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session_mon_statistics != nullptr)
+    {
+        children["session-mon-statistics"] = session_mon_statistics;
+    }
+
     if(interface_all_statistics != nullptr)
     {
         children["interface-all-statistics"] = interface_all_statistics;
@@ -319,11 +324,6 @@ std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::get_chil
     if(license_statistics != nullptr)
     {
         children["license-statistics"] = license_statistics;
-    }
-
-    if(session_mon_statistics != nullptr)
-    {
-        children["session-mon-statistics"] = session_mon_statistics;
     }
 
     return children;
@@ -349,7 +349,251 @@ void SessionMon::Nodes::Node::set_filter(const std::string & value_path, YFilter
 
 bool SessionMon::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-all-statistics" || name == "license-statistics" || name == "session-mon-statistics" || name == "node-id")
+    if(name == "session-mon-statistics" || name == "interface-all-statistics" || name == "license-statistics" || name == "node-id")
+        return true;
+    return false;
+}
+
+SessionMon::Nodes::Node::SessionMonStatistics::SessionMonStatistics()
+    :
+    total{YType::uint32, "total"},
+    pppoe{YType::uint32, "pppoe"},
+    pppoe_ds{YType::uint32, "pppoe-ds"},
+    dhcpv4{YType::uint32, "dhcpv4"},
+    dhcpv6{YType::uint32, "dhcpv6"},
+    dhcp_ds{YType::uint32, "dhcp-ds"},
+    ippkt{YType::uint32, "ippkt"},
+    active_sessions{YType::uint32, "active-sessions"},
+    standby_sessions{YType::uint32, "standby-sessions"},
+    peak_active_sessions{YType::uint32, "peak-active-sessions"},
+    peak_standby_sessions{YType::uint32, "peak-standby-sessions"},
+    peak_start_time{YType::uint32, "peak-start-time"},
+    timeout_value{YType::uint32, "timeout-value"}
+{
+
+    yang_name = "session-mon-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SessionMon::Nodes::Node::SessionMonStatistics::~SessionMonStatistics()
+{
+}
+
+bool SessionMon::Nodes::Node::SessionMonStatistics::has_data() const
+{
+    return total.is_set
+	|| pppoe.is_set
+	|| pppoe_ds.is_set
+	|| dhcpv4.is_set
+	|| dhcpv6.is_set
+	|| dhcp_ds.is_set
+	|| ippkt.is_set
+	|| active_sessions.is_set
+	|| standby_sessions.is_set
+	|| peak_active_sessions.is_set
+	|| peak_standby_sessions.is_set
+	|| peak_start_time.is_set
+	|| timeout_value.is_set;
+}
+
+bool SessionMon::Nodes::Node::SessionMonStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(pppoe.yfilter)
+	|| ydk::is_set(pppoe_ds.yfilter)
+	|| ydk::is_set(dhcpv4.yfilter)
+	|| ydk::is_set(dhcpv6.yfilter)
+	|| ydk::is_set(dhcp_ds.yfilter)
+	|| ydk::is_set(ippkt.yfilter)
+	|| ydk::is_set(active_sessions.yfilter)
+	|| ydk::is_set(standby_sessions.yfilter)
+	|| ydk::is_set(peak_active_sessions.yfilter)
+	|| ydk::is_set(peak_standby_sessions.yfilter)
+	|| ydk::is_set(peak_start_time.yfilter)
+	|| ydk::is_set(timeout_value.yfilter);
+}
+
+std::string SessionMon::Nodes::Node::SessionMonStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-mon-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::SessionMonStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
+    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
+    if (dhcpv4.is_set || is_set(dhcpv4.yfilter)) leaf_name_data.push_back(dhcpv4.get_name_leafdata());
+    if (dhcpv6.is_set || is_set(dhcpv6.yfilter)) leaf_name_data.push_back(dhcpv6.get_name_leafdata());
+    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
+    if (ippkt.is_set || is_set(ippkt.yfilter)) leaf_name_data.push_back(ippkt.get_name_leafdata());
+    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
+    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
+    if (peak_active_sessions.is_set || is_set(peak_active_sessions.yfilter)) leaf_name_data.push_back(peak_active_sessions.get_name_leafdata());
+    if (peak_standby_sessions.is_set || is_set(peak_standby_sessions.yfilter)) leaf_name_data.push_back(peak_standby_sessions.get_name_leafdata());
+    if (peak_start_time.is_set || is_set(peak_start_time.yfilter)) leaf_name_data.push_back(peak_start_time.get_name_leafdata());
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SessionMon::Nodes::Node::SessionMonStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::SessionMonStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SessionMon::Nodes::Node::SessionMonStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pppoe")
+    {
+        pppoe = value;
+        pppoe.value_namespace = name_space;
+        pppoe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds = value;
+        pppoe_ds.value_namespace = name_space;
+        pppoe_ds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcpv4")
+    {
+        dhcpv4 = value;
+        dhcpv4.value_namespace = name_space;
+        dhcpv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcpv6")
+    {
+        dhcpv6 = value;
+        dhcpv6.value_namespace = name_space;
+        dhcpv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds = value;
+        dhcp_ds.value_namespace = name_space;
+        dhcp_ds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ippkt")
+    {
+        ippkt = value;
+        ippkt.value_namespace = name_space;
+        ippkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions = value;
+        active_sessions.value_namespace = name_space;
+        active_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions = value;
+        standby_sessions.value_namespace = name_space;
+        standby_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-active-sessions")
+    {
+        peak_active_sessions = value;
+        peak_active_sessions.value_namespace = name_space;
+        peak_active_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-standby-sessions")
+    {
+        peak_standby_sessions = value;
+        peak_standby_sessions.value_namespace = name_space;
+        peak_standby_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-start-time")
+    {
+        peak_start_time = value;
+        peak_start_time.value_namespace = name_space;
+        peak_start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout-value")
+    {
+        timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionMon::Nodes::Node::SessionMonStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "pppoe")
+    {
+        pppoe.yfilter = yfilter;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds.yfilter = yfilter;
+    }
+    if(value_path == "dhcpv4")
+    {
+        dhcpv4.yfilter = yfilter;
+    }
+    if(value_path == "dhcpv6")
+    {
+        dhcpv6.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds.yfilter = yfilter;
+    }
+    if(value_path == "ippkt")
+    {
+        ippkt.yfilter = yfilter;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions.yfilter = yfilter;
+    }
+    if(value_path == "peak-active-sessions")
+    {
+        peak_active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "peak-standby-sessions")
+    {
+        peak_standby_sessions.yfilter = yfilter;
+    }
+    if(value_path == "peak-start-time")
+    {
+        peak_start_time.yfilter = yfilter;
+    }
+    if(value_path == "timeout-value")
+    {
+        timeout_value.yfilter = yfilter;
+    }
+}
+
+bool SessionMon::Nodes::Node::SessionMonStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "total" || name == "pppoe" || name == "pppoe-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "dhcp-ds" || name == "ippkt" || name == "active-sessions" || name == "standby-sessions" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "timeout-value")
         return true;
     return false;
 }
@@ -450,19 +694,19 @@ bool SessionMon::Nodes::Node::InterfaceAllStatistics::has_leaf_or_child_of_name(
 SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::InterfaceAllStatistic()
     :
     interface_name{YType::str, "interface-name"},
-    active_sessions{YType::uint32, "active-sessions"},
-    dhcp_ds{YType::uint32, "dhcp-ds"},
+    total{YType::uint32, "total"},
+    pppoe{YType::uint32, "pppoe"},
+    pppoe_ds{YType::uint32, "pppoe-ds"},
     dhcpv4{YType::uint32, "dhcpv4"},
     dhcpv6{YType::uint32, "dhcpv6"},
+    dhcp_ds{YType::uint32, "dhcp-ds"},
     ippkt{YType::uint32, "ippkt"},
+    active_sessions{YType::uint32, "active-sessions"},
+    standby_sessions{YType::uint32, "standby-sessions"},
     peak_active_sessions{YType::uint32, "peak-active-sessions"},
     peak_standby_sessions{YType::uint32, "peak-standby-sessions"},
     peak_start_time{YType::uint32, "peak-start-time"},
-    pppoe{YType::uint32, "pppoe"},
-    pppoe_ds{YType::uint32, "pppoe-ds"},
-    standby_sessions{YType::uint32, "standby-sessions"},
-    timeout_value{YType::uint32, "timeout-value"},
-    total{YType::uint32, "total"}
+    timeout_value{YType::uint32, "timeout-value"}
 {
 
     yang_name = "interface-all-statistic"; yang_parent_name = "interface-all-statistics"; is_top_level_class = false; has_list_ancestor = true;
@@ -475,38 +719,38 @@ SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::~Interfa
 bool SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::has_data() const
 {
     return interface_name.is_set
-	|| active_sessions.is_set
-	|| dhcp_ds.is_set
+	|| total.is_set
+	|| pppoe.is_set
+	|| pppoe_ds.is_set
 	|| dhcpv4.is_set
 	|| dhcpv6.is_set
+	|| dhcp_ds.is_set
 	|| ippkt.is_set
+	|| active_sessions.is_set
+	|| standby_sessions.is_set
 	|| peak_active_sessions.is_set
 	|| peak_standby_sessions.is_set
 	|| peak_start_time.is_set
-	|| pppoe.is_set
-	|| pppoe_ds.is_set
-	|| standby_sessions.is_set
-	|| timeout_value.is_set
-	|| total.is_set;
+	|| timeout_value.is_set;
 }
 
 bool SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(active_sessions.yfilter)
-	|| ydk::is_set(dhcp_ds.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(pppoe.yfilter)
+	|| ydk::is_set(pppoe_ds.yfilter)
 	|| ydk::is_set(dhcpv4.yfilter)
 	|| ydk::is_set(dhcpv6.yfilter)
+	|| ydk::is_set(dhcp_ds.yfilter)
 	|| ydk::is_set(ippkt.yfilter)
+	|| ydk::is_set(active_sessions.yfilter)
+	|| ydk::is_set(standby_sessions.yfilter)
 	|| ydk::is_set(peak_active_sessions.yfilter)
 	|| ydk::is_set(peak_standby_sessions.yfilter)
 	|| ydk::is_set(peak_start_time.yfilter)
-	|| ydk::is_set(pppoe.yfilter)
-	|| ydk::is_set(pppoe_ds.yfilter)
-	|| ydk::is_set(standby_sessions.yfilter)
-	|| ydk::is_set(timeout_value.yfilter)
-	|| ydk::is_set(total.yfilter);
+	|| ydk::is_set(timeout_value.yfilter);
 }
 
 std::string SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_segment_path() const
@@ -521,19 +765,19 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::Interfac
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
-    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
+    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
     if (dhcpv4.is_set || is_set(dhcpv4.yfilter)) leaf_name_data.push_back(dhcpv4.get_name_leafdata());
     if (dhcpv6.is_set || is_set(dhcpv6.yfilter)) leaf_name_data.push_back(dhcpv6.get_name_leafdata());
+    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
     if (ippkt.is_set || is_set(ippkt.yfilter)) leaf_name_data.push_back(ippkt.get_name_leafdata());
+    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
+    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
     if (peak_active_sessions.is_set || is_set(peak_active_sessions.yfilter)) leaf_name_data.push_back(peak_active_sessions.get_name_leafdata());
     if (peak_standby_sessions.is_set || is_set(peak_standby_sessions.yfilter)) leaf_name_data.push_back(peak_standby_sessions.get_name_leafdata());
     if (peak_start_time.is_set || is_set(peak_start_time.yfilter)) leaf_name_data.push_back(peak_start_time.get_name_leafdata());
-    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
-    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
-    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
     if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -558,17 +802,23 @@ void SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::set
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "active-sessions")
+    if(value_path == "total")
     {
-        active_sessions = value;
-        active_sessions.value_namespace = name_space;
-        active_sessions.value_namespace_prefix = name_space_prefix;
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dhcp-ds")
+    if(value_path == "pppoe")
     {
-        dhcp_ds = value;
-        dhcp_ds.value_namespace = name_space;
-        dhcp_ds.value_namespace_prefix = name_space_prefix;
+        pppoe = value;
+        pppoe.value_namespace = name_space;
+        pppoe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds = value;
+        pppoe_ds.value_namespace = name_space;
+        pppoe_ds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcpv4")
     {
@@ -582,11 +832,29 @@ void SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::set
         dhcpv6.value_namespace = name_space;
         dhcpv6.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds = value;
+        dhcp_ds.value_namespace = name_space;
+        dhcp_ds.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ippkt")
     {
         ippkt = value;
         ippkt.value_namespace = name_space;
         ippkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions = value;
+        active_sessions.value_namespace = name_space;
+        active_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions = value;
+        standby_sessions.value_namespace = name_space;
+        standby_sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-active-sessions")
     {
@@ -606,35 +874,11 @@ void SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::set
         peak_start_time.value_namespace = name_space;
         peak_start_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pppoe")
-    {
-        pppoe = value;
-        pppoe.value_namespace = name_space;
-        pppoe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds = value;
-        pppoe_ds.value_namespace = name_space;
-        pppoe_ds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions = value;
-        standby_sessions.value_namespace = name_space;
-        standby_sessions.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "timeout-value")
     {
         timeout_value = value;
         timeout_value.value_namespace = name_space;
         timeout_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -644,13 +888,17 @@ void SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::set
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "active-sessions")
+    if(value_path == "total")
     {
-        active_sessions.yfilter = yfilter;
+        total.yfilter = yfilter;
     }
-    if(value_path == "dhcp-ds")
+    if(value_path == "pppoe")
     {
-        dhcp_ds.yfilter = yfilter;
+        pppoe.yfilter = yfilter;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds.yfilter = yfilter;
     }
     if(value_path == "dhcpv4")
     {
@@ -660,9 +908,21 @@ void SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::set
     {
         dhcpv6.yfilter = yfilter;
     }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds.yfilter = yfilter;
+    }
     if(value_path == "ippkt")
     {
         ippkt.yfilter = yfilter;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions.yfilter = yfilter;
     }
     if(value_path == "peak-active-sessions")
     {
@@ -676,50 +936,34 @@ void SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::set
     {
         peak_start_time.yfilter = yfilter;
     }
-    if(value_path == "pppoe")
-    {
-        pppoe.yfilter = yfilter;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds.yfilter = yfilter;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions.yfilter = yfilter;
-    }
     if(value_path == "timeout-value")
     {
         timeout_value.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
     }
 }
 
 bool SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "active-sessions" || name == "dhcp-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "ippkt" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "pppoe" || name == "pppoe-ds" || name == "standby-sessions" || name == "timeout-value" || name == "total")
+    if(name == "interface-name" || name == "total" || name == "pppoe" || name == "pppoe-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "dhcp-ds" || name == "ippkt" || name == "active-sessions" || name == "standby-sessions" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "timeout-value")
         return true;
     return false;
 }
 
 SessionMon::Nodes::Node::LicenseStatistics::LicenseStatistics()
     :
-    active_sessions{YType::uint32, "active-sessions"},
-    dhcp_ds{YType::uint32, "dhcp-ds"},
+    total{YType::uint32, "total"},
+    pppoe{YType::uint32, "pppoe"},
+    pppoe_ds{YType::uint32, "pppoe-ds"},
     dhcpv4{YType::uint32, "dhcpv4"},
     dhcpv6{YType::uint32, "dhcpv6"},
+    dhcp_ds{YType::uint32, "dhcp-ds"},
     ippkt{YType::uint32, "ippkt"},
+    active_sessions{YType::uint32, "active-sessions"},
+    standby_sessions{YType::uint32, "standby-sessions"},
     peak_active_sessions{YType::uint32, "peak-active-sessions"},
     peak_standby_sessions{YType::uint32, "peak-standby-sessions"},
     peak_start_time{YType::uint32, "peak-start-time"},
-    pppoe{YType::uint32, "pppoe"},
-    pppoe_ds{YType::uint32, "pppoe-ds"},
-    standby_sessions{YType::uint32, "standby-sessions"},
-    timeout_value{YType::uint32, "timeout-value"},
-    total{YType::uint32, "total"}
+    timeout_value{YType::uint32, "timeout-value"}
 {
 
     yang_name = "license-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
@@ -731,37 +975,37 @@ SessionMon::Nodes::Node::LicenseStatistics::~LicenseStatistics()
 
 bool SessionMon::Nodes::Node::LicenseStatistics::has_data() const
 {
-    return active_sessions.is_set
-	|| dhcp_ds.is_set
+    return total.is_set
+	|| pppoe.is_set
+	|| pppoe_ds.is_set
 	|| dhcpv4.is_set
 	|| dhcpv6.is_set
+	|| dhcp_ds.is_set
 	|| ippkt.is_set
+	|| active_sessions.is_set
+	|| standby_sessions.is_set
 	|| peak_active_sessions.is_set
 	|| peak_standby_sessions.is_set
 	|| peak_start_time.is_set
-	|| pppoe.is_set
-	|| pppoe_ds.is_set
-	|| standby_sessions.is_set
-	|| timeout_value.is_set
-	|| total.is_set;
+	|| timeout_value.is_set;
 }
 
 bool SessionMon::Nodes::Node::LicenseStatistics::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(active_sessions.yfilter)
-	|| ydk::is_set(dhcp_ds.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(pppoe.yfilter)
+	|| ydk::is_set(pppoe_ds.yfilter)
 	|| ydk::is_set(dhcpv4.yfilter)
 	|| ydk::is_set(dhcpv6.yfilter)
+	|| ydk::is_set(dhcp_ds.yfilter)
 	|| ydk::is_set(ippkt.yfilter)
+	|| ydk::is_set(active_sessions.yfilter)
+	|| ydk::is_set(standby_sessions.yfilter)
 	|| ydk::is_set(peak_active_sessions.yfilter)
 	|| ydk::is_set(peak_standby_sessions.yfilter)
 	|| ydk::is_set(peak_start_time.yfilter)
-	|| ydk::is_set(pppoe.yfilter)
-	|| ydk::is_set(pppoe_ds.yfilter)
-	|| ydk::is_set(standby_sessions.yfilter)
-	|| ydk::is_set(timeout_value.yfilter)
-	|| ydk::is_set(total.yfilter);
+	|| ydk::is_set(timeout_value.yfilter);
 }
 
 std::string SessionMon::Nodes::Node::LicenseStatistics::get_segment_path() const
@@ -775,19 +1019,19 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::LicenseS
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
-    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
+    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
     if (dhcpv4.is_set || is_set(dhcpv4.yfilter)) leaf_name_data.push_back(dhcpv4.get_name_leafdata());
     if (dhcpv6.is_set || is_set(dhcpv6.yfilter)) leaf_name_data.push_back(dhcpv6.get_name_leafdata());
+    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
     if (ippkt.is_set || is_set(ippkt.yfilter)) leaf_name_data.push_back(ippkt.get_name_leafdata());
+    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
+    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
     if (peak_active_sessions.is_set || is_set(peak_active_sessions.yfilter)) leaf_name_data.push_back(peak_active_sessions.get_name_leafdata());
     if (peak_standby_sessions.is_set || is_set(peak_standby_sessions.yfilter)) leaf_name_data.push_back(peak_standby_sessions.get_name_leafdata());
     if (peak_start_time.is_set || is_set(peak_start_time.yfilter)) leaf_name_data.push_back(peak_start_time.get_name_leafdata());
-    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
-    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
-    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
     if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -806,17 +1050,23 @@ std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::LicenseS
 
 void SessionMon::Nodes::Node::LicenseStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "active-sessions")
+    if(value_path == "total")
     {
-        active_sessions = value;
-        active_sessions.value_namespace = name_space;
-        active_sessions.value_namespace_prefix = name_space_prefix;
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dhcp-ds")
+    if(value_path == "pppoe")
     {
-        dhcp_ds = value;
-        dhcp_ds.value_namespace = name_space;
-        dhcp_ds.value_namespace_prefix = name_space_prefix;
+        pppoe = value;
+        pppoe.value_namespace = name_space;
+        pppoe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds = value;
+        pppoe_ds.value_namespace = name_space;
+        pppoe_ds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcpv4")
     {
@@ -830,11 +1080,29 @@ void SessionMon::Nodes::Node::LicenseStatistics::set_value(const std::string & v
         dhcpv6.value_namespace = name_space;
         dhcpv6.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds = value;
+        dhcp_ds.value_namespace = name_space;
+        dhcp_ds.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ippkt")
     {
         ippkt = value;
         ippkt.value_namespace = name_space;
         ippkt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions = value;
+        active_sessions.value_namespace = name_space;
+        active_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions = value;
+        standby_sessions.value_namespace = name_space;
+        standby_sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-active-sessions")
     {
@@ -854,47 +1122,27 @@ void SessionMon::Nodes::Node::LicenseStatistics::set_value(const std::string & v
         peak_start_time.value_namespace = name_space;
         peak_start_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pppoe")
-    {
-        pppoe = value;
-        pppoe.value_namespace = name_space;
-        pppoe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds = value;
-        pppoe_ds.value_namespace = name_space;
-        pppoe_ds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions = value;
-        standby_sessions.value_namespace = name_space;
-        standby_sessions.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "timeout-value")
     {
         timeout_value = value;
         timeout_value.value_namespace = name_space;
         timeout_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void SessionMon::Nodes::Node::LicenseStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "active-sessions")
+    if(value_path == "total")
     {
-        active_sessions.yfilter = yfilter;
+        total.yfilter = yfilter;
     }
-    if(value_path == "dhcp-ds")
+    if(value_path == "pppoe")
     {
-        dhcp_ds.yfilter = yfilter;
+        pppoe.yfilter = yfilter;
+    }
+    if(value_path == "pppoe-ds")
+    {
+        pppoe_ds.yfilter = yfilter;
     }
     if(value_path == "dhcpv4")
     {
@@ -904,9 +1152,21 @@ void SessionMon::Nodes::Node::LicenseStatistics::set_filter(const std::string & 
     {
         dhcpv6.yfilter = yfilter;
     }
+    if(value_path == "dhcp-ds")
+    {
+        dhcp_ds.yfilter = yfilter;
+    }
     if(value_path == "ippkt")
     {
         ippkt.yfilter = yfilter;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "standby-sessions")
+    {
+        standby_sessions.yfilter = yfilter;
     }
     if(value_path == "peak-active-sessions")
     {
@@ -920,275 +1180,15 @@ void SessionMon::Nodes::Node::LicenseStatistics::set_filter(const std::string & 
     {
         peak_start_time.yfilter = yfilter;
     }
-    if(value_path == "pppoe")
-    {
-        pppoe.yfilter = yfilter;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds.yfilter = yfilter;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions.yfilter = yfilter;
-    }
     if(value_path == "timeout-value")
     {
         timeout_value.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
     }
 }
 
 bool SessionMon::Nodes::Node::LicenseStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "active-sessions" || name == "dhcp-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "ippkt" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "pppoe" || name == "pppoe-ds" || name == "standby-sessions" || name == "timeout-value" || name == "total")
-        return true;
-    return false;
-}
-
-SessionMon::Nodes::Node::SessionMonStatistics::SessionMonStatistics()
-    :
-    active_sessions{YType::uint32, "active-sessions"},
-    dhcp_ds{YType::uint32, "dhcp-ds"},
-    dhcpv4{YType::uint32, "dhcpv4"},
-    dhcpv6{YType::uint32, "dhcpv6"},
-    ippkt{YType::uint32, "ippkt"},
-    peak_active_sessions{YType::uint32, "peak-active-sessions"},
-    peak_standby_sessions{YType::uint32, "peak-standby-sessions"},
-    peak_start_time{YType::uint32, "peak-start-time"},
-    pppoe{YType::uint32, "pppoe"},
-    pppoe_ds{YType::uint32, "pppoe-ds"},
-    standby_sessions{YType::uint32, "standby-sessions"},
-    timeout_value{YType::uint32, "timeout-value"},
-    total{YType::uint32, "total"}
-{
-
-    yang_name = "session-mon-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-SessionMon::Nodes::Node::SessionMonStatistics::~SessionMonStatistics()
-{
-}
-
-bool SessionMon::Nodes::Node::SessionMonStatistics::has_data() const
-{
-    return active_sessions.is_set
-	|| dhcp_ds.is_set
-	|| dhcpv4.is_set
-	|| dhcpv6.is_set
-	|| ippkt.is_set
-	|| peak_active_sessions.is_set
-	|| peak_standby_sessions.is_set
-	|| peak_start_time.is_set
-	|| pppoe.is_set
-	|| pppoe_ds.is_set
-	|| standby_sessions.is_set
-	|| timeout_value.is_set
-	|| total.is_set;
-}
-
-bool SessionMon::Nodes::Node::SessionMonStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(active_sessions.yfilter)
-	|| ydk::is_set(dhcp_ds.yfilter)
-	|| ydk::is_set(dhcpv4.yfilter)
-	|| ydk::is_set(dhcpv6.yfilter)
-	|| ydk::is_set(ippkt.yfilter)
-	|| ydk::is_set(peak_active_sessions.yfilter)
-	|| ydk::is_set(peak_standby_sessions.yfilter)
-	|| ydk::is_set(peak_start_time.yfilter)
-	|| ydk::is_set(pppoe.yfilter)
-	|| ydk::is_set(pppoe_ds.yfilter)
-	|| ydk::is_set(standby_sessions.yfilter)
-	|| ydk::is_set(timeout_value.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string SessionMon::Nodes::Node::SessionMonStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session-mon-statistics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::SessionMonStatistics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
-    if (dhcp_ds.is_set || is_set(dhcp_ds.yfilter)) leaf_name_data.push_back(dhcp_ds.get_name_leafdata());
-    if (dhcpv4.is_set || is_set(dhcpv4.yfilter)) leaf_name_data.push_back(dhcpv4.get_name_leafdata());
-    if (dhcpv6.is_set || is_set(dhcpv6.yfilter)) leaf_name_data.push_back(dhcpv6.get_name_leafdata());
-    if (ippkt.is_set || is_set(ippkt.yfilter)) leaf_name_data.push_back(ippkt.get_name_leafdata());
-    if (peak_active_sessions.is_set || is_set(peak_active_sessions.yfilter)) leaf_name_data.push_back(peak_active_sessions.get_name_leafdata());
-    if (peak_standby_sessions.is_set || is_set(peak_standby_sessions.yfilter)) leaf_name_data.push_back(peak_standby_sessions.get_name_leafdata());
-    if (peak_start_time.is_set || is_set(peak_start_time.yfilter)) leaf_name_data.push_back(peak_start_time.get_name_leafdata());
-    if (pppoe.is_set || is_set(pppoe.yfilter)) leaf_name_data.push_back(pppoe.get_name_leafdata());
-    if (pppoe_ds.is_set || is_set(pppoe_ds.yfilter)) leaf_name_data.push_back(pppoe_ds.get_name_leafdata());
-    if (standby_sessions.is_set || is_set(standby_sessions.yfilter)) leaf_name_data.push_back(standby_sessions.get_name_leafdata());
-    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> SessionMon::Nodes::Node::SessionMonStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::SessionMonStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SessionMon::Nodes::Node::SessionMonStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "active-sessions")
-    {
-        active_sessions = value;
-        active_sessions.value_namespace = name_space;
-        active_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcp-ds")
-    {
-        dhcp_ds = value;
-        dhcp_ds.value_namespace = name_space;
-        dhcp_ds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcpv4")
-    {
-        dhcpv4 = value;
-        dhcpv4.value_namespace = name_space;
-        dhcpv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dhcpv6")
-    {
-        dhcpv6 = value;
-        dhcpv6.value_namespace = name_space;
-        dhcpv6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ippkt")
-    {
-        ippkt = value;
-        ippkt.value_namespace = name_space;
-        ippkt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peak-active-sessions")
-    {
-        peak_active_sessions = value;
-        peak_active_sessions.value_namespace = name_space;
-        peak_active_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peak-standby-sessions")
-    {
-        peak_standby_sessions = value;
-        peak_standby_sessions.value_namespace = name_space;
-        peak_standby_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peak-start-time")
-    {
-        peak_start_time = value;
-        peak_start_time.value_namespace = name_space;
-        peak_start_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pppoe")
-    {
-        pppoe = value;
-        pppoe.value_namespace = name_space;
-        pppoe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds = value;
-        pppoe_ds.value_namespace = name_space;
-        pppoe_ds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions = value;
-        standby_sessions.value_namespace = name_space;
-        standby_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout-value")
-    {
-        timeout_value = value;
-        timeout_value.value_namespace = name_space;
-        timeout_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SessionMon::Nodes::Node::SessionMonStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "active-sessions")
-    {
-        active_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dhcp-ds")
-    {
-        dhcp_ds.yfilter = yfilter;
-    }
-    if(value_path == "dhcpv4")
-    {
-        dhcpv4.yfilter = yfilter;
-    }
-    if(value_path == "dhcpv6")
-    {
-        dhcpv6.yfilter = yfilter;
-    }
-    if(value_path == "ippkt")
-    {
-        ippkt.yfilter = yfilter;
-    }
-    if(value_path == "peak-active-sessions")
-    {
-        peak_active_sessions.yfilter = yfilter;
-    }
-    if(value_path == "peak-standby-sessions")
-    {
-        peak_standby_sessions.yfilter = yfilter;
-    }
-    if(value_path == "peak-start-time")
-    {
-        peak_start_time.yfilter = yfilter;
-    }
-    if(value_path == "pppoe")
-    {
-        pppoe.yfilter = yfilter;
-    }
-    if(value_path == "pppoe-ds")
-    {
-        pppoe_ds.yfilter = yfilter;
-    }
-    if(value_path == "standby-sessions")
-    {
-        standby_sessions.yfilter = yfilter;
-    }
-    if(value_path == "timeout-value")
-    {
-        timeout_value.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
-}
-
-bool SessionMon::Nodes::Node::SessionMonStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-sessions" || name == "dhcp-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "ippkt" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "pppoe" || name == "pppoe-ds" || name == "standby-sessions" || name == "timeout-value" || name == "total")
+    if(name == "total" || name == "pppoe" || name == "pppoe-ds" || name == "dhcpv4" || name == "dhcpv6" || name == "dhcp-ds" || name == "ippkt" || name == "active-sessions" || name == "standby-sessions" || name == "peak-active-sessions" || name == "peak-standby-sessions" || name == "peak-start-time" || name == "timeout-value")
         return true;
     return false;
 }

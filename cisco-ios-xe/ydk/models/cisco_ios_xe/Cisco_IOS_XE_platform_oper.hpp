@@ -60,11 +60,65 @@ class Components::Component : public ydk::Entity
         class PlatformProperties; //type: Components::Component::PlatformProperties
         class PlatformSubcomponents; //type: Components::Component::PlatformSubcomponents
 
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::State> state;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::PlatformProperties> platform_properties;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::PlatformSubcomponents> platform_subcomponents;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::State> state;
         
 }; // Components::Component
+
+
+class Components::Component::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: PlatformCompType
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf mfg_name; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf serial_no; //type: string
+        ydk::YLeaf part_no; //type: string
+        class Temp; //type: Components::Component::State::Temp
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::State::Temp> temp;
+        
+}; // Components::Component::State
+
+
+class Components::Component::State::Temp : public ydk::Entity
+{
+    public:
+        Temp();
+        ~Temp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf temp_instant; //type: decimal64
+        ydk::YLeaf temp_avg; //type: decimal64
+        ydk::YLeaf temp_max; //type: decimal64
+        ydk::YLeaf temp_min; //type: decimal64
+
+}; // Components::Component::State::Temp
 
 
 class Components::Component::PlatformProperties : public ydk::Entity
@@ -184,60 +238,6 @@ class Components::Component::PlatformSubcomponents::PlatformSubcomponent : publi
         ydk::YLeaf parent_platform_component_cname_key; //type: string
 
 }; // Components::Component::PlatformSubcomponents::PlatformSubcomponent
-
-
-class Components::Component::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf type; //type: PlatformCompType
-        ydk::YLeaf id; //type: string
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf mfg_name; //type: string
-        ydk::YLeaf version; //type: string
-        ydk::YLeaf serial_no; //type: string
-        ydk::YLeaf part_no; //type: string
-        class Temp; //type: Components::Component::State::Temp
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::State::Temp> temp;
-        
-}; // Components::Component::State
-
-
-class Components::Component::State::Temp : public ydk::Entity
-{
-    public:
-        Temp();
-        ~Temp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf temp_instant; //type: decimal64
-        ydk::YLeaf temp_avg; //type: decimal64
-        ydk::YLeaf temp_max; //type: decimal64
-        ydk::YLeaf temp_min; //type: decimal64
-
-}; // Components::Component::State::Temp
 
 class PlatformCompType : public ydk::Enum
 {

@@ -13,19 +13,19 @@ namespace CISCO_IP_LOCAL_POOL_MIB {
 
 CISCOIPLOCALPOOLMIB::CISCOIPLOCALPOOLMIB()
     :
-    ciplocalpoolalloctable(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable>())
-	,ciplocalpoolconfig(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig>())
+    ciplocalpoolconfig(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig>())
 	,ciplocalpoolconfigtable(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable>())
 	,ciplocalpoolgroupcontainstable(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable>())
 	,ciplocalpoolgrouptable(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable>())
 	,ciplocalpoolstatstable(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable>())
+	,ciplocalpoolalloctable(std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable>())
 {
-    ciplocalpoolalloctable->parent = this;
     ciplocalpoolconfig->parent = this;
     ciplocalpoolconfigtable->parent = this;
     ciplocalpoolgroupcontainstable->parent = this;
     ciplocalpoolgrouptable->parent = this;
     ciplocalpoolstatstable->parent = this;
+    ciplocalpoolalloctable->parent = this;
 
     yang_name = "CISCO-IP-LOCAL-POOL-MIB"; yang_parent_name = "CISCO-IP-LOCAL-POOL-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -36,23 +36,23 @@ CISCOIPLOCALPOOLMIB::~CISCOIPLOCALPOOLMIB()
 
 bool CISCOIPLOCALPOOLMIB::has_data() const
 {
-    return (ciplocalpoolalloctable !=  nullptr && ciplocalpoolalloctable->has_data())
-	|| (ciplocalpoolconfig !=  nullptr && ciplocalpoolconfig->has_data())
+    return (ciplocalpoolconfig !=  nullptr && ciplocalpoolconfig->has_data())
 	|| (ciplocalpoolconfigtable !=  nullptr && ciplocalpoolconfigtable->has_data())
 	|| (ciplocalpoolgroupcontainstable !=  nullptr && ciplocalpoolgroupcontainstable->has_data())
 	|| (ciplocalpoolgrouptable !=  nullptr && ciplocalpoolgrouptable->has_data())
-	|| (ciplocalpoolstatstable !=  nullptr && ciplocalpoolstatstable->has_data());
+	|| (ciplocalpoolstatstable !=  nullptr && ciplocalpoolstatstable->has_data())
+	|| (ciplocalpoolalloctable !=  nullptr && ciplocalpoolalloctable->has_data());
 }
 
 bool CISCOIPLOCALPOOLMIB::has_operation() const
 {
     return is_set(yfilter)
-	|| (ciplocalpoolalloctable !=  nullptr && ciplocalpoolalloctable->has_operation())
 	|| (ciplocalpoolconfig !=  nullptr && ciplocalpoolconfig->has_operation())
 	|| (ciplocalpoolconfigtable !=  nullptr && ciplocalpoolconfigtable->has_operation())
 	|| (ciplocalpoolgroupcontainstable !=  nullptr && ciplocalpoolgroupcontainstable->has_operation())
 	|| (ciplocalpoolgrouptable !=  nullptr && ciplocalpoolgrouptable->has_operation())
-	|| (ciplocalpoolstatstable !=  nullptr && ciplocalpoolstatstable->has_operation());
+	|| (ciplocalpoolstatstable !=  nullptr && ciplocalpoolstatstable->has_operation())
+	|| (ciplocalpoolalloctable !=  nullptr && ciplocalpoolalloctable->has_operation());
 }
 
 std::string CISCOIPLOCALPOOLMIB::get_segment_path() const
@@ -73,15 +73,6 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::get_name_lea
 
 std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cIpLocalPoolAllocTable")
-    {
-        if(ciplocalpoolalloctable == nullptr)
-        {
-            ciplocalpoolalloctable = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable>();
-        }
-        return ciplocalpoolalloctable;
-    }
-
     if(child_yang_name == "cIpLocalPoolConfig")
     {
         if(ciplocalpoolconfig == nullptr)
@@ -127,17 +118,21 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::get_child_by_name(const std::string
         return ciplocalpoolstatstable;
     }
 
+    if(child_yang_name == "cIpLocalPoolAllocTable")
+    {
+        if(ciplocalpoolalloctable == nullptr)
+        {
+            ciplocalpoolalloctable = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable>();
+        }
+        return ciplocalpoolalloctable;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciplocalpoolalloctable != nullptr)
-    {
-        children["cIpLocalPoolAllocTable"] = ciplocalpoolalloctable;
-    }
-
     if(ciplocalpoolconfig != nullptr)
     {
         children["cIpLocalPoolConfig"] = ciplocalpoolconfig;
@@ -161,6 +156,11 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::get_children
     if(ciplocalpoolstatstable != nullptr)
     {
         children["cIpLocalPoolStatsTable"] = ciplocalpoolstatstable;
+    }
+
+    if(ciplocalpoolalloctable != nullptr)
+    {
+        children["cIpLocalPoolAllocTable"] = ciplocalpoolalloctable;
     }
 
     return children;
@@ -201,246 +201,7 @@ std::map<std::pair<std::string, std::string>, std::string> CISCOIPLOCALPOOLMIB::
 
 bool CISCOIPLOCALPOOLMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cIpLocalPoolAllocTable" || name == "cIpLocalPoolConfig" || name == "cIpLocalPoolConfigTable" || name == "cIpLocalPoolGroupContainsTable" || name == "cIpLocalPoolGroupTable" || name == "cIpLocalPoolStatsTable")
-        return true;
-    return false;
-}
-
-CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolalloctable()
-{
-
-    yang_name = "cIpLocalPoolAllocTable"; yang_parent_name = "CISCO-IP-LOCAL-POOL-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::~Ciplocalpoolalloctable()
-{
-}
-
-bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::has_data() const
-{
-    for (std::size_t index=0; index<ciplocalpoolallocentry.size(); index++)
-    {
-        if(ciplocalpoolallocentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::has_operation() const
-{
-    for (std::size_t index=0; index<ciplocalpoolallocentry.size(); index++)
-    {
-        if(ciplocalpoolallocentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-IP-LOCAL-POOL-MIB:CISCO-IP-LOCAL-POOL-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cIpLocalPoolAllocTable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cIpLocalPoolAllocEntry")
-    {
-        for(auto const & c : ciplocalpoolallocentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry>();
-        c->parent = this;
-        ciplocalpoolallocentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciplocalpoolallocentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cIpLocalPoolAllocEntry")
-        return true;
-    return false;
-}
-
-CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::Ciplocalpoolallocentry()
-    :
-    ciplocalpoolname{YType::str, "cIpLocalPoolName"},
-    ciplocalpoolallocaddrtype{YType::enumeration, "cIpLocalPoolAllocAddrType"},
-    ciplocalpoolallocaddr{YType::str, "cIpLocalPoolAllocAddr"},
-    ciplocalpoolallocifindex{YType::int32, "cIpLocalPoolAllocIfIndex"},
-    ciplocalpoolallocuser{YType::str, "cIpLocalPoolAllocUser"}
-{
-
-    yang_name = "cIpLocalPoolAllocEntry"; yang_parent_name = "cIpLocalPoolAllocTable"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::~Ciplocalpoolallocentry()
-{
-}
-
-bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::has_data() const
-{
-    return ciplocalpoolname.is_set
-	|| ciplocalpoolallocaddrtype.is_set
-	|| ciplocalpoolallocaddr.is_set
-	|| ciplocalpoolallocifindex.is_set
-	|| ciplocalpoolallocuser.is_set;
-}
-
-bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ciplocalpoolname.yfilter)
-	|| ydk::is_set(ciplocalpoolallocaddrtype.yfilter)
-	|| ydk::is_set(ciplocalpoolallocaddr.yfilter)
-	|| ydk::is_set(ciplocalpoolallocifindex.yfilter)
-	|| ydk::is_set(ciplocalpoolallocuser.yfilter);
-}
-
-std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-IP-LOCAL-POOL-MIB:CISCO-IP-LOCAL-POOL-MIB/cIpLocalPoolAllocTable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cIpLocalPoolAllocEntry" <<"[cIpLocalPoolName='" <<ciplocalpoolname <<"']" <<"[cIpLocalPoolAllocAddrType='" <<ciplocalpoolallocaddrtype <<"']" <<"[cIpLocalPoolAllocAddr='" <<ciplocalpoolallocaddr <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ciplocalpoolname.is_set || is_set(ciplocalpoolname.yfilter)) leaf_name_data.push_back(ciplocalpoolname.get_name_leafdata());
-    if (ciplocalpoolallocaddrtype.is_set || is_set(ciplocalpoolallocaddrtype.yfilter)) leaf_name_data.push_back(ciplocalpoolallocaddrtype.get_name_leafdata());
-    if (ciplocalpoolallocaddr.is_set || is_set(ciplocalpoolallocaddr.yfilter)) leaf_name_data.push_back(ciplocalpoolallocaddr.get_name_leafdata());
-    if (ciplocalpoolallocifindex.is_set || is_set(ciplocalpoolallocifindex.yfilter)) leaf_name_data.push_back(ciplocalpoolallocifindex.get_name_leafdata());
-    if (ciplocalpoolallocuser.is_set || is_set(ciplocalpoolallocuser.yfilter)) leaf_name_data.push_back(ciplocalpoolallocuser.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cIpLocalPoolName")
-    {
-        ciplocalpoolname = value;
-        ciplocalpoolname.value_namespace = name_space;
-        ciplocalpoolname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cIpLocalPoolAllocAddrType")
-    {
-        ciplocalpoolallocaddrtype = value;
-        ciplocalpoolallocaddrtype.value_namespace = name_space;
-        ciplocalpoolallocaddrtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cIpLocalPoolAllocAddr")
-    {
-        ciplocalpoolallocaddr = value;
-        ciplocalpoolallocaddr.value_namespace = name_space;
-        ciplocalpoolallocaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cIpLocalPoolAllocIfIndex")
-    {
-        ciplocalpoolallocifindex = value;
-        ciplocalpoolallocifindex.value_namespace = name_space;
-        ciplocalpoolallocifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cIpLocalPoolAllocUser")
-    {
-        ciplocalpoolallocuser = value;
-        ciplocalpoolallocuser.value_namespace = name_space;
-        ciplocalpoolallocuser.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cIpLocalPoolName")
-    {
-        ciplocalpoolname.yfilter = yfilter;
-    }
-    if(value_path == "cIpLocalPoolAllocAddrType")
-    {
-        ciplocalpoolallocaddrtype.yfilter = yfilter;
-    }
-    if(value_path == "cIpLocalPoolAllocAddr")
-    {
-        ciplocalpoolallocaddr.yfilter = yfilter;
-    }
-    if(value_path == "cIpLocalPoolAllocIfIndex")
-    {
-        ciplocalpoolallocifindex.yfilter = yfilter;
-    }
-    if(value_path == "cIpLocalPoolAllocUser")
-    {
-        ciplocalpoolallocuser.yfilter = yfilter;
-    }
-}
-
-bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cIpLocalPoolName" || name == "cIpLocalPoolAllocAddrType" || name == "cIpLocalPoolAllocAddr" || name == "cIpLocalPoolAllocIfIndex" || name == "cIpLocalPoolAllocUser")
+    if(name == "cIpLocalPoolConfig" || name == "cIpLocalPoolConfigTable" || name == "cIpLocalPoolGroupContainsTable" || name == "cIpLocalPoolGroupTable" || name == "cIpLocalPoolStatsTable" || name == "cIpLocalPoolAllocTable")
         return true;
     return false;
 }
@@ -635,10 +396,10 @@ CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::Ciplocalp
     ciplocalpooladdresslo{YType::str, "cIpLocalPoolAddressLo"},
     ciplocalpooladdresshi{YType::str, "cIpLocalPoolAddressHi"},
     ciplocalpoolfreeaddrs{YType::uint32, "cIpLocalPoolFreeAddrs"},
-    ciplocalpoolgroupcontainedin{YType::str, "cIpLocalPoolGroupContainedIn"},
     ciplocalpoolinuseaddrs{YType::uint32, "cIpLocalPoolInUseAddrs"},
-    ciplocalpoolpriority{YType::uint32, "cIpLocalPoolPriority"},
-    ciplocalpoolrowstatus{YType::enumeration, "cIpLocalPoolRowStatus"}
+    ciplocalpoolgroupcontainedin{YType::str, "cIpLocalPoolGroupContainedIn"},
+    ciplocalpoolrowstatus{YType::enumeration, "cIpLocalPoolRowStatus"},
+    ciplocalpoolpriority{YType::uint32, "cIpLocalPoolPriority"}
 {
 
     yang_name = "cIpLocalPoolConfigEntry"; yang_parent_name = "cIpLocalPoolConfigTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -655,10 +416,10 @@ bool CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::has_
 	|| ciplocalpooladdresslo.is_set
 	|| ciplocalpooladdresshi.is_set
 	|| ciplocalpoolfreeaddrs.is_set
-	|| ciplocalpoolgroupcontainedin.is_set
 	|| ciplocalpoolinuseaddrs.is_set
-	|| ciplocalpoolpriority.is_set
-	|| ciplocalpoolrowstatus.is_set;
+	|| ciplocalpoolgroupcontainedin.is_set
+	|| ciplocalpoolrowstatus.is_set
+	|| ciplocalpoolpriority.is_set;
 }
 
 bool CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::has_operation() const
@@ -669,10 +430,10 @@ bool CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::has_
 	|| ydk::is_set(ciplocalpooladdresslo.yfilter)
 	|| ydk::is_set(ciplocalpooladdresshi.yfilter)
 	|| ydk::is_set(ciplocalpoolfreeaddrs.yfilter)
-	|| ydk::is_set(ciplocalpoolgroupcontainedin.yfilter)
 	|| ydk::is_set(ciplocalpoolinuseaddrs.yfilter)
-	|| ydk::is_set(ciplocalpoolpriority.yfilter)
-	|| ydk::is_set(ciplocalpoolrowstatus.yfilter);
+	|| ydk::is_set(ciplocalpoolgroupcontainedin.yfilter)
+	|| ydk::is_set(ciplocalpoolrowstatus.yfilter)
+	|| ydk::is_set(ciplocalpoolpriority.yfilter);
 }
 
 std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::get_absolute_path() const
@@ -698,10 +459,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::Ciplocalpool
     if (ciplocalpooladdresslo.is_set || is_set(ciplocalpooladdresslo.yfilter)) leaf_name_data.push_back(ciplocalpooladdresslo.get_name_leafdata());
     if (ciplocalpooladdresshi.is_set || is_set(ciplocalpooladdresshi.yfilter)) leaf_name_data.push_back(ciplocalpooladdresshi.get_name_leafdata());
     if (ciplocalpoolfreeaddrs.is_set || is_set(ciplocalpoolfreeaddrs.yfilter)) leaf_name_data.push_back(ciplocalpoolfreeaddrs.get_name_leafdata());
-    if (ciplocalpoolgroupcontainedin.is_set || is_set(ciplocalpoolgroupcontainedin.yfilter)) leaf_name_data.push_back(ciplocalpoolgroupcontainedin.get_name_leafdata());
     if (ciplocalpoolinuseaddrs.is_set || is_set(ciplocalpoolinuseaddrs.yfilter)) leaf_name_data.push_back(ciplocalpoolinuseaddrs.get_name_leafdata());
-    if (ciplocalpoolpriority.is_set || is_set(ciplocalpoolpriority.yfilter)) leaf_name_data.push_back(ciplocalpoolpriority.get_name_leafdata());
+    if (ciplocalpoolgroupcontainedin.is_set || is_set(ciplocalpoolgroupcontainedin.yfilter)) leaf_name_data.push_back(ciplocalpoolgroupcontainedin.get_name_leafdata());
     if (ciplocalpoolrowstatus.is_set || is_set(ciplocalpoolrowstatus.yfilter)) leaf_name_data.push_back(ciplocalpoolrowstatus.get_name_leafdata());
+    if (ciplocalpoolpriority.is_set || is_set(ciplocalpoolpriority.yfilter)) leaf_name_data.push_back(ciplocalpoolpriority.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -750,29 +511,29 @@ void CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::set_
         ciplocalpoolfreeaddrs.value_namespace = name_space;
         ciplocalpoolfreeaddrs.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cIpLocalPoolGroupContainedIn")
-    {
-        ciplocalpoolgroupcontainedin = value;
-        ciplocalpoolgroupcontainedin.value_namespace = name_space;
-        ciplocalpoolgroupcontainedin.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cIpLocalPoolInUseAddrs")
     {
         ciplocalpoolinuseaddrs = value;
         ciplocalpoolinuseaddrs.value_namespace = name_space;
         ciplocalpoolinuseaddrs.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cIpLocalPoolPriority")
+    if(value_path == "cIpLocalPoolGroupContainedIn")
     {
-        ciplocalpoolpriority = value;
-        ciplocalpoolpriority.value_namespace = name_space;
-        ciplocalpoolpriority.value_namespace_prefix = name_space_prefix;
+        ciplocalpoolgroupcontainedin = value;
+        ciplocalpoolgroupcontainedin.value_namespace = name_space;
+        ciplocalpoolgroupcontainedin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIpLocalPoolRowStatus")
     {
         ciplocalpoolrowstatus = value;
         ciplocalpoolrowstatus.value_namespace = name_space;
         ciplocalpoolrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolPriority")
+    {
+        ciplocalpoolpriority = value;
+        ciplocalpoolpriority.value_namespace = name_space;
+        ciplocalpoolpriority.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -798,27 +559,27 @@ void CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::set_
     {
         ciplocalpoolfreeaddrs.yfilter = yfilter;
     }
-    if(value_path == "cIpLocalPoolGroupContainedIn")
-    {
-        ciplocalpoolgroupcontainedin.yfilter = yfilter;
-    }
     if(value_path == "cIpLocalPoolInUseAddrs")
     {
         ciplocalpoolinuseaddrs.yfilter = yfilter;
     }
-    if(value_path == "cIpLocalPoolPriority")
+    if(value_path == "cIpLocalPoolGroupContainedIn")
     {
-        ciplocalpoolpriority.yfilter = yfilter;
+        ciplocalpoolgroupcontainedin.yfilter = yfilter;
     }
     if(value_path == "cIpLocalPoolRowStatus")
     {
         ciplocalpoolrowstatus.yfilter = yfilter;
     }
+    if(value_path == "cIpLocalPoolPriority")
+    {
+        ciplocalpoolpriority.yfilter = yfilter;
+    }
 }
 
 bool CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cIpLocalPoolName" || name == "cIpLocalPoolAddrType" || name == "cIpLocalPoolAddressLo" || name == "cIpLocalPoolAddressHi" || name == "cIpLocalPoolFreeAddrs" || name == "cIpLocalPoolGroupContainedIn" || name == "cIpLocalPoolInUseAddrs" || name == "cIpLocalPoolPriority" || name == "cIpLocalPoolRowStatus")
+    if(name == "cIpLocalPoolName" || name == "cIpLocalPoolAddrType" || name == "cIpLocalPoolAddressLo" || name == "cIpLocalPoolAddressHi" || name == "cIpLocalPoolFreeAddrs" || name == "cIpLocalPoolInUseAddrs" || name == "cIpLocalPoolGroupContainedIn" || name == "cIpLocalPoolRowStatus" || name == "cIpLocalPoolPriority")
         return true;
     return false;
 }
@@ -1334,13 +1095,13 @@ bool CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::has_leaf_or_child_of_name(cons
 CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::Ciplocalpoolstatsentry()
     :
     ciplocalpoolname{YType::str, "cIpLocalPoolName"},
-    ciplocalpoolpercentaddrthldhi{YType::uint32, "cIpLocalPoolPercentAddrThldHi"},
-    ciplocalpoolpercentaddrthldlo{YType::uint32, "cIpLocalPoolPercentAddrThldLo"},
     ciplocalpoolstatfreeaddrs{YType::uint32, "cIpLocalPoolStatFreeAddrs"},
-    ciplocalpoolstathiwaterusedaddrs{YType::uint32, "cIpLocalPoolStatHiWaterUsedAddrs"},
     ciplocalpoolstatinuseaddrs{YType::uint32, "cIpLocalPoolStatInUseAddrs"},
+    ciplocalpoolstathiwaterusedaddrs{YType::uint32, "cIpLocalPoolStatHiWaterUsedAddrs"},
+    ciplocalpoolstatinuseaddrthldlo{YType::uint32, "cIpLocalPoolStatInUseAddrThldLo"},
     ciplocalpoolstatinuseaddrthldhi{YType::uint32, "cIpLocalPoolStatInUseAddrThldHi"},
-    ciplocalpoolstatinuseaddrthldlo{YType::uint32, "cIpLocalPoolStatInUseAddrThldLo"}
+    ciplocalpoolpercentaddrthldlo{YType::uint32, "cIpLocalPoolPercentAddrThldLo"},
+    ciplocalpoolpercentaddrthldhi{YType::uint32, "cIpLocalPoolPercentAddrThldHi"}
 {
 
     yang_name = "cIpLocalPoolStatsEntry"; yang_parent_name = "cIpLocalPoolStatsTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -1353,26 +1114,26 @@ CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::~Ciplocalpo
 bool CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::has_data() const
 {
     return ciplocalpoolname.is_set
-	|| ciplocalpoolpercentaddrthldhi.is_set
-	|| ciplocalpoolpercentaddrthldlo.is_set
 	|| ciplocalpoolstatfreeaddrs.is_set
-	|| ciplocalpoolstathiwaterusedaddrs.is_set
 	|| ciplocalpoolstatinuseaddrs.is_set
+	|| ciplocalpoolstathiwaterusedaddrs.is_set
+	|| ciplocalpoolstatinuseaddrthldlo.is_set
 	|| ciplocalpoolstatinuseaddrthldhi.is_set
-	|| ciplocalpoolstatinuseaddrthldlo.is_set;
+	|| ciplocalpoolpercentaddrthldlo.is_set
+	|| ciplocalpoolpercentaddrthldhi.is_set;
 }
 
 bool CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciplocalpoolname.yfilter)
-	|| ydk::is_set(ciplocalpoolpercentaddrthldhi.yfilter)
-	|| ydk::is_set(ciplocalpoolpercentaddrthldlo.yfilter)
 	|| ydk::is_set(ciplocalpoolstatfreeaddrs.yfilter)
-	|| ydk::is_set(ciplocalpoolstathiwaterusedaddrs.yfilter)
 	|| ydk::is_set(ciplocalpoolstatinuseaddrs.yfilter)
+	|| ydk::is_set(ciplocalpoolstathiwaterusedaddrs.yfilter)
+	|| ydk::is_set(ciplocalpoolstatinuseaddrthldlo.yfilter)
 	|| ydk::is_set(ciplocalpoolstatinuseaddrthldhi.yfilter)
-	|| ydk::is_set(ciplocalpoolstatinuseaddrthldlo.yfilter);
+	|| ydk::is_set(ciplocalpoolpercentaddrthldlo.yfilter)
+	|| ydk::is_set(ciplocalpoolpercentaddrthldhi.yfilter);
 }
 
 std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::get_absolute_path() const
@@ -1394,13 +1155,13 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::Ciplocalpool
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ciplocalpoolname.is_set || is_set(ciplocalpoolname.yfilter)) leaf_name_data.push_back(ciplocalpoolname.get_name_leafdata());
-    if (ciplocalpoolpercentaddrthldhi.is_set || is_set(ciplocalpoolpercentaddrthldhi.yfilter)) leaf_name_data.push_back(ciplocalpoolpercentaddrthldhi.get_name_leafdata());
-    if (ciplocalpoolpercentaddrthldlo.is_set || is_set(ciplocalpoolpercentaddrthldlo.yfilter)) leaf_name_data.push_back(ciplocalpoolpercentaddrthldlo.get_name_leafdata());
     if (ciplocalpoolstatfreeaddrs.is_set || is_set(ciplocalpoolstatfreeaddrs.yfilter)) leaf_name_data.push_back(ciplocalpoolstatfreeaddrs.get_name_leafdata());
-    if (ciplocalpoolstathiwaterusedaddrs.is_set || is_set(ciplocalpoolstathiwaterusedaddrs.yfilter)) leaf_name_data.push_back(ciplocalpoolstathiwaterusedaddrs.get_name_leafdata());
     if (ciplocalpoolstatinuseaddrs.is_set || is_set(ciplocalpoolstatinuseaddrs.yfilter)) leaf_name_data.push_back(ciplocalpoolstatinuseaddrs.get_name_leafdata());
-    if (ciplocalpoolstatinuseaddrthldhi.is_set || is_set(ciplocalpoolstatinuseaddrthldhi.yfilter)) leaf_name_data.push_back(ciplocalpoolstatinuseaddrthldhi.get_name_leafdata());
+    if (ciplocalpoolstathiwaterusedaddrs.is_set || is_set(ciplocalpoolstathiwaterusedaddrs.yfilter)) leaf_name_data.push_back(ciplocalpoolstathiwaterusedaddrs.get_name_leafdata());
     if (ciplocalpoolstatinuseaddrthldlo.is_set || is_set(ciplocalpoolstatinuseaddrthldlo.yfilter)) leaf_name_data.push_back(ciplocalpoolstatinuseaddrthldlo.get_name_leafdata());
+    if (ciplocalpoolstatinuseaddrthldhi.is_set || is_set(ciplocalpoolstatinuseaddrthldhi.yfilter)) leaf_name_data.push_back(ciplocalpoolstatinuseaddrthldhi.get_name_leafdata());
+    if (ciplocalpoolpercentaddrthldlo.is_set || is_set(ciplocalpoolpercentaddrthldlo.yfilter)) leaf_name_data.push_back(ciplocalpoolpercentaddrthldlo.get_name_leafdata());
+    if (ciplocalpoolpercentaddrthldhi.is_set || is_set(ciplocalpoolpercentaddrthldhi.yfilter)) leaf_name_data.push_back(ciplocalpoolpercentaddrthldhi.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1425,29 +1186,11 @@ void CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::set_va
         ciplocalpoolname.value_namespace = name_space;
         ciplocalpoolname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cIpLocalPoolPercentAddrThldHi")
-    {
-        ciplocalpoolpercentaddrthldhi = value;
-        ciplocalpoolpercentaddrthldhi.value_namespace = name_space;
-        ciplocalpoolpercentaddrthldhi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cIpLocalPoolPercentAddrThldLo")
-    {
-        ciplocalpoolpercentaddrthldlo = value;
-        ciplocalpoolpercentaddrthldlo.value_namespace = name_space;
-        ciplocalpoolpercentaddrthldlo.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "cIpLocalPoolStatFreeAddrs")
     {
         ciplocalpoolstatfreeaddrs = value;
         ciplocalpoolstatfreeaddrs.value_namespace = name_space;
         ciplocalpoolstatfreeaddrs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cIpLocalPoolStatHiWaterUsedAddrs")
-    {
-        ciplocalpoolstathiwaterusedaddrs = value;
-        ciplocalpoolstathiwaterusedaddrs.value_namespace = name_space;
-        ciplocalpoolstathiwaterusedaddrs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIpLocalPoolStatInUseAddrs")
     {
@@ -1455,17 +1198,35 @@ void CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::set_va
         ciplocalpoolstatinuseaddrs.value_namespace = name_space;
         ciplocalpoolstatinuseaddrs.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cIpLocalPoolStatInUseAddrThldHi")
+    if(value_path == "cIpLocalPoolStatHiWaterUsedAddrs")
     {
-        ciplocalpoolstatinuseaddrthldhi = value;
-        ciplocalpoolstatinuseaddrthldhi.value_namespace = name_space;
-        ciplocalpoolstatinuseaddrthldhi.value_namespace_prefix = name_space_prefix;
+        ciplocalpoolstathiwaterusedaddrs = value;
+        ciplocalpoolstathiwaterusedaddrs.value_namespace = name_space;
+        ciplocalpoolstathiwaterusedaddrs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIpLocalPoolStatInUseAddrThldLo")
     {
         ciplocalpoolstatinuseaddrthldlo = value;
         ciplocalpoolstatinuseaddrthldlo.value_namespace = name_space;
         ciplocalpoolstatinuseaddrthldlo.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolStatInUseAddrThldHi")
+    {
+        ciplocalpoolstatinuseaddrthldhi = value;
+        ciplocalpoolstatinuseaddrthldhi.value_namespace = name_space;
+        ciplocalpoolstatinuseaddrthldhi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolPercentAddrThldLo")
+    {
+        ciplocalpoolpercentaddrthldlo = value;
+        ciplocalpoolpercentaddrthldlo.value_namespace = name_space;
+        ciplocalpoolpercentaddrthldlo.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolPercentAddrThldHi")
+    {
+        ciplocalpoolpercentaddrthldhi = value;
+        ciplocalpoolpercentaddrthldhi.value_namespace = name_space;
+        ciplocalpoolpercentaddrthldhi.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1475,39 +1236,278 @@ void CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::set_fi
     {
         ciplocalpoolname.yfilter = yfilter;
     }
-    if(value_path == "cIpLocalPoolPercentAddrThldHi")
-    {
-        ciplocalpoolpercentaddrthldhi.yfilter = yfilter;
-    }
-    if(value_path == "cIpLocalPoolPercentAddrThldLo")
-    {
-        ciplocalpoolpercentaddrthldlo.yfilter = yfilter;
-    }
     if(value_path == "cIpLocalPoolStatFreeAddrs")
     {
         ciplocalpoolstatfreeaddrs.yfilter = yfilter;
-    }
-    if(value_path == "cIpLocalPoolStatHiWaterUsedAddrs")
-    {
-        ciplocalpoolstathiwaterusedaddrs.yfilter = yfilter;
     }
     if(value_path == "cIpLocalPoolStatInUseAddrs")
     {
         ciplocalpoolstatinuseaddrs.yfilter = yfilter;
     }
-    if(value_path == "cIpLocalPoolStatInUseAddrThldHi")
+    if(value_path == "cIpLocalPoolStatHiWaterUsedAddrs")
     {
-        ciplocalpoolstatinuseaddrthldhi.yfilter = yfilter;
+        ciplocalpoolstathiwaterusedaddrs.yfilter = yfilter;
     }
     if(value_path == "cIpLocalPoolStatInUseAddrThldLo")
     {
         ciplocalpoolstatinuseaddrthldlo.yfilter = yfilter;
     }
+    if(value_path == "cIpLocalPoolStatInUseAddrThldHi")
+    {
+        ciplocalpoolstatinuseaddrthldhi.yfilter = yfilter;
+    }
+    if(value_path == "cIpLocalPoolPercentAddrThldLo")
+    {
+        ciplocalpoolpercentaddrthldlo.yfilter = yfilter;
+    }
+    if(value_path == "cIpLocalPoolPercentAddrThldHi")
+    {
+        ciplocalpoolpercentaddrthldhi.yfilter = yfilter;
+    }
 }
 
 bool CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cIpLocalPoolName" || name == "cIpLocalPoolPercentAddrThldHi" || name == "cIpLocalPoolPercentAddrThldLo" || name == "cIpLocalPoolStatFreeAddrs" || name == "cIpLocalPoolStatHiWaterUsedAddrs" || name == "cIpLocalPoolStatInUseAddrs" || name == "cIpLocalPoolStatInUseAddrThldHi" || name == "cIpLocalPoolStatInUseAddrThldLo")
+    if(name == "cIpLocalPoolName" || name == "cIpLocalPoolStatFreeAddrs" || name == "cIpLocalPoolStatInUseAddrs" || name == "cIpLocalPoolStatHiWaterUsedAddrs" || name == "cIpLocalPoolStatInUseAddrThldLo" || name == "cIpLocalPoolStatInUseAddrThldHi" || name == "cIpLocalPoolPercentAddrThldLo" || name == "cIpLocalPoolPercentAddrThldHi")
+        return true;
+    return false;
+}
+
+CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolalloctable()
+{
+
+    yang_name = "cIpLocalPoolAllocTable"; yang_parent_name = "CISCO-IP-LOCAL-POOL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::~Ciplocalpoolalloctable()
+{
+}
+
+bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::has_data() const
+{
+    for (std::size_t index=0; index<ciplocalpoolallocentry.size(); index++)
+    {
+        if(ciplocalpoolallocentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::has_operation() const
+{
+    for (std::size_t index=0; index<ciplocalpoolallocentry.size(); index++)
+    {
+        if(ciplocalpoolallocentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-LOCAL-POOL-MIB:CISCO-IP-LOCAL-POOL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cIpLocalPoolAllocTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cIpLocalPoolAllocEntry")
+    {
+        for(auto const & c : ciplocalpoolallocentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry>();
+        c->parent = this;
+        ciplocalpoolallocentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ciplocalpoolallocentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIpLocalPoolAllocEntry")
+        return true;
+    return false;
+}
+
+CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::Ciplocalpoolallocentry()
+    :
+    ciplocalpoolname{YType::str, "cIpLocalPoolName"},
+    ciplocalpoolallocaddrtype{YType::enumeration, "cIpLocalPoolAllocAddrType"},
+    ciplocalpoolallocaddr{YType::str, "cIpLocalPoolAllocAddr"},
+    ciplocalpoolallocifindex{YType::int32, "cIpLocalPoolAllocIfIndex"},
+    ciplocalpoolallocuser{YType::str, "cIpLocalPoolAllocUser"}
+{
+
+    yang_name = "cIpLocalPoolAllocEntry"; yang_parent_name = "cIpLocalPoolAllocTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::~Ciplocalpoolallocentry()
+{
+}
+
+bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::has_data() const
+{
+    return ciplocalpoolname.is_set
+	|| ciplocalpoolallocaddrtype.is_set
+	|| ciplocalpoolallocaddr.is_set
+	|| ciplocalpoolallocifindex.is_set
+	|| ciplocalpoolallocuser.is_set;
+}
+
+bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ciplocalpoolname.yfilter)
+	|| ydk::is_set(ciplocalpoolallocaddrtype.yfilter)
+	|| ydk::is_set(ciplocalpoolallocaddr.yfilter)
+	|| ydk::is_set(ciplocalpoolallocifindex.yfilter)
+	|| ydk::is_set(ciplocalpoolallocuser.yfilter);
+}
+
+std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-LOCAL-POOL-MIB:CISCO-IP-LOCAL-POOL-MIB/cIpLocalPoolAllocTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cIpLocalPoolAllocEntry" <<"[cIpLocalPoolName='" <<ciplocalpoolname <<"']" <<"[cIpLocalPoolAllocAddrType='" <<ciplocalpoolallocaddrtype <<"']" <<"[cIpLocalPoolAllocAddr='" <<ciplocalpoolallocaddr <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ciplocalpoolname.is_set || is_set(ciplocalpoolname.yfilter)) leaf_name_data.push_back(ciplocalpoolname.get_name_leafdata());
+    if (ciplocalpoolallocaddrtype.is_set || is_set(ciplocalpoolallocaddrtype.yfilter)) leaf_name_data.push_back(ciplocalpoolallocaddrtype.get_name_leafdata());
+    if (ciplocalpoolallocaddr.is_set || is_set(ciplocalpoolallocaddr.yfilter)) leaf_name_data.push_back(ciplocalpoolallocaddr.get_name_leafdata());
+    if (ciplocalpoolallocifindex.is_set || is_set(ciplocalpoolallocifindex.yfilter)) leaf_name_data.push_back(ciplocalpoolallocifindex.get_name_leafdata());
+    if (ciplocalpoolallocuser.is_set || is_set(ciplocalpoolallocuser.yfilter)) leaf_name_data.push_back(ciplocalpoolallocuser.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cIpLocalPoolName")
+    {
+        ciplocalpoolname = value;
+        ciplocalpoolname.value_namespace = name_space;
+        ciplocalpoolname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolAllocAddrType")
+    {
+        ciplocalpoolallocaddrtype = value;
+        ciplocalpoolallocaddrtype.value_namespace = name_space;
+        ciplocalpoolallocaddrtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolAllocAddr")
+    {
+        ciplocalpoolallocaddr = value;
+        ciplocalpoolallocaddr.value_namespace = name_space;
+        ciplocalpoolallocaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolAllocIfIndex")
+    {
+        ciplocalpoolallocifindex = value;
+        ciplocalpoolallocifindex.value_namespace = name_space;
+        ciplocalpoolallocifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cIpLocalPoolAllocUser")
+    {
+        ciplocalpoolallocuser = value;
+        ciplocalpoolallocuser.value_namespace = name_space;
+        ciplocalpoolallocuser.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cIpLocalPoolName")
+    {
+        ciplocalpoolname.yfilter = yfilter;
+    }
+    if(value_path == "cIpLocalPoolAllocAddrType")
+    {
+        ciplocalpoolallocaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "cIpLocalPoolAllocAddr")
+    {
+        ciplocalpoolallocaddr.yfilter = yfilter;
+    }
+    if(value_path == "cIpLocalPoolAllocIfIndex")
+    {
+        ciplocalpoolallocifindex.yfilter = yfilter;
+    }
+    if(value_path == "cIpLocalPoolAllocUser")
+    {
+        ciplocalpoolallocuser.yfilter = yfilter;
+    }
+}
+
+bool CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIpLocalPoolName" || name == "cIpLocalPoolAllocAddrType" || name == "cIpLocalPoolAllocAddr" || name == "cIpLocalPoolAllocIfIndex" || name == "cIpLocalPoolAllocUser")
         return true;
     return false;
 }

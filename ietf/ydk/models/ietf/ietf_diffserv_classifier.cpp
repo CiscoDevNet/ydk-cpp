@@ -11,6 +11,16 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_diffserv_classifier {
 
+FilterType::FilterType()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:filter-type")
+{
+
+}
+
+FilterType::~FilterType()
+{
+}
+
 ClassifierEntryFilterOperationType::ClassifierEntryFilterOperationType()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:classifier-entry-filter-operation-type")
 {
@@ -296,24 +306,9 @@ Classifiers::ClassifierEntry::FilterEntry::~FilterEntry()
 
 bool Classifiers::ClassifierEntry::FilterEntry::has_data() const
 {
-    for (std::size_t index=0; index<destination_ip_address_cfg.size(); index++)
-    {
-        if(destination_ip_address_cfg[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<destination_port_cfg.size(); index++)
-    {
-        if(destination_port_cfg[index]->has_data())
-            return true;
-    }
     for (std::size_t index=0; index<dscp_cfg.size(); index++)
     {
         if(dscp_cfg[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<protocol_cfg.size(); index++)
-    {
-        if(protocol_cfg[index]->has_data())
             return true;
     }
     for (std::size_t index=0; index<source_ip_address_cfg.size(); index++)
@@ -321,9 +316,24 @@ bool Classifiers::ClassifierEntry::FilterEntry::has_data() const
         if(source_ip_address_cfg[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<destination_ip_address_cfg.size(); index++)
+    {
+        if(destination_ip_address_cfg[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<source_port_cfg.size(); index++)
     {
         if(source_port_cfg[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<destination_port_cfg.size(); index++)
+    {
+        if(destination_port_cfg[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<protocol_cfg.size(); index++)
+    {
+        if(protocol_cfg[index]->has_data())
             return true;
     }
     return filter_type.is_set
@@ -332,24 +342,9 @@ bool Classifiers::ClassifierEntry::FilterEntry::has_data() const
 
 bool Classifiers::ClassifierEntry::FilterEntry::has_operation() const
 {
-    for (std::size_t index=0; index<destination_ip_address_cfg.size(); index++)
-    {
-        if(destination_ip_address_cfg[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<destination_port_cfg.size(); index++)
-    {
-        if(destination_port_cfg[index]->has_operation())
-            return true;
-    }
     for (std::size_t index=0; index<dscp_cfg.size(); index++)
     {
         if(dscp_cfg[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<protocol_cfg.size(); index++)
-    {
-        if(protocol_cfg[index]->has_operation())
             return true;
     }
     for (std::size_t index=0; index<source_ip_address_cfg.size(); index++)
@@ -357,9 +352,24 @@ bool Classifiers::ClassifierEntry::FilterEntry::has_operation() const
         if(source_ip_address_cfg[index]->has_operation())
             return true;
     }
+    for (std::size_t index=0; index<destination_ip_address_cfg.size(); index++)
+    {
+        if(destination_ip_address_cfg[index]->has_operation())
+            return true;
+    }
     for (std::size_t index=0; index<source_port_cfg.size(); index++)
     {
         if(source_port_cfg[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<destination_port_cfg.size(); index++)
+    {
+        if(destination_port_cfg[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<protocol_cfg.size(); index++)
+    {
+        if(protocol_cfg[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -387,38 +397,6 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "destination-ip-address-cfg")
-    {
-        for(auto const & c : destination_ip_address_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
-        c->parent = this;
-        destination_ip_address_cfg.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "destination-port-cfg")
-    {
-        for(auto const & c : destination_port_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg>();
-        c->parent = this;
-        destination_port_cfg.push_back(c);
-        return c;
-    }
-
     if(child_yang_name == "dscp-cfg")
     {
         for(auto const & c : dscp_cfg)
@@ -432,22 +410,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DscpCfg>();
         c->parent = this;
         dscp_cfg.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "protocol-cfg")
-    {
-        for(auto const & c : protocol_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg>();
-        c->parent = this;
-        protocol_cfg.push_back(c);
         return c;
     }
 
@@ -467,6 +429,22 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
         return c;
     }
 
+    if(child_yang_name == "destination-ip-address-cfg")
+    {
+        for(auto const & c : destination_ip_address_cfg)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
+        c->parent = this;
+        destination_ip_address_cfg.push_back(c);
+        return c;
+    }
+
     if(child_yang_name == "source-port-cfg")
     {
         for(auto const & c : source_port_cfg)
@@ -483,28 +461,45 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
         return c;
     }
 
+    if(child_yang_name == "destination-port-cfg")
+    {
+        for(auto const & c : destination_port_cfg)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg>();
+        c->parent = this;
+        destination_port_cfg.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "protocol-cfg")
+    {
+        for(auto const & c : protocol_cfg)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg>();
+        c->parent = this;
+        protocol_cfg.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : destination_ip_address_cfg)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : destination_port_cfg)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     for (auto const & c : dscp_cfg)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : protocol_cfg)
     {
         children[c->get_segment_path()] = c;
     }
@@ -514,7 +509,22 @@ std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::Fil
         children[c->get_segment_path()] = c;
     }
 
+    for (auto const & c : destination_ip_address_cfg)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     for (auto const & c : source_port_cfg)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : destination_port_cfg)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : protocol_cfg)
     {
         children[c->get_segment_path()] = c;
     }
@@ -552,173 +562,7 @@ void Classifiers::ClassifierEntry::FilterEntry::set_filter(const std::string & v
 
 bool Classifiers::ClassifierEntry::FilterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination-ip-address-cfg" || name == "destination-port-cfg" || name == "dscp-cfg" || name == "protocol-cfg" || name == "source-ip-address-cfg" || name == "source-port-cfg" || name == "filter-type" || name == "filter-logical-not")
-        return true;
-    return false;
-}
-
-Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::DestinationIpAddressCfg()
-    :
-    destination_ip_addr{YType::str, "destination-ip-addr"}
-{
-
-    yang_name = "destination-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::~DestinationIpAddressCfg()
-{
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_data() const
-{
-    return destination_ip_addr.is_set;
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_ip_addr.yfilter);
-}
-
-std::string Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-ip-address-cfg" <<"[destination-ip-addr='" <<destination_ip_addr <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_ip_addr.is_set || is_set(destination_ip_addr.yfilter)) leaf_name_data.push_back(destination_ip_addr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-ip-addr")
-    {
-        destination_ip_addr = value;
-        destination_ip_addr.value_namespace = name_space;
-        destination_ip_addr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-ip-addr")
-    {
-        destination_ip_addr.yfilter = yfilter;
-    }
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-ip-addr")
-        return true;
-    return false;
-}
-
-Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::DestinationPortCfg()
-    :
-    destination_port_min{YType::uint16, "destination-port-min"},
-    destination_port_max{YType::uint16, "destination-port-max"}
-{
-
-    yang_name = "destination-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::~DestinationPortCfg()
-{
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::has_data() const
-{
-    return destination_port_min.is_set
-	|| destination_port_max.is_set;
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_port_min.yfilter)
-	|| ydk::is_set(destination_port_max.yfilter);
-}
-
-std::string Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-port-cfg" <<"[destination-port-min='" <<destination_port_min <<"']" <<"[destination-port-max='" <<destination_port_max <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_port_min.is_set || is_set(destination_port_min.yfilter)) leaf_name_data.push_back(destination_port_min.get_name_leafdata());
-    if (destination_port_max.is_set || is_set(destination_port_max.yfilter)) leaf_name_data.push_back(destination_port_max.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-port-min")
-    {
-        destination_port_min = value;
-        destination_port_min.value_namespace = name_space;
-        destination_port_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-port-max")
-    {
-        destination_port_max = value;
-        destination_port_max.value_namespace = name_space;
-        destination_port_max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-port-min")
-    {
-        destination_port_min.yfilter = yfilter;
-    }
-    if(value_path == "destination-port-max")
-    {
-        destination_port_max.yfilter = yfilter;
-    }
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-port-min" || name == "destination-port-max")
+    if(name == "dscp-cfg" || name == "source-ip-address-cfg" || name == "destination-ip-address-cfg" || name == "source-port-cfg" || name == "destination-port-cfg" || name == "protocol-cfg" || name == "filter-type" || name == "filter-logical-not")
         return true;
     return false;
 }
@@ -813,96 +657,6 @@ bool Classifiers::ClassifierEntry::FilterEntry::DscpCfg::has_leaf_or_child_of_na
     return false;
 }
 
-Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::ProtocolCfg()
-    :
-    protocol_min{YType::uint8, "protocol-min"},
-    protocol_max{YType::uint8, "protocol-max"}
-{
-
-    yang_name = "protocol-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::~ProtocolCfg()
-{
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_data() const
-{
-    return protocol_min.is_set
-	|| protocol_max.is_set;
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(protocol_min.yfilter)
-	|| ydk::is_set(protocol_max.yfilter);
-}
-
-std::string Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protocol-cfg" <<"[protocol-min='" <<protocol_min <<"']" <<"[protocol-max='" <<protocol_max <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (protocol_min.is_set || is_set(protocol_min.yfilter)) leaf_name_data.push_back(protocol_min.get_name_leafdata());
-    if (protocol_max.is_set || is_set(protocol_max.yfilter)) leaf_name_data.push_back(protocol_max.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocol-min")
-    {
-        protocol_min = value;
-        protocol_min.value_namespace = name_space;
-        protocol_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol-max")
-    {
-        protocol_max = value;
-        protocol_max.value_namespace = name_space;
-        protocol_max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocol-min")
-    {
-        protocol_min.yfilter = yfilter;
-    }
-    if(value_path == "protocol-max")
-    {
-        protocol_max.yfilter = yfilter;
-    }
-}
-
-bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol-min" || name == "protocol-max")
-        return true;
-    return false;
-}
-
 Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::SourceIpAddressCfg()
     :
     source_ip_addr{YType::str, "source-ip-addr"}
@@ -975,6 +729,82 @@ void Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::set_filter(c
 bool Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-ip-addr")
+        return true;
+    return false;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::DestinationIpAddressCfg()
+    :
+    destination_ip_addr{YType::str, "destination-ip-addr"}
+{
+
+    yang_name = "destination-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::~DestinationIpAddressCfg()
+{
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_data() const
+{
+    return destination_ip_addr.is_set;
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_ip_addr.yfilter);
+}
+
+std::string Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination-ip-address-cfg" <<"[destination-ip-addr='" <<destination_ip_addr <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_ip_addr.is_set || is_set(destination_ip_addr.yfilter)) leaf_name_data.push_back(destination_ip_addr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-ip-addr")
+    {
+        destination_ip_addr = value;
+        destination_ip_addr.value_namespace = name_space;
+        destination_ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-ip-addr")
+    {
+        destination_ip_addr.yfilter = yfilter;
+    }
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-ip-addr")
         return true;
     return false;
 }
@@ -1069,34 +899,184 @@ bool Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::has_leaf_or_child
     return false;
 }
 
-FilterType::FilterType()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:filter-type")
+Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::DestinationPortCfg()
+    :
+    destination_port_min{YType::uint16, "destination-port-min"},
+    destination_port_max{YType::uint16, "destination-port-max"}
 {
 
+    yang_name = "destination-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FilterType::~FilterType()
-{
-}
-
-DestinationIpAddress::DestinationIpAddress()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-ip-address")
-{
-
-}
-
-DestinationIpAddress::~DestinationIpAddress()
+Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::~DestinationPortCfg()
 {
 }
 
-DestinationPort::DestinationPort()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-port")
+bool Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::has_data() const
 {
+    return destination_port_min.is_set
+	|| destination_port_max.is_set;
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_port_min.yfilter)
+	|| ydk::is_set(destination_port_max.yfilter);
+}
+
+std::string Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination-port-cfg" <<"[destination-port-min='" <<destination_port_min <<"']" <<"[destination-port-max='" <<destination_port_max <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_port_min.is_set || is_set(destination_port_min.yfilter)) leaf_name_data.push_back(destination_port_min.get_name_leafdata());
+    if (destination_port_max.is_set || is_set(destination_port_max.yfilter)) leaf_name_data.push_back(destination_port_max.get_name_leafdata());
+
+    return leaf_name_data;
 
 }
 
-DestinationPort::~DestinationPort()
+std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-port-min")
+    {
+        destination_port_min = value;
+        destination_port_min.value_namespace = name_space;
+        destination_port_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-port-max")
+    {
+        destination_port_max = value;
+        destination_port_max.value_namespace = name_space;
+        destination_port_max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-port-min")
+    {
+        destination_port_min.yfilter = yfilter;
+    }
+    if(value_path == "destination-port-max")
+    {
+        destination_port_max.yfilter = yfilter;
+    }
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-port-min" || name == "destination-port-max")
+        return true;
+    return false;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::ProtocolCfg()
+    :
+    protocol_min{YType::uint8, "protocol-min"},
+    protocol_max{YType::uint8, "protocol-max"}
+{
+
+    yang_name = "protocol-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::~ProtocolCfg()
+{
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_data() const
+{
+    return protocol_min.is_set
+	|| protocol_max.is_set;
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_min.yfilter)
+	|| ydk::is_set(protocol_max.yfilter);
+}
+
+std::string Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protocol-cfg" <<"[protocol-min='" <<protocol_min <<"']" <<"[protocol-max='" <<protocol_max <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (protocol_min.is_set || is_set(protocol_min.yfilter)) leaf_name_data.push_back(protocol_min.get_name_leafdata());
+    if (protocol_max.is_set || is_set(protocol_max.yfilter)) leaf_name_data.push_back(protocol_max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "protocol-min")
+    {
+        protocol_min = value;
+        protocol_min.value_namespace = name_space;
+        protocol_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol-max")
+    {
+        protocol_max = value;
+        protocol_max.value_namespace = name_space;
+        protocol_max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-min")
+    {
+        protocol_min.yfilter = yfilter;
+    }
+    if(value_path == "protocol-max")
+    {
+        protocol_max.yfilter = yfilter;
+    }
+}
+
+bool Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-min" || name == "protocol-max")
+        return true;
+    return false;
 }
 
 Dscp::Dscp()
@@ -1106,36 +1086,6 @@ Dscp::Dscp()
 }
 
 Dscp::~Dscp()
-{
-}
-
-MatchAllFilter::MatchAllFilter()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-all-filter")
-{
-
-}
-
-MatchAllFilter::~MatchAllFilter()
-{
-}
-
-MatchAnyFilter::MatchAnyFilter()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-any-filter")
-{
-
-}
-
-MatchAnyFilter::~MatchAnyFilter()
-{
-}
-
-Protocol::Protocol()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:protocol")
-{
-
-}
-
-Protocol::~Protocol()
 {
 }
 
@@ -1149,6 +1099,16 @@ SourceIpAddress::~SourceIpAddress()
 {
 }
 
+DestinationIpAddress::DestinationIpAddress()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-ip-address")
+{
+
+}
+
+DestinationIpAddress::~DestinationIpAddress()
+{
+}
+
 SourcePort::SourcePort()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:source-port")
 {
@@ -1156,6 +1116,46 @@ SourcePort::SourcePort()
 }
 
 SourcePort::~SourcePort()
+{
+}
+
+DestinationPort::DestinationPort()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:destination-port")
+{
+
+}
+
+DestinationPort::~DestinationPort()
+{
+}
+
+Protocol::Protocol()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:protocol")
+{
+
+}
+
+Protocol::~Protocol()
+{
+}
+
+MatchAnyFilter::MatchAnyFilter()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-any-filter")
+{
+
+}
+
+MatchAnyFilter::~MatchAnyFilter()
+{
+}
+
+MatchAllFilter::MatchAllFilter()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-classifier", "ietf-diffserv-classifier", "ietf-diffserv-classifier:match-all-filter")
+{
+
+}
+
+MatchAllFilter::~MatchAllFilter()
 {
 }
 

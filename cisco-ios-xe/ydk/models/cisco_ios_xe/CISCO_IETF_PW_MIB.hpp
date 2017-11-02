@@ -40,65 +40,15 @@ class CISCOIETFPWMIB : public ydk::Entity
         class Cpwvcidmappingtable; //type: CISCOIETFPWMIB::Cpwvcidmappingtable
         class Cpwvcpeermappingtable; //type: CISCOIETFPWMIB::Cpwvcpeermappingtable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcidmappingtable> cpwvcidmappingtable;
         std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcobjects> cpwvcobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcpeermappingtable> cpwvcpeermappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable> cpwvctable;
         std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperfcurrenttable> cpwvcperfcurrenttable;
         std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperfintervaltable> cpwvcperfintervaltable;
         std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperftotaltable> cpwvcperftotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable> cpwvctable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcidmappingtable> cpwvcidmappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcpeermappingtable> cpwvcpeermappingtable;
         
 }; // CISCOIETFPWMIB
-
-
-class CISCOIETFPWMIB::Cpwvcidmappingtable : public ydk::Entity
-{
-    public:
-        Cpwvcidmappingtable();
-        ~Cpwvcidmappingtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cpwvcidmappingentry; //type: CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry> > cpwvcidmappingentry;
-        
-}; // CISCOIETFPWMIB::Cpwvcidmappingtable
-
-
-class CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry : public ydk::Entity
-{
-    public:
-        Cpwvcidmappingentry();
-        ~Cpwvcidmappingentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cpwvcidmappingvctype; //type: CpwVcType
-        ydk::YLeaf cpwvcidmappingvcid; //type: uint32
-        ydk::YLeaf cpwvcidmappingpeeraddrtype; //type: InetAddressType
-        ydk::YLeaf cpwvcidmappingpeeraddr; //type: binary
-        ydk::YLeaf cpwvcidmappingvcindex; //type: uint32
-
-}; // CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry
 
 
 class CISCOIETFPWMIB::Cpwvcobjects : public ydk::Entity
@@ -126,11 +76,11 @@ class CISCOIETFPWMIB::Cpwvcobjects : public ydk::Entity
 }; // CISCOIETFPWMIB::Cpwvcobjects
 
 
-class CISCOIETFPWMIB::Cpwvcpeermappingtable : public ydk::Entity
+class CISCOIETFPWMIB::Cpwvctable : public ydk::Entity
 {
     public:
-        Cpwvcpeermappingtable();
-        ~Cpwvcpeermappingtable();
+        Cpwvctable();
+        ~Cpwvctable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,18 +93,18 @@ class CISCOIETFPWMIB::Cpwvcpeermappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwvcpeermappingentry; //type: CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry
+        class Cpwvcentry; //type: CISCOIETFPWMIB::Cpwvctable::Cpwvcentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry> > cpwvcpeermappingentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry> > cpwvcentry;
         
-}; // CISCOIETFPWMIB::Cpwvcpeermappingtable
+}; // CISCOIETFPWMIB::Cpwvctable
 
 
-class CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry : public ydk::Entity
+class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry : public ydk::Entity
 {
     public:
-        Cpwvcpeermappingentry();
-        ~Cpwvcpeermappingentry();
+        Cpwvcentry();
+        ~Cpwvcentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -167,13 +117,45 @@ class CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cpwvcpeermappingpeeraddrtype; //type: InetAddressType
-        ydk::YLeaf cpwvcpeermappingpeeraddr; //type: binary
-        ydk::YLeaf cpwvcpeermappingvctype; //type: CpwVcType
-        ydk::YLeaf cpwvcpeermappingvcid; //type: uint32
-        ydk::YLeaf cpwvcpeermappingvcindex; //type: uint32
+        ydk::YLeaf cpwvcindex; //type: uint32
+        ydk::YLeaf cpwvctype; //type: CpwVcType
+        ydk::YLeaf cpwvcowner; //type: Cpwvcowner
+        ydk::YLeaf cpwvcpsntype; //type: Cpwvcpsntype
+        ydk::YLeaf cpwvcsetuppriority; //type: int32
+        ydk::YLeaf cpwvcholdingpriority; //type: int32
+        ydk::YLeaf cpwvcinboundmode; //type: Cpwvcinboundmode
+        ydk::YLeaf cpwvcpeeraddrtype; //type: InetAddressType
+        ydk::YLeaf cpwvcpeeraddr; //type: binary
+        ydk::YLeaf cpwvcid; //type: uint32
+        ydk::YLeaf cpwvclocalgroupid; //type: uint32
+        ydk::YLeaf cpwvccontrolword; //type: boolean
+        ydk::YLeaf cpwvclocalifmtu; //type: uint32
+        ydk::YLeaf cpwvclocalifstring; //type: boolean
+        ydk::YLeaf cpwvcremotegroupid; //type: uint32
+        ydk::YLeaf cpwvcremotecontrolword; //type: Cpwvcremotecontrolword
+        ydk::YLeaf cpwvcremoteifmtu; //type: uint32
+        ydk::YLeaf cpwvcremoteifstring; //type: string
+        ydk::YLeaf cpwvcoutboundvclabel; //type: uint32
+        ydk::YLeaf cpwvcinboundvclabel; //type: uint32
+        ydk::YLeaf cpwvcname; //type: string
+        ydk::YLeaf cpwvcdescr; //type: string
+        ydk::YLeaf cpwvccreatetime; //type: uint32
+        ydk::YLeaf cpwvcuptime; //type: uint32
+        ydk::YLeaf cpwvcadminstatus; //type: Cpwvcadminstatus
+        ydk::YLeaf cpwvcoperstatus; //type: CpwOperStatus
+        ydk::YLeaf cpwvcinboundoperstatus; //type: CpwOperStatus
+        ydk::YLeaf cpwvcoutboundoperstatus; //type: CpwOperStatus
+        ydk::YLeaf cpwvctimeelapsed; //type: int32
+        ydk::YLeaf cpwvcvalidintervals; //type: int32
+        ydk::YLeaf cpwvcrowstatus; //type: RowStatus
+        ydk::YLeaf cpwvcstoragetype; //type: StorageType
+        class Cpwvcowner;
+        class Cpwvcpsntype;
+        class Cpwvcinboundmode;
+        class Cpwvcremotecontrolword;
+        class Cpwvcadminstatus;
 
-}; // CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry
+}; // CISCOIETFPWMIB::Cpwvctable::Cpwvcentry
 
 
 class CISCOIETFPWMIB::Cpwvcperfcurrenttable : public ydk::Entity
@@ -333,11 +315,11 @@ class CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry : public ydk::Ent
 }; // CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry
 
 
-class CISCOIETFPWMIB::Cpwvctable : public ydk::Entity
+class CISCOIETFPWMIB::Cpwvcidmappingtable : public ydk::Entity
 {
     public:
-        Cpwvctable();
-        ~Cpwvctable();
+        Cpwvcidmappingtable();
+        ~Cpwvcidmappingtable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -350,18 +332,18 @@ class CISCOIETFPWMIB::Cpwvctable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwvcentry; //type: CISCOIETFPWMIB::Cpwvctable::Cpwvcentry
+        class Cpwvcidmappingentry; //type: CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry> > cpwvcentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry> > cpwvcidmappingentry;
         
-}; // CISCOIETFPWMIB::Cpwvctable
+}; // CISCOIETFPWMIB::Cpwvcidmappingtable
 
 
-class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry : public ydk::Entity
+class CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry : public ydk::Entity
 {
     public:
-        Cpwvcentry();
-        ~Cpwvcentry();
+        Cpwvcidmappingentry();
+        ~Cpwvcidmappingentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -374,45 +356,63 @@ class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cpwvcindex; //type: uint32
-        ydk::YLeaf cpwvctype; //type: CpwVcType
-        ydk::YLeaf cpwvcowner; //type: Cpwvcowner
-        ydk::YLeaf cpwvcpsntype; //type: Cpwvcpsntype
-        ydk::YLeaf cpwvcsetuppriority; //type: int32
-        ydk::YLeaf cpwvcholdingpriority; //type: int32
-        ydk::YLeaf cpwvcinboundmode; //type: Cpwvcinboundmode
-        ydk::YLeaf cpwvcpeeraddrtype; //type: InetAddressType
-        ydk::YLeaf cpwvcpeeraddr; //type: binary
-        ydk::YLeaf cpwvcid; //type: uint32
-        ydk::YLeaf cpwvclocalgroupid; //type: uint32
-        ydk::YLeaf cpwvccontrolword; //type: boolean
-        ydk::YLeaf cpwvclocalifmtu; //type: uint32
-        ydk::YLeaf cpwvclocalifstring; //type: boolean
-        ydk::YLeaf cpwvcremotegroupid; //type: uint32
-        ydk::YLeaf cpwvcremotecontrolword; //type: Cpwvcremotecontrolword
-        ydk::YLeaf cpwvcremoteifmtu; //type: uint32
-        ydk::YLeaf cpwvcremoteifstring; //type: string
-        ydk::YLeaf cpwvcoutboundvclabel; //type: uint32
-        ydk::YLeaf cpwvcinboundvclabel; //type: uint32
-        ydk::YLeaf cpwvcname; //type: string
-        ydk::YLeaf cpwvcdescr; //type: string
-        ydk::YLeaf cpwvccreatetime; //type: uint32
-        ydk::YLeaf cpwvcuptime; //type: uint32
-        ydk::YLeaf cpwvcadminstatus; //type: Cpwvcadminstatus
-        ydk::YLeaf cpwvcoperstatus; //type: CpwOperStatus
-        ydk::YLeaf cpwvcinboundoperstatus; //type: CpwOperStatus
-        ydk::YLeaf cpwvcoutboundoperstatus; //type: CpwOperStatus
-        ydk::YLeaf cpwvctimeelapsed; //type: int32
-        ydk::YLeaf cpwvcvalidintervals; //type: int32
-        ydk::YLeaf cpwvcrowstatus; //type: RowStatus
-        ydk::YLeaf cpwvcstoragetype; //type: StorageType
-        class Cpwvcowner;
-        class Cpwvcpsntype;
-        class Cpwvcinboundmode;
-        class Cpwvcremotecontrolword;
-        class Cpwvcadminstatus;
+        ydk::YLeaf cpwvcidmappingvctype; //type: CpwVcType
+        ydk::YLeaf cpwvcidmappingvcid; //type: uint32
+        ydk::YLeaf cpwvcidmappingpeeraddrtype; //type: InetAddressType
+        ydk::YLeaf cpwvcidmappingpeeraddr; //type: binary
+        ydk::YLeaf cpwvcidmappingvcindex; //type: uint32
 
-}; // CISCOIETFPWMIB::Cpwvctable::Cpwvcentry
+}; // CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry
+
+
+class CISCOIETFPWMIB::Cpwvcpeermappingtable : public ydk::Entity
+{
+    public:
+        Cpwvcpeermappingtable();
+        ~Cpwvcpeermappingtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwvcpeermappingentry; //type: CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry> > cpwvcpeermappingentry;
+        
+}; // CISCOIETFPWMIB::Cpwvcpeermappingtable
+
+
+class CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry : public ydk::Entity
+{
+    public:
+        Cpwvcpeermappingentry();
+        ~Cpwvcpeermappingentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cpwvcpeermappingpeeraddrtype; //type: InetAddressType
+        ydk::YLeaf cpwvcpeermappingpeeraddr; //type: binary
+        ydk::YLeaf cpwvcpeermappingvctype; //type: CpwVcType
+        ydk::YLeaf cpwvcpeermappingvcid; //type: uint32
+        ydk::YLeaf cpwvcpeermappingvcindex; //type: uint32
+
+}; // CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry
 
 class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcowner : public ydk::Enum
 {

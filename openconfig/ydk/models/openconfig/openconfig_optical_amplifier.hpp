@@ -10,6 +10,15 @@
 namespace openconfig {
 namespace openconfig_optical_amplifier {
 
+class OPTICALAMPLIFIERTYPE : public virtual ydk::Identity
+{
+    public:
+        OPTICALAMPLIFIERTYPE();
+        ~OPTICALAMPLIFIERTYPE();
+
+
+}; // OPTICALAMPLIFIERTYPE
+
 class GAINRANGE : public virtual ydk::Identity
 {
     public:
@@ -27,15 +36,6 @@ class OPTICALAMPLIFIERMODE : public virtual ydk::Identity
 
 
 }; // OPTICALAMPLIFIERMODE
-
-class OPTICALAMPLIFIERTYPE : public virtual ydk::Identity
-{
-    public:
-        OPTICALAMPLIFIERTYPE();
-        ~OPTICALAMPLIFIERTYPE();
-
-
-}; // OPTICALAMPLIFIERTYPE
 
 class OpticalAmplifier : public ydk::Entity
 {
@@ -188,14 +188,14 @@ class OpticalAmplifier::Amplifiers::Amplifier::State : public ydk::Entity
 
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain> actual_gain;
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt> actual_gain_tilt;
+        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal> input_power_total;
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand> input_power_c_band;
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand> input_power_l_band;
-        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal> input_power_total;
-        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent> laser_bias_current;
-        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss> optical_return_loss;
+        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal> output_power_total;
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand> output_power_c_band;
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand> output_power_l_band;
-        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal> output_power_total;
+        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent> laser_bias_current;
+        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss> optical_return_loss;
         
 }; // OpticalAmplifier::Amplifiers::Amplifier::State
 
@@ -248,6 +248,30 @@ class OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt : public yd
 }; // OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt
 
 
+class OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal : public ydk::Entity
+{
+    public:
+        InputPowerTotal();
+        ~InputPowerTotal();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal
+
+
 class OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand : public ydk::Entity
 {
     public:
@@ -296,11 +320,11 @@ class OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand : public y
 }; // OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand
 
 
-class OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal : public ydk::Entity
+class OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal : public ydk::Entity
 {
     public:
-        InputPowerTotal();
-        ~InputPowerTotal();
+        OutputPowerTotal();
+        ~OutputPowerTotal();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -317,55 +341,7 @@ class OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal : public y
         ydk::YLeaf min; //type: decimal64
         ydk::YLeaf max; //type: decimal64
 
-}; // OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal
-
-
-class OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent : public ydk::Entity
-{
-    public:
-        LaserBiasCurrent();
-        ~LaserBiasCurrent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent
-
-
-class OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss : public ydk::Entity
-{
-    public:
-        OpticalReturnLoss();
-        ~OpticalReturnLoss();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss
+}; // OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal
 
 
 class OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand : public ydk::Entity
@@ -416,11 +392,11 @@ class OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand : public 
 }; // OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand
 
 
-class OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal : public ydk::Entity
+class OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent : public ydk::Entity
 {
     public:
-        OutputPowerTotal();
-        ~OutputPowerTotal();
+        LaserBiasCurrent();
+        ~LaserBiasCurrent();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -437,7 +413,31 @@ class OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal : public 
         ydk::YLeaf min; //type: decimal64
         ydk::YLeaf max; //type: decimal64
 
-}; // OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal
+}; // OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent
+
+
+class OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss : public ydk::Entity
+{
+    public:
+        OpticalReturnLoss();
+        ~OpticalReturnLoss();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
+
+}; // OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss
 
 
 class OpticalAmplifier::SupervisoryChannels : public ydk::Entity
@@ -537,8 +537,8 @@ class OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State : public 
         class LaserBiasCurrent; //type: OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent
 
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower> input_power;
-        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent> laser_bias_current;
         std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower> output_power;
+        std::shared_ptr<openconfig::openconfig_optical_amplifier::OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent> laser_bias_current;
         
 }; // OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State
 
@@ -567,30 +567,6 @@ class OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPow
 }; // OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower
 
 
-class OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent : public ydk::Entity
-{
-    public:
-        LaserBiasCurrent();
-        ~LaserBiasCurrent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instant; //type: decimal64
-        ydk::YLeaf avg; //type: decimal64
-        ydk::YLeaf min; //type: decimal64
-        ydk::YLeaf max; //type: decimal64
-
-}; // OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent
-
-
 class OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower : public ydk::Entity
 {
     public:
@@ -614,32 +590,29 @@ class OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPo
 
 }; // OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower
 
-class BACKWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
+
+class OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent : public ydk::Entity
 {
     public:
-        BACKWARDRAMAN();
-        ~BACKWARDRAMAN();
+        LaserBiasCurrent();
+        ~LaserBiasCurrent();
 
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-}; // BACKWARDRAMAN
+        ydk::YLeaf instant; //type: decimal64
+        ydk::YLeaf avg; //type: decimal64
+        ydk::YLeaf min; //type: decimal64
+        ydk::YLeaf max; //type: decimal64
 
-class CONSTANTGAIN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERMODE, virtual ydk::Identity
-{
-    public:
-        CONSTANTGAIN();
-        ~CONSTANTGAIN();
-
-
-}; // CONSTANTGAIN
-
-class CONSTANTPOWER : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERMODE, virtual ydk::Identity
-{
-    public:
-        CONSTANTPOWER();
-        ~CONSTANTPOWER();
-
-
-}; // CONSTANTPOWER
+}; // OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent
 
 class EDFA : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
 {
@@ -650,15 +623,6 @@ class EDFA : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTY
 
 }; // EDFA
 
-class FIXEDGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
-{
-    public:
-        FIXEDGAINRANGE();
-        ~FIXEDGAINRANGE();
-
-
-}; // FIXEDGAINRANGE
-
 class FORWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
 {
     public:
@@ -668,14 +632,14 @@ class FORWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAMP
 
 }; // FORWARDRAMAN
 
-class HIGHGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
+class BACKWARDRAMAN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
 {
     public:
-        HIGHGAINRANGE();
-        ~HIGHGAINRANGE();
+        BACKWARDRAMAN();
+        ~BACKWARDRAMAN();
 
 
-}; // HIGHGAINRANGE
+}; // BACKWARDRAMAN
 
 class HYBRID : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERTYPE, virtual ydk::Identity
 {
@@ -703,6 +667,42 @@ class MIDGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE,
 
 
 }; // MIDGAINRANGE
+
+class HIGHGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
+{
+    public:
+        HIGHGAINRANGE();
+        ~HIGHGAINRANGE();
+
+
+}; // HIGHGAINRANGE
+
+class FIXEDGAINRANGE : public openconfig::openconfig_optical_amplifier::GAINRANGE, virtual ydk::Identity
+{
+    public:
+        FIXEDGAINRANGE();
+        ~FIXEDGAINRANGE();
+
+
+}; // FIXEDGAINRANGE
+
+class CONSTANTPOWER : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERMODE, virtual ydk::Identity
+{
+    public:
+        CONSTANTPOWER();
+        ~CONSTANTPOWER();
+
+
+}; // CONSTANTPOWER
+
+class CONSTANTGAIN : public openconfig::openconfig_optical_amplifier::OPTICALAMPLIFIERMODE, virtual ydk::Identity
+{
+    public:
+        CONSTANTGAIN();
+        ~CONSTANTGAIN();
+
+
+}; // CONSTANTGAIN
 
 
 }

@@ -14,9 +14,9 @@ namespace Cisco_IOS_XR_patch_panel_cfg {
 PatchPanel::PatchPanel()
     :
     enable{YType::empty, "enable"},
-    ipv4{YType::str, "ipv4"},
+    user_name{YType::str, "user-name"},
     password{YType::str, "password"},
-    user_name{YType::str, "user-name"}
+    ipv4{YType::str, "ipv4"}
 {
 
     yang_name = "patch-panel"; yang_parent_name = "Cisco-IOS-XR-patch-panel-cfg"; is_top_level_class = true; has_list_ancestor = false;
@@ -29,18 +29,18 @@ PatchPanel::~PatchPanel()
 bool PatchPanel::has_data() const
 {
     return enable.is_set
-	|| ipv4.is_set
+	|| user_name.is_set
 	|| password.is_set
-	|| user_name.is_set;
+	|| ipv4.is_set;
 }
 
 bool PatchPanel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(user_name.yfilter)
 	|| ydk::is_set(password.yfilter)
-	|| ydk::is_set(user_name.yfilter);
+	|| ydk::is_set(ipv4.yfilter);
 }
 
 std::string PatchPanel::get_segment_path() const
@@ -55,9 +55,9 @@ std::vector<std::pair<std::string, LeafData> > PatchPanel::get_name_leaf_data() 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
     if (user_name.is_set || is_set(user_name.yfilter)) leaf_name_data.push_back(user_name.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -82,11 +82,11 @@ void PatchPanel::set_value(const std::string & value_path, const std::string & v
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipv4")
+    if(value_path == "user-name")
     {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
+        user_name = value;
+        user_name.value_namespace = name_space;
+        user_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
@@ -94,11 +94,11 @@ void PatchPanel::set_value(const std::string & value_path, const std::string & v
         password.value_namespace = name_space;
         password.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "user-name")
+    if(value_path == "ipv4")
     {
-        user_name = value;
-        user_name.value_namespace = name_space;
-        user_name.value_namespace_prefix = name_space_prefix;
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -108,17 +108,17 @@ void PatchPanel::set_filter(const std::string & value_path, YFilter yfilter)
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "ipv4")
+    if(value_path == "user-name")
     {
-        ipv4.yfilter = yfilter;
+        user_name.yfilter = yfilter;
     }
     if(value_path == "password")
     {
         password.yfilter = yfilter;
     }
-    if(value_path == "user-name")
+    if(value_path == "ipv4")
     {
-        user_name.yfilter = yfilter;
+        ipv4.yfilter = yfilter;
     }
 }
 
@@ -149,7 +149,7 @@ std::map<std::pair<std::string, std::string>, std::string> PatchPanel::get_names
 
 bool PatchPanel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "ipv4" || name == "password" || name == "user-name")
+    if(name == "enable" || name == "user-name" || name == "password" || name == "ipv4")
         return true;
     return false;
 }

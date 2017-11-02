@@ -36,12 +36,473 @@ class Vrrp : public ydk::Entity
         class Ipv4; //type: Vrrp::Ipv4
         class MgoSessions; //type: Vrrp::MgoSessions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::MgoSessions> mgo_sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Summary> summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::MgoSessions> mgo_sessions;
         
 }; // Vrrp
+
+
+class Vrrp::Summary : public ydk::Entity
+{
+    public:
+        Summary();
+        ~Summary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ipv4_sessions_master_owner; //type: uint32
+        ydk::YLeaf ipv4_sessions_master; //type: uint32
+        ydk::YLeaf ipv4_sessions_backup; //type: uint32
+        ydk::YLeaf ipv4_sessions_init; //type: uint32
+        ydk::YLeaf ipv4_slaves_master; //type: uint32
+        ydk::YLeaf ipv4_slaves_backup; //type: uint32
+        ydk::YLeaf ipv4_slaves_init; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_master_owner_up; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_master_owner_down; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_master_up; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_master_down; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_backup_up; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_backup_down; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_init_up; //type: uint32
+        ydk::YLeaf ipv4_virtual_ip_addresses_init_down; //type: uint32
+        ydk::YLeaf ipv6_sessions_master_owner; //type: uint32
+        ydk::YLeaf ipv6_sessions_master; //type: uint32
+        ydk::YLeaf ipv6_sessions_backup; //type: uint32
+        ydk::YLeaf ipv6_sessions_init; //type: uint32
+        ydk::YLeaf ipv6_slaves_master; //type: uint32
+        ydk::YLeaf ipv6_slaves_backup; //type: uint32
+        ydk::YLeaf ipv6_slaves_init; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_master_owner_up; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_master_owner_down; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_master_up; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_master_down; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_backup_up; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_backup_down; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_init_up; //type: uint32
+        ydk::YLeaf ipv6_virtual_ip_addresses_init_down; //type: uint32
+        ydk::YLeaf interfaces_ipv4_state_up; //type: uint32
+        ydk::YLeaf interfaces_ipv4_state_down; //type: uint32
+        ydk::YLeaf tracked_interfaces_ipv4_state_up; //type: uint32
+        ydk::YLeaf tracked_interfaces_ipv4_state_down; //type: uint32
+        ydk::YLeaf interfaces_ipv6_state_up; //type: uint32
+        ydk::YLeaf interfaces_ipv6_state_down; //type: uint32
+        ydk::YLeaf tracked_interfaces_ipv6_state_up; //type: uint32
+        ydk::YLeaf tracked_interfaces_ipv6_state_down; //type: uint32
+        ydk::YLeaf tracked_objects_state_up; //type: uint32
+        ydk::YLeaf tracked_objects_state_down; //type: uint32
+        ydk::YLeaf bfd_sessions_up; //type: uint32
+        ydk::YLeaf bfd_sessions_down; //type: uint32
+        ydk::YLeaf bfd_session_inactive; //type: uint32
+        ydk::YLeaf ipv6bfd_sessions_up; //type: uint32
+        ydk::YLeaf ipv6bfd_sessions_down; //type: uint32
+        ydk::YLeaf ipv6bfd_session_inactive; //type: uint32
+
+}; // Vrrp::Summary
+
+
+class Vrrp::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TrackItems; //type: Vrrp::Ipv6::TrackItems
+        class VirtualRouters; //type: Vrrp::Ipv6::VirtualRouters
+        class Interfaces; //type: Vrrp::Ipv6::Interfaces
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::TrackItems> track_items;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters> virtual_routers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::Interfaces> interfaces;
+        
+}; // Vrrp::Ipv6
+
+
+class Vrrp::Ipv6::TrackItems : public ydk::Entity
+{
+    public:
+        TrackItems();
+        ~TrackItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TrackItem; //type: Vrrp::Ipv6::TrackItems::TrackItem
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::TrackItems::TrackItem> > track_item;
+        
+}; // Vrrp::Ipv6::TrackItems
+
+
+class Vrrp::Ipv6::TrackItems::TrackItem : public ydk::Entity
+{
+    public:
+        TrackItem();
+        ~TrackItem();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf virtual_router_id; //type: int32
+        ydk::YLeaf tracked_interface_name; //type: string
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf virtual_router_id_xr; //type: uint32
+        ydk::YLeaf tracked_item_type; //type: uint16
+        ydk::YLeaf tracked_item_index; //type: string
+        ydk::YLeaf state; //type: uint8
+        ydk::YLeaf priority; //type: uint8
+
+}; // Vrrp::Ipv6::TrackItems::TrackItem
+
+
+class Vrrp::Ipv6::VirtualRouters : public ydk::Entity
+{
+    public:
+        VirtualRouters();
+        ~VirtualRouters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class VirtualRouter; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter> > virtual_router;
+        
+}; // Vrrp::Ipv6::VirtualRouters
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter : public ydk::Entity
+{
+    public:
+        VirtualRouter();
+        ~VirtualRouter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf virtual_router_id; //type: int32
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf virtual_router_id_xr; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf address_family; //type: VrrpBAf
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf slaves; //type: uint32
+        ydk::YLeaf is_slave; //type: boolean
+        ydk::YLeaf followed_session_name; //type: string
+        ydk::YLeaf secondary_address_count; //type: uint8
+        ydk::YLeaf operational_address_count; //type: uint8
+        ydk::YLeaf primary_virtual_ip; //type: string
+        ydk::YLeaf configured_down_address_count; //type: uint8
+        ydk::YLeaf virtual_linklocal_ipv6_address; //type: string
+        ydk::YLeaf primary_state; //type: VrrpVipState
+        ydk::YLeaf master_ip_address; //type: string
+        ydk::YLeaf master_ipv6_address; //type: string
+        ydk::YLeaf master_priority; //type: uint8
+        ydk::YLeaf vrrp_state; //type: VrrpBagProtocolState
+        ydk::YLeaf authentication_type; //type: VrrpProtAuth
+        ydk::YLeaf authentication_string; //type: string
+        ydk::YLeaf configured_advertize_time; //type: uint32
+        ydk::YLeaf oper_advertize_time; //type: uint32
+        ydk::YLeaf min_delay_time; //type: uint32
+        ydk::YLeaf reload_delay_time; //type: uint32
+        ydk::YLeaf delay_timer_flag; //type: boolean
+        ydk::YLeaf delay_timer_secs; //type: uint32
+        ydk::YLeaf delay_timer_msecs; //type: uint32
+        ydk::YLeaf authentication_flag; //type: boolean
+        ydk::YLeaf force_timer_flag; //type: boolean
+        ydk::YLeaf preempt_flag; //type: boolean
+        ydk::YLeaf ip_address_owner_flag; //type: boolean
+        ydk::YLeaf is_accept_mode; //type: boolean
+        ydk::YLeaf preempt_delay_time; //type: uint16
+        ydk::YLeaf configured_priority; //type: uint8
+        ydk::YLeaf operational_priority; //type: uint8
+        ydk::YLeaf priority_decrement; //type: uint32
+        ydk::YLeaf tracked_interface_count; //type: uint32
+        ydk::YLeaf tracked_interface_up_count; //type: uint32
+        ydk::YLeaf tracked_item_count; //type: uint32
+        ydk::YLeaf tracked_item_up_count; //type: uint32
+        ydk::YLeaf time_in_current_state; //type: uint32
+        ydk::YLeaf state_change_count; //type: uint32
+        ydk::YLeaf time_vrouter_up; //type: uint32
+        ydk::YLeaf master_count; //type: uint32
+        ydk::YLeaf adverts_received_count; //type: uint32
+        ydk::YLeaf advert_interval_error_count; //type: uint32
+        ydk::YLeaf adverts_sent_count; //type: uint32
+        ydk::YLeaf authentication_fail_count; //type: uint32
+        ydk::YLeaf ttl_error_count; //type: uint32
+        ydk::YLeaf priority_zero_received_count; //type: uint32
+        ydk::YLeaf priority_zero_sent_count; //type: uint32
+        ydk::YLeaf invalid_packet_count; //type: uint32
+        ydk::YLeaf address_list_error_count; //type: uint32
+        ydk::YLeaf invalid_auth_type_count; //type: uint32
+        ydk::YLeaf auth_type_mismatch_count; //type: uint32
+        ydk::YLeaf pkt_length_errors_count; //type: uint32
+        ydk::YLeaf time_stats_discontinuity; //type: uint32
+        ydk::YLeaf bfd_session_state; //type: VrrpBfdSessionState
+        ydk::YLeaf bfd_interval; //type: uint32
+        ydk::YLeaf bfd_multiplier; //type: uint32
+        ydk::YLeaf bfd_cfg_remote_ip; //type: string
+        ydk::YLeaf bfd_configured_remote_ipv6_address; //type: string
+        ydk::YLeaf state_from_checkpoint; //type: boolean
+        ydk::YLeaf interface_ipv4_address; //type: string
+        ydk::YLeaf interface_ipv6_address; //type: string
+        ydk::YLeaf virtual_mac_address; //type: string
+        ydk::YLeaf virtual_mac_address_state; //type: VrrpVmacState
+        ydk::YLeafList operational_address; //type: list of  string
+        ydk::YLeafList ipv4_configured_down_address; //type: list of  string
+        class ResignSentTime; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime
+        class ResignReceivedTime; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime
+        class Ipv6OperationalAddress; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
+        class Ipv6ConfiguredDownAddress; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
+        class StateChangeHistory; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
+        
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime : public ydk::Entity
+{
+    public:
+        ResignSentTime();
+        ~ResignSentTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime : public ydk::Entity
+{
+    public:
+        ResignReceivedTime();
+        ~ResignReceivedTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress : public ydk::Entity
+{
+    public:
+        Ipv6OperationalAddress();
+        ~Ipv6OperationalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress : public ydk::Entity
+{
+    public:
+        Ipv6ConfiguredDownAddress();
+        ~Ipv6ConfiguredDownAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory : public ydk::Entity
+{
+    public:
+        StateChangeHistory();
+        ~StateChangeHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf old_state; //type: VrrpBagProtocolState
+        ydk::YLeaf new_state; //type: VrrpBagProtocolState
+        ydk::YLeaf reason; //type: VrrpStateChangeReason
+        class Time; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time> time;
+        
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time : public ydk::Entity
+{
+    public:
+        Time();
+        ~Time();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time
+
+
+class Vrrp::Ipv6::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Interface; //type: Vrrp::Ipv6::Interfaces::Interface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::Interfaces::Interface> > interface;
+        
+}; // Vrrp::Ipv6::Interfaces
+
+
+class Vrrp::Ipv6::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf invalid_checksum_count; //type: uint32
+        ydk::YLeaf invalid_version_count; //type: uint32
+        ydk::YLeaf invalid_vrid_count; //type: uint32
+        ydk::YLeaf invalid_packet_length_count; //type: uint32
+
+}; // Vrrp::Ipv6::Interfaces::Interface
 
 
 class Vrrp::Ipv4 : public ydk::Entity
@@ -295,20 +756,20 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter : public ydk::Entity
         class Ipv6ConfiguredDownAddress; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
         class StateChangeHistory; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
         
 }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter
 
 
-class Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress : public ydk::Entity
+class Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime : public ydk::Entity
 {
     public:
-        Ipv6ConfiguredDownAddress();
-        ~Ipv6ConfiguredDownAddress();
+        ResignSentTime();
+        ~ResignSentTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -320,30 +781,10 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
-
-
-class Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress : public ydk::Entity
-{
-    public:
-        Ipv6OperationalAddress();
-        ~Ipv6OperationalAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
+}; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime
 
 
 class Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime : public ydk::Entity
@@ -368,11 +809,11 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime : public ydk
 }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime
 
 
-class Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime : public ydk::Entity
+class Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress : public ydk::Entity
 {
     public:
-        ResignSentTime();
-        ~ResignSentTime();
+        Ipv6OperationalAddress();
+        ~Ipv6OperationalAddress();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -384,10 +825,30 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf ipv6_address; //type: string
 
-}; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime
+}; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
+
+
+class Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress : public ydk::Entity
+{
+    public:
+        Ipv6ConfiguredDownAddress();
+        ~Ipv6ConfiguredDownAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
 
 
 class Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory : public ydk::Entity
@@ -436,400 +897,6 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time : publ
         ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time
-
-
-class Vrrp::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TrackItems; //type: Vrrp::Ipv6::TrackItems
-        class VirtualRouters; //type: Vrrp::Ipv6::VirtualRouters
-        class Interfaces; //type: Vrrp::Ipv6::Interfaces
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::Interfaces> interfaces;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::TrackItems> track_items;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters> virtual_routers;
-        
-}; // Vrrp::Ipv6
-
-
-class Vrrp::Ipv6::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Interface; //type: Vrrp::Ipv6::Interfaces::Interface
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::Interfaces::Interface> > interface;
-        
-}; // Vrrp::Ipv6::Interfaces
-
-
-class Vrrp::Ipv6::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf invalid_checksum_count; //type: uint32
-        ydk::YLeaf invalid_version_count; //type: uint32
-        ydk::YLeaf invalid_vrid_count; //type: uint32
-        ydk::YLeaf invalid_packet_length_count; //type: uint32
-
-}; // Vrrp::Ipv6::Interfaces::Interface
-
-
-class Vrrp::Ipv6::TrackItems : public ydk::Entity
-{
-    public:
-        TrackItems();
-        ~TrackItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TrackItem; //type: Vrrp::Ipv6::TrackItems::TrackItem
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::TrackItems::TrackItem> > track_item;
-        
-}; // Vrrp::Ipv6::TrackItems
-
-
-class Vrrp::Ipv6::TrackItems::TrackItem : public ydk::Entity
-{
-    public:
-        TrackItem();
-        ~TrackItem();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf virtual_router_id; //type: int32
-        ydk::YLeaf tracked_interface_name; //type: string
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf virtual_router_id_xr; //type: uint32
-        ydk::YLeaf tracked_item_type; //type: uint16
-        ydk::YLeaf tracked_item_index; //type: string
-        ydk::YLeaf state; //type: uint8
-        ydk::YLeaf priority; //type: uint8
-
-}; // Vrrp::Ipv6::TrackItems::TrackItem
-
-
-class Vrrp::Ipv6::VirtualRouters : public ydk::Entity
-{
-    public:
-        VirtualRouters();
-        ~VirtualRouters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class VirtualRouter; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter> > virtual_router;
-        
-}; // Vrrp::Ipv6::VirtualRouters
-
-
-class Vrrp::Ipv6::VirtualRouters::VirtualRouter : public ydk::Entity
-{
-    public:
-        VirtualRouter();
-        ~VirtualRouter();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf virtual_router_id; //type: int32
-        ydk::YLeaf interface_name_xr; //type: string
-        ydk::YLeaf virtual_router_id_xr; //type: uint32
-        ydk::YLeaf version; //type: uint8
-        ydk::YLeaf address_family; //type: VrrpBAf
-        ydk::YLeaf session_name; //type: string
-        ydk::YLeaf slaves; //type: uint32
-        ydk::YLeaf is_slave; //type: boolean
-        ydk::YLeaf followed_session_name; //type: string
-        ydk::YLeaf secondary_address_count; //type: uint8
-        ydk::YLeaf operational_address_count; //type: uint8
-        ydk::YLeaf primary_virtual_ip; //type: string
-        ydk::YLeaf configured_down_address_count; //type: uint8
-        ydk::YLeaf virtual_linklocal_ipv6_address; //type: string
-        ydk::YLeaf primary_state; //type: VrrpVipState
-        ydk::YLeaf master_ip_address; //type: string
-        ydk::YLeaf master_ipv6_address; //type: string
-        ydk::YLeaf master_priority; //type: uint8
-        ydk::YLeaf vrrp_state; //type: VrrpBagProtocolState
-        ydk::YLeaf authentication_type; //type: VrrpProtAuth
-        ydk::YLeaf authentication_string; //type: string
-        ydk::YLeaf configured_advertize_time; //type: uint32
-        ydk::YLeaf oper_advertize_time; //type: uint32
-        ydk::YLeaf min_delay_time; //type: uint32
-        ydk::YLeaf reload_delay_time; //type: uint32
-        ydk::YLeaf delay_timer_flag; //type: boolean
-        ydk::YLeaf delay_timer_secs; //type: uint32
-        ydk::YLeaf delay_timer_msecs; //type: uint32
-        ydk::YLeaf authentication_flag; //type: boolean
-        ydk::YLeaf force_timer_flag; //type: boolean
-        ydk::YLeaf preempt_flag; //type: boolean
-        ydk::YLeaf ip_address_owner_flag; //type: boolean
-        ydk::YLeaf is_accept_mode; //type: boolean
-        ydk::YLeaf preempt_delay_time; //type: uint16
-        ydk::YLeaf configured_priority; //type: uint8
-        ydk::YLeaf operational_priority; //type: uint8
-        ydk::YLeaf priority_decrement; //type: uint32
-        ydk::YLeaf tracked_interface_count; //type: uint32
-        ydk::YLeaf tracked_interface_up_count; //type: uint32
-        ydk::YLeaf tracked_item_count; //type: uint32
-        ydk::YLeaf tracked_item_up_count; //type: uint32
-        ydk::YLeaf time_in_current_state; //type: uint32
-        ydk::YLeaf state_change_count; //type: uint32
-        ydk::YLeaf time_vrouter_up; //type: uint32
-        ydk::YLeaf master_count; //type: uint32
-        ydk::YLeaf adverts_received_count; //type: uint32
-        ydk::YLeaf advert_interval_error_count; //type: uint32
-        ydk::YLeaf adverts_sent_count; //type: uint32
-        ydk::YLeaf authentication_fail_count; //type: uint32
-        ydk::YLeaf ttl_error_count; //type: uint32
-        ydk::YLeaf priority_zero_received_count; //type: uint32
-        ydk::YLeaf priority_zero_sent_count; //type: uint32
-        ydk::YLeaf invalid_packet_count; //type: uint32
-        ydk::YLeaf address_list_error_count; //type: uint32
-        ydk::YLeaf invalid_auth_type_count; //type: uint32
-        ydk::YLeaf auth_type_mismatch_count; //type: uint32
-        ydk::YLeaf pkt_length_errors_count; //type: uint32
-        ydk::YLeaf time_stats_discontinuity; //type: uint32
-        ydk::YLeaf bfd_session_state; //type: VrrpBfdSessionState
-        ydk::YLeaf bfd_interval; //type: uint32
-        ydk::YLeaf bfd_multiplier; //type: uint32
-        ydk::YLeaf bfd_cfg_remote_ip; //type: string
-        ydk::YLeaf bfd_configured_remote_ipv6_address; //type: string
-        ydk::YLeaf state_from_checkpoint; //type: boolean
-        ydk::YLeaf interface_ipv4_address; //type: string
-        ydk::YLeaf interface_ipv6_address; //type: string
-        ydk::YLeaf virtual_mac_address; //type: string
-        ydk::YLeaf virtual_mac_address_state; //type: VrrpVmacState
-        ydk::YLeafList operational_address; //type: list of  string
-        ydk::YLeafList ipv4_configured_down_address; //type: list of  string
-        class ResignSentTime; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime
-        class ResignReceivedTime; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime
-        class Ipv6OperationalAddress; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
-        class Ipv6ConfiguredDownAddress; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
-        class StateChangeHistory; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
-        
-}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter
-
-
-class Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress : public ydk::Entity
-{
-    public:
-        Ipv6ConfiguredDownAddress();
-        ~Ipv6ConfiguredDownAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
-
-
-class Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress : public ydk::Entity
-{
-    public:
-        Ipv6OperationalAddress();
-        ~Ipv6OperationalAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
-
-
-class Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime : public ydk::Entity
-{
-    public:
-        ResignReceivedTime();
-        ~ResignReceivedTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
-
-}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime
-
-
-class Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime : public ydk::Entity
-{
-    public:
-        ResignSentTime();
-        ~ResignSentTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
-
-}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime
-
-
-class Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory : public ydk::Entity
-{
-    public:
-        StateChangeHistory();
-        ~StateChangeHistory();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf old_state; //type: VrrpBagProtocolState
-        ydk::YLeaf new_state; //type: VrrpBagProtocolState
-        ydk::YLeaf reason; //type: VrrpStateChangeReason
-        class Time; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time> time;
-        
-}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory
-
-
-class Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time : public ydk::Entity
-{
-    public:
-        Time();
-        ~Time();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
-
-}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time
 
 
 class Vrrp::MgoSessions : public ydk::Entity
@@ -907,72 +974,15 @@ class Vrrp::MgoSessions::MgoSession::Slave : public ydk::Entity
 
 }; // Vrrp::MgoSessions::MgoSession::Slave
 
-
-class Vrrp::Summary : public ydk::Entity
+class VrrpVmacState : public ydk::Enum
 {
     public:
-        Summary();
-        ~Summary();
+        static const ydk::Enum::YLeaf stored;
+        static const ydk::Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf reserving;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ipv4_sessions_master_owner; //type: uint32
-        ydk::YLeaf ipv4_sessions_master; //type: uint32
-        ydk::YLeaf ipv4_sessions_backup; //type: uint32
-        ydk::YLeaf ipv4_sessions_init; //type: uint32
-        ydk::YLeaf ipv4_slaves_master; //type: uint32
-        ydk::YLeaf ipv4_slaves_backup; //type: uint32
-        ydk::YLeaf ipv4_slaves_init; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_master_owner_up; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_master_owner_down; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_master_up; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_master_down; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_backup_up; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_backup_down; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_init_up; //type: uint32
-        ydk::YLeaf ipv4_virtual_ip_addresses_init_down; //type: uint32
-        ydk::YLeaf ipv6_sessions_master_owner; //type: uint32
-        ydk::YLeaf ipv6_sessions_master; //type: uint32
-        ydk::YLeaf ipv6_sessions_backup; //type: uint32
-        ydk::YLeaf ipv6_sessions_init; //type: uint32
-        ydk::YLeaf ipv6_slaves_master; //type: uint32
-        ydk::YLeaf ipv6_slaves_backup; //type: uint32
-        ydk::YLeaf ipv6_slaves_init; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_master_owner_up; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_master_owner_down; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_master_up; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_master_down; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_backup_up; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_backup_down; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_init_up; //type: uint32
-        ydk::YLeaf ipv6_virtual_ip_addresses_init_down; //type: uint32
-        ydk::YLeaf interfaces_ipv4_state_up; //type: uint32
-        ydk::YLeaf interfaces_ipv4_state_down; //type: uint32
-        ydk::YLeaf tracked_interfaces_ipv4_state_up; //type: uint32
-        ydk::YLeaf tracked_interfaces_ipv4_state_down; //type: uint32
-        ydk::YLeaf interfaces_ipv6_state_up; //type: uint32
-        ydk::YLeaf interfaces_ipv6_state_down; //type: uint32
-        ydk::YLeaf tracked_interfaces_ipv6_state_up; //type: uint32
-        ydk::YLeaf tracked_interfaces_ipv6_state_down; //type: uint32
-        ydk::YLeaf tracked_objects_state_up; //type: uint32
-        ydk::YLeaf tracked_objects_state_down; //type: uint32
-        ydk::YLeaf bfd_sessions_up; //type: uint32
-        ydk::YLeaf bfd_sessions_down; //type: uint32
-        ydk::YLeaf bfd_session_inactive; //type: uint32
-        ydk::YLeaf ipv6bfd_sessions_up; //type: uint32
-        ydk::YLeaf ipv6bfd_sessions_down; //type: uint32
-        ydk::YLeaf ipv6bfd_session_inactive; //type: uint32
-
-}; // Vrrp::Summary
+};
 
 class VrrpStateChangeReason : public ydk::Enum
 {
@@ -993,6 +1003,16 @@ class VrrpStateChangeReason : public ydk::Enum
 
 };
 
+class VrrpBfdSessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bfd_state_none;
+        static const ydk::Enum::YLeaf bfd_state_inactive;
+        static const ydk::Enum::YLeaf bfd_state_up;
+        static const ydk::Enum::YLeaf bfd_state_down;
+
+};
+
 class VrrpProtAuth : public ydk::Enum
 {
     public:
@@ -1002,32 +1022,12 @@ class VrrpProtAuth : public ydk::Enum
 
 };
 
-class VrrpVmacState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stored;
-        static const ydk::Enum::YLeaf reserved;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf reserving;
-
-};
-
 class VrrpBagProtocolState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf state_initial;
         static const ydk::Enum::YLeaf state_backup;
         static const ydk::Enum::YLeaf state_master;
-
-};
-
-class VrrpBfdSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bfd_state_none;
-        static const ydk::Enum::YLeaf bfd_state_inactive;
-        static const ydk::Enum::YLeaf bfd_state_up;
-        static const ydk::Enum::YLeaf bfd_state_down;
 
 };
 

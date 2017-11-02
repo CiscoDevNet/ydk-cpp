@@ -38,13 +38,35 @@ class IFMIB : public ydk::Entity
         class Ifstacktable; //type: IFMIB::Ifstacktable
         class Ifrcvaddresstable; //type: IFMIB::Ifrcvaddresstable
 
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifmibobjects> ifmibobjects;
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifrcvaddresstable> ifrcvaddresstable;
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifstacktable> ifstacktable;
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Iftable> iftable;
         std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifmibobjects> ifmibobjects;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Iftable> iftable;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifstacktable> ifstacktable;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifrcvaddresstable> ifrcvaddresstable;
         
 }; // IFMIB
+
+
+class IFMIB::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ifnumber; //type: int32
+
+}; // IFMIB::Interfaces
 
 
 class IFMIB::Ifmibobjects : public ydk::Entity
@@ -68,105 +90,6 @@ class IFMIB::Ifmibobjects : public ydk::Entity
         ydk::YLeaf ifstacklastchange; //type: uint32
 
 }; // IFMIB::Ifmibobjects
-
-
-class IFMIB::Ifrcvaddresstable : public ydk::Entity
-{
-    public:
-        Ifrcvaddresstable();
-        ~Ifrcvaddresstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ifrcvaddressentry; //type: IFMIB::Ifrcvaddresstable::Ifrcvaddressentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifrcvaddresstable::Ifrcvaddressentry> > ifrcvaddressentry;
-        
-}; // IFMIB::Ifrcvaddresstable
-
-
-class IFMIB::Ifrcvaddresstable::Ifrcvaddressentry : public ydk::Entity
-{
-    public:
-        Ifrcvaddressentry();
-        ~Ifrcvaddressentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf ifrcvaddressaddress; //type: string
-        ydk::YLeaf ifrcvaddressstatus; //type: RowStatus
-        ydk::YLeaf ifrcvaddresstype; //type: Ifrcvaddresstype
-        class Ifrcvaddresstype;
-
-}; // IFMIB::Ifrcvaddresstable::Ifrcvaddressentry
-
-
-class IFMIB::Ifstacktable : public ydk::Entity
-{
-    public:
-        Ifstacktable();
-        ~Ifstacktable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ifstackentry; //type: IFMIB::Ifstacktable::Ifstackentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifstacktable::Ifstackentry> > ifstackentry;
-        
-}; // IFMIB::Ifstacktable
-
-
-class IFMIB::Ifstacktable::Ifstackentry : public ydk::Entity
-{
-    public:
-        Ifstackentry();
-        ~Ifstackentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ifstackhigherlayer; //type: int32
-        ydk::YLeaf ifstacklowerlayer; //type: int32
-        ydk::YLeaf ifstackstatus; //type: RowStatus
-
-}; // IFMIB::Ifstacktable::Ifstackentry
 
 
 class IFMIB::Iftable : public ydk::Entity
@@ -266,11 +189,11 @@ class IFMIB::Iftable::Ifentry : public ydk::Entity
 }; // IFMIB::Iftable::Ifentry
 
 
-class IFMIB::Interfaces : public ydk::Entity
+class IFMIB::Ifstacktable : public ydk::Entity
 {
     public:
-        Interfaces();
-        ~Interfaces();
+        Ifstacktable();
+        ~Ifstacktable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -283,18 +206,86 @@ class IFMIB::Interfaces : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ifnumber; //type: int32
+        class Ifstackentry; //type: IFMIB::Ifstacktable::Ifstackentry
 
-}; // IFMIB::Interfaces
+        std::vector<std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifstacktable::Ifstackentry> > ifstackentry;
+        
+}; // IFMIB::Ifstacktable
 
-class IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddresstype : public ydk::Enum
+
+class IFMIB::Ifstacktable::Ifstackentry : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf volatile_;
-        static const ydk::Enum::YLeaf nonVolatile;
+        Ifstackentry();
+        ~Ifstackentry();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ifstackhigherlayer; //type: int32
+        ydk::YLeaf ifstacklowerlayer; //type: int32
+        ydk::YLeaf ifstackstatus; //type: RowStatus
+
+}; // IFMIB::Ifstacktable::Ifstackentry
+
+
+class IFMIB::Ifrcvaddresstable : public ydk::Entity
+{
+    public:
+        Ifrcvaddresstable();
+        ~Ifrcvaddresstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ifrcvaddressentry; //type: IFMIB::Ifrcvaddresstable::Ifrcvaddressentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifrcvaddresstable::Ifrcvaddressentry> > ifrcvaddressentry;
+        
+}; // IFMIB::Ifrcvaddresstable
+
+
+class IFMIB::Ifrcvaddresstable::Ifrcvaddressentry : public ydk::Entity
+{
+    public:
+        Ifrcvaddressentry();
+        ~Ifrcvaddressentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf ifrcvaddressaddress; //type: string
+        ydk::YLeaf ifrcvaddressstatus; //type: RowStatus
+        ydk::YLeaf ifrcvaddresstype; //type: Ifrcvaddresstype
+        class Ifrcvaddresstype;
+
+}; // IFMIB::Ifrcvaddresstable::Ifrcvaddressentry
 
 class IFMIB::Iftable::Ifentry::Ifadminstatus : public ydk::Enum
 {
@@ -344,6 +335,15 @@ class IFMIB::Iftable::Ifentry::Iftestresult : public ydk::Enum
         static const ydk::Enum::YLeaf unAbleToRun;
         static const ydk::Enum::YLeaf aborted;
         static const ydk::Enum::YLeaf failed;
+
+};
+
+class IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddresstype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf volatile_;
+        static const ydk::Enum::YLeaf nonVolatile;
 
 };
 

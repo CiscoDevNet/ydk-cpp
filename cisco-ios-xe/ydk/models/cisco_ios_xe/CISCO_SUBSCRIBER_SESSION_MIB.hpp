@@ -45,27 +45,27 @@ class CISCOSUBSCRIBERSESSIONMIB : public ydk::Entity
         class Csubjobqueuetable; //type: CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable
         class Csubjobreporttable; //type: CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable> csubaggstatsinttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable> csubaggstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable> csubaggstatsthreshtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh> csubaggthresh;
         std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjob> csubjob;
+        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh> csubaggthresh;
+        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable> csubsessiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable> csubsessionbytypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable> csubaggstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable> csubaggstatsinttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable> csubaggstatsthreshtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobtable> csubjobtable;
         std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable> csubjobmatchparamstable;
         std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable> csubjobqueryparamstable;
         std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable> csubjobqueuetable;
         std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable> csubjobreporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobtable> csubjobtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable> csubsessionbytypetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable> csubsessiontable;
         
 }; // CISCOSUBSCRIBERSESSIONMIB
 
 
-class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable : public ydk::Entity
+class CISCOSUBSCRIBERSESSIONMIB::Csubjob : public ydk::Entity
 {
     public:
-        Csubaggstatsinttable();
-        ~Csubaggstatsinttable();
+        Csubjob();
+        ~Csubjob();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -78,18 +78,67 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csubaggstatsintentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry
+        ydk::YLeaf csubjobfinishednotifyenable; //type: boolean
+        ydk::YLeaf csubjobindexedattributes; //type: SubSessionIdentities
+        ydk::YLeaf csubjobidnext; //type: uint32
+        ydk::YLeaf csubjobmaxnumber; //type: uint32
+        ydk::YLeaf csubjobmaxlife; //type: uint32
+        ydk::YLeaf csubjobcount; //type: uint32
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry> > csubaggstatsintentry;
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubjob
+
+
+class CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh : public ydk::Entity
+{
+    public:
+        Csubaggthresh();
+        ~Csubaggthresh();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf csubaggstatsthreshnotifenable; //type: boolean
+
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh
+
+
+class CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable : public ydk::Entity
+{
+    public:
+        Csubsessiontable();
+        ~Csubsessiontable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Csubsessionentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry> > csubsessionentry;
         
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable
 
 
-class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry : public ydk::Entity
+class CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry : public ydk::Entity
 {
     public:
-        Csubaggstatsintentry();
-        ~Csubaggstatsintentry();
+        Csubsessionentry();
+        ~Csubsessionentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -102,19 +151,95 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf csubaggstatspointtype; //type: Csubaggstatspointtype
-        //type: uint32 (refers to cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::csubaggstatspoint)
-        ydk::YLeaf csubaggstatspoint;
-        ydk::YLeaf csubaggstatssessiontype; //type: SubSessionType
-        ydk::YLeaf csubaggstatsintnumber; //type: uint32
-        ydk::YLeaf csubaggstatsintvalid; //type: boolean
-        ydk::YLeaf csubaggstatsintcreatedsessions; //type: uint32
-        ydk::YLeaf csubaggstatsintfailedsessions; //type: uint32
-        ydk::YLeaf csubaggstatsintupsessions; //type: uint32
-        ydk::YLeaf csubaggstatsintauthsessions; //type: uint32
-        ydk::YLeaf csubaggstatsintdiscsessions; //type: uint32
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csubsessiontype; //type: SubSessionType
+        ydk::YLeaf csubsessionipaddrassignment; //type: Csubsessionipaddrassignment
+        ydk::YLeaf csubsessionstate; //type: SubSessionState
+        ydk::YLeaf csubsessionauthenticated; //type: boolean
+        ydk::YLeaf csubsessionredundancymode; //type: SubSessionRedundancyMode
+        ydk::YLeaf csubsessioncreationtime; //type: string
+        ydk::YLeaf csubsessionderivedcfg; //type: binary
+        ydk::YLeaf csubsessionavailableidentities; //type: SubSessionIdentities
+        ydk::YLeaf csubsessionsubscriberlabel; //type: uint32
+        ydk::YLeaf csubsessionmacaddress; //type: string
+        ydk::YLeaf csubsessionnativevrf; //type: string
+        ydk::YLeaf csubsessionnativeipaddrtype; //type: InetAddressType
+        ydk::YLeaf csubsessionnativeipaddr; //type: binary
+        ydk::YLeaf csubsessionnativeipmask; //type: binary
+        ydk::YLeaf csubsessiondomainvrf; //type: string
+        ydk::YLeaf csubsessiondomainipaddrtype; //type: InetAddressType
+        ydk::YLeaf csubsessiondomainipaddr; //type: binary
+        ydk::YLeaf csubsessiondomainipmask; //type: binary
+        ydk::YLeaf csubsessionpbhk; //type: string
+        ydk::YLeaf csubsessionremoteid; //type: string
+        ydk::YLeaf csubsessioncircuitid; //type: string
+        ydk::YLeaf csubsessionnasport; //type: string
+        ydk::YLeaf csubsessiondomain; //type: string
+        ydk::YLeaf csubsessionusername; //type: string
+        ydk::YLeaf csubsessionacctsessionid; //type: uint32
+        ydk::YLeaf csubsessiondnis; //type: string
+        ydk::YLeaf csubsessionmedia; //type: SubscriberMediaType
+        ydk::YLeaf csubsessionmlpnegotiated; //type: boolean
+        ydk::YLeaf csubsessionprotocol; //type: SubscriberProtocolType
+        ydk::YLeaf csubsessiondhcpclass; //type: string
+        ydk::YLeaf csubsessiontunnelname; //type: string
+        ydk::YLeaf csubsessionlocationidentifier; //type: string
+        ydk::YLeaf csubsessionserviceidentifier; //type: string
+        ydk::YLeaf csubsessionlastchanged; //type: string
+        ydk::YLeaf csubsessionnativeipaddrtype2; //type: InetAddressType
+        ydk::YLeaf csubsessionnativeipaddr2; //type: binary
+        ydk::YLeaf csubsessionnativeipmask2; //type: binary
+        class Csubsessionipaddrassignment;
 
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry
+
+
+class CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable : public ydk::Entity
+{
+    public:
+        Csubsessionbytypetable();
+        ~Csubsessionbytypetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Csubsessionbytypeentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry> > csubsessionbytypeentry;
+        
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable
+
+
+class CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry : public ydk::Entity
+{
+    public:
+        Csubsessionbytypeentry();
+        ~Csubsessionbytypeentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf csubsessionbytype; //type: SubSessionType
+        ydk::YLeaf csubsessionifindex; //type: int32
+
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry
 
 
 class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable : public ydk::Entity
@@ -199,6 +324,62 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry : public y
 }; // CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry
 
 
+class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable : public ydk::Entity
+{
+    public:
+        Csubaggstatsinttable();
+        ~Csubaggstatsinttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Csubaggstatsintentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry> > csubaggstatsintentry;
+        
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable
+
+
+class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry : public ydk::Entity
+{
+    public:
+        Csubaggstatsintentry();
+        ~Csubaggstatsintentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf csubaggstatspointtype; //type: Csubaggstatspointtype
+        //type: uint32 (refers to cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::csubaggstatspoint)
+        ydk::YLeaf csubaggstatspoint;
+        ydk::YLeaf csubaggstatssessiontype; //type: SubSessionType
+        ydk::YLeaf csubaggstatsintnumber; //type: uint32
+        ydk::YLeaf csubaggstatsintvalid; //type: boolean
+        ydk::YLeaf csubaggstatsintcreatedsessions; //type: uint32
+        ydk::YLeaf csubaggstatsintfailedsessions; //type: uint32
+        ydk::YLeaf csubaggstatsintupsessions; //type: uint32
+        ydk::YLeaf csubaggstatsintauthsessions; //type: uint32
+        ydk::YLeaf csubaggstatsintdiscsessions; //type: uint32
+
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry
+
+
 class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable : public ydk::Entity
 {
     public:
@@ -248,11 +429,11 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentr
 }; // CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry
 
 
-class CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh : public ydk::Entity
+class CISCOSUBSCRIBERSESSIONMIB::Csubjobtable : public ydk::Entity
 {
     public:
-        Csubaggthresh();
-        ~Csubaggthresh();
+        Csubjobtable();
+        ~Csubjobtable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -265,16 +446,18 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf csubaggstatsthreshnotifenable; //type: boolean
+        class Csubjobentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry
 
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry> > csubjobentry;
+        
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubjobtable
 
 
-class CISCOSUBSCRIBERSESSIONMIB::Csubjob : public ydk::Entity
+class CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry : public ydk::Entity
 {
     public:
-        Csubjob();
-        ~Csubjob();
+        Csubjobentry();
+        ~Csubjobentry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,14 +470,21 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubjob : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf csubjobfinishednotifyenable; //type: boolean
-        ydk::YLeaf csubjobindexedattributes; //type: SubSessionIdentities
-        ydk::YLeaf csubjobidnext; //type: uint32
-        ydk::YLeaf csubjobmaxnumber; //type: uint32
-        ydk::YLeaf csubjobmaxlife; //type: uint32
-        ydk::YLeaf csubjobcount; //type: uint32
+        ydk::YLeaf csubjobid; //type: uint32
+        ydk::YLeaf csubjobstatus; //type: RowStatus
+        ydk::YLeaf csubjobstorage; //type: StorageType
+        ydk::YLeaf csubjobtype; //type: Csubjobtype
+        ydk::YLeaf csubjobcontrol; //type: Csubjobcontrol
+        ydk::YLeaf csubjobstate; //type: Csubjobstate
+        ydk::YLeaf csubjobstartedtime; //type: uint32
+        ydk::YLeaf csubjobfinishedtime; //type: uint32
+        ydk::YLeaf csubjobfinishedreason; //type: Csubjobfinishedreason
+        class Csubjobtype;
+        class Csubjobcontrol;
+        class Csubjobstate;
+        class Csubjobfinishedreason;
 
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubjob
+}; // CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry
 
 
 class CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable : public ydk::Entity
@@ -520,195 +710,20 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry : public
 
 }; // CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry
 
-
-class CISCOSUBSCRIBERSESSIONMIB::Csubjobtable : public ydk::Entity
+class CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment : public ydk::Enum
 {
     public:
-        Csubjobtable();
-        ~Csubjobtable();
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf localPool;
+        static const ydk::Enum::YLeaf dhcpv4;
+        static const ydk::Enum::YLeaf dhcpv6;
+        static const ydk::Enum::YLeaf userProfileIpAddr;
+        static const ydk::Enum::YLeaf userProfileIpSubnet;
+        static const ydk::Enum::YLeaf userProfileNamedPool;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Csubjobentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry> > csubjobentry;
-        
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubjobtable
-
-
-class CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry : public ydk::Entity
-{
-    public:
-        Csubjobentry();
-        ~Csubjobentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf csubjobid; //type: uint32
-        ydk::YLeaf csubjobstatus; //type: RowStatus
-        ydk::YLeaf csubjobstorage; //type: StorageType
-        ydk::YLeaf csubjobtype; //type: Csubjobtype
-        ydk::YLeaf csubjobcontrol; //type: Csubjobcontrol
-        ydk::YLeaf csubjobstate; //type: Csubjobstate
-        ydk::YLeaf csubjobstartedtime; //type: uint32
-        ydk::YLeaf csubjobfinishedtime; //type: uint32
-        ydk::YLeaf csubjobfinishedreason; //type: Csubjobfinishedreason
-        class Csubjobtype;
-        class Csubjobcontrol;
-        class Csubjobstate;
-        class Csubjobfinishedreason;
-
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry
-
-
-class CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable : public ydk::Entity
-{
-    public:
-        Csubsessionbytypetable();
-        ~Csubsessionbytypetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Csubsessionbytypeentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry> > csubsessionbytypeentry;
-        
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable
-
-
-class CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry : public ydk::Entity
-{
-    public:
-        Csubsessionbytypeentry();
-        ~Csubsessionbytypeentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf csubsessionbytype; //type: SubSessionType
-        ydk::YLeaf csubsessionifindex; //type: int32
-
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry
-
-
-class CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable : public ydk::Entity
-{
-    public:
-        Csubsessiontable();
-        ~Csubsessiontable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Csubsessionentry; //type: CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SUBSCRIBER_SESSION_MIB::CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry> > csubsessionentry;
-        
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable
-
-
-class CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry : public ydk::Entity
-{
-    public:
-        Csubsessionentry();
-        ~Csubsessionentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf csubsessiontype; //type: SubSessionType
-        ydk::YLeaf csubsessionipaddrassignment; //type: Csubsessionipaddrassignment
-        ydk::YLeaf csubsessionstate; //type: SubSessionState
-        ydk::YLeaf csubsessionauthenticated; //type: boolean
-        ydk::YLeaf csubsessionredundancymode; //type: SubSessionRedundancyMode
-        ydk::YLeaf csubsessioncreationtime; //type: string
-        ydk::YLeaf csubsessionderivedcfg; //type: binary
-        ydk::YLeaf csubsessionavailableidentities; //type: SubSessionIdentities
-        ydk::YLeaf csubsessionsubscriberlabel; //type: uint32
-        ydk::YLeaf csubsessionmacaddress; //type: string
-        ydk::YLeaf csubsessionnativevrf; //type: string
-        ydk::YLeaf csubsessionnativeipaddrtype; //type: InetAddressType
-        ydk::YLeaf csubsessionnativeipaddr; //type: binary
-        ydk::YLeaf csubsessionnativeipmask; //type: binary
-        ydk::YLeaf csubsessiondomainvrf; //type: string
-        ydk::YLeaf csubsessiondomainipaddrtype; //type: InetAddressType
-        ydk::YLeaf csubsessiondomainipaddr; //type: binary
-        ydk::YLeaf csubsessiondomainipmask; //type: binary
-        ydk::YLeaf csubsessionpbhk; //type: string
-        ydk::YLeaf csubsessionremoteid; //type: string
-        ydk::YLeaf csubsessioncircuitid; //type: string
-        ydk::YLeaf csubsessionnasport; //type: string
-        ydk::YLeaf csubsessiondomain; //type: string
-        ydk::YLeaf csubsessionusername; //type: string
-        ydk::YLeaf csubsessionacctsessionid; //type: uint32
-        ydk::YLeaf csubsessiondnis; //type: string
-        ydk::YLeaf csubsessionmedia; //type: SubscriberMediaType
-        ydk::YLeaf csubsessionmlpnegotiated; //type: boolean
-        ydk::YLeaf csubsessionprotocol; //type: SubscriberProtocolType
-        ydk::YLeaf csubsessiondhcpclass; //type: string
-        ydk::YLeaf csubsessiontunnelname; //type: string
-        ydk::YLeaf csubsessionlocationidentifier; //type: string
-        ydk::YLeaf csubsessionserviceidentifier; //type: string
-        ydk::YLeaf csubsessionlastchanged; //type: string
-        ydk::YLeaf csubsessionnativeipaddrtype2; //type: InetAddressType
-        ydk::YLeaf csubsessionnativeipaddr2; //type: binary
-        ydk::YLeaf csubsessionnativeipmask2; //type: binary
-        class Csubsessionipaddrassignment;
-
-}; // CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry
+};
 
 class CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::Csubaggstatspointtype : public ydk::Enum
 {
@@ -756,21 +771,6 @@ class CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobfinishedreas
         static const ydk::Enum::YLeaf aborted;
         static const ydk::Enum::YLeaf insufficientResources;
         static const ydk::Enum::YLeaf error;
-
-};
-
-class CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf localPool;
-        static const ydk::Enum::YLeaf dhcpv4;
-        static const ydk::Enum::YLeaf dhcpv6;
-        static const ydk::Enum::YLeaf userProfileIpAddr;
-        static const ydk::Enum::YLeaf userProfileIpSubnet;
-        static const ydk::Enum::YLeaf userProfileNamedPool;
 
 };
 

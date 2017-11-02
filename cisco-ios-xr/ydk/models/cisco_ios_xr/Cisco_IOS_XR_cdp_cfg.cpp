@@ -13,11 +13,11 @@ namespace Cisco_IOS_XR_cdp_cfg {
 
 Cdp::Cdp()
     :
+    timer{YType::uint32, "timer"},
     advertise_v1_only{YType::empty, "advertise-v1-only"},
     enable{YType::boolean, "enable"},
     hold_time{YType::uint32, "hold-time"},
-    log_adjacency{YType::empty, "log-adjacency"},
-    timer{YType::uint32, "timer"}
+    log_adjacency{YType::empty, "log-adjacency"}
 {
 
     yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-cfg"; is_top_level_class = true; has_list_ancestor = false;
@@ -29,21 +29,21 @@ Cdp::~Cdp()
 
 bool Cdp::has_data() const
 {
-    return advertise_v1_only.is_set
+    return timer.is_set
+	|| advertise_v1_only.is_set
 	|| enable.is_set
 	|| hold_time.is_set
-	|| log_adjacency.is_set
-	|| timer.is_set;
+	|| log_adjacency.is_set;
 }
 
 bool Cdp::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(timer.yfilter)
 	|| ydk::is_set(advertise_v1_only.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(hold_time.yfilter)
-	|| ydk::is_set(log_adjacency.yfilter)
-	|| ydk::is_set(timer.yfilter);
+	|| ydk::is_set(log_adjacency.yfilter);
 }
 
 std::string Cdp::get_segment_path() const
@@ -57,11 +57,11 @@ std::vector<std::pair<std::string, LeafData> > Cdp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
     if (advertise_v1_only.is_set || is_set(advertise_v1_only.yfilter)) leaf_name_data.push_back(advertise_v1_only.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
     if (log_adjacency.is_set || is_set(log_adjacency.yfilter)) leaf_name_data.push_back(log_adjacency.get_name_leafdata());
-    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -80,6 +80,12 @@ std::map<std::string, std::shared_ptr<Entity>> Cdp::get_children() const
 
 void Cdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "timer")
+    {
+        timer = value;
+        timer.value_namespace = name_space;
+        timer.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "advertise-v1-only")
     {
         advertise_v1_only = value;
@@ -104,16 +110,14 @@ void Cdp::set_value(const std::string & value_path, const std::string & value, c
         log_adjacency.value_namespace = name_space;
         log_adjacency.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "timer")
-    {
-        timer = value;
-        timer.value_namespace = name_space;
-        timer.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Cdp::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
     if(value_path == "advertise-v1-only")
     {
         advertise_v1_only.yfilter = yfilter;
@@ -129,10 +133,6 @@ void Cdp::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "log-adjacency")
     {
         log_adjacency.yfilter = yfilter;
-    }
-    if(value_path == "timer")
-    {
-        timer.yfilter = yfilter;
     }
 }
 
@@ -163,7 +163,7 @@ std::map<std::pair<std::string, std::string>, std::string> Cdp::get_namespace_id
 
 bool Cdp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "advertise-v1-only" || name == "enable" || name == "hold-time" || name == "log-adjacency" || name == "timer")
+    if(name == "timer" || name == "advertise-v1-only" || name == "enable" || name == "hold-time" || name == "log-adjacency")
         return true;
     return false;
 }

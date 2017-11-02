@@ -116,12 +116,12 @@ class CfgHistGl::RecordType::Record::Info : public ydk::Entity
         class BackupInfo; //type: CfgHistGl::RecordType::Record::Info::BackupInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::AlarmInfo> alarm_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::BackupInfo> backup_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::CfscheckInfo> cfscheck_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::CommitInfo> commit_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::OirInfo> oir_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::ShutdownInfo> shutdown_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::StartupInfo> startup_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::BackupInfo> backup_info;
         
 }; // CfgHistGl::RecordType::Record::Info
 
@@ -146,27 +146,6 @@ class CfgHistGl::RecordType::Record::Info::AlarmInfo : public ydk::Entity
         ydk::YLeaf where; //type: string
 
 }; // CfgHistGl::RecordType::Record::Info::AlarmInfo
-
-
-class CfgHistGl::RecordType::Record::Info::BackupInfo : public ydk::Entity
-{
-    public:
-        BackupInfo();
-        ~BackupInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf comment; //type: string
-
-}; // CfgHistGl::RecordType::Record::Info::BackupInfo
 
 
 class CfgHistGl::RecordType::Record::Info::CfscheckInfo : public ydk::Entity
@@ -281,6 +260,27 @@ class CfgHistGl::RecordType::Record::Info::StartupInfo : public ydk::Entity
         ydk::YLeaf boot_path; //type: string
 
 }; // CfgHistGl::RecordType::Record::Info::StartupInfo
+
+
+class CfgHistGl::RecordType::Record::Info::BackupInfo : public ydk::Entity
+{
+    public:
+        BackupInfo();
+        ~BackupInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf comment; //type: string
+
+}; // CfgHistGl::RecordType::Record::Info::BackupInfo
 
 class HistRecord : public ydk::Enum
 {

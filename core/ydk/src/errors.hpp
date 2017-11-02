@@ -101,6 +101,7 @@ struct YCPPOperationNotSupportedError : public YCPPError
 ///
 struct YCPPModelError : public YCPPError
 {
+    YCPPModelError();
     YCPPModelError(const std::string& msg);
 };
 

@@ -625,12 +625,12 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::has_leaf_or_c
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::TcamBank()
     :
-    bank_free_entries{YType::uint32, "bank-free-entries"},
     bank_id{YType::str, "bank-id"},
-    bank_inuse_entries{YType::uint32, "bank-inuse-entries"},
     bank_key_size{YType::str, "bank-key-size"},
-    nof_dbs{YType::uint32, "nof-dbs"},
-    owner{YType::str, "owner"}
+    bank_free_entries{YType::uint32, "bank-free-entries"},
+    bank_inuse_entries{YType::uint32, "bank-inuse-entries"},
+    owner{YType::str, "owner"},
+    nof_dbs{YType::uint32, "nof-dbs"}
 {
 
     yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true;
@@ -647,12 +647,12 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::has
         if(bank_db[index]->has_data())
             return true;
     }
-    return bank_free_entries.is_set
-	|| bank_id.is_set
-	|| bank_inuse_entries.is_set
+    return bank_id.is_set
 	|| bank_key_size.is_set
-	|| nof_dbs.is_set
-	|| owner.is_set;
+	|| bank_free_entries.is_set
+	|| bank_inuse_entries.is_set
+	|| owner.is_set
+	|| nof_dbs.is_set;
 }
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::has_operation() const
@@ -663,12 +663,12 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::has
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(bank_free_entries.yfilter)
 	|| ydk::is_set(bank_id.yfilter)
-	|| ydk::is_set(bank_inuse_entries.yfilter)
 	|| ydk::is_set(bank_key_size.yfilter)
-	|| ydk::is_set(nof_dbs.yfilter)
-	|| ydk::is_set(owner.yfilter);
+	|| ydk::is_set(bank_free_entries.yfilter)
+	|| ydk::is_set(bank_inuse_entries.yfilter)
+	|| ydk::is_set(owner.yfilter)
+	|| ydk::is_set(nof_dbs.yfilter);
 }
 
 std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::get_segment_path() const
@@ -682,12 +682,12 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Ext
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bank_free_entries.is_set || is_set(bank_free_entries.yfilter)) leaf_name_data.push_back(bank_free_entries.get_name_leafdata());
     if (bank_id.is_set || is_set(bank_id.yfilter)) leaf_name_data.push_back(bank_id.get_name_leafdata());
-    if (bank_inuse_entries.is_set || is_set(bank_inuse_entries.yfilter)) leaf_name_data.push_back(bank_inuse_entries.get_name_leafdata());
     if (bank_key_size.is_set || is_set(bank_key_size.yfilter)) leaf_name_data.push_back(bank_key_size.get_name_leafdata());
-    if (nof_dbs.is_set || is_set(nof_dbs.yfilter)) leaf_name_data.push_back(nof_dbs.get_name_leafdata());
+    if (bank_free_entries.is_set || is_set(bank_free_entries.yfilter)) leaf_name_data.push_back(bank_free_entries.get_name_leafdata());
+    if (bank_inuse_entries.is_set || is_set(bank_inuse_entries.yfilter)) leaf_name_data.push_back(bank_inuse_entries.get_name_leafdata());
     if (owner.is_set || is_set(owner.yfilter)) leaf_name_data.push_back(owner.get_name_leafdata());
+    if (nof_dbs.is_set || is_set(nof_dbs.yfilter)) leaf_name_data.push_back(nof_dbs.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -727,23 +727,11 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Ext
 
 void Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "bank-free-entries")
-    {
-        bank_free_entries = value;
-        bank_free_entries.value_namespace = name_space;
-        bank_free_entries.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "bank-id")
     {
         bank_id = value;
         bank_id.value_namespace = name_space;
         bank_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bank-inuse-entries")
-    {
-        bank_inuse_entries = value;
-        bank_inuse_entries.value_namespace = name_space;
-        bank_inuse_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bank-key-size")
     {
@@ -751,11 +739,17 @@ void Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::set
         bank_key_size.value_namespace = name_space;
         bank_key_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nof-dbs")
+    if(value_path == "bank-free-entries")
     {
-        nof_dbs = value;
-        nof_dbs.value_namespace = name_space;
-        nof_dbs.value_namespace_prefix = name_space_prefix;
+        bank_free_entries = value;
+        bank_free_entries.value_namespace = name_space;
+        bank_free_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bank-inuse-entries")
+    {
+        bank_inuse_entries = value;
+        bank_inuse_entries.value_namespace = name_space;
+        bank_inuse_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "owner")
     {
@@ -763,39 +757,45 @@ void Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::set
         owner.value_namespace = name_space;
         owner.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nof-dbs")
+    {
+        nof_dbs = value;
+        nof_dbs.value_namespace = name_space;
+        nof_dbs.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "bank-free-entries")
-    {
-        bank_free_entries.yfilter = yfilter;
-    }
     if(value_path == "bank-id")
     {
         bank_id.yfilter = yfilter;
-    }
-    if(value_path == "bank-inuse-entries")
-    {
-        bank_inuse_entries.yfilter = yfilter;
     }
     if(value_path == "bank-key-size")
     {
         bank_key_size.yfilter = yfilter;
     }
-    if(value_path == "nof-dbs")
+    if(value_path == "bank-free-entries")
     {
-        nof_dbs.yfilter = yfilter;
+        bank_free_entries.yfilter = yfilter;
+    }
+    if(value_path == "bank-inuse-entries")
+    {
+        bank_inuse_entries.yfilter = yfilter;
     }
     if(value_path == "owner")
     {
         owner.yfilter = yfilter;
     }
+    if(value_path == "nof-dbs")
+    {
+        nof_dbs.yfilter = yfilter;
+    }
 }
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bank-db" || name == "bank-free-entries" || name == "bank-id" || name == "bank-inuse-entries" || name == "bank-key-size" || name == "nof-dbs" || name == "owner")
+    if(name == "bank-db" || name == "bank-id" || name == "bank-key-size" || name == "bank-free-entries" || name == "bank-inuse-entries" || name == "owner" || name == "nof-dbs")
         return true;
     return false;
 }
@@ -1106,12 +1106,12 @@ bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::has_leaf_or_c
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::TcamBank()
     :
-    bank_free_entries{YType::uint32, "bank-free-entries"},
     bank_id{YType::str, "bank-id"},
-    bank_inuse_entries{YType::uint32, "bank-inuse-entries"},
     bank_key_size{YType::str, "bank-key-size"},
-    nof_dbs{YType::uint32, "nof-dbs"},
-    owner{YType::str, "owner"}
+    bank_free_entries{YType::uint32, "bank-free-entries"},
+    bank_inuse_entries{YType::uint32, "bank-inuse-entries"},
+    owner{YType::str, "owner"},
+    nof_dbs{YType::uint32, "nof-dbs"}
 {
 
     yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true;
@@ -1128,12 +1128,12 @@ bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::has
         if(bank_db[index]->has_data())
             return true;
     }
-    return bank_free_entries.is_set
-	|| bank_id.is_set
-	|| bank_inuse_entries.is_set
+    return bank_id.is_set
 	|| bank_key_size.is_set
-	|| nof_dbs.is_set
-	|| owner.is_set;
+	|| bank_free_entries.is_set
+	|| bank_inuse_entries.is_set
+	|| owner.is_set
+	|| nof_dbs.is_set;
 }
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::has_operation() const
@@ -1144,12 +1144,12 @@ bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::has
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(bank_free_entries.yfilter)
 	|| ydk::is_set(bank_id.yfilter)
-	|| ydk::is_set(bank_inuse_entries.yfilter)
 	|| ydk::is_set(bank_key_size.yfilter)
-	|| ydk::is_set(nof_dbs.yfilter)
-	|| ydk::is_set(owner.yfilter);
+	|| ydk::is_set(bank_free_entries.yfilter)
+	|| ydk::is_set(bank_inuse_entries.yfilter)
+	|| ydk::is_set(owner.yfilter)
+	|| ydk::is_set(nof_dbs.yfilter);
 }
 
 std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_segment_path() const
@@ -1163,12 +1163,12 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Int
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bank_free_entries.is_set || is_set(bank_free_entries.yfilter)) leaf_name_data.push_back(bank_free_entries.get_name_leafdata());
     if (bank_id.is_set || is_set(bank_id.yfilter)) leaf_name_data.push_back(bank_id.get_name_leafdata());
-    if (bank_inuse_entries.is_set || is_set(bank_inuse_entries.yfilter)) leaf_name_data.push_back(bank_inuse_entries.get_name_leafdata());
     if (bank_key_size.is_set || is_set(bank_key_size.yfilter)) leaf_name_data.push_back(bank_key_size.get_name_leafdata());
-    if (nof_dbs.is_set || is_set(nof_dbs.yfilter)) leaf_name_data.push_back(nof_dbs.get_name_leafdata());
+    if (bank_free_entries.is_set || is_set(bank_free_entries.yfilter)) leaf_name_data.push_back(bank_free_entries.get_name_leafdata());
+    if (bank_inuse_entries.is_set || is_set(bank_inuse_entries.yfilter)) leaf_name_data.push_back(bank_inuse_entries.get_name_leafdata());
     if (owner.is_set || is_set(owner.yfilter)) leaf_name_data.push_back(owner.get_name_leafdata());
+    if (nof_dbs.is_set || is_set(nof_dbs.yfilter)) leaf_name_data.push_back(nof_dbs.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1208,23 +1208,11 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Int
 
 void Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "bank-free-entries")
-    {
-        bank_free_entries = value;
-        bank_free_entries.value_namespace = name_space;
-        bank_free_entries.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "bank-id")
     {
         bank_id = value;
         bank_id.value_namespace = name_space;
         bank_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bank-inuse-entries")
-    {
-        bank_inuse_entries = value;
-        bank_inuse_entries.value_namespace = name_space;
-        bank_inuse_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bank-key-size")
     {
@@ -1232,11 +1220,17 @@ void Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::set
         bank_key_size.value_namespace = name_space;
         bank_key_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nof-dbs")
+    if(value_path == "bank-free-entries")
     {
-        nof_dbs = value;
-        nof_dbs.value_namespace = name_space;
-        nof_dbs.value_namespace_prefix = name_space_prefix;
+        bank_free_entries = value;
+        bank_free_entries.value_namespace = name_space;
+        bank_free_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bank-inuse-entries")
+    {
+        bank_inuse_entries = value;
+        bank_inuse_entries.value_namespace = name_space;
+        bank_inuse_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "owner")
     {
@@ -1244,39 +1238,45 @@ void Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::set
         owner.value_namespace = name_space;
         owner.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nof-dbs")
+    {
+        nof_dbs = value;
+        nof_dbs.value_namespace = name_space;
+        nof_dbs.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "bank-free-entries")
-    {
-        bank_free_entries.yfilter = yfilter;
-    }
     if(value_path == "bank-id")
     {
         bank_id.yfilter = yfilter;
-    }
-    if(value_path == "bank-inuse-entries")
-    {
-        bank_inuse_entries.yfilter = yfilter;
     }
     if(value_path == "bank-key-size")
     {
         bank_key_size.yfilter = yfilter;
     }
-    if(value_path == "nof-dbs")
+    if(value_path == "bank-free-entries")
     {
-        nof_dbs.yfilter = yfilter;
+        bank_free_entries.yfilter = yfilter;
+    }
+    if(value_path == "bank-inuse-entries")
+    {
+        bank_inuse_entries.yfilter = yfilter;
     }
     if(value_path == "owner")
     {
         owner.yfilter = yfilter;
     }
+    if(value_path == "nof-dbs")
+    {
+        nof_dbs.yfilter = yfilter;
+    }
 }
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bank-db" || name == "bank-free-entries" || name == "bank-id" || name == "bank-inuse-entries" || name == "bank-key-size" || name == "nof-dbs" || name == "owner")
+    if(name == "bank-db" || name == "bank-id" || name == "bank-key-size" || name == "bank-free-entries" || name == "bank-inuse-entries" || name == "owner" || name == "nof-dbs")
         return true;
     return false;
 }

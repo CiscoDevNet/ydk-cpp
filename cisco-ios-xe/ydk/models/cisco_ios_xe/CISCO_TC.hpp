@@ -10,6 +10,38 @@
 namespace cisco_ios_xe {
 namespace CISCO_TC {
 
+class CiscoNetworkProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf decnet;
+        static const ydk::Enum::YLeaf pup;
+        static const ydk::Enum::YLeaf chaos;
+        static const ydk::Enum::YLeaf xns;
+        static const ydk::Enum::YLeaf x121;
+        static const ydk::Enum::YLeaf appletalk;
+        static const ydk::Enum::YLeaf clns;
+        static const ydk::Enum::YLeaf lat;
+        static const ydk::Enum::YLeaf vines;
+        static const ydk::Enum::YLeaf cons;
+        static const ydk::Enum::YLeaf apollo;
+        static const ydk::Enum::YLeaf stun;
+        static const ydk::Enum::YLeaf novell;
+        static const ydk::Enum::YLeaf qllc;
+        static const ydk::Enum::YLeaf snapshot;
+        static const ydk::Enum::YLeaf atmIlmi;
+        static const ydk::Enum::YLeaf bstun;
+        static const ydk::Enum::YLeaf x25pvc;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf cdm;
+        static const ydk::Enum::YLeaf nbf;
+        static const ydk::Enum::YLeaf bpxIgx;
+        static const ydk::Enum::YLeaf clnsPfx;
+        static const ydk::Enum::YLeaf http;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
 class CiscoRowOperStatus : public ydk::Enum
 {
     public:
@@ -17,6 +49,20 @@ class CiscoRowOperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf activeDependencies;
         static const ydk::Enum::YLeaf inactiveDependency;
         static const ydk::Enum::YLeaf missingDependency;
+
+};
+
+class CiscoLocationClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf chassis;
+        static const ydk::Enum::YLeaf shelf;
+        static const ydk::Enum::YLeaf slot;
+        static const ydk::Enum::YLeaf subSlot;
+        static const ydk::Enum::YLeaf port;
+        static const ydk::Enum::YLeaf subPort;
+        static const ydk::Enum::YLeaf channel;
+        static const ydk::Enum::YLeaf subChannel;
 
 };
 
@@ -318,52 +364,6 @@ class IfOperStatusReason : public ydk::Enum
         static const ydk::Enum::YLeaf ethIntfNotLicensed;
         static const ydk::Enum::YLeaf domainIdsInvalid;
         static const ydk::Enum::YLeaf fabricNameInvalid;
-
-};
-
-class CiscoNetworkProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf decnet;
-        static const ydk::Enum::YLeaf pup;
-        static const ydk::Enum::YLeaf chaos;
-        static const ydk::Enum::YLeaf xns;
-        static const ydk::Enum::YLeaf x121;
-        static const ydk::Enum::YLeaf appletalk;
-        static const ydk::Enum::YLeaf clns;
-        static const ydk::Enum::YLeaf lat;
-        static const ydk::Enum::YLeaf vines;
-        static const ydk::Enum::YLeaf cons;
-        static const ydk::Enum::YLeaf apollo;
-        static const ydk::Enum::YLeaf stun;
-        static const ydk::Enum::YLeaf novell;
-        static const ydk::Enum::YLeaf qllc;
-        static const ydk::Enum::YLeaf snapshot;
-        static const ydk::Enum::YLeaf atmIlmi;
-        static const ydk::Enum::YLeaf bstun;
-        static const ydk::Enum::YLeaf x25pvc;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf cdm;
-        static const ydk::Enum::YLeaf nbf;
-        static const ydk::Enum::YLeaf bpxIgx;
-        static const ydk::Enum::YLeaf clnsPfx;
-        static const ydk::Enum::YLeaf http;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class CiscoLocationClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf chassis;
-        static const ydk::Enum::YLeaf shelf;
-        static const ydk::Enum::YLeaf slot;
-        static const ydk::Enum::YLeaf subSlot;
-        static const ydk::Enum::YLeaf port;
-        static const ydk::Enum::YLeaf subPort;
-        static const ydk::Enum::YLeaf channel;
-        static const ydk::Enum::YLeaf subChannel;
 
 };
 

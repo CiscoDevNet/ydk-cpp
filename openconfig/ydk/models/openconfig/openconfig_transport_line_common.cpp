@@ -21,6 +21,26 @@ OPTICALLINEPORTTYPE::~OPTICALLINEPORTTYPE()
 {
 }
 
+INGRESS::INGRESS()
+     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:INGRESS")
+{
+
+}
+
+INGRESS::~INGRESS()
+{
+}
+
+EGRESS::EGRESS()
+     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:EGRESS")
+{
+
+}
+
+EGRESS::~EGRESS()
+{
+}
+
 ADD::ADD()
      : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:ADD")
 {
@@ -38,26 +58,6 @@ DROP::DROP()
 }
 
 DROP::~DROP()
-{
-}
-
-EGRESS::EGRESS()
-     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:EGRESS")
-{
-
-}
-
-EGRESS::~EGRESS()
-{
-}
-
-INGRESS::INGRESS()
-     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:INGRESS")
-{
-
-}
-
-INGRESS::~INGRESS()
 {
 }
 

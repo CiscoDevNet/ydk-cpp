@@ -37,8 +37,8 @@ class CISCOIPSLAECHOMIB : public ydk::Entity
         class Cipslatcpconntmpltable; //type: CISCOIPSLAECHOMIB::Cipslatcpconntmpltable
 
         std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable> cipslaicmpechotmpltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslatcpconntmpltable> cipslatcpconntmpltable;
         std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslaudpechotmpltable> cipslaudpechotmpltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslatcpconntmpltable> cipslatcpconntmpltable;
         
 }; // CISCOIPSLAECHOMIB
 
@@ -107,70 +107,6 @@ class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry : publ
 }; // CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry
 
 
-class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable : public ydk::Entity
-{
-    public:
-        Cipslatcpconntmpltable();
-        ~Cipslatcpconntmpltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cipslatcpconntmplentry; //type: CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry> > cipslatcpconntmplentry;
-        
-}; // CISCOIPSLAECHOMIB::Cipslatcpconntmpltable
-
-
-class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry : public ydk::Entity
-{
-    public:
-        Cipslatcpconntmplentry();
-        ~Cipslatcpconntmplentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf cipslatcpconntmplname; //type: string
-        ydk::YLeaf cipslatcpconntmpldescription; //type: string
-        ydk::YLeaf cipslatcpconntmplcontrolenable; //type: boolean
-        ydk::YLeaf cipslatcpconntmplsrcaddrtype; //type: InetAddressType
-        ydk::YLeaf cipslatcpconntmplsrcaddr; //type: binary
-        ydk::YLeaf cipslatcpconntmplsrcport; //type: uint16
-        ydk::YLeaf cipslatcpconntmpltimeout; //type: uint32
-        ydk::YLeaf cipslatcpconntmplverifydata; //type: boolean
-        ydk::YLeaf cipslatcpconntmpltos; //type: uint32
-        ydk::YLeaf cipslatcpconntmplthreshold; //type: uint32
-        ydk::YLeaf cipslatcpconntmplhistlives; //type: uint32
-        ydk::YLeaf cipslatcpconntmplhistbuckets; //type: uint32
-        ydk::YLeaf cipslatcpconntmplhistfilter; //type: Cipslatcpconntmplhistfilter
-        ydk::YLeaf cipslatcpconntmplstatshours; //type: uint32
-        ydk::YLeaf cipslatcpconntmpldistbuckets; //type: uint32
-        ydk::YLeaf cipslatcpconntmpldistinterval; //type: uint32
-        ydk::YLeaf cipslatcpconntmplstoragetype; //type: StorageType
-        ydk::YLeaf cipslatcpconntmplrowstatus; //type: RowStatus
-        class Cipslatcpconntmplhistfilter;
-
-}; // CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry
-
-
 class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable : public ydk::Entity
 {
     public:
@@ -236,6 +172,70 @@ class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry : public
 
 }; // CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry
 
+
+class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable : public ydk::Entity
+{
+    public:
+        Cipslatcpconntmpltable();
+        ~Cipslatcpconntmpltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cipslatcpconntmplentry; //type: CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry> > cipslatcpconntmplentry;
+        
+}; // CISCOIPSLAECHOMIB::Cipslatcpconntmpltable
+
+
+class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry : public ydk::Entity
+{
+    public:
+        Cipslatcpconntmplentry();
+        ~Cipslatcpconntmplentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cipslatcpconntmplname; //type: string
+        ydk::YLeaf cipslatcpconntmpldescription; //type: string
+        ydk::YLeaf cipslatcpconntmplcontrolenable; //type: boolean
+        ydk::YLeaf cipslatcpconntmplsrcaddrtype; //type: InetAddressType
+        ydk::YLeaf cipslatcpconntmplsrcaddr; //type: binary
+        ydk::YLeaf cipslatcpconntmplsrcport; //type: uint16
+        ydk::YLeaf cipslatcpconntmpltimeout; //type: uint32
+        ydk::YLeaf cipslatcpconntmplverifydata; //type: boolean
+        ydk::YLeaf cipslatcpconntmpltos; //type: uint32
+        ydk::YLeaf cipslatcpconntmplthreshold; //type: uint32
+        ydk::YLeaf cipslatcpconntmplhistlives; //type: uint32
+        ydk::YLeaf cipslatcpconntmplhistbuckets; //type: uint32
+        ydk::YLeaf cipslatcpconntmplhistfilter; //type: Cipslatcpconntmplhistfilter
+        ydk::YLeaf cipslatcpconntmplstatshours; //type: uint32
+        ydk::YLeaf cipslatcpconntmpldistbuckets; //type: uint32
+        ydk::YLeaf cipslatcpconntmpldistinterval; //type: uint32
+        ydk::YLeaf cipslatcpconntmplstoragetype; //type: StorageType
+        ydk::YLeaf cipslatcpconntmplrowstatus; //type: RowStatus
+        class Cipslatcpconntmplhistfilter;
+
+}; // CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry
+
 class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry::Cipslaicmpechotmplhistfilter : public ydk::Enum
 {
     public:
@@ -246,7 +246,7 @@ class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry::Cipsl
 
 };
 
-class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry::Cipslatcpconntmplhistfilter : public ydk::Enum
+class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry::Cipslaudpechotmplhistfilter : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -256,7 +256,7 @@ class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry::Cipslat
 
 };
 
-class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry::Cipslaudpechotmplhistfilter : public ydk::Enum
+class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry::Cipslatcpconntmplhistfilter : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

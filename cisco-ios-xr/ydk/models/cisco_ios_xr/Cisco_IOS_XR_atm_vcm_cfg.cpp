@@ -13,10 +13,10 @@ namespace Cisco_IOS_XR_atm_vcm_cfg {
 
 const Enum::YLeaf AtmVpiBitsMode::twelve {12, "twelve"};
 
-const Enum::YLeaf AtmPvpTestMode::loop {1, "loop"};
-
 const Enum::YLeaf AtmPvcTestMode::loop {1, "loop"};
 const Enum::YLeaf AtmPvcTestMode::reserved {2, "reserved"};
+
+const Enum::YLeaf AtmPvpTestMode::loop {1, "loop"};
 
 
 }

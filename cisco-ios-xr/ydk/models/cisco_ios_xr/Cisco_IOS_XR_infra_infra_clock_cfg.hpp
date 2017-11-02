@@ -97,14 +97,6 @@ class Clock_::TimeZone : public ydk::Entity
 
 }; // Clock_::TimeZone
 
-class ClockSummerTimeMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf recurring;
-        static const ydk::Enum::YLeaf date;
-
-};
-
 class ClockMonth : public ydk::Enum
 {
     public:
@@ -120,6 +112,14 @@ class ClockMonth : public ydk::Enum
         static const ydk::Enum::YLeaf october;
         static const ydk::Enum::YLeaf november;
         static const ydk::Enum::YLeaf december;
+
+};
+
+class ClockSummerTimeMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf recurring;
+        static const ydk::Enum::YLeaf date;
 
 };
 

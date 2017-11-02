@@ -222,10 +222,10 @@ MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::
     mplsldpentityindex{YType::str, "mplsLdpEntityIndex"},
     mplsldpentitygenericlrmin{YType::uint32, "mplsLdpEntityGenericLRMin"},
     mplsldpentitygenericlrmax{YType::uint32, "mplsLdpEntityGenericLRMax"},
-    mplsldpentitygenericifindexorzero{YType::int32, "mplsLdpEntityGenericIfIndexOrZero"},
     mplsldpentitygenericlabelspace{YType::enumeration, "mplsLdpEntityGenericLabelSpace"},
-    mplsldpentitygenericlrrowstatus{YType::enumeration, "mplsLdpEntityGenericLRRowStatus"},
-    mplsldpentitygenericlrstoragetype{YType::enumeration, "mplsLdpEntityGenericLRStorageType"}
+    mplsldpentitygenericifindexorzero{YType::int32, "mplsLdpEntityGenericIfIndexOrZero"},
+    mplsldpentitygenericlrstoragetype{YType::enumeration, "mplsLdpEntityGenericLRStorageType"},
+    mplsldpentitygenericlrrowstatus{YType::enumeration, "mplsLdpEntityGenericLRRowStatus"}
 {
 
     yang_name = "mplsLdpEntityGenericLREntry"; yang_parent_name = "mplsLdpEntityGenericLRTable"; is_top_level_class = false; has_list_ancestor = false;
@@ -241,10 +241,10 @@ bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
 	|| mplsldpentityindex.is_set
 	|| mplsldpentitygenericlrmin.is_set
 	|| mplsldpentitygenericlrmax.is_set
-	|| mplsldpentitygenericifindexorzero.is_set
 	|| mplsldpentitygenericlabelspace.is_set
-	|| mplsldpentitygenericlrrowstatus.is_set
-	|| mplsldpentitygenericlrstoragetype.is_set;
+	|| mplsldpentitygenericifindexorzero.is_set
+	|| mplsldpentitygenericlrstoragetype.is_set
+	|| mplsldpentitygenericlrrowstatus.is_set;
 }
 
 bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_operation() const
@@ -254,10 +254,10 @@ bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
 	|| ydk::is_set(mplsldpentityindex.yfilter)
 	|| ydk::is_set(mplsldpentitygenericlrmin.yfilter)
 	|| ydk::is_set(mplsldpentitygenericlrmax.yfilter)
-	|| ydk::is_set(mplsldpentitygenericifindexorzero.yfilter)
 	|| ydk::is_set(mplsldpentitygenericlabelspace.yfilter)
-	|| ydk::is_set(mplsldpentitygenericlrrowstatus.yfilter)
-	|| ydk::is_set(mplsldpentitygenericlrstoragetype.yfilter);
+	|| ydk::is_set(mplsldpentitygenericifindexorzero.yfilter)
+	|| ydk::is_set(mplsldpentitygenericlrstoragetype.yfilter)
+	|| ydk::is_set(mplsldpentitygenericlrrowstatus.yfilter);
 }
 
 std::string MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::get_absolute_path() const
@@ -282,10 +282,10 @@ std::vector<std::pair<std::string, LeafData> > MPLSLDPGENERICSTDMIB::Mplsldpenti
     if (mplsldpentityindex.is_set || is_set(mplsldpentityindex.yfilter)) leaf_name_data.push_back(mplsldpentityindex.get_name_leafdata());
     if (mplsldpentitygenericlrmin.is_set || is_set(mplsldpentitygenericlrmin.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlrmin.get_name_leafdata());
     if (mplsldpentitygenericlrmax.is_set || is_set(mplsldpentitygenericlrmax.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlrmax.get_name_leafdata());
-    if (mplsldpentitygenericifindexorzero.is_set || is_set(mplsldpentitygenericifindexorzero.yfilter)) leaf_name_data.push_back(mplsldpentitygenericifindexorzero.get_name_leafdata());
     if (mplsldpentitygenericlabelspace.is_set || is_set(mplsldpentitygenericlabelspace.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlabelspace.get_name_leafdata());
-    if (mplsldpentitygenericlrrowstatus.is_set || is_set(mplsldpentitygenericlrrowstatus.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlrrowstatus.get_name_leafdata());
+    if (mplsldpentitygenericifindexorzero.is_set || is_set(mplsldpentitygenericifindexorzero.yfilter)) leaf_name_data.push_back(mplsldpentitygenericifindexorzero.get_name_leafdata());
     if (mplsldpentitygenericlrstoragetype.is_set || is_set(mplsldpentitygenericlrstoragetype.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlrstoragetype.get_name_leafdata());
+    if (mplsldpentitygenericlrrowstatus.is_set || is_set(mplsldpentitygenericlrrowstatus.yfilter)) leaf_name_data.push_back(mplsldpentitygenericlrrowstatus.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -328,29 +328,29 @@ void MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
         mplsldpentitygenericlrmax.value_namespace = name_space;
         mplsldpentitygenericlrmax.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsLdpEntityGenericIfIndexOrZero")
-    {
-        mplsldpentitygenericifindexorzero = value;
-        mplsldpentitygenericifindexorzero.value_namespace = name_space;
-        mplsldpentitygenericifindexorzero.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mplsLdpEntityGenericLabelSpace")
     {
         mplsldpentitygenericlabelspace = value;
         mplsldpentitygenericlabelspace.value_namespace = name_space;
         mplsldpentitygenericlabelspace.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsLdpEntityGenericLRRowStatus")
+    if(value_path == "mplsLdpEntityGenericIfIndexOrZero")
     {
-        mplsldpentitygenericlrrowstatus = value;
-        mplsldpentitygenericlrrowstatus.value_namespace = name_space;
-        mplsldpentitygenericlrrowstatus.value_namespace_prefix = name_space_prefix;
+        mplsldpentitygenericifindexorzero = value;
+        mplsldpentitygenericifindexorzero.value_namespace = name_space;
+        mplsldpentitygenericifindexorzero.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsLdpEntityGenericLRStorageType")
     {
         mplsldpentitygenericlrstoragetype = value;
         mplsldpentitygenericlrstoragetype.value_namespace = name_space;
         mplsldpentitygenericlrstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsLdpEntityGenericLRRowStatus")
+    {
+        mplsldpentitygenericlrrowstatus = value;
+        mplsldpentitygenericlrrowstatus.value_namespace = name_space;
+        mplsldpentitygenericlrrowstatus.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -372,27 +372,27 @@ void MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlren
     {
         mplsldpentitygenericlrmax.yfilter = yfilter;
     }
-    if(value_path == "mplsLdpEntityGenericIfIndexOrZero")
-    {
-        mplsldpentitygenericifindexorzero.yfilter = yfilter;
-    }
     if(value_path == "mplsLdpEntityGenericLabelSpace")
     {
         mplsldpentitygenericlabelspace.yfilter = yfilter;
     }
-    if(value_path == "mplsLdpEntityGenericLRRowStatus")
+    if(value_path == "mplsLdpEntityGenericIfIndexOrZero")
     {
-        mplsldpentitygenericlrrowstatus.yfilter = yfilter;
+        mplsldpentitygenericifindexorzero.yfilter = yfilter;
     }
     if(value_path == "mplsLdpEntityGenericLRStorageType")
     {
         mplsldpentitygenericlrstoragetype.yfilter = yfilter;
     }
+    if(value_path == "mplsLdpEntityGenericLRRowStatus")
+    {
+        mplsldpentitygenericlrrowstatus.yfilter = yfilter;
+    }
 }
 
 bool MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsLdpEntityLdpId" || name == "mplsLdpEntityIndex" || name == "mplsLdpEntityGenericLRMin" || name == "mplsLdpEntityGenericLRMax" || name == "mplsLdpEntityGenericIfIndexOrZero" || name == "mplsLdpEntityGenericLabelSpace" || name == "mplsLdpEntityGenericLRRowStatus" || name == "mplsLdpEntityGenericLRStorageType")
+    if(name == "mplsLdpEntityLdpId" || name == "mplsLdpEntityIndex" || name == "mplsLdpEntityGenericLRMin" || name == "mplsLdpEntityGenericLRMax" || name == "mplsLdpEntityGenericLabelSpace" || name == "mplsLdpEntityGenericIfIndexOrZero" || name == "mplsLdpEntityGenericLRStorageType" || name == "mplsLdpEntityGenericLRRowStatus")
         return true;
     return false;
 }

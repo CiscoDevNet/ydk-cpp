@@ -146,6 +146,11 @@ ydk::path::YCPPCodecError::YCPPCodecError(YCPPCodecError::Error ec) : YCPPCoreEr
 /////////////////////////////////////////////////////////////////////////
 /// YCPPModelError
 /////////////////////////////////////////////////////////////////////////
+ydk::YCPPModelError::YCPPModelError() : ydk::YCPPError{"YCPPModelError: " + std::string(ly_errmsg()) + " Path: " + std::string(ly_errpath())}
+{
+
+}
+
 ydk::YCPPModelError::YCPPModelError(const std::string& msg) : ydk::YCPPError{"YCPPModelError: " + msg+" : " + get_libyang_error()}
 {
 

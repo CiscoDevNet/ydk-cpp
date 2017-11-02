@@ -118,8 +118,8 @@ bool FabVqiConfig::has_leaf_or_child_of_name(const std::string & name) const
 
 FabVqiConfig::Mode::Mode()
     :
-    fab_mode_type{YType::enumeration, "fab-mode-type"},
-    fab_mode_type_xr{YType::enumeration, "fab-mode-type-xr"}
+    fab_mode_type_xr{YType::enumeration, "fab-mode-type-xr"},
+    fab_mode_type{YType::enumeration, "fab-mode-type"}
 {
 
     yang_name = "mode"; yang_parent_name = "fab-vqi-config"; is_top_level_class = false; has_list_ancestor = false;
@@ -131,15 +131,15 @@ FabVqiConfig::Mode::~Mode()
 
 bool FabVqiConfig::Mode::has_data() const
 {
-    return fab_mode_type.is_set
-	|| fab_mode_type_xr.is_set;
+    return fab_mode_type_xr.is_set
+	|| fab_mode_type.is_set;
 }
 
 bool FabVqiConfig::Mode::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(fab_mode_type.yfilter)
-	|| ydk::is_set(fab_mode_type_xr.yfilter);
+	|| ydk::is_set(fab_mode_type_xr.yfilter)
+	|| ydk::is_set(fab_mode_type.yfilter);
 }
 
 std::string FabVqiConfig::Mode::get_absolute_path() const
@@ -160,8 +160,8 @@ std::vector<std::pair<std::string, LeafData> > FabVqiConfig::Mode::get_name_leaf
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fab_mode_type.is_set || is_set(fab_mode_type.yfilter)) leaf_name_data.push_back(fab_mode_type.get_name_leafdata());
     if (fab_mode_type_xr.is_set || is_set(fab_mode_type_xr.yfilter)) leaf_name_data.push_back(fab_mode_type_xr.get_name_leafdata());
+    if (fab_mode_type.is_set || is_set(fab_mode_type.yfilter)) leaf_name_data.push_back(fab_mode_type.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -180,35 +180,35 @@ std::map<std::string, std::shared_ptr<Entity>> FabVqiConfig::Mode::get_children(
 
 void FabVqiConfig::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "fab-mode-type")
-    {
-        fab_mode_type = value;
-        fab_mode_type.value_namespace = name_space;
-        fab_mode_type.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "fab-mode-type-xr")
     {
         fab_mode_type_xr = value;
         fab_mode_type_xr.value_namespace = name_space;
         fab_mode_type_xr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "fab-mode-type")
+    {
+        fab_mode_type = value;
+        fab_mode_type.value_namespace = name_space;
+        fab_mode_type.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void FabVqiConfig::Mode::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "fab-mode-type")
-    {
-        fab_mode_type.yfilter = yfilter;
-    }
     if(value_path == "fab-mode-type-xr")
     {
         fab_mode_type_xr.yfilter = yfilter;
+    }
+    if(value_path == "fab-mode-type")
+    {
+        fab_mode_type.yfilter = yfilter;
     }
 }
 
 bool FabVqiConfig::Mode::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fab-mode-type" || name == "fab-mode-type-xr")
+    if(name == "fab-mode-type-xr" || name == "fab-mode-type")
         return true;
     return false;
 }

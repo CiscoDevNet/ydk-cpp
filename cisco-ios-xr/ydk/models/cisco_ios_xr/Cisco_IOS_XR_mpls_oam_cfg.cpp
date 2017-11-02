@@ -13,8 +13,8 @@ namespace Cisco_IOS_XR_mpls_oam_cfg {
 
 MplsOam::MplsOam()
     :
-    disable_vendor_extension{YType::empty, "disable-vendor-extension"},
-    enable_oam{YType::empty, "enable-oam"}
+    enable_oam{YType::empty, "enable-oam"},
+    disable_vendor_extension{YType::empty, "disable-vendor-extension"}
     	,
     reply_mode(std::make_shared<MplsOam::ReplyMode>())
 {
@@ -29,16 +29,16 @@ MplsOam::~MplsOam()
 
 bool MplsOam::has_data() const
 {
-    return disable_vendor_extension.is_set
-	|| enable_oam.is_set
+    return enable_oam.is_set
+	|| disable_vendor_extension.is_set
 	|| (reply_mode !=  nullptr && reply_mode->has_data());
 }
 
 bool MplsOam::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(disable_vendor_extension.yfilter)
 	|| ydk::is_set(enable_oam.yfilter)
+	|| ydk::is_set(disable_vendor_extension.yfilter)
 	|| (reply_mode !=  nullptr && reply_mode->has_operation());
 }
 
@@ -53,8 +53,8 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::get_name_leaf_data() con
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable_vendor_extension.is_set || is_set(disable_vendor_extension.yfilter)) leaf_name_data.push_back(disable_vendor_extension.get_name_leafdata());
     if (enable_oam.is_set || is_set(enable_oam.yfilter)) leaf_name_data.push_back(enable_oam.get_name_leafdata());
+    if (disable_vendor_extension.is_set || is_set(disable_vendor_extension.yfilter)) leaf_name_data.push_back(disable_vendor_extension.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -87,29 +87,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
 
 void MplsOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "disable-vendor-extension")
-    {
-        disable_vendor_extension = value;
-        disable_vendor_extension.value_namespace = name_space;
-        disable_vendor_extension.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "enable-oam")
     {
         enable_oam = value;
         enable_oam.value_namespace = name_space;
         enable_oam.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "disable-vendor-extension")
+    {
+        disable_vendor_extension = value;
+        disable_vendor_extension.value_namespace = name_space;
+        disable_vendor_extension.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsOam::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "disable-vendor-extension")
-    {
-        disable_vendor_extension.yfilter = yfilter;
-    }
     if(value_path == "enable-oam")
     {
         enable_oam.yfilter = yfilter;
+    }
+    if(value_path == "disable-vendor-extension")
+    {
+        disable_vendor_extension.yfilter = yfilter;
     }
 }
 
@@ -140,7 +140,7 @@ std::map<std::pair<std::string, std::string>, std::string> MplsOam::get_namespac
 
 bool MplsOam::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "reply-mode" || name == "disable-vendor-extension" || name == "enable-oam")
+    if(name == "reply-mode" || name == "enable-oam" || name == "disable-vendor-extension")
         return true;
     return false;
 }

@@ -159,14 +159,14 @@ ydk::path::RootSchemaNode::get_keys() const
 // class RootSchemaNodeImpl
 /////////////////////////////////////////////////////////////////////////////////////
 ydk::path::RootSchemaNodeImpl::RootSchemaNodeImpl(struct ly_ctx* ctx, const std::shared_ptr<RepositoryPtr> & repo)
-    : m_ctx{ctx}, m_priv_repo{repo}, m_name_lookup(), m_namespace_lookup()
+    : m_ctx{ctx}, m_priv_repo{repo}, m_name_namespace_lookup()
 {
     populate_all_module_schemas();
 }
 
 ydk::path::RootSchemaNodeImpl::RootSchemaNodeImpl(struct ly_ctx* ctx, const std::shared_ptr<RepositoryPtr> & repo,
-                                                  const std::vector<std::unordered_map<std::string, path::Capability>>& lookup_tables)
-    : m_ctx{ctx}, m_priv_repo{repo}, m_name_lookup({lookup_tables[0]}), m_namespace_lookup({lookup_tables[1]})
+                                                  const std::unordered_map<std::string, path::Capability>& lookup_table)
+    : m_ctx{ctx}, m_priv_repo{repo}, m_name_namespace_lookup(lookup_table)
 {
     populate_all_module_schemas();
 }
@@ -208,12 +208,12 @@ ydk::path::RootSchemaNodeImpl::populate_new_schemas_from_payload(const std::stri
     if (format == ydk::EncodingFormat::XML)
     {
         auto namespaces = get_namespaces_from_xml_payload(payload);
-        modules = m_priv_repo->get_new_ly_modules_from_lookup(m_ctx, namespaces, m_namespace_lookup);
+        modules = m_priv_repo->get_new_ly_modules_from_lookup(m_ctx, namespaces, m_name_namespace_lookup);
     }
     else
     {
         auto module_names = get_module_names_from_json_payload(payload);
-        modules = m_priv_repo->get_new_ly_modules_from_lookup(m_ctx, module_names, m_name_lookup);
+        modules = m_priv_repo->get_new_ly_modules_from_lookup(m_ctx, module_names, m_name_namespace_lookup);
     }
 
     populate_new_schemas(modules);
@@ -221,7 +221,7 @@ ydk::path::RootSchemaNodeImpl::populate_new_schemas_from_payload(const std::stri
 
 void
 ydk::path::RootSchemaNodeImpl::populate_new_schemas_from_path(const std::string& path) {
-    auto new_modules = m_priv_repo->get_new_ly_modules_from_path(m_ctx, path, m_name_lookup);
+    auto new_modules = m_priv_repo->get_new_ly_modules_from_path(m_ctx, path, m_name_namespace_lookup);
     populate_new_schemas(new_modules);
 }
 
@@ -237,13 +237,16 @@ ydk::path::RootSchemaNodeImpl::populate_new_schemas(std::vector<const lys_module
 void
 ydk::path::RootSchemaNodeImpl::populate_augmented_schema_nodes(const struct lys_module* module)
 {
-    for (int i = 0; i < module->augment_size; i++) {
+    for (int i = 0; i < module->augment_size; i++)
+    {
         auto aug = module->augment[i];
         std::vector<lys_node*> ancestors;
         lys_node* node = aug.target;
 
-        while(node) {
-            if (node->nodetype != LYS_USES) {
+        while(node)
+        {
+            if (node->nodetype != LYS_USES)
+            {
                 ancestors.emplace_back(node);
             }
             node = node->parent;
@@ -265,9 +268,27 @@ ydk::path::RootSchemaNodeImpl::populate_augmented_schema_node(std::vector<lys_no
     YLOG_DEBUG("Populating augmented schema node '{}'", std::string(target->name));
 
     lys_node* root = ancestors.back();
+    // quick fix: populate augmented top node if we have not already done so
+    bool found = false;
+    for (auto&c: m_children)
+    {
+        if (c->get_statement().arg == root->name)
+        {
+            found = true;
+            break;
+        }
+    }
+    if (found == false)
+    {
+        m_children.push_back(std::make_unique<SchemaNodeImpl>(this, const_cast<struct lys_node*>(root)));
+    }
+
+    // populate the rest of augmented schema nodes
     ancestors.pop_back();
-    for (auto& c: m_children) {
-        if (c->get_statement().arg == root->name) {
+    for (auto& c: m_children)
+    {
+        if (c->get_statement().arg == root->name)
+        {
             reinterpret_cast<SchemaNodeImpl*>(c.get())->populate_augmented_schema_node(ancestors, target);
         }
     }

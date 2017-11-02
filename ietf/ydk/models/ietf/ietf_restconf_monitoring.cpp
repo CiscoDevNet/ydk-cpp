@@ -330,8 +330,8 @@ RestconfState::Streams::Stream::Stream()
     :
     name{YType::str, "name"},
     description{YType::str, "description"},
-    replay_log_creation_time{YType::str, "replay-log-creation-time"},
-    replay_support{YType::boolean, "replay-support"}
+    replay_support{YType::boolean, "replay-support"},
+    replay_log_creation_time{YType::str, "replay-log-creation-time"}
 {
 
     yang_name = "stream"; yang_parent_name = "streams"; is_top_level_class = false; has_list_ancestor = false;
@@ -350,8 +350,8 @@ bool RestconfState::Streams::Stream::has_data() const
     }
     return name.is_set
 	|| description.is_set
-	|| replay_log_creation_time.is_set
-	|| replay_support.is_set;
+	|| replay_support.is_set
+	|| replay_log_creation_time.is_set;
 }
 
 bool RestconfState::Streams::Stream::has_operation() const
@@ -364,8 +364,8 @@ bool RestconfState::Streams::Stream::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(replay_log_creation_time.yfilter)
-	|| ydk::is_set(replay_support.yfilter);
+	|| ydk::is_set(replay_support.yfilter)
+	|| ydk::is_set(replay_log_creation_time.yfilter);
 }
 
 std::string RestconfState::Streams::Stream::get_absolute_path() const
@@ -388,8 +388,8 @@ std::vector<std::pair<std::string, LeafData> > RestconfState::Streams::Stream::g
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (replay_log_creation_time.is_set || is_set(replay_log_creation_time.yfilter)) leaf_name_data.push_back(replay_log_creation_time.get_name_leafdata());
     if (replay_support.is_set || is_set(replay_support.yfilter)) leaf_name_data.push_back(replay_support.get_name_leafdata());
+    if (replay_log_creation_time.is_set || is_set(replay_log_creation_time.yfilter)) leaf_name_data.push_back(replay_log_creation_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -441,17 +441,17 @@ void RestconfState::Streams::Stream::set_value(const std::string & value_path, c
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "replay-log-creation-time")
-    {
-        replay_log_creation_time = value;
-        replay_log_creation_time.value_namespace = name_space;
-        replay_log_creation_time.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "replay-support")
     {
         replay_support = value;
         replay_support.value_namespace = name_space;
         replay_support.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replay-log-creation-time")
+    {
+        replay_log_creation_time = value;
+        replay_log_creation_time.value_namespace = name_space;
+        replay_log_creation_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -465,19 +465,19 @@ void RestconfState::Streams::Stream::set_filter(const std::string & value_path, 
     {
         description.yfilter = yfilter;
     }
-    if(value_path == "replay-log-creation-time")
-    {
-        replay_log_creation_time.yfilter = yfilter;
-    }
     if(value_path == "replay-support")
     {
         replay_support.yfilter = yfilter;
+    }
+    if(value_path == "replay-log-creation-time")
+    {
+        replay_log_creation_time.yfilter = yfilter;
     }
 }
 
 bool RestconfState::Streams::Stream::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access" || name == "name" || name == "description" || name == "replay-log-creation-time" || name == "replay-support")
+    if(name == "access" || name == "name" || name == "description" || name == "replay-support" || name == "replay-log-creation-time")
         return true;
     return false;
 }

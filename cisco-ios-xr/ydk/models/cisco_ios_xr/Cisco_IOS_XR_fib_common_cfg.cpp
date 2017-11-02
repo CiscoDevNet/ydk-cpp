@@ -252,8 +252,8 @@ bool Fib::PbtsForwardClassFallbacks::has_leaf_or_child_of_name(const std::string
 Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::PbtsForwardClassFallback()
     :
     forward_class_number{YType::str, "forward-class-number"},
-    fallback_class_number_array{YType::uint32, "fallback-class-number-array"},
-    fallback_type{YType::enumeration, "fallback-type"}
+    fallback_type{YType::enumeration, "fallback-type"},
+    fallback_class_number_array{YType::uint32, "fallback-class-number-array"}
 {
 
     yang_name = "pbts-forward-class-fallback"; yang_parent_name = "pbts-forward-class-fallbacks"; is_top_level_class = false; has_list_ancestor = false;
@@ -283,8 +283,8 @@ bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_operation() c
     }
     return is_set(yfilter)
 	|| ydk::is_set(forward_class_number.yfilter)
-	|| ydk::is_set(fallback_class_number_array.yfilter)
-	|| ydk::is_set(fallback_type.yfilter);
+	|| ydk::is_set(fallback_type.yfilter)
+	|| ydk::is_set(fallback_class_number_array.yfilter);
 }
 
 std::string Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_absolute_path() const
@@ -333,15 +333,15 @@ void Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::set_value(const s
         forward_class_number.value_namespace = name_space;
         forward_class_number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fallback-class-number-array")
-    {
-        fallback_class_number_array.append(value);
-    }
     if(value_path == "fallback-type")
     {
         fallback_type = value;
         fallback_type.value_namespace = name_space;
         fallback_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fallback-class-number-array")
+    {
+        fallback_class_number_array.append(value);
     }
 }
 
@@ -351,19 +351,19 @@ void Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::set_filter(const 
     {
         forward_class_number.yfilter = yfilter;
     }
-    if(value_path == "fallback-class-number-array")
-    {
-        fallback_class_number_array.yfilter = yfilter;
-    }
     if(value_path == "fallback-type")
     {
         fallback_type.yfilter = yfilter;
+    }
+    if(value_path == "fallback-class-number-array")
+    {
+        fallback_class_number_array.yfilter = yfilter;
     }
 }
 
 bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "forward-class-number" || name == "fallback-class-number-array" || name == "fallback-type")
+    if(name == "forward-class-number" || name == "fallback-type" || name == "fallback-class-number-array")
         return true;
     return false;
 }
@@ -538,11 +538,11 @@ bool Fib::Platform::LabelSwitchedMulticast::has_leaf_or_child_of_name(const std:
     return false;
 }
 
+const Enum::YLeaf FibPbtsForwardClass::any {8, "any"};
+
 const Enum::YLeaf FibPbtsFallback::list {1, "list"};
 const Enum::YLeaf FibPbtsFallback::any {2, "any"};
 const Enum::YLeaf FibPbtsFallback::drop {3, "drop"};
-
-const Enum::YLeaf FibPbtsForwardClass::any {8, "any"};
 
 
 }

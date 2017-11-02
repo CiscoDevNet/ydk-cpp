@@ -235,9 +235,9 @@ Ipv6Neighbor::Neighbors::Neighbor::Neighbor()
     :
     neighbor_address{YType::str, "neighbor-address"},
     interface_name{YType::str, "interface-name"},
-    encapsulation{YType::enumeration, "encapsulation"},
+    zone{YType::str, "zone"},
     mac_address{YType::str, "mac-address"},
-    zone{YType::str, "zone"}
+    encapsulation{YType::enumeration, "encapsulation"}
 {
 
     yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
@@ -251,9 +251,9 @@ bool Ipv6Neighbor::Neighbors::Neighbor::has_data() const
 {
     return neighbor_address.is_set
 	|| interface_name.is_set
-	|| encapsulation.is_set
+	|| zone.is_set
 	|| mac_address.is_set
-	|| zone.is_set;
+	|| encapsulation.is_set;
 }
 
 bool Ipv6Neighbor::Neighbors::Neighbor::has_operation() const
@@ -261,9 +261,9 @@ bool Ipv6Neighbor::Neighbors::Neighbor::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(neighbor_address.yfilter)
 	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(encapsulation.yfilter)
+	|| ydk::is_set(zone.yfilter)
 	|| ydk::is_set(mac_address.yfilter)
-	|| ydk::is_set(zone.yfilter);
+	|| ydk::is_set(encapsulation.yfilter);
 }
 
 std::string Ipv6Neighbor::Neighbors::Neighbor::get_absolute_path() const
@@ -286,9 +286,9 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Neighbor::Neighbors::Neighbor
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
     if (zone.is_set || is_set(zone.yfilter)) leaf_name_data.push_back(zone.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -319,11 +319,11 @@ void Ipv6Neighbor::Neighbors::Neighbor::set_value(const std::string & value_path
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "encapsulation")
+    if(value_path == "zone")
     {
-        encapsulation = value;
-        encapsulation.value_namespace = name_space;
-        encapsulation.value_namespace_prefix = name_space_prefix;
+        zone = value;
+        zone.value_namespace = name_space;
+        zone.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
@@ -331,11 +331,11 @@ void Ipv6Neighbor::Neighbors::Neighbor::set_value(const std::string & value_path
         mac_address.value_namespace = name_space;
         mac_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "zone")
+    if(value_path == "encapsulation")
     {
-        zone = value;
-        zone.value_namespace = name_space;
-        zone.value_namespace_prefix = name_space_prefix;
+        encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -349,33 +349,29 @@ void Ipv6Neighbor::Neighbors::Neighbor::set_filter(const std::string & value_pat
     {
         interface_name.yfilter = yfilter;
     }
-    if(value_path == "encapsulation")
+    if(value_path == "zone")
     {
-        encapsulation.yfilter = yfilter;
+        zone.yfilter = yfilter;
     }
     if(value_path == "mac-address")
     {
         mac_address.yfilter = yfilter;
     }
-    if(value_path == "zone")
+    if(value_path == "encapsulation")
     {
-        zone.yfilter = yfilter;
+        encapsulation.yfilter = yfilter;
     }
 }
 
 bool Ipv6Neighbor::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "interface-name" || name == "encapsulation" || name == "mac-address" || name == "zone")
+    if(name == "neighbor-address" || name == "interface-name" || name == "zone" || name == "mac-address" || name == "encapsulation")
         return true;
     return false;
 }
 
 const Enum::YLeaf Ipv6srpEncapsulation::srpa {5, "srpa"};
 const Enum::YLeaf Ipv6srpEncapsulation::srpb {6, "srpb"};
-
-const Enum::YLeaf Ipv6NdRouterPref::high {1, "high"};
-const Enum::YLeaf Ipv6NdRouterPref::medium {2, "medium"};
-const Enum::YLeaf Ipv6NdRouterPref::low {3, "low"};
 
 const Enum::YLeaf Ipv6ndMonth::january {0, "january"};
 const Enum::YLeaf Ipv6ndMonth::february {1, "february"};
@@ -389,6 +385,10 @@ const Enum::YLeaf Ipv6ndMonth::september {8, "september"};
 const Enum::YLeaf Ipv6ndMonth::october {9, "october"};
 const Enum::YLeaf Ipv6ndMonth::november {10, "november"};
 const Enum::YLeaf Ipv6ndMonth::december {11, "december"};
+
+const Enum::YLeaf Ipv6NdRouterPref::high {1, "high"};
+const Enum::YLeaf Ipv6NdRouterPref::medium {2, "medium"};
+const Enum::YLeaf Ipv6NdRouterPref::low {3, "low"};
 
 
 }

@@ -8,16 +8,17 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_ip_bfd_oper_0.hpp"
+#include "Cisco_IOS_XR_ip_bfd_oper_1.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_bfd_oper {
 
 
-class Bfd::SessionBriefs : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
 {
     public:
-        SessionBriefs();
-        ~SessionBriefs();
+        LspPingTxLastTime();
+        ~LspPingTxLastTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -30,18 +31,17 @@ class Bfd::SessionBriefs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class SessionBrief; //type: Bfd::SessionBriefs::SessionBrief
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionBriefs::SessionBrief> > session_brief;
-        
-}; // Bfd::SessionBriefs
+}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime
 
 
-class Bfd::SessionBriefs::SessionBrief : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
 {
     public:
-        SessionBrief();
-        ~SessionBrief();
+        LspPingTxLastErrorTime();
+        ~LspPingTxLastErrorTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -54,26 +54,17 @@ class Bfd::SessionBriefs::SessionBrief : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf location; //type: string
-        ydk::YLeaf node_id; //type: string
-        ydk::YLeaf state; //type: BfdMgmtSessionState
-        ydk::YLeaf session_type; //type: BfdSession
-        ydk::YLeaf session_subtype; //type: string
-        ydk::YLeaf session_flags; //type: uint32
-        class StatusBriefInformation; //type: Bfd::SessionBriefs::SessionBrief::StatusBriefInformation
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionBriefs::SessionBrief::StatusBriefInformation> status_brief_information;
-        
-}; // Bfd::SessionBriefs::SessionBrief
+}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
 
-class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
 {
     public:
-        StatusBriefInformation();
-        ~StatusBriefInformation();
+        LspPingRxLastTime();
+        ~LspPingRxLastTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -86,20 +77,17 @@ class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AsyncIntervalMultiplier; //type: Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
-        class EchoIntervalMultiplier; //type: Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier> async_interval_multiplier;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier> echo_interval_multiplier;
-        
-}; // Bfd::SessionBriefs::SessionBrief::StatusBriefInformation
+}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime
 
 
-class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation : public ydk::Entity
 {
     public:
-        AsyncIntervalMultiplier();
-        ~AsyncIntervalMultiplier();
+        OwnerInformation();
+        ~OwnerInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -112,98 +100,16 @@ class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMul
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf negotiated_remote_transmit_interval; //type: uint32
-        ydk::YLeaf negotiated_local_transmit_interval; //type: uint32
-        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf interval; //type: uint32
         ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
-}; // Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
-
-
-class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
-{
-    public:
-        EchoIntervalMultiplier();
-        ~EchoIntervalMultiplier();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf negotiated_transmit_interval; //type: uint32
-        ydk::YLeaf detection_time; //type: uint32
-        ydk::YLeaf detection_multiplier; //type: uint32
-
-}; // Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier
+}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation
 
 
-class Bfd::SessionDetails : public ydk::Entity
-{
-    public:
-        SessionDetails();
-        ~SessionDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class SessionDetail; //type: Bfd::SessionDetails::SessionDetail
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail> > session_detail;
-        
-}; // Bfd::SessionDetails
-
-
-class Bfd::SessionDetails::SessionDetail : public ydk::Entity
-{
-    public:
-        SessionDetail();
-        ~SessionDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf location; //type: string
-        class StatusInformation; //type: Bfd::SessionDetails::SessionDetail::StatusInformation
-        class MpDownloadState; //type: Bfd::SessionDetails::SessionDetail::MpDownloadState
-        class LspPingInfo; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo
-        class OwnerInformation; //type: Bfd::SessionDetails::SessionDetail::OwnerInformation
-        class AssociationInformation; //type: Bfd::SessionDetails::SessionDetail::AssociationInformation
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::AssociationInformation> > association_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::LspPingInfo> lsp_ping_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::MpDownloadState> mp_download_state;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::OwnerInformation> > owner_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation> status_information;
-        
-}; // Bfd::SessionDetails::SessionDetail
-
-
-class Bfd::SessionDetails::SessionDetail::AssociationInformation : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation : public ydk::Entity
 {
     public:
         AssociationInformation();
@@ -223,16 +129,16 @@ class Bfd::SessionDetails::SessionDetail::AssociationInformation : public ydk::E
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf sessiontype; //type: BfdSession
         ydk::YLeaf local_discriminator; //type: uint32
-        class IpDestinationAddress; //type: Bfd::SessionDetails::SessionDetail::AssociationInformation::IpDestinationAddress
-        class OwnerInformation; //type: Bfd::SessionDetails::SessionDetail::AssociationInformation::OwnerInformation
+        class IpDestinationAddress; //type: Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress
+        class OwnerInformation; //type: Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::AssociationInformation::IpDestinationAddress> ip_destination_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::AssociationInformation::OwnerInformation> > owner_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress> ip_destination_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
         
-}; // Bfd::SessionDetails::SessionDetail::AssociationInformation
+}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation
 
 
-class Bfd::SessionDetails::SessionDetail::AssociationInformation::IpDestinationAddress : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress : public ydk::Entity
 {
     public:
         IpDestinationAddress();
@@ -254,10 +160,10 @@ class Bfd::SessionDetails::SessionDetail::AssociationInformation::IpDestinationA
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Bfd::SessionDetails::SessionDetail::AssociationInformation::IpDestinationAddress
+}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress
 
 
-class Bfd::SessionDetails::SessionDetail::AssociationInformation::OwnerInformation : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -280,14 +186,14 @@ class Bfd::SessionDetails::SessionDetail::AssociationInformation::OwnerInformati
         ydk::YLeaf adjusted_detection_multiplier; //type: uint32
         ydk::YLeaf name; //type: string
 
-}; // Bfd::SessionDetails::SessionDetail::AssociationInformation::OwnerInformation
+}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation
 
 
-class Bfd::SessionDetails::SessionDetail::LspPingInfo : public ydk::Entity
+class Bfd::RelationBriefs : public ydk::Entity
 {
     public:
-        LspPingInfo();
-        ~LspPingInfo();
+        RelationBriefs();
+        ~RelationBriefs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -300,31 +206,18 @@ class Bfd::SessionDetails::SessionDetail::LspPingInfo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf lsp_ping_tx_count; //type: uint32
-        ydk::YLeaf lsp_ping_tx_error_count; //type: uint32
-        ydk::YLeaf lsp_ping_tx_last_rc; //type: string
-        ydk::YLeaf lsp_ping_tx_last_error_rc; //type: string
-        ydk::YLeaf lsp_ping_rx_last_discr; //type: uint32
-        ydk::YLeaf lsp_ping_rx_count; //type: uint32
-        ydk::YLeaf lsp_ping_rx_last_code; //type: uint8
-        ydk::YLeaf lsp_ping_rx_last_subcode; //type: uint8
-        ydk::YLeaf lsp_ping_rx_last_output; //type: string
-        class LspPingTxLastTime; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime
-        class LspPingTxLastErrorTime; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime
-        class LspPingRxLastTime; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime
+        class RelationBrief; //type: Bfd::RelationBriefs::RelationBrief
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime> lsp_ping_rx_last_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime> lsp_ping_tx_last_error_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime> lsp_ping_tx_last_time;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationBriefs::RelationBrief> > relation_brief;
         
-}; // Bfd::SessionDetails::SessionDetail::LspPingInfo
+}; // Bfd::RelationBriefs
 
 
-class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
+class Bfd::RelationBriefs::RelationBrief : public ydk::Entity
 {
     public:
-        LspPingRxLastTime();
-        ~LspPingRxLastTime();
+        RelationBrief();
+        ~RelationBrief();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -337,88 +230,21 @@ class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf seconds; //type: uint64
-        ydk::YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        class LinkInformation; //type: Bfd::RelationBriefs::RelationBrief::LinkInformation
 
-}; // Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime
-
-
-class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
-{
-    public:
-        LspPingTxLastErrorTime();
-        ~LspPingTxLastErrorTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf seconds; //type: uint64
-        ydk::YLeaf nanoseconds; //type: uint32
-
-}; // Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime
-
-
-class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
-{
-    public:
-        LspPingTxLastTime();
-        ~LspPingTxLastTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf seconds; //type: uint64
-        ydk::YLeaf nanoseconds; //type: uint32
-
-}; // Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime
-
-
-class Bfd::SessionDetails::SessionDetail::MpDownloadState : public ydk::Entity
-{
-    public:
-        MpDownloadState();
-        ~MpDownloadState();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf mp_download_state; //type: BfdMpDownloadState
-        class ChangeTime; //type: Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime> change_time;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationBriefs::RelationBrief::LinkInformation> > link_information;
         
-}; // Bfd::SessionDetails::SessionDetail::MpDownloadState
+}; // Bfd::RelationBriefs::RelationBrief
 
 
-class Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime : public ydk::Entity
+class Bfd::RelationBriefs::RelationBrief::LinkInformation : public ydk::Entity
 {
     public:
-        ChangeTime();
-        ~ChangeTime();
+        LinkInformation();
+        ~LinkInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -431,17 +257,17 @@ class Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf seconds; //type: uint64
-        ydk::YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf interface_name; //type: string
 
-}; // Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime
+}; // Bfd::RelationBriefs::RelationBrief::LinkInformation
 
 
-class Bfd::SessionDetails::SessionDetail::OwnerInformation : public ydk::Entity
+class Bfd::ClientBriefs : public ydk::Entity
 {
     public:
-        OwnerInformation();
-        ~OwnerInformation();
+        ClientBriefs();
+        ~ClientBriefs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -454,20 +280,43 @@ class Bfd::SessionDetails::SessionDetail::OwnerInformation : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interval; //type: uint32
-        ydk::YLeaf detection_multiplier; //type: uint32
-        ydk::YLeaf adjusted_interval; //type: uint32
-        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        class ClientBrief; //type: Bfd::ClientBriefs::ClientBrief
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::ClientBriefs::ClientBrief> > client_brief;
+        
+}; // Bfd::ClientBriefs
+
+
+class Bfd::ClientBriefs::ClientBrief : public ydk::Entity
+{
+    public:
+        ClientBrief();
+        ~ClientBrief();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
         ydk::YLeaf name; //type: string
+        ydk::YLeaf name_xr; //type: string
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf session_count; //type: uint32
 
-}; // Bfd::SessionDetails::SessionDetail::OwnerInformation
+}; // Bfd::ClientBriefs::ClientBrief
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteHeadMultiPaths : public ydk::Entity
 {
     public:
-        StatusInformation();
-        ~StatusInformation();
+        Ipv4BfDoMplsteHeadMultiPaths();
+        ~Ipv4BfDoMplsteHeadMultiPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -480,48 +329,83 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf sessiontype; //type: BfdSession
+        class Ipv4BfDoMplsteHeadMultiPath; //type: Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath> > ipv4bf_do_mplste_head_multi_path;
+        
+}; // Bfd::Ipv4BfDoMplsteHeadMultiPaths
+
+
+class Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath : public ydk::Entity
+{
+    public:
+        Ipv4BfDoMplsteHeadMultiPath();
+        ~Ipv4BfDoMplsteHeadMultiPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf incoming_label; //type: int32
+        ydk::YLeaf fe_ctype; //type: int32
+        ydk::YLeaf fec_subgroup_id; //type: int32
+        ydk::YLeaf feclspid; //type: int32
+        ydk::YLeaf fec_tunnel_id; //type: int32
+        ydk::YLeaf fec_extended_tunnel_id; //type: string
+        ydk::YLeaf fec_source; //type: string
+        ydk::YLeaf fec_destination; //type: string
+        ydk::YLeaf fecp2mpid; //type: int32
+        ydk::YLeaf fec_subgroup_originator; //type: string
+        ydk::YLeaf fec_ctype; //type: int32
+        ydk::YLeaf location; //type: string
         ydk::YLeaf session_subtype; //type: string
         ydk::YLeaf state; //type: BfdMgmtSessionState
         ydk::YLeaf local_discriminator; //type: uint32
-        ydk::YLeaf remote_discriminator; //type: uint32
-        ydk::YLeaf to_up_state_count; //type: uint32
-        ydk::YLeaf desired_minimum_echo_transmit_interval; //type: uint32
-        ydk::YLeaf remote_negotiated_interval; //type: uint32
-        ydk::YLeaf latency_number; //type: uint32
-        ydk::YLeaf latency_minimum; //type: uint32
-        ydk::YLeaf latency_maximum; //type: uint32
-        ydk::YLeaf latency_average; //type: uint32
         ydk::YLeaf node_id; //type: string
-        ydk::YLeaf internal_label; //type: uint32
-        class SourceAddress; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress
-        class LastStateChange; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange
-        class TransmitPacket; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket
-        class ReceivePacket; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket
-        class StatusBriefInformation; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation
-        class AsyncTransmitStatistics; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics
-        class AsyncReceiveStatistics; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics
-        class EchoTransmitStatistics; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics
-        class EchoReceivedStatistics; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics
+        ydk::YLeaf incoming_label_xr; //type: uint32
+        ydk::YLeaf session_interface_name; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics> async_receive_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics> async_transmit_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics> echo_received_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics> echo_transmit_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange> last_state_change;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket> receive_packet;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress> source_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket> transmit_packet;
+}; // Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath
+
+
+class Bfd::RelationDetails : public ydk::Entity
+{
+    public:
+        RelationDetails();
+        ~RelationDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RelationDetail; //type: Bfd::RelationDetails::RelationDetail
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail> > relation_detail;
         
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation
+}; // Bfd::RelationDetails
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics : public ydk::Entity
+class Bfd::RelationDetails::RelationDetail : public ydk::Entity
 {
     public:
-        AsyncReceiveStatistics();
-        ~AsyncReceiveStatistics();
+        RelationDetail();
+        ~RelationDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -534,160 +418,77 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatist
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf number; //type: uint32
-        ydk::YLeaf minimum; //type: uint32
-        ydk::YLeaf maximum; //type: uint32
-        ydk::YLeaf average; //type: uint32
-        ydk::YLeaf last; //type: uint32
-
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics
-
-
-class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics : public ydk::Entity
-{
-    public:
-        AsyncTransmitStatistics();
-        ~AsyncTransmitStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf number; //type: uint32
-        ydk::YLeaf minimum; //type: uint32
-        ydk::YLeaf maximum; //type: uint32
-        ydk::YLeaf average; //type: uint32
-        ydk::YLeaf last; //type: uint32
-
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics
-
-
-class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics : public ydk::Entity
-{
-    public:
-        EchoReceivedStatistics();
-        ~EchoReceivedStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf number; //type: uint32
-        ydk::YLeaf minimum; //type: uint32
-        ydk::YLeaf maximum; //type: uint32
-        ydk::YLeaf average; //type: uint32
-        ydk::YLeaf last; //type: uint32
-
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics
-
-
-class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics : public ydk::Entity
-{
-    public:
-        EchoTransmitStatistics();
-        ~EchoTransmitStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf number; //type: uint32
-        ydk::YLeaf minimum; //type: uint32
-        ydk::YLeaf maximum; //type: uint32
-        ydk::YLeaf average; //type: uint32
-        ydk::YLeaf last; //type: uint32
-
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics
-
-
-class Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange : public ydk::Entity
-{
-    public:
-        LastStateChange();
-        ~LastStateChange();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf days; //type: uint32
-        ydk::YLeaf hours; //type: uint8
-        ydk::YLeaf minutes; //type: uint8
-        ydk::YLeaf seconds; //type: uint8
-
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange
-
-
-class Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket : public ydk::Entity
-{
-    public:
-        ReceivePacket();
-        ~ReceivePacket();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf version; //type: uint8
-        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
-        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf destination_address; //type: string
         ydk::YLeaf state; //type: BfdMgmtSessionState
-        ydk::YLeaf demand; //type: int32
-        ydk::YLeaf poll; //type: int32
-        ydk::YLeaf final; //type: int32
-        ydk::YLeaf control_plane_independent; //type: int32
-        ydk::YLeaf authentication_present; //type: int32
-        ydk::YLeaf detection_multiplier; //type: uint32
-        ydk::YLeaf length; //type: uint32
-        ydk::YLeaf my_discriminator; //type: uint32
-        ydk::YLeaf your_discriminator; //type: uint32
-        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
-        ydk::YLeaf required_minimum_receive_interval; //type: uint32
-        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf local_discriminator; //type: uint32
+        class LinkInformation; //type: Bfd::RelationDetails::RelationDetail::LinkInformation
+        class AssociationInformation; //type: Bfd::RelationDetails::RelationDetail::AssociationInformation
 
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::LinkInformation> > link_information;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation> > association_information;
+        
+}; // Bfd::RelationDetails::RelationDetail
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress : public ydk::Entity
+class Bfd::RelationDetails::RelationDetail::LinkInformation : public ydk::Entity
 {
     public:
-        SourceAddress();
-        ~SourceAddress();
+        LinkInformation();
+        ~LinkInformation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf local_discriminator; //type: uint32
+
+}; // Bfd::RelationDetails::RelationDetail::LinkInformation
+
+
+class Bfd::RelationDetails::RelationDetail::AssociationInformation : public ydk::Entity
+{
+    public:
+        AssociationInformation();
+        ~AssociationInformation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf local_discriminator; //type: uint32
+        class IpDestinationAddress; //type: Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress
+        class OwnerInformation; //type: Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress> ip_destination_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation> > owner_information;
+        
+}; // Bfd::RelationDetails::RelationDetail::AssociationInformation
+
+
+class Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress : public ydk::Entity
+{
+    public:
+        IpDestinationAddress();
+        ~IpDestinationAddress();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -705,10 +506,179 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress : pub
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress
+}; // Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation : public ydk::Entity
+class Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation : public ydk::Entity
+{
+    public:
+        OwnerInformation();
+        ~OwnerInformation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
+
+}; // Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation
+
+
+class Bfd::Ipv4BfDoMplsteTailCounters : public ydk::Entity
+{
+    public:
+        Ipv4BfDoMplsteTailCounters();
+        ~Ipv4BfDoMplsteTailCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ipv4BfDoMplsteTailPacketCounters; //type: Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters> ipv4bf_do_mplste_tail_packet_counters;
+        
+}; // Bfd::Ipv4BfDoMplsteTailCounters
+
+
+class Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters : public ydk::Entity
+{
+    public:
+        Ipv4BfDoMplsteTailPacketCounters();
+        ~Ipv4BfDoMplsteTailPacketCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ipv4BfDoMplsteTailPacketCounter; //type: Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter> > ipv4bf_do_mplste_tail_packet_counter;
+        
+}; // Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters
+
+
+class Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter : public ydk::Entity
+{
+    public:
+        Ipv4BfDoMplsteTailPacketCounter();
+        ~Ipv4BfDoMplsteTailPacketCounter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf incoming_label; //type: int32
+        ydk::YLeaf fe_ctype; //type: int32
+        ydk::YLeaf fec_subgroup_id; //type: int32
+        ydk::YLeaf feclspid; //type: int32
+        ydk::YLeaf fec_tunnel_id; //type: int32
+        ydk::YLeaf fec_extended_tunnel_id; //type: string
+        ydk::YLeaf fec_source; //type: string
+        ydk::YLeaf fec_destination; //type: string
+        ydk::YLeaf fecp2mpid; //type: int32
+        ydk::YLeaf fec_subgroup_originator; //type: string
+        ydk::YLeaf fec_ctype; //type: int32
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf hello_transmit_count; //type: uint32
+        ydk::YLeaf hello_receive_count; //type: uint32
+        ydk::YLeaf echo_transmit_count; //type: uint32
+        ydk::YLeaf echo_receive_count; //type: uint32
+        ydk::YLeaf display_type; //type: BfdMgmtPktDisplay
+
+}; // Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter
+
+
+class Bfd::Ipv6SingleHopSessionBriefs : public ydk::Entity
+{
+    public:
+        Ipv6SingleHopSessionBriefs();
+        ~Ipv6SingleHopSessionBriefs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ipv6SingleHopSessionBrief; //type: Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief> > ipv6_single_hop_session_brief;
+        
+}; // Bfd::Ipv6SingleHopSessionBriefs
+
+
+class Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief : public ydk::Entity
+{
+    public:
+        Ipv6SingleHopSessionBrief();
+        ~Ipv6SingleHopSessionBrief();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf session_type; //type: BfdSession
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf session_flags; //type: uint32
+        class StatusBriefInformation; //type: Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation> status_brief_information;
+        
+}; // Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief
+
+
+class Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation : public ydk::Entity
 {
     public:
         StatusBriefInformation();
@@ -725,16 +695,16 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformat
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class AsyncIntervalMultiplier; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
-        class EchoIntervalMultiplier; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
+        class AsyncIntervalMultiplier; //type: Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
+        class EchoIntervalMultiplier; //type: Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier> async_interval_multiplier;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier> echo_interval_multiplier;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier> async_interval_multiplier;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier> echo_interval_multiplier;
         
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation
+}; // Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
+class Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
 {
     public:
         AsyncIntervalMultiplier();
@@ -756,10 +726,10 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformat
         ydk::YLeaf detection_time; //type: uint32
         ydk::YLeaf detection_multiplier; //type: uint32
 
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
+}; // Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
+class Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
 {
     public:
         EchoIntervalMultiplier();
@@ -780,14 +750,14 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformat
         ydk::YLeaf detection_time; //type: uint32
         ydk::YLeaf detection_multiplier; //type: uint32
 
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
+}; // Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket : public ydk::Entity
+class Bfd::Ipv4BfDoMplsteTailMultiPaths : public ydk::Entity
 {
     public:
-        TransmitPacket();
-        ~TransmitPacket();
+        Ipv4BfDoMplsteTailMultiPaths();
+        ~Ipv4BfDoMplsteTailMultiPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -800,124 +770,58 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf version; //type: uint8
-        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
-        ydk::YLeaf ihear_you; //type: int32
+        class Ipv4BfDoMplsteTailMultiPath; //type: Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath> > ipv4bf_do_mplste_tail_multi_path;
+        
+}; // Bfd::Ipv4BfDoMplsteTailMultiPaths
+
+
+class Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath : public ydk::Entity
+{
+    public:
+        Ipv4BfDoMplsteTailMultiPath();
+        ~Ipv4BfDoMplsteTailMultiPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf incoming_label; //type: int32
+        ydk::YLeaf fe_ctype; //type: int32
+        ydk::YLeaf fec_subgroup_id; //type: int32
+        ydk::YLeaf feclspid; //type: int32
+        ydk::YLeaf fec_tunnel_id; //type: int32
+        ydk::YLeaf fec_extended_tunnel_id; //type: string
+        ydk::YLeaf fec_source; //type: string
+        ydk::YLeaf fec_destination; //type: string
+        ydk::YLeaf fecp2mpid; //type: int32
+        ydk::YLeaf fec_subgroup_originator; //type: string
+        ydk::YLeaf fec_ctype; //type: int32
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf session_subtype; //type: string
         ydk::YLeaf state; //type: BfdMgmtSessionState
-        ydk::YLeaf demand; //type: int32
-        ydk::YLeaf poll; //type: int32
-        ydk::YLeaf final; //type: int32
-        ydk::YLeaf control_plane_independent; //type: int32
-        ydk::YLeaf authentication_present; //type: int32
-        ydk::YLeaf detection_multiplier; //type: uint32
-        ydk::YLeaf length; //type: uint32
-        ydk::YLeaf my_discriminator; //type: uint32
-        ydk::YLeaf your_discriminator; //type: uint32
-        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
-        ydk::YLeaf required_minimum_receive_interval; //type: uint32
-        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
-
-}; // Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket
-
-
-class Bfd::SessionMibs : public ydk::Entity
-{
-    public:
-        SessionMibs();
-        ~SessionMibs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class SessionMib; //type: Bfd::SessionMibs::SessionMib
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionMibs::SessionMib> > session_mib;
-        
-}; // Bfd::SessionMibs
-
-
-class Bfd::SessionMibs::SessionMib : public ydk::Entity
-{
-    public:
-        SessionMib();
-        ~SessionMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf discriminator; //type: int32
         ydk::YLeaf local_discriminator; //type: uint32
-        ydk::YLeaf remote_discriminator; //type: uint32
-        ydk::YLeaf sessionversion; //type: uint32
-        ydk::YLeaf session_state; //type: uint32
-        ydk::YLeaf trap_bitmap; //type: uint32
-        ydk::YLeaf pkt_in; //type: uint64
-        ydk::YLeaf pkt_out; //type: uint64
-        ydk::YLeaf last_up_time_sec; //type: uint64
-        ydk::YLeaf last_up_time_nsec; //type: uint32
-        ydk::YLeaf last_down_time_sec; //type: uint64
-        ydk::YLeaf last_down_time_nsec; //type: uint32
-        ydk::YLeaf last_down_diag; //type: BfdMgmtSessionDiag
-        ydk::YLeaf up_counter; //type: uint32
-        ydk::YLeaf last_time_cached; //type: uint64
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf int_handle; //type: uint32
-        ydk::YLeaf detection_multiplier; //type: uint32
-        ydk::YLeaf desired_min_tx_interval; //type: uint32
-        ydk::YLeaf required_min_rx_interval; //type: uint32
-        ydk::YLeaf required_min_rx_echo_interval; //type: uint32
-        class DestAddress; //type: Bfd::SessionMibs::SessionMib::DestAddress
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf incoming_label_xr; //type: uint32
+        ydk::YLeaf session_interface_name; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionMibs::SessionMib::DestAddress> dest_address;
-        
-}; // Bfd::SessionMibs::SessionMib
+}; // Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath
 
 
-class Bfd::SessionMibs::SessionMib::DestAddress : public ydk::Entity
+class Bfd::Ipv4MultiHopMultiPaths : public ydk::Entity
 {
     public:
-        DestAddress();
-        ~DestAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BfdAfId
-        ydk::YLeaf dummy; //type: uint8
-        ydk::YLeaf ipv4; //type: string
-        ydk::YLeaf ipv6; //type: string
-
-}; // Bfd::SessionMibs::SessionMib::DestAddress
-
-
-class Bfd::Summary : public ydk::Entity
-{
-    public:
-        Summary();
-        ~Summary();
+        Ipv4MultiHopMultiPaths();
+        ~Ipv4MultiHopMultiPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -930,14 +834,69 @@ class Bfd::Summary : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class SessionState; //type: Bfd::Summary::SessionState
+        class Ipv4MultiHopMultiPath; //type: Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Summary::SessionState> session_state;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath> > ipv4_multi_hop_multi_path;
         
-}; // Bfd::Summary
+}; // Bfd::Ipv4MultiHopMultiPaths
 
 
-class Bfd::Summary::SessionState : public ydk::Entity
+class Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath : public ydk::Entity
+{
+    public:
+        Ipv4MultiHopMultiPath();
+        ~Ipv4MultiHopMultiPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf incoming_label_xr; //type: uint32
+        ydk::YLeaf session_interface_name; //type: string
+
+}; // Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath
+
+
+class Bfd::Ipv4BfDoMplsteHeadSummary : public ydk::Entity
+{
+    public:
+        Ipv4BfDoMplsteHeadSummary();
+        ~Ipv4BfDoMplsteHeadSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class SessionState; //type: Bfd::Ipv4BfDoMplsteHeadSummary::SessionState
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSummary::SessionState> session_state;
+        
+}; // Bfd::Ipv4BfDoMplsteHeadSummary
+
+
+class Bfd::Ipv4BfDoMplsteHeadSummary::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -959,7 +918,7 @@ class Bfd::Summary::SessionState : public ydk::Entity
         ydk::YLeaf up_count; //type: uint32
         ydk::YLeaf unknown_count; //type: uint32
 
-}; // Bfd::Summary::SessionState
+}; // Bfd::Ipv4BfDoMplsteHeadSummary::SessionState
 
 
 }

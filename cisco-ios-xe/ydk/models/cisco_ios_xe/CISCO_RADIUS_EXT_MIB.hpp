@@ -35,18 +35,18 @@ class CISCORADIUSEXTMIB : public ydk::Entity
         class Creclientauthentication; //type: CISCORADIUSEXTMIB::Creclientauthentication
         class Creclientaccounting; //type: CISCORADIUSEXTMIB::Creclientaccounting
 
-        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientaccounting> creclientaccounting;
-        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientauthentication> creclientauthentication;
         std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientglobal> creclientglobal;
+        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientauthentication> creclientauthentication;
+        std::shared_ptr<cisco_ios_xe::CISCO_RADIUS_EXT_MIB::CISCORADIUSEXTMIB::Creclientaccounting> creclientaccounting;
         
 }; // CISCORADIUSEXTMIB
 
 
-class CISCORADIUSEXTMIB::Creclientaccounting : public ydk::Entity
+class CISCORADIUSEXTMIB::Creclientglobal : public ydk::Entity
 {
     public:
-        Creclientaccounting();
-        ~Creclientaccounting();
+        Creclientglobal();
+        ~Creclientglobal();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,21 +59,17 @@ class CISCORADIUSEXTMIB::Creclientaccounting : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf creacctclientbadauthenticators; //type: uint32
-        ydk::YLeaf creacctclientunknownresponses; //type: uint32
-        ydk::YLeaf creacctclienttotalpacketswithresponses; //type: uint32
-        ydk::YLeaf creacctclientbufferallocfailures; //type: uint32
-        ydk::YLeaf creacctclienttotalresponses; //type: uint32
-        ydk::YLeaf creacctclienttotalpacketswithoutresponses; //type: uint32
-        ydk::YLeaf creacctclientaverageresponsedelay; //type: int32
-        ydk::YLeaf creacctclientmaxresponsedelay; //type: int32
-        ydk::YLeaf creacctclientmaxbuffersize; //type: uint32
-        ydk::YLeaf creacctclienttimeouts; //type: uint32
-        ydk::YLeaf creacctclientdupids; //type: uint32
-        ydk::YLeaf creacctclientmalformedresponses; //type: uint32
-        ydk::YLeaf creacctclientlastusedsourceid; //type: uint32
+        ydk::YLeaf creclienttotalmaxinqlength; //type: uint32
+        ydk::YLeaf creclienttotalmaxwaitqlength; //type: uint32
+        ydk::YLeaf creclienttotalmaxdoneqlength; //type: uint32
+        ydk::YLeaf creclienttotalaccessrejects; //type: uint32
+        ydk::YLeaf creclienttotalaverageresponsedelay; //type: int32
+        ydk::YLeaf creclientsourceportrangestart; //type: uint16
+        ydk::YLeaf creclientsourceportrangeend; //type: uint16
+        ydk::YLeaf creclientlastusedsourceport; //type: uint16
+        ydk::YLeaf creclientlastusedsourceid; //type: uint32
 
-}; // CISCORADIUSEXTMIB::Creclientaccounting
+}; // CISCORADIUSEXTMIB::Creclientglobal
 
 
 class CISCORADIUSEXTMIB::Creclientauthentication : public ydk::Entity
@@ -110,11 +106,11 @@ class CISCORADIUSEXTMIB::Creclientauthentication : public ydk::Entity
 }; // CISCORADIUSEXTMIB::Creclientauthentication
 
 
-class CISCORADIUSEXTMIB::Creclientglobal : public ydk::Entity
+class CISCORADIUSEXTMIB::Creclientaccounting : public ydk::Entity
 {
     public:
-        Creclientglobal();
-        ~Creclientglobal();
+        Creclientaccounting();
+        ~Creclientaccounting();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -127,17 +123,21 @@ class CISCORADIUSEXTMIB::Creclientglobal : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf creclienttotalmaxinqlength; //type: uint32
-        ydk::YLeaf creclienttotalmaxwaitqlength; //type: uint32
-        ydk::YLeaf creclienttotalmaxdoneqlength; //type: uint32
-        ydk::YLeaf creclienttotalaccessrejects; //type: uint32
-        ydk::YLeaf creclienttotalaverageresponsedelay; //type: int32
-        ydk::YLeaf creclientsourceportrangestart; //type: uint16
-        ydk::YLeaf creclientsourceportrangeend; //type: uint16
-        ydk::YLeaf creclientlastusedsourceport; //type: uint16
-        ydk::YLeaf creclientlastusedsourceid; //type: uint32
+        ydk::YLeaf creacctclientbadauthenticators; //type: uint32
+        ydk::YLeaf creacctclientunknownresponses; //type: uint32
+        ydk::YLeaf creacctclienttotalpacketswithresponses; //type: uint32
+        ydk::YLeaf creacctclientbufferallocfailures; //type: uint32
+        ydk::YLeaf creacctclienttotalresponses; //type: uint32
+        ydk::YLeaf creacctclienttotalpacketswithoutresponses; //type: uint32
+        ydk::YLeaf creacctclientaverageresponsedelay; //type: int32
+        ydk::YLeaf creacctclientmaxresponsedelay; //type: int32
+        ydk::YLeaf creacctclientmaxbuffersize; //type: uint32
+        ydk::YLeaf creacctclienttimeouts; //type: uint32
+        ydk::YLeaf creacctclientdupids; //type: uint32
+        ydk::YLeaf creacctclientmalformedresponses; //type: uint32
+        ydk::YLeaf creacctclientlastusedsourceid; //type: uint32
 
-}; // CISCORADIUSEXTMIB::Creclientglobal
+}; // CISCORADIUSEXTMIB::Creclientaccounting
 
 
 }

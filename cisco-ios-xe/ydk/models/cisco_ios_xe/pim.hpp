@@ -19,15 +19,6 @@ class GroupToRpMappingMode : public virtual ydk::Identity
 
 }; // GroupToRpMappingMode
 
-class AsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        AsmMappingMode();
-        ~AsmMappingMode();
-
-
-}; // AsmMappingMode
-
 class DmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
@@ -36,24 +27,6 @@ class DmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual yd
 
 
 }; // DmMappingMode
-
-class OtherMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        OtherMappingMode();
-        ~OtherMappingMode();
-
-
-}; // OtherMappingMode
-
-class PimBidirMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        PimBidirMappingMode();
-        ~PimBidirMappingMode();
-
-
-}; // PimBidirMappingMode
 
 class SmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
@@ -64,6 +37,15 @@ class SmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual yd
 
 }; // SmMappingMode
 
+class PimBidirMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
+{
+    public:
+        PimBidirMappingMode();
+        ~PimBidirMappingMode();
+
+
+}; // PimBidirMappingMode
+
 class SsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
@@ -72,6 +54,24 @@ class SsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual y
 
 
 }; // SsmMappingMode
+
+class AsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
+{
+    public:
+        AsmMappingMode();
+        ~AsmMappingMode();
+
+
+}; // AsmMappingMode
+
+class OtherMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
+{
+    public:
+        OtherMappingMode();
+        ~OtherMappingMode();
+
+
+}; // OtherMappingMode
 
 class RouteProtocolType : public ydk::Enum
 {
@@ -114,6 +114,17 @@ class MrouteProtocolType : public ydk::Enum
 
 };
 
+class PimMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sparse;
+        static const ydk::Enum::YLeaf dense;
+        static const ydk::Enum::YLeaf sparse_dense;
+        static const ydk::Enum::YLeaf dm_proxy;
+        static const ydk::Enum::YLeaf none;
+
+};
+
 class Origin : public ydk::Enum
 {
     public:
@@ -127,17 +138,6 @@ class Origin : public ydk::Enum
         static const ydk::Enum::YLeaf auto_rp;
         static const ydk::Enum::YLeaf bsr;
         static const ydk::Enum::YLeaf msdp;
-
-};
-
-class PimMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sparse;
-        static const ydk::Enum::YLeaf dense;
-        static const ydk::Enum::YLeaf sparse_dense;
-        static const ydk::Enum::YLeaf dm_proxy;
-        static const ydk::Enum::YLeaf none;
 
 };
 

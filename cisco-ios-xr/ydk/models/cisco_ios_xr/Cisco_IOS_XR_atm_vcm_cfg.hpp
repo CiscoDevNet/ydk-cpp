@@ -17,18 +17,18 @@ class AtmVpiBitsMode : public ydk::Enum
 
 };
 
-class AtmPvpTestMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf loop;
-
-};
-
 class AtmPvcTestMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf loop;
         static const ydk::Enum::YLeaf reserved;
+
+};
+
+class AtmPvpTestMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf loop;
 
 };
 

@@ -55,13 +55,12 @@ class NotifSyslogAndSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimi
 
 }; // NotifSyslogAndSnmpTrap
 
-class MacLimitAction : public ydk::Enum
+class EthTrafficClass : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf flood;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unknown_unicast;
 
 };
 
@@ -73,12 +72,13 @@ class MacAgingType : public ydk::Enum
 
 };
 
-class EthTrafficClass : public ydk::Enum
+class MacLimitAction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unknown_unicast;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 

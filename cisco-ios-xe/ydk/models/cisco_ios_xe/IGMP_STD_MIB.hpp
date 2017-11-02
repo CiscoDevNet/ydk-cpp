@@ -35,63 +35,10 @@ class IGMPSTDMIB : public ydk::Entity
         class Igmpinterfacetable; //type: IGMPSTDMIB::Igmpinterfacetable
         class Igmpcachetable; //type: IGMPSTDMIB::Igmpcachetable
 
-        std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpcachetable> igmpcachetable;
         std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpinterfacetable> igmpinterfacetable;
+        std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpcachetable> igmpcachetable;
         
 }; // IGMPSTDMIB
-
-
-class IGMPSTDMIB::Igmpcachetable : public ydk::Entity
-{
-    public:
-        Igmpcachetable();
-        ~Igmpcachetable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Igmpcacheentry; //type: IGMPSTDMIB::Igmpcachetable::Igmpcacheentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpcachetable::Igmpcacheentry> > igmpcacheentry;
-        
-}; // IGMPSTDMIB::Igmpcachetable
-
-
-class IGMPSTDMIB::Igmpcachetable::Igmpcacheentry : public ydk::Entity
-{
-    public:
-        Igmpcacheentry();
-        ~Igmpcacheentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf igmpcacheaddress; //type: string
-        ydk::YLeaf igmpcacheifindex; //type: int32
-        ydk::YLeaf igmpcacheself; //type: boolean
-        ydk::YLeaf igmpcachelastreporter; //type: string
-        ydk::YLeaf igmpcacheuptime; //type: uint32
-        ydk::YLeaf igmpcacheexpirytime; //type: uint32
-        ydk::YLeaf igmpcachestatus; //type: RowStatus
-        ydk::YLeaf igmpcacheversion1hosttimer; //type: uint32
-
-}; // IGMPSTDMIB::Igmpcachetable::Igmpcacheentry
 
 
 class IGMPSTDMIB::Igmpinterfacetable : public ydk::Entity
@@ -152,6 +99,59 @@ class IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry : public ydk::Entity
         ydk::YLeaf igmpinterfacelastmembqueryintvl; //type: uint32
 
 }; // IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry
+
+
+class IGMPSTDMIB::Igmpcachetable : public ydk::Entity
+{
+    public:
+        Igmpcachetable();
+        ~Igmpcachetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Igmpcacheentry; //type: IGMPSTDMIB::Igmpcachetable::Igmpcacheentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpcachetable::Igmpcacheentry> > igmpcacheentry;
+        
+}; // IGMPSTDMIB::Igmpcachetable
+
+
+class IGMPSTDMIB::Igmpcachetable::Igmpcacheentry : public ydk::Entity
+{
+    public:
+        Igmpcacheentry();
+        ~Igmpcacheentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf igmpcacheaddress; //type: string
+        ydk::YLeaf igmpcacheifindex; //type: int32
+        ydk::YLeaf igmpcacheself; //type: boolean
+        ydk::YLeaf igmpcachelastreporter; //type: string
+        ydk::YLeaf igmpcacheuptime; //type: uint32
+        ydk::YLeaf igmpcacheexpirytime; //type: uint32
+        ydk::YLeaf igmpcachestatus; //type: RowStatus
+        ydk::YLeaf igmpcacheversion1hosttimer; //type: uint32
+
+}; // IGMPSTDMIB::Igmpcachetable::Igmpcacheentry
 
 
 }

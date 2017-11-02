@@ -133,13 +133,13 @@ ChannelMonitors::ChannelMonitor::ChannelMonitor()
     :
     name{YType::str, "name"}
     	,
-    channels(std::make_shared<ChannelMonitors::ChannelMonitor::Channels>())
-	,config(std::make_shared<ChannelMonitors::ChannelMonitor::Config>())
+    config(std::make_shared<ChannelMonitors::ChannelMonitor::Config>())
 	,state(std::make_shared<ChannelMonitors::ChannelMonitor::State>())
+	,channels(std::make_shared<ChannelMonitors::ChannelMonitor::Channels>())
 {
-    channels->parent = this;
     config->parent = this;
     state->parent = this;
+    channels->parent = this;
 
     yang_name = "channel-monitor"; yang_parent_name = "channel-monitors"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -151,18 +151,18 @@ ChannelMonitors::ChannelMonitor::~ChannelMonitor()
 bool ChannelMonitors::ChannelMonitor::has_data() const
 {
     return name.is_set
-	|| (channels !=  nullptr && channels->has_data())
 	|| (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
+	|| (state !=  nullptr && state->has_data())
+	|| (channels !=  nullptr && channels->has_data());
 }
 
 bool ChannelMonitors::ChannelMonitor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| (channels !=  nullptr && channels->has_operation())
 	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
+	|| (state !=  nullptr && state->has_operation())
+	|| (channels !=  nullptr && channels->has_operation());
 }
 
 std::string ChannelMonitors::ChannelMonitor::get_absolute_path() const
@@ -191,15 +191,6 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
 
 std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "channels")
-    {
-        if(channels == nullptr)
-        {
-            channels = std::make_shared<ChannelMonitors::ChannelMonitor::Channels>();
-        }
-        return channels;
-    }
-
     if(child_yang_name == "config")
     {
         if(config == nullptr)
@@ -218,17 +209,21 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::get_child_by_name(const
         return state;
     }
 
+    if(child_yang_name == "channels")
+    {
+        if(channels == nullptr)
+        {
+            channels = std::make_shared<ChannelMonitors::ChannelMonitor::Channels>();
+        }
+        return channels;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(channels != nullptr)
-    {
-        children["channels"] = channels;
-    }
-
     if(config != nullptr)
     {
         children["config"] = config;
@@ -237,6 +232,11 @@ std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::
     if(state != nullptr)
     {
         children["state"] = state;
+    }
+
+    if(channels != nullptr)
+    {
+        children["channels"] = channels;
     }
 
     return children;
@@ -262,7 +262,187 @@ void ChannelMonitors::ChannelMonitor::set_filter(const std::string & value_path,
 
 bool ChannelMonitors::ChannelMonitor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "channels" || name == "config" || name == "state" || name == "name")
+    if(name == "config" || name == "state" || name == "channels" || name == "name")
+        return true;
+    return false;
+}
+
+ChannelMonitors::ChannelMonitor::Config::Config()
+    :
+    name{YType::str, "name"},
+    monitor_port{YType::str, "monitor-port"}
+{
+
+    yang_name = "config"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ChannelMonitors::ChannelMonitor::Config::~Config()
+{
+}
+
+bool ChannelMonitors::ChannelMonitor::Config::has_data() const
+{
+    return name.is_set
+	|| monitor_port.is_set;
+}
+
+bool ChannelMonitors::ChannelMonitor::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(monitor_port.yfilter);
+}
+
+std::string ChannelMonitors::ChannelMonitor::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (monitor_port.is_set || is_set(monitor_port.yfilter)) leaf_name_data.push_back(monitor_port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ChannelMonitors::ChannelMonitor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "monitor-port")
+    {
+        monitor_port = value;
+        monitor_port.value_namespace = name_space;
+        monitor_port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ChannelMonitors::ChannelMonitor::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "monitor-port")
+    {
+        monitor_port.yfilter = yfilter;
+    }
+}
+
+bool ChannelMonitors::ChannelMonitor::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "monitor-port")
+        return true;
+    return false;
+}
+
+ChannelMonitors::ChannelMonitor::State::State()
+    :
+    name{YType::str, "name"},
+    monitor_port{YType::str, "monitor-port"}
+{
+
+    yang_name = "state"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ChannelMonitors::ChannelMonitor::State::~State()
+{
+}
+
+bool ChannelMonitors::ChannelMonitor::State::has_data() const
+{
+    return name.is_set
+	|| monitor_port.is_set;
+}
+
+bool ChannelMonitors::ChannelMonitor::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(monitor_port.yfilter);
+}
+
+std::string ChannelMonitors::ChannelMonitor::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (monitor_port.is_set || is_set(monitor_port.yfilter)) leaf_name_data.push_back(monitor_port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ChannelMonitors::ChannelMonitor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "monitor-port")
+    {
+        monitor_port = value;
+        monitor_port.value_namespace = name_space;
+        monitor_port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ChannelMonitors::ChannelMonitor::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "monitor-port")
+    {
+        monitor_port.yfilter = yfilter;
+    }
+}
+
+bool ChannelMonitors::ChannelMonitor::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "monitor-port")
         return true;
     return false;
 }
@@ -472,8 +652,8 @@ bool ChannelMonitors::ChannelMonitor::Channels::Channel::has_leaf_or_child_of_na
 ChannelMonitors::ChannelMonitor::Channels::Channel::State::State()
     :
     lower_frequency{YType::uint64, "lower-frequency"},
-    psd{YType::str, "psd"},
-    upper_frequency{YType::uint64, "upper-frequency"}
+    upper_frequency{YType::uint64, "upper-frequency"},
+    psd{YType::str, "psd"}
 {
 
     yang_name = "state"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
@@ -486,16 +666,16 @@ ChannelMonitors::ChannelMonitor::Channels::Channel::State::~State()
 bool ChannelMonitors::ChannelMonitor::Channels::Channel::State::has_data() const
 {
     return lower_frequency.is_set
-	|| psd.is_set
-	|| upper_frequency.is_set;
+	|| upper_frequency.is_set
+	|| psd.is_set;
 }
 
 bool ChannelMonitors::ChannelMonitor::Channels::Channel::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lower_frequency.yfilter)
-	|| ydk::is_set(psd.yfilter)
-	|| ydk::is_set(upper_frequency.yfilter);
+	|| ydk::is_set(upper_frequency.yfilter)
+	|| ydk::is_set(psd.yfilter);
 }
 
 std::string ChannelMonitors::ChannelMonitor::Channels::Channel::State::get_segment_path() const
@@ -510,8 +690,8 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (lower_frequency.is_set || is_set(lower_frequency.yfilter)) leaf_name_data.push_back(lower_frequency.get_name_leafdata());
-    if (psd.is_set || is_set(psd.yfilter)) leaf_name_data.push_back(psd.get_name_leafdata());
     if (upper_frequency.is_set || is_set(upper_frequency.yfilter)) leaf_name_data.push_back(upper_frequency.get_name_leafdata());
+    if (psd.is_set || is_set(psd.yfilter)) leaf_name_data.push_back(psd.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -536,17 +716,17 @@ void ChannelMonitors::ChannelMonitor::Channels::Channel::State::set_value(const 
         lower_frequency.value_namespace = name_space;
         lower_frequency.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "psd")
-    {
-        psd = value;
-        psd.value_namespace = name_space;
-        psd.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "upper-frequency")
     {
         upper_frequency = value;
         upper_frequency.value_namespace = name_space;
         upper_frequency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "psd")
+    {
+        psd = value;
+        psd.value_namespace = name_space;
+        psd.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -556,199 +736,19 @@ void ChannelMonitors::ChannelMonitor::Channels::Channel::State::set_filter(const
     {
         lower_frequency.yfilter = yfilter;
     }
-    if(value_path == "psd")
-    {
-        psd.yfilter = yfilter;
-    }
     if(value_path == "upper-frequency")
     {
         upper_frequency.yfilter = yfilter;
+    }
+    if(value_path == "psd")
+    {
+        psd.yfilter = yfilter;
     }
 }
 
 bool ChannelMonitors::ChannelMonitor::Channels::Channel::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lower-frequency" || name == "psd" || name == "upper-frequency")
-        return true;
-    return false;
-}
-
-ChannelMonitors::ChannelMonitor::Config::Config()
-    :
-    monitor_port{YType::str, "monitor-port"},
-    name{YType::str, "name"}
-{
-
-    yang_name = "config"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ChannelMonitors::ChannelMonitor::Config::~Config()
-{
-}
-
-bool ChannelMonitors::ChannelMonitor::Config::has_data() const
-{
-    return monitor_port.is_set
-	|| name.is_set;
-}
-
-bool ChannelMonitors::ChannelMonitor::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(monitor_port.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ChannelMonitors::ChannelMonitor::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (monitor_port.is_set || is_set(monitor_port.yfilter)) leaf_name_data.push_back(monitor_port.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ChannelMonitors::ChannelMonitor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "monitor-port")
-    {
-        monitor_port = value;
-        monitor_port.value_namespace = name_space;
-        monitor_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ChannelMonitors::ChannelMonitor::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "monitor-port")
-    {
-        monitor_port.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ChannelMonitors::ChannelMonitor::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitor-port" || name == "name")
-        return true;
-    return false;
-}
-
-ChannelMonitors::ChannelMonitor::State::State()
-    :
-    monitor_port{YType::str, "monitor-port"},
-    name{YType::str, "name"}
-{
-
-    yang_name = "state"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-ChannelMonitors::ChannelMonitor::State::~State()
-{
-}
-
-bool ChannelMonitors::ChannelMonitor::State::has_data() const
-{
-    return monitor_port.is_set
-	|| name.is_set;
-}
-
-bool ChannelMonitors::ChannelMonitor::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(monitor_port.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string ChannelMonitors::ChannelMonitor::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (monitor_port.is_set || is_set(monitor_port.yfilter)) leaf_name_data.push_back(monitor_port.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ChannelMonitors::ChannelMonitor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "monitor-port")
-    {
-        monitor_port = value;
-        monitor_port.value_namespace = name_space;
-        monitor_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ChannelMonitors::ChannelMonitor::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "monitor-port")
-    {
-        monitor_port.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool ChannelMonitors::ChannelMonitor::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitor-port" || name == "name")
+    if(name == "lower-frequency" || name == "upper-frequency" || name == "psd")
         return true;
     return false;
 }

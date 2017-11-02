@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 cmake_policy(SET CMP0048 NEW)
-project(ydk VERSION 0.6.1 LANGUAGES C CXX)
+project(ydk VERSION 0.6.2 LANGUAGES C CXX)
 
 
 set(YDK_DESCRIPTION "YANG Development Kit Library. The library for  YDK API.")
@@ -161,6 +161,7 @@ set(libydk_src
     src/value_list.cpp
     src/xml_subtree_codec.cpp
     src/ydk_operation.cpp
+    src/ydk.cpp
     src/ydk_yang.cpp
     src/path/annotation.cpp
     src/path/capability.cpp
@@ -212,7 +213,8 @@ set(libydk_install_headers
     src/service_provider.hpp
     src/types.hpp
     src/xml_subtree_codec.hpp
-    src/validation_service.hpp)
+    src/validation_service.hpp
+    src/ydk.h)
 
 # Set LibNetconf variables
 set(libnetconf_location ${CMAKE_CURRENT_BINARY_DIR}/project_libnetconf/src/project_libnetconf)

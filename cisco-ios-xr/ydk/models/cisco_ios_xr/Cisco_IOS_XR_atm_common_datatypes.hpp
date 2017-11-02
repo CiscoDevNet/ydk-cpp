@@ -10,12 +10,13 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_atm_common_datatypes {
 
-class AtmPvcData : public ydk::Enum
+class AtmVpShaping : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf data;
-        static const ydk::Enum::YLeaf ilmi;
-        static const ydk::Enum::YLeaf layer2;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf vbr_nrt;
+        static const ydk::Enum::YLeaf vbr_rt;
+        static const ydk::Enum::YLeaf ubr;
 
 };
 
@@ -29,13 +30,12 @@ class AtmPvcShaping : public ydk::Enum
 
 };
 
-class AtmVpShaping : public ydk::Enum
+class AtmPvcData : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cbr;
-        static const ydk::Enum::YLeaf vbr_nrt;
-        static const ydk::Enum::YLeaf vbr_rt;
-        static const ydk::Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf data;
+        static const ydk::Enum::YLeaf ilmi;
+        static const ydk::Enum::YLeaf layer2;
 
 };
 

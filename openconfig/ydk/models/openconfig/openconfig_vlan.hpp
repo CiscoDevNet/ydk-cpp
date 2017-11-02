@@ -63,8 +63,8 @@ class Vlans::Vlan : public ydk::Entity
         class Members; //type: Vlans::Vlan::Members
 
         std::shared_ptr<openconfig::openconfig_vlan::Vlans::Vlan::Config> config;
-        std::shared_ptr<openconfig::openconfig_vlan::Vlans::Vlan::Members> members;
         std::shared_ptr<openconfig::openconfig_vlan::Vlans::Vlan::State> state;
+        std::shared_ptr<openconfig::openconfig_vlan::Vlans::Vlan::Members> members;
         
 }; // Vlans::Vlan
 
@@ -92,6 +92,31 @@ class Vlans::Vlan::Config : public ydk::Entity
         class Status;
 
 }; // Vlans::Vlan::Config
+
+
+class Vlans::Vlan::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vlan_id; //type: uint16
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf status; //type: Status
+        ydk::YLeaf tpid; //type: TPIDTYPES
+        class Status;
+
+}; // Vlans::Vlan::State
 
 
 class Vlans::Vlan::Members : public ydk::Entity
@@ -185,31 +210,6 @@ class Vlans::Vlan::Members::Member::InterfaceRef::State : public ydk::Entity
         ydk::YLeaf subinterface;
 
 }; // Vlans::Vlan::Members::Member::InterfaceRef::State
-
-
-class Vlans::Vlan::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vlan_id; //type: uint16
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf status; //type: Status
-        ydk::YLeaf tpid; //type: TPIDTYPES
-        class Status;
-
-}; // Vlans::Vlan::State
 
 class Vlans::Vlan::Config::Status : public ydk::Enum
 {

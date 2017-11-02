@@ -334,10 +334,10 @@ bool SpanMonitorSession::Sessions::Session::has_leaf_or_child_of_name(const std:
 
 SpanMonitorSession::Sessions::Session::Destination::Destination()
     :
+    destination_type{YType::enumeration, "destination-type"},
     destination_interface_name{YType::str, "destination-interface-name"},
     destination_ipv4_address{YType::str, "destination-ipv4-address"},
-    destination_ipv6_address{YType::str, "destination-ipv6-address"},
-    destination_type{YType::enumeration, "destination-type"}
+    destination_ipv6_address{YType::str, "destination-ipv6-address"}
 {
 
     yang_name = "destination"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
@@ -349,19 +349,19 @@ SpanMonitorSession::Sessions::Session::Destination::~Destination()
 
 bool SpanMonitorSession::Sessions::Session::Destination::has_data() const
 {
-    return destination_interface_name.is_set
+    return destination_type.is_set
+	|| destination_interface_name.is_set
 	|| destination_ipv4_address.is_set
-	|| destination_ipv6_address.is_set
-	|| destination_type.is_set;
+	|| destination_ipv6_address.is_set;
 }
 
 bool SpanMonitorSession::Sessions::Session::Destination::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(destination_type.yfilter)
 	|| ydk::is_set(destination_interface_name.yfilter)
 	|| ydk::is_set(destination_ipv4_address.yfilter)
-	|| ydk::is_set(destination_ipv6_address.yfilter)
-	|| ydk::is_set(destination_type.yfilter);
+	|| ydk::is_set(destination_ipv6_address.yfilter);
 }
 
 std::string SpanMonitorSession::Sessions::Session::Destination::get_segment_path() const
@@ -375,10 +375,10 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Sessions::Ses
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (destination_type.is_set || is_set(destination_type.yfilter)) leaf_name_data.push_back(destination_type.get_name_leafdata());
     if (destination_interface_name.is_set || is_set(destination_interface_name.yfilter)) leaf_name_data.push_back(destination_interface_name.get_name_leafdata());
     if (destination_ipv4_address.is_set || is_set(destination_ipv4_address.yfilter)) leaf_name_data.push_back(destination_ipv4_address.get_name_leafdata());
     if (destination_ipv6_address.is_set || is_set(destination_ipv6_address.yfilter)) leaf_name_data.push_back(destination_ipv6_address.get_name_leafdata());
-    if (destination_type.is_set || is_set(destination_type.yfilter)) leaf_name_data.push_back(destination_type.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -397,6 +397,12 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Sessions::Ses
 
 void SpanMonitorSession::Sessions::Session::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "destination-type")
+    {
+        destination_type = value;
+        destination_type.value_namespace = name_space;
+        destination_type.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "destination-interface-name")
     {
         destination_interface_name = value;
@@ -415,16 +421,14 @@ void SpanMonitorSession::Sessions::Session::Destination::set_value(const std::st
         destination_ipv6_address.value_namespace = name_space;
         destination_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "destination-type")
-    {
-        destination_type = value;
-        destination_type.value_namespace = name_space;
-        destination_type.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void SpanMonitorSession::Sessions::Session::Destination::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "destination-type")
+    {
+        destination_type.yfilter = yfilter;
+    }
     if(value_path == "destination-interface-name")
     {
         destination_interface_name.yfilter = yfilter;
@@ -437,23 +441,14 @@ void SpanMonitorSession::Sessions::Session::Destination::set_filter(const std::s
     {
         destination_ipv6_address.yfilter = yfilter;
     }
-    if(value_path == "destination-type")
-    {
-        destination_type.yfilter = yfilter;
-    }
 }
 
 bool SpanMonitorSession::Sessions::Session::Destination::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination-interface-name" || name == "destination-ipv4-address" || name == "destination-ipv6-address" || name == "destination-type")
+    if(name == "destination-type" || name == "destination-interface-name" || name == "destination-ipv4-address" || name == "destination-ipv6-address")
         return true;
     return false;
 }
-
-const Enum::YLeaf SpanDestination::interface {0, "interface"};
-const Enum::YLeaf SpanDestination::pseudowire {1, "pseudowire"};
-const Enum::YLeaf SpanDestination::ipv4_address {2, "ipv4-address"};
-const Enum::YLeaf SpanDestination::ipv6_address {3, "ipv6-address"};
 
 const Enum::YLeaf SpanTrafficDirection::rx_only {1, "rx-only"};
 const Enum::YLeaf SpanTrafficDirection::tx_only {2, "tx-only"};
@@ -464,6 +459,11 @@ const Enum::YLeaf SpanMirrorInterval::Y_2k {3, "2k"};
 const Enum::YLeaf SpanMirrorInterval::Y_4k {4, "4k"};
 const Enum::YLeaf SpanMirrorInterval::Y_8k {5, "8k"};
 const Enum::YLeaf SpanMirrorInterval::Y_16k {6, "16k"};
+
+const Enum::YLeaf SpanDestination::interface {0, "interface"};
+const Enum::YLeaf SpanDestination::pseudowire {1, "pseudowire"};
+const Enum::YLeaf SpanDestination::ipv4_address {2, "ipv4-address"};
+const Enum::YLeaf SpanDestination::ipv6_address {3, "ipv6-address"};
 
 
 }

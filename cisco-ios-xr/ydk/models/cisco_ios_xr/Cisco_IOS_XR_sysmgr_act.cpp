@@ -118,8 +118,8 @@ bool SysmgrProcessRestart::has_leaf_or_child_of_name(const std::string & name) c
 
 SysmgrProcessRestart::Input::Input()
     :
-    location{YType::str, "location"},
-    process_name{YType::str, "process-name"}
+    process_name{YType::str, "process-name"},
+    location{YType::str, "location"}
 {
 
     yang_name = "input"; yang_parent_name = "sysmgr-process-restart"; is_top_level_class = false; has_list_ancestor = false;
@@ -131,15 +131,15 @@ SysmgrProcessRestart::Input::~Input()
 
 bool SysmgrProcessRestart::Input::has_data() const
 {
-    return location.is_set
-	|| process_name.is_set;
+    return process_name.is_set
+	|| location.is_set;
 }
 
 bool SysmgrProcessRestart::Input::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(location.yfilter)
-	|| ydk::is_set(process_name.yfilter);
+	|| ydk::is_set(process_name.yfilter)
+	|| ydk::is_set(location.yfilter);
 }
 
 std::string SysmgrProcessRestart::Input::get_absolute_path() const
@@ -160,8 +160,8 @@ std::vector<std::pair<std::string, LeafData> > SysmgrProcessRestart::Input::get_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
     if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -180,35 +180,35 @@ std::map<std::string, std::shared_ptr<Entity>> SysmgrProcessRestart::Input::get_
 
 void SysmgrProcessRestart::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "location")
-    {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "process-name")
     {
         process_name = value;
         process_name.value_namespace = name_space;
         process_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SysmgrProcessRestart::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "location")
-    {
-        location.yfilter = yfilter;
-    }
     if(value_path == "process-name")
     {
         process_name.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
     }
 }
 
 bool SysmgrProcessRestart::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "location" || name == "process-name")
+    if(name == "process-name" || name == "location")
         return true;
     return false;
 }

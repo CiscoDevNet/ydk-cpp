@@ -118,10 +118,10 @@ bool CISCOOSPFTRAPMIB::has_leaf_or_child_of_name(const std::string & name) const
 
 CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospftrapcontrol()
     :
+    cospfsettrap{YType::bits, "cospfSetTrap"},
     cospfconfigerrortype{YType::enumeration, "cospfConfigErrorType"},
-    cospfpacketsrc{YType::str, "cospfPacketSrc"},
     cospfpackettype{YType::enumeration, "cospfPacketType"},
-    cospfsettrap{YType::bits, "cospfSetTrap"}
+    cospfpacketsrc{YType::str, "cospfPacketSrc"}
 {
 
     yang_name = "cospfTrapControl"; yang_parent_name = "CISCO-OSPF-TRAP-MIB"; is_top_level_class = false; has_list_ancestor = false;
@@ -133,19 +133,19 @@ CISCOOSPFTRAPMIB::Cospftrapcontrol::~Cospftrapcontrol()
 
 bool CISCOOSPFTRAPMIB::Cospftrapcontrol::has_data() const
 {
-    return cospfconfigerrortype.is_set
-	|| cospfpacketsrc.is_set
+    return cospfsettrap.is_set
+	|| cospfconfigerrortype.is_set
 	|| cospfpackettype.is_set
-	|| cospfsettrap.is_set;
+	|| cospfpacketsrc.is_set;
 }
 
 bool CISCOOSPFTRAPMIB::Cospftrapcontrol::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(cospfsettrap.yfilter)
 	|| ydk::is_set(cospfconfigerrortype.yfilter)
-	|| ydk::is_set(cospfpacketsrc.yfilter)
 	|| ydk::is_set(cospfpackettype.yfilter)
-	|| ydk::is_set(cospfsettrap.yfilter);
+	|| ydk::is_set(cospfpacketsrc.yfilter);
 }
 
 std::string CISCOOSPFTRAPMIB::Cospftrapcontrol::get_absolute_path() const
@@ -166,10 +166,10 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFTRAPMIB::Cospftrapcontro
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cospfconfigerrortype.is_set || is_set(cospfconfigerrortype.yfilter)) leaf_name_data.push_back(cospfconfigerrortype.get_name_leafdata());
-    if (cospfpacketsrc.is_set || is_set(cospfpacketsrc.yfilter)) leaf_name_data.push_back(cospfpacketsrc.get_name_leafdata());
-    if (cospfpackettype.is_set || is_set(cospfpackettype.yfilter)) leaf_name_data.push_back(cospfpackettype.get_name_leafdata());
     if (cospfsettrap.is_set || is_set(cospfsettrap.yfilter)) leaf_name_data.push_back(cospfsettrap.get_name_leafdata());
+    if (cospfconfigerrortype.is_set || is_set(cospfconfigerrortype.yfilter)) leaf_name_data.push_back(cospfconfigerrortype.get_name_leafdata());
+    if (cospfpackettype.is_set || is_set(cospfpackettype.yfilter)) leaf_name_data.push_back(cospfpackettype.get_name_leafdata());
+    if (cospfpacketsrc.is_set || is_set(cospfpacketsrc.yfilter)) leaf_name_data.push_back(cospfpacketsrc.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -188,17 +188,15 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFTRAPMIB::Cospftrapcontro
 
 void CISCOOSPFTRAPMIB::Cospftrapcontrol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "cospfSetTrap")
+    {
+        cospfsettrap[value] = true;
+    }
     if(value_path == "cospfConfigErrorType")
     {
         cospfconfigerrortype = value;
         cospfconfigerrortype.value_namespace = name_space;
         cospfconfigerrortype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cospfPacketSrc")
-    {
-        cospfpacketsrc = value;
-        cospfpacketsrc.value_namespace = name_space;
-        cospfpacketsrc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cospfPacketType")
     {
@@ -206,35 +204,37 @@ void CISCOOSPFTRAPMIB::Cospftrapcontrol::set_value(const std::string & value_pat
         cospfpackettype.value_namespace = name_space;
         cospfpackettype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfSetTrap")
+    if(value_path == "cospfPacketSrc")
     {
-        cospfsettrap[value] = true;
+        cospfpacketsrc = value;
+        cospfpacketsrc.value_namespace = name_space;
+        cospfpacketsrc.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void CISCOOSPFTRAPMIB::Cospftrapcontrol::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "cospfSetTrap")
+    {
+        cospfsettrap.yfilter = yfilter;
+    }
     if(value_path == "cospfConfigErrorType")
     {
         cospfconfigerrortype.yfilter = yfilter;
-    }
-    if(value_path == "cospfPacketSrc")
-    {
-        cospfpacketsrc.yfilter = yfilter;
     }
     if(value_path == "cospfPacketType")
     {
         cospfpackettype.yfilter = yfilter;
     }
-    if(value_path == "cospfSetTrap")
+    if(value_path == "cospfPacketSrc")
     {
-        cospfsettrap.yfilter = yfilter;
+        cospfpacketsrc.yfilter = yfilter;
     }
 }
 
 bool CISCOOSPFTRAPMIB::Cospftrapcontrol::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cospfConfigErrorType" || name == "cospfPacketSrc" || name == "cospfPacketType" || name == "cospfSetTrap")
+    if(name == "cospfSetTrap" || name == "cospfConfigErrorType" || name == "cospfPacketType" || name == "cospfPacketSrc")
         return true;
     return false;
 }

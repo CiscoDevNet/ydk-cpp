@@ -118,8 +118,8 @@ bool HwModuleSubslot::has_leaf_or_child_of_name(const std::string & name) const
 
 HwModuleSubslot::Input::Input()
     :
-    reload{YType::empty, "reload"},
-    subslot{YType::str, "subslot"}
+    subslot{YType::str, "subslot"},
+    reload{YType::empty, "reload"}
 {
 
     yang_name = "input"; yang_parent_name = "hw-module-subslot"; is_top_level_class = false; has_list_ancestor = false;
@@ -131,15 +131,15 @@ HwModuleSubslot::Input::~Input()
 
 bool HwModuleSubslot::Input::has_data() const
 {
-    return reload.is_set
-	|| subslot.is_set;
+    return subslot.is_set
+	|| reload.is_set;
 }
 
 bool HwModuleSubslot::Input::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(reload.yfilter)
-	|| ydk::is_set(subslot.yfilter);
+	|| ydk::is_set(subslot.yfilter)
+	|| ydk::is_set(reload.yfilter);
 }
 
 std::string HwModuleSubslot::Input::get_absolute_path() const
@@ -160,8 +160,8 @@ std::vector<std::pair<std::string, LeafData> > HwModuleSubslot::Input::get_name_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reload.is_set || is_set(reload.yfilter)) leaf_name_data.push_back(reload.get_name_leafdata());
     if (subslot.is_set || is_set(subslot.yfilter)) leaf_name_data.push_back(subslot.get_name_leafdata());
+    if (reload.is_set || is_set(reload.yfilter)) leaf_name_data.push_back(reload.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -180,35 +180,35 @@ std::map<std::string, std::shared_ptr<Entity>> HwModuleSubslot::Input::get_child
 
 void HwModuleSubslot::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "reload")
-    {
-        reload = value;
-        reload.value_namespace = name_space;
-        reload.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "subslot")
     {
         subslot = value;
         subslot.value_namespace = name_space;
         subslot.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "reload")
+    {
+        reload = value;
+        reload.value_namespace = name_space;
+        reload.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void HwModuleSubslot::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "reload")
-    {
-        reload.yfilter = yfilter;
-    }
     if(value_path == "subslot")
     {
         subslot.yfilter = yfilter;
+    }
+    if(value_path == "reload")
+    {
+        reload.yfilter = yfilter;
     }
 }
 
 bool HwModuleSubslot::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "reload" || name == "subslot")
+    if(name == "subslot" || name == "reload")
         return true;
     return false;
 }

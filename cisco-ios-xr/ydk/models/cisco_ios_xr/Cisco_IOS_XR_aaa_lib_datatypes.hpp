@@ -10,14 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_lib_datatypes {
 
-class AaaAccountingBroadcast : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
 class AaaAccounting : public ydk::Enum
 {
     public:
@@ -27,16 +19,15 @@ class AaaAccounting : public ydk::Enum
 
 };
 
-class AaaAccountingUpdate : public ydk::Enum
+class AaaAccountingRpFailover : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf newinfo;
-        static const ydk::Enum::YLeaf periodic;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class AaaAccountingRpFailover : public ydk::Enum
+class AaaAccountingBroadcast : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
@@ -64,6 +55,15 @@ class AaaMethod : public ydk::Enum
         static const ydk::Enum::YLeaf kerberos;
         static const ydk::Enum::YLeaf diameter;
         static const ydk::Enum::YLeaf last;
+
+};
+
+class AaaAccountingUpdate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf newinfo;
+        static const ydk::Enum::YLeaf periodic;
 
 };
 

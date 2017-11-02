@@ -11,10 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_aaacore_cfg {
 
-const Enum::YLeaf AaaServiceAccounting::none {0, "none"};
-const Enum::YLeaf AaaServiceAccounting::extended {1, "extended"};
-const Enum::YLeaf AaaServiceAccounting::brief {2, "brief"};
-
 const Enum::YLeaf NasPortValue::async {0, "async"};
 const Enum::YLeaf NasPortValue::sync {1, "sync"};
 const Enum::YLeaf NasPortValue::isdn {2, "isdn"};
@@ -39,6 +35,10 @@ const Enum::YLeaf NasPortValue::ipoeoqinq {41, "ipoeoqinq"};
 const Enum::YLeaf NasPortValue::virtual_ipoeoe {42, "virtual-ipoeoe"};
 const Enum::YLeaf NasPortValue::virtual_ipoeovlan {43, "virtual-ipoeovlan"};
 const Enum::YLeaf NasPortValue::virtual_ipoeoqinq {44, "virtual-ipoeoqinq"};
+
+const Enum::YLeaf AaaServiceAccounting::none {0, "none"};
+const Enum::YLeaf AaaServiceAccounting::extended {1, "extended"};
+const Enum::YLeaf AaaServiceAccounting::brief {2, "brief"};
 
 
 }

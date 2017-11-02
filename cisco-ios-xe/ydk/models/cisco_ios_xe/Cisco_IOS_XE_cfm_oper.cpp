@@ -221,13 +221,13 @@ CfmStatistics::CfmMeps::CfmMep::CfmMep()
     domain_name{YType::str, "domain-name"},
     ma_name{YType::str, "ma-name"},
     mpid{YType::uint32, "mpid"},
-    ccm_seq_errors{YType::uint64, "ccm-seq-errors"},
     ccm_transmitted{YType::uint64, "ccm-transmitted"},
-    lbr_received_bad{YType::uint64, "lbr-received-bad"},
-    lbr_received_ok{YType::uint64, "lbr-received-ok"},
-    lbr_seq_errors{YType::uint64, "lbr-seq-errors"},
+    ccm_seq_errors{YType::uint64, "ccm-seq-errors"},
+    ltr_unexpected{YType::uint64, "ltr-unexpected"},
     lbr_transmitted{YType::uint64, "lbr-transmitted"},
-    ltr_unexpected{YType::uint64, "ltr-unexpected"}
+    lbr_seq_errors{YType::uint64, "lbr-seq-errors"},
+    lbr_received_ok{YType::uint64, "lbr-received-ok"},
+    lbr_received_bad{YType::uint64, "lbr-received-bad"}
     	,
     last_cleared(std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>())
 {
@@ -245,13 +245,13 @@ bool CfmStatistics::CfmMeps::CfmMep::has_data() const
     return domain_name.is_set
 	|| ma_name.is_set
 	|| mpid.is_set
-	|| ccm_seq_errors.is_set
 	|| ccm_transmitted.is_set
-	|| lbr_received_bad.is_set
-	|| lbr_received_ok.is_set
-	|| lbr_seq_errors.is_set
-	|| lbr_transmitted.is_set
+	|| ccm_seq_errors.is_set
 	|| ltr_unexpected.is_set
+	|| lbr_transmitted.is_set
+	|| lbr_seq_errors.is_set
+	|| lbr_received_ok.is_set
+	|| lbr_received_bad.is_set
 	|| (last_cleared !=  nullptr && last_cleared->has_data());
 }
 
@@ -261,13 +261,13 @@ bool CfmStatistics::CfmMeps::CfmMep::has_operation() const
 	|| ydk::is_set(domain_name.yfilter)
 	|| ydk::is_set(ma_name.yfilter)
 	|| ydk::is_set(mpid.yfilter)
-	|| ydk::is_set(ccm_seq_errors.yfilter)
 	|| ydk::is_set(ccm_transmitted.yfilter)
-	|| ydk::is_set(lbr_received_bad.yfilter)
-	|| ydk::is_set(lbr_received_ok.yfilter)
-	|| ydk::is_set(lbr_seq_errors.yfilter)
-	|| ydk::is_set(lbr_transmitted.yfilter)
+	|| ydk::is_set(ccm_seq_errors.yfilter)
 	|| ydk::is_set(ltr_unexpected.yfilter)
+	|| ydk::is_set(lbr_transmitted.yfilter)
+	|| ydk::is_set(lbr_seq_errors.yfilter)
+	|| ydk::is_set(lbr_received_ok.yfilter)
+	|| ydk::is_set(lbr_received_bad.yfilter)
 	|| (last_cleared !=  nullptr && last_cleared->has_operation());
 }
 
@@ -292,13 +292,13 @@ std::vector<std::pair<std::string, LeafData> > CfmStatistics::CfmMeps::CfmMep::g
     if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (ma_name.is_set || is_set(ma_name.yfilter)) leaf_name_data.push_back(ma_name.get_name_leafdata());
     if (mpid.is_set || is_set(mpid.yfilter)) leaf_name_data.push_back(mpid.get_name_leafdata());
-    if (ccm_seq_errors.is_set || is_set(ccm_seq_errors.yfilter)) leaf_name_data.push_back(ccm_seq_errors.get_name_leafdata());
     if (ccm_transmitted.is_set || is_set(ccm_transmitted.yfilter)) leaf_name_data.push_back(ccm_transmitted.get_name_leafdata());
-    if (lbr_received_bad.is_set || is_set(lbr_received_bad.yfilter)) leaf_name_data.push_back(lbr_received_bad.get_name_leafdata());
-    if (lbr_received_ok.is_set || is_set(lbr_received_ok.yfilter)) leaf_name_data.push_back(lbr_received_ok.get_name_leafdata());
-    if (lbr_seq_errors.is_set || is_set(lbr_seq_errors.yfilter)) leaf_name_data.push_back(lbr_seq_errors.get_name_leafdata());
-    if (lbr_transmitted.is_set || is_set(lbr_transmitted.yfilter)) leaf_name_data.push_back(lbr_transmitted.get_name_leafdata());
+    if (ccm_seq_errors.is_set || is_set(ccm_seq_errors.yfilter)) leaf_name_data.push_back(ccm_seq_errors.get_name_leafdata());
     if (ltr_unexpected.is_set || is_set(ltr_unexpected.yfilter)) leaf_name_data.push_back(ltr_unexpected.get_name_leafdata());
+    if (lbr_transmitted.is_set || is_set(lbr_transmitted.yfilter)) leaf_name_data.push_back(lbr_transmitted.get_name_leafdata());
+    if (lbr_seq_errors.is_set || is_set(lbr_seq_errors.yfilter)) leaf_name_data.push_back(lbr_seq_errors.get_name_leafdata());
+    if (lbr_received_ok.is_set || is_set(lbr_received_ok.yfilter)) leaf_name_data.push_back(lbr_received_ok.get_name_leafdata());
+    if (lbr_received_bad.is_set || is_set(lbr_received_bad.yfilter)) leaf_name_data.push_back(lbr_received_bad.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -349,35 +349,23 @@ void CfmStatistics::CfmMeps::CfmMep::set_value(const std::string & value_path, c
         mpid.value_namespace = name_space;
         mpid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ccm-seq-errors")
-    {
-        ccm_seq_errors = value;
-        ccm_seq_errors.value_namespace = name_space;
-        ccm_seq_errors.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ccm-transmitted")
     {
         ccm_transmitted = value;
         ccm_transmitted.value_namespace = name_space;
         ccm_transmitted.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "lbr-received-bad")
+    if(value_path == "ccm-seq-errors")
     {
-        lbr_received_bad = value;
-        lbr_received_bad.value_namespace = name_space;
-        lbr_received_bad.value_namespace_prefix = name_space_prefix;
+        ccm_seq_errors = value;
+        ccm_seq_errors.value_namespace = name_space;
+        ccm_seq_errors.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "lbr-received-ok")
+    if(value_path == "ltr-unexpected")
     {
-        lbr_received_ok = value;
-        lbr_received_ok.value_namespace = name_space;
-        lbr_received_ok.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lbr-seq-errors")
-    {
-        lbr_seq_errors = value;
-        lbr_seq_errors.value_namespace = name_space;
-        lbr_seq_errors.value_namespace_prefix = name_space_prefix;
+        ltr_unexpected = value;
+        ltr_unexpected.value_namespace = name_space;
+        ltr_unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lbr-transmitted")
     {
@@ -385,11 +373,23 @@ void CfmStatistics::CfmMeps::CfmMep::set_value(const std::string & value_path, c
         lbr_transmitted.value_namespace = name_space;
         lbr_transmitted.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ltr-unexpected")
+    if(value_path == "lbr-seq-errors")
     {
-        ltr_unexpected = value;
-        ltr_unexpected.value_namespace = name_space;
-        ltr_unexpected.value_namespace_prefix = name_space_prefix;
+        lbr_seq_errors = value;
+        lbr_seq_errors.value_namespace = name_space;
+        lbr_seq_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lbr-received-ok")
+    {
+        lbr_received_ok = value;
+        lbr_received_ok.value_namespace = name_space;
+        lbr_received_ok.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lbr-received-bad")
+    {
+        lbr_received_bad = value;
+        lbr_received_bad.value_namespace = name_space;
+        lbr_received_bad.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -407,39 +407,39 @@ void CfmStatistics::CfmMeps::CfmMep::set_filter(const std::string & value_path, 
     {
         mpid.yfilter = yfilter;
     }
-    if(value_path == "ccm-seq-errors")
-    {
-        ccm_seq_errors.yfilter = yfilter;
-    }
     if(value_path == "ccm-transmitted")
     {
         ccm_transmitted.yfilter = yfilter;
     }
-    if(value_path == "lbr-received-bad")
+    if(value_path == "ccm-seq-errors")
     {
-        lbr_received_bad.yfilter = yfilter;
-    }
-    if(value_path == "lbr-received-ok")
-    {
-        lbr_received_ok.yfilter = yfilter;
-    }
-    if(value_path == "lbr-seq-errors")
-    {
-        lbr_seq_errors.yfilter = yfilter;
-    }
-    if(value_path == "lbr-transmitted")
-    {
-        lbr_transmitted.yfilter = yfilter;
+        ccm_seq_errors.yfilter = yfilter;
     }
     if(value_path == "ltr-unexpected")
     {
         ltr_unexpected.yfilter = yfilter;
     }
+    if(value_path == "lbr-transmitted")
+    {
+        lbr_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "lbr-seq-errors")
+    {
+        lbr_seq_errors.yfilter = yfilter;
+    }
+    if(value_path == "lbr-received-ok")
+    {
+        lbr_received_ok.yfilter = yfilter;
+    }
+    if(value_path == "lbr-received-bad")
+    {
+        lbr_received_bad.yfilter = yfilter;
+    }
 }
 
 bool CfmStatistics::CfmMeps::CfmMep::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "last-cleared" || name == "domain-name" || name == "ma-name" || name == "mpid" || name == "ccm-seq-errors" || name == "ccm-transmitted" || name == "lbr-received-bad" || name == "lbr-received-ok" || name == "lbr-seq-errors" || name == "lbr-transmitted" || name == "ltr-unexpected")
+    if(name == "last-cleared" || name == "domain-name" || name == "ma-name" || name == "mpid" || name == "ccm-transmitted" || name == "ccm-seq-errors" || name == "ltr-unexpected" || name == "lbr-transmitted" || name == "lbr-seq-errors" || name == "lbr-received-ok" || name == "lbr-received-bad")
         return true;
     return false;
 }

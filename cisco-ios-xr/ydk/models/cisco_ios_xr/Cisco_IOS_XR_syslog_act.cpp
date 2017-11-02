@@ -118,8 +118,8 @@ bool Logmsg::has_leaf_or_child_of_name(const std::string & name) const
 
 Logmsg::Input::Input()
     :
-    message{YType::str, "message"},
-    severity{YType::enumeration, "severity"}
+    severity{YType::enumeration, "severity"},
+    message{YType::str, "message"}
 {
 
     yang_name = "input"; yang_parent_name = "logmsg"; is_top_level_class = false; has_list_ancestor = false;
@@ -131,15 +131,15 @@ Logmsg::Input::~Input()
 
 bool Logmsg::Input::has_data() const
 {
-    return message.is_set
-	|| severity.is_set;
+    return severity.is_set
+	|| message.is_set;
 }
 
 bool Logmsg::Input::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(message.yfilter)
-	|| ydk::is_set(severity.yfilter);
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(message.yfilter);
 }
 
 std::string Logmsg::Input::get_absolute_path() const
@@ -160,8 +160,8 @@ std::vector<std::pair<std::string, LeafData> > Logmsg::Input::get_name_leaf_data
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
     if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -180,35 +180,35 @@ std::map<std::string, std::shared_ptr<Entity>> Logmsg::Input::get_children() con
 
 void Logmsg::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "message")
-    {
-        message = value;
-        message.value_namespace = name_space;
-        message.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "severity")
     {
         severity = value;
         severity.value_namespace = name_space;
         severity.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "message")
+    {
+        message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Logmsg::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "message")
-    {
-        message.yfilter = yfilter;
-    }
     if(value_path == "severity")
     {
         severity.yfilter = yfilter;
+    }
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
     }
 }
 
 bool Logmsg::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "message" || name == "severity")
+    if(name == "severity" || name == "message")
         return true;
     return false;
 }

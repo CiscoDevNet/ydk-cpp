@@ -117,8 +117,8 @@ bool Clock_::has_leaf_or_child_of_name(const std::string & name) const
 
 Clock_::TimeZone::TimeZone()
     :
-    area_name{YType::str, "area-name"},
-    time_zone_name{YType::str, "time-zone-name"}
+    time_zone_name{YType::str, "time-zone-name"},
+    area_name{YType::str, "area-name"}
 {
 
     yang_name = "time-zone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
@@ -130,15 +130,15 @@ Clock_::TimeZone::~TimeZone()
 
 bool Clock_::TimeZone::has_data() const
 {
-    return area_name.is_set
-	|| time_zone_name.is_set;
+    return time_zone_name.is_set
+	|| area_name.is_set;
 }
 
 bool Clock_::TimeZone::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(area_name.yfilter)
-	|| ydk::is_set(time_zone_name.yfilter);
+	|| ydk::is_set(time_zone_name.yfilter)
+	|| ydk::is_set(area_name.yfilter);
 }
 
 std::string Clock_::TimeZone::get_absolute_path() const
@@ -159,8 +159,8 @@ std::vector<std::pair<std::string, LeafData> > Clock_::TimeZone::get_name_leaf_d
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area_name.is_set || is_set(area_name.yfilter)) leaf_name_data.push_back(area_name.get_name_leafdata());
     if (time_zone_name.is_set || is_set(time_zone_name.yfilter)) leaf_name_data.push_back(time_zone_name.get_name_leafdata());
+    if (area_name.is_set || is_set(area_name.yfilter)) leaf_name_data.push_back(area_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -179,35 +179,35 @@ std::map<std::string, std::shared_ptr<Entity>> Clock_::TimeZone::get_children() 
 
 void Clock_::TimeZone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "area-name")
-    {
-        area_name = value;
-        area_name.value_namespace = name_space;
-        area_name.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "time-zone-name")
     {
         time_zone_name = value;
         time_zone_name.value_namespace = name_space;
         time_zone_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "area-name")
+    {
+        area_name = value;
+        area_name.value_namespace = name_space;
+        area_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Clock_::TimeZone::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "area-name")
-    {
-        area_name.yfilter = yfilter;
-    }
     if(value_path == "time-zone-name")
     {
         time_zone_name.yfilter = yfilter;
+    }
+    if(value_path == "area-name")
+    {
+        area_name.yfilter = yfilter;
     }
 }
 
 bool Clock_::TimeZone::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "area-name" || name == "time-zone-name")
+    if(name == "time-zone-name" || name == "area-name")
         return true;
     return false;
 }

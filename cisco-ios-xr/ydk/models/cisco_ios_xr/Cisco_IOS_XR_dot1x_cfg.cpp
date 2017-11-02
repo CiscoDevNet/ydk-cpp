@@ -134,11 +134,11 @@ Dot1X::Dot1XProfile::Dot1XProfile()
     profile_name{YType::str, "profile-name"},
     pae{YType::str, "pae"}
     	,
-    authenticator(std::make_shared<Dot1X::Dot1XProfile::Authenticator>())
-	,supplicant(std::make_shared<Dot1X::Dot1XProfile::Supplicant>())
+    supplicant(std::make_shared<Dot1X::Dot1XProfile::Supplicant>())
+	,authenticator(std::make_shared<Dot1X::Dot1XProfile::Authenticator>())
 {
-    authenticator->parent = this;
     supplicant->parent = this;
+    authenticator->parent = this;
 
     yang_name = "dot1x-profile"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -151,8 +151,8 @@ bool Dot1X::Dot1XProfile::has_data() const
 {
     return profile_name.is_set
 	|| pae.is_set
-	|| (authenticator !=  nullptr && authenticator->has_data())
-	|| (supplicant !=  nullptr && supplicant->has_data());
+	|| (supplicant !=  nullptr && supplicant->has_data())
+	|| (authenticator !=  nullptr && authenticator->has_data());
 }
 
 bool Dot1X::Dot1XProfile::has_operation() const
@@ -160,8 +160,8 @@ bool Dot1X::Dot1XProfile::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
 	|| ydk::is_set(pae.yfilter)
-	|| (authenticator !=  nullptr && authenticator->has_operation())
-	|| (supplicant !=  nullptr && supplicant->has_operation());
+	|| (supplicant !=  nullptr && supplicant->has_operation())
+	|| (authenticator !=  nullptr && authenticator->has_operation());
 }
 
 std::string Dot1X::Dot1XProfile::get_absolute_path() const
@@ -191,15 +191,6 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::get_name_lea
 
 std::shared_ptr<Entity> Dot1X::Dot1XProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "authenticator")
-    {
-        if(authenticator == nullptr)
-        {
-            authenticator = std::make_shared<Dot1X::Dot1XProfile::Authenticator>();
-        }
-        return authenticator;
-    }
-
     if(child_yang_name == "supplicant")
     {
         if(supplicant == nullptr)
@@ -209,20 +200,29 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::get_child_by_name(const std::string
         return supplicant;
     }
 
+    if(child_yang_name == "authenticator")
+    {
+        if(authenticator == nullptr)
+        {
+            authenticator = std::make_shared<Dot1X::Dot1XProfile::Authenticator>();
+        }
+        return authenticator;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(authenticator != nullptr)
-    {
-        children["authenticator"] = authenticator;
-    }
-
     if(supplicant != nullptr)
     {
         children["supplicant"] = supplicant;
+    }
+
+    if(authenticator != nullptr)
+    {
+        children["authenticator"] = authenticator;
     }
 
     return children;
@@ -258,7 +258,83 @@ void Dot1X::Dot1XProfile::set_filter(const std::string & value_path, YFilter yfi
 
 bool Dot1X::Dot1XProfile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authenticator" || name == "supplicant" || name == "profile-name" || name == "pae")
+    if(name == "supplicant" || name == "authenticator" || name == "profile-name" || name == "pae")
+        return true;
+    return false;
+}
+
+Dot1X::Dot1XProfile::Supplicant::Supplicant()
+    :
+    eap_profile{YType::str, "eap-profile"}
+{
+
+    yang_name = "supplicant"; yang_parent_name = "dot1x-profile"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dot1X::Dot1XProfile::Supplicant::~Supplicant()
+{
+}
+
+bool Dot1X::Dot1XProfile::Supplicant::has_data() const
+{
+    return eap_profile.is_set;
+}
+
+bool Dot1X::Dot1XProfile::Supplicant::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(eap_profile.yfilter);
+}
+
+std::string Dot1X::Dot1XProfile::Supplicant::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "supplicant";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Supplicant::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (eap_profile.is_set || is_set(eap_profile.yfilter)) leaf_name_data.push_back(eap_profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dot1X::Dot1XProfile::Supplicant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Supplicant::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dot1X::Dot1XProfile::Supplicant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "eap-profile")
+    {
+        eap_profile = value;
+        eap_profile.value_namespace = name_space;
+        eap_profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dot1X::Dot1XProfile::Supplicant::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "eap-profile")
+    {
+        eap_profile.yfilter = yfilter;
+    }
+}
+
+bool Dot1X::Dot1XProfile::Supplicant::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "eap-profile")
         return true;
     return false;
 }
@@ -425,8 +501,8 @@ bool Dot1X::Dot1XProfile::Authenticator::Timers::has_leaf_or_child_of_name(const
 
 Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::ReauthTime()
     :
-    local{YType::uint32, "local"},
-    server{YType::boolean, "server"}
+    server{YType::boolean, "server"},
+    local{YType::uint32, "local"}
 {
 
     yang_name = "reauth-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
@@ -438,15 +514,15 @@ Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::~ReauthTime()
 
 bool Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::has_data() const
 {
-    return local.is_set
-	|| server.is_set;
+    return server.is_set
+	|| local.is_set;
 }
 
 bool Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(local.yfilter)
-	|| ydk::is_set(server.yfilter);
+	|| ydk::is_set(server.yfilter)
+	|| ydk::is_set(local.yfilter);
 }
 
 std::string Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::get_segment_path() const
@@ -460,8 +536,8 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Authenticato
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local.is_set || is_set(local.yfilter)) leaf_name_data.push_back(local.get_name_leafdata());
     if (server.is_set || is_set(server.yfilter)) leaf_name_data.push_back(server.get_name_leafdata());
+    if (local.is_set || is_set(local.yfilter)) leaf_name_data.push_back(local.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -480,111 +556,35 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticato
 
 void Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "local")
-    {
-        local = value;
-        local.value_namespace = name_space;
-        local.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "server")
     {
         server = value;
         server.value_namespace = name_space;
         server.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "local")
+    {
+        local = value;
+        local.value_namespace = name_space;
+        local.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "local")
-    {
-        local.yfilter = yfilter;
-    }
     if(value_path == "server")
     {
         server.yfilter = yfilter;
+    }
+    if(value_path == "local")
+    {
+        local.yfilter = yfilter;
     }
 }
 
 bool Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local" || name == "server")
-        return true;
-    return false;
-}
-
-Dot1X::Dot1XProfile::Supplicant::Supplicant()
-    :
-    eap_profile{YType::str, "eap-profile"}
-{
-
-    yang_name = "supplicant"; yang_parent_name = "dot1x-profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Dot1X::Dot1XProfile::Supplicant::~Supplicant()
-{
-}
-
-bool Dot1X::Dot1XProfile::Supplicant::has_data() const
-{
-    return eap_profile.is_set;
-}
-
-bool Dot1X::Dot1XProfile::Supplicant::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(eap_profile.yfilter);
-}
-
-std::string Dot1X::Dot1XProfile::Supplicant::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "supplicant";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Supplicant::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (eap_profile.is_set || is_set(eap_profile.yfilter)) leaf_name_data.push_back(eap_profile.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Dot1X::Dot1XProfile::Supplicant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Supplicant::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dot1X::Dot1XProfile::Supplicant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "eap-profile")
-    {
-        eap_profile = value;
-        eap_profile.value_namespace = name_space;
-        eap_profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dot1X::Dot1XProfile::Supplicant::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "eap-profile")
-    {
-        eap_profile.yfilter = yfilter;
-    }
-}
-
-bool Dot1X::Dot1XProfile::Supplicant::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "eap-profile")
+    if(name == "server" || name == "local")
         return true;
     return false;
 }

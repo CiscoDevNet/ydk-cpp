@@ -84,8 +84,8 @@ class CdpNeighbourDetails::CdpNeighbourDetail : public ydk::Entity
         class SparePair; //type: CdpNeighbourDetails::CdpNeighbourDetail::SparePair
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage> hello_message;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable> power_available;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest> power_request;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable> power_available;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::SparePair> spare_pair;
         
 }; // CdpNeighbourDetails::CdpNeighbourDetail
@@ -115,6 +115,29 @@ class CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage : public ydk::Entity
 }; // CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage
 
 
+class CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest : public ydk::Entity
+{
+    public:
+        PowerRequest();
+        ~PowerRequest();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf power_request_id; //type: uint16
+        ydk::YLeaf power_man_id; //type: uint16
+        ydk::YLeaf power_request_level; //type: string
+
+}; // CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest
+
+
 class CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable : public ydk::Entity
 {
     public:
@@ -137,29 +160,6 @@ class CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable : public ydk::Enti
         ydk::YLeaf power_man_level; //type: uint32
 
 }; // CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable
-
-
-class CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest : public ydk::Entity
-{
-    public:
-        PowerRequest();
-        ~PowerRequest();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf power_request_id; //type: uint16
-        ydk::YLeaf power_man_id; //type: uint16
-        ydk::YLeaf power_request_level; //type: string
-
-}; // CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest
 
 
 class CdpNeighbourDetails::CdpNeighbourDetail::SparePair : public ydk::Entity
@@ -185,19 +185,23 @@ class CdpNeighbourDetails::CdpNeighbourDetail::SparePair : public ydk::Entity
 
 }; // CdpNeighbourDetails::CdpNeighbourDetail::SparePair
 
-class CdpEnableDisable : public ydk::Enum
+class CdpDuplex : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdp_disable;
-        static const ydk::Enum::YLeaf cdp_enable;
+        static const ydk::Enum::YLeaf cdp_duplex_unknown;
+        static const ydk::Enum::YLeaf cdp_half_duplex;
+        static const ydk::Enum::YLeaf cdp_full_duplex;
+        static const ydk::Enum::YLeaf cdp_half_duplex_mismatch;
+        static const ydk::Enum::YLeaf cdp_full_duplex_mismatch;
 
 };
 
-class CdpYesNo : public ydk::Enum
+class CdpAdvVersion : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdp_no;
-        static const ydk::Enum::YLeaf cdp_yes;
+        static const ydk::Enum::YLeaf cdp_advertised_none;
+        static const ydk::Enum::YLeaf cdp_advertised_v1;
+        static const ydk::Enum::YLeaf cdp_advertised_v2;
 
 };
 
@@ -211,23 +215,19 @@ class CdpUnidirectionalMode : public ydk::Enum
 
 };
 
-class CdpAdvVersion : public ydk::Enum
+class CdpYesNo : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdp_advertised_none;
-        static const ydk::Enum::YLeaf cdp_advertised_v1;
-        static const ydk::Enum::YLeaf cdp_advertised_v2;
+        static const ydk::Enum::YLeaf cdp_no;
+        static const ydk::Enum::YLeaf cdp_yes;
 
 };
 
-class CdpDuplex : public ydk::Enum
+class CdpEnableDisable : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdp_duplex_unknown;
-        static const ydk::Enum::YLeaf cdp_half_duplex;
-        static const ydk::Enum::YLeaf cdp_full_duplex;
-        static const ydk::Enum::YLeaf cdp_half_duplex_mismatch;
-        static const ydk::Enum::YLeaf cdp_full_duplex_mismatch;
+        static const ydk::Enum::YLeaf cdp_disable;
+        static const ydk::Enum::YLeaf cdp_enable;
 
 };
 

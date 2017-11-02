@@ -14,12 +14,12 @@ namespace CISCO_AAA_SESSION_MIB {
 CISCOAAASESSIONMIB::CISCOAAASESSIONMIB()
     :
     casnactive(std::make_shared<CISCOAAASESSIONMIB::Casnactive>())
-	,casnactivetable(std::make_shared<CISCOAAASESSIONMIB::Casnactivetable>())
 	,casngeneral(std::make_shared<CISCOAAASESSIONMIB::Casngeneral>())
+	,casnactivetable(std::make_shared<CISCOAAASESSIONMIB::Casnactivetable>())
 {
     casnactive->parent = this;
-    casnactivetable->parent = this;
     casngeneral->parent = this;
+    casnactivetable->parent = this;
 
     yang_name = "CISCO-AAA-SESSION-MIB"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -31,16 +31,16 @@ CISCOAAASESSIONMIB::~CISCOAAASESSIONMIB()
 bool CISCOAAASESSIONMIB::has_data() const
 {
     return (casnactive !=  nullptr && casnactive->has_data())
-	|| (casnactivetable !=  nullptr && casnactivetable->has_data())
-	|| (casngeneral !=  nullptr && casngeneral->has_data());
+	|| (casngeneral !=  nullptr && casngeneral->has_data())
+	|| (casnactivetable !=  nullptr && casnactivetable->has_data());
 }
 
 bool CISCOAAASESSIONMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (casnactive !=  nullptr && casnactive->has_operation())
-	|| (casnactivetable !=  nullptr && casnactivetable->has_operation())
-	|| (casngeneral !=  nullptr && casngeneral->has_operation());
+	|| (casngeneral !=  nullptr && casngeneral->has_operation())
+	|| (casnactivetable !=  nullptr && casnactivetable->has_operation());
 }
 
 std::string CISCOAAASESSIONMIB::get_segment_path() const
@@ -70,15 +70,6 @@ std::shared_ptr<Entity> CISCOAAASESSIONMIB::get_child_by_name(const std::string 
         return casnactive;
     }
 
-    if(child_yang_name == "casnActiveTable")
-    {
-        if(casnactivetable == nullptr)
-        {
-            casnactivetable = std::make_shared<CISCOAAASESSIONMIB::Casnactivetable>();
-        }
-        return casnactivetable;
-    }
-
     if(child_yang_name == "casnGeneral")
     {
         if(casngeneral == nullptr)
@@ -86,6 +77,15 @@ std::shared_ptr<Entity> CISCOAAASESSIONMIB::get_child_by_name(const std::string 
             casngeneral = std::make_shared<CISCOAAASESSIONMIB::Casngeneral>();
         }
         return casngeneral;
+    }
+
+    if(child_yang_name == "casnActiveTable")
+    {
+        if(casnactivetable == nullptr)
+        {
+            casnactivetable = std::make_shared<CISCOAAASESSIONMIB::Casnactivetable>();
+        }
+        return casnactivetable;
     }
 
     return nullptr;
@@ -99,14 +99,14 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::get_children(
         children["casnActive"] = casnactive;
     }
 
-    if(casnactivetable != nullptr)
-    {
-        children["casnActiveTable"] = casnactivetable;
-    }
-
     if(casngeneral != nullptr)
     {
         children["casnGeneral"] = casngeneral;
+    }
+
+    if(casnactivetable != nullptr)
+    {
+        children["casnActiveTable"] = casnactivetable;
     }
 
     return children;
@@ -147,7 +147,7 @@ std::map<std::pair<std::string, std::string>, std::string> CISCOAAASESSIONMIB::g
 
 bool CISCOAAASESSIONMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "casnActive" || name == "casnActiveTable" || name == "casnGeneral")
+    if(name == "casnActive" || name == "casnGeneral" || name == "casnActiveTable")
         return true;
     return false;
 }
@@ -245,6 +245,103 @@ void CISCOAAASESSIONMIB::Casnactive::set_filter(const std::string & value_path, 
 bool CISCOAAASESSIONMIB::Casnactive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "casnActiveTableEntries" || name == "casnActiveTableHighWaterMark")
+        return true;
+    return false;
+}
+
+CISCOAAASESSIONMIB::Casngeneral::Casngeneral()
+    :
+    casntotalsessions{YType::uint32, "casnTotalSessions"},
+    casndisconnectedsessions{YType::uint32, "casnDisconnectedSessions"}
+{
+
+    yang_name = "casnGeneral"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOAAASESSIONMIB::Casngeneral::~Casngeneral()
+{
+}
+
+bool CISCOAAASESSIONMIB::Casngeneral::has_data() const
+{
+    return casntotalsessions.is_set
+	|| casndisconnectedsessions.is_set;
+}
+
+bool CISCOAAASESSIONMIB::Casngeneral::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(casntotalsessions.yfilter)
+	|| ydk::is_set(casndisconnectedsessions.yfilter);
+}
+
+std::string CISCOAAASESSIONMIB::Casngeneral::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-AAA-SESSION-MIB:CISCO-AAA-SESSION-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOAAASESSIONMIB::Casngeneral::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "casnGeneral";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casngeneral::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (casntotalsessions.is_set || is_set(casntotalsessions.yfilter)) leaf_name_data.push_back(casntotalsessions.get_name_leafdata());
+    if (casndisconnectedsessions.is_set || is_set(casndisconnectedsessions.yfilter)) leaf_name_data.push_back(casndisconnectedsessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOAAASESSIONMIB::Casngeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::Casngeneral::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOAAASESSIONMIB::Casngeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "casnTotalSessions")
+    {
+        casntotalsessions = value;
+        casntotalsessions.value_namespace = name_space;
+        casntotalsessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "casnDisconnectedSessions")
+    {
+        casndisconnectedsessions = value;
+        casndisconnectedsessions.value_namespace = name_space;
+        casndisconnectedsessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOAAASESSIONMIB::Casngeneral::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "casnTotalSessions")
+    {
+        casntotalsessions.yfilter = yfilter;
+    }
+    if(value_path == "casnDisconnectedSessions")
+    {
+        casndisconnectedsessions.yfilter = yfilter;
+    }
+}
+
+bool CISCOAAASESSIONMIB::Casngeneral::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "casnTotalSessions" || name == "casnDisconnectedSessions")
         return true;
     return false;
 }
@@ -352,12 +449,12 @@ bool CISCOAAASESSIONMIB::Casnactivetable::has_leaf_or_child_of_name(const std::s
 CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::Casnactiveentry()
     :
     casnsessionid{YType::uint32, "casnSessionId"},
-    casncalltrackerid{YType::uint32, "casnCallTrackerId"},
-    casndisconnect{YType::boolean, "casnDisconnect"},
-    casnidletime{YType::uint32, "casnIdleTime"},
-    casnipaddr{YType::str, "casnIpAddr"},
-    casnnasport{YType::str, "casnNasPort"},
     casnuserid{YType::str, "casnUserId"},
+    casnipaddr{YType::str, "casnIpAddr"},
+    casnidletime{YType::uint32, "casnIdleTime"},
+    casndisconnect{YType::boolean, "casnDisconnect"},
+    casncalltrackerid{YType::uint32, "casnCallTrackerId"},
+    casnnasport{YType::str, "casnNasPort"},
     casnvaiifindex{YType::int32, "casnVaiIfIndex"}
 {
 
@@ -371,12 +468,12 @@ CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::~Casnactiveentry()
 bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_data() const
 {
     return casnsessionid.is_set
-	|| casncalltrackerid.is_set
-	|| casndisconnect.is_set
-	|| casnidletime.is_set
-	|| casnipaddr.is_set
-	|| casnnasport.is_set
 	|| casnuserid.is_set
+	|| casnipaddr.is_set
+	|| casnidletime.is_set
+	|| casndisconnect.is_set
+	|| casncalltrackerid.is_set
+	|| casnnasport.is_set
 	|| casnvaiifindex.is_set;
 }
 
@@ -384,12 +481,12 @@ bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(casnsessionid.yfilter)
-	|| ydk::is_set(casncalltrackerid.yfilter)
-	|| ydk::is_set(casndisconnect.yfilter)
-	|| ydk::is_set(casnidletime.yfilter)
-	|| ydk::is_set(casnipaddr.yfilter)
-	|| ydk::is_set(casnnasport.yfilter)
 	|| ydk::is_set(casnuserid.yfilter)
+	|| ydk::is_set(casnipaddr.yfilter)
+	|| ydk::is_set(casnidletime.yfilter)
+	|| ydk::is_set(casndisconnect.yfilter)
+	|| ydk::is_set(casncalltrackerid.yfilter)
+	|| ydk::is_set(casnnasport.yfilter)
 	|| ydk::is_set(casnvaiifindex.yfilter);
 }
 
@@ -412,12 +509,12 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casnactivetab
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (casnsessionid.is_set || is_set(casnsessionid.yfilter)) leaf_name_data.push_back(casnsessionid.get_name_leafdata());
-    if (casncalltrackerid.is_set || is_set(casncalltrackerid.yfilter)) leaf_name_data.push_back(casncalltrackerid.get_name_leafdata());
-    if (casndisconnect.is_set || is_set(casndisconnect.yfilter)) leaf_name_data.push_back(casndisconnect.get_name_leafdata());
-    if (casnidletime.is_set || is_set(casnidletime.yfilter)) leaf_name_data.push_back(casnidletime.get_name_leafdata());
-    if (casnipaddr.is_set || is_set(casnipaddr.yfilter)) leaf_name_data.push_back(casnipaddr.get_name_leafdata());
-    if (casnnasport.is_set || is_set(casnnasport.yfilter)) leaf_name_data.push_back(casnnasport.get_name_leafdata());
     if (casnuserid.is_set || is_set(casnuserid.yfilter)) leaf_name_data.push_back(casnuserid.get_name_leafdata());
+    if (casnipaddr.is_set || is_set(casnipaddr.yfilter)) leaf_name_data.push_back(casnipaddr.get_name_leafdata());
+    if (casnidletime.is_set || is_set(casnidletime.yfilter)) leaf_name_data.push_back(casnidletime.get_name_leafdata());
+    if (casndisconnect.is_set || is_set(casndisconnect.yfilter)) leaf_name_data.push_back(casndisconnect.get_name_leafdata());
+    if (casncalltrackerid.is_set || is_set(casncalltrackerid.yfilter)) leaf_name_data.push_back(casncalltrackerid.get_name_leafdata());
+    if (casnnasport.is_set || is_set(casnnasport.yfilter)) leaf_name_data.push_back(casnnasport.get_name_leafdata());
     if (casnvaiifindex.is_set || is_set(casnvaiifindex.yfilter)) leaf_name_data.push_back(casnvaiifindex.get_name_leafdata());
 
     return leaf_name_data;
@@ -443,23 +540,11 @@ void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_value(const std::
         casnsessionid.value_namespace = name_space;
         casnsessionid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "casnCallTrackerId")
+    if(value_path == "casnUserId")
     {
-        casncalltrackerid = value;
-        casncalltrackerid.value_namespace = name_space;
-        casncalltrackerid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "casnDisconnect")
-    {
-        casndisconnect = value;
-        casndisconnect.value_namespace = name_space;
-        casndisconnect.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "casnIdleTime")
-    {
-        casnidletime = value;
-        casnidletime.value_namespace = name_space;
-        casnidletime.value_namespace_prefix = name_space_prefix;
+        casnuserid = value;
+        casnuserid.value_namespace = name_space;
+        casnuserid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "casnIpAddr")
     {
@@ -467,17 +552,29 @@ void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_value(const std::
         casnipaddr.value_namespace = name_space;
         casnipaddr.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "casnIdleTime")
+    {
+        casnidletime = value;
+        casnidletime.value_namespace = name_space;
+        casnidletime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "casnDisconnect")
+    {
+        casndisconnect = value;
+        casndisconnect.value_namespace = name_space;
+        casndisconnect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "casnCallTrackerId")
+    {
+        casncalltrackerid = value;
+        casncalltrackerid.value_namespace = name_space;
+        casncalltrackerid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "casnNasPort")
     {
         casnnasport = value;
         casnnasport.value_namespace = name_space;
         casnnasport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "casnUserId")
-    {
-        casnuserid = value;
-        casnuserid.value_namespace = name_space;
-        casnuserid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "casnVaiIfIndex")
     {
@@ -493,29 +590,29 @@ void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_filter(const std:
     {
         casnsessionid.yfilter = yfilter;
     }
-    if(value_path == "casnCallTrackerId")
+    if(value_path == "casnUserId")
     {
-        casncalltrackerid.yfilter = yfilter;
-    }
-    if(value_path == "casnDisconnect")
-    {
-        casndisconnect.yfilter = yfilter;
-    }
-    if(value_path == "casnIdleTime")
-    {
-        casnidletime.yfilter = yfilter;
+        casnuserid.yfilter = yfilter;
     }
     if(value_path == "casnIpAddr")
     {
         casnipaddr.yfilter = yfilter;
     }
+    if(value_path == "casnIdleTime")
+    {
+        casnidletime.yfilter = yfilter;
+    }
+    if(value_path == "casnDisconnect")
+    {
+        casndisconnect.yfilter = yfilter;
+    }
+    if(value_path == "casnCallTrackerId")
+    {
+        casncalltrackerid.yfilter = yfilter;
+    }
     if(value_path == "casnNasPort")
     {
         casnnasport.yfilter = yfilter;
-    }
-    if(value_path == "casnUserId")
-    {
-        casnuserid.yfilter = yfilter;
     }
     if(value_path == "casnVaiIfIndex")
     {
@@ -525,104 +622,7 @@ void CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::set_filter(const std:
 
 bool CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "casnSessionId" || name == "casnCallTrackerId" || name == "casnDisconnect" || name == "casnIdleTime" || name == "casnIpAddr" || name == "casnNasPort" || name == "casnUserId" || name == "casnVaiIfIndex")
-        return true;
-    return false;
-}
-
-CISCOAAASESSIONMIB::Casngeneral::Casngeneral()
-    :
-    casndisconnectedsessions{YType::uint32, "casnDisconnectedSessions"},
-    casntotalsessions{YType::uint32, "casnTotalSessions"}
-{
-
-    yang_name = "casnGeneral"; yang_parent_name = "CISCO-AAA-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-CISCOAAASESSIONMIB::Casngeneral::~Casngeneral()
-{
-}
-
-bool CISCOAAASESSIONMIB::Casngeneral::has_data() const
-{
-    return casndisconnectedsessions.is_set
-	|| casntotalsessions.is_set;
-}
-
-bool CISCOAAASESSIONMIB::Casngeneral::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(casndisconnectedsessions.yfilter)
-	|| ydk::is_set(casntotalsessions.yfilter);
-}
-
-std::string CISCOAAASESSIONMIB::Casngeneral::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CISCO-AAA-SESSION-MIB:CISCO-AAA-SESSION-MIB/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CISCOAAASESSIONMIB::Casngeneral::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "casnGeneral";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CISCOAAASESSIONMIB::Casngeneral::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (casndisconnectedsessions.is_set || is_set(casndisconnectedsessions.yfilter)) leaf_name_data.push_back(casndisconnectedsessions.get_name_leafdata());
-    if (casntotalsessions.is_set || is_set(casntotalsessions.yfilter)) leaf_name_data.push_back(casntotalsessions.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CISCOAAASESSIONMIB::Casngeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASESSIONMIB::Casngeneral::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CISCOAAASESSIONMIB::Casngeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "casnDisconnectedSessions")
-    {
-        casndisconnectedsessions = value;
-        casndisconnectedsessions.value_namespace = name_space;
-        casndisconnectedsessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "casnTotalSessions")
-    {
-        casntotalsessions = value;
-        casntotalsessions.value_namespace = name_space;
-        casntotalsessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CISCOAAASESSIONMIB::Casngeneral::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "casnDisconnectedSessions")
-    {
-        casndisconnectedsessions.yfilter = yfilter;
-    }
-    if(value_path == "casnTotalSessions")
-    {
-        casntotalsessions.yfilter = yfilter;
-    }
-}
-
-bool CISCOAAASESSIONMIB::Casngeneral::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "casnDisconnectedSessions" || name == "casnTotalSessions")
+    if(name == "casnSessionId" || name == "casnUserId" || name == "casnIpAddr" || name == "casnIdleTime" || name == "casnDisconnect" || name == "casnCallTrackerId" || name == "casnNasPort" || name == "casnVaiIfIndex")
         return true;
     return false;
 }

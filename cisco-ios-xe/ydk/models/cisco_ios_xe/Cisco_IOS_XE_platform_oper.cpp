@@ -133,13 +133,13 @@ Components::Component::Component()
     :
     cname{YType::str, "cname"}
     	,
-    platform_properties(std::make_shared<Components::Component::PlatformProperties>())
+    state(std::make_shared<Components::Component::State>())
+	,platform_properties(std::make_shared<Components::Component::PlatformProperties>())
 	,platform_subcomponents(std::make_shared<Components::Component::PlatformSubcomponents>())
-	,state(std::make_shared<Components::Component::State>())
 {
+    state->parent = this;
     platform_properties->parent = this;
     platform_subcomponents->parent = this;
-    state->parent = this;
 
     yang_name = "component"; yang_parent_name = "components"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -151,18 +151,18 @@ Components::Component::~Component()
 bool Components::Component::has_data() const
 {
     return cname.is_set
+	|| (state !=  nullptr && state->has_data())
 	|| (platform_properties !=  nullptr && platform_properties->has_data())
-	|| (platform_subcomponents !=  nullptr && platform_subcomponents->has_data())
-	|| (state !=  nullptr && state->has_data());
+	|| (platform_subcomponents !=  nullptr && platform_subcomponents->has_data());
 }
 
 bool Components::Component::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cname.yfilter)
+	|| (state !=  nullptr && state->has_operation())
 	|| (platform_properties !=  nullptr && platform_properties->has_operation())
-	|| (platform_subcomponents !=  nullptr && platform_subcomponents->has_operation())
-	|| (state !=  nullptr && state->has_operation());
+	|| (platform_subcomponents !=  nullptr && platform_subcomponents->has_operation());
 }
 
 std::string Components::Component::get_absolute_path() const
@@ -191,6 +191,15 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::get_name_l
 
 std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Components::Component::State>();
+        }
+        return state;
+    }
+
     if(child_yang_name == "platform-properties")
     {
         if(platform_properties == nullptr)
@@ -209,21 +218,17 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
         return platform_subcomponents;
     }
 
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Components::Component::State>();
-        }
-        return state;
-    }
-
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
     if(platform_properties != nullptr)
     {
         children["platform-properties"] = platform_properties;
@@ -232,11 +237,6 @@ std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_childr
     if(platform_subcomponents != nullptr)
     {
         children["platform-subcomponents"] = platform_subcomponents;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
     }
 
     return children;
@@ -262,7 +262,304 @@ void Components::Component::set_filter(const std::string & value_path, YFilter y
 
 bool Components::Component::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "platform-properties" || name == "platform-subcomponents" || name == "state" || name == "cname")
+    if(name == "state" || name == "platform-properties" || name == "platform-subcomponents" || name == "cname")
+        return true;
+    return false;
+}
+
+Components::Component::State::State()
+    :
+    type{YType::enumeration, "type"},
+    id{YType::str, "id"},
+    description{YType::str, "description"},
+    mfg_name{YType::str, "mfg-name"},
+    version{YType::str, "version"},
+    serial_no{YType::str, "serial-no"},
+    part_no{YType::str, "part-no"}
+    	,
+    temp(std::make_shared<Components::Component::State::Temp>())
+{
+    temp->parent = this;
+
+    yang_name = "state"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Components::Component::State::~State()
+{
+}
+
+bool Components::Component::State::has_data() const
+{
+    return type.is_set
+	|| id.is_set
+	|| description.is_set
+	|| mfg_name.is_set
+	|| version.is_set
+	|| serial_no.is_set
+	|| part_no.is_set
+	|| (temp !=  nullptr && temp->has_data());
+}
+
+bool Components::Component::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(mfg_name.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(serial_no.yfilter)
+	|| ydk::is_set(part_no.yfilter)
+	|| (temp !=  nullptr && temp->has_operation());
+}
+
+std::string Components::Component::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (mfg_name.is_set || is_set(mfg_name.yfilter)) leaf_name_data.push_back(mfg_name.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (serial_no.is_set || is_set(serial_no.yfilter)) leaf_name_data.push_back(serial_no.get_name_leafdata());
+    if (part_no.is_set || is_set(part_no.yfilter)) leaf_name_data.push_back(part_no.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "temp")
+    {
+        if(temp == nullptr)
+        {
+            temp = std::make_shared<Components::Component::State::Temp>();
+        }
+        return temp;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(temp != nullptr)
+    {
+        children["temp"] = temp;
+    }
+
+    return children;
+}
+
+void Components::Component::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mfg-name")
+    {
+        mfg_name = value;
+        mfg_name.value_namespace = name_space;
+        mfg_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-no")
+    {
+        serial_no = value;
+        serial_no.value_namespace = name_space;
+        serial_no.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "part-no")
+    {
+        part_no = value;
+        part_no.value_namespace = name_space;
+        part_no.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "mfg-name")
+    {
+        mfg_name.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "serial-no")
+    {
+        serial_no.yfilter = yfilter;
+    }
+    if(value_path == "part-no")
+    {
+        part_no.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "temp" || name == "type" || name == "id" || name == "description" || name == "mfg-name" || name == "version" || name == "serial-no" || name == "part-no")
+        return true;
+    return false;
+}
+
+Components::Component::State::Temp::Temp()
+    :
+    temp_instant{YType::str, "temp-instant"},
+    temp_avg{YType::str, "temp-avg"},
+    temp_max{YType::str, "temp-max"},
+    temp_min{YType::str, "temp-min"}
+{
+
+    yang_name = "temp"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Components::Component::State::Temp::~Temp()
+{
+}
+
+bool Components::Component::State::Temp::has_data() const
+{
+    return temp_instant.is_set
+	|| temp_avg.is_set
+	|| temp_max.is_set
+	|| temp_min.is_set;
+}
+
+bool Components::Component::State::Temp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(temp_instant.yfilter)
+	|| ydk::is_set(temp_avg.yfilter)
+	|| ydk::is_set(temp_max.yfilter)
+	|| ydk::is_set(temp_min.yfilter);
+}
+
+std::string Components::Component::State::Temp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "temp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::State::Temp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (temp_instant.is_set || is_set(temp_instant.yfilter)) leaf_name_data.push_back(temp_instant.get_name_leafdata());
+    if (temp_avg.is_set || is_set(temp_avg.yfilter)) leaf_name_data.push_back(temp_avg.get_name_leafdata());
+    if (temp_max.is_set || is_set(temp_max.yfilter)) leaf_name_data.push_back(temp_max.get_name_leafdata());
+    if (temp_min.is_set || is_set(temp_min.yfilter)) leaf_name_data.push_back(temp_min.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::State::Temp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::Temp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Components::Component::State::Temp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "temp-instant")
+    {
+        temp_instant = value;
+        temp_instant.value_namespace = name_space;
+        temp_instant.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temp-avg")
+    {
+        temp_avg = value;
+        temp_avg.value_namespace = name_space;
+        temp_avg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temp-max")
+    {
+        temp_max = value;
+        temp_max.value_namespace = name_space;
+        temp_max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temp-min")
+    {
+        temp_min = value;
+        temp_min.value_namespace = name_space;
+        temp_min.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::State::Temp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "temp-instant")
+    {
+        temp_instant.yfilter = yfilter;
+    }
+    if(value_path == "temp-avg")
+    {
+        temp_avg.yfilter = yfilter;
+    }
+    if(value_path == "temp-max")
+    {
+        temp_max.yfilter = yfilter;
+    }
+    if(value_path == "temp-min")
+    {
+        temp_min.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::State::Temp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "temp-instant" || name == "temp-avg" || name == "temp-max" || name == "temp-min")
         return true;
     return false;
 }
@@ -485,11 +782,11 @@ bool Components::Component::PlatformProperties::PlatformProperty::has_leaf_or_ch
 
 Components::Component::PlatformProperties::PlatformProperty::Value_::Value_()
     :
-    boolean{YType::boolean, "boolean"},
-    decimal{YType::str, "decimal"},
-    intsixfour{YType::int64, "intsixfour"},
     string{YType::str, "string"},
-    uintsixfour{YType::uint64, "uintsixfour"}
+    boolean{YType::boolean, "boolean"},
+    intsixfour{YType::int64, "intsixfour"},
+    uintsixfour{YType::uint64, "uintsixfour"},
+    decimal{YType::str, "decimal"}
 {
 
     yang_name = "value"; yang_parent_name = "platform-property"; is_top_level_class = false; has_list_ancestor = true;
@@ -501,21 +798,21 @@ Components::Component::PlatformProperties::PlatformProperty::Value_::~Value_()
 
 bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_data() const
 {
-    return boolean.is_set
-	|| decimal.is_set
+    return string.is_set
+	|| boolean.is_set
 	|| intsixfour.is_set
-	|| string.is_set
-	|| uintsixfour.is_set;
+	|| uintsixfour.is_set
+	|| decimal.is_set;
 }
 
 bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(boolean.yfilter)
-	|| ydk::is_set(decimal.yfilter)
-	|| ydk::is_set(intsixfour.yfilter)
 	|| ydk::is_set(string.yfilter)
-	|| ydk::is_set(uintsixfour.yfilter);
+	|| ydk::is_set(boolean.yfilter)
+	|| ydk::is_set(intsixfour.yfilter)
+	|| ydk::is_set(uintsixfour.yfilter)
+	|| ydk::is_set(decimal.yfilter);
 }
 
 std::string Components::Component::PlatformProperties::PlatformProperty::Value_::get_segment_path() const
@@ -529,11 +826,11 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformPr
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (boolean.is_set || is_set(boolean.yfilter)) leaf_name_data.push_back(boolean.get_name_leafdata());
-    if (decimal.is_set || is_set(decimal.yfilter)) leaf_name_data.push_back(decimal.get_name_leafdata());
-    if (intsixfour.is_set || is_set(intsixfour.yfilter)) leaf_name_data.push_back(intsixfour.get_name_leafdata());
     if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
+    if (boolean.is_set || is_set(boolean.yfilter)) leaf_name_data.push_back(boolean.get_name_leafdata());
+    if (intsixfour.is_set || is_set(intsixfour.yfilter)) leaf_name_data.push_back(intsixfour.get_name_leafdata());
     if (uintsixfour.is_set || is_set(uintsixfour.yfilter)) leaf_name_data.push_back(uintsixfour.get_name_leafdata());
+    if (decimal.is_set || is_set(decimal.yfilter)) leaf_name_data.push_back(decimal.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -552,17 +849,17 @@ std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformPr
 
 void Components::Component::PlatformProperties::PlatformProperty::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "string")
+    {
+        string = value;
+        string.value_namespace = name_space;
+        string.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "boolean")
     {
         boolean = value;
         boolean.value_namespace = name_space;
         boolean.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "decimal")
-    {
-        decimal = value;
-        decimal.value_namespace = name_space;
-        decimal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intsixfour")
     {
@@ -570,47 +867,47 @@ void Components::Component::PlatformProperties::PlatformProperty::Value_::set_va
         intsixfour.value_namespace = name_space;
         intsixfour.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "string")
-    {
-        string = value;
-        string.value_namespace = name_space;
-        string.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "uintsixfour")
     {
         uintsixfour = value;
         uintsixfour.value_namespace = name_space;
         uintsixfour.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "decimal")
+    {
+        decimal = value;
+        decimal.value_namespace = name_space;
+        decimal.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Components::Component::PlatformProperties::PlatformProperty::Value_::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "string")
+    {
+        string.yfilter = yfilter;
+    }
     if(value_path == "boolean")
     {
         boolean.yfilter = yfilter;
-    }
-    if(value_path == "decimal")
-    {
-        decimal.yfilter = yfilter;
     }
     if(value_path == "intsixfour")
     {
         intsixfour.yfilter = yfilter;
     }
-    if(value_path == "string")
-    {
-        string.yfilter = yfilter;
-    }
     if(value_path == "uintsixfour")
     {
         uintsixfour.yfilter = yfilter;
+    }
+    if(value_path == "decimal")
+    {
+        decimal.yfilter = yfilter;
     }
 }
 
 bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "boolean" || name == "decimal" || name == "intsixfour" || name == "string" || name == "uintsixfour")
+    if(name == "string" || name == "boolean" || name == "intsixfour" || name == "uintsixfour" || name == "decimal")
         return true;
     return false;
 }
@@ -794,303 +1091,6 @@ void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_fil
 bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "parent-platform-component-cname-key")
-        return true;
-    return false;
-}
-
-Components::Component::State::State()
-    :
-    description{YType::str, "description"},
-    id{YType::str, "id"},
-    mfg_name{YType::str, "mfg-name"},
-    part_no{YType::str, "part-no"},
-    serial_no{YType::str, "serial-no"},
-    type{YType::enumeration, "type"},
-    version{YType::str, "version"}
-    	,
-    temp(std::make_shared<Components::Component::State::Temp>())
-{
-    temp->parent = this;
-
-    yang_name = "state"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Components::Component::State::~State()
-{
-}
-
-bool Components::Component::State::has_data() const
-{
-    return description.is_set
-	|| id.is_set
-	|| mfg_name.is_set
-	|| part_no.is_set
-	|| serial_no.is_set
-	|| type.is_set
-	|| version.is_set
-	|| (temp !=  nullptr && temp->has_data());
-}
-
-bool Components::Component::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(mfg_name.yfilter)
-	|| ydk::is_set(part_no.yfilter)
-	|| ydk::is_set(serial_no.yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| (temp !=  nullptr && temp->has_operation());
-}
-
-std::string Components::Component::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Components::Component::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (mfg_name.is_set || is_set(mfg_name.yfilter)) leaf_name_data.push_back(mfg_name.get_name_leafdata());
-    if (part_no.is_set || is_set(part_no.yfilter)) leaf_name_data.push_back(part_no.get_name_leafdata());
-    if (serial_no.is_set || is_set(serial_no.yfilter)) leaf_name_data.push_back(serial_no.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "temp")
-    {
-        if(temp == nullptr)
-        {
-            temp = std::make_shared<Components::Component::State::Temp>();
-        }
-        return temp;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(temp != nullptr)
-    {
-        children["temp"] = temp;
-    }
-
-    return children;
-}
-
-void Components::Component::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mfg-name")
-    {
-        mfg_name = value;
-        mfg_name.value_namespace = name_space;
-        mfg_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "part-no")
-    {
-        part_no = value;
-        part_no.value_namespace = name_space;
-        part_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-no")
-    {
-        serial_no = value;
-        serial_no.value_namespace = name_space;
-        serial_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "mfg-name")
-    {
-        mfg_name.yfilter = yfilter;
-    }
-    if(value_path == "part-no")
-    {
-        part_no.yfilter = yfilter;
-    }
-    if(value_path == "serial-no")
-    {
-        serial_no.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "temp" || name == "description" || name == "id" || name == "mfg-name" || name == "part-no" || name == "serial-no" || name == "type" || name == "version")
-        return true;
-    return false;
-}
-
-Components::Component::State::Temp::Temp()
-    :
-    temp_avg{YType::str, "temp-avg"},
-    temp_instant{YType::str, "temp-instant"},
-    temp_max{YType::str, "temp-max"},
-    temp_min{YType::str, "temp-min"}
-{
-
-    yang_name = "temp"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Components::Component::State::Temp::~Temp()
-{
-}
-
-bool Components::Component::State::Temp::has_data() const
-{
-    return temp_avg.is_set
-	|| temp_instant.is_set
-	|| temp_max.is_set
-	|| temp_min.is_set;
-}
-
-bool Components::Component::State::Temp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(temp_avg.yfilter)
-	|| ydk::is_set(temp_instant.yfilter)
-	|| ydk::is_set(temp_max.yfilter)
-	|| ydk::is_set(temp_min.yfilter);
-}
-
-std::string Components::Component::State::Temp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "temp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Components::Component::State::Temp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (temp_avg.is_set || is_set(temp_avg.yfilter)) leaf_name_data.push_back(temp_avg.get_name_leafdata());
-    if (temp_instant.is_set || is_set(temp_instant.yfilter)) leaf_name_data.push_back(temp_instant.get_name_leafdata());
-    if (temp_max.is_set || is_set(temp_max.yfilter)) leaf_name_data.push_back(temp_max.get_name_leafdata());
-    if (temp_min.is_set || is_set(temp_min.yfilter)) leaf_name_data.push_back(temp_min.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Components::Component::State::Temp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::Temp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Components::Component::State::Temp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "temp-avg")
-    {
-        temp_avg = value;
-        temp_avg.value_namespace = name_space;
-        temp_avg.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "temp-instant")
-    {
-        temp_instant = value;
-        temp_instant.value_namespace = name_space;
-        temp_instant.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "temp-max")
-    {
-        temp_max = value;
-        temp_max.value_namespace = name_space;
-        temp_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "temp-min")
-    {
-        temp_min = value;
-        temp_min.value_namespace = name_space;
-        temp_min.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::State::Temp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "temp-avg")
-    {
-        temp_avg.yfilter = yfilter;
-    }
-    if(value_path == "temp-instant")
-    {
-        temp_instant.yfilter = yfilter;
-    }
-    if(value_path == "temp-max")
-    {
-        temp_max.yfilter = yfilter;
-    }
-    if(value_path == "temp-min")
-    {
-        temp_min.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::State::Temp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "temp-avg" || name == "temp-instant" || name == "temp-max" || name == "temp-min")
         return true;
     return false;
 }

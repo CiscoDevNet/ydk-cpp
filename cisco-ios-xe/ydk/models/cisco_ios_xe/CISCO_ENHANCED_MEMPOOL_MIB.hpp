@@ -36,19 +36,19 @@ class CISCOENHANCEDMEMPOOLMIB : public ydk::Entity
         class Cempmembufferpooltable; //type: CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable
         class Cempmembuffercachepooltable; //type: CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable> cempmembuffercachepooltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable> cempmembufferpooltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmempooltable> cempmempooltable;
         std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig> cempnotificationconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmempooltable> cempmempooltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable> cempmembufferpooltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable> cempmembuffercachepooltable;
         
 }; // CISCOENHANCEDMEMPOOLMIB
 
 
-class CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable : public ydk::Entity
+class CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig : public ydk::Entity
 {
     public:
-        Cempmembuffercachepooltable();
-        ~Cempmembuffercachepooltable();
+        Cempnotificationconfig();
+        ~Cempnotificationconfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -61,112 +61,9 @@ class CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cempmembuffercachepoolentry; //type: CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry
+        ydk::YLeaf cempmembuffernotifyenabled; //type: boolean
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry> > cempmembuffercachepoolentry;
-        
-}; // CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable
-
-
-class CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry : public ydk::Entity
-{
-    public:
-        Cempmembuffercachepoolentry();
-        ~Cempmembuffercachepoolentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        ydk::YLeaf entphysicalindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::cempmembufferpoolindex)
-        ydk::YLeaf cempmembufferpoolindex;
-        ydk::YLeaf cempmembuffercachesize; //type: uint32
-        ydk::YLeaf cempmembuffercachetotal; //type: uint32
-        ydk::YLeaf cempmembuffercacheused; //type: uint32
-        ydk::YLeaf cempmembuffercachehit; //type: uint32
-        ydk::YLeaf cempmembuffercachemiss; //type: uint32
-        ydk::YLeaf cempmembuffercachethreshold; //type: uint32
-        ydk::YLeaf cempmembuffercachethresholdcount; //type: uint32
-
-}; // CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry
-
-
-class CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable : public ydk::Entity
-{
-    public:
-        Cempmembufferpooltable();
-        ~Cempmembufferpooltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Cempmembufferpoolentry; //type: CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry
-
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry> > cempmembufferpoolentry;
-        
-}; // CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable
-
-
-class CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry : public ydk::Entity
-{
-    public:
-        Cempmembufferpoolentry();
-        ~Cempmembufferpoolentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        ydk::YLeaf entphysicalindex;
-        ydk::YLeaf cempmembufferpoolindex; //type: uint32
-        ydk::YLeaf cempmembuffermempoolindex; //type: int32
-        ydk::YLeaf cempmembuffername; //type: string
-        ydk::YLeaf cempmembufferdynamic; //type: boolean
-        ydk::YLeaf cempmembuffersize; //type: uint32
-        ydk::YLeaf cempmembuffermin; //type: uint32
-        ydk::YLeaf cempmembuffermax; //type: uint32
-        ydk::YLeaf cempmembufferpermanent; //type: uint32
-        ydk::YLeaf cempmembuffertransient; //type: uint32
-        ydk::YLeaf cempmembuffertotal; //type: uint32
-        ydk::YLeaf cempmembufferfree; //type: uint32
-        ydk::YLeaf cempmembufferhit; //type: uint32
-        ydk::YLeaf cempmembuffermiss; //type: uint32
-        ydk::YLeaf cempmembufferfreehit; //type: uint32
-        ydk::YLeaf cempmembufferfreemiss; //type: uint32
-        ydk::YLeaf cempmembufferpermchange; //type: int32
-        ydk::YLeaf cempmembufferpeak; //type: uint32
-        ydk::YLeaf cempmembufferpeaktime; //type: uint32
-        ydk::YLeaf cempmembuffertrim; //type: uint32
-        ydk::YLeaf cempmembuffergrow; //type: uint32
-        ydk::YLeaf cempmembufferfailures; //type: uint32
-        ydk::YLeaf cempmembuffernostorage; //type: uint32
-
-}; // CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry
+}; // CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig
 
 
 class CISCOENHANCEDMEMPOOLMIB::Cempmempooltable : public ydk::Entity
@@ -244,11 +141,11 @@ class CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry : public ydk::
 }; // CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry
 
 
-class CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig : public ydk::Entity
+class CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable : public ydk::Entity
 {
     public:
-        Cempnotificationconfig();
-        ~Cempnotificationconfig();
+        Cempmembufferpooltable();
+        ~Cempmembufferpooltable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -261,9 +158,112 @@ class CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cempmembuffernotifyenabled; //type: boolean
+        class Cempmembufferpoolentry; //type: CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry
 
-}; // CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry> > cempmembufferpoolentry;
+        
+}; // CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable
+
+
+class CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry : public ydk::Entity
+{
+    public:
+        Cempmembufferpoolentry();
+        ~Cempmembufferpoolentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cempmembufferpoolindex; //type: uint32
+        ydk::YLeaf cempmembuffermempoolindex; //type: int32
+        ydk::YLeaf cempmembuffername; //type: string
+        ydk::YLeaf cempmembufferdynamic; //type: boolean
+        ydk::YLeaf cempmembuffersize; //type: uint32
+        ydk::YLeaf cempmembuffermin; //type: uint32
+        ydk::YLeaf cempmembuffermax; //type: uint32
+        ydk::YLeaf cempmembufferpermanent; //type: uint32
+        ydk::YLeaf cempmembuffertransient; //type: uint32
+        ydk::YLeaf cempmembuffertotal; //type: uint32
+        ydk::YLeaf cempmembufferfree; //type: uint32
+        ydk::YLeaf cempmembufferhit; //type: uint32
+        ydk::YLeaf cempmembuffermiss; //type: uint32
+        ydk::YLeaf cempmembufferfreehit; //type: uint32
+        ydk::YLeaf cempmembufferfreemiss; //type: uint32
+        ydk::YLeaf cempmembufferpermchange; //type: int32
+        ydk::YLeaf cempmembufferpeak; //type: uint32
+        ydk::YLeaf cempmembufferpeaktime; //type: uint32
+        ydk::YLeaf cempmembuffertrim; //type: uint32
+        ydk::YLeaf cempmembuffergrow; //type: uint32
+        ydk::YLeaf cempmembufferfailures; //type: uint32
+        ydk::YLeaf cempmembuffernostorage; //type: uint32
+
+}; // CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry
+
+
+class CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable : public ydk::Entity
+{
+    public:
+        Cempmembuffercachepooltable();
+        ~Cempmembuffercachepooltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cempmembuffercachepoolentry; //type: CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry> > cempmembuffercachepoolentry;
+        
+}; // CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable
+
+
+class CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry : public ydk::Entity
+{
+    public:
+        Cempmembuffercachepoolentry();
+        ~Cempmembuffercachepoolentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        ydk::YLeaf entphysicalindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_ENHANCED_MEMPOOL_MIB::CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::cempmembufferpoolindex)
+        ydk::YLeaf cempmembufferpoolindex;
+        ydk::YLeaf cempmembuffercachesize; //type: uint32
+        ydk::YLeaf cempmembuffercachetotal; //type: uint32
+        ydk::YLeaf cempmembuffercacheused; //type: uint32
+        ydk::YLeaf cempmembuffercachehit; //type: uint32
+        ydk::YLeaf cempmembuffercachemiss; //type: uint32
+        ydk::YLeaf cempmembuffercachethreshold; //type: uint32
+        ydk::YLeaf cempmembuffercachethresholdcount; //type: uint32
+
+}; // CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry
 
 class CempMemPoolTypes : public ydk::Enum
 {

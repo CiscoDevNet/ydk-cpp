@@ -826,16 +826,16 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::Lo
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::MemoryStats()
     :
-    available_number{YType::uint64, "available-number"},
-    available_percent{YType::uint64, "available-percent"},
-    committed_number{YType::uint64, "committed-number"},
-    committed_percent{YType::uint8, "committed-percent"},
-    free_number{YType::uint64, "free-number"},
-    free_percent{YType::uint64, "free-percent"},
     memory_status{YType::str, "memory-status"},
     total{YType::uint64, "total"},
     used_number{YType::uint64, "used-number"},
-    used_percent{YType::uint64, "used-percent"}
+    used_percent{YType::uint64, "used-percent"},
+    free_number{YType::uint64, "free-number"},
+    free_percent{YType::uint64, "free-percent"},
+    available_number{YType::uint64, "available-number"},
+    available_percent{YType::uint64, "available-percent"},
+    committed_number{YType::uint64, "committed-number"},
+    committed_percent{YType::uint8, "committed-percent"}
     	,
     status(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status>())
 {
@@ -850,32 +850,32 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::~MemorySta
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::has_data() const
 {
-    return available_number.is_set
-	|| available_percent.is_set
-	|| committed_number.is_set
-	|| committed_percent.is_set
-	|| free_number.is_set
-	|| free_percent.is_set
-	|| memory_status.is_set
+    return memory_status.is_set
 	|| total.is_set
 	|| used_number.is_set
 	|| used_percent.is_set
+	|| free_number.is_set
+	|| free_percent.is_set
+	|| available_number.is_set
+	|| available_percent.is_set
+	|| committed_number.is_set
+	|| committed_percent.is_set
 	|| (status !=  nullptr && status->has_data());
 }
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(available_number.yfilter)
-	|| ydk::is_set(available_percent.yfilter)
-	|| ydk::is_set(committed_number.yfilter)
-	|| ydk::is_set(committed_percent.yfilter)
-	|| ydk::is_set(free_number.yfilter)
-	|| ydk::is_set(free_percent.yfilter)
 	|| ydk::is_set(memory_status.yfilter)
 	|| ydk::is_set(total.yfilter)
 	|| ydk::is_set(used_number.yfilter)
 	|| ydk::is_set(used_percent.yfilter)
+	|| ydk::is_set(free_number.yfilter)
+	|| ydk::is_set(free_percent.yfilter)
+	|| ydk::is_set(available_number.yfilter)
+	|| ydk::is_set(available_percent.yfilter)
+	|| ydk::is_set(committed_number.yfilter)
+	|| ydk::is_set(committed_percent.yfilter)
 	|| (status !=  nullptr && status->has_operation());
 }
 
@@ -890,16 +890,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (available_number.is_set || is_set(available_number.yfilter)) leaf_name_data.push_back(available_number.get_name_leafdata());
-    if (available_percent.is_set || is_set(available_percent.yfilter)) leaf_name_data.push_back(available_percent.get_name_leafdata());
-    if (committed_number.is_set || is_set(committed_number.yfilter)) leaf_name_data.push_back(committed_number.get_name_leafdata());
-    if (committed_percent.is_set || is_set(committed_percent.yfilter)) leaf_name_data.push_back(committed_percent.get_name_leafdata());
-    if (free_number.is_set || is_set(free_number.yfilter)) leaf_name_data.push_back(free_number.get_name_leafdata());
-    if (free_percent.is_set || is_set(free_percent.yfilter)) leaf_name_data.push_back(free_percent.get_name_leafdata());
     if (memory_status.is_set || is_set(memory_status.yfilter)) leaf_name_data.push_back(memory_status.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
     if (used_number.is_set || is_set(used_number.yfilter)) leaf_name_data.push_back(used_number.get_name_leafdata());
     if (used_percent.is_set || is_set(used_percent.yfilter)) leaf_name_data.push_back(used_percent.get_name_leafdata());
+    if (free_number.is_set || is_set(free_number.yfilter)) leaf_name_data.push_back(free_number.get_name_leafdata());
+    if (free_percent.is_set || is_set(free_percent.yfilter)) leaf_name_data.push_back(free_percent.get_name_leafdata());
+    if (available_number.is_set || is_set(available_number.yfilter)) leaf_name_data.push_back(available_number.get_name_leafdata());
+    if (available_percent.is_set || is_set(available_percent.yfilter)) leaf_name_data.push_back(available_percent.get_name_leafdata());
+    if (committed_number.is_set || is_set(committed_number.yfilter)) leaf_name_data.push_back(committed_number.get_name_leafdata());
+    if (committed_percent.is_set || is_set(committed_percent.yfilter)) leaf_name_data.push_back(committed_percent.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -932,42 +932,6 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlPro
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "available-number")
-    {
-        available_number = value;
-        available_number.value_namespace = name_space;
-        available_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "available-percent")
-    {
-        available_percent = value;
-        available_percent.value_namespace = name_space;
-        available_percent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "committed-number")
-    {
-        committed_number = value;
-        committed_number.value_namespace = name_space;
-        committed_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "committed-percent")
-    {
-        committed_percent = value;
-        committed_percent.value_namespace = name_space;
-        committed_percent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-number")
-    {
-        free_number = value;
-        free_number.value_namespace = name_space;
-        free_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-percent")
-    {
-        free_percent = value;
-        free_percent.value_namespace = name_space;
-        free_percent.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "memory-status")
     {
         memory_status = value;
@@ -992,34 +956,46 @@ void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::set_v
         used_percent.value_namespace = name_space;
         used_percent.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "free-number")
+    {
+        free_number = value;
+        free_number.value_namespace = name_space;
+        free_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free-percent")
+    {
+        free_percent = value;
+        free_percent.value_namespace = name_space;
+        free_percent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "available-number")
+    {
+        available_number = value;
+        available_number.value_namespace = name_space;
+        available_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "available-percent")
+    {
+        available_percent = value;
+        available_percent.value_namespace = name_space;
+        available_percent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "committed-number")
+    {
+        committed_number = value;
+        committed_number.value_namespace = name_space;
+        committed_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "committed-percent")
+    {
+        committed_percent = value;
+        committed_percent.value_namespace = name_space;
+        committed_percent.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "available-number")
-    {
-        available_number.yfilter = yfilter;
-    }
-    if(value_path == "available-percent")
-    {
-        available_percent.yfilter = yfilter;
-    }
-    if(value_path == "committed-number")
-    {
-        committed_number.yfilter = yfilter;
-    }
-    if(value_path == "committed-percent")
-    {
-        committed_percent.yfilter = yfilter;
-    }
-    if(value_path == "free-number")
-    {
-        free_number.yfilter = yfilter;
-    }
-    if(value_path == "free-percent")
-    {
-        free_percent.yfilter = yfilter;
-    }
     if(value_path == "memory-status")
     {
         memory_status.yfilter = yfilter;
@@ -1036,19 +1012,43 @@ void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::set_f
     {
         used_percent.yfilter = yfilter;
     }
+    if(value_path == "free-number")
+    {
+        free_number.yfilter = yfilter;
+    }
+    if(value_path == "free-percent")
+    {
+        free_percent.yfilter = yfilter;
+    }
+    if(value_path == "available-number")
+    {
+        available_number.yfilter = yfilter;
+    }
+    if(value_path == "available-percent")
+    {
+        available_percent.yfilter = yfilter;
+    }
+    if(value_path == "committed-number")
+    {
+        committed_number.yfilter = yfilter;
+    }
+    if(value_path == "committed-percent")
+    {
+        committed_percent.yfilter = yfilter;
+    }
 }
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "status" || name == "available-number" || name == "available-percent" || name == "committed-number" || name == "committed-percent" || name == "free-number" || name == "free-percent" || name == "memory-status" || name == "total" || name == "used-number" || name == "used-percent")
+    if(name == "status" || name == "memory-status" || name == "total" || name == "used-number" || name == "used-percent" || name == "free-number" || name == "free-percent" || name == "available-number" || name == "available-percent" || name == "committed-number" || name == "committed-percent")
         return true;
     return false;
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::Status()
     :
-    critical_threshold_percent{YType::uint32, "critical-threshold-percent"},
-    warning_threshold_percent{YType::uint32, "warning-threshold-percent"}
+    warning_threshold_percent{YType::uint32, "warning-threshold-percent"},
+    critical_threshold_percent{YType::uint32, "critical-threshold-percent"}
 {
 
     yang_name = "status"; yang_parent_name = "memory-stats"; is_top_level_class = false; has_list_ancestor = true;
@@ -1060,15 +1060,15 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::~S
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::has_data() const
 {
-    return critical_threshold_percent.is_set
-	|| warning_threshold_percent.is_set;
+    return warning_threshold_percent.is_set
+	|| critical_threshold_percent.is_set;
 }
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(critical_threshold_percent.yfilter)
-	|| ydk::is_set(warning_threshold_percent.yfilter);
+	|| ydk::is_set(warning_threshold_percent.yfilter)
+	|| ydk::is_set(critical_threshold_percent.yfilter);
 }
 
 std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_segment_path() const
@@ -1082,8 +1082,8 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical_threshold_percent.is_set || is_set(critical_threshold_percent.yfilter)) leaf_name_data.push_back(critical_threshold_percent.get_name_leafdata());
     if (warning_threshold_percent.is_set || is_set(warning_threshold_percent.yfilter)) leaf_name_data.push_back(warning_threshold_percent.get_name_leafdata());
+    if (critical_threshold_percent.is_set || is_set(critical_threshold_percent.yfilter)) leaf_name_data.push_back(critical_threshold_percent.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1102,35 +1102,35 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlPro
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "critical-threshold-percent")
-    {
-        critical_threshold_percent = value;
-        critical_threshold_percent.value_namespace = name_space;
-        critical_threshold_percent.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "warning-threshold-percent")
     {
         warning_threshold_percent = value;
         warning_threshold_percent.value_namespace = name_space;
         warning_threshold_percent.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "critical-threshold-percent")
+    {
+        critical_threshold_percent = value;
+        critical_threshold_percent.value_namespace = name_space;
+        critical_threshold_percent.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "critical-threshold-percent")
-    {
-        critical_threshold_percent.yfilter = yfilter;
-    }
     if(value_path == "warning-threshold-percent")
     {
         warning_threshold_percent.yfilter = yfilter;
+    }
+    if(value_path == "critical-threshold-percent")
+    {
+        critical_threshold_percent.yfilter = yfilter;
     }
 }
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "critical-threshold-percent" || name == "warning-threshold-percent")
+    if(name == "warning-threshold-percent" || name == "critical-threshold-percent")
         return true;
     return false;
 }
@@ -1231,13 +1231,13 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::has_
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::PerCoreStat()
     :
     name{YType::uint32, "name"},
-    idle{YType::str, "idle"},
-    io_wait{YType::str, "io-wait"},
-    irq{YType::str, "irq"},
-    nice{YType::str, "nice"},
-    sirq{YType::str, "sirq"},
+    user{YType::str, "user"},
     system{YType::str, "system"},
-    user{YType::str, "user"}
+    nice{YType::str, "nice"},
+    idle{YType::str, "idle"},
+    irq{YType::str, "irq"},
+    sirq{YType::str, "sirq"},
+    io_wait{YType::str, "io-wait"}
 {
 
     yang_name = "per-core-stat"; yang_parent_name = "per-core-stats"; is_top_level_class = false; has_list_ancestor = true;
@@ -1250,26 +1250,26 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreSt
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_data() const
 {
     return name.is_set
-	|| idle.is_set
-	|| io_wait.is_set
-	|| irq.is_set
-	|| nice.is_set
-	|| sirq.is_set
+	|| user.is_set
 	|| system.is_set
-	|| user.is_set;
+	|| nice.is_set
+	|| idle.is_set
+	|| irq.is_set
+	|| sirq.is_set
+	|| io_wait.is_set;
 }
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(idle.yfilter)
-	|| ydk::is_set(io_wait.yfilter)
-	|| ydk::is_set(irq.yfilter)
-	|| ydk::is_set(nice.yfilter)
-	|| ydk::is_set(sirq.yfilter)
+	|| ydk::is_set(user.yfilter)
 	|| ydk::is_set(system.yfilter)
-	|| ydk::is_set(user.yfilter);
+	|| ydk::is_set(nice.yfilter)
+	|| ydk::is_set(idle.yfilter)
+	|| ydk::is_set(irq.yfilter)
+	|| ydk::is_set(sirq.yfilter)
+	|| ydk::is_set(io_wait.yfilter);
 }
 
 std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_segment_path() const
@@ -1284,13 +1284,13 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (idle.is_set || is_set(idle.yfilter)) leaf_name_data.push_back(idle.get_name_leafdata());
-    if (io_wait.is_set || is_set(io_wait.yfilter)) leaf_name_data.push_back(io_wait.get_name_leafdata());
-    if (irq.is_set || is_set(irq.yfilter)) leaf_name_data.push_back(irq.get_name_leafdata());
-    if (nice.is_set || is_set(nice.yfilter)) leaf_name_data.push_back(nice.get_name_leafdata());
-    if (sirq.is_set || is_set(sirq.yfilter)) leaf_name_data.push_back(sirq.get_name_leafdata());
-    if (system.is_set || is_set(system.yfilter)) leaf_name_data.push_back(system.get_name_leafdata());
     if (user.is_set || is_set(user.yfilter)) leaf_name_data.push_back(user.get_name_leafdata());
+    if (system.is_set || is_set(system.yfilter)) leaf_name_data.push_back(system.get_name_leafdata());
+    if (nice.is_set || is_set(nice.yfilter)) leaf_name_data.push_back(nice.get_name_leafdata());
+    if (idle.is_set || is_set(idle.yfilter)) leaf_name_data.push_back(idle.get_name_leafdata());
+    if (irq.is_set || is_set(irq.yfilter)) leaf_name_data.push_back(irq.get_name_leafdata());
+    if (sirq.is_set || is_set(sirq.yfilter)) leaf_name_data.push_back(sirq.get_name_leafdata());
+    if (io_wait.is_set || is_set(io_wait.yfilter)) leaf_name_data.push_back(io_wait.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1315,35 +1315,11 @@ void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerC
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "idle")
+    if(value_path == "user")
     {
-        idle = value;
-        idle.value_namespace = name_space;
-        idle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "io-wait")
-    {
-        io_wait = value;
-        io_wait.value_namespace = name_space;
-        io_wait.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "irq")
-    {
-        irq = value;
-        irq.value_namespace = name_space;
-        irq.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nice")
-    {
-        nice = value;
-        nice.value_namespace = name_space;
-        nice.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sirq")
-    {
-        sirq = value;
-        sirq.value_namespace = name_space;
-        sirq.value_namespace_prefix = name_space_prefix;
+        user = value;
+        user.value_namespace = name_space;
+        user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system")
     {
@@ -1351,11 +1327,35 @@ void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerC
         system.value_namespace = name_space;
         system.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "user")
+    if(value_path == "nice")
     {
-        user = value;
-        user.value_namespace = name_space;
-        user.value_namespace_prefix = name_space_prefix;
+        nice = value;
+        nice.value_namespace = name_space;
+        nice.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle")
+    {
+        idle = value;
+        idle.value_namespace = name_space;
+        idle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "irq")
+    {
+        irq = value;
+        irq.value_namespace = name_space;
+        irq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sirq")
+    {
+        sirq = value;
+        sirq.value_namespace = name_space;
+        sirq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "io-wait")
+    {
+        io_wait = value;
+        io_wait.value_namespace = name_space;
+        io_wait.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1365,39 +1365,39 @@ void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerC
     {
         name.yfilter = yfilter;
     }
-    if(value_path == "idle")
+    if(value_path == "user")
     {
-        idle.yfilter = yfilter;
-    }
-    if(value_path == "io-wait")
-    {
-        io_wait.yfilter = yfilter;
-    }
-    if(value_path == "irq")
-    {
-        irq.yfilter = yfilter;
-    }
-    if(value_path == "nice")
-    {
-        nice.yfilter = yfilter;
-    }
-    if(value_path == "sirq")
-    {
-        sirq.yfilter = yfilter;
+        user.yfilter = yfilter;
     }
     if(value_path == "system")
     {
         system.yfilter = yfilter;
     }
-    if(value_path == "user")
+    if(value_path == "nice")
     {
-        user.yfilter = yfilter;
+        nice.yfilter = yfilter;
+    }
+    if(value_path == "idle")
+    {
+        idle.yfilter = yfilter;
+    }
+    if(value_path == "irq")
+    {
+        irq.yfilter = yfilter;
+    }
+    if(value_path == "sirq")
+    {
+        sirq.yfilter = yfilter;
+    }
+    if(value_path == "io-wait")
+    {
+        io_wait.yfilter = yfilter;
     }
 }
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "idle" || name == "io-wait" || name == "irq" || name == "nice" || name == "sirq" || name == "system" || name == "user")
+    if(name == "name" || name == "user" || name == "system" || name == "nice" || name == "idle" || name == "irq" || name == "sirq" || name == "io-wait")
         return true;
     return false;
 }

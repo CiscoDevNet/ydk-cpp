@@ -151,19 +151,19 @@ class Wanphy::Controllers::Controller::Info : public ydk::Entity
 
 }; // Wanphy::Controllers::Controller::Info
 
-class WanphyModeInfo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lan;
-        static const ydk::Enum::YLeaf wan;
-
-};
-
 class WanphyAlarmRepStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
+
+};
+
+class WanphyModeInfo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lan;
+        static const ydk::Enum::YLeaf wan;
 
 };
 

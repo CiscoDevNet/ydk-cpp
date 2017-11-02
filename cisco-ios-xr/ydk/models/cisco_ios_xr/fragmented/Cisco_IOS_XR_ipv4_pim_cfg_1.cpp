@@ -11,238 +11,176 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_cfg {
 
-Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::RpfVectorEnable()
+Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::CloneSource()
     :
-    allow_ebgp{YType::empty, "allow-ebgp"},
-    disable_ibgp{YType::empty, "disable-ibgp"},
-    enable{YType::empty, "enable"}
+    source{YType::str, "source"},
+    primary{YType::str, "primary"},
+    backup{YType::str, "backup"},
+    prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "rpf-vector-enable"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clone-source"; yang_parent_name = "clone-sources"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::~RpfVectorEnable()
+Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::~CloneSource()
 {
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_data() const
+bool Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::has_data() const
 {
-    return allow_ebgp.is_set
-	|| disable_ibgp.is_set
-	|| enable.is_set;
+    return source.is_set
+	|| primary.is_set
+	|| backup.is_set
+	|| prefix_length.is_set;
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_operation() const
+bool Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(allow_ebgp.yfilter)
-	|| ydk::is_set(disable_ibgp.yfilter)
-	|| ydk::is_set(enable.yfilter);
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(primary.yfilter)
+	|| ydk::is_set(backup.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
-std::string Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_segment_path() const
+std::string Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rpf-vector-enable";
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-cfg:pim/default-context/ipv4/mofrr/clone-sources/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_name_leaf_data() const
+std::string Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clone-source" <<"[source='" <<source <<"']" <<"[primary='" <<primary <<"']" <<"[backup='" <<backup <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
-    if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (primary.is_set || is_set(primary.yfilter)) leaf_name_data.push_back(primary.get_name_leafdata());
+    if (backup.is_set || is_set(backup.yfilter)) leaf_name_data.push_back(backup.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "allow-ebgp")
+    if(value_path == "source")
     {
-        allow_ebgp = value;
-        allow_ebgp.value_namespace = name_space;
-        allow_ebgp.value_namespace_prefix = name_space_prefix;
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "disable-ibgp")
+    if(value_path == "primary")
     {
-        disable_ibgp = value;
-        disable_ibgp.value_namespace = name_space;
-        disable_ibgp.value_namespace_prefix = name_space_prefix;
+        primary = value;
+        primary.value_namespace = name_space;
+        primary.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
+    if(value_path == "backup")
     {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
+        backup = value;
+        backup.value_namespace = name_space;
+        backup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
+void Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "allow-ebgp")
+    if(value_path == "source")
     {
-        allow_ebgp.yfilter = yfilter;
+        source.yfilter = yfilter;
     }
-    if(value_path == "disable-ibgp")
+    if(value_path == "primary")
     {
-        disable_ibgp.yfilter = yfilter;
+        primary.yfilter = yfilter;
     }
-    if(value_path == "enable")
+    if(value_path == "backup")
     {
-        enable.yfilter = yfilter;
+        backup.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
     }
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
+bool Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "allow-ebgp" || name == "disable-ibgp" || name == "enable")
+    if(name == "source" || name == "primary" || name == "backup" || name == "prefix-length")
         return true;
     return false;
 }
 
-Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::SgExpiryTimer()
-    :
-    access_list_name{YType::str, "access-list-name"},
-    interval{YType::uint32, "interval"}
+Pim::DefaultContext::Ipv4::Paths::Paths()
 {
 
-    yang_name = "sg-expiry-timer"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::~SgExpiryTimer()
+Pim::DefaultContext::Ipv4::Paths::~Paths()
 {
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::has_data() const
+bool Pim::DefaultContext::Ipv4::Paths::has_data() const
 {
-    return access_list_name.is_set
-	|| interval.is_set;
-}
-
-bool Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(access_list_name.yfilter)
-	|| ydk::is_set(interval.yfilter);
-}
-
-std::string Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sg-expiry-timer";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "access-list-name")
+    for (std::size_t index=0; index<path.size(); index++)
     {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "access-list-name")
-    {
-        access_list_name.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-}
-
-bool Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-list-name" || name == "interval")
-        return true;
-    return false;
-}
-
-Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddresses()
-{
-
-    yang_name = "sparse-mode-rp-addresses"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::~SparseModeRpAddresses()
-{
-}
-
-bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::has_data() const
-{
-    for (std::size_t index=0; index<sparse_mode_rp_address.size(); index++)
-    {
-        if(sparse_mode_rp_address[index]->has_data())
+        if(path[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::has_operation() const
+bool Pim::DefaultContext::Ipv4::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<sparse_mode_rp_address.size(); index++)
+    for (std::size_t index=0; index<path.size(); index++)
     {
-        if(sparse_mode_rp_address[index]->has_operation())
+        if(path[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_segment_path() const
+std::string Pim::DefaultContext::Ipv4::Paths::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sparse-mode-rp-addresses";
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-cfg:pim/default-context/ipv4/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_name_leaf_data() const
+std::string Pim::DefaultContext::Ipv4::Paths::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "paths";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::DefaultContext::Ipv4::Paths::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -251,11 +189,11 @@ std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv6::SparseModeR
 
 }
 
-std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "sparse-mode-rp-address")
+    if(child_yang_name == "path")
     {
-        for(auto const & c : sparse_mode_rp_address)
+        for(auto const & c : path)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -263,19 +201,19 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_child_b
                 return c;
             }
         }
-        auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress>();
+        auto c = std::make_shared<Pim::DefaultContext::Ipv4::Paths::Path>();
         c->parent = this;
-        sparse_mode_rp_address.push_back(c);
+        path.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Paths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sparse_mode_rp_address)
+    for (auto const & c : path)
     {
         children[c->get_segment_path()] = c;
     }
@@ -283,211 +221,330 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SparseModeR
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Pim::DefaultContext::Ipv4::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+void Pim::DefaultContext::Ipv4::Paths::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+bool Pim::DefaultContext::Ipv4::Paths::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sparse-mode-rp-address")
+    if(name == "path")
         return true;
     return false;
 }
 
-Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::SparseModeRpAddress()
+Pim::DefaultContext::Ipv4::Paths::Path::Path()
     :
-    rp_address{YType::str, "rp-address"},
-    access_list_name{YType::str, "access-list-name"},
-    auto_rp_override{YType::boolean, "auto-rp-override"}
+    source_address{YType::str, "source-address"},
+    prefix_length{YType::uint8, "prefix-length"},
+    rpf_proxy_address{YType::str, "rpf-proxy-address"}
 {
 
-    yang_name = "sparse-mode-rp-address"; yang_parent_name = "sparse-mode-rp-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::~SparseModeRpAddress()
+Pim::DefaultContext::Ipv4::Paths::Path::~Path()
 {
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_data() const
+bool Pim::DefaultContext::Ipv4::Paths::Path::has_data() const
 {
-    return rp_address.is_set
-	|| access_list_name.is_set
-	|| auto_rp_override.is_set;
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return source_address.is_set
+	|| prefix_length.is_set;
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_operation() const
+bool Pim::DefaultContext::Ipv4::Paths::Path::has_operation() const
 {
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(rp_address.yfilter)
-	|| ydk::is_set(access_list_name.yfilter)
-	|| ydk::is_set(auto_rp_override.yfilter);
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(rpf_proxy_address.yfilter);
 }
 
-std::string Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_segment_path() const
+std::string Pim::DefaultContext::Ipv4::Paths::Path::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sparse-mode-rp-address" <<"[rp-address='" <<rp_address <<"']";
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-cfg:pim/default-context/ipv4/paths/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_name_leaf_data() const
+std::string Pim::DefaultContext::Ipv4::Paths::Path::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path" <<"[source-address='" <<source_address <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::DefaultContext::Ipv4::Paths::Path::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
+    auto rpf_proxy_address_name_datas = rpf_proxy_address.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), rpf_proxy_address_name_datas.begin(), rpf_proxy_address_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Paths::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Pim::DefaultContext::Ipv4::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "rp-address")
+    if(value_path == "source-address")
     {
-        rp_address = value;
-        rp_address.value_namespace = name_space;
-        rp_address.value_namespace_prefix = name_space_prefix;
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "prefix-length")
     {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "auto-rp-override")
+    if(value_path == "rpf-proxy-address")
     {
-        auto_rp_override = value;
-        auto_rp_override.value_namespace = name_space;
-        auto_rp_override.value_namespace_prefix = name_space_prefix;
+        rpf_proxy_address.append(value);
     }
 }
 
-void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Pim::DefaultContext::Ipv4::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "rp-address")
+    if(value_path == "source-address")
     {
-        rp_address.yfilter = yfilter;
+        source_address.yfilter = yfilter;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "prefix-length")
     {
-        access_list_name.yfilter = yfilter;
+        prefix_length.yfilter = yfilter;
     }
-    if(value_path == "auto-rp-override")
+    if(value_path == "rpf-proxy-address")
     {
-        auto_rp_override.yfilter = yfilter;
+        rpf_proxy_address.yfilter = yfilter;
     }
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Pim::DefaultContext::Ipv4::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+    if(name == "source-address" || name == "prefix-length" || name == "rpf-proxy-address")
         return true;
     return false;
 }
 
-Pim::Vrfs::Vrf::Ipv6::Ssm::Ssm()
+Pim::DefaultContext::Ipv4::AllowRp::AllowRp()
     :
-    disable{YType::boolean, "disable"},
-    range{YType::str, "range"}
+    rp_list_name{YType::str, "rp-list-name"},
+    group_list_name{YType::str, "group-list-name"}
 {
 
-    yang_name = "ssm"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allow-rp"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Pim::Vrfs::Vrf::Ipv6::Ssm::~Ssm()
+Pim::DefaultContext::Ipv4::AllowRp::~AllowRp()
 {
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::Ssm::has_data() const
+bool Pim::DefaultContext::Ipv4::AllowRp::has_data() const
 {
-    return disable.is_set
-	|| range.is_set;
+    return rp_list_name.is_set
+	|| group_list_name.is_set;
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::Ssm::has_operation() const
+bool Pim::DefaultContext::Ipv4::AllowRp::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| ydk::is_set(range.yfilter);
+	|| ydk::is_set(rp_list_name.yfilter)
+	|| ydk::is_set(group_list_name.yfilter);
 }
 
-std::string Pim::Vrfs::Vrf::Ipv6::Ssm::get_segment_path() const
+std::string Pim::DefaultContext::Ipv4::AllowRp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssm";
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-cfg:pim/default-context/ipv4/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv6::Ssm::get_name_leaf_data() const
+std::string Pim::DefaultContext::Ipv4::AllowRp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "allow-rp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::DefaultContext::Ipv4::AllowRp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
+    if (rp_list_name.is_set || is_set(rp_list_name.yfilter)) leaf_name_data.push_back(rp_list_name.get_name_leafdata());
+    if (group_list_name.is_set || is_set(group_list_name.yfilter)) leaf_name_data.push_back(group_list_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Ssm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AllowRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Ssm::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AllowRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Ssm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Pim::DefaultContext::Ipv4::AllowRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "disable")
+    if(value_path == "rp-list-name")
     {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
+        rp_list_name = value;
+        rp_list_name.value_namespace = name_space;
+        rp_list_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "range")
+    if(value_path == "group-list-name")
     {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
+        group_list_name = value;
+        group_list_name.value_namespace = name_space;
+        group_list_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Ssm::set_filter(const std::string & value_path, YFilter yfilter)
+void Pim::DefaultContext::Ipv4::AllowRp::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "disable")
+    if(value_path == "rp-list-name")
     {
-        disable.yfilter = yfilter;
+        rp_list_name.yfilter = yfilter;
     }
-    if(value_path == "range")
+    if(value_path == "group-list-name")
     {
-        range.yfilter = yfilter;
+        group_list_name.yfilter = yfilter;
     }
 }
 
-bool Pim::Vrfs::Vrf::Ipv6::Ssm::has_leaf_or_child_of_name(const std::string & name) const
+bool Pim::DefaultContext::Ipv4::AllowRp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disable" || name == "range")
+    if(name == "rp-list-name" || name == "group-list-name")
+        return true;
+    return false;
+}
+
+Pim::DefaultContext::Ipv4::Convergence::Convergence()
+    :
+    rpf_conflict_join_delay{YType::uint32, "rpf-conflict-join-delay"},
+    link_down_prune_delay{YType::uint32, "link-down-prune-delay"}
+{
+
+    yang_name = "convergence"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Pim::DefaultContext::Ipv4::Convergence::~Convergence()
+{
+}
+
+bool Pim::DefaultContext::Ipv4::Convergence::has_data() const
+{
+    return rpf_conflict_join_delay.is_set
+	|| link_down_prune_delay.is_set;
+}
+
+bool Pim::DefaultContext::Ipv4::Convergence::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rpf_conflict_join_delay.yfilter)
+	|| ydk::is_set(link_down_prune_delay.yfilter);
+}
+
+std::string Pim::DefaultContext::Ipv4::Convergence::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-pim-cfg:pim/default-context/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pim::DefaultContext::Ipv4::Convergence::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "convergence";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::DefaultContext::Ipv4::Convergence::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rpf_conflict_join_delay.is_set || is_set(rpf_conflict_join_delay.yfilter)) leaf_name_data.push_back(rpf_conflict_join_delay.get_name_leafdata());
+    if (link_down_prune_delay.is_set || is_set(link_down_prune_delay.yfilter)) leaf_name_data.push_back(link_down_prune_delay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Convergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Convergence::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Pim::DefaultContext::Ipv4::Convergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rpf-conflict-join-delay")
+    {
+        rpf_conflict_join_delay = value;
+        rpf_conflict_join_delay.value_namespace = name_space;
+        rpf_conflict_join_delay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-down-prune-delay")
+    {
+        link_down_prune_delay = value;
+        link_down_prune_delay.value_namespace = name_space;
+        link_down_prune_delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pim::DefaultContext::Ipv4::Convergence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rpf-conflict-join-delay")
+    {
+        rpf_conflict_join_delay.yfilter = yfilter;
+    }
+    if(value_path == "link-down-prune-delay")
+    {
+        link_down_prune_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Convergence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rpf-conflict-join-delay" || name == "link-down-prune-delay")
         return true;
     return false;
 }

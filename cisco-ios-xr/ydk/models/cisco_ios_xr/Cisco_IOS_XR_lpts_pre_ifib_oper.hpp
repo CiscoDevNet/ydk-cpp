@@ -85,11 +85,105 @@ class LptsPifib_::Nodes::Node : public ydk::Entity
         class DynamicFlowsStats; //type: LptsPifib_::Nodes::Node::DynamicFlowsStats
         class Hardware; //type: LptsPifib_::Nodes::Node::Hardware
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues> type_values;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::DynamicFlowsStats> dynamic_flows_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware> hardware;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues> type_values;
         
 }; // LptsPifib_::Nodes::Node
+
+
+class LptsPifib_::Nodes::Node::TypeValues : public ydk::Entity
+{
+    public:
+        TypeValues();
+        ~TypeValues();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TypeValue; //type: LptsPifib_::Nodes::Node::TypeValues::TypeValue
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues::TypeValue> > type_value;
+        
+}; // LptsPifib_::Nodes::Node::TypeValues
+
+
+class LptsPifib_::Nodes::Node::TypeValues::TypeValue : public ydk::Entity
+{
+    public:
+        TypeValue();
+        ~TypeValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pifib_type; //type: LptsPifib
+        class Entry; //type: LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry> > entry;
+        
+}; // LptsPifib_::Nodes::Node::TypeValues::TypeValue
+
+
+class LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry : public ydk::Entity
+{
+    public:
+        Entry();
+        ~Entry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf vid; //type: uint32
+        ydk::YLeaf l3protocol; //type: uint32
+        ydk::YLeaf l4protocol; //type: uint32
+        ydk::YLeaf intf_name; //type: string
+        ydk::YLeaf intf_handle; //type: uint32
+        ydk::YLeaf destination_addr; //type: string
+        ydk::YLeaf source_addr; //type: string
+        ydk::YLeaf destination_type; //type: string
+        ydk::YLeaf destination_value; //type: string
+        ydk::YLeaf source_port; //type: string
+        ydk::YLeaf is_frag; //type: uint8
+        ydk::YLeaf is_syn; //type: uint8
+        ydk::YLeaf opcode; //type: string
+        ydk::YLeaf flow_type; //type: string
+        ydk::YLeaf listener_tag; //type: string
+        ydk::YLeaf local_flag; //type: uint8
+        ydk::YLeaf is_fgid; //type: uint8
+        ydk::YLeaf deliver_list_short; //type: string
+        ydk::YLeaf deliver_list_long; //type: string
+        ydk::YLeaf min_ttl; //type: uint8
+        ydk::YLeaf accepts; //type: uint64
+        ydk::YLeaf drops; //type: uint64
+        ydk::YLeaf stale; //type: uint8
+        ydk::YLeaf pifib_type; //type: uint8
+        ydk::YLeaf pifib_program_time; //type: string
+
+}; // LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry
 
 
 class LptsPifib_::Nodes::Node::DynamicFlowsStats : public ydk::Entity
@@ -173,14 +267,191 @@ class LptsPifib_::Nodes::Node::Hardware : public ydk::Entity
         class Statistics; //type: LptsPifib_::Nodes::Node::Hardware::Statistics
         class IndexEntries; //type: LptsPifib_::Nodes::Node::Hardware::IndexEntries
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Bfd> bfd;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::IndexEntries> index_entries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries> usage_entries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Police> police;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::StaticPolice> static_police;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Bfd> bfd;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Statistics> statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries> usage_entries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::IndexEntries> index_entries;
         
 }; // LptsPifib_::Nodes::Node::Hardware
+
+
+class LptsPifib_::Nodes::Node::Hardware::UsageEntries : public ydk::Entity
+{
+    public:
+        UsageEntries();
+        ~UsageEntries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class UsageEntry; //type: LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry> > usage_entry;
+        
+}; // LptsPifib_::Nodes::Node::Hardware::UsageEntries
+
+
+class LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry : public ydk::Entity
+{
+    public:
+        UsageEntry();
+        ~UsageEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf region_id; //type: UsageAddressFamily
+        class UsageInfo; //type: LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo> > usage_info;
+        
+}; // LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry
+
+
+class LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo : public ydk::Entity
+{
+    public:
+        UsageInfo();
+        ~UsageInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pipe_id; //type: uint8
+        ydk::YLeaf region; //type: uint8
+        ydk::YLeaf region_id; //type: uint8
+        ydk::YLeaf size; //type: uint32
+        ydk::YLeaf used; //type: uint32
+
+}; // LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
+
+
+class LptsPifib_::Nodes::Node::Hardware::Police : public ydk::Entity
+{
+    public:
+        Police();
+        ~Police();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PoliceInfo; //type: LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo> > police_info;
+        
+}; // LptsPifib_::Nodes::Node::Hardware::Police
+
+
+class LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo : public ydk::Entity
+{
+    public:
+        PoliceInfo();
+        ~PoliceInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf avgrate; //type: uint32
+        ydk::YLeaf burst; //type: uint32
+        ydk::YLeaf static_avgrate; //type: uint32
+        ydk::YLeaf avgrate_type; //type: uint32
+        ydk::YLeaf accepted_stats; //type: uint64
+        ydk::YLeaf dropped_stats; //type: uint64
+        ydk::YLeaf policer; //type: uint32
+        ydk::YLeaf iptos_value; //type: uint8
+        ydk::YLeaf change_type; //type: uint8
+        ydk::YLeaf acl_config; //type: uint8
+        ydk::YLeaf acl_str; //type: string
+
+}; // LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo
+
+
+class LptsPifib_::Nodes::Node::Hardware::StaticPolice : public ydk::Entity
+{
+    public:
+        StaticPolice();
+        ~StaticPolice();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class StaticInfo; //type: LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo> > static_info;
+        
+}; // LptsPifib_::Nodes::Node::Hardware::StaticPolice
+
+
+class LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo : public ydk::Entity
+{
+    public:
+        StaticInfo();
+        ~StaticInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf punt_reason; //type: uint32
+        ydk::YLeaf sid; //type: uint32
+        ydk::YLeaf flow_rate; //type: uint32
+        ydk::YLeaf burst_rate; //type: uint32
+        ydk::YLeaf accepted; //type: uint64
+        ydk::YLeaf dropped; //type: uint64
+        ydk::YLeaf punt_reason_string; //type: string
+        ydk::YLeaf change_type; //type: uint8
+
+}; // LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo
 
 
 class LptsPifib_::Nodes::Node::Hardware::Bfd : public ydk::Entity
@@ -229,6 +500,30 @@ class LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo : public ydk::Entity
         ydk::YLeaf policer_id; //type: uint32
 
 }; // LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo
+
+
+class LptsPifib_::Nodes::Node::Hardware::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf accepted; //type: uint64
+        ydk::YLeaf dropped; //type: uint64
+        ydk::YLeaf clear_ts; //type: uint64
+        ydk::YLeaf no_stats_mem_err; //type: uint64
+
+}; // LptsPifib_::Nodes::Node::Hardware::Statistics
 
 
 class LptsPifib_::Nodes::Node::Hardware::IndexEntries : public ydk::Entity
@@ -348,301 +643,6 @@ class LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo : publ
         ydk::YLeaf tm_start_offset; //type: int32
 
 }; // LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo
-
-
-class LptsPifib_::Nodes::Node::Hardware::Police : public ydk::Entity
-{
-    public:
-        Police();
-        ~Police();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PoliceInfo; //type: LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo> > police_info;
-        
-}; // LptsPifib_::Nodes::Node::Hardware::Police
-
-
-class LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo : public ydk::Entity
-{
-    public:
-        PoliceInfo();
-        ~PoliceInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf avgrate; //type: uint32
-        ydk::YLeaf burst; //type: uint32
-        ydk::YLeaf static_avgrate; //type: uint32
-        ydk::YLeaf avgrate_type; //type: uint32
-        ydk::YLeaf accepted_stats; //type: uint64
-        ydk::YLeaf dropped_stats; //type: uint64
-        ydk::YLeaf policer; //type: uint32
-        ydk::YLeaf iptos_value; //type: uint8
-        ydk::YLeaf change_type; //type: uint8
-        ydk::YLeaf acl_config; //type: uint8
-        ydk::YLeaf acl_str; //type: string
-
-}; // LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo
-
-
-class LptsPifib_::Nodes::Node::Hardware::StaticPolice : public ydk::Entity
-{
-    public:
-        StaticPolice();
-        ~StaticPolice();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class StaticInfo; //type: LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo> > static_info;
-        
-}; // LptsPifib_::Nodes::Node::Hardware::StaticPolice
-
-
-class LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo : public ydk::Entity
-{
-    public:
-        StaticInfo();
-        ~StaticInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf punt_reason; //type: uint32
-        ydk::YLeaf sid; //type: uint32
-        ydk::YLeaf flow_rate; //type: uint32
-        ydk::YLeaf burst_rate; //type: uint32
-        ydk::YLeaf accepted; //type: uint64
-        ydk::YLeaf dropped; //type: uint64
-        ydk::YLeaf punt_reason_string; //type: string
-        ydk::YLeaf change_type; //type: uint8
-
-}; // LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo
-
-
-class LptsPifib_::Nodes::Node::Hardware::Statistics : public ydk::Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf accepted; //type: uint64
-        ydk::YLeaf dropped; //type: uint64
-        ydk::YLeaf clear_ts; //type: uint64
-        ydk::YLeaf no_stats_mem_err; //type: uint64
-
-}; // LptsPifib_::Nodes::Node::Hardware::Statistics
-
-
-class LptsPifib_::Nodes::Node::Hardware::UsageEntries : public ydk::Entity
-{
-    public:
-        UsageEntries();
-        ~UsageEntries();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class UsageEntry; //type: LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry> > usage_entry;
-        
-}; // LptsPifib_::Nodes::Node::Hardware::UsageEntries
-
-
-class LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry : public ydk::Entity
-{
-    public:
-        UsageEntry();
-        ~UsageEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf region_id; //type: UsageAddressFamily
-        class UsageInfo; //type: LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo> > usage_info;
-        
-}; // LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry
-
-
-class LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo : public ydk::Entity
-{
-    public:
-        UsageInfo();
-        ~UsageInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pipe_id; //type: uint8
-        ydk::YLeaf region; //type: uint8
-        ydk::YLeaf region_id; //type: uint8
-        ydk::YLeaf size; //type: uint32
-        ydk::YLeaf used; //type: uint32
-
-}; // LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
-
-
-class LptsPifib_::Nodes::Node::TypeValues : public ydk::Entity
-{
-    public:
-        TypeValues();
-        ~TypeValues();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class TypeValue; //type: LptsPifib_::Nodes::Node::TypeValues::TypeValue
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues::TypeValue> > type_value;
-        
-}; // LptsPifib_::Nodes::Node::TypeValues
-
-
-class LptsPifib_::Nodes::Node::TypeValues::TypeValue : public ydk::Entity
-{
-    public:
-        TypeValue();
-        ~TypeValue();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pifib_type; //type: LptsPifib
-        class Entry; //type: LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry> > entry;
-        
-}; // LptsPifib_::Nodes::Node::TypeValues::TypeValue
-
-
-class LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry : public ydk::Entity
-{
-    public:
-        Entry();
-        ~Entry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: string
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf vid; //type: uint32
-        ydk::YLeaf l3protocol; //type: uint32
-        ydk::YLeaf l4protocol; //type: uint32
-        ydk::YLeaf intf_name; //type: string
-        ydk::YLeaf intf_handle; //type: uint32
-        ydk::YLeaf destination_addr; //type: string
-        ydk::YLeaf source_addr; //type: string
-        ydk::YLeaf destination_type; //type: string
-        ydk::YLeaf destination_value; //type: string
-        ydk::YLeaf source_port; //type: string
-        ydk::YLeaf is_frag; //type: uint8
-        ydk::YLeaf is_syn; //type: uint8
-        ydk::YLeaf opcode; //type: string
-        ydk::YLeaf flow_type; //type: string
-        ydk::YLeaf listener_tag; //type: string
-        ydk::YLeaf local_flag; //type: uint8
-        ydk::YLeaf is_fgid; //type: uint8
-        ydk::YLeaf deliver_list_short; //type: string
-        ydk::YLeaf deliver_list_long; //type: string
-        ydk::YLeaf min_ttl; //type: uint8
-        ydk::YLeaf accepts; //type: uint64
-        ydk::YLeaf drops; //type: uint64
-        ydk::YLeaf stale; //type: uint8
-        ydk::YLeaf pifib_type; //type: uint8
-        ydk::YLeaf pifib_program_time; //type: string
-
-}; // LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry
 
 class LptsPifib : public ydk::Enum
 {

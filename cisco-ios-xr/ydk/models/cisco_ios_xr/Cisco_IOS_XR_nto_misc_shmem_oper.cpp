@@ -220,11 +220,11 @@ MemorySummary::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
     	,
-    detail(std::make_shared<MemorySummary::Nodes::Node::Detail>())
-	,summary(std::make_shared<MemorySummary::Nodes::Node::Summary>())
+    summary(std::make_shared<MemorySummary::Nodes::Node::Summary>())
+	,detail(std::make_shared<MemorySummary::Nodes::Node::Detail>())
 {
-    detail->parent = this;
     summary->parent = this;
+    detail->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -236,16 +236,16 @@ MemorySummary::Nodes::Node::~Node()
 bool MemorySummary::Nodes::Node::has_data() const
 {
     return node_name.is_set
-	|| (detail !=  nullptr && detail->has_data())
-	|| (summary !=  nullptr && summary->has_data());
+	|| (summary !=  nullptr && summary->has_data())
+	|| (detail !=  nullptr && detail->has_data());
 }
 
 bool MemorySummary::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| (detail !=  nullptr && detail->has_operation())
-	|| (summary !=  nullptr && summary->has_operation());
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (detail !=  nullptr && detail->has_operation());
 }
 
 std::string MemorySummary::Nodes::Node::get_absolute_path() const
@@ -274,15 +274,6 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::get_n
 
 std::shared_ptr<Entity> MemorySummary::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "detail")
-    {
-        if(detail == nullptr)
-        {
-            detail = std::make_shared<MemorySummary::Nodes::Node::Detail>();
-        }
-        return detail;
-    }
-
     if(child_yang_name == "summary")
     {
         if(summary == nullptr)
@@ -292,20 +283,29 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::get_child_by_name(const std:
         return summary;
     }
 
+    if(child_yang_name == "detail")
+    {
+        if(detail == nullptr)
+        {
+            detail = std::make_shared<MemorySummary::Nodes::Node::Detail>();
+        }
+        return detail;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(detail != nullptr)
-    {
-        children["detail"] = detail;
-    }
-
     if(summary != nullptr)
     {
         children["summary"] = summary;
+    }
+
+    if(detail != nullptr)
+    {
+        children["detail"] = detail;
     }
 
     return children;
@@ -331,29 +331,231 @@ void MemorySummary::Nodes::Node::set_filter(const std::string & value_path, YFil
 
 bool MemorySummary::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "detail" || name == "summary" || name == "node-name")
+    if(name == "summary" || name == "detail" || name == "node-name")
+        return true;
+    return false;
+}
+
+MemorySummary::Nodes::Node::Summary::Summary()
+    :
+    page_size{YType::uint32, "page-size"},
+    ram_memory{YType::uint64, "ram-memory"},
+    free_physical_memory{YType::uint64, "free-physical-memory"},
+    system_ram_memory{YType::uint64, "system-ram-memory"},
+    free_application_memory{YType::uint64, "free-application-memory"},
+    image_memory{YType::uint64, "image-memory"},
+    boot_ram_size{YType::uint64, "boot-ram-size"},
+    reserved_memory{YType::uint64, "reserved-memory"},
+    io_memory{YType::uint64, "io-memory"},
+    flash_system{YType::uint64, "flash-system"}
+{
+
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MemorySummary::Nodes::Node::Summary::~Summary()
+{
+}
+
+bool MemorySummary::Nodes::Node::Summary::has_data() const
+{
+    return page_size.is_set
+	|| ram_memory.is_set
+	|| free_physical_memory.is_set
+	|| system_ram_memory.is_set
+	|| free_application_memory.is_set
+	|| image_memory.is_set
+	|| boot_ram_size.is_set
+	|| reserved_memory.is_set
+	|| io_memory.is_set
+	|| flash_system.is_set;
+}
+
+bool MemorySummary::Nodes::Node::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(page_size.yfilter)
+	|| ydk::is_set(ram_memory.yfilter)
+	|| ydk::is_set(free_physical_memory.yfilter)
+	|| ydk::is_set(system_ram_memory.yfilter)
+	|| ydk::is_set(free_application_memory.yfilter)
+	|| ydk::is_set(image_memory.yfilter)
+	|| ydk::is_set(boot_ram_size.yfilter)
+	|| ydk::is_set(reserved_memory.yfilter)
+	|| ydk::is_set(io_memory.yfilter)
+	|| ydk::is_set(flash_system.yfilter);
+}
+
+std::string MemorySummary::Nodes::Node::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (page_size.is_set || is_set(page_size.yfilter)) leaf_name_data.push_back(page_size.get_name_leafdata());
+    if (ram_memory.is_set || is_set(ram_memory.yfilter)) leaf_name_data.push_back(ram_memory.get_name_leafdata());
+    if (free_physical_memory.is_set || is_set(free_physical_memory.yfilter)) leaf_name_data.push_back(free_physical_memory.get_name_leafdata());
+    if (system_ram_memory.is_set || is_set(system_ram_memory.yfilter)) leaf_name_data.push_back(system_ram_memory.get_name_leafdata());
+    if (free_application_memory.is_set || is_set(free_application_memory.yfilter)) leaf_name_data.push_back(free_application_memory.get_name_leafdata());
+    if (image_memory.is_set || is_set(image_memory.yfilter)) leaf_name_data.push_back(image_memory.get_name_leafdata());
+    if (boot_ram_size.is_set || is_set(boot_ram_size.yfilter)) leaf_name_data.push_back(boot_ram_size.get_name_leafdata());
+    if (reserved_memory.is_set || is_set(reserved_memory.yfilter)) leaf_name_data.push_back(reserved_memory.get_name_leafdata());
+    if (io_memory.is_set || is_set(io_memory.yfilter)) leaf_name_data.push_back(io_memory.get_name_leafdata());
+    if (flash_system.is_set || is_set(flash_system.yfilter)) leaf_name_data.push_back(flash_system.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MemorySummary::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "page-size")
+    {
+        page_size = value;
+        page_size.value_namespace = name_space;
+        page_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ram-memory")
+    {
+        ram_memory = value;
+        ram_memory.value_namespace = name_space;
+        ram_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free-physical-memory")
+    {
+        free_physical_memory = value;
+        free_physical_memory.value_namespace = name_space;
+        free_physical_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "system-ram-memory")
+    {
+        system_ram_memory = value;
+        system_ram_memory.value_namespace = name_space;
+        system_ram_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free-application-memory")
+    {
+        free_application_memory = value;
+        free_application_memory.value_namespace = name_space;
+        free_application_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "image-memory")
+    {
+        image_memory = value;
+        image_memory.value_namespace = name_space;
+        image_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "boot-ram-size")
+    {
+        boot_ram_size = value;
+        boot_ram_size.value_namespace = name_space;
+        boot_ram_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reserved-memory")
+    {
+        reserved_memory = value;
+        reserved_memory.value_namespace = name_space;
+        reserved_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "io-memory")
+    {
+        io_memory = value;
+        io_memory.value_namespace = name_space;
+        io_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flash-system")
+    {
+        flash_system = value;
+        flash_system.value_namespace = name_space;
+        flash_system.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MemorySummary::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "page-size")
+    {
+        page_size.yfilter = yfilter;
+    }
+    if(value_path == "ram-memory")
+    {
+        ram_memory.yfilter = yfilter;
+    }
+    if(value_path == "free-physical-memory")
+    {
+        free_physical_memory.yfilter = yfilter;
+    }
+    if(value_path == "system-ram-memory")
+    {
+        system_ram_memory.yfilter = yfilter;
+    }
+    if(value_path == "free-application-memory")
+    {
+        free_application_memory.yfilter = yfilter;
+    }
+    if(value_path == "image-memory")
+    {
+        image_memory.yfilter = yfilter;
+    }
+    if(value_path == "boot-ram-size")
+    {
+        boot_ram_size.yfilter = yfilter;
+    }
+    if(value_path == "reserved-memory")
+    {
+        reserved_memory.yfilter = yfilter;
+    }
+    if(value_path == "io-memory")
+    {
+        io_memory.yfilter = yfilter;
+    }
+    if(value_path == "flash-system")
+    {
+        flash_system.yfilter = yfilter;
+    }
+}
+
+bool MemorySummary::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "page-size" || name == "ram-memory" || name == "free-physical-memory" || name == "system-ram-memory" || name == "free-application-memory" || name == "image-memory" || name == "boot-ram-size" || name == "reserved-memory" || name == "io-memory" || name == "flash-system")
         return true;
     return false;
 }
 
 MemorySummary::Nodes::Node::Detail::Detail()
     :
-    allocated_memory{YType::uint64, "allocated-memory"},
-    boot_ram_size{YType::uint64, "boot-ram-size"},
-    flash_system{YType::uint64, "flash-system"},
-    free_application_memory{YType::uint64, "free-application-memory"},
-    free_physical_memory{YType::uint64, "free-physical-memory"},
-    image_memory{YType::uint64, "image-memory"},
-    io_memory{YType::uint64, "io-memory"},
     page_size{YType::uint32, "page-size"},
-    private_physical_memory{YType::uint64, "private-physical-memory"},
-    program_data{YType::uint64, "program-data"},
-    program_stack{YType::uint64, "program-stack"},
-    program_text{YType::uint64, "program-text"},
     ram_memory{YType::uint64, "ram-memory"},
-    reserved_memory{YType::uint64, "reserved-memory"},
+    free_physical_memory{YType::uint64, "free-physical-memory"},
+    private_physical_memory{YType::uint64, "private-physical-memory"},
     system_ram_memory{YType::uint64, "system-ram-memory"},
-    total_shared_window{YType::uint64, "total-shared-window"}
+    free_application_memory{YType::uint64, "free-application-memory"},
+    image_memory{YType::uint64, "image-memory"},
+    boot_ram_size{YType::uint64, "boot-ram-size"},
+    reserved_memory{YType::uint64, "reserved-memory"},
+    io_memory{YType::uint64, "io-memory"},
+    flash_system{YType::uint64, "flash-system"},
+    total_shared_window{YType::uint64, "total-shared-window"},
+    allocated_memory{YType::uint64, "allocated-memory"},
+    program_text{YType::uint64, "program-text"},
+    program_data{YType::uint64, "program-data"},
+    program_stack{YType::uint64, "program-stack"}
 {
 
     yang_name = "detail"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
@@ -370,22 +572,22 @@ bool MemorySummary::Nodes::Node::Detail::has_data() const
         if(shared_window[index]->has_data())
             return true;
     }
-    return allocated_memory.is_set
-	|| boot_ram_size.is_set
-	|| flash_system.is_set
-	|| free_application_memory.is_set
-	|| free_physical_memory.is_set
-	|| image_memory.is_set
-	|| io_memory.is_set
-	|| page_size.is_set
-	|| private_physical_memory.is_set
-	|| program_data.is_set
-	|| program_stack.is_set
-	|| program_text.is_set
+    return page_size.is_set
 	|| ram_memory.is_set
-	|| reserved_memory.is_set
+	|| free_physical_memory.is_set
+	|| private_physical_memory.is_set
 	|| system_ram_memory.is_set
-	|| total_shared_window.is_set;
+	|| free_application_memory.is_set
+	|| image_memory.is_set
+	|| boot_ram_size.is_set
+	|| reserved_memory.is_set
+	|| io_memory.is_set
+	|| flash_system.is_set
+	|| total_shared_window.is_set
+	|| allocated_memory.is_set
+	|| program_text.is_set
+	|| program_data.is_set
+	|| program_stack.is_set;
 }
 
 bool MemorySummary::Nodes::Node::Detail::has_operation() const
@@ -396,22 +598,22 @@ bool MemorySummary::Nodes::Node::Detail::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(allocated_memory.yfilter)
-	|| ydk::is_set(boot_ram_size.yfilter)
-	|| ydk::is_set(flash_system.yfilter)
-	|| ydk::is_set(free_application_memory.yfilter)
-	|| ydk::is_set(free_physical_memory.yfilter)
-	|| ydk::is_set(image_memory.yfilter)
-	|| ydk::is_set(io_memory.yfilter)
 	|| ydk::is_set(page_size.yfilter)
-	|| ydk::is_set(private_physical_memory.yfilter)
-	|| ydk::is_set(program_data.yfilter)
-	|| ydk::is_set(program_stack.yfilter)
-	|| ydk::is_set(program_text.yfilter)
 	|| ydk::is_set(ram_memory.yfilter)
-	|| ydk::is_set(reserved_memory.yfilter)
+	|| ydk::is_set(free_physical_memory.yfilter)
+	|| ydk::is_set(private_physical_memory.yfilter)
 	|| ydk::is_set(system_ram_memory.yfilter)
-	|| ydk::is_set(total_shared_window.yfilter);
+	|| ydk::is_set(free_application_memory.yfilter)
+	|| ydk::is_set(image_memory.yfilter)
+	|| ydk::is_set(boot_ram_size.yfilter)
+	|| ydk::is_set(reserved_memory.yfilter)
+	|| ydk::is_set(io_memory.yfilter)
+	|| ydk::is_set(flash_system.yfilter)
+	|| ydk::is_set(total_shared_window.yfilter)
+	|| ydk::is_set(allocated_memory.yfilter)
+	|| ydk::is_set(program_text.yfilter)
+	|| ydk::is_set(program_data.yfilter)
+	|| ydk::is_set(program_stack.yfilter);
 }
 
 std::string MemorySummary::Nodes::Node::Detail::get_segment_path() const
@@ -425,22 +627,22 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Detai
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allocated_memory.is_set || is_set(allocated_memory.yfilter)) leaf_name_data.push_back(allocated_memory.get_name_leafdata());
-    if (boot_ram_size.is_set || is_set(boot_ram_size.yfilter)) leaf_name_data.push_back(boot_ram_size.get_name_leafdata());
-    if (flash_system.is_set || is_set(flash_system.yfilter)) leaf_name_data.push_back(flash_system.get_name_leafdata());
-    if (free_application_memory.is_set || is_set(free_application_memory.yfilter)) leaf_name_data.push_back(free_application_memory.get_name_leafdata());
-    if (free_physical_memory.is_set || is_set(free_physical_memory.yfilter)) leaf_name_data.push_back(free_physical_memory.get_name_leafdata());
-    if (image_memory.is_set || is_set(image_memory.yfilter)) leaf_name_data.push_back(image_memory.get_name_leafdata());
-    if (io_memory.is_set || is_set(io_memory.yfilter)) leaf_name_data.push_back(io_memory.get_name_leafdata());
     if (page_size.is_set || is_set(page_size.yfilter)) leaf_name_data.push_back(page_size.get_name_leafdata());
+    if (ram_memory.is_set || is_set(ram_memory.yfilter)) leaf_name_data.push_back(ram_memory.get_name_leafdata());
+    if (free_physical_memory.is_set || is_set(free_physical_memory.yfilter)) leaf_name_data.push_back(free_physical_memory.get_name_leafdata());
     if (private_physical_memory.is_set || is_set(private_physical_memory.yfilter)) leaf_name_data.push_back(private_physical_memory.get_name_leafdata());
+    if (system_ram_memory.is_set || is_set(system_ram_memory.yfilter)) leaf_name_data.push_back(system_ram_memory.get_name_leafdata());
+    if (free_application_memory.is_set || is_set(free_application_memory.yfilter)) leaf_name_data.push_back(free_application_memory.get_name_leafdata());
+    if (image_memory.is_set || is_set(image_memory.yfilter)) leaf_name_data.push_back(image_memory.get_name_leafdata());
+    if (boot_ram_size.is_set || is_set(boot_ram_size.yfilter)) leaf_name_data.push_back(boot_ram_size.get_name_leafdata());
+    if (reserved_memory.is_set || is_set(reserved_memory.yfilter)) leaf_name_data.push_back(reserved_memory.get_name_leafdata());
+    if (io_memory.is_set || is_set(io_memory.yfilter)) leaf_name_data.push_back(io_memory.get_name_leafdata());
+    if (flash_system.is_set || is_set(flash_system.yfilter)) leaf_name_data.push_back(flash_system.get_name_leafdata());
+    if (total_shared_window.is_set || is_set(total_shared_window.yfilter)) leaf_name_data.push_back(total_shared_window.get_name_leafdata());
+    if (allocated_memory.is_set || is_set(allocated_memory.yfilter)) leaf_name_data.push_back(allocated_memory.get_name_leafdata());
+    if (program_text.is_set || is_set(program_text.yfilter)) leaf_name_data.push_back(program_text.get_name_leafdata());
     if (program_data.is_set || is_set(program_data.yfilter)) leaf_name_data.push_back(program_data.get_name_leafdata());
     if (program_stack.is_set || is_set(program_stack.yfilter)) leaf_name_data.push_back(program_stack.get_name_leafdata());
-    if (program_text.is_set || is_set(program_text.yfilter)) leaf_name_data.push_back(program_text.get_name_leafdata());
-    if (ram_memory.is_set || is_set(ram_memory.yfilter)) leaf_name_data.push_back(ram_memory.get_name_leafdata());
-    if (reserved_memory.is_set || is_set(reserved_memory.yfilter)) leaf_name_data.push_back(reserved_memory.get_name_leafdata());
-    if (system_ram_memory.is_set || is_set(system_ram_memory.yfilter)) leaf_name_data.push_back(system_ram_memory.get_name_leafdata());
-    if (total_shared_window.is_set || is_set(total_shared_window.yfilter)) leaf_name_data.push_back(total_shared_window.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -480,29 +682,17 @@ std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detai
 
 void MemorySummary::Nodes::Node::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "allocated-memory")
+    if(value_path == "page-size")
     {
-        allocated_memory = value;
-        allocated_memory.value_namespace = name_space;
-        allocated_memory.value_namespace_prefix = name_space_prefix;
+        page_size = value;
+        page_size.value_namespace = name_space;
+        page_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "boot-ram-size")
+    if(value_path == "ram-memory")
     {
-        boot_ram_size = value;
-        boot_ram_size.value_namespace = name_space;
-        boot_ram_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flash-system")
-    {
-        flash_system = value;
-        flash_system.value_namespace = name_space;
-        flash_system.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-application-memory")
-    {
-        free_application_memory = value;
-        free_application_memory.value_namespace = name_space;
-        free_application_memory.value_namespace_prefix = name_space_prefix;
+        ram_memory = value;
+        ram_memory.value_namespace = name_space;
+        ram_memory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free-physical-memory")
     {
@@ -510,11 +700,41 @@ void MemorySummary::Nodes::Node::Detail::set_value(const std::string & value_pat
         free_physical_memory.value_namespace = name_space;
         free_physical_memory.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "private-physical-memory")
+    {
+        private_physical_memory = value;
+        private_physical_memory.value_namespace = name_space;
+        private_physical_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "system-ram-memory")
+    {
+        system_ram_memory = value;
+        system_ram_memory.value_namespace = name_space;
+        system_ram_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free-application-memory")
+    {
+        free_application_memory = value;
+        free_application_memory.value_namespace = name_space;
+        free_application_memory.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "image-memory")
     {
         image_memory = value;
         image_memory.value_namespace = name_space;
         image_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "boot-ram-size")
+    {
+        boot_ram_size = value;
+        boot_ram_size.value_namespace = name_space;
+        boot_ram_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reserved-memory")
+    {
+        reserved_memory = value;
+        reserved_memory.value_namespace = name_space;
+        reserved_memory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "io-memory")
     {
@@ -522,17 +742,29 @@ void MemorySummary::Nodes::Node::Detail::set_value(const std::string & value_pat
         io_memory.value_namespace = name_space;
         io_memory.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "page-size")
+    if(value_path == "flash-system")
     {
-        page_size = value;
-        page_size.value_namespace = name_space;
-        page_size.value_namespace_prefix = name_space_prefix;
+        flash_system = value;
+        flash_system.value_namespace = name_space;
+        flash_system.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "private-physical-memory")
+    if(value_path == "total-shared-window")
     {
-        private_physical_memory = value;
-        private_physical_memory.value_namespace = name_space;
-        private_physical_memory.value_namespace_prefix = name_space_prefix;
+        total_shared_window = value;
+        total_shared_window.value_namespace = name_space;
+        total_shared_window.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allocated-memory")
+    {
+        allocated_memory = value;
+        allocated_memory.value_namespace = name_space;
+        allocated_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "program-text")
+    {
+        program_text = value;
+        program_text.value_namespace = name_space;
+        program_text.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "program-data")
     {
@@ -546,75 +778,65 @@ void MemorySummary::Nodes::Node::Detail::set_value(const std::string & value_pat
         program_stack.value_namespace = name_space;
         program_stack.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "program-text")
-    {
-        program_text = value;
-        program_text.value_namespace = name_space;
-        program_text.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ram-memory")
-    {
-        ram_memory = value;
-        ram_memory.value_namespace = name_space;
-        ram_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reserved-memory")
-    {
-        reserved_memory = value;
-        reserved_memory.value_namespace = name_space;
-        reserved_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "system-ram-memory")
-    {
-        system_ram_memory = value;
-        system_ram_memory.value_namespace = name_space;
-        system_ram_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-shared-window")
-    {
-        total_shared_window = value;
-        total_shared_window.value_namespace = name_space;
-        total_shared_window.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MemorySummary::Nodes::Node::Detail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "allocated-memory")
+    if(value_path == "page-size")
     {
-        allocated_memory.yfilter = yfilter;
+        page_size.yfilter = yfilter;
     }
-    if(value_path == "boot-ram-size")
+    if(value_path == "ram-memory")
     {
-        boot_ram_size.yfilter = yfilter;
-    }
-    if(value_path == "flash-system")
-    {
-        flash_system.yfilter = yfilter;
-    }
-    if(value_path == "free-application-memory")
-    {
-        free_application_memory.yfilter = yfilter;
+        ram_memory.yfilter = yfilter;
     }
     if(value_path == "free-physical-memory")
     {
         free_physical_memory.yfilter = yfilter;
     }
+    if(value_path == "private-physical-memory")
+    {
+        private_physical_memory.yfilter = yfilter;
+    }
+    if(value_path == "system-ram-memory")
+    {
+        system_ram_memory.yfilter = yfilter;
+    }
+    if(value_path == "free-application-memory")
+    {
+        free_application_memory.yfilter = yfilter;
+    }
     if(value_path == "image-memory")
     {
         image_memory.yfilter = yfilter;
+    }
+    if(value_path == "boot-ram-size")
+    {
+        boot_ram_size.yfilter = yfilter;
+    }
+    if(value_path == "reserved-memory")
+    {
+        reserved_memory.yfilter = yfilter;
     }
     if(value_path == "io-memory")
     {
         io_memory.yfilter = yfilter;
     }
-    if(value_path == "page-size")
+    if(value_path == "flash-system")
     {
-        page_size.yfilter = yfilter;
+        flash_system.yfilter = yfilter;
     }
-    if(value_path == "private-physical-memory")
+    if(value_path == "total-shared-window")
     {
-        private_physical_memory.yfilter = yfilter;
+        total_shared_window.yfilter = yfilter;
+    }
+    if(value_path == "allocated-memory")
+    {
+        allocated_memory.yfilter = yfilter;
+    }
+    if(value_path == "program-text")
+    {
+        program_text.yfilter = yfilter;
     }
     if(value_path == "program-data")
     {
@@ -624,31 +846,11 @@ void MemorySummary::Nodes::Node::Detail::set_filter(const std::string & value_pa
     {
         program_stack.yfilter = yfilter;
     }
-    if(value_path == "program-text")
-    {
-        program_text.yfilter = yfilter;
-    }
-    if(value_path == "ram-memory")
-    {
-        ram_memory.yfilter = yfilter;
-    }
-    if(value_path == "reserved-memory")
-    {
-        reserved_memory.yfilter = yfilter;
-    }
-    if(value_path == "system-ram-memory")
-    {
-        system_ram_memory.yfilter = yfilter;
-    }
-    if(value_path == "total-shared-window")
-    {
-        total_shared_window.yfilter = yfilter;
-    }
 }
 
 bool MemorySummary::Nodes::Node::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "shared-window" || name == "allocated-memory" || name == "boot-ram-size" || name == "flash-system" || name == "free-application-memory" || name == "free-physical-memory" || name == "image-memory" || name == "io-memory" || name == "page-size" || name == "private-physical-memory" || name == "program-data" || name == "program-stack" || name == "program-text" || name == "ram-memory" || name == "reserved-memory" || name == "system-ram-memory" || name == "total-shared-window")
+    if(name == "shared-window" || name == "page-size" || name == "ram-memory" || name == "free-physical-memory" || name == "private-physical-memory" || name == "system-ram-memory" || name == "free-application-memory" || name == "image-memory" || name == "boot-ram-size" || name == "reserved-memory" || name == "io-memory" || name == "flash-system" || name == "total-shared-window" || name == "allocated-memory" || name == "program-text" || name == "program-data" || name == "program-stack")
         return true;
     return false;
 }
@@ -739,208 +941,6 @@ void MemorySummary::Nodes::Node::Detail::SharedWindow::set_filter(const std::str
 bool MemorySummary::Nodes::Node::Detail::SharedWindow::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "shared-window" || name == "window-size")
-        return true;
-    return false;
-}
-
-MemorySummary::Nodes::Node::Summary::Summary()
-    :
-    boot_ram_size{YType::uint64, "boot-ram-size"},
-    flash_system{YType::uint64, "flash-system"},
-    free_application_memory{YType::uint64, "free-application-memory"},
-    free_physical_memory{YType::uint64, "free-physical-memory"},
-    image_memory{YType::uint64, "image-memory"},
-    io_memory{YType::uint64, "io-memory"},
-    page_size{YType::uint32, "page-size"},
-    ram_memory{YType::uint64, "ram-memory"},
-    reserved_memory{YType::uint64, "reserved-memory"},
-    system_ram_memory{YType::uint64, "system-ram-memory"}
-{
-
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MemorySummary::Nodes::Node::Summary::~Summary()
-{
-}
-
-bool MemorySummary::Nodes::Node::Summary::has_data() const
-{
-    return boot_ram_size.is_set
-	|| flash_system.is_set
-	|| free_application_memory.is_set
-	|| free_physical_memory.is_set
-	|| image_memory.is_set
-	|| io_memory.is_set
-	|| page_size.is_set
-	|| ram_memory.is_set
-	|| reserved_memory.is_set
-	|| system_ram_memory.is_set;
-}
-
-bool MemorySummary::Nodes::Node::Summary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(boot_ram_size.yfilter)
-	|| ydk::is_set(flash_system.yfilter)
-	|| ydk::is_set(free_application_memory.yfilter)
-	|| ydk::is_set(free_physical_memory.yfilter)
-	|| ydk::is_set(image_memory.yfilter)
-	|| ydk::is_set(io_memory.yfilter)
-	|| ydk::is_set(page_size.yfilter)
-	|| ydk::is_set(ram_memory.yfilter)
-	|| ydk::is_set(reserved_memory.yfilter)
-	|| ydk::is_set(system_ram_memory.yfilter);
-}
-
-std::string MemorySummary::Nodes::Node::Summary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "summary";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Summary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (boot_ram_size.is_set || is_set(boot_ram_size.yfilter)) leaf_name_data.push_back(boot_ram_size.get_name_leafdata());
-    if (flash_system.is_set || is_set(flash_system.yfilter)) leaf_name_data.push_back(flash_system.get_name_leafdata());
-    if (free_application_memory.is_set || is_set(free_application_memory.yfilter)) leaf_name_data.push_back(free_application_memory.get_name_leafdata());
-    if (free_physical_memory.is_set || is_set(free_physical_memory.yfilter)) leaf_name_data.push_back(free_physical_memory.get_name_leafdata());
-    if (image_memory.is_set || is_set(image_memory.yfilter)) leaf_name_data.push_back(image_memory.get_name_leafdata());
-    if (io_memory.is_set || is_set(io_memory.yfilter)) leaf_name_data.push_back(io_memory.get_name_leafdata());
-    if (page_size.is_set || is_set(page_size.yfilter)) leaf_name_data.push_back(page_size.get_name_leafdata());
-    if (ram_memory.is_set || is_set(ram_memory.yfilter)) leaf_name_data.push_back(ram_memory.get_name_leafdata());
-    if (reserved_memory.is_set || is_set(reserved_memory.yfilter)) leaf_name_data.push_back(reserved_memory.get_name_leafdata());
-    if (system_ram_memory.is_set || is_set(system_ram_memory.yfilter)) leaf_name_data.push_back(system_ram_memory.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MemorySummary::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "boot-ram-size")
-    {
-        boot_ram_size = value;
-        boot_ram_size.value_namespace = name_space;
-        boot_ram_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flash-system")
-    {
-        flash_system = value;
-        flash_system.value_namespace = name_space;
-        flash_system.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-application-memory")
-    {
-        free_application_memory = value;
-        free_application_memory.value_namespace = name_space;
-        free_application_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-physical-memory")
-    {
-        free_physical_memory = value;
-        free_physical_memory.value_namespace = name_space;
-        free_physical_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "image-memory")
-    {
-        image_memory = value;
-        image_memory.value_namespace = name_space;
-        image_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "io-memory")
-    {
-        io_memory = value;
-        io_memory.value_namespace = name_space;
-        io_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "page-size")
-    {
-        page_size = value;
-        page_size.value_namespace = name_space;
-        page_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ram-memory")
-    {
-        ram_memory = value;
-        ram_memory.value_namespace = name_space;
-        ram_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reserved-memory")
-    {
-        reserved_memory = value;
-        reserved_memory.value_namespace = name_space;
-        reserved_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "system-ram-memory")
-    {
-        system_ram_memory = value;
-        system_ram_memory.value_namespace = name_space;
-        system_ram_memory.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MemorySummary::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "boot-ram-size")
-    {
-        boot_ram_size.yfilter = yfilter;
-    }
-    if(value_path == "flash-system")
-    {
-        flash_system.yfilter = yfilter;
-    }
-    if(value_path == "free-application-memory")
-    {
-        free_application_memory.yfilter = yfilter;
-    }
-    if(value_path == "free-physical-memory")
-    {
-        free_physical_memory.yfilter = yfilter;
-    }
-    if(value_path == "image-memory")
-    {
-        image_memory.yfilter = yfilter;
-    }
-    if(value_path == "io-memory")
-    {
-        io_memory.yfilter = yfilter;
-    }
-    if(value_path == "page-size")
-    {
-        page_size.yfilter = yfilter;
-    }
-    if(value_path == "ram-memory")
-    {
-        ram_memory.yfilter = yfilter;
-    }
-    if(value_path == "reserved-memory")
-    {
-        reserved_memory.yfilter = yfilter;
-    }
-    if(value_path == "system-ram-memory")
-    {
-        system_ram_memory.yfilter = yfilter;
-    }
-}
-
-bool MemorySummary::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "boot-ram-size" || name == "flash-system" || name == "free-application-memory" || name == "free-physical-memory" || name == "image-memory" || name == "io-memory" || name == "page-size" || name == "ram-memory" || name == "reserved-memory" || name == "system-ram-memory")
         return true;
     return false;
 }

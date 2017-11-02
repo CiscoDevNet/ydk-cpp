@@ -11,1334 +11,44 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_snmp_agent_cfg {
 
-Snmp::Notification::Rsvp::Rsvp()
-    :
-    enable{YType::empty, "enable"},
-    lost_flow{YType::empty, "lost-flow"},
-    new_flow{YType::empty, "new-flow"}
+Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunities()
 {
 
-    yang_name = "rsvp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inform-encrypted-user-communities"; yang_parent_name = "inform-host"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Notification::Rsvp::~Rsvp()
+Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::~InformEncryptedUserCommunities()
 {
 }
 
-bool Snmp::Notification::Rsvp::has_data() const
+bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_data() const
 {
-    return enable.is_set
-	|| lost_flow.is_set
-	|| new_flow.is_set;
-}
-
-bool Snmp::Notification::Rsvp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(lost_flow.yfilter)
-	|| ydk::is_set(new_flow.yfilter);
-}
-
-std::string Snmp::Notification::Rsvp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Rsvp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-cfg:rsvp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Rsvp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (lost_flow.is_set || is_set(lost_flow.yfilter)) leaf_name_data.push_back(lost_flow.get_name_leafdata());
-    if (new_flow.is_set || is_set(new_flow.yfilter)) leaf_name_data.push_back(new_flow.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Rsvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Rsvp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::Rsvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
+    for (std::size_t index=0; index<inform_encrypted_user_community.size(); index++)
     {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lost-flow")
-    {
-        lost_flow = value;
-        lost_flow.value_namespace = name_space;
-        lost_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-flow")
-    {
-        new_flow = value;
-        new_flow.value_namespace = name_space;
-        new_flow.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Rsvp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "lost-flow")
-    {
-        lost_flow.yfilter = yfilter;
-    }
-    if(value_path == "new-flow")
-    {
-        new_flow.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Rsvp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "lost-flow" || name == "new-flow")
-        return true;
-    return false;
-}
-
-Snmp::Notification::SelectiveVrfDownload::SelectiveVrfDownload()
-    :
-    role_change{YType::empty, "role-change"}
-{
-
-    yang_name = "selective-vrf-download"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::SelectiveVrfDownload::~SelectiveVrfDownload()
-{
-}
-
-bool Snmp::Notification::SelectiveVrfDownload::has_data() const
-{
-    return role_change.is_set;
-}
-
-bool Snmp::Notification::SelectiveVrfDownload::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(role_change.yfilter);
-}
-
-std::string Snmp::Notification::SelectiveVrfDownload::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::SelectiveVrfDownload::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-rsi-cfg:selective-vrf-download";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::SelectiveVrfDownload::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (role_change.is_set || is_set(role_change.yfilter)) leaf_name_data.push_back(role_change.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::SelectiveVrfDownload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::SelectiveVrfDownload::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::SelectiveVrfDownload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "role-change")
-    {
-        role_change = value;
-        role_change.value_namespace = name_space;
-        role_change.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::SelectiveVrfDownload::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "role-change")
-    {
-        role_change.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::SelectiveVrfDownload::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "role-change")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Sensor::Sensor()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "sensor"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::Sensor::~Sensor()
-{
-}
-
-bool Snmp::Notification::Sensor::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Sensor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Sensor::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Sensor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Sensor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Sensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Sensor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::Sensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Sensor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Sensor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Snmp_::Snmp_()
-    :
-    authentication{YType::empty, "authentication"},
-    cold_start{YType::empty, "cold-start"},
-    enable{YType::empty, "enable"},
-    link_down{YType::empty, "Cisco-IOS-XR-snmp-ifmib-cfg:link-down"},
-    link_up{YType::empty, "Cisco-IOS-XR-snmp-ifmib-cfg:link-up"},
-    warm_start{YType::empty, "warm-start"}
-{
-
-    yang_name = "snmp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::Snmp_::~Snmp_()
-{
-}
-
-bool Snmp::Notification::Snmp_::has_data() const
-{
-    return authentication.is_set
-	|| cold_start.is_set
-	|| enable.is_set
-	|| link_down.is_set
-	|| link_up.is_set
-	|| warm_start.is_set;
-}
-
-bool Snmp::Notification::Snmp_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(authentication.yfilter)
-	|| ydk::is_set(cold_start.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(link_down.yfilter)
-	|| ydk::is_set(link_up.yfilter)
-	|| ydk::is_set(warm_start.yfilter);
-}
-
-std::string Snmp::Notification::Snmp_::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Snmp_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "snmp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Snmp_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (authentication.is_set || is_set(authentication.yfilter)) leaf_name_data.push_back(authentication.get_name_leafdata());
-    if (cold_start.is_set || is_set(cold_start.yfilter)) leaf_name_data.push_back(cold_start.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (link_down.is_set || is_set(link_down.yfilter)) leaf_name_data.push_back(link_down.get_name_leafdata());
-    if (link_up.is_set || is_set(link_up.yfilter)) leaf_name_data.push_back(link_up.get_name_leafdata());
-    if (warm_start.is_set || is_set(warm_start.yfilter)) leaf_name_data.push_back(warm_start.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Snmp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Snmp_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::Snmp_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "authentication")
-    {
-        authentication = value;
-        authentication.value_namespace = name_space;
-        authentication.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cold-start")
-    {
-        cold_start = value;
-        cold_start.value_namespace = name_space;
-        cold_start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-down")
-    {
-        link_down = value;
-        link_down.value_namespace = name_space;
-        link_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-up")
-    {
-        link_up = value;
-        link_up.value_namespace = name_space;
-        link_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "warm-start")
-    {
-        warm_start = value;
-        warm_start.value_namespace = name_space;
-        warm_start.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Snmp_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "authentication")
-    {
-        authentication.yfilter = yfilter;
-    }
-    if(value_path == "cold-start")
-    {
-        cold_start.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "link-down")
-    {
-        link_down.yfilter = yfilter;
-    }
-    if(value_path == "link-up")
-    {
-        link_up.yfilter = yfilter;
-    }
-    if(value_path == "warm-start")
-    {
-        warm_start.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Snmp_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "authentication" || name == "cold-start" || name == "enable" || name == "link-down" || name == "link-up" || name == "warm-start")
-        return true;
-    return false;
-}
-
-Snmp::Notification::SubscriberMib::SubscriberMib()
-    :
-    session_aggregate(std::make_shared<Snmp::Notification::SubscriberMib::SessionAggregate>())
-{
-    session_aggregate->parent = this;
-
-    yang_name = "subscriber-mib"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::SubscriberMib::~SubscriberMib()
-{
-}
-
-bool Snmp::Notification::SubscriberMib::has_data() const
-{
-    return (session_aggregate !=  nullptr && session_aggregate->has_data());
-}
-
-bool Snmp::Notification::SubscriberMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| (session_aggregate !=  nullptr && session_aggregate->has_operation());
-}
-
-std::string Snmp::Notification::SubscriberMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::SubscriberMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::SubscriberMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::SubscriberMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "session-aggregate")
-    {
-        if(session_aggregate == nullptr)
-        {
-            session_aggregate = std::make_shared<Snmp::Notification::SubscriberMib::SessionAggregate>();
-        }
-        return session_aggregate;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::SubscriberMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(session_aggregate != nullptr)
-    {
-        children["session-aggregate"] = session_aggregate;
-    }
-
-    return children;
-}
-
-void Snmp::Notification::SubscriberMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Notification::SubscriberMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Notification::SubscriberMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session-aggregate")
-        return true;
-    return false;
-}
-
-Snmp::Notification::SubscriberMib::SessionAggregate::SessionAggregate()
-    :
-    access_interface{YType::empty, "access-interface"},
-    node{YType::empty, "node"}
-{
-
-    yang_name = "session-aggregate"; yang_parent_name = "subscriber-mib"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::SubscriberMib::SessionAggregate::~SessionAggregate()
-{
-}
-
-bool Snmp::Notification::SubscriberMib::SessionAggregate::has_data() const
-{
-    return access_interface.is_set
-	|| node.is_set;
-}
-
-bool Snmp::Notification::SubscriberMib::SessionAggregate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(access_interface.yfilter)
-	|| ydk::is_set(node.yfilter);
-}
-
-std::string Snmp::Notification::SubscriberMib::SessionAggregate::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::SubscriberMib::SessionAggregate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session-aggregate";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::SubscriberMib::SessionAggregate::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (access_interface.is_set || is_set(access_interface.yfilter)) leaf_name_data.push_back(access_interface.get_name_leafdata());
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::SubscriberMib::SessionAggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::SubscriberMib::SessionAggregate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::SubscriberMib::SessionAggregate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "access-interface")
-    {
-        access_interface = value;
-        access_interface.value_namespace = name_space;
-        access_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node")
-    {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::SubscriberMib::SessionAggregate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "access-interface")
-    {
-        access_interface.yfilter = yfilter;
-    }
-    if(value_path == "node")
-    {
-        node.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::SubscriberMib::SessionAggregate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-interface" || name == "node")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Syslog::Syslog()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "syslog"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::Syslog::~Syslog()
-{
-}
-
-bool Snmp::Notification::Syslog::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Syslog::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Syslog::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Syslog::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-syslogmib-cfg:syslog";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Syslog::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Syslog::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Syslog::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Syslog::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::System::System()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "system"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::System::~System()
-{
-}
-
-bool Snmp::Notification::System::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Snmp::Notification::System::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::System::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::System::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-systemmib-cfg:system";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::System::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::System::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::System::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::System::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Vpls::Vpls()
-    :
-    enable{YType::empty, "enable"},
-    full_clear{YType::empty, "full-clear"},
-    full_raise{YType::empty, "full-raise"},
-    status{YType::empty, "status"}
-{
-
-    yang_name = "vpls"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::Vpls::~Vpls()
-{
-}
-
-bool Snmp::Notification::Vpls::has_data() const
-{
-    return enable.is_set
-	|| full_clear.is_set
-	|| full_raise.is_set
-	|| status.is_set;
-}
-
-bool Snmp::Notification::Vpls::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(full_clear.yfilter)
-	|| ydk::is_set(full_raise.yfilter)
-	|| ydk::is_set(status.yfilter);
-}
-
-std::string Snmp::Notification::Vpls::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Vpls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:vpls";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Vpls::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (full_clear.is_set || is_set(full_clear.yfilter)) leaf_name_data.push_back(full_clear.get_name_leafdata());
-    if (full_raise.is_set || is_set(full_raise.yfilter)) leaf_name_data.push_back(full_raise.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Vpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Vpls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::Vpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "full-clear")
-    {
-        full_clear = value;
-        full_clear.value_namespace = name_space;
-        full_clear.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "full-raise")
-    {
-        full_raise = value;
-        full_raise.value_namespace = name_space;
-        full_raise.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Vpls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "full-clear")
-    {
-        full_clear.yfilter = yfilter;
-    }
-    if(value_path == "full-raise")
-    {
-        full_raise.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Vpls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "full-clear" || name == "full-raise" || name == "status")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Vrrp::Vrrp()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "vrrp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::Vrrp::~Vrrp()
-{
-}
-
-bool Snmp::Notification::Vrrp::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Vrrp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Vrrp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Vrrp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Vrrp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Vrrp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Notification::Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Vrrp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Vrrp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::OverloadControl::OverloadControl()
-    :
-    drop_time{YType::uint32, "drop-time"},
-    throttle_rate{YType::uint32, "throttle-rate"}
-{
-
-    yang_name = "overload-control"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::OverloadControl::~OverloadControl()
-{
-}
-
-bool Snmp::OverloadControl::has_data() const
-{
-    return drop_time.is_set
-	|| throttle_rate.is_set;
-}
-
-bool Snmp::OverloadControl::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(drop_time.yfilter)
-	|| ydk::is_set(throttle_rate.yfilter);
-}
-
-std::string Snmp::OverloadControl::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::OverloadControl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "overload-control";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::OverloadControl::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (drop_time.is_set || is_set(drop_time.yfilter)) leaf_name_data.push_back(drop_time.get_name_leafdata());
-    if (throttle_rate.is_set || is_set(throttle_rate.yfilter)) leaf_name_data.push_back(throttle_rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::OverloadControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::OverloadControl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::OverloadControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "drop-time")
-    {
-        drop_time = value;
-        drop_time.value_namespace = name_space;
-        drop_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttle-rate")
-    {
-        throttle_rate = value;
-        throttle_rate.value_namespace = name_space;
-        throttle_rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::OverloadControl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "drop-time")
-    {
-        drop_time.yfilter = yfilter;
-    }
-    if(value_path == "throttle-rate")
-    {
-        throttle_rate.yfilter = yfilter;
-    }
-}
-
-bool Snmp::OverloadControl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "drop-time" || name == "throttle-rate")
-        return true;
-    return false;
-}
-
-Snmp::System::System()
-    :
-    chassis_id{YType::str, "chassis-id"},
-    contact{YType::str, "contact"},
-    location{YType::str, "location"}
-{
-
-    yang_name = "system"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::System::~System()
-{
-}
-
-bool Snmp::System::has_data() const
-{
-    return chassis_id.is_set
-	|| contact.is_set
-	|| location.is_set;
-}
-
-bool Snmp::System::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(chassis_id.yfilter)
-	|| ydk::is_set(contact.yfilter)
-	|| ydk::is_set(location.yfilter);
-}
-
-std::string Snmp::System::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::System::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "system";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::System::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (chassis_id.is_set || is_set(chassis_id.yfilter)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
-    if (contact.is_set || is_set(contact.yfilter)) leaf_name_data.push_back(contact.get_name_leafdata());
-    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::System::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "chassis-id")
-    {
-        chassis_id = value;
-        chassis_id.value_namespace = name_space;
-        chassis_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "contact")
-    {
-        contact = value;
-        contact.value_namespace = name_space;
-        contact.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "location")
-    {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::System::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "chassis-id")
-    {
-        chassis_id.yfilter = yfilter;
-    }
-    if(value_path == "contact")
-    {
-        contact.yfilter = yfilter;
-    }
-    if(value_path == "location")
-    {
-        location.yfilter = yfilter;
-    }
-}
-
-bool Snmp::System::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "chassis-id" || name == "contact" || name == "location")
-        return true;
-    return false;
-}
-
-Snmp::Target::Target()
-    :
-    targets(std::make_shared<Snmp::Target::Targets>())
-{
-    targets->parent = this;
-
-    yang_name = "target"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Target::~Target()
-{
-}
-
-bool Snmp::Target::has_data() const
-{
-    return (targets !=  nullptr && targets->has_data());
-}
-
-bool Snmp::Target::has_operation() const
-{
-    return is_set(yfilter)
-	|| (targets !=  nullptr && targets->has_operation());
-}
-
-std::string Snmp::Target::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Target::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "target";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Target::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "targets")
-    {
-        if(targets == nullptr)
-        {
-            targets = std::make_shared<Snmp::Target::Targets>();
-        }
-        return targets;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(targets != nullptr)
-    {
-        children["targets"] = targets;
-    }
-
-    return children;
-}
-
-void Snmp::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Target::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Target::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "targets")
-        return true;
-    return false;
-}
-
-Snmp::Target::Targets::Targets()
-{
-
-    yang_name = "targets"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Target::Targets::~Targets()
-{
-}
-
-bool Snmp::Target::Targets::has_data() const
-{
-    for (std::size_t index=0; index<target.size(); index++)
-    {
-        if(target[index]->has_data())
+        if(inform_encrypted_user_community[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Snmp::Target::Targets::has_operation() const
+bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_operation() const
 {
-    for (std::size_t index=0; index<target.size(); index++)
+    for (std::size_t index=0; index<inform_encrypted_user_community.size(); index++)
     {
-        if(target[index]->has_operation())
+        if(inform_encrypted_user_community[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Snmp::Target::Targets::get_absolute_path() const
+std::string Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/target/" << get_segment_path();
+    path_buffer << "inform-encrypted-user-communities";
     return path_buffer.str();
 }
 
-std::string Snmp::Target::Targets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "targets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Target::Targets::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1347,11 +57,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Target::Targets::get_name_l
 
 }
 
-std::shared_ptr<Entity> Snmp::Target::Targets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "target")
+    if(child_yang_name == "inform-encrypted-user-community")
     {
-        for(auto const & c : target)
+        for(auto const & c : inform_encrypted_user_community)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1359,19 +69,19 @@ std::shared_ptr<Entity> Snmp::Target::Targets::get_child_by_name(const std::stri
                 return c;
             }
         }
-        auto c = std::make_shared<Snmp::Target::Targets::Target_>();
+        auto c = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity>();
         c->parent = this;
-        target.push_back(c);
+        inform_encrypted_user_community.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::Targets::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : target)
+    for (auto const & c : inform_encrypted_user_community)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1379,949 +89,177 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::Targets::get_childr
     return children;
 }
 
-void Snmp::Target::Targets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Target::Targets::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Target::Targets::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "target")
+    if(name == "inform-encrypted-user-community")
         return true;
     return false;
 }
 
-Snmp::Target::Targets::Target_::Target_()
+Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::InformEncryptedUserCommunity()
     :
-    target_list_name{YType::str, "target-list-name"}
-    	,
-    target_addresses(std::make_shared<Snmp::Target::Targets::Target_::TargetAddresses>())
-	,vrf_names(std::make_shared<Snmp::Target::Targets::Target_::VrfNames>())
+    community_name{YType::str, "community-name"},
+    port{YType::uint16, "port"},
+    version{YType::str, "version"},
+    security_level{YType::enumeration, "security-level"},
+    basic_trap_types{YType::int32, "basic-trap-types"},
+    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
+    advanced_trap_types2{YType::int32, "advanced-trap-types2"}
 {
-    target_addresses->parent = this;
-    vrf_names->parent = this;
 
-    yang_name = "target"; yang_parent_name = "targets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inform-encrypted-user-community"; yang_parent_name = "inform-encrypted-user-communities"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Target::Targets::Target_::~Target_()
+Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::~InformEncryptedUserCommunity()
 {
 }
 
-bool Snmp::Target::Targets::Target_::has_data() const
+bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_data() const
 {
-    return target_list_name.is_set
-	|| (target_addresses !=  nullptr && target_addresses->has_data())
-	|| (vrf_names !=  nullptr && vrf_names->has_data());
+    return community_name.is_set
+	|| port.is_set
+	|| version.is_set
+	|| security_level.is_set
+	|| basic_trap_types.is_set
+	|| advanced_trap_types1.is_set
+	|| advanced_trap_types2.is_set;
 }
 
-bool Snmp::Target::Targets::Target_::has_operation() const
+bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(target_list_name.yfilter)
-	|| (target_addresses !=  nullptr && target_addresses->has_operation())
-	|| (vrf_names !=  nullptr && vrf_names->has_operation());
+	|| ydk::is_set(community_name.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(security_level.yfilter)
+	|| ydk::is_set(basic_trap_types.yfilter)
+	|| ydk::is_set(advanced_trap_types1.yfilter)
+	|| ydk::is_set(advanced_trap_types2.yfilter);
 }
 
-std::string Snmp::Target::Targets::Target_::get_absolute_path() const
+std::string Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/target/targets/" << get_segment_path();
+    path_buffer << "inform-encrypted-user-community" <<"[community-name='" <<community_name <<"']";
     return path_buffer.str();
 }
 
-std::string Snmp::Target::Targets::Target_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "target" <<"[target-list-name='" <<target_list_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Target::Targets::Target_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (target_list_name.is_set || is_set(target_list_name.yfilter)) leaf_name_data.push_back(target_list_name.get_name_leafdata());
+    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
+    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
+    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
+    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Target::Targets::Target_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "target-addresses")
-    {
-        if(target_addresses == nullptr)
-        {
-            target_addresses = std::make_shared<Snmp::Target::Targets::Target_::TargetAddresses>();
-        }
-        return target_addresses;
-    }
-
-    if(child_yang_name == "vrf-names")
-    {
-        if(vrf_names == nullptr)
-        {
-            vrf_names = std::make_shared<Snmp::Target::Targets::Target_::VrfNames>();
-        }
-        return vrf_names;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::Targets::Target_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(target_addresses != nullptr)
-    {
-        children["target-addresses"] = target_addresses;
-    }
-
-    if(vrf_names != nullptr)
-    {
-        children["vrf-names"] = vrf_names;
-    }
-
-    return children;
-}
-
-void Snmp::Target::Targets::Target_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "target-list-name")
-    {
-        target_list_name = value;
-        target_list_name.value_namespace = name_space;
-        target_list_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Target::Targets::Target_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "target-list-name")
-    {
-        target_list_name.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Target::Targets::Target_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "target-addresses" || name == "vrf-names" || name == "target-list-name")
-        return true;
-    return false;
-}
-
-Snmp::Target::Targets::Target_::TargetAddresses::TargetAddresses()
-{
-
-    yang_name = "target-addresses"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Target::Targets::Target_::TargetAddresses::~TargetAddresses()
-{
-}
-
-bool Snmp::Target::Targets::Target_::TargetAddresses::has_data() const
-{
-    for (std::size_t index=0; index<target_address.size(); index++)
-    {
-        if(target_address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::Target::Targets::Target_::TargetAddresses::has_operation() const
-{
-    for (std::size_t index=0; index<target_address.size(); index++)
-    {
-        if(target_address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::Target::Targets::Target_::TargetAddresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "target-addresses";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Target::Targets::Target_::TargetAddresses::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Target::Targets::Target_::TargetAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "target-address")
-    {
-        for(auto const & c : target_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress>();
-        c->parent = this;
-        target_address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::Targets::Target_::TargetAddresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : target_address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::Target::Targets::Target_::TargetAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Target::Targets::Target_::TargetAddresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Target::Targets::Target_::TargetAddresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "target-address")
-        return true;
-    return false;
-}
-
-Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::TargetAddress()
-    :
-    ip_address{YType::str, "ip-address"}
-{
-
-    yang_name = "target-address"; yang_parent_name = "target-addresses"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::~TargetAddress()
-{
-}
-
-bool Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::has_data() const
-{
-    return ip_address.is_set;
-}
-
-bool Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip_address.yfilter);
-}
-
-std::string Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "target-address" <<"[ip-address='" <<ip_address <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "ip-address")
+    if(value_path == "community-name")
     {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
+        community_name = value;
+        community_name.value_namespace = name_space;
+        community_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "security-level")
+    {
+        security_level = value;
+        security_level.value_namespace = name_space;
+        security_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "basic-trap-types")
+    {
+        basic_trap_types = value;
+        basic_trap_types.value_namespace = name_space;
+        basic_trap_types.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advanced-trap-types1")
+    {
+        advanced_trap_types1 = value;
+        advanced_trap_types1.value_namespace = name_space;
+        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advanced-trap-types2")
+    {
+        advanced_trap_types2 = value;
+        advanced_trap_types2.value_namespace = name_space;
+        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "ip-address")
+    if(value_path == "community-name")
     {
-        ip_address.yfilter = yfilter;
+        community_name.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "security-level")
+    {
+        security_level.yfilter = yfilter;
+    }
+    if(value_path == "basic-trap-types")
+    {
+        basic_trap_types.yfilter = yfilter;
+    }
+    if(value_path == "advanced-trap-types1")
+    {
+        advanced_trap_types1.yfilter = yfilter;
+    }
+    if(value_path == "advanced-trap-types2")
+    {
+        advanced_trap_types2.yfilter = yfilter;
     }
 }
 
-bool Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip-address")
-        return true;
-    return false;
-}
-
-Snmp::Target::Targets::Target_::VrfNames::VrfNames()
-{
-
-    yang_name = "vrf-names"; yang_parent_name = "target"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Target::Targets::Target_::VrfNames::~VrfNames()
-{
-}
-
-bool Snmp::Target::Targets::Target_::VrfNames::has_data() const
-{
-    for (std::size_t index=0; index<vrf_name.size(); index++)
-    {
-        if(vrf_name[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::Target::Targets::Target_::VrfNames::has_operation() const
-{
-    for (std::size_t index=0; index<vrf_name.size(); index++)
-    {
-        if(vrf_name[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::Target::Targets::Target_::VrfNames::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf-names";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Target::Targets::Target_::VrfNames::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Target::Targets::Target_::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf-name")
-    {
-        for(auto const & c : vrf_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::Target::Targets::Target_::VrfNames::VrfName>();
-        c->parent = this;
-        vrf_name.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::Targets::Target_::VrfNames::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vrf_name)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::Target::Targets::Target_::VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Target::Targets::Target_::VrfNames::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Target::Targets::Target_::VrfNames::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-name")
-        return true;
-    return false;
-}
-
-Snmp::Target::Targets::Target_::VrfNames::VrfName::VrfName()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "vrf-name"; yang_parent_name = "vrf-names"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Target::Targets::Target_::VrfNames::VrfName::~VrfName()
-{
-}
-
-bool Snmp::Target::Targets::Target_::VrfNames::VrfName::has_data() const
-{
-    return name.is_set;
-}
-
-bool Snmp::Target::Targets::Target_::VrfNames::VrfName::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Snmp::Target::Targets::Target_::VrfNames::VrfName::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf-name" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Target::Targets::Target_::VrfNames::VrfName::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Target::Targets::Target_::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Target::Targets::Target_::VrfNames::VrfName::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Target::Targets::Target_::VrfNames::VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Target::Targets::Target_::VrfNames::VrfName::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Target::Targets::Target_::VrfNames::VrfName::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Snmp::Timeouts::Timeouts()
-    :
-    duplicates{YType::uint32, "duplicates"},
-    in_qdrop{YType::uint32, "in-qdrop"},
-    pdu_stats{YType::uint32, "pdu-stats"},
-    subagent{YType::uint32, "subagent"}
-{
-
-    yang_name = "timeouts"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Timeouts::~Timeouts()
-{
-}
-
-bool Snmp::Timeouts::has_data() const
-{
-    return duplicates.is_set
-	|| in_qdrop.is_set
-	|| pdu_stats.is_set
-	|| subagent.is_set;
-}
-
-bool Snmp::Timeouts::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(duplicates.yfilter)
-	|| ydk::is_set(in_qdrop.yfilter)
-	|| ydk::is_set(pdu_stats.yfilter)
-	|| ydk::is_set(subagent.yfilter);
-}
-
-std::string Snmp::Timeouts::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Timeouts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "timeouts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Timeouts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
-    if (in_qdrop.is_set || is_set(in_qdrop.yfilter)) leaf_name_data.push_back(in_qdrop.get_name_leafdata());
-    if (pdu_stats.is_set || is_set(pdu_stats.yfilter)) leaf_name_data.push_back(pdu_stats.get_name_leafdata());
-    if (subagent.is_set || is_set(subagent.yfilter)) leaf_name_data.push_back(subagent.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Timeouts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Timeouts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Timeouts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "duplicates")
-    {
-        duplicates = value;
-        duplicates.value_namespace = name_space;
-        duplicates.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-qdrop")
-    {
-        in_qdrop = value;
-        in_qdrop.value_namespace = name_space;
-        in_qdrop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pdu-stats")
-    {
-        pdu_stats = value;
-        pdu_stats.value_namespace = name_space;
-        pdu_stats.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "subagent")
-    {
-        subagent = value;
-        subagent.value_namespace = name_space;
-        subagent.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Timeouts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "duplicates")
-    {
-        duplicates.yfilter = yfilter;
-    }
-    if(value_path == "in-qdrop")
-    {
-        in_qdrop.yfilter = yfilter;
-    }
-    if(value_path == "pdu-stats")
-    {
-        pdu_stats.yfilter = yfilter;
-    }
-    if(value_path == "subagent")
-    {
-        subagent.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Timeouts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "duplicates" || name == "in-qdrop" || name == "pdu-stats" || name == "subagent")
-        return true;
-    return false;
-}
-
-Snmp::Trap::Trap()
-    :
-    queue_length{YType::uint32, "queue-length"},
-    throttle_time{YType::uint32, "throttle-time"},
-    timeout{YType::uint32, "timeout"}
-{
-
-    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Trap::~Trap()
-{
-}
-
-bool Snmp::Trap::has_data() const
-{
-    return queue_length.is_set
-	|| throttle_time.is_set
-	|| timeout.is_set;
-}
-
-bool Snmp::Trap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(queue_length.yfilter)
-	|| ydk::is_set(throttle_time.yfilter)
-	|| ydk::is_set(timeout.yfilter);
-}
-
-std::string Snmp::Trap::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Trap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Trap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (queue_length.is_set || is_set(queue_length.yfilter)) leaf_name_data.push_back(queue_length.get_name_leafdata());
-    if (throttle_time.is_set || is_set(throttle_time.yfilter)) leaf_name_data.push_back(throttle_time.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Trap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Trap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Trap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "queue-length")
-    {
-        queue_length = value;
-        queue_length.value_namespace = name_space;
-        queue_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttle-time")
-    {
-        throttle_time = value;
-        throttle_time.value_namespace = name_space;
-        throttle_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Trap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "queue-length")
-    {
-        queue_length.yfilter = yfilter;
-    }
-    if(value_path == "throttle-time")
-    {
-        throttle_time.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Trap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "queue-length" || name == "throttle-time" || name == "timeout")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHosts()
-{
-
-    yang_name = "trap-hosts"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::TrapHosts::~TrapHosts()
-{
-}
-
-bool Snmp::TrapHosts::has_data() const
-{
-    for (std::size_t index=0; index<trap_host.size(); index++)
-    {
-        if(trap_host[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::TrapHosts::has_operation() const
-{
-    for (std::size_t index=0; index<trap_host.size(); index++)
-    {
-        if(trap_host[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::TrapHosts::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::TrapHosts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap-hosts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trap-host")
-    {
-        for(auto const & c : trap_host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::TrapHosts::TrapHost>();
-        c->parent = this;
-        trap_host.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trap_host)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::TrapHosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::TrapHosts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::TrapHosts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trap-host")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHost::TrapHost()
-    :
-    ip_address{YType::str, "ip-address"}
-    	,
-    default_user_communities(std::make_shared<Snmp::TrapHosts::TrapHost::DefaultUserCommunities>())
-	,encrypted_user_communities(std::make_shared<Snmp::TrapHosts::TrapHost::EncryptedUserCommunities>())
-	,inform_host(std::make_shared<Snmp::TrapHosts::TrapHost::InformHost>())
-{
-    default_user_communities->parent = this;
-    encrypted_user_communities->parent = this;
-    inform_host->parent = this;
-
-    yang_name = "trap-host"; yang_parent_name = "trap-hosts"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::TrapHosts::TrapHost::~TrapHost()
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::has_data() const
-{
-    return ip_address.is_set
-	|| (default_user_communities !=  nullptr && default_user_communities->has_data())
-	|| (encrypted_user_communities !=  nullptr && encrypted_user_communities->has_data())
-	|| (inform_host !=  nullptr && inform_host->has_data());
-}
-
-bool Snmp::TrapHosts::TrapHost::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| (default_user_communities !=  nullptr && default_user_communities->has_operation())
-	|| (encrypted_user_communities !=  nullptr && encrypted_user_communities->has_operation())
-	|| (inform_host !=  nullptr && inform_host->has_operation());
-}
-
-std::string Snmp::TrapHosts::TrapHost::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/trap-hosts/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::TrapHosts::TrapHost::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap-host" <<"[ip-address='" <<ip_address <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "default-user-communities")
-    {
-        if(default_user_communities == nullptr)
-        {
-            default_user_communities = std::make_shared<Snmp::TrapHosts::TrapHost::DefaultUserCommunities>();
-        }
-        return default_user_communities;
-    }
-
-    if(child_yang_name == "encrypted-user-communities")
-    {
-        if(encrypted_user_communities == nullptr)
-        {
-            encrypted_user_communities = std::make_shared<Snmp::TrapHosts::TrapHost::EncryptedUserCommunities>();
-        }
-        return encrypted_user_communities;
-    }
-
-    if(child_yang_name == "inform-host")
-    {
-        if(inform_host == nullptr)
-        {
-            inform_host = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost>();
-        }
-        return inform_host;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(default_user_communities != nullptr)
-    {
-        children["default-user-communities"] = default_user_communities;
-    }
-
-    if(encrypted_user_communities != nullptr)
-    {
-        children["encrypted-user-communities"] = encrypted_user_communities;
-    }
-
-    if(inform_host != nullptr)
-    {
-        children["inform-host"] = inform_host;
-    }
-
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::TrapHosts::TrapHost::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-}
-
-bool Snmp::TrapHosts::TrapHost::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "default-user-communities" || name == "encrypted-user-communities" || name == "inform-host" || name == "ip-address")
+    if(name == "community-name" || name == "port" || name == "version" || name == "security-level" || name == "basic-trap-types" || name == "advanced-trap-types1" || name == "advanced-trap-types2")
         return true;
     return false;
 }
@@ -2422,12 +360,12 @@ bool Snmp::TrapHosts::TrapHost::DefaultUserCommunities::has_leaf_or_child_of_nam
 Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::DefaultUserCommunity()
     :
     community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
     port{YType::uint16, "port"},
+    version{YType::str, "version"},
     security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
+    basic_trap_types{YType::int32, "basic-trap-types"},
+    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
+    advanced_trap_types2{YType::int32, "advanced-trap-types2"}
 {
 
     yang_name = "default-user-community"; yang_parent_name = "default-user-communities"; is_top_level_class = false; has_list_ancestor = true;
@@ -2440,24 +378,24 @@ Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::~Defaul
 bool Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::has_data() const
 {
     return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
 	|| port.is_set
+	|| version.is_set
 	|| security_level.is_set
-	|| version.is_set;
+	|| basic_trap_types.is_set
+	|| advanced_trap_types1.is_set
+	|| advanced_trap_types2.is_set;
 }
 
 bool Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
 	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
+	|| ydk::is_set(basic_trap_types.yfilter)
+	|| ydk::is_set(advanced_trap_types1.yfilter)
+	|| ydk::is_set(advanced_trap_types2.yfilter);
 }
 
 std::string Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_segment_path() const
@@ -2472,12 +410,12 @@ std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::Defaul
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
+    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
     if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
     if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2502,6 +440,30 @@ void Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::se
         community_name.value_namespace = name_space;
         community_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "security-level")
+    {
+        security_level = value;
+        security_level.value_namespace = name_space;
+        security_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "basic-trap-types")
+    {
+        basic_trap_types = value;
+        basic_trap_types.value_namespace = name_space;
+        basic_trap_types.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "advanced-trap-types1")
     {
         advanced_trap_types1 = value;
@@ -2513,30 +475,6 @@ void Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::se
         advanced_trap_types2 = value;
         advanced_trap_types2.value_namespace = name_space;
         advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -2546,6 +484,22 @@ void Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::se
     {
         community_name.yfilter = yfilter;
     }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "security-level")
+    {
+        security_level.yfilter = yfilter;
+    }
+    if(value_path == "basic-trap-types")
+    {
+        basic_trap_types.yfilter = yfilter;
+    }
     if(value_path == "advanced-trap-types1")
     {
         advanced_trap_types1.yfilter = yfilter;
@@ -2553,934 +507,61 @@ void Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::se
     if(value_path == "advanced-trap-types2")
     {
         advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
     }
 }
 
 bool Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
+    if(name == "community-name" || name == "port" || name == "version" || name == "security-level" || name == "basic-trap-types" || name == "advanced-trap-types1" || name == "advanced-trap-types2")
         return true;
     return false;
 }
 
-Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunities()
+Snmp::Contexts::Contexts()
 {
 
-    yang_name = "encrypted-user-communities"; yang_parent_name = "trap-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "contexts"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::~EncryptedUserCommunities()
+Snmp::Contexts::~Contexts()
 {
 }
 
-bool Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::has_data() const
+bool Snmp::Contexts::has_data() const
 {
-    for (std::size_t index=0; index<encrypted_user_community.size(); index++)
+    for (std::size_t index=0; index<context.size(); index++)
     {
-        if(encrypted_user_community[index]->has_data())
+        if(context[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::has_operation() const
+bool Snmp::Contexts::has_operation() const
 {
-    for (std::size_t index=0; index<encrypted_user_community.size(); index++)
+    for (std::size_t index=0; index<context.size(); index++)
     {
-        if(encrypted_user_community[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "encrypted-user-communities";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "encrypted-user-community")
-    {
-        for(auto const & c : encrypted_user_community)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity>();
-        c->parent = this;
-        encrypted_user_community.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : encrypted_user_community)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "encrypted-user-community")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::EncryptedUserCommunity()
-    :
-    community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
-    port{YType::uint16, "port"},
-    security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
-{
-
-    yang_name = "encrypted-user-community"; yang_parent_name = "encrypted-user-communities"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::~EncryptedUserCommunity()
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::has_data() const
-{
-    return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
-	|| port.is_set
-	|| security_level.is_set
-	|| version.is_set;
-}
-
-bool Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
-}
-
-std::string Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "encrypted-user-community" <<"[community-name='" <<community_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
-    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
-    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "community-name")
-    {
-        community_name = value;
-        community_name.value_namespace = name_space;
-        community_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advanced-trap-types1")
-    {
-        advanced_trap_types1 = value;
-        advanced_trap_types1.value_namespace = name_space;
-        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2 = value;
-        advanced_trap_types2.value_namespace = name_space;
-        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "community-name")
-    {
-        community_name.yfilter = yfilter;
-    }
-    if(value_path == "advanced-trap-types1")
-    {
-        advanced_trap_types1.yfilter = yfilter;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformHost()
-    :
-    inform_encrypted_user_communities(std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities>())
-	,inform_user_communities(std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities>())
-{
-    inform_encrypted_user_communities->parent = this;
-    inform_user_communities->parent = this;
-
-    yang_name = "inform-host"; yang_parent_name = "trap-host"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::~InformHost()
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::has_data() const
-{
-    return (inform_encrypted_user_communities !=  nullptr && inform_encrypted_user_communities->has_data())
-	|| (inform_user_communities !=  nullptr && inform_user_communities->has_data());
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::has_operation() const
-{
-    return is_set(yfilter)
-	|| (inform_encrypted_user_communities !=  nullptr && inform_encrypted_user_communities->has_operation())
-	|| (inform_user_communities !=  nullptr && inform_user_communities->has_operation());
-}
-
-std::string Snmp::TrapHosts::TrapHost::InformHost::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inform-host";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::InformHost::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "inform-encrypted-user-communities")
-    {
-        if(inform_encrypted_user_communities == nullptr)
-        {
-            inform_encrypted_user_communities = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities>();
-        }
-        return inform_encrypted_user_communities;
-    }
-
-    if(child_yang_name == "inform-user-communities")
-    {
-        if(inform_user_communities == nullptr)
-        {
-            inform_user_communities = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities>();
-        }
-        return inform_user_communities;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(inform_encrypted_user_communities != nullptr)
-    {
-        children["inform-encrypted-user-communities"] = inform_encrypted_user_communities;
-    }
-
-    if(inform_user_communities != nullptr)
-    {
-        children["inform-user-communities"] = inform_user_communities;
-    }
-
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "inform-encrypted-user-communities" || name == "inform-user-communities")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunities()
-{
-
-    yang_name = "inform-encrypted-user-communities"; yang_parent_name = "inform-host"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::~InformEncryptedUserCommunities()
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_data() const
-{
-    for (std::size_t index=0; index<inform_encrypted_user_community.size(); index++)
-    {
-        if(inform_encrypted_user_community[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_operation() const
-{
-    for (std::size_t index=0; index<inform_encrypted_user_community.size(); index++)
-    {
-        if(inform_encrypted_user_community[index]->has_operation())
+        if(context[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inform-encrypted-user-communities";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "inform-encrypted-user-community")
-    {
-        for(auto const & c : inform_encrypted_user_community)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity>();
-        c->parent = this;
-        inform_encrypted_user_community.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : inform_encrypted_user_community)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "inform-encrypted-user-community")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::InformEncryptedUserCommunity()
-    :
-    community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
-    port{YType::uint16, "port"},
-    security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
-{
-
-    yang_name = "inform-encrypted-user-community"; yang_parent_name = "inform-encrypted-user-communities"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::~InformEncryptedUserCommunity()
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_data() const
-{
-    return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
-	|| port.is_set
-	|| security_level.is_set
-	|| version.is_set;
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
-}
-
-std::string Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inform-encrypted-user-community" <<"[community-name='" <<community_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
-    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
-    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "community-name")
-    {
-        community_name = value;
-        community_name.value_namespace = name_space;
-        community_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advanced-trap-types1")
-    {
-        advanced_trap_types1 = value;
-        advanced_trap_types1.value_namespace = name_space;
-        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2 = value;
-        advanced_trap_types2.value_namespace = name_space;
-        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "community-name")
-    {
-        community_name.yfilter = yfilter;
-    }
-    if(value_path == "advanced-trap-types1")
-    {
-        advanced_trap_types1.yfilter = yfilter;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunities()
-{
-
-    yang_name = "inform-user-communities"; yang_parent_name = "inform-host"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::~InformUserCommunities()
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::has_data() const
-{
-    for (std::size_t index=0; index<inform_user_community.size(); index++)
-    {
-        if(inform_user_community[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::has_operation() const
-{
-    for (std::size_t index=0; index<inform_user_community.size(); index++)
-    {
-        if(inform_user_community[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inform-user-communities";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "inform-user-community")
-    {
-        for(auto const & c : inform_user_community)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity>();
-        c->parent = this;
-        inform_user_community.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : inform_user_community)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "inform-user-community")
-        return true;
-    return false;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::InformUserCommunity()
-    :
-    community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
-    port{YType::uint16, "port"},
-    security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
-{
-
-    yang_name = "inform-user-community"; yang_parent_name = "inform-user-communities"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::~InformUserCommunity()
-{
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::has_data() const
-{
-    return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
-	|| port.is_set
-	|| security_level.is_set
-	|| version.is_set;
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
-}
-
-std::string Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inform-user-community" <<"[community-name='" <<community_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
-    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
-    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "community-name")
-    {
-        community_name = value;
-        community_name.value_namespace = name_space;
-        community_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advanced-trap-types1")
-    {
-        advanced_trap_types1 = value;
-        advanced_trap_types1.value_namespace = name_space;
-        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2 = value;
-        advanced_trap_types2.value_namespace = name_space;
-        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "community-name")
-    {
-        community_name.yfilter = yfilter;
-    }
-    if(value_path == "advanced-trap-types1")
-    {
-        advanced_trap_types1.yfilter = yfilter;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
-        return true;
-    return false;
-}
-
-Snmp::Users::Users()
-{
-
-    yang_name = "users"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Users::~Users()
-{
-}
-
-bool Snmp::Users::has_data() const
-{
-    for (std::size_t index=0; index<user.size(); index++)
-    {
-        if(user[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::Users::has_operation() const
-{
-    for (std::size_t index=0; index<user.size(); index++)
-    {
-        if(user[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::Users::get_absolute_path() const
+std::string Snmp::Contexts::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Users::get_segment_path() const
+std::string Snmp::Contexts::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "users";
+    path_buffer << "contexts";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Users::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Contexts::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3489,11 +570,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Users::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Snmp::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "user")
+    if(child_yang_name == "context")
     {
-        for(auto const & c : user)
+        for(auto const & c : context)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3501,19 +582,19 @@ std::shared_ptr<Entity> Snmp::Users::get_child_by_name(const std::string & child
                 return c;
             }
         }
-        auto c = std::make_shared<Snmp::Users::User>();
+        auto c = std::make_shared<Snmp::Contexts::Context>();
         c->parent = this;
-        user.push_back(c);
+        context.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Users::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Contexts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : user)
+    for (auto const & c : context)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3521,774 +602,115 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Users::get_children() const
     return children;
 }
 
-void Snmp::Users::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Contexts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Users::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Contexts::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Users::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Contexts::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "user")
+    if(name == "context")
         return true;
     return false;
 }
 
-Snmp::Users::User::User()
+Snmp::Contexts::Context::Context()
     :
-    user_name{YType::str, "user-name"},
-    algorithm{YType::enumeration, "algorithm"},
-    authentication_password{YType::str, "authentication-password"},
-    authentication_password_configured{YType::empty, "authentication-password-configured"},
-    group_name{YType::str, "group-name"},
-    owner{YType::enumeration, "owner"},
-    port{YType::uint16, "port"},
-    priv_algorithm{YType::enumeration, "priv-algorithm"},
-    privacy_password{YType::str, "privacy-password"},
-    privacy_password_configured{YType::empty, "privacy-password-configured"},
-    remote_address{YType::str, "remote-address"},
-    v4_access_list{YType::str, "v4-access-list"},
-    v4acl_type{YType::enumeration, "v4acl-type"},
-    v6_access_list{YType::str, "v6-access-list"},
-    v6acl_type{YType::enumeration, "v6acl-type"},
-    version{YType::enumeration, "version"}
+    context_name{YType::str, "context-name"}
 {
 
-    yang_name = "user"; yang_parent_name = "users"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context"; yang_parent_name = "contexts"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Users::User::~User()
+Snmp::Contexts::Context::~Context()
 {
 }
 
-bool Snmp::Users::User::has_data() const
+bool Snmp::Contexts::Context::has_data() const
 {
-    return user_name.is_set
-	|| algorithm.is_set
-	|| authentication_password.is_set
-	|| authentication_password_configured.is_set
-	|| group_name.is_set
-	|| owner.is_set
-	|| port.is_set
-	|| priv_algorithm.is_set
-	|| privacy_password.is_set
-	|| privacy_password_configured.is_set
-	|| remote_address.is_set
-	|| v4_access_list.is_set
-	|| v4acl_type.is_set
-	|| v6_access_list.is_set
-	|| v6acl_type.is_set
-	|| version.is_set;
+    return context_name.is_set;
 }
 
-bool Snmp::Users::User::has_operation() const
+bool Snmp::Contexts::Context::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(user_name.yfilter)
-	|| ydk::is_set(algorithm.yfilter)
-	|| ydk::is_set(authentication_password.yfilter)
-	|| ydk::is_set(authentication_password_configured.yfilter)
-	|| ydk::is_set(group_name.yfilter)
-	|| ydk::is_set(owner.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(priv_algorithm.yfilter)
-	|| ydk::is_set(privacy_password.yfilter)
-	|| ydk::is_set(privacy_password_configured.yfilter)
-	|| ydk::is_set(remote_address.yfilter)
-	|| ydk::is_set(v4_access_list.yfilter)
-	|| ydk::is_set(v4acl_type.yfilter)
-	|| ydk::is_set(v6_access_list.yfilter)
-	|| ydk::is_set(v6acl_type.yfilter)
-	|| ydk::is_set(version.yfilter);
+	|| ydk::is_set(context_name.yfilter);
 }
 
-std::string Snmp::Users::User::get_absolute_path() const
+std::string Snmp::Contexts::Context::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/users/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/contexts/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Users::User::get_segment_path() const
+std::string Snmp::Contexts::Context::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "user" <<"[user-name='" <<user_name <<"']";
+    path_buffer << "context" <<"[context-name='" <<context_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Users::User::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Contexts::Context::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (user_name.is_set || is_set(user_name.yfilter)) leaf_name_data.push_back(user_name.get_name_leafdata());
-    if (algorithm.is_set || is_set(algorithm.yfilter)) leaf_name_data.push_back(algorithm.get_name_leafdata());
-    if (authentication_password.is_set || is_set(authentication_password.yfilter)) leaf_name_data.push_back(authentication_password.get_name_leafdata());
-    if (authentication_password_configured.is_set || is_set(authentication_password_configured.yfilter)) leaf_name_data.push_back(authentication_password_configured.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (owner.is_set || is_set(owner.yfilter)) leaf_name_data.push_back(owner.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (priv_algorithm.is_set || is_set(priv_algorithm.yfilter)) leaf_name_data.push_back(priv_algorithm.get_name_leafdata());
-    if (privacy_password.is_set || is_set(privacy_password.yfilter)) leaf_name_data.push_back(privacy_password.get_name_leafdata());
-    if (privacy_password_configured.is_set || is_set(privacy_password_configured.yfilter)) leaf_name_data.push_back(privacy_password_configured.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (v4_access_list.is_set || is_set(v4_access_list.yfilter)) leaf_name_data.push_back(v4_access_list.get_name_leafdata());
-    if (v4acl_type.is_set || is_set(v4acl_type.yfilter)) leaf_name_data.push_back(v4acl_type.get_name_leafdata());
-    if (v6_access_list.is_set || is_set(v6_access_list.yfilter)) leaf_name_data.push_back(v6_access_list.get_name_leafdata());
-    if (v6acl_type.is_set || is_set(v6acl_type.yfilter)) leaf_name_data.push_back(v6acl_type.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (context_name.is_set || is_set(context_name.yfilter)) leaf_name_data.push_back(context_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Users::User::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Contexts::Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmp::Users::User::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Contexts::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "user-name")
+    if(value_path == "context-name")
     {
-        user_name = value;
-        user_name.value_namespace = name_space;
-        user_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "algorithm")
-    {
-        algorithm = value;
-        algorithm.value_namespace = name_space;
-        algorithm.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-password")
-    {
-        authentication_password = value;
-        authentication_password.value_namespace = name_space;
-        authentication_password.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-password-configured")
-    {
-        authentication_password_configured = value;
-        authentication_password_configured.value_namespace = name_space;
-        authentication_password_configured.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-name")
-    {
-        group_name = value;
-        group_name.value_namespace = name_space;
-        group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "owner")
-    {
-        owner = value;
-        owner.value_namespace = name_space;
-        owner.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priv-algorithm")
-    {
-        priv_algorithm = value;
-        priv_algorithm.value_namespace = name_space;
-        priv_algorithm.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "privacy-password")
-    {
-        privacy_password = value;
-        privacy_password.value_namespace = name_space;
-        privacy_password.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "privacy-password-configured")
-    {
-        privacy_password_configured = value;
-        privacy_password_configured.value_namespace = name_space;
-        privacy_password_configured.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-address")
-    {
-        remote_address = value;
-        remote_address.value_namespace = name_space;
-        remote_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v4-access-list")
-    {
-        v4_access_list = value;
-        v4_access_list.value_namespace = name_space;
-        v4_access_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v4acl-type")
-    {
-        v4acl_type = value;
-        v4acl_type.value_namespace = name_space;
-        v4acl_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v6-access-list")
-    {
-        v6_access_list = value;
-        v6_access_list.value_namespace = name_space;
-        v6_access_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "v6acl-type")
-    {
-        v6acl_type = value;
-        v6acl_type.value_namespace = name_space;
-        v6acl_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
+        context_name = value;
+        context_name.value_namespace = name_space;
+        context_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Users::User::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Contexts::Context::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "user-name")
+    if(value_path == "context-name")
     {
-        user_name.yfilter = yfilter;
-    }
-    if(value_path == "algorithm")
-    {
-        algorithm.yfilter = yfilter;
-    }
-    if(value_path == "authentication-password")
-    {
-        authentication_password.yfilter = yfilter;
-    }
-    if(value_path == "authentication-password-configured")
-    {
-        authentication_password_configured.yfilter = yfilter;
-    }
-    if(value_path == "group-name")
-    {
-        group_name.yfilter = yfilter;
-    }
-    if(value_path == "owner")
-    {
-        owner.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "priv-algorithm")
-    {
-        priv_algorithm.yfilter = yfilter;
-    }
-    if(value_path == "privacy-password")
-    {
-        privacy_password.yfilter = yfilter;
-    }
-    if(value_path == "privacy-password-configured")
-    {
-        privacy_password_configured.yfilter = yfilter;
-    }
-    if(value_path == "remote-address")
-    {
-        remote_address.yfilter = yfilter;
-    }
-    if(value_path == "v4-access-list")
-    {
-        v4_access_list.yfilter = yfilter;
-    }
-    if(value_path == "v4acl-type")
-    {
-        v4acl_type.yfilter = yfilter;
-    }
-    if(value_path == "v6-access-list")
-    {
-        v6_access_list.yfilter = yfilter;
-    }
-    if(value_path == "v6acl-type")
-    {
-        v6acl_type.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
+        context_name.yfilter = yfilter;
     }
 }
 
-bool Snmp::Users::User::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Contexts::Context::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "user-name" || name == "algorithm" || name == "authentication-password" || name == "authentication-password-configured" || name == "group-name" || name == "owner" || name == "port" || name == "priv-algorithm" || name == "privacy-password" || name == "privacy-password-configured" || name == "remote-address" || name == "v4-access-list" || name == "v4acl-type" || name == "v6-access-list" || name == "v6acl-type" || name == "version")
+    if(name == "context-name")
         return true;
     return false;
 }
 
-Snmp::Views::Views()
+Snmp::ContextMappings::ContextMappings()
 {
 
-    yang_name = "views"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context-mappings"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Views::~Views()
-{
-}
-
-bool Snmp::Views::has_data() const
-{
-    for (std::size_t index=0; index<view.size(); index++)
-    {
-        if(view[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::Views::has_operation() const
-{
-    for (std::size_t index=0; index<view.size(); index++)
-    {
-        if(view[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::Views::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Views::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "views";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Views::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Views::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "view")
-    {
-        for(auto const & c : view)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::Views::View>();
-        c->parent = this;
-        view.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Views::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : view)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::Views::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+Snmp::ContextMappings::~ContextMappings()
 {
 }
 
-void Snmp::Views::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Views::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "view")
-        return true;
-    return false;
-}
-
-Snmp::Views::View::View()
-    :
-    view_name{YType::str, "view-name"},
-    family{YType::str, "family"},
-    view_inclusion{YType::enumeration, "view-inclusion"}
-{
-
-    yang_name = "view"; yang_parent_name = "views"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Views::View::~View()
-{
-}
-
-bool Snmp::Views::View::has_data() const
-{
-    return view_name.is_set
-	|| family.is_set
-	|| view_inclusion.is_set;
-}
-
-bool Snmp::Views::View::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(view_name.yfilter)
-	|| ydk::is_set(family.yfilter)
-	|| ydk::is_set(view_inclusion.yfilter);
-}
-
-std::string Snmp::Views::View::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/views/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Views::View::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "view" <<"[view-name='" <<view_name <<"']" <<"[family='" <<family <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Views::View::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (view_name.is_set || is_set(view_name.yfilter)) leaf_name_data.push_back(view_name.get_name_leafdata());
-    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
-    if (view_inclusion.is_set || is_set(view_inclusion.yfilter)) leaf_name_data.push_back(view_inclusion.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Views::View::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Views::View::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Views::View::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "view-name")
-    {
-        view_name = value;
-        view_name.value_namespace = name_space;
-        view_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "family")
-    {
-        family = value;
-        family.value_namespace = name_space;
-        family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "view-inclusion")
-    {
-        view_inclusion = value;
-        view_inclusion.value_namespace = name_space;
-        view_inclusion.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Views::View::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "view-name")
-    {
-        view_name.yfilter = yfilter;
-    }
-    if(value_path == "family")
-    {
-        family.yfilter = yfilter;
-    }
-    if(value_path == "view-inclusion")
-    {
-        view_inclusion.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Views::View::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "view-name" || name == "family" || name == "view-inclusion")
-        return true;
-    return false;
-}
-
-Snmp::Vrfs::Vrfs()
-{
-
-    yang_name = "vrfs"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Vrfs::~Vrfs()
-{
-}
-
-bool Snmp::Vrfs::has_data() const
-{
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::Vrfs::has_operation() const
-{
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::Vrfs::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Vrfs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrfs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf")
-    {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vrf)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf")
-        return true;
-    return false;
-}
-
-Snmp::Vrfs::Vrf::Vrf()
-    :
-    name{YType::str, "name"}
-    	,
-    context_mappings(std::make_shared<Snmp::Vrfs::Vrf::ContextMappings>())
-	,contexts(std::make_shared<Snmp::Vrfs::Vrf::Contexts>())
-	,trap_hosts(std::make_shared<Snmp::Vrfs::Vrf::TrapHosts>())
-{
-    context_mappings->parent = this;
-    contexts->parent = this;
-    trap_hosts->parent = this;
-
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Vrfs::Vrf::~Vrf()
-{
-}
-
-bool Snmp::Vrfs::Vrf::has_data() const
-{
-    return name.is_set
-	|| (context_mappings !=  nullptr && context_mappings->has_data())
-	|| (contexts !=  nullptr && contexts->has_data())
-	|| (trap_hosts !=  nullptr && trap_hosts->has_data());
-}
-
-bool Snmp::Vrfs::Vrf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (context_mappings !=  nullptr && context_mappings->has_operation())
-	|| (contexts !=  nullptr && contexts->has_operation())
-	|| (trap_hosts !=  nullptr && trap_hosts->has_operation());
-}
-
-std::string Snmp::Vrfs::Vrf::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/vrfs/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Vrfs::Vrf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "context-mappings")
-    {
-        if(context_mappings == nullptr)
-        {
-            context_mappings = std::make_shared<Snmp::Vrfs::Vrf::ContextMappings>();
-        }
-        return context_mappings;
-    }
-
-    if(child_yang_name == "contexts")
-    {
-        if(contexts == nullptr)
-        {
-            contexts = std::make_shared<Snmp::Vrfs::Vrf::Contexts>();
-        }
-        return contexts;
-    }
-
-    if(child_yang_name == "trap-hosts")
-    {
-        if(trap_hosts == nullptr)
-        {
-            trap_hosts = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts>();
-        }
-        return trap_hosts;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(context_mappings != nullptr)
-    {
-        children["context-mappings"] = context_mappings;
-    }
-
-    if(contexts != nullptr)
-    {
-        children["contexts"] = contexts;
-    }
-
-    if(trap_hosts != nullptr)
-    {
-        children["trap-hosts"] = trap_hosts;
-    }
-
-    return children;
-}
-
-void Snmp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context-mappings" || name == "contexts" || name == "trap-hosts" || name == "name")
-        return true;
-    return false;
-}
-
-Snmp::Vrfs::Vrf::ContextMappings::ContextMappings()
-{
-
-    yang_name = "context-mappings"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Vrfs::Vrf::ContextMappings::~ContextMappings()
-{
-}
-
-bool Snmp::Vrfs::Vrf::ContextMappings::has_data() const
+bool Snmp::ContextMappings::has_data() const
 {
     for (std::size_t index=0; index<context_mapping.size(); index++)
     {
@@ -4298,7 +720,7 @@ bool Snmp::Vrfs::Vrf::ContextMappings::has_data() const
     return false;
 }
 
-bool Snmp::Vrfs::Vrf::ContextMappings::has_operation() const
+bool Snmp::ContextMappings::has_operation() const
 {
     for (std::size_t index=0; index<context_mapping.size(); index++)
     {
@@ -4308,14 +730,21 @@ bool Snmp::Vrfs::Vrf::ContextMappings::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::ContextMappings::get_segment_path() const
+std::string Snmp::ContextMappings::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::ContextMappings::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "context-mappings";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::ContextMappings::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::ContextMappings::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4324,7 +753,7 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::ContextMappings:
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::ContextMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::ContextMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context-mapping")
     {
@@ -4336,7 +765,7 @@ std::shared_ptr<Entity> Snmp::Vrfs::Vrf::ContextMappings::get_child_by_name(cons
                 return c;
             }
         }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf::ContextMappings::ContextMapping>();
+        auto c = std::make_shared<Snmp::ContextMappings::ContextMapping>();
         c->parent = this;
         context_mapping.push_back(c);
         return c;
@@ -4345,7 +774,7 @@ std::shared_ptr<Entity> Snmp::Vrfs::Vrf::ContextMappings::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::ContextMappings::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::ContextMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : context_mapping)
@@ -4356,89 +785,96 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::ContextMappings:
     return children;
 }
 
-void Snmp::Vrfs::Vrf::ContextMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::ContextMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Vrfs::Vrf::ContextMappings::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::ContextMappings::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Vrfs::Vrf::ContextMappings::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::ContextMappings::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "context-mapping")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::ContextMapping()
+Snmp::ContextMappings::ContextMapping::ContextMapping()
     :
     context_mapping_name{YType::str, "context-mapping-name"},
     context{YType::enumeration, "context"},
     instance_name{YType::str, "instance-name"},
-    topology_name{YType::str, "topology-name"},
-    vrf_name{YType::str, "vrf-name"}
+    vrf_name{YType::str, "vrf-name"},
+    topology_name{YType::str, "topology-name"}
 {
 
-    yang_name = "context-mapping"; yang_parent_name = "context-mappings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "context-mapping"; yang_parent_name = "context-mappings"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::~ContextMapping()
+Snmp::ContextMappings::ContextMapping::~ContextMapping()
 {
 }
 
-bool Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::has_data() const
+bool Snmp::ContextMappings::ContextMapping::has_data() const
 {
     return context_mapping_name.is_set
 	|| context.is_set
 	|| instance_name.is_set
-	|| topology_name.is_set
-	|| vrf_name.is_set;
+	|| vrf_name.is_set
+	|| topology_name.is_set;
 }
 
-bool Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::has_operation() const
+bool Snmp::ContextMappings::ContextMapping::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(context_mapping_name.yfilter)
 	|| ydk::is_set(context.yfilter)
 	|| ydk::is_set(instance_name.yfilter)
-	|| ydk::is_set(topology_name.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(topology_name.yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::get_segment_path() const
+std::string Snmp::ContextMappings::ContextMapping::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/context-mappings/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::ContextMappings::ContextMapping::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "context-mapping" <<"[context-mapping-name='" <<context_mapping_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::ContextMappings::ContextMapping::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (context_mapping_name.is_set || is_set(context_mapping_name.yfilter)) leaf_name_data.push_back(context_mapping_name.get_name_leafdata());
     if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
     if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (topology_name.is_set || is_set(topology_name.yfilter)) leaf_name_data.push_back(topology_name.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (topology_name.is_set || is_set(topology_name.yfilter)) leaf_name_data.push_back(topology_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::ContextMappings::ContextMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::ContextMappings::ContextMapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::ContextMappings::ContextMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "context-mapping-name")
     {
@@ -4458,21 +894,21 @@ void Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::set_value(const std::stri
         instance_name.value_namespace = name_space;
         instance_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "topology-name")
-    {
-        topology_name = value;
-        topology_name.value_namespace = name_space;
-        topology_name.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "topology-name")
+    {
+        topology_name = value;
+        topology_name.value_namespace = name_space;
+        topology_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::ContextMappings::ContextMapping::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "context-mapping-name")
     {
@@ -4486,454 +922,1265 @@ void Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::set_filter(const std::str
     {
         instance_name.yfilter = yfilter;
     }
-    if(value_path == "topology-name")
-    {
-        topology_name.yfilter = yfilter;
-    }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
+    if(value_path == "topology-name")
+    {
+        topology_name.yfilter = yfilter;
+    }
 }
 
-bool Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::ContextMappings::ContextMapping::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "context-mapping-name" || name == "context" || name == "instance-name" || name == "topology-name" || name == "vrf-name")
+    if(name == "context-mapping-name" || name == "context" || name == "instance-name" || name == "vrf-name" || name == "topology-name")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::Contexts::Contexts()
-{
-
-    yang_name = "contexts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Vrfs::Vrf::Contexts::~Contexts()
-{
-}
-
-bool Snmp::Vrfs::Vrf::Contexts::has_data() const
-{
-    for (std::size_t index=0; index<context.size(); index++)
-    {
-        if(context[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::Vrfs::Vrf::Contexts::has_operation() const
-{
-    for (std::size_t index=0; index<context.size(); index++)
-    {
-        if(context[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::Vrfs::Vrf::Contexts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "contexts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::Contexts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "context")
-    {
-        for(auto const & c : context)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf::Contexts::Context>();
-        c->parent = this;
-        context.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::Contexts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : context)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::Vrfs::Vrf::Contexts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Vrfs::Vrf::Contexts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Vrfs::Vrf::Contexts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context")
-        return true;
-    return false;
-}
-
-Snmp::Vrfs::Vrf::Contexts::Context::Context()
+Mib::Mib()
     :
-    context_name{YType::str, "context-name"}
-{
-
-    yang_name = "context"; yang_parent_name = "contexts"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Vrfs::Vrf::Contexts::Context::~Context()
-{
-}
-
-bool Snmp::Vrfs::Vrf::Contexts::Context::has_data() const
-{
-    return context_name.is_set;
-}
-
-bool Snmp::Vrfs::Vrf::Contexts::Context::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(context_name.yfilter);
-}
-
-std::string Snmp::Vrfs::Vrf::Contexts::Context::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "context" <<"[context-name='" <<context_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::Contexts::Context::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (context_name.is_set || is_set(context_name.yfilter)) leaf_name_data.push_back(context_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::Contexts::Context::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmp::Vrfs::Vrf::Contexts::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "context-name")
-    {
-        context_name = value;
-        context_name.value_namespace = name_space;
-        context_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Vrfs::Vrf::Contexts::Context::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "context-name")
-    {
-        context_name.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Vrfs::Vrf::Contexts::Context::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context-name")
-        return true;
-    return false;
-}
-
-Snmp::Vrfs::Vrf::TrapHosts::TrapHosts()
-{
-
-    yang_name = "trap-hosts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Vrfs::Vrf::TrapHosts::~TrapHosts()
-{
-}
-
-bool Snmp::Vrfs::Vrf::TrapHosts::has_data() const
-{
-    for (std::size_t index=0; index<trap_host.size(); index++)
-    {
-        if(trap_host[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Snmp::Vrfs::Vrf::TrapHosts::has_operation() const
-{
-    for (std::size_t index=0; index<trap_host.size(); index++)
-    {
-        if(trap_host[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Snmp::Vrfs::Vrf::TrapHosts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap-hosts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trap-host")
-    {
-        for(auto const & c : trap_host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost>();
-        c->parent = this;
-        trap_host.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trap_host)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Snmp::Vrfs::Vrf::TrapHosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Vrfs::Vrf::TrapHosts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Vrfs::Vrf::TrapHosts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trap-host")
-        return true;
-    return false;
-}
-
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::TrapHost()
-    :
-    ip_address{YType::str, "ip-address"}
+    sensor_mib_cache{YType::empty, "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor-mib-cache"}
     	,
-    default_user_communities(std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities>())
-	,encrypted_user_communities(std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities>())
-	,inform_host(std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost>())
+    mpls_te_mib(std::make_shared<Mib::MplsTeMib>())
+	,mpls_p2mp_mib(std::make_shared<Mib::MplsP2MpMib>())
+	,mpls_te_ext_std_mib(std::make_shared<Mib::MplsTeExtStdMib>())
+	,mpls_te_ext_mib(std::make_shared<Mib::MplsTeExtMib>())
+	,mpls_frr_mib(std::make_shared<Mib::MplsFrrMib>())
+	,cb_qosmib(std::make_shared<Mib::CbQosmib>())
+	,entity_mib(std::make_shared<Mib::EntityMib>())
+	,interface_mib(std::make_shared<Mib::InterfaceMib>())
+	,subscriber(std::make_shared<Mib::Subscriber>())
 {
-    default_user_communities->parent = this;
-    encrypted_user_communities->parent = this;
-    inform_host->parent = this;
+    mpls_te_mib->parent = this;
+    mpls_p2mp_mib->parent = this;
+    mpls_te_ext_std_mib->parent = this;
+    mpls_te_ext_mib->parent = this;
+    mpls_frr_mib->parent = this;
+    cb_qosmib->parent = this;
+    entity_mib->parent = this;
+    interface_mib->parent = this;
+    subscriber->parent = this;
 
-    yang_name = "trap-host"; yang_parent_name = "trap-hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mib"; yang_parent_name = "Cisco-IOS-XR-snmp-agent-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::~TrapHost()
+Mib::~Mib()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::has_data() const
+bool Mib::has_data() const
 {
-    return ip_address.is_set
-	|| (default_user_communities !=  nullptr && default_user_communities->has_data())
-	|| (encrypted_user_communities !=  nullptr && encrypted_user_communities->has_data())
-	|| (inform_host !=  nullptr && inform_host->has_data());
+    return sensor_mib_cache.is_set
+	|| (mpls_te_mib !=  nullptr && mpls_te_mib->has_data())
+	|| (mpls_p2mp_mib !=  nullptr && mpls_p2mp_mib->has_data())
+	|| (mpls_te_ext_std_mib !=  nullptr && mpls_te_ext_std_mib->has_data())
+	|| (mpls_te_ext_mib !=  nullptr && mpls_te_ext_mib->has_data())
+	|| (mpls_frr_mib !=  nullptr && mpls_frr_mib->has_data())
+	|| (cb_qosmib !=  nullptr && cb_qosmib->has_data())
+	|| (entity_mib !=  nullptr && entity_mib->has_data())
+	|| (interface_mib !=  nullptr && interface_mib->has_data())
+	|| (subscriber !=  nullptr && subscriber->has_data());
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::has_operation() const
+bool Mib::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| (default_user_communities !=  nullptr && default_user_communities->has_operation())
-	|| (encrypted_user_communities !=  nullptr && encrypted_user_communities->has_operation())
-	|| (inform_host !=  nullptr && inform_host->has_operation());
+	|| ydk::is_set(sensor_mib_cache.yfilter)
+	|| (mpls_te_mib !=  nullptr && mpls_te_mib->has_operation())
+	|| (mpls_p2mp_mib !=  nullptr && mpls_p2mp_mib->has_operation())
+	|| (mpls_te_ext_std_mib !=  nullptr && mpls_te_ext_std_mib->has_operation())
+	|| (mpls_te_ext_mib !=  nullptr && mpls_te_ext_mib->has_operation())
+	|| (mpls_frr_mib !=  nullptr && mpls_frr_mib->has_operation())
+	|| (cb_qosmib !=  nullptr && cb_qosmib->has_operation())
+	|| (entity_mib !=  nullptr && entity_mib->has_operation())
+	|| (interface_mib !=  nullptr && interface_mib->has_operation())
+	|| (subscriber !=  nullptr && subscriber->has_operation());
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::get_segment_path() const
+std::string Mib::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trap-host" <<"[ip-address='" <<ip_address <<"']";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Mib::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (sensor_mib_cache.is_set || is_set(sensor_mib_cache.yfilter)) leaf_name_data.push_back(sensor_mib_cache.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "default-user-communities")
+    if(child_yang_name == "mpls-te-mib")
     {
-        if(default_user_communities == nullptr)
+        if(mpls_te_mib == nullptr)
         {
-            default_user_communities = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities>();
+            mpls_te_mib = std::make_shared<Mib::MplsTeMib>();
         }
-        return default_user_communities;
+        return mpls_te_mib;
     }
 
-    if(child_yang_name == "encrypted-user-communities")
+    if(child_yang_name == "mpls-p2mp-mib")
     {
-        if(encrypted_user_communities == nullptr)
+        if(mpls_p2mp_mib == nullptr)
         {
-            encrypted_user_communities = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities>();
+            mpls_p2mp_mib = std::make_shared<Mib::MplsP2MpMib>();
         }
-        return encrypted_user_communities;
+        return mpls_p2mp_mib;
     }
 
-    if(child_yang_name == "inform-host")
+    if(child_yang_name == "mpls-te-ext-std-mib")
     {
-        if(inform_host == nullptr)
+        if(mpls_te_ext_std_mib == nullptr)
         {
-            inform_host = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost>();
+            mpls_te_ext_std_mib = std::make_shared<Mib::MplsTeExtStdMib>();
         }
-        return inform_host;
+        return mpls_te_ext_std_mib;
+    }
+
+    if(child_yang_name == "mpls-te-ext-mib")
+    {
+        if(mpls_te_ext_mib == nullptr)
+        {
+            mpls_te_ext_mib = std::make_shared<Mib::MplsTeExtMib>();
+        }
+        return mpls_te_ext_mib;
+    }
+
+    if(child_yang_name == "mpls-frr-mib")
+    {
+        if(mpls_frr_mib == nullptr)
+        {
+            mpls_frr_mib = std::make_shared<Mib::MplsFrrMib>();
+        }
+        return mpls_frr_mib;
+    }
+
+    if(child_yang_name == "cb-qosmib")
+    {
+        if(cb_qosmib == nullptr)
+        {
+            cb_qosmib = std::make_shared<Mib::CbQosmib>();
+        }
+        return cb_qosmib;
+    }
+
+    if(child_yang_name == "entity-mib")
+    {
+        if(entity_mib == nullptr)
+        {
+            entity_mib = std::make_shared<Mib::EntityMib>();
+        }
+        return entity_mib;
+    }
+
+    if(child_yang_name == "interface-mib")
+    {
+        if(interface_mib == nullptr)
+        {
+            interface_mib = std::make_shared<Mib::InterfaceMib>();
+        }
+        return interface_mib;
+    }
+
+    if(child_yang_name == "subscriber")
+    {
+        if(subscriber == nullptr)
+        {
+            subscriber = std::make_shared<Mib::Subscriber>();
+        }
+        return subscriber;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(default_user_communities != nullptr)
+    if(mpls_te_mib != nullptr)
     {
-        children["default-user-communities"] = default_user_communities;
+        children["mpls-te-mib"] = mpls_te_mib;
     }
 
-    if(encrypted_user_communities != nullptr)
+    if(mpls_p2mp_mib != nullptr)
     {
-        children["encrypted-user-communities"] = encrypted_user_communities;
+        children["mpls-p2mp-mib"] = mpls_p2mp_mib;
     }
 
-    if(inform_host != nullptr)
+    if(mpls_te_ext_std_mib != nullptr)
     {
-        children["inform-host"] = inform_host;
+        children["mpls-te-ext-std-mib"] = mpls_te_ext_std_mib;
+    }
+
+    if(mpls_te_ext_mib != nullptr)
+    {
+        children["mpls-te-ext-mib"] = mpls_te_ext_mib;
+    }
+
+    if(mpls_frr_mib != nullptr)
+    {
+        children["mpls-frr-mib"] = mpls_frr_mib;
+    }
+
+    if(cb_qosmib != nullptr)
+    {
+        children["cb-qosmib"] = cb_qosmib;
+    }
+
+    if(entity_mib != nullptr)
+    {
+        children["entity-mib"] = entity_mib;
+    }
+
+    if(interface_mib != nullptr)
+    {
+        children["interface-mib"] = interface_mib;
+    }
+
+    if(subscriber != nullptr)
+    {
+        children["subscriber"] = subscriber;
     }
 
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "ip-address")
+    if(value_path == "sensor-mib-cache")
     {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
+        sensor_mib_cache = value;
+        sensor_mib_cache.value_namespace = name_space;
+        sensor_mib_cache.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "ip-address")
+    if(value_path == "sensor-mib-cache")
     {
-        ip_address.yfilter = yfilter;
+        sensor_mib_cache.yfilter = yfilter;
     }
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::has_leaf_or_child_of_name(const std::string & name) const
+std::shared_ptr<Entity> Mib::clone_ptr() const
 {
-    if(name == "default-user-communities" || name == "encrypted-user-communities" || name == "inform-host" || name == "ip-address")
+    return std::make_shared<Mib>();
+}
+
+std::string Mib::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string Mib::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function Mib::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Mib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mpls-te-mib" || name == "mpls-p2mp-mib" || name == "mpls-te-ext-std-mib" || name == "mpls-te-ext-mib" || name == "mpls-frr-mib" || name == "cb-qosmib" || name == "entity-mib" || name == "interface-mib" || name == "subscriber" || name == "sensor-mib-cache")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunities()
+Mib::MplsTeMib::MplsTeMib()
+    :
+    cache_garbage_collect_timer{YType::uint32, "cache-garbage-collect-timer"},
+    cache_timer{YType::uint32, "cache-timer"}
 {
 
-    yang_name = "default-user-communities"; yang_parent_name = "trap-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::~DefaultUserCommunities()
+Mib::MplsTeMib::~MplsTeMib()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::has_data() const
+bool Mib::MplsTeMib::has_data() const
 {
-    for (std::size_t index=0; index<default_user_community.size(); index++)
+    return cache_garbage_collect_timer.is_set
+	|| cache_timer.is_set;
+}
+
+bool Mib::MplsTeMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_garbage_collect_timer.yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsTeMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsTeMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsTeMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_garbage_collect_timer.is_set || is_set(cache_garbage_collect_timer.yfilter)) leaf_name_data.push_back(cache_garbage_collect_timer.get_name_leafdata());
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::MplsTeMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::MplsTeMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-garbage-collect-timer")
     {
-        if(default_user_community[index]->has_data())
+        cache_garbage_collect_timer = value;
+        cache_garbage_collect_timer.value_namespace = name_space;
+        cache_garbage_collect_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsTeMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-garbage-collect-timer")
+    {
+        cache_garbage_collect_timer.yfilter = yfilter;
+    }
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsTeMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-garbage-collect-timer" || name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsP2MpMib::MplsP2MpMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-p2mp-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::MplsP2MpMib::~MplsP2MpMib()
+{
+}
+
+bool Mib::MplsP2MpMib::has_data() const
+{
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsP2MpMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsP2MpMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsP2MpMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-p2mp-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsP2MpMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::MplsP2MpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::MplsP2MpMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::MplsP2MpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsP2MpMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsP2MpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsTeExtStdMib::MplsTeExtStdMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-te-ext-std-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::MplsTeExtStdMib::~MplsTeExtStdMib()
+{
+}
+
+bool Mib::MplsTeExtStdMib::has_data() const
+{
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsTeExtStdMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsTeExtStdMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsTeExtStdMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-std-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtStdMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::MplsTeExtStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeExtStdMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::MplsTeExtStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsTeExtStdMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsTeExtStdMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsTeExtMib::MplsTeExtMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-te-ext-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::MplsTeExtMib::~MplsTeExtMib()
+{
+}
+
+bool Mib::MplsTeExtMib::has_data() const
+{
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsTeExtMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsTeExtMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsTeExtMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::MplsTeExtMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeExtMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::MplsTeExtMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsTeExtMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsTeExtMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsFrrMib::MplsFrrMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-frr-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::MplsFrrMib::~MplsFrrMib()
+{
+}
+
+bool Mib::MplsFrrMib::has_data() const
+{
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsFrrMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsFrrMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsFrrMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsFrrMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::MplsFrrMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::MplsFrrMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::MplsFrrMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsFrrMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsFrrMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::CbQosmib::CbQosmib()
+    :
+    member_interface_stats{YType::empty, "member-interface-stats"},
+    persist{YType::empty, "persist"}
+    	,
+    cache(std::make_shared<Mib::CbQosmib::Cache>())
+{
+    cache->parent = this;
+
+    yang_name = "cb-qosmib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::CbQosmib::~CbQosmib()
+{
+}
+
+bool Mib::CbQosmib::has_data() const
+{
+    return member_interface_stats.is_set
+	|| persist.is_set
+	|| (cache !=  nullptr && cache->has_data());
+}
+
+bool Mib::CbQosmib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface_stats.yfilter)
+	|| ydk::is_set(persist.yfilter)
+	|| (cache !=  nullptr && cache->has_operation());
+}
+
+std::string Mib::CbQosmib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::CbQosmib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::CbQosmib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (member_interface_stats.is_set || is_set(member_interface_stats.yfilter)) leaf_name_data.push_back(member_interface_stats.get_name_leafdata());
+    if (persist.is_set || is_set(persist.yfilter)) leaf_name_data.push_back(persist.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::CbQosmib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cache")
+    {
+        if(cache == nullptr)
+        {
+            cache = std::make_shared<Mib::CbQosmib::Cache>();
+        }
+        return cache;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::CbQosmib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cache != nullptr)
+    {
+        children["cache"] = cache;
+    }
+
+    return children;
+}
+
+void Mib::CbQosmib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "member-interface-stats")
+    {
+        member_interface_stats = value;
+        member_interface_stats.value_namespace = name_space;
+        member_interface_stats.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "persist")
+    {
+        persist = value;
+        persist.value_namespace = name_space;
+        persist.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::CbQosmib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface-stats")
+    {
+        member_interface_stats.yfilter = yfilter;
+    }
+    if(value_path == "persist")
+    {
+        persist.yfilter = yfilter;
+    }
+}
+
+bool Mib::CbQosmib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache" || name == "member-interface-stats" || name == "persist")
+        return true;
+    return false;
+}
+
+Mib::CbQosmib::Cache::Cache()
+    :
+    enable{YType::empty, "enable"},
+    refresh_time{YType::uint32, "refresh-time"},
+    service_policy_count{YType::uint32, "service-policy-count"}
+{
+
+    yang_name = "cache"; yang_parent_name = "cb-qosmib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::CbQosmib::Cache::~Cache()
+{
+}
+
+bool Mib::CbQosmib::Cache::has_data() const
+{
+    return enable.is_set
+	|| refresh_time.is_set
+	|| service_policy_count.is_set;
+}
+
+bool Mib::CbQosmib::Cache::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(refresh_time.yfilter)
+	|| ydk::is_set(service_policy_count.yfilter);
+}
+
+std::string Mib::CbQosmib::Cache::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::CbQosmib::Cache::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cache";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::CbQosmib::Cache::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (refresh_time.is_set || is_set(refresh_time.yfilter)) leaf_name_data.push_back(refresh_time.get_name_leafdata());
+    if (service_policy_count.is_set || is_set(service_policy_count.yfilter)) leaf_name_data.push_back(service_policy_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::CbQosmib::Cache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::CbQosmib::Cache::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::CbQosmib::Cache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "refresh-time")
+    {
+        refresh_time = value;
+        refresh_time.value_namespace = name_space;
+        refresh_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "service-policy-count")
+    {
+        service_policy_count = value;
+        service_policy_count.value_namespace = name_space;
+        service_policy_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::CbQosmib::Cache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "refresh-time")
+    {
+        refresh_time.yfilter = yfilter;
+    }
+    if(value_path == "service-policy-count")
+    {
+        service_policy_count.yfilter = yfilter;
+    }
+}
+
+bool Mib::CbQosmib::Cache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "refresh-time" || name == "service-policy-count")
+        return true;
+    return false;
+}
+
+Mib::EntityMib::EntityMib()
+    :
+    entity_index_persistence{YType::empty, "entity-index-persistence"}
+{
+
+    yang_name = "entity-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::EntityMib::~EntityMib()
+{
+}
+
+bool Mib::EntityMib::has_data() const
+{
+    return entity_index_persistence.is_set;
+}
+
+bool Mib::EntityMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entity_index_persistence.yfilter);
+}
+
+std::string Mib::EntityMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::EntityMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::EntityMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entity_index_persistence.is_set || is_set(entity_index_persistence.yfilter)) leaf_name_data.push_back(entity_index_persistence.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::EntityMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::EntityMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::EntityMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entity-index-persistence")
+    {
+        entity_index_persistence = value;
+        entity_index_persistence.value_namespace = name_space;
+        entity_index_persistence.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::EntityMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entity-index-persistence")
+    {
+        entity_index_persistence.yfilter = yfilter;
+    }
+}
+
+bool Mib::EntityMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entity-index-persistence")
+        return true;
+    return false;
+}
+
+Mib::InterfaceMib::InterfaceMib()
+    :
+    internal_cache{YType::uint32, "internal-cache"},
+    interface_alias_long{YType::empty, "interface-alias-long"},
+    ip_subscriber{YType::empty, "ip-subscriber"},
+    interface_index_persistence{YType::empty, "interface-index-persistence"},
+    statistics_cache{YType::empty, "statistics-cache"}
+    	,
+    interfaces(std::make_shared<Mib::InterfaceMib::Interfaces>())
+	,notification(std::make_shared<Mib::InterfaceMib::Notification>())
+	,subsets(std::make_shared<Mib::InterfaceMib::Subsets>())
+{
+    interfaces->parent = this;
+    notification->parent = this;
+    subsets->parent = this;
+
+    yang_name = "interface-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::InterfaceMib::~InterfaceMib()
+{
+}
+
+bool Mib::InterfaceMib::has_data() const
+{
+    return internal_cache.is_set
+	|| interface_alias_long.is_set
+	|| ip_subscriber.is_set
+	|| interface_index_persistence.is_set
+	|| statistics_cache.is_set
+	|| (interfaces !=  nullptr && interfaces->has_data())
+	|| (notification !=  nullptr && notification->has_data())
+	|| (subsets !=  nullptr && subsets->has_data());
+}
+
+bool Mib::InterfaceMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(internal_cache.yfilter)
+	|| ydk::is_set(interface_alias_long.yfilter)
+	|| ydk::is_set(ip_subscriber.yfilter)
+	|| ydk::is_set(interface_index_persistence.yfilter)
+	|| ydk::is_set(statistics_cache.yfilter)
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (notification !=  nullptr && notification->has_operation())
+	|| (subsets !=  nullptr && subsets->has_operation());
+}
+
+std::string Mib::InterfaceMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::InterfaceMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (internal_cache.is_set || is_set(internal_cache.yfilter)) leaf_name_data.push_back(internal_cache.get_name_leafdata());
+    if (interface_alias_long.is_set || is_set(interface_alias_long.yfilter)) leaf_name_data.push_back(interface_alias_long.get_name_leafdata());
+    if (ip_subscriber.is_set || is_set(ip_subscriber.yfilter)) leaf_name_data.push_back(ip_subscriber.get_name_leafdata());
+    if (interface_index_persistence.is_set || is_set(interface_index_persistence.yfilter)) leaf_name_data.push_back(interface_index_persistence.get_name_leafdata());
+    if (statistics_cache.is_set || is_set(statistics_cache.yfilter)) leaf_name_data.push_back(statistics_cache.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::InterfaceMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interfaces")
+    {
+        if(interfaces == nullptr)
+        {
+            interfaces = std::make_shared<Mib::InterfaceMib::Interfaces>();
+        }
+        return interfaces;
+    }
+
+    if(child_yang_name == "notification")
+    {
+        if(notification == nullptr)
+        {
+            notification = std::make_shared<Mib::InterfaceMib::Notification>();
+        }
+        return notification;
+    }
+
+    if(child_yang_name == "subsets")
+    {
+        if(subsets == nullptr)
+        {
+            subsets = std::make_shared<Mib::InterfaceMib::Subsets>();
+        }
+        return subsets;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
+    {
+        children["interfaces"] = interfaces;
+    }
+
+    if(notification != nullptr)
+    {
+        children["notification"] = notification;
+    }
+
+    if(subsets != nullptr)
+    {
+        children["subsets"] = subsets;
+    }
+
+    return children;
+}
+
+void Mib::InterfaceMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "internal-cache")
+    {
+        internal_cache = value;
+        internal_cache.value_namespace = name_space;
+        internal_cache.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-alias-long")
+    {
+        interface_alias_long = value;
+        interface_alias_long.value_namespace = name_space;
+        interface_alias_long.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-subscriber")
+    {
+        ip_subscriber = value;
+        ip_subscriber.value_namespace = name_space;
+        ip_subscriber.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-index-persistence")
+    {
+        interface_index_persistence = value;
+        interface_index_persistence.value_namespace = name_space;
+        interface_index_persistence.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "statistics-cache")
+    {
+        statistics_cache = value;
+        statistics_cache.value_namespace = name_space;
+        statistics_cache.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::InterfaceMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-cache")
+    {
+        internal_cache.yfilter = yfilter;
+    }
+    if(value_path == "interface-alias-long")
+    {
+        interface_alias_long.yfilter = yfilter;
+    }
+    if(value_path == "ip-subscriber")
+    {
+        ip_subscriber.yfilter = yfilter;
+    }
+    if(value_path == "interface-index-persistence")
+    {
+        interface_index_persistence.yfilter = yfilter;
+    }
+    if(value_path == "statistics-cache")
+    {
+        statistics_cache.yfilter = yfilter;
+    }
+}
+
+bool Mib::InterfaceMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "notification" || name == "subsets" || name == "internal-cache" || name == "interface-alias-long" || name == "ip-subscriber" || name == "interface-index-persistence" || name == "statistics-cache")
+        return true;
+    return false;
+}
+
+Mib::InterfaceMib::Interfaces::Interfaces()
+{
+
+    yang_name = "interfaces"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::InterfaceMib::Interfaces::~Interfaces()
+{
+}
+
+bool Mib::InterfaceMib::Interfaces::has_data() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::has_operation() const
+bool Mib::InterfaceMib::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<default_user_community.size(); index++)
+    for (std::size_t index=0; index<interface.size(); index++)
     {
-        if(default_user_community[index]->has_operation())
+        if(interface[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::get_segment_path() const
+std::string Mib::InterfaceMib::Interfaces::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "default-user-communities";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::get_name_leaf_data() const
+std::string Mib::InterfaceMib::Interfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Interfaces::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4942,11 +2189,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapH
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::InterfaceMib::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "default-user-community")
+    if(child_yang_name == "interface")
     {
-        for(auto const & c : default_user_community)
+        for(auto const & c : interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4954,19 +2201,19 @@ std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommuni
                 return c;
             }
         }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity>();
+        auto c = std::make_shared<Mib::InterfaceMib::Interfaces::Interface>();
         c->parent = this;
-        default_user_community.push_back(c);
+        interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : default_user_community)
+    for (auto const & c : interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4974,219 +2221,260 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapH
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::InterfaceMib::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::InterfaceMib::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::InterfaceMib::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "default-user-community")
+    if(name == "interface")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::DefaultUserCommunity()
+Mib::InterfaceMib::Interfaces::Interface::Interface()
     :
-    community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
-    port{YType::uint16, "port"},
-    security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
+    interface_name{YType::str, "interface-name"},
+    link_up_down{YType::boolean, "link-up-down"},
+    index_persistence{YType::boolean, "index-persistence"}
 {
 
-    yang_name = "default-user-community"; yang_parent_name = "default-user-communities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::~DefaultUserCommunity()
+Mib::InterfaceMib::Interfaces::Interface::~Interface()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::has_data() const
+bool Mib::InterfaceMib::Interfaces::Interface::has_data() const
 {
-    return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
-	|| port.is_set
-	|| security_level.is_set
-	|| version.is_set;
+    return interface_name.is_set
+	|| link_up_down.is_set
+	|| index_persistence.is_set;
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::has_operation() const
+bool Mib::InterfaceMib::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_up_down.yfilter)
+	|| ydk::is_set(index_persistence.yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_segment_path() const
+std::string Mib::InterfaceMib::Interfaces::Interface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "default-user-community" <<"[community-name='" <<community_name <<"']";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib/interfaces/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_name_leaf_data() const
+std::string Mib::InterfaceMib::Interfaces::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Interfaces::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
-    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
-    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_up_down.is_set || is_set(link_up_down.yfilter)) leaf_name_data.push_back(link_up_down.get_name_leafdata());
+    if (index_persistence.is_set || is_set(index_persistence.yfilter)) leaf_name_data.push_back(index_persistence.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::InterfaceMib::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::InterfaceMib::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "community-name")
+    if(value_path == "interface-name")
     {
-        community_name = value;
-        community_name.value_namespace = name_space;
-        community_name.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "link-up-down")
     {
-        advanced_trap_types1 = value;
-        advanced_trap_types1.value_namespace = name_space;
-        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
+        link_up_down = value;
+        link_up_down.value_namespace = name_space;
+        link_up_down.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "advanced-trap-types2")
+    if(value_path == "index-persistence")
     {
-        advanced_trap_types2 = value;
-        advanced_trap_types2.value_namespace = name_space;
-        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
+        index_persistence = value;
+        index_persistence.value_namespace = name_space;
+        index_persistence.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::InterfaceMib::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "community-name")
+    if(value_path == "interface-name")
     {
-        community_name.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "link-up-down")
     {
-        advanced_trap_types1.yfilter = yfilter;
+        link_up_down.yfilter = yfilter;
     }
-    if(value_path == "advanced-trap-types2")
+    if(value_path == "index-persistence")
     {
-        advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
+        index_persistence.yfilter = yfilter;
     }
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::InterfaceMib::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
+    if(name == "interface-name" || name == "link-up-down" || name == "index-persistence")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunities()
+Mib::InterfaceMib::Notification::Notification()
+    :
+    link_ietf{YType::empty, "link-ietf"}
 {
 
-    yang_name = "encrypted-user-communities"; yang_parent_name = "trap-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "notification"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::~EncryptedUserCommunities()
+Mib::InterfaceMib::Notification::~Notification()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::has_data() const
+bool Mib::InterfaceMib::Notification::has_data() const
 {
-    for (std::size_t index=0; index<encrypted_user_community.size(); index++)
+    return link_ietf.is_set;
+}
+
+bool Mib::InterfaceMib::Notification::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_ietf.yfilter);
+}
+
+std::string Mib::InterfaceMib::Notification::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::InterfaceMib::Notification::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "notification";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Notification::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_ietf.is_set || is_set(link_ietf.yfilter)) leaf_name_data.push_back(link_ietf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::InterfaceMib::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Notification::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::InterfaceMib::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-ietf")
     {
-        if(encrypted_user_community[index]->has_data())
+        link_ietf = value;
+        link_ietf.value_namespace = name_space;
+        link_ietf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::InterfaceMib::Notification::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-ietf")
+    {
+        link_ietf.yfilter = yfilter;
+    }
+}
+
+bool Mib::InterfaceMib::Notification::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-ietf")
+        return true;
+    return false;
+}
+
+Mib::InterfaceMib::Subsets::Subsets()
+{
+
+    yang_name = "subsets"; yang_parent_name = "interface-mib"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::InterfaceMib::Subsets::~Subsets()
+{
+}
+
+bool Mib::InterfaceMib::Subsets::has_data() const
+{
+    for (std::size_t index=0; index<subset.size(); index++)
+    {
+        if(subset[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::has_operation() const
+bool Mib::InterfaceMib::Subsets::has_operation() const
 {
-    for (std::size_t index=0; index<encrypted_user_community.size(); index++)
+    for (std::size_t index=0; index<subset.size(); index++)
     {
-        if(encrypted_user_community[index]->has_operation())
+        if(subset[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::get_segment_path() const
+std::string Mib::InterfaceMib::Subsets::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "encrypted-user-communities";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::get_name_leaf_data() const
+std::string Mib::InterfaceMib::Subsets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subsets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Subsets::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5195,11 +2483,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapH
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "encrypted-user-community")
+    if(child_yang_name == "subset")
     {
-        for(auto const & c : encrypted_user_community)
+        for(auto const & c : subset)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5207,19 +2495,19 @@ std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommu
                 return c;
             }
         }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity>();
+        auto c = std::make_shared<Mib::InterfaceMib::Subsets::Subset>();
         c->parent = this;
-        encrypted_user_community.push_back(c);
+        subset.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : encrypted_user_community)
+    for (auto const & c : subset)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5227,217 +2515,252 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapH
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::InterfaceMib::Subsets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::InterfaceMib::Subsets::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::InterfaceMib::Subsets::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "encrypted-user-community")
+    if(name == "subset")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::EncryptedUserCommunity()
+Mib::InterfaceMib::Subsets::Subset::Subset()
     :
-    community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
-    port{YType::uint16, "port"},
-    security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
+    subset_id{YType::uint32, "subset-id"}
+    	,
+    link_up_down(std::make_shared<Mib::InterfaceMib::Subsets::Subset::LinkUpDown>())
 {
+    link_up_down->parent = this;
 
-    yang_name = "encrypted-user-community"; yang_parent_name = "encrypted-user-communities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subset"; yang_parent_name = "subsets"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::~EncryptedUserCommunity()
+Mib::InterfaceMib::Subsets::Subset::~Subset()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::has_data() const
+bool Mib::InterfaceMib::Subsets::Subset::has_data() const
 {
-    return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
-	|| port.is_set
-	|| security_level.is_set
-	|| version.is_set;
+    return subset_id.is_set
+	|| (link_up_down !=  nullptr && link_up_down->has_data());
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::has_operation() const
+bool Mib::InterfaceMib::Subsets::Subset::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
+	|| ydk::is_set(subset_id.yfilter)
+	|| (link_up_down !=  nullptr && link_up_down->has_operation());
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_segment_path() const
+std::string Mib::InterfaceMib::Subsets::Subset::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "encrypted-user-community" <<"[community-name='" <<community_name <<"']";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib/subsets/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_name_leaf_data() const
+std::string Mib::InterfaceMib::Subsets::Subset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subset" <<"[subset-id='" <<subset_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Subsets::Subset::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
-    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
-    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (subset_id.is_set || is_set(subset_id.yfilter)) leaf_name_data.push_back(subset_id.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::Subset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-up-down")
+    {
+        if(link_up_down == nullptr)
+        {
+            link_up_down = std::make_shared<Mib::InterfaceMib::Subsets::Subset::LinkUpDown>();
+        }
+        return link_up_down;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::Subset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(link_up_down != nullptr)
+    {
+        children["link-up-down"] = link_up_down;
+    }
+
+    return children;
+}
+
+void Mib::InterfaceMib::Subsets::Subset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "subset-id")
+    {
+        subset_id = value;
+        subset_id.value_namespace = name_space;
+        subset_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::InterfaceMib::Subsets::Subset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subset-id")
+    {
+        subset_id.yfilter = yfilter;
+    }
+}
+
+bool Mib::InterfaceMib::Subsets::Subset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-up-down" || name == "subset-id")
+        return true;
+    return false;
+}
+
+Mib::InterfaceMib::Subsets::Subset::LinkUpDown::LinkUpDown()
+    :
+    enable{YType::boolean, "enable"},
+    regular_expression{YType::str, "regular-expression"}
+{
+
+    yang_name = "link-up-down"; yang_parent_name = "subset"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Mib::InterfaceMib::Subsets::Subset::LinkUpDown::~LinkUpDown()
+{
+}
+
+bool Mib::InterfaceMib::Subsets::Subset::LinkUpDown::has_data() const
+{
+    return enable.is_set
+	|| regular_expression.is_set;
+}
+
+bool Mib::InterfaceMib::Subsets::Subset::LinkUpDown::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(regular_expression.yfilter);
+}
+
+std::string Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-up-down";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (regular_expression.is_set || is_set(regular_expression.yfilter)) leaf_name_data.push_back(regular_expression.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::InterfaceMib::Subsets::Subset::LinkUpDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "community-name")
+    if(value_path == "enable")
     {
-        community_name = value;
-        community_name.value_namespace = name_space;
-        community_name.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "regular-expression")
     {
-        advanced_trap_types1 = value;
-        advanced_trap_types1.value_namespace = name_space;
-        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2 = value;
-        advanced_trap_types2.value_namespace = name_space;
-        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
+        regular_expression = value;
+        regular_expression.value_namespace = name_space;
+        regular_expression.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::InterfaceMib::Subsets::Subset::LinkUpDown::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "community-name")
+    if(value_path == "enable")
     {
-        community_name.yfilter = yfilter;
+        enable.yfilter = yfilter;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "regular-expression")
     {
-        advanced_trap_types1.yfilter = yfilter;
-    }
-    if(value_path == "advanced-trap-types2")
-    {
-        advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
+        regular_expression.yfilter = yfilter;
     }
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::InterfaceMib::Subsets::Subset::LinkUpDown::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
+    if(name == "enable" || name == "regular-expression")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformHost()
+Mib::Subscriber::Subscriber()
     :
-    inform_encrypted_user_communities(std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities>())
-	,inform_user_communities(std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities>())
+    threshold(std::make_shared<Mib::Subscriber::Threshold>())
 {
-    inform_encrypted_user_communities->parent = this;
-    inform_user_communities->parent = this;
+    threshold->parent = this;
 
-    yang_name = "inform-host"; yang_parent_name = "trap-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::~InformHost()
+Mib::Subscriber::~Subscriber()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::has_data() const
+bool Mib::Subscriber::has_data() const
 {
-    return (inform_encrypted_user_communities !=  nullptr && inform_encrypted_user_communities->has_data())
-	|| (inform_user_communities !=  nullptr && inform_user_communities->has_data());
+    return (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::has_operation() const
+bool Mib::Subscriber::has_operation() const
 {
     return is_set(yfilter)
-	|| (inform_encrypted_user_communities !=  nullptr && inform_encrypted_user_communities->has_operation())
-	|| (inform_user_communities !=  nullptr && inform_user_communities->has_operation());
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::get_segment_path() const
+std::string Mib::Subscriber::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inform-host";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::get_name_leaf_data() const
+std::string Mib::Subscriber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5446,98 +2769,442 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapH
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::Subscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "inform-encrypted-user-communities")
+    if(child_yang_name == "threshold")
     {
-        if(inform_encrypted_user_communities == nullptr)
+        if(threshold == nullptr)
         {
-            inform_encrypted_user_communities = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities>();
+            threshold = std::make_shared<Mib::Subscriber::Threshold>();
         }
-        return inform_encrypted_user_communities;
-    }
-
-    if(child_yang_name == "inform-user-communities")
-    {
-        if(inform_user_communities == nullptr)
-        {
-            inform_user_communities = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities>();
-        }
-        return inform_user_communities;
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(inform_encrypted_user_communities != nullptr)
+    if(threshold != nullptr)
     {
-        children["inform-encrypted-user-communities"] = inform_encrypted_user_communities;
-    }
-
-    if(inform_user_communities != nullptr)
-    {
-        children["inform-user-communities"] = inform_user_communities;
+        children["threshold"] = threshold;
     }
 
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::Subscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::Subscriber::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::Subscriber::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inform-encrypted-user-communities" || name == "inform-user-communities")
+    if(name == "threshold")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunities()
+Mib::Subscriber::Threshold::Threshold()
+    :
+    delta(std::make_shared<Mib::Subscriber::Threshold::Delta>())
+	,access_interface_sub(std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub>())
+	,falling(std::make_shared<Mib::Subscriber::Threshold::Falling>())
+	,rising(std::make_shared<Mib::Subscriber::Threshold::Rising>())
 {
+    delta->parent = this;
+    access_interface_sub->parent = this;
+    falling->parent = this;
+    rising->parent = this;
 
-    yang_name = "inform-encrypted-user-communities"; yang_parent_name = "inform-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::~InformEncryptedUserCommunities()
+Mib::Subscriber::Threshold::~Threshold()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_data() const
+bool Mib::Subscriber::Threshold::has_data() const
 {
-    for (std::size_t index=0; index<inform_encrypted_user_community.size(); index++)
+    return (delta !=  nullptr && delta->has_data())
+	|| (access_interface_sub !=  nullptr && access_interface_sub->has_data())
+	|| (falling !=  nullptr && falling->has_data())
+	|| (rising !=  nullptr && rising->has_data());
+}
+
+bool Mib::Subscriber::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| (delta !=  nullptr && delta->has_operation())
+	|| (access_interface_sub !=  nullptr && access_interface_sub->has_operation())
+	|| (falling !=  nullptr && falling->has_operation())
+	|| (rising !=  nullptr && rising->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "delta")
     {
-        if(inform_encrypted_user_community[index]->has_data())
+        if(delta == nullptr)
+        {
+            delta = std::make_shared<Mib::Subscriber::Threshold::Delta>();
+        }
+        return delta;
+    }
+
+    if(child_yang_name == "access-interface-sub")
+    {
+        if(access_interface_sub == nullptr)
+        {
+            access_interface_sub = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub>();
+        }
+        return access_interface_sub;
+    }
+
+    if(child_yang_name == "falling")
+    {
+        if(falling == nullptr)
+        {
+            falling = std::make_shared<Mib::Subscriber::Threshold::Falling>();
+        }
+        return falling;
+    }
+
+    if(child_yang_name == "rising")
+    {
+        if(rising == nullptr)
+        {
+            rising = std::make_shared<Mib::Subscriber::Threshold::Rising>();
+        }
+        return rising;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(delta != nullptr)
+    {
+        children["delta"] = delta;
+    }
+
+    if(access_interface_sub != nullptr)
+    {
+        children["access-interface-sub"] = access_interface_sub;
+    }
+
+    if(falling != nullptr)
+    {
+        children["falling"] = falling;
+    }
+
+    if(rising != nullptr)
+    {
+        children["rising"] = rising;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delta" || name == "access-interface-sub" || name == "falling" || name == "rising")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Delta()
+    :
+    evaluation(std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation>())
+	,percent(std::make_shared<Mib::Subscriber::Threshold::Delta::Percent>())
+{
+    evaluation->parent = this;
+    percent->parent = this;
+
+    yang_name = "delta"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::~Delta()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::has_data() const
+{
+    return (evaluation !=  nullptr && evaluation->has_data())
+	|| (percent !=  nullptr && percent->has_data());
+}
+
+bool Mib::Subscriber::Threshold::Delta::has_operation() const
+{
+    return is_set(yfilter)
+	|| (evaluation !=  nullptr && evaluation->has_operation())
+	|| (percent !=  nullptr && percent->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::Delta::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Delta::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delta";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "evaluation")
+    {
+        if(evaluation == nullptr)
+        {
+            evaluation = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation>();
+        }
+        return evaluation;
+    }
+
+    if(child_yang_name == "percent")
+    {
+        if(percent == nullptr)
+        {
+            percent = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent>();
+        }
+        return percent;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(evaluation != nullptr)
+    {
+        children["evaluation"] = evaluation;
+    }
+
+    if(percent != nullptr)
+    {
+        children["percent"] = percent;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Delta::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Delta::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evaluation" || name == "percent")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Evaluation::Evaluation()
+    :
+    access_interfaces(std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces>())
+	,nodes(std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::Nodes>())
+{
+    access_interfaces->parent = this;
+    nodes->parent = this;
+
+    yang_name = "evaluation"; yang_parent_name = "delta"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::Evaluation::~Evaluation()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Evaluation::has_data() const
+{
+    return (access_interfaces !=  nullptr && access_interfaces->has_data())
+	|| (nodes !=  nullptr && nodes->has_data());
+}
+
+bool Mib::Subscriber::Threshold::Delta::Evaluation::has_operation() const
+{
+    return is_set(yfilter)
+	|| (access_interfaces !=  nullptr && access_interfaces->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evaluation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Evaluation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-interfaces")
+    {
+        if(access_interfaces == nullptr)
+        {
+            access_interfaces = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces>();
+        }
+        return access_interfaces;
+    }
+
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interfaces != nullptr)
+    {
+        children["access-interfaces"] = access_interfaces;
+    }
+
+    if(nodes != nullptr)
+    {
+        children["nodes"] = nodes;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Delta::Evaluation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Delta::Evaluation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Evaluation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interfaces" || name == "nodes")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterfaces()
+{
+
+    yang_name = "access-interfaces"; yang_parent_name = "evaluation"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::~AccessInterfaces()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<access_interface.size(); index++)
+    {
+        if(access_interface[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_operation() const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<inform_encrypted_user_community.size(); index++)
+    for (std::size_t index=0; index<access_interface.size(); index++)
     {
-        if(inform_encrypted_user_community[index]->has_operation())
+        if(access_interface[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_segment_path() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inform-encrypted-user-communities";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/evaluation/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_name_leaf_data() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5546,11 +3213,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapH
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "inform-encrypted-user-community")
+    if(child_yang_name == "access-interface")
     {
-        for(auto const & c : inform_encrypted_user_community)
+        for(auto const & c : access_interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5558,19 +3225,19 @@ std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::Inform
                 return c;
             }
         }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity>();
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface>();
         c->parent = this;
-        inform_encrypted_user_community.push_back(c);
+        access_interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : inform_encrypted_user_community)
+    for (auto const & c : access_interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5578,219 +3245,177 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapH
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inform-encrypted-user-community")
+    if(name == "access-interface")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::InformEncryptedUserCommunity()
+Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::AccessInterface()
     :
-    community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
-    port{YType::uint16, "port"},
-    security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
+    interface_name{YType::str, "interface-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
 {
 
-    yang_name = "inform-encrypted-user-community"; yang_parent_name = "inform-encrypted-user-communities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface"; yang_parent_name = "access-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::~InformEncryptedUserCommunity()
+Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::~AccessInterface()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_data() const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::has_data() const
 {
-    return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
-	|| port.is_set
-	|| security_level.is_set
-	|| version.is_set;
+    return interface_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_operation() const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_segment_path() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inform-encrypted-user-community" <<"[community-name='" <<community_name <<"']";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/evaluation/access-interfaces/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_name_leaf_data() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
-    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
-    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "community-name")
+    if(value_path == "interface-name")
     {
-        community_name = value;
-        community_name.value_namespace = name_space;
-        community_name.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "session-count")
     {
-        advanced_trap_types1 = value;
-        advanced_trap_types1.value_namespace = name_space;
-        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "advanced-trap-types2")
+    if(value_path == "interval")
     {
-        advanced_trap_types2 = value;
-        advanced_trap_types2.value_namespace = name_space;
-        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "community-name")
+    if(value_path == "interface-name")
     {
-        community_name.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "session-count")
     {
-        advanced_trap_types1.yfilter = yfilter;
+        session_count.yfilter = yfilter;
     }
-    if(value_path == "advanced-trap-types2")
+    if(value_path == "interval")
     {
-        advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
+        interval.yfilter = yfilter;
     }
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
+    if(name == "interface-name" || name == "session-count" || name == "interval")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunities()
+Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Nodes()
 {
 
-    yang_name = "inform-user-communities"; yang_parent_name = "inform-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodes"; yang_parent_name = "evaluation"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::~InformUserCommunities()
+Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::~Nodes()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::has_data() const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<inform_user_community.size(); index++)
+    for (std::size_t index=0; index<node.size(); index++)
     {
-        if(inform_user_community[index]->has_data())
+        if(node[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::has_operation() const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<inform_user_community.size(); index++)
+    for (std::size_t index=0; index<node.size(); index++)
     {
-        if(inform_user_community[index]->has_operation())
+        if(node[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_segment_path() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inform-user-communities";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/evaluation/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_name_leaf_data() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5799,11 +3424,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapH
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "inform-user-community")
+    if(child_yang_name == "node")
     {
-        for(auto const & c : inform_user_community)
+        for(auto const & c : node)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5811,19 +3436,19 @@ std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::Inform
                 return c;
             }
         }
-        auto c = std::make_shared<Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity>();
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node>();
         c->parent = this;
-        inform_user_community.push_back(c);
+        node.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : inform_user_community)
+    for (auto const & c : node)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5831,177 +3456,2234 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapH
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "inform-user-community")
+    if(name == "node")
         return true;
     return false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::InformUserCommunity()
+Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::Node()
     :
-    community_name{YType::str, "community-name"},
-    advanced_trap_types1{YType::int32, "advanced-trap-types1"},
-    advanced_trap_types2{YType::int32, "advanced-trap-types2"},
-    basic_trap_types{YType::int32, "basic-trap-types"},
-    port{YType::uint16, "port"},
-    security_level{YType::enumeration, "security-level"},
-    version{YType::str, "version"}
+    node_name{YType::str, "node-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
 {
 
-    yang_name = "inform-user-community"; yang_parent_name = "inform-user-communities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::~InformUserCommunity()
+Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::~Node()
 {
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::has_data() const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::has_data() const
 {
-    return community_name.is_set
-	|| advanced_trap_types1.is_set
-	|| advanced_trap_types2.is_set
-	|| basic_trap_types.is_set
-	|| port.is_set
-	|| security_level.is_set
-	|| version.is_set;
+    return node_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::has_operation() const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(community_name.yfilter)
-	|| ydk::is_set(advanced_trap_types1.yfilter)
-	|| ydk::is_set(advanced_trap_types2.yfilter)
-	|| ydk::is_set(basic_trap_types.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(security_level.yfilter)
-	|| ydk::is_set(version.yfilter);
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_segment_path() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inform-user-community" <<"[community-name='" <<community_name <<"']";
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/evaluation/nodes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_name_leaf_data() const
+std::string Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (community_name.is_set || is_set(community_name.yfilter)) leaf_name_data.push_back(community_name.get_name_leafdata());
-    if (advanced_trap_types1.is_set || is_set(advanced_trap_types1.yfilter)) leaf_name_data.push_back(advanced_trap_types1.get_name_leafdata());
-    if (advanced_trap_types2.is_set || is_set(advanced_trap_types2.yfilter)) leaf_name_data.push_back(advanced_trap_types2.get_name_leafdata());
-    if (basic_trap_types.is_set || is_set(basic_trap_types.yfilter)) leaf_name_data.push_back(basic_trap_types.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (security_level.is_set || is_set(security_level.yfilter)) leaf_name_data.push_back(security_level.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "community-name")
+    if(value_path == "node-name")
     {
-        community_name = value;
-        community_name.value_namespace = name_space;
-        community_name.value_namespace_prefix = name_space_prefix;
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "session-count")
     {
-        advanced_trap_types1 = value;
-        advanced_trap_types1.value_namespace = name_space;
-        advanced_trap_types1.value_namespace_prefix = name_space_prefix;
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "advanced-trap-types2")
+    if(value_path == "interval")
     {
-        advanced_trap_types2 = value;
-        advanced_trap_types2.value_namespace = name_space;
-        advanced_trap_types2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types = value;
-        basic_trap_types.value_namespace = name_space;
-        basic_trap_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-level")
-    {
-        security_level = value;
-        security_level.value_namespace = name_space;
-        security_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::set_filter(const std::string & value_path, YFilter yfilter)
+void Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "community-name")
+    if(value_path == "node-name")
     {
-        community_name.yfilter = yfilter;
+        node_name.yfilter = yfilter;
     }
-    if(value_path == "advanced-trap-types1")
+    if(value_path == "session-count")
     {
-        advanced_trap_types1.yfilter = yfilter;
+        session_count.yfilter = yfilter;
     }
-    if(value_path == "advanced-trap-types2")
+    if(value_path == "interval")
     {
-        advanced_trap_types2.yfilter = yfilter;
-    }
-    if(value_path == "basic-trap-types")
-    {
-        basic_trap_types.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "security-level")
-    {
-        security_level.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
+        interval.yfilter = yfilter;
     }
 }
 
-bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::has_leaf_or_child_of_name(const std::string & name) const
+bool Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "community-name" || name == "advanced-trap-types1" || name == "advanced-trap-types2" || name == "basic-trap-types" || name == "port" || name == "security-level" || name == "version")
+    if(name == "node-name" || name == "session-count" || name == "interval")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::Percent()
+    :
+    access_interfaces(std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces>())
+	,nodes(std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::Nodes>())
+{
+    access_interfaces->parent = this;
+    nodes->parent = this;
+
+    yang_name = "percent"; yang_parent_name = "delta"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::~Percent()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::has_data() const
+{
+    return (access_interfaces !=  nullptr && access_interfaces->has_data())
+	|| (nodes !=  nullptr && nodes->has_data());
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (access_interfaces !=  nullptr && access_interfaces->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "percent";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Percent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-interfaces")
+    {
+        if(access_interfaces == nullptr)
+        {
+            access_interfaces = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces>();
+        }
+        return access_interfaces;
+    }
+
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interfaces != nullptr)
+    {
+        children["access-interfaces"] = access_interfaces;
+    }
+
+    if(nodes != nullptr)
+    {
+        children["nodes"] = nodes;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interfaces" || name == "nodes")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterfaces()
+{
+
+    yang_name = "access-interfaces"; yang_parent_name = "percent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::~AccessInterfaces()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<access_interface.size(); index++)
+    {
+        if(access_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<access_interface.size(); index++)
+    {
+        if(access_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/percent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-interface")
+    {
+        for(auto const & c : access_interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface>();
+        c->parent = this;
+        access_interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : access_interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interface")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::AccessInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "access-interface"; yang_parent_name = "access-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::~AccessInterface()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::has_data() const
+{
+    return interface_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/percent/access-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-count")
+    {
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "session-count")
+    {
+        session_count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "session-count" || name == "interval")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::Nodes::Nodes()
+{
+
+    yang_name = "nodes"; yang_parent_name = "percent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::Nodes::~Nodes()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::Nodes::has_data() const
+{
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::Nodes::has_operation() const
+{
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/percent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node")
+    {
+        for(auto const & c : node)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node>();
+        c->parent = this;
+        node.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : node)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::Node()
+    :
+    node_name{YType::str, "node-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::~Node()
+{
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::has_data() const
+{
+    return node_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/delta/percent/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-count")
+    {
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "session-count")
+    {
+        session_count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "session-count" || name == "interval")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::AccessInterfaceSub()
+    :
+    subsets(std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets>())
+{
+    subsets->parent = this;
+
+    yang_name = "access-interface-sub"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::~AccessInterfaceSub()
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::has_data() const
+{
+    return (subsets !=  nullptr && subsets->has_data());
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::has_operation() const
+{
+    return is_set(yfilter)
+	|| (subsets !=  nullptr && subsets->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interface-sub";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::AccessInterfaceSub::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "subsets")
+    {
+        if(subsets == nullptr)
+        {
+            subsets = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets>();
+        }
+        return subsets;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(subsets != nullptr)
+    {
+        children["subsets"] = subsets;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subsets")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subsets()
+{
+
+    yang_name = "subsets"; yang_parent_name = "access-interface-sub"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::~Subsets()
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::has_data() const
+{
+    for (std::size_t index=0; index<subset.size(); index++)
+    {
+        if(subset[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::has_operation() const
+{
+    for (std::size_t index=0; index<subset.size(); index++)
+    {
+        if(subset[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/access-interface-sub/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subsets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "subset")
+    {
+        for(auto const & c : subset)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset>();
+        c->parent = this;
+        subset.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : subset)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subset")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::Subset()
+    :
+    subset_id{YType::uint32, "subset-id"}
+    	,
+    regular_expression(std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression>())
+{
+    regular_expression->parent = this;
+
+    yang_name = "subset"; yang_parent_name = "subsets"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::~Subset()
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::has_data() const
+{
+    return subset_id.is_set
+	|| (regular_expression !=  nullptr && regular_expression->has_data());
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(subset_id.yfilter)
+	|| (regular_expression !=  nullptr && regular_expression->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/access-interface-sub/subsets/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subset" <<"[subset-id='" <<subset_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (subset_id.is_set || is_set(subset_id.yfilter)) leaf_name_data.push_back(subset_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "regular-expression")
+    {
+        if(regular_expression == nullptr)
+        {
+            regular_expression = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression>();
+        }
+        return regular_expression;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(regular_expression != nullptr)
+    {
+        children["regular-expression"] = regular_expression;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "subset-id")
+    {
+        subset_id = value;
+        subset_id.value_namespace = name_space;
+        subset_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subset-id")
+    {
+        subset_id.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "regular-expression" || name == "subset-id")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::RegularExpression()
+    :
+    notification(std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification>())
+{
+    notification->parent = this;
+
+    yang_name = "regular-expression"; yang_parent_name = "subset"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::~RegularExpression()
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::has_data() const
+{
+    return (notification !=  nullptr && notification->has_data());
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::has_operation() const
+{
+    return is_set(yfilter)
+	|| (notification !=  nullptr && notification->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "regular-expression";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "notification")
+    {
+        if(notification == nullptr)
+        {
+            notification = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification>();
+        }
+        return notification;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(notification != nullptr)
+    {
+        children["notification"] = notification;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "notification")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::Notification()
+    :
+    rising_falling(std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling>())
+{
+    rising_falling->parent = this;
+
+    yang_name = "notification"; yang_parent_name = "regular-expression"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::~Notification()
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::has_data() const
+{
+    return (rising_falling !=  nullptr && rising_falling->has_data());
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::has_operation() const
+{
+    return is_set(yfilter)
+	|| (rising_falling !=  nullptr && rising_falling->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "notification";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rising-falling")
+    {
+        if(rising_falling == nullptr)
+        {
+            rising_falling = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling>();
+        }
+        return rising_falling;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rising_falling != nullptr)
+    {
+        children["rising-falling"] = rising_falling;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rising-falling")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::RisingFalling()
+    :
+    disable{YType::str, "disable"}
+{
+
+    yang_name = "rising-falling"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::~RisingFalling()
+{
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::has_data() const
+{
+    return disable.is_set;
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rising-falling";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Falling::Falling()
+    :
+    access_interfaces(std::make_shared<Mib::Subscriber::Threshold::Falling::AccessInterfaces>())
+	,nodes(std::make_shared<Mib::Subscriber::Threshold::Falling::Nodes>())
+{
+    access_interfaces->parent = this;
+    nodes->parent = this;
+
+    yang_name = "falling"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Falling::~Falling()
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::has_data() const
+{
+    return (access_interfaces !=  nullptr && access_interfaces->has_data())
+	|| (nodes !=  nullptr && nodes->has_data());
+}
+
+bool Mib::Subscriber::Threshold::Falling::has_operation() const
+{
+    return is_set(yfilter)
+	|| (access_interfaces !=  nullptr && access_interfaces->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::Falling::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Falling::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "falling";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falling::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-interfaces")
+    {
+        if(access_interfaces == nullptr)
+        {
+            access_interfaces = std::make_shared<Mib::Subscriber::Threshold::Falling::AccessInterfaces>();
+        }
+        return access_interfaces;
+    }
+
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<Mib::Subscriber::Threshold::Falling::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interfaces != nullptr)
+    {
+        children["access-interfaces"] = access_interfaces;
+    }
+
+    if(nodes != nullptr)
+    {
+        children["nodes"] = nodes;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Falling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Falling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interfaces" || name == "nodes")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterfaces()
+{
+
+    yang_name = "access-interfaces"; yang_parent_name = "falling"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Falling::AccessInterfaces::~AccessInterfaces()
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::AccessInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<access_interface.size(); index++)
+    {
+        if(access_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Mib::Subscriber::Threshold::Falling::AccessInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<access_interface.size(); index++)
+    {
+        if(access_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/falling/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-interface")
+    {
+        for(auto const & c : access_interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface>();
+        c->parent = this;
+        access_interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : access_interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Falling::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Falling::AccessInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::AccessInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interface")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::AccessInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "access-interface"; yang_parent_name = "access-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::~AccessInterface()
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::has_data() const
+{
+    return interface_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
+}
+
+bool Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/falling/access-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-count")
+    {
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "session-count")
+    {
+        session_count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "session-count" || name == "interval")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Falling::Nodes::Nodes()
+{
+
+    yang_name = "nodes"; yang_parent_name = "falling"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Falling::Nodes::~Nodes()
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::Nodes::has_data() const
+{
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Mib::Subscriber::Threshold::Falling::Nodes::has_operation() const
+{
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Falling::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/falling/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Falling::Nodes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falling::Nodes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node")
+    {
+        for(auto const & c : node)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Falling::Nodes::Node>();
+        c->parent = this;
+        node.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::Nodes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : node)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Falling::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Falling::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Falling::Nodes::Node::Node()
+    :
+    node_name{YType::str, "node-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Falling::Nodes::Node::~Node()
+{
+}
+
+bool Mib::Subscriber::Threshold::Falling::Nodes::Node::has_data() const
+{
+    return node_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
+}
+
+bool Mib::Subscriber::Threshold::Falling::Nodes::Node::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Falling::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/falling/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Falling::Nodes::Node::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falling::Nodes::Node::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Falling::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-count")
+    {
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::Falling::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "session-count")
+    {
+        session_count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::Falling::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "session-count" || name == "interval")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Rising::Rising()
+    :
+    access_interfaces(std::make_shared<Mib::Subscriber::Threshold::Rising::AccessInterfaces>())
+	,nodes(std::make_shared<Mib::Subscriber::Threshold::Rising::Nodes>())
+{
+    access_interfaces->parent = this;
+    nodes->parent = this;
+
+    yang_name = "rising"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Rising::~Rising()
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::has_data() const
+{
+    return (access_interfaces !=  nullptr && access_interfaces->has_data())
+	|| (nodes !=  nullptr && nodes->has_data());
+}
+
+bool Mib::Subscriber::Threshold::Rising::has_operation() const
+{
+    return is_set(yfilter)
+	|| (access_interfaces !=  nullptr && access_interfaces->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string Mib::Subscriber::Threshold::Rising::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Rising::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rising";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Rising::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-interfaces")
+    {
+        if(access_interfaces == nullptr)
+        {
+            access_interfaces = std::make_shared<Mib::Subscriber::Threshold::Rising::AccessInterfaces>();
+        }
+        return access_interfaces;
+    }
+
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<Mib::Subscriber::Threshold::Rising::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interfaces != nullptr)
+    {
+        children["access-interfaces"] = access_interfaces;
+    }
+
+    if(nodes != nullptr)
+    {
+        children["nodes"] = nodes;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Rising::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Rising::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interfaces" || name == "nodes")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterfaces()
+{
+
+    yang_name = "access-interfaces"; yang_parent_name = "rising"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Rising::AccessInterfaces::~AccessInterfaces()
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::AccessInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<access_interface.size(); index++)
+    {
+        if(access_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Mib::Subscriber::Threshold::Rising::AccessInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<access_interface.size(); index++)
+    {
+        if(access_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/rising/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-interface")
+    {
+        for(auto const & c : access_interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface>();
+        c->parent = this;
+        access_interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : access_interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Rising::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Rising::AccessInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::AccessInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interface")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::AccessInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "access-interface"; yang_parent_name = "access-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::~AccessInterface()
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::has_data() const
+{
+    return interface_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
+}
+
+bool Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/rising/access-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-count")
+    {
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "session-count")
+    {
+        session_count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "session-count" || name == "interval")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Rising::Nodes::Nodes()
+{
+
+    yang_name = "nodes"; yang_parent_name = "rising"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Rising::Nodes::~Nodes()
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::Nodes::has_data() const
+{
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Mib::Subscriber::Threshold::Rising::Nodes::has_operation() const
+{
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Rising::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/rising/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Rising::Nodes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Rising::Nodes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node")
+    {
+        for(auto const & c : node)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Mib::Subscriber::Threshold::Rising::Nodes::Node>();
+        c->parent = this;
+        node.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::Nodes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : node)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Rising::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mib::Subscriber::Threshold::Rising::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
+}
+
+Mib::Subscriber::Threshold::Rising::Nodes::Node::Node()
+    :
+    node_name{YType::str, "node-name"},
+    session_count{YType::uint32, "session-count"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Mib::Subscriber::Threshold::Rising::Nodes::Node::~Node()
+{
+}
+
+bool Mib::Subscriber::Threshold::Rising::Nodes::Node::has_data() const
+{
+    return node_name.is_set
+	|| session_count.is_set
+	|| interval.is_set;
+}
+
+bool Mib::Subscriber::Threshold::Rising::Nodes::Node::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(session_count.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Mib::Subscriber::Threshold::Rising::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber/threshold/rising/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::Subscriber::Threshold::Rising::Nodes::Node::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Rising::Nodes::Node::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Mib::Subscriber::Threshold::Rising::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-count")
+    {
+        session_count = value;
+        session_count.value_namespace = name_space;
+        session_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::Subscriber::Threshold::Rising::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "session-count")
+    {
+        session_count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Mib::Subscriber::Threshold::Rising::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "session-count" || name == "interval")
         return true;
     return false;
 }
