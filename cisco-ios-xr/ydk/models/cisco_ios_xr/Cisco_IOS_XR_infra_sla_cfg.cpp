@@ -165,7 +165,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::get_name_leaf_dat
 
 std::shared_ptr<Entity> Sla::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ethernet")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-cfg:ethernet")
     {
         if(ethernet == nullptr)
         {
@@ -182,7 +182,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        children["Cisco-IOS-XR-ethernet-cfm-cfg:ethernet"] = ethernet;
     }
 
     return children;

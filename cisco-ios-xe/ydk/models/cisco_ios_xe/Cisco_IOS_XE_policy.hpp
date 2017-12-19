@@ -55,6 +55,15 @@ class PolicePacketsBytesType : public ydk::Enum
 
 };
 
+class BytesMsUsType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bytes;
+        static const ydk::Enum::YLeaf ms;
+        static const ydk::Enum::YLeaf us;
+
+};
+
 class PolicePpsBpsType : public ydk::Enum
 {
     public:

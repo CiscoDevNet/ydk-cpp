@@ -296,7 +296,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::get_child_by_name(const std::st
         return dynamic_flows_stats;
     }
 
-    if(child_yang_name == "hardware")
+    if(child_yang_name == "Cisco-IOS-XR-platform-pifib-oper:hardware")
     {
         if(hardware == nullptr)
         {
@@ -323,7 +323,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::get_chil
 
     if(hardware != nullptr)
     {
-        children["hardware"] = hardware;
+        children["Cisco-IOS-XR-platform-pifib-oper:hardware"] = hardware;
     }
 
     return children;

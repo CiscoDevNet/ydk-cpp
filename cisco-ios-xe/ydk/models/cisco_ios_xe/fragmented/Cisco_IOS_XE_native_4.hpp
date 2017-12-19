@@ -2119,13 +2119,15 @@ class Native::Flow::Record::Default_::Match::Datalink : public ydk::Entity
 
         ydk::YLeaf destination_vlan_id; //type: empty
         ydk::YLeaf ethertype; //type: empty
+        ydk::YLeaf vlan; //type: Vlan
         ydk::YLeaf source_vlan_id; //type: empty
         class Dot1Q; //type: Native::Flow::Record::Default_::Match::Datalink::Dot1Q
         class Mac; //type: Native::Flow::Record::Default_::Match::Datalink::Mac
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Dot1Q> dot1q;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Mac> mac;
-        
+                class Vlan;
+
 }; // Native::Flow::Record::Default_::Match::Datalink
 
 
@@ -3557,6 +3559,14 @@ class Native::Flow::Record::Default_::Match::Pfr::Service : public ydk::Entity
         ydk::YLeaf identifier; //type: empty
 
 }; // Native::Flow::Record::Default_::Match::Pfr::Service
+
+class Native::Flow::Record::Default_::Match::Datalink::Vlan : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf input;
+        static const ydk::Enum::YLeaf output;
+
+};
 
 
 }

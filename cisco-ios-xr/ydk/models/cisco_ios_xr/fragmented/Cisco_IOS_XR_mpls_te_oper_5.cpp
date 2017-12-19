@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_5.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_6.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_7.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_6.hpp"
 
 using namespace ydk;
 

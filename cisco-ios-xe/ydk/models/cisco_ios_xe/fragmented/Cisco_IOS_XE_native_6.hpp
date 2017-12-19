@@ -1036,6 +1036,8 @@ class Native::Flow::Exporter::Source : public ydk::Entity
         ydk::YLeaf embedded_service_engine; //type: string
         ydk::YLeaf fastethernet; //type: string
         ydk::YLeaf gigabitethernet; //type: string
+        ydk::YLeaf fivegigabitethernet; //type: string
+        ydk::YLeaf twentyfivegigabitethernet; //type: string
         ydk::YLeaf lisp; //type: string
         ydk::YLeaf loopback; //type: uint32
         ydk::YLeaf multilink; //type: uint16
@@ -1679,7 +1681,7 @@ class Native::Flow::Monitor::Record : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf type; //type: one of string, enumeration
+        ydk::YLeaf type; //type: one of enumeration, string
         class Netflow; //type: Native::Flow::Monitor::Record::Netflow
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Record::Netflow> netflow;

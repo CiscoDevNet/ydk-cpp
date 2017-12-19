@@ -1046,8 +1046,8 @@ class Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session : public ydk::E
         ydk::YLeaf status; //type: Status
         ydk::YLeaf type; //type: Type
         ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf label_in; //type: one of enumeration, uint32
-        ydk::YLeaf label_out; //type: one of enumeration, uint32
+        ydk::YLeaf label_in; //type: one of uint32, enumeration
+        ydk::YLeaf label_out; //type: one of uint32, enumeration
         //type: list of  string (refers to openconfig::openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::Config::name)
         ydk::YLeafList associated_lsps;
         class Status;
@@ -2457,7 +2457,7 @@ class Mpls::Lsps::ConstrainedPath::Tunnel::Config : public ydk::Entity
         ydk::YLeaf description; //type: string
         ydk::YLeaf admin_status; //type: TunnelAdminStatus
         ydk::YLeaf preference; //type: uint8
-        ydk::YLeaf metric; //type: one of enumeration, uint32
+        ydk::YLeaf metric; //type: one of uint32, enumeration
         ydk::YLeaf protection_style_requested; //type: ProtectionType
         ydk::YLeaf reoptimize_timer; //type: uint16
         ydk::YLeaf source; //type: string
@@ -2491,7 +2491,7 @@ class Mpls::Lsps::ConstrainedPath::Tunnel::State : public ydk::Entity
         ydk::YLeaf description; //type: string
         ydk::YLeaf admin_status; //type: TunnelAdminStatus
         ydk::YLeaf preference; //type: uint8
-        ydk::YLeaf metric; //type: one of enumeration, uint32
+        ydk::YLeaf metric; //type: one of uint32, enumeration
         ydk::YLeaf protection_style_requested; //type: ProtectionType
         ydk::YLeaf reoptimize_timer; //type: uint16
         ydk::YLeaf source; //type: string
@@ -3790,8 +3790,8 @@ class Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf next_hop; //type: string
-        ydk::YLeaf incoming_label; //type: one of enumeration, uint32
-        ydk::YLeaf push_label; //type: one of enumeration, uint32
+        ydk::YLeaf incoming_label; //type: one of uint32, enumeration
+        ydk::YLeaf push_label; //type: one of uint32, enumeration
 
 }; // Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress
 
@@ -3813,8 +3813,8 @@ class Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf next_hop; //type: string
-        ydk::YLeaf incoming_label; //type: one of enumeration, uint32
-        ydk::YLeaf push_label; //type: one of enumeration, uint32
+        ydk::YLeaf incoming_label; //type: one of uint32, enumeration
+        ydk::YLeaf push_label; //type: one of uint32, enumeration
 
 }; // Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit
 
@@ -3836,8 +3836,8 @@ class Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf next_hop; //type: string
-        ydk::YLeaf incoming_label; //type: one of enumeration, uint32
-        ydk::YLeaf push_label; //type: one of enumeration, uint32
+        ydk::YLeaf incoming_label; //type: one of uint32, enumeration
+        ydk::YLeaf push_label; //type: one of uint32, enumeration
 
 }; // Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress
 

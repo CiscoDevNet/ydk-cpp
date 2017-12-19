@@ -60,6 +60,7 @@ class StartQuery::Input : public ydk::Entity
         ydk::YLeaf foreach; //type: string
         ydk::YLeaf limit; //type: uint32
         ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
         ydk::YLeafList sort_by; //type: list of  string
         class Select; //type: StartQuery::Input::Select
 
@@ -309,6 +310,7 @@ class ResetQuery::Input : public ydk::Entity
 
         ydk::YLeaf query_handle; //type: uint32
         ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
 
 }; // ResetQuery::Input
 

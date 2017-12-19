@@ -1181,31 +1181,31 @@ void OSPFMIB::Ospfareatable::Ospfareaentry::set_value(const std::string & value_
         ospfareanssatranslatorevents.value_namespace = name_space;
         ospfareanssatranslatorevents.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfOpaqueAreaLsaCount")
+    if(value_path == "CISCO-OSPF-MIB:cospfOpaqueAreaLsaCount")
     {
         cospfopaquearealsacount = value;
         cospfopaquearealsacount.value_namespace = name_space;
         cospfopaquearealsacount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfOpaqueAreaLsaCksumSum")
+    if(value_path == "CISCO-OSPF-MIB:cospfOpaqueAreaLsaCksumSum")
     {
         cospfopaquearealsacksumsum = value;
         cospfopaquearealsacksumsum.value_namespace = name_space;
         cospfopaquearealsacksumsum.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfAreaNssaTranslatorRole")
+    if(value_path == "CISCO-OSPF-MIB:cospfAreaNssaTranslatorRole")
     {
         cospfareanssatranslatorrole = value;
         cospfareanssatranslatorrole.value_namespace = name_space;
         cospfareanssatranslatorrole.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfAreaNssaTranslatorState")
+    if(value_path == "CISCO-OSPF-MIB:cospfAreaNssaTranslatorState")
     {
         cospfareanssatranslatorstate = value;
         cospfareanssatranslatorstate.value_namespace = name_space;
         cospfareanssatranslatorstate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfAreaNssaTranslatorEvents")
+    if(value_path == "CISCO-OSPF-MIB:cospfAreaNssaTranslatorEvents")
     {
         cospfareanssatranslatorevents = value;
         cospfareanssatranslatorevents.value_namespace = name_space;
@@ -2716,13 +2716,13 @@ void OSPFMIB::Ospfiftable::Ospfifentry::set_value(const std::string & value_path
         ospfifbackupdesignatedrouterid.value_namespace = name_space;
         ospfifbackupdesignatedrouterid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfIfLsaCount")
+    if(value_path == "CISCO-OSPF-MIB:cospfIfLsaCount")
     {
         cospfiflsacount = value;
         cospfiflsacount.value_namespace = name_space;
         cospfiflsacount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfIfLsaCksumSum")
+    if(value_path == "CISCO-OSPF-MIB:cospfIfLsaCksumSum")
     {
         cospfiflsacksumsum = value;
         cospfiflsacksumsum.value_namespace = name_space;
@@ -3378,13 +3378,13 @@ void OSPFMIB::Ospfvirtiftable::Ospfvirtifentry::set_value(const std::string & va
         ospfvirtiflsacksumsum.value_namespace = name_space;
         ospfvirtiflsacksumsum.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfVirtIfLsaCount")
+    if(value_path == "CISCO-OSPF-MIB:cospfVirtIfLsaCount")
     {
         cospfvirtiflsacount = value;
         cospfvirtiflsacount.value_namespace = name_space;
         cospfvirtiflsacount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cospfVirtIfLsaCksumSum")
+    if(value_path == "CISCO-OSPF-MIB:cospfVirtIfLsaCksumSum")
     {
         cospfvirtiflsacksumsum = value;
         cospfvirtiflsacksumsum.value_namespace = name_space;

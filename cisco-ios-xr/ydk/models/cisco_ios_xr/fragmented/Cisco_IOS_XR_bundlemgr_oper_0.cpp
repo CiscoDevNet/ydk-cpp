@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_0.hpp"
-#include "Cisco_IOS_XR_bundlemgr_oper_2.hpp"
-#include "Cisco_IOS_XR_bundlemgr_oper_1.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_3.hpp"
+#include "Cisco_IOS_XR_bundlemgr_oper_1.hpp"
+#include "Cisco_IOS_XR_bundlemgr_oper_2.hpp"
 
 using namespace ydk;
 

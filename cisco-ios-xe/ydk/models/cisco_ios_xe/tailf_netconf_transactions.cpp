@@ -195,7 +195,7 @@ std::map<std::string, std::shared_ptr<Entity>> StartTransaction::Input::get_chil
 
 void StartTransaction::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "with-inactive")
+    if(value_path == "tailf-netconf-inactive:with-inactive")
     {
         with_inactive = value;
         with_inactive.value_namespace = name_space;

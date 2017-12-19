@@ -806,13 +806,13 @@ void RMONMIB::Etherstatstable::Etherstatsentry::set_value(const std::string & va
         etherstatsstatus.value_namespace = name_space;
         etherstatsstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "etherStatsDroppedFrames")
+    if(value_path == "RMON2-MIB:etherStatsDroppedFrames")
     {
         etherstatsdroppedframes = value;
         etherstatsdroppedframes.value_namespace = name_space;
         etherstatsdroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "etherStatsCreateTime")
+    if(value_path == "RMON2-MIB:etherStatsCreateTime")
     {
         etherstatscreatetime = value;
         etherstatscreatetime.value_namespace = name_space;
@@ -1153,7 +1153,7 @@ void RMONMIB::Historycontroltable::Historycontrolentry::set_value(const std::str
         historycontrolstatus.value_namespace = name_space;
         historycontrolstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "historyControlDroppedFrames")
+    if(value_path == "RMON2-MIB:historyControlDroppedFrames")
     {
         historycontroldroppedframes = value;
         historycontroldroppedframes.value_namespace = name_space;
@@ -2144,13 +2144,13 @@ void RMONMIB::Hostcontroltable::Hostcontrolentry::set_value(const std::string & 
         hostcontrolstatus.value_namespace = name_space;
         hostcontrolstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hostControlDroppedFrames")
+    if(value_path == "RMON2-MIB:hostControlDroppedFrames")
     {
         hostcontroldroppedframes = value;
         hostcontroldroppedframes.value_namespace = name_space;
         hostcontroldroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hostControlCreateTime")
+    if(value_path == "RMON2-MIB:hostControlCreateTime")
     {
         hostcontrolcreatetime = value;
         hostcontrolcreatetime.value_namespace = name_space;
@@ -3577,13 +3577,13 @@ void RMONMIB::Matrixcontroltable::Matrixcontrolentry::set_value(const std::strin
         matrixcontrolstatus.value_namespace = name_space;
         matrixcontrolstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "matrixControlDroppedFrames")
+    if(value_path == "RMON2-MIB:matrixControlDroppedFrames")
     {
         matrixcontroldroppedframes = value;
         matrixcontroldroppedframes.value_namespace = name_space;
         matrixcontroldroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "matrixControlCreateTime")
+    if(value_path == "RMON2-MIB:matrixControlCreateTime")
     {
         matrixcontrolcreatetime = value;
         matrixcontrolcreatetime.value_namespace = name_space;
@@ -4414,13 +4414,13 @@ void RMONMIB::Filtertable::Filterentry::set_value(const std::string & value_path
         filterstatus.value_namespace = name_space;
         filterstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "filterProtocolDirDataLocalIndex")
+    if(value_path == "RMON2-MIB:filterProtocolDirDataLocalIndex")
     {
         filterprotocoldirdatalocalindex = value;
         filterprotocoldirdatalocalindex.value_namespace = name_space;
         filterprotocoldirdatalocalindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "filterProtocolDirLocalIndex")
+    if(value_path == "RMON2-MIB:filterProtocolDirLocalIndex")
     {
         filterprotocoldirlocalindex = value;
         filterprotocoldirlocalindex.value_namespace = name_space;
@@ -4775,13 +4775,13 @@ void RMONMIB::Channeltable::Channelentry::set_value(const std::string & value_pa
         channelstatus.value_namespace = name_space;
         channelstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "channelDroppedFrames")
+    if(value_path == "RMON2-MIB:channelDroppedFrames")
     {
         channeldroppedframes = value;
         channeldroppedframes.value_namespace = name_space;
         channeldroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "channelCreateTime")
+    if(value_path == "RMON2-MIB:channelCreateTime")
     {
         channelcreatetime = value;
         channelcreatetime.value_namespace = name_space;

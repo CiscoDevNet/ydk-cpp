@@ -139,7 +139,7 @@ std::shared_ptr<Entity> Snmp::get_child_by_name(const std::string & child_yang_n
         return if_indexes;
     }
 
-    if(child_yang_name == "entity-mib")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entitymib-oper:entity-mib")
     {
         if(entity_mib == nullptr)
         {
@@ -148,7 +148,7 @@ std::shared_ptr<Entity> Snmp::get_child_by_name(const std::string & child_yang_n
         return entity_mib;
     }
 
-    if(child_yang_name == "interface-mib")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-ifmib-oper:interface-mib")
     {
         if(interface_mib == nullptr)
         {
@@ -157,7 +157,7 @@ std::shared_ptr<Entity> Snmp::get_child_by_name(const std::string & child_yang_n
         return interface_mib;
     }
 
-    if(child_yang_name == "sensor-mib")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-sensormib-oper:sensor-mib")
     {
         if(sensor_mib == nullptr)
         {
@@ -204,17 +204,17 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::get_children() const
 
     if(entity_mib != nullptr)
     {
-        children["entity-mib"] = entity_mib;
+        children["Cisco-IOS-XR-snmp-entitymib-oper:entity-mib"] = entity_mib;
     }
 
     if(interface_mib != nullptr)
     {
-        children["interface-mib"] = interface_mib;
+        children["Cisco-IOS-XR-snmp-ifmib-oper:interface-mib"] = interface_mib;
     }
 
     if(sensor_mib != nullptr)
     {
-        children["sensor-mib"] = sensor_mib;
+        children["Cisco-IOS-XR-snmp-sensormib-oper:sensor-mib"] = sensor_mib;
     }
 
     return children;

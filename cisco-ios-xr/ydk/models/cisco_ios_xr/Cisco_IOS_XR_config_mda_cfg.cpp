@@ -138,14 +138,14 @@ ActiveNodes::ActiveNode::ActiveNode()
 	,lpts_local(std::make_shared<ActiveNodes::ActiveNode::LptsLocal>())
 	,ssrp_group(std::make_shared<ActiveNodes::ActiveNode::SsrpGroup>())
 	,cisco_ios_xr_watchd_cfg_watchdog_node_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold>())
-	,cisco_ios_xr_wd_cfg_watchdog_node_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>())
+	,cisco_ios_xr_wd_cfg_watchdog_node_threshold_(std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>())
 {
     clock_interface->parent = this;
     ltrace->parent = this;
     lpts_local->parent = this;
     ssrp_group->parent = this;
     cisco_ios_xr_watchd_cfg_watchdog_node_threshold->parent = this;
-    cisco_ios_xr_wd_cfg_watchdog_node_threshold->parent = this;
+    cisco_ios_xr_wd_cfg_watchdog_node_threshold_->parent = this;
 
     yang_name = "active-node"; yang_parent_name = "active-nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -162,7 +162,7 @@ bool ActiveNodes::ActiveNode::has_data() const
 	|| (lpts_local !=  nullptr && lpts_local->has_data())
 	|| (ssrp_group !=  nullptr && ssrp_group->has_data())
 	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_data())
-	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_data());
+	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold_ !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold_->has_data());
 }
 
 bool ActiveNodes::ActiveNode::has_operation() const
@@ -174,7 +174,7 @@ bool ActiveNodes::ActiveNode::has_operation() const
 	|| (lpts_local !=  nullptr && lpts_local->has_operation())
 	|| (ssrp_group !=  nullptr && ssrp_group->has_operation())
 	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_operation())
-	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_operation());
+	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold_ !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold_->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::get_absolute_path() const
@@ -203,7 +203,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::get_name
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "clock-interface")
+    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:clock-interface")
     {
         if(clock_interface == nullptr)
         {
@@ -212,7 +212,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::st
         return clock_interface;
     }
 
-    if(child_yang_name == "ltrace")
+    if(child_yang_name == "Cisco-IOS-XR-infra-ltrace-cfg:ltrace")
     {
         if(ltrace == nullptr)
         {
@@ -221,7 +221,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::st
         return ltrace;
     }
 
-    if(child_yang_name == "lpts-local")
+    if(child_yang_name == "Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local")
     {
         if(lpts_local == nullptr)
         {
@@ -230,7 +230,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::st
         return lpts_local;
     }
 
-    if(child_yang_name == "ssrp-group")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-group")
     {
         if(ssrp_group == nullptr)
         {
@@ -239,7 +239,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::st
         return ssrp_group;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold")
+    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
     {
         if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold == nullptr)
         {
@@ -248,13 +248,13 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::st
         return cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold")
+    if(child_yang_name == "Cisco-IOS-XR-wd-cfg:watchdog-node-threshold")
     {
-        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold == nullptr)
+        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold_ == nullptr)
         {
-            cisco_ios_xr_wd_cfg_watchdog_node_threshold = std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>();
+            cisco_ios_xr_wd_cfg_watchdog_node_threshold_ = std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>();
         }
-        return cisco_ios_xr_wd_cfg_watchdog_node_threshold;
+        return cisco_ios_xr_wd_cfg_watchdog_node_threshold_;
     }
 
     return nullptr;
@@ -265,32 +265,32 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(clock_interface != nullptr)
     {
-        children["clock-interface"] = clock_interface;
+        children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
     }
 
     if(ltrace != nullptr)
     {
-        children["ltrace"] = ltrace;
+        children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
     }
 
     if(lpts_local != nullptr)
     {
-        children["lpts-local"] = lpts_local;
+        children["Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local"] = lpts_local;
     }
 
     if(ssrp_group != nullptr)
     {
-        children["ssrp-group"] = ssrp_group;
+        children["Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-group"] = ssrp_group;
     }
 
     if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
     {
-        children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
+        children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
-    if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
+    if(cisco_ios_xr_wd_cfg_watchdog_node_threshold_ != nullptr)
     {
-        children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
+        children["Cisco-IOS-XR-wd-cfg:watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold_;
     }
 
     return children;
@@ -316,7 +316,7 @@ void ActiveNodes::ActiveNode::set_filter(const std::string & value_path, YFilter
 
 bool ActiveNodes::ActiveNode::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-interface" || name == "ltrace" || name == "lpts-local" || name == "ssrp-group" || name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold" || name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold" || name == "node-name")
+    if(name == "clock-interface" || name == "ltrace" || name == "lpts-local" || name == "ssrp-group" || name == "watchdog-node-threshold" || name == "watchdog-node-threshold" || name == "node-name")
         return true;
     return false;
 }
@@ -2605,7 +2605,7 @@ ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::CiscoIOSXRWat
 {
     memory_threshold->parent = this;
 
-    yang_name = "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"; yang_parent_name = "active-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "watchdog-node-threshold"; yang_parent_name = "active-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::~CiscoIOSXRWatchdCfgWatchdogNodeThreshold()
@@ -2626,7 +2626,7 @@ bool ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::has_oper
 std::string ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-watchd-cfg:Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold";
+    path_buffer << "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold";
     return path_buffer.str();
 }
 
@@ -2686,7 +2686,7 @@ ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThresho
     critical{YType::uint32, "critical"}
 {
 
-    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
@@ -2789,7 +2789,7 @@ ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::CiscoIOSXRWdCfgWa
 {
     memory_threshold->parent = this;
 
-    yang_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; yang_parent_name = "active-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "watchdog-node-threshold"; yang_parent_name = "active-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::~CiscoIOSXRWdCfgWatchdogNodeThreshold()
@@ -2810,7 +2810,7 @@ bool ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::has_operatio
 std::string ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-wd-cfg:Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+    path_buffer << "Cisco-IOS-XR-wd-cfg:watchdog-node-threshold";
     return path_buffer.str();
 }
 
@@ -2870,7 +2870,7 @@ ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold::
     critical{YType::uint32, "critical"}
 {
 
-    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
@@ -3093,13 +3093,13 @@ PreconfiguredNodes::PreconfiguredNode::PreconfiguredNode()
 	,ltrace(std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace>())
 	,lpts_local(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal>())
 	,cisco_ios_xr_watchd_cfg_watchdog_node_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold>())
-	,cisco_ios_xr_wd_cfg_watchdog_node_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>())
+	,cisco_ios_xr_wd_cfg_watchdog_node_threshold_(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>())
 {
     clock_interface->parent = this;
     ltrace->parent = this;
     lpts_local->parent = this;
     cisco_ios_xr_watchd_cfg_watchdog_node_threshold->parent = this;
-    cisco_ios_xr_wd_cfg_watchdog_node_threshold->parent = this;
+    cisco_ios_xr_wd_cfg_watchdog_node_threshold_->parent = this;
 
     yang_name = "preconfigured-node"; yang_parent_name = "preconfigured-nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -3115,7 +3115,7 @@ bool PreconfiguredNodes::PreconfiguredNode::has_data() const
 	|| (ltrace !=  nullptr && ltrace->has_data())
 	|| (lpts_local !=  nullptr && lpts_local->has_data())
 	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_data())
-	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_data());
+	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold_ !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold_->has_data());
 }
 
 bool PreconfiguredNodes::PreconfiguredNode::has_operation() const
@@ -3126,7 +3126,7 @@ bool PreconfiguredNodes::PreconfiguredNode::has_operation() const
 	|| (ltrace !=  nullptr && ltrace->has_operation())
 	|| (lpts_local !=  nullptr && lpts_local->has_operation())
 	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_operation())
-	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_operation());
+	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold_ !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold_->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::get_absolute_path() const
@@ -3155,7 +3155,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "clock-interface")
+    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:clock-interface")
     {
         if(clock_interface == nullptr)
         {
@@ -3164,7 +3164,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name
         return clock_interface;
     }
 
-    if(child_yang_name == "ltrace")
+    if(child_yang_name == "Cisco-IOS-XR-infra-ltrace-cfg:ltrace")
     {
         if(ltrace == nullptr)
         {
@@ -3173,7 +3173,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name
         return ltrace;
     }
 
-    if(child_yang_name == "lpts-local")
+    if(child_yang_name == "Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local")
     {
         if(lpts_local == nullptr)
         {
@@ -3182,7 +3182,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name
         return lpts_local;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold")
+    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
     {
         if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold == nullptr)
         {
@@ -3191,13 +3191,13 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name
         return cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold")
+    if(child_yang_name == "Cisco-IOS-XR-wd-cfg:watchdog-node-threshold")
     {
-        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold == nullptr)
+        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold_ == nullptr)
         {
-            cisco_ios_xr_wd_cfg_watchdog_node_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>();
+            cisco_ios_xr_wd_cfg_watchdog_node_threshold_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold>();
         }
-        return cisco_ios_xr_wd_cfg_watchdog_node_threshold;
+        return cisco_ios_xr_wd_cfg_watchdog_node_threshold_;
     }
 
     return nullptr;
@@ -3208,27 +3208,27 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(clock_interface != nullptr)
     {
-        children["clock-interface"] = clock_interface;
+        children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
     }
 
     if(ltrace != nullptr)
     {
-        children["ltrace"] = ltrace;
+        children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
     }
 
     if(lpts_local != nullptr)
     {
-        children["lpts-local"] = lpts_local;
+        children["Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local"] = lpts_local;
     }
 
     if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
     {
-        children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
+        children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
-    if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
+    if(cisco_ios_xr_wd_cfg_watchdog_node_threshold_ != nullptr)
     {
-        children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
+        children["Cisco-IOS-XR-wd-cfg:watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold_;
     }
 
     return children;
@@ -3254,7 +3254,7 @@ void PreconfiguredNodes::PreconfiguredNode::set_filter(const std::string & value
 
 bool PreconfiguredNodes::PreconfiguredNode::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-interface" || name == "ltrace" || name == "lpts-local" || name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold" || name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold" || name == "node-name")
+    if(name == "clock-interface" || name == "ltrace" || name == "lpts-local" || name == "watchdog-node-threshold" || name == "watchdog-node-threshold" || name == "node-name")
         return true;
     return false;
 }
@@ -5280,7 +5280,7 @@ PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold:
 {
     memory_threshold->parent = this;
 
-    yang_name = "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"; yang_parent_name = "preconfigured-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "watchdog-node-threshold"; yang_parent_name = "preconfigured-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::~CiscoIOSXRWatchdCfgWatchdogNodeThreshold()
@@ -5301,7 +5301,7 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThres
 std::string PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-watchd-cfg:Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold";
+    path_buffer << "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold";
     return path_buffer.str();
 }
 
@@ -5361,7 +5361,7 @@ PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold:
     critical{YType::uint32, "critical"}
 {
 
-    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
@@ -5464,7 +5464,7 @@ PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::Cis
 {
     memory_threshold->parent = this;
 
-    yang_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; yang_parent_name = "preconfigured-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "watchdog-node-threshold"; yang_parent_name = "preconfigured-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::~CiscoIOSXRWdCfgWatchdogNodeThreshold()
@@ -5485,7 +5485,7 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold
 std::string PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-wd-cfg:Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+    path_buffer << "Cisco-IOS-XR-wd-cfg:watchdog-node-threshold";
     return path_buffer.str();
 }
 
@@ -5545,7 +5545,7 @@ PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::Mem
     critical{YType::uint32, "critical"}
 {
 
-    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()

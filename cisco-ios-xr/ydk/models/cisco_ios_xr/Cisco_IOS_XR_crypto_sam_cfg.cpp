@@ -66,7 +66,7 @@ std::shared_ptr<Entity> Crypto::get_child_by_name(const std::string & child_yang
         return sam;
     }
 
-    if(child_yang_name == "ssh")
+    if(child_yang_name == "Cisco-IOS-XR-crypto-ssh-cfg:ssh")
     {
         if(ssh == nullptr)
         {
@@ -88,7 +88,7 @@ std::map<std::string, std::shared_ptr<Entity>> Crypto::get_children() const
 
     if(ssh != nullptr)
     {
-        children["ssh"] = ssh;
+        children["Cisco-IOS-XR-crypto-ssh-cfg:ssh"] = ssh;
     }
 
     return children;

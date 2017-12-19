@@ -358,7 +358,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::get_n
 
 std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "span-monitor-sessions")
+    if(child_yang_name == "Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions")
     {
         if(span_monitor_sessions == nullptr)
         {
@@ -367,7 +367,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return span_monitor_sessions;
     }
 
-    if(child_yang_name == "ipv4-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter")
     {
         if(ipv4_packet_filter == nullptr)
         {
@@ -376,7 +376,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return ipv4_packet_filter;
     }
 
-    if(child_yang_name == "ipv6-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter")
     {
         if(ipv6_packet_filter == nullptr)
         {
@@ -385,7 +385,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return ipv6_packet_filter;
     }
 
-    if(child_yang_name == "igmp")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp")
     {
         if(igmp == nullptr)
         {
@@ -394,7 +394,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return igmp;
     }
 
-    if(child_yang_name == "ipv4-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
     {
         if(ipv4_network == nullptr)
         {
@@ -403,7 +403,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return ipv4_network;
     }
 
-    if(child_yang_name == "ipv6-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network")
     {
         if(ipv6_network == nullptr)
         {
@@ -412,7 +412,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return ipv6_network;
     }
 
-    if(child_yang_name == "ipv6-neighbor")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor")
     {
         if(ipv6_neighbor == nullptr)
         {
@@ -421,7 +421,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return ipv6_neighbor;
     }
 
-    if(child_yang_name == "dhcpv6")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6")
     {
         if(dhcpv6 == nullptr)
         {
@@ -430,7 +430,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return dhcpv6;
     }
 
-    if(child_yang_name == "pbr")
+    if(child_yang_name == "Cisco-IOS-XR-pbr-subscriber-cfg:pbr")
     {
         if(pbr == nullptr)
         {
@@ -439,7 +439,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return pbr;
     }
 
-    if(child_yang_name == "ppp-template")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-gbl-cfg:ppp-template")
     {
         if(ppp_template == nullptr)
         {
@@ -448,7 +448,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return ppp_template;
     }
 
-    if(child_yang_name == "qos")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-bng-cfg:qos")
     {
         if(qos == nullptr)
         {
@@ -457,7 +457,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return qos;
     }
 
-    if(child_yang_name == "accounting")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
     {
         if(accounting == nullptr)
         {
@@ -466,7 +466,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
         return accounting;
     }
 
-    if(child_yang_name == "pppoe-template")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg:pppoe-template")
     {
         if(pppoe_template == nullptr)
         {
@@ -483,67 +483,67 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(span_monitor_sessions != nullptr)
     {
-        children["span-monitor-sessions"] = span_monitor_sessions;
+        children["Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions"] = span_monitor_sessions;
     }
 
     if(ipv4_packet_filter != nullptr)
     {
-        children["ipv4-packet-filter"] = ipv4_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
     }
 
     if(ipv6_packet_filter != nullptr)
     {
-        children["ipv6-packet-filter"] = ipv6_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
     }
 
     if(igmp != nullptr)
     {
-        children["igmp"] = igmp;
+        children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
     }
 
     if(ipv4_network != nullptr)
     {
-        children["ipv4-network"] = ipv4_network;
+        children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv6_network != nullptr)
     {
-        children["ipv6-network"] = ipv6_network;
+        children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
     if(ipv6_neighbor != nullptr)
     {
-        children["ipv6-neighbor"] = ipv6_neighbor;
+        children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
     if(dhcpv6 != nullptr)
     {
-        children["dhcpv6"] = dhcpv6;
+        children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
     }
 
     if(pbr != nullptr)
     {
-        children["pbr"] = pbr;
+        children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
     }
 
     if(ppp_template != nullptr)
     {
-        children["ppp-template"] = ppp_template;
+        children["Cisco-IOS-XR-ppp-ma-gbl-cfg:ppp-template"] = ppp_template;
     }
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        children["Cisco-IOS-XR-qos-ma-bng-cfg:qos"] = qos;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     if(pppoe_template != nullptr)
     {
-        children["pppoe-template"] = pppoe_template;
+        children["Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg:pppoe-template"] = pppoe_template;
     }
 
     return children;
@@ -557,7 +557,7 @@ void DynamicTemplate::Ppps::Ppp::set_value(const std::string & value_path, const
         template_name.value_namespace = name_space;
         template_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vrf")
+    if(value_path == "Cisco-IOS-XR-infra-rsi-subscriber-cfg:vrf")
     {
         vrf = value;
         vrf.value_namespace = name_space;
@@ -6553,7 +6553,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "span-monitor-sessions")
+    if(child_yang_name == "Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions")
     {
         if(span_monitor_sessions == nullptr)
         {
@@ -6562,7 +6562,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return span_monitor_sessions;
     }
 
-    if(child_yang_name == "ipv4-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter")
     {
         if(ipv4_packet_filter == nullptr)
         {
@@ -6571,7 +6571,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return ipv4_packet_filter;
     }
 
-    if(child_yang_name == "ipv6-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter")
     {
         if(ipv6_packet_filter == nullptr)
         {
@@ -6580,7 +6580,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return ipv6_packet_filter;
     }
 
-    if(child_yang_name == "dhcpd")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-dhcpd-subscriber-cfg:dhcpd")
     {
         if(dhcpd == nullptr)
         {
@@ -6589,7 +6589,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return dhcpd;
     }
 
-    if(child_yang_name == "igmp")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp")
     {
         if(igmp == nullptr)
         {
@@ -6598,7 +6598,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return igmp;
     }
 
-    if(child_yang_name == "ipv4-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
     {
         if(ipv4_network == nullptr)
         {
@@ -6607,7 +6607,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return ipv4_network;
     }
 
-    if(child_yang_name == "ipv6-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network")
     {
         if(ipv6_network == nullptr)
         {
@@ -6616,7 +6616,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return ipv6_network;
     }
 
-    if(child_yang_name == "ipv6-neighbor")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor")
     {
         if(ipv6_neighbor == nullptr)
         {
@@ -6625,7 +6625,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return ipv6_neighbor;
     }
 
-    if(child_yang_name == "dhcpv6")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6")
     {
         if(dhcpv6 == nullptr)
         {
@@ -6634,7 +6634,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return dhcpv6;
     }
 
-    if(child_yang_name == "pbr")
+    if(child_yang_name == "Cisco-IOS-XR-pbr-subscriber-cfg:pbr")
     {
         if(pbr == nullptr)
         {
@@ -6643,7 +6643,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return pbr;
     }
 
-    if(child_yang_name == "qos")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-bng-cfg:qos")
     {
         if(qos == nullptr)
         {
@@ -6652,7 +6652,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
         return qos;
     }
 
-    if(child_yang_name == "accounting")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
     {
         if(accounting == nullptr)
         {
@@ -6669,62 +6669,62 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(span_monitor_sessions != nullptr)
     {
-        children["span-monitor-sessions"] = span_monitor_sessions;
+        children["Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions"] = span_monitor_sessions;
     }
 
     if(ipv4_packet_filter != nullptr)
     {
-        children["ipv4-packet-filter"] = ipv4_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
     }
 
     if(ipv6_packet_filter != nullptr)
     {
-        children["ipv6-packet-filter"] = ipv6_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
     }
 
     if(dhcpd != nullptr)
     {
-        children["dhcpd"] = dhcpd;
+        children["Cisco-IOS-XR-ipv4-dhcpd-subscriber-cfg:dhcpd"] = dhcpd;
     }
 
     if(igmp != nullptr)
     {
-        children["igmp"] = igmp;
+        children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
     }
 
     if(ipv4_network != nullptr)
     {
-        children["ipv4-network"] = ipv4_network;
+        children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv6_network != nullptr)
     {
-        children["ipv6-network"] = ipv6_network;
+        children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
     if(ipv6_neighbor != nullptr)
     {
-        children["ipv6-neighbor"] = ipv6_neighbor;
+        children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
     if(dhcpv6 != nullptr)
     {
-        children["dhcpv6"] = dhcpv6;
+        children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
     }
 
     if(pbr != nullptr)
     {
-        children["pbr"] = pbr;
+        children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
     }
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        children["Cisco-IOS-XR-qos-ma-bng-cfg:qos"] = qos;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     return children;
@@ -6738,7 +6738,7 @@ void DynamicTemplate::IpSubscribers::IpSubscriber::set_value(const std::string &
         template_name.value_namespace = name_space;
         template_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vrf")
+    if(value_path == "Cisco-IOS-XR-infra-rsi-subscriber-cfg:vrf")
     {
         vrf = value;
         vrf.value_namespace = name_space;
@@ -11080,7 +11080,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "span-monitor-sessions")
+    if(child_yang_name == "Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions")
     {
         if(span_monitor_sessions == nullptr)
         {
@@ -11089,7 +11089,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return span_monitor_sessions;
     }
 
-    if(child_yang_name == "ipv4-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter")
     {
         if(ipv4_packet_filter == nullptr)
         {
@@ -11098,7 +11098,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return ipv4_packet_filter;
     }
 
-    if(child_yang_name == "ipv6-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter")
     {
         if(ipv6_packet_filter == nullptr)
         {
@@ -11107,7 +11107,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return ipv6_packet_filter;
     }
 
-    if(child_yang_name == "ipv4-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
     {
         if(ipv4_network == nullptr)
         {
@@ -11116,7 +11116,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return ipv4_network;
     }
 
-    if(child_yang_name == "ipv6-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network")
     {
         if(ipv6_network == nullptr)
         {
@@ -11125,7 +11125,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return ipv6_network;
     }
 
-    if(child_yang_name == "ipv6-neighbor")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor")
     {
         if(ipv6_neighbor == nullptr)
         {
@@ -11134,7 +11134,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return ipv6_neighbor;
     }
 
-    if(child_yang_name == "pbr")
+    if(child_yang_name == "Cisco-IOS-XR-pbr-subscriber-cfg:pbr")
     {
         if(pbr == nullptr)
         {
@@ -11143,7 +11143,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return pbr;
     }
 
-    if(child_yang_name == "qos")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-bng-cfg:qos")
     {
         if(qos == nullptr)
         {
@@ -11152,7 +11152,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
         return qos;
     }
 
-    if(child_yang_name == "accounting")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
     {
         if(accounting == nullptr)
         {
@@ -11169,47 +11169,47 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(span_monitor_sessions != nullptr)
     {
-        children["span-monitor-sessions"] = span_monitor_sessions;
+        children["Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions"] = span_monitor_sessions;
     }
 
     if(ipv4_packet_filter != nullptr)
     {
-        children["ipv4-packet-filter"] = ipv4_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
     }
 
     if(ipv6_packet_filter != nullptr)
     {
-        children["ipv6-packet-filter"] = ipv6_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
     }
 
     if(ipv4_network != nullptr)
     {
-        children["ipv4-network"] = ipv4_network;
+        children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv6_network != nullptr)
     {
-        children["ipv6-network"] = ipv6_network;
+        children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
     if(ipv6_neighbor != nullptr)
     {
-        children["ipv6-neighbor"] = ipv6_neighbor;
+        children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
     if(pbr != nullptr)
     {
-        children["pbr"] = pbr;
+        children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
     }
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        children["Cisco-IOS-XR-qos-ma-bng-cfg:qos"] = qos;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     return children;
@@ -11223,7 +11223,7 @@ void DynamicTemplate::SubscriberServices::SubscriberService::set_value(const std
         template_name.value_namespace = name_space;
         template_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vrf")
+    if(value_path == "Cisco-IOS-XR-infra-rsi-subscriber-cfg:vrf")
     {
         vrf = value;
         vrf.value_namespace = name_space;

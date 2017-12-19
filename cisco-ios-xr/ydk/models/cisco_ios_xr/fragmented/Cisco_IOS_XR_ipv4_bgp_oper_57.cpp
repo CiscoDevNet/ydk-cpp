@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_bgp_oper_57.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_59.hpp"
 #include "Cisco_IOS_XR_ipv4_bgp_oper_58.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_59.hpp"
 
 using namespace ydk;
 

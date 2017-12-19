@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_cfg_1.hpp"
-#include "Cisco_IOS_XR_ipv4_ospf_cfg_3.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_cfg_2.hpp"
+#include "Cisco_IOS_XR_ipv4_ospf_cfg_3.hpp"
 
 using namespace ydk;
 

@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::get_name_leaf_data()
 
 std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cisco-ia")
+    if(child_yang_name == "cisco-ia:cisco-ia")
     {
         if(cisco_ia == nullptr)
         {
@@ -66,7 +66,7 @@ std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child
         return cisco_ia;
     }
 
-    if(child_yang_name == "cisco-odm")
+    if(child_yang_name == "cisco-odm:cisco-odm")
     {
         if(cisco_odm == nullptr)
         {
@@ -83,12 +83,12 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfYang::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cisco_ia != nullptr)
     {
-        children["cisco-ia"] = cisco_ia;
+        children["cisco-ia:cisco-ia"] = cisco_ia;
     }
 
     if(cisco_odm != nullptr)
     {
-        children["cisco-odm"] = cisco_odm;
+        children["cisco-odm:cisco-odm"] = cisco_odm;
     }
 
     return children;

@@ -3630,7 +3630,7 @@ Snmp::Notification::Notification()
 	,mpls_te(std::make_shared<Snmp::Notification::MplsTe>())
 	,mpls_frr(std::make_shared<Snmp::Notification::MplsFrr>())
 	,mpls_l3vpn(std::make_shared<Snmp::Notification::MplsL3Vpn>())
-	,cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization(std::make_shared<Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>())
+	,cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_(std::make_shared<Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>())
 	,optical(std::make_shared<Snmp::Notification::Optical>())
 	,optical_ots(std::make_shared<Snmp::Notification::OpticalOts>())
 	,otn(std::make_shared<Snmp::Notification::Otn>())
@@ -3673,7 +3673,7 @@ Snmp::Notification::Notification()
     mpls_te->parent = this;
     mpls_frr->parent = this;
     mpls_l3vpn->parent = this;
-    cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization->parent = this;
+    cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->parent = this;
     optical->parent = this;
     optical_ots->parent = this;
     otn->parent = this;
@@ -3725,7 +3725,7 @@ bool Snmp::Notification::has_data() const
 	|| (mpls_te !=  nullptr && mpls_te->has_data())
 	|| (mpls_frr !=  nullptr && mpls_frr->has_data())
 	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_data())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization->has_data())
+	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_data())
 	|| (optical !=  nullptr && optical->has_data())
 	|| (optical_ots !=  nullptr && optical_ots->has_data())
 	|| (otn !=  nullptr && otn->has_data())
@@ -3772,7 +3772,7 @@ bool Snmp::Notification::has_operation() const
 	|| (mpls_te !=  nullptr && mpls_te->has_operation())
 	|| (mpls_frr !=  nullptr && mpls_frr->has_operation())
 	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_operation())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization->has_operation())
+	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_operation())
 	|| (optical !=  nullptr && optical->has_operation())
 	|| (optical_ots !=  nullptr && optical_ots->has_operation())
 	|| (otn !=  nullptr && otn->has_operation())
@@ -3821,7 +3821,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return snmp;
     }
 
-    if(child_yang_name == "diametermib")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib")
     {
         if(diametermib == nullptr)
         {
@@ -3830,7 +3830,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return diametermib;
     }
 
-    if(child_yang_name == "vpls")
+    if(child_yang_name == "Cisco-IOS-XR-l2vpn-cfg:vpls")
     {
         if(vpls == nullptr)
         {
@@ -3839,7 +3839,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return vpls;
     }
 
-    if(child_yang_name == "l2vpn")
+    if(child_yang_name == "Cisco-IOS-XR-l2vpn-cfg:l2vpn")
     {
         if(l2vpn == nullptr)
         {
@@ -3848,7 +3848,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return l2vpn;
     }
 
-    if(child_yang_name == "isis")
+    if(child_yang_name == "Cisco-IOS-XR-clns-isis-cfg:isis")
     {
         if(isis == nullptr)
         {
@@ -3857,7 +3857,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return isis;
     }
 
-    if(child_yang_name == "config-man")
+    if(child_yang_name == "Cisco-IOS-XR-config-mibs-cfg:config-man")
     {
         if(config_man == nullptr)
         {
@@ -3866,7 +3866,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return config_man;
     }
 
-    if(child_yang_name == "cfm")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-cfg:cfm")
     {
         if(cfm == nullptr)
         {
@@ -3875,7 +3875,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return cfm;
     }
 
-    if(child_yang_name == "oam")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-link-oam-cfg:oam")
     {
         if(oam == nullptr)
         {
@@ -3884,7 +3884,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return oam;
     }
 
-    if(child_yang_name == "fabric-crs")
+    if(child_yang_name == "Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs")
     {
         if(fabric_crs == nullptr)
         {
@@ -3893,7 +3893,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return fabric_crs;
     }
 
-    if(child_yang_name == "flash")
+    if(child_yang_name == "Cisco-IOS-XR-flashmib-cfg:flash")
     {
         if(flash == nullptr)
         {
@@ -3902,7 +3902,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return flash;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization")
+    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization")
     {
         if(cisco_ios_xr_freqsync_cfg_frequency_synchronization == nullptr)
         {
@@ -3911,7 +3911,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return cisco_ios_xr_freqsync_cfg_frequency_synchronization;
     }
 
-    if(child_yang_name == "entity-redundancy")
+    if(child_yang_name == "Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy")
     {
         if(entity_redundancy == nullptr)
         {
@@ -3920,7 +3920,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return entity_redundancy;
     }
 
-    if(child_yang_name == "config-copy")
+    if(child_yang_name == "Cisco-IOS-XR-infra-confcopymib-cfg:config-copy")
     {
         if(config_copy == nullptr)
         {
@@ -3929,7 +3929,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return config_copy;
     }
 
-    if(child_yang_name == "selective-vrf-download")
+    if(child_yang_name == "Cisco-IOS-XR-infra-rsi-cfg:selective-vrf-download")
     {
         if(selective_vrf_download == nullptr)
         {
@@ -3938,7 +3938,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return selective_vrf_download;
     }
 
-    if(child_yang_name == "system")
+    if(child_yang_name == "Cisco-IOS-XR-infra-systemmib-cfg:system")
     {
         if(system == nullptr)
         {
@@ -3947,7 +3947,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return system;
     }
 
-    if(child_yang_name == "bfd")
+    if(child_yang_name == "Cisco-IOS-XR-ip-bfd-cfg:bfd")
     {
         if(bfd == nullptr)
         {
@@ -3956,7 +3956,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return bfd;
     }
 
-    if(child_yang_name == "addresspool-mib")
+    if(child_yang_name == "Cisco-IOS-XR-ip-daps-mib-cfg:addresspool-mib")
     {
         if(addresspool_mib == nullptr)
         {
@@ -3965,7 +3965,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return addresspool_mib;
     }
 
-    if(child_yang_name == "ntp")
+    if(child_yang_name == "Cisco-IOS-XR-ip-ntp-cfg:ntp")
     {
         if(ntp == nullptr)
         {
@@ -3974,7 +3974,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return ntp;
     }
 
-    if(child_yang_name == "rsvp")
+    if(child_yang_name == "Cisco-IOS-XR-ip-rsvp-cfg:rsvp")
     {
         if(rsvp == nullptr)
         {
@@ -3983,7 +3983,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return rsvp;
     }
 
-    if(child_yang_name == "bgp")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
     {
         if(bgp == nullptr)
         {
@@ -3992,7 +3992,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return bgp;
     }
 
-    if(child_yang_name == "hsrp")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp")
     {
         if(hsrp == nullptr)
         {
@@ -4001,7 +4001,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return hsrp;
     }
 
-    if(child_yang_name == "ospf")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ospf-cfg:ospf")
     {
         if(ospf == nullptr)
         {
@@ -4010,7 +4010,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return ospf;
     }
 
-    if(child_yang_name == "vrrp")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp")
     {
         if(vrrp == nullptr)
         {
@@ -4019,7 +4019,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return vrrp;
     }
 
-    if(child_yang_name == "ospfv3")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-ospfv3-cfg:ospfv3")
     {
         if(ospfv3 == nullptr)
         {
@@ -4028,7 +4028,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return ospfv3;
     }
 
-    if(child_yang_name == "mpls-ldp")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp")
     {
         if(mpls_ldp == nullptr)
         {
@@ -4037,7 +4037,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return mpls_ldp;
     }
 
-    if(child_yang_name == "mpls-te-p2mp")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-te-p2mp")
     {
         if(mpls_te_p2mp == nullptr)
         {
@@ -4046,7 +4046,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return mpls_te_p2mp;
     }
 
-    if(child_yang_name == "mpls-te")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-te")
     {
         if(mpls_te == nullptr)
         {
@@ -4055,7 +4055,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return mpls_te;
     }
 
-    if(child_yang_name == "mpls-frr")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-frr")
     {
         if(mpls_frr == nullptr)
         {
@@ -4064,7 +4064,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return mpls_frr;
     }
 
-    if(child_yang_name == "mpls-l3vpn")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn")
     {
         if(mpls_l3vpn == nullptr)
         {
@@ -4073,16 +4073,16 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return mpls_l3vpn;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization")
+    if(child_yang_name == "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization")
     {
-        if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization == nullptr)
+        if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ == nullptr)
         {
-            cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization = std::make_shared<Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>();
+            cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ = std::make_shared<Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>();
         }
-        return cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization;
+        return cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
     }
 
-    if(child_yang_name == "optical")
+    if(child_yang_name == "Cisco-IOS-XR-opticalmib-cfg:optical")
     {
         if(optical == nullptr)
         {
@@ -4091,7 +4091,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return optical;
     }
 
-    if(child_yang_name == "optical-ots")
+    if(child_yang_name == "Cisco-IOS-XR-opticalotsmib-cfg:optical-ots")
     {
         if(optical_ots == nullptr)
         {
@@ -4100,7 +4100,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return optical_ots;
     }
 
-    if(child_yang_name == "otn")
+    if(child_yang_name == "Cisco-IOS-XR-otnifmib-cfg:otn")
     {
         if(otn == nullptr)
         {
@@ -4109,7 +4109,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return otn;
     }
 
-    if(child_yang_name == "bridge")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-bridgemib-cfg:bridge")
     {
         if(bridge == nullptr)
         {
@@ -4118,7 +4118,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return bridge;
     }
 
-    if(child_yang_name == "sensor")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor")
     {
         if(sensor == nullptr)
         {
@@ -4127,7 +4127,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return sensor;
     }
 
-    if(child_yang_name == "entity")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entitymib-cfg:entity")
     {
         if(entity_ == nullptr)
         {
@@ -4136,7 +4136,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return entity_;
     }
 
-    if(child_yang_name == "entity-state")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state")
     {
         if(entity_state == nullptr)
         {
@@ -4145,7 +4145,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return entity_state;
     }
 
-    if(child_yang_name == "fru-control")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control")
     {
         if(fru_control == nullptr)
         {
@@ -4154,7 +4154,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return fru_control;
     }
 
-    if(child_yang_name == "rf")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf")
     {
         if(rf == nullptr)
         {
@@ -4163,7 +4163,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return rf;
     }
 
-    if(child_yang_name == "syslog")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-syslogmib-cfg:syslog")
     {
         if(syslog == nullptr)
         {
@@ -4172,7 +4172,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return syslog;
     }
 
-    if(child_yang_name == "subscriber-mib")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib")
     {
         if(subscriber_mib == nullptr)
         {
@@ -4181,7 +4181,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return subscriber_mib;
     }
 
-    if(child_yang_name == "l2tun")
+    if(child_yang_name == "Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun")
     {
         if(l2tun == nullptr)
         {
@@ -4203,207 +4203,207 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
 
     if(diametermib != nullptr)
     {
-        children["diametermib"] = diametermib;
+        children["Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib"] = diametermib;
     }
 
     if(vpls != nullptr)
     {
-        children["vpls"] = vpls;
+        children["Cisco-IOS-XR-l2vpn-cfg:vpls"] = vpls;
     }
 
     if(l2vpn != nullptr)
     {
-        children["l2vpn"] = l2vpn;
+        children["Cisco-IOS-XR-l2vpn-cfg:l2vpn"] = l2vpn;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        children["Cisco-IOS-XR-clns-isis-cfg:isis"] = isis;
     }
 
     if(config_man != nullptr)
     {
-        children["config-man"] = config_man;
+        children["Cisco-IOS-XR-config-mibs-cfg:config-man"] = config_man;
     }
 
     if(cfm != nullptr)
     {
-        children["cfm"] = cfm;
+        children["Cisco-IOS-XR-ethernet-cfm-cfg:cfm"] = cfm;
     }
 
     if(oam != nullptr)
     {
-        children["oam"] = oam;
+        children["Cisco-IOS-XR-ethernet-link-oam-cfg:oam"] = oam;
     }
 
     if(fabric_crs != nullptr)
     {
-        children["fabric-crs"] = fabric_crs;
+        children["Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs"] = fabric_crs;
     }
 
     if(flash != nullptr)
     {
-        children["flash"] = flash;
+        children["Cisco-IOS-XR-flashmib-cfg:flash"] = flash;
     }
 
     if(cisco_ios_xr_freqsync_cfg_frequency_synchronization != nullptr)
     {
-        children["Cisco-IOS-XR-freqsync-cfg_frequency-synchronization"] = cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_freqsync_cfg_frequency_synchronization;
     }
 
     if(entity_redundancy != nullptr)
     {
-        children["entity-redundancy"] = entity_redundancy;
+        children["Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy"] = entity_redundancy;
     }
 
     if(config_copy != nullptr)
     {
-        children["config-copy"] = config_copy;
+        children["Cisco-IOS-XR-infra-confcopymib-cfg:config-copy"] = config_copy;
     }
 
     if(selective_vrf_download != nullptr)
     {
-        children["selective-vrf-download"] = selective_vrf_download;
+        children["Cisco-IOS-XR-infra-rsi-cfg:selective-vrf-download"] = selective_vrf_download;
     }
 
     if(system != nullptr)
     {
-        children["system"] = system;
+        children["Cisco-IOS-XR-infra-systemmib-cfg:system"] = system;
     }
 
     if(bfd != nullptr)
     {
-        children["bfd"] = bfd;
+        children["Cisco-IOS-XR-ip-bfd-cfg:bfd"] = bfd;
     }
 
     if(addresspool_mib != nullptr)
     {
-        children["addresspool-mib"] = addresspool_mib;
+        children["Cisco-IOS-XR-ip-daps-mib-cfg:addresspool-mib"] = addresspool_mib;
     }
 
     if(ntp != nullptr)
     {
-        children["ntp"] = ntp;
+        children["Cisco-IOS-XR-ip-ntp-cfg:ntp"] = ntp;
     }
 
     if(rsvp != nullptr)
     {
-        children["rsvp"] = rsvp;
+        children["Cisco-IOS-XR-ip-rsvp-cfg:rsvp"] = rsvp;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
     }
 
     if(hsrp != nullptr)
     {
-        children["hsrp"] = hsrp;
+        children["Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp"] = hsrp;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        children["Cisco-IOS-XR-ipv4-ospf-cfg:ospf"] = ospf;
     }
 
     if(vrrp != nullptr)
     {
-        children["vrrp"] = vrrp;
+        children["Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp"] = vrrp;
     }
 
     if(ospfv3 != nullptr)
     {
-        children["ospfv3"] = ospfv3;
+        children["Cisco-IOS-XR-ipv6-ospfv3-cfg:ospfv3"] = ospfv3;
     }
 
     if(mpls_ldp != nullptr)
     {
-        children["mpls-ldp"] = mpls_ldp;
+        children["Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp"] = mpls_ldp;
     }
 
     if(mpls_te_p2mp != nullptr)
     {
-        children["mpls-te-p2mp"] = mpls_te_p2mp;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-p2mp"] = mpls_te_p2mp;
     }
 
     if(mpls_te != nullptr)
     {
-        children["mpls-te"] = mpls_te;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te"] = mpls_te;
     }
 
     if(mpls_frr != nullptr)
     {
-        children["mpls-frr"] = mpls_frr;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-frr"] = mpls_frr;
     }
 
     if(mpls_l3vpn != nullptr)
     {
-        children["mpls-l3vpn"] = mpls_l3vpn;
+        children["Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn"] = mpls_l3vpn;
     }
 
-    if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization != nullptr)
+    if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ != nullptr)
     {
-        children["Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization"] = cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization;
+        children["Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
     }
 
     if(optical != nullptr)
     {
-        children["optical"] = optical;
+        children["Cisco-IOS-XR-opticalmib-cfg:optical"] = optical;
     }
 
     if(optical_ots != nullptr)
     {
-        children["optical-ots"] = optical_ots;
+        children["Cisco-IOS-XR-opticalotsmib-cfg:optical-ots"] = optical_ots;
     }
 
     if(otn != nullptr)
     {
-        children["otn"] = otn;
+        children["Cisco-IOS-XR-otnifmib-cfg:otn"] = otn;
     }
 
     if(bridge != nullptr)
     {
-        children["bridge"] = bridge;
+        children["Cisco-IOS-XR-snmp-bridgemib-cfg:bridge"] = bridge;
     }
 
     if(sensor != nullptr)
     {
-        children["sensor"] = sensor;
+        children["Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor"] = sensor;
     }
 
     if(entity_ != nullptr)
     {
-        children["entity"] = entity_;
+        children["Cisco-IOS-XR-snmp-entitymib-cfg:entity"] = entity_;
     }
 
     if(entity_state != nullptr)
     {
-        children["entity-state"] = entity_state;
+        children["Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state"] = entity_state;
     }
 
     if(fru_control != nullptr)
     {
-        children["fru-control"] = fru_control;
+        children["Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control"] = fru_control;
     }
 
     if(rf != nullptr)
     {
-        children["rf"] = rf;
+        children["Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf"] = rf;
     }
 
     if(syslog != nullptr)
     {
-        children["syslog"] = syslog;
+        children["Cisco-IOS-XR-snmp-syslogmib-cfg:syslog"] = syslog;
     }
 
     if(subscriber_mib != nullptr)
     {
-        children["subscriber-mib"] = subscriber_mib;
+        children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib"] = subscriber_mib;
     }
 
     if(l2tun != nullptr)
     {
-        children["l2tun"] = l2tun;
+        children["Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun"] = l2tun;
     }
 
     return children;
@@ -4419,7 +4419,7 @@ void Snmp::Notification::set_filter(const std::string & value_path, YFilter yfil
 
 bool Snmp::Notification::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "snmp" || name == "diametermib" || name == "vpls" || name == "l2vpn" || name == "isis" || name == "config-man" || name == "cfm" || name == "oam" || name == "fabric-crs" || name == "flash" || name == "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization" || name == "entity-redundancy" || name == "config-copy" || name == "selective-vrf-download" || name == "system" || name == "bfd" || name == "addresspool-mib" || name == "ntp" || name == "rsvp" || name == "bgp" || name == "hsrp" || name == "ospf" || name == "vrrp" || name == "ospfv3" || name == "mpls-ldp" || name == "mpls-te-p2mp" || name == "mpls-te" || name == "mpls-frr" || name == "mpls-l3vpn" || name == "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization" || name == "optical" || name == "optical-ots" || name == "otn" || name == "bridge" || name == "sensor" || name == "entity" || name == "entity-state" || name == "fru-control" || name == "rf" || name == "syslog" || name == "subscriber-mib" || name == "l2tun")
+    if(name == "snmp" || name == "diametermib" || name == "vpls" || name == "l2vpn" || name == "isis" || name == "config-man" || name == "cfm" || name == "oam" || name == "fabric-crs" || name == "flash" || name == "frequency-synchronization" || name == "entity-redundancy" || name == "config-copy" || name == "selective-vrf-download" || name == "system" || name == "bfd" || name == "addresspool-mib" || name == "ntp" || name == "rsvp" || name == "bgp" || name == "hsrp" || name == "ospf" || name == "vrrp" || name == "ospfv3" || name == "mpls-ldp" || name == "mpls-te-p2mp" || name == "mpls-te" || name == "mpls-frr" || name == "mpls-l3vpn" || name == "frequency-synchronization" || name == "optical" || name == "optical-ots" || name == "otn" || name == "bridge" || name == "sensor" || name == "entity" || name == "entity-state" || name == "fru-control" || name == "rf" || name == "syslog" || name == "subscriber-mib" || name == "l2tun")
         return true;
     return false;
 }
@@ -4528,13 +4528,13 @@ void Snmp::Notification::Snmp_::set_value(const std::string & value_path, const 
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-down")
+    if(value_path == "Cisco-IOS-XR-snmp-ifmib-cfg:link-down")
     {
         link_down = value;
         link_down.value_namespace = name_space;
         link_down.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-up")
+    if(value_path == "Cisco-IOS-XR-snmp-ifmib-cfg:link-up")
     {
         link_up = value;
         link_up.value_namespace = name_space;
@@ -5763,7 +5763,7 @@ Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::CiscoIOSXRFre
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::~CiscoIOSXRFreqsyncCfgFrequencySynchronization()
@@ -5791,7 +5791,7 @@ std::string Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::g
 std::string Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-freqsync-cfg:Cisco-IOS-XR-freqsync-cfg_frequency-synchronization";
+    path_buffer << "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization";
     return path_buffer.str();
 }
 
@@ -8852,7 +8852,7 @@ Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::CiscoIOS
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::~CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization()
@@ -8880,7 +8880,7 @@ std::string Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronizati
 std::string Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ncs4k-freqsync-cfg:Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization";
+    path_buffer << "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization";
     return path_buffer.str();
 }
 

@@ -12,417 +12,7 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Supplicant()
-    :
-    eap(std::make_shared<Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap>())
-{
-    eap->parent = this;
-
-    yang_name = "supplicant"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::~Supplicant()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::has_data() const
-{
-    return (eap !=  nullptr && eap->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::has_operation() const
-{
-    return is_set(yfilter)
-	|| (eap !=  nullptr && eap->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "supplicant";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "eap")
-    {
-        if(eap == nullptr)
-        {
-            eap = std::make_shared<Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap>();
-        }
-        return eap;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(eap != nullptr)
-    {
-        children["eap"] = eap;
-    }
-
-    return children;
-}
-
-void Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "eap")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::Eap()
-    :
-    profile{YType::str, "profile"}
-{
-
-    yang_name = "eap"; yang_parent_name = "supplicant"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::~Eap()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::has_data() const
-{
-    return profile.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "eap";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile")
-    {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile")
-    {
-        profile.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Supplicant::Eap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Dot1X::Timeout::Timeout()
-    :
-    auth_period{YType::uint16, "auth-period"},
-    held_period{YType::uint16, "held-period"},
-    quiet_period{YType::uint16, "quiet-period"},
-    ratelimit_period{YType::uint16, "ratelimit-period"},
-    server_timeout{YType::uint16, "server-timeout"},
-    start_period{YType::uint16, "start-period"},
-    supp_timeout{YType::uint16, "supp-timeout"},
-    tx_period{YType::uint16, "tx-period"}
-{
-
-    yang_name = "timeout"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::TenGigabitEthernet::Dot1X::Timeout::~Timeout()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Timeout::has_data() const
-{
-    return auth_period.is_set
-	|| held_period.is_set
-	|| quiet_period.is_set
-	|| ratelimit_period.is_set
-	|| server_timeout.is_set
-	|| start_period.is_set
-	|| supp_timeout.is_set
-	|| tx_period.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Timeout::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auth_period.yfilter)
-	|| ydk::is_set(held_period.yfilter)
-	|| ydk::is_set(quiet_period.yfilter)
-	|| ydk::is_set(ratelimit_period.yfilter)
-	|| ydk::is_set(server_timeout.yfilter)
-	|| ydk::is_set(start_period.yfilter)
-	|| ydk::is_set(supp_timeout.yfilter)
-	|| ydk::is_set(tx_period.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Dot1X::Timeout::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "timeout";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Dot1X::Timeout::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auth_period.is_set || is_set(auth_period.yfilter)) leaf_name_data.push_back(auth_period.get_name_leafdata());
-    if (held_period.is_set || is_set(held_period.yfilter)) leaf_name_data.push_back(held_period.get_name_leafdata());
-    if (quiet_period.is_set || is_set(quiet_period.yfilter)) leaf_name_data.push_back(quiet_period.get_name_leafdata());
-    if (ratelimit_period.is_set || is_set(ratelimit_period.yfilter)) leaf_name_data.push_back(ratelimit_period.get_name_leafdata());
-    if (server_timeout.is_set || is_set(server_timeout.yfilter)) leaf_name_data.push_back(server_timeout.get_name_leafdata());
-    if (start_period.is_set || is_set(start_period.yfilter)) leaf_name_data.push_back(start_period.get_name_leafdata());
-    if (supp_timeout.is_set || is_set(supp_timeout.yfilter)) leaf_name_data.push_back(supp_timeout.get_name_leafdata());
-    if (tx_period.is_set || is_set(tx_period.yfilter)) leaf_name_data.push_back(tx_period.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Dot1X::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Dot1X::Timeout::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Native::Interface::TenGigabitEthernet::Dot1X::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auth-period")
-    {
-        auth_period = value;
-        auth_period.value_namespace = name_space;
-        auth_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "held-period")
-    {
-        held_period = value;
-        held_period.value_namespace = name_space;
-        held_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "quiet-period")
-    {
-        quiet_period = value;
-        quiet_period.value_namespace = name_space;
-        quiet_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ratelimit-period")
-    {
-        ratelimit_period = value;
-        ratelimit_period.value_namespace = name_space;
-        ratelimit_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "server-timeout")
-    {
-        server_timeout = value;
-        server_timeout.value_namespace = name_space;
-        server_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-period")
-    {
-        start_period = value;
-        start_period.value_namespace = name_space;
-        start_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "supp-timeout")
-    {
-        supp_timeout = value;
-        supp_timeout.value_namespace = name_space;
-        supp_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-period")
-    {
-        tx_period = value;
-        tx_period.value_namespace = name_space;
-        tx_period.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Dot1X::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auth-period")
-    {
-        auth_period.yfilter = yfilter;
-    }
-    if(value_path == "held-period")
-    {
-        held_period.yfilter = yfilter;
-    }
-    if(value_path == "quiet-period")
-    {
-        quiet_period.yfilter = yfilter;
-    }
-    if(value_path == "ratelimit-period")
-    {
-        ratelimit_period.yfilter = yfilter;
-    }
-    if(value_path == "server-timeout")
-    {
-        server_timeout.yfilter = yfilter;
-    }
-    if(value_path == "start-period")
-    {
-        start_period.yfilter = yfilter;
-    }
-    if(value_path == "supp-timeout")
-    {
-        supp_timeout.yfilter = yfilter;
-    }
-    if(value_path == "tx-period")
-    {
-        tx_period.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Dot1X::Timeout::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auth-period" || name == "held-period" || name == "quiet-period" || name == "ratelimit-period" || name == "server-timeout" || name == "start-period" || name == "supp-timeout" || name == "tx-period")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Performance::Performance()
-    :
-    monitor(std::make_shared<Native::Interface::TenGigabitEthernet::Performance::Monitor>())
-{
-    monitor->parent = this;
-
-    yang_name = "performance"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::TenGigabitEthernet::Performance::~Performance()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Performance::has_data() const
-{
-    return (monitor !=  nullptr && monitor->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Performance::has_operation() const
-{
-    return is_set(yfilter)
-	|| (monitor !=  nullptr && monitor->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Performance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ezpm:performance";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Performance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Performance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "monitor")
-    {
-        if(monitor == nullptr)
-        {
-            monitor = std::make_shared<Native::Interface::TenGigabitEthernet::Performance::Monitor>();
-        }
-        return monitor;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Performance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(monitor != nullptr)
-    {
-        children["monitor"] = monitor;
-    }
-
-    return children;
-}
-
-void Native::Interface::TenGigabitEthernet::Performance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Performance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Performance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitor")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Performance::Monitor::Monitor()
+Native::Interface::GigabitEthernet::Performance::Monitor::Monitor()
     :
     context{YType::str, "context"}
 {
@@ -430,11 +20,11 @@ Native::Interface::TenGigabitEthernet::Performance::Monitor::Monitor()
     yang_name = "monitor"; yang_parent_name = "performance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Performance::Monitor::~Monitor()
+Native::Interface::GigabitEthernet::Performance::Monitor::~Monitor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Performance::Monitor::has_data() const
+bool Native::Interface::GigabitEthernet::Performance::Monitor::has_data() const
 {
     for (auto const & leaf : context.getYLeafs())
     {
@@ -444,7 +34,7 @@ bool Native::Interface::TenGigabitEthernet::Performance::Monitor::has_data() con
     return false;
 }
 
-bool Native::Interface::TenGigabitEthernet::Performance::Monitor::has_operation() const
+bool Native::Interface::GigabitEthernet::Performance::Monitor::has_operation() const
 {
     for (auto const & leaf : context.getYLeafs())
     {
@@ -455,14 +45,14 @@ bool Native::Interface::TenGigabitEthernet::Performance::Monitor::has_operation(
 	|| ydk::is_set(context.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Performance::Monitor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Performance::Monitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "monitor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Performance::Monitor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Performance::Monitor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -473,18 +63,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Performance::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Performance::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Performance::Monitor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Performance::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Performance::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Performance::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "context")
     {
@@ -492,7 +82,7 @@ void Native::Interface::TenGigabitEthernet::Performance::Monitor::set_value(cons
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Performance::Monitor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Performance::Monitor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "context")
     {
@@ -500,31 +90,31 @@ void Native::Interface::TenGigabitEthernet::Performance::Monitor::set_filter(con
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Performance::Monitor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Performance::Monitor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "context")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::ServicePolicy()
+Native::Interface::GigabitEthernet::ServicePolicy::ServicePolicy()
     :
     history{YType::empty, "history"},
     input{YType::str, "input"},
     output{YType::str, "output"}
     	,
-    type(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type>())
+    type(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type>())
 {
     type->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::~ServicePolicy()
+Native::Interface::GigabitEthernet::ServicePolicy::~ServicePolicy()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_data() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::has_data() const
 {
     return history.is_set
 	|| input.is_set
@@ -532,7 +122,7 @@ bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_data() const
 	|| (type !=  nullptr && type->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_operation() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(history.yfilter)
@@ -541,14 +131,14 @@ bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_operation() const
 	|| (type !=  nullptr && type->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::ServicePolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-policy:service-policy";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::ServicePolicy::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -560,13 +150,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "type")
     {
         if(type == nullptr)
         {
-            type = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type>();
+            type = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type>();
         }
         return type;
     }
@@ -574,7 +164,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(type != nullptr)
@@ -585,7 +175,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "history")
     {
@@ -607,7 +197,7 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::set_value(const std::
     }
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "history")
     {
@@ -623,18 +213,18 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::set_filter(const std:
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "history" || name == "input" || name == "output")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Type()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::Type()
     :
-    control(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control>())
-	,performance_monitor(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor>())
-	,service_chain(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain>())
+    control(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::Control>())
+	,performance_monitor(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor>())
+	,service_chain(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain>())
 {
     control->parent = this;
     performance_monitor->parent = this;
@@ -643,18 +233,18 @@ Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Type()
     yang_name = "type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::~Type()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::~Type()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::has_data() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::has_data() const
 {
     return (control !=  nullptr && control->has_data())
 	|| (performance_monitor !=  nullptr && performance_monitor->has_data())
 	|| (service_chain !=  nullptr && service_chain->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::has_operation() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::has_operation() const
 {
     return is_set(yfilter)
 	|| (control !=  nullptr && control->has_operation())
@@ -662,14 +252,14 @@ bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::has_operation()
 	|| (service_chain !=  nullptr && service_chain->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::ServicePolicy::Type::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "type";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::ServicePolicy::Type::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -678,13 +268,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "control")
     {
         if(control == nullptr)
         {
-            control = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control>();
+            control = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::Control>();
         }
         return control;
     }
@@ -693,7 +283,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Ty
     {
         if(performance_monitor == nullptr)
         {
-            performance_monitor = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor>();
+            performance_monitor = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor>();
         }
         return performance_monitor;
     }
@@ -702,7 +292,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Ty
     {
         if(service_chain == nullptr)
         {
-            service_chain = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain>();
+            service_chain = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain>();
         }
         return service_chain;
     }
@@ -710,7 +300,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Ty
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::ServicePolicy::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(control != nullptr)
@@ -731,22 +321,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "control" || name == "performance-monitor" || name == "service-chain")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::Control()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::Control()
     :
     subscriber{YType::str, "subscriber"}
 {
@@ -754,29 +344,29 @@ Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::Control()
     yang_name = "control"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::~Control()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::~Control()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::has_data() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::has_data() const
 {
     return subscriber.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::has_operation() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(subscriber.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "control";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -786,18 +376,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "subscriber")
     {
@@ -807,7 +397,7 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::set_va
     }
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "subscriber")
     {
@@ -815,14 +405,14 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::set_fi
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::Control::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "subscriber")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::PerformanceMonitor()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::PerformanceMonitor()
     :
     direction{YType::enumeration, "direction"},
     name{YType::str, "name"}
@@ -831,31 +421,31 @@ Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::
     yang_name = "performance-monitor"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::~PerformanceMonitor()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::~PerformanceMonitor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_data() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_data() const
 {
     return direction.is_set
 	|| name.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_operation() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(direction.yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "performance-monitor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -866,18 +456,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
@@ -893,7 +483,7 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMoni
     }
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "direction")
     {
@@ -905,17 +495,17 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMoni
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "direction" || name == "name")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::ServiceChain()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::ServiceChain()
     :
-    input(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input>())
-	,output(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output>())
+    input(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input>())
+	,output(std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output>())
 {
     input->parent = this;
     output->parent = this;
@@ -923,31 +513,31 @@ Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Servic
     yang_name = "service-chain"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::~ServiceChain()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::~ServiceChain()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::has_data() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::has_data() const
 {
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::has_operation() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::has_operation() const
 {
     return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "service-chain";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -956,13 +546,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input>();
+            input = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input>();
         }
         return input;
     }
@@ -971,7 +561,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Ty
     {
         if(output == nullptr)
         {
-            output = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output>();
+            output = std::make_shared<Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output>();
         }
         return output;
     }
@@ -979,7 +569,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Ty
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -995,22 +585,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "input" || name == "output")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::Input()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::Input()
     :
     name{YType::str, "name"}
 {
@@ -1018,29 +608,29 @@ Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input:
     yang_name = "input"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::~Input()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::~Input()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_data() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_data() const
 {
     return name.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_operation() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1050,18 +640,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -1071,7 +661,7 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::I
     }
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -1079,14 +669,14 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::I
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::Output()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::Output()
     :
     name{YType::str, "name"}
 {
@@ -1094,29 +684,29 @@ Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output
     yang_name = "output"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::~Output()
+Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::~Output()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_data() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_data() const
 {
     return name.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_operation() const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1126,18 +716,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -1147,7 +737,7 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::O
     }
 }
 
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -1155,49 +745,312 @@ void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::O
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Lisp()
+Native::Interface::GigabitEthernet::FabricDomain::FabricDomain()
+    :
+    iwan_fabric(std::make_shared<Native::Interface::GigabitEthernet::FabricDomain::IwanFabric>())
+{
+    iwan_fabric->parent = this;
+
+    yang_name = "fabric-domain"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Native::Interface::GigabitEthernet::FabricDomain::~FabricDomain()
+{
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::has_data() const
+{
+    return (iwan_fabric !=  nullptr && iwan_fabric->has_data());
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::has_operation() const
+{
+    return is_set(yfilter)
+	|| (iwan_fabric !=  nullptr && iwan_fabric->has_operation());
+}
+
+std::string Native::Interface::GigabitEthernet::FabricDomain::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-iwanfabric:fabric-domain";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::FabricDomain::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::FabricDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "iwan-fabric")
+    {
+        if(iwan_fabric == nullptr)
+        {
+            iwan_fabric = std::make_shared<Native::Interface::GigabitEthernet::FabricDomain::IwanFabric>();
+        }
+        return iwan_fabric;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::FabricDomain::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(iwan_fabric != nullptr)
+    {
+        children["iwan-fabric"] = iwan_fabric;
+    }
+
+    return children;
+}
+
+void Native::Interface::GigabitEthernet::FabricDomain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::GigabitEthernet::FabricDomain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "iwan-fabric")
+        return true;
+    return false;
+}
+
+Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::IwanFabric()
+{
+
+    yang_name = "iwan-fabric"; yang_parent_name = "fabric-domain"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::~IwanFabric()
+{
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::has_data() const
+{
+    for (std::size_t index=0; index<word.size(); index++)
+    {
+        if(word[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::has_operation() const
+{
+    for (std::size_t index=0; index<word.size(); index++)
+    {
+        if(word[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "iwan-fabric";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "word")
+    {
+        for(auto const & c : word)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word>();
+        c->parent = this;
+        word.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : word)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "word")
+        return true;
+    return false;
+}
+
+Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::Word()
+    :
+    word{YType::str, "word"},
+    interface_id{YType::uint8, "interface-id"}
+{
+
+    yang_name = "word"; yang_parent_name = "iwan-fabric"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::~Word()
+{
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::has_data() const
+{
+    return word.is_set
+	|| interface_id.is_set;
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(word.yfilter)
+	|| ydk::is_set(interface_id.yfilter);
+}
+
+std::string Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "word" <<"[word='" <<word <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (word.is_set || is_set(word.yfilter)) leaf_name_data.push_back(word.get_name_leafdata());
+    if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "word")
+    {
+        word = value;
+        word.value_namespace = name_space;
+        word.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-id")
+    {
+        interface_id = value;
+        interface_id.value_namespace = name_space;
+        interface_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "word")
+    {
+        word.yfilter = yfilter;
+    }
+    if(value_path == "interface-id")
+    {
+        interface_id.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::GigabitEthernet::FabricDomain::IwanFabric::Word::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "word" || name == "interface-id")
+        return true;
+    return false;
+}
+
+Native::Interface::GigabitEthernet::Lisp::Lisp()
     :
     extended_subnet_mode{YType::empty, "extended-subnet-mode"}
     	,
-    mobility(std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility>())
+    mobility(std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility>())
 {
     mobility->parent = this;
 
-    yang_name = "lisp"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lisp"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::~Lisp()
+Native::Interface::GigabitEthernet::Lisp::~Lisp()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::has_data() const
+bool Native::Interface::GigabitEthernet::Lisp::has_data() const
 {
     return extended_subnet_mode.is_set
 	|| (mobility !=  nullptr && mobility->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::has_operation() const
+bool Native::Interface::GigabitEthernet::Lisp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(extended_subnet_mode.yfilter)
 	|| (mobility !=  nullptr && mobility->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Lisp::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Lisp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-lisp:lisp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Lisp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Lisp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1207,13 +1060,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mobility")
     {
         if(mobility == nullptr)
         {
-            mobility = std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility>();
+            mobility = std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility>();
         }
         return mobility;
     }
@@ -1221,7 +1074,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Lisp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(mobility != nullptr)
@@ -1232,7 +1085,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "extended-subnet-mode")
     {
@@ -1242,7 +1095,7 @@ void Native::Interface::TenGigabitEthernet::Lisp::set_value(const std::string & 
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Lisp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "extended-subnet-mode")
     {
@@ -1250,18 +1103,18 @@ void Native::Interface::TenGigabitEthernet::Lisp::set_filter(const std::string &
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Lisp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mobility" || name == "extended-subnet-mode")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::Mobility()
+Native::Interface::GigabitEthernet::Lisp::Mobility::Mobility()
     :
-    dynamic_eid(std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid>())
-	,discover(std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover>())
-	,liveness(std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness>())
+    dynamic_eid(std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid>())
+	,discover(std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility::Discover>())
+	,liveness(std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness>())
 {
     dynamic_eid->parent = this;
     discover->parent = this;
@@ -1270,18 +1123,18 @@ Native::Interface::TenGigabitEthernet::Lisp::Mobility::Mobility()
     yang_name = "mobility"; yang_parent_name = "lisp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::~Mobility()
+Native::Interface::GigabitEthernet::Lisp::Mobility::~Mobility()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::has_data() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::has_data() const
 {
     return (dynamic_eid !=  nullptr && dynamic_eid->has_data())
 	|| (discover !=  nullptr && discover->has_data())
 	|| (liveness !=  nullptr && liveness->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::has_operation() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::has_operation() const
 {
     return is_set(yfilter)
 	|| (dynamic_eid !=  nullptr && dynamic_eid->has_operation())
@@ -1289,14 +1142,14 @@ bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::has_operation() cons
 	|| (liveness !=  nullptr && liveness->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Lisp::Mobility::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Lisp::Mobility::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mobility";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Lisp::Mobility::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Lisp::Mobility::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1305,13 +1158,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::Mobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Lisp::Mobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic-eid")
     {
         if(dynamic_eid == nullptr)
         {
-            dynamic_eid = std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid>();
+            dynamic_eid = std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid>();
         }
         return dynamic_eid;
     }
@@ -1320,7 +1173,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::Mobility::g
     {
         if(discover == nullptr)
         {
-            discover = std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover>();
+            discover = std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility::Discover>();
         }
         return discover;
     }
@@ -1329,7 +1182,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::Mobility::g
     {
         if(liveness == nullptr)
         {
-            liveness = std::make_shared<Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness>();
+            liveness = std::make_shared<Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness>();
         }
         return liveness;
     }
@@ -1337,7 +1190,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::Mobility::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Lisp::Mobility::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Lisp::Mobility::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dynamic_eid != nullptr)
@@ -1358,22 +1211,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic-eid" || name == "discover" || name == "liveness")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::DynamicEid()
+Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::DynamicEid()
     :
     dynamic_eid_name{YType::str, "dynamic-eid-name"},
     nbr_proxy_reply{YType::empty, "nbr-proxy-reply"},
@@ -1383,18 +1236,18 @@ Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::DynamicEid()
     yang_name = "dynamic-eid"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::~DynamicEid()
+Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::~DynamicEid()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::has_data() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::has_data() const
 {
     return dynamic_eid_name.is_set
 	|| nbr_proxy_reply.is_set
 	|| requests.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::has_operation() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dynamic_eid_name.yfilter)
@@ -1402,14 +1255,14 @@ bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::has_oper
 	|| ydk::is_set(requests.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dynamic-eid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1421,18 +1274,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dynamic-eid-name")
     {
@@ -1454,7 +1307,7 @@ void Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::set_valu
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dynamic-eid-name")
     {
@@ -1470,14 +1323,14 @@ void Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::set_filt
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::DynamicEid::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::DynamicEid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic-eid-name" || name == "nbr-proxy-reply" || name == "requests")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::Discover()
+Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::Discover()
     :
     arp{YType::boolean, "arp"}
 {
@@ -1485,29 +1338,29 @@ Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::Discover()
     yang_name = "discover"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::~Discover()
+Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::~Discover()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::has_data() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::has_data() const
 {
     return arp.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::has_operation() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(arp.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "discover";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1517,18 +1370,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arp")
     {
@@ -1538,7 +1391,7 @@ void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::set_value(
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "arp")
     {
@@ -1546,14 +1399,14 @@ void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::set_filter
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::Discover::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::Discover::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "arp")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::Liveness()
+Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::Liveness()
     :
     test{YType::boolean, "test"},
     ttl{YType::uint8, "ttl"}
@@ -1562,31 +1415,31 @@ Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::Liveness()
     yang_name = "liveness"; yang_parent_name = "mobility"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::~Liveness()
+Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::~Liveness()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::has_data() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::has_data() const
 {
     return test.is_set
 	|| ttl.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::has_operation() const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(test.yfilter)
 	|| ydk::is_set(ttl.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "liveness";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1597,18 +1450,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "test")
     {
@@ -1624,7 +1477,7 @@ void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::set_value(
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "test")
     {
@@ -1636,47 +1489,47 @@ void Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::set_filter
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Lisp::Mobility::Liveness::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Lisp::Mobility::Liveness::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test" || name == "ttl")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Lldp::Lldp()
+Native::Interface::GigabitEthernet::Lldp::Lldp()
     :
     receive{YType::boolean, "receive"},
     transmit{YType::boolean, "transmit"}
 {
 
-    yang_name = "lldp"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Lldp::~Lldp()
+Native::Interface::GigabitEthernet::Lldp::~Lldp()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Lldp::has_data() const
+bool Native::Interface::GigabitEthernet::Lldp::has_data() const
 {
     return receive.is_set
 	|| transmit.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Lldp::has_operation() const
+bool Native::Interface::GigabitEthernet::Lldp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(receive.yfilter)
 	|| ydk::is_set(transmit.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Lldp::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Lldp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-lldp:lldp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Lldp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Lldp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1687,18 +1540,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Lldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Lldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Lldp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Lldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Lldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Lldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "receive")
     {
@@ -1714,7 +1567,7 @@ void Native::Interface::TenGigabitEthernet::Lldp::set_value(const std::string & 
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Lldp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Lldp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "receive")
     {
@@ -1726,45 +1579,49 @@ void Native::Interface::TenGigabitEthernet::Lldp::set_filter(const std::string &
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Lldp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Lldp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "receive" || name == "transmit")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Mka::Mka()
+Native::Interface::GigabitEthernet::Mka::Mka()
     :
-    pre_shared_key(std::make_shared<Native::Interface::TenGigabitEthernet::Mka::PreSharedKey>())
+    policy(std::make_shared<Native::Interface::GigabitEthernet::Mka::Policy>())
+	,pre_shared_key(std::make_shared<Native::Interface::GigabitEthernet::Mka::PreSharedKey>())
 {
+    policy->parent = this;
     pre_shared_key->parent = this;
 
-    yang_name = "mka"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mka"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Mka::~Mka()
+Native::Interface::GigabitEthernet::Mka::~Mka()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::has_data() const
+bool Native::Interface::GigabitEthernet::Mka::has_data() const
 {
-    return (pre_shared_key !=  nullptr && pre_shared_key->has_data());
+    return (policy !=  nullptr && policy->has_data())
+	|| (pre_shared_key !=  nullptr && pre_shared_key->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::has_operation() const
+bool Native::Interface::GigabitEthernet::Mka::has_operation() const
 {
     return is_set(yfilter)
+	|| (policy !=  nullptr && policy->has_operation())
 	|| (pre_shared_key !=  nullptr && pre_shared_key->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Mka::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Mka::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-mka:mka";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Mka::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Mka::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1773,13 +1630,22 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Mka::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Mka::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "policy")
+    {
+        if(policy == nullptr)
+        {
+            policy = std::make_shared<Native::Interface::GigabitEthernet::Mka::Policy>();
+        }
+        return policy;
+    }
+
     if(child_yang_name == "pre-shared-key")
     {
         if(pre_shared_key == nullptr)
         {
-            pre_shared_key = std::make_shared<Native::Interface::TenGigabitEthernet::Mka::PreSharedKey>();
+            pre_shared_key = std::make_shared<Native::Interface::GigabitEthernet::Mka::PreSharedKey>();
         }
         return pre_shared_key;
     }
@@ -1787,9 +1653,14 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Mka::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Mka::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Mka::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy != nullptr)
+    {
+        children["policy"] = policy;
+    }
+
     if(pre_shared_key != nullptr)
     {
         children["pre-shared-key"] = pre_shared_key;
@@ -1798,53 +1669,129 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Mka::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Mka::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Mka::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Mka::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Mka::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pre-shared-key")
+    if(name == "policy" || name == "pre-shared-key")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::PreSharedKey()
+Native::Interface::GigabitEthernet::Mka::Policy::Policy()
     :
-    key_chain(std::make_shared<Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain>())
+    name{YType::str, "name"}
+{
+
+    yang_name = "policy"; yang_parent_name = "mka"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Native::Interface::GigabitEthernet::Mka::Policy::~Policy()
+{
+}
+
+bool Native::Interface::GigabitEthernet::Mka::Policy::has_data() const
+{
+    return name.is_set;
+}
+
+bool Native::Interface::GigabitEthernet::Mka::Policy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string Native::Interface::GigabitEthernet::Mka::Policy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Mka::Policy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Mka::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Mka::Policy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Native::Interface::GigabitEthernet::Mka::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::GigabitEthernet::Mka::Policy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::GigabitEthernet::Mka::Policy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
+}
+
+Native::Interface::GigabitEthernet::Mka::PreSharedKey::PreSharedKey()
+    :
+    key_chain(std::make_shared<Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain>())
 {
     key_chain->parent = this;
 
     yang_name = "pre-shared-key"; yang_parent_name = "mka"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::~PreSharedKey()
+Native::Interface::GigabitEthernet::Mka::PreSharedKey::~PreSharedKey()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::has_data() const
+bool Native::Interface::GigabitEthernet::Mka::PreSharedKey::has_data() const
 {
     return (key_chain !=  nullptr && key_chain->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::has_operation() const
+bool Native::Interface::GigabitEthernet::Mka::PreSharedKey::has_operation() const
 {
     return is_set(yfilter)
 	|| (key_chain !=  nullptr && key_chain->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Mka::PreSharedKey::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pre-shared-key";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Mka::PreSharedKey::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1853,13 +1800,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Mka::PreSharedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-chain")
     {
         if(key_chain == nullptr)
         {
-            key_chain = std::make_shared<Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain>();
+            key_chain = std::make_shared<Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain>();
         }
         return key_chain;
     }
@@ -1867,7 +1814,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Mka::PreSharedKey
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Mka::PreSharedKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key_chain != nullptr)
@@ -1878,22 +1825,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Mka::PreSharedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Mka::PreSharedKey::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Mka::PreSharedKey::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::KeyChain()
+Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::KeyChain()
     :
     name{YType::str, "name"}
 {
@@ -1901,29 +1848,29 @@ Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::KeyChain()
     yang_name = "key-chain"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::~KeyChain()
+Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::~KeyChain()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::has_data() const
+bool Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::has_data() const
 {
     return name.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::has_operation() const
+bool Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-chain";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1933,18 +1880,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -1954,7 +1901,7 @@ void Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::set_val
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -1962,14 +1909,14 @@ void Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::set_fil
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Mka::PreSharedKey::KeyChain::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Mka::PreSharedKey::KeyChain::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Ospfv3()
+Native::Interface::GigabitEthernet::Ospfv3::Ospfv3()
     :
     dead_interval{YType::uint16, "dead-interval"},
     flood_reduction{YType::empty, "flood-reduction"},
@@ -1980,15 +1927,15 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Ospfv3()
     shutdown{YType::empty, "shutdown"},
     transmit_delay{YType::uint32, "transmit-delay"}
     	,
-    authentication(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication>())
+    authentication(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication>())
 	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost>())
-	,database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter>())
+	,cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost>())
+	,database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter>())
 	,demand_circuit(nullptr) // presence node
-	,encryption(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption>())
-	,manet(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Manet>())
-	,multi_area(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea>())
-	,network(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Network>())
+	,encryption(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption>())
+	,manet(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Manet>())
+	,multi_area(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::MultiArea>())
+	,network(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Network>())
 	,prefix_suppression(nullptr) // presence node
 {
     authentication->parent = this;
@@ -1999,14 +1946,14 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Ospfv3()
     multi_area->parent = this;
     network->parent = this;
 
-    yang_name = "ospfv3"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::~Ospfv3()
+Native::Interface::GigabitEthernet::Ospfv3::~Ospfv3()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::has_data() const
 {
     for (std::size_t index=0; index<process_id.size(); index++)
     {
@@ -2038,7 +1985,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::has_data() const
 	|| (prefix_suppression !=  nullptr && prefix_suppression->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::has_operation() const
 {
     for (std::size_t index=0; index<process_id.size(); index++)
     {
@@ -2071,14 +2018,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::has_operation() const
 	|| (prefix_suppression !=  nullptr && prefix_suppression->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-ospfv3:ospfv3";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2095,7 +2042,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process-id")
     {
@@ -2107,7 +2054,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId>();
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId>();
         c->parent = this;
         process_id.push_back(c);
         return c;
@@ -2117,7 +2064,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication>();
+            authentication = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication>();
         }
         return authentication;
     }
@@ -2126,7 +2073,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(bfd == nullptr)
         {
-            bfd = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Bfd>();
+            bfd = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Bfd>();
         }
         return bfd;
     }
@@ -2135,7 +2082,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost>();
         }
         return cost;
     }
@@ -2144,7 +2091,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -2153,7 +2100,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(demand_circuit == nullptr)
         {
-            demand_circuit = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit>();
+            demand_circuit = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit>();
         }
         return demand_circuit;
     }
@@ -2162,7 +2109,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(encryption == nullptr)
         {
-            encryption = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption>();
+            encryption = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption>();
         }
         return encryption;
     }
@@ -2171,7 +2118,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(manet == nullptr)
         {
-            manet = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Manet>();
+            manet = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Manet>();
         }
         return manet;
     }
@@ -2180,7 +2127,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(multi_area == nullptr)
         {
-            multi_area = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea>();
+            multi_area = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::MultiArea>();
         }
         return multi_area;
     }
@@ -2195,7 +2142,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor>();
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
         return c;
@@ -2205,7 +2152,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(network == nullptr)
         {
-            network = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Network>();
+            network = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Network>();
         }
         return network;
     }
@@ -2214,7 +2161,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     {
         if(prefix_suppression == nullptr)
         {
-            prefix_suppression = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression>();
+            prefix_suppression = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression>();
         }
         return prefix_suppression;
     }
@@ -2222,7 +2169,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : process_id)
@@ -2288,7 +2235,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dead-interval")
     {
@@ -2340,7 +2287,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::set_value(const std::string 
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dead-interval")
     {
@@ -2376,14 +2323,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::set_filter(const std::string
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "process-id" || name == "authentication" || name == "bfd" || name == "cost" || name == "database-filter" || name == "demand-circuit" || name == "encryption" || name == "manet" || name == "multi-area" || name == "neighbor" || name == "network" || name == "prefix-suppression" || name == "dead-interval" || name == "flood-reduction" || name == "hello-interval" || name == "mtu-ignore" || name == "priority" || name == "retransmit-interval" || name == "shutdown" || name == "transmit-delay")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::ProcessId()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::ProcessId()
     :
     id{YType::uint16, "id"},
     dead_interval{YType::uint16, "dead-interval"},
@@ -2392,20 +2339,20 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::ProcessId()
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
     	,
-    authentication(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication>())
+    authentication(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication>())
 	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost>())
-	,database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter>())
+	,cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost>())
+	,database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter>())
 	,demand_circuit(nullptr) // presence node
 	,flood_reduction(nullptr) // presence node
-	,manet(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet>())
+	,manet(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet>())
 	,mtu_ignore(nullptr) // presence node
-	,multi_area(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea>())
-	,network(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network>())
+	,multi_area(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea>())
+	,network(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network>())
 	,prefix_suppression(nullptr) // presence node
 	,shutdown(nullptr) // presence node
-	,ipv4(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4>())
-	,ipv6(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6>())
+	,ipv4(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4>())
+	,ipv6(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6>())
 {
     authentication->parent = this;
     cost->parent = this;
@@ -2419,11 +2366,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::ProcessId()
     yang_name = "process-id"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::~ProcessId()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::~ProcessId()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::has_data() const
 {
     for (std::size_t index=0; index<neighbor.size(); index++)
     {
@@ -2452,7 +2399,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::has_data() const
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::has_operation() const
 {
     for (std::size_t index=0; index<neighbor.size(); index++)
     {
@@ -2482,14 +2429,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::has_operation() c
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "process-id" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2504,13 +2451,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication>();
+            authentication = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication>();
         }
         return authentication;
     }
@@ -2519,7 +2466,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(bfd == nullptr)
         {
-            bfd = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd>();
+            bfd = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd>();
         }
         return bfd;
     }
@@ -2528,7 +2475,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost>();
         }
         return cost;
     }
@@ -2537,7 +2484,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -2546,7 +2493,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(demand_circuit == nullptr)
         {
-            demand_circuit = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit>();
+            demand_circuit = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit>();
         }
         return demand_circuit;
     }
@@ -2555,7 +2502,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(flood_reduction == nullptr)
         {
-            flood_reduction = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction>();
+            flood_reduction = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction>();
         }
         return flood_reduction;
     }
@@ -2564,7 +2511,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(manet == nullptr)
         {
-            manet = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet>();
+            manet = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet>();
         }
         return manet;
     }
@@ -2573,7 +2520,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(mtu_ignore == nullptr)
         {
-            mtu_ignore = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore>();
+            mtu_ignore = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore>();
         }
         return mtu_ignore;
     }
@@ -2582,7 +2529,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(multi_area == nullptr)
         {
-            multi_area = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea>();
+            multi_area = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea>();
         }
         return multi_area;
     }
@@ -2597,7 +2544,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor>();
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
         return c;
@@ -2607,7 +2554,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(network == nullptr)
         {
-            network = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network>();
+            network = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network>();
         }
         return network;
     }
@@ -2616,7 +2563,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(prefix_suppression == nullptr)
         {
-            prefix_suppression = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression>();
+            prefix_suppression = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression>();
         }
         return prefix_suppression;
     }
@@ -2625,7 +2572,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(shutdown == nullptr)
         {
-            shutdown = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown>();
+            shutdown = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown>();
         }
         return shutdown;
     }
@@ -2634,7 +2581,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4>();
+            ipv4 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4>();
         }
         return ipv4;
     }
@@ -2643,7 +2590,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(ipv6 == nullptr)
         {
-            ipv6 = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6>();
+            ipv6 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6>();
         }
         return ipv6;
     }
@@ -2651,7 +2598,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(authentication != nullptr)
@@ -2732,7 +2679,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -2772,7 +2719,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::set_value(const s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -2800,14 +2747,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::set_filter(const 
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "authentication" || name == "bfd" || name == "cost" || name == "database-filter" || name == "demand-circuit" || name == "flood-reduction" || name == "manet" || name == "mtu-ignore" || name == "multi-area" || name == "neighbor" || name == "network" || name == "prefix-suppression" || name == "shutdown" || name == "ipv4" || name == "ipv6" || name == "id" || name == "dead-interval" || name == "hello-interval" || name == "priority" || name == "retransmit-interval" || name == "transmit-delay")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"},
     null{YType::empty, "null"}
@@ -2816,31 +2763,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::Authen
     yang_name = "authentication"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::~Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::~Authentication()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::has_data() const
 {
     return key_chain.is_set
 	|| null.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_chain.yfilter)
 	|| ydk::is_set(null.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2851,18 +2798,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-chain")
     {
@@ -2878,7 +2825,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-chain")
     {
@@ -2890,14 +2837,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain" || name == "null")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::Bfd()
     :
     disable{YType::empty, "disable"}
 {
@@ -2905,29 +2852,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::Bfd()
     yang_name = "bfd"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::~Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::~Bfd()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2937,18 +2884,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -2958,7 +2905,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::set_value(co
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -2966,14 +2913,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::set_filter(c
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Bfd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Cost()
     :
     value_{YType::uint32, "value"}
     	,
@@ -2983,31 +2930,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Cost()
     yang_name = "cost"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::has_data() const
 {
     return value_.is_set
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| (dynamic !=  nullptr && dynamic->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3017,13 +2964,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
         if(dynamic == nullptr)
         {
-            dynamic = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic>();
+            dynamic = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic>();
         }
         return dynamic;
     }
@@ -3031,7 +2978,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dynamic != nullptr)
@@ -3042,7 +2989,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -3052,7 +2999,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::set_value(c
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -3060,37 +3007,37 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::set_filter(
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic" || name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Dynamic()
     :
     default_{YType::uint32, "default"}
     	,
     hysteresis(nullptr) // presence node
-	,weight(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight>())
+	,weight(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight>())
 {
     weight->parent = this;
 
     yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::~Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::~Dynamic()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::has_data() const
 {
     return default_.is_set
 	|| (hysteresis !=  nullptr && hysteresis->has_data())
 	|| (weight !=  nullptr && weight->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
@@ -3098,14 +3045,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::ha
 	|| (weight !=  nullptr && weight->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dynamic";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3115,13 +3062,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hysteresis")
     {
         if(hysteresis == nullptr)
         {
-            hysteresis = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis>();
+            hysteresis = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis>();
         }
         return hysteresis;
     }
@@ -3130,7 +3077,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(weight == nullptr)
         {
-            weight = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight>();
+            weight = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight>();
         }
         return weight;
     }
@@ -3138,7 +3085,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(hysteresis != nullptr)
@@ -3154,7 +3101,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -3164,7 +3111,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::se
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -3172,14 +3119,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::se
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hysteresis" || name == "weight" || name == "default")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::Hysteresis()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -3188,31 +3135,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hystere
     yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::~Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::~Hysteresis()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hysteresis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3223,18 +3170,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -3250,7 +3197,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hy
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -3262,14 +3209,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hy
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Weight()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Weight()
     :
     l2_factor(nullptr) // presence node
 	,latency(nullptr) // presence node
@@ -3280,11 +3227,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight:
     yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::~Weight()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::~Weight()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::has_data() const
 {
     return (l2_factor !=  nullptr && l2_factor->has_data())
 	|| (latency !=  nullptr && latency->has_data())
@@ -3292,7 +3239,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
 	|| (throughput !=  nullptr && throughput->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::has_operation() const
 {
     return is_set(yfilter)
 	|| (l2_factor !=  nullptr && l2_factor->has_operation())
@@ -3301,14 +3248,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
 	|| (throughput !=  nullptr && throughput->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weight";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3317,13 +3264,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "L2-factor")
     {
         if(l2_factor == nullptr)
         {
-            l2_factor = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor>();
+            l2_factor = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor>();
         }
         return l2_factor;
     }
@@ -3332,7 +3279,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(latency == nullptr)
         {
-            latency = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency>();
+            latency = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency>();
         }
         return latency;
     }
@@ -3341,7 +3288,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(resources == nullptr)
         {
-            resources = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources>();
+            resources = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources>();
         }
         return resources;
     }
@@ -3350,7 +3297,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(throughput == nullptr)
         {
-            throughput = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput>();
+            throughput = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput>();
         }
         return throughput;
     }
@@ -3358,7 +3305,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(l2_factor != nullptr)
@@ -3384,22 +3331,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "L2-factor" || name == "latency" || name == "resources" || name == "throughput")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::L2Factor()
     :
     value_{YType::uint8, "value"}
 {
@@ -3407,29 +3354,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight:
     yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::~L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::~L2Factor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "L2-factor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3439,18 +3386,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -3460,7 +3407,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -3468,14 +3415,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::Latency()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::Latency()
     :
     value_{YType::uint8, "value"}
 {
@@ -3483,29 +3430,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight:
     yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::~Latency()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::~Latency()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "latency";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3515,18 +3462,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -3536,7 +3483,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -3544,14 +3491,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::Resources()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::Resources()
     :
     value_{YType::uint8, "value"}
 {
@@ -3559,29 +3506,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight:
     yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::~Resources()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::~Resources()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "resources";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3591,18 +3538,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -3612,7 +3559,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -3620,14 +3567,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::Throughput()
     :
     value_{YType::uint8, "value"}
 {
@@ -3635,29 +3582,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight:
     yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::~Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::~Throughput()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "throughput";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3667,18 +3614,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -3688,7 +3635,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -3696,14 +3643,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::We
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"},
     disable{YType::empty, "disable"}
@@ -3712,31 +3659,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::Databa
     yang_name = "database-filter"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::has_data() const
 {
     return all.is_set
 	|| disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3747,18 +3694,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -3774,7 +3721,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -3786,14 +3733,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all" || name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::DemandCircuit()
     :
     disable{YType::empty, "disable"},
     ignore{YType::empty, "ignore"}
@@ -3802,31 +3749,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::DemandC
     yang_name = "demand-circuit"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::~DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::~DemandCircuit()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::has_data() const
 {
     return disable.is_set
 	|| ignore.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(ignore.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "demand-circuit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3837,18 +3784,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -3864,7 +3811,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::se
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -3876,14 +3823,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::se
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable" || name == "ignore")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::FloodReduction()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::FloodReduction()
     :
     disable{YType::empty, "disable"}
 {
@@ -3891,29 +3838,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::FloodR
     yang_name = "flood-reduction"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::~FloodReduction()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::~FloodReduction()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flood-reduction";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3923,18 +3870,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -3944,7 +3891,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -3952,45 +3899,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::FloodReduction::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::FloodReduction::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Manet()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Manet()
     :
-    peering(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering>())
+    peering(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering>())
 {
     peering->parent = this;
 
     yang_name = "manet"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::~Manet()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::~Manet()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::has_data() const
 {
     return (peering !=  nullptr && peering->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::has_operation() const
 {
     return is_set(yfilter)
 	|| (peering !=  nullptr && peering->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "manet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3999,13 +3946,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peering")
     {
         if(peering == nullptr)
         {
-            peering = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering>();
+            peering = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering>();
         }
         return peering;
     }
@@ -4013,7 +3960,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(peering != nullptr)
@@ -4024,57 +3971,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peering")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Peering()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Peering()
     :
     link_metrics{YType::uint32, "link-metrics"}
     	,
-    cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost>())
+    cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost>())
 {
     cost->parent = this;
 
     yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::~Peering()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::~Peering()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::has_data() const
 {
     return link_metrics.is_set
 	|| (cost !=  nullptr && cost->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(link_metrics.yfilter)
 	|| (cost !=  nullptr && cost->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peering";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4084,13 +4031,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost>();
         }
         return cost;
     }
@@ -4098,7 +4045,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cost != nullptr)
@@ -4109,7 +4056,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-metrics")
     {
@@ -4119,7 +4066,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "link-metrics")
     {
@@ -4127,14 +4074,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cost" || name == "link-metrics")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::Cost()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -4143,31 +4090,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::
     yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4178,18 +4125,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -4205,7 +4152,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::C
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -4217,14 +4164,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::C
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::MtuIgnore()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::MtuIgnore()
     :
     disable{YType::empty, "disable"}
 {
@@ -4232,29 +4179,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::MtuIgnore()
     yang_name = "mtu-ignore"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::~MtuIgnore()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::~MtuIgnore()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mtu-ignore";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4264,18 +4211,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -4285,7 +4232,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::set_va
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -4293,14 +4240,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::set_fi
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::MultiArea()
     :
     id{YType::str, "id"},
     cost{YType::uint32, "cost"},
@@ -4310,18 +4257,18 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::MultiArea()
     yang_name = "multi-area"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::~MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::~MultiArea()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::has_data() const
 {
     return id.is_set
 	|| cost.is_set
 	|| disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -4329,14 +4276,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::has_op
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multi-area";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4348,18 +4295,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -4381,7 +4328,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::set_va
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -4397,32 +4344,32 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::set_fi
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "cost" || name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::Neighbor()
     :
     id{YType::str, "id"},
     cost{YType::uint16, "cost"},
     poll_interval{YType::uint32, "poll-interval"},
     priority{YType::uint8, "priority"}
     	,
-    database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter>())
+    database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter>())
 {
     database_filter->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::~Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::~Neighbor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::has_data() const
 {
     return id.is_set
 	|| cost.is_set
@@ -4431,7 +4378,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::has_dat
 	|| (database_filter !=  nullptr && database_filter->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -4441,14 +4388,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::has_ope
 	|| (database_filter !=  nullptr && database_filter->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4461,13 +4408,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-filter")
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -4475,7 +4422,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database_filter != nullptr)
@@ -4486,7 +4433,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -4514,7 +4461,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::set_val
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -4534,14 +4481,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::set_fil
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database-filter" || name == "id" || name == "cost" || name == "poll-interval" || name == "priority")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"}
 {
@@ -4549,29 +4496,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilt
     yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_data() const
 {
     return all.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4581,18 +4528,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -4602,7 +4549,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::Databas
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -4610,14 +4557,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::Databas
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::Network()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::Network()
     :
     broadcast{YType::empty, "broadcast"},
     manet{YType::empty, "manet"},
@@ -4630,11 +4577,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::Network()
     yang_name = "network"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::~Network()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::~Network()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::has_data() const
 {
     return broadcast.is_set
 	|| manet.is_set
@@ -4643,7 +4590,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::has_data
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast.yfilter)
@@ -4653,14 +4600,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::has_oper
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4673,13 +4620,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "point-to-multipoint")
     {
         if(point_to_multipoint == nullptr)
         {
-            point_to_multipoint = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint>();
+            point_to_multipoint = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint>();
         }
         return point_to_multipoint;
     }
@@ -4687,7 +4634,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(point_to_multipoint != nullptr)
@@ -4698,7 +4645,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast")
     {
@@ -4726,7 +4673,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::set_valu
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast")
     {
@@ -4746,14 +4693,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::set_filt
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "point-to-multipoint" || name == "broadcast" || name == "manet" || name == "non-broadcast" || name == "point-to-point")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::PointToMultipoint()
     :
     non_broadcast{YType::empty, "non-broadcast"}
 {
@@ -4761,29 +4708,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultip
     yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::~PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::~PointToMultipoint()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::has_data() const
 {
     return non_broadcast.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(non_broadcast.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "point-to-multipoint";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4793,18 +4740,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "non-broadcast")
     {
@@ -4814,7 +4761,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToM
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "non-broadcast")
     {
@@ -4822,14 +4769,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToM
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "non-broadcast")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::PrefixSuppression()
     :
     disable{YType::empty, "disable"}
 {
@@ -4837,29 +4784,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::Pre
     yang_name = "prefix-suppression"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::~PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::~PrefixSuppression()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-suppression";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4869,18 +4816,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -4890,7 +4837,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -4898,14 +4845,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::Shutdown()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::Shutdown()
     :
     disable{YType::empty, "disable"}
 {
@@ -4913,29 +4860,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::Shutdown()
     yang_name = "shutdown"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::~Shutdown()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::~Shutdown()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4945,18 +4892,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -4966,7 +4913,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::set_val
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -4974,14 +4921,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::set_fil
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Ipv4()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Ipv4()
     :
     dead_interval{YType::uint16, "dead-interval"},
     hello_interval{YType::uint32, "hello-interval"},
@@ -4989,16 +4936,16 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Ipv4()
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
     	,
-    authentication(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication>())
+    authentication(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication>())
 	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost>())
-	,database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter>())
+	,cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost>())
+	,database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter>())
 	,demand_circuit(nullptr) // presence node
 	,flood_reduction(nullptr) // presence node
-	,manet(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet>())
+	,manet(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet>())
 	,mtu_ignore(nullptr) // presence node
-	,multi_area(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea>())
-	,network(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network>())
+	,multi_area(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea>())
+	,network(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network>())
 	,prefix_suppression(nullptr) // presence node
 	,shutdown(nullptr) // presence node
 {
@@ -5012,11 +4959,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Ipv4()
     yang_name = "ipv4"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::~Ipv4()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::~Ipv4()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::has_data() const
 {
     for (std::size_t index=0; index<area.size(); index++)
     {
@@ -5047,7 +4994,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::has_data() 
 	|| (shutdown !=  nullptr && shutdown->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::has_operation() const
 {
     for (std::size_t index=0; index<area.size(); index++)
     {
@@ -5079,14 +5026,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::has_operati
 	|| (shutdown !=  nullptr && shutdown->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5100,7 +5047,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area")
     {
@@ -5112,7 +5059,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area>();
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area>();
         c->parent = this;
         area.push_back(c);
         return c;
@@ -5122,7 +5069,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication>();
+            authentication = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication>();
         }
         return authentication;
     }
@@ -5131,7 +5078,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(bfd == nullptr)
         {
-            bfd = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd>();
+            bfd = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd>();
         }
         return bfd;
     }
@@ -5140,7 +5087,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost>();
         }
         return cost;
     }
@@ -5149,7 +5096,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -5158,7 +5105,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(demand_circuit == nullptr)
         {
-            demand_circuit = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit>();
+            demand_circuit = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit>();
         }
         return demand_circuit;
     }
@@ -5167,7 +5114,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(flood_reduction == nullptr)
         {
-            flood_reduction = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction>();
+            flood_reduction = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction>();
         }
         return flood_reduction;
     }
@@ -5176,7 +5123,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(manet == nullptr)
         {
-            manet = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet>();
+            manet = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet>();
         }
         return manet;
     }
@@ -5185,7 +5132,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(mtu_ignore == nullptr)
         {
-            mtu_ignore = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore>();
+            mtu_ignore = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore>();
         }
         return mtu_ignore;
     }
@@ -5194,7 +5141,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(multi_area == nullptr)
         {
-            multi_area = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea>();
+            multi_area = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea>();
         }
         return multi_area;
     }
@@ -5209,7 +5156,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor>();
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
         return c;
@@ -5219,7 +5166,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(network == nullptr)
         {
-            network = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network>();
+            network = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network>();
         }
         return network;
     }
@@ -5228,7 +5175,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(prefix_suppression == nullptr)
         {
-            prefix_suppression = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression>();
+            prefix_suppression = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression>();
         }
         return prefix_suppression;
     }
@@ -5237,7 +5184,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(shutdown == nullptr)
         {
-            shutdown = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown>();
+            shutdown = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown>();
         }
         return shutdown;
     }
@@ -5245,7 +5192,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area)
@@ -5321,7 +5268,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dead-interval")
     {
@@ -5355,7 +5302,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::set_value(c
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dead-interval")
     {
@@ -5379,14 +5326,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::set_filter(
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "area" || name == "authentication" || name == "bfd" || name == "cost" || name == "database-filter" || name == "demand-circuit" || name == "flood-reduction" || name == "manet" || name == "mtu-ignore" || name == "multi-area" || name == "neighbor" || name == "network" || name == "prefix-suppression" || name == "shutdown" || name == "dead-interval" || name == "hello-interval" || name == "priority" || name == "retransmit-interval" || name == "transmit-delay")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::Area()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::Area()
     :
     id{YType::str, "id"},
     instance{YType::uint8, "instance"}
@@ -5395,31 +5342,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::Area()
     yang_name = "area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::~Area()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::~Area()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::has_data() const
 {
     return id.is_set
 	|| instance.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(instance.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "area" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5430,18 +5377,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -5457,7 +5404,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::set_v
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -5469,14 +5416,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::set_f
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "instance")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"},
     null{YType::empty, "null"}
@@ -5485,31 +5432,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::
     yang_name = "authentication"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::~Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::~Authentication()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::has_data() const
 {
     return key_chain.is_set
 	|| null.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_chain.yfilter)
 	|| ydk::is_set(null.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5520,18 +5467,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-chain")
     {
@@ -5547,7 +5494,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authenticat
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-chain")
     {
@@ -5559,14 +5506,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authenticat
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain" || name == "null")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::Bfd()
     :
     disable{YType::empty, "disable"}
 {
@@ -5574,29 +5521,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::Bfd()
     yang_name = "bfd"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::~Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::~Bfd()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5606,18 +5553,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -5627,7 +5574,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::set_va
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -5635,14 +5582,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::set_fi
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Cost()
     :
     value_{YType::uint32, "value"}
     	,
@@ -5652,31 +5599,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Cost()
     yang_name = "cost"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::has_data() const
 {
     return value_.is_set
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| (dynamic !=  nullptr && dynamic->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5686,13 +5633,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
         if(dynamic == nullptr)
         {
-            dynamic = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic>();
+            dynamic = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic>();
         }
         return dynamic;
     }
@@ -5700,7 +5647,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dynamic != nullptr)
@@ -5711,7 +5658,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -5721,7 +5668,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::set_v
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -5729,37 +5676,37 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::set_f
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic" || name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Dynamic()
     :
     default_{YType::uint32, "default"}
     	,
     hysteresis(nullptr) // presence node
-	,weight(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>())
+	,weight(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>())
 {
     weight->parent = this;
 
     yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::~Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::~Dynamic()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_data() const
 {
     return default_.is_set
 	|| (hysteresis !=  nullptr && hysteresis->has_data())
 	|| (weight !=  nullptr && weight->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
@@ -5767,14 +5714,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
 	|| (weight !=  nullptr && weight->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dynamic";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5784,13 +5731,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hysteresis")
     {
         if(hysteresis == nullptr)
         {
-            hysteresis = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis>();
+            hysteresis = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis>();
         }
         return hysteresis;
     }
@@ -5799,7 +5746,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(weight == nullptr)
         {
-            weight = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>();
+            weight = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>();
         }
         return weight;
     }
@@ -5807,7 +5754,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(hysteresis != nullptr)
@@ -5823,7 +5770,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -5833,7 +5780,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -5841,14 +5788,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hysteresis" || name == "weight" || name == "default")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::Hysteresis()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -5857,31 +5804,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::H
     yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::~Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::~Hysteresis()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hysteresis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5892,18 +5839,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -5919,7 +5866,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -5931,14 +5878,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Weight()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Weight()
     :
     l2_factor(nullptr) // presence node
 	,latency(nullptr) // presence node
@@ -5949,11 +5896,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::W
     yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::~Weight()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::~Weight()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_data() const
 {
     return (l2_factor !=  nullptr && l2_factor->has_data())
 	|| (latency !=  nullptr && latency->has_data())
@@ -5961,7 +5908,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
 	|| (throughput !=  nullptr && throughput->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_operation() const
 {
     return is_set(yfilter)
 	|| (l2_factor !=  nullptr && l2_factor->has_operation())
@@ -5970,14 +5917,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
 	|| (throughput !=  nullptr && throughput->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weight";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5986,13 +5933,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "L2-factor")
     {
         if(l2_factor == nullptr)
         {
-            l2_factor = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor>();
+            l2_factor = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor>();
         }
         return l2_factor;
     }
@@ -6001,7 +5948,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(latency == nullptr)
         {
-            latency = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency>();
+            latency = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency>();
         }
         return latency;
     }
@@ -6010,7 +5957,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(resources == nullptr)
         {
-            resources = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources>();
+            resources = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources>();
         }
         return resources;
     }
@@ -6019,7 +5966,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(throughput == nullptr)
         {
-            throughput = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput>();
+            throughput = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput>();
         }
         return throughput;
     }
@@ -6027,7 +5974,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(l2_factor != nullptr)
@@ -6053,22 +6000,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "L2-factor" || name == "latency" || name == "resources" || name == "throughput")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::L2Factor()
     :
     value_{YType::uint8, "value"}
 {
@@ -6076,29 +6023,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::W
     yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::~L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::~L2Factor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "L2-factor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6108,18 +6055,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -6129,7 +6076,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -6137,14 +6084,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::Latency()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::Latency()
     :
     value_{YType::uint8, "value"}
 {
@@ -6152,29 +6099,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::W
     yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::~Latency()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::~Latency()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "latency";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6184,18 +6131,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -6205,7 +6152,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -6213,14 +6160,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::Resources()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::Resources()
     :
     value_{YType::uint8, "value"}
 {
@@ -6228,29 +6175,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::W
     yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::~Resources()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::~Resources()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "resources";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6260,18 +6207,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -6281,7 +6228,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -6289,14 +6236,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::Throughput()
     :
     value_{YType::uint8, "value"}
 {
@@ -6304,29 +6251,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::W
     yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::~Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::~Throughput()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "throughput";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6336,18 +6283,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -6357,7 +6304,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -6365,14 +6312,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"},
     disable{YType::empty, "disable"}
@@ -6381,31 +6328,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::
     yang_name = "database-filter"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_data() const
 {
     return all.is_set
 	|| disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6416,18 +6363,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -6443,7 +6390,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFil
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -6455,14 +6402,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFil
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all" || name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::DemandCircuit()
     :
     disable{YType::empty, "disable"},
     ignore{YType::empty, "ignore"}
@@ -6471,31 +6418,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::D
     yang_name = "demand-circuit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::~DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::~DemandCircuit()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_data() const
 {
     return disable.is_set
 	|| ignore.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(ignore.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "demand-circuit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6506,18 +6453,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -6533,7 +6480,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircu
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -6545,14 +6492,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircu
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable" || name == "ignore")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::FloodReduction()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::FloodReduction()
     :
     disable{YType::empty, "disable"}
 {
@@ -6560,29 +6507,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::
     yang_name = "flood-reduction"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::~FloodReduction()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::~FloodReduction()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flood-reduction";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6592,18 +6539,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -6613,7 +6560,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduct
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -6621,45 +6568,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduct
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Manet()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Manet()
     :
-    peering(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering>())
+    peering(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering>())
 {
     peering->parent = this;
 
     yang_name = "manet"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::~Manet()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::~Manet()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::has_data() const
 {
     return (peering !=  nullptr && peering->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::has_operation() const
 {
     return is_set(yfilter)
 	|| (peering !=  nullptr && peering->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "manet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6668,13 +6615,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peering")
     {
         if(peering == nullptr)
         {
-            peering = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering>();
+            peering = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering>();
         }
         return peering;
     }
@@ -6682,7 +6629,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(peering != nullptr)
@@ -6693,57 +6640,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peering")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Peering()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Peering()
     :
     link_metrics{YType::uint32, "link-metrics"}
     	,
-    cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost>())
+    cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost>())
 {
     cost->parent = this;
 
     yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::~Peering()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::~Peering()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_data() const
 {
     return link_metrics.is_set
 	|| (cost !=  nullptr && cost->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(link_metrics.yfilter)
 	|| (cost !=  nullptr && cost->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peering";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6753,13 +6700,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost>();
         }
         return cost;
     }
@@ -6767,7 +6714,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cost != nullptr)
@@ -6778,7 +6725,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-metrics")
     {
@@ -6788,7 +6735,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peer
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "link-metrics")
     {
@@ -6796,14 +6743,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peer
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cost" || name == "link-metrics")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::Cost()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -6812,31 +6759,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::
     yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6847,18 +6794,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -6874,7 +6821,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peer
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -6886,14 +6833,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peer
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::MtuIgnore()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::MtuIgnore()
     :
     disable{YType::empty, "disable"}
 {
@@ -6901,29 +6848,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::MtuIg
     yang_name = "mtu-ignore"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::~MtuIgnore()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::~MtuIgnore()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mtu-ignore";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6933,18 +6880,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -6954,7 +6901,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -6962,14 +6909,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::MultiArea()
     :
     id{YType::str, "id"},
     cost{YType::uint32, "cost"},
@@ -6979,18 +6926,18 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::Multi
     yang_name = "multi-area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::~MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::~MultiArea()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::has_data() const
 {
     return id.is_set
 	|| cost.is_set
 	|| disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -6998,14 +6945,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multi-area";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7017,18 +6964,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -7050,7 +6997,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -7066,32 +7013,32 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "cost" || name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::Neighbor()
     :
     id{YType::str, "id"},
     cost{YType::uint16, "cost"},
     poll_interval{YType::uint32, "poll-interval"},
     priority{YType::uint8, "priority"}
     	,
-    database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter>())
+    database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter>())
 {
     database_filter->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::~Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::~Neighbor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::has_data() const
 {
     return id.is_set
 	|| cost.is_set
@@ -7100,7 +7047,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::h
 	|| (database_filter !=  nullptr && database_filter->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -7110,14 +7057,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::h
 	|| (database_filter !=  nullptr && database_filter->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7130,13 +7077,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-filter")
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -7144,7 +7091,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database_filter != nullptr)
@@ -7155,7 +7102,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -7183,7 +7130,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -7203,14 +7150,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database-filter" || name == "id" || name == "cost" || name == "poll-interval" || name == "priority")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"}
 {
@@ -7218,29 +7165,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::Databa
     yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_data() const
 {
     return all.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7250,18 +7197,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -7271,7 +7218,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::D
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -7279,14 +7226,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::D
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::Network()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::Network()
     :
     broadcast{YType::empty, "broadcast"},
     manet{YType::empty, "manet"},
@@ -7299,11 +7246,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::Network
     yang_name = "network"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::~Network()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::~Network()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::has_data() const
 {
     return broadcast.is_set
 	|| manet.is_set
@@ -7312,7 +7259,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::ha
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast.yfilter)
@@ -7322,14 +7269,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::ha
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7342,13 +7289,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "point-to-multipoint")
     {
         if(point_to_multipoint == nullptr)
         {
-            point_to_multipoint = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint>();
+            point_to_multipoint = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint>();
         }
         return point_to_multipoint;
     }
@@ -7356,7 +7303,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(point_to_multipoint != nullptr)
@@ -7367,7 +7314,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast")
     {
@@ -7395,7 +7342,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::se
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast")
     {
@@ -7415,14 +7362,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::se
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "point-to-multipoint" || name == "broadcast" || name == "manet" || name == "non-broadcast" || name == "point-to-point")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::PointToMultipoint()
     :
     non_broadcast{YType::empty, "non-broadcast"}
 {
@@ -7430,29 +7377,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointTo
     yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::~PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::~PointToMultipoint()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_data() const
 {
     return non_broadcast.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(non_broadcast.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "point-to-multipoint";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7462,18 +7409,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "non-broadcast")
     {
@@ -7483,7 +7430,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::Po
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "non-broadcast")
     {
@@ -7491,14 +7438,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::Po
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "non-broadcast")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::PrefixSuppression()
     :
     disable{YType::empty, "disable"}
 {
@@ -7506,29 +7453,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppressio
     yang_name = "prefix-suppression"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::~PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::~PrefixSuppression()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-suppression";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7538,18 +7485,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -7559,7 +7506,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppr
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -7567,14 +7514,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppr
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::Shutdown()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::Shutdown()
     :
     disable{YType::empty, "disable"}
 {
@@ -7582,29 +7529,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::Shutdo
     yang_name = "shutdown"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::~Shutdown()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::~Shutdown()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7614,18 +7561,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -7635,7 +7582,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -7643,14 +7590,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Ipv6()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Ipv6()
     :
     dead_interval{YType::uint16, "dead-interval"},
     hello_interval{YType::uint32, "hello-interval"},
@@ -7658,16 +7605,16 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Ipv6()
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
     	,
-    authentication(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication>())
+    authentication(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication>())
 	,bfd(nullptr) // presence node
-	,cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost>())
-	,database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter>())
+	,cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost>())
+	,database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter>())
 	,demand_circuit(nullptr) // presence node
 	,flood_reduction(nullptr) // presence node
-	,manet(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet>())
+	,manet(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet>())
 	,mtu_ignore(nullptr) // presence node
-	,multi_area(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea>())
-	,network(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network>())
+	,multi_area(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea>())
+	,network(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network>())
 	,prefix_suppression(nullptr) // presence node
 	,shutdown(nullptr) // presence node
 {
@@ -7681,11 +7628,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Ipv6()
     yang_name = "ipv6"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::~Ipv6()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::~Ipv6()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::has_data() const
 {
     for (std::size_t index=0; index<area.size(); index++)
     {
@@ -7716,7 +7663,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::has_data() 
 	|| (shutdown !=  nullptr && shutdown->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::has_operation() const
 {
     for (std::size_t index=0; index<area.size(); index++)
     {
@@ -7748,14 +7695,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::has_operati
 	|| (shutdown !=  nullptr && shutdown->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7769,7 +7716,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area")
     {
@@ -7781,7 +7728,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area>();
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area>();
         c->parent = this;
         area.push_back(c);
         return c;
@@ -7791,7 +7738,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication>();
+            authentication = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication>();
         }
         return authentication;
     }
@@ -7800,7 +7747,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(bfd == nullptr)
         {
-            bfd = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd>();
+            bfd = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd>();
         }
         return bfd;
     }
@@ -7809,7 +7756,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost>();
         }
         return cost;
     }
@@ -7818,7 +7765,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -7827,7 +7774,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(demand_circuit == nullptr)
         {
-            demand_circuit = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit>();
+            demand_circuit = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit>();
         }
         return demand_circuit;
     }
@@ -7836,7 +7783,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(flood_reduction == nullptr)
         {
-            flood_reduction = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction>();
+            flood_reduction = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction>();
         }
         return flood_reduction;
     }
@@ -7845,7 +7792,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(manet == nullptr)
         {
-            manet = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet>();
+            manet = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet>();
         }
         return manet;
     }
@@ -7854,7 +7801,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(mtu_ignore == nullptr)
         {
-            mtu_ignore = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore>();
+            mtu_ignore = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore>();
         }
         return mtu_ignore;
     }
@@ -7863,7 +7810,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(multi_area == nullptr)
         {
-            multi_area = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea>();
+            multi_area = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea>();
         }
         return multi_area;
     }
@@ -7878,7 +7825,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor>();
+        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
         return c;
@@ -7888,7 +7835,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(network == nullptr)
         {
-            network = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network>();
+            network = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network>();
         }
         return network;
     }
@@ -7897,7 +7844,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(prefix_suppression == nullptr)
         {
-            prefix_suppression = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression>();
+            prefix_suppression = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression>();
         }
         return prefix_suppression;
     }
@@ -7906,7 +7853,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(shutdown == nullptr)
         {
-            shutdown = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown>();
+            shutdown = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown>();
         }
         return shutdown;
     }
@@ -7914,7 +7861,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area)
@@ -7990,7 +7937,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dead-interval")
     {
@@ -8024,7 +7971,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::set_value(c
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dead-interval")
     {
@@ -8048,14 +7995,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::set_filter(
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "area" || name == "authentication" || name == "bfd" || name == "cost" || name == "database-filter" || name == "demand-circuit" || name == "flood-reduction" || name == "manet" || name == "mtu-ignore" || name == "multi-area" || name == "neighbor" || name == "network" || name == "prefix-suppression" || name == "shutdown" || name == "dead-interval" || name == "hello-interval" || name == "priority" || name == "retransmit-interval" || name == "transmit-delay")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::Area()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::Area()
     :
     id{YType::str, "id"},
     instance{YType::uint8, "instance"}
@@ -8064,31 +8011,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::Area()
     yang_name = "area"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::~Area()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::~Area()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::has_data() const
 {
     return id.is_set
 	|| instance.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(instance.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "area" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8099,18 +8046,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -8126,7 +8073,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::set_v
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -8138,14 +8085,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::set_f
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "instance")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"},
     null{YType::empty, "null"}
@@ -8154,31 +8101,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::
     yang_name = "authentication"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::~Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::~Authentication()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::has_data() const
 {
     return key_chain.is_set
 	|| null.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_chain.yfilter)
 	|| ydk::is_set(null.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8189,18 +8136,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-chain")
     {
@@ -8216,7 +8163,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authenticat
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-chain")
     {
@@ -8228,14 +8175,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authenticat
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain" || name == "null")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::Bfd()
     :
     disable{YType::empty, "disable"}
 {
@@ -8243,29 +8190,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::Bfd()
     yang_name = "bfd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::~Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::~Bfd()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8275,18 +8222,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -8296,7 +8243,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::set_va
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -8304,14 +8251,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::set_fi
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Cost()
     :
     value_{YType::uint32, "value"}
     	,
@@ -8321,31 +8268,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Cost()
     yang_name = "cost"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::has_data() const
 {
     return value_.is_set
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| (dynamic !=  nullptr && dynamic->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8355,13 +8302,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
         if(dynamic == nullptr)
         {
-            dynamic = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic>();
+            dynamic = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic>();
         }
         return dynamic;
     }
@@ -8369,7 +8316,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dynamic != nullptr)
@@ -8380,7 +8327,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -8390,7 +8337,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::set_v
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -8398,37 +8345,37 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::set_f
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic" || name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Dynamic()
     :
     default_{YType::uint32, "default"}
     	,
     hysteresis(nullptr) // presence node
-	,weight(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>())
+	,weight(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>())
 {
     weight->parent = this;
 
     yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::~Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::~Dynamic()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_data() const
 {
     return default_.is_set
 	|| (hysteresis !=  nullptr && hysteresis->has_data())
 	|| (weight !=  nullptr && weight->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
@@ -8436,14 +8383,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
 	|| (weight !=  nullptr && weight->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dynamic";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8453,13 +8400,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hysteresis")
     {
         if(hysteresis == nullptr)
         {
-            hysteresis = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis>();
+            hysteresis = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis>();
         }
         return hysteresis;
     }
@@ -8468,7 +8415,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(weight == nullptr)
         {
-            weight = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>();
+            weight = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>();
         }
         return weight;
     }
@@ -8476,7 +8423,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(hysteresis != nullptr)
@@ -8492,7 +8439,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -8502,7 +8449,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -8510,14 +8457,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hysteresis" || name == "weight" || name == "default")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::Hysteresis()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -8526,31 +8473,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::H
     yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::~Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::~Hysteresis()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hysteresis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8561,18 +8508,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -8588,7 +8535,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -8600,14 +8547,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Weight()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Weight()
     :
     l2_factor(nullptr) // presence node
 	,latency(nullptr) // presence node
@@ -8618,11 +8565,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::W
     yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::~Weight()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::~Weight()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_data() const
 {
     return (l2_factor !=  nullptr && l2_factor->has_data())
 	|| (latency !=  nullptr && latency->has_data())
@@ -8630,7 +8577,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
 	|| (throughput !=  nullptr && throughput->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_operation() const
 {
     return is_set(yfilter)
 	|| (l2_factor !=  nullptr && l2_factor->has_operation())
@@ -8639,14 +8586,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
 	|| (throughput !=  nullptr && throughput->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weight";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8655,13 +8602,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "L2-factor")
     {
         if(l2_factor == nullptr)
         {
-            l2_factor = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor>();
+            l2_factor = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor>();
         }
         return l2_factor;
     }
@@ -8670,7 +8617,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(latency == nullptr)
         {
-            latency = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency>();
+            latency = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency>();
         }
         return latency;
     }
@@ -8679,7 +8626,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(resources == nullptr)
         {
-            resources = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources>();
+            resources = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources>();
         }
         return resources;
     }
@@ -8688,7 +8635,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     {
         if(throughput == nullptr)
         {
-            throughput = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput>();
+            throughput = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput>();
         }
         return throughput;
     }
@@ -8696,7 +8643,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(l2_factor != nullptr)
@@ -8722,22 +8669,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "L2-factor" || name == "latency" || name == "resources" || name == "throughput")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::L2Factor()
     :
     value_{YType::uint8, "value"}
 {
@@ -8745,29 +8692,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::W
     yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::~L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::~L2Factor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "L2-factor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8777,18 +8724,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -8798,7 +8745,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -8806,14 +8753,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::Latency()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::Latency()
     :
     value_{YType::uint8, "value"}
 {
@@ -8821,29 +8768,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::W
     yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::~Latency()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::~Latency()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "latency";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8853,18 +8800,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -8874,7 +8821,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -8882,14 +8829,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::Resources()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::Resources()
     :
     value_{YType::uint8, "value"}
 {
@@ -8897,29 +8844,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::W
     yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::~Resources()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::~Resources()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "resources";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8929,18 +8876,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -8950,7 +8897,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -8958,14 +8905,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::Throughput()
     :
     value_{YType::uint8, "value"}
 {
@@ -8973,29 +8920,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::W
     yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::~Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::~Throughput()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "throughput";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9005,18 +8952,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -9026,7 +8973,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -9034,14 +8981,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynam
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"},
     disable{YType::empty, "disable"}
@@ -9050,31 +8997,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::
     yang_name = "database-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_data() const
 {
     return all.is_set
 	|| disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9085,18 +9032,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -9112,7 +9059,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFil
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -9124,14 +9071,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFil
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all" || name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::DemandCircuit()
     :
     disable{YType::empty, "disable"},
     ignore{YType::empty, "ignore"}
@@ -9140,31 +9087,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::D
     yang_name = "demand-circuit"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::~DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::~DemandCircuit()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::has_data() const
 {
     return disable.is_set
 	|| ignore.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(ignore.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "demand-circuit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9175,18 +9122,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -9202,7 +9149,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircu
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -9214,14 +9161,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircu
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable" || name == "ignore")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::FloodReduction()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::FloodReduction()
     :
     disable{YType::empty, "disable"}
 {
@@ -9229,29 +9176,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::
     yang_name = "flood-reduction"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::~FloodReduction()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::~FloodReduction()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flood-reduction";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9261,18 +9208,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -9282,7 +9229,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduct
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -9290,45 +9237,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduct
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Manet()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Manet()
     :
-    peering(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering>())
+    peering(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering>())
 {
     peering->parent = this;
 
     yang_name = "manet"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::~Manet()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::~Manet()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::has_data() const
 {
     return (peering !=  nullptr && peering->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::has_operation() const
 {
     return is_set(yfilter)
 	|| (peering !=  nullptr && peering->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "manet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9337,13 +9284,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peering")
     {
         if(peering == nullptr)
         {
-            peering = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering>();
+            peering = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering>();
         }
         return peering;
     }
@@ -9351,7 +9298,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(peering != nullptr)
@@ -9362,57 +9309,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peering")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Peering()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Peering()
     :
     link_metrics{YType::uint32, "link-metrics"}
     	,
-    cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost>())
+    cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost>())
 {
     cost->parent = this;
 
     yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::~Peering()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::~Peering()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_data() const
 {
     return link_metrics.is_set
 	|| (cost !=  nullptr && cost->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(link_metrics.yfilter)
 	|| (cost !=  nullptr && cost->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peering";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9422,13 +9369,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost>();
         }
         return cost;
     }
@@ -9436,7 +9383,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cost != nullptr)
@@ -9447,7 +9394,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-metrics")
     {
@@ -9457,7 +9404,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peer
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "link-metrics")
     {
@@ -9465,14 +9412,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peer
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cost" || name == "link-metrics")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::Cost()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -9481,31 +9428,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::
     yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9516,18 +9463,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -9543,7 +9490,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peer
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -9555,14 +9502,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peer
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::MtuIgnore()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::MtuIgnore()
     :
     disable{YType::empty, "disable"}
 {
@@ -9570,29 +9517,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::MtuIg
     yang_name = "mtu-ignore"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::~MtuIgnore()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::~MtuIgnore()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mtu-ignore";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9602,18 +9549,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -9623,7 +9570,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -9631,14 +9578,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::MultiArea()
     :
     id{YType::str, "id"},
     cost{YType::uint32, "cost"},
@@ -9648,18 +9595,18 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::Multi
     yang_name = "multi-area"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::~MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::~MultiArea()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::has_data() const
 {
     return id.is_set
 	|| cost.is_set
 	|| disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -9667,14 +9614,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multi-area";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9686,18 +9633,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -9719,7 +9666,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -9735,32 +9682,32 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "cost" || name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::Neighbor()
     :
     id{YType::str, "id"},
     cost{YType::uint16, "cost"},
     poll_interval{YType::uint32, "poll-interval"},
     priority{YType::uint8, "priority"}
     	,
-    database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter>())
+    database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter>())
 {
     database_filter->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::~Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::~Neighbor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::has_data() const
 {
     return id.is_set
 	|| cost.is_set
@@ -9769,7 +9716,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::h
 	|| (database_filter !=  nullptr && database_filter->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -9779,14 +9726,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::h
 	|| (database_filter !=  nullptr && database_filter->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9799,13 +9746,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-filter")
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -9813,7 +9760,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database_filter != nullptr)
@@ -9824,7 +9771,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -9852,7 +9799,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -9872,14 +9819,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database-filter" || name == "id" || name == "cost" || name == "poll-interval" || name == "priority")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"}
 {
@@ -9887,29 +9834,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::Databa
     yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::has_data() const
 {
     return all.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9919,18 +9866,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -9940,7 +9887,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::D
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -9948,14 +9895,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::D
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::Network()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::Network()
     :
     broadcast{YType::empty, "broadcast"},
     manet{YType::empty, "manet"},
@@ -9968,11 +9915,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::Network
     yang_name = "network"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::~Network()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::~Network()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::has_data() const
 {
     return broadcast.is_set
 	|| manet.is_set
@@ -9981,7 +9928,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::ha
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast.yfilter)
@@ -9991,14 +9938,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::ha
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10011,13 +9958,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "point-to-multipoint")
     {
         if(point_to_multipoint == nullptr)
         {
-            point_to_multipoint = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint>();
+            point_to_multipoint = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint>();
         }
         return point_to_multipoint;
     }
@@ -10025,7 +9972,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(point_to_multipoint != nullptr)
@@ -10036,7 +9983,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast")
     {
@@ -10064,7 +10011,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::se
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast")
     {
@@ -10084,14 +10031,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::se
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "point-to-multipoint" || name == "broadcast" || name == "manet" || name == "non-broadcast" || name == "point-to-point")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::PointToMultipoint()
     :
     non_broadcast{YType::empty, "non-broadcast"}
 {
@@ -10099,29 +10046,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointTo
     yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::~PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::~PointToMultipoint()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::has_data() const
 {
     return non_broadcast.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(non_broadcast.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "point-to-multipoint";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10131,18 +10078,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "non-broadcast")
     {
@@ -10152,7 +10099,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::Po
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "non-broadcast")
     {
@@ -10160,14 +10107,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::Po
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "non-broadcast")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::PrefixSuppression()
     :
     disable{YType::empty, "disable"}
 {
@@ -10175,29 +10122,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppressio
     yang_name = "prefix-suppression"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::~PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::~PrefixSuppression()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-suppression";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10207,18 +10154,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -10228,7 +10175,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppr
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -10236,14 +10183,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppr
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::Shutdown()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::Shutdown()
     :
     disable{YType::empty, "disable"}
 {
@@ -10251,29 +10198,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::Shutdo
     yang_name = "shutdown"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::~Shutdown()
+Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::~Shutdown()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10283,18 +10230,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -10304,7 +10251,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -10312,37 +10259,37 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"},
     null{YType::empty, "null"}
     	,
-    ipsec(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec>())
+    ipsec(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec>())
 {
     ipsec->parent = this;
 
     yang_name = "authentication"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::~Authentication()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::~Authentication()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::has_data() const
 {
     return key_chain.is_set
 	|| null.is_set
 	|| (ipsec !=  nullptr && ipsec->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_chain.yfilter)
@@ -10350,14 +10297,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::has_operatio
 	|| (ipsec !=  nullptr && ipsec->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10368,13 +10315,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipsec")
     {
         if(ipsec == nullptr)
         {
-            ipsec = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec>();
+            ipsec = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec>();
         }
         return ipsec;
     }
@@ -10382,7 +10329,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipsec != nullptr)
@@ -10393,7 +10340,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-chain")
     {
@@ -10409,7 +10356,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::set_value(co
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-chain")
     {
@@ -10421,19 +10368,19 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::set_filter(c
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipsec" || name == "key-chain" || name == "null")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Ipsec()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Ipsec()
     :
     spi{YType::uint64, "spi"}
     	,
-    md5(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5>())
-	,sha1(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1>())
+    md5(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5>())
+	,sha1(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1>())
 {
     md5->parent = this;
     sha1->parent = this;
@@ -10441,18 +10388,18 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Ipsec()
     yang_name = "ipsec"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::~Ipsec()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::~Ipsec()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::has_data() const
 {
     return spi.is_set
 	|| (md5 !=  nullptr && md5->has_data())
 	|| (sha1 !=  nullptr && sha1->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(spi.yfilter)
@@ -10460,14 +10407,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::has_o
 	|| (sha1 !=  nullptr && sha1->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipsec";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10477,13 +10424,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "md5")
     {
         if(md5 == nullptr)
         {
-            md5 = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5>();
+            md5 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5>();
         }
         return md5;
     }
@@ -10492,7 +10439,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentic
     {
         if(sha1 == nullptr)
         {
-            sha1 = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1>();
+            sha1 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1>();
         }
         return sha1;
     }
@@ -10500,7 +10447,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(md5 != nullptr)
@@ -10516,7 +10463,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "spi")
     {
@@ -10526,7 +10473,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::set_v
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "spi")
     {
@@ -10534,45 +10481,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::set_f
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "md5" || name == "sha1" || name == "spi")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::Md5()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::Md5()
     :
-    key_string(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString>())
+    key_string(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString>())
 {
     key_string->parent = this;
 
     yang_name = "md5"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::~Md5()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::~Md5()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::has_data() const
 {
     return (key_string !=  nullptr && key_string->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::has_operation() const
 {
     return is_set(yfilter)
 	|| (key_string !=  nullptr && key_string->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "md5";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10581,13 +10528,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
         if(key_string == nullptr)
         {
-            key_string = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString>();
+            key_string = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString>();
         }
         return key_string;
     }
@@ -10595,7 +10542,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key_string != nullptr)
@@ -10606,22 +10553,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::KeyString()
     :
     encrypt{YType::enumeration, "encrypt"},
     string{YType::str, "string"}
@@ -10630,31 +10577,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeySt
     yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::~KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::~KeyString()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::has_data() const
 {
     return encrypt.is_set
 	|| string.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(encrypt.yfilter)
 	|| ydk::is_set(string.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-string";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10665,18 +10612,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encrypt")
     {
@@ -10692,7 +10639,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "encrypt")
     {
@@ -10704,45 +10651,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encrypt" || name == "string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::Sha1()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::Sha1()
     :
-    key_string(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString>())
+    key_string(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString>())
 {
     key_string->parent = this;
 
     yang_name = "sha1"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::~Sha1()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::~Sha1()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::has_data() const
 {
     return (key_string !=  nullptr && key_string->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::has_operation() const
 {
     return is_set(yfilter)
 	|| (key_string !=  nullptr && key_string->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sha1";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10751,13 +10698,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
         if(key_string == nullptr)
         {
-            key_string = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString>();
+            key_string = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString>();
         }
         return key_string;
     }
@@ -10765,7 +10712,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key_string != nullptr)
@@ -10776,22 +10723,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::KeyString()
     :
     encrypt{YType::enumeration, "encrypt"},
     string{YType::str, "string"}
@@ -10800,31 +10747,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyS
     yang_name = "key-string"; yang_parent_name = "sha1"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::~KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::~KeyString()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::has_data() const
 {
     return encrypt.is_set
 	|| string.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(encrypt.yfilter)
 	|| ydk::is_set(string.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-string";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10835,18 +10782,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encrypt")
     {
@@ -10862,7 +10809,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1:
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "encrypt")
     {
@@ -10874,14 +10821,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1:
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encrypt" || name == "string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::Bfd::Bfd()
     :
     disable{YType::empty, "disable"}
 {
@@ -10889,29 +10836,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::Bfd()
     yang_name = "bfd"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::~Bfd()
+Native::Interface::GigabitEthernet::Ospfv3::Bfd::~Bfd()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Bfd::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Bfd::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10921,18 +10868,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -10942,7 +10889,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::set_value(const std::st
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -10950,14 +10897,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::set_filter(const std::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Bfd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Cost()
     :
     value_{YType::uint32, "value"}
     	,
@@ -10967,31 +10914,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Cost()
     yang_name = "cost"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::has_data() const
 {
     return value_.is_set
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| (dynamic !=  nullptr && dynamic->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11001,13 +10948,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
         if(dynamic == nullptr)
         {
-            dynamic = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic>();
+            dynamic = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic>();
         }
         return dynamic;
     }
@@ -11015,7 +10962,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(dynamic != nullptr)
@@ -11026,7 +10973,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -11036,7 +10983,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::set_value(const std::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -11044,37 +10991,37 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::set_filter(const std::
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic" || name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Dynamic()
     :
     default_{YType::uint32, "default"}
     	,
     hysteresis(nullptr) // presence node
-	,weight(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight>())
+	,weight(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight>())
 {
     weight->parent = this;
 
     yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::~Dynamic()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::~Dynamic()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::has_data() const
 {
     return default_.is_set
 	|| (hysteresis !=  nullptr && hysteresis->has_data())
 	|| (weight !=  nullptr && weight->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
@@ -11082,14 +11029,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::has_operation
 	|| (weight !=  nullptr && weight->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dynamic";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11099,13 +11046,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hysteresis")
     {
         if(hysteresis == nullptr)
         {
-            hysteresis = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis>();
+            hysteresis = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis>();
         }
         return hysteresis;
     }
@@ -11114,7 +11061,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dyn
     {
         if(weight == nullptr)
         {
-            weight = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight>();
+            weight = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight>();
         }
         return weight;
     }
@@ -11122,7 +11069,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dyn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(hysteresis != nullptr)
@@ -11138,7 +11085,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -11148,7 +11095,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::set_value(con
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -11156,14 +11103,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::set_filter(co
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hysteresis" || name == "weight" || name == "default")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::Hysteresis()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -11172,31 +11119,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::Hyster
     yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::~Hysteresis()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::~Hysteresis()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hysteresis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11207,18 +11154,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -11234,7 +11181,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -11246,14 +11193,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Weight()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Weight()
     :
     l2_factor(nullptr) // presence node
 	,latency(nullptr) // presence node
@@ -11264,11 +11211,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Weight()
     yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::~Weight()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::~Weight()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_data() const
 {
     return (l2_factor !=  nullptr && l2_factor->has_data())
 	|| (latency !=  nullptr && latency->has_data())
@@ -11276,7 +11223,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_d
 	|| (throughput !=  nullptr && throughput->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_operation() const
 {
     return is_set(yfilter)
 	|| (l2_factor !=  nullptr && l2_factor->has_operation())
@@ -11285,14 +11232,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_o
 	|| (throughput !=  nullptr && throughput->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weight";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11301,13 +11248,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "L2-factor")
     {
         if(l2_factor == nullptr)
         {
-            l2_factor = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor>();
+            l2_factor = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor>();
         }
         return l2_factor;
     }
@@ -11316,7 +11263,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dyn
     {
         if(latency == nullptr)
         {
-            latency = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency>();
+            latency = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency>();
         }
         return latency;
     }
@@ -11325,7 +11272,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dyn
     {
         if(resources == nullptr)
         {
-            resources = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources>();
+            resources = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources>();
         }
         return resources;
     }
@@ -11334,7 +11281,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dyn
     {
         if(throughput == nullptr)
         {
-            throughput = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput>();
+            throughput = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput>();
         }
         return throughput;
     }
@@ -11342,7 +11289,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dyn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(l2_factor != nullptr)
@@ -11368,22 +11315,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "L2-factor" || name == "latency" || name == "resources" || name == "throughput")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::L2Factor()
     :
     value_{YType::uint8, "value"}
 {
@@ -11391,29 +11338,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::
     yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::~L2Factor()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::~L2Factor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "L2-factor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11423,18 +11370,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -11444,7 +11391,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Fac
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -11452,14 +11399,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Fac
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::Latency()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::Latency()
     :
     value_{YType::uint8, "value"}
 {
@@ -11467,29 +11414,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::L
     yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::~Latency()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::~Latency()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "latency";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11499,18 +11446,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -11520,7 +11467,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Laten
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -11528,14 +11475,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Laten
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::Resources()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::Resources()
     :
     value_{YType::uint8, "value"}
 {
@@ -11543,29 +11490,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources:
     yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::~Resources()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::~Resources()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "resources";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11575,18 +11522,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -11596,7 +11543,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resou
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -11604,14 +11551,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resou
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::Throughput()
     :
     value_{YType::uint8, "value"}
 {
@@ -11619,29 +11566,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput
     yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::~Throughput()
+Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::~Throughput()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::has_data() const
 {
     return value_.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "throughput";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11651,18 +11598,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -11672,7 +11619,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throu
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -11680,14 +11627,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throu
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"}
 {
@@ -11695,29 +11642,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::DatabaseFilter()
     yang_name = "database-filter"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::has_data() const
 {
     return all.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11727,18 +11674,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -11748,7 +11695,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::set_value(co
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -11756,14 +11703,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::set_filter(c
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::DemandCircuit()
     :
     ignore{YType::empty, "ignore"}
 {
@@ -11771,29 +11718,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::DemandCircuit()
     yang_name = "demand-circuit"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::~DemandCircuit()
+Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::~DemandCircuit()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::has_data() const
 {
     return ignore.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ignore.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "demand-circuit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11803,18 +11750,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ignore")
     {
@@ -11824,7 +11771,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::set_value(con
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ignore")
     {
@@ -11832,49 +11779,49 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::set_filter(co
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ignore")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Encryption()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Encryption()
     :
     null{YType::empty, "null"}
     	,
-    ipsec(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec>())
+    ipsec(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec>())
 {
     ipsec->parent = this;
 
     yang_name = "encryption"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::~Encryption()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::~Encryption()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::has_data() const
 {
     return null.is_set
 	|| (ipsec !=  nullptr && ipsec->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(null.yfilter)
 	|| (ipsec !=  nullptr && ipsec->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "encryption";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11884,13 +11831,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipsec")
     {
         if(ipsec == nullptr)
         {
-            ipsec = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec>();
+            ipsec = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec>();
         }
         return ipsec;
     }
@@ -11898,7 +11845,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipsec != nullptr)
@@ -11909,7 +11856,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "null")
     {
@@ -11919,7 +11866,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::set_value(const 
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "null")
     {
@@ -11927,20 +11874,20 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::set_filter(const
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipsec" || name == "null")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec()
     :
     spi{YType::uint64, "spi"},
     esp{YType::empty, "esp"}
     	,
-    ipsec_3des(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des>())
-	,aes_cbc(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc>())
+    ipsec_3des(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des>())
+	,aes_cbc(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc>())
 {
     ipsec_3des->parent = this;
     aes_cbc->parent = this;
@@ -11948,11 +11895,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec()
     yang_name = "ipsec"; yang_parent_name = "encryption"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::~Ipsec()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::~Ipsec()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::has_data() const
 {
     return spi.is_set
 	|| esp.is_set
@@ -11960,7 +11907,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::has_data(
 	|| (aes_cbc !=  nullptr && aes_cbc->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(spi.yfilter)
@@ -11969,14 +11916,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::has_opera
 	|| (aes_cbc !=  nullptr && aes_cbc->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipsec";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11987,13 +11934,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipsec_3des")
     {
         if(ipsec_3des == nullptr)
         {
-            ipsec_3des = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des>();
+            ipsec_3des = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des>();
         }
         return ipsec_3des;
     }
@@ -12002,7 +11949,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     {
         if(aes_cbc == nullptr)
         {
-            aes_cbc = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc>();
+            aes_cbc = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc>();
         }
         return aes_cbc;
     }
@@ -12010,7 +11957,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipsec_3des != nullptr)
@@ -12026,7 +11973,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "spi")
     {
@@ -12042,7 +11989,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::set_value
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "spi")
     {
@@ -12054,45 +12001,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::set_filte
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipsec_3des" || name == "aes-cbc" || name == "spi" || name == "esp")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::Ipsec3Des()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::Ipsec3Des()
     :
-    key_string(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString>())
+    key_string(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString>())
 {
     key_string->parent = this;
 
     yang_name = "ipsec_3des"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::~Ipsec3Des()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::~Ipsec3Des()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::has_data() const
 {
     return (key_string !=  nullptr && key_string->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::has_operation() const
 {
     return is_set(yfilter)
 	|| (key_string !=  nullptr && key_string->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipsec_3des";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12101,13 +12048,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
         if(key_string == nullptr)
         {
-            key_string = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString>();
+            key_string = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString>();
         }
         return key_string;
     }
@@ -12115,7 +12062,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key_string != nullptr)
@@ -12126,22 +12073,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::KeyString()
     :
     encrypt{YType::enumeration, "encrypt"},
     string{YType::str, "string"}
@@ -12150,31 +12097,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::Key
     yang_name = "key-string"; yang_parent_name = "ipsec_3des"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::~KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::~KeyString()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::has_data() const
 {
     return encrypt.is_set
 	|| string.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(encrypt.yfilter)
 	|| ydk::is_set(string.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-string";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12185,18 +12132,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encrypt")
     {
@@ -12212,7 +12159,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "encrypt")
     {
@@ -12224,18 +12171,18 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encrypt" || name == "string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc()
     :
-    aes_cbc_128(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128>())
-	,aes_192(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192>())
-	,aes_256(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256>())
+    aes_cbc_128(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128>())
+	,aes_192(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192>())
+	,aes_256(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256>())
 {
     aes_cbc_128->parent = this;
     aes_192->parent = this;
@@ -12244,18 +12191,18 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc
     yang_name = "aes-cbc"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::~AesCbc()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::~AesCbc()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::has_data() const
 {
     return (aes_cbc_128 !=  nullptr && aes_cbc_128->has_data())
 	|| (aes_192 !=  nullptr && aes_192->has_data())
 	|| (aes_256 !=  nullptr && aes_256->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::has_operation() const
 {
     return is_set(yfilter)
 	|| (aes_cbc_128 !=  nullptr && aes_cbc_128->has_operation())
@@ -12263,14 +12210,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::h
 	|| (aes_256 !=  nullptr && aes_256->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aes-cbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12279,13 +12226,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aes-cbc-128")
     {
         if(aes_cbc_128 == nullptr)
         {
-            aes_cbc_128 = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128>();
+            aes_cbc_128 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128>();
         }
         return aes_cbc_128;
     }
@@ -12294,7 +12241,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     {
         if(aes_192 == nullptr)
         {
-            aes_192 = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192>();
+            aes_192 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192>();
         }
         return aes_192;
     }
@@ -12303,7 +12250,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     {
         if(aes_256 == nullptr)
         {
-            aes_256 = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256>();
+            aes_256 = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256>();
         }
         return aes_256;
     }
@@ -12311,7 +12258,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(aes_cbc_128 != nullptr)
@@ -12332,53 +12279,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aes-cbc-128" || name == "aes-192" || name == "aes-256")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::AesCbc128()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::AesCbc128()
     :
-    key_string(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString>())
+    key_string(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString>())
 {
     key_string->parent = this;
 
     yang_name = "aes-cbc-128"; yang_parent_name = "aes-cbc"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::~AesCbc128()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::~AesCbc128()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::has_data() const
 {
     return (key_string !=  nullptr && key_string->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::has_operation() const
 {
     return is_set(yfilter)
 	|| (key_string !=  nullptr && key_string->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aes-cbc-128";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12387,13 +12334,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
         if(key_string == nullptr)
         {
-            key_string = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString>();
+            key_string = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString>();
         }
         return key_string;
     }
@@ -12401,7 +12348,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key_string != nullptr)
@@ -12412,22 +12359,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::KeyString()
     :
     encrypt{YType::enumeration, "encrypt"},
     string{YType::str, "string"}
@@ -12436,31 +12383,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc
     yang_name = "key-string"; yang_parent_name = "aes-cbc-128"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::~KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::~KeyString()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::has_data() const
 {
     return encrypt.is_set
 	|| string.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(encrypt.yfilter)
 	|| ydk::is_set(string.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-string";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12471,18 +12418,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encrypt")
     {
@@ -12498,7 +12445,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::A
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "encrypt")
     {
@@ -12510,45 +12457,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::A
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encrypt" || name == "string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::Aes192()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::Aes192()
     :
-    key_string(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString>())
+    key_string(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString>())
 {
     key_string->parent = this;
 
     yang_name = "aes-192"; yang_parent_name = "aes-cbc"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::~Aes192()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::~Aes192()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::has_data() const
 {
     return (key_string !=  nullptr && key_string->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::has_operation() const
 {
     return is_set(yfilter)
 	|| (key_string !=  nullptr && key_string->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aes-192";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12557,13 +12504,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
         if(key_string == nullptr)
         {
-            key_string = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString>();
+            key_string = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString>();
         }
         return key_string;
     }
@@ -12571,7 +12518,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key_string != nullptr)
@@ -12582,22 +12529,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::KeyString()
     :
     encrypt{YType::enumeration, "encrypt"},
     string{YType::str, "string"}
@@ -12606,31 +12553,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192
     yang_name = "key-string"; yang_parent_name = "aes-192"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::~KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::~KeyString()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::has_data() const
 {
     return encrypt.is_set
 	|| string.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(encrypt.yfilter)
 	|| ydk::is_set(string.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-string";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12641,18 +12588,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encrypt")
     {
@@ -12668,7 +12615,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::A
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "encrypt")
     {
@@ -12680,45 +12627,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::A
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encrypt" || name == "string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::Aes256()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::Aes256()
     :
-    key_string(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString>())
+    key_string(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString>())
 {
     key_string->parent = this;
 
     yang_name = "aes-256"; yang_parent_name = "aes-cbc"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::~Aes256()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::~Aes256()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::has_data() const
 {
     return (key_string !=  nullptr && key_string->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::has_operation() const
 {
     return is_set(yfilter)
 	|| (key_string !=  nullptr && key_string->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aes-256";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12727,13 +12674,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
         if(key_string == nullptr)
         {
-            key_string = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString>();
+            key_string = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString>();
         }
         return key_string;
     }
@@ -12741,7 +12688,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryptio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key_string != nullptr)
@@ -12752,22 +12699,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::KeyString()
     :
     encrypt{YType::enumeration, "encrypt"},
     string{YType::str, "string"}
@@ -12776,31 +12723,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256
     yang_name = "key-string"; yang_parent_name = "aes-256"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::~KeyString()
+Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::~KeyString()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::has_data() const
 {
     return encrypt.is_set
 	|| string.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(encrypt.yfilter)
 	|| ydk::is_set(string.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-string";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12811,18 +12758,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encrypt")
     {
@@ -12838,7 +12785,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::A
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "encrypt")
     {
@@ -12850,45 +12797,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::A
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "encrypt" || name == "string")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Manet()
+Native::Interface::GigabitEthernet::Ospfv3::Manet::Manet()
     :
-    peering(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering>())
+    peering(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering>())
 {
     peering->parent = this;
 
     yang_name = "manet"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Manet::~Manet()
+Native::Interface::GigabitEthernet::Ospfv3::Manet::~Manet()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::has_data() const
 {
     return (peering !=  nullptr && peering->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::has_operation() const
 {
     return is_set(yfilter)
 	|| (peering !=  nullptr && peering->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Manet::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Manet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "manet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Manet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Manet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12897,13 +12844,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peering")
     {
         if(peering == nullptr)
         {
-            peering = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering>();
+            peering = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering>();
         }
         return peering;
     }
@@ -12911,7 +12858,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(peering != nullptr)
@@ -12922,57 +12869,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Manet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peering")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Peering()
+Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Peering()
     :
     link_metrics{YType::uint32, "link-metrics"}
     	,
-    cost(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost>())
+    cost(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost>())
 {
     cost->parent = this;
 
     yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::~Peering()
+Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::~Peering()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::has_data() const
 {
     return link_metrics.is_set
 	|| (cost !=  nullptr && cost->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(link_metrics.yfilter)
 	|| (cost !=  nullptr && cost->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peering";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12982,13 +12929,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
         if(cost == nullptr)
         {
-            cost = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost>();
+            cost = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost>();
         }
         return cost;
     }
@@ -12996,7 +12943,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Pe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cost != nullptr)
@@ -13007,7 +12954,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-metrics")
     {
@@ -13017,7 +12964,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::set_value(co
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "link-metrics")
     {
@@ -13025,14 +12972,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::set_filter(c
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cost" || name == "link-metrics")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::Cost()
+Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::Cost()
     :
     percent{YType::uint8, "percent"},
     threshold{YType::uint32, "threshold"}
@@ -13041,31 +12988,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::Cost()
     yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::~Cost()
+Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::~Cost()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::has_data() const
 {
     return percent.is_set
 	|| threshold.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(percent.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cost";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13076,18 +13023,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "percent")
     {
@@ -13103,7 +13050,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::set_va
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "percent")
     {
@@ -13115,14 +13062,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::set_fi
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "percent" || name == "threshold")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::MultiArea::MultiArea()
     :
     id{YType::str, "id"},
     cost{YType::uint32, "cost"}
@@ -13131,31 +13078,31 @@ Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::MultiArea()
     yang_name = "multi-area"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::~MultiArea()
+Native::Interface::GigabitEthernet::Ospfv3::MultiArea::~MultiArea()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::MultiArea::has_data() const
 {
     return id.is_set
 	|| cost.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::MultiArea::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(cost.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multi-area";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13166,18 +13113,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -13193,7 +13140,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::set_value(const s
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -13205,32 +13152,32 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::set_filter(const 
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "cost")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::Neighbor::Neighbor()
     :
     id{YType::str, "id"},
     cost{YType::uint16, "cost"},
     poll_interval{YType::uint32, "poll-interval"},
     priority{YType::uint8, "priority"}
     	,
-    database_filter(std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter>())
+    database_filter(std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter>())
 {
     database_filter->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::~Neighbor()
+Native::Interface::GigabitEthernet::Ospfv3::Neighbor::~Neighbor()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Neighbor::has_data() const
 {
     return id.is_set
 	|| cost.is_set
@@ -13239,7 +13186,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::has_data() const
 	|| (database_filter !=  nullptr && database_filter->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -13249,14 +13196,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::has_operation() co
 	|| (database_filter !=  nullptr && database_filter->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13269,13 +13216,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-filter")
     {
         if(database_filter == nullptr)
         {
-            database_filter = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter>();
+            database_filter = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter>();
         }
         return database_filter;
     }
@@ -13283,7 +13230,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database_filter != nullptr)
@@ -13294,7 +13241,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -13322,7 +13269,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::set_value(const st
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -13342,14 +13289,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::set_filter(const s
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database-filter" || name == "id" || name == "cost" || name == "poll-interval" || name == "priority")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::DatabaseFilter()
     :
     all{YType::enumeration, "all"}
 {
@@ -13357,29 +13304,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::Databas
     yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::~DatabaseFilter()
+Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::~DatabaseFilter()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::has_data() const
 {
     return all.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13389,18 +13336,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "all")
     {
@@ -13410,7 +13357,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::se
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "all")
     {
@@ -13418,14 +13365,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::se
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Network::Network()
+Native::Interface::GigabitEthernet::Ospfv3::Network::Network()
     :
     broadcast{YType::empty, "broadcast"},
     manet{YType::empty, "manet"},
@@ -13438,11 +13385,11 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Network::Network()
     yang_name = "network"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Network::~Network()
+Native::Interface::GigabitEthernet::Ospfv3::Network::~Network()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Network::has_data() const
 {
     return broadcast.is_set
 	|| manet.is_set
@@ -13451,7 +13398,7 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::has_data() const
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Network::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast.yfilter)
@@ -13461,14 +13408,14 @@ bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::has_operation() con
 	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Network::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Network::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13481,13 +13428,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "point-to-multipoint")
     {
         if(point_to_multipoint == nullptr)
         {
-            point_to_multipoint = std::make_shared<Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint>();
+            point_to_multipoint = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint>();
         }
         return point_to_multipoint;
     }
@@ -13495,7 +13442,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Network::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Network::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(point_to_multipoint != nullptr)
@@ -13506,7 +13453,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast")
     {
@@ -13534,7 +13481,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Network::set_value(const std
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Network::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast")
     {
@@ -13554,14 +13501,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Network::set_filter(const st
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Network::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "point-to-multipoint" || name == "broadcast" || name == "manet" || name == "non-broadcast" || name == "point-to-point")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::PointToMultipoint()
     :
     non_broadcast{YType::empty, "non-broadcast"}
 {
@@ -13569,29 +13516,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::Point
     yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::~PointToMultipoint()
+Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::~PointToMultipoint()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::has_data() const
 {
     return non_broadcast.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(non_broadcast.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "point-to-multipoint";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13601,18 +13548,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "non-broadcast")
     {
@@ -13622,7 +13569,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "non-broadcast")
     {
@@ -13630,14 +13577,14 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "non-broadcast")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::PrefixSuppression()
     :
     disable{YType::empty, "disable"}
 {
@@ -13645,29 +13592,29 @@ Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::PrefixSuppress
     yang_name = "prefix-suppression"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::~PrefixSuppression()
+Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::~PrefixSuppression()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::has_data() const
+bool Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::has_data() const
 {
     return disable.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::has_operation() const
+bool Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-suppression";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13677,18 +13624,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -13698,7 +13645,7 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::set_value
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -13706,45 +13653,45 @@ void Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::set_filte
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Ospfv3::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Power()
+Native::Interface::GigabitEthernet::Power::Power()
     :
-    inline_(std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_>())
+    inline_(std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_>())
 {
     inline_->parent = this;
 
-    yang_name = "power"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::~Power()
+Native::Interface::GigabitEthernet::Power::~Power()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::has_data() const
+bool Native::Interface::GigabitEthernet::Power::has_data() const
 {
     return (inline_ !=  nullptr && inline_->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::has_operation() const
 {
     return is_set(yfilter)
 	|| (inline_ !=  nullptr && inline_->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-power:power";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13753,13 +13700,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inline")
     {
         if(inline_ == nullptr)
         {
-            inline_ = std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_>();
+            inline_ = std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_>();
         }
         return inline_;
     }
@@ -13767,7 +13714,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(inline_ != nullptr)
@@ -13778,30 +13725,30 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Power::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "inline")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Inline_()
+Native::Interface::GigabitEthernet::Power::Inline_::Inline_()
     :
     consumption{YType::uint16, "consumption"},
     never{YType::empty, "never"}
     	,
     auto_(nullptr) // presence node
-	,four_pair(std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair>())
+	,four_pair(std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::FourPair>())
 	,police(nullptr) // presence node
-	,port(std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::Port>())
+	,port(std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::Port>())
 	,static_(nullptr) // presence node
 {
     four_pair->parent = this;
@@ -13810,11 +13757,11 @@ Native::Interface::TenGigabitEthernet::Power::Inline_::Inline_()
     yang_name = "inline"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::~Inline_()
+Native::Interface::GigabitEthernet::Power::Inline_::~Inline_()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::has_data() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::has_data() const
 {
     return consumption.is_set
 	|| never.is_set
@@ -13825,7 +13772,7 @@ bool Native::Interface::TenGigabitEthernet::Power::Inline_::has_data() const
 	|| (static_ !=  nullptr && static_->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(consumption.yfilter)
@@ -13837,14 +13784,14 @@ bool Native::Interface::TenGigabitEthernet::Power::Inline_::has_operation() cons
 	|| (static_ !=  nullptr && static_->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::Inline_::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::Inline_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inline";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::Inline_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::Inline_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13855,13 +13802,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::Inline_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto")
     {
         if(auto_ == nullptr)
         {
-            auto_ = std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_>();
+            auto_ = std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::Auto_>();
         }
         return auto_;
     }
@@ -13870,7 +13817,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::g
     {
         if(four_pair == nullptr)
         {
-            four_pair = std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair>();
+            four_pair = std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::FourPair>();
         }
         return four_pair;
     }
@@ -13879,7 +13826,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::g
     {
         if(police == nullptr)
         {
-            police = std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::Police>();
+            police = std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::Police>();
         }
         return police;
     }
@@ -13888,7 +13835,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::g
     {
         if(port == nullptr)
         {
-            port = std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::Port>();
+            port = std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::Port>();
         }
         return port;
     }
@@ -13897,7 +13844,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::g
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::Static_>();
+            static_ = std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::Static_>();
         }
         return static_;
     }
@@ -13905,7 +13852,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::Inline_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::Inline_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(auto_ != nullptr)
@@ -13936,7 +13883,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::Inline_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "consumption")
     {
@@ -13952,7 +13899,7 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::set_value(const std:
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::Inline_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "consumption")
     {
@@ -13964,14 +13911,14 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::set_filter(const std
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::Inline_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "auto" || name == "four-pair" || name == "police" || name == "port" || name == "static" || name == "consumption" || name == "never")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::Auto_()
+Native::Interface::GigabitEthernet::Power::Inline_::Auto_::Auto_()
     :
     max{YType::int32, "max"}
 {
@@ -13979,29 +13926,29 @@ Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::Auto_()
     yang_name = "auto"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::~Auto_()
+Native::Interface::GigabitEthernet::Power::Inline_::Auto_::~Auto_()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::has_data() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Auto_::has_data() const
 {
     return max.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Auto_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(max.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::Inline_::Auto_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::Inline_::Auto_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14011,18 +13958,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::Inline_::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::Inline_::Auto_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::Inline_::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max")
     {
@@ -14032,7 +13979,7 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::set_value(con
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::Inline_::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "max")
     {
@@ -14040,14 +13987,14 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::set_filter(co
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Auto_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::FourPair()
+Native::Interface::GigabitEthernet::Power::Inline_::FourPair::FourPair()
     :
     forced{YType::empty, "forced"}
 {
@@ -14055,29 +14002,29 @@ Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::FourPair()
     yang_name = "four-pair"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::~FourPair()
+Native::Interface::GigabitEthernet::Power::Inline_::FourPair::~FourPair()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::has_data() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::FourPair::has_data() const
 {
     return forced.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::FourPair::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(forced.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::Inline_::FourPair::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "four-pair";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::Inline_::FourPair::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14087,18 +14034,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::Inline_::FourPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::Inline_::FourPair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::Inline_::FourPair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "forced")
     {
@@ -14108,7 +14055,7 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::set_value(
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::Inline_::FourPair::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "forced")
     {
@@ -14116,45 +14063,45 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::set_filter
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::Inline_::FourPair::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "forced")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Police()
+Native::Interface::GigabitEthernet::Power::Inline_::Police::Police()
     :
-    action(std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action>())
+    action(std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::Police::Action>())
 {
     action->parent = this;
 
     yang_name = "police"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Police::~Police()
+Native::Interface::GigabitEthernet::Power::Inline_::Police::~Police()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Police::has_data() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Police::has_data() const
 {
     return (action !=  nullptr && action->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Police::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Police::has_operation() const
 {
     return is_set(yfilter)
 	|| (action !=  nullptr && action->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::Inline_::Police::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::Inline_::Police::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "police";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::Inline_::Police::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::Inline_::Police::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14163,13 +14110,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::Inline_::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
         if(action == nullptr)
         {
-            action = std::make_shared<Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action>();
+            action = std::make_shared<Native::Interface::GigabitEthernet::Power::Inline_::Police::Action>();
         }
         return action;
     }
@@ -14177,7 +14124,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::P
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::Inline_::Police::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::Inline_::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(action != nullptr)
@@ -14188,22 +14135,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::Inline_::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Police::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::Inline_::Police::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Police::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Police::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::Action()
+Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::Action()
     :
     errdisable{YType::empty, "errdisable"},
     log{YType::empty, "log"}
@@ -14212,31 +14159,31 @@ Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::Action()
     yang_name = "action"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::~Action()
+Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::~Action()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::has_data() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::has_data() const
 {
     return errdisable.is_set
 	|| log.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(errdisable.yfilter)
 	|| ydk::is_set(log.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "action";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14247,18 +14194,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "errdisable")
     {
@@ -14274,7 +14221,7 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::set_
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "errdisable")
     {
@@ -14286,14 +14233,14 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::set_
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Police::Action::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "errdisable" || name == "log")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Port::Port()
+Native::Interface::GigabitEthernet::Power::Inline_::Port::Port()
     :
     poe_ha{YType::empty, "poe-ha"},
     two_event{YType::empty, "two-event"}
@@ -14302,31 +14249,31 @@ Native::Interface::TenGigabitEthernet::Power::Inline_::Port::Port()
     yang_name = "port"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Port::~Port()
+Native::Interface::GigabitEthernet::Power::Inline_::Port::~Port()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Port::has_data() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Port::has_data() const
 {
     return poe_ha.is_set
 	|| two_event.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Port::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Port::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(poe_ha.yfilter)
 	|| ydk::is_set(two_event.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::Inline_::Port::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::Inline_::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::Inline_::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::Inline_::Port::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14337,18 +14284,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::Inline_::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::Inline_::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::Inline_::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::Inline_::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "poe-ha")
     {
@@ -14364,7 +14311,7 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Port::set_value(cons
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::Inline_::Port::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "poe-ha")
     {
@@ -14376,14 +14323,14 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Port::set_filter(con
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "poe-ha" || name == "two-event")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::Static_()
+Native::Interface::GigabitEthernet::Power::Inline_::Static_::Static_()
     :
     max{YType::int32, "max"}
 {
@@ -14391,29 +14338,29 @@ Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::Static_()
     yang_name = "static"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::~Static_()
+Native::Interface::GigabitEthernet::Power::Inline_::Static_::~Static_()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::has_data() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Static_::has_data() const
 {
     return max.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::has_operation() const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Static_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(max.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Power::Inline_::Static_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Power::Inline_::Static_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14423,18 +14370,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Power::Inline_::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Power::Inline_::Static_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Power::Inline_::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max")
     {
@@ -14444,7 +14391,7 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::set_value(c
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Power::Inline_::Static_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "max")
     {
@@ -14452,14 +14399,14 @@ void Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::set_filter(
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Power::Inline_::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Power::Inline_::Static_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Authentication()
+Native::Interface::GigabitEthernet::Authentication::Authentication()
     :
     control_direction{YType::enumeration, "control-direction"},
     fallback{YType::str, "fallback"},
@@ -14469,24 +14416,24 @@ Native::Interface::TenGigabitEthernet::Authentication::Authentication()
     periodic{YType::empty, "periodic"},
     violation{YType::enumeration, "violation"}
     	,
-    event(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event>())
-	,order(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Order>())
-	,priority(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Priority>())
-	,timer(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Timer>())
+    event(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event>())
+	,order(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Order>())
+	,priority(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Priority>())
+	,timer(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Timer>())
 {
     event->parent = this;
     order->parent = this;
     priority->parent = this;
     timer->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "GigabitEthernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::~Authentication()
+Native::Interface::GigabitEthernet::Authentication::~Authentication()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::has_data() const
+bool Native::Interface::GigabitEthernet::Authentication::has_data() const
 {
     return control_direction.is_set
 	|| fallback.is_set
@@ -14501,7 +14448,7 @@ bool Native::Interface::TenGigabitEthernet::Authentication::has_data() const
 	|| (timer !=  nullptr && timer->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::has_operation() const
+bool Native::Interface::GigabitEthernet::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(control_direction.yfilter)
@@ -14517,14 +14464,14 @@ bool Native::Interface::TenGigabitEthernet::Authentication::has_operation() cons
 	|| (timer !=  nullptr && timer->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Authentication::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-sanet:authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14540,13 +14487,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
         if(event == nullptr)
         {
-            event = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event>();
+            event = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event>();
         }
         return event;
     }
@@ -14555,7 +14502,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::g
     {
         if(order == nullptr)
         {
-            order = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Order>();
+            order = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Order>();
         }
         return order;
     }
@@ -14564,7 +14511,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::g
     {
         if(priority == nullptr)
         {
-            priority = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Priority>();
+            priority = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Priority>();
         }
         return priority;
     }
@@ -14573,7 +14520,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::g
     {
         if(timer == nullptr)
         {
-            timer = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Timer>();
+            timer = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Timer>();
         }
         return timer;
     }
@@ -14581,7 +14528,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(event != nullptr)
@@ -14607,7 +14554,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "control-direction")
     {
@@ -14653,7 +14600,7 @@ void Native::Interface::TenGigabitEthernet::Authentication::set_value(const std:
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "control-direction")
     {
@@ -14685,18 +14632,18 @@ void Native::Interface::TenGigabitEthernet::Authentication::set_filter(const std
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "event" || name == "order" || name == "priority" || name == "timer" || name == "control-direction" || name == "fallback" || name == "host-mode" || name == "open" || name == "port-control" || name == "periodic" || name == "violation")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Event()
+Native::Interface::GigabitEthernet::Authentication::Event::Event()
     :
-    server(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server>())
-	,fail(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Fail>())
-	,no_response(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::NoResponse>())
+    server(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server>())
+	,fail(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Fail>())
+	,no_response(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::NoResponse>())
 {
     server->parent = this;
     fail->parent = this;
@@ -14705,18 +14652,18 @@ Native::Interface::TenGigabitEthernet::Authentication::Event::Event()
     yang_name = "event"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::~Event()
+Native::Interface::GigabitEthernet::Authentication::Event::~Event()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::has_data() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::has_data() const
 {
     return (server !=  nullptr && server->has_data())
 	|| (fail !=  nullptr && fail->has_data())
 	|| (no_response !=  nullptr && no_response->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::has_operation() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::has_operation() const
 {
     return is_set(yfilter)
 	|| (server !=  nullptr && server->has_operation())
@@ -14724,14 +14671,14 @@ bool Native::Interface::TenGigabitEthernet::Authentication::Event::has_operation
 	|| (no_response !=  nullptr && no_response->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Authentication::Event::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Authentication::Event::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "event";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Authentication::Event::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Authentication::Event::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14740,13 +14687,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Authentication::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "server")
     {
         if(server == nullptr)
         {
-            server = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server>();
+            server = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server>();
         }
         return server;
     }
@@ -14755,7 +14702,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::E
     {
         if(fail == nullptr)
         {
-            fail = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Fail>();
+            fail = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Fail>();
         }
         return fail;
     }
@@ -14764,7 +14711,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::E
     {
         if(no_response == nullptr)
         {
-            no_response = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::NoResponse>();
+            no_response = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::NoResponse>();
         }
         return no_response;
     }
@@ -14772,7 +14719,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::E
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Authentication::Event::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Authentication::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(server != nullptr)
@@ -14793,25 +14740,25 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Authentication::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Authentication::Event::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Authentication::Event::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "server" || name == "fail" || name == "no-response")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Server()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::Server()
     :
-    alive(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive>())
-	,dead(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead>())
+    alive(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive>())
+	,dead(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead>())
 {
     alive->parent = this;
     dead->parent = this;
@@ -14819,31 +14766,31 @@ Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Server()
     yang_name = "server"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::~Server()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::~Server()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::has_data() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::has_data() const
 {
     return (alive !=  nullptr && alive->has_data())
 	|| (dead !=  nullptr && dead->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::has_operation() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::has_operation() const
 {
     return is_set(yfilter)
 	|| (alive !=  nullptr && alive->has_operation())
 	|| (dead !=  nullptr && dead->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Authentication::Event::Server::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Authentication::Event::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Authentication::Event::Server::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Authentication::Event::Server::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14852,13 +14799,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Authentication::Event::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alive")
     {
         if(alive == nullptr)
         {
-            alive = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive>();
+            alive = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive>();
         }
         return alive;
     }
@@ -14867,7 +14814,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::E
     {
         if(dead == nullptr)
         {
-            dead = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead>();
+            dead = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead>();
         }
         return dead;
     }
@@ -14875,7 +14822,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::E
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Authentication::Event::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(alive != nullptr)
@@ -14891,53 +14838,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alive" || name == "dead")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Alive()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Alive()
     :
-    action(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action>())
+    action(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action>())
 {
     action->parent = this;
 
     yang_name = "alive"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::~Alive()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::~Alive()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::has_data() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::has_data() const
 {
     return (action !=  nullptr && action->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::has_operation() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::has_operation() const
 {
     return is_set(yfilter)
 	|| (action !=  nullptr && action->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alive";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14946,13 +14893,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
         if(action == nullptr)
         {
-            action = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action>();
+            action = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action>();
         }
         return action;
     }
@@ -14960,7 +14907,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::E
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(action != nullptr)
@@ -14971,22 +14918,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::Action()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::Action()
     :
     reinitialize{YType::empty, "reinitialize"}
 {
@@ -14994,29 +14941,29 @@ Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Act
     yang_name = "action"; yang_parent_name = "alive"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::~Action()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::~Action()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::has_data() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::has_data() const
 {
     return reinitialize.is_set;
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::has_operation() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(reinitialize.yfilter);
 }
 
-std::string Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "action";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15026,18 +14973,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reinitialize")
     {
@@ -15047,7 +14994,7 @@ void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive
     }
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "reinitialize")
     {
@@ -15055,45 +15002,45 @@ void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive
     }
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Alive::Action::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Alive::Action::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "reinitialize")
         return true;
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::Dead()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::Dead()
     :
-    action(std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::Action>())
+    action(std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::Action>())
 {
     action->parent = this;
 
     yang_name = "dead"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::~Dead()
+Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::~Dead()
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::has_data() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::has_data() const
 {
     return (action !=  nullptr && action->has_data());
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::has_operation() const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::has_operation() const
 {
     return is_set(yfilter)
 	|| (action !=  nullptr && action->has_operation());
 }
 
-std::string Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::get_segment_path() const
+std::string Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dead";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15102,13 +15049,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
         if(action == nullptr)
         {
-            action = std::make_shared<Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::Action>();
+            action = std::make_shared<Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::Action>();
         }
         return action;
     }
@@ -15116,7 +15063,7 @@ std::shared_ptr<Entity> Native::Interface::TenGigabitEthernet::Authentication::E
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(action != nullptr)
@@ -15127,74 +15074,74 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TenGigabitEthe
     return children;
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TenGigabitEthernet::Authentication::Event::Server::Dead::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::GigabitEthernet::Authentication::Event::Server::Dead::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action")
         return true;
     return false;
 }
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::Direction::input {0, "input"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::Direction::output {1, "output"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::Direction::input {0, "input"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::ServicePolicy::Type::PerformanceMonitor::Direction::output {1, "output"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::ProcessId::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Neighbor::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::Encrypt::Y_0 {0, "0"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::Encrypt::Y_7 {1, "7"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::Encrypt::Y_0 {0, "0"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::Encrypt::Y_7 {1, "7"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::Encrypt::Y_0 {0, "0"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::Encrypt::Y_7 {1, "7"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::Encrypt::Y_0 {0, "0"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::Encrypt::Y_7 {1, "7"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::Encrypt::Y_0 {0, "0"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::Encrypt::Y_7 {1, "7"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::Encrypt::Y_0 {0, "0"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::Encrypt::Y_7 {1, "7"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::Encrypt::Y_0 {0, "0"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::Encrypt::Y_7 {1, "7"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::Encrypt::Y_0 {0, "0"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::Encrypt::Y_7 {1, "7"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::Encrypt::Y_0 {0, "0"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::Encrypt::Y_7 {1, "7"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::Encrypt::Y_0 {0, "0"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::Encrypt::Y_7 {1, "7"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt::Y_0 {0, "0"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt::Y_7 {1, "7"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt::Y_0 {0, "0"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt::Y_7 {1, "7"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::All::out {0, "out"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::All::out {0, "out"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::ControlDirection::both {0, "both"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::ControlDirection::in {1, "in"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::ControlDirection::both {0, "both"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::ControlDirection::in {1, "in"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::HostMode::multi_auth {0, "multi-auth"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::HostMode::multi_domain {1, "multi-domain"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::HostMode::multi_host {2, "multi-host"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::HostMode::single_host {3, "single-host"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::HostMode::multi_auth {0, "multi-auth"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::HostMode::multi_domain {1, "multi-domain"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::HostMode::multi_host {2, "multi-host"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::HostMode::single_host {3, "single-host"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::PortControl::auto_ {0, "auto"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::PortControl::force_authorized {1, "force-authorized"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::PortControl::force_unauthorized {2, "force-unauthorized"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::PortControl::auto_ {0, "auto"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::PortControl::force_authorized {1, "force-authorized"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::PortControl::force_unauthorized {2, "force-unauthorized"};
 
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violation::protect {0, "protect"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violation::replace {1, "replace"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violation::restrict {2, "restrict"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violation::shutdown {3, "shutdown"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::Violation::protect {0, "protect"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::Violation::replace {1, "replace"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::Violation::restrict {2, "restrict"};
+const Enum::YLeaf Native::Interface::GigabitEthernet::Authentication::Violation::shutdown {3, "shutdown"};
 
 
 }

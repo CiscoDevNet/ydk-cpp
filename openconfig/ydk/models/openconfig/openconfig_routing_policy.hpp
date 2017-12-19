@@ -552,7 +552,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::C
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf community_set_name; //type: string
-        ydk::YLeafList community_member; //type: list of  one of union, identityref, string
+        ydk::YLeafList community_member; //type: list of  one of string, identityref, union
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config
 
@@ -574,7 +574,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::S
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf community_set_name; //type: string
-        ydk::YLeafList community_member; //type: list of  one of union, identityref, string
+        ydk::YLeafList community_member; //type: list of  one of string, identityref, union
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State
 
@@ -648,7 +648,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ext_community_set_name; //type: string
-        ydk::YLeafList ext_community_member; //type: list of  one of union, string
+        ydk::YLeafList ext_community_member; //type: list of  one of string, union
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::Config
 
@@ -670,7 +670,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ext_community_set_name; //type: string
-        ydk::YLeafList ext_community_member; //type: list of  one of union, string
+        ydk::YLeafList ext_community_member; //type: list of  one of string, union
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::State
 
@@ -1981,8 +1981,8 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
 
         ydk::YLeaf set_route_origin; //type: BgpOriginAttrType
         ydk::YLeaf set_local_pref; //type: uint32
-        ydk::YLeaf set_next_hop; //type: one of union, enumeration
-        ydk::YLeaf set_med; //type: one of enumeration, uint32, string
+        ydk::YLeaf set_next_hop; //type: one of enumeration, union
+        ydk::YLeaf set_med; //type: one of uint32, string, enumeration
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::Config
 
@@ -2005,8 +2005,8 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
 
         ydk::YLeaf set_route_origin; //type: BgpOriginAttrType
         ydk::YLeaf set_local_pref; //type: uint32
-        ydk::YLeaf set_next_hop; //type: one of union, enumeration
-        ydk::YLeaf set_med; //type: one of enumeration, uint32, string
+        ydk::YLeaf set_next_hop; //type: one of enumeration, union
+        ydk::YLeaf set_med; //type: one of uint32, string, enumeration
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::State
 
@@ -2194,7 +2194,7 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList communities; //type: list of  one of union, identityref
+        ydk::YLeafList communities; //type: list of  one of identityref, union
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config
 
@@ -2215,7 +2215,7 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList communities; //type: list of  one of union, identityref
+        ydk::YLeafList communities; //type: list of  one of identityref, union
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State
 
@@ -2405,7 +2405,7 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList communities; //type: list of  one of union, identityref
+        ydk::YLeafList communities; //type: list of  one of identityref, union
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config
 
@@ -2426,7 +2426,7 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList communities; //type: list of  one of union, identityref
+        ydk::YLeafList communities; //type: list of  one of identityref, union
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State
 

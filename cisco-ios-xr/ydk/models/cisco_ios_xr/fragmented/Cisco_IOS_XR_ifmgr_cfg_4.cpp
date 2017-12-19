@@ -1032,7 +1032,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Min
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaCfgPpp::CiscoIOSXRPppMaCfgPpp()
 {
 
-    yang_name = "Cisco-IOS-XR-ppp-ma-cfg_ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaCfgPpp::~CiscoIOSXRPppMaCfgPpp()
@@ -1052,7 +1052,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaCfgPpp::has
 std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaCfgPpp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-cfg:Cisco-IOS-XR-ppp-ma-cfg_ppp";
+    path_buffer << "Cisco-IOS-XR-ppp-ma-cfg:ppp";
     return path_buffer.str();
 }
 
@@ -1095,7 +1095,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp::Cisco
 {
     fsm->parent = this;
 
-    yang_name = "Cisco-IOS-XR-ppp-ma-fsm-cfg_ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp::~CiscoIOSXRPppMaFsmCfgPpp()
@@ -1116,7 +1116,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp::
 std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-fsm-cfg:Cisco-IOS-XR-ppp-ma-fsm-cfg_ppp";
+    path_buffer << "Cisco-IOS-XR-ppp-ma-fsm-cfg:ppp";
     return path_buffer.str();
 }
 
@@ -1177,7 +1177,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp::Fsm::
     max_unacknowledged_conf_requests{YType::uint32, "max-unacknowledged-conf-requests"}
 {
 
-    yang_name = "fsm"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-fsm-cfg_ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fsm"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp::Fsm::~Fsm()
@@ -1293,7 +1293,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp::Cisc
 {
     ipcp->parent = this;
 
-    yang_name = "Cisco-IOS-XR-ppp-ma-ipcp-cfg_ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp::~CiscoIOSXRPppMaIpcpCfgPpp()
@@ -1314,7 +1314,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp:
 std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-ipcp-cfg:Cisco-IOS-XR-ppp-ma-ipcp-cfg_ppp";
+    path_buffer << "Cisco-IOS-XR-ppp-ma-ipcp-cfg:ppp";
     return path_buffer.str();
 }
 
@@ -1377,7 +1377,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp::Ipcp
     peer_address->parent = this;
     dns->parent = this;
 
-    yang_name = "ipcp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-ipcp-cfg_ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcp"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp::Ipcp::~Ipcp()
@@ -1732,7 +1732,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp::Ci
 {
     ipcpiw->parent = this;
 
-    yang_name = "Cisco-IOS-XR-ppp-ma-ipcpiw-cfg_ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp::~CiscoIOSXRPppMaIpcpiwCfgPpp()
@@ -1753,7 +1753,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPp
 std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-ipcpiw-cfg:Cisco-IOS-XR-ppp-ma-ipcpiw-cfg_ppp";
+    path_buffer << "Cisco-IOS-XR-ppp-ma-ipcpiw-cfg:ppp";
     return path_buffer.str();
 }
 
@@ -1811,7 +1811,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp::Ip
     proxy_address{YType::str, "proxy-address"}
 {
 
-    yang_name = "ipcpiw"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-ipcpiw-cfg_ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcpiw"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp::Ipcpiw::~Ipcpiw()
@@ -1890,7 +1890,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::Cisco
     mcmp->parent = this;
     lcp->parent = this;
 
-    yang_name = "Cisco-IOS-XR-ppp-ma-lcp-cfg_ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::~CiscoIOSXRPppMaLcpCfgPpp()
@@ -1913,7 +1913,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::
 std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-lcp-cfg:Cisco-IOS-XR-ppp-ma-lcp-cfg_ppp";
+    path_buffer << "Cisco-IOS-XR-ppp-ma-lcp-cfg:ppp";
     return path_buffer.str();
 }
 
@@ -1989,7 +1989,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::Mcmp:
 {
     local->parent = this;
 
-    yang_name = "mcmp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-lcp-cfg_ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mcmp"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::Mcmp::~Mcmp()
@@ -2197,7 +2197,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::Lcp::
     authentication->parent = this;
     chap->parent = this;
 
-    yang_name = "lcp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-lcp-cfg_ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lcp"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp::Lcp::~Lcp()

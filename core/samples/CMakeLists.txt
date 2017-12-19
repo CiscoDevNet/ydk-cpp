@@ -19,12 +19,13 @@ set(samples bgp_create
                 bgp_xr_read
                 bgp_xr_opendaylight
                 bgp_restconf
-                xe_native_read)
+                xe_native_read # uncomment this line if you want to build this XE native sample which takes a while
+                )
 
 # set default build type if not specified by user
 set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
-set(CMAKE_CXX_FLAGS_DEBUG   "-g -O0 -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS_DEBUG   "-g -O0 -fprofile-arcs")
 
 # Find dependent libraries
 find_library(ydk_openconfig_location ydk_openconfig)

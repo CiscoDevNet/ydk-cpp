@@ -2929,7 +2929,7 @@ std::shared_ptr<Entity> Ptp::Logging::get_child_by_name(const std::string & chil
         return best_master_clock;
     }
 
-    if(child_yang_name == "servo")
+    if(child_yang_name == "Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo")
     {
         if(servo == nullptr)
         {
@@ -2951,7 +2951,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Logging::get_children() cons
 
     if(servo != nullptr)
     {
-        children["servo"] = servo;
+        children["Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo"] = servo;
     }
 
     return children;

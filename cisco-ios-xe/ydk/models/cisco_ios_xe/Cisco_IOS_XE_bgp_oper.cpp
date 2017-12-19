@@ -16,10 +16,12 @@ BgpStateData::BgpStateData()
     neighbors(std::make_shared<BgpStateData::Neighbors>())
 	,address_families(std::make_shared<BgpStateData::AddressFamilies>())
 	,bgp_route_vrfs(std::make_shared<BgpStateData::BgpRouteVrfs>())
+	,bgp_route_rds(std::make_shared<BgpStateData::BgpRouteRds>())
 {
     neighbors->parent = this;
     address_families->parent = this;
     bgp_route_vrfs->parent = this;
+    bgp_route_rds->parent = this;
 
     yang_name = "bgp-state-data"; yang_parent_name = "Cisco-IOS-XE-bgp-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -32,7 +34,8 @@ bool BgpStateData::has_data() const
 {
     return (neighbors !=  nullptr && neighbors->has_data())
 	|| (address_families !=  nullptr && address_families->has_data())
-	|| (bgp_route_vrfs !=  nullptr && bgp_route_vrfs->has_data());
+	|| (bgp_route_vrfs !=  nullptr && bgp_route_vrfs->has_data())
+	|| (bgp_route_rds !=  nullptr && bgp_route_rds->has_data());
 }
 
 bool BgpStateData::has_operation() const
@@ -40,7 +43,8 @@ bool BgpStateData::has_operation() const
     return is_set(yfilter)
 	|| (neighbors !=  nullptr && neighbors->has_operation())
 	|| (address_families !=  nullptr && address_families->has_operation())
-	|| (bgp_route_vrfs !=  nullptr && bgp_route_vrfs->has_operation());
+	|| (bgp_route_vrfs !=  nullptr && bgp_route_vrfs->has_operation())
+	|| (bgp_route_rds !=  nullptr && bgp_route_rds->has_operation());
 }
 
 std::string BgpStateData::get_segment_path() const
@@ -88,6 +92,15 @@ std::shared_ptr<Entity> BgpStateData::get_child_by_name(const std::string & chil
         return bgp_route_vrfs;
     }
 
+    if(child_yang_name == "bgp-route-rds")
+    {
+        if(bgp_route_rds == nullptr)
+        {
+            bgp_route_rds = std::make_shared<BgpStateData::BgpRouteRds>();
+        }
+        return bgp_route_rds;
+    }
+
     return nullptr;
 }
 
@@ -107,6 +120,11 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::get_children() cons
     if(bgp_route_vrfs != nullptr)
     {
         children["bgp-route-vrfs"] = bgp_route_vrfs;
+    }
+
+    if(bgp_route_rds != nullptr)
+    {
+        children["bgp-route-rds"] = bgp_route_rds;
     }
 
     return children;
@@ -147,7 +165,7 @@ std::map<std::pair<std::string, std::string>, std::string> BgpStateData::get_nam
 
 bool BgpStateData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbors" || name == "address-families" || name == "bgp-route-vrfs")
+    if(name == "neighbors" || name == "address-families" || name == "bgp-route-vrfs" || name == "bgp-route-rds")
         return true;
     return false;
 }
@@ -3294,8 +3312,12 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteAf()
     afi_safi{YType::enumeration, "afi-safi"}
     	,
     bgp_route_filters(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters>())
+	,bgp_route_neighbors(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors>())
+	,bgp_peer_groups(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups>())
 {
     bgp_route_filters->parent = this;
+    bgp_route_neighbors->parent = this;
+    bgp_peer_groups->parent = this;
 
     yang_name = "bgp-route-af"; yang_parent_name = "bgp-route-afs"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -3307,14 +3329,18 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::~BgpRouteAf()
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::has_data() const
 {
     return afi_safi.is_set
-	|| (bgp_route_filters !=  nullptr && bgp_route_filters->has_data());
+	|| (bgp_route_filters !=  nullptr && bgp_route_filters->has_data())
+	|| (bgp_route_neighbors !=  nullptr && bgp_route_neighbors->has_data())
+	|| (bgp_peer_groups !=  nullptr && bgp_peer_groups->has_data());
 }
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(afi_safi.yfilter)
-	|| (bgp_route_filters !=  nullptr && bgp_route_filters->has_operation());
+	|| (bgp_route_filters !=  nullptr && bgp_route_filters->has_operation())
+	|| (bgp_route_neighbors !=  nullptr && bgp_route_neighbors->has_operation())
+	|| (bgp_peer_groups !=  nullptr && bgp_peer_groups->has_operation());
 }
 
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::get_segment_path() const
@@ -3345,6 +3371,24 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
         return bgp_route_filters;
     }
 
+    if(child_yang_name == "bgp-route-neighbors")
+    {
+        if(bgp_route_neighbors == nullptr)
+        {
+            bgp_route_neighbors = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors>();
+        }
+        return bgp_route_neighbors;
+    }
+
+    if(child_yang_name == "bgp-peer-groups")
+    {
+        if(bgp_peer_groups == nullptr)
+        {
+            bgp_peer_groups = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups>();
+        }
+        return bgp_peer_groups;
+    }
+
     return nullptr;
 }
 
@@ -3354,6 +3398,16 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     if(bgp_route_filters != nullptr)
     {
         children["bgp-route-filters"] = bgp_route_filters;
+    }
+
+    if(bgp_route_neighbors != nullptr)
+    {
+        children["bgp-route-neighbors"] = bgp_route_neighbors;
+    }
+
+    if(bgp_peer_groups != nullptr)
+    {
+        children["bgp-peer-groups"] = bgp_peer_groups;
     }
 
     return children;
@@ -3379,7 +3433,7 @@ void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::set_filte
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bgp-route-filters" || name == "afi-safi")
+    if(name == "bgp-route-filters" || name == "bgp-route-neighbors" || name == "bgp-peer-groups" || name == "afi-safi")
         return true;
     return false;
 }
@@ -3904,7 +3958,22 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
     as_path{YType::str, "as-path"},
     origin{YType::enumeration, "origin"},
     rpki_status{YType::enumeration, "rpki-status"},
-    community{YType::str, "community"}
+    community{YType::str, "community"},
+    mpls_in{YType::str, "mpls-in"},
+    mpls_out{YType::str, "mpls-out"},
+    sr_profile_name{YType::str, "sr-profile-name"},
+    sr_binding_sid{YType::uint32, "sr-binding-sid"},
+    sr_label_indx{YType::uint32, "sr-label-indx"},
+    as4_path{YType::str, "as4-path"},
+    atomic_aggregate{YType::boolean, "atomic-aggregate"},
+    aggr_as_number{YType::uint32, "aggr-as-number"},
+    aggr_as4_number{YType::uint32, "aggr-as4-number"},
+    aggr_address{YType::str, "aggr-address"},
+    originator_id{YType::str, "originator-id"},
+    cluster_list{YType::str, "cluster-list"},
+    extended_community{YType::str, "extended-community"},
+    ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
+    path_id{YType::uint32, "path-id"}
     	,
     path_status(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::PathStatus>())
 {
@@ -3927,6 +3996,21 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 	|| origin.is_set
 	|| rpki_status.is_set
 	|| community.is_set
+	|| mpls_in.is_set
+	|| mpls_out.is_set
+	|| sr_profile_name.is_set
+	|| sr_binding_sid.is_set
+	|| sr_label_indx.is_set
+	|| as4_path.is_set
+	|| atomic_aggregate.is_set
+	|| aggr_as_number.is_set
+	|| aggr_as4_number.is_set
+	|| aggr_address.is_set
+	|| originator_id.is_set
+	|| cluster_list.is_set
+	|| extended_community.is_set
+	|| ext_aigp_metric.is_set
+	|| path_id.is_set
 	|| (path_status !=  nullptr && path_status->has_data());
 }
 
@@ -3941,6 +4025,21 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 	|| ydk::is_set(origin.yfilter)
 	|| ydk::is_set(rpki_status.yfilter)
 	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(mpls_in.yfilter)
+	|| ydk::is_set(mpls_out.yfilter)
+	|| ydk::is_set(sr_profile_name.yfilter)
+	|| ydk::is_set(sr_binding_sid.yfilter)
+	|| ydk::is_set(sr_label_indx.yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(atomic_aggregate.yfilter)
+	|| ydk::is_set(aggr_as_number.yfilter)
+	|| ydk::is_set(aggr_as4_number.yfilter)
+	|| ydk::is_set(aggr_address.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(extended_community.yfilter)
+	|| ydk::is_set(ext_aigp_metric.yfilter)
+	|| ydk::is_set(path_id.yfilter)
 	|| (path_status !=  nullptr && path_status->has_operation());
 }
 
@@ -3963,6 +4062,21 @@ std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRo
     if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
     if (rpki_status.is_set || is_set(rpki_status.yfilter)) leaf_name_data.push_back(rpki_status.get_name_leafdata());
     if (community.is_set || is_set(community.yfilter)) leaf_name_data.push_back(community.get_name_leafdata());
+    if (mpls_in.is_set || is_set(mpls_in.yfilter)) leaf_name_data.push_back(mpls_in.get_name_leafdata());
+    if (mpls_out.is_set || is_set(mpls_out.yfilter)) leaf_name_data.push_back(mpls_out.get_name_leafdata());
+    if (sr_profile_name.is_set || is_set(sr_profile_name.yfilter)) leaf_name_data.push_back(sr_profile_name.get_name_leafdata());
+    if (sr_binding_sid.is_set || is_set(sr_binding_sid.yfilter)) leaf_name_data.push_back(sr_binding_sid.get_name_leafdata());
+    if (sr_label_indx.is_set || is_set(sr_label_indx.yfilter)) leaf_name_data.push_back(sr_label_indx.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (atomic_aggregate.is_set || is_set(atomic_aggregate.yfilter)) leaf_name_data.push_back(atomic_aggregate.get_name_leafdata());
+    if (aggr_as_number.is_set || is_set(aggr_as_number.yfilter)) leaf_name_data.push_back(aggr_as_number.get_name_leafdata());
+    if (aggr_as4_number.is_set || is_set(aggr_as4_number.yfilter)) leaf_name_data.push_back(aggr_as4_number.get_name_leafdata());
+    if (aggr_address.is_set || is_set(aggr_address.yfilter)) leaf_name_data.push_back(aggr_address.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (cluster_list.is_set || is_set(cluster_list.yfilter)) leaf_name_data.push_back(cluster_list.get_name_leafdata());
+    if (extended_community.is_set || is_set(extended_community.yfilter)) leaf_name_data.push_back(extended_community.get_name_leafdata());
+    if (ext_aigp_metric.is_set || is_set(ext_aigp_metric.yfilter)) leaf_name_data.push_back(ext_aigp_metric.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4043,6 +4157,96 @@ void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
         community.value_namespace = name_space;
         community.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "mpls-in")
+    {
+        mpls_in = value;
+        mpls_in.value_namespace = name_space;
+        mpls_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out = value;
+        mpls_out.value_namespace = name_space;
+        mpls_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name = value;
+        sr_profile_name.value_namespace = name_space;
+        sr_profile_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid = value;
+        sr_binding_sid.value_namespace = name_space;
+        sr_binding_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx = value;
+        sr_label_indx.value_namespace = name_space;
+        sr_label_indx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate = value;
+        atomic_aggregate.value_namespace = name_space;
+        atomic_aggregate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number = value;
+        aggr_as_number.value_namespace = name_space;
+        aggr_as_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number = value;
+        aggr_as4_number.value_namespace = name_space;
+        aggr_as4_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address = value;
+        aggr_address.value_namespace = name_space;
+        aggr_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list = value;
+        cluster_list.value_namespace = name_space;
+        cluster_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community = value;
+        extended_community.value_namespace = name_space;
+        extended_community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric = value;
+        ext_aigp_metric.value_namespace = name_space;
+        ext_aigp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-id")
+    {
+        path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4079,11 +4283,71 @@ void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
     {
         community.yfilter = yfilter;
     }
+    if(value_path == "mpls-in")
+    {
+        mpls_in.yfilter = yfilter;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out.yfilter = yfilter;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name.yfilter = yfilter;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid.yfilter = yfilter;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx.yfilter = yfilter;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community.yfilter = yfilter;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
 }
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "path-status" || name == "nexthop" || name == "metric" || name == "local-pref" || name == "weight" || name == "as-path" || name == "origin" || name == "rpki-status" || name == "community")
+    if(name == "path-status" || name == "nexthop" || name == "metric" || name == "local-pref" || name == "weight" || name == "as-path" || name == "origin" || name == "rpki-status" || name == "community" || name == "mpls-in" || name == "mpls-out" || name == "sr-profile-name" || name == "sr-binding-sid" || name == "sr-label-indx" || name == "as4-path" || name == "atomic-aggregate" || name == "aggr-as-number" || name == "aggr-as4-number" || name == "aggr-address" || name == "originator-id" || name == "cluster-list" || name == "extended-community" || name == "ext-aigp-metric" || name == "path-id")
         return true;
     return false;
 }
@@ -4354,6 +4618,4819 @@ void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 }
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::PathStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "suppressed" || name == "damped" || name == "history" || name == "valid" || name == "sourced" || name == "bestpath" || name == "internal" || name == "rib-fail" || name == "stale" || name == "multipath" || name == "backup-path" || name == "rt-filter" || name == "best-external" || name == "additional-path" || name == "rib-compressed")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbors()
+{
+
+    yang_name = "bgp-route-neighbors"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::~BgpRouteNeighbors()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::has_data() const
+{
+    for (std::size_t index=0; index<bgp_route_neighbor.size(); index++)
+    {
+        if(bgp_route_neighbor[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_route_neighbor.size(); index++)
+    {
+        if(bgp_route_neighbor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-route-neighbors";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-route-neighbor")
+    {
+        for(auto const & c : bgp_route_neighbor)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor>();
+        c->parent = this;
+        bgp_route_neighbor.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_route_neighbor)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-route-neighbor")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpRouteNeighbor()
+    :
+    nbr_id{YType::str, "nbr-id"}
+    	,
+    bgp_neighbor_route_filters(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters>())
+{
+    bgp_neighbor_route_filters->parent = this;
+
+    yang_name = "bgp-route-neighbor"; yang_parent_name = "bgp-route-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::~BgpRouteNeighbor()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::has_data() const
+{
+    return nbr_id.is_set
+	|| (bgp_neighbor_route_filters !=  nullptr && bgp_neighbor_route_filters->has_data());
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nbr_id.yfilter)
+	|| (bgp_neighbor_route_filters !=  nullptr && bgp_neighbor_route_filters->has_operation());
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-route-neighbor" <<"[nbr-id='" <<nbr_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nbr_id.is_set || is_set(nbr_id.yfilter)) leaf_name_data.push_back(nbr_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-neighbor-route-filters")
+    {
+        if(bgp_neighbor_route_filters == nullptr)
+        {
+            bgp_neighbor_route_filters = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters>();
+        }
+        return bgp_neighbor_route_filters;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_neighbor_route_filters != nullptr)
+    {
+        children["bgp-neighbor-route-filters"] = bgp_neighbor_route_filters;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nbr-id")
+    {
+        nbr_id = value;
+        nbr_id.value_namespace = name_space;
+        nbr_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nbr-id")
+    {
+        nbr_id.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-neighbor-route-filters" || name == "nbr-id")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilters()
+{
+
+    yang_name = "bgp-neighbor-route-filters"; yang_parent_name = "bgp-route-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::~BgpNeighborRouteFilters()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::has_data() const
+{
+    for (std::size_t index=0; index<bgp_neighbor_route_filter.size(); index++)
+    {
+        if(bgp_neighbor_route_filter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_neighbor_route_filter.size(); index++)
+    {
+        if(bgp_neighbor_route_filter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-neighbor-route-filters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-neighbor-route-filter")
+    {
+        for(auto const & c : bgp_neighbor_route_filter)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter>();
+        c->parent = this;
+        bgp_neighbor_route_filter.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_neighbor_route_filter)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-neighbor-route-filter")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteFilter()
+    :
+    nbr_fltr{YType::enumeration, "nbr-fltr"}
+    	,
+    bgp_neighbor_route_entries(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries>())
+{
+    bgp_neighbor_route_entries->parent = this;
+
+    yang_name = "bgp-neighbor-route-filter"; yang_parent_name = "bgp-neighbor-route-filters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::~BgpNeighborRouteFilter()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::has_data() const
+{
+    return nbr_fltr.is_set
+	|| (bgp_neighbor_route_entries !=  nullptr && bgp_neighbor_route_entries->has_data());
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nbr_fltr.yfilter)
+	|| (bgp_neighbor_route_entries !=  nullptr && bgp_neighbor_route_entries->has_operation());
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-neighbor-route-filter" <<"[nbr-fltr='" <<nbr_fltr <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nbr_fltr.is_set || is_set(nbr_fltr.yfilter)) leaf_name_data.push_back(nbr_fltr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-neighbor-route-entries")
+    {
+        if(bgp_neighbor_route_entries == nullptr)
+        {
+            bgp_neighbor_route_entries = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries>();
+        }
+        return bgp_neighbor_route_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_neighbor_route_entries != nullptr)
+    {
+        children["bgp-neighbor-route-entries"] = bgp_neighbor_route_entries;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nbr-fltr")
+    {
+        nbr_fltr = value;
+        nbr_fltr.value_namespace = name_space;
+        nbr_fltr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nbr-fltr")
+    {
+        nbr_fltr.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-neighbor-route-entries" || name == "nbr-fltr")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntries()
+{
+
+    yang_name = "bgp-neighbor-route-entries"; yang_parent_name = "bgp-neighbor-route-filter"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::~BgpNeighborRouteEntries()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::has_data() const
+{
+    for (std::size_t index=0; index<bgp_neighbor_route_entry.size(); index++)
+    {
+        if(bgp_neighbor_route_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_neighbor_route_entry.size(); index++)
+    {
+        if(bgp_neighbor_route_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-neighbor-route-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-neighbor-route-entry")
+    {
+        for(auto const & c : bgp_neighbor_route_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry>();
+        c->parent = this;
+        bgp_neighbor_route_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_neighbor_route_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-neighbor-route-entry")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborRouteEntry()
+    :
+    prefix{YType::str, "prefix"},
+    version{YType::uint32, "version"},
+    available_paths{YType::uint32, "available-paths"},
+    advertised_to{YType::str, "advertised-to"}
+    	,
+    bgp_neighbor_path_entries(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries>())
+{
+    bgp_neighbor_path_entries->parent = this;
+
+    yang_name = "bgp-neighbor-route-entry"; yang_parent_name = "bgp-neighbor-route-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::~BgpNeighborRouteEntry()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::has_data() const
+{
+    return prefix.is_set
+	|| version.is_set
+	|| available_paths.is_set
+	|| advertised_to.is_set
+	|| (bgp_neighbor_path_entries !=  nullptr && bgp_neighbor_path_entries->has_data());
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(available_paths.yfilter)
+	|| ydk::is_set(advertised_to.yfilter)
+	|| (bgp_neighbor_path_entries !=  nullptr && bgp_neighbor_path_entries->has_operation());
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-neighbor-route-entry" <<"[prefix='" <<prefix <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (available_paths.is_set || is_set(available_paths.yfilter)) leaf_name_data.push_back(available_paths.get_name_leafdata());
+    if (advertised_to.is_set || is_set(advertised_to.yfilter)) leaf_name_data.push_back(advertised_to.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-neighbor-path-entries")
+    {
+        if(bgp_neighbor_path_entries == nullptr)
+        {
+            bgp_neighbor_path_entries = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries>();
+        }
+        return bgp_neighbor_path_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_neighbor_path_entries != nullptr)
+    {
+        children["bgp-neighbor-path-entries"] = bgp_neighbor_path_entries;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "available-paths")
+    {
+        available_paths = value;
+        available_paths.value_namespace = name_space;
+        available_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advertised-to")
+    {
+        advertised_to = value;
+        advertised_to.value_namespace = name_space;
+        advertised_to.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "available-paths")
+    {
+        available_paths.yfilter = yfilter;
+    }
+    if(value_path == "advertised-to")
+    {
+        advertised_to.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-neighbor-path-entries" || name == "prefix" || name == "version" || name == "available-paths" || name == "advertised-to")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntries()
+{
+
+    yang_name = "bgp-neighbor-path-entries"; yang_parent_name = "bgp-neighbor-route-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::~BgpNeighborPathEntries()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::has_data() const
+{
+    for (std::size_t index=0; index<bgp_neighbor_path_entry.size(); index++)
+    {
+        if(bgp_neighbor_path_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_neighbor_path_entry.size(); index++)
+    {
+        if(bgp_neighbor_path_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-neighbor-path-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-neighbor-path-entry")
+    {
+        for(auto const & c : bgp_neighbor_path_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry>();
+        c->parent = this;
+        bgp_neighbor_path_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_neighbor_path_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-neighbor-path-entry")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::BgpNeighborPathEntry()
+    :
+    nexthop{YType::str, "nexthop"},
+    metric{YType::uint32, "metric"},
+    local_pref{YType::uint32, "local-pref"},
+    weight{YType::uint32, "weight"},
+    as_path{YType::str, "as-path"},
+    origin{YType::enumeration, "origin"},
+    rpki_status{YType::enumeration, "rpki-status"},
+    community{YType::str, "community"},
+    mpls_in{YType::str, "mpls-in"},
+    mpls_out{YType::str, "mpls-out"},
+    sr_profile_name{YType::str, "sr-profile-name"},
+    sr_binding_sid{YType::uint32, "sr-binding-sid"},
+    sr_label_indx{YType::uint32, "sr-label-indx"},
+    as4_path{YType::str, "as4-path"},
+    atomic_aggregate{YType::boolean, "atomic-aggregate"},
+    aggr_as_number{YType::uint32, "aggr-as-number"},
+    aggr_as4_number{YType::uint32, "aggr-as4-number"},
+    aggr_address{YType::str, "aggr-address"},
+    originator_id{YType::str, "originator-id"},
+    cluster_list{YType::str, "cluster-list"},
+    extended_community{YType::str, "extended-community"},
+    ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
+    path_id{YType::uint32, "path-id"}
+    	,
+    path_status(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus>())
+{
+    path_status->parent = this;
+
+    yang_name = "bgp-neighbor-path-entry"; yang_parent_name = "bgp-neighbor-path-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::~BgpNeighborPathEntry()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::has_data() const
+{
+    return nexthop.is_set
+	|| metric.is_set
+	|| local_pref.is_set
+	|| weight.is_set
+	|| as_path.is_set
+	|| origin.is_set
+	|| rpki_status.is_set
+	|| community.is_set
+	|| mpls_in.is_set
+	|| mpls_out.is_set
+	|| sr_profile_name.is_set
+	|| sr_binding_sid.is_set
+	|| sr_label_indx.is_set
+	|| as4_path.is_set
+	|| atomic_aggregate.is_set
+	|| aggr_as_number.is_set
+	|| aggr_as4_number.is_set
+	|| aggr_address.is_set
+	|| originator_id.is_set
+	|| cluster_list.is_set
+	|| extended_community.is_set
+	|| ext_aigp_metric.is_set
+	|| path_id.is_set
+	|| (path_status !=  nullptr && path_status->has_data());
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nexthop.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(origin.yfilter)
+	|| ydk::is_set(rpki_status.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(mpls_in.yfilter)
+	|| ydk::is_set(mpls_out.yfilter)
+	|| ydk::is_set(sr_profile_name.yfilter)
+	|| ydk::is_set(sr_binding_sid.yfilter)
+	|| ydk::is_set(sr_label_indx.yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(atomic_aggregate.yfilter)
+	|| ydk::is_set(aggr_as_number.yfilter)
+	|| ydk::is_set(aggr_as4_number.yfilter)
+	|| ydk::is_set(aggr_address.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(extended_community.yfilter)
+	|| ydk::is_set(ext_aigp_metric.yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| (path_status !=  nullptr && path_status->has_operation());
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-neighbor-path-entry" <<"[nexthop='" <<nexthop <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nexthop.is_set || is_set(nexthop.yfilter)) leaf_name_data.push_back(nexthop.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (rpki_status.is_set || is_set(rpki_status.yfilter)) leaf_name_data.push_back(rpki_status.get_name_leafdata());
+    if (community.is_set || is_set(community.yfilter)) leaf_name_data.push_back(community.get_name_leafdata());
+    if (mpls_in.is_set || is_set(mpls_in.yfilter)) leaf_name_data.push_back(mpls_in.get_name_leafdata());
+    if (mpls_out.is_set || is_set(mpls_out.yfilter)) leaf_name_data.push_back(mpls_out.get_name_leafdata());
+    if (sr_profile_name.is_set || is_set(sr_profile_name.yfilter)) leaf_name_data.push_back(sr_profile_name.get_name_leafdata());
+    if (sr_binding_sid.is_set || is_set(sr_binding_sid.yfilter)) leaf_name_data.push_back(sr_binding_sid.get_name_leafdata());
+    if (sr_label_indx.is_set || is_set(sr_label_indx.yfilter)) leaf_name_data.push_back(sr_label_indx.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (atomic_aggregate.is_set || is_set(atomic_aggregate.yfilter)) leaf_name_data.push_back(atomic_aggregate.get_name_leafdata());
+    if (aggr_as_number.is_set || is_set(aggr_as_number.yfilter)) leaf_name_data.push_back(aggr_as_number.get_name_leafdata());
+    if (aggr_as4_number.is_set || is_set(aggr_as4_number.yfilter)) leaf_name_data.push_back(aggr_as4_number.get_name_leafdata());
+    if (aggr_address.is_set || is_set(aggr_address.yfilter)) leaf_name_data.push_back(aggr_address.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (cluster_list.is_set || is_set(cluster_list.yfilter)) leaf_name_data.push_back(cluster_list.get_name_leafdata());
+    if (extended_community.is_set || is_set(extended_community.yfilter)) leaf_name_data.push_back(extended_community.get_name_leafdata());
+    if (ext_aigp_metric.is_set || is_set(ext_aigp_metric.yfilter)) leaf_name_data.push_back(ext_aigp_metric.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-status")
+    {
+        if(path_status == nullptr)
+        {
+            path_status = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus>();
+        }
+        return path_status;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_status != nullptr)
+    {
+        children["path-status"] = path_status;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nexthop")
+    {
+        nexthop = value;
+        nexthop.value_namespace = name_space;
+        nexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-path")
+    {
+        as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-status")
+    {
+        rpki_status = value;
+        rpki_status.value_namespace = name_space;
+        rpki_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "community")
+    {
+        community = value;
+        community.value_namespace = name_space;
+        community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-in")
+    {
+        mpls_in = value;
+        mpls_in.value_namespace = name_space;
+        mpls_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out = value;
+        mpls_out.value_namespace = name_space;
+        mpls_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name = value;
+        sr_profile_name.value_namespace = name_space;
+        sr_profile_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid = value;
+        sr_binding_sid.value_namespace = name_space;
+        sr_binding_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx = value;
+        sr_label_indx.value_namespace = name_space;
+        sr_label_indx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate = value;
+        atomic_aggregate.value_namespace = name_space;
+        atomic_aggregate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number = value;
+        aggr_as_number.value_namespace = name_space;
+        aggr_as_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number = value;
+        aggr_as4_number.value_namespace = name_space;
+        aggr_as4_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address = value;
+        aggr_address.value_namespace = name_space;
+        aggr_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list = value;
+        cluster_list.value_namespace = name_space;
+        cluster_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community = value;
+        extended_community.value_namespace = name_space;
+        extended_community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric = value;
+        ext_aigp_metric.value_namespace = name_space;
+        ext_aigp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-id")
+    {
+        path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nexthop")
+    {
+        nexthop.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+    if(value_path == "rpki-status")
+    {
+        rpki_status.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "mpls-in")
+    {
+        mpls_in.yfilter = yfilter;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out.yfilter = yfilter;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name.yfilter = yfilter;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid.yfilter = yfilter;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx.yfilter = yfilter;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community.yfilter = yfilter;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-status" || name == "nexthop" || name == "metric" || name == "local-pref" || name == "weight" || name == "as-path" || name == "origin" || name == "rpki-status" || name == "community" || name == "mpls-in" || name == "mpls-out" || name == "sr-profile-name" || name == "sr-binding-sid" || name == "sr-label-indx" || name == "as4-path" || name == "atomic-aggregate" || name == "aggr-as-number" || name == "aggr-as4-number" || name == "aggr-address" || name == "originator-id" || name == "cluster-list" || name == "extended-community" || name == "ext-aigp-metric" || name == "path-id")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::PathStatus()
+    :
+    suppressed{YType::empty, "suppressed"},
+    damped{YType::empty, "damped"},
+    history{YType::empty, "history"},
+    valid{YType::empty, "valid"},
+    sourced{YType::empty, "sourced"},
+    bestpath{YType::empty, "bestpath"},
+    internal{YType::empty, "internal"},
+    rib_fail{YType::empty, "rib-fail"},
+    stale{YType::empty, "stale"},
+    multipath{YType::empty, "multipath"},
+    backup_path{YType::empty, "backup-path"},
+    rt_filter{YType::empty, "rt-filter"},
+    best_external{YType::empty, "best-external"},
+    additional_path{YType::empty, "additional-path"},
+    rib_compressed{YType::empty, "rib-compressed"}
+{
+
+    yang_name = "path-status"; yang_parent_name = "bgp-neighbor-path-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::~PathStatus()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::has_data() const
+{
+    return suppressed.is_set
+	|| damped.is_set
+	|| history.is_set
+	|| valid.is_set
+	|| sourced.is_set
+	|| bestpath.is_set
+	|| internal.is_set
+	|| rib_fail.is_set
+	|| stale.is_set
+	|| multipath.is_set
+	|| backup_path.is_set
+	|| rt_filter.is_set
+	|| best_external.is_set
+	|| additional_path.is_set
+	|| rib_compressed.is_set;
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(suppressed.yfilter)
+	|| ydk::is_set(damped.yfilter)
+	|| ydk::is_set(history.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(sourced.yfilter)
+	|| ydk::is_set(bestpath.yfilter)
+	|| ydk::is_set(internal.yfilter)
+	|| ydk::is_set(rib_fail.yfilter)
+	|| ydk::is_set(stale.yfilter)
+	|| ydk::is_set(multipath.yfilter)
+	|| ydk::is_set(backup_path.yfilter)
+	|| ydk::is_set(rt_filter.yfilter)
+	|| ydk::is_set(best_external.yfilter)
+	|| ydk::is_set(additional_path.yfilter)
+	|| ydk::is_set(rib_compressed.yfilter);
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (suppressed.is_set || is_set(suppressed.yfilter)) leaf_name_data.push_back(suppressed.get_name_leafdata());
+    if (damped.is_set || is_set(damped.yfilter)) leaf_name_data.push_back(damped.get_name_leafdata());
+    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (sourced.is_set || is_set(sourced.yfilter)) leaf_name_data.push_back(sourced.get_name_leafdata());
+    if (bestpath.is_set || is_set(bestpath.yfilter)) leaf_name_data.push_back(bestpath.get_name_leafdata());
+    if (internal.is_set || is_set(internal.yfilter)) leaf_name_data.push_back(internal.get_name_leafdata());
+    if (rib_fail.is_set || is_set(rib_fail.yfilter)) leaf_name_data.push_back(rib_fail.get_name_leafdata());
+    if (stale.is_set || is_set(stale.yfilter)) leaf_name_data.push_back(stale.get_name_leafdata());
+    if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
+    if (backup_path.is_set || is_set(backup_path.yfilter)) leaf_name_data.push_back(backup_path.get_name_leafdata());
+    if (rt_filter.is_set || is_set(rt_filter.yfilter)) leaf_name_data.push_back(rt_filter.get_name_leafdata());
+    if (best_external.is_set || is_set(best_external.yfilter)) leaf_name_data.push_back(best_external.get_name_leafdata());
+    if (additional_path.is_set || is_set(additional_path.yfilter)) leaf_name_data.push_back(additional_path.get_name_leafdata());
+    if (rib_compressed.is_set || is_set(rib_compressed.yfilter)) leaf_name_data.push_back(rib_compressed.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "suppressed")
+    {
+        suppressed = value;
+        suppressed.value_namespace = name_space;
+        suppressed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "damped")
+    {
+        damped = value;
+        damped.value_namespace = name_space;
+        damped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "history")
+    {
+        history = value;
+        history.value_namespace = name_space;
+        history.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sourced")
+    {
+        sourced = value;
+        sourced.value_namespace = name_space;
+        sourced.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bestpath")
+    {
+        bestpath = value;
+        bestpath.value_namespace = name_space;
+        bestpath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal")
+    {
+        internal = value;
+        internal.value_namespace = name_space;
+        internal.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-fail")
+    {
+        rib_fail = value;
+        rib_fail.value_namespace = name_space;
+        rib_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale")
+    {
+        stale = value;
+        stale.value_namespace = name_space;
+        stale.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multipath")
+    {
+        multipath = value;
+        multipath.value_namespace = name_space;
+        multipath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-path")
+    {
+        backup_path = value;
+        backup_path.value_namespace = name_space;
+        backup_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-filter")
+    {
+        rt_filter = value;
+        rt_filter.value_namespace = name_space;
+        rt_filter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "best-external")
+    {
+        best_external = value;
+        best_external.value_namespace = name_space;
+        best_external.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "additional-path")
+    {
+        additional_path = value;
+        additional_path.value_namespace = name_space;
+        additional_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-compressed")
+    {
+        rib_compressed = value;
+        rib_compressed.value_namespace = name_space;
+        rib_compressed.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "suppressed")
+    {
+        suppressed.yfilter = yfilter;
+    }
+    if(value_path == "damped")
+    {
+        damped.yfilter = yfilter;
+    }
+    if(value_path == "history")
+    {
+        history.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "sourced")
+    {
+        sourced.yfilter = yfilter;
+    }
+    if(value_path == "bestpath")
+    {
+        bestpath.yfilter = yfilter;
+    }
+    if(value_path == "internal")
+    {
+        internal.yfilter = yfilter;
+    }
+    if(value_path == "rib-fail")
+    {
+        rib_fail.yfilter = yfilter;
+    }
+    if(value_path == "stale")
+    {
+        stale.yfilter = yfilter;
+    }
+    if(value_path == "multipath")
+    {
+        multipath.yfilter = yfilter;
+    }
+    if(value_path == "backup-path")
+    {
+        backup_path.yfilter = yfilter;
+    }
+    if(value_path == "rt-filter")
+    {
+        rt_filter.yfilter = yfilter;
+    }
+    if(value_path == "best-external")
+    {
+        best_external.yfilter = yfilter;
+    }
+    if(value_path == "additional-path")
+    {
+        additional_path.yfilter = yfilter;
+    }
+    if(value_path == "rib-compressed")
+    {
+        rib_compressed.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "suppressed" || name == "damped" || name == "history" || name == "valid" || name == "sourced" || name == "bestpath" || name == "internal" || name == "rib-fail" || name == "stale" || name == "multipath" || name == "backup-path" || name == "rt-filter" || name == "best-external" || name == "additional-path" || name == "rib-compressed")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroups()
+{
+
+    yang_name = "bgp-peer-groups"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::~BgpPeerGroups()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::has_data() const
+{
+    for (std::size_t index=0; index<bgp_peer_group.size(); index++)
+    {
+        if(bgp_peer_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_peer_group.size(); index++)
+    {
+        if(bgp_peer_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-peer-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-peer-group")
+    {
+        for(auto const & c : bgp_peer_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup>();
+        c->parent = this;
+        bgp_peer_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_peer_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-peer-group")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::BgpPeerGroup()
+    :
+    name{YType::str, "name"},
+    description{YType::str, "description"},
+    remote_as{YType::uint32, "remote-as"},
+    bgp_version{YType::uint16, "bgp-version"},
+    min_time{YType::uint16, "min-time"},
+    num_of_sessions{YType::uint32, "num-of-sessions"},
+    num_estab_sessions{YType::uint32, "num-estab-sessions"},
+    num_sso_sessions{YType::uint32, "num-sso-sessions"},
+    peer_members{YType::str, "peer-members"},
+    fmt_grp_ix{YType::uint16, "fmt-grp-ix"},
+    adv_ix{YType::uint16, "adv-ix"},
+    aspath_in{YType::uint32, "aspath-in"},
+    aspath_out{YType::uint32, "aspath-out"},
+    routemap_in{YType::str, "routemap-in"},
+    routemap_out{YType::str, "routemap-out"},
+    updated_messages{YType::uint64, "updated-messages"},
+    rep_count{YType::uint32, "rep-count"},
+    slowpeer_detection_value{YType::uint16, "slowpeer-detection-value"},
+    weight{YType::uint16, "weight"},
+    send_community{YType::boolean, "send-community"},
+    extended_community{YType::boolean, "extended-community"},
+    remove_private_as{YType::boolean, "remove-private-as"}
+{
+
+    yang_name = "bgp-peer-group"; yang_parent_name = "bgp-peer-groups"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::~BgpPeerGroup()
+{
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::has_data() const
+{
+    for (auto const & leaf : peer_members.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return name.is_set
+	|| description.is_set
+	|| remote_as.is_set
+	|| bgp_version.is_set
+	|| min_time.is_set
+	|| num_of_sessions.is_set
+	|| num_estab_sessions.is_set
+	|| num_sso_sessions.is_set
+	|| fmt_grp_ix.is_set
+	|| adv_ix.is_set
+	|| aspath_in.is_set
+	|| aspath_out.is_set
+	|| routemap_in.is_set
+	|| routemap_out.is_set
+	|| updated_messages.is_set
+	|| rep_count.is_set
+	|| slowpeer_detection_value.is_set
+	|| weight.is_set
+	|| send_community.is_set
+	|| extended_community.is_set
+	|| remove_private_as.is_set;
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::has_operation() const
+{
+    for (auto const & leaf : peer_members.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(remote_as.yfilter)
+	|| ydk::is_set(bgp_version.yfilter)
+	|| ydk::is_set(min_time.yfilter)
+	|| ydk::is_set(num_of_sessions.yfilter)
+	|| ydk::is_set(num_estab_sessions.yfilter)
+	|| ydk::is_set(num_sso_sessions.yfilter)
+	|| ydk::is_set(peer_members.yfilter)
+	|| ydk::is_set(fmt_grp_ix.yfilter)
+	|| ydk::is_set(adv_ix.yfilter)
+	|| ydk::is_set(aspath_in.yfilter)
+	|| ydk::is_set(aspath_out.yfilter)
+	|| ydk::is_set(routemap_in.yfilter)
+	|| ydk::is_set(routemap_out.yfilter)
+	|| ydk::is_set(updated_messages.yfilter)
+	|| ydk::is_set(rep_count.yfilter)
+	|| ydk::is_set(slowpeer_detection_value.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(send_community.yfilter)
+	|| ydk::is_set(extended_community.yfilter)
+	|| ydk::is_set(remove_private_as.yfilter);
+}
+
+std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-peer-group" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (remote_as.is_set || is_set(remote_as.yfilter)) leaf_name_data.push_back(remote_as.get_name_leafdata());
+    if (bgp_version.is_set || is_set(bgp_version.yfilter)) leaf_name_data.push_back(bgp_version.get_name_leafdata());
+    if (min_time.is_set || is_set(min_time.yfilter)) leaf_name_data.push_back(min_time.get_name_leafdata());
+    if (num_of_sessions.is_set || is_set(num_of_sessions.yfilter)) leaf_name_data.push_back(num_of_sessions.get_name_leafdata());
+    if (num_estab_sessions.is_set || is_set(num_estab_sessions.yfilter)) leaf_name_data.push_back(num_estab_sessions.get_name_leafdata());
+    if (num_sso_sessions.is_set || is_set(num_sso_sessions.yfilter)) leaf_name_data.push_back(num_sso_sessions.get_name_leafdata());
+    if (fmt_grp_ix.is_set || is_set(fmt_grp_ix.yfilter)) leaf_name_data.push_back(fmt_grp_ix.get_name_leafdata());
+    if (adv_ix.is_set || is_set(adv_ix.yfilter)) leaf_name_data.push_back(adv_ix.get_name_leafdata());
+    if (aspath_in.is_set || is_set(aspath_in.yfilter)) leaf_name_data.push_back(aspath_in.get_name_leafdata());
+    if (aspath_out.is_set || is_set(aspath_out.yfilter)) leaf_name_data.push_back(aspath_out.get_name_leafdata());
+    if (routemap_in.is_set || is_set(routemap_in.yfilter)) leaf_name_data.push_back(routemap_in.get_name_leafdata());
+    if (routemap_out.is_set || is_set(routemap_out.yfilter)) leaf_name_data.push_back(routemap_out.get_name_leafdata());
+    if (updated_messages.is_set || is_set(updated_messages.yfilter)) leaf_name_data.push_back(updated_messages.get_name_leafdata());
+    if (rep_count.is_set || is_set(rep_count.yfilter)) leaf_name_data.push_back(rep_count.get_name_leafdata());
+    if (slowpeer_detection_value.is_set || is_set(slowpeer_detection_value.yfilter)) leaf_name_data.push_back(slowpeer_detection_value.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (send_community.is_set || is_set(send_community.yfilter)) leaf_name_data.push_back(send_community.get_name_leafdata());
+    if (extended_community.is_set || is_set(extended_community.yfilter)) leaf_name_data.push_back(extended_community.get_name_leafdata());
+    if (remove_private_as.is_set || is_set(remove_private_as.yfilter)) leaf_name_data.push_back(remove_private_as.get_name_leafdata());
+
+    auto peer_members_name_datas = peer_members.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), peer_members_name_datas.begin(), peer_members_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-as")
+    {
+        remote_as = value;
+        remote_as.value_namespace = name_space;
+        remote_as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bgp-version")
+    {
+        bgp_version = value;
+        bgp_version.value_namespace = name_space;
+        bgp_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-time")
+    {
+        min_time = value;
+        min_time.value_namespace = name_space;
+        min_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-sessions")
+    {
+        num_of_sessions = value;
+        num_of_sessions.value_namespace = name_space;
+        num_of_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-estab-sessions")
+    {
+        num_estab_sessions = value;
+        num_estab_sessions.value_namespace = name_space;
+        num_estab_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-sso-sessions")
+    {
+        num_sso_sessions = value;
+        num_sso_sessions.value_namespace = name_space;
+        num_sso_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-members")
+    {
+        peer_members.append(value);
+    }
+    if(value_path == "fmt-grp-ix")
+    {
+        fmt_grp_ix = value;
+        fmt_grp_ix.value_namespace = name_space;
+        fmt_grp_ix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adv-ix")
+    {
+        adv_ix = value;
+        adv_ix.value_namespace = name_space;
+        adv_ix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aspath-in")
+    {
+        aspath_in = value;
+        aspath_in.value_namespace = name_space;
+        aspath_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aspath-out")
+    {
+        aspath_out = value;
+        aspath_out.value_namespace = name_space;
+        aspath_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "routemap-in")
+    {
+        routemap_in = value;
+        routemap_in.value_namespace = name_space;
+        routemap_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "routemap-out")
+    {
+        routemap_out = value;
+        routemap_out.value_namespace = name_space;
+        routemap_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "updated-messages")
+    {
+        updated_messages = value;
+        updated_messages.value_namespace = name_space;
+        updated_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rep-count")
+    {
+        rep_count = value;
+        rep_count.value_namespace = name_space;
+        rep_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slowpeer-detection-value")
+    {
+        slowpeer_detection_value = value;
+        slowpeer_detection_value.value_namespace = name_space;
+        slowpeer_detection_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "send-community")
+    {
+        send_community = value;
+        send_community.value_namespace = name_space;
+        send_community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community = value;
+        extended_community.value_namespace = name_space;
+        extended_community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remove-private-as")
+    {
+        remove_private_as = value;
+        remove_private_as.value_namespace = name_space;
+        remove_private_as.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "remote-as")
+    {
+        remote_as.yfilter = yfilter;
+    }
+    if(value_path == "bgp-version")
+    {
+        bgp_version.yfilter = yfilter;
+    }
+    if(value_path == "min-time")
+    {
+        min_time.yfilter = yfilter;
+    }
+    if(value_path == "num-of-sessions")
+    {
+        num_of_sessions.yfilter = yfilter;
+    }
+    if(value_path == "num-estab-sessions")
+    {
+        num_estab_sessions.yfilter = yfilter;
+    }
+    if(value_path == "num-sso-sessions")
+    {
+        num_sso_sessions.yfilter = yfilter;
+    }
+    if(value_path == "peer-members")
+    {
+        peer_members.yfilter = yfilter;
+    }
+    if(value_path == "fmt-grp-ix")
+    {
+        fmt_grp_ix.yfilter = yfilter;
+    }
+    if(value_path == "adv-ix")
+    {
+        adv_ix.yfilter = yfilter;
+    }
+    if(value_path == "aspath-in")
+    {
+        aspath_in.yfilter = yfilter;
+    }
+    if(value_path == "aspath-out")
+    {
+        aspath_out.yfilter = yfilter;
+    }
+    if(value_path == "routemap-in")
+    {
+        routemap_in.yfilter = yfilter;
+    }
+    if(value_path == "routemap-out")
+    {
+        routemap_out.yfilter = yfilter;
+    }
+    if(value_path == "updated-messages")
+    {
+        updated_messages.yfilter = yfilter;
+    }
+    if(value_path == "rep-count")
+    {
+        rep_count.yfilter = yfilter;
+    }
+    if(value_path == "slowpeer-detection-value")
+    {
+        slowpeer_detection_value.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "send-community")
+    {
+        send_community.yfilter = yfilter;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community.yfilter = yfilter;
+    }
+    if(value_path == "remove-private-as")
+    {
+        remove_private_as.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "description" || name == "remote-as" || name == "bgp-version" || name == "min-time" || name == "num-of-sessions" || name == "num-estab-sessions" || name == "num-sso-sessions" || name == "peer-members" || name == "fmt-grp-ix" || name == "adv-ix" || name == "aspath-in" || name == "aspath-out" || name == "routemap-in" || name == "routemap-out" || name == "updated-messages" || name == "rep-count" || name == "slowpeer-detection-value" || name == "weight" || name == "send-community" || name == "extended-community" || name == "remove-private-as")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRds()
+{
+
+    yang_name = "bgp-route-rds"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+BgpStateData::BgpRouteRds::~BgpRouteRds()
+{
+}
+
+bool BgpStateData::BgpRouteRds::has_data() const
+{
+    for (std::size_t index=0; index<bgp_route_rd.size(); index++)
+    {
+        if(bgp_route_rd[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_route_rd.size(); index++)
+    {
+        if(bgp_route_rd[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-bgp-oper:bgp-state-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string BgpStateData::BgpRouteRds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-route-rds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-route-rd")
+    {
+        for(auto const & c : bgp_route_rd)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd>();
+        c->parent = this;
+        bgp_route_rd.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_route_rd)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-route-rd")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRouteRd()
+    :
+    rd_value{YType::str, "rd-value"}
+    	,
+    bgp_rd_route_afs(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs>())
+{
+    bgp_rd_route_afs->parent = this;
+
+    yang_name = "bgp-route-rd"; yang_parent_name = "bgp-route-rds"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::~BgpRouteRd()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::has_data() const
+{
+    return rd_value.is_set
+	|| (bgp_rd_route_afs !=  nullptr && bgp_rd_route_afs->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rd_value.yfilter)
+	|| (bgp_rd_route_afs !=  nullptr && bgp_rd_route_afs->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-bgp-oper:bgp-state-data/bgp-route-rds/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-route-rd" <<"[rd-value='" <<rd_value <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rd_value.is_set || is_set(rd_value.yfilter)) leaf_name_data.push_back(rd_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-route-afs")
+    {
+        if(bgp_rd_route_afs == nullptr)
+        {
+            bgp_rd_route_afs = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs>();
+        }
+        return bgp_rd_route_afs;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_rd_route_afs != nullptr)
+    {
+        children["bgp-rd-route-afs"] = bgp_rd_route_afs;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rd-value")
+    {
+        rd_value = value;
+        rd_value.value_namespace = name_space;
+        rd_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rd-value")
+    {
+        rd_value.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-route-afs" || name == "rd-value")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAfs()
+{
+
+    yang_name = "bgp-rd-route-afs"; yang_parent_name = "bgp-route-rd"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::~BgpRdRouteAfs()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_af.size(); index++)
+    {
+        if(bgp_rd_route_af[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_af.size(); index++)
+    {
+        if(bgp_rd_route_af[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-afs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-route-af")
+    {
+        for(auto const & c : bgp_rd_route_af)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf>();
+        c->parent = this;
+        bgp_rd_route_af.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_route_af)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-route-af")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteAf()
+    :
+    afi_safi{YType::enumeration, "afi-safi"}
+    	,
+    bgp_rd_route_filters(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters>())
+	,bgp_rd_route_neighbors(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors>())
+{
+    bgp_rd_route_filters->parent = this;
+    bgp_rd_route_neighbors->parent = this;
+
+    yang_name = "bgp-rd-route-af"; yang_parent_name = "bgp-rd-route-afs"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::~BgpRdRouteAf()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::has_data() const
+{
+    return afi_safi.is_set
+	|| (bgp_rd_route_filters !=  nullptr && bgp_rd_route_filters->has_data())
+	|| (bgp_rd_route_neighbors !=  nullptr && bgp_rd_route_neighbors->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi_safi.yfilter)
+	|| (bgp_rd_route_filters !=  nullptr && bgp_rd_route_filters->has_operation())
+	|| (bgp_rd_route_neighbors !=  nullptr && bgp_rd_route_neighbors->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-af" <<"[afi-safi='" <<afi_safi <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi.is_set || is_set(afi_safi.yfilter)) leaf_name_data.push_back(afi_safi.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-route-filters")
+    {
+        if(bgp_rd_route_filters == nullptr)
+        {
+            bgp_rd_route_filters = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters>();
+        }
+        return bgp_rd_route_filters;
+    }
+
+    if(child_yang_name == "bgp-rd-route-neighbors")
+    {
+        if(bgp_rd_route_neighbors == nullptr)
+        {
+            bgp_rd_route_neighbors = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors>();
+        }
+        return bgp_rd_route_neighbors;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_rd_route_filters != nullptr)
+    {
+        children["bgp-rd-route-filters"] = bgp_rd_route_filters;
+    }
+
+    if(bgp_rd_route_neighbors != nullptr)
+    {
+        children["bgp-rd-route-neighbors"] = bgp_rd_route_neighbors;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi-safi")
+    {
+        afi_safi = value;
+        afi_safi.value_namespace = name_space;
+        afi_safi.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-safi")
+    {
+        afi_safi.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-route-filters" || name == "bgp-rd-route-neighbors" || name == "afi-safi")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilters()
+{
+
+    yang_name = "bgp-rd-route-filters"; yang_parent_name = "bgp-rd-route-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::~BgpRdRouteFilters()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_filter.size(); index++)
+    {
+        if(bgp_rd_route_filter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_filter.size(); index++)
+    {
+        if(bgp_rd_route_filter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-filters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-route-filter")
+    {
+        for(auto const & c : bgp_rd_route_filter)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter>();
+        c->parent = this;
+        bgp_rd_route_filter.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_route_filter)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-route-filter")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteFilter()
+    :
+    route_filter{YType::enumeration, "route-filter"}
+    	,
+    bgp_rd_route_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries>())
+{
+    bgp_rd_route_entries->parent = this;
+
+    yang_name = "bgp-rd-route-filter"; yang_parent_name = "bgp-rd-route-filters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::~BgpRdRouteFilter()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::has_data() const
+{
+    return route_filter.is_set
+	|| (bgp_rd_route_entries !=  nullptr && bgp_rd_route_entries->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(route_filter.yfilter)
+	|| (bgp_rd_route_entries !=  nullptr && bgp_rd_route_entries->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-filter" <<"[route-filter='" <<route_filter <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_filter.is_set || is_set(route_filter.yfilter)) leaf_name_data.push_back(route_filter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-route-entries")
+    {
+        if(bgp_rd_route_entries == nullptr)
+        {
+            bgp_rd_route_entries = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries>();
+        }
+        return bgp_rd_route_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_rd_route_entries != nullptr)
+    {
+        children["bgp-rd-route-entries"] = bgp_rd_route_entries;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-filter")
+    {
+        route_filter = value;
+        route_filter.value_namespace = name_space;
+        route_filter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-filter")
+    {
+        route_filter.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-route-entries" || name == "route-filter")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntries()
+{
+
+    yang_name = "bgp-rd-route-entries"; yang_parent_name = "bgp-rd-route-filter"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::~BgpRdRouteEntries()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_entry.size(); index++)
+    {
+        if(bgp_rd_route_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_entry.size(); index++)
+    {
+        if(bgp_rd_route_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-route-entry")
+    {
+        for(auto const & c : bgp_rd_route_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry>();
+        c->parent = this;
+        bgp_rd_route_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_route_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-route-entry")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdRouteEntry()
+    :
+    prefix{YType::str, "prefix"},
+    version{YType::uint32, "version"},
+    available_paths{YType::uint32, "available-paths"},
+    advertised_to{YType::str, "advertised-to"}
+    	,
+    bgp_rd_path_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries>())
+{
+    bgp_rd_path_entries->parent = this;
+
+    yang_name = "bgp-rd-route-entry"; yang_parent_name = "bgp-rd-route-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::~BgpRdRouteEntry()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::has_data() const
+{
+    return prefix.is_set
+	|| version.is_set
+	|| available_paths.is_set
+	|| advertised_to.is_set
+	|| (bgp_rd_path_entries !=  nullptr && bgp_rd_path_entries->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(available_paths.yfilter)
+	|| ydk::is_set(advertised_to.yfilter)
+	|| (bgp_rd_path_entries !=  nullptr && bgp_rd_path_entries->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-entry" <<"[prefix='" <<prefix <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (available_paths.is_set || is_set(available_paths.yfilter)) leaf_name_data.push_back(available_paths.get_name_leafdata());
+    if (advertised_to.is_set || is_set(advertised_to.yfilter)) leaf_name_data.push_back(advertised_to.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-path-entries")
+    {
+        if(bgp_rd_path_entries == nullptr)
+        {
+            bgp_rd_path_entries = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries>();
+        }
+        return bgp_rd_path_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_rd_path_entries != nullptr)
+    {
+        children["bgp-rd-path-entries"] = bgp_rd_path_entries;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "available-paths")
+    {
+        available_paths = value;
+        available_paths.value_namespace = name_space;
+        available_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advertised-to")
+    {
+        advertised_to = value;
+        advertised_to.value_namespace = name_space;
+        advertised_to.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "available-paths")
+    {
+        available_paths.yfilter = yfilter;
+    }
+    if(value_path == "advertised-to")
+    {
+        advertised_to.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-path-entries" || name == "prefix" || name == "version" || name == "available-paths" || name == "advertised-to")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntries()
+{
+
+    yang_name = "bgp-rd-path-entries"; yang_parent_name = "bgp-rd-route-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::~BgpRdPathEntries()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_path_entry.size(); index++)
+    {
+        if(bgp_rd_path_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_path_entry.size(); index++)
+    {
+        if(bgp_rd_path_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-path-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-path-entry")
+    {
+        for(auto const & c : bgp_rd_path_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry>();
+        c->parent = this;
+        bgp_rd_path_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_path_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-path-entry")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::BgpRdPathEntry()
+    :
+    nexthop{YType::str, "nexthop"},
+    metric{YType::uint32, "metric"},
+    local_pref{YType::uint32, "local-pref"},
+    weight{YType::uint32, "weight"},
+    as_path{YType::str, "as-path"},
+    origin{YType::enumeration, "origin"},
+    rpki_status{YType::enumeration, "rpki-status"},
+    community{YType::str, "community"},
+    mpls_in{YType::str, "mpls-in"},
+    mpls_out{YType::str, "mpls-out"},
+    sr_profile_name{YType::str, "sr-profile-name"},
+    sr_binding_sid{YType::uint32, "sr-binding-sid"},
+    sr_label_indx{YType::uint32, "sr-label-indx"},
+    as4_path{YType::str, "as4-path"},
+    atomic_aggregate{YType::boolean, "atomic-aggregate"},
+    aggr_as_number{YType::uint32, "aggr-as-number"},
+    aggr_as4_number{YType::uint32, "aggr-as4-number"},
+    aggr_address{YType::str, "aggr-address"},
+    originator_id{YType::str, "originator-id"},
+    cluster_list{YType::str, "cluster-list"},
+    extended_community{YType::str, "extended-community"},
+    ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
+    path_id{YType::uint32, "path-id"}
+    	,
+    path_status(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus>())
+{
+    path_status->parent = this;
+
+    yang_name = "bgp-rd-path-entry"; yang_parent_name = "bgp-rd-path-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::~BgpRdPathEntry()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::has_data() const
+{
+    return nexthop.is_set
+	|| metric.is_set
+	|| local_pref.is_set
+	|| weight.is_set
+	|| as_path.is_set
+	|| origin.is_set
+	|| rpki_status.is_set
+	|| community.is_set
+	|| mpls_in.is_set
+	|| mpls_out.is_set
+	|| sr_profile_name.is_set
+	|| sr_binding_sid.is_set
+	|| sr_label_indx.is_set
+	|| as4_path.is_set
+	|| atomic_aggregate.is_set
+	|| aggr_as_number.is_set
+	|| aggr_as4_number.is_set
+	|| aggr_address.is_set
+	|| originator_id.is_set
+	|| cluster_list.is_set
+	|| extended_community.is_set
+	|| ext_aigp_metric.is_set
+	|| path_id.is_set
+	|| (path_status !=  nullptr && path_status->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nexthop.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(origin.yfilter)
+	|| ydk::is_set(rpki_status.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(mpls_in.yfilter)
+	|| ydk::is_set(mpls_out.yfilter)
+	|| ydk::is_set(sr_profile_name.yfilter)
+	|| ydk::is_set(sr_binding_sid.yfilter)
+	|| ydk::is_set(sr_label_indx.yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(atomic_aggregate.yfilter)
+	|| ydk::is_set(aggr_as_number.yfilter)
+	|| ydk::is_set(aggr_as4_number.yfilter)
+	|| ydk::is_set(aggr_address.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(extended_community.yfilter)
+	|| ydk::is_set(ext_aigp_metric.yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| (path_status !=  nullptr && path_status->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-path-entry" <<"[nexthop='" <<nexthop <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nexthop.is_set || is_set(nexthop.yfilter)) leaf_name_data.push_back(nexthop.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (rpki_status.is_set || is_set(rpki_status.yfilter)) leaf_name_data.push_back(rpki_status.get_name_leafdata());
+    if (community.is_set || is_set(community.yfilter)) leaf_name_data.push_back(community.get_name_leafdata());
+    if (mpls_in.is_set || is_set(mpls_in.yfilter)) leaf_name_data.push_back(mpls_in.get_name_leafdata());
+    if (mpls_out.is_set || is_set(mpls_out.yfilter)) leaf_name_data.push_back(mpls_out.get_name_leafdata());
+    if (sr_profile_name.is_set || is_set(sr_profile_name.yfilter)) leaf_name_data.push_back(sr_profile_name.get_name_leafdata());
+    if (sr_binding_sid.is_set || is_set(sr_binding_sid.yfilter)) leaf_name_data.push_back(sr_binding_sid.get_name_leafdata());
+    if (sr_label_indx.is_set || is_set(sr_label_indx.yfilter)) leaf_name_data.push_back(sr_label_indx.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (atomic_aggregate.is_set || is_set(atomic_aggregate.yfilter)) leaf_name_data.push_back(atomic_aggregate.get_name_leafdata());
+    if (aggr_as_number.is_set || is_set(aggr_as_number.yfilter)) leaf_name_data.push_back(aggr_as_number.get_name_leafdata());
+    if (aggr_as4_number.is_set || is_set(aggr_as4_number.yfilter)) leaf_name_data.push_back(aggr_as4_number.get_name_leafdata());
+    if (aggr_address.is_set || is_set(aggr_address.yfilter)) leaf_name_data.push_back(aggr_address.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (cluster_list.is_set || is_set(cluster_list.yfilter)) leaf_name_data.push_back(cluster_list.get_name_leafdata());
+    if (extended_community.is_set || is_set(extended_community.yfilter)) leaf_name_data.push_back(extended_community.get_name_leafdata());
+    if (ext_aigp_metric.is_set || is_set(ext_aigp_metric.yfilter)) leaf_name_data.push_back(ext_aigp_metric.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-status")
+    {
+        if(path_status == nullptr)
+        {
+            path_status = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus>();
+        }
+        return path_status;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_status != nullptr)
+    {
+        children["path-status"] = path_status;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nexthop")
+    {
+        nexthop = value;
+        nexthop.value_namespace = name_space;
+        nexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-path")
+    {
+        as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-status")
+    {
+        rpki_status = value;
+        rpki_status.value_namespace = name_space;
+        rpki_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "community")
+    {
+        community = value;
+        community.value_namespace = name_space;
+        community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-in")
+    {
+        mpls_in = value;
+        mpls_in.value_namespace = name_space;
+        mpls_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out = value;
+        mpls_out.value_namespace = name_space;
+        mpls_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name = value;
+        sr_profile_name.value_namespace = name_space;
+        sr_profile_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid = value;
+        sr_binding_sid.value_namespace = name_space;
+        sr_binding_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx = value;
+        sr_label_indx.value_namespace = name_space;
+        sr_label_indx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate = value;
+        atomic_aggregate.value_namespace = name_space;
+        atomic_aggregate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number = value;
+        aggr_as_number.value_namespace = name_space;
+        aggr_as_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number = value;
+        aggr_as4_number.value_namespace = name_space;
+        aggr_as4_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address = value;
+        aggr_address.value_namespace = name_space;
+        aggr_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list = value;
+        cluster_list.value_namespace = name_space;
+        cluster_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community = value;
+        extended_community.value_namespace = name_space;
+        extended_community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric = value;
+        ext_aigp_metric.value_namespace = name_space;
+        ext_aigp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-id")
+    {
+        path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nexthop")
+    {
+        nexthop.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+    if(value_path == "rpki-status")
+    {
+        rpki_status.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "mpls-in")
+    {
+        mpls_in.yfilter = yfilter;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out.yfilter = yfilter;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name.yfilter = yfilter;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid.yfilter = yfilter;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx.yfilter = yfilter;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community.yfilter = yfilter;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-status" || name == "nexthop" || name == "metric" || name == "local-pref" || name == "weight" || name == "as-path" || name == "origin" || name == "rpki-status" || name == "community" || name == "mpls-in" || name == "mpls-out" || name == "sr-profile-name" || name == "sr-binding-sid" || name == "sr-label-indx" || name == "as4-path" || name == "atomic-aggregate" || name == "aggr-as-number" || name == "aggr-as4-number" || name == "aggr-address" || name == "originator-id" || name == "cluster-list" || name == "extended-community" || name == "ext-aigp-metric" || name == "path-id")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::PathStatus()
+    :
+    suppressed{YType::empty, "suppressed"},
+    damped{YType::empty, "damped"},
+    history{YType::empty, "history"},
+    valid{YType::empty, "valid"},
+    sourced{YType::empty, "sourced"},
+    bestpath{YType::empty, "bestpath"},
+    internal{YType::empty, "internal"},
+    rib_fail{YType::empty, "rib-fail"},
+    stale{YType::empty, "stale"},
+    multipath{YType::empty, "multipath"},
+    backup_path{YType::empty, "backup-path"},
+    rt_filter{YType::empty, "rt-filter"},
+    best_external{YType::empty, "best-external"},
+    additional_path{YType::empty, "additional-path"},
+    rib_compressed{YType::empty, "rib-compressed"}
+{
+
+    yang_name = "path-status"; yang_parent_name = "bgp-rd-path-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::~PathStatus()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::has_data() const
+{
+    return suppressed.is_set
+	|| damped.is_set
+	|| history.is_set
+	|| valid.is_set
+	|| sourced.is_set
+	|| bestpath.is_set
+	|| internal.is_set
+	|| rib_fail.is_set
+	|| stale.is_set
+	|| multipath.is_set
+	|| backup_path.is_set
+	|| rt_filter.is_set
+	|| best_external.is_set
+	|| additional_path.is_set
+	|| rib_compressed.is_set;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(suppressed.yfilter)
+	|| ydk::is_set(damped.yfilter)
+	|| ydk::is_set(history.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(sourced.yfilter)
+	|| ydk::is_set(bestpath.yfilter)
+	|| ydk::is_set(internal.yfilter)
+	|| ydk::is_set(rib_fail.yfilter)
+	|| ydk::is_set(stale.yfilter)
+	|| ydk::is_set(multipath.yfilter)
+	|| ydk::is_set(backup_path.yfilter)
+	|| ydk::is_set(rt_filter.yfilter)
+	|| ydk::is_set(best_external.yfilter)
+	|| ydk::is_set(additional_path.yfilter)
+	|| ydk::is_set(rib_compressed.yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (suppressed.is_set || is_set(suppressed.yfilter)) leaf_name_data.push_back(suppressed.get_name_leafdata());
+    if (damped.is_set || is_set(damped.yfilter)) leaf_name_data.push_back(damped.get_name_leafdata());
+    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (sourced.is_set || is_set(sourced.yfilter)) leaf_name_data.push_back(sourced.get_name_leafdata());
+    if (bestpath.is_set || is_set(bestpath.yfilter)) leaf_name_data.push_back(bestpath.get_name_leafdata());
+    if (internal.is_set || is_set(internal.yfilter)) leaf_name_data.push_back(internal.get_name_leafdata());
+    if (rib_fail.is_set || is_set(rib_fail.yfilter)) leaf_name_data.push_back(rib_fail.get_name_leafdata());
+    if (stale.is_set || is_set(stale.yfilter)) leaf_name_data.push_back(stale.get_name_leafdata());
+    if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
+    if (backup_path.is_set || is_set(backup_path.yfilter)) leaf_name_data.push_back(backup_path.get_name_leafdata());
+    if (rt_filter.is_set || is_set(rt_filter.yfilter)) leaf_name_data.push_back(rt_filter.get_name_leafdata());
+    if (best_external.is_set || is_set(best_external.yfilter)) leaf_name_data.push_back(best_external.get_name_leafdata());
+    if (additional_path.is_set || is_set(additional_path.yfilter)) leaf_name_data.push_back(additional_path.get_name_leafdata());
+    if (rib_compressed.is_set || is_set(rib_compressed.yfilter)) leaf_name_data.push_back(rib_compressed.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "suppressed")
+    {
+        suppressed = value;
+        suppressed.value_namespace = name_space;
+        suppressed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "damped")
+    {
+        damped = value;
+        damped.value_namespace = name_space;
+        damped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "history")
+    {
+        history = value;
+        history.value_namespace = name_space;
+        history.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sourced")
+    {
+        sourced = value;
+        sourced.value_namespace = name_space;
+        sourced.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bestpath")
+    {
+        bestpath = value;
+        bestpath.value_namespace = name_space;
+        bestpath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal")
+    {
+        internal = value;
+        internal.value_namespace = name_space;
+        internal.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-fail")
+    {
+        rib_fail = value;
+        rib_fail.value_namespace = name_space;
+        rib_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale")
+    {
+        stale = value;
+        stale.value_namespace = name_space;
+        stale.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multipath")
+    {
+        multipath = value;
+        multipath.value_namespace = name_space;
+        multipath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-path")
+    {
+        backup_path = value;
+        backup_path.value_namespace = name_space;
+        backup_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-filter")
+    {
+        rt_filter = value;
+        rt_filter.value_namespace = name_space;
+        rt_filter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "best-external")
+    {
+        best_external = value;
+        best_external.value_namespace = name_space;
+        best_external.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "additional-path")
+    {
+        additional_path = value;
+        additional_path.value_namespace = name_space;
+        additional_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-compressed")
+    {
+        rib_compressed = value;
+        rib_compressed.value_namespace = name_space;
+        rib_compressed.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "suppressed")
+    {
+        suppressed.yfilter = yfilter;
+    }
+    if(value_path == "damped")
+    {
+        damped.yfilter = yfilter;
+    }
+    if(value_path == "history")
+    {
+        history.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "sourced")
+    {
+        sourced.yfilter = yfilter;
+    }
+    if(value_path == "bestpath")
+    {
+        bestpath.yfilter = yfilter;
+    }
+    if(value_path == "internal")
+    {
+        internal.yfilter = yfilter;
+    }
+    if(value_path == "rib-fail")
+    {
+        rib_fail.yfilter = yfilter;
+    }
+    if(value_path == "stale")
+    {
+        stale.yfilter = yfilter;
+    }
+    if(value_path == "multipath")
+    {
+        multipath.yfilter = yfilter;
+    }
+    if(value_path == "backup-path")
+    {
+        backup_path.yfilter = yfilter;
+    }
+    if(value_path == "rt-filter")
+    {
+        rt_filter.yfilter = yfilter;
+    }
+    if(value_path == "best-external")
+    {
+        best_external.yfilter = yfilter;
+    }
+    if(value_path == "additional-path")
+    {
+        additional_path.yfilter = yfilter;
+    }
+    if(value_path == "rib-compressed")
+    {
+        rib_compressed.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "suppressed" || name == "damped" || name == "history" || name == "valid" || name == "sourced" || name == "bestpath" || name == "internal" || name == "rib-fail" || name == "stale" || name == "multipath" || name == "backup-path" || name == "rt-filter" || name == "best-external" || name == "additional-path" || name == "rib-compressed")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbors()
+{
+
+    yang_name = "bgp-rd-route-neighbors"; yang_parent_name = "bgp-rd-route-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::~BgpRdRouteNeighbors()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_neighbor.size(); index++)
+    {
+        if(bgp_rd_route_neighbor[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_route_neighbor.size(); index++)
+    {
+        if(bgp_rd_route_neighbor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-neighbors";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-route-neighbor")
+    {
+        for(auto const & c : bgp_rd_route_neighbor)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor>();
+        c->parent = this;
+        bgp_rd_route_neighbor.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_route_neighbor)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-route-neighbor")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdRouteNeighbor()
+    :
+    neighbor_id{YType::str, "neighbor-id"}
+    	,
+    bgp_rd_neighbor_route_filters(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters>())
+{
+    bgp_rd_neighbor_route_filters->parent = this;
+
+    yang_name = "bgp-rd-route-neighbor"; yang_parent_name = "bgp-rd-route-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::~BgpRdRouteNeighbor()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::has_data() const
+{
+    return neighbor_id.is_set
+	|| (bgp_rd_neighbor_route_filters !=  nullptr && bgp_rd_neighbor_route_filters->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_id.yfilter)
+	|| (bgp_rd_neighbor_route_filters !=  nullptr && bgp_rd_neighbor_route_filters->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-route-neighbor" <<"[neighbor-id='" <<neighbor_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (neighbor_id.is_set || is_set(neighbor_id.yfilter)) leaf_name_data.push_back(neighbor_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-neighbor-route-filters")
+    {
+        if(bgp_rd_neighbor_route_filters == nullptr)
+        {
+            bgp_rd_neighbor_route_filters = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters>();
+        }
+        return bgp_rd_neighbor_route_filters;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_rd_neighbor_route_filters != nullptr)
+    {
+        children["bgp-rd-neighbor-route-filters"] = bgp_rd_neighbor_route_filters;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "neighbor-id")
+    {
+        neighbor_id = value;
+        neighbor_id.value_namespace = name_space;
+        neighbor_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-id")
+    {
+        neighbor_id.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-neighbor-route-filters" || name == "neighbor-id")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilters()
+{
+
+    yang_name = "bgp-rd-neighbor-route-filters"; yang_parent_name = "bgp-rd-route-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::~BgpRdNeighborRouteFilters()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_filter.size(); index++)
+    {
+        if(bgp_rd_neighbor_route_filter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_filter.size(); index++)
+    {
+        if(bgp_rd_neighbor_route_filter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-neighbor-route-filters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-neighbor-route-filter")
+    {
+        for(auto const & c : bgp_rd_neighbor_route_filter)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter>();
+        c->parent = this;
+        bgp_rd_neighbor_route_filter.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_neighbor_route_filter)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-neighbor-route-filter")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteFilter()
+    :
+    neighbor_filter{YType::enumeration, "neighbor-filter"}
+    	,
+    bgp_rd_neighbor_route_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries>())
+{
+    bgp_rd_neighbor_route_entries->parent = this;
+
+    yang_name = "bgp-rd-neighbor-route-filter"; yang_parent_name = "bgp-rd-neighbor-route-filters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::~BgpRdNeighborRouteFilter()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::has_data() const
+{
+    return neighbor_filter.is_set
+	|| (bgp_rd_neighbor_route_entries !=  nullptr && bgp_rd_neighbor_route_entries->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| (bgp_rd_neighbor_route_entries !=  nullptr && bgp_rd_neighbor_route_entries->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-neighbor-route-filter" <<"[neighbor-filter='" <<neighbor_filter <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-neighbor-route-entries")
+    {
+        if(bgp_rd_neighbor_route_entries == nullptr)
+        {
+            bgp_rd_neighbor_route_entries = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries>();
+        }
+        return bgp_rd_neighbor_route_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_rd_neighbor_route_entries != nullptr)
+    {
+        children["bgp-rd-neighbor-route-entries"] = bgp_rd_neighbor_route_entries;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-neighbor-route-entries" || name == "neighbor-filter")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntries()
+{
+
+    yang_name = "bgp-rd-neighbor-route-entries"; yang_parent_name = "bgp-rd-neighbor-route-filter"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::~BgpRdNeighborRouteEntries()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_entry.size(); index++)
+    {
+        if(bgp_rd_neighbor_route_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_entry.size(); index++)
+    {
+        if(bgp_rd_neighbor_route_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-neighbor-route-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-neighbor-route-entry")
+    {
+        for(auto const & c : bgp_rd_neighbor_route_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry>();
+        c->parent = this;
+        bgp_rd_neighbor_route_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_neighbor_route_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-neighbor-route-entry")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborRouteEntry()
+    :
+    prefix{YType::str, "prefix"},
+    version{YType::uint32, "version"},
+    available_paths{YType::uint32, "available-paths"},
+    advertised_to{YType::str, "advertised-to"}
+    	,
+    bgp_rd_neighbor_path_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries>())
+{
+    bgp_rd_neighbor_path_entries->parent = this;
+
+    yang_name = "bgp-rd-neighbor-route-entry"; yang_parent_name = "bgp-rd-neighbor-route-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::~BgpRdNeighborRouteEntry()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::has_data() const
+{
+    return prefix.is_set
+	|| version.is_set
+	|| available_paths.is_set
+	|| advertised_to.is_set
+	|| (bgp_rd_neighbor_path_entries !=  nullptr && bgp_rd_neighbor_path_entries->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(available_paths.yfilter)
+	|| ydk::is_set(advertised_to.yfilter)
+	|| (bgp_rd_neighbor_path_entries !=  nullptr && bgp_rd_neighbor_path_entries->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-neighbor-route-entry" <<"[prefix='" <<prefix <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (available_paths.is_set || is_set(available_paths.yfilter)) leaf_name_data.push_back(available_paths.get_name_leafdata());
+    if (advertised_to.is_set || is_set(advertised_to.yfilter)) leaf_name_data.push_back(advertised_to.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-neighbor-path-entries")
+    {
+        if(bgp_rd_neighbor_path_entries == nullptr)
+        {
+            bgp_rd_neighbor_path_entries = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries>();
+        }
+        return bgp_rd_neighbor_path_entries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_rd_neighbor_path_entries != nullptr)
+    {
+        children["bgp-rd-neighbor-path-entries"] = bgp_rd_neighbor_path_entries;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "available-paths")
+    {
+        available_paths = value;
+        available_paths.value_namespace = name_space;
+        available_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advertised-to")
+    {
+        advertised_to = value;
+        advertised_to.value_namespace = name_space;
+        advertised_to.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "available-paths")
+    {
+        available_paths.yfilter = yfilter;
+    }
+    if(value_path == "advertised-to")
+    {
+        advertised_to.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-neighbor-path-entries" || name == "prefix" || name == "version" || name == "available-paths" || name == "advertised-to")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntries()
+{
+
+    yang_name = "bgp-rd-neighbor-path-entries"; yang_parent_name = "bgp-rd-neighbor-route-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::~BgpRdNeighborPathEntries()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::has_data() const
+{
+    for (std::size_t index=0; index<bgp_rd_neighbor_path_entry.size(); index++)
+    {
+        if(bgp_rd_neighbor_path_entry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::has_operation() const
+{
+    for (std::size_t index=0; index<bgp_rd_neighbor_path_entry.size(); index++)
+    {
+        if(bgp_rd_neighbor_path_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-neighbor-path-entries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-rd-neighbor-path-entry")
+    {
+        for(auto const & c : bgp_rd_neighbor_path_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry>();
+        c->parent = this;
+        bgp_rd_neighbor_path_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bgp_rd_neighbor_path_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-rd-neighbor-path-entry")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::BgpRdNeighborPathEntry()
+    :
+    nexthop{YType::str, "nexthop"},
+    metric{YType::uint32, "metric"},
+    local_pref{YType::uint32, "local-pref"},
+    weight{YType::uint32, "weight"},
+    as_path{YType::str, "as-path"},
+    origin{YType::enumeration, "origin"},
+    rpki_status{YType::enumeration, "rpki-status"},
+    community{YType::str, "community"},
+    mpls_in{YType::str, "mpls-in"},
+    mpls_out{YType::str, "mpls-out"},
+    sr_profile_name{YType::str, "sr-profile-name"},
+    sr_binding_sid{YType::uint32, "sr-binding-sid"},
+    sr_label_indx{YType::uint32, "sr-label-indx"},
+    as4_path{YType::str, "as4-path"},
+    atomic_aggregate{YType::boolean, "atomic-aggregate"},
+    aggr_as_number{YType::uint32, "aggr-as-number"},
+    aggr_as4_number{YType::uint32, "aggr-as4-number"},
+    aggr_address{YType::str, "aggr-address"},
+    originator_id{YType::str, "originator-id"},
+    cluster_list{YType::str, "cluster-list"},
+    extended_community{YType::str, "extended-community"},
+    ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
+    path_id{YType::uint32, "path-id"}
+    	,
+    path_status(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus>())
+{
+    path_status->parent = this;
+
+    yang_name = "bgp-rd-neighbor-path-entry"; yang_parent_name = "bgp-rd-neighbor-path-entries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::~BgpRdNeighborPathEntry()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::has_data() const
+{
+    return nexthop.is_set
+	|| metric.is_set
+	|| local_pref.is_set
+	|| weight.is_set
+	|| as_path.is_set
+	|| origin.is_set
+	|| rpki_status.is_set
+	|| community.is_set
+	|| mpls_in.is_set
+	|| mpls_out.is_set
+	|| sr_profile_name.is_set
+	|| sr_binding_sid.is_set
+	|| sr_label_indx.is_set
+	|| as4_path.is_set
+	|| atomic_aggregate.is_set
+	|| aggr_as_number.is_set
+	|| aggr_as4_number.is_set
+	|| aggr_address.is_set
+	|| originator_id.is_set
+	|| cluster_list.is_set
+	|| extended_community.is_set
+	|| ext_aigp_metric.is_set
+	|| path_id.is_set
+	|| (path_status !=  nullptr && path_status->has_data());
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nexthop.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(origin.yfilter)
+	|| ydk::is_set(rpki_status.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(mpls_in.yfilter)
+	|| ydk::is_set(mpls_out.yfilter)
+	|| ydk::is_set(sr_profile_name.yfilter)
+	|| ydk::is_set(sr_binding_sid.yfilter)
+	|| ydk::is_set(sr_label_indx.yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(atomic_aggregate.yfilter)
+	|| ydk::is_set(aggr_as_number.yfilter)
+	|| ydk::is_set(aggr_as4_number.yfilter)
+	|| ydk::is_set(aggr_address.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(extended_community.yfilter)
+	|| ydk::is_set(ext_aigp_metric.yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| (path_status !=  nullptr && path_status->has_operation());
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-rd-neighbor-path-entry" <<"[nexthop='" <<nexthop <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nexthop.is_set || is_set(nexthop.yfilter)) leaf_name_data.push_back(nexthop.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (rpki_status.is_set || is_set(rpki_status.yfilter)) leaf_name_data.push_back(rpki_status.get_name_leafdata());
+    if (community.is_set || is_set(community.yfilter)) leaf_name_data.push_back(community.get_name_leafdata());
+    if (mpls_in.is_set || is_set(mpls_in.yfilter)) leaf_name_data.push_back(mpls_in.get_name_leafdata());
+    if (mpls_out.is_set || is_set(mpls_out.yfilter)) leaf_name_data.push_back(mpls_out.get_name_leafdata());
+    if (sr_profile_name.is_set || is_set(sr_profile_name.yfilter)) leaf_name_data.push_back(sr_profile_name.get_name_leafdata());
+    if (sr_binding_sid.is_set || is_set(sr_binding_sid.yfilter)) leaf_name_data.push_back(sr_binding_sid.get_name_leafdata());
+    if (sr_label_indx.is_set || is_set(sr_label_indx.yfilter)) leaf_name_data.push_back(sr_label_indx.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (atomic_aggregate.is_set || is_set(atomic_aggregate.yfilter)) leaf_name_data.push_back(atomic_aggregate.get_name_leafdata());
+    if (aggr_as_number.is_set || is_set(aggr_as_number.yfilter)) leaf_name_data.push_back(aggr_as_number.get_name_leafdata());
+    if (aggr_as4_number.is_set || is_set(aggr_as4_number.yfilter)) leaf_name_data.push_back(aggr_as4_number.get_name_leafdata());
+    if (aggr_address.is_set || is_set(aggr_address.yfilter)) leaf_name_data.push_back(aggr_address.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (cluster_list.is_set || is_set(cluster_list.yfilter)) leaf_name_data.push_back(cluster_list.get_name_leafdata());
+    if (extended_community.is_set || is_set(extended_community.yfilter)) leaf_name_data.push_back(extended_community.get_name_leafdata());
+    if (ext_aigp_metric.is_set || is_set(ext_aigp_metric.yfilter)) leaf_name_data.push_back(ext_aigp_metric.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-status")
+    {
+        if(path_status == nullptr)
+        {
+            path_status = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus>();
+        }
+        return path_status;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_status != nullptr)
+    {
+        children["path-status"] = path_status;
+    }
+
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nexthop")
+    {
+        nexthop = value;
+        nexthop.value_namespace = name_space;
+        nexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-path")
+    {
+        as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "origin")
+    {
+        origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-status")
+    {
+        rpki_status = value;
+        rpki_status.value_namespace = name_space;
+        rpki_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "community")
+    {
+        community = value;
+        community.value_namespace = name_space;
+        community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-in")
+    {
+        mpls_in = value;
+        mpls_in.value_namespace = name_space;
+        mpls_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out = value;
+        mpls_out.value_namespace = name_space;
+        mpls_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name = value;
+        sr_profile_name.value_namespace = name_space;
+        sr_profile_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid = value;
+        sr_binding_sid.value_namespace = name_space;
+        sr_binding_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx = value;
+        sr_label_indx.value_namespace = name_space;
+        sr_label_indx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate = value;
+        atomic_aggregate.value_namespace = name_space;
+        atomic_aggregate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number = value;
+        aggr_as_number.value_namespace = name_space;
+        aggr_as_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number = value;
+        aggr_as4_number.value_namespace = name_space;
+        aggr_as4_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address = value;
+        aggr_address.value_namespace = name_space;
+        aggr_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list = value;
+        cluster_list.value_namespace = name_space;
+        cluster_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community = value;
+        extended_community.value_namespace = name_space;
+        extended_community.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric = value;
+        ext_aigp_metric.value_namespace = name_space;
+        ext_aigp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-id")
+    {
+        path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nexthop")
+    {
+        nexthop.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+    if(value_path == "rpki-status")
+    {
+        rpki_status.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "mpls-in")
+    {
+        mpls_in.yfilter = yfilter;
+    }
+    if(value_path == "mpls-out")
+    {
+        mpls_out.yfilter = yfilter;
+    }
+    if(value_path == "sr-profile-name")
+    {
+        sr_profile_name.yfilter = yfilter;
+    }
+    if(value_path == "sr-binding-sid")
+    {
+        sr_binding_sid.yfilter = yfilter;
+    }
+    if(value_path == "sr-label-indx")
+    {
+        sr_label_indx.yfilter = yfilter;
+    }
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggregate")
+    {
+        atomic_aggregate.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as-number")
+    {
+        aggr_as_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-as4-number")
+    {
+        aggr_as4_number.yfilter = yfilter;
+    }
+    if(value_path == "aggr-address")
+    {
+        aggr_address.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "extended-community")
+    {
+        extended_community.yfilter = yfilter;
+    }
+    if(value_path == "ext-aigp-metric")
+    {
+        ext_aigp_metric.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-status" || name == "nexthop" || name == "metric" || name == "local-pref" || name == "weight" || name == "as-path" || name == "origin" || name == "rpki-status" || name == "community" || name == "mpls-in" || name == "mpls-out" || name == "sr-profile-name" || name == "sr-binding-sid" || name == "sr-label-indx" || name == "as4-path" || name == "atomic-aggregate" || name == "aggr-as-number" || name == "aggr-as4-number" || name == "aggr-address" || name == "originator-id" || name == "cluster-list" || name == "extended-community" || name == "ext-aigp-metric" || name == "path-id")
+        return true;
+    return false;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::PathStatus()
+    :
+    suppressed{YType::empty, "suppressed"},
+    damped{YType::empty, "damped"},
+    history{YType::empty, "history"},
+    valid{YType::empty, "valid"},
+    sourced{YType::empty, "sourced"},
+    bestpath{YType::empty, "bestpath"},
+    internal{YType::empty, "internal"},
+    rib_fail{YType::empty, "rib-fail"},
+    stale{YType::empty, "stale"},
+    multipath{YType::empty, "multipath"},
+    backup_path{YType::empty, "backup-path"},
+    rt_filter{YType::empty, "rt-filter"},
+    best_external{YType::empty, "best-external"},
+    additional_path{YType::empty, "additional-path"},
+    rib_compressed{YType::empty, "rib-compressed"}
+{
+
+    yang_name = "path-status"; yang_parent_name = "bgp-rd-neighbor-path-entry"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::~PathStatus()
+{
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::has_data() const
+{
+    return suppressed.is_set
+	|| damped.is_set
+	|| history.is_set
+	|| valid.is_set
+	|| sourced.is_set
+	|| bestpath.is_set
+	|| internal.is_set
+	|| rib_fail.is_set
+	|| stale.is_set
+	|| multipath.is_set
+	|| backup_path.is_set
+	|| rt_filter.is_set
+	|| best_external.is_set
+	|| additional_path.is_set
+	|| rib_compressed.is_set;
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(suppressed.yfilter)
+	|| ydk::is_set(damped.yfilter)
+	|| ydk::is_set(history.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(sourced.yfilter)
+	|| ydk::is_set(bestpath.yfilter)
+	|| ydk::is_set(internal.yfilter)
+	|| ydk::is_set(rib_fail.yfilter)
+	|| ydk::is_set(stale.yfilter)
+	|| ydk::is_set(multipath.yfilter)
+	|| ydk::is_set(backup_path.yfilter)
+	|| ydk::is_set(rt_filter.yfilter)
+	|| ydk::is_set(best_external.yfilter)
+	|| ydk::is_set(additional_path.yfilter)
+	|| ydk::is_set(rib_compressed.yfilter);
+}
+
+std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (suppressed.is_set || is_set(suppressed.yfilter)) leaf_name_data.push_back(suppressed.get_name_leafdata());
+    if (damped.is_set || is_set(damped.yfilter)) leaf_name_data.push_back(damped.get_name_leafdata());
+    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (sourced.is_set || is_set(sourced.yfilter)) leaf_name_data.push_back(sourced.get_name_leafdata());
+    if (bestpath.is_set || is_set(bestpath.yfilter)) leaf_name_data.push_back(bestpath.get_name_leafdata());
+    if (internal.is_set || is_set(internal.yfilter)) leaf_name_data.push_back(internal.get_name_leafdata());
+    if (rib_fail.is_set || is_set(rib_fail.yfilter)) leaf_name_data.push_back(rib_fail.get_name_leafdata());
+    if (stale.is_set || is_set(stale.yfilter)) leaf_name_data.push_back(stale.get_name_leafdata());
+    if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
+    if (backup_path.is_set || is_set(backup_path.yfilter)) leaf_name_data.push_back(backup_path.get_name_leafdata());
+    if (rt_filter.is_set || is_set(rt_filter.yfilter)) leaf_name_data.push_back(rt_filter.get_name_leafdata());
+    if (best_external.is_set || is_set(best_external.yfilter)) leaf_name_data.push_back(best_external.get_name_leafdata());
+    if (additional_path.is_set || is_set(additional_path.yfilter)) leaf_name_data.push_back(additional_path.get_name_leafdata());
+    if (rib_compressed.is_set || is_set(rib_compressed.yfilter)) leaf_name_data.push_back(rib_compressed.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "suppressed")
+    {
+        suppressed = value;
+        suppressed.value_namespace = name_space;
+        suppressed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "damped")
+    {
+        damped = value;
+        damped.value_namespace = name_space;
+        damped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "history")
+    {
+        history = value;
+        history.value_namespace = name_space;
+        history.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sourced")
+    {
+        sourced = value;
+        sourced.value_namespace = name_space;
+        sourced.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bestpath")
+    {
+        bestpath = value;
+        bestpath.value_namespace = name_space;
+        bestpath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal")
+    {
+        internal = value;
+        internal.value_namespace = name_space;
+        internal.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-fail")
+    {
+        rib_fail = value;
+        rib_fail.value_namespace = name_space;
+        rib_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale")
+    {
+        stale = value;
+        stale.value_namespace = name_space;
+        stale.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multipath")
+    {
+        multipath = value;
+        multipath.value_namespace = name_space;
+        multipath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-path")
+    {
+        backup_path = value;
+        backup_path.value_namespace = name_space;
+        backup_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-filter")
+    {
+        rt_filter = value;
+        rt_filter.value_namespace = name_space;
+        rt_filter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "best-external")
+    {
+        best_external = value;
+        best_external.value_namespace = name_space;
+        best_external.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "additional-path")
+    {
+        additional_path = value;
+        additional_path.value_namespace = name_space;
+        additional_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-compressed")
+    {
+        rib_compressed = value;
+        rib_compressed.value_namespace = name_space;
+        rib_compressed.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "suppressed")
+    {
+        suppressed.yfilter = yfilter;
+    }
+    if(value_path == "damped")
+    {
+        damped.yfilter = yfilter;
+    }
+    if(value_path == "history")
+    {
+        history.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "sourced")
+    {
+        sourced.yfilter = yfilter;
+    }
+    if(value_path == "bestpath")
+    {
+        bestpath.yfilter = yfilter;
+    }
+    if(value_path == "internal")
+    {
+        internal.yfilter = yfilter;
+    }
+    if(value_path == "rib-fail")
+    {
+        rib_fail.yfilter = yfilter;
+    }
+    if(value_path == "stale")
+    {
+        stale.yfilter = yfilter;
+    }
+    if(value_path == "multipath")
+    {
+        multipath.yfilter = yfilter;
+    }
+    if(value_path == "backup-path")
+    {
+        backup_path.yfilter = yfilter;
+    }
+    if(value_path == "rt-filter")
+    {
+        rt_filter.yfilter = yfilter;
+    }
+    if(value_path == "best-external")
+    {
+        best_external.yfilter = yfilter;
+    }
+    if(value_path == "additional-path")
+    {
+        additional_path.yfilter = yfilter;
+    }
+    if(value_path == "rib-compressed")
+    {
+        rib_compressed.yfilter = yfilter;
+    }
+}
+
+bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "suppressed" || name == "damped" || name == "history" || name == "valid" || name == "sourced" || name == "bestpath" || name == "internal" || name == "rib-fail" || name == "stale" || name == "multipath" || name == "backup-path" || name == "rt-filter" || name == "best-external" || name == "additional-path" || name == "rib-compressed")
         return true;

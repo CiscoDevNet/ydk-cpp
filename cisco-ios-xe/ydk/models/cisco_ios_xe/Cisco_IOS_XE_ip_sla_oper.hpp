@@ -571,6 +571,7 @@ class SlaOperType : public ydk::Enum
         static const ydk::Enum::YLeaf oper_type_mcast;
         static const ydk::Enum::YLeaf oper_type_pong;
         static const ydk::Enum::YLeaf oper_type_path_jitter;
+        static const ydk::Enum::YLeaf oper_type_icmp_echo;
 
 };
 

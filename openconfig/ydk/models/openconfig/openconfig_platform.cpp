@@ -243,7 +243,7 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
         return subcomponents;
     }
 
-    if(child_yang_name == "optical-port")
+    if(child_yang_name == "openconfig-transport-line-common:optical-port")
     {
         if(optical_port == nullptr)
         {
@@ -252,7 +252,7 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
         return optical_port;
     }
 
-    if(child_yang_name == "transceiver")
+    if(child_yang_name == "openconfig-platform-transceiver:transceiver")
     {
         if(transceiver == nullptr)
         {
@@ -261,7 +261,7 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
         return transceiver;
     }
 
-    if(child_yang_name == "optical-channel")
+    if(child_yang_name == "openconfig-terminal-device:optical-channel")
     {
         if(optical_channel == nullptr)
         {
@@ -298,17 +298,17 @@ std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_childr
 
     if(optical_port != nullptr)
     {
-        children["optical-port"] = optical_port;
+        children["openconfig-transport-line-common:optical-port"] = optical_port;
     }
 
     if(transceiver != nullptr)
     {
-        children["transceiver"] = transceiver;
+        children["openconfig-platform-transceiver:transceiver"] = transceiver;
     }
 
     if(optical_channel != nullptr)
     {
-        children["optical-channel"] = optical_channel;
+        children["openconfig-terminal-device:optical-channel"] = optical_channel;
     }
 
     return children;

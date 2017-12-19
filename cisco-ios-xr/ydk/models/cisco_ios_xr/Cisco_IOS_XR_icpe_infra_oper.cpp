@@ -230,7 +230,7 @@ std::shared_ptr<Entity> NvSatellite::get_child_by_name(const std::string & child
         return satellite_properties;
     }
 
-    if(child_yang_name == "sdacp-discovery2s")
+    if(child_yang_name == "Cisco-IOS-XR-icpe-sdacp-oper:sdacp-discovery2s")
     {
         if(sdacp_discovery2s == nullptr)
         {
@@ -239,7 +239,7 @@ std::shared_ptr<Entity> NvSatellite::get_child_by_name(const std::string & child
         return sdacp_discovery2s;
     }
 
-    if(child_yang_name == "icpe-dpms")
+    if(child_yang_name == "Cisco-IOS-XR-icpe-sdacp-oper:icpe-dpms")
     {
         if(icpe_dpms == nullptr)
         {
@@ -248,7 +248,7 @@ std::shared_ptr<Entity> NvSatellite::get_child_by_name(const std::string & child
         return icpe_dpms;
     }
 
-    if(child_yang_name == "sdacp-controls")
+    if(child_yang_name == "Cisco-IOS-XR-icpe-sdacp-oper:sdacp-controls")
     {
         if(sdacp_controls == nullptr)
         {
@@ -330,17 +330,17 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::get_children() const
 
     if(sdacp_discovery2s != nullptr)
     {
-        children["sdacp-discovery2s"] = sdacp_discovery2s;
+        children["Cisco-IOS-XR-icpe-sdacp-oper:sdacp-discovery2s"] = sdacp_discovery2s;
     }
 
     if(icpe_dpms != nullptr)
     {
-        children["icpe-dpms"] = icpe_dpms;
+        children["Cisco-IOS-XR-icpe-sdacp-oper:icpe-dpms"] = icpe_dpms;
     }
 
     if(sdacp_controls != nullptr)
     {
-        children["sdacp-controls"] = sdacp_controls;
+        children["Cisco-IOS-XR-icpe-sdacp-oper:sdacp-controls"] = sdacp_controls;
     }
 
     return children;

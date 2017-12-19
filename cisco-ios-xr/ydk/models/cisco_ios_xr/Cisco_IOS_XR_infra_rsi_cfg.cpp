@@ -228,7 +228,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::get_child_by_name(const std::string & child_y
         return afs;
     }
 
-    if(child_yang_name == "multicast-host")
+    if(child_yang_name == "Cisco-IOS-XR-ip-iarm-vrf-cfg:multicast-host")
     {
         if(multicast_host == nullptr)
         {
@@ -255,7 +255,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::get_children() const
 
     if(multicast_host != nullptr)
     {
-        children["multicast-host"] = multicast_host;
+        children["Cisco-IOS-XR-ip-iarm-vrf-cfg:multicast-host"] = multicast_host;
     }
 
     return children;
@@ -581,7 +581,7 @@ std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::get_name_leaf
 
 std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "maximum-prefix")
+    if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
     {
         if(maximum_prefix == nullptr)
         {
@@ -590,7 +590,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string 
         return maximum_prefix;
     }
 
-    if(child_yang_name == "bgp")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
     {
         if(bgp == nullptr)
         {
@@ -607,12 +607,12 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
     }
 
     return children;

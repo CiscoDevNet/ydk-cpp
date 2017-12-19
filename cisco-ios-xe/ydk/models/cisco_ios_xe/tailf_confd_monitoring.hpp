@@ -155,7 +155,7 @@ class ConfdState::LoadedDataModels::DataModel : public ydk::Entity
         ydk::YLeaf namespace_; //type: string
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf exported_to_all; //type: empty
-        ydk::YLeafList exported_to; //type: list of  one of string, enumeration
+        ydk::YLeafList exported_to; //type: list of  one of enumeration, string
         class ExportedTo;
 
 }; // ConfdState::LoadedDataModels::DataModel

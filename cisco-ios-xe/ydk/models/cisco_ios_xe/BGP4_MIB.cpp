@@ -709,49 +709,49 @@ void BGP4MIB::Bgppeertable::Bgppeerentry::set_value(const std::string & value_pa
         bgppeerinupdateelapsedtime.value_namespace = name_space;
         bgppeerinupdateelapsedtime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerPrefixAccepted")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerPrefixAccepted")
     {
         cbgppeerprefixaccepted = value;
         cbgppeerprefixaccepted.value_namespace = name_space;
         cbgppeerprefixaccepted.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerPrefixDenied")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerPrefixDenied")
     {
         cbgppeerprefixdenied = value;
         cbgppeerprefixdenied.value_namespace = name_space;
         cbgppeerprefixdenied.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerPrefixLimit")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerPrefixLimit")
     {
         cbgppeerprefixlimit = value;
         cbgppeerprefixlimit.value_namespace = name_space;
         cbgppeerprefixlimit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerPrefixAdvertised")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerPrefixAdvertised")
     {
         cbgppeerprefixadvertised = value;
         cbgppeerprefixadvertised.value_namespace = name_space;
         cbgppeerprefixadvertised.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerPrefixSuppressed")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerPrefixSuppressed")
     {
         cbgppeerprefixsuppressed = value;
         cbgppeerprefixsuppressed.value_namespace = name_space;
         cbgppeerprefixsuppressed.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerPrefixWithdrawn")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerPrefixWithdrawn")
     {
         cbgppeerprefixwithdrawn = value;
         cbgppeerprefixwithdrawn.value_namespace = name_space;
         cbgppeerprefixwithdrawn.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerLastErrorTxt")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerLastErrorTxt")
     {
         cbgppeerlasterrortxt = value;
         cbgppeerlasterrortxt.value_namespace = name_space;
         cbgppeerlasterrortxt.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cbgpPeerPrevState")
+    if(value_path == "CISCO-BGP4-MIB:cbgpPeerPrevState")
     {
         cbgppeerprevstate = value;
         cbgppeerprevstate.value_namespace = name_space;

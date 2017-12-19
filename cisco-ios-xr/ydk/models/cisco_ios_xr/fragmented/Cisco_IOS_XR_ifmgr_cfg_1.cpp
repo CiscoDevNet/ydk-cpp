@@ -3856,7 +3856,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::Interfac
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cfm")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-cfg:cfm")
     {
         if(cfm == nullptr)
         {
@@ -3865,7 +3865,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
         return cfm;
     }
 
-    if(child_yang_name == "ether-link-oam")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-link-oam-cfg:ether-link-oam")
     {
         if(ether_link_oam == nullptr)
         {
@@ -3882,12 +3882,12 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cfm != nullptr)
     {
-        children["cfm"] = cfm;
+        children["Cisco-IOS-XR-ethernet-cfm-cfg:cfm"] = cfm;
     }
 
     if(ether_link_oam != nullptr)
     {
-        children["ether-link-oam"] = ether_link_oam;
+        children["Cisco-IOS-XR-ethernet-link-oam-cfg:ether-link-oam"] = ether_link_oam;
     }
 
     return children;
@@ -3901,7 +3901,7 @@ void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::set_valu
         filtering.value_namespace = name_space;
         filtering.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ether-link-oam-enable")
+    if(value_path == "Cisco-IOS-XR-ethernet-link-oam-cfg:ether-link-oam-enable")
     {
         ether_link_oam_enable = value;
         ether_link_oam_enable.value_namespace = name_space;
@@ -7158,7 +7158,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::Interfac
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "qos")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-sat-cfg:qos")
     {
         if(qos == nullptr)
         {
@@ -7175,7 +7175,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        children["Cisco-IOS-XR-qos-ma-sat-cfg:qos"] = qos;
     }
 
     return children;
@@ -7717,7 +7717,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatel
         return remote_ports;
     }
 
-    if(child_yang_name == "ethernet-features")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-sat-cfg:ethernet-features")
     {
         if(ethernet_features == nullptr)
         {
@@ -7726,7 +7726,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatel
         return ethernet_features;
     }
 
-    if(child_yang_name == "frequency-synchronization")
+    if(child_yang_name == "Cisco-IOS-XR-freqsync-sat-cfg:frequency-synchronization")
     {
         if(frequency_synchronization == nullptr)
         {
@@ -7735,7 +7735,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatel
         return frequency_synchronization;
     }
 
-    if(child_yang_name == "qos")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-sat-cfg:qos")
     {
         if(qos == nullptr)
         {
@@ -7762,17 +7762,17 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
 
     if(ethernet_features != nullptr)
     {
-        children["ethernet-features"] = ethernet_features;
+        children["Cisco-IOS-XR-ethernet-cfm-sat-cfg:ethernet-features"] = ethernet_features;
     }
 
     if(frequency_synchronization != nullptr)
     {
-        children["frequency-synchronization"] = frequency_synchronization;
+        children["Cisco-IOS-XR-freqsync-sat-cfg:frequency-synchronization"] = frequency_synchronization;
     }
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        children["Cisco-IOS-XR-qos-ma-sat-cfg:qos"] = qos;
     }
 
     return children;
@@ -8991,7 +8991,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatel
         return c;
     }
 
-    if(child_yang_name == "qos")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-sat-cfg:qos")
     {
         if(qos == nullptr)
         {
@@ -9013,7 +9013,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        children["Cisco-IOS-XR-qos-ma-sat-cfg:qos"] = qos;
     }
 
     return children;
@@ -10586,7 +10586,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencyS
     input_quality_level->parent = this;
     output_quality_level->parent = this;
 
-    yang_name = "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frequency-synchronization"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::~CiscoIOSXRFreqsyncCfgFrequencySynchronization()
@@ -10621,7 +10621,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
 std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-freqsync-cfg:Cisco-IOS-XR-freqsync-cfg_frequency-synchronization";
+    path_buffer << "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization";
     return path_buffer.str();
 }
 
@@ -10762,7 +10762,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencyS
     max_quality_level_value{YType::enumeration, "max-quality-level-value"}
 {
 
-    yang_name = "input-quality-level"; yang_parent_name = "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::~InputQualityLevel()
@@ -10880,7 +10880,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencyS
     max_quality_level_value{YType::enumeration, "max-quality-level-value"}
 {
 
-    yang_name = "output-quality-level"; yang_parent_name = "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()

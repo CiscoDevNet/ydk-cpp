@@ -491,11 +491,14 @@ MdtOperData::MdtSubscriptions::Base::Base()
     :
     stream{YType::str, "stream"},
     encoding{YType::str, "encoding"},
+    source_vrf{YType::str, "source-vrf"},
+    source_address{YType::str, "source-address"},
     no_trigger{YType::uint32, "no-trigger"},
     period{YType::uint32, "period"},
     no_synch_on_start{YType::boolean, "no-synch-on-start"},
     no_filter{YType::uint32, "no-filter"},
-    xpath{YType::str, "xpath"}
+    xpath{YType::str, "xpath"},
+    tdl_uri{YType::str, "tdl-uri"}
 {
 
     yang_name = "base"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true;
@@ -509,11 +512,14 @@ bool MdtOperData::MdtSubscriptions::Base::has_data() const
 {
     return stream.is_set
 	|| encoding.is_set
+	|| source_vrf.is_set
+	|| source_address.is_set
 	|| no_trigger.is_set
 	|| period.is_set
 	|| no_synch_on_start.is_set
 	|| no_filter.is_set
-	|| xpath.is_set;
+	|| xpath.is_set
+	|| tdl_uri.is_set;
 }
 
 bool MdtOperData::MdtSubscriptions::Base::has_operation() const
@@ -521,11 +527,14 @@ bool MdtOperData::MdtSubscriptions::Base::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(stream.yfilter)
 	|| ydk::is_set(encoding.yfilter)
+	|| ydk::is_set(source_vrf.yfilter)
+	|| ydk::is_set(source_address.yfilter)
 	|| ydk::is_set(no_trigger.yfilter)
 	|| ydk::is_set(period.yfilter)
 	|| ydk::is_set(no_synch_on_start.yfilter)
 	|| ydk::is_set(no_filter.yfilter)
-	|| ydk::is_set(xpath.yfilter);
+	|| ydk::is_set(xpath.yfilter)
+	|| ydk::is_set(tdl_uri.yfilter);
 }
 
 std::string MdtOperData::MdtSubscriptions::Base::get_segment_path() const
@@ -541,11 +550,14 @@ std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtSubscriptions::Ba
 
     if (stream.is_set || is_set(stream.yfilter)) leaf_name_data.push_back(stream.get_name_leafdata());
     if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
+    if (source_vrf.is_set || is_set(source_vrf.yfilter)) leaf_name_data.push_back(source_vrf.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
     if (no_trigger.is_set || is_set(no_trigger.yfilter)) leaf_name_data.push_back(no_trigger.get_name_leafdata());
     if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
     if (no_synch_on_start.is_set || is_set(no_synch_on_start.yfilter)) leaf_name_data.push_back(no_synch_on_start.get_name_leafdata());
     if (no_filter.is_set || is_set(no_filter.yfilter)) leaf_name_data.push_back(no_filter.get_name_leafdata());
     if (xpath.is_set || is_set(xpath.yfilter)) leaf_name_data.push_back(xpath.get_name_leafdata());
+    if (tdl_uri.is_set || is_set(tdl_uri.yfilter)) leaf_name_data.push_back(tdl_uri.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -575,6 +587,18 @@ void MdtOperData::MdtSubscriptions::Base::set_value(const std::string & value_pa
         encoding = value;
         encoding.value_namespace = name_space;
         encoding.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-vrf")
+    {
+        source_vrf = value;
+        source_vrf.value_namespace = name_space;
+        source_vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-trigger")
     {
@@ -606,6 +630,12 @@ void MdtOperData::MdtSubscriptions::Base::set_value(const std::string & value_pa
         xpath.value_namespace = name_space;
         xpath.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "tdl-uri")
+    {
+        tdl_uri = value;
+        tdl_uri.value_namespace = name_space;
+        tdl_uri.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MdtOperData::MdtSubscriptions::Base::set_filter(const std::string & value_path, YFilter yfilter)
@@ -617,6 +647,14 @@ void MdtOperData::MdtSubscriptions::Base::set_filter(const std::string & value_p
     if(value_path == "encoding")
     {
         encoding.yfilter = yfilter;
+    }
+    if(value_path == "source-vrf")
+    {
+        source_vrf.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
     }
     if(value_path == "no-trigger")
     {
@@ -638,11 +676,15 @@ void MdtOperData::MdtSubscriptions::Base::set_filter(const std::string & value_p
     {
         xpath.yfilter = yfilter;
     }
+    if(value_path == "tdl-uri")
+    {
+        tdl_uri.yfilter = yfilter;
+    }
 }
 
 bool MdtOperData::MdtSubscriptions::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "stream" || name == "encoding" || name == "no-trigger" || name == "period" || name == "no-synch-on-start" || name == "no-filter" || name == "xpath")
+    if(name == "stream" || name == "encoding" || name == "source-vrf" || name == "source-address" || name == "no-trigger" || name == "period" || name == "no-synch-on-start" || name == "no-filter" || name == "xpath" || name == "tdl-uri")
         return true;
     return false;
 }
@@ -783,6 +825,8 @@ MdtOperData::MdtConnections::MdtConnections()
     :
     address{YType::str, "address"},
     port{YType::uint16, "port"},
+    source_vrf{YType::str, "source-vrf"},
+    source_address{YType::str, "source-address"},
     transport{YType::str, "transport"},
     peer_id{YType::str, "peer-id"},
     state{YType::enumeration, "state"}
@@ -804,6 +848,8 @@ bool MdtOperData::MdtConnections::has_data() const
     }
     return address.is_set
 	|| port.is_set
+	|| source_vrf.is_set
+	|| source_address.is_set
 	|| transport.is_set
 	|| peer_id.is_set
 	|| state.is_set;
@@ -819,6 +865,8 @@ bool MdtOperData::MdtConnections::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(source_vrf.yfilter)
+	|| ydk::is_set(source_address.yfilter)
 	|| ydk::is_set(transport.yfilter)
 	|| ydk::is_set(peer_id.yfilter)
 	|| ydk::is_set(state.yfilter);
@@ -834,7 +882,7 @@ std::string MdtOperData::MdtConnections::get_absolute_path() const
 std::string MdtOperData::MdtConnections::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-connections" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "mdt-connections" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']" <<"[source-vrf='" <<source_vrf <<"']" <<"[source-address='" <<source_address <<"']";
     return path_buffer.str();
 }
 
@@ -844,6 +892,8 @@ std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtConnections::get_
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (source_vrf.is_set || is_set(source_vrf.yfilter)) leaf_name_data.push_back(source_vrf.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
     if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
     if (peer_id.is_set || is_set(peer_id.yfilter)) leaf_name_data.push_back(peer_id.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
@@ -898,6 +948,18 @@ void MdtOperData::MdtConnections::set_value(const std::string & value_path, cons
         port.value_namespace = name_space;
         port.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "source-vrf")
+    {
+        source_vrf = value;
+        source_vrf.value_namespace = name_space;
+        source_vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "transport")
     {
         transport = value;
@@ -928,6 +990,14 @@ void MdtOperData::MdtConnections::set_filter(const std::string & value_path, YFi
     {
         port.yfilter = yfilter;
     }
+    if(value_path == "source-vrf")
+    {
+        source_vrf.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
     if(value_path == "transport")
     {
         transport.yfilter = yfilter;
@@ -944,7 +1014,7 @@ void MdtOperData::MdtConnections::set_filter(const std::string & value_path, YFi
 
 bool MdtOperData::MdtConnections::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mdt-sub-con-stats" || name == "address" || name == "port" || name == "transport" || name == "peer-id" || name == "state")
+    if(name == "mdt-sub-con-stats" || name == "address" || name == "port" || name == "source-vrf" || name == "source-address" || name == "transport" || name == "peer-id" || name == "state")
         return true;
     return false;
 }

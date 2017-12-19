@@ -83,11 +83,14 @@ class MdtSubscriptions::MdtSubscription::Base : public ydk::Entity
 
         ydk::YLeaf stream; //type: string
         ydk::YLeaf encoding; //type: string
+        ydk::YLeaf source_vrf; //type: string
+        ydk::YLeaf source_address; //type: string
         ydk::YLeaf no_trigger; //type: uint32
         ydk::YLeaf period; //type: uint32
         ydk::YLeaf no_synch_on_start; //type: boolean
         ydk::YLeaf no_filter; //type: uint32
         ydk::YLeaf xpath; //type: string
+        ydk::YLeaf tdl_uri; //type: string
 
 }; // MdtSubscriptions::MdtSubscription::Base
 

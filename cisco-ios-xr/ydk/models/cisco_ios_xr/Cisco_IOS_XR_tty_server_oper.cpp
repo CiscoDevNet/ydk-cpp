@@ -1924,7 +1924,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::get_child_by_name(const std::str
         return configuration;
     }
 
-    if(child_yang_name == "sessions")
+    if(child_yang_name == "Cisco-IOS-XR-tty-management-oper:sessions")
     {
         if(sessions == nullptr)
         {
@@ -1956,7 +1956,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::get_child
 
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        children["Cisco-IOS-XR-tty-management-oper:sessions"] = sessions;
     }
 
     return children;

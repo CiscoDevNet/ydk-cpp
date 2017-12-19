@@ -989,101 +989,101 @@ void BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::set_value(const std::str
         dot1dbaseportmtuexceededdiscards.value_namespace = name_space;
         dot1dbaseportmtuexceededdiscards.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortCapabilities")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortCapabilities")
     {
         dot1dportcapabilities[value] = true;
     }
-    if(value_path == "dot1dPortDefaultUserPriority")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortDefaultUserPriority")
     {
         dot1dportdefaultuserpriority = value;
         dot1dportdefaultuserpriority.value_namespace = name_space;
         dot1dportdefaultuserpriority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortNumTrafficClasses")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortNumTrafficClasses")
     {
         dot1dportnumtrafficclasses = value;
         dot1dportnumtrafficclasses.value_namespace = name_space;
         dot1dportnumtrafficclasses.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortGarpJoinTime")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortGarpJoinTime")
     {
         dot1dportgarpjointime = value;
         dot1dportgarpjointime.value_namespace = name_space;
         dot1dportgarpjointime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortGarpLeaveTime")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortGarpLeaveTime")
     {
         dot1dportgarpleavetime = value;
         dot1dportgarpleavetime.value_namespace = name_space;
         dot1dportgarpleavetime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortGarpLeaveAllTime")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortGarpLeaveAllTime")
     {
         dot1dportgarpleavealltime = value;
         dot1dportgarpleavealltime.value_namespace = name_space;
         dot1dportgarpleavealltime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortGmrpStatus")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortGmrpStatus")
     {
         dot1dportgmrpstatus = value;
         dot1dportgmrpstatus.value_namespace = name_space;
         dot1dportgmrpstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortGmrpFailedRegistrations")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortGmrpFailedRegistrations")
     {
         dot1dportgmrpfailedregistrations = value;
         dot1dportgmrpfailedregistrations.value_namespace = name_space;
         dot1dportgmrpfailedregistrations.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortGmrpLastPduOrigin")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortGmrpLastPduOrigin")
     {
         dot1dportgmrplastpduorigin = value;
         dot1dportgmrplastpduorigin.value_namespace = name_space;
         dot1dportgmrplastpduorigin.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1dPortRestrictedGroupRegistration")
+    if(value_path == "P-BRIDGE-MIB:dot1dPortRestrictedGroupRegistration")
     {
         dot1dportrestrictedgroupregistration = value;
         dot1dportrestrictedgroupregistration.value_namespace = name_space;
         dot1dportrestrictedgroupregistration.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1qPvid")
+    if(value_path == "Q-BRIDGE-MIB:dot1qPvid")
     {
         dot1qpvid = value;
         dot1qpvid.value_namespace = name_space;
         dot1qpvid.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1qPortAcceptableFrameTypes")
+    if(value_path == "Q-BRIDGE-MIB:dot1qPortAcceptableFrameTypes")
     {
         dot1qportacceptableframetypes = value;
         dot1qportacceptableframetypes.value_namespace = name_space;
         dot1qportacceptableframetypes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1qPortIngressFiltering")
+    if(value_path == "Q-BRIDGE-MIB:dot1qPortIngressFiltering")
     {
         dot1qportingressfiltering = value;
         dot1qportingressfiltering.value_namespace = name_space;
         dot1qportingressfiltering.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1qPortGvrpStatus")
+    if(value_path == "Q-BRIDGE-MIB:dot1qPortGvrpStatus")
     {
         dot1qportgvrpstatus = value;
         dot1qportgvrpstatus.value_namespace = name_space;
         dot1qportgvrpstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1qPortGvrpFailedRegistrations")
+    if(value_path == "Q-BRIDGE-MIB:dot1qPortGvrpFailedRegistrations")
     {
         dot1qportgvrpfailedregistrations = value;
         dot1qportgvrpfailedregistrations.value_namespace = name_space;
         dot1qportgvrpfailedregistrations.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1qPortGvrpLastPduOrigin")
+    if(value_path == "Q-BRIDGE-MIB:dot1qPortGvrpLastPduOrigin")
     {
         dot1qportgvrplastpduorigin = value;
         dot1qportgvrplastpduorigin.value_namespace = name_space;
         dot1qportgvrplastpduorigin.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dot1qPortRestrictedVlanRegistration")
+    if(value_path == "Q-BRIDGE-MIB:dot1qPortRestrictedVlanRegistration")
     {
         dot1qportrestrictedvlanregistration = value;
         dot1qportrestrictedvlanregistration.value_namespace = name_space;
@@ -1460,7 +1460,7 @@ void BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::set_value(const std::strin
         dot1dstpportpathcost32.value_namespace = name_space;
         dot1dstpportpathcost32.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxLongStpPortPathCost")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxLongStpPortPathCost")
     {
         stpxlongstpportpathcost = value;
         stpxlongstpportpathcost.value_namespace = name_space;
