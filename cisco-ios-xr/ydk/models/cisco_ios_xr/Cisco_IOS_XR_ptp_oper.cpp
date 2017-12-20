@@ -209,7 +209,7 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
         return interface_unicast_peers;
     }
 
-    if(child_yang_name == "platform")
+    if(child_yang_name == "Cisco-IOS-XR-ptp-pd-oper:platform")
     {
         if(platform == nullptr)
         {
@@ -286,7 +286,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
 
     if(platform != nullptr)
     {
-        children["platform"] = platform;
+        children["Cisco-IOS-XR-ptp-pd-oper:platform"] = platform;
     }
 
     return children;

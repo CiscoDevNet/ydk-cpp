@@ -1029,7 +1029,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get
         return members;
     }
 
-    if(child_yang_name == "mlacp")
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:mlacp")
     {
         if(mlacp == nullptr)
         {
@@ -1038,7 +1038,7 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get
         return mlacp;
     }
 
-    if(child_yang_name == "nv-satellite")
+    if(child_yang_name == "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite")
     {
         if(nv_satellite == nullptr)
         {
@@ -1065,12 +1065,12 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
 
     if(mlacp != nullptr)
     {
-        children["mlacp"] = mlacp;
+        children["Cisco-IOS-XR-bundlemgr-cfg:mlacp"] = mlacp;
     }
 
     if(nv_satellite != nullptr)
     {
-        children["nv-satellite"] = nv_satellite;
+        children["Cisco-IOS-XR-icpe-infra-cfg:nv-satellite"] = nv_satellite;
     }
 
     return children;

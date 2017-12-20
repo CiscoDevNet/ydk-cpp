@@ -8,17 +8,19 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XE_native_0.hpp"
+#include "Cisco_IOS_XE_native_105.hpp"
+#include "Cisco_IOS_XE_native_158.hpp"
 #include "Cisco_IOS_XE_native_175.hpp"
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable : public ydk::Entity
 {
     public:
-        InterfacePortNumber();
-        ~InterfacePortNumber();
+        EtrEnable();
+        ~EtrEnable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -30,23 +32,39 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: uint8
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly
+        ydk::YLeaf etr; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly> weekly;
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator : public ydk::Entity
+{
+    public:
+        Locator();
+        ~Locator();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Reachability; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability> reachability;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability : public ydk::Entity
 {
     public:
-        Daily();
-        ~Daily();
+        Reachability();
+        ~Reachability();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -58,16 +76,16 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hh_mm; //type: string
+        ydk::YLeaf exclude_default; //type: empty
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache : public ydk::Entity
 {
     public:
-        On();
-        ~On();
+        MapCache();
+        ~MapCache();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,19 +97,16 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf month; //type: MonthType
-        ydk::YLeaf day_of_month; //type: uint16
-        ydk::YLeaf year; //type: uint16
-        ydk::YLeaf hh_mm; //type: string
+        ydk::YLeaf site_registration; //type: empty
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit : public ydk::Entity
 {
     public:
-        Weekly();
-        ~Weekly();
+        MapCacheLimit();
+        ~MapCacheLimit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -103,17 +118,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf day; //type: WeekdayType
-        ydk::YLeaf hh_mm; //type: string
+        ydk::YLeaf max_map_cache_entries; //type: uint32
+        ydk::YLeaf reserve_list; //type: string
+        ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent : public ydk::Entity
 {
     public:
-        PortNumberList();
-        ~PortNumberList();
+        MapCachePersistent();
+        ~MapCachePersistent();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -125,23 +141,39 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumb
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number_list; //type: string
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly
+        ydk::YLeaf interval; //type: uint16
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly> weekly;
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver : public ydk::Entity
+{
+    public:
+        MapResolver();
+        ~MapResolver();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapRequest; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest> map_request;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest : public ydk::Entity
 {
     public:
-        Daily();
-        ~Daily();
+        MapRequest();
+        ~MapRequest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -153,89 +185,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumb
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hh_mm; //type: string
+        class Validate; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On : public ydk::Entity
-{
-    public:
-        On();
-        ~On();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf month; //type: MonthType
-        ydk::YLeaf day_of_month; //type: uint16
-        ydk::YLeaf year; //type: uint16
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly : public ydk::Entity
-{
-    public:
-        Weekly();
-        ~Weekly();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf day; //type: WeekdayType
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All : public ydk::Entity
-{
-    public:
-        All();
-        ~All();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate> validate;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate : public ydk::Entity
 {
     public:
-        Daily();
-        ~Daily();
+        Validate();
+        ~Validate();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -247,91 +208,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Dai
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hh_mm; //type: string
+        class Source; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On : public ydk::Entity
-{
-    public:
-        On();
-        ~On();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf month; //type: MonthType
-        ydk::YLeaf day_of_month; //type: uint16
-        ydk::YLeaf year; //type: uint16
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly : public ydk::Entity
-{
-    public:
-        Weekly();
-        ~Weekly();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf day; //type: WeekdayType
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort : public ydk::Entity
-{
-    public:
-        PerPort();
-        ~PerPort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly
-        class Port; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly> weekly;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port> port;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source> source;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source : public ydk::Entity
 {
     public:
-        Daily();
-        ~Daily();
+        Source();
+        ~Source();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -343,1333 +231,19 @@ class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::On : public ydk::Entity
-{
-    public:
-        On();
-        ~On();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf month; //type: MonthType
-        ydk::YLeaf day_of_month; //type: uint16
-        ydk::YLeaf year; //type: uint16
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::On
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly : public ydk::Entity
-{
-    public:
-        Weekly();
-        ~Weekly();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf day; //type: WeekdayType
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port : public ydk::Entity
-{
-    public:
-        Port();
-        ~Port();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber
-        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList
-        class All; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber> > interface_port_number;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList> > port_number_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All> all;
-        
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber : public ydk::Entity
-{
-    public:
-        InterfacePortNumber();
-        ~InterfacePortNumber();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf number; //type: uint8
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly> weekly;
-        
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily : public ydk::Entity
-{
-    public:
-        Daily();
-        ~Daily();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On : public ydk::Entity
-{
-    public:
-        On();
-        ~On();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf month; //type: MonthType
-        ydk::YLeaf day_of_month; //type: uint16
-        ydk::YLeaf year; //type: uint16
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly : public ydk::Entity
-{
-    public:
-        Weekly();
-        ~Weekly();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf day; //type: WeekdayType
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList : public ydk::Entity
-{
-    public:
-        PortNumberList();
-        ~PortNumberList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf number_list; //type: string
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly> weekly;
-        
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily : public ydk::Entity
-{
-    public:
-        Daily();
-        ~Daily();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On : public ydk::Entity
-{
-    public:
-        On();
-        ~On();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf month; //type: MonthType
-        ydk::YLeaf day_of_month; //type: uint16
-        ydk::YLeaf year; //type: uint16
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly : public ydk::Entity
-{
-    public:
-        Weekly();
-        ~Weekly();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf day; //type: WeekdayType
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All : public ydk::Entity
-{
-    public:
-        All();
-        ~All();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly> weekly;
-        
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily : public ydk::Entity
-{
-    public:
-        Daily();
-        ~Daily();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On : public ydk::Entity
-{
-    public:
-        On();
-        ~On();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf month; //type: MonthType
-        ydk::YLeaf day_of_month; //type: uint16
-        ydk::YLeaf year; //type: uint16
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On
-
-
-class Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly : public ydk::Entity
-{
-    public:
-        Weekly();
-        ~Weekly();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf day; //type: WeekdayType
-        ydk::YLeaf hh_mm; //type: string
-
-}; // Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly
-
-
-class Native::Lldp : public ydk::Entity
-{
-    public:
-        Lldp();
-        ~Lldp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf run; //type: empty
-
-}; // Native::Lldp
-
-
-class Native::MaintenanceTemplate : public ydk::Entity
-{
-    public:
-        MaintenanceTemplate();
-        ~MaintenanceTemplate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf templ_name; //type: string
-        class ConfigMaintenanceTempl; //type: Native::MaintenanceTemplate::ConfigMaintenanceTempl
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::MaintenanceTemplate::ConfigMaintenanceTempl> config_maintenance_templ;
-        
-}; // Native::MaintenanceTemplate
-
-
-class Native::MaintenanceTemplate::ConfigMaintenanceTempl : public ydk::Entity
-{
-    public:
-        ConfigMaintenanceTempl();
-        ~ConfigMaintenanceTempl();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Router; //type: Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router
-        class Shutdown; //type: Native::MaintenanceTemplate::ConfigMaintenanceTempl::Shutdown
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router> router;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::MaintenanceTemplate::ConfigMaintenanceTempl::Shutdown> shutdown;
-        
-}; // Native::MaintenanceTemplate::ConfigMaintenanceTempl
-
-
-class Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router : public ydk::Entity
-{
-    public:
-        Router();
-        ~Router();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class RoutingProtocol; //type: Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router::RoutingProtocol
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router::RoutingProtocol> > routing_protocol;
-        
-}; // Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router
-
-
-class Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router::RoutingProtocol : public ydk::Entity
-{
-    public:
-        RoutingProtocol();
-        ~RoutingProtocol();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf protocol; //type: Protocol
-        ydk::YLeaf instance; //type: uint16
-        class Protocol;
-
-}; // Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router::RoutingProtocol
-
-
-class Native::MaintenanceTemplate::ConfigMaintenanceTempl::Shutdown : public ydk::Entity
-{
-    public:
-        Shutdown();
-        ~Shutdown();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2; //type: empty
-
-}; // Native::MaintenanceTemplate::ConfigMaintenanceTempl::Shutdown
-
-
-class Native::Nat66 : public ydk::Entity
-{
-    public:
-        Nat66();
-        ~Nat66();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Prefix; //type: Native::Nat66::Prefix
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66::Prefix> prefix;
-        
-}; // Native::Nat66
-
-
-class Native::Nat66::Prefix : public ydk::Entity
-{
-    public:
-        Prefix();
-        ~Prefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Inside; //type: Native::Nat66::Prefix::Inside
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66::Prefix::Inside> > inside;
-        
-}; // Native::Nat66::Prefix
-
-
-class Native::Nat66::Prefix::Inside : public ydk::Entity
-{
-    public:
-        Inside();
-        ~Inside();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf inside_pfx; //type: string
-        ydk::YLeaf outside; //type: string
-
-}; // Native::Nat66::Prefix::Inside
-
-
-class Native::PmAgent : public ydk::Entity
-{
-    public:
-        PmAgent();
-        ~PmAgent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ConfigPmAgent; //type: Native::PmAgent::ConfigPmAgent
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent> config_pm_agent;
-        
-}; // Native::PmAgent
-
-
-class Native::PmAgent::ConfigPmAgent : public ydk::Entity
-{
-    public:
-        ConfigPmAgent();
-        ~ConfigPmAgent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf shutdown; //type: empty
-        class Device; //type: Native::PmAgent::ConfigPmAgent::Device
-        class InstanceId; //type: Native::PmAgent::ConfigPmAgent::InstanceId
-        class Region; //type: Native::PmAgent::ConfigPmAgent::Region
-        class Site; //type: Native::PmAgent::ConfigPmAgent::Site
-        class Tenant; //type: Native::PmAgent::ConfigPmAgent::Tenant
-        class Pmcs; //type: Native::PmAgent::ConfigPmAgent::Pmcs
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device> device;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::InstanceId> > instance_id;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Region> region;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Site> site;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Tenant> tenant;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Pmcs> pmcs;
-        
-}; // Native::PmAgent::ConfigPmAgent
-
-
-class Native::PmAgent::ConfigPmAgent::Device : public ydk::Entity
-{
-    public:
-        Device();
-        ~Device();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Id; //type: Native::PmAgent::ConfigPmAgent::Device::Id
-        class Type; //type: Native::PmAgent::ConfigPmAgent::Device::Type
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Id> id;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Type> type;
-        
-}; // Native::PmAgent::ConfigPmAgent::Device
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Id : public ydk::Entity
-{
-    public:
-        Id();
-        ~Id();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class DeviceRange; //type: Native::PmAgent::ConfigPmAgent::Device::Id::DeviceRange
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Id::DeviceRange> > device_range;
-        
-}; // Native::PmAgent::ConfigPmAgent::Device::Id
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Id::DeviceRange : public ydk::Entity
-{
-    public:
-        DeviceRange();
-        ~DeviceRange();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf device_id_range; //type: uint32
-        ydk::YLeaf name; //type: string
-
-}; // Native::PmAgent::ConfigPmAgent::Device::Id::DeviceRange
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Type : public ydk::Entity
-{
-    public:
-        Type();
-        ~Type();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf pxtr; //type: empty
-        class Ntr; //type: Native::PmAgent::ConfigPmAgent::Device::Type::Ntr
-        class Rtr; //type: Native::PmAgent::ConfigPmAgent::Device::Type::Rtr
-        class Xtr; //type: Native::PmAgent::ConfigPmAgent::Device::Type::Xtr
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Type::Ntr> ntr; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Type::Rtr> rtr; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Type::Xtr> xtr; // presence node
-        
-}; // Native::PmAgent::ConfigPmAgent::Device::Type
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Type::Ntr : public ydk::Entity
-{
-    public:
-        Ntr();
-        ~Ntr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Rtr; //type: Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Rtr
-        class Xtr; //type: Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Xtr
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Rtr> rtr; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Xtr> xtr; // presence node
-        
-}; // Native::PmAgent::ConfigPmAgent::Device::Type::Ntr
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Rtr : public ydk::Entity
-{
-    public:
-        Rtr();
-        ~Rtr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf xtr; //type: empty
-
-}; // Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Rtr
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Xtr : public ydk::Entity
-{
-    public:
-        Xtr();
-        ~Xtr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf rtr; //type: empty
-
-}; // Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Xtr
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Type::Rtr : public ydk::Entity
-{
-    public:
-        Rtr();
-        ~Rtr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ntr; //type: empty
-        class Xtr; //type: Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::Xtr
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::Xtr> xtr; // presence node
-        
-}; // Native::PmAgent::ConfigPmAgent::Device::Type::Rtr
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::Xtr : public ydk::Entity
-{
-    public:
-        Xtr();
-        ~Xtr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ntr; //type: empty
-
-}; // Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::Xtr
-
-
-class Native::PmAgent::ConfigPmAgent::Device::Type::Xtr : public ydk::Entity
-{
-    public:
-        Xtr();
-        ~Xtr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ntr; //type: empty
-        ydk::YLeaf rtr; //type: empty
-
-}; // Native::PmAgent::ConfigPmAgent::Device::Type::Xtr
-
-
-class Native::PmAgent::ConfigPmAgent::InstanceId : public ydk::Entity
-{
-    public:
-        InstanceId();
-        ~InstanceId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf instance_id_range; //type: uint32
-        class ConfigPmAgentInstance; //type: Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance> config_pm_agent_instance;
-        
-}; // Native::PmAgent::ConfigPmAgent::InstanceId
-
-
-class Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance : public ydk::Entity
-{
-    public:
-        ConfigPmAgentInstance();
-        ~ConfigPmAgentInstance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class EnterprisePrefix; //type: Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix> enterprise_prefix;
-        
-}; // Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance
-
-
-class Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix : public ydk::Entity
-{
-    public:
-        EnterprisePrefix();
-        ~EnterprisePrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ipv4; //type: Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv4
-        class Ipv6; //type: Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv6
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv6> ipv6;
-        
-}; // Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix
-
-
-class Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv4 : public ydk::Entity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_list; //type: string
-
-}; // Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv4
-
-
-class Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_list; //type: string
-
-}; // Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv6
-
-
-class Native::PmAgent::ConfigPmAgent::Region : public ydk::Entity
-{
-    public:
-        Region();
-        ~Region();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Id; //type: Native::PmAgent::ConfigPmAgent::Region::Id
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Region::Id> id;
-        
-}; // Native::PmAgent::ConfigPmAgent::Region
-
-
-class Native::PmAgent::ConfigPmAgent::Region::Id : public ydk::Entity
-{
-    public:
-        Id();
-        ~Id();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RegionIdRange; //type: Native::PmAgent::ConfigPmAgent::Region::Id::RegionIdRange
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Region::Id::RegionIdRange> > region_id_range;
-        
-}; // Native::PmAgent::ConfigPmAgent::Region::Id
-
-
-class Native::PmAgent::ConfigPmAgent::Region::Id::RegionIdRange : public ydk::Entity
-{
-    public:
-        RegionIdRange();
-        ~RegionIdRange();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf region_id_range; //type: uint32
-        ydk::YLeaf name; //type: string
-
-}; // Native::PmAgent::ConfigPmAgent::Region::Id::RegionIdRange
-
-
-class Native::PmAgent::ConfigPmAgent::Site : public ydk::Entity
-{
-    public:
-        Site();
-        ~Site();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Id; //type: Native::PmAgent::ConfigPmAgent::Site::Id
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Site::Id> id;
-        
-}; // Native::PmAgent::ConfigPmAgent::Site
-
-
-class Native::PmAgent::ConfigPmAgent::Site::Id : public ydk::Entity
-{
-    public:
-        Id();
-        ~Id();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class SiteIdRange; //type: Native::PmAgent::ConfigPmAgent::Site::Id::SiteIdRange
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Site::Id::SiteIdRange> > site_id_range;
-        
-}; // Native::PmAgent::ConfigPmAgent::Site::Id
-
-
-class Native::PmAgent::ConfigPmAgent::Site::Id::SiteIdRange : public ydk::Entity
-{
-    public:
-        SiteIdRange();
-        ~SiteIdRange();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf site_id_range; //type: uint32
-        ydk::YLeaf name; //type: string
-
-}; // Native::PmAgent::ConfigPmAgent::Site::Id::SiteIdRange
-
-
-class Native::PmAgent::ConfigPmAgent::Tenant : public ydk::Entity
-{
-    public:
-        Tenant();
-        ~Tenant();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Id; //type: Native::PmAgent::ConfigPmAgent::Tenant::Id
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Tenant::Id> id;
-        
-}; // Native::PmAgent::ConfigPmAgent::Tenant
-
-
-class Native::PmAgent::ConfigPmAgent::Tenant::Id : public ydk::Entity
-{
-    public:
-        Id();
-        ~Id();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class TenantIdRange; //type: Native::PmAgent::ConfigPmAgent::Tenant::Id::TenantIdRange
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Tenant::Id::TenantIdRange> > tenant_id_range;
-        
-}; // Native::PmAgent::ConfigPmAgent::Tenant::Id
-
-
-class Native::PmAgent::ConfigPmAgent::Tenant::Id::TenantIdRange : public ydk::Entity
-{
-    public:
-        TenantIdRange();
-        ~TenantIdRange();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf tenant_id_range; //type: uint32
-        ydk::YLeaf name; //type: string
-
-}; // Native::PmAgent::ConfigPmAgent::Tenant::Id::TenantIdRange
-
-
-class Native::PmAgent::ConfigPmAgent::Pmcs : public ydk::Entity
-{
-    public:
-        Pmcs();
-        ~Pmcs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Ipv4; //type: Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4
-        class Ipv6; //type: Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6> ipv6;
-        
-}; // Native::PmAgent::ConfigPmAgent::Pmcs
-
-
-class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4 : public ydk::Entity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class PmcsIpv4; //type: Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4> > pmcs_ipv4;
-        
-}; // Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4
-
-
-class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4 : public ydk::Entity
-{
-    public:
-        PmcsIpv4();
-        ~PmcsIpv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
+        ydk::YLeaf list; //type: empty
+        ydk::YLeaf registered; //type: empty
         ydk::YLeaf ipv4; //type: string
-        ydk::YLeaf backup; //type: empty
-        class Ipv6; //type: Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6> ipv6;
-        
-}; // Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4
-
-
-class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PmcsIpv6; //type: Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6::PmcsIpv6
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6::PmcsIpv6> > pmcs_ipv6;
-        
-}; // Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6
-
-
-class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6::PmcsIpv6 : public ydk::Entity
-{
-    public:
-        PmcsIpv6();
-        ~PmcsIpv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
         ydk::YLeaf ipv6; //type: string
-        ydk::YLeaf backup; //type: empty
 
-}; // Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6::PmcsIpv6
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source
 
 
-class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6 : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer : public ydk::Entity
 {
     public:
-        Ipv6();
-        ~Ipv6();
+        MapServer();
+        ~MapServer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1680,20 +254,19 @@ class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6 : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class Ipv6_; //type: Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_
+        class MapRegister; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_> > ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister> map_register;
         
-}; // Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer
 
 
-class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_ : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister : public ydk::Entity
 {
     public:
-        Ipv6_();
-        ~Ipv6_();
+        MapRegister();
+        ~MapRegister();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1704,75 +277,19 @@ class Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_ : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv6; //type: string
-        ydk::YLeaf backup; //type: empty
-        ydk::YLeaf ipv4; //type: string
+        class Validate; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate
 
-}; // Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_
-
-
-class Native::Power : public ydk::Entity
-{
-    public:
-        Power();
-        ~Power();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf redundancy_mode; //type: RedundancyMode
-        ydk::YLeaf max_min; //type: MaxMin
-        ydk::YLeaf inputs; //type: uint8
-        class Inline_; //type: Native::Power::Inline_
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power::Inline_> inline_; // presence node
-                class RedundancyMode;
-        class MaxMin;
-
-}; // Native::Power
-
-
-class Native::Power::Inline_ : public ydk::Entity
-{
-    public:
-        Inline_();
-        ~Inline_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Consumption; //type: Native::Power::Inline_::Consumption
-        class Logging; //type: Native::Power::Inline_::Logging
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power::Inline_::Consumption> consumption;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power::Inline_::Logging> logging;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate> validate;
         
-}; // Native::Power::Inline_
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister
 
 
-class Native::Power::Inline_::Consumption : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate : public ydk::Entity
 {
     public:
-        Consumption();
-        ~Consumption();
+        Validate();
+        ~Validate();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1783,88 +300,19 @@ class Native::Power::Inline_::Consumption : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf default_; //type: uint16
+        class Source; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source
 
-}; // Native::Power::Inline_::Consumption
-
-
-class Native::Power::Inline_::Logging : public ydk::Entity
-{
-    public:
-        Logging();
-        ~Logging();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf global; //type: empty
-
-}; // Native::Power::Inline_::Logging
-
-
-class Native::NamedOrderingRouteMap : public ydk::Entity
-{
-    public:
-        NamedOrderingRouteMap();
-        ~NamedOrderingRouteMap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Native::NamedOrderingRouteMap
-
-
-class Native::AccessSession : public ydk::Entity
-{
-    public:
-        AccessSession();
-        ~AccessSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Attributes; //type: Native::AccessSession::Attributes
-        class MacMove; //type: Native::AccessSession::MacMove
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession::Attributes> attributes;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession::MacMove> mac_move;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source> source;
         
-}; // Native::AccessSession
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate
 
 
-class Native::AccessSession::Attributes : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source : public ydk::Entity
 {
     public:
-        Attributes();
-        ~Attributes();
+        Source();
+        ~Source();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1875,20 +323,86 @@ class Native::AccessSession::Attributes : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class FilterList; //type: Native::AccessSession::Attributes::FilterList
+        ydk::YLeaf allowed_locator; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession::Attributes::FilterList> filter_list;
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery : public ydk::Entity
+{
+    public:
+        PathMtuDiscovery();
+        ~PathMtuDiscovery();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max; //type: uint16
+        ydk::YLeaf min; //type: uint16
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport : public ydk::Entity
+{
+    public:
+        RouteExport();
+        ~RouteExport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf site_registrations; //type: empty
+        ydk::YLeaf away_eids; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport : public ydk::Entity
+{
+    public:
+        RouteImport();
+        ~RouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Database; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database
+        class MapCache; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database> database;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache> map_cache;
         
-}; // Native::AccessSession::Attributes
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport
 
 
-class Native::AccessSession::Attributes::FilterList : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database : public ydk::Entity
 {
     public:
-        FilterList();
-        ~FilterList();
+        Database();
+        ~Database();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1899,20 +413,35 @@ class Native::AccessSession::Attributes::FilterList : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class List; //type: Native::AccessSession::Attributes::FilterList::List
+        class Bgp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp
+        class Connected; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected
+        class Eigrp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp
+        class Isis; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis
+        class MaximumPrefix; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix
+        class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf
+        class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3
+        class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip
+        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession::Attributes::FilterList::List> > list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp> > bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected> connected;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp> > eigrp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis> > isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix> maximum_prefix;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf> > ospf;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3> > ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip> rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_> static_;
         
-}; // Native::AccessSession::Attributes::FilterList
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database
 
 
-class Native::AccessSession::Attributes::FilterList::List : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp : public ydk::Entity
 {
     public:
-        List();
-        ~List();
+        Bgp();
+        ~Bgp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1923,71 +452,20 @@ class Native::AccessSession::Attributes::FilterList::List : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf cdp; //type: empty
-        ydk::YLeaf dhcp; //type: empty
-        ydk::YLeaf lldp; //type: empty
+        ydk::YLeaf id; //type: one of string, uint32
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport
 
-}; // Native::AccessSession::Attributes::FilterList::List
-
-
-class Native::AccessSession::MacMove : public ydk::Entity
-{
-    public:
-        MacMove();
-        ~MacMove();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf deny; //type: empty
-
-}; // Native::AccessSession::MacMove
-
-
-class Native::Authentication : public ydk::Entity
-{
-    public:
-        Authentication();
-        ~Authentication();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Command; //type: Native::Authentication::Command
-        class Critical; //type: Native::Authentication::Critical
-        class MacMove; //type: Native::Authentication::MacMove
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication::Command> command;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication::Critical> critical;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication::MacMove> mac_move;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Authentication
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp
 
 
-class Native::Authentication::Command : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport : public ydk::Entity
 {
     public:
-        Command();
-        ~Command();
+        LispIpRouteImport();
+        ~LispIpRouteImport();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1998,22 +476,41 @@ class Native::Authentication::Command : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class BouncePort; //type: Native::Authentication::Command::BouncePort
-        class DisablePort; //type: Native::Authentication::Command::DisablePort
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication::Command::BouncePort> bounce_port;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication::Command::DisablePort> disable_port;
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected : public ydk::Entity
+{
+    public:
+        Connected();
+        ~Connected();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Authentication::Command
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected
 
 
-class Native::Authentication::Command::BouncePort : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport : public ydk::Entity
 {
     public:
-        BouncePort();
-        ~BouncePort();
+        LispIpRouteImport();
+        ~LispIpRouteImport();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2024,18 +521,783 @@ class Native::Authentication::Command::BouncePort : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp : public ydk::Entity
+{
+    public:
+        Eigrp();
+        ~Eigrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis : public ydk::Entity
+{
+    public:
+        Isis();
+        ~Isis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: string
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf number; //type: int32
+        ydk::YLeaf warning_only; //type: empty
+        ydk::YLeaf threshold; //type: uint8
+        ydk::YLeaf threshold1; //type: uint8
+        ydk::YLeaf warning_only1; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf : public ydk::Entity
+{
+    public:
+        Ospf();
+        ~Ospf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3 : public ydk::Entity
+{
+    public:
+        Ospfv3();
+        ~Ospfv3();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip : public ydk::Entity
+{
+    public:
+        Rip();
+        ~Rip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_ : public ydk::Entity
+{
+    public:
+        Static_();
+        ~Static_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache : public ydk::Entity
+{
+    public:
+        MapCache();
+        ~MapCache();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Bgp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp
+        class Connected; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected
+        class Eigrp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp
+        class Isis; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis
+        class MaximumPrefix; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix
+        class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf
+        class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3
+        class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip
+        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp> > bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected> connected; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp> > eigrp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis> > isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix> maximum_prefix;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf> > ospf;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3> > ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip> rip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_> static_; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp : public ydk::Entity
+{
+    public:
+        Bgp();
+        ~Bgp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: one of string, uint32
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected : public ydk::Entity
+{
+    public:
+        Connected();
+        ~Connected();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp : public ydk::Entity
+{
+    public:
+        Eigrp();
+        ~Eigrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis : public ydk::Entity
+{
+    public:
+        Isis();
+        ~Isis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: string
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf number; //type: int32
+        ydk::YLeaf warning_only; //type: empty
+        ydk::YLeaf threshold; //type: uint8
+        ydk::YLeaf threshold1; //type: uint8
+        ydk::YLeaf warning_only1; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf : public ydk::Entity
+{
+    public:
+        Ospf();
+        ~Ospf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3 : public ydk::Entity
+{
+    public:
+        Ospfv3();
+        ~Ospfv3();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip : public ydk::Entity
+{
+    public:
+        Rip();
+        ~Rip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_ : public ydk::Entity
+{
+    public:
+        Static_();
+        ~Static_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration : public ydk::Entity
+{
+    public:
+        SiteRegistration();
+        ~SiteRegistration();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf limit; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint8
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest : public ydk::Entity
+{
+    public:
+        SolicitMapRequest();
+        ~SolicitMapRequest();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ignore; //type: empty
+        ydk::YLeaf max_per_entry; //type: uint8
+        ydk::YLeaf suppression_time; //type: uint16
 
-}; // Native::Authentication::Command::BouncePort
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest
 
 
-class Native::Authentication::Command::DisablePort : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr : public ydk::Entity
 {
     public:
-        DisablePort();
-        ~DisablePort();
+        UsePetr();
+        ~UsePetr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2046,18 +1308,1563 @@ class Native::Authentication::Command::DisablePort : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
+
+        ydk::YLeaf locator_address; //type: string
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf weight; //type: uint8
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf alt_vrf; //type: string
+        ydk::YLeaf map_request_source; //type: string
+        ydk::YLeaf proxy_etr; //type: empty
+        ydk::YLeaf sgt; //type: empty
+        ydk::YLeafList proxy_itr; //type: list of  string
+        class DatabaseMapping; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping
+        class Distance; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance
+        class Itr; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr
+        class ItrEnable; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable
+        class Etr; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr
+        class EtrEnable; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable
+        class Locator; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator
+        class MapCache; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache
+        class MapCacheLimit; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit
+        class MapCachePersistent; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent
+        class MapResolver; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver
+        class MapServer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer
+        class PathMtuDiscovery; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery
+        class RouteExport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport
+        class RouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport
+        class SiteRegistration; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration
+        class SolicitMapRequest; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest
+        class UsePetr; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping> database_mapping;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance> distance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr> itr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable> itr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr> etr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable> etr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator> locator;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache> map_cache;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit> map_cache_limit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent> map_cache_persistent;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver> map_resolver; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer> map_server; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery> path_mtu_discovery; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport> route_export;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport> route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration> site_registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest> solicit_map_request;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr> > use_petr;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping : public ydk::Entity
+{
+    public:
+        DatabaseMapping();
+        ~DatabaseMapping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Limit; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit> limit;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit : public ydk::Entity
+{
+    public:
+        Limit();
+        ~Limit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dynamic; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint8
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance : public ydk::Entity
+{
+    public:
+        Distance();
+        ~Distance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf alt; //type: uint8
+        ydk::YLeaf dyn_eid; //type: uint8
+        ydk::YLeaf site_registrations; //type: uint8
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr : public ydk::Entity
+{
+    public:
+        Itr();
+        ~Itr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapResolver; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver> > map_resolver;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver : public ydk::Entity
+{
+    public:
+        MapResolver();
+        ~MapResolver();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip_addr; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable : public ydk::Entity
+{
+    public:
+        ItrEnable();
+        ~ItrEnable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf itr; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr : public ydk::Entity
+{
+    public:
+        Etr();
+        ~Etr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapServer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer> > map_server;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer : public ydk::Entity
+{
+    public:
+        MapServer();
+        ~MapServer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf proxy_reply; //type: empty
+        class Key; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key> key;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_0; //type: string
+        ydk::YLeaf key_6; //type: string
+        ydk::YLeaf key_7; //type: string
+        ydk::YLeaf pwd; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable : public ydk::Entity
+{
+    public:
+        EtrEnable();
+        ~EtrEnable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf etr; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator : public ydk::Entity
+{
+    public:
+        Locator();
+        ~Locator();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Reachability; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability> reachability;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability : public ydk::Entity
+{
+    public:
+        Reachability();
+        ~Reachability();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf exclude_default; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache : public ydk::Entity
+{
+    public:
+        MapCache();
+        ~MapCache();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf site_registration; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit : public ydk::Entity
+{
+    public:
+        MapCacheLimit();
+        ~MapCacheLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_map_cache_entries; //type: uint32
+        ydk::YLeaf reserve_list; //type: string
+        ydk::YLeaf warning_threshold; //type: uint8
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent : public ydk::Entity
+{
+    public:
+        MapCachePersistent();
+        ~MapCachePersistent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interval; //type: uint16
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver : public ydk::Entity
+{
+    public:
+        MapResolver();
+        ~MapResolver();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapRequest; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest> map_request;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest : public ydk::Entity
+{
+    public:
+        MapRequest();
+        ~MapRequest();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Validate; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate> validate;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate : public ydk::Entity
+{
+    public:
+        Validate();
+        ~Validate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Source; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source> source;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf list; //type: empty
+        ydk::YLeaf registered; //type: empty
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer : public ydk::Entity
+{
+    public:
+        MapServer();
+        ~MapServer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapRegister; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister> map_register;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister : public ydk::Entity
+{
+    public:
+        MapRegister();
+        ~MapRegister();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Validate; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate> validate;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate : public ydk::Entity
+{
+    public:
+        Validate();
+        ~Validate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Source; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source> source;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf allowed_locator; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery : public ydk::Entity
+{
+    public:
+        PathMtuDiscovery();
+        ~PathMtuDiscovery();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max; //type: uint16
+        ydk::YLeaf min; //type: uint16
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport : public ydk::Entity
+{
+    public:
+        RouteExport();
+        ~RouteExport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf site_registrations; //type: empty
+        ydk::YLeaf away_eids; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport : public ydk::Entity
+{
+    public:
+        RouteImport();
+        ~RouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Database; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database
+        class MapCache; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database> database;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache> map_cache;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database : public ydk::Entity
+{
+    public:
+        Database();
+        ~Database();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Bgp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp
+        class Connected; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected
+        class Eigrp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp
+        class Isis; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis
+        class MaximumPrefix; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix
+        class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf
+        class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3
+        class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip
+        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp> > bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected> connected;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp> > eigrp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis> > isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix> maximum_prefix;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf> > ospf;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3> > ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip> rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_> static_;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp : public ydk::Entity
+{
+    public:
+        Bgp();
+        ~Bgp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: one of string, uint32
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected : public ydk::Entity
+{
+    public:
+        Connected();
+        ~Connected();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp : public ydk::Entity
+{
+    public:
+        Eigrp();
+        ~Eigrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis : public ydk::Entity
+{
+    public:
+        Isis();
+        ~Isis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: string
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf number; //type: int32
+        ydk::YLeaf warning_only; //type: empty
+        ydk::YLeaf threshold; //type: uint8
+        ydk::YLeaf threshold1; //type: uint8
+        ydk::YLeaf warning_only1; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf : public ydk::Entity
+{
+    public:
+        Ospf();
+        ~Ospf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3 : public ydk::Entity
+{
+    public:
+        Ospfv3();
+        ~Ospfv3();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip : public ydk::Entity
+{
+    public:
+        Rip();
+        ~Rip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_ : public ydk::Entity
+{
+    public:
+        Static_();
+        ~Static_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport> lisp_ip_route_import;
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport : public ydk::Entity
+{
+    public:
+        LispIpRouteImport();
+        ~LispIpRouteImport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf locator_set; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache : public ydk::Entity
+{
+    public:
+        MapCache();
+        ~MapCache();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Bgp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp
+        class Connected; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected
+        class Eigrp; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp
+        class Isis; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis
+        class MaximumPrefix; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix
+        class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf
+        class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3
+        class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip
+        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp> > bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected> connected; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp> > eigrp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis> > isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix> maximum_prefix;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf> > ospf;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3> > ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip> rip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_> static_; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp : public ydk::Entity
+{
+    public:
+        Bgp();
+        ~Bgp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: one of string, uint32
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected : public ydk::Entity
+{
+    public:
+        Connected();
+        ~Connected();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp : public ydk::Entity
+{
+    public:
+        Eigrp();
+        ~Eigrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis : public ydk::Entity
+{
+    public:
+        Isis();
+        ~Isis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: string
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf number; //type: int32
+        ydk::YLeaf warning_only; //type: empty
+        ydk::YLeaf threshold; //type: uint8
+        ydk::YLeaf threshold1; //type: uint8
+        ydk::YLeaf warning_only1; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf : public ydk::Entity
+{
+    public:
+        Ospf();
+        ~Ospf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3 : public ydk::Entity
+{
+    public:
+        Ospfv3();
+        ~Ospfv3();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip : public ydk::Entity
+{
+    public:
+        Rip();
+        ~Rip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_ : public ydk::Entity
+{
+    public:
+        Static_();
+        ~Static_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer> map_cache_container; // presence node
+        
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer : public ydk::Entity
+{
+    public:
+        MapCacheContainer();
+        ~MapCacheContainer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf route_map; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration : public ydk::Entity
+{
+    public:
+        SiteRegistration();
+        ~SiteRegistration();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf limit; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint8
+
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration
+
+
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest : public ydk::Entity
+{
+    public:
+        SolicitMapRequest();
+        ~SolicitMapRequest();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ignore; //type: empty
+        ydk::YLeaf max_per_entry; //type: uint8
+        ydk::YLeaf suppression_time; //type: uint16
 
-}; // Native::Authentication::Command::DisablePort
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest
 
 
-class Native::Authentication::Critical : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr : public ydk::Entity
 {
     public:
-        Critical();
-        ~Critical();
+        UsePetr();
+        ~UsePetr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2068,20 +2875,43 @@ class Native::Authentication::Critical : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class Recovery; //type: Native::Authentication::Critical::Recovery
+        ydk::YLeaf locator_address; //type: string
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf weight; //type: uint8
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication::Critical::Recovery> recovery;
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr
+
+
+class Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm : public ydk::Entity
+{
+    public:
+        LocReachAlgorithm();
+        ~LocReachAlgorithm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rloc_probing; //type: empty
+        class LsbReports; //type: Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports> lsb_reports;
         
-}; // Native::Authentication::Critical
+}; // Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm
 
 
-class Native::Authentication::Critical::Recovery : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports : public ydk::Entity
 {
     public:
-        Recovery();
-        ~Recovery();
+        LsbReports();
+        ~LsbReports();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2092,18 +2922,18 @@ class Native::Authentication::Critical::Recovery : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf delay; //type: uint32
+        ydk::YLeaf do_not_transmit; //type: empty
+        ydk::YLeaf ignore; //type: empty
 
-}; // Native::Authentication::Critical::Recovery
+}; // Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports
 
 
-class Native::Authentication::MacMove : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::LocatorDown : public ydk::Entity
 {
     public:
-        MacMove();
-        ~MacMove();
+        LocatorDown();
+        ~LocatorDown();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2114,18 +2944,19 @@ class Native::Authentication::MacMove : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf permit; //type: empty
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf ipv4_interface; //type: string
+        ydk::YLeaf ipv6_interface; //type: string
 
-}; // Native::Authentication::MacMove
+}; // Native::Router::LispList::EidTable::InstanceList::LocatorDown
 
 
-class Native::ServiceList : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::LocatorTable : public ydk::Entity
 {
     public:
-        ServiceList();
-        ~ServiceList();
+        LocatorTable();
+        ~LocatorTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2136,20 +2967,65 @@ class Native::ServiceList : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class MdnsSd; //type: Native::ServiceList::MdnsSd
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf default_; //type: empty
+        ydk::YLeaf vrf; //type: string
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd> > mdns_sd;
+}; // Native::Router::LispList::EidTable::InstanceList::LocatorTable
+
+
+class Native::Router::LispList::EidTable::InstanceList::MapRequest : public ydk::Entity
+{
+    public:
+        MapRequest();
+        ~MapRequest();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf itr_rlocs; //type: string
+
+}; // Native::Router::LispList::EidTable::InstanceList::MapRequest
+
+
+class Native::Router::LispList::EidTable::InstanceList::MapServer : public ydk::Entity
+{
+    public:
+        MapServer();
+        ~MapServer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Rloc; //type: Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc
+        class SiteRegistration; //type: Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc> rloc;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration> site_registration;
         
-}; // Native::ServiceList
+}; // Native::Router::LispList::EidTable::InstanceList::MapServer
 
 
-class Native::ServiceList::MdnsSd : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc : public ydk::Entity
 {
     public:
-        MdnsSd();
-        ~MdnsSd();
+        Rloc();
+        ~Rloc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2160,25 +3036,19 @@ class Native::ServiceList::MdnsSd : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf service_list_name; //type: string
-        class Deny; //type: Native::ServiceList::MdnsSd::Deny
-        class Permit; //type: Native::ServiceList::MdnsSd::Permit
-        class Query; //type: Native::ServiceList::MdnsSd::Query
+        class Members; //type: Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Deny> > deny;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Permit> > permit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Query> query;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members> members;
         
-}; // Native::ServiceList::MdnsSd
+}; // Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc
 
 
-class Native::ServiceList::MdnsSd::Deny : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members : public ydk::Entity
 {
     public:
-        Deny();
-        ~Deny();
+        Members();
+        ~Members();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2190,19 +3060,19 @@ class Native::ServiceList::MdnsSd::Deny : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf deny_pack; //type: uint8
-        class Match; //type: Native::ServiceList::MdnsSd::Deny::Match
+        ydk::YLeaf distribute; //type: empty
+        class ModifyDiscovered; //type: Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Deny::Match> match;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered> modify_discovered;
         
-}; // Native::ServiceList::MdnsSd::Deny
+}; // Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members
 
 
-class Native::ServiceList::MdnsSd::Deny::Match : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered : public ydk::Entity
 {
     public:
-        Match();
-        ~Match();
+        ModifyDiscovered();
+        ~ModifyDiscovered();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2214,23 +3084,110 @@ class Native::ServiceList::MdnsSd::Deny::Match : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf learnt_interface; //type: empty
-        ydk::YLeaf service_instance; //type: string
-        ydk::YLeaf service_type; //type: string
-        class Location; //type: Native::ServiceList::MdnsSd::Deny::Match::Location
-        class MessageType; //type: Native::ServiceList::MdnsSd::Deny::Match::MessageType
+        ydk::YLeaf operator_; //type: Operator_
+        ydk::YLeaf locator_set; //type: string
+        class Operator_;
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Deny::Match::Location> location; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Deny::Match::MessageType> message_type; // presence node
+}; // Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered
+
+
+class Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration : public ydk::Entity
+{
+    public:
+        SiteRegistration();
+        ~SiteRegistration();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf limit; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint8
+
+}; // Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration
+
+
+class Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe : public ydk::Entity
+{
+    public:
+        OtherXtrProbe();
+        ~OtherXtrProbe();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf period; //type: uint16
+
+}; // Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe
+
+
+class Native::Router::LispList::EidTable::InstanceList::RemoteRlocProbe : public ydk::Entity
+{
+    public:
+        RemoteRlocProbe();
+        ~RemoteRlocProbe();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf on_membership_change; //type: empty
+        ydk::YLeaf on_route_change; //type: empty
+
+}; // Native::Router::LispList::EidTable::InstanceList::RemoteRlocProbe
+
+
+class Native::Router::LispList::EidTable::InstanceList::MapCache : public ydk::Entity
+{
+    public:
+        MapCache();
+        ~MapCache();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf eid_prefix; //type: string
+        ydk::YLeaf drop; //type: empty
+        ydk::YLeaf map_request; //type: empty
+        ydk::YLeaf native_forward; //type: empty
+        class EtrInterfaceIp; //type: Native::Router::LispList::EidTable::InstanceList::MapCache::EtrInterfaceIp
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::MapCache::EtrInterfaceIp> etr_interface_ip;
         
-}; // Native::ServiceList::MdnsSd::Deny::Match
+}; // Native::Router::LispList::EidTable::InstanceList::MapCache
 
 
-class Native::ServiceList::MdnsSd::Deny::Match::Location : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::MapCache::EtrInterfaceIp : public ydk::Entity
 {
     public:
-        Location();
-        ~Location();
+        EtrInterfaceIp();
+        ~EtrInterfaceIp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2242,246 +3199,14 @@ class Native::ServiceList::MdnsSd::Deny::Match::Location : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf civic; //type: string
+        ydk::YLeaf etr_interface_ip_address; //type: string
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf weight; //type: uint8
 
-}; // Native::ServiceList::MdnsSd::Deny::Match::Location
-
-
-class Native::ServiceList::MdnsSd::Deny::Match::MessageType : public ydk::Entity
-{
-    public:
-        MessageType();
-        ~MessageType();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf announcement; //type: empty
-        ydk::YLeaf query; //type: empty
-        ydk::YLeaf any; //type: empty
-
-}; // Native::ServiceList::MdnsSd::Deny::Match::MessageType
+}; // Native::Router::LispList::EidTable::InstanceList::MapCache::EtrInterfaceIp
 
 
-class Native::ServiceList::MdnsSd::Permit : public ydk::Entity
-{
-    public:
-        Permit();
-        ~Permit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf deny_pack; //type: uint8
-        class Match; //type: Native::ServiceList::MdnsSd::Permit::Match
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Permit::Match> match;
-        
-}; // Native::ServiceList::MdnsSd::Permit
-
-
-class Native::ServiceList::MdnsSd::Permit::Match : public ydk::Entity
-{
-    public:
-        Match();
-        ~Match();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf learnt_interface; //type: empty
-        ydk::YLeaf service_instance; //type: string
-        ydk::YLeaf service_type; //type: string
-        class Location; //type: Native::ServiceList::MdnsSd::Permit::Match::Location
-        class MessageType; //type: Native::ServiceList::MdnsSd::Permit::Match::MessageType
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Permit::Match::Location> location; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList::MdnsSd::Permit::Match::MessageType> message_type; // presence node
-        
-}; // Native::ServiceList::MdnsSd::Permit::Match
-
-
-class Native::ServiceList::MdnsSd::Permit::Match::Location : public ydk::Entity
-{
-    public:
-        Location();
-        ~Location();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf civic; //type: string
-
-}; // Native::ServiceList::MdnsSd::Permit::Match::Location
-
-
-class Native::ServiceList::MdnsSd::Permit::Match::MessageType : public ydk::Entity
-{
-    public:
-        MessageType();
-        ~MessageType();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf announcement; //type: empty
-        ydk::YLeaf query; //type: empty
-        ydk::YLeaf any; //type: empty
-
-}; // Native::ServiceList::MdnsSd::Permit::Match::MessageType
-
-
-class Native::ServiceList::MdnsSd::Query : public ydk::Entity
-{
-    public:
-        Query();
-        ~Query();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf service_type; //type: string
-
-}; // Native::ServiceList::MdnsSd::Query
-
-
-class Native::ServiceRouting : public ydk::Entity
-{
-    public:
-        ServiceRouting();
-        ~ServiceRouting();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf capabilities_manager; //type: boolean
-        ydk::YLeaf mdns_sd; //type: empty
-
-}; // Native::ServiceRouting
-
-
-class Native::NetworkPolicy : public ydk::Entity
-{
-    public:
-        NetworkPolicy();
-        ~NetworkPolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf profile; //type: uint32
-
-}; // Native::NetworkPolicy
-
-
-class Native::Energywise : public ydk::Entity
-{
-    public:
-        Energywise();
-        ~Energywise();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Domain; //type: Native::Energywise::Domain
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise::Domain> > domain;
-        
-}; // Native::Energywise
-
-
-class Native::Energywise::Domain : public ydk::Entity
-{
-    public:
-        Domain();
-        ~Domain();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf word; //type: string
-        class Security; //type: Native::Energywise::Domain::Security
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise::Domain::Security> security;
-        
-}; // Native::Energywise::Domain
-
-
-class Native::Energywise::Domain::Security : public ydk::Entity
+class Native::Router::LispList::Security : public ydk::Entity
 {
     public:
         Security();
@@ -2497,18 +3222,50 @@ class Native::Energywise::Domain::Security : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SharedSecret; //type: Native::Energywise::Domain::Security::SharedSecret
+        ydk::YLeaf strong; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise::Domain::Security::SharedSecret> shared_secret;
+}; // Native::Router::LispList::Security
+
+
+class Native::Router::LispList::Site : public ydk::Entity
+{
+    public:
+        Site();
+        ~Site();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sname; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf site_id; //type: uint32
+        class Default_; //type: Native::Router::LispList::Site::Default_
+        class AuthenticationKey; //type: Native::Router::LispList::Site::AuthenticationKey
+        class AllowedLocator; //type: Native::Router::LispList::Site::AllowedLocator
+        class EidPrefix; //type: Native::Router::LispList::Site::EidPrefix
+        class EidRecord; //type: Native::Router::LispList::Site::EidRecord
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::AuthenticationKey> authentication_key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::AllowedLocator> allowed_locator;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::EidPrefix> eid_prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::EidRecord> eid_record;
         
-}; // Native::Energywise::Domain::Security
+}; // Native::Router::LispList::Site
 
 
-class Native::Energywise::Domain::Security::SharedSecret : public ydk::Entity
+class Native::Router::LispList::Site::Default_ : public ydk::Entity
 {
     public:
-        SharedSecret();
-        ~SharedSecret();
+        Default_();
+        ~Default_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2520,18 +3277,26 @@ class Native::Energywise::Domain::Security::SharedSecret : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Zero; //type: Native::Energywise::Domain::Security::SharedSecret::Zero
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf site_id; //type: uint32
+        class AuthenticationKey; //type: Native::Router::LispList::Site::Default_::AuthenticationKey
+        class AllowedLocator; //type: Native::Router::LispList::Site::Default_::AllowedLocator
+        class EidPrefix; //type: Native::Router::LispList::Site::Default_::EidPrefix
+        class EidRecord; //type: Native::Router::LispList::Site::Default_::EidRecord
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise::Domain::Security::SharedSecret::Zero> > zero;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::AuthenticationKey> authentication_key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::AllowedLocator> allowed_locator;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix> eid_prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord> eid_record;
         
-}; // Native::Energywise::Domain::Security::SharedSecret
+}; // Native::Router::LispList::Site::Default_
 
 
-class Native::Energywise::Domain::Security::SharedSecret::Zero : public ydk::Entity
+class Native::Router::LispList::Site::Default_::AuthenticationKey : public ydk::Entity
 {
     public:
-        Zero();
-        ~Zero();
+        AuthenticationKey();
+        ~AuthenticationKey();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2543,19 +3308,44 @@ class Native::Energywise::Domain::Security::SharedSecret::Zero : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf word; //type: string
-        class Protocol; //type: Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol
+        ydk::YLeaf unc_pwd; //type: string
+        ydk::YLeaf key_0; //type: string
+        ydk::YLeaf key_6; //type: string
+        ydk::YLeaf key_7; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol> protocol;
+}; // Native::Router::LispList::Site::Default_::AuthenticationKey
+
+
+class Native::Router::LispList::Site::Default_::AllowedLocator : public ydk::Entity
+{
+    public:
+        AllowedLocator();
+        ~AllowedLocator();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ls_ipv4; //type: string
+        ydk::YLeaf ls_ipv6; //type: string
+        class List; //type: Native::Router::LispList::Site::Default_::AllowedLocator::List
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::AllowedLocator::List> list;
         
-}; // Native::Energywise::Domain::Security::SharedSecret::Zero
+}; // Native::Router::LispList::Site::Default_::AllowedLocator
 
 
-class Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol : public ydk::Entity
+class Native::Router::LispList::Site::Default_::AllowedLocator::List : public ydk::Entity
 {
     public:
-        Protocol();
-        ~Protocol();
+        List();
+        ~List();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2567,18 +3357,43 @@ class Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Udp; //type: Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol::Udp
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol::Udp> udp;
+}; // Native::Router::LispList::Site::Default_::AllowedLocator::List
+
+
+class Native::Router::LispList::Site::Default_::EidPrefix : public ydk::Entity
+{
+    public:
+        EidPrefix();
+        ~EidPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf any_mac; //type: empty
+        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidPrefix::Prefixes
+        class InstanceId; //type: Native::Router::LispList::Site::Default_::EidPrefix::InstanceId
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix::Prefixes> > prefixes;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix::InstanceId> > instance_id;
         
-}; // Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol
+}; // Native::Router::LispList::Site::Default_::EidPrefix
 
 
-class Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol::Udp : public ydk::Entity
+class Native::Router::LispList::Site::Default_::EidPrefix::Prefixes : public ydk::Entity
 {
     public:
-        Udp();
-        ~Udp();
+        Prefixes();
+        ~Prefixes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2590,17 +3405,18 @@ class Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol::Udp : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf port; //type: uint16
-        ydk::YLeaf ip; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf accept_more_specifics; //type: empty
+        ydk::YLeaf route_tag; //type: uint32
 
-}; // Native::Energywise::Domain::Security::SharedSecret::Zero::Protocol::Udp
+}; // Native::Router::LispList::Site::Default_::EidPrefix::Prefixes
 
 
-class Native::CiscoIOSXESwitchTemplate : public ydk::Entity
+class Native::Router::LispList::Site::Default_::EidPrefix::InstanceId : public ydk::Entity
 {
     public:
-        CiscoIOSXESwitchTemplate();
-        ~CiscoIOSXESwitchTemplate();
+        InstanceId();
+        ~InstanceId();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2611,40 +3427,21 @@ class Native::CiscoIOSXESwitchTemplate : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class IPCAMERAINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE
-        class LAPINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE
-        class APINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::APINTERFACETEMPLATE
-        class DMPINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::DMPINTERFACETEMPLATE
-        class IPPHONEINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::IPPHONEINTERFACETEMPLATE
-        class MSPCAMERAINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::MSPCAMERAINTERFACETEMPLATE
-        class MSPVCINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::MSPVCINTERFACETEMPLATE
-        class PRINTERINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::PRINTERINTERFACETEMPLATE
-        class ROUTERINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::ROUTERINTERFACETEMPLATE
-        class SWITCHINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::SWITCHINTERFACETEMPLATE
-        class TPINTERFACETEMPLATE; //type: Native::CiscoIOSXESwitchTemplate::TPINTERFACETEMPLATE
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf any_mac; //type: empty
+        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE> ip_camera_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE> lap_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::APINTERFACETEMPLATE> ap_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::DMPINTERFACETEMPLATE> dmp_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPPHONEINTERFACETEMPLATE> ip_phone_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::MSPCAMERAINTERFACETEMPLATE> msp_camera_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::MSPVCINTERFACETEMPLATE> msp_vc_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::PRINTERINTERFACETEMPLATE> printer_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::ROUTERINTERFACETEMPLATE> router_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::SWITCHINTERFACETEMPLATE> switch_interface_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::TPINTERFACETEMPLATE> tp_interface_template;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes> > prefixes;
         
-}; // Native::CiscoIOSXESwitchTemplate
+}; // Native::Router::LispList::Site::Default_::EidPrefix::InstanceId
 
 
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE : public ydk::Entity
+class Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes : public ydk::Entity
 {
     public:
-        IPCAMERAINTERFACETEMPLATE();
-        ~IPCAMERAINTERFACETEMPLATE();
+        Prefixes();
+        ~Prefixes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2655,29 +3452,45 @@ class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE : public ydk::
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        ydk::YLeaf load_interval; //type: uint16
-        class ServicePolicy; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy
-        class Switchport; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport
-        class SpanningTree; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree
-        class StormControl; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl
-        class Ip; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf accept_more_specifics; //type: empty
+        ydk::YLeaf route_tag; //type: uint32
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport> switchport;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree> spanning_tree; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl> storm_control;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip> ip;
+}; // Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes
+
+
+class Native::Router::LispList::Site::Default_::EidRecord : public ydk::Entity
+{
+    public:
+        EidRecord();
+        ~EidRecord();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf any_mac; //type: empty
+        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidRecord::Prefixes
+        class InstanceId; //type: Native::Router::LispList::Site::Default_::EidRecord::InstanceId
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord::Prefixes> > prefixes;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord::InstanceId> > instance_id;
         
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE
+}; // Native::Router::LispList::Site::Default_::EidRecord
 
 
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy : public ydk::Entity
+class Native::Router::LispList::Site::Default_::EidRecord::Prefixes : public ydk::Entity
 {
     public:
-        ServicePolicy();
-        ~ServicePolicy();
+        Prefixes();
+        ~Prefixes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2688,269 +3501,44 @@ class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
 
-        class Input; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Input
-        class Output; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Output
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf accept_more_specifics; //type: empty
+        ydk::YLeaf route_tag; //type: uint32
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Input> input;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Output> output;
+}; // Native::Router::LispList::Site::Default_::EidRecord::Prefixes
+
+
+class Native::Router::LispList::Site::Default_::EidRecord::InstanceId : public ydk::Entity
+{
+    public:
+        InstanceId();
+        ~InstanceId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf any_mac; //type: empty
+        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes> > prefixes;
         
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy
+}; // Native::Router::LispList::Site::Default_::EidRecord::InstanceId
 
 
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Input : public ydk::Entity
+class Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes : public ydk::Entity
 {
     public:
-        Input();
-        ~Input();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf policy_map_name; //type: string
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Input
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Output : public ydk::Entity
-{
-    public:
-        Output();
-        ~Output();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf policy_map_name; //type: string
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::ServicePolicy::Output
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport : public ydk::Entity
-{
-    public:
-        Switchport();
-        ~Switchport();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf nonegotiate; //type: empty
-        class Mode; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Mode
-        class Block; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Block
-        class PortSecurity; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity
-        class Access; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Access
-        class Voice; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Voice
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Mode> mode;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Block> block;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity> port_security; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Access> access;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Voice> voice;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Mode : public ydk::Entity
-{
-    public:
-        Mode();
-        ~Mode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf trunk; //type: empty
-        ydk::YLeaf access; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Mode
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Block : public ydk::Entity
-{
-    public:
-        Block();
-        ~Block();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf unicast; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Block
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity : public ydk::Entity
-{
-    public:
-        PortSecurity();
-        ~PortSecurity();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Aging; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging
-        class Maximum; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
-        class Violation; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Violation
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging> aging;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum> maximum;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Violation> violation;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging : public ydk::Entity
-{
-    public:
-        Aging();
-        ~Aging();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf static_; //type: empty
-        ydk::YLeaf time; //type: uint16
-        class Type; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type> type; // presence node
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type : public ydk::Entity
-{
-    public:
-        Type();
-        ~Type();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf inactivity; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum : public ydk::Entity
-{
-    public:
-        Maximum();
-        ~Maximum();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Range; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range : public ydk::Entity
-{
-    public:
-        Range();
-        ~Range();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf range; //type: uint16
-        class Vlan; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan> vlan; // presence node
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan : public ydk::Entity
-{
-    public:
-        Vlan();
-        ~Vlan();
+        Prefixes();
+        ~Prefixes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2962,715 +3550,17 @@ class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::P
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access; //type: empty
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf accept_more_specifics; //type: empty
+        ydk::YLeaf route_tag; //type: uint32
 
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan
+}; // Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes
 
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Violation : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::Operator_ : public ydk::Enum
 {
     public:
-        Violation();
-        ~Violation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf restrict; //type: empty
-        ydk::YLeaf shutdown; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::PortSecurity::Violation
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Access : public ydk::Entity
-{
-    public:
-        Access();
-        ~Access();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf vlan; //type: uint16
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Access
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Voice : public ydk::Entity
-{
-    public:
-        Voice();
-        ~Voice();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf vlan; //type: uint16
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Switchport::Voice
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree : public ydk::Entity
-{
-    public:
-        SpanningTree();
-        ~SpanningTree();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf service_policy; //type: empty
-        class Bpduguard; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Bpduguard
-        class Portfast; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Portfast
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Bpduguard> bpduguard;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Portfast> portfast;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Bpduguard : public ydk::Entity
-{
-    public:
-        Bpduguard();
-        ~Bpduguard();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Bpduguard
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Portfast : public ydk::Entity
-{
-    public:
-        Portfast();
-        ~Portfast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf disable; //type: empty
-        ydk::YLeaf edge; //type: empty
-        ydk::YLeaf network; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::SpanningTree::Portfast
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl : public ydk::Entity
-{
-    public:
-        StormControl();
-        ~StormControl();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Broadcast; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast
-        class Action; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Action
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast> broadcast;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Action> action;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast : public ydk::Entity
-{
-    public:
-        Broadcast();
-        ~Broadcast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Level; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level> level;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level : public ydk::Entity
-{
-    public:
-        Level();
-        ~Level();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf threshold; //type: decimal64
-        class Pps; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps
-        class Bps; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps> pps;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps> bps;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps : public ydk::Entity
-{
-    public:
-        Pps();
-        ~Pps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf threshold; //type: string
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps : public ydk::Entity
-{
-    public:
-        Bps();
-        ~Bps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf threshold; //type: decimal64
-        ydk::YLeaf b_unit; //type: string
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Action : public ydk::Entity
-{
-    public:
-        Action();
-        ~Action();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf shutdown; //type: empty
-        ydk::YLeaf trap; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::StormControl::Action
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip : public ydk::Entity
-{
-    public:
-        Ip();
-        ~Ip();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Dhcp; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp> dhcp;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp : public ydk::Entity
-{
-    public:
-        Dhcp();
-        ~Dhcp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Snooping; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping> snooping;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping : public ydk::Entity
-{
-    public:
-        Snooping();
-        ~Snooping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Limit; //type: Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit> limit;
-        
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping
-
-
-class Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit : public ydk::Entity
-{
-    public:
-        Limit();
-        ~Limit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf rate; //type: uint16
-
-}; // Native::CiscoIOSXESwitchTemplate::IPCAMERAINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE : public ydk::Entity
-{
-    public:
-        LAPINTERFACETEMPLATE();
-        ~LAPINTERFACETEMPLATE();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf load_interval; //type: uint16
-        class ServicePolicy; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy
-        class Switchport; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport
-        class SpanningTree; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::SpanningTree
-        class StormControl; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::StormControl
-        class Ip; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Ip
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport> switchport;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::SpanningTree> spanning_tree; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::StormControl> storm_control;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Ip> ip;
-        
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy : public ydk::Entity
-{
-    public:
-        ServicePolicy();
-        ~ServicePolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Input; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Input
-        class Output; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Output
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Input> input;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Output> output;
-        
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Input : public ydk::Entity
-{
-    public:
-        Input();
-        ~Input();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf policy_map_name; //type: string
-
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Input
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Output : public ydk::Entity
-{
-    public:
-        Output();
-        ~Output();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf policy_map_name; //type: string
-
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::ServicePolicy::Output
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport : public ydk::Entity
-{
-    public:
-        Switchport();
-        ~Switchport();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf nonegotiate; //type: empty
-        class Mode; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Mode
-        class Block; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Block
-        class PortSecurity; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity
-        class Access; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Access
-        class Voice; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Voice
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Mode> mode;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Block> block;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity> port_security; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Access> access;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Voice> voice;
-        
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Mode : public ydk::Entity
-{
-    public:
-        Mode();
-        ~Mode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf trunk; //type: empty
-        ydk::YLeaf access; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Mode
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Block : public ydk::Entity
-{
-    public:
-        Block();
-        ~Block();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf unicast; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::Block
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity : public ydk::Entity
-{
-    public:
-        PortSecurity();
-        ~PortSecurity();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Aging; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging
-        class Maximum; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
-        class Violation; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Violation
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging> aging;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum> maximum;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Violation> violation;
-        
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging : public ydk::Entity
-{
-    public:
-        Aging();
-        ~Aging();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf static_; //type: empty
-        ydk::YLeaf time; //type: uint16
-        class Type; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type> type; // presence node
-        
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type : public ydk::Entity
-{
-    public:
-        Type();
-        ~Type();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf inactivity; //type: empty
-
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum : public ydk::Entity
-{
-    public:
-        Maximum();
-        ~Maximum();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Range; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range> > range;
-        
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
-
-
-class Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range : public ydk::Entity
-{
-    public:
-        Range();
-        ~Range();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf range; //type: uint16
-        class Vlan; //type: Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan> vlan; // presence node
-        
-}; // Native::CiscoIOSXESwitchTemplate::LAPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range
-
-class Native::MaintenanceTemplate::ConfigMaintenanceTempl::Router::RoutingProtocol::Protocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf isis;
-
-};
-
-class Native::Power::RedundancyMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf combined;
-        static const ydk::Enum::YLeaf redundant;
-
-};
-
-class Native::Power::MaxMin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf max;
+        static const ydk::Enum::YLeaf add;
+        static const ydk::Enum::YLeaf override;
 
 };
 

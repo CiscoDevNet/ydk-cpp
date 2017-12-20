@@ -28,8 +28,8 @@ The YANG Development Kit (YDK) is a Software Development Kit that provides API's
 You can install YDK-Cpp on macOS or Linux.  It is not currently supported on Windows.
 
 ### System Requirements
-#### Linux
-**Ubuntu (Debian-based)** - The following packages must be present in your system before installing YDK-Cpp:
+**Linux**  
+Ubuntu (Debian-based) - The following packages must be present in your system before installing YDK-Cpp:
 
 If installing from prebuilt binary:
 ```
@@ -40,7 +40,7 @@ If building from source:
 $ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev libxslt1-dev libtool-bin cmake
 ```
 
-**Centos (Fedora-based)** - The following packages must be present in your system before installing YDK-Cpp:
+Centos (Fedora-based) - The following packages must be present in your system before installing YDK-Cpp:
 
 If installing from prebuilt binary:
 ```
@@ -66,41 +66,41 @@ $ xcode-select --install
 ##### Ubuntu (Debian-based)
 You can install the latest `libydk` `core` package using prebuilt binaries:
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.6.2/libydk_0.6.2-1_amd64.deb
-$ sudo gdebi libydk_0.6.2-1_amd64.deb
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.6.3/libydk_0.6.3-1_amd64.deb
+$ sudo gdebi libydk_0.6.3-1_amd64.deb
 ```
 To install the `ietf` package using prebuilt binaries:
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.6.2/libydk-ietf_0.1.3-1_amd64.deb
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.6.3/libydk-ietf_0.1.3-1_amd64.deb
 $ sudo gdebi libydk-ietf_0.1.3-1_amd64.deb
 ```
-Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/debian-ydk/0.6.2) can be installed.
+Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/debian-ydk/0.6.3) can be installed.
 
 ##### Centos (Fedora-based)
 You can install the latest `libydk` `core` package using prebuilt binaries:
 ```
-$ sudo yum install https://devhub.cisco.com/artifactory/rpm-ydk/0.6.2/libydk-0.6.2-1.x86_64.rpm
+$ sudo yum install https://devhub.cisco.com/artifactory/rpm-ydk/0.6.3/libydk-0.6.3-1.x86_64.rpm
 ```
 To install the `ietf` package using prebuilt binaries:
 ```
-$ sudo yum install https://devhub.cisco.com/artifactory/rpm-ydk/0.6.2/libydk-ietf-0.1.3-1.x86_64.rpm
+$ sudo yum install https://devhub.cisco.com/artifactory/rpm-ydk/0.6.3/libydk-ietf-0.1.3-1.x86_64.rpm
 ```
-Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/rpm-ydk/0.6.2) can be installed.
+Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/rpm-ydk/0.6.3) can be installed.
 
 #### macOS  
 You can install the latest `libydk` `core` package using prebuilt binaries:
 ```
-$ curl -O https://devhub.cisco.com/artifactory/osx-ydk/0.6.2/libydk-0.6.2-Darwin.pkg
-$ sudo installer -pkg libydk-0.6.2-Darwin.pkg -target /
+$ curl -O https://devhub.cisco.com/artifactory/osx-ydk/0.6.3/libydk-0.6.3-Darwin.pkg
+$ sudo installer -pkg libydk-0.6.3-Darwin.pkg -target /
 ```
 To install the `ietf` package using prebuilt binaries:
 ```
-$ curl -O https://devhub.cisco.com/artifactory/osx-ydk/0.6.2/libydk-ietf-0.1.3-Darwin.pkg
+$ curl -O https://devhub.cisco.com/artifactory/osx-ydk/0.6.3/libydk-ietf-0.1.3-Darwin.pkg
 $ sudo installer -pkg libydk-ietf-0.1.3-Darwin.pkg -target /
 ```
-Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/osx-ydk/0.6.2) can be installed.
+Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/osx-ydk/0.6.3) can be installed.
 
-#### Installing from source
+####Installing from source
 #### Building YDK
 YDK uses ``cmake`` as the build system of choice. To install the ``core`` package, execute:
 ```
@@ -152,4 +152,4 @@ $ build$ cd ../..
 - Additional YDK information can be found at [ydk.io](http://ydk.io)
 
 ## Release Notes
-The current YDK release version is 0.6.2 (alpha). YDK-Cpp is licensed under the Apache 2.0 License.
+The current YDK release version is 0.6.3 (alpha). YDK-Cpp is licensed under the Apache 2.0 License.

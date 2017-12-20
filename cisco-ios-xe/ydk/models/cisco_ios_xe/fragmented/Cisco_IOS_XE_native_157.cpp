@@ -11,170 +11,38 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::Delegate()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Decapsulation()
     :
-    eid_prefix{YType::str, "eid-prefix"},
-    instance_id{YType::str, "instance-id"},
-    to{YType::empty, "to"},
-    ip_address{YType::str, "ip-address"},
-    map_server{YType::empty, "map-server"}
-{
-
-    yang_name = "delegate"; yang_parent_name = "instance-id-list"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::~Delegate()
-{
-}
-
-bool Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::has_data() const
-{
-    return eid_prefix.is_set
-	|| instance_id.is_set
-	|| to.is_set
-	|| ip_address.is_set
-	|| map_server.is_set;
-}
-
-bool Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(eid_prefix.yfilter)
-	|| ydk::is_set(instance_id.yfilter)
-	|| ydk::is_set(to.yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(map_server.yfilter);
-}
-
-std::string Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delegate";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (eid_prefix.is_set || is_set(eid_prefix.yfilter)) leaf_name_data.push_back(eid_prefix.get_name_leafdata());
-    if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
-    if (to.is_set || is_set(to.yfilter)) leaf_name_data.push_back(to.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (map_server.is_set || is_set(map_server.yfilter)) leaf_name_data.push_back(map_server.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "eid-prefix")
-    {
-        eid_prefix = value;
-        eid_prefix.value_namespace = name_space;
-        eid_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "instance-id")
-    {
-        instance_id = value;
-        instance_id.value_namespace = name_space;
-        instance_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "to")
-    {
-        to = value;
-        to.value_namespace = name_space;
-        to.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "map-server")
-    {
-        map_server = value;
-        map_server.value_namespace = name_space;
-        map_server.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "eid-prefix")
-    {
-        eid_prefix.yfilter = yfilter;
-    }
-    if(value_path == "instance-id")
-    {
-        instance_id.yfilter = yfilter;
-    }
-    if(value_path == "to")
-    {
-        to.yfilter = yfilter;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "map-server")
-    {
-        map_server.yfilter = yfilter;
-    }
-}
-
-bool Native::Router::LispList::EidTable::InstanceList::Ddt::Authoritative::InstanceIdList::Delegate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "eid-prefix" || name == "instance-id" || name == "to" || name == "ip-address" || name == "map-server")
-        return true;
-    return false;
-}
-
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::Decapsulation()
-    :
-    filter(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter>())
+    filter(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter>())
 {
     filter->parent = this;
 
     yang_name = "decapsulation"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::~Decapsulation()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::~Decapsulation()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::has_data() const
 {
     return (filter !=  nullptr && filter->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::has_operation() const
 {
     return is_set(yfilter)
 	|| (filter !=  nullptr && filter->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Decapsulation::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Decapsulation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "decapsulation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Decapsulation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Decapsulation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -183,13 +51,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Decapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "filter")
     {
         if(filter == nullptr)
         {
-            filter = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter>();
+            filter = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter>();
         }
         return filter;
     }
@@ -197,7 +65,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Decaps
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Decapsulation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(filter != nullptr)
@@ -208,53 +76,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "filter")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Filter()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Filter()
     :
-    rloc(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc>())
+    rloc(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc>())
 {
     rloc->parent = this;
 
     yang_name = "filter"; yang_parent_name = "decapsulation"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::~Filter()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::~Filter()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::has_data() const
 {
     return (rloc !=  nullptr && rloc->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::has_operation() const
 {
     return is_set(yfilter)
 	|| (rloc !=  nullptr && rloc->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -263,13 +131,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rloc")
     {
         if(rloc == nullptr)
         {
-            rloc = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc>();
+            rloc = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc>();
         }
         return rloc;
     }
@@ -277,7 +145,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Decaps
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(rloc != nullptr)
@@ -288,53 +156,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rloc")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Rloc()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Rloc()
     :
-    source(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source>())
+    source(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source>())
 {
     source->parent = this;
 
     yang_name = "rloc"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::~Rloc()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::~Rloc()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::has_data() const
 {
     return (source !=  nullptr && source->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::has_operation() const
 {
     return is_set(yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rloc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -343,13 +211,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source>();
+            source = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source>();
         }
         return source;
     }
@@ -357,7 +225,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Decaps
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -368,22 +236,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::Source()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::Source()
     :
     locator_set{YType::str, "locator-set"},
     member{YType::empty, "member"}
@@ -392,31 +260,31 @@ Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::S
     yang_name = "source"; yang_parent_name = "rloc"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::~Source()
+Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::~Source()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::has_data() const
 {
     return locator_set.is_set
 	|| member.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(locator_set.yfilter)
 	|| ydk::is_set(member.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -427,18 +295,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "locator-set")
     {
@@ -454,7 +322,7 @@ void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rl
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "locator-set")
     {
@@ -466,45 +334,45 @@ void Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rl
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Decapsulation::Filter::Rloc::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "locator-set" || name == "member")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Etr::Etr()
+Native::Router::Lisp::EidTable::InstanceList::Etr::Etr()
     :
-    map_server(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Etr::MapServer>())
+    map_server(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer>())
 {
     map_server->parent = this;
 
     yang_name = "etr"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Etr::~Etr()
+Native::Router::Lisp::EidTable::InstanceList::Etr::~Etr()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Etr::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Etr::has_data() const
 {
     return (map_server !=  nullptr && map_server->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Etr::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Etr::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_server !=  nullptr && map_server->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Etr::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Etr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Etr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Etr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -513,13 +381,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-server")
     {
         if(map_server == nullptr)
         {
-            map_server = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Etr::MapServer>();
+            map_server = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer>();
         }
         return map_server;
     }
@@ -527,7 +395,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Etr::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Etr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Etr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_server != nullptr)
@@ -538,22 +406,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Etr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Etr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Etr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Etr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-server")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::MapServer()
     :
     source_address{YType::str, "source-address"}
 {
@@ -561,29 +429,29 @@ Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::MapServer()
     yang_name = "map-server"; yang_parent_name = "etr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::~MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::~MapServer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::has_data() const
 {
     return source_address.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-server";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -593,18 +461,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -614,7 +482,7 @@ void Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::set_value
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -622,14 +490,14 @@ void Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::set_filte
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Etr::MapServer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Etr::MapServer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-address")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Ipv4()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Ipv4()
     :
     alt_vrf{YType::str, "alt-vrf"},
     map_request_source{YType::str, "map-request-source"},
@@ -637,23 +505,23 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::Ipv4()
     proxy_itr{YType::str, "proxy-itr"},
     sgt{YType::empty, "sgt"}
     	,
-    database_mapping(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping>())
-	,distance(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance>())
-	,itr(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr>())
-	,itr_enable(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable>())
-	,etr(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr>())
-	,etr_enable(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable>())
-	,locator(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator>())
-	,map_cache(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache>())
-	,map_cache_limit(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit>())
-	,map_cache_persistent(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent>())
+    database_mapping(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping>())
+	,distance(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance>())
+	,itr(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr>())
+	,itr_enable(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable>())
+	,etr(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr>())
+	,etr_enable(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable>())
+	,locator(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator>())
+	,map_cache(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache>())
+	,map_cache_limit(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit>())
+	,map_cache_persistent(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent>())
 	,map_resolver(nullptr) // presence node
 	,map_server(nullptr) // presence node
 	,path_mtu_discovery(nullptr) // presence node
-	,route_export(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport>())
-	,route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport>())
-	,site_registration(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration>())
-	,solicit_map_request(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest>())
+	,route_export(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport>())
+	,route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport>())
+	,site_registration(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration>())
+	,solicit_map_request(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest>())
 {
     database_mapping->parent = this;
     distance->parent = this;
@@ -673,11 +541,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::Ipv4()
     yang_name = "ipv4"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::~Ipv4()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::~Ipv4()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::has_data() const
 {
     for (std::size_t index=0; index<use_petr.size(); index++)
     {
@@ -712,7 +580,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::has_data() const
 	|| (solicit_map_request !=  nullptr && solicit_map_request->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::has_operation() const
 {
     for (std::size_t index=0; index<use_petr.size(); index++)
     {
@@ -749,14 +617,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::has_operation() con
 	|| (solicit_map_request !=  nullptr && solicit_map_request->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -771,13 +639,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping")
     {
         if(database_mapping == nullptr)
         {
-            database_mapping = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping>();
+            database_mapping = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping>();
         }
         return database_mapping;
     }
@@ -786,7 +654,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(distance == nullptr)
         {
-            distance = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance>();
+            distance = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance>();
         }
         return distance;
     }
@@ -795,7 +663,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(itr == nullptr)
         {
-            itr = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr>();
+            itr = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr>();
         }
         return itr;
     }
@@ -804,7 +672,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(itr_enable == nullptr)
         {
-            itr_enable = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable>();
+            itr_enable = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable>();
         }
         return itr_enable;
     }
@@ -813,7 +681,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(etr == nullptr)
         {
-            etr = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr>();
+            etr = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr>();
         }
         return etr;
     }
@@ -822,7 +690,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(etr_enable == nullptr)
         {
-            etr_enable = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable>();
+            etr_enable = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable>();
         }
         return etr_enable;
     }
@@ -831,7 +699,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(locator == nullptr)
         {
-            locator = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator>();
+            locator = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator>();
         }
         return locator;
     }
@@ -840,7 +708,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(map_cache == nullptr)
         {
-            map_cache = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache>();
+            map_cache = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache>();
         }
         return map_cache;
     }
@@ -849,7 +717,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(map_cache_limit == nullptr)
         {
-            map_cache_limit = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit>();
+            map_cache_limit = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit>();
         }
         return map_cache_limit;
     }
@@ -858,7 +726,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(map_cache_persistent == nullptr)
         {
-            map_cache_persistent = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent>();
+            map_cache_persistent = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent>();
         }
         return map_cache_persistent;
     }
@@ -867,7 +735,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(map_resolver == nullptr)
         {
-            map_resolver = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver>();
+            map_resolver = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver>();
         }
         return map_resolver;
     }
@@ -876,7 +744,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(map_server == nullptr)
         {
-            map_server = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer>();
+            map_server = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer>();
         }
         return map_server;
     }
@@ -885,7 +753,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(path_mtu_discovery == nullptr)
         {
-            path_mtu_discovery = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery>();
+            path_mtu_discovery = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery>();
         }
         return path_mtu_discovery;
     }
@@ -894,7 +762,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(route_export == nullptr)
         {
-            route_export = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport>();
+            route_export = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport>();
         }
         return route_export;
     }
@@ -903,7 +771,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(route_import == nullptr)
         {
-            route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport>();
+            route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport>();
         }
         return route_import;
     }
@@ -912,7 +780,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(site_registration == nullptr)
         {
-            site_registration = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration>();
+            site_registration = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration>();
         }
         return site_registration;
     }
@@ -921,7 +789,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(solicit_map_request == nullptr)
         {
-            solicit_map_request = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest>();
+            solicit_map_request = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest>();
         }
         return solicit_map_request;
     }
@@ -936,7 +804,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr>();
         c->parent = this;
         use_petr.push_back(c);
         return c;
@@ -945,7 +813,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database_mapping != nullptr)
@@ -1041,7 +909,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "alt-vrf")
     {
@@ -1073,7 +941,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::set_value(const std
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "alt-vrf")
     {
@@ -1097,45 +965,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::set_filter(const st
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database-mapping" || name == "distance" || name == "itr" || name == "itr-enable" || name == "etr" || name == "etr-enable" || name == "locator" || name == "map-cache" || name == "map-cache-limit" || name == "map-cache-persistent" || name == "map-resolver" || name == "map-server" || name == "path-mtu-discovery" || name == "route-export" || name == "route-import" || name == "site-registration" || name == "solicit-map-request" || name == "use-petr" || name == "alt-vrf" || name == "map-request-source" || name == "proxy-etr" || name == "proxy-itr" || name == "sgt")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::DatabaseMapping()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::DatabaseMapping()
     :
-    limit(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit>())
+    limit(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit>())
 {
     limit->parent = this;
 
     yang_name = "database-mapping"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::~DatabaseMapping()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::~DatabaseMapping()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::has_data() const
 {
     return (limit !=  nullptr && limit->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::has_operation() const
 {
     return is_set(yfilter)
 	|| (limit !=  nullptr && limit->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-mapping";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1144,13 +1012,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "limit")
     {
         if(limit == nullptr)
         {
-            limit = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit>();
+            limit = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit>();
         }
         return limit;
     }
@@ -1158,7 +1026,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(limit != nullptr)
@@ -1169,22 +1037,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "limit")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::Limit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::Limit()
     :
     dynamic{YType::uint32, "dynamic"},
     warning_threshold{YType::uint8, "warning-threshold"}
@@ -1193,31 +1061,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::
     yang_name = "limit"; yang_parent_name = "database-mapping"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::~Limit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::~Limit()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::has_data() const
 {
     return dynamic.is_set
 	|| warning_threshold.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dynamic.yfilter)
 	|| ydk::is_set(warning_threshold.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "limit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1228,18 +1096,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dynamic")
     {
@@ -1255,7 +1123,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Li
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dynamic")
     {
@@ -1267,14 +1135,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Li
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::DatabaseMapping::Limit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic" || name == "warning-threshold")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::Distance()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::Distance()
     :
     alt{YType::uint8, "alt"},
     dyn_eid{YType::uint8, "dyn-eid"},
@@ -1284,18 +1152,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::Distance()
     yang_name = "distance"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::~Distance()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::~Distance()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::has_data() const
 {
     return alt.is_set
 	|| dyn_eid.is_set
 	|| site_registrations.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(alt.yfilter)
@@ -1303,14 +1171,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::has_opera
 	|| ydk::is_set(site_registrations.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "distance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1322,18 +1190,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "alt")
     {
@@ -1355,7 +1223,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::set_value
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "alt")
     {
@@ -1371,24 +1239,24 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::set_filte
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Distance::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Distance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alt" || name == "dyn-eid" || name == "site-registrations")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::Itr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::Itr()
 {
 
     yang_name = "itr"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::~Itr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::~Itr()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::has_data() const
 {
     for (std::size_t index=0; index<map_resolver.size(); index++)
     {
@@ -1398,7 +1266,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::has_data() con
     return false;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::has_operation() const
 {
     for (std::size_t index=0; index<map_resolver.size(); index++)
     {
@@ -1408,14 +1276,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::has_operation(
     return is_set(yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "itr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1424,7 +1292,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-resolver")
     {
@@ -1436,7 +1304,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver>();
         c->parent = this;
         map_resolver.push_back(c);
         return c;
@@ -1445,7 +1313,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : map_resolver)
@@ -1456,22 +1324,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-resolver")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::MapResolver()
     :
     ip_addr{YType::str, "ip-addr"}
 {
@@ -1479,29 +1347,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::MapRes
     yang_name = "map-resolver"; yang_parent_name = "itr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::~MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::~MapResolver()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::has_data() const
 {
     return ip_addr.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip_addr.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-resolver" <<"[ip-addr='" <<ip_addr <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1511,18 +1379,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-addr")
     {
@@ -1532,7 +1400,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::s
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip-addr")
     {
@@ -1540,14 +1408,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::s
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Itr::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Itr::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-addr")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::ItrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::ItrEnable()
     :
     itr{YType::empty, "itr"}
 {
@@ -1555,29 +1423,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::ItrEnable()
     yang_name = "itr-enable"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::~ItrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::~ItrEnable()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::has_data() const
 {
     return itr.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(itr.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "itr-enable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1587,18 +1455,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "itr")
     {
@@ -1608,7 +1476,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::set_valu
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "itr")
     {
@@ -1616,24 +1484,24 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::set_filt
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::ItrEnable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::ItrEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "itr")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::Etr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::Etr()
 {
 
     yang_name = "etr"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::~Etr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::~Etr()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::has_data() const
 {
     for (std::size_t index=0; index<map_server.size(); index++)
     {
@@ -1643,7 +1511,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::has_data() con
     return false;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::has_operation() const
 {
     for (std::size_t index=0; index<map_server.size(); index++)
     {
@@ -1653,14 +1521,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::has_operation(
     return is_set(yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1669,7 +1537,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-server")
     {
@@ -1681,7 +1549,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer>();
         c->parent = this;
         map_server.push_back(c);
         return c;
@@ -1690,7 +1558,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : map_server)
@@ -1701,45 +1569,45 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-server")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::MapServer()
     :
     ip_addr{YType::str, "ip-addr"},
     proxy_reply{YType::empty, "proxy-reply"}
     	,
-    key(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key>())
+    key(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key>())
 {
     key->parent = this;
 
     yang_name = "map-server"; yang_parent_name = "etr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::~MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::~MapServer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::has_data() const
 {
     return ip_addr.is_set
 	|| proxy_reply.is_set
 	|| (key !=  nullptr && key->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip_addr.yfilter)
@@ -1747,14 +1615,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::has
 	|| (key !=  nullptr && key->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-server" <<"[ip-addr='" <<ip_addr <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1765,13 +1633,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
         if(key == nullptr)
         {
-            key = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key>();
+            key = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key>();
         }
         return key;
     }
@@ -1779,7 +1647,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key != nullptr)
@@ -1790,7 +1658,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-addr")
     {
@@ -1806,7 +1674,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::set
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip-addr")
     {
@@ -1818,14 +1686,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::set
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key" || name == "ip-addr" || name == "proxy-reply")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::Key()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::Key()
     :
     key_0{YType::str, "key-0"},
     key_6{YType::str, "key-6"},
@@ -1836,11 +1704,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::Key
     yang_name = "key"; yang_parent_name = "map-server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::~Key()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::~Key()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::has_data() const
 {
     return key_0.is_set
 	|| key_6.is_set
@@ -1848,7 +1716,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key
 	|| pwd.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_0.yfilter)
@@ -1857,14 +1725,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key
 	|| ydk::is_set(pwd.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1877,18 +1745,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-0")
     {
@@ -1916,7 +1784,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-0")
     {
@@ -1936,14 +1804,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Etr::MapServer::Key::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-0" || name == "key-6" || name == "key-7" || name == "pwd")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::EtrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::EtrEnable()
     :
     etr{YType::empty, "etr"}
 {
@@ -1951,29 +1819,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::EtrEnable()
     yang_name = "etr-enable"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::~EtrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::~EtrEnable()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::has_data() const
 {
     return etr.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(etr.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etr-enable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1983,18 +1851,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "etr")
     {
@@ -2004,7 +1872,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::set_valu
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "etr")
     {
@@ -2012,45 +1880,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::set_filt
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::EtrEnable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::EtrEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "etr")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Locator()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Locator()
     :
-    reachability(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability>())
+    reachability(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability>())
 {
     reachability->parent = this;
 
     yang_name = "locator"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::~Locator()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::~Locator()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::has_data() const
 {
     return (reachability !=  nullptr && reachability->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::has_operation() const
 {
     return is_set(yfilter)
 	|| (reachability !=  nullptr && reachability->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "locator";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2059,13 +1927,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reachability")
     {
         if(reachability == nullptr)
         {
-            reachability = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability>();
+            reachability = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability>();
         }
         return reachability;
     }
@@ -2073,7 +1941,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(reachability != nullptr)
@@ -2084,22 +1952,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "reachability")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::Reachability()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::Reachability()
     :
     exclude_default{YType::empty, "exclude-default"}
 {
@@ -2107,29 +1975,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::R
     yang_name = "reachability"; yang_parent_name = "locator"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::~Reachability()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::~Reachability()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::has_data() const
 {
     return exclude_default.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(exclude_default.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reachability";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2139,18 +2007,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exclude-default")
     {
@@ -2160,7 +2028,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachabili
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "exclude-default")
     {
@@ -2168,14 +2036,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachabili
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::Locator::Reachability::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::Locator::Reachability::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "exclude-default")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::MapCache()
     :
     site_registration{YType::empty, "site-registration"}
 {
@@ -2183,29 +2051,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::MapCache()
     yang_name = "map-cache"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::~MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::~MapCache()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::has_data() const
 {
     return site_registration.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(site_registration.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2215,18 +2083,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "site-registration")
     {
@@ -2236,7 +2104,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::set_value
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "site-registration")
     {
@@ -2244,14 +2112,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::set_filte
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCache::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCache::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "site-registration")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::MapCacheLimit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::MapCacheLimit()
     :
     max_map_cache_entries{YType::uint32, "max-map-cache-entries"},
     reserve_list{YType::str, "reserve-list"},
@@ -2261,18 +2129,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::MapCacheL
     yang_name = "map-cache-limit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::~MapCacheLimit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::~MapCacheLimit()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::has_data() const
 {
     return max_map_cache_entries.is_set
 	|| reserve_list.is_set
 	|| warning_threshold.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(max_map_cache_entries.yfilter)
@@ -2280,14 +2148,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::has_
 	|| ydk::is_set(warning_threshold.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-limit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2299,18 +2167,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-map-cache-entries")
     {
@@ -2332,7 +2200,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::set_
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "max-map-cache-entries")
     {
@@ -2348,14 +2216,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::set_
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCacheLimit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCacheLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max-map-cache-entries" || name == "reserve-list" || name == "warning-threshold")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::MapCachePersistent()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::MapCachePersistent()
     :
     interval{YType::uint16, "interval"}
 {
@@ -2363,29 +2231,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::MapC
     yang_name = "map-cache-persistent"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::~MapCachePersistent()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::~MapCachePersistent()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::has_data() const
 {
     return interval.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-persistent";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2395,18 +2263,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
@@ -2416,7 +2284,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent:
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interval")
     {
@@ -2424,45 +2292,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent:
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapCachePersistent::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapCachePersistent::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interval")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapResolver()
     :
-    map_request(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest>())
+    map_request(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest>())
 {
     map_request->parent = this;
 
     yang_name = "map-resolver"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::~MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::~MapResolver()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::has_data() const
 {
     return (map_request !=  nullptr && map_request->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_request !=  nullptr && map_request->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-resolver";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2471,13 +2339,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-request")
     {
         if(map_request == nullptr)
         {
-            map_request = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest>();
+            map_request = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest>();
         }
         return map_request;
     }
@@ -2485,7 +2353,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_request != nullptr)
@@ -2496,53 +2364,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-request")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::MapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::MapRequest()
     :
-    validate(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate>())
+    validate(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate>())
 {
     validate->parent = this;
 
     yang_name = "map-request"; yang_parent_name = "map-resolver"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::~MapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::~MapRequest()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::has_data() const
 {
     return (validate !=  nullptr && validate->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| (validate !=  nullptr && validate->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-request";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2551,13 +2419,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "validate")
     {
         if(validate == nullptr)
         {
-            validate = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate>();
+            validate = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate>();
         }
         return validate;
     }
@@ -2565,7 +2433,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(validate != nullptr)
@@ -2576,53 +2444,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Validate()
     :
-    source(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source>())
+    source(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source>())
 {
     source->parent = this;
 
     yang_name = "validate"; yang_parent_name = "map-request"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::~Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::~Validate()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::has_data() const
 {
     return (source !=  nullptr && source->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::has_operation() const
 {
     return is_set(yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "validate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2631,13 +2499,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source>();
+            source = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source>();
         }
         return source;
     }
@@ -2645,7 +2513,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -2656,22 +2524,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::Source()
     :
     list{YType::empty, "list"},
     registered{YType::empty, "registered"},
@@ -2682,11 +2550,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest:
     yang_name = "source"; yang_parent_name = "validate"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::~Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::~Source()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::has_data() const
 {
     return list.is_set
 	|| registered.is_set
@@ -2694,7 +2562,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapReq
 	|| ipv6.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(list.yfilter)
@@ -2703,14 +2571,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapReq
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2723,18 +2591,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "list")
     {
@@ -2762,7 +2630,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapReq
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "list")
     {
@@ -2782,45 +2650,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapReq
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapResolver::MapRequest::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "list" || name == "registered" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapServer()
     :
-    map_register(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister>())
+    map_register(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister>())
 {
     map_register->parent = this;
 
     yang_name = "map-server"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::~MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::~MapServer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::has_data() const
 {
     return (map_register !=  nullptr && map_register->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_register !=  nullptr && map_register->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-server";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2829,13 +2697,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-register")
     {
         if(map_register == nullptr)
         {
-            map_register = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister>();
+            map_register = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister>();
         }
         return map_register;
     }
@@ -2843,7 +2711,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_register != nullptr)
@@ -2854,53 +2722,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-register")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::MapRegister()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::MapRegister()
     :
-    validate(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate>())
+    validate(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate>())
 {
     validate->parent = this;
 
     yang_name = "map-register"; yang_parent_name = "map-server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::~MapRegister()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::~MapRegister()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::has_data() const
 {
     return (validate !=  nullptr && validate->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::has_operation() const
 {
     return is_set(yfilter)
 	|| (validate !=  nullptr && validate->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-register";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2909,13 +2777,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "validate")
     {
         if(validate == nullptr)
         {
-            validate = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate>();
+            validate = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate>();
         }
         return validate;
     }
@@ -2923,7 +2791,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(validate != nullptr)
@@ -2934,53 +2802,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Validate()
     :
-    source(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source>())
+    source(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source>())
 {
     source->parent = this;
 
     yang_name = "validate"; yang_parent_name = "map-register"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::~Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::~Validate()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::has_data() const
 {
     return (source !=  nullptr && source->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::has_operation() const
 {
     return is_set(yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "validate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2989,13 +2857,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source>();
+            source = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source>();
         }
         return source;
     }
@@ -3003,7 +2871,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -3014,22 +2882,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::Source()
     :
     allowed_locator{YType::empty, "allowed-locator"}
 {
@@ -3037,29 +2905,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::
     yang_name = "source"; yang_parent_name = "validate"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::~Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::~Source()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::has_data() const
 {
     return allowed_locator.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(allowed_locator.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3069,18 +2937,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allowed-locator")
     {
@@ -3090,7 +2958,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegis
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "allowed-locator")
     {
@@ -3098,14 +2966,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegis
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::MapServer::MapRegister::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "allowed-locator")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::PathMtuDiscovery()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::PathMtuDiscovery()
     :
     max{YType::uint16, "max"},
     min{YType::uint16, "min"}
@@ -3114,31 +2982,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::PathMt
     yang_name = "path-mtu-discovery"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::~PathMtuDiscovery()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::~PathMtuDiscovery()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::has_data() const
 {
     return max.is_set
 	|| min.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(max.yfilter)
 	|| ydk::is_set(min.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-mtu-discovery";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3149,18 +3017,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max")
     {
@@ -3176,7 +3044,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::s
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "max")
     {
@@ -3188,14 +3056,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::s
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::PathMtuDiscovery::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::PathMtuDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max" || name == "min")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::RouteExport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::RouteExport()
     :
     site_registrations{YType::empty, "site-registrations"},
     away_eids{YType::empty, "away-eids"}
@@ -3204,31 +3072,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::RouteExport
     yang_name = "route-export"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::~RouteExport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::~RouteExport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::has_data() const
 {
     return site_registrations.is_set
 	|| away_eids.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(site_registrations.yfilter)
 	|| ydk::is_set(away_eids.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-export";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3239,18 +3107,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "site-registrations")
     {
@@ -3266,7 +3134,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::set_va
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "site-registrations")
     {
@@ -3278,17 +3146,17 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::set_fi
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteExport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteExport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "site-registrations" || name == "away-eids")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::RouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::RouteImport()
     :
-    database(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database>())
-	,map_cache(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache>())
+    database(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database>())
+	,map_cache(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache>())
 {
     database->parent = this;
     map_cache->parent = this;
@@ -3296,31 +3164,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::RouteImport
     yang_name = "route-import"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::~RouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::~RouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::has_data() const
 {
     return (database !=  nullptr && database->has_data())
 	|| (map_cache !=  nullptr && map_cache->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| (database !=  nullptr && database->has_operation())
 	|| (map_cache !=  nullptr && map_cache->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3329,13 +3197,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database")
     {
         if(database == nullptr)
         {
-            database = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database>();
+            database = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database>();
         }
         return database;
     }
@@ -3344,7 +3212,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(map_cache == nullptr)
         {
-            map_cache = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache>();
+            map_cache = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache>();
         }
         return map_cache;
     }
@@ -3352,7 +3220,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database != nullptr)
@@ -3368,27 +3236,27 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database" || name == "map-cache")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Database()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Database()
     :
-    connected(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected>())
-	,maximum_prefix(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix>())
-	,rip(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip>())
-	,static_(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_>())
+    connected(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected>())
+	,maximum_prefix(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix>())
+	,rip(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip>())
+	,static_(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_>())
 {
     connected->parent = this;
     maximum_prefix->parent = this;
@@ -3398,11 +3266,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::D
     yang_name = "database"; yang_parent_name = "route-import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::~Database()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::~Database()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::has_data() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -3435,7 +3303,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
 	|| (static_ !=  nullptr && static_->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::has_operation() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -3469,14 +3337,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
 	|| (static_ !=  nullptr && static_->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3485,7 +3353,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -3497,7 +3365,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp>();
         c->parent = this;
         bgp.push_back(c);
         return c;
@@ -3507,7 +3375,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(connected == nullptr)
         {
-            connected = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected>();
+            connected = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected>();
         }
         return connected;
     }
@@ -3522,7 +3390,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
         return c;
@@ -3538,7 +3406,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis>();
         c->parent = this;
         isis.push_back(c);
         return c;
@@ -3548,7 +3416,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(maximum_prefix == nullptr)
         {
-            maximum_prefix = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix>();
+            maximum_prefix = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix>();
         }
         return maximum_prefix;
     }
@@ -3563,7 +3431,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf>();
         c->parent = this;
         ospf.push_back(c);
         return c;
@@ -3579,7 +3447,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3>();
         c->parent = this;
         ospfv3.push_back(c);
         return c;
@@ -3589,7 +3457,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(rip == nullptr)
         {
-            rip = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip>();
+            rip = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip>();
         }
         return rip;
     }
@@ -3598,7 +3466,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_>();
+            static_ = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_>();
         }
         return static_;
     }
@@ -3606,7 +3474,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bgp)
@@ -3657,57 +3525,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp" || name == "connected" || name == "eigrp" || name == "isis" || name == "maximum-prefix" || name == "ospf" || name == "ospfv3" || name == "rip" || name == "static")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::Bgp()
     :
     id{YType::str, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "bgp"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::~Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::~Bgp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3717,13 +3585,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -3731,7 +3599,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -3742,7 +3610,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -3752,7 +3620,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -3760,14 +3628,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -3776,31 +3644,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::B
     yang_name = "lisp-ip-route-import"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3811,18 +3679,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -3838,7 +3706,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -3850,45 +3718,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::Connected()
     :
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "connected"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::~Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::~Connected()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::has_data() const
 {
     return (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::has_operation() const
 {
     return is_set(yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "connected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3897,13 +3765,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -3911,7 +3779,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -3922,22 +3790,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -3946,31 +3814,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::C
     yang_name = "lisp-ip-route-import"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3981,18 +3849,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4008,7 +3876,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -4020,49 +3888,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::Eigrp()
     :
     id{YType::uint16, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "eigrp"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::~Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::~Eigrp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4072,13 +3940,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -4086,7 +3954,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -4097,7 +3965,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -4107,7 +3975,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -4115,14 +3983,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -4131,31 +3999,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::E
     yang_name = "lisp-ip-route-import"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4166,18 +4034,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4193,7 +4061,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -4205,49 +4073,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Eigrp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::Isis()
     :
     id{YType::str, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "isis"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::~Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::~Isis()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4257,13 +4125,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -4271,7 +4139,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -4282,7 +4150,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -4292,7 +4160,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -4300,14 +4168,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -4316,31 +4184,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::I
     yang_name = "lisp-ip-route-import"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4351,18 +4219,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4378,7 +4246,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -4390,14 +4258,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Isis::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::MaximumPrefix()
     :
     number{YType::int32, "number"},
     warning_only{YType::empty, "warning-only"},
@@ -4409,11 +4277,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::M
     yang_name = "maximum-prefix"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::~MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::~MaximumPrefix()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::has_data() const
 {
     return number.is_set
 	|| warning_only.is_set
@@ -4422,7 +4290,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
 	|| warning_only1.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -4432,14 +4300,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
 	|| ydk::is_set(warning_only1.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-prefix";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4453,18 +4321,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -4498,7 +4366,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -4522,49 +4390,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "number" || name == "warning-only" || name == "threshold" || name == "threshold1" || name == "warning-only1")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::Ospf()
     :
     id{YType::uint16, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "ospf"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::~Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::~Ospf()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospf" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4574,13 +4442,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -4588,7 +4456,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -4599,7 +4467,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -4609,7 +4477,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -4617,14 +4485,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -4633,31 +4501,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::O
     yang_name = "lisp-ip-route-import"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4668,18 +4536,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4695,7 +4563,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -4707,49 +4575,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::Ospfv3()
     :
     id{YType::uint16, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "ospfv3"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::~Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::~Ospfv3()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospfv3" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4759,13 +4627,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -4773,7 +4641,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -4784,7 +4652,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -4794,7 +4662,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -4802,14 +4670,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -4818,31 +4686,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::O
     yang_name = "lisp-ip-route-import"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4853,18 +4721,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4880,7 +4748,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -4892,45 +4760,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::Rip()
     :
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "rip"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::~Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::~Rip()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::has_data() const
 {
     return (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::has_operation() const
 {
     return is_set(yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4939,13 +4807,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -4953,7 +4821,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -4964,22 +4832,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -4988,31 +4856,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::R
     yang_name = "lisp-ip-route-import"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5023,18 +4891,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -5050,7 +4918,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5062,45 +4930,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::Static_()
     :
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "static"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::~Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::~Static_()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::has_data() const
 {
     return (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::has_operation() const
 {
     return is_set(yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5109,13 +4977,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -5123,7 +4991,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -5134,22 +5002,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -5158,31 +5026,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::S
     yang_name = "lisp-ip-route-import"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5193,18 +5061,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -5220,7 +5088,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5232,17 +5100,17 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MapCache()
     :
     connected(nullptr) // presence node
-	,maximum_prefix(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix>())
+	,maximum_prefix(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix>())
 	,rip(nullptr) // presence node
 	,static_(nullptr) // presence node
 {
@@ -5251,11 +5119,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::M
     yang_name = "map-cache"; yang_parent_name = "route-import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::~MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::~MapCache()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::has_data() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -5288,7 +5156,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
 	|| (static_ !=  nullptr && static_->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::has_operation() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -5322,14 +5190,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
 	|| (static_ !=  nullptr && static_->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5338,7 +5206,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -5350,7 +5218,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp>();
         c->parent = this;
         bgp.push_back(c);
         return c;
@@ -5360,7 +5228,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(connected == nullptr)
         {
-            connected = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected>();
+            connected = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected>();
         }
         return connected;
     }
@@ -5375,7 +5243,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
         return c;
@@ -5391,7 +5259,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis>();
         c->parent = this;
         isis.push_back(c);
         return c;
@@ -5401,7 +5269,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(maximum_prefix == nullptr)
         {
-            maximum_prefix = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix>();
+            maximum_prefix = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix>();
         }
         return maximum_prefix;
     }
@@ -5416,7 +5284,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf>();
         c->parent = this;
         ospf.push_back(c);
         return c;
@@ -5432,7 +5300,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3>();
         c->parent = this;
         ospfv3.push_back(c);
         return c;
@@ -5442,7 +5310,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(rip == nullptr)
         {
-            rip = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip>();
+            rip = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip>();
         }
         return rip;
     }
@@ -5451,7 +5319,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_>();
+            static_ = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_>();
         }
         return static_;
     }
@@ -5459,7 +5327,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bgp)
@@ -5510,22 +5378,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp" || name == "connected" || name == "eigrp" || name == "isis" || name == "maximum-prefix" || name == "ospf" || name == "ospfv3" || name == "rip" || name == "static")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::Bgp()
     :
     id{YType::str, "id"}
     	,
@@ -5535,31 +5403,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::B
     yang_name = "bgp"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::~Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::~Bgp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5569,13 +5437,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -5583,7 +5451,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -5594,7 +5462,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -5604,7 +5472,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -5612,14 +5480,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -5627,29 +5495,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::B
     yang_name = "map-cache-container"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5659,18 +5527,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -5680,7 +5548,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5688,14 +5556,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::Connected()
     :
     map_cache_container(nullptr) // presence node
 {
@@ -5703,29 +5571,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::C
     yang_name = "connected"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::~Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::~Connected()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::has_data() const
 {
     return (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "connected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5734,13 +5602,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -5748,7 +5616,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -5759,22 +5627,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -5782,29 +5650,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::C
     yang_name = "map-cache-container"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5814,18 +5682,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -5835,7 +5703,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5843,14 +5711,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::Eigrp()
     :
     id{YType::uint16, "id"}
     	,
@@ -5860,31 +5728,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::E
     yang_name = "eigrp"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::~Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::~Eigrp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5894,13 +5762,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -5908,7 +5776,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -5919,7 +5787,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -5929,7 +5797,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -5937,14 +5805,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -5952,29 +5820,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::E
     yang_name = "map-cache-container"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5984,18 +5852,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6005,7 +5873,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6013,14 +5881,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Eigrp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::Isis()
     :
     id{YType::str, "id"}
     	,
@@ -6030,31 +5898,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::I
     yang_name = "isis"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::~Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::~Isis()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6064,13 +5932,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -6078,7 +5946,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -6089,7 +5957,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -6099,7 +5967,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -6107,14 +5975,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -6122,29 +5990,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::I
     yang_name = "map-cache-container"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6154,18 +6022,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6175,7 +6043,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6183,14 +6051,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Isis::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::MaximumPrefix()
     :
     number{YType::int32, "number"},
     warning_only{YType::empty, "warning-only"},
@@ -6202,11 +6070,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::M
     yang_name = "maximum-prefix"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::~MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::~MaximumPrefix()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::has_data() const
 {
     return number.is_set
 	|| warning_only.is_set
@@ -6215,7 +6083,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
 	|| warning_only1.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -6225,14 +6093,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
 	|| ydk::is_set(warning_only1.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-prefix";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6246,18 +6114,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -6291,7 +6159,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -6315,14 +6183,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "number" || name == "warning-only" || name == "threshold" || name == "threshold1" || name == "warning-only1")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::Ospf()
     :
     id{YType::uint16, "id"}
     	,
@@ -6332,31 +6200,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::O
     yang_name = "ospf"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::~Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::~Ospf()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospf" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6366,13 +6234,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -6380,7 +6248,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -6391,7 +6259,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -6401,7 +6269,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -6409,14 +6277,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -6424,29 +6292,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::O
     yang_name = "map-cache-container"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6456,18 +6324,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6477,7 +6345,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6485,14 +6353,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::Ospfv3()
     :
     id{YType::uint16, "id"}
     	,
@@ -6502,31 +6370,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::O
     yang_name = "ospfv3"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::~Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::~Ospfv3()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospfv3" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6536,13 +6404,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -6550,7 +6418,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -6561,7 +6429,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -6571,7 +6439,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -6579,14 +6447,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -6594,29 +6462,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::O
     yang_name = "map-cache-container"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6626,18 +6494,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6647,7 +6515,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6655,14 +6523,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::Rip()
     :
     map_cache_container(nullptr) // presence node
 {
@@ -6670,29 +6538,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::R
     yang_name = "rip"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::~Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::~Rip()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::has_data() const
 {
     return (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6701,13 +6569,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -6715,7 +6583,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -6726,22 +6594,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -6749,29 +6617,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::R
     yang_name = "map-cache-container"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6781,18 +6649,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6802,7 +6670,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6810,14 +6678,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::Static_()
     :
     map_cache_container(nullptr) // presence node
 {
@@ -6825,29 +6693,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::S
     yang_name = "static"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::~Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::~Static_()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::has_data() const
 {
     return (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6856,13 +6724,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -6870,7 +6738,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -6881,22 +6749,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -6904,29 +6772,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::S
     yang_name = "map-cache-container"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6936,18 +6804,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6957,7 +6825,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6965,14 +6833,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::SiteRegistration()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::SiteRegistration()
     :
     limit{YType::uint32, "limit"},
     warning_threshold{YType::uint8, "warning-threshold"}
@@ -6981,31 +6849,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::SiteRe
     yang_name = "site-registration"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::~SiteRegistration()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::~SiteRegistration()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::has_data() const
 {
     return limit.is_set
 	|| warning_threshold.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(limit.yfilter)
 	|| ydk::is_set(warning_threshold.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "site-registration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7016,18 +6884,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
@@ -7043,7 +6911,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::s
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "limit")
     {
@@ -7055,14 +6923,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::s
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::SiteRegistration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "limit" || name == "warning-threshold")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::SolicitMapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::SolicitMapRequest()
     :
     ignore{YType::empty, "ignore"},
     max_per_entry{YType::uint8, "max-per-entry"},
@@ -7072,18 +6940,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::Solic
     yang_name = "solicit-map-request"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::~SolicitMapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::~SolicitMapRequest()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::has_data() const
 {
     return ignore.is_set
 	|| max_per_entry.is_set
 	|| suppression_time.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ignore.yfilter)
@@ -7091,14 +6959,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::
 	|| ydk::is_set(suppression_time.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "solicit-map-request";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7110,18 +6978,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ignore")
     {
@@ -7143,7 +7011,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ignore")
     {
@@ -7159,14 +7027,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::SolicitMapRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::SolicitMapRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ignore" || name == "max-per-entry" || name == "suppression-time")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::UsePetr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::UsePetr()
     :
     locator_address{YType::str, "locator-address"},
     priority{YType::uint8, "priority"},
@@ -7176,18 +7044,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::UsePetr()
     yang_name = "use-petr"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::~UsePetr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::~UsePetr()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::has_data() const
 {
     return locator_address.is_set
 	|| priority.is_set
 	|| weight.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(locator_address.yfilter)
@@ -7195,14 +7063,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::has_operat
 	|| ydk::is_set(weight.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "use-petr" <<"[locator-address='" <<locator_address <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7214,18 +7082,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "locator-address")
     {
@@ -7247,7 +7115,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::set_value(
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "locator-address")
     {
@@ -7263,14 +7131,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::set_filter
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv4::UsePetr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv4::UsePetr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "locator-address" || name == "priority" || name == "weight")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Ipv6()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Ipv6()
     :
     alt_vrf{YType::str, "alt-vrf"},
     map_request_source{YType::str, "map-request-source"},
@@ -7278,23 +7146,23 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::Ipv6()
     proxy_itr{YType::str, "proxy-itr"},
     sgt{YType::empty, "sgt"}
     	,
-    database_mapping(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping>())
-	,distance(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance>())
-	,itr(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr>())
-	,itr_enable(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable>())
-	,etr(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr>())
-	,etr_enable(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable>())
-	,locator(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator>())
-	,map_cache(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache>())
-	,map_cache_limit(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit>())
-	,map_cache_persistent(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent>())
+    database_mapping(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping>())
+	,distance(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance>())
+	,itr(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr>())
+	,itr_enable(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable>())
+	,etr(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr>())
+	,etr_enable(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable>())
+	,locator(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator>())
+	,map_cache(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache>())
+	,map_cache_limit(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit>())
+	,map_cache_persistent(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent>())
 	,map_resolver(nullptr) // presence node
 	,map_server(nullptr) // presence node
 	,path_mtu_discovery(nullptr) // presence node
-	,route_export(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport>())
-	,route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport>())
-	,site_registration(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration>())
-	,solicit_map_request(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest>())
+	,route_export(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport>())
+	,route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport>())
+	,site_registration(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration>())
+	,solicit_map_request(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest>())
 {
     database_mapping->parent = this;
     distance->parent = this;
@@ -7314,11 +7182,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::Ipv6()
     yang_name = "ipv6"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::~Ipv6()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::~Ipv6()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::has_data() const
 {
     for (std::size_t index=0; index<use_petr.size(); index++)
     {
@@ -7353,7 +7221,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::has_data() const
 	|| (solicit_map_request !=  nullptr && solicit_map_request->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::has_operation() const
 {
     for (std::size_t index=0; index<use_petr.size(); index++)
     {
@@ -7390,14 +7258,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::has_operation() con
 	|| (solicit_map_request !=  nullptr && solicit_map_request->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7412,13 +7280,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping")
     {
         if(database_mapping == nullptr)
         {
-            database_mapping = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping>();
+            database_mapping = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping>();
         }
         return database_mapping;
     }
@@ -7427,7 +7295,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(distance == nullptr)
         {
-            distance = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance>();
+            distance = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance>();
         }
         return distance;
     }
@@ -7436,7 +7304,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(itr == nullptr)
         {
-            itr = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr>();
+            itr = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr>();
         }
         return itr;
     }
@@ -7445,7 +7313,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(itr_enable == nullptr)
         {
-            itr_enable = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable>();
+            itr_enable = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable>();
         }
         return itr_enable;
     }
@@ -7454,7 +7322,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(etr == nullptr)
         {
-            etr = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr>();
+            etr = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr>();
         }
         return etr;
     }
@@ -7463,7 +7331,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(etr_enable == nullptr)
         {
-            etr_enable = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable>();
+            etr_enable = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable>();
         }
         return etr_enable;
     }
@@ -7472,7 +7340,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(locator == nullptr)
         {
-            locator = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator>();
+            locator = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator>();
         }
         return locator;
     }
@@ -7481,7 +7349,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(map_cache == nullptr)
         {
-            map_cache = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache>();
+            map_cache = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache>();
         }
         return map_cache;
     }
@@ -7490,7 +7358,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(map_cache_limit == nullptr)
         {
-            map_cache_limit = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit>();
+            map_cache_limit = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit>();
         }
         return map_cache_limit;
     }
@@ -7499,7 +7367,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(map_cache_persistent == nullptr)
         {
-            map_cache_persistent = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent>();
+            map_cache_persistent = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent>();
         }
         return map_cache_persistent;
     }
@@ -7508,7 +7376,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(map_resolver == nullptr)
         {
-            map_resolver = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver>();
+            map_resolver = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver>();
         }
         return map_resolver;
     }
@@ -7517,7 +7385,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(map_server == nullptr)
         {
-            map_server = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer>();
+            map_server = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer>();
         }
         return map_server;
     }
@@ -7526,7 +7394,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(path_mtu_discovery == nullptr)
         {
-            path_mtu_discovery = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery>();
+            path_mtu_discovery = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery>();
         }
         return path_mtu_discovery;
     }
@@ -7535,7 +7403,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(route_export == nullptr)
         {
-            route_export = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport>();
+            route_export = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport>();
         }
         return route_export;
     }
@@ -7544,7 +7412,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(route_import == nullptr)
         {
-            route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport>();
+            route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport>();
         }
         return route_import;
     }
@@ -7553,7 +7421,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(site_registration == nullptr)
         {
-            site_registration = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration>();
+            site_registration = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration>();
         }
         return site_registration;
     }
@@ -7562,7 +7430,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(solicit_map_request == nullptr)
         {
-            solicit_map_request = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest>();
+            solicit_map_request = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest>();
         }
         return solicit_map_request;
     }
@@ -7577,7 +7445,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr>();
         c->parent = this;
         use_petr.push_back(c);
         return c;
@@ -7586,7 +7454,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database_mapping != nullptr)
@@ -7682,7 +7550,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "alt-vrf")
     {
@@ -7714,7 +7582,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::set_value(const std
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "alt-vrf")
     {
@@ -7738,45 +7606,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::set_filter(const st
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database-mapping" || name == "distance" || name == "itr" || name == "itr-enable" || name == "etr" || name == "etr-enable" || name == "locator" || name == "map-cache" || name == "map-cache-limit" || name == "map-cache-persistent" || name == "map-resolver" || name == "map-server" || name == "path-mtu-discovery" || name == "route-export" || name == "route-import" || name == "site-registration" || name == "solicit-map-request" || name == "use-petr" || name == "alt-vrf" || name == "map-request-source" || name == "proxy-etr" || name == "proxy-itr" || name == "sgt")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::DatabaseMapping()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::DatabaseMapping()
     :
-    limit(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit>())
+    limit(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit>())
 {
     limit->parent = this;
 
     yang_name = "database-mapping"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::~DatabaseMapping()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::~DatabaseMapping()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::has_data() const
 {
     return (limit !=  nullptr && limit->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::has_operation() const
 {
     return is_set(yfilter)
 	|| (limit !=  nullptr && limit->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database-mapping";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7785,13 +7653,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "limit")
     {
         if(limit == nullptr)
         {
-            limit = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit>();
+            limit = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit>();
         }
         return limit;
     }
@@ -7799,7 +7667,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(limit != nullptr)
@@ -7810,22 +7678,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "limit")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::Limit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::Limit()
     :
     dynamic{YType::uint32, "dynamic"},
     warning_threshold{YType::uint8, "warning-threshold"}
@@ -7834,31 +7702,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::
     yang_name = "limit"; yang_parent_name = "database-mapping"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::~Limit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::~Limit()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::has_data() const
 {
     return dynamic.is_set
 	|| warning_threshold.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dynamic.yfilter)
 	|| ydk::is_set(warning_threshold.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "limit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7869,18 +7737,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dynamic")
     {
@@ -7896,7 +7764,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Li
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dynamic")
     {
@@ -7908,14 +7776,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Li
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::DatabaseMapping::Limit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic" || name == "warning-threshold")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::Distance()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::Distance()
     :
     alt{YType::uint8, "alt"},
     dyn_eid{YType::uint8, "dyn-eid"},
@@ -7925,18 +7793,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::Distance()
     yang_name = "distance"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::~Distance()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::~Distance()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::has_data() const
 {
     return alt.is_set
 	|| dyn_eid.is_set
 	|| site_registrations.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(alt.yfilter)
@@ -7944,14 +7812,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::has_opera
 	|| ydk::is_set(site_registrations.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "distance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7963,18 +7831,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "alt")
     {
@@ -7996,7 +7864,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::set_value
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "alt")
     {
@@ -8012,24 +7880,24 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::set_filte
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Distance::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Distance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alt" || name == "dyn-eid" || name == "site-registrations")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::Itr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::Itr()
 {
 
     yang_name = "itr"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::~Itr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::~Itr()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::has_data() const
 {
     for (std::size_t index=0; index<map_resolver.size(); index++)
     {
@@ -8039,7 +7907,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::has_data() con
     return false;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::has_operation() const
 {
     for (std::size_t index=0; index<map_resolver.size(); index++)
     {
@@ -8049,14 +7917,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::has_operation(
     return is_set(yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "itr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8065,7 +7933,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-resolver")
     {
@@ -8077,7 +7945,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver>();
         c->parent = this;
         map_resolver.push_back(c);
         return c;
@@ -8086,7 +7954,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : map_resolver)
@@ -8097,22 +7965,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-resolver")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::MapResolver()
     :
     ip_addr{YType::str, "ip-addr"}
 {
@@ -8120,29 +7988,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::MapRes
     yang_name = "map-resolver"; yang_parent_name = "itr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::~MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::~MapResolver()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::has_data() const
 {
     return ip_addr.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip_addr.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-resolver" <<"[ip-addr='" <<ip_addr <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8152,18 +8020,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-addr")
     {
@@ -8173,7 +8041,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::s
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip-addr")
     {
@@ -8181,14 +8049,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::s
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Itr::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Itr::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-addr")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::ItrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::ItrEnable()
     :
     itr{YType::empty, "itr"}
 {
@@ -8196,29 +8064,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::ItrEnable()
     yang_name = "itr-enable"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::~ItrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::~ItrEnable()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::has_data() const
 {
     return itr.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(itr.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "itr-enable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8228,18 +8096,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "itr")
     {
@@ -8249,7 +8117,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::set_valu
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "itr")
     {
@@ -8257,24 +8125,24 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::set_filt
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::ItrEnable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::ItrEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "itr")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::Etr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::Etr()
 {
 
     yang_name = "etr"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::~Etr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::~Etr()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::has_data() const
 {
     for (std::size_t index=0; index<map_server.size(); index++)
     {
@@ -8284,7 +8152,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::has_data() con
     return false;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::has_operation() const
 {
     for (std::size_t index=0; index<map_server.size(); index++)
     {
@@ -8294,14 +8162,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::has_operation(
     return is_set(yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8310,7 +8178,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-server")
     {
@@ -8322,7 +8190,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer>();
         c->parent = this;
         map_server.push_back(c);
         return c;
@@ -8331,7 +8199,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : map_server)
@@ -8342,45 +8210,45 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-server")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::MapServer()
     :
     ip_addr{YType::str, "ip-addr"},
     proxy_reply{YType::empty, "proxy-reply"}
     	,
-    key(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key>())
+    key(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key>())
 {
     key->parent = this;
 
     yang_name = "map-server"; yang_parent_name = "etr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::~MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::~MapServer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::has_data() const
 {
     return ip_addr.is_set
 	|| proxy_reply.is_set
 	|| (key !=  nullptr && key->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip_addr.yfilter)
@@ -8388,14 +8256,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::has
 	|| (key !=  nullptr && key->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-server" <<"[ip-addr='" <<ip_addr <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8406,13 +8274,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
         if(key == nullptr)
         {
-            key = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key>();
+            key = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key>();
         }
         return key;
     }
@@ -8420,7 +8288,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(key != nullptr)
@@ -8431,7 +8299,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-addr")
     {
@@ -8447,7 +8315,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::set
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip-addr")
     {
@@ -8459,14 +8327,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::set
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key" || name == "ip-addr" || name == "proxy-reply")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::Key()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::Key()
     :
     key_0{YType::str, "key-0"},
     key_6{YType::str, "key-6"},
@@ -8477,11 +8345,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::Key
     yang_name = "key"; yang_parent_name = "map-server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::~Key()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::~Key()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::has_data() const
 {
     return key_0.is_set
 	|| key_6.is_set
@@ -8489,7 +8357,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key
 	|| pwd.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_0.yfilter)
@@ -8498,14 +8366,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key
 	|| ydk::is_set(pwd.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8518,18 +8386,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-0")
     {
@@ -8557,7 +8425,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-0")
     {
@@ -8577,14 +8445,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Etr::MapServer::Key::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-0" || name == "key-6" || name == "key-7" || name == "pwd")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::EtrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::EtrEnable()
     :
     etr{YType::empty, "etr"}
 {
@@ -8592,29 +8460,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::EtrEnable()
     yang_name = "etr-enable"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::~EtrEnable()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::~EtrEnable()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::has_data() const
 {
     return etr.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(etr.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "etr-enable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8624,18 +8492,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "etr")
     {
@@ -8645,7 +8513,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::set_valu
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "etr")
     {
@@ -8653,45 +8521,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::set_filt
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::EtrEnable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::EtrEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "etr")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Locator()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Locator()
     :
-    reachability(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability>())
+    reachability(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability>())
 {
     reachability->parent = this;
 
     yang_name = "locator"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::~Locator()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::~Locator()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::has_data() const
 {
     return (reachability !=  nullptr && reachability->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::has_operation() const
 {
     return is_set(yfilter)
 	|| (reachability !=  nullptr && reachability->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "locator";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8700,13 +8568,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reachability")
     {
         if(reachability == nullptr)
         {
-            reachability = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability>();
+            reachability = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability>();
         }
         return reachability;
     }
@@ -8714,7 +8582,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(reachability != nullptr)
@@ -8725,22 +8593,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "reachability")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::Reachability()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::Reachability()
     :
     exclude_default{YType::empty, "exclude-default"}
 {
@@ -8748,29 +8616,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::R
     yang_name = "reachability"; yang_parent_name = "locator"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::~Reachability()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::~Reachability()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::has_data() const
 {
     return exclude_default.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(exclude_default.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reachability";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8780,18 +8648,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exclude-default")
     {
@@ -8801,7 +8669,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachabili
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "exclude-default")
     {
@@ -8809,14 +8677,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachabili
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::Locator::Reachability::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::Locator::Reachability::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "exclude-default")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::MapCache()
     :
     site_registration{YType::empty, "site-registration"}
 {
@@ -8824,29 +8692,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::MapCache()
     yang_name = "map-cache"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::~MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::~MapCache()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::has_data() const
 {
     return site_registration.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(site_registration.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8856,18 +8724,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "site-registration")
     {
@@ -8877,7 +8745,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::set_value
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "site-registration")
     {
@@ -8885,14 +8753,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::set_filte
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCache::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCache::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "site-registration")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::MapCacheLimit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::MapCacheLimit()
     :
     max_map_cache_entries{YType::uint32, "max-map-cache-entries"},
     reserve_list{YType::str, "reserve-list"},
@@ -8902,18 +8770,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::MapCacheL
     yang_name = "map-cache-limit"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::~MapCacheLimit()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::~MapCacheLimit()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::has_data() const
 {
     return max_map_cache_entries.is_set
 	|| reserve_list.is_set
 	|| warning_threshold.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(max_map_cache_entries.yfilter)
@@ -8921,14 +8789,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::has_
 	|| ydk::is_set(warning_threshold.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-limit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8940,18 +8808,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-map-cache-entries")
     {
@@ -8973,7 +8841,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::set_
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "max-map-cache-entries")
     {
@@ -8989,14 +8857,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::set_
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCacheLimit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCacheLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max-map-cache-entries" || name == "reserve-list" || name == "warning-threshold")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::MapCachePersistent()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::MapCachePersistent()
     :
     interval{YType::uint16, "interval"}
 {
@@ -9004,29 +8872,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::MapC
     yang_name = "map-cache-persistent"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::~MapCachePersistent()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::~MapCachePersistent()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::has_data() const
 {
     return interval.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-persistent";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9036,18 +8904,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
@@ -9057,7 +8925,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent:
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interval")
     {
@@ -9065,45 +8933,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent:
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapCachePersistent::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapCachePersistent::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interval")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapResolver()
     :
-    map_request(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest>())
+    map_request(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest>())
 {
     map_request->parent = this;
 
     yang_name = "map-resolver"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::~MapResolver()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::~MapResolver()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::has_data() const
 {
     return (map_request !=  nullptr && map_request->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_request !=  nullptr && map_request->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-resolver";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9112,13 +8980,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-request")
     {
         if(map_request == nullptr)
         {
-            map_request = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest>();
+            map_request = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest>();
         }
         return map_request;
     }
@@ -9126,7 +8994,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_request != nullptr)
@@ -9137,53 +9005,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-request")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::MapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::MapRequest()
     :
-    validate(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate>())
+    validate(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate>())
 {
     validate->parent = this;
 
     yang_name = "map-request"; yang_parent_name = "map-resolver"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::~MapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::~MapRequest()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::has_data() const
 {
     return (validate !=  nullptr && validate->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| (validate !=  nullptr && validate->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-request";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9192,13 +9060,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "validate")
     {
         if(validate == nullptr)
         {
-            validate = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate>();
+            validate = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate>();
         }
         return validate;
     }
@@ -9206,7 +9074,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(validate != nullptr)
@@ -9217,53 +9085,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Validate()
     :
-    source(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source>())
+    source(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source>())
 {
     source->parent = this;
 
     yang_name = "validate"; yang_parent_name = "map-request"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::~Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::~Validate()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::has_data() const
 {
     return (source !=  nullptr && source->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::has_operation() const
 {
     return is_set(yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "validate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9272,13 +9140,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source>();
+            source = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source>();
         }
         return source;
     }
@@ -9286,7 +9154,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -9297,22 +9165,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::Source()
     :
     list{YType::empty, "list"},
     registered{YType::empty, "registered"},
@@ -9323,11 +9191,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest:
     yang_name = "source"; yang_parent_name = "validate"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::~Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::~Source()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::has_data() const
 {
     return list.is_set
 	|| registered.is_set
@@ -9335,7 +9203,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapReq
 	|| ipv6.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(list.yfilter)
@@ -9344,14 +9212,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapReq
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9364,18 +9232,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "list")
     {
@@ -9403,7 +9271,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapReq
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "list")
     {
@@ -9423,45 +9291,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapReq
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapResolver::MapRequest::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "list" || name == "registered" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapServer()
     :
-    map_register(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister>())
+    map_register(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister>())
 {
     map_register->parent = this;
 
     yang_name = "map-server"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::~MapServer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::~MapServer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::has_data() const
 {
     return (map_register !=  nullptr && map_register->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_register !=  nullptr && map_register->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-server";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9470,13 +9338,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-register")
     {
         if(map_register == nullptr)
         {
-            map_register = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister>();
+            map_register = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister>();
         }
         return map_register;
     }
@@ -9484,7 +9352,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_register != nullptr)
@@ -9495,53 +9363,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-register")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::MapRegister()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::MapRegister()
     :
-    validate(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate>())
+    validate(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate>())
 {
     validate->parent = this;
 
     yang_name = "map-register"; yang_parent_name = "map-server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::~MapRegister()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::~MapRegister()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::has_data() const
 {
     return (validate !=  nullptr && validate->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::has_operation() const
 {
     return is_set(yfilter)
 	|| (validate !=  nullptr && validate->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-register";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9550,13 +9418,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "validate")
     {
         if(validate == nullptr)
         {
-            validate = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate>();
+            validate = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate>();
         }
         return validate;
     }
@@ -9564,7 +9432,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(validate != nullptr)
@@ -9575,53 +9443,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "validate")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Validate()
     :
-    source(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source>())
+    source(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source>())
 {
     source->parent = this;
 
     yang_name = "validate"; yang_parent_name = "map-register"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::~Validate()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::~Validate()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::has_data() const
 {
     return (source !=  nullptr && source->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::has_operation() const
 {
     return is_set(yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "validate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9630,13 +9498,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source>();
+            source = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source>();
         }
         return source;
     }
@@ -9644,7 +9512,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -9655,22 +9523,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::Source()
     :
     allowed_locator{YType::empty, "allowed-locator"}
 {
@@ -9678,29 +9546,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::
     yang_name = "source"; yang_parent_name = "validate"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::~Source()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::~Source()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::has_data() const
 {
     return allowed_locator.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(allowed_locator.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9710,18 +9578,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allowed-locator")
     {
@@ -9731,7 +9599,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegis
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "allowed-locator")
     {
@@ -9739,14 +9607,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegis
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::MapServer::MapRegister::Validate::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "allowed-locator")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::PathMtuDiscovery()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::PathMtuDiscovery()
     :
     max{YType::uint16, "max"},
     min{YType::uint16, "min"}
@@ -9755,31 +9623,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::PathMt
     yang_name = "path-mtu-discovery"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::~PathMtuDiscovery()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::~PathMtuDiscovery()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::has_data() const
 {
     return max.is_set
 	|| min.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(max.yfilter)
 	|| ydk::is_set(min.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-mtu-discovery";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9790,18 +9658,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max")
     {
@@ -9817,7 +9685,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::s
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "max")
     {
@@ -9829,14 +9697,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::s
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::PathMtuDiscovery::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::PathMtuDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max" || name == "min")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::RouteExport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::RouteExport()
     :
     site_registrations{YType::empty, "site-registrations"},
     away_eids{YType::empty, "away-eids"}
@@ -9845,31 +9713,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::RouteExport
     yang_name = "route-export"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::~RouteExport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::~RouteExport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::has_data() const
 {
     return site_registrations.is_set
 	|| away_eids.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(site_registrations.yfilter)
 	|| ydk::is_set(away_eids.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-export";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9880,18 +9748,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "site-registrations")
     {
@@ -9907,7 +9775,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::set_va
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "site-registrations")
     {
@@ -9919,17 +9787,17 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::set_fi
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteExport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteExport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "site-registrations" || name == "away-eids")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::RouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::RouteImport()
     :
-    database(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database>())
-	,map_cache(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache>())
+    database(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database>())
+	,map_cache(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache>())
 {
     database->parent = this;
     map_cache->parent = this;
@@ -9937,31 +9805,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::RouteImport
     yang_name = "route-import"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::~RouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::~RouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::has_data() const
 {
     return (database !=  nullptr && database->has_data())
 	|| (map_cache !=  nullptr && map_cache->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| (database !=  nullptr && database->has_operation())
 	|| (map_cache !=  nullptr && map_cache->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9970,13 +9838,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database")
     {
         if(database == nullptr)
         {
-            database = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database>();
+            database = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database>();
         }
         return database;
     }
@@ -9985,7 +9853,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(map_cache == nullptr)
         {
-            map_cache = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache>();
+            map_cache = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache>();
         }
         return map_cache;
     }
@@ -9993,7 +9861,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(database != nullptr)
@@ -10009,27 +9877,27 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database" || name == "map-cache")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Database()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Database()
     :
-    connected(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected>())
-	,maximum_prefix(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix>())
-	,rip(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip>())
-	,static_(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_>())
+    connected(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected>())
+	,maximum_prefix(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix>())
+	,rip(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip>())
+	,static_(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_>())
 {
     connected->parent = this;
     maximum_prefix->parent = this;
@@ -10039,11 +9907,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::D
     yang_name = "database"; yang_parent_name = "route-import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::~Database()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::~Database()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::has_data() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -10076,7 +9944,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
 	|| (static_ !=  nullptr && static_->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::has_operation() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -10110,14 +9978,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
 	|| (static_ !=  nullptr && static_->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10126,7 +9994,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -10138,7 +10006,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp>();
         c->parent = this;
         bgp.push_back(c);
         return c;
@@ -10148,7 +10016,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(connected == nullptr)
         {
-            connected = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected>();
+            connected = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected>();
         }
         return connected;
     }
@@ -10163,7 +10031,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
         return c;
@@ -10179,7 +10047,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis>();
         c->parent = this;
         isis.push_back(c);
         return c;
@@ -10189,7 +10057,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(maximum_prefix == nullptr)
         {
-            maximum_prefix = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix>();
+            maximum_prefix = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix>();
         }
         return maximum_prefix;
     }
@@ -10204,7 +10072,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf>();
         c->parent = this;
         ospf.push_back(c);
         return c;
@@ -10220,7 +10088,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3>();
         c->parent = this;
         ospfv3.push_back(c);
         return c;
@@ -10230,7 +10098,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(rip == nullptr)
         {
-            rip = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip>();
+            rip = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip>();
         }
         return rip;
     }
@@ -10239,7 +10107,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_>();
+            static_ = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_>();
         }
         return static_;
     }
@@ -10247,7 +10115,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bgp)
@@ -10298,57 +10166,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp" || name == "connected" || name == "eigrp" || name == "isis" || name == "maximum-prefix" || name == "ospf" || name == "ospfv3" || name == "rip" || name == "static")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::Bgp()
     :
     id{YType::str, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "bgp"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::~Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::~Bgp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10358,13 +10226,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -10372,7 +10240,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -10383,7 +10251,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -10393,7 +10261,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -10401,14 +10269,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -10417,31 +10285,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::B
     yang_name = "lisp-ip-route-import"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10452,18 +10320,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -10479,7 +10347,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -10491,45 +10359,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::Connected()
     :
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "connected"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::~Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::~Connected()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::has_data() const
 {
     return (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::has_operation() const
 {
     return is_set(yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "connected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10538,13 +10406,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -10552,7 +10420,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -10563,22 +10431,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -10587,31 +10455,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::C
     yang_name = "lisp-ip-route-import"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10622,18 +10490,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -10649,7 +10517,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -10661,49 +10529,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::Eigrp()
     :
     id{YType::uint16, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "eigrp"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::~Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::~Eigrp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10713,13 +10581,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -10727,7 +10595,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -10738,7 +10606,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -10748,7 +10616,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -10756,14 +10624,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -10772,31 +10640,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::E
     yang_name = "lisp-ip-route-import"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10807,18 +10675,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -10834,7 +10702,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -10846,49 +10714,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Eigrp::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::Isis()
     :
     id{YType::str, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "isis"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::~Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::~Isis()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10898,13 +10766,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -10912,7 +10780,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -10923,7 +10791,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -10933,7 +10801,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -10941,14 +10809,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -10957,31 +10825,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::I
     yang_name = "lisp-ip-route-import"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10992,18 +10860,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -11019,7 +10887,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -11031,14 +10899,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Isis::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::MaximumPrefix()
     :
     number{YType::int32, "number"},
     warning_only{YType::empty, "warning-only"},
@@ -11050,11 +10918,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::M
     yang_name = "maximum-prefix"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::~MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::~MaximumPrefix()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::has_data() const
 {
     return number.is_set
 	|| warning_only.is_set
@@ -11063,7 +10931,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
 	|| warning_only1.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -11073,14 +10941,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
 	|| ydk::is_set(warning_only1.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-prefix";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11094,18 +10962,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -11139,7 +11007,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -11163,49 +11031,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "number" || name == "warning-only" || name == "threshold" || name == "threshold1" || name == "warning-only1")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::Ospf()
     :
     id{YType::uint16, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "ospf"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::~Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::~Ospf()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospf" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11215,13 +11083,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -11229,7 +11097,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -11240,7 +11108,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -11250,7 +11118,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -11258,14 +11126,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -11274,31 +11142,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::O
     yang_name = "lisp-ip-route-import"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11309,18 +11177,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -11336,7 +11204,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -11348,49 +11216,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::Ospfv3()
     :
     id{YType::uint16, "id"}
     	,
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "ospfv3"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::~Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::~Ospfv3()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::has_data() const
 {
     return id.is_set
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospfv3" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11400,13 +11268,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -11414,7 +11282,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -11425,7 +11293,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -11435,7 +11303,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -11443,14 +11311,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -11459,31 +11327,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::O
     yang_name = "lisp-ip-route-import"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11494,18 +11362,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -11521,7 +11389,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -11533,45 +11401,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::Rip()
     :
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "rip"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::~Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::~Rip()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::has_data() const
 {
     return (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::has_operation() const
 {
     return is_set(yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11580,13 +11448,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -11594,7 +11462,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -11605,22 +11473,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -11629,31 +11497,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::R
     yang_name = "lisp-ip-route-import"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11664,18 +11532,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -11691,7 +11559,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -11703,45 +11571,45 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::Static_()
     :
-    lisp_ip_route_import(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport>())
+    lisp_ip_route_import(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport>())
 {
     lisp_ip_route_import->parent = this;
 
     yang_name = "static"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::~Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::~Static_()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::has_data() const
 {
     return (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::has_operation() const
 {
     return is_set(yfilter)
 	|| (lisp_ip_route_import !=  nullptr && lisp_ip_route_import->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11750,13 +11618,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
         if(lisp_ip_route_import == nullptr)
         {
-            lisp_ip_route_import = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport>();
+            lisp_ip_route_import = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport>();
         }
         return lisp_ip_route_import;
     }
@@ -11764,7 +11632,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lisp_ip_route_import != nullptr)
@@ -11775,22 +11643,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lisp-ip-route-import")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::LispIpRouteImport()
     :
     route_map{YType::str, "route-map"},
     locator_set{YType::str, "locator-set"}
@@ -11799,31 +11667,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::S
     yang_name = "lisp-ip-route-import"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::~LispIpRouteImport()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::~LispIpRouteImport()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::has_data() const
 {
     return route_map.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lisp-ip-route-import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11834,18 +11702,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -11861,7 +11729,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -11873,17 +11741,17 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Databa
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MapCache()
     :
     connected(nullptr) // presence node
-	,maximum_prefix(std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix>())
+	,maximum_prefix(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix>())
 	,rip(nullptr) // presence node
 	,static_(nullptr) // presence node
 {
@@ -11892,11 +11760,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::M
     yang_name = "map-cache"; yang_parent_name = "route-import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::~MapCache()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::~MapCache()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::has_data() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -11929,7 +11797,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
 	|| (static_ !=  nullptr && static_->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::has_operation() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -11963,14 +11831,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
 	|| (static_ !=  nullptr && static_->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11979,7 +11847,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -11991,7 +11859,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp>();
         c->parent = this;
         bgp.push_back(c);
         return c;
@@ -12001,7 +11869,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(connected == nullptr)
         {
-            connected = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected>();
+            connected = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected>();
         }
         return connected;
     }
@@ -12016,7 +11884,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
         return c;
@@ -12032,7 +11900,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis>();
         c->parent = this;
         isis.push_back(c);
         return c;
@@ -12042,7 +11910,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(maximum_prefix == nullptr)
         {
-            maximum_prefix = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix>();
+            maximum_prefix = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix>();
         }
         return maximum_prefix;
     }
@@ -12057,7 +11925,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf>();
         c->parent = this;
         ospf.push_back(c);
         return c;
@@ -12073,7 +11941,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
                 return c;
             }
         }
-        auto c = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3>();
+        auto c = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3>();
         c->parent = this;
         ospfv3.push_back(c);
         return c;
@@ -12083,7 +11951,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(rip == nullptr)
         {
-            rip = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip>();
+            rip = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip>();
         }
         return rip;
     }
@@ -12092,7 +11960,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_>();
+            static_ = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_>();
         }
         return static_;
     }
@@ -12100,7 +11968,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bgp)
@@ -12151,22 +12019,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp" || name == "connected" || name == "eigrp" || name == "isis" || name == "maximum-prefix" || name == "ospf" || name == "ospfv3" || name == "rip" || name == "static")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::Bgp()
     :
     id{YType::str, "id"}
     	,
@@ -12176,31 +12044,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::B
     yang_name = "bgp"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::~Bgp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::~Bgp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12210,13 +12078,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -12224,7 +12092,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -12235,7 +12103,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -12245,7 +12113,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -12253,14 +12121,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -12268,29 +12136,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::B
     yang_name = "map-cache-container"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12300,18 +12168,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -12321,7 +12189,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -12329,14 +12197,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::Connected()
     :
     map_cache_container(nullptr) // presence node
 {
@@ -12344,29 +12212,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::C
     yang_name = "connected"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::~Connected()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::~Connected()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::has_data() const
 {
     return (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "connected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12375,13 +12243,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -12389,7 +12257,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -12400,22 +12268,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -12423,29 +12291,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::C
     yang_name = "map-cache-container"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12455,18 +12323,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -12476,7 +12344,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -12484,14 +12352,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::Eigrp()
     :
     id{YType::uint16, "id"}
     	,
@@ -12501,31 +12369,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::E
     yang_name = "eigrp"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::~Eigrp()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::~Eigrp()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12535,13 +12403,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -12549,7 +12417,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -12560,7 +12428,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -12570,7 +12438,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -12578,14 +12446,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -12593,29 +12461,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::E
     yang_name = "map-cache-container"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12625,18 +12493,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -12646,7 +12514,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -12654,14 +12522,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::Isis()
     :
     id{YType::str, "id"}
     	,
@@ -12671,31 +12539,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::I
     yang_name = "isis"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::~Isis()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::~Isis()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12705,13 +12573,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -12719,7 +12587,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -12730,7 +12598,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -12740,7 +12608,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -12748,14 +12616,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -12763,29 +12631,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::I
     yang_name = "map-cache-container"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12795,18 +12663,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -12816,7 +12684,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -12824,14 +12692,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::MaximumPrefix()
     :
     number{YType::int32, "number"},
     warning_only{YType::empty, "warning-only"},
@@ -12843,11 +12711,11 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::M
     yang_name = "maximum-prefix"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::~MaximumPrefix()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::~MaximumPrefix()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::has_data() const
 {
     return number.is_set
 	|| warning_only.is_set
@@ -12856,7 +12724,7 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
 	|| warning_only1.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -12866,14 +12734,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
 	|| ydk::is_set(warning_only1.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-prefix";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12887,18 +12755,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -12932,7 +12800,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -12956,14 +12824,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "number" || name == "warning-only" || name == "threshold" || name == "threshold1" || name == "warning-only1")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::Ospf()
     :
     id{YType::uint16, "id"}
     	,
@@ -12973,31 +12841,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::O
     yang_name = "ospf"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::~Ospf()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::~Ospf()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospf" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13007,13 +12875,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -13021,7 +12889,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -13032,7 +12900,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -13042,7 +12910,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -13050,14 +12918,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -13065,29 +12933,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::O
     yang_name = "map-cache-container"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13097,18 +12965,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -13118,7 +12986,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -13126,14 +12994,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::Ospfv3()
     :
     id{YType::uint16, "id"}
     	,
@@ -13143,31 +13011,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::O
     yang_name = "ospfv3"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::~Ospfv3()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::~Ospfv3()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::has_data() const
 {
     return id.is_set
 	|| (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospfv3" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13177,13 +13045,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -13191,7 +13059,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -13202,7 +13070,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -13212,7 +13080,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -13220,14 +13088,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -13235,29 +13103,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::O
     yang_name = "map-cache-container"; yang_parent_name = "ospfv3"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13267,18 +13135,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -13288,7 +13156,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -13296,14 +13164,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::Rip()
     :
     map_cache_container(nullptr) // presence node
 {
@@ -13311,29 +13179,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::R
     yang_name = "rip"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::~Rip()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::~Rip()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::has_data() const
 {
     return (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13342,13 +13210,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -13356,7 +13224,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -13367,22 +13235,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -13390,29 +13258,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::R
     yang_name = "map-cache-container"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13422,18 +13290,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -13443,7 +13311,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -13451,14 +13319,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::Static_()
     :
     map_cache_container(nullptr) // presence node
 {
@@ -13466,29 +13334,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::S
     yang_name = "static"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::~Static_()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::~Static_()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::has_data() const
 {
     return (map_cache_container !=  nullptr && map_cache_container->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::has_operation() const
 {
     return is_set(yfilter)
 	|| (map_cache_container !=  nullptr && map_cache_container->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13497,13 +13365,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
         if(map_cache_container == nullptr)
         {
-            map_cache_container = std::make_shared<Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer>();
+            map_cache_container = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer>();
         }
         return map_cache_container;
     }
@@ -13511,7 +13379,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(map_cache_container != nullptr)
@@ -13522,22 +13390,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "map-cache-container")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::MapCacheContainer()
     :
     route_map{YType::str, "route-map"}
 {
@@ -13545,29 +13413,29 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::S
     yang_name = "map-cache-container"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::~MapCacheContainer()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::~MapCacheContainer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-cache-container";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13577,18 +13445,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -13598,7 +13466,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -13606,14 +13474,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCac
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::SiteRegistration()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::SiteRegistration()
     :
     limit{YType::uint32, "limit"},
     warning_threshold{YType::uint8, "warning-threshold"}
@@ -13622,31 +13490,31 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::SiteRe
     yang_name = "site-registration"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::~SiteRegistration()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::~SiteRegistration()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::has_data() const
 {
     return limit.is_set
 	|| warning_threshold.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(limit.yfilter)
 	|| ydk::is_set(warning_threshold.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "site-registration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13657,18 +13525,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
@@ -13684,7 +13552,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::s
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "limit")
     {
@@ -13696,14 +13564,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::s
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::SiteRegistration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "limit" || name == "warning-threshold")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::SolicitMapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::SolicitMapRequest()
     :
     ignore{YType::empty, "ignore"},
     max_per_entry{YType::uint8, "max-per-entry"},
@@ -13713,18 +13581,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::Solic
     yang_name = "solicit-map-request"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::~SolicitMapRequest()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::~SolicitMapRequest()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::has_data() const
 {
     return ignore.is_set
 	|| max_per_entry.is_set
 	|| suppression_time.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ignore.yfilter)
@@ -13732,14 +13600,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::
 	|| ydk::is_set(suppression_time.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "solicit-map-request";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13751,18 +13619,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ignore")
     {
@@ -13784,7 +13652,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ignore")
     {
@@ -13800,14 +13668,14 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::SolicitMapRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::SolicitMapRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ignore" || name == "max-per-entry" || name == "suppression-time")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::UsePetr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::UsePetr()
     :
     locator_address{YType::str, "locator-address"},
     priority{YType::uint8, "priority"},
@@ -13817,18 +13685,18 @@ Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::UsePetr()
     yang_name = "use-petr"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::~UsePetr()
+Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::~UsePetr()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::has_data() const
 {
     return locator_address.is_set
 	|| priority.is_set
 	|| weight.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(locator_address.yfilter)
@@ -13836,14 +13704,14 @@ bool Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::has_operat
 	|| ydk::is_set(weight.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "use-petr" <<"[locator-address='" <<locator_address <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13855,18 +13723,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "locator-address")
     {
@@ -13888,7 +13756,7 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::set_value(
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "locator-address")
     {
@@ -13904,49 +13772,49 @@ void Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::set_filter
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::Ipv6::UsePetr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::Ipv6::UsePetr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "locator-address" || name == "priority" || name == "weight")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LocReachAlgorithm()
+Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LocReachAlgorithm()
     :
     rloc_probing{YType::empty, "rloc-probing"}
     	,
-    lsb_reports(std::make_shared<Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports>())
+    lsb_reports(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports>())
 {
     lsb_reports->parent = this;
 
     yang_name = "loc-reach-algorithm"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::~LocReachAlgorithm()
+Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::~LocReachAlgorithm()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::has_data() const
 {
     return rloc_probing.is_set
 	|| (lsb_reports !=  nullptr && lsb_reports->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rloc_probing.yfilter)
 	|| (lsb_reports !=  nullptr && lsb_reports->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "loc-reach-algorithm";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13956,13 +13824,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsb-reports")
     {
         if(lsb_reports == nullptr)
         {
-            lsb_reports = std::make_shared<Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports>();
+            lsb_reports = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports>();
         }
         return lsb_reports;
     }
@@ -13970,7 +13838,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::LocRea
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(lsb_reports != nullptr)
@@ -13981,7 +13849,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rloc-probing")
     {
@@ -13991,7 +13859,7 @@ void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::set_va
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rloc-probing")
     {
@@ -13999,14 +13867,14 @@ void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::set_fi
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lsb-reports" || name == "rloc-probing")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::LsbReports()
+Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::LsbReports()
     :
     do_not_transmit{YType::empty, "do-not-transmit"},
     ignore{YType::empty, "ignore"}
@@ -14015,31 +13883,31 @@ Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports:
     yang_name = "lsb-reports"; yang_parent_name = "loc-reach-algorithm"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::~LsbReports()
+Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::~LsbReports()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::has_data() const
 {
     return do_not_transmit.is_set
 	|| ignore.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(do_not_transmit.yfilter)
 	|| ydk::is_set(ignore.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lsb-reports";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14050,18 +13918,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "do-not-transmit")
     {
@@ -14077,7 +13945,7 @@ void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbRep
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "do-not-transmit")
     {
@@ -14089,14 +13957,14 @@ void Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbRep
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocReachAlgorithm::LsbReports::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::LocReachAlgorithm::LsbReports::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "do-not-transmit" || name == "ignore")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocatorDown::LocatorDown()
+Native::Router::Lisp::EidTable::InstanceList::LocatorDown::LocatorDown()
     :
     address{YType::str, "address"},
     ipv4_interface{YType::str, "IPv4-interface"},
@@ -14106,18 +13974,18 @@ Native::Router::LispList::EidTable::InstanceList::LocatorDown::LocatorDown()
     yang_name = "locator-down"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocatorDown::~LocatorDown()
+Native::Router::Lisp::EidTable::InstanceList::LocatorDown::~LocatorDown()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocatorDown::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocatorDown::has_data() const
 {
     return address.is_set
 	|| ipv4_interface.is_set
 	|| ipv6_interface.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocatorDown::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocatorDown::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
@@ -14125,14 +13993,14 @@ bool Native::Router::LispList::EidTable::InstanceList::LocatorDown::has_operatio
 	|| ydk::is_set(ipv6_interface.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::LocatorDown::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::LocatorDown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "locator-down";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::LocatorDown::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::LocatorDown::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14144,18 +14012,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::LocatorDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::LocatorDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::LocatorDown::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::LocatorDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocatorDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::LocatorDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -14177,7 +14045,7 @@ void Native::Router::LispList::EidTable::InstanceList::LocatorDown::set_value(co
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocatorDown::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::LocatorDown::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -14193,14 +14061,14 @@ void Native::Router::LispList::EidTable::InstanceList::LocatorDown::set_filter(c
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocatorDown::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::LocatorDown::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address" || name == "IPv4-interface" || name == "IPv6-interface")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocatorTable::LocatorTable()
+Native::Router::Lisp::EidTable::InstanceList::LocatorTable::LocatorTable()
     :
     vrf_name{YType::str, "vrf-name"},
     default_{YType::empty, "default"},
@@ -14210,18 +14078,18 @@ Native::Router::LispList::EidTable::InstanceList::LocatorTable::LocatorTable()
     yang_name = "locator-table"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::LocatorTable::~LocatorTable()
+Native::Router::Lisp::EidTable::InstanceList::LocatorTable::~LocatorTable()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocatorTable::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocatorTable::has_data() const
 {
     return vrf_name.is_set
 	|| default_.is_set
 	|| vrf.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocatorTable::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::LocatorTable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
@@ -14229,14 +14097,14 @@ bool Native::Router::LispList::EidTable::InstanceList::LocatorTable::has_operati
 	|| ydk::is_set(vrf.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::LocatorTable::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::LocatorTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "locator-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::LocatorTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::LocatorTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14248,18 +14116,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::LocatorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::LocatorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::LocatorTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::LocatorTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocatorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::LocatorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -14281,7 +14149,7 @@ void Native::Router::LispList::EidTable::InstanceList::LocatorTable::set_value(c
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::LocatorTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::LocatorTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -14297,14 +14165,14 @@ void Native::Router::LispList::EidTable::InstanceList::LocatorTable::set_filter(
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::LocatorTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::LocatorTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "default" || name == "vrf")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapRequest::MapRequest()
+Native::Router::Lisp::EidTable::InstanceList::MapRequest::MapRequest()
     :
     itr_rlocs{YType::str, "itr-rlocs"}
 {
@@ -14312,29 +14180,29 @@ Native::Router::LispList::EidTable::InstanceList::MapRequest::MapRequest()
     yang_name = "map-request"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapRequest::~MapRequest()
+Native::Router::Lisp::EidTable::InstanceList::MapRequest::~MapRequest()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapRequest::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapRequest::has_data() const
 {
     return itr_rlocs.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapRequest::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(itr_rlocs.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::MapRequest::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::MapRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-request";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::MapRequest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::MapRequest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14344,18 +14212,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::MapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::MapRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::MapRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::MapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "itr-rlocs")
     {
@@ -14365,7 +14233,7 @@ void Native::Router::LispList::EidTable::InstanceList::MapRequest::set_value(con
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::MapRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "itr-rlocs")
     {
@@ -14373,17 +14241,17 @@ void Native::Router::LispList::EidTable::InstanceList::MapRequest::set_filter(co
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::MapRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "itr-rlocs")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::MapServer()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::MapServer()
     :
-    rloc(std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc>())
-	,site_registration(std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration>())
+    rloc(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc>())
+	,site_registration(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration>())
 {
     rloc->parent = this;
     site_registration->parent = this;
@@ -14391,31 +14259,31 @@ Native::Router::LispList::EidTable::InstanceList::MapServer::MapServer()
     yang_name = "map-server"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::~MapServer()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::~MapServer()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::has_data() const
 {
     return (rloc !=  nullptr && rloc->has_data())
 	|| (site_registration !=  nullptr && site_registration->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::has_operation() const
 {
     return is_set(yfilter)
 	|| (rloc !=  nullptr && rloc->has_operation())
 	|| (site_registration !=  nullptr && site_registration->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::MapServer::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::MapServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "map-server";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::MapServer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::MapServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14424,13 +14292,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rloc")
     {
         if(rloc == nullptr)
         {
-            rloc = std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc>();
+            rloc = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc>();
         }
         return rloc;
     }
@@ -14439,7 +14307,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapSer
     {
         if(site_registration == nullptr)
         {
-            site_registration = std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration>();
+            site_registration = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration>();
         }
         return site_registration;
     }
@@ -14447,7 +14315,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapSer
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::MapServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(rloc != nullptr)
@@ -14463,53 +14331,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rloc" || name == "site-registration")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Rloc()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Rloc()
     :
-    members(std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members>())
+    members(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members>())
 {
     members->parent = this;
 
     yang_name = "rloc"; yang_parent_name = "map-server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::~Rloc()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::~Rloc()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::has_data() const
 {
     return (members !=  nullptr && members->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::has_operation() const
 {
     return is_set(yfilter)
 	|| (members !=  nullptr && members->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rloc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14518,13 +14386,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "members")
     {
         if(members == nullptr)
         {
-            members = std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members>();
+            members = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members>();
         }
         return members;
     }
@@ -14532,7 +14400,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapSer
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(members != nullptr)
@@ -14543,57 +14411,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "members")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::Members()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::Members()
     :
     distribute{YType::empty, "distribute"}
     	,
-    modify_discovered(std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered>())
+    modify_discovered(std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered>())
 {
     modify_discovered->parent = this;
 
     yang_name = "members"; yang_parent_name = "rloc"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::~Members()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::~Members()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::has_data() const
 {
     return distribute.is_set
 	|| (modify_discovered !=  nullptr && modify_discovered->has_data());
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(distribute.yfilter)
 	|| (modify_discovered !=  nullptr && modify_discovered->has_operation());
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "members";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14603,13 +14471,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "modify-discovered")
     {
         if(modify_discovered == nullptr)
         {
-            modify_discovered = std::make_shared<Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered>();
+            modify_discovered = std::make_shared<Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered>();
         }
         return modify_discovered;
     }
@@ -14617,7 +14485,7 @@ std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapSer
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(modify_discovered != nullptr)
@@ -14628,7 +14496,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTabl
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "distribute")
     {
@@ -14638,7 +14506,7 @@ void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members:
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "distribute")
     {
@@ -14646,14 +14514,14 @@ void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members:
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "modify-discovered" || name == "distribute")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::ModifyDiscovered()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::ModifyDiscovered()
     :
     operator_{YType::enumeration, "operator"},
     locator_set{YType::str, "locator-set"}
@@ -14662,31 +14530,31 @@ Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::Modi
     yang_name = "modify-discovered"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::~ModifyDiscovered()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::~ModifyDiscovered()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::has_data() const
 {
     return operator_.is_set
 	|| locator_set.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(operator_.yfilter)
 	|| ydk::is_set(locator_set.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "modify-discovered";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14697,18 +14565,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "operator")
     {
@@ -14724,7 +14592,7 @@ void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members:
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "operator")
     {
@@ -14736,14 +14604,14 @@ void Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members:
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "operator" || name == "locator-set")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::SiteRegistration()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::SiteRegistration()
     :
     limit{YType::uint32, "limit"},
     warning_threshold{YType::uint8, "warning-threshold"}
@@ -14752,31 +14620,31 @@ Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::S
     yang_name = "site-registration"; yang_parent_name = "map-server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::~SiteRegistration()
+Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::~SiteRegistration()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::has_data() const
 {
     return limit.is_set
 	|| warning_threshold.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(limit.yfilter)
 	|| ydk::is_set(warning_threshold.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "site-registration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14787,18 +14655,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
@@ -14814,7 +14682,7 @@ void Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistrati
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "limit")
     {
@@ -14826,14 +14694,14 @@ void Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistrati
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::MapServer::SiteRegistration::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::MapServer::SiteRegistration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "limit" || name == "warning-threshold")
         return true;
     return false;
 }
 
-Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::OtherXtrProbe()
+Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::OtherXtrProbe()
     :
     period{YType::uint16, "period"}
 {
@@ -14841,29 +14709,29 @@ Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::OtherXtrProbe()
     yang_name = "other-xtr-probe"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::~OtherXtrProbe()
+Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::~OtherXtrProbe()
 {
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::has_data() const
+bool Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::has_data() const
 {
     return period.is_set;
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::has_operation() const
+bool Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(period.yfilter);
 }
 
-std::string Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::get_segment_path() const
+std::string Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "other-xtr-probe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14873,18 +14741,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::EidTabl
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "period")
     {
@@ -14894,7 +14762,7 @@ void Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::set_value(
     }
 }
 
-void Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "period")
     {
@@ -14902,15 +14770,105 @@ void Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::set_filter
     }
 }
 
-bool Native::Router::LispList::EidTable::InstanceList::OtherXtrProbe::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Lisp::EidTable::InstanceList::OtherXtrProbe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "period")
         return true;
     return false;
 }
 
-const Enum::YLeaf Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::Operator_::add {0, "add"};
-const Enum::YLeaf Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::Operator_::override {1, "override"};
+Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::RemoteRlocProbe()
+    :
+    on_membership_change{YType::empty, "on-membership-change"},
+    on_route_change{YType::empty, "on-route-change"}
+{
+
+    yang_name = "remote-rloc-probe"; yang_parent_name = "instance-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::~RemoteRlocProbe()
+{
+}
+
+bool Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::has_data() const
+{
+    return on_membership_change.is_set
+	|| on_route_change.is_set;
+}
+
+bool Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(on_membership_change.yfilter)
+	|| ydk::is_set(on_route_change.yfilter);
+}
+
+std::string Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-rloc-probe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (on_membership_change.is_set || is_set(on_membership_change.yfilter)) leaf_name_data.push_back(on_membership_change.get_name_leafdata());
+    if (on_route_change.is_set || is_set(on_route_change.yfilter)) leaf_name_data.push_back(on_route_change.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "on-membership-change")
+    {
+        on_membership_change = value;
+        on_membership_change.value_namespace = name_space;
+        on_membership_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "on-route-change")
+    {
+        on_route_change = value;
+        on_route_change.value_namespace = name_space;
+        on_route_change.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "on-membership-change")
+    {
+        on_membership_change.yfilter = yfilter;
+    }
+    if(value_path == "on-route-change")
+    {
+        on_route_change.yfilter = yfilter;
+    }
+}
+
+bool Native::Router::Lisp::EidTable::InstanceList::RemoteRlocProbe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-membership-change" || name == "on-route-change")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::Operator_::add {0, "add"};
+const Enum::YLeaf Native::Router::Lisp::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::Operator_::override {1, "override"};
 
 
 }

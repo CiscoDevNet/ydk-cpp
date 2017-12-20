@@ -139,7 +139,8 @@ StartQuery::Input::Input()
     foreach{YType::str, "foreach"},
     sort_by{YType::str, "sort-by"},
     limit{YType::uint32, "limit"},
-    offset{YType::uint32, "offset"}
+    offset{YType::uint32, "offset"},
+    timeout{YType::uint32, "timeout"}
 {
 
     yang_name = "input"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false;
@@ -163,7 +164,8 @@ bool StartQuery::Input::has_data() const
     }
     return foreach.is_set
 	|| limit.is_set
-	|| offset.is_set;
+	|| offset.is_set
+	|| timeout.is_set;
 }
 
 bool StartQuery::Input::has_operation() const
@@ -182,7 +184,8 @@ bool StartQuery::Input::has_operation() const
 	|| ydk::is_set(foreach.yfilter)
 	|| ydk::is_set(sort_by.yfilter)
 	|| ydk::is_set(limit.yfilter)
-	|| ydk::is_set(offset.yfilter);
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string StartQuery::Input::get_absolute_path() const
@@ -206,6 +209,7 @@ std::vector<std::pair<std::string, LeafData> > StartQuery::Input::get_name_leaf_
     if (foreach.is_set || is_set(foreach.yfilter)) leaf_name_data.push_back(foreach.get_name_leafdata());
     if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
     if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
     auto sort_by_name_datas = sort_by.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sort_by_name_datas.begin(), sort_by_name_datas.end());
@@ -269,6 +273,12 @@ void StartQuery::Input::set_value(const std::string & value_path, const std::str
         offset.value_namespace = name_space;
         offset.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void StartQuery::Input::set_filter(const std::string & value_path, YFilter yfilter)
@@ -289,11 +299,15 @@ void StartQuery::Input::set_filter(const std::string & value_path, YFilter yfilt
     {
         offset.yfilter = yfilter;
     }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
 }
 
 bool StartQuery::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "select" || name == "foreach" || name == "sort-by" || name == "limit" || name == "offset")
+    if(name == "select" || name == "foreach" || name == "sort-by" || name == "limit" || name == "offset" || name == "timeout")
         return true;
     return false;
 }
@@ -1226,7 +1240,8 @@ bool ResetQuery::has_leaf_or_child_of_name(const std::string & name) const
 ResetQuery::Input::Input()
     :
     query_handle{YType::uint32, "query-handle"},
-    offset{YType::uint32, "offset"}
+    offset{YType::uint32, "offset"},
+    timeout{YType::uint32, "timeout"}
 {
 
     yang_name = "input"; yang_parent_name = "reset-query"; is_top_level_class = false; has_list_ancestor = false;
@@ -1239,14 +1254,16 @@ ResetQuery::Input::~Input()
 bool ResetQuery::Input::has_data() const
 {
     return query_handle.is_set
-	|| offset.is_set;
+	|| offset.is_set
+	|| timeout.is_set;
 }
 
 bool ResetQuery::Input::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(query_handle.yfilter)
-	|| ydk::is_set(offset.yfilter);
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string ResetQuery::Input::get_absolute_path() const
@@ -1269,6 +1286,7 @@ std::vector<std::pair<std::string, LeafData> > ResetQuery::Input::get_name_leaf_
 
     if (query_handle.is_set || is_set(query_handle.yfilter)) leaf_name_data.push_back(query_handle.get_name_leafdata());
     if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1299,6 +1317,12 @@ void ResetQuery::Input::set_value(const std::string & value_path, const std::str
         offset.value_namespace = name_space;
         offset.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ResetQuery::Input::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1311,11 +1335,15 @@ void ResetQuery::Input::set_filter(const std::string & value_path, YFilter yfilt
     {
         offset.yfilter = yfilter;
     }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
 }
 
 bool ResetQuery::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "query-handle" || name == "offset")
+    if(name == "query-handle" || name == "offset" || name == "timeout")
         return true;
     return false;
 }

@@ -304,7 +304,7 @@ class YLeaf
 
 class YLeafList {
   public:
-    YLeafList(YType type, std::string name);
+    YLeafList(YType type, const std::string & name);
     virtual ~YLeafList();
 
     YLeafList(const YLeafList& val);

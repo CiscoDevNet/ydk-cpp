@@ -6,8 +6,8 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_0.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_3.hpp"
-#include "Cisco_IOS_XR_qos_ma_oper_7.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_1.hpp"
+#include "Cisco_IOS_XR_qos_ma_oper_7.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_6.hpp"
 #include "Cisco_IOS_XR_qos_ma_oper_2.hpp"
 

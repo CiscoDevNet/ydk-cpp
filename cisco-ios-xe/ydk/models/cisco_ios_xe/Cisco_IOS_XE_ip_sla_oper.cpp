@@ -2757,6 +2757,7 @@ const Enum::YLeaf SlaOperType::oper_type_video {8, "oper-type-video"};
 const Enum::YLeaf SlaOperType::oper_type_mcast {9, "oper-type-mcast"};
 const Enum::YLeaf SlaOperType::oper_type_pong {10, "oper-type-pong"};
 const Enum::YLeaf SlaOperType::oper_type_path_jitter {11, "oper-type-path-jitter"};
+const Enum::YLeaf SlaOperType::oper_type_icmp_echo {12, "oper-type-icmp-echo"};
 
 const Enum::YLeaf SlaReturnCode::ret_code_unknown {0, "ret-code-unknown"};
 const Enum::YLeaf SlaReturnCode::ret_code_ok {1, "ret-code-ok"};

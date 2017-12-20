@@ -154,7 +154,6 @@ module ydktest-sanity {
     }
   }
 
-
   grouping two-level {
     description "testing for couple of leaves";
     container two {
@@ -178,7 +177,6 @@ module ydktest-sanity {
       }
     }
   }
-
 
   grouping three-level {
     description "testing for couple of leaves";
@@ -211,7 +209,6 @@ module ydktest-sanity {
       }
     }
   }
-
 
   grouping all-ytypes-class {
     description "testing for couple of leaves";
@@ -500,9 +497,7 @@ module ydktest-sanity {
         }
       }
     }
-  
   }
-
 
   grouping two-level-w-list {
     container two-list {
@@ -662,6 +657,26 @@ module ydktest-sanity {
     }
   }
 
+  grouping one-read-only {
+    description "testing for couple of leaves";
+    container one-read-only {
+      config false;
+      description "one_read_only data";
+      leaf number {
+        description "integer value type";
+        type int32;
+      }
+
+      leaf name {
+        description "this is string value";
+        type string;
+      }
+      anyxml config {
+          description "test";
+      }
+    }
+  }
+
   container runner {
 
     uses nested-naming;
@@ -684,6 +699,8 @@ module ydktest-sanity {
     uses leaf-ref-g;
 
     uses not-supported;
+
+    uses one-read-only;
 
     container runner-2 {
 

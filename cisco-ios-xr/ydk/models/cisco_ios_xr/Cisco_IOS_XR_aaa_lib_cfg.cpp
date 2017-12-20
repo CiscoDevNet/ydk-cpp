@@ -166,7 +166,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return authentications;
     }
 
-    if(child_yang_name == "aaa-subscriber")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-aaacore-cfg:aaa-subscriber")
     {
         if(aaa_subscriber == nullptr)
         {
@@ -175,7 +175,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return aaa_subscriber;
     }
 
-    if(child_yang_name == "aaa-mobile")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-aaacore-cfg:aaa-mobile")
     {
         if(aaa_mobile == nullptr)
         {
@@ -184,7 +184,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return aaa_mobile;
     }
 
-    if(child_yang_name == "aaa-dot1x")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-aaacore-cfg:aaa-dot1x")
     {
         if(aaa_dot1x == nullptr)
         {
@@ -193,7 +193,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return aaa_dot1x;
     }
 
-    if(child_yang_name == "radius-attribute")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-aaacore-cfg:radius-attribute")
     {
         if(radius_attribute == nullptr)
         {
@@ -202,7 +202,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return radius_attribute;
     }
 
-    if(child_yang_name == "server-groups")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-locald-cfg:server-groups")
     {
         if(server_groups == nullptr)
         {
@@ -211,7 +211,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return server_groups;
     }
 
-    if(child_yang_name == "usernames")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-locald-cfg:usernames")
     {
         if(usernames == nullptr)
         {
@@ -220,7 +220,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return usernames;
     }
 
-    if(child_yang_name == "taskgroups")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-locald-cfg:taskgroups")
     {
         if(taskgroups == nullptr)
         {
@@ -229,7 +229,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return taskgroups;
     }
 
-    if(child_yang_name == "usergroups")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-locald-cfg:usergroups")
     {
         if(usergroups == nullptr)
         {
@@ -238,7 +238,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return usergroups;
     }
 
-    if(child_yang_name == "diameter")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-diameter-cfg:diameter")
     {
         if(diameter == nullptr)
         {
@@ -247,7 +247,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return diameter;
     }
 
-    if(child_yang_name == "radius")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-protocol-radius-cfg:radius")
     {
         if(radius == nullptr)
         {
@@ -256,7 +256,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return radius;
     }
 
-    if(child_yang_name == "tacacs")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-tacacs-cfg:tacacs")
     {
         if(tacacs == nullptr)
         {
@@ -298,57 +298,57 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
 
     if(aaa_subscriber != nullptr)
     {
-        children["aaa-subscriber"] = aaa_subscriber;
+        children["Cisco-IOS-XR-aaa-aaacore-cfg:aaa-subscriber"] = aaa_subscriber;
     }
 
     if(aaa_mobile != nullptr)
     {
-        children["aaa-mobile"] = aaa_mobile;
+        children["Cisco-IOS-XR-aaa-aaacore-cfg:aaa-mobile"] = aaa_mobile;
     }
 
     if(aaa_dot1x != nullptr)
     {
-        children["aaa-dot1x"] = aaa_dot1x;
+        children["Cisco-IOS-XR-aaa-aaacore-cfg:aaa-dot1x"] = aaa_dot1x;
     }
 
     if(radius_attribute != nullptr)
     {
-        children["radius-attribute"] = radius_attribute;
+        children["Cisco-IOS-XR-aaa-aaacore-cfg:radius-attribute"] = radius_attribute;
     }
 
     if(server_groups != nullptr)
     {
-        children["server-groups"] = server_groups;
+        children["Cisco-IOS-XR-aaa-locald-cfg:server-groups"] = server_groups;
     }
 
     if(usernames != nullptr)
     {
-        children["usernames"] = usernames;
+        children["Cisco-IOS-XR-aaa-locald-cfg:usernames"] = usernames;
     }
 
     if(taskgroups != nullptr)
     {
-        children["taskgroups"] = taskgroups;
+        children["Cisco-IOS-XR-aaa-locald-cfg:taskgroups"] = taskgroups;
     }
 
     if(usergroups != nullptr)
     {
-        children["usergroups"] = usergroups;
+        children["Cisco-IOS-XR-aaa-locald-cfg:usergroups"] = usergroups;
     }
 
     if(diameter != nullptr)
     {
-        children["diameter"] = diameter;
+        children["Cisco-IOS-XR-aaa-diameter-cfg:diameter"] = diameter;
     }
 
     if(radius != nullptr)
     {
-        children["radius"] = radius;
+        children["Cisco-IOS-XR-aaa-protocol-radius-cfg:radius"] = radius;
     }
 
     if(tacacs != nullptr)
     {
-        children["tacacs"] = tacacs;
+        children["Cisco-IOS-XR-aaa-tacacs-cfg:tacacs"] = tacacs;
     }
 
     return children;
@@ -356,13 +356,13 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
 
 void Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "default-taskgroup")
+    if(value_path == "Cisco-IOS-XR-aaa-locald-cfg:default-taskgroup")
     {
         default_taskgroup = value;
         default_taskgroup.value_namespace = name_space;
         default_taskgroup.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "intercept")
+    if(value_path == "Cisco-IOS-XR-aaa-li-cfg:intercept")
     {
         intercept = value;
         intercept.value_namespace = name_space;
@@ -5513,7 +5513,7 @@ std::vector<std::pair<std::string, LeafData> > Aaa::ServerGroups::get_name_leaf_
 
 std::shared_ptr<Entity> Aaa::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "diameter-server-groups")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-diameter-cfg:diameter-server-groups")
     {
         if(diameter_server_groups == nullptr)
         {
@@ -5522,7 +5522,7 @@ std::shared_ptr<Entity> Aaa::ServerGroups::get_child_by_name(const std::string &
         return diameter_server_groups;
     }
 
-    if(child_yang_name == "radius-server-groups")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-protocol-radius-cfg:radius-server-groups")
     {
         if(radius_server_groups == nullptr)
         {
@@ -5531,7 +5531,7 @@ std::shared_ptr<Entity> Aaa::ServerGroups::get_child_by_name(const std::string &
         return radius_server_groups;
     }
 
-    if(child_yang_name == "tacacs-server-groups")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-tacacs-cfg:tacacs-server-groups")
     {
         if(tacacs_server_groups == nullptr)
         {
@@ -5548,17 +5548,17 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::ServerGroups::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(diameter_server_groups != nullptr)
     {
-        children["diameter-server-groups"] = diameter_server_groups;
+        children["Cisco-IOS-XR-aaa-diameter-cfg:diameter-server-groups"] = diameter_server_groups;
     }
 
     if(radius_server_groups != nullptr)
     {
-        children["radius-server-groups"] = radius_server_groups;
+        children["Cisco-IOS-XR-aaa-protocol-radius-cfg:radius-server-groups"] = radius_server_groups;
     }
 
     if(tacacs_server_groups != nullptr)
     {
-        children["tacacs-server-groups"] = tacacs_server_groups;
+        children["Cisco-IOS-XR-aaa-tacacs-cfg:tacacs-server-groups"] = tacacs_server_groups;
     }
 
     return children;

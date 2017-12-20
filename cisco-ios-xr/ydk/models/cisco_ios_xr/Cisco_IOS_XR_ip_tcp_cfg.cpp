@@ -622,7 +622,7 @@ std::shared_ptr<Entity> Ip::get_child_by_name(const std::string & child_yang_nam
         return cinetd;
     }
 
-    if(child_yang_name == "forward-protocol")
+    if(child_yang_name == "Cisco-IOS-XR-ip-udp-cfg:forward-protocol")
     {
         if(forward_protocol == nullptr)
         {
@@ -644,7 +644,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::get_children() const
 
     if(forward_protocol != nullptr)
     {
-        children["forward-protocol"] = forward_protocol;
+        children["Cisco-IOS-XR-ip-udp-cfg:forward-protocol"] = forward_protocol;
     }
 
     return children;
@@ -769,7 +769,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::get_children() const
 
 void Ip::Cinetd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "rate-limit")
+    if(value_path == "Cisco-IOS-XR-ipv4-cinetd-cfg:rate-limit")
     {
         rate_limit = value;
         rate_limit.value_namespace = name_space;
@@ -1062,7 +1062,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::get_child_by_n
         return tcp_small_servers;
     }
 
-    if(child_yang_name == "udp-small-servers")
+    if(child_yang_name == "Cisco-IOS-XR-ip-udp-cfg:udp-small-servers")
     {
         if(udp_small_servers == nullptr)
         {
@@ -1084,7 +1084,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::Small
 
     if(udp_small_servers != nullptr)
     {
-        children["udp-small-servers"] = udp_small_servers;
+        children["Cisco-IOS-XR-ip-udp-cfg:udp-small-servers"] = udp_small_servers;
     }
 
     return children;

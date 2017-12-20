@@ -5,10 +5,10 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_6.hpp"
-#include "Cisco_IOS_XE_native_10.hpp"
 #include "Cisco_IOS_XE_native_7.hpp"
-#include "Cisco_IOS_XE_native_9.hpp"
 #include "Cisco_IOS_XE_native_8.hpp"
+#include "Cisco_IOS_XE_native_10.hpp"
+#include "Cisco_IOS_XE_native_9.hpp"
 
 using namespace ydk;
 
@@ -4167,6 +4167,8 @@ Native::Flow::Exporter::Source::Source()
     embedded_service_engine{YType::str, "Embedded-Service-Engine"},
     fastethernet{YType::str, "FastEthernet"},
     gigabitethernet{YType::str, "GigabitEthernet"},
+    fivegigabitethernet{YType::str, "FiveGigabitEthernet"},
+    twentyfivegigabitethernet{YType::str, "TwentyFiveGigabitEthernet"},
     lisp{YType::str, "LISP"},
     loopback{YType::uint32, "Loopback"},
     multilink{YType::uint16, "Multilink"},
@@ -4214,6 +4216,8 @@ bool Native::Flow::Exporter::Source::has_data() const
 	|| embedded_service_engine.is_set
 	|| fastethernet.is_set
 	|| gigabitethernet.is_set
+	|| fivegigabitethernet.is_set
+	|| twentyfivegigabitethernet.is_set
 	|| lisp.is_set
 	|| loopback.is_set
 	|| multilink.is_set
@@ -4250,6 +4254,8 @@ bool Native::Flow::Exporter::Source::has_operation() const
 	|| ydk::is_set(embedded_service_engine.yfilter)
 	|| ydk::is_set(fastethernet.yfilter)
 	|| ydk::is_set(gigabitethernet.yfilter)
+	|| ydk::is_set(fivegigabitethernet.yfilter)
+	|| ydk::is_set(twentyfivegigabitethernet.yfilter)
 	|| ydk::is_set(lisp.yfilter)
 	|| ydk::is_set(loopback.yfilter)
 	|| ydk::is_set(multilink.yfilter)
@@ -4294,6 +4300,8 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Source::g
     if (embedded_service_engine.is_set || is_set(embedded_service_engine.yfilter)) leaf_name_data.push_back(embedded_service_engine.get_name_leafdata());
     if (fastethernet.is_set || is_set(fastethernet.yfilter)) leaf_name_data.push_back(fastethernet.get_name_leafdata());
     if (gigabitethernet.is_set || is_set(gigabitethernet.yfilter)) leaf_name_data.push_back(gigabitethernet.get_name_leafdata());
+    if (fivegigabitethernet.is_set || is_set(fivegigabitethernet.yfilter)) leaf_name_data.push_back(fivegigabitethernet.get_name_leafdata());
+    if (twentyfivegigabitethernet.is_set || is_set(twentyfivegigabitethernet.yfilter)) leaf_name_data.push_back(twentyfivegigabitethernet.get_name_leafdata());
     if (lisp.is_set || is_set(lisp.yfilter)) leaf_name_data.push_back(lisp.get_name_leafdata());
     if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
     if (multilink.is_set || is_set(multilink.yfilter)) leaf_name_data.push_back(multilink.get_name_leafdata());
@@ -4445,6 +4453,18 @@ void Native::Flow::Exporter::Source::set_value(const std::string & value_path, c
         gigabitethernet.value_namespace = name_space;
         gigabitethernet.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "FiveGigabitEthernet")
+    {
+        fivegigabitethernet = value;
+        fivegigabitethernet.value_namespace = name_space;
+        fivegigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "TwentyFiveGigabitEthernet")
+    {
+        twentyfivegigabitethernet = value;
+        twentyfivegigabitethernet.value_namespace = name_space;
+        twentyfivegigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "LISP")
     {
         lisp = value;
@@ -4591,6 +4611,14 @@ void Native::Flow::Exporter::Source::set_filter(const std::string & value_path, 
     {
         gigabitethernet.yfilter = yfilter;
     }
+    if(value_path == "FiveGigabitEthernet")
+    {
+        fivegigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "TwentyFiveGigabitEthernet")
+    {
+        twentyfivegigabitethernet.yfilter = yfilter;
+    }
     if(value_path == "LISP")
     {
         lisp.yfilter = yfilter;
@@ -4663,7 +4691,7 @@ void Native::Flow::Exporter::Source::set_filter(const std::string & value_path, 
 
 bool Native::Flow::Exporter::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ATM-subinterface" || name == "ATM-ACRsubinterface" || name == "LISP-subinterface" || name == "Port-channel-subinterface" || name == "AppNav-Compress" || name == "AppNav-UnCompress" || name == "ATM" || name == "ATM-ACR" || name == "BDI" || name == "CEM" || name == "CEM-ACR" || name == "Embedded-Service-Engine" || name == "FastEthernet" || name == "GigabitEthernet" || name == "LISP" || name == "Loopback" || name == "Multilink" || name == "nve" || name == "overlay" || name == "Port-channel" || name == "pseudowire" || name == "SM" || name == "Cellular" || name == "Serial" || name == "TenGigabitEthernet" || name == "Tunnel" || name == "Virtual-Template" || name == "Vlan" || name == "VirtualPortGroup" || name == "vasileft" || name == "vasiright")
+    if(name == "ATM-subinterface" || name == "ATM-ACRsubinterface" || name == "LISP-subinterface" || name == "Port-channel-subinterface" || name == "AppNav-Compress" || name == "AppNav-UnCompress" || name == "ATM" || name == "ATM-ACR" || name == "BDI" || name == "CEM" || name == "CEM-ACR" || name == "Embedded-Service-Engine" || name == "FastEthernet" || name == "GigabitEthernet" || name == "FiveGigabitEthernet" || name == "TwentyFiveGigabitEthernet" || name == "LISP" || name == "Loopback" || name == "Multilink" || name == "nve" || name == "overlay" || name == "Port-channel" || name == "pseudowire" || name == "SM" || name == "Cellular" || name == "Serial" || name == "TenGigabitEthernet" || name == "Tunnel" || name == "Virtual-Template" || name == "Vlan" || name == "VirtualPortGroup" || name == "vasileft" || name == "vasiright")
         return true;
     return false;
 }
@@ -10454,7 +10482,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return device;
     }
 
-    if(child_yang_name == "radius")
+    if(child_yang_name == "Cisco-IOS-XE-aaa:radius")
     {
         if(radius == nullptr)
         {
@@ -10463,7 +10491,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return radius;
     }
 
-    if(child_yang_name == "tacacs")
+    if(child_yang_name == "Cisco-IOS-XE-aaa:tacacs")
     {
         if(tacacs == nullptr)
         {
@@ -10472,7 +10500,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return tacacs;
     }
 
-    if(child_yang_name == "community-list")
+    if(child_yang_name == "Cisco-IOS-XE-bgp:community-list")
     {
         if(community_list == nullptr)
         {
@@ -10481,7 +10509,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return community_list;
     }
 
-    if(child_yang_name == "extcommunity-list")
+    if(child_yang_name == "Cisco-IOS-XE-bgp:extcommunity-list")
     {
         if(extcommunity_list == nullptr)
         {
@@ -10490,7 +10518,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return extcommunity_list;
     }
 
-    if(child_yang_name == "http")
+    if(child_yang_name == "Cisco-IOS-XE-http:http")
     {
         if(http == nullptr)
         {
@@ -10499,7 +10527,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return http;
     }
 
-    if(child_yang_name == "icmp")
+    if(child_yang_name == "Cisco-IOS-XE-icmp:icmp")
     {
         if(icmp == nullptr)
         {
@@ -10508,7 +10536,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return icmp;
     }
 
-    if(child_yang_name == "igmp")
+    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
     {
         if(igmp == nullptr)
         {
@@ -10517,7 +10545,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return igmp;
     }
 
-    if(child_yang_name == "msdp")
+    if(child_yang_name == "Cisco-IOS-XE-multicast:msdp")
     {
         if(msdp == nullptr)
         {
@@ -10526,7 +10554,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return msdp;
     }
 
-    if(child_yang_name == "mcr-conf")
+    if(child_yang_name == "Cisco-IOS-XE-multicast:mcr-conf")
     {
         if(mcr_conf == nullptr)
         {
@@ -10535,7 +10563,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return mcr_conf;
     }
 
-    if(child_yang_name == "multicast-routing")
+    if(child_yang_name == "Cisco-IOS-XE-multicast:multicast-routing")
     {
         if(multicast_routing == nullptr)
         {
@@ -10544,7 +10572,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return multicast_routing;
     }
 
-    if(child_yang_name == "mroute")
+    if(child_yang_name == "Cisco-IOS-XE-multicast:mroute")
     {
         if(mroute == nullptr)
         {
@@ -10553,7 +10581,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return mroute;
     }
 
-    if(child_yang_name == "nat")
+    if(child_yang_name == "Cisco-IOS-XE-nat:nat")
     {
         if(nat == nullptr)
         {
@@ -10562,7 +10590,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return nat;
     }
 
-    if(child_yang_name == "nbar")
+    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
     {
         if(nbar == nullptr)
         {
@@ -10571,7 +10599,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return nbar;
     }
 
-    if(child_yang_name == "rsvp")
+    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
     {
         if(rsvp == nullptr)
         {
@@ -10580,7 +10608,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return rsvp;
     }
 
-    if(child_yang_name == "sla")
+    if(child_yang_name == "Cisco-IOS-XE-sla:sla")
     {
         if(sla == nullptr)
         {
@@ -10589,7 +10617,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
         return sla;
     }
 
-    if(child_yang_name == "wccp")
+    if(child_yang_name == "Cisco-IOS-XE-wccp:wccp")
     {
         if(wccp == nullptr)
         {
@@ -10781,82 +10809,82 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::get_children() const
 
     if(radius != nullptr)
     {
-        children["radius"] = radius;
+        children["Cisco-IOS-XE-aaa:radius"] = radius;
     }
 
     if(tacacs != nullptr)
     {
-        children["tacacs"] = tacacs;
+        children["Cisco-IOS-XE-aaa:tacacs"] = tacacs;
     }
 
     if(community_list != nullptr)
     {
-        children["community-list"] = community_list;
+        children["Cisco-IOS-XE-bgp:community-list"] = community_list;
     }
 
     if(extcommunity_list != nullptr)
     {
-        children["extcommunity-list"] = extcommunity_list;
+        children["Cisco-IOS-XE-bgp:extcommunity-list"] = extcommunity_list;
     }
 
     if(http != nullptr)
     {
-        children["http"] = http;
+        children["Cisco-IOS-XE-http:http"] = http;
     }
 
     if(icmp != nullptr)
     {
-        children["icmp"] = icmp;
+        children["Cisco-IOS-XE-icmp:icmp"] = icmp;
     }
 
     if(igmp != nullptr)
     {
-        children["igmp"] = igmp;
+        children["Cisco-IOS-XE-igmp:igmp"] = igmp;
     }
 
     if(msdp != nullptr)
     {
-        children["msdp"] = msdp;
+        children["Cisco-IOS-XE-multicast:msdp"] = msdp;
     }
 
     if(mcr_conf != nullptr)
     {
-        children["mcr-conf"] = mcr_conf;
+        children["Cisco-IOS-XE-multicast:mcr-conf"] = mcr_conf;
     }
 
     if(multicast_routing != nullptr)
     {
-        children["multicast-routing"] = multicast_routing;
+        children["Cisco-IOS-XE-multicast:multicast-routing"] = multicast_routing;
     }
 
     if(mroute != nullptr)
     {
-        children["mroute"] = mroute;
+        children["Cisco-IOS-XE-multicast:mroute"] = mroute;
     }
 
     if(nat != nullptr)
     {
-        children["nat"] = nat;
+        children["Cisco-IOS-XE-nat:nat"] = nat;
     }
 
     if(nbar != nullptr)
     {
-        children["nbar"] = nbar;
+        children["Cisco-IOS-XE-nbar:nbar"] = nbar;
     }
 
     if(rsvp != nullptr)
     {
-        children["rsvp"] = rsvp;
+        children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
     }
 
     if(sla != nullptr)
     {
-        children["sla"] = sla;
+        children["Cisco-IOS-XE-sla:sla"] = sla;
     }
 
     if(wccp != nullptr)
     {
-        children["wccp"] = wccp;
+        children["Cisco-IOS-XE-wccp:wccp"] = wccp;
     }
 
     return children;
@@ -14295,7 +14323,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ip::AsPath::get_name_leaf
 
 std::shared_ptr<Entity> Native::Ip::AsPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "access-list")
+    if(child_yang_name == "Cisco-IOS-XE-bgp:access-list")
     {
         for(auto const & c : access_list)
         {
@@ -14921,7 +14949,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ip::Cef::get_name_leaf_da
 
 std::shared_ptr<Entity> Native::Ip::Cef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "accounting")
+    if(child_yang_name == "Cisco-IOS-XE-cef:accounting")
     {
         if(accounting == nullptr)
         {
@@ -14930,7 +14958,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::get_child_by_name(const std::string & c
         return accounting;
     }
 
-    if(child_yang_name == "optimize")
+    if(child_yang_name == "Cisco-IOS-XE-cef:optimize")
     {
         if(optimize == nullptr)
         {
@@ -14939,7 +14967,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::get_child_by_name(const std::string & c
         return optimize;
     }
 
-    if(child_yang_name == "traffic-statistics")
+    if(child_yang_name == "Cisco-IOS-XE-cef:traffic-statistics")
     {
         if(traffic_statistics == nullptr)
         {
@@ -14948,7 +14976,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::get_child_by_name(const std::string & c
         return traffic_statistics;
     }
 
-    if(child_yang_name == "load-sharing")
+    if(child_yang_name == "Cisco-IOS-XE-cef:load-sharing")
     {
         if(load_sharing == nullptr)
         {
@@ -14965,22 +14993,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        children["Cisco-IOS-XE-cef:accounting"] = accounting;
     }
 
     if(optimize != nullptr)
     {
-        children["optimize"] = optimize;
+        children["Cisco-IOS-XE-cef:optimize"] = optimize;
     }
 
     if(traffic_statistics != nullptr)
     {
-        children["traffic-statistics"] = traffic_statistics;
+        children["Cisco-IOS-XE-cef:traffic-statistics"] = traffic_statistics;
     }
 
     if(load_sharing != nullptr)
     {
-        children["load-sharing"] = load_sharing;
+        children["Cisco-IOS-XE-cef:load-sharing"] = load_sharing;
     }
 
     return children;
@@ -14988,7 +15016,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::get_children() c
 
 void Native::Ip::Cef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "distributed")
+    if(value_path == "Cisco-IOS-XE-cef:distributed")
     {
         distributed = value;
         distributed.value_namespace = name_space;

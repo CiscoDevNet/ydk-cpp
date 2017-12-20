@@ -431,7 +431,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan_id; //type: one of uint16, string
+        ydk::YLeaf vlan_id; //type: one of string, uint16
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config
 
@@ -452,7 +452,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan_id; //type: one of uint16, string
+        ydk::YLeaf vlan_id; //type: one of string, uint16
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State
 
@@ -1800,9 +1800,9 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of uint16, string
-        ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeaf native_vlan; //type: one of string, uint16
+        ydk::YLeaf access_vlan; //type: one of string, uint16
+        ydk::YLeafList trunk_vlans; //type: list of  one of string, uint16, union
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::Config
 
@@ -1824,9 +1824,9 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::State : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of uint16, string
-        ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeaf native_vlan; //type: one of string, uint16
+        ydk::YLeaf access_vlan; //type: one of string, uint16
+        ydk::YLeafList trunk_vlans; //type: list of  one of string, uint16, union
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::State
 
@@ -1947,9 +1947,9 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::Config : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of uint16, string
-        ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeaf native_vlan; //type: one of string, uint16
+        ydk::YLeaf access_vlan; //type: one of string, uint16
+        ydk::YLeafList trunk_vlans; //type: list of  one of string, uint16, union
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::Config
 
@@ -1971,9 +1971,9 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::State : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface_mode; //type: VlanModeType
-        ydk::YLeaf native_vlan; //type: one of uint16, string
-        ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeaf native_vlan; //type: one of string, uint16
+        ydk::YLeaf access_vlan; //type: one of string, uint16
+        ydk::YLeafList trunk_vlans; //type: list of  one of string, uint16, union
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::State
 
@@ -2023,7 +2023,7 @@ class Interfaces::Interface::RoutedVlan::Config : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, string
+        ydk::YLeaf vlan; //type: one of string, uint16
 
 }; // Interfaces::Interface::RoutedVlan::Config
 
@@ -2044,7 +2044,7 @@ class Interfaces::Interface::RoutedVlan::State : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, string
+        ydk::YLeaf vlan; //type: one of string, uint16
 
 }; // Interfaces::Interface::RoutedVlan::State
 

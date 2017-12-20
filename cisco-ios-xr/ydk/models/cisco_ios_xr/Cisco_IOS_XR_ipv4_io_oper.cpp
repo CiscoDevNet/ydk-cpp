@@ -66,7 +66,7 @@ std::shared_ptr<Entity> Ipv4Network::get_child_by_name(const std::string & child
         return nodes;
     }
 
-    if(child_yang_name == "interfaces")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-oper:interfaces")
     {
         if(interfaces == nullptr)
         {
@@ -88,7 +88,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::get_children() const
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        children["Cisco-IOS-XR-ipv4-ma-oper:interfaces"] = interfaces;
     }
 
     return children;

@@ -222,7 +222,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::get_child_by_name(const std:
         return tag_sets;
     }
 
-    if(child_yang_name == "bgp-defined-sets")
+    if(child_yang_name == "openconfig-bgp-policy:bgp-defined-sets")
     {
         if(bgp_defined_sets == nullptr)
         {
@@ -254,7 +254,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::get_c
 
     if(bgp_defined_sets != nullptr)
     {
-        children["bgp-defined-sets"] = bgp_defined_sets;
+        children["openconfig-bgp-policy:bgp-defined-sets"] = bgp_defined_sets;
     }
 
     return children;
@@ -4185,7 +4185,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
         return igp_conditions;
     }
 
-    if(child_yang_name == "bgp-conditions")
+    if(child_yang_name == "openconfig-bgp-policy:bgp-conditions")
     {
         if(bgp_conditions == nullptr)
         {
@@ -4237,7 +4237,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
 
     if(bgp_conditions != nullptr)
     {
-        children["bgp-conditions"] = bgp_conditions;
+        children["openconfig-bgp-policy:bgp-conditions"] = bgp_conditions;
     }
 
     return children;
@@ -7595,7 +7595,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
         return igp_actions;
     }
 
-    if(child_yang_name == "bgp-actions")
+    if(child_yang_name == "openconfig-bgp-policy:bgp-actions")
     {
         if(bgp_actions == nullptr)
         {
@@ -7627,7 +7627,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
 
     if(bgp_actions != nullptr)
     {
-        children["bgp-actions"] = bgp_actions;
+        children["openconfig-bgp-policy:bgp-actions"] = bgp_actions;
     }
 
     return children;

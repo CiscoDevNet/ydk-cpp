@@ -247,7 +247,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
         return subinterfaces;
     }
 
-    if(child_yang_name == "ethernet")
+    if(child_yang_name == "openconfig-if-ethernet:ethernet")
     {
         if(ethernet == nullptr)
         {
@@ -256,7 +256,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
         return ethernet;
     }
 
-    if(child_yang_name == "aggregation")
+    if(child_yang_name == "openconfig-if-aggregate:aggregation")
     {
         if(aggregation == nullptr)
         {
@@ -265,7 +265,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
         return aggregation;
     }
 
-    if(child_yang_name == "routed-vlan")
+    if(child_yang_name == "openconfig-vlan:routed-vlan")
     {
         if(routed_vlan == nullptr)
         {
@@ -274,7 +274,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
         return routed_vlan;
     }
 
-    if(child_yang_name == "sonet")
+    if(child_yang_name == "openconfig-transport-line-common:sonet")
     {
         if(sonet == nullptr)
         {
@@ -311,22 +311,22 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_childr
 
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        children["openconfig-if-ethernet:ethernet"] = ethernet;
     }
 
     if(aggregation != nullptr)
     {
-        children["aggregation"] = aggregation;
+        children["openconfig-if-aggregate:aggregation"] = aggregation;
     }
 
     if(routed_vlan != nullptr)
     {
-        children["routed-vlan"] = routed_vlan;
+        children["openconfig-vlan:routed-vlan"] = routed_vlan;
     }
 
     if(sonet != nullptr)
     {
-        children["sonet"] = sonet;
+        children["openconfig-transport-line-common:sonet"] = sonet;
     }
 
     return children;
@@ -651,7 +651,7 @@ void Interfaces::Interface::State::set_value(const std::string & value_path, con
         last_change.value_namespace = name_space;
         last_change.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hardware-port")
+    if(value_path == "openconfig-platform:hardware-port")
     {
         hardware_port = value;
         hardware_port.value_namespace = name_space;
@@ -1420,7 +1420,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::get_
         return state;
     }
 
-    if(child_yang_name == "vlan")
+    if(child_yang_name == "openconfig-vlan:vlan")
     {
         if(vlan == nullptr)
         {
@@ -1429,7 +1429,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::get_
         return vlan;
     }
 
-    if(child_yang_name == "ipv4")
+    if(child_yang_name == "openconfig-if-ip:ipv4")
     {
         if(ipv4 == nullptr)
         {
@@ -1438,7 +1438,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::get_
         return ipv4;
     }
 
-    if(child_yang_name == "ipv6")
+    if(child_yang_name == "openconfig-if-ip:ipv6")
     {
         if(ipv6 == nullptr)
         {
@@ -1465,17 +1465,17 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
 
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        children["openconfig-vlan:vlan"] = vlan;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        children["openconfig-if-ip:ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        children["openconfig-if-ip:ipv6"] = ipv6;
     }
 
     return children;
@@ -7587,7 +7587,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::get_child_by_name(const
         return state;
     }
 
-    if(child_yang_name == "switched-vlan")
+    if(child_yang_name == "openconfig-vlan:switched-vlan")
     {
         if(switched_vlan == nullptr)
         {
@@ -7614,7 +7614,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::
 
     if(switched_vlan != nullptr)
     {
-        children["switched-vlan"] = switched_vlan;
+        children["openconfig-vlan:switched-vlan"] = switched_vlan;
     }
 
     return children;
@@ -7738,7 +7738,7 @@ void Interfaces::Interface::Ethernet::Config::set_value(const std::string & valu
         enable_flow_control.value_namespace = name_space;
         enable_flow_control.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "aggregate-id")
+    if(value_path == "openconfig-if-aggregate:aggregate-id")
     {
         aggregate_id = value;
         aggregate_id.value_namespace = name_space;
@@ -7923,7 +7923,7 @@ void Interfaces::Interface::Ethernet::State::set_value(const std::string & value
         effective_speed.value_namespace = name_space;
         effective_speed.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "aggregate-id")
+    if(value_path == "openconfig-if-aggregate:aggregate-id")
     {
         aggregate_id = value;
         aggregate_id.value_namespace = name_space;
@@ -8594,7 +8594,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::get_child_by_name(co
         return state;
     }
 
-    if(child_yang_name == "switched-vlan")
+    if(child_yang_name == "openconfig-vlan:switched-vlan")
     {
         if(switched_vlan == nullptr)
         {
@@ -8621,7 +8621,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregatio
 
     if(switched_vlan != nullptr)
     {
-        children["switched-vlan"] = switched_vlan;
+        children["openconfig-vlan:switched-vlan"] = switched_vlan;
     }
 
     return children;
@@ -9280,7 +9280,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::get_child_by_name(con
         return state;
     }
 
-    if(child_yang_name == "ipv4")
+    if(child_yang_name == "openconfig-if-ip:ipv4")
     {
         if(ipv4 == nullptr)
         {
@@ -9289,7 +9289,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::get_child_by_name(con
         return ipv4;
     }
 
-    if(child_yang_name == "ipv6")
+    if(child_yang_name == "openconfig-if-ip:ipv6")
     {
         if(ipv6 == nullptr)
         {
@@ -9316,12 +9316,12 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        children["openconfig-if-ip:ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        children["openconfig-if-ip:ipv6"] = ipv6;
     }
 
     return children;

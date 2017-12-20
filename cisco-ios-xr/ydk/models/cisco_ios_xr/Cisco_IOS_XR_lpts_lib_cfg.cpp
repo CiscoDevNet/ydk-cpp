@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::get_name_leaf_data() const
 
 std::shared_ptr<Entity> Lpts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipolicer")
+    if(child_yang_name == "Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer")
     {
         if(ipolicer == nullptr)
         {
@@ -65,7 +65,7 @@ std::shared_ptr<Entity> Lpts::get_child_by_name(const std::string & child_yang_n
         return ipolicer;
     }
 
-    if(child_yang_name == "punt")
+    if(child_yang_name == "Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt")
     {
         if(punt == nullptr)
         {
@@ -82,12 +82,12 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipolicer != nullptr)
     {
-        children["ipolicer"] = ipolicer;
+        children["Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer"] = ipolicer;
     }
 
     if(punt != nullptr)
     {
-        children["punt"] = punt;
+        children["Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt"] = punt;
     }
 
     return children;

@@ -2550,25 +2550,25 @@ void SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::set_value(const std
         sonetpathcurrentuass.value_namespace = name_space;
         sonetpathcurrentuass.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cspSonetPathPayload")
+    if(value_path == "CISCO-SONET-MIB:cspSonetPathPayload")
     {
         cspsonetpathpayload = value;
         cspsonetpathpayload.value_namespace = name_space;
         cspsonetpathpayload.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cspTributaryMappingType")
+    if(value_path == "CISCO-SONET-MIB:cspTributaryMappingType")
     {
         csptributarymappingtype = value;
         csptributarymappingtype.value_namespace = name_space;
         csptributarymappingtype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cspSignallingTransportMode")
+    if(value_path == "CISCO-SONET-MIB:cspSignallingTransportMode")
     {
         cspsignallingtransportmode = value;
         cspsignallingtransportmode.value_namespace = name_space;
         cspsignallingtransportmode.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cspTributaryGroupingType")
+    if(value_path == "CISCO-SONET-MIB:cspTributaryGroupingType")
     {
         csptributarygroupingtype = value;
         csptributarygroupingtype.value_namespace = name_space;

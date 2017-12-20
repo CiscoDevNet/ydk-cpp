@@ -1759,7 +1759,7 @@ void CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::set_value(const std::string & valu
         vtpvlanifindex.value_namespace = name_space;
         vtpvlanifindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxVlanMISTPInstMapInstIndex")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxVlanMISTPInstMapInstIndex")
     {
         stpxvlanmistpinstmapinstindex = value;
         stpxvlanmistpinstmapinstindex.value_namespace = name_space;
@@ -2425,7 +2425,7 @@ void CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::set_value(const std::strin
     {
         vtpvlanedittypeext2[value] = true;
     }
-    if(value_path == "stpxVlanMISTPInstMapEditInstIndex")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxVlanMISTPInstMapEditInstIndex")
     {
         stpxvlanmistpinstmapeditinstindex = value;
         stpxvlanmistpinstmapeditinstindex.value_namespace = name_space;
@@ -3229,37 +3229,37 @@ void CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::set_value(const std::s
         vlantrunkportvlansactivesecond2k.value_namespace = name_space;
         vlantrunkportvlansactivesecond2k.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxPreferredVlansMap")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxPreferredVlansMap")
     {
         stpxpreferredvlansmap = value;
         stpxpreferredvlansmap.value_namespace = name_space;
         stpxpreferredvlansmap.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxPreferredVlansMap2k")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxPreferredVlansMap2k")
     {
         stpxpreferredvlansmap2k = value;
         stpxpreferredvlansmap2k.value_namespace = name_space;
         stpxpreferredvlansmap2k.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxPreferredVlansMap3k")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxPreferredVlansMap3k")
     {
         stpxpreferredvlansmap3k = value;
         stpxpreferredvlansmap3k.value_namespace = name_space;
         stpxpreferredvlansmap3k.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxPreferredVlansMap4k")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxPreferredVlansMap4k")
     {
         stpxpreferredvlansmap4k = value;
         stpxpreferredvlansmap4k.value_namespace = name_space;
         stpxpreferredvlansmap4k.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxPreferredMISTPInstancesMap")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxPreferredMISTPInstancesMap")
     {
         stpxpreferredmistpinstancesmap = value;
         stpxpreferredmistpinstancesmap.value_namespace = name_space;
         stpxpreferredmistpinstancesmap.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stpxPreferredMSTInstancesMap")
+    if(value_path == "CISCO-STP-EXTENSIONS-MIB:stpxPreferredMSTInstancesMap")
     {
         stpxpreferredmstinstancesmap = value;
         stpxpreferredmstinstancesmap.value_namespace = name_space;

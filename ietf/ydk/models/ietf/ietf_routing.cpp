@@ -554,7 +554,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingState::RoutingInstance::Ro
 
 std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ospf")
+    if(child_yang_name == "ietf-ospf:ospf")
     {
         if(ospf == nullptr)
         {
@@ -571,7 +571,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        children["ietf-ospf:ospf"] = ospf;
     }
 
     return children;
@@ -15656,13 +15656,13 @@ void RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::set_value(const st
         update_source.value_namespace = name_space;
         update_source.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tag")
+    if(value_path == "ietf-ospf:tag")
     {
         tag = value;
         tag.value_namespace = name_space;
         tag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "route-type")
+    if(value_path == "ietf-ospf:route-type")
     {
         route_type = value;
         route_type.value_namespace = name_space;
@@ -16379,7 +16379,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
         return static_routes;
     }
 
-    if(child_yang_name == "ospf")
+    if(child_yang_name == "ietf-ospf:ospf")
     {
         if(ospf == nullptr)
         {
@@ -16401,7 +16401,7 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        children["ietf-ospf:ospf"] = ospf;
     }
 
     return children;
@@ -16498,7 +16498,7 @@ std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::Routing
 
 std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4")
+    if(child_yang_name == "ietf-ipv4-unicast-routing:ipv4")
     {
         if(ipv4 == nullptr)
         {
@@ -16507,7 +16507,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
         return ipv4;
     }
 
-    if(child_yang_name == "ipv6")
+    if(child_yang_name == "ietf-ipv6-unicast-routing:ipv6")
     {
         if(ipv6 == nullptr)
         {
@@ -16524,12 +16524,12 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        children["ietf-ipv4-unicast-routing:ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        children["ietf-ipv6-unicast-routing:ipv6"] = ipv6;
     }
 
     return children;
@@ -23124,8 +23124,8 @@ bool FibRoute::Input::has_leaf_or_child_of_name(const std::string & name) const
 FibRoute::Input::DestinationAddress::DestinationAddress()
     :
     address_family{YType::identityref, "address-family"},
-    ietf_ipv4_unicast_routing_address{YType::str, "ietf-ipv4-unicast-routing:ietf-ipv4-unicast-routing_address"},
-    ietf_ipv6_unicast_routing_address{YType::str, "ietf-ipv6-unicast-routing:ietf-ipv6-unicast-routing_address"}
+    ietf_ipv4_unicast_routing_address{YType::str, "ietf-ipv4-unicast-routing:address"},
+    ietf_ipv6_unicast_routing_address{YType::str, "ietf-ipv6-unicast-routing:address"}
 {
 
     yang_name = "destination-address"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
@@ -23195,13 +23195,13 @@ void FibRoute::Input::DestinationAddress::set_value(const std::string & value_pa
         address_family.value_namespace = name_space;
         address_family.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv4-unicast-routing_address")
+    if(value_path == "ietf-ipv4-unicast-routing:address")
     {
         ietf_ipv4_unicast_routing_address = value;
         ietf_ipv4_unicast_routing_address.value_namespace = name_space;
         ietf_ipv4_unicast_routing_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv6-unicast-routing_address")
+    if(value_path == "ietf-ipv6-unicast-routing:address")
     {
         ietf_ipv6_unicast_routing_address = value;
         ietf_ipv6_unicast_routing_address.value_namespace = name_space;
@@ -23215,11 +23215,11 @@ void FibRoute::Input::DestinationAddress::set_filter(const std::string & value_p
     {
         address_family.yfilter = yfilter;
     }
-    if(value_path == "ietf-ipv4-unicast-routing_address")
+    if(value_path == "address")
     {
         ietf_ipv4_unicast_routing_address.yfilter = yfilter;
     }
-    if(value_path == "ietf-ipv6-unicast-routing_address")
+    if(value_path == "address")
     {
         ietf_ipv6_unicast_routing_address.yfilter = yfilter;
     }
@@ -23227,7 +23227,7 @@ void FibRoute::Input::DestinationAddress::set_filter(const std::string & value_p
 
 bool FibRoute::Input::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-family" || name == "ietf-ipv4-unicast-routing_address" || name == "ietf-ipv6-unicast-routing_address")
+    if(name == "address-family" || name == "address" || name == "address")
         return true;
     return false;
 }
@@ -23325,8 +23325,8 @@ FibRoute::Output::Route::Route()
     source_protocol{YType::identityref, "source-protocol"},
     active{YType::empty, "active"},
     last_updated{YType::str, "last-updated"},
-    ietf_ipv4_unicast_routing_destination_prefix{YType::str, "ietf-ipv4-unicast-routing:ietf-ipv4-unicast-routing_destination-prefix"},
-    ietf_ipv6_unicast_routing_destination_prefix{YType::str, "ietf-ipv6-unicast-routing:ietf-ipv6-unicast-routing_destination-prefix"}
+    ietf_ipv4_unicast_routing_destination_prefix{YType::str, "ietf-ipv4-unicast-routing:destination-prefix"},
+    ietf_ipv6_unicast_routing_destination_prefix{YType::str, "ietf-ipv6-unicast-routing:destination-prefix"}
     	,
     next_hop(std::make_shared<FibRoute::Output::Route::NextHop>())
 {
@@ -23442,13 +23442,13 @@ void FibRoute::Output::Route::set_value(const std::string & value_path, const st
         last_updated.value_namespace = name_space;
         last_updated.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv4-unicast-routing_destination-prefix")
+    if(value_path == "ietf-ipv4-unicast-routing:destination-prefix")
     {
         ietf_ipv4_unicast_routing_destination_prefix = value;
         ietf_ipv4_unicast_routing_destination_prefix.value_namespace = name_space;
         ietf_ipv4_unicast_routing_destination_prefix.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv6-unicast-routing_destination-prefix")
+    if(value_path == "ietf-ipv6-unicast-routing:destination-prefix")
     {
         ietf_ipv6_unicast_routing_destination_prefix = value;
         ietf_ipv6_unicast_routing_destination_prefix.value_namespace = name_space;
@@ -23474,11 +23474,11 @@ void FibRoute::Output::Route::set_filter(const std::string & value_path, YFilter
     {
         last_updated.yfilter = yfilter;
     }
-    if(value_path == "ietf-ipv4-unicast-routing_destination-prefix")
+    if(value_path == "destination-prefix")
     {
         ietf_ipv4_unicast_routing_destination_prefix.yfilter = yfilter;
     }
-    if(value_path == "ietf-ipv6-unicast-routing_destination-prefix")
+    if(value_path == "destination-prefix")
     {
         ietf_ipv6_unicast_routing_destination_prefix.yfilter = yfilter;
     }
@@ -23486,7 +23486,7 @@ void FibRoute::Output::Route::set_filter(const std::string & value_path, YFilter
 
 bool FibRoute::Output::Route::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "next-hop" || name == "address-family" || name == "source-protocol" || name == "active" || name == "last-updated" || name == "ietf-ipv4-unicast-routing_destination-prefix" || name == "ietf-ipv6-unicast-routing_destination-prefix")
+    if(name == "next-hop" || name == "address-family" || name == "source-protocol" || name == "active" || name == "last-updated" || name == "destination-prefix" || name == "destination-prefix")
         return true;
     return false;
 }
@@ -23494,9 +23494,9 @@ bool FibRoute::Output::Route::has_leaf_or_child_of_name(const std::string & name
 FibRoute::Output::Route::NextHop::NextHop()
     :
     outgoing_interface{YType::str, "outgoing-interface"},
-    ietf_routing_next_hop_address{YType::str, "ietf-routing_next-hop-address"},
-    ietf_ipv4_unicast_routing_next_hop_address{YType::str, "ietf-ipv4-unicast-routing:ietf-ipv4-unicast-routing_next-hop-address"},
-    ietf_ipv6_unicast_routing_next_hop_address{YType::str, "ietf-ipv6-unicast-routing:ietf-ipv6-unicast-routing_next-hop-address"},
+    ietf_routing_next_hop_address{YType::str, "next-hop-address"},
+    ietf_ipv4_unicast_routing_next_hop_address{YType::str, "ietf-ipv4-unicast-routing:next-hop-address"},
+    ietf_ipv6_unicast_routing_next_hop_address{YType::str, "ietf-ipv6-unicast-routing:next-hop-address"},
     special_next_hop{YType::enumeration, "special-next-hop"}
 {
 
@@ -23573,19 +23573,19 @@ void FibRoute::Output::Route::NextHop::set_value(const std::string & value_path,
         outgoing_interface.value_namespace = name_space;
         outgoing_interface.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-routing_next-hop-address")
+    if(value_path == "next-hop-address")
     {
         ietf_routing_next_hop_address = value;
         ietf_routing_next_hop_address.value_namespace = name_space;
         ietf_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv4-unicast-routing_next-hop-address")
+    if(value_path == "ietf-ipv4-unicast-routing:next-hop-address")
     {
         ietf_ipv4_unicast_routing_next_hop_address = value;
         ietf_ipv4_unicast_routing_next_hop_address.value_namespace = name_space;
         ietf_ipv4_unicast_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv6-unicast-routing_next-hop-address")
+    if(value_path == "ietf-ipv6-unicast-routing:next-hop-address")
     {
         ietf_ipv6_unicast_routing_next_hop_address = value;
         ietf_ipv6_unicast_routing_next_hop_address.value_namespace = name_space;
@@ -23605,15 +23605,15 @@ void FibRoute::Output::Route::NextHop::set_filter(const std::string & value_path
     {
         outgoing_interface.yfilter = yfilter;
     }
-    if(value_path == "ietf-routing_next-hop-address")
+    if(value_path == "next-hop-address")
     {
         ietf_routing_next_hop_address.yfilter = yfilter;
     }
-    if(value_path == "ietf-ipv4-unicast-routing_next-hop-address")
+    if(value_path == "next-hop-address")
     {
         ietf_ipv4_unicast_routing_next_hop_address.yfilter = yfilter;
     }
-    if(value_path == "ietf-ipv6-unicast-routing_next-hop-address")
+    if(value_path == "next-hop-address")
     {
         ietf_ipv6_unicast_routing_next_hop_address.yfilter = yfilter;
     }
@@ -23625,7 +23625,7 @@ void FibRoute::Output::Route::NextHop::set_filter(const std::string & value_path
 
 bool FibRoute::Output::Route::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "outgoing-interface" || name == "ietf-routing_next-hop-address" || name == "ietf-ipv4-unicast-routing_next-hop-address" || name == "ietf-ipv6-unicast-routing_next-hop-address" || name == "special-next-hop")
+    if(name == "outgoing-interface" || name == "next-hop-address" || name == "next-hop-address" || name == "next-hop-address" || name == "special-next-hop")
         return true;
     return false;
 }

@@ -223,7 +223,7 @@ void GetConfig::Input::set_value(const std::string & value_path, const std::stri
         filter.value_namespace = name_space;
         filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "with-defaults")
+    if(value_path == "ietf-netconf-with-defaults:with-defaults")
     {
         with_defaults = value;
         with_defaults.value_namespace = name_space;
@@ -1006,7 +1006,7 @@ std::map<std::string, std::shared_ptr<Entity>> CopyConfig::Input::get_children()
 
 void CopyConfig::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "with-defaults")
+    if(value_path == "ietf-netconf-with-defaults:with-defaults")
     {
         with_defaults = value;
         with_defaults.value_namespace = name_space;
@@ -2381,7 +2381,7 @@ void Get::Input::set_value(const std::string & value_path, const std::string & v
         filter.value_namespace = name_space;
         filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "with-defaults")
+    if(value_path == "ietf-netconf-with-defaults:with-defaults")
     {
         with_defaults = value;
         with_defaults.value_namespace = name_space;

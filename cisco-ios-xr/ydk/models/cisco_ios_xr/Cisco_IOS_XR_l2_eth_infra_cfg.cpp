@@ -70,7 +70,7 @@ std::shared_ptr<Entity> EthernetFeatures::get_child_by_name(const std::string & 
         return egress_filtering;
     }
 
-    if(child_yang_name == "cfm")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-cfg:cfm")
     {
         if(cfm == nullptr)
         {
@@ -79,7 +79,7 @@ std::shared_ptr<Entity> EthernetFeatures::get_child_by_name(const std::string & 
         return cfm;
     }
 
-    if(child_yang_name == "ether-link-oam")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-link-oam-cfg:ether-link-oam")
     {
         if(ether_link_oam == nullptr)
         {
@@ -101,12 +101,12 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::get_children() 
 
     if(cfm != nullptr)
     {
-        children["cfm"] = cfm;
+        children["Cisco-IOS-XR-ethernet-cfm-cfg:cfm"] = cfm;
     }
 
     if(ether_link_oam != nullptr)
     {
-        children["ether-link-oam"] = ether_link_oam;
+        children["Cisco-IOS-XR-ethernet-link-oam-cfg:ether-link-oam"] = ether_link_oam;
     }
 
     return children;

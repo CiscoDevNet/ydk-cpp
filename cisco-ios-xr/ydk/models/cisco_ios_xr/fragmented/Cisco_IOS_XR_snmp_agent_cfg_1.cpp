@@ -1018,7 +1018,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::get_name_leaf_data() const
 
 std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mpls-te-mib")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib")
     {
         if(mpls_te_mib == nullptr)
         {
@@ -1027,7 +1027,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return mpls_te_mib;
     }
 
-    if(child_yang_name == "mpls-p2mp-mib")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-p2mp-mib")
     {
         if(mpls_p2mp_mib == nullptr)
         {
@@ -1036,7 +1036,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return mpls_p2mp_mib;
     }
 
-    if(child_yang_name == "mpls-te-ext-std-mib")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-std-mib")
     {
         if(mpls_te_ext_std_mib == nullptr)
         {
@@ -1045,7 +1045,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return mpls_te_ext_std_mib;
     }
 
-    if(child_yang_name == "mpls-te-ext-mib")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-mib")
     {
         if(mpls_te_ext_mib == nullptr)
         {
@@ -1054,7 +1054,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return mpls_te_ext_mib;
     }
 
-    if(child_yang_name == "mpls-frr-mib")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib")
     {
         if(mpls_frr_mib == nullptr)
         {
@@ -1063,7 +1063,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return mpls_frr_mib;
     }
 
-    if(child_yang_name == "cb-qosmib")
+    if(child_yang_name == "Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib")
     {
         if(cb_qosmib == nullptr)
         {
@@ -1072,7 +1072,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return cb_qosmib;
     }
 
-    if(child_yang_name == "entity-mib")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib")
     {
         if(entity_mib == nullptr)
         {
@@ -1081,7 +1081,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return entity_mib;
     }
 
-    if(child_yang_name == "interface-mib")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib")
     {
         if(interface_mib == nullptr)
         {
@@ -1090,7 +1090,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
         return interface_mib;
     }
 
-    if(child_yang_name == "subscriber")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber")
     {
         if(subscriber == nullptr)
         {
@@ -1107,47 +1107,47 @@ std::map<std::string, std::shared_ptr<Entity>> Mib::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(mpls_te_mib != nullptr)
     {
-        children["mpls-te-mib"] = mpls_te_mib;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib"] = mpls_te_mib;
     }
 
     if(mpls_p2mp_mib != nullptr)
     {
-        children["mpls-p2mp-mib"] = mpls_p2mp_mib;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-p2mp-mib"] = mpls_p2mp_mib;
     }
 
     if(mpls_te_ext_std_mib != nullptr)
     {
-        children["mpls-te-ext-std-mib"] = mpls_te_ext_std_mib;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-std-mib"] = mpls_te_ext_std_mib;
     }
 
     if(mpls_te_ext_mib != nullptr)
     {
-        children["mpls-te-ext-mib"] = mpls_te_ext_mib;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-mib"] = mpls_te_ext_mib;
     }
 
     if(mpls_frr_mib != nullptr)
     {
-        children["mpls-frr-mib"] = mpls_frr_mib;
+        children["Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib"] = mpls_frr_mib;
     }
 
     if(cb_qosmib != nullptr)
     {
-        children["cb-qosmib"] = cb_qosmib;
+        children["Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib"] = cb_qosmib;
     }
 
     if(entity_mib != nullptr)
     {
-        children["entity-mib"] = entity_mib;
+        children["Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib"] = entity_mib;
     }
 
     if(interface_mib != nullptr)
     {
-        children["interface-mib"] = interface_mib;
+        children["Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib"] = interface_mib;
     }
 
     if(subscriber != nullptr)
     {
-        children["subscriber"] = subscriber;
+        children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber"] = subscriber;
     }
 
     return children;
@@ -1155,7 +1155,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mib::get_children() const
 
 void Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "sensor-mib-cache")
+    if(value_path == "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor-mib-cache")
     {
         sensor_mib_cache = value;
         sensor_mib_cache.value_namespace = name_space;

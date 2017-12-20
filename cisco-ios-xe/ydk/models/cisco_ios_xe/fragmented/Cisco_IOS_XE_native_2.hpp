@@ -800,10 +800,11 @@ class Native::Flow::Record::Collect::Connection::Delay::Response::ToServer : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf histogram; //type: empty
+        ydk::YLeaf histogram; //type: Histogram
         ydk::YLeaf max; //type: empty
         ydk::YLeaf min; //type: empty
         ydk::YLeaf sum; //type: empty
+        class Histogram;
 
 }; // Native::Flow::Record::Collect::Connection::Delay::Response::ToServer
 
@@ -1294,13 +1295,15 @@ class Native::Flow::Record::Collect::Datalink : public ydk::Entity
 
         ydk::YLeaf destination_vlan_id; //type: empty
         ydk::YLeaf ethertype; //type: empty
+        ydk::YLeaf vlan; //type: Vlan
         ydk::YLeaf source_vlan_id; //type: empty
         class Dot1Q; //type: Native::Flow::Record::Collect::Datalink::Dot1Q
         class Mac; //type: Native::Flow::Record::Collect::Datalink::Mac
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect::Datalink::Dot1Q> dot1q;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect::Datalink::Mac> mac;
-        
+                class Vlan;
+
 }; // Native::Flow::Record::Collect::Datalink
 
 
@@ -3516,6 +3519,29 @@ class Native::Flow::Record::Collect::Services::Waas::Segment : public ydk::Entit
         ydk::YLeaf account_on_resolution; //type: empty
 
 }; // Native::Flow::Record::Collect::Services::Waas::Segment
+
+class Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::Histogram : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf bucket1;
+        static const ydk::Enum::YLeaf bucket2;
+        static const ydk::Enum::YLeaf bucket3;
+        static const ydk::Enum::YLeaf bucket4;
+        static const ydk::Enum::YLeaf bucket5;
+        static const ydk::Enum::YLeaf bucket6;
+        static const ydk::Enum::YLeaf bucket7;
+        static const ydk::Enum::YLeaf late;
+
+};
+
+class Native::Flow::Record::Collect::Datalink::Vlan : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf input;
+        static const ydk::Enum::YLeaf output;
+
+};
 
 
 }

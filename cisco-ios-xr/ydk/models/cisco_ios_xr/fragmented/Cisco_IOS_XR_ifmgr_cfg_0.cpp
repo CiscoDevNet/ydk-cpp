@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_0.hpp"
-#include "Cisco_IOS_XR_ifmgr_cfg_1.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_2.hpp"
+#include "Cisco_IOS_XR_ifmgr_cfg_1.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_4.hpp"
 
 using namespace ydk;
@@ -305,15 +305,15 @@ InterfaceConfigurations::InterfaceConfiguration::InterfaceConfiguration()
 	,tunnel_te_attributes(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes>())
 	,transport_profile_tunnel(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel>())
 	,mte_tunnel_attributes(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes>())
-	,cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>())
+	,cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>())
 	,portmode(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Portmode>())
 	,pbr(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr>())
 	,performance_management(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement>())
 	,cisco_ios_xr_ppp_ma_cfg_ppp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaCfgPpp>())
-	,cisco_ios_xr_ppp_ma_fsm_cfg_ppp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp>())
-	,cisco_ios_xr_ppp_ma_ipcp_cfg_ppp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp>())
-	,cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp>())
-	,cisco_ios_xr_ppp_ma_lcp_cfg_ppp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp>())
+	,cisco_ios_xr_ppp_ma_fsm_cfg_ppp_(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp>())
+	,cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp>())
+	,cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp>())
+	,cisco_ios_xr_ppp_ma_lcp_cfg_ppp____(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp>())
 	,ssrp_session(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SsrpSession>())
 	,qos(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Qos>())
 	,subscriber(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Subscriber>())
@@ -375,15 +375,15 @@ InterfaceConfigurations::InterfaceConfiguration::InterfaceConfiguration()
     tunnel_te_attributes->parent = this;
     transport_profile_tunnel->parent = this;
     mte_tunnel_attributes->parent = this;
-    cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization->parent = this;
+    cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->parent = this;
     portmode->parent = this;
     pbr->parent = this;
     performance_management->parent = this;
     cisco_ios_xr_ppp_ma_cfg_ppp->parent = this;
-    cisco_ios_xr_ppp_ma_fsm_cfg_ppp->parent = this;
-    cisco_ios_xr_ppp_ma_ipcp_cfg_ppp->parent = this;
-    cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp->parent = this;
-    cisco_ios_xr_ppp_ma_lcp_cfg_ppp->parent = this;
+    cisco_ios_xr_ppp_ma_fsm_cfg_ppp_->parent = this;
+    cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__->parent = this;
+    cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___->parent = this;
+    cisco_ios_xr_ppp_ma_lcp_cfg_ppp____->parent = this;
     ssrp_session->parent = this;
     qos->parent = this;
     subscriber->parent = this;
@@ -471,15 +471,15 @@ bool InterfaceConfigurations::InterfaceConfiguration::has_data() const
 	|| (tunnel_te_attributes !=  nullptr && tunnel_te_attributes->has_data())
 	|| (transport_profile_tunnel !=  nullptr && transport_profile_tunnel->has_data())
 	|| (mte_tunnel_attributes !=  nullptr && mte_tunnel_attributes->has_data())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization->has_data())
+	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_data())
 	|| (portmode !=  nullptr && portmode->has_data())
 	|| (pbr !=  nullptr && pbr->has_data())
 	|| (performance_management !=  nullptr && performance_management->has_data())
 	|| (cisco_ios_xr_ppp_ma_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_cfg_ppp->has_data())
-	|| (cisco_ios_xr_ppp_ma_fsm_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_fsm_cfg_ppp->has_data())
-	|| (cisco_ios_xr_ppp_ma_ipcp_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_ipcp_cfg_ppp->has_data())
-	|| (cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp->has_data())
-	|| (cisco_ios_xr_ppp_ma_lcp_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_lcp_cfg_ppp->has_data())
+	|| (cisco_ios_xr_ppp_ma_fsm_cfg_ppp_ !=  nullptr && cisco_ios_xr_ppp_ma_fsm_cfg_ppp_->has_data())
+	|| (cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__ !=  nullptr && cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__->has_data())
+	|| (cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___ !=  nullptr && cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___->has_data())
+	|| (cisco_ios_xr_ppp_ma_lcp_cfg_ppp____ !=  nullptr && cisco_ios_xr_ppp_ma_lcp_cfg_ppp____->has_data())
 	|| (ssrp_session !=  nullptr && ssrp_session->has_data())
 	|| (qos !=  nullptr && qos->has_data())
 	|| (subscriber !=  nullptr && subscriber->has_data())
@@ -562,15 +562,15 @@ bool InterfaceConfigurations::InterfaceConfiguration::has_operation() const
 	|| (tunnel_te_attributes !=  nullptr && tunnel_te_attributes->has_operation())
 	|| (transport_profile_tunnel !=  nullptr && transport_profile_tunnel->has_operation())
 	|| (mte_tunnel_attributes !=  nullptr && mte_tunnel_attributes->has_operation())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization->has_operation())
+	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_operation())
 	|| (portmode !=  nullptr && portmode->has_operation())
 	|| (pbr !=  nullptr && pbr->has_operation())
 	|| (performance_management !=  nullptr && performance_management->has_operation())
 	|| (cisco_ios_xr_ppp_ma_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_cfg_ppp->has_operation())
-	|| (cisco_ios_xr_ppp_ma_fsm_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_fsm_cfg_ppp->has_operation())
-	|| (cisco_ios_xr_ppp_ma_ipcp_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_ipcp_cfg_ppp->has_operation())
-	|| (cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp->has_operation())
-	|| (cisco_ios_xr_ppp_ma_lcp_cfg_ppp !=  nullptr && cisco_ios_xr_ppp_ma_lcp_cfg_ppp->has_operation())
+	|| (cisco_ios_xr_ppp_ma_fsm_cfg_ppp_ !=  nullptr && cisco_ios_xr_ppp_ma_fsm_cfg_ppp_->has_operation())
+	|| (cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__ !=  nullptr && cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__->has_operation())
+	|| (cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___ !=  nullptr && cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___->has_operation())
+	|| (cisco_ios_xr_ppp_ma_lcp_cfg_ppp____ !=  nullptr && cisco_ios_xr_ppp_ma_lcp_cfg_ppp____->has_operation())
 	|| (ssrp_session !=  nullptr && ssrp_session->has_operation())
 	|| (qos !=  nullptr && qos->has_operation())
 	|| (subscriber !=  nullptr && subscriber->has_operation())
@@ -649,7 +649,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return encapsulation;
     }
 
-    if(child_yang_name == "aaa-table")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-aaacore-cfg:aaa-table")
     {
         if(aaa_table == nullptr)
         {
@@ -658,7 +658,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return aaa_table;
     }
 
-    if(child_yang_name == "ethernet-control")
+    if(child_yang_name == "Cisco-IOS-XR-asr9k-lc-ethctrl-cfg:ethernet-control")
     {
         if(ethernet_control == nullptr)
         {
@@ -667,7 +667,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ethernet_control;
     }
 
-    if(child_yang_name == "ptp")
+    if(child_yang_name == "Cisco-IOS-XR-ptp-cfg:ptp")
     {
         if(ptp == nullptr)
         {
@@ -676,7 +676,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ptp;
     }
 
-    if(child_yang_name == "pseudowire-ether")
+    if(child_yang_name == "Cisco-IOS-XR-l2vpn-cfg:pseudowire-ether")
     {
         if(pseudowire_ether == nullptr)
         {
@@ -685,7 +685,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return pseudowire_ether;
     }
 
-    if(child_yang_name == "pseudowire-iw")
+    if(child_yang_name == "Cisco-IOS-XR-l2vpn-cfg:pseudowire-iw")
     {
         if(pseudowire_iw == nullptr)
         {
@@ -694,7 +694,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return pseudowire_iw;
     }
 
-    if(child_yang_name == "bvi")
+    if(child_yang_name == "Cisco-IOS-XR-l2vpn-cfg:bvi")
     {
         if(bvi == nullptr)
         {
@@ -703,7 +703,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return bvi;
     }
 
-    if(child_yang_name == "l2-transport")
+    if(child_yang_name == "Cisco-IOS-XR-l2vpn-cfg:l2-transport")
     {
         if(l2_transport == nullptr)
         {
@@ -712,7 +712,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return l2_transport;
     }
 
-    if(child_yang_name == "atm")
+    if(child_yang_name == "Cisco-IOS-XR-atm-vcm-cfg:atm")
     {
         if(atm == nullptr)
         {
@@ -721,7 +721,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return atm;
     }
 
-    if(child_yang_name == "bfd")
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:bfd")
     {
         if(bfd == nullptr)
         {
@@ -730,7 +730,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return bfd;
     }
 
-    if(child_yang_name == "bundle")
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:bundle")
     {
         if(bundle == nullptr)
         {
@@ -739,7 +739,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return bundle;
     }
 
-    if(child_yang_name == "lacp")
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:lacp")
     {
         if(lacp == nullptr)
         {
@@ -748,7 +748,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return lacp;
     }
 
-    if(child_yang_name == "bundle-member")
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:bundle-member")
     {
         if(bundle_member == nullptr)
         {
@@ -757,7 +757,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return bundle_member;
     }
 
-    if(child_yang_name == "mlacp")
+    if(child_yang_name == "Cisco-IOS-XR-bundlemgr-cfg:mlacp")
     {
         if(mlacp == nullptr)
         {
@@ -766,7 +766,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return mlacp;
     }
 
-    if(child_yang_name == "cdp")
+    if(child_yang_name == "Cisco-IOS-XR-cdp-cfg:cdp")
     {
         if(cdp == nullptr)
         {
@@ -775,7 +775,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return cdp;
     }
 
-    if(child_yang_name == "optics")
+    if(child_yang_name == "Cisco-IOS-XR-controller-optics-cfg:optics")
     {
         if(optics == nullptr)
         {
@@ -784,7 +784,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return optics;
     }
 
-    if(child_yang_name == "otu")
+    if(child_yang_name == "Cisco-IOS-XR-controller-otu-cfg:otu")
     {
         if(otu == nullptr)
         {
@@ -793,7 +793,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return otu;
     }
 
-    if(child_yang_name == "macsec")
+    if(child_yang_name == "Cisco-IOS-XR-crypto-macsec-mka-if-cfg:macsec")
     {
         if(macsec == nullptr)
         {
@@ -802,7 +802,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return macsec;
     }
 
-    if(child_yang_name == "dot1x-interface")
+    if(child_yang_name == "Cisco-IOS-XR-dot1x-if-cfg:dot1x-interface")
     {
         if(dot1x_interface == nullptr)
         {
@@ -811,7 +811,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return dot1x_interface;
     }
 
-    if(child_yang_name == "loopbacks")
+    if(child_yang_name == "Cisco-IOS-XR-drivers-icpe-ethernet-cfg:loopbacks")
     {
         if(loopbacks == nullptr)
         {
@@ -820,7 +820,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return loopbacks;
     }
 
-    if(child_yang_name == "ethernet")
+    if(child_yang_name == "Cisco-IOS-XR-drivers-media-eth-cfg:ethernet")
     {
         if(ethernet == nullptr)
         {
@@ -829,7 +829,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ethernet;
     }
 
-    if(child_yang_name == "dwdm")
+    if(child_yang_name == "Cisco-IOS-XR-dwdm-ui-cfg:dwdm")
     {
         if(dwdm == nullptr)
         {
@@ -838,7 +838,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return dwdm;
     }
 
-    if(child_yang_name == "vlan-sub-configuration")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:vlan-sub-configuration")
     {
         if(vlan_sub_configuration == nullptr)
         {
@@ -847,7 +847,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return vlan_sub_configuration;
     }
 
-    if(child_yang_name == "ethernet-service")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:ethernet-service")
     {
         if(ethernet_service == nullptr)
         {
@@ -856,7 +856,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ethernet_service;
     }
 
-    if(child_yang_name == "ethernet-bng")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:ethernet-bng")
     {
         if(ethernet_bng == nullptr)
         {
@@ -865,7 +865,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ethernet_bng;
     }
 
-    if(child_yang_name == "mac-accounting")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:mac-accounting")
     {
         if(mac_accounting == nullptr)
         {
@@ -874,7 +874,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return mac_accounting;
     }
 
-    if(child_yang_name == "ethernet-features")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:ethernet-features")
     {
         if(ethernet_features == nullptr)
         {
@@ -883,7 +883,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ethernet_features;
     }
 
-    if(child_yang_name == "carrier-delay")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:carrier-delay")
     {
         if(carrier_delay == nullptr)
         {
@@ -892,7 +892,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return carrier_delay;
     }
 
-    if(child_yang_name == "vlan-trunk-configuration")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:vlan-trunk-configuration")
     {
         if(vlan_trunk_configuration == nullptr)
         {
@@ -901,7 +901,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return vlan_trunk_configuration;
     }
 
-    if(child_yang_name == "nv-satellite-access")
+    if(child_yang_name == "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-access")
     {
         if(nv_satellite_access == nullptr)
         {
@@ -910,7 +910,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return nv_satellite_access;
     }
 
-    if(child_yang_name == "nv-satellite-fabric-link")
+    if(child_yang_name == "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-fabric-link")
     {
         if(nv_satellite_fabric_link == nullptr)
         {
@@ -919,7 +919,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return nv_satellite_fabric_link;
     }
 
-    if(child_yang_name == "nv-satellite-fabric-network")
+    if(child_yang_name == "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-fabric-network")
     {
         if(nv_satellite_fabric_network == nullptr)
         {
@@ -928,7 +928,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return nv_satellite_fabric_network;
     }
 
-    if(child_yang_name == "lldp")
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-lldp-cfg:lldp")
     {
         if(lldp == nullptr)
         {
@@ -937,7 +937,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return lldp;
     }
 
-    if(child_yang_name == "span-monitor-sessions")
+    if(child_yang_name == "Cisco-IOS-XR-Ethernet-SPAN-cfg:span-monitor-sessions")
     {
         if(span_monitor_sessions == nullptr)
         {
@@ -946,7 +946,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return span_monitor_sessions;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization")
+    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization")
     {
         if(cisco_ios_xr_freqsync_cfg_frequency_synchronization == nullptr)
         {
@@ -955,7 +955,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return cisco_ios_xr_freqsync_cfg_frequency_synchronization;
     }
 
-    if(child_yang_name == "service-policies")
+    if(child_yang_name == "Cisco-IOS-XR-iedge4710-cfg:service-policies")
     {
         if(service_policies == nullptr)
         {
@@ -964,7 +964,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return service_policies;
     }
 
-    if(child_yang_name == "afs")
+    if(child_yang_name == "Cisco-IOS-XR-infra-rsi-cfg:afs")
     {
         if(afs == nullptr)
         {
@@ -973,7 +973,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return afs;
     }
 
-    if(child_yang_name == "statistics")
+    if(child_yang_name == "Cisco-IOS-XR-infra-statsd-cfg:statistics")
     {
         if(statistics == nullptr)
         {
@@ -982,7 +982,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return statistics;
     }
 
-    if(child_yang_name == "ipv6-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-cfg:ipv6-packet-filter")
     {
         if(ipv6_packet_filter == nullptr)
         {
@@ -991,7 +991,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ipv6_packet_filter;
     }
 
-    if(child_yang_name == "es-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-cfg:es-packet-filter")
     {
         if(es_packet_filter == nullptr)
         {
@@ -1000,7 +1000,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return es_packet_filter;
     }
 
-    if(child_yang_name == "ipv4-packet-filter")
+    if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-cfg:ipv4-packet-filter")
     {
         if(ipv4_packet_filter == nullptr)
         {
@@ -1009,7 +1009,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ipv4_packet_filter;
     }
 
-    if(child_yang_name == "dagrs")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-arp-cfg:dagrs")
     {
         if(dagrs == nullptr)
         {
@@ -1018,7 +1018,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return dagrs;
     }
 
-    if(child_yang_name == "ipv4arp")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-arp-cfg:ipv4arp")
     {
         if(ipv4arp == nullptr)
         {
@@ -1027,7 +1027,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ipv4arp;
     }
 
-    if(child_yang_name == "ipv4-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-io-cfg:ipv4-network")
     {
         if(ipv4_network == nullptr)
         {
@@ -1036,7 +1036,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ipv4_network;
     }
 
-    if(child_yang_name == "ipv4-network-forwarding")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-io-cfg:ipv4-network-forwarding")
     {
         if(ipv4_network_forwarding == nullptr)
         {
@@ -1045,7 +1045,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ipv4_network_forwarding;
     }
 
-    if(child_yang_name == "ipv6-network")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network")
     {
         if(ipv6_network == nullptr)
         {
@@ -1054,7 +1054,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ipv6_network;
     }
 
-    if(child_yang_name == "ipv6-neighbor")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-nd-cfg:ipv6-neighbor")
     {
         if(ipv6_neighbor == nullptr)
         {
@@ -1063,7 +1063,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ipv6_neighbor;
     }
 
-    if(child_yang_name == "mpls")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-io-cfg:mpls")
     {
         if(mpls == nullptr)
         {
@@ -1072,7 +1072,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return mpls;
     }
 
-    if(child_yang_name == "tunnel-te-attributes")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:tunnel-te-attributes")
     {
         if(tunnel_te_attributes == nullptr)
         {
@@ -1081,7 +1081,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return tunnel_te_attributes;
     }
 
-    if(child_yang_name == "transport-profile-tunnel")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:transport-profile-tunnel")
     {
         if(transport_profile_tunnel == nullptr)
         {
@@ -1090,7 +1090,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return transport_profile_tunnel;
     }
 
-    if(child_yang_name == "mte-tunnel-attributes")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mte-tunnel-attributes")
     {
         if(mte_tunnel_attributes == nullptr)
         {
@@ -1099,16 +1099,16 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return mte_tunnel_attributes;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization")
+    if(child_yang_name == "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization")
     {
-        if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization == nullptr)
+        if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ == nullptr)
         {
-            cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>();
+            cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>();
         }
-        return cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization;
+        return cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
     }
 
-    if(child_yang_name == "portmode")
+    if(child_yang_name == "Cisco-IOS-XR-ncs5500-coherent-portmode-cfg:portmode")
     {
         if(portmode == nullptr)
         {
@@ -1117,7 +1117,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return portmode;
     }
 
-    if(child_yang_name == "pbr")
+    if(child_yang_name == "Cisco-IOS-XR-pbr-cfg:pbr")
     {
         if(pbr == nullptr)
         {
@@ -1126,7 +1126,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return pbr;
     }
 
-    if(child_yang_name == "performance-management")
+    if(child_yang_name == "Cisco-IOS-XR-pmengine-cfg:performance-management")
     {
         if(performance_management == nullptr)
         {
@@ -1135,7 +1135,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return performance_management;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-cfg_ppp")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-cfg:ppp")
     {
         if(cisco_ios_xr_ppp_ma_cfg_ppp == nullptr)
         {
@@ -1144,43 +1144,43 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return cisco_ios_xr_ppp_ma_cfg_ppp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-fsm-cfg_ppp")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-fsm-cfg:ppp")
     {
-        if(cisco_ios_xr_ppp_ma_fsm_cfg_ppp == nullptr)
+        if(cisco_ios_xr_ppp_ma_fsm_cfg_ppp_ == nullptr)
         {
-            cisco_ios_xr_ppp_ma_fsm_cfg_ppp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp>();
+            cisco_ios_xr_ppp_ma_fsm_cfg_ppp_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaFsmCfgPpp>();
         }
-        return cisco_ios_xr_ppp_ma_fsm_cfg_ppp;
+        return cisco_ios_xr_ppp_ma_fsm_cfg_ppp_;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-ipcp-cfg_ppp")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-ipcp-cfg:ppp")
     {
-        if(cisco_ios_xr_ppp_ma_ipcp_cfg_ppp == nullptr)
+        if(cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__ == nullptr)
         {
-            cisco_ios_xr_ppp_ma_ipcp_cfg_ppp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp>();
+            cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpCfgPpp>();
         }
-        return cisco_ios_xr_ppp_ma_ipcp_cfg_ppp;
+        return cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-ipcpiw-cfg_ppp")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-ipcpiw-cfg:ppp")
     {
-        if(cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp == nullptr)
+        if(cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___ == nullptr)
         {
-            cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp>();
+            cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaIpcpiwCfgPpp>();
         }
-        return cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp;
+        return cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-lcp-cfg_ppp")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-lcp-cfg:ppp")
     {
-        if(cisco_ios_xr_ppp_ma_lcp_cfg_ppp == nullptr)
+        if(cisco_ios_xr_ppp_ma_lcp_cfg_ppp____ == nullptr)
         {
-            cisco_ios_xr_ppp_ma_lcp_cfg_ppp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp>();
+            cisco_ios_xr_ppp_ma_lcp_cfg_ppp____ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRPppMaLcpCfgPpp>();
         }
-        return cisco_ios_xr_ppp_ma_lcp_cfg_ppp;
+        return cisco_ios_xr_ppp_ma_lcp_cfg_ppp____;
     }
 
-    if(child_yang_name == "ssrp-session")
+    if(child_yang_name == "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-session")
     {
         if(ssrp_session == nullptr)
         {
@@ -1189,7 +1189,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return ssrp_session;
     }
 
-    if(child_yang_name == "qos")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-cfg:qos")
     {
         if(qos == nullptr)
         {
@@ -1198,7 +1198,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return qos;
     }
 
-    if(child_yang_name == "subscriber")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-ipsub-cfg:subscriber")
     {
         if(subscriber == nullptr)
         {
@@ -1207,7 +1207,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return subscriber;
     }
 
-    if(child_yang_name == "pppoe")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-pppoe-ma-cmd-cfg:pppoe")
     {
         if(pppoe == nullptr)
         {
@@ -1216,7 +1216,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return pppoe;
     }
 
-    if(child_yang_name == "net-flow")
+    if(child_yang_name == "Cisco-IOS-XR-traffmon-netflow-cfg:net-flow")
     {
         if(net_flow == nullptr)
         {
@@ -1225,7 +1225,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return net_flow;
     }
 
-    if(child_yang_name == "tunnel-ip")
+    if(child_yang_name == "Cisco-IOS-XR-tunnel-gre-cfg:tunnel-ip")
     {
         if(tunnel_ip == nullptr)
         {
@@ -1234,7 +1234,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return tunnel_ip;
     }
 
-    if(child_yang_name == "nve")
+    if(child_yang_name == "Cisco-IOS-XR-tunnel-nve-cfg:nve")
     {
         if(nve == nullptr)
         {
@@ -1243,7 +1243,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
         return nve;
     }
 
-    if(child_yang_name == "wanphy")
+    if(child_yang_name == "Cisco-IOS-XR-wanphy-ui-cfg:wanphy")
     {
         if(wanphy == nullptr)
         {
@@ -1275,337 +1275,337 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
 
     if(aaa_table != nullptr)
     {
-        children["aaa-table"] = aaa_table;
+        children["Cisco-IOS-XR-aaa-aaacore-cfg:aaa-table"] = aaa_table;
     }
 
     if(ethernet_control != nullptr)
     {
-        children["ethernet-control"] = ethernet_control;
+        children["Cisco-IOS-XR-asr9k-lc-ethctrl-cfg:ethernet-control"] = ethernet_control;
     }
 
     if(ptp != nullptr)
     {
-        children["ptp"] = ptp;
+        children["Cisco-IOS-XR-ptp-cfg:ptp"] = ptp;
     }
 
     if(pseudowire_ether != nullptr)
     {
-        children["pseudowire-ether"] = pseudowire_ether;
+        children["Cisco-IOS-XR-l2vpn-cfg:pseudowire-ether"] = pseudowire_ether;
     }
 
     if(pseudowire_iw != nullptr)
     {
-        children["pseudowire-iw"] = pseudowire_iw;
+        children["Cisco-IOS-XR-l2vpn-cfg:pseudowire-iw"] = pseudowire_iw;
     }
 
     if(bvi != nullptr)
     {
-        children["bvi"] = bvi;
+        children["Cisco-IOS-XR-l2vpn-cfg:bvi"] = bvi;
     }
 
     if(l2_transport != nullptr)
     {
-        children["l2-transport"] = l2_transport;
+        children["Cisco-IOS-XR-l2vpn-cfg:l2-transport"] = l2_transport;
     }
 
     if(atm != nullptr)
     {
-        children["atm"] = atm;
+        children["Cisco-IOS-XR-atm-vcm-cfg:atm"] = atm;
     }
 
     if(bfd != nullptr)
     {
-        children["bfd"] = bfd;
+        children["Cisco-IOS-XR-bundlemgr-cfg:bfd"] = bfd;
     }
 
     if(bundle != nullptr)
     {
-        children["bundle"] = bundle;
+        children["Cisco-IOS-XR-bundlemgr-cfg:bundle"] = bundle;
     }
 
     if(lacp != nullptr)
     {
-        children["lacp"] = lacp;
+        children["Cisco-IOS-XR-bundlemgr-cfg:lacp"] = lacp;
     }
 
     if(bundle_member != nullptr)
     {
-        children["bundle-member"] = bundle_member;
+        children["Cisco-IOS-XR-bundlemgr-cfg:bundle-member"] = bundle_member;
     }
 
     if(mlacp != nullptr)
     {
-        children["mlacp"] = mlacp;
+        children["Cisco-IOS-XR-bundlemgr-cfg:mlacp"] = mlacp;
     }
 
     if(cdp != nullptr)
     {
-        children["cdp"] = cdp;
+        children["Cisco-IOS-XR-cdp-cfg:cdp"] = cdp;
     }
 
     if(optics != nullptr)
     {
-        children["optics"] = optics;
+        children["Cisco-IOS-XR-controller-optics-cfg:optics"] = optics;
     }
 
     if(otu != nullptr)
     {
-        children["otu"] = otu;
+        children["Cisco-IOS-XR-controller-otu-cfg:otu"] = otu;
     }
 
     if(macsec != nullptr)
     {
-        children["macsec"] = macsec;
+        children["Cisco-IOS-XR-crypto-macsec-mka-if-cfg:macsec"] = macsec;
     }
 
     if(dot1x_interface != nullptr)
     {
-        children["dot1x-interface"] = dot1x_interface;
+        children["Cisco-IOS-XR-dot1x-if-cfg:dot1x-interface"] = dot1x_interface;
     }
 
     if(loopbacks != nullptr)
     {
-        children["loopbacks"] = loopbacks;
+        children["Cisco-IOS-XR-drivers-icpe-ethernet-cfg:loopbacks"] = loopbacks;
     }
 
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        children["Cisco-IOS-XR-drivers-media-eth-cfg:ethernet"] = ethernet;
     }
 
     if(dwdm != nullptr)
     {
-        children["dwdm"] = dwdm;
+        children["Cisco-IOS-XR-dwdm-ui-cfg:dwdm"] = dwdm;
     }
 
     if(vlan_sub_configuration != nullptr)
     {
-        children["vlan-sub-configuration"] = vlan_sub_configuration;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:vlan-sub-configuration"] = vlan_sub_configuration;
     }
 
     if(ethernet_service != nullptr)
     {
-        children["ethernet-service"] = ethernet_service;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:ethernet-service"] = ethernet_service;
     }
 
     if(ethernet_bng != nullptr)
     {
-        children["ethernet-bng"] = ethernet_bng;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:ethernet-bng"] = ethernet_bng;
     }
 
     if(mac_accounting != nullptr)
     {
-        children["mac-accounting"] = mac_accounting;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:mac-accounting"] = mac_accounting;
     }
 
     if(ethernet_features != nullptr)
     {
-        children["ethernet-features"] = ethernet_features;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:ethernet-features"] = ethernet_features;
     }
 
     if(carrier_delay != nullptr)
     {
-        children["carrier-delay"] = carrier_delay;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:carrier-delay"] = carrier_delay;
     }
 
     if(vlan_trunk_configuration != nullptr)
     {
-        children["vlan-trunk-configuration"] = vlan_trunk_configuration;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:vlan-trunk-configuration"] = vlan_trunk_configuration;
     }
 
     if(nv_satellite_access != nullptr)
     {
-        children["nv-satellite-access"] = nv_satellite_access;
+        children["Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-access"] = nv_satellite_access;
     }
 
     if(nv_satellite_fabric_link != nullptr)
     {
-        children["nv-satellite-fabric-link"] = nv_satellite_fabric_link;
+        children["Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-fabric-link"] = nv_satellite_fabric_link;
     }
 
     if(nv_satellite_fabric_network != nullptr)
     {
-        children["nv-satellite-fabric-network"] = nv_satellite_fabric_network;
+        children["Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-fabric-network"] = nv_satellite_fabric_network;
     }
 
     if(lldp != nullptr)
     {
-        children["lldp"] = lldp;
+        children["Cisco-IOS-XR-ethernet-lldp-cfg:lldp"] = lldp;
     }
 
     if(span_monitor_sessions != nullptr)
     {
-        children["span-monitor-sessions"] = span_monitor_sessions;
+        children["Cisco-IOS-XR-Ethernet-SPAN-cfg:span-monitor-sessions"] = span_monitor_sessions;
     }
 
     if(cisco_ios_xr_freqsync_cfg_frequency_synchronization != nullptr)
     {
-        children["Cisco-IOS-XR-freqsync-cfg_frequency-synchronization"] = cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_freqsync_cfg_frequency_synchronization;
     }
 
     if(service_policies != nullptr)
     {
-        children["service-policies"] = service_policies;
+        children["Cisco-IOS-XR-iedge4710-cfg:service-policies"] = service_policies;
     }
 
     if(afs != nullptr)
     {
-        children["afs"] = afs;
+        children["Cisco-IOS-XR-infra-rsi-cfg:afs"] = afs;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        children["Cisco-IOS-XR-infra-statsd-cfg:statistics"] = statistics;
     }
 
     if(ipv6_packet_filter != nullptr)
     {
-        children["ipv6-packet-filter"] = ipv6_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
     }
 
     if(es_packet_filter != nullptr)
     {
-        children["es-packet-filter"] = es_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-cfg:es-packet-filter"] = es_packet_filter;
     }
 
     if(ipv4_packet_filter != nullptr)
     {
-        children["ipv4-packet-filter"] = ipv4_packet_filter;
+        children["Cisco-IOS-XR-ip-pfilter-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
     }
 
     if(dagrs != nullptr)
     {
-        children["dagrs"] = dagrs;
+        children["Cisco-IOS-XR-ipv4-arp-cfg:dagrs"] = dagrs;
     }
 
     if(ipv4arp != nullptr)
     {
-        children["ipv4arp"] = ipv4arp;
+        children["Cisco-IOS-XR-ipv4-arp-cfg:ipv4arp"] = ipv4arp;
     }
 
     if(ipv4_network != nullptr)
     {
-        children["ipv4-network"] = ipv4_network;
+        children["Cisco-IOS-XR-ipv4-io-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv4_network_forwarding != nullptr)
     {
-        children["ipv4-network-forwarding"] = ipv4_network_forwarding;
+        children["Cisco-IOS-XR-ipv4-io-cfg:ipv4-network-forwarding"] = ipv4_network_forwarding;
     }
 
     if(ipv6_network != nullptr)
     {
-        children["ipv6-network"] = ipv6_network;
+        children["Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network"] = ipv6_network;
     }
 
     if(ipv6_neighbor != nullptr)
     {
-        children["ipv6-neighbor"] = ipv6_neighbor;
+        children["Cisco-IOS-XR-ipv6-nd-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        children["Cisco-IOS-XR-mpls-io-cfg:mpls"] = mpls;
     }
 
     if(tunnel_te_attributes != nullptr)
     {
-        children["tunnel-te-attributes"] = tunnel_te_attributes;
+        children["Cisco-IOS-XR-mpls-te-cfg:tunnel-te-attributes"] = tunnel_te_attributes;
     }
 
     if(transport_profile_tunnel != nullptr)
     {
-        children["transport-profile-tunnel"] = transport_profile_tunnel;
+        children["Cisco-IOS-XR-mpls-te-cfg:transport-profile-tunnel"] = transport_profile_tunnel;
     }
 
     if(mte_tunnel_attributes != nullptr)
     {
-        children["mte-tunnel-attributes"] = mte_tunnel_attributes;
+        children["Cisco-IOS-XR-mpls-te-cfg:mte-tunnel-attributes"] = mte_tunnel_attributes;
     }
 
-    if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization != nullptr)
+    if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ != nullptr)
     {
-        children["Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization"] = cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization;
+        children["Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
     }
 
     if(portmode != nullptr)
     {
-        children["portmode"] = portmode;
+        children["Cisco-IOS-XR-ncs5500-coherent-portmode-cfg:portmode"] = portmode;
     }
 
     if(pbr != nullptr)
     {
-        children["pbr"] = pbr;
+        children["Cisco-IOS-XR-pbr-cfg:pbr"] = pbr;
     }
 
     if(performance_management != nullptr)
     {
-        children["performance-management"] = performance_management;
+        children["Cisco-IOS-XR-pmengine-cfg:performance-management"] = performance_management;
     }
 
     if(cisco_ios_xr_ppp_ma_cfg_ppp != nullptr)
     {
-        children["Cisco-IOS-XR-ppp-ma-cfg_ppp"] = cisco_ios_xr_ppp_ma_cfg_ppp;
+        children["Cisco-IOS-XR-ppp-ma-cfg:ppp"] = cisco_ios_xr_ppp_ma_cfg_ppp;
     }
 
-    if(cisco_ios_xr_ppp_ma_fsm_cfg_ppp != nullptr)
+    if(cisco_ios_xr_ppp_ma_fsm_cfg_ppp_ != nullptr)
     {
-        children["Cisco-IOS-XR-ppp-ma-fsm-cfg_ppp"] = cisco_ios_xr_ppp_ma_fsm_cfg_ppp;
+        children["Cisco-IOS-XR-ppp-ma-fsm-cfg:ppp"] = cisco_ios_xr_ppp_ma_fsm_cfg_ppp_;
     }
 
-    if(cisco_ios_xr_ppp_ma_ipcp_cfg_ppp != nullptr)
+    if(cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__ != nullptr)
     {
-        children["Cisco-IOS-XR-ppp-ma-ipcp-cfg_ppp"] = cisco_ios_xr_ppp_ma_ipcp_cfg_ppp;
+        children["Cisco-IOS-XR-ppp-ma-ipcp-cfg:ppp"] = cisco_ios_xr_ppp_ma_ipcp_cfg_ppp__;
     }
 
-    if(cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp != nullptr)
+    if(cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___ != nullptr)
     {
-        children["Cisco-IOS-XR-ppp-ma-ipcpiw-cfg_ppp"] = cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp;
+        children["Cisco-IOS-XR-ppp-ma-ipcpiw-cfg:ppp"] = cisco_ios_xr_ppp_ma_ipcpiw_cfg_ppp___;
     }
 
-    if(cisco_ios_xr_ppp_ma_lcp_cfg_ppp != nullptr)
+    if(cisco_ios_xr_ppp_ma_lcp_cfg_ppp____ != nullptr)
     {
-        children["Cisco-IOS-XR-ppp-ma-lcp-cfg_ppp"] = cisco_ios_xr_ppp_ma_lcp_cfg_ppp;
+        children["Cisco-IOS-XR-ppp-ma-lcp-cfg:ppp"] = cisco_ios_xr_ppp_ma_lcp_cfg_ppp____;
     }
 
     if(ssrp_session != nullptr)
     {
-        children["ssrp-session"] = ssrp_session;
+        children["Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-session"] = ssrp_session;
     }
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        children["Cisco-IOS-XR-qos-ma-cfg:qos"] = qos;
     }
 
     if(subscriber != nullptr)
     {
-        children["subscriber"] = subscriber;
+        children["Cisco-IOS-XR-subscriber-ipsub-cfg:subscriber"] = subscriber;
     }
 
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        children["Cisco-IOS-XR-subscriber-pppoe-ma-cmd-cfg:pppoe"] = pppoe;
     }
 
     if(net_flow != nullptr)
     {
-        children["net-flow"] = net_flow;
+        children["Cisco-IOS-XR-traffmon-netflow-cfg:net-flow"] = net_flow;
     }
 
     if(tunnel_ip != nullptr)
     {
-        children["tunnel-ip"] = tunnel_ip;
+        children["Cisco-IOS-XR-tunnel-gre-cfg:tunnel-ip"] = tunnel_ip;
     }
 
     if(nve != nullptr)
     {
-        children["nve"] = nve;
+        children["Cisco-IOS-XR-tunnel-nve-cfg:nve"] = nve;
     }
 
     if(wanphy != nullptr)
     {
-        children["wanphy"] = wanphy;
+        children["Cisco-IOS-XR-wanphy-ui-cfg:wanphy"] = wanphy;
     }
 
     return children;
@@ -1667,43 +1667,43 @@ void InterfaceConfigurations::InterfaceConfiguration::set_value(const std::strin
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "laser-squelch")
+    if(value_path == "Cisco-IOS-XR-drivers-icpe-ethernet-cfg:laser-squelch")
     {
         laser_squelch = value;
         laser_squelch.value_namespace = name_space;
         laser_squelch.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "perf-mon-disable")
+    if(value_path == "Cisco-IOS-XR-drivers-icpe-ethernet-cfg:perf-mon-disable")
     {
         perf_mon_disable = value;
         perf_mon_disable.value_namespace = name_space;
         perf_mon_disable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "maintenance-embargo")
+    if(value_path == "Cisco-IOS-XR-dwdm-ui-cfg:maintenance-embargo")
     {
         maintenance_embargo = value;
         maintenance_embargo.value_namespace = name_space;
         maintenance_embargo.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "vrf")
+    if(value_path == "Cisco-IOS-XR-infra-rsi-cfg:vrf")
     {
         vrf = value;
         vrf.value_namespace = name_space;
         vrf.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "track-name")
+    if(value_path == "Cisco-IOS-XR-manageability-object-tracking-cfg:track-name")
     {
         track_name = value;
         track_name.value_namespace = name_space;
         track_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fast-shutdown")
+    if(value_path == "Cisco-IOS-XR-mdrv-lib-cfg:fast-shutdown")
     {
         fast_shutdown = value;
         fast_shutdown.value_namespace = name_space;
         fast_shutdown.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mac-addr")
+    if(value_path == "Cisco-IOS-XR-mdrv-lib-cfg:mac-addr")
     {
         mac_addr = value;
         mac_addr.value_namespace = name_space;
@@ -1781,7 +1781,7 @@ void InterfaceConfigurations::InterfaceConfiguration::set_filter(const std::stri
 
 bool InterfaceConfigurations::InterfaceConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dampening" || name == "mtus" || name == "encapsulation" || name == "aaa-table" || name == "ethernet-control" || name == "ptp" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "bvi" || name == "l2-transport" || name == "atm" || name == "bfd" || name == "bundle" || name == "lacp" || name == "bundle-member" || name == "mlacp" || name == "cdp" || name == "optics" || name == "otu" || name == "macsec" || name == "dot1x-interface" || name == "loopbacks" || name == "ethernet" || name == "dwdm" || name == "vlan-sub-configuration" || name == "ethernet-service" || name == "ethernet-bng" || name == "mac-accounting" || name == "ethernet-features" || name == "carrier-delay" || name == "vlan-trunk-configuration" || name == "nv-satellite-access" || name == "nv-satellite-fabric-link" || name == "nv-satellite-fabric-network" || name == "lldp" || name == "span-monitor-sessions" || name == "Cisco-IOS-XR-freqsync-cfg_frequency-synchronization" || name == "service-policies" || name == "afs" || name == "statistics" || name == "ipv6-packet-filter" || name == "es-packet-filter" || name == "ipv4-packet-filter" || name == "dagrs" || name == "ipv4arp" || name == "ipv4-network" || name == "ipv4-network-forwarding" || name == "ipv6-network" || name == "ipv6-neighbor" || name == "mpls" || name == "tunnel-te-attributes" || name == "transport-profile-tunnel" || name == "mte-tunnel-attributes" || name == "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization" || name == "portmode" || name == "pbr" || name == "performance-management" || name == "Cisco-IOS-XR-ppp-ma-cfg_ppp" || name == "Cisco-IOS-XR-ppp-ma-fsm-cfg_ppp" || name == "Cisco-IOS-XR-ppp-ma-ipcp-cfg_ppp" || name == "Cisco-IOS-XR-ppp-ma-ipcpiw-cfg_ppp" || name == "Cisco-IOS-XR-ppp-ma-lcp-cfg_ppp" || name == "ssrp-session" || name == "qos" || name == "subscriber" || name == "pppoe" || name == "net-flow" || name == "tunnel-ip" || name == "nve" || name == "wanphy" || name == "active" || name == "interface-name" || name == "shutdown" || name == "interface-virtual" || name == "secondary-admin-state" || name == "interface-mode-non-physical" || name == "bandwidth" || name == "link-status" || name == "description" || name == "laser-squelch" || name == "perf-mon-disable" || name == "maintenance-embargo" || name == "vrf" || name == "track-name" || name == "fast-shutdown" || name == "mac-addr")
+    if(name == "dampening" || name == "mtus" || name == "encapsulation" || name == "aaa-table" || name == "ethernet-control" || name == "ptp" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "bvi" || name == "l2-transport" || name == "atm" || name == "bfd" || name == "bundle" || name == "lacp" || name == "bundle-member" || name == "mlacp" || name == "cdp" || name == "optics" || name == "otu" || name == "macsec" || name == "dot1x-interface" || name == "loopbacks" || name == "ethernet" || name == "dwdm" || name == "vlan-sub-configuration" || name == "ethernet-service" || name == "ethernet-bng" || name == "mac-accounting" || name == "ethernet-features" || name == "carrier-delay" || name == "vlan-trunk-configuration" || name == "nv-satellite-access" || name == "nv-satellite-fabric-link" || name == "nv-satellite-fabric-network" || name == "lldp" || name == "span-monitor-sessions" || name == "frequency-synchronization" || name == "service-policies" || name == "afs" || name == "statistics" || name == "ipv6-packet-filter" || name == "es-packet-filter" || name == "ipv4-packet-filter" || name == "dagrs" || name == "ipv4arp" || name == "ipv4-network" || name == "ipv4-network-forwarding" || name == "ipv6-network" || name == "ipv6-neighbor" || name == "mpls" || name == "tunnel-te-attributes" || name == "transport-profile-tunnel" || name == "mte-tunnel-attributes" || name == "frequency-synchronization" || name == "portmode" || name == "pbr" || name == "performance-management" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ssrp-session" || name == "qos" || name == "subscriber" || name == "pppoe" || name == "net-flow" || name == "tunnel-ip" || name == "nve" || name == "wanphy" || name == "active" || name == "interface-name" || name == "shutdown" || name == "interface-virtual" || name == "secondary-admin-state" || name == "interface-mode-non-physical" || name == "bandwidth" || name == "link-status" || name == "description" || name == "laser-squelch" || name == "perf-mon-disable" || name == "maintenance-embargo" || name == "vrf" || name == "track-name" || name == "fast-shutdown" || name == "mac-addr")
         return true;
     return false;
 }
@@ -5196,7 +5196,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::Interfac
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "atm-port-mode-parameters")
+    if(child_yang_name == "Cisco-IOS-XR-atm-vcm-cfg:atm-port-mode-parameters")
     {
         if(atm_port_mode_parameters == nullptr)
         {
@@ -5205,7 +5205,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
         return atm_port_mode_parameters;
     }
 
-    if(child_yang_name == "l2-protocols")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:l2-protocols")
     {
         if(l2_protocols == nullptr)
         {
@@ -5214,7 +5214,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
         return l2_protocols;
     }
 
-    if(child_yang_name == "l2-ethernet-features")
+    if(child_yang_name == "Cisco-IOS-XR-l2-eth-infra-cfg:l2-ethernet-features")
     {
         if(l2_ethernet_features == nullptr)
         {
@@ -5223,7 +5223,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
         return l2_ethernet_features;
     }
 
-    if(child_yang_name == "span-monitor-sessions")
+    if(child_yang_name == "Cisco-IOS-XR-Ethernet-SPAN-cfg:span-monitor-sessions")
     {
         if(span_monitor_sessions == nullptr)
         {
@@ -5232,7 +5232,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
         return span_monitor_sessions;
     }
 
-    if(child_yang_name == "pac")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-cfg:pac")
     {
         if(pac == nullptr)
         {
@@ -5241,7 +5241,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
         return pac;
     }
 
-    if(child_yang_name == "cac")
+    if(child_yang_name == "Cisco-IOS-XR-qos-ma-cfg:cac")
     {
         if(cac == nullptr)
         {
@@ -5258,32 +5258,32 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(atm_port_mode_parameters != nullptr)
     {
-        children["atm-port-mode-parameters"] = atm_port_mode_parameters;
+        children["Cisco-IOS-XR-atm-vcm-cfg:atm-port-mode-parameters"] = atm_port_mode_parameters;
     }
 
     if(l2_protocols != nullptr)
     {
-        children["l2-protocols"] = l2_protocols;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:l2-protocols"] = l2_protocols;
     }
 
     if(l2_ethernet_features != nullptr)
     {
-        children["l2-ethernet-features"] = l2_ethernet_features;
+        children["Cisco-IOS-XR-l2-eth-infra-cfg:l2-ethernet-features"] = l2_ethernet_features;
     }
 
     if(span_monitor_sessions != nullptr)
     {
-        children["span-monitor-sessions"] = span_monitor_sessions;
+        children["Cisco-IOS-XR-Ethernet-SPAN-cfg:span-monitor-sessions"] = span_monitor_sessions;
     }
 
     if(pac != nullptr)
     {
-        children["pac"] = pac;
+        children["Cisco-IOS-XR-qos-ma-cfg:pac"] = pac;
     }
 
     if(cac != nullptr)
     {
-        children["cac"] = cac;
+        children["Cisco-IOS-XR-qos-ma-cfg:cac"] = cac;
     }
 
     return children;
@@ -5297,7 +5297,7 @@ void InterfaceConfigurations::InterfaceConfiguration::L2Transport::set_value(con
         enabled.value_namespace = name_space;
         enabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "propagate-remote-status")
+    if(value_path == "Cisco-IOS-XR-l2-eth-infra-cfg:propagate-remote-status")
     {
         propagate_remote_status = value;
         propagate_remote_status.value_namespace = name_space;
@@ -14309,7 +14309,7 @@ void InterfaceConfigurations::InterfaceConfiguration::Optics::set_value(const st
         optics_cd_low_threshold.value_namespace = name_space;
         optics_cd_low_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "breakout")
+    if(value_path == "Cisco-IOS-XR-optics-driver-cfg:breakout")
     {
         breakout = value;
         breakout.value_namespace = name_space;

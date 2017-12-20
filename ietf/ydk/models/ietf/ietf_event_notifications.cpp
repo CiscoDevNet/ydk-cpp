@@ -348,13 +348,13 @@ void EstablishSubscription::Input::set_value(const std::string & value_path, con
         filter_ref.value_namespace = name_space;
         filter_ref.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subtree-filter")
+    if(value_path == "ietf-yang-push:subtree-filter")
     {
         subtree_filter = value;
         subtree_filter.value_namespace = name_space;
         subtree_filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xpath-filter")
+    if(value_path == "ietf-yang-push:xpath-filter")
     {
         xpath_filter = value;
         xpath_filter.value_namespace = name_space;
@@ -372,47 +372,47 @@ void EstablishSubscription::Input::set_value(const std::string & value_path, con
         stoptime.value_namespace = name_space;
         stoptime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "period")
+    if(value_path == "ietf-yang-push:period")
     {
         period = value;
         period.value_namespace = name_space;
         period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "anchor-time")
+    if(value_path == "ietf-yang-push:anchor-time")
     {
         anchor_time = value;
         anchor_time.value_namespace = name_space;
         anchor_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-synch-on-start")
+    if(value_path == "ietf-yang-push:no-synch-on-start")
     {
         no_synch_on_start = value;
         no_synch_on_start.value_namespace = name_space;
         no_synch_on_start.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dampening-period")
+    if(value_path == "ietf-yang-push:dampening-period")
     {
         dampening_period = value;
         dampening_period.value_namespace = name_space;
         dampening_period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "excluded-change")
+    if(value_path == "ietf-yang-push:excluded-change")
     {
         excluded_change.append(value);
     }
-    if(value_path == "dscp")
+    if(value_path == "ietf-yang-push:dscp")
     {
         dscp = value;
         dscp.value_namespace = name_space;
         dscp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-priority")
+    if(value_path == "ietf-yang-push:subscription-priority")
     {
         subscription_priority = value;
         subscription_priority.value_namespace = name_space;
         subscription_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-dependency")
+    if(value_path == "ietf-yang-push:subscription-dependency")
     {
         subscription_dependency = value;
         subscription_dependency.value_namespace = name_space;
@@ -669,13 +669,13 @@ void EstablishSubscription::Output::set_value(const std::string & value_path, co
         filter_ref.value_namespace = name_space;
         filter_ref.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subtree-filter")
+    if(value_path == "ietf-yang-push:subtree-filter")
     {
         subtree_filter = value;
         subtree_filter.value_namespace = name_space;
         subtree_filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xpath-filter")
+    if(value_path == "ietf-yang-push:xpath-filter")
     {
         xpath_filter = value;
         xpath_filter.value_namespace = name_space;
@@ -693,47 +693,47 @@ void EstablishSubscription::Output::set_value(const std::string & value_path, co
         stoptime.value_namespace = name_space;
         stoptime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "period")
+    if(value_path == "ietf-yang-push:period")
     {
         period = value;
         period.value_namespace = name_space;
         period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "anchor-time")
+    if(value_path == "ietf-yang-push:anchor-time")
     {
         anchor_time = value;
         anchor_time.value_namespace = name_space;
         anchor_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-synch-on-start")
+    if(value_path == "ietf-yang-push:no-synch-on-start")
     {
         no_synch_on_start = value;
         no_synch_on_start.value_namespace = name_space;
         no_synch_on_start.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dampening-period")
+    if(value_path == "ietf-yang-push:dampening-period")
     {
         dampening_period = value;
         dampening_period.value_namespace = name_space;
         dampening_period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "excluded-change")
+    if(value_path == "ietf-yang-push:excluded-change")
     {
         excluded_change.append(value);
     }
-    if(value_path == "dscp")
+    if(value_path == "ietf-yang-push:dscp")
     {
         dscp = value;
         dscp.value_namespace = name_space;
         dscp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-priority")
+    if(value_path == "ietf-yang-push:subscription-priority")
     {
         subscription_priority = value;
         subscription_priority.value_namespace = name_space;
         subscription_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-dependency")
+    if(value_path == "ietf-yang-push:subscription-dependency")
     {
         subscription_dependency = value;
         subscription_dependency.value_namespace = name_space;
@@ -1323,13 +1323,13 @@ void ModifySubscription::Input::set_value(const std::string & value_path, const 
         filter_ref.value_namespace = name_space;
         filter_ref.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subtree-filter")
+    if(value_path == "ietf-yang-push:subtree-filter")
     {
         subtree_filter = value;
         subtree_filter.value_namespace = name_space;
         subtree_filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xpath-filter")
+    if(value_path == "ietf-yang-push:xpath-filter")
     {
         xpath_filter = value;
         xpath_filter.value_namespace = name_space;
@@ -1347,31 +1347,31 @@ void ModifySubscription::Input::set_value(const std::string & value_path, const 
         stoptime.value_namespace = name_space;
         stoptime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "period")
+    if(value_path == "ietf-yang-push:period")
     {
         period = value;
         period.value_namespace = name_space;
         period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "anchor-time")
+    if(value_path == "ietf-yang-push:anchor-time")
     {
         anchor_time = value;
         anchor_time.value_namespace = name_space;
         anchor_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-synch-on-start")
+    if(value_path == "ietf-yang-push:no-synch-on-start")
     {
         no_synch_on_start = value;
         no_synch_on_start.value_namespace = name_space;
         no_synch_on_start.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dampening-period")
+    if(value_path == "ietf-yang-push:dampening-period")
     {
         dampening_period = value;
         dampening_period.value_namespace = name_space;
         dampening_period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "excluded-change")
+    if(value_path == "ietf-yang-push:excluded-change")
     {
         excluded_change.append(value);
     }
@@ -1610,13 +1610,13 @@ void ModifySubscription::Output::set_value(const std::string & value_path, const
         filter_ref.value_namespace = name_space;
         filter_ref.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subtree-filter")
+    if(value_path == "ietf-yang-push:subtree-filter")
     {
         subtree_filter = value;
         subtree_filter.value_namespace = name_space;
         subtree_filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xpath-filter")
+    if(value_path == "ietf-yang-push:xpath-filter")
     {
         xpath_filter = value;
         xpath_filter.value_namespace = name_space;
@@ -1634,47 +1634,47 @@ void ModifySubscription::Output::set_value(const std::string & value_path, const
         stoptime.value_namespace = name_space;
         stoptime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "period")
+    if(value_path == "ietf-yang-push:period")
     {
         period = value;
         period.value_namespace = name_space;
         period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "anchor-time")
+    if(value_path == "ietf-yang-push:anchor-time")
     {
         anchor_time = value;
         anchor_time.value_namespace = name_space;
         anchor_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-synch-on-start")
+    if(value_path == "ietf-yang-push:no-synch-on-start")
     {
         no_synch_on_start = value;
         no_synch_on_start.value_namespace = name_space;
         no_synch_on_start.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dampening-period")
+    if(value_path == "ietf-yang-push:dampening-period")
     {
         dampening_period = value;
         dampening_period.value_namespace = name_space;
         dampening_period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "excluded-change")
+    if(value_path == "ietf-yang-push:excluded-change")
     {
         excluded_change.append(value);
     }
-    if(value_path == "dscp")
+    if(value_path == "ietf-yang-push:dscp")
     {
         dscp = value;
         dscp.value_namespace = name_space;
         dscp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-priority")
+    if(value_path == "ietf-yang-push:subscription-priority")
     {
         subscription_priority = value;
         subscription_priority.value_namespace = name_space;
         subscription_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-dependency")
+    if(value_path == "ietf-yang-push:subscription-dependency")
     {
         subscription_dependency = value;
         subscription_dependency.value_namespace = name_space;
@@ -2367,13 +2367,13 @@ void Filters::Filter::set_value(const std::string & value_path, const std::strin
         filter.value_namespace = name_space;
         filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subtree-filter")
+    if(value_path == "ietf-yang-push:subtree-filter")
     {
         subtree_filter = value;
         subtree_filter.value_namespace = name_space;
         subtree_filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xpath-filter")
+    if(value_path == "ietf-yang-push:xpath-filter")
     {
         xpath_filter = value;
         xpath_filter.value_namespace = name_space;
@@ -2721,13 +2721,13 @@ void SubscriptionConfig::Subscription::set_value(const std::string & value_path,
         filter_ref.value_namespace = name_space;
         filter_ref.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subtree-filter")
+    if(value_path == "ietf-yang-push:subtree-filter")
     {
         subtree_filter = value;
         subtree_filter.value_namespace = name_space;
         subtree_filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xpath-filter")
+    if(value_path == "ietf-yang-push:xpath-filter")
     {
         xpath_filter = value;
         xpath_filter.value_namespace = name_space;
@@ -2763,47 +2763,47 @@ void SubscriptionConfig::Subscription::set_value(const std::string & value_path,
         source_address.value_namespace = name_space;
         source_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "period")
+    if(value_path == "ietf-yang-push:period")
     {
         period = value;
         period.value_namespace = name_space;
         period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "anchor-time")
+    if(value_path == "ietf-yang-push:anchor-time")
     {
         anchor_time = value;
         anchor_time.value_namespace = name_space;
         anchor_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-synch-on-start")
+    if(value_path == "ietf-yang-push:no-synch-on-start")
     {
         no_synch_on_start = value;
         no_synch_on_start.value_namespace = name_space;
         no_synch_on_start.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dampening-period")
+    if(value_path == "ietf-yang-push:dampening-period")
     {
         dampening_period = value;
         dampening_period.value_namespace = name_space;
         dampening_period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "excluded-change")
+    if(value_path == "ietf-yang-push:excluded-change")
     {
         excluded_change.append(value);
     }
-    if(value_path == "dscp")
+    if(value_path == "ietf-yang-push:dscp")
     {
         dscp = value;
         dscp.value_namespace = name_space;
         dscp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-priority")
+    if(value_path == "ietf-yang-push:subscription-priority")
     {
         subscription_priority = value;
         subscription_priority.value_namespace = name_space;
         subscription_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-dependency")
+    if(value_path == "ietf-yang-push:subscription-dependency")
     {
         subscription_dependency = value;
         subscription_dependency.value_namespace = name_space;
@@ -3432,13 +3432,13 @@ void Subscriptions::Subscription::set_value(const std::string & value_path, cons
         filter_ref.value_namespace = name_space;
         filter_ref.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subtree-filter")
+    if(value_path == "ietf-yang-push:subtree-filter")
     {
         subtree_filter = value;
         subtree_filter.value_namespace = name_space;
         subtree_filter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xpath-filter")
+    if(value_path == "ietf-yang-push:xpath-filter")
     {
         xpath_filter = value;
         xpath_filter.value_namespace = name_space;
@@ -3474,47 +3474,47 @@ void Subscriptions::Subscription::set_value(const std::string & value_path, cons
         source_address.value_namespace = name_space;
         source_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "period")
+    if(value_path == "ietf-yang-push:period")
     {
         period = value;
         period.value_namespace = name_space;
         period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "anchor-time")
+    if(value_path == "ietf-yang-push:anchor-time")
     {
         anchor_time = value;
         anchor_time.value_namespace = name_space;
         anchor_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "no-synch-on-start")
+    if(value_path == "ietf-yang-push:no-synch-on-start")
     {
         no_synch_on_start = value;
         no_synch_on_start.value_namespace = name_space;
         no_synch_on_start.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dampening-period")
+    if(value_path == "ietf-yang-push:dampening-period")
     {
         dampening_period = value;
         dampening_period.value_namespace = name_space;
         dampening_period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "excluded-change")
+    if(value_path == "ietf-yang-push:excluded-change")
     {
         excluded_change.append(value);
     }
-    if(value_path == "dscp")
+    if(value_path == "ietf-yang-push:dscp")
     {
         dscp = value;
         dscp.value_namespace = name_space;
         dscp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-priority")
+    if(value_path == "ietf-yang-push:subscription-priority")
     {
         subscription_priority = value;
         subscription_priority.value_namespace = name_space;
         subscription_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "subscription-dependency")
+    if(value_path == "ietf-yang-push:subscription-dependency")
     {
         subscription_dependency = value;
         subscription_dependency.value_namespace = name_space;

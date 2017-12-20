@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_rcmd_oper_0.hpp"
-#include "Cisco_IOS_XR_infra_rcmd_oper_2.hpp"
 #include "Cisco_IOS_XR_infra_rcmd_oper_1.hpp"
+#include "Cisco_IOS_XR_infra_rcmd_oper_2.hpp"
 
 using namespace ydk;
 

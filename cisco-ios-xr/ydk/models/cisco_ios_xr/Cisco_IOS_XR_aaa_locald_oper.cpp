@@ -165,7 +165,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return current_usergroup;
     }
 
-    if(child_yang_name == "diameter")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-diameter-oper:diameter")
     {
         if(diameter == nullptr)
         {
@@ -174,7 +174,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return diameter;
     }
 
-    if(child_yang_name == "radius")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-protocol-radius-oper:radius")
     {
         if(radius == nullptr)
         {
@@ -183,7 +183,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return radius;
     }
 
-    if(child_yang_name == "tacacs")
+    if(child_yang_name == "Cisco-IOS-XR-aaa-tacacs-oper:tacacs")
     {
         if(tacacs == nullptr)
         {
@@ -240,17 +240,17 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
 
     if(diameter != nullptr)
     {
-        children["diameter"] = diameter;
+        children["Cisco-IOS-XR-aaa-diameter-oper:diameter"] = diameter;
     }
 
     if(radius != nullptr)
     {
-        children["radius"] = radius;
+        children["Cisco-IOS-XR-aaa-protocol-radius-oper:radius"] = radius;
     }
 
     if(tacacs != nullptr)
     {
-        children["tacacs"] = tacacs;
+        children["Cisco-IOS-XR-aaa-tacacs-oper:tacacs"] = tacacs;
     }
 
     return children;

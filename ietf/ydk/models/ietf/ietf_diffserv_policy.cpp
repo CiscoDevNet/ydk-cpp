@@ -1296,7 +1296,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "marking-cfg")
+    if(child_yang_name == "ietf-diffserv-action:marking-cfg")
     {
         if(marking_cfg == nullptr)
         {
@@ -1305,7 +1305,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
         return marking_cfg;
     }
 
-    if(child_yang_name == "priority-cfg")
+    if(child_yang_name == "ietf-diffserv-action:priority-cfg")
     {
         if(priority_cfg == nullptr)
         {
@@ -1314,7 +1314,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
         return priority_cfg;
     }
 
-    if(child_yang_name == "meter-cfg")
+    if(child_yang_name == "ietf-diffserv-action:meter-cfg")
     {
         if(meter_cfg == nullptr)
         {
@@ -1323,7 +1323,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
         return meter_cfg;
     }
 
-    if(child_yang_name == "min-rate-cfg")
+    if(child_yang_name == "ietf-diffserv-action:min-rate-cfg")
     {
         if(min_rate_cfg == nullptr)
         {
@@ -1332,7 +1332,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
         return min_rate_cfg;
     }
 
-    if(child_yang_name == "max-rate-cfg")
+    if(child_yang_name == "ietf-diffserv-action:max-rate-cfg")
     {
         if(max_rate_cfg == nullptr)
         {
@@ -1341,7 +1341,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
         return max_rate_cfg;
     }
 
-    if(child_yang_name == "drop-cfg")
+    if(child_yang_name == "ietf-diffserv-action:drop-cfg")
     {
         if(drop_cfg == nullptr)
         {
@@ -1350,7 +1350,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
         return drop_cfg;
     }
 
-    if(child_yang_name == "tail-drop-cfg")
+    if(child_yang_name == "ietf-diffserv-action:tail-drop-cfg")
     {
         if(tail_drop_cfg == nullptr)
         {
@@ -1359,7 +1359,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
         return tail_drop_cfg;
     }
 
-    if(child_yang_name == "random-detect-cfg")
+    if(child_yang_name == "ietf-diffserv-action:random-detect-cfg")
     {
         if(random_detect_cfg == nullptr)
         {
@@ -1376,42 +1376,42 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(marking_cfg != nullptr)
     {
-        children["marking-cfg"] = marking_cfg;
+        children["ietf-diffserv-action:marking-cfg"] = marking_cfg;
     }
 
     if(priority_cfg != nullptr)
     {
-        children["priority-cfg"] = priority_cfg;
+        children["ietf-diffserv-action:priority-cfg"] = priority_cfg;
     }
 
     if(meter_cfg != nullptr)
     {
-        children["meter-cfg"] = meter_cfg;
+        children["ietf-diffserv-action:meter-cfg"] = meter_cfg;
     }
 
     if(min_rate_cfg != nullptr)
     {
-        children["min-rate-cfg"] = min_rate_cfg;
+        children["ietf-diffserv-action:min-rate-cfg"] = min_rate_cfg;
     }
 
     if(max_rate_cfg != nullptr)
     {
-        children["max-rate-cfg"] = max_rate_cfg;
+        children["ietf-diffserv-action:max-rate-cfg"] = max_rate_cfg;
     }
 
     if(drop_cfg != nullptr)
     {
-        children["drop-cfg"] = drop_cfg;
+        children["ietf-diffserv-action:drop-cfg"] = drop_cfg;
     }
 
     if(tail_drop_cfg != nullptr)
     {
-        children["tail-drop-cfg"] = tail_drop_cfg;
+        children["ietf-diffserv-action:tail-drop-cfg"] = tail_drop_cfg;
     }
 
     if(random_detect_cfg != nullptr)
     {
-        children["random-detect-cfg"] = random_detect_cfg;
+        children["ietf-diffserv-action:random-detect-cfg"] = random_detect_cfg;
     }
 
     return children;

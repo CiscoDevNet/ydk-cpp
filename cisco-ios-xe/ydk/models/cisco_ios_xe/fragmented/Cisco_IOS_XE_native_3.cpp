@@ -8202,7 +8202,7 @@ bool Native::Flow::Record::Default_::Collect::Connection::Delay::Response::Clien
 
 Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::ToServer()
     :
-    histogram{YType::empty, "histogram"},
+    histogram{YType::enumeration, "histogram"},
     max{YType::empty, "max"},
     min{YType::empty, "min"},
     sum{YType::empty, "sum"}
@@ -10219,6 +10219,7 @@ Native::Flow::Record::Default_::Collect::Datalink::Datalink()
     :
     destination_vlan_id{YType::empty, "destination-vlan-id"},
     ethertype{YType::empty, "ethertype"},
+    vlan{YType::enumeration, "vlan"},
     source_vlan_id{YType::empty, "source-vlan-id"}
     	,
     dot1q(std::make_shared<Native::Flow::Record::Default_::Collect::Datalink::Dot1Q>())
@@ -10238,6 +10239,7 @@ bool Native::Flow::Record::Default_::Collect::Datalink::has_data() const
 {
     return destination_vlan_id.is_set
 	|| ethertype.is_set
+	|| vlan.is_set
 	|| source_vlan_id.is_set
 	|| (dot1q !=  nullptr && dot1q->has_data())
 	|| (mac !=  nullptr && mac->has_data());
@@ -10248,6 +10250,7 @@ bool Native::Flow::Record::Default_::Collect::Datalink::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(destination_vlan_id.yfilter)
 	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(vlan.yfilter)
 	|| ydk::is_set(source_vlan_id.yfilter)
 	|| (dot1q !=  nullptr && dot1q->has_operation())
 	|| (mac !=  nullptr && mac->has_operation());
@@ -10266,6 +10269,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default_::C
 
     if (destination_vlan_id.is_set || is_set(destination_vlan_id.yfilter)) leaf_name_data.push_back(destination_vlan_id.get_name_leafdata());
     if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
     if (source_vlan_id.is_set || is_set(source_vlan_id.yfilter)) leaf_name_data.push_back(source_vlan_id.get_name_leafdata());
 
     return leaf_name_data;
@@ -10325,6 +10329,12 @@ void Native::Flow::Record::Default_::Collect::Datalink::set_value(const std::str
         ethertype.value_namespace = name_space;
         ethertype.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "source-vlan-id")
     {
         source_vlan_id = value;
@@ -10343,6 +10353,10 @@ void Native::Flow::Record::Default_::Collect::Datalink::set_filter(const std::st
     {
         ethertype.yfilter = yfilter;
     }
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
     if(value_path == "source-vlan-id")
     {
         source_vlan_id.yfilter = yfilter;
@@ -10351,7 +10365,7 @@ void Native::Flow::Record::Default_::Collect::Datalink::set_filter(const std::st
 
 bool Native::Flow::Record::Default_::Collect::Datalink::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dot1q" || name == "mac" || name == "destination-vlan-id" || name == "ethertype" || name == "source-vlan-id")
+    if(name == "dot1q" || name == "mac" || name == "destination-vlan-id" || name == "ethertype" || name == "vlan" || name == "source-vlan-id")
         return true;
     return false;
 }
@@ -15408,6 +15422,19 @@ bool Native::Flow::Record::Default_::Collect::Mpls::Label::One::has_leaf_or_chil
         return true;
     return false;
 }
+
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::all {0, "all"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::bucket1 {1, "bucket1"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::bucket2 {2, "bucket2"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::bucket3 {3, "bucket3"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::bucket4 {4, "bucket4"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::bucket5 {5, "bucket5"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::bucket6 {6, "bucket6"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::bucket7 {7, "bucket7"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Connection::Delay::Response::ToServer::Histogram::late {8, "late"};
+
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Datalink::Vlan::input {0, "input"};
+const Enum::YLeaf Native::Flow::Record::Default_::Collect::Datalink::Vlan::output {1, "output"};
 
 
 }

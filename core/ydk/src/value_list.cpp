@@ -26,13 +26,16 @@
 //////////////////////////////////////////////////////////////////
 
 #include <iostream>
+#include <sstream>
 
 #include "errors.hpp"
 #include "types.hpp"
 
+using namespace std;
+
 namespace ydk {
 
-std::string to_string(YType t)
+string to_string(YType t)
 {
 #define TOSTRING(t) case YType::t: return #t
     switch(t)
@@ -56,7 +59,7 @@ std::string to_string(YType t)
     return "";
 }
 
-YLeafList::YLeafList(YType type, std::string name)
+YLeafList::YLeafList(YType type, const std::string & name)
     : yfilter(YFilter::not_set), type(type), name(name)
 {
 }
@@ -203,7 +206,7 @@ void YLeafList::append(Bits val)
     values.push_back(value);
 }
 
-void YLeafList::append(std::string val)
+void YLeafList::append(string val)
 {
     YLeaf value {type, name};
     value = val;
@@ -240,7 +243,7 @@ YLeaf & YLeafList::operator [] (size_t key)
     return values[key];
 }
 
-std::vector<YLeaf> YLeafList::getYLeafs() const
+vector<YLeaf> YLeafList::getYLeafs() const
 {
     return values;
 }
@@ -257,7 +260,7 @@ std::vector<std::pair<std::string, LeafData> > YLeafList::get_name_leafdata() co
     {
         name_values.push_back(
                             {
-                                (value.get_name_leafdata().first+"[.='"+value.get()+"']"),
+                                (value.get_name_leafdata().first+"[.=\""+value.get()+"\"]"),
                                 {"", yfilter, value.is_set, value.value_namespace, value.value_namespace_prefix}
                             }
                             );

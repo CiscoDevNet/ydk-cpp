@@ -703,127 +703,127 @@ void IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::set_value(const std::string &
         ipmroutehcoctets.value_namespace = name_space;
         ipmroutehcoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRoutePruneFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRoutePruneFlag")
     {
         ciscoipmroutepruneflag = value;
         ciscoipmroutepruneflag.value_namespace = name_space;
         ciscoipmroutepruneflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteSparseFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteSparseFlag")
     {
         ciscoipmroutesparseflag = value;
         ciscoipmroutesparseflag.value_namespace = name_space;
         ciscoipmroutesparseflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteConnectedFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteConnectedFlag")
     {
         ciscoipmrouteconnectedflag = value;
         ciscoipmrouteconnectedflag.value_namespace = name_space;
         ciscoipmrouteconnectedflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteLocalFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteLocalFlag")
     {
         ciscoipmroutelocalflag = value;
         ciscoipmroutelocalflag.value_namespace = name_space;
         ciscoipmroutelocalflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteRegisterFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteRegisterFlag")
     {
         ciscoipmrouteregisterflag = value;
         ciscoipmrouteregisterflag.value_namespace = name_space;
         ciscoipmrouteregisterflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteRpFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteRpFlag")
     {
         ciscoipmrouterpflag = value;
         ciscoipmrouterpflag.value_namespace = name_space;
         ciscoipmrouterpflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteSptFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteSptFlag")
     {
         ciscoipmroutesptflag = value;
         ciscoipmroutesptflag.value_namespace = name_space;
         ciscoipmroutesptflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteBps")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteBps")
     {
         ciscoipmroutebps = value;
         ciscoipmroutebps.value_namespace = name_space;
         ciscoipmroutebps.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteMetric")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteMetric")
     {
         ciscoipmroutemetric = value;
         ciscoipmroutemetric.value_namespace = name_space;
         ciscoipmroutemetric.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteMetricPreference")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteMetricPreference")
     {
         ciscoipmroutemetricpreference = value;
         ciscoipmroutemetricpreference.value_namespace = name_space;
         ciscoipmroutemetricpreference.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteInLimit")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteInLimit")
     {
         ciscoipmrouteinlimit = value;
         ciscoipmrouteinlimit.value_namespace = name_space;
         ciscoipmrouteinlimit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteLastUsed")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteLastUsed")
     {
         ciscoipmroutelastused = value;
         ciscoipmroutelastused.value_namespace = name_space;
         ciscoipmroutelastused.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteInLimit2")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteInLimit2")
     {
         ciscoipmrouteinlimit2 = value;
         ciscoipmrouteinlimit2.value_namespace = name_space;
         ciscoipmrouteinlimit2.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteJoinFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteJoinFlag")
     {
         ciscoipmroutejoinflag = value;
         ciscoipmroutejoinflag.value_namespace = name_space;
         ciscoipmroutejoinflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteMsdpFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteMsdpFlag")
     {
         ciscoipmroutemsdpflag = value;
         ciscoipmroutemsdpflag.value_namespace = name_space;
         ciscoipmroutemsdpflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteProxyJoinFlag")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteProxyJoinFlag")
     {
         ciscoipmrouteproxyjoinflag = value;
         ciscoipmrouteproxyjoinflag.value_namespace = name_space;
         ciscoipmrouteproxyjoinflag.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRoutePkts")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRoutePkts")
     {
         ciscoipmroutepkts = value;
         ciscoipmroutepkts.value_namespace = name_space;
         ciscoipmroutepkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteDifferentInIfPkts")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteDifferentInIfPkts")
     {
         ciscoipmroutedifferentinifpkts = value;
         ciscoipmroutedifferentinifpkts.value_namespace = name_space;
         ciscoipmroutedifferentinifpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteOctets")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteOctets")
     {
         ciscoipmrouteoctets = value;
         ciscoipmrouteoctets.value_namespace = name_space;
         ciscoipmrouteoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteBps2")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteBps2")
     {
         ciscoipmroutebps2 = value;
         ciscoipmroutebps2.value_namespace = name_space;
         ciscoipmroutebps2.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteMetric2")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteMetric2")
     {
         ciscoipmroutemetric2 = value;
         ciscoipmroutemetric2.value_namespace = name_space;
@@ -1268,19 +1268,19 @@ void IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::set_value(const
         ipmroutenexthoppkts.value_namespace = name_space;
         ipmroutenexthoppkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteNextHopOutLimit")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopOutLimit")
     {
         ciscoipmroutenexthopoutlimit = value;
         ciscoipmroutenexthopoutlimit.value_namespace = name_space;
         ciscoipmroutenexthopoutlimit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteNextHopMacHdr")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopMacHdr")
     {
         ciscoipmroutenexthopmachdr = value;
         ciscoipmroutenexthopmachdr.value_namespace = name_space;
         ciscoipmroutenexthopmachdr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteNextHopPkts")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopPkts")
     {
         ciscoipmroutenexthoppkts = value;
         ciscoipmroutenexthoppkts.value_namespace = name_space;
@@ -1615,37 +1615,37 @@ void IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_value(c
         ipmrouteinterfacehcoutmcastoctets.value_namespace = name_space;
         ipmrouteinterfacehcoutmcastoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteIfInMcastOctets")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfInMcastOctets")
     {
         ciscoipmrouteifinmcastoctets = value;
         ciscoipmrouteifinmcastoctets.value_namespace = name_space;
         ciscoipmrouteifinmcastoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteIfOutMcastOctets")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfOutMcastOctets")
     {
         ciscoipmrouteifoutmcastoctets = value;
         ciscoipmrouteifoutmcastoctets.value_namespace = name_space;
         ciscoipmrouteifoutmcastoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteIfInMcastPkts")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfInMcastPkts")
     {
         ciscoipmrouteifinmcastpkts = value;
         ciscoipmrouteifinmcastpkts.value_namespace = name_space;
         ciscoipmrouteifinmcastpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteIfHCInMcastPkts")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfHCInMcastPkts")
     {
         ciscoipmrouteifhcinmcastpkts = value;
         ciscoipmrouteifhcinmcastpkts.value_namespace = name_space;
         ciscoipmrouteifhcinmcastpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteIfOutMcastPkts")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfOutMcastPkts")
     {
         ciscoipmrouteifoutmcastpkts = value;
         ciscoipmrouteifoutmcastpkts.value_namespace = name_space;
         ciscoipmrouteifoutmcastpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ciscoIpMRouteIfHCOutMcastPkts")
+    if(value_path == "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfHCOutMcastPkts")
     {
         ciscoipmrouteifhcoutmcastpkts = value;
         ciscoipmrouteifhcoutmcastpkts.value_namespace = name_space;

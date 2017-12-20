@@ -11343,7 +11343,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequ
     input_quality_level->parent = this;
     output_quality_level->parent = this;
 
-    yang_name = "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frequency-synchronization"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::~CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization()
@@ -11378,7 +11378,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfg
 std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ncs4k-freqsync-cfg:Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization";
+    path_buffer << "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization";
     return path_buffer.str();
 }
 
@@ -11519,7 +11519,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequ
     max_quality_level_value{YType::enumeration, "max-quality-level-value"}
 {
 
-    yang_name = "input-quality-level"; yang_parent_name = "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::~InputQualityLevel()
@@ -11637,7 +11637,7 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequ
     max_quality_level_value{YType::enumeration, "max-quality-level-value"}
 {
 
-    yang_name = "output-quality-level"; yang_parent_name = "Cisco-IOS-XR-ncs4k-freqsync-cfg_frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()

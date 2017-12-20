@@ -829,187 +829,187 @@ void ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::set_value(const std::
         atminterfacesubscraddress.value_namespace = name_space;
         atminterfacesubscraddress.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmIntfPvcFailures")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailures")
     {
         atmintfpvcfailures = value;
         atmintfpvcfailures.value_namespace = name_space;
         atmintfpvcfailures.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmIntfCurrentlyFailingPVcls")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfCurrentlyFailingPVcls")
     {
         atmintfcurrentlyfailingpvcls = value;
         atmintfcurrentlyfailingpvcls.value_namespace = name_space;
         atmintfcurrentlyfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmIntfPvcFailuresTrapEnable")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailuresTrapEnable")
     {
         atmintfpvcfailurestrapenable = value;
         atmintfpvcfailurestrapenable.value_namespace = name_space;
         atmintfpvcfailurestrapenable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmIntfPvcNotificationInterval")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcNotificationInterval")
     {
         atmintfpvcnotificationinterval = value;
         atmintfpvcnotificationinterval.value_namespace = name_space;
         atmintfpvcnotificationinterval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmPreviouslyFailedPVclInterval")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB:atmPreviouslyFailedPVclInterval")
     {
         atmpreviouslyfailedpvclinterval = value;
         atmpreviouslyfailedpvclinterval.value_namespace = name_space;
         atmpreviouslyfailedpvclinterval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurrentlyDownToUpPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurrentlyDownToUpPVcls")
     {
         catmintfcurrentlydowntouppvcls = value;
         catmintfcurrentlydowntouppvcls.value_namespace = name_space;
         catmintfcurrentlydowntouppvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfOAMFailedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfOAMFailedPVcls")
     {
         catmintfoamfailedpvcls = value;
         catmintfoamfailedpvcls.value_namespace = name_space;
         catmintfoamfailedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurrentOAMFailingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurrentOAMFailingPVcls")
     {
         catmintfcurrentoamfailingpvcls = value;
         catmintfcurrentoamfailingpvcls.value_namespace = name_space;
         catmintfcurrentoamfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfSegCCOAMFailedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfSegCCOAMFailedPVcls")
     {
         catmintfsegccoamfailedpvcls = value;
         catmintfsegccoamfailedpvcls.value_namespace = name_space;
         catmintfsegccoamfailedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurSegCCOAMFailingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurSegCCOAMFailingPVcls")
     {
         catmintfcursegccoamfailingpvcls = value;
         catmintfcursegccoamfailingpvcls.value_namespace = name_space;
         catmintfcursegccoamfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfEndCCOAMFailedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfEndCCOAMFailedPVcls")
     {
         catmintfendccoamfailedpvcls = value;
         catmintfendccoamfailedpvcls.value_namespace = name_space;
         catmintfendccoamfailedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurEndCCOAMFailingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurEndCCOAMFailingPVcls")
     {
         catmintfcurendccoamfailingpvcls = value;
         catmintfcurendccoamfailingpvcls.value_namespace = name_space;
         catmintfcurendccoamfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfAISRDIOAMFailedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfAISRDIOAMFailedPVcls")
     {
         catmintfaisrdioamfailedpvcls = value;
         catmintfaisrdioamfailedpvcls.value_namespace = name_space;
         catmintfaisrdioamfailedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurAISRDIOAMFailingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAISRDIOAMFailingPVcls")
     {
         catmintfcuraisrdioamfailingpvcls = value;
         catmintfcuraisrdioamfailingpvcls.value_namespace = name_space;
         catmintfcuraisrdioamfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfAnyOAMFailedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfAnyOAMFailedPVcls")
     {
         catmintfanyoamfailedpvcls = value;
         catmintfanyoamfailedpvcls.value_namespace = name_space;
         catmintfanyoamfailedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurAnyOAMFailingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAnyOAMFailingPVcls")
     {
         catmintfcuranyoamfailingpvcls = value;
         catmintfcuranyoamfailingpvcls.value_namespace = name_space;
         catmintfcuranyoamfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfTypeOfOAMFailure")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfTypeOfOAMFailure")
     {
         catmintftypeofoamfailure = value;
         catmintftypeofoamfailure.value_namespace = name_space;
         catmintftypeofoamfailure.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfOAMRcovedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfOAMRcovedPVcls")
     {
         catmintfoamrcovedpvcls = value;
         catmintfoamrcovedpvcls.value_namespace = name_space;
         catmintfoamrcovedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurrentOAMRcovingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurrentOAMRcovingPVcls")
     {
         catmintfcurrentoamrcovingpvcls = value;
         catmintfcurrentoamrcovingpvcls.value_namespace = name_space;
         catmintfcurrentoamrcovingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfSegCCOAMRcovedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfSegCCOAMRcovedPVcls")
     {
         catmintfsegccoamrcovedpvcls = value;
         catmintfsegccoamrcovedpvcls.value_namespace = name_space;
         catmintfsegccoamrcovedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurSegCCOAMRcovingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurSegCCOAMRcovingPVcls")
     {
         catmintfcursegccoamrcovingpvcls = value;
         catmintfcursegccoamrcovingpvcls.value_namespace = name_space;
         catmintfcursegccoamrcovingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfEndCCOAMRcovedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfEndCCOAMRcovedPVcls")
     {
         catmintfendccoamrcovedpvcls = value;
         catmintfendccoamrcovedpvcls.value_namespace = name_space;
         catmintfendccoamrcovedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurEndCCOAMRcovingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurEndCCOAMRcovingPVcls")
     {
         catmintfcurendccoamrcovingpvcls = value;
         catmintfcurendccoamrcovingpvcls.value_namespace = name_space;
         catmintfcurendccoamrcovingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfAISRDIOAMRcovedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfAISRDIOAMRcovedPVcls")
     {
         catmintfaisrdioamrcovedpvcls = value;
         catmintfaisrdioamrcovedpvcls.value_namespace = name_space;
         catmintfaisrdioamrcovedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurAISRDIOAMRcovingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAISRDIOAMRcovingPVcls")
     {
         catmintfcuraisrdioamrcovingpvcls = value;
         catmintfcuraisrdioamrcovingpvcls.value_namespace = name_space;
         catmintfcuraisrdioamrcovingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfAnyOAMRcovedPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfAnyOAMRcovedPVcls")
     {
         catmintfanyoamrcovedpvcls = value;
         catmintfanyoamrcovedpvcls.value_namespace = name_space;
         catmintfanyoamrcovedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfCurAnyOAMRcovingPVcls")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAnyOAMRcovingPVcls")
     {
         catmintfcuranyoamrcovingpvcls = value;
         catmintfcuranyoamrcovingpvcls.value_namespace = name_space;
         catmintfcuranyoamrcovingpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmIntfTypeOfOAMRecover")
+    if(value_path == "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfTypeOfOAMRecover")
     {
         catmintftypeofoamrecover = value;
         catmintftypeofoamrecover.value_namespace = name_space;
         catmintftypeofoamrecover.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmIntfCurrentlyDownToUpPVcls")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls")
     {
         atmintfcurrentlydowntouppvcls = value;
         atmintfcurrentlydowntouppvcls.value_namespace = name_space;
         atmintfcurrentlydowntouppvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmIntfOAMFailedPVcls")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls")
     {
         atmintfoamfailedpvcls = value;
         atmintfoamfailedpvcls.value_namespace = name_space;
         atmintfoamfailedpvcls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "atmIntfCurrentlyOAMFailingPVcls")
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls")
     {
         atmintfcurrentlyoamfailingpvcls = value;
         atmintfcurrentlyoamfailingpvcls.value_namespace = name_space;
@@ -2710,145 +2710,145 @@ void ATMMIB::Atmvcltable::Atmvclentry::set_value(const std::string & value_path,
         atmvclconnkind.value_namespace = name_space;
         atmvclconnkind.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamLoopbackFreq")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamLoopbackFreq")
     {
         catmxvcloamloopbackfreq = value;
         catmxvcloamloopbackfreq.value_namespace = name_space;
         catmxvcloamloopbackfreq.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamRetryFreq")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamRetryFreq")
     {
         catmxvcloamretryfreq = value;
         catmxvcloamretryfreq.value_namespace = name_space;
         catmxvcloamretryfreq.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamUpRetryCount")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamUpRetryCount")
     {
         catmxvcloamupretrycount = value;
         catmxvcloamupretrycount.value_namespace = name_space;
         catmxvcloamupretrycount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamDownRetryCount")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamDownRetryCount")
     {
         catmxvcloamdownretrycount = value;
         catmxvcloamdownretrycount.value_namespace = name_space;
         catmxvcloamdownretrycount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamEndCCActCount")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamEndCCActCount")
     {
         catmxvcloamendccactcount = value;
         catmxvcloamendccactcount.value_namespace = name_space;
         catmxvcloamendccactcount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamEndCCDeActCount")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamEndCCDeActCount")
     {
         catmxvcloamendccdeactcount = value;
         catmxvcloamendccdeactcount.value_namespace = name_space;
         catmxvcloamendccdeactcount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamEndCCRetryFreq")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamEndCCRetryFreq")
     {
         catmxvcloamendccretryfreq = value;
         catmxvcloamendccretryfreq.value_namespace = name_space;
         catmxvcloamendccretryfreq.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamSegCCActCount")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamSegCCActCount")
     {
         catmxvcloamsegccactcount = value;
         catmxvcloamsegccactcount.value_namespace = name_space;
         catmxvcloamsegccactcount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamSegCCDeActCount")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamSegCCDeActCount")
     {
         catmxvcloamsegccdeactcount = value;
         catmxvcloamsegccdeactcount.value_namespace = name_space;
         catmxvcloamsegccdeactcount.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamSegCCRetryFreq")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamSegCCRetryFreq")
     {
         catmxvcloamsegccretryfreq = value;
         catmxvcloamsegccretryfreq.value_namespace = name_space;
         catmxvcloamsegccretryfreq.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamManage")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamManage")
     {
         catmxvcloammanage = value;
         catmxvcloammanage.value_namespace = name_space;
         catmxvcloammanage.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamLoopBkStatus")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamLoopBkStatus")
     {
         catmxvcloamloopbkstatus = value;
         catmxvcloamloopbkstatus.value_namespace = name_space;
         catmxvcloamloopbkstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamVcState")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamVcState")
     {
         catmxvcloamvcstate = value;
         catmxvcloamvcstate.value_namespace = name_space;
         catmxvcloamvcstate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamEndCCStatus")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamEndCCStatus")
     {
         catmxvcloamendccstatus = value;
         catmxvcloamendccstatus.value_namespace = name_space;
         catmxvcloamendccstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamSegCCStatus")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamSegCCStatus")
     {
         catmxvcloamsegccstatus = value;
         catmxvcloamsegccstatus.value_namespace = name_space;
         catmxvcloamsegccstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamEndCCVcState")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamEndCCVcState")
     {
         catmxvcloamendccvcstate = value;
         catmxvcloamendccvcstate.value_namespace = name_space;
         catmxvcloamendccvcstate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamSegCCVcState")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamSegCCVcState")
     {
         catmxvcloamsegccvcstate = value;
         catmxvcloamsegccvcstate.value_namespace = name_space;
         catmxvcloamsegccvcstate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamCellsReceived")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamCellsReceived")
     {
         catmxvcloamcellsreceived = value;
         catmxvcloamcellsreceived.value_namespace = name_space;
         catmxvcloamcellsreceived.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamCellsSent")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamCellsSent")
     {
         catmxvcloamcellssent = value;
         catmxvcloamcellssent.value_namespace = name_space;
         catmxvcloamcellssent.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamCellsDropped")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamCellsDropped")
     {
         catmxvcloamcellsdropped = value;
         catmxvcloamcellsdropped.value_namespace = name_space;
         catmxvcloamcellsdropped.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamInF5ais")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamInF5ais")
     {
         catmxvcloaminf5ais = value;
         catmxvcloaminf5ais.value_namespace = name_space;
         catmxvcloaminf5ais.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamOutF5ais")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamOutF5ais")
     {
         catmxvcloamoutf5ais = value;
         catmxvcloamoutf5ais.value_namespace = name_space;
         catmxvcloamoutf5ais.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamInF5rdi")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamInF5rdi")
     {
         catmxvcloaminf5rdi = value;
         catmxvcloaminf5rdi.value_namespace = name_space;
         catmxvcloaminf5rdi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "catmxVclOamOutF5rdi")
+    if(value_path == "CISCO-ATM-EXT-MIB:catmxVclOamOutF5rdi")
     {
         catmxvcloamoutf5rdi = value;
         catmxvcloamoutf5rdi.value_namespace = name_space;
@@ -3981,97 +3981,97 @@ void ATMMIB::Aal5Vcctable::Aal5Vccentry::set_value(const std::string & value_pat
         aal5vccoversizedsdus.value_namespace = name_space;
         aal5vccoversizedsdus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccInPkts")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccInPkts")
     {
         caal5vccinpkts = value;
         caal5vccinpkts.value_namespace = name_space;
         caal5vccinpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccOutPkts")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccOutPkts")
     {
         caal5vccoutpkts = value;
         caal5vccoutpkts.value_namespace = name_space;
         caal5vccoutpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccInOctets")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccInOctets")
     {
         caal5vccinoctets = value;
         caal5vccinoctets.value_namespace = name_space;
         caal5vccinoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccOutOctets")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccOutOctets")
     {
         caal5vccoutoctets = value;
         caal5vccoutoctets.value_namespace = name_space;
         caal5vccoutoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccInDroppedPkts")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccInDroppedPkts")
     {
         caal5vccindroppedpkts = value;
         caal5vccindroppedpkts.value_namespace = name_space;
         caal5vccindroppedpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccOutDroppedPkts")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccOutDroppedPkts")
     {
         caal5vccoutdroppedpkts = value;
         caal5vccoutdroppedpkts.value_namespace = name_space;
         caal5vccoutdroppedpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccInDroppedOctets")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccInDroppedOctets")
     {
         caal5vccindroppedoctets = value;
         caal5vccindroppedoctets.value_namespace = name_space;
         caal5vccindroppedoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccOutDroppedOctets")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccOutDroppedOctets")
     {
         caal5vccoutdroppedoctets = value;
         caal5vccoutdroppedoctets.value_namespace = name_space;
         caal5vccoutdroppedoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccHCInPkts")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccHCInPkts")
     {
         caal5vcchcinpkts = value;
         caal5vcchcinpkts.value_namespace = name_space;
         caal5vcchcinpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccHCOutPkts")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccHCOutPkts")
     {
         caal5vcchcoutpkts = value;
         caal5vcchcoutpkts.value_namespace = name_space;
         caal5vcchcoutpkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccHCInOctets")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccHCInOctets")
     {
         caal5vcchcinoctets = value;
         caal5vcchcinoctets.value_namespace = name_space;
         caal5vcchcinoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccHCOutOctets")
+    if(value_path == "CISCO-AAL5-MIB:cAal5VccHCOutOctets")
     {
         caal5vcchcoutoctets = value;
         caal5vcchcoutoctets.value_namespace = name_space;
         caal5vcchcoutoctets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccExtCompEnabled")
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtCompEnabled")
     {
         caal5vccextcompenabled = value;
         caal5vccextcompenabled.value_namespace = name_space;
         caal5vccextcompenabled.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccExtVoice")
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtVoice")
     {
         caal5vccextvoice = value;
         caal5vccextvoice.value_namespace = name_space;
         caal5vccextvoice.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccExtInF5OamCells")
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtInF5OamCells")
     {
         caal5vccextinf5oamcells = value;
         caal5vccextinf5oamcells.value_namespace = name_space;
         caal5vccextinf5oamcells.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cAal5VccExtOutF5OamCells")
+    if(value_path == "CISCO-ATM-EXT-MIB:cAal5VccExtOutF5OamCells")
     {
         caal5vccextoutf5oamcells = value;
         caal5vccextoutf5oamcells.value_namespace = name_space;

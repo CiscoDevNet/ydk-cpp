@@ -46,6 +46,16 @@ class BgpRouteFilters : public ydk::Enum
 
 };
 
+class BgpNeighborRouteFilters : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_nrf_post_received;
+        static const ydk::Enum::YLeaf bgp_nrf_pre_received;
+        static const ydk::Enum::YLeaf bgp_nrf_pre_advertised;
+        static const ydk::Enum::YLeaf bgp_nrf_post_advertised;
+
+};
+
 
 }
 }

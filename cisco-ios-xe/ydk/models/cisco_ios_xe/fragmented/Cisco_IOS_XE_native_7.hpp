@@ -260,6 +260,8 @@ class Native::Ip::Domain::LookupSettings::Lookup::SourceInterface : public ydk::
         ydk::YLeaf embedded_service_engine; //type: string
         ydk::YLeaf fastethernet; //type: string
         ydk::YLeaf gigabitethernet; //type: string
+        ydk::YLeaf fivegigabitethernet; //type: string
+        ydk::YLeaf twentyfivegigabitethernet; //type: string
         ydk::YLeaf lisp; //type: string
         ydk::YLeaf loopback; //type: uint32
         ydk::YLeaf multilink; //type: uint16
@@ -452,6 +454,8 @@ class Native::Ip::DomainLookup::SourceInterface : public ydk::Entity
         ydk::YLeaf embedded_service_engine; //type: string
         ydk::YLeaf fastethernet; //type: string
         ydk::YLeaf gigabitethernet; //type: string
+        ydk::YLeaf fivegigabitethernet; //type: string
+        ydk::YLeaf twentyfivegigabitethernet; //type: string
         ydk::YLeaf lisp; //type: string
         ydk::YLeaf loopback; //type: uint32
         ydk::YLeaf multilink; //type: uint16
@@ -965,7 +969,7 @@ class Native::Ip::Dhcp::Pool::Option::OptionRange : public ydk::Entity
 
         ydk::YLeaf option_range; //type: uint8
         ydk::YLeaf ascii; //type: string
-        ydk::YLeafList ip; //type: list of  one of union, string
+        ydk::YLeafList ip; //type: list of  one of string, union
         class Hex; //type: Native::Ip::Dhcp::Pool::Option::OptionRange::Hex
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Option::OptionRange::Hex> hex;
@@ -1504,6 +1508,8 @@ class Native::Ip::Ftp::SourceInterface : public ydk::Entity
         ydk::YLeaf embedded_service_engine; //type: string
         ydk::YLeaf fastethernet; //type: string
         ydk::YLeaf gigabitethernet; //type: string
+        ydk::YLeaf fivegigabitethernet; //type: string
+        ydk::YLeaf twentyfivegigabitethernet; //type: string
         ydk::YLeaf lisp; //type: string
         ydk::YLeaf loopback; //type: uint32
         ydk::YLeaf multilink; //type: uint16
@@ -2994,6 +3000,8 @@ class Native::Ip::Route::IpRouteInterfaceForwardingList : public ydk::Entity
 
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf mask; //type: string
+        ydk::YLeaf dhcp; //type: empty
+        ydk::YLeaf metric; //type: uint8
         class FwdList; //type: Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList> > fwd_list;
@@ -3017,19 +3025,50 @@ class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of string, enumeration
+        ydk::YLeaf fwd; //type: one of enumeration, string
+        ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf metric; //type: uint8
-        ydk::YLeaf forwarding_router_adr; //type: string
         ydk::YLeaf global; //type: empty
         ydk::YLeaf name; //type: string
         ydk::YLeaf permanent; //type: empty
         ydk::YLeaf multicast; //type: empty
-        ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf tag; //type: uint32
         ydk::YLeaf track; //type: uint16
-        class Fwd;
+        class InterfaceNextHop; //type: Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop> > interface_next_hop;
+                class Fwd;
 
 }; // Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList
+
+
+class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop : public ydk::Entity
+{
+    public:
+        InterfaceNextHop();
+        ~InterfaceNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf dhcp; //type: empty
+        ydk::YLeaf metric; //type: uint8
+        ydk::YLeaf global; //type: empty
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf permanent; //type: empty
+        ydk::YLeaf multicast; //type: empty
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf track; //type: uint16
+
+}; // Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop
 
 
 class Native::Ip::Route::Static_ : public ydk::Entity
@@ -3148,6 +3187,8 @@ class Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList : public ydk::Entit
 
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf mask; //type: string
+        ydk::YLeaf dhcp; //type: empty
+        ydk::YLeaf metric; //type: uint8
         class FwdList; //type: Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList> > fwd_list;
@@ -3171,19 +3212,50 @@ class Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of string, enumeration
+        ydk::YLeaf fwd; //type: one of enumeration, string
+        ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf metric; //type: uint8
-        ydk::YLeaf forwarding_router_adr; //type: string
         ydk::YLeaf global; //type: empty
         ydk::YLeaf name; //type: string
         ydk::YLeaf permanent; //type: empty
         ydk::YLeaf multicast; //type: empty
-        ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf tag; //type: uint32
         ydk::YLeaf track; //type: uint16
-        class Fwd;
+        class InterfaceNextHop; //type: Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop> > interface_next_hop;
+                class Fwd;
 
 }; // Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList
+
+
+class Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop : public ydk::Entity
+{
+    public:
+        InterfaceNextHop();
+        ~InterfaceNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf dhcp; //type: empty
+        ydk::YLeaf metric; //type: uint8
+        ydk::YLeaf global; //type: empty
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf permanent; //type: empty
+        ydk::YLeaf multicast; //type: empty
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf track; //type: uint16
+
+}; // Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop
 
 
 class Native::Ip::Routing : public ydk::Entity
@@ -3574,6 +3646,7 @@ class Native::Ip::Ssh : public ydk::Entity
         ydk::YLeaf source_interface; //type: string
         ydk::YLeaf time_out; //type: uint8
         ydk::YLeaf version; //type: uint8
+        ydk::YLeaf maxstartups; //type: uint8
         class Client; //type: Native::Ip::Ssh::Client
         class Logging; //type: Native::Ip::Ssh::Logging
         class PubkeyChain; //type: Native::Ip::Ssh::PubkeyChain
@@ -3733,51 +3806,6 @@ class Native::Ip::Ssh::PubkeyChain::Username : public ydk::Entity
         
 }; // Native::Ip::Ssh::PubkeyChain::Username
 
-
-class Native::Ip::Ssh::PubkeyChain::Username::KeyHash : public ydk::Entity
-{
-    public:
-        KeyHash();
-        ~KeyHash();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf key_type; //type: KeyType
-        ydk::YLeaf key_hash_value; //type: string
-        class KeyType;
-
-}; // Native::Ip::Ssh::PubkeyChain::Username::KeyHash
-
-
-class Native::Ip::Ssh::Rsa : public ydk::Entity
-{
-    public:
-        Rsa();
-        ~Rsa();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf keypair_name; //type: string
-
-}; // Native::Ip::Ssh::Rsa
-
 class Native::Ip::ForwardProtocol::Protocol : public ydk::Enum
 {
     public:
@@ -3869,13 +3897,6 @@ class Native::Ip::Spd::Mode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf aggressive;
-
-};
-
-class Native::Ip::Ssh::PubkeyChain::Username::KeyHash::KeyType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ssh_rsa;
 
 };
 

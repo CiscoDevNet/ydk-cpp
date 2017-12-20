@@ -10,11 +10,11 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_cdp_oper {
 
-class CdpNeighbourDetails : public ydk::Entity
+class CdpNeighborDetails : public ydk::Entity
 {
     public:
-        CdpNeighbourDetails();
-        ~CdpNeighbourDetails();
+        CdpNeighborDetails();
+        ~CdpNeighborDetails();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,18 +31,18 @@ class CdpNeighbourDetails : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class CdpNeighbourDetail; //type: CdpNeighbourDetails::CdpNeighbourDetail
+        class CdpNeighborDetail; //type: CdpNeighborDetails::CdpNeighborDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail> > cdp_neighbour_detail;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighborDetails::CdpNeighborDetail> > cdp_neighbor_detail;
         
-}; // CdpNeighbourDetails
+}; // CdpNeighborDetails
 
 
-class CdpNeighbourDetails::CdpNeighbourDetail : public ydk::Entity
+class CdpNeighborDetails::CdpNeighborDetail : public ydk::Entity
 {
     public:
-        CdpNeighbourDetail();
-        ~CdpNeighbourDetail();
+        CdpNeighborDetail();
+        ~CdpNeighborDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -78,20 +78,20 @@ class CdpNeighbourDetails::CdpNeighbourDetail : public ydk::Entity
         ydk::YLeaf novell_addr; //type: string
         ydk::YLeaf second_port_status; //type: string
         ydk::YLeaf table_id; //type: uint16
-        class HelloMessage; //type: CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage
-        class PowerRequest; //type: CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest
-        class PowerAvailable; //type: CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable
-        class SparePair; //type: CdpNeighbourDetails::CdpNeighbourDetail::SparePair
+        class HelloMessage; //type: CdpNeighborDetails::CdpNeighborDetail::HelloMessage
+        class PowerRequest; //type: CdpNeighborDetails::CdpNeighborDetail::PowerRequest
+        class PowerAvailable; //type: CdpNeighborDetails::CdpNeighborDetail::PowerAvailable
+        class SparePair; //type: CdpNeighborDetails::CdpNeighborDetail::SparePair
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage> hello_message;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest> power_request;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable> power_available;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighbourDetails::CdpNeighbourDetail::SparePair> spare_pair;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighborDetails::CdpNeighborDetail::HelloMessage> hello_message;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighborDetails::CdpNeighborDetail::PowerRequest> power_request;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighborDetails::CdpNeighborDetail::PowerAvailable> power_available;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighborDetails::CdpNeighborDetail::SparePair> spare_pair;
         
-}; // CdpNeighbourDetails::CdpNeighbourDetail
+}; // CdpNeighborDetails::CdpNeighborDetail
 
 
-class CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage : public ydk::Entity
+class CdpNeighborDetails::CdpNeighborDetail::HelloMessage : public ydk::Entity
 {
     public:
         HelloMessage();
@@ -112,10 +112,10 @@ class CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage : public ydk::Entity
         ydk::YLeaf payload_value; //type: string
         ydk::YLeaf payload_len; //type: uint16
 
-}; // CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage
+}; // CdpNeighborDetails::CdpNeighborDetail::HelloMessage
 
 
-class CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest : public ydk::Entity
+class CdpNeighborDetails::CdpNeighborDetail::PowerRequest : public ydk::Entity
 {
     public:
         PowerRequest();
@@ -135,10 +135,10 @@ class CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest : public ydk::Entity
         ydk::YLeaf power_man_id; //type: uint16
         ydk::YLeaf power_request_level; //type: string
 
-}; // CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest
+}; // CdpNeighborDetails::CdpNeighborDetail::PowerRequest
 
 
-class CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable : public ydk::Entity
+class CdpNeighborDetails::CdpNeighborDetail::PowerAvailable : public ydk::Entity
 {
     public:
         PowerAvailable();
@@ -159,10 +159,10 @@ class CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable : public ydk::Enti
         ydk::YLeaf power_available; //type: uint32
         ydk::YLeaf power_man_level; //type: uint32
 
-}; // CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable
+}; // CdpNeighborDetails::CdpNeighborDetail::PowerAvailable
 
 
-class CdpNeighbourDetails::CdpNeighbourDetail::SparePair : public ydk::Entity
+class CdpNeighborDetails::CdpNeighborDetail::SparePair : public ydk::Entity
 {
     public:
         SparePair();
@@ -183,7 +183,7 @@ class CdpNeighbourDetails::CdpNeighbourDetail::SparePair : public ydk::Entity
         ydk::YLeaf spare_pair_pd_config; //type: CdpEnableDisable
         ydk::YLeaf spare_pair_pse_operational; //type: CdpYesNo
 
-}; // CdpNeighbourDetails::CdpNeighbourDetail::SparePair
+}; // CdpNeighborDetails::CdpNeighborDetail::SparePair
 
 class CdpDuplex : public ydk::Enum
 {

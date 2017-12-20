@@ -861,7 +861,7 @@ class Snmp::Notification : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsTe> mpls_te;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsFrr> mpls_frr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsL3Vpn> mpls_l3vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization> cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization> cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Optical> optical;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::OpticalOts> optical_ots;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Otn> otn;

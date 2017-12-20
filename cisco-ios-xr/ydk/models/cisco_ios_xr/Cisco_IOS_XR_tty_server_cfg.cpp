@@ -326,7 +326,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::get_child_by_name(const std::str
         return exec;
     }
 
-    if(child_yang_name == "connection")
+    if(child_yang_name == "Cisco-IOS-XR-tty-management-cfg:connection")
     {
         if(connection == nullptr)
         {
@@ -335,7 +335,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::get_child_by_name(const std::str
         return connection;
     }
 
-    if(child_yang_name == "exec-mode")
+    if(child_yang_name == "Cisco-IOS-XR-tty-management-cfg:exec-mode")
     {
         if(exec_mode == nullptr)
         {
@@ -372,12 +372,12 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::get_child
 
     if(connection != nullptr)
     {
-        children["connection"] = connection;
+        children["Cisco-IOS-XR-tty-management-cfg:connection"] = connection;
     }
 
     if(exec_mode != nullptr)
     {
-        children["exec-mode"] = exec_mode;
+        children["Cisco-IOS-XR-tty-management-cfg:exec-mode"] = exec_mode;
     }
 
     return children;

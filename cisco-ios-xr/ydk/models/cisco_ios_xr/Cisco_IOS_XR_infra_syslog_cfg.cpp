@@ -1115,7 +1115,7 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
         return source_interface_table;
     }
 
-    if(child_yang_name == "alarm-logger")
+    if(child_yang_name == "Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger")
     {
         if(alarm_logger == nullptr)
         {
@@ -1124,7 +1124,7 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
         return alarm_logger;
     }
 
-    if(child_yang_name == "correlator")
+    if(child_yang_name == "Cisco-IOS-XR-infra-correlator-cfg:correlator")
     {
         if(correlator == nullptr)
         {
@@ -1133,7 +1133,7 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
         return correlator;
     }
 
-    if(child_yang_name == "suppression")
+    if(child_yang_name == "Cisco-IOS-XR-infra-correlator-cfg:suppression")
     {
         if(suppression == nullptr)
         {
@@ -1210,17 +1210,17 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
 
     if(alarm_logger != nullptr)
     {
-        children["alarm-logger"] = alarm_logger;
+        children["Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger"] = alarm_logger;
     }
 
     if(correlator != nullptr)
     {
-        children["correlator"] = correlator;
+        children["Cisco-IOS-XR-infra-correlator-cfg:correlator"] = correlator;
     }
 
     if(suppression != nullptr)
     {
-        children["suppression"] = suppression;
+        children["Cisco-IOS-XR-infra-correlator-cfg:suppression"] = suppression;
     }
 
     return children;

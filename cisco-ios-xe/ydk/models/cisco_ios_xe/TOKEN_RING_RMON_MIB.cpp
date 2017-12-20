@@ -712,13 +712,13 @@ void TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::set_value(c
         tokenringmlstatsstatus.value_namespace = name_space;
         tokenringmlstatsstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tokenRingMLStatsDroppedFrames")
+    if(value_path == "RMON2-MIB:tokenRingMLStatsDroppedFrames")
     {
         tokenringmlstatsdroppedframes = value;
         tokenringmlstatsdroppedframes.value_namespace = name_space;
         tokenringmlstatsdroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tokenRingMLStatsCreateTime")
+    if(value_path == "RMON2-MIB:tokenRingMLStatsCreateTime")
     {
         tokenringmlstatscreatetime = value;
         tokenringmlstatscreatetime.value_namespace = name_space;
@@ -1207,13 +1207,13 @@ void TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::set_value(con
         tokenringpstatsstatus.value_namespace = name_space;
         tokenringpstatsstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tokenRingPStatsDroppedFrames")
+    if(value_path == "RMON2-MIB:tokenRingPStatsDroppedFrames")
     {
         tokenringpstatsdroppedframes = value;
         tokenringpstatsdroppedframes.value_namespace = name_space;
         tokenringpstatsdroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tokenRingPStatsCreateTime")
+    if(value_path == "RMON2-MIB:tokenRingPStatsCreateTime")
     {
         tokenringpstatscreatetime = value;
         tokenringpstatscreatetime.value_namespace = name_space;
@@ -2548,13 +2548,13 @@ void TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::set_val
         ringstationcontrolstatus.value_namespace = name_space;
         ringstationcontrolstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ringStationControlDroppedFrames")
+    if(value_path == "RMON2-MIB:ringStationControlDroppedFrames")
     {
         ringstationcontroldroppedframes = value;
         ringstationcontroldroppedframes.value_namespace = name_space;
         ringstationcontroldroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ringStationControlCreateTime")
+    if(value_path == "RMON2-MIB:ringStationControlCreateTime")
     {
         ringstationcontrolcreatetime = value;
         ringstationcontrolcreatetime.value_namespace = name_space;
@@ -4205,13 +4205,13 @@ void TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::set_val
         sourceroutingstatsstatus.value_namespace = name_space;
         sourceroutingstatsstatus.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sourceRoutingStatsDroppedFrames")
+    if(value_path == "RMON2-MIB:sourceRoutingStatsDroppedFrames")
     {
         sourceroutingstatsdroppedframes = value;
         sourceroutingstatsdroppedframes.value_namespace = name_space;
         sourceroutingstatsdroppedframes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sourceRoutingStatsCreateTime")
+    if(value_path == "RMON2-MIB:sourceRoutingStatsCreateTime")
     {
         sourceroutingstatscreatetime = value;
         sourceroutingstatscreatetime.value_namespace = name_space;

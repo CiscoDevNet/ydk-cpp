@@ -629,7 +629,7 @@ void ENTITYMIB::Entphysicaltable::Entphysicalentry::set_value(const std::string 
         entphysicaluris.value_namespace = name_space;
         entphysicaluris.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ceEntPhysicalSecondSerialNum")
+    if(value_path == "CISCO-ENTITY-EXT-MIB:ceEntPhysicalSecondSerialNum")
     {
         ceentphysicalsecondserialnum = value;
         ceentphysicalsecondserialnum.value_namespace = name_space;

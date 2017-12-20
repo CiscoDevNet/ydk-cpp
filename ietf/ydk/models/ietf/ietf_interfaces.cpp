@@ -221,7 +221,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::get_name_l
 
 std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "diffserv-target-entry")
+    if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
     {
         for(auto const & c : diffserv_target_entry)
         {
@@ -237,7 +237,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
         return c;
     }
 
-    if(child_yang_name == "ipv4")
+    if(child_yang_name == "ietf-ip:ipv4")
     {
         if(ipv4 == nullptr)
         {
@@ -246,7 +246,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
         return ipv4;
     }
 
-    if(child_yang_name == "ipv6")
+    if(child_yang_name == "ietf-ip:ipv6")
     {
         if(ipv6 == nullptr)
         {
@@ -268,12 +268,12 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_childr
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        children["ietf-ip:ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        children["ietf-ip:ipv6"] = ipv6;
     }
 
     return children;
@@ -918,7 +918,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
         return autoconf;
     }
 
-    if(child_yang_name == "ipv6-router-advertisements")
+    if(child_yang_name == "ietf-ipv6-unicast-routing:ipv6-router-advertisements")
     {
         if(ipv6_router_advertisements == nullptr)
         {
@@ -950,7 +950,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::get_
 
     if(ipv6_router_advertisements != nullptr)
     {
-        children["ipv6-router-advertisements"] = ipv6_router_advertisements;
+        children["ietf-ipv6-unicast-routing:ipv6-router-advertisements"] = ipv6_router_advertisements;
     }
 
     return children;
@@ -2026,7 +2026,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
         return statistics;
     }
 
-    if(child_yang_name == "diffserv-target-entry")
+    if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
     {
         for(auto const & c : diffserv_target_entry)
         {
@@ -2042,7 +2042,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
         return c;
     }
 
-    if(child_yang_name == "ipv4")
+    if(child_yang_name == "ietf-ip:ipv4")
     {
         if(ipv4 == nullptr)
         {
@@ -2051,7 +2051,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
         return ipv4;
     }
 
-    if(child_yang_name == "ipv6")
+    if(child_yang_name == "ietf-ip:ipv6")
     {
         if(ipv6 == nullptr)
         {
@@ -2078,12 +2078,12 @@ std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::get_c
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        children["ietf-ip:ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        children["ietf-ip:ipv6"] = ipv6;
     }
 
     return children;
@@ -2147,7 +2147,7 @@ void InterfacesState::Interface::set_value(const std::string & value_path, const
         speed.value_namespace = name_space;
         speed.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "routing-instance")
+    if(value_path == "ietf-routing:routing-instance")
     {
         routing_instance = value;
         routing_instance.value_namespace = name_space;
@@ -2407,13 +2407,13 @@ void InterfacesState::Interface::Statistics::set_value(const std::string & value
         out_errors.value_namespace = name_space;
         out_errors.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "in-pkts")
+    if(value_path == "ietf-interfaces-ext:in-pkts")
     {
         in_pkts = value;
         in_pkts.value_namespace = name_space;
         in_pkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "out-pkts")
+    if(value_path == "ietf-interfaces-ext:out-pkts")
     {
         out_pkts = value;
         out_pkts.value_namespace = name_space;

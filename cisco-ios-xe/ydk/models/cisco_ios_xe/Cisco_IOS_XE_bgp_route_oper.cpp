@@ -32,6 +32,11 @@ const Enum::YLeaf BgpRouteFilters::bgp_rf_extcommunity {7, "bgp-rf-extcommunity"
 const Enum::YLeaf BgpRouteFilters::bgp_rf_oer_controlled {8, "bgp-rf-oer-controlled"};
 const Enum::YLeaf BgpRouteFilters::bgp_rf_pending {9, "bgp-rf-pending"};
 
+const Enum::YLeaf BgpNeighborRouteFilters::bgp_nrf_post_received {0, "bgp-nrf-post-received"};
+const Enum::YLeaf BgpNeighborRouteFilters::bgp_nrf_pre_received {1, "bgp-nrf-pre-received"};
+const Enum::YLeaf BgpNeighborRouteFilters::bgp_nrf_pre_advertised {2, "bgp-nrf-pre-advertised"};
+const Enum::YLeaf BgpNeighborRouteFilters::bgp_nrf_post_advertised {3, "bgp-nrf-post-advertised"};
+
 
 }
 }

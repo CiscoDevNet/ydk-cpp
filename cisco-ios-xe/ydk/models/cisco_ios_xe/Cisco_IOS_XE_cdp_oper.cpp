@@ -11,44 +11,44 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_cdp_oper {
 
-CdpNeighbourDetails::CdpNeighbourDetails()
+CdpNeighborDetails::CdpNeighborDetails()
 {
 
-    yang_name = "cdp-neighbour-details"; yang_parent_name = "Cisco-IOS-XE-cdp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cdp-neighbor-details"; yang_parent_name = "Cisco-IOS-XE-cdp-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CdpNeighbourDetails::~CdpNeighbourDetails()
+CdpNeighborDetails::~CdpNeighborDetails()
 {
 }
 
-bool CdpNeighbourDetails::has_data() const
+bool CdpNeighborDetails::has_data() const
 {
-    for (std::size_t index=0; index<cdp_neighbour_detail.size(); index++)
+    for (std::size_t index=0; index<cdp_neighbor_detail.size(); index++)
     {
-        if(cdp_neighbour_detail[index]->has_data())
+        if(cdp_neighbor_detail[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool CdpNeighbourDetails::has_operation() const
+bool CdpNeighborDetails::has_operation() const
 {
-    for (std::size_t index=0; index<cdp_neighbour_detail.size(); index++)
+    for (std::size_t index=0; index<cdp_neighbor_detail.size(); index++)
     {
-        if(cdp_neighbour_detail[index]->has_operation())
+        if(cdp_neighbor_detail[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string CdpNeighbourDetails::get_segment_path() const
+std::string CdpNeighborDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-cdp-oper:cdp-neighbour-details";
+    path_buffer << "Cisco-IOS-XE-cdp-oper:cdp-neighbor-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CdpNeighborDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -57,11 +57,11 @@ std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CdpNeighbourDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CdpNeighborDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cdp-neighbour-detail")
+    if(child_yang_name == "cdp-neighbor-detail")
     {
-        for(auto const & c : cdp_neighbour_detail)
+        for(auto const & c : cdp_neighbor_detail)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -69,19 +69,19 @@ std::shared_ptr<Entity> CdpNeighbourDetails::get_child_by_name(const std::string
                 return c;
             }
         }
-        auto c = std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail>();
+        auto c = std::make_shared<CdpNeighborDetails::CdpNeighborDetail>();
         c->parent = this;
-        cdp_neighbour_detail.push_back(c);
+        cdp_neighbor_detail.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdp_neighbour_detail)
+    for (auto const & c : cdp_neighbor_detail)
     {
         children[c->get_segment_path()] = c;
     }
@@ -89,47 +89,47 @@ std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::get_children
     return children;
 }
 
-void CdpNeighbourDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CdpNeighborDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CdpNeighbourDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void CdpNeighborDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CdpNeighbourDetails::clone_ptr() const
+std::shared_ptr<Entity> CdpNeighborDetails::clone_ptr() const
 {
-    return std::make_shared<CdpNeighbourDetails>();
+    return std::make_shared<CdpNeighborDetails>();
 }
 
-std::string CdpNeighbourDetails::get_bundle_yang_models_location() const
+std::string CdpNeighborDetails::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CdpNeighbourDetails::get_bundle_name() const
+std::string CdpNeighborDetails::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CdpNeighbourDetails::get_augment_capabilities_function() const
+augment_capabilities_function CdpNeighborDetails::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CdpNeighbourDetails::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CdpNeighborDetails::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CdpNeighbourDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool CdpNeighborDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cdp-neighbour-detail")
+    if(name == "cdp-neighbor-detail")
         return true;
     return false;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::CdpNeighbourDetail()
+CdpNeighborDetails::CdpNeighborDetail::CdpNeighborDetail()
     :
     device_id{YType::uint32, "device-id"},
     device_name{YType::str, "device-name"},
@@ -155,24 +155,24 @@ CdpNeighbourDetails::CdpNeighbourDetail::CdpNeighbourDetail()
     second_port_status{YType::str, "second-port-status"},
     table_id{YType::uint16, "table-id"}
     	,
-    hello_message(std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage>())
-	,power_request(std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest>())
-	,power_available(std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable>())
-	,spare_pair(std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::SparePair>())
+    hello_message(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::HelloMessage>())
+	,power_request(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerRequest>())
+	,power_available(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerAvailable>())
+	,spare_pair(std::make_shared<CdpNeighborDetails::CdpNeighborDetail::SparePair>())
 {
     hello_message->parent = this;
     power_request->parent = this;
     power_available->parent = this;
     spare_pair->parent = this;
 
-    yang_name = "cdp-neighbour-detail"; yang_parent_name = "cdp-neighbour-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdp-neighbor-detail"; yang_parent_name = "cdp-neighbor-details"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::~CdpNeighbourDetail()
+CdpNeighborDetails::CdpNeighborDetail::~CdpNeighborDetail()
 {
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::has_data() const
+bool CdpNeighborDetails::CdpNeighborDetail::has_data() const
 {
     return device_id.is_set
 	|| device_name.is_set
@@ -203,7 +203,7 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::has_data() const
 	|| (spare_pair !=  nullptr && spare_pair->has_data());
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::has_operation() const
+bool CdpNeighborDetails::CdpNeighborDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(device_id.yfilter)
@@ -235,21 +235,21 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::has_operation() const
 	|| (spare_pair !=  nullptr && spare_pair->has_operation());
 }
 
-std::string CdpNeighbourDetails::CdpNeighbourDetail::get_absolute_path() const
+std::string CdpNeighborDetails::CdpNeighborDetail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-cdp-oper:cdp-neighbour-details/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-cdp-oper:cdp-neighbor-details/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CdpNeighbourDetails::CdpNeighbourDetail::get_segment_path() const
+std::string CdpNeighborDetails::CdpNeighborDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdp-neighbour-detail" <<"[device-id='" <<device_id <<"']";
+    path_buffer << "cdp-neighbor-detail" <<"[device-id='" <<device_id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbourDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CdpNeighborDetails::CdpNeighborDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -281,13 +281,13 @@ std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbour
 
 }
 
-std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hello-message")
     {
         if(hello_message == nullptr)
         {
-            hello_message = std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage>();
+            hello_message = std::make_shared<CdpNeighborDetails::CdpNeighborDetail::HelloMessage>();
         }
         return hello_message;
     }
@@ -296,7 +296,7 @@ std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::get_child_by_na
     {
         if(power_request == nullptr)
         {
-            power_request = std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest>();
+            power_request = std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerRequest>();
         }
         return power_request;
     }
@@ -305,7 +305,7 @@ std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::get_child_by_na
     {
         if(power_available == nullptr)
         {
-            power_available = std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable>();
+            power_available = std::make_shared<CdpNeighborDetails::CdpNeighborDetail::PowerAvailable>();
         }
         return power_available;
     }
@@ -314,7 +314,7 @@ std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::get_child_by_na
     {
         if(spare_pair == nullptr)
         {
-            spare_pair = std::make_shared<CdpNeighbourDetails::CdpNeighbourDetail::SparePair>();
+            spare_pair = std::make_shared<CdpNeighborDetails::CdpNeighborDetail::SparePair>();
         }
         return spare_pair;
     }
@@ -322,7 +322,7 @@ std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::CdpNeighbourDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(hello_message != nullptr)
@@ -348,7 +348,7 @@ std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::CdpNeighbour
     return children;
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CdpNeighborDetails::CdpNeighborDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "device-id")
     {
@@ -490,7 +490,7 @@ void CdpNeighbourDetails::CdpNeighbourDetail::set_value(const std::string & valu
     }
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void CdpNeighborDetails::CdpNeighborDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "device-id")
     {
@@ -586,14 +586,14 @@ void CdpNeighbourDetails::CdpNeighbourDetail::set_filter(const std::string & val
     }
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool CdpNeighborDetails::CdpNeighborDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hello-message" || name == "power-request" || name == "power-available" || name == "spare-pair" || name == "device-id" || name == "device-name" || name == "local-intf-name" || name == "port-id" || name == "capability" || name == "platform-name" || name == "version" || name == "duplex" || name == "adv-version" || name == "vty-mgmt-domain" || name == "native-vlan" || name == "vvid-tag" || name == "vvid" || name == "power" || name == "unidirectional-mode" || name == "mgmt-address" || name == "ip-address" || name == "ipv6-address" || name == "clns-address" || name == "decnet-addr" || name == "novell-addr" || name == "second-port-status" || name == "table-id")
         return true;
     return false;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::HelloMessage()
+CdpNeighborDetails::CdpNeighborDetail::HelloMessage::HelloMessage()
     :
     oui{YType::str, "oui"},
     protocol_id{YType::str, "protocol-id"},
@@ -601,14 +601,14 @@ CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::HelloMessage()
     payload_len{YType::uint16, "payload-len"}
 {
 
-    yang_name = "hello-message"; yang_parent_name = "cdp-neighbour-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-message"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::~HelloMessage()
+CdpNeighborDetails::CdpNeighborDetail::HelloMessage::~HelloMessage()
 {
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::has_data() const
+bool CdpNeighborDetails::CdpNeighborDetail::HelloMessage::has_data() const
 {
     return oui.is_set
 	|| protocol_id.is_set
@@ -616,7 +616,7 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::has_data() const
 	|| payload_len.is_set;
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::has_operation() const
+bool CdpNeighborDetails::CdpNeighborDetail::HelloMessage::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oui.yfilter)
@@ -625,14 +625,14 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::has_operation() cons
 	|| ydk::is_set(payload_len.yfilter);
 }
 
-std::string CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::get_segment_path() const
+std::string CdpNeighborDetails::CdpNeighborDetail::HelloMessage::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hello-message";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CdpNeighborDetails::CdpNeighborDetail::HelloMessage::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -645,18 +645,18 @@ std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbour
 
 }
 
-std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::HelloMessage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::HelloMessage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CdpNeighborDetails::CdpNeighborDetail::HelloMessage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oui")
     {
@@ -684,7 +684,7 @@ void CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::set_value(const std:
     }
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::set_filter(const std::string & value_path, YFilter yfilter)
+void CdpNeighborDetails::CdpNeighborDetail::HelloMessage::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oui")
     {
@@ -704,35 +704,35 @@ void CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::set_filter(const std
     }
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::HelloMessage::has_leaf_or_child_of_name(const std::string & name) const
+bool CdpNeighborDetails::CdpNeighborDetail::HelloMessage::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oui" || name == "protocol-id" || name == "payload-value" || name == "payload-len")
         return true;
     return false;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::PowerRequest()
+CdpNeighborDetails::CdpNeighborDetail::PowerRequest::PowerRequest()
     :
     power_request_id{YType::uint16, "power-request-id"},
     power_man_id{YType::uint16, "power-man-id"},
     power_request_level{YType::str, "power-request-level"}
 {
 
-    yang_name = "power-request"; yang_parent_name = "cdp-neighbour-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-request"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::~PowerRequest()
+CdpNeighborDetails::CdpNeighborDetail::PowerRequest::~PowerRequest()
 {
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::has_data() const
+bool CdpNeighborDetails::CdpNeighborDetail::PowerRequest::has_data() const
 {
     return power_request_id.is_set
 	|| power_man_id.is_set
 	|| power_request_level.is_set;
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::has_operation() const
+bool CdpNeighborDetails::CdpNeighborDetail::PowerRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(power_request_id.yfilter)
@@ -740,14 +740,14 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::has_operation() cons
 	|| ydk::is_set(power_request_level.yfilter);
 }
 
-std::string CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::get_segment_path() const
+std::string CdpNeighborDetails::CdpNeighborDetail::PowerRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "power-request";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CdpNeighborDetails::CdpNeighborDetail::PowerRequest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -759,18 +759,18 @@ std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbour
 
 }
 
-std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::PowerRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::PowerRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CdpNeighborDetails::CdpNeighborDetail::PowerRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "power-request-id")
     {
@@ -792,7 +792,7 @@ void CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::set_value(const std:
     }
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void CdpNeighborDetails::CdpNeighborDetail::PowerRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "power-request-id")
     {
@@ -808,14 +808,14 @@ void CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::set_filter(const std
     }
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::PowerRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool CdpNeighborDetails::CdpNeighborDetail::PowerRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "power-request-id" || name == "power-man-id" || name == "power-request-level")
         return true;
     return false;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::PowerAvailable()
+CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::PowerAvailable()
     :
     power_request_id{YType::uint16, "power-request-id"},
     power_man_id{YType::uint16, "power-man-id"},
@@ -823,14 +823,14 @@ CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::PowerAvailable()
     power_man_level{YType::uint32, "power-man-level"}
 {
 
-    yang_name = "power-available"; yang_parent_name = "cdp-neighbour-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "power-available"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::~PowerAvailable()
+CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::~PowerAvailable()
 {
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::has_data() const
+bool CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::has_data() const
 {
     return power_request_id.is_set
 	|| power_man_id.is_set
@@ -838,7 +838,7 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::has_data() const
 	|| power_man_level.is_set;
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::has_operation() const
+bool CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(power_request_id.yfilter)
@@ -847,14 +847,14 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::has_operation() co
 	|| ydk::is_set(power_man_level.yfilter);
 }
 
-std::string CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::get_segment_path() const
+std::string CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "power-available";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -867,18 +867,18 @@ std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbour
 
 }
 
-std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "power-request-id")
     {
@@ -906,7 +906,7 @@ void CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::set_value(const st
     }
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::set_filter(const std::string & value_path, YFilter yfilter)
+void CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "power-request-id")
     {
@@ -926,14 +926,14 @@ void CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::set_filter(const s
     }
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::PowerAvailable::has_leaf_or_child_of_name(const std::string & name) const
+bool CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "power-request-id" || name == "power-man-id" || name == "power-available" || name == "power-man-level")
         return true;
     return false;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::SparePair::SparePair()
+CdpNeighborDetails::CdpNeighborDetail::SparePair::SparePair()
     :
     spare_pair_poe{YType::enumeration, "spare-pair-poe"},
     spare_pair_detection_required{YType::enumeration, "spare-pair-detection-required"},
@@ -941,14 +941,14 @@ CdpNeighbourDetails::CdpNeighbourDetail::SparePair::SparePair()
     spare_pair_pse_operational{YType::enumeration, "spare-pair-pse-operational"}
 {
 
-    yang_name = "spare-pair"; yang_parent_name = "cdp-neighbour-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spare-pair"; yang_parent_name = "cdp-neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-CdpNeighbourDetails::CdpNeighbourDetail::SparePair::~SparePair()
+CdpNeighborDetails::CdpNeighborDetail::SparePair::~SparePair()
 {
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::SparePair::has_data() const
+bool CdpNeighborDetails::CdpNeighborDetail::SparePair::has_data() const
 {
     return spare_pair_poe.is_set
 	|| spare_pair_detection_required.is_set
@@ -956,7 +956,7 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::SparePair::has_data() const
 	|| spare_pair_pse_operational.is_set;
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::SparePair::has_operation() const
+bool CdpNeighborDetails::CdpNeighborDetail::SparePair::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(spare_pair_poe.yfilter)
@@ -965,14 +965,14 @@ bool CdpNeighbourDetails::CdpNeighbourDetail::SparePair::has_operation() const
 	|| ydk::is_set(spare_pair_pse_operational.yfilter);
 }
 
-std::string CdpNeighbourDetails::CdpNeighbourDetail::SparePair::get_segment_path() const
+std::string CdpNeighborDetails::CdpNeighborDetail::SparePair::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "spare-pair";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbourDetail::SparePair::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CdpNeighborDetails::CdpNeighborDetail::SparePair::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -985,18 +985,18 @@ std::vector<std::pair<std::string, LeafData> > CdpNeighbourDetails::CdpNeighbour
 
 }
 
-std::shared_ptr<Entity> CdpNeighbourDetails::CdpNeighbourDetail::SparePair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::SparePair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CdpNeighbourDetails::CdpNeighbourDetail::SparePair::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::SparePair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::SparePair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CdpNeighborDetails::CdpNeighborDetail::SparePair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "spare-pair-poe")
     {
@@ -1024,7 +1024,7 @@ void CdpNeighbourDetails::CdpNeighbourDetail::SparePair::set_value(const std::st
     }
 }
 
-void CdpNeighbourDetails::CdpNeighbourDetail::SparePair::set_filter(const std::string & value_path, YFilter yfilter)
+void CdpNeighborDetails::CdpNeighborDetail::SparePair::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "spare-pair-poe")
     {
@@ -1044,7 +1044,7 @@ void CdpNeighbourDetails::CdpNeighbourDetail::SparePair::set_filter(const std::s
     }
 }
 
-bool CdpNeighbourDetails::CdpNeighbourDetail::SparePair::has_leaf_or_child_of_name(const std::string & name) const
+bool CdpNeighborDetails::CdpNeighborDetail::SparePair::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "spare-pair-poe" || name == "spare-pair-detection-required" || name == "spare-pair-pd-config" || name == "spare-pair-pse-operational")
         return true;

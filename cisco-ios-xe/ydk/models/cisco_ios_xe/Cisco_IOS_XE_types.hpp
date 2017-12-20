@@ -159,6 +159,8 @@ class InterfaceType : public ydk::Enum
         static const ydk::Enum::YLeaf Serial;
         static const ydk::Enum::YLeaf TenGigabitEthernet;
         static const ydk::Enum::YLeaf Vlan;
+        static const ydk::Enum::YLeaf FiveGigabitEthernet;
+        static const ydk::Enum::YLeaf TwentyFiveGigabitEthernet;
 
 };
 

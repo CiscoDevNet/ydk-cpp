@@ -49,9 +49,18 @@ public:
     NetconfSSHClient(
         std::string  username, 
         std::string  password,
-        std::string  server_ip, 
+        std::string  server_ip,
         int port,
         int timeout = -1);
+
+    NetconfSSHClient(
+        std::string username, 
+        std::string private_key_path,
+        std::string public_key_path,
+        std::string server_ip,
+        int port,
+        int timeout = -1
+    );
 
     virtual ~NetconfSSHClient();
 
@@ -76,7 +85,7 @@ private:
     nc_rpc* build_rpc_request(const std::string & payload);
     std::string process_rpc_reply(int reply_type, const nc_reply* reply);
     void init_capabilities();
-    void perform_session_check(std::string message);
+    void perform_session_check(const std::string & message);
 
 private:
     struct nc_session *session;
@@ -86,6 +95,9 @@ private:
     int port;
     int timeout;
     std::vector<std::string> capabilities;
+
+    std::string private_key_path;
+    std::string public_key_path;
 };
 
 

@@ -68,6 +68,36 @@ NetconfSSHClient::NetconfSSHClient(
     session=NULL;
 }
 
+NetconfSSHClient::NetconfSSHClient(
+    string username,
+    string private_key_path,
+    string public_key_path,
+    string server_ip,
+    int port,
+    int timeout
+):
+    NetconfClient(),
+    username(username),
+    private_key_path(private_key_path),
+    public_key_path(public_key_path),
+    hostname(server_ip),
+    port(port),
+    timeout(timeout)
+{
+    nc_verbosity(NC_VERB_DEBUG);
+    nc_callback_print(clb_print);
+    nc_callback_sshauth_password(clb_set_password);
+    nc_callback_sshauth_interactive(clb_set_interactive);
+    nc_callback_sshauth_passphrase(clb_set_passphrase);
+    nc_callback_ssh_host_authenticity_check(clb_ssh_host_authenticity_check);
+    nc_ssh_pref(NC_SSH_AUTH_PUBLIC_KEYS, 100);
+    nc_session_transport(NC_TRANSPORT_SSH);
+
+    nc_set_keypair_path(private_key_path.c_str(), public_key_path.c_str());
+    // password_lookup.insert(make_pair(make_pair(username, hostname), password));
+    session=NULL;
+}
+
 
 int NetconfSSHClient::connect()
 {
@@ -170,12 +200,12 @@ void NetconfSSHClient::clb_print(NC_VERB_LEVEL level, const char* msg)
     switch (level)
     {
     case NC_VERB_ERROR:
-         YLOG_ERROR("libnetconf ERROR: {}", msg);
+         YLOG_ERROR("Connection error occurred: {}", msg);
         break;
     case NC_VERB_WARNING:
     case NC_VERB_VERBOSE:
     case NC_VERB_DEBUG:
-        YLOG_DEBUG("libnetconf TRACE: {}", msg);
+        YLOG_DEBUG("Trace: {}", msg);
         break;
     }
 }
@@ -223,7 +253,7 @@ int NetconfSSHClient::clb_ssh_host_authenticity_check(const char *hostname,
     return EXIT_SUCCESS;
 }
 
-void NetconfSSHClient::perform_session_check(string message)
+void NetconfSSHClient::perform_session_check(const string & message)
 {
     if (session == NULL)
     {

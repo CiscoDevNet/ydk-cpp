@@ -33,7 +33,7 @@ TEST_CASE("test_value_list_uint8")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 TEST_CASE("test_value_list_uint16")
@@ -42,7 +42,7 @@ TEST_CASE("test_value_list_uint16")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 
@@ -52,7 +52,7 @@ TEST_CASE("test_value_list_uint32")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 
@@ -62,7 +62,7 @@ TEST_CASE("test_value_list_uint64")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 
@@ -72,7 +72,7 @@ TEST_CASE("test_value_list_int8")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 
@@ -82,7 +82,7 @@ TEST_CASE("test_value_list_int16")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 
@@ -92,7 +92,7 @@ TEST_CASE("test_value_list_int32")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 
@@ -102,7 +102,7 @@ TEST_CASE("test_value_list_int64")
     test_value.append(4);
     REQUIRE(test_value[0].get()=="4");
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="name[.='4']");
+    REQUIRE(nv[0].first=="name[.=\"4\"]");
 }
 
 TEST_CASE("test_value_list_empty")
@@ -131,8 +131,8 @@ TEST_CASE("test_value_list_enum_")
     REQUIRE(test_value[1].get()=="two");
 
     auto nv = test_value.get_name_leafdata();
-    REQUIRE(nv[0].first=="enumval[.='one']");
-    REQUIRE(nv[1].first=="enumval[.='two']");
+    REQUIRE(nv[0].first=="enumval[.=\"one\"]");
+    REQUIRE(nv[1].first=="enumval[.=\"two\"]");
 }
 
 TEST_CASE("test_value_list_str")

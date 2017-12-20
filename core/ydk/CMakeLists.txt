@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 cmake_policy(SET CMP0048 NEW)
-project(ydk VERSION 0.6.2 LANGUAGES C CXX)
+project(ydk VERSION 0.6.3 LANGUAGES C CXX)
 
 
 set(YDK_DESCRIPTION "YANG Development Kit Library. The library for  YDK API.")
@@ -37,8 +37,6 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         OUTPUT_VARIABLE LSB_RELEASE_ID_SHORT
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
-    message("C Compiler: ${CMAKE_C_COMPILER_ID}")
-    message("CXX Compiler: ${CMAKE_CXX_COMPILER_ID}")
 
     # Linux Debian
     if (${LSB_RELEASE_ID_SHORT} MATCHES "Ubuntu")
@@ -117,7 +115,7 @@ set(HOME_DIRECTORY $ENV{HOME})
 
 set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
-set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0 -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0")
 
 
 if(CMAKE_BUILD_TYPE STREQUAL debug)

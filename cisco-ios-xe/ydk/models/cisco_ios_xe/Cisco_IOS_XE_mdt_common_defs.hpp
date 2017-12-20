@@ -15,6 +15,7 @@ class MdtSubFilterType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf sub_filter_type_none;
         static const ydk::Enum::YLeaf sub_filter_type_xpath;
+        static const ydk::Enum::YLeaf sub_filter_type_tdl_uri;
 
 };
 

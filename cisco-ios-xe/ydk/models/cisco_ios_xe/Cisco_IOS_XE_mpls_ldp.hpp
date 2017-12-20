@@ -2840,7 +2840,7 @@ class MplsLdp::MplsLdpConfig::Passwords::Password : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf nbr_vrf; //type: string
-        ydk::YLeaf nbr_id; //type: one of union, string
+        ydk::YLeaf nbr_id; //type: one of string, union
         ydk::YLeaf password_num; //type: uint32
         ydk::YLeaf pass_required; //type: boolean
         ydk::YLeaf clear_pass; //type: string

@@ -122,6 +122,8 @@ const Enum::YLeaf InterfaceType::Port_channel {4, "Port-channel"};
 const Enum::YLeaf InterfaceType::Serial {5, "Serial"};
 const Enum::YLeaf InterfaceType::TenGigabitEthernet {6, "TenGigabitEthernet"};
 const Enum::YLeaf InterfaceType::Vlan {7, "Vlan"};
+const Enum::YLeaf InterfaceType::FiveGigabitEthernet {8, "FiveGigabitEthernet"};
+const Enum::YLeaf InterfaceType::TwentyFiveGigabitEthernet {9, "TwentyFiveGigabitEthernet"};
 
 const Enum::YLeaf MobilityType::bind_acknowledgement {0, "bind-acknowledgement"};
 const Enum::YLeaf MobilityType::bind_error {1, "bind-error"};

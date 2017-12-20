@@ -262,7 +262,7 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf index_; //type: string
-        ydk::YLeaf next_hop; //type: one of union, identityref
+        ydk::YLeaf next_hop; //type: one of identityref, union
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf recurse; //type: boolean
 
@@ -286,7 +286,7 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf index_; //type: string
-        ydk::YLeaf next_hop; //type: one of union, identityref
+        ydk::YLeaf next_hop; //type: one of identityref, union
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf recurse; //type: boolean
 
