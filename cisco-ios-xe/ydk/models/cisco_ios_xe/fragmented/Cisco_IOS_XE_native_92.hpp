@@ -200,7 +200,7 @@ class Native::Aaa::Authorization::Network : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of enumeration, string
+        ydk::YLeaf id; //type: one of string, enumeration
         class A1; //type: Native::Aaa::Authorization::Network::A1
         class A2; //type: Native::Aaa::Authorization::Network::A2
         class A3; //type: Native::Aaa::Authorization::Network::A3
@@ -550,7 +550,7 @@ class Native::Aaa::Accounting::Commands : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf level; //type: uint8
-        ydk::YLeaf list_name; //type: one of enumeration, string
+        ydk::YLeaf list_name; //type: one of string, enumeration
         ydk::YLeaf action_type; //type: ActionType
         ydk::YLeaf broadcast; //type: empty
         ydk::YLeaf group; //type: one of string, enumeration
@@ -918,7 +918,7 @@ class Native::Aaa::Accounting::Network : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of enumeration, string
+        ydk::YLeaf id; //type: one of string, enumeration
         ydk::YLeaf none; //type: empty
         ydk::YLeaf mode; //type: Mode
         ydk::YLeaf broadcast; //type: empty

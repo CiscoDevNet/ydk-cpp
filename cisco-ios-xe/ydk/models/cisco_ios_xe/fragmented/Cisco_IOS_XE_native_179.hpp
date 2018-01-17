@@ -1266,7 +1266,7 @@ class Native::Router::Ospfv3::QueueDepth::Hello : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of enumeration, uint32
+        ydk::YLeaf options; //type: one of uint32, enumeration
         class Options;
 
 }; // Native::Router::Ospfv3::QueueDepth::Hello
@@ -1288,7 +1288,7 @@ class Native::Router::Ospfv3::QueueDepth::Update : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of enumeration, uint32
+        ydk::YLeaf options; //type: one of uint32, enumeration
         class Options;
 
 }; // Native::Router::Ospfv3::QueueDepth::Update
@@ -3082,7 +3082,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Hello : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of enumeration, uint32
+        ydk::YLeaf options; //type: one of uint32, enumeration
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Hello
@@ -3104,7 +3104,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Update :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of enumeration, uint32
+        ydk::YLeaf options; //type: one of uint32, enumeration
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Update

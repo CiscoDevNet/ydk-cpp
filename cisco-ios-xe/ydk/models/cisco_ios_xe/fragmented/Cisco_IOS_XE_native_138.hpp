@@ -1779,7 +1779,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf eig_filt; //type: one of uint16, string
+        ydk::YLeaf eig_filt; //type: one of string, uint16
         class In; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt::In
         class Out; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt::Out
 

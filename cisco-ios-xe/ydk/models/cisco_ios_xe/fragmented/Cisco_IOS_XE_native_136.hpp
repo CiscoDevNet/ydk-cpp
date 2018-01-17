@@ -1714,7 +1714,7 @@ class Native::Router::IsisContainer::Isis::Distance::IpList::WildcardBits : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf w_bits; //type: string
-        ydk::YLeaf access_list; //type: one of uint16, uint8
+        ydk::YLeaf access_list; //type: one of uint8, uint16
 
 }; // Native::Router::IsisContainer::Isis::Distance::IpList::WildcardBits
 

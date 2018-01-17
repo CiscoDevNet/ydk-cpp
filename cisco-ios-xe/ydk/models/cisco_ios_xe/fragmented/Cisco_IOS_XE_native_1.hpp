@@ -546,7 +546,7 @@ class Native::Archive : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf path; //type: one of enumeration, string
+        ydk::YLeaf path; //type: one of string, enumeration
         ydk::YLeaf maximum; //type: uint8
         ydk::YLeaf write_memory; //type: empty
         ydk::YLeaf time_period; //type: uint32
@@ -956,7 +956,7 @@ class Native::Controller::ControllerTxExList::ChannelGroup : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        ydk::YLeafList timeslots; //type: list of  one of uint16, string
+        ydk::YLeafList timeslots; //type: list of  one of string, uint16
 
 }; // Native::Controller::ControllerTxExList::ChannelGroup
 
@@ -2600,7 +2600,7 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
         ydk::YLeaf threshold; //type: uint32
         class Multicast; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data::Multicast
 

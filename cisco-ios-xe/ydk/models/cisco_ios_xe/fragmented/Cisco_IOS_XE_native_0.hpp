@@ -2417,7 +2417,7 @@ class Native::Domain::Vrf::Master::LoadBalance::Advanced::PathPreference : publi
         ydk::YLeaf primary; //type: string
         ydk::YLeaf primary2; //type: string
         ydk::YLeaf primary3; //type: string
-        ydk::YLeaf fallback; //type: one of enumeration, string
+        ydk::YLeaf fallback; //type: one of string, enumeration
         ydk::YLeaf fallback2; //type: string
         ydk::YLeaf fallback3; //type: string
         class Fallback;
@@ -2583,7 +2583,7 @@ class Native::Domain::Vrf::Master::Class_::PathPreference : public ydk::Entity
         ydk::YLeaf primary; //type: string
         ydk::YLeaf primary2; //type: string
         ydk::YLeaf primary3; //type: string
-        ydk::YLeaf fallback; //type: one of enumeration, string
+        ydk::YLeaf fallback; //type: one of string, enumeration
         ydk::YLeaf fallback2; //type: string
         ydk::YLeaf fallback3; //type: string
         class Fallback;
@@ -4044,7 +4044,7 @@ class MonitorEventType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf error;
         static const ydk::Enum::YLeaf detail;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
 
 };
 
@@ -4079,7 +4079,7 @@ class Native::CallHome::Profile::SubscribeToAlertGroup::Diagnostic::Severity : p
         static const ydk::Enum::YLeaf debugging;
         static const ydk::Enum::YLeaf disaster;
         static const ydk::Enum::YLeaf fatal;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf notification;
@@ -4095,7 +4095,7 @@ class Native::CallHome::Profile::SubscribeToAlertGroup::Environment::Severity : 
         static const ydk::Enum::YLeaf debugging;
         static const ydk::Enum::YLeaf disaster;
         static const ydk::Enum::YLeaf fatal;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf notification;
@@ -4111,7 +4111,7 @@ class Native::CallHome::Profile::SubscribeToAlertGroup::Syslog::Severity::Value_
         static const ydk::Enum::YLeaf debugging;
         static const ydk::Enum::YLeaf disaster;
         static const ydk::Enum::YLeaf fatal;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf notification;

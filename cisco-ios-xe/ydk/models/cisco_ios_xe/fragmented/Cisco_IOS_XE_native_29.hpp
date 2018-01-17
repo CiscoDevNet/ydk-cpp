@@ -1627,11 +1627,11 @@ class Native::Interface::Ucse::SwitchportWrapper::Switchport::Trunk::Allowed::Vl
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vlans; //type: string
-        ydk::YLeaf add; //type: one of uint16, string
+        ydk::YLeaf add; //type: one of string, uint16
         ydk::YLeaf all; //type: empty
         ydk::YLeaf none; //type: empty
-        ydk::YLeaf remove; //type: one of uint16, string
-        ydk::YLeafList except; //type: list of  one of uint16, string
+        ydk::YLeaf remove; //type: one of string, uint16
+        ydk::YLeafList except; //type: list of  one of string, uint16
 
 }; // Native::Interface::Ucse::SwitchportWrapper::Switchport::Trunk::Allowed::Vlan
 
@@ -1784,8 +1784,8 @@ class Native::Interface::Ucse::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -1950,8 +1950,8 @@ class Native::Interface::Ucse::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -2703,7 +2703,7 @@ class Native::Interface::Ucse::Ip : public ydk::Entity
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of uint16, string
+        ydk::YLeaf directed_broadcast; //type: one of string, uint16
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -2820,7 +2820,7 @@ class Native::Interface::Ucse::Ip::AccessGroup::In::CommonAcl : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::Ucse::Ip::AccessGroup::In::CommonAcl
@@ -2842,7 +2842,7 @@ class Native::Interface::Ucse::Ip::AccessGroup::In::Acl : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::Ucse::Ip::AccessGroup::In::Acl
@@ -2889,7 +2889,7 @@ class Native::Interface::Ucse::Ip::AccessGroup::Out::CommonAcl : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::Ucse::Ip::AccessGroup::Out::CommonAcl
@@ -2911,7 +2911,7 @@ class Native::Interface::Ucse::Ip::AccessGroup::Out::Acl : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::Ucse::Ip::AccessGroup::Out::Acl

@@ -1540,7 +1540,7 @@ class Native::TacacsServer::Host : public ydk::Entity
 
         ydk::YLeaf name; //type: one of string, union
         ydk::YLeaf port; //type: uint16
-        ydk::YLeaf key; //type: one of enumeration, string
+        ydk::YLeaf key; //type: one of string, enumeration
         ydk::YLeaf encryption_key; //type: string
         ydk::YLeaf timeout; //type: uint16
         class Key;
@@ -3457,11 +3457,11 @@ class Native::Monitor::EventTrace::Atom : public ydk::Entity
 
         class Error; //type: Native::Monitor::EventTrace::Atom::Error
         class Event; //type: Native::Monitor::EventTrace::Atom::Event
-        class Major; //type: Native::Monitor::EventTrace::Atom::Major
+        class Major_; //type: Native::Monitor::EventTrace::Atom::Major_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Error> error;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Event> event;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Major> major;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Major_> major_;
         
 }; // Native::Monitor::EventTrace::Atom
 
@@ -3515,11 +3515,11 @@ class Native::Monitor::EventTrace::Atom::Event : public ydk::Entity
 }; // Native::Monitor::EventTrace::Atom::Event
 
 
-class Native::Monitor::EventTrace::Atom::Major : public ydk::Entity
+class Native::Monitor::EventTrace::Atom::Major_ : public ydk::Entity
 {
     public:
-        Major();
-        ~Major();
+        Major_();
+        ~Major_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3536,7 +3536,7 @@ class Native::Monitor::EventTrace::Atom::Major : public ydk::Entity
         ydk::YLeaf disable; //type: empty
         ydk::YLeafList include; //type: list of  MonitorEventType
 
-}; // Native::Monitor::EventTrace::Atom::Major
+}; // Native::Monitor::EventTrace::Atom::Major_
 
 
 class Native::Monitor::Session : public ydk::Entity

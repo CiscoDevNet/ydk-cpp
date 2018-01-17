@@ -17479,7 +17479,7 @@ const Enum::YLeaf Native::Snmp::Mib::Persist::PersistEnum::v3mibs {2, "v3mibs"};
 
 const Enum::YLeaf Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType::critical {0, "critical"};
 const Enum::YLeaf Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType::informational {1, "informational"};
-const Enum::YLeaf Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType::major {2, "major"};
+const Enum::YLeaf Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType::major_ {2, "major"};
 const Enum::YLeaf Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType::minor {3, "minor"};
 
 const Enum::YLeaf Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pvc::Extension::Mibversion::Y_1 {0, "1"};

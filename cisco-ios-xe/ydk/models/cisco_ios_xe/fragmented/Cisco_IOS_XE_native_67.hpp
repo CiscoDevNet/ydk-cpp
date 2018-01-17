@@ -493,8 +493,8 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Backup::Delay : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of enumeration, uint32
-        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
+        ydk::YLeaf failure; //type: one of uint32, enumeration
+        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
         class Failure;
         class SecondaryDisable;
 
@@ -659,8 +659,8 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Backup::Load : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of enumeration, uint32
-        ydk::YLeaf kickout; //type: one of enumeration, uint32
+        ydk::YLeaf kickin; //type: one of uint32, enumeration
+        ydk::YLeaf kickout; //type: one of uint32, enumeration
         class Kickin;
         class Kickout;
 
@@ -1412,7 +1412,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ip : public ydk::
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of uint16, string
+        ydk::YLeaf directed_broadcast; //type: one of string, uint16
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -1529,7 +1529,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::In::CommonAcl
@@ -1551,7 +1551,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::In::Acl
@@ -1598,7 +1598,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::Out::CommonAcl
@@ -1620,7 +1620,7 @@ class Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::PortChannelSubinterface::PortChannel::Ip::AccessGroup::Out::Acl

@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_32.hpp"
-#include "Cisco_IOS_XE_native_35.hpp"
-#include "Cisco_IOS_XE_native_36.hpp"
 #include "Cisco_IOS_XE_native_37.hpp"
+#include "Cisco_IOS_XE_native_36.hpp"
+#include "Cisco_IOS_XE_native_35.hpp"
 #include "Cisco_IOS_XE_native_33.hpp"
 #include "Cisco_IOS_XE_native_34.hpp"
 

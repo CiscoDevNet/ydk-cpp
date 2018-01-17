@@ -228,7 +228,7 @@ class SensorThresholdSeverity : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf critical;
 
 };

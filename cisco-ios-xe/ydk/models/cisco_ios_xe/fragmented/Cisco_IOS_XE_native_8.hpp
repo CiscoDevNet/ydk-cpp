@@ -631,7 +631,7 @@ class Native::Ip::AccessList::Standard : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of uint16, string
+        ydk::YLeaf name; //type: one of string, uint16
         class AccessListSeqRule; //type: Native::Ip::AccessList::Standard::AccessListSeqRule
         class Default_; //type: Native::Ip::AccessList::Standard::Default_
 
@@ -1361,7 +1361,7 @@ class Native::Ip::AccessList::Extended : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of uint16, string
+        ydk::YLeaf name; //type: one of string, uint16
         class AccessListSeqRule; //type: Native::Ip::AccessList::Extended::AccessListSeqRule
         class Default_; //type: Native::Ip::AccessList::Extended::Default_
 
@@ -2453,7 +2453,7 @@ class Native::Ip::CommunityList::NumberStandard::Deny : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList deny_list; //type: list of  one of enumeration, union
+        ydk::YLeafList deny_list; //type: list of  one of union, enumeration
 
 }; // Native::Ip::CommunityList::NumberStandard::Deny
 
@@ -2474,7 +2474,7 @@ class Native::Ip::CommunityList::NumberStandard::Permit : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList permit_list; //type: list of  one of enumeration, union
+        ydk::YLeafList permit_list; //type: list of  one of union, enumeration
 
 }; // Native::Ip::CommunityList::NumberStandard::Permit
 
@@ -2660,7 +2660,7 @@ class Native::Ip::CommunityList::Standard::Deny : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList deny_list; //type: list of  one of enumeration, union
+        ydk::YLeafList deny_list; //type: list of  one of union, enumeration
 
 }; // Native::Ip::CommunityList::Standard::Deny
 
@@ -2681,7 +2681,7 @@ class Native::Ip::CommunityList::Standard::Permit : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList permit_list; //type: list of  one of enumeration, union
+        ydk::YLeafList permit_list; //type: list of  one of union, enumeration
 
 }; // Native::Ip::CommunityList::Standard::Permit
 
@@ -3910,7 +3910,7 @@ class Native::Ip::Igmp::SsmMap::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf source_ip; //type: string
 
 }; // Native::Ip::Igmp::SsmMap::Static_

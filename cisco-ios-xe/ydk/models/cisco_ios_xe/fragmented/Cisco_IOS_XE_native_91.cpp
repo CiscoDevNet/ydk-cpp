@@ -17449,7 +17449,7 @@ const Enum::YLeaf Native::Clock_::Timezone::Offset::Y_ {1, "-"};
 
 const Enum::YLeaf Native::Logging::Alarm::critical {0, "critical"};
 const Enum::YLeaf Native::Logging::Alarm::informational {1, "informational"};
-const Enum::YLeaf Native::Logging::Alarm::major {2, "major"};
+const Enum::YLeaf Native::Logging::Alarm::major_ {2, "major"};
 const Enum::YLeaf Native::Logging::Alarm::minor {3, "minor"};
 
 const Enum::YLeaf Native::Logging::Facility::auth {0, "auth"};

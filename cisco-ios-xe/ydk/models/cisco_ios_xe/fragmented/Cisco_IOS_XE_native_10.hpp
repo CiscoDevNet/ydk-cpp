@@ -1433,7 +1433,7 @@ class Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf life; //type: one of enumeration, uint32
+        ydk::YLeaf life; //type: one of uint32, enumeration
         class Frequency; //type: Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::Frequency
         class StartTime; //type: Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::StartTime
 
@@ -1506,7 +1506,7 @@ class Native::Ip::Sla::Schedule : public ydk::Entity
 
         ydk::YLeaf entry_number; //type: uint32
         ydk::YLeaf ageout; //type: uint32
-        ydk::YLeaf life; //type: one of enumeration, uint32
+        ydk::YLeaf life; //type: one of uint32, enumeration
         ydk::YLeaf recurring; //type: empty
         class StartTime; //type: Native::Ip::Sla::Schedule::StartTime
 
@@ -1806,9 +1806,9 @@ class Native::Ip::Wccp::WccpList : public ydk::Entity
 
         ydk::YLeaf id; //type: uint8
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of uint16, string
+        ydk::YLeaf group_list; //type: one of string, uint16
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of uint16, string
+        ydk::YLeaf redirect_list; //type: one of string, uint16
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::WccpList::Password
 
@@ -1859,9 +1859,9 @@ class Native::Ip::Wccp::WebCache : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of uint16, string
+        ydk::YLeaf group_list; //type: one of string, uint16
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of uint16, string
+        ydk::YLeaf redirect_list; //type: one of string, uint16
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::WebCache::Password
 
@@ -2011,9 +2011,9 @@ class Native::Ip::Wccp::Vrf::WccpList : public ydk::Entity
 
         ydk::YLeaf id; //type: uint8
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of uint16, string
+        ydk::YLeaf group_list; //type: one of string, uint16
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of uint16, string
+        ydk::YLeaf redirect_list; //type: one of string, uint16
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::Vrf::WccpList::Password
 
@@ -2063,9 +2063,9 @@ class Native::Ip::Wccp::Vrf::WebCache : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of uint16, string
+        ydk::YLeaf group_list; //type: one of string, uint16
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of uint16, string
+        ydk::YLeaf redirect_list; //type: one of string, uint16
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::Vrf::WebCache::Password
 
@@ -2769,8 +2769,8 @@ class Native::Ipv6::Dhcp::Pool::Address::Prefix::Lifetime : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf valid_lifetime; //type: one of enumeration, uint32
-        ydk::YLeaf preferred_lifetime; //type: one of enumeration, uint32
+        ydk::YLeaf valid_lifetime; //type: one of uint32, enumeration
+        ydk::YLeaf preferred_lifetime; //type: one of uint32, enumeration
         class ValidLifetime;
         class PreferredLifetime;
 

@@ -895,7 +895,7 @@ class Native::SnmpServer : public ydk::Entity
         ydk::YLeaf packetsize; //type: uint32
         ydk::YLeaf queue_length; //type: uint16
         ydk::YLeaf system_shutdown; //type: empty
-        ydk::YLeaf tftp_server_list; //type: one of uint8, string
+        ydk::YLeaf tftp_server_list; //type: one of string, uint8
         class Community; //type: Native::SnmpServer::Community
         class Context; //type: Native::SnmpServer::Context
         class Enable; //type: Native::SnmpServer::Enable
@@ -951,7 +951,7 @@ class Native::SnmpServer::Community : public ydk::Entity
         ydk::YLeaf ro; //type: empty
         ydk::YLeaf rw; //type: empty
         ydk::YLeaf ipv6; //type: string
-        ydk::YLeaf access_list_name; //type: one of uint16, string
+        ydk::YLeaf access_list_name; //type: one of string, uint16
 
 }; // Native::SnmpServer::Community
 
@@ -3857,7 +3857,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::AlarmType : publi
     public:
         static const ydk::Enum::YLeaf critical;
         static const ydk::Enum::YLeaf informational;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
 
 };

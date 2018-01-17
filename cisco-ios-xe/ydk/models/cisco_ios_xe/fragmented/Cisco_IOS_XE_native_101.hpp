@@ -984,7 +984,7 @@ class Native::Crypto::Pki::Certificate::Storage : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf path; //type: one of enumeration, string
+        ydk::YLeaf path; //type: one of string, enumeration
         ydk::YLeaf on; //type: empty
         ydk::YLeaf with_keypair; //type: empty
         class Path;

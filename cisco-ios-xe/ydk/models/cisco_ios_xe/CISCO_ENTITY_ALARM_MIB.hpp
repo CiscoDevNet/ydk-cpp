@@ -378,7 +378,7 @@ class AlarmSeverity : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf info;
 

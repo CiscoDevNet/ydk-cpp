@@ -3248,7 +3248,7 @@ class Native::Aaa::Authentication::Login : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of enumeration, string
+        ydk::YLeaf name; //type: one of string, enumeration
         class A1; //type: Native::Aaa::Authentication::Login::A1
         class A2; //type: Native::Aaa::Authentication::Login::A2
         class A3; //type: Native::Aaa::Authentication::Login::A3
@@ -3705,8 +3705,8 @@ class Native::Aaa::Authorization::Commands : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf level; //type: uint8
-        ydk::YLeaf list_name; //type: one of enumeration, string
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf list_name; //type: one of string, enumeration
+        ydk::YLeaf group; //type: one of string, enumeration
         ydk::YLeaf if_authenticated; //type: empty
         ydk::YLeaf local; //type: empty
         ydk::YLeaf none; //type: empty
@@ -3872,7 +3872,7 @@ class Native::Logging::Alarm : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf critical;
         static const ydk::Enum::YLeaf informational;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
 
 };

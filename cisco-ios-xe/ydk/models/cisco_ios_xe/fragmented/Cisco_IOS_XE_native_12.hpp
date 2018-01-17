@@ -551,7 +551,7 @@ class Native::Vlan::Configuration : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vlan_id; //type: one of uint16, string
+        ydk::YLeaf vlan_id; //type: one of string, uint16
         class Ip; //type: Native::Vlan::Configuration::Ip
         class Ipv6; //type: Native::Vlan::Configuration::Ipv6
 
@@ -715,7 +715,7 @@ class Native::Vlan::Filter : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf word; //type: string
-        ydk::YLeaf vlan_list; //type: one of uint16, string
+        ydk::YLeaf vlan_list; //type: one of string, uint16
 
 }; // Native::Vlan::Filter
 
@@ -877,7 +877,7 @@ class Native::Vlan::VlanList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint16, string
+        ydk::YLeaf id; //type: one of string, uint16
         ydk::YLeaf remote_span; //type: empty
         ydk::YLeaf name; //type: string
         ydk::YLeaf state; //type: State
@@ -2008,8 +2008,8 @@ class Native::Policy::ClassMap::Match::Vlan : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList inner; //type: list of  one of uint16, string
-        ydk::YLeafList value_; //type: list of  one of uint16, string
+        ydk::YLeafList inner; //type: list of  one of string, uint16
+        ydk::YLeafList value_; //type: list of  one of string, uint16
 
 }; // Native::Policy::ClassMap::Match::Vlan
 
@@ -2991,8 +2991,8 @@ class Native::Policy::ClassMap::Match::Not_::Vlan : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList inner; //type: list of  one of uint16, string
-        ydk::YLeafList value_; //type: list of  one of uint16, string
+        ydk::YLeafList inner; //type: list of  one of string, uint16
+        ydk::YLeafList value_; //type: list of  one of string, uint16
 
 }; // Native::Policy::ClassMap::Match::Not_::Vlan
 
@@ -3329,7 +3329,7 @@ class Native::Policy::PolicyMap::Event::ClassNumber : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        ydk::YLeaf class_; //type: one of enumeration, string
+        ydk::YLeaf class_; //type: one of string, enumeration
         ydk::YLeaf execution_type; //type: ExecutionType
         class ActionNumber; //type: Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber
 

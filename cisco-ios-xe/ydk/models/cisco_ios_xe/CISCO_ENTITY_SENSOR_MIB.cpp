@@ -836,7 +836,7 @@ const Enum::YLeaf SensorStatus::nonoperational {3, "nonoperational"};
 
 const Enum::YLeaf SensorThresholdSeverity::other {1, "other"};
 const Enum::YLeaf SensorThresholdSeverity::minor {10, "minor"};
-const Enum::YLeaf SensorThresholdSeverity::major {20, "major"};
+const Enum::YLeaf SensorThresholdSeverity::major_ {20, "major"};
 const Enum::YLeaf SensorThresholdSeverity::critical {30, "critical"};
 
 const Enum::YLeaf SensorThresholdRelation::lessThan {1, "lessThan"};

@@ -196,7 +196,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Match::Address : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of uint16, string
+        ydk::YLeaf ipv4; //type: one of string, uint16
         ydk::YLeaf ipv6; //type: string
 
 }; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Match::Address
@@ -2229,7 +2229,7 @@ class Native::Crypto::Isakmp::Client::Configuration::Group : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf access_restrict; //type: string
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf backup_gateway; //type: string
         ydk::YLeaf browser_proxy; //type: string
         ydk::YLeaf domain; //type: string
@@ -2582,7 +2582,7 @@ class Native::Crypto::Isakmp::Client::Firewall::Policy::CentralPolicyPush::Acces
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         class Direction;
 
 }; // Native::Crypto::Isakmp::Client::Firewall::Policy::CentralPolicyPush::AccessList

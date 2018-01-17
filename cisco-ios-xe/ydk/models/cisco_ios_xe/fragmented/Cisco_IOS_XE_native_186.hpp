@@ -460,7 +460,7 @@ class Native::Router::Rip::Default_::Distance::DistanceList : public ydk::Entity
         ydk::YLeaf number; //type: uint8
         ydk::YLeaf ip; //type: string
         ydk::YLeaf mask; //type: string
-        ydk::YLeaf access_list; //type: one of uint16, uint8
+        ydk::YLeaf access_list; //type: one of uint8, uint16
 
 }; // Native::Router::Rip::Default_::Distance::DistanceList
 

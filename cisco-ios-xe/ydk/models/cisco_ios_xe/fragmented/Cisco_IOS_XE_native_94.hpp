@@ -2031,7 +2031,7 @@ class Native::SpanningTree::Mst::InstanceRange : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint16, string
+        ydk::YLeaf id; //type: one of string, uint16
         ydk::YLeaf priority; //type: uint16
         ydk::YLeaf root; //type: Root
         class Root;
@@ -2085,7 +2085,7 @@ class Native::SpanningTree::Mst::Configuration::Instance : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeafList vlan; //type: list of  one of uint16, string
+        ydk::YLeafList vlan; //type: list of  one of string, uint16
 
 }; // Native::SpanningTree::Mst::Configuration::Instance
 
@@ -3437,7 +3437,7 @@ class Native::Fallback::Profile::FallbackList::Ip::AccessGroup : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of uint16, string
+        ydk::YLeaf name; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Fallback::Profile::FallbackList::Ip::AccessGroup

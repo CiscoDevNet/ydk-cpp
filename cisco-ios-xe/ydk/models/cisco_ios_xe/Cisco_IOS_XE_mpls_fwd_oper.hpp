@@ -79,10 +79,10 @@ class MplsForwardingTable::LocalLabelEntry::ForwardingInfo : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf outgoing_interface; //type: one of enumeration, string
-        ydk::YLeaf outgoing_label; //type: one of enumeration, uint32
+        ydk::YLeaf outgoing_interface; //type: one of string, enumeration
+        ydk::YLeaf outgoing_label; //type: one of uint32, enumeration
         ydk::YLeaf label_switched_bytes; //type: uint64
-        ydk::YLeaf next_hop; //type: one of enumeration, union, string
+        ydk::YLeaf next_hop; //type: one of string, union, enumeration
         class ConnectionInfo; //type: MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mpls_fwd_oper::MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo> connection_info;
