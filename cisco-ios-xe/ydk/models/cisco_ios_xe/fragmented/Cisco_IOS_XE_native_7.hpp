@@ -2002,7 +2002,7 @@ class Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_::GroupList : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group_list_name; //type: one of uint16, string
+        ydk::YLeaf group_list_name; //type: one of string, uint16
 
 }; // Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_::GroupList
 
@@ -2113,7 +2113,7 @@ class Native::Ip::Pim::AcceptRegister : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
 
 }; // Native::Ip::Pim::AcceptRegister
 
@@ -2158,7 +2158,7 @@ class Native::Ip::Pim::RpAddress : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf address; //type: string
-        ydk::YLeaf access_list; //type: one of uint16, string
+        ydk::YLeaf access_list; //type: one of string, uint16
         ydk::YLeaf override; //type: empty
 
 }; // Native::Ip::Pim::RpAddress
@@ -2182,7 +2182,7 @@ class Native::Ip::Pim::SptThreshold : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf how; //type: How
-        ydk::YLeaf group_list; //type: one of uint16, string
+        ydk::YLeaf group_list; //type: one of string, uint16
         class How;
 
 }; // Native::Ip::Pim::SptThreshold
@@ -2394,7 +2394,7 @@ class Native::Ip::Pim::Ssm : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf range; //type: one of uint16, string
+        ydk::YLeaf range; //type: one of string, uint16
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Ip::Pim::Ssm
@@ -2456,7 +2456,7 @@ class Native::Ip::Pim::Vrf::AcceptRegister : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
 
 }; // Native::Ip::Pim::Vrf::AcceptRegister
 
@@ -2499,7 +2499,7 @@ class Native::Ip::Pim::Vrf::RpAddress : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: string
-        ydk::YLeaf access_list; //type: one of uint16, string
+        ydk::YLeaf access_list; //type: one of string, uint16
         ydk::YLeaf override; //type: empty
 
 }; // Native::Ip::Pim::Vrf::RpAddress
@@ -2522,7 +2522,7 @@ class Native::Ip::Pim::Vrf::SptThreshold : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf how; //type: How
-        ydk::YLeaf group_list; //type: one of uint16, string
+        ydk::YLeaf group_list; //type: one of string, uint16
         class How;
 
 }; // Native::Ip::Pim::Vrf::SptThreshold
@@ -2727,7 +2727,7 @@ class Native::Ip::Pim::Vrf::Ssm : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, string
+        ydk::YLeaf range; //type: one of string, uint16
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Ip::Pim::Vrf::Ssm
@@ -3025,7 +3025,7 @@ class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of enumeration, string
+        ydk::YLeaf fwd; //type: one of string, enumeration
         ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf metric; //type: uint8
         ydk::YLeaf global; //type: empty
@@ -3212,7 +3212,7 @@ class Native::Ip::Route::Vrf::IpRouteInterfaceForwardingList::FwdList : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of enumeration, string
+        ydk::YLeaf fwd; //type: one of string, enumeration
         ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf metric; //type: uint8
         ydk::YLeaf global; //type: empty

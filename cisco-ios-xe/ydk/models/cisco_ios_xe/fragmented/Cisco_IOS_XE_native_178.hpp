@@ -2861,8 +2861,8 @@ class Native::Router::Ospf::Limit::Retransmissions : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf non_dc; //type: one of enumeration, uint32
-        ydk::YLeaf dc; //type: one of enumeration, uint32
+        ydk::YLeaf non_dc; //type: one of uint32, enumeration
+        ydk::YLeaf dc; //type: one of uint32, enumeration
 
 }; // Native::Router::Ospf::Limit::Retransmissions
 

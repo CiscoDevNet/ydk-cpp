@@ -121,7 +121,7 @@ class Native::Interface::TenGigabitEthernet::Mpls::Ldp::Discovery : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::TenGigabitEthernet::Mpls::Ldp::Discovery
 
@@ -419,7 +419,7 @@ class Native::Interface::TenGigabitEthernet::Ip : public ydk::Entity
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of uint16, string
+        ydk::YLeaf directed_broadcast; //type: one of string, uint16
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -553,7 +553,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl
@@ -575,7 +575,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::Acl : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::Acl
@@ -622,7 +622,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::CommonAcl : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::CommonAcl
@@ -644,7 +644,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::Acl : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::Acl

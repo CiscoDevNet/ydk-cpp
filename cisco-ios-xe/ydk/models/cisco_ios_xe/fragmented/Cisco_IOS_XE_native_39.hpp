@@ -2362,9 +2362,9 @@ class Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList dot1q; //type: list of  one of string, uint16, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
@@ -2415,9 +2415,9 @@ class Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of uint16, enumeration, string
+        ydk::YLeafList second_dot1q; //type: list of  one of string, uint16, enumeration
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::Dot1Q::Cos2
 
@@ -2560,7 +2560,7 @@ class Native::Interface::FiveGigabitEthernet::Service::Instance::Ip::Acl : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of uint16, string
+        ydk::YLeaf access_group; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
         ydk::YLeaf out; //type: empty
 

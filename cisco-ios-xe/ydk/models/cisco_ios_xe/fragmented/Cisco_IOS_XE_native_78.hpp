@@ -470,7 +470,7 @@ class Native::Interface::Tunnel::Isis::Ipv6::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::Tunnel::Isis::Ipv6::Metric::MetricList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Ipv6::Metric::MetricList> > metric_list;
@@ -496,7 +496,7 @@ class Native::Interface::Tunnel::Isis::Ipv6::Metric::MetricList : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -540,7 +540,7 @@ class Native::Interface::Tunnel::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::Tunnel::Isis::Metric::MetricList
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Isis::Metric::MetricList> > metric_list;
@@ -566,7 +566,7 @@ class Native::Interface::Tunnel::Isis::Metric::MetricList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
         class Levels;
         class Value_;
 
@@ -1133,7 +1133,7 @@ class Native::Interface::Tunnel::Mpls::Ldp::Discovery : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::Tunnel::Mpls::Ldp::Discovery
 
@@ -1431,7 +1431,7 @@ class Native::Interface::Tunnel::Ip : public ydk::Entity
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of uint16, string
+        ydk::YLeaf directed_broadcast; //type: one of string, uint16
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -1565,7 +1565,7 @@ class Native::Interface::Tunnel::Ip::AccessGroup::In::CommonAcl : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::Tunnel::Ip::AccessGroup::In::CommonAcl
@@ -1587,7 +1587,7 @@ class Native::Interface::Tunnel::Ip::AccessGroup::In::Acl : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::Tunnel::Ip::AccessGroup::In::Acl
@@ -1634,7 +1634,7 @@ class Native::Interface::Tunnel::Ip::AccessGroup::Out::CommonAcl : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of uint16, string
+        ydk::YLeaf common; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::Tunnel::Ip::AccessGroup::Out::CommonAcl
@@ -1656,7 +1656,7 @@ class Native::Interface::Tunnel::Ip::AccessGroup::Out::Acl : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of uint16, string
+        ydk::YLeaf acl_name; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::Tunnel::Ip::AccessGroup::Out::Acl

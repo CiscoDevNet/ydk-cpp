@@ -163,7 +163,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Neighbor::DistributeL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf inout; //type: Inout
-        ydk::YLeaf accesslist; //type: one of uint16, string
+        ydk::YLeaf accesslist; //type: one of string, uint16
         class Inout;
 
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Rtfilter::Neighbor::DistributeList

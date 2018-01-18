@@ -620,7 +620,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Neighbor:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf inout; //type: Inout
-        ydk::YLeaf accesslist; //type: one of uint16, string
+        ydk::YLeaf accesslist; //type: one of string, uint16
         class Inout;
 
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Neighbor::DistributeList
@@ -2946,7 +2946,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Distance::IpList::Wil
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf w_bits; //type: string
-        ydk::YLeaf access_list; //type: one of uint16, uint8
+        ydk::YLeaf access_list; //type: one of uint8, uint16
 
 }; // Native::Router::Isis::AddressFamily::Ipv4::Topology::Distance::IpList::WildcardBits
 

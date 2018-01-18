@@ -156,7 +156,7 @@ class Native::Ip::Msdp::FilterSaRequest : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name_addr; //type: string
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
 
 }; // Native::Ip::Msdp::FilterSaRequest
 
@@ -273,7 +273,7 @@ class Native::Ip::Msdp::Redistribute : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf route_map; //type: string
 
@@ -324,9 +324,9 @@ class Native::Ip::Msdp::SaFilter::In : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of uint16, string
+        ydk::YLeaf rp_list; //type: one of string, uint16
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::SaFilter::In
@@ -350,9 +350,9 @@ class Native::Ip::Msdp::SaFilter::Out : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of uint16, string
+        ydk::YLeaf rp_list; //type: one of string, uint16
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::SaFilter::Out
@@ -563,7 +563,7 @@ class Native::Ip::Msdp::Vrf::FilterSaRequest : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name_addr; //type: string
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
 
 }; // Native::Ip::Msdp::Vrf::FilterSaRequest
 
@@ -675,7 +675,7 @@ class Native::Ip::Msdp::Vrf::Redistribute : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf route_map; //type: string
 
@@ -724,9 +724,9 @@ class Native::Ip::Msdp::Vrf::SaFilter::In : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of uint16, string
+        ydk::YLeaf rp_list; //type: one of string, uint16
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::Vrf::SaFilter::In
@@ -749,9 +749,9 @@ class Native::Ip::Msdp::Vrf::SaFilter::Out : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of string, uint16
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of uint16, string
+        ydk::YLeaf rp_list; //type: one of string, uint16
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::Vrf::SaFilter::Out
@@ -1046,7 +1046,7 @@ class Native::Ip::Nat::Inside::Source::List : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint16, string
+        ydk::YLeaf id; //type: one of string, uint16
         ydk::YLeaf pool; //type: string
         ydk::YLeaf redundancy; //type: uint8
         ydk::YLeaf mapping_id; //type: uint32
@@ -1571,7 +1571,7 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList : public 
         ydk::YLeaf no_payload; //type: empty
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf reversible; //type: empty
-        ydk::YLeaf redundancy; //type: one of uint8, string
+        ydk::YLeaf redundancy; //type: one of string, uint8
         ydk::YLeaf mapping_id; //type: uint32
         ydk::YLeaf match_in_vrf; //type: empty
         ydk::YLeaf forced; //type: empty
@@ -1793,7 +1793,7 @@ class Native::Ip::Nat::Inside::Destination::List : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint16, string
+        ydk::YLeaf id; //type: one of string, uint16
         ydk::YLeaf pool; //type: string
         ydk::YLeaf redundancy; //type: uint8
         ydk::YLeaf mapping_id; //type: uint32
@@ -1920,7 +1920,7 @@ class Native::Ip::Nat::Outside::List : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint16, string
+        ydk::YLeaf id; //type: one of string, uint16
         ydk::YLeaf pool; //type: string
         ydk::YLeaf mapping_id; //type: uint32
         ydk::YLeaf vrf; //type: string

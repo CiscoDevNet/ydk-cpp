@@ -16453,7 +16453,7 @@ const Enum::YLeaf Native::Radius::Server::Pac::Key::Encryption::Y_6 {1, "6"};
 const Enum::YLeaf Native::Radius::Server::Pac::Key::Encryption::Y_7 {2, "7"};
 
 const Enum::YLeaf Native::AlarmContact::Severity::critical {0, "critical"};
-const Enum::YLeaf Native::AlarmContact::Severity::major {1, "major"};
+const Enum::YLeaf Native::AlarmContact::Severity::major_ {1, "major"};
 const Enum::YLeaf Native::AlarmContact::Severity::minor {2, "minor"};
 
 const Enum::YLeaf Native::AlarmContact::Trigger::open {0, "open"};

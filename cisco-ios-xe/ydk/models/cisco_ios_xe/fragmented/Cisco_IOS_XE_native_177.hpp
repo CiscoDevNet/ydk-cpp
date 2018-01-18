@@ -2524,7 +2524,7 @@ class Native::Router::Ospf::QueueDepth::Hello : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of enumeration, uint32
+        ydk::YLeaf options; //type: one of uint32, enumeration
         class Options;
 
 }; // Native::Router::Ospf::QueueDepth::Hello
@@ -2546,7 +2546,7 @@ class Native::Router::Ospf::QueueDepth::Update : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of enumeration, uint32
+        ydk::YLeaf options; //type: one of uint32, enumeration
         class Options;
 
 }; // Native::Router::Ospf::QueueDepth::Update

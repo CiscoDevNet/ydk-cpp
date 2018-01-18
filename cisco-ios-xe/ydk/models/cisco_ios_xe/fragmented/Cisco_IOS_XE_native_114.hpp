@@ -2364,7 +2364,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2Vpn::Distance::AdmDistance : 
         ydk::YLeaf distance; //type: uint16
         ydk::YLeaf srcip; //type: string
         ydk::YLeaf wildbits; //type: string
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
 
 }; // Native::Router::Bgp::AddressFamily::NoVrf::L2Vpn::Distance::AdmDistance
 
@@ -2385,7 +2385,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2Vpn::DistributeList : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint16, string
+        ydk::YLeaf id; //type: one of string, uint16
         class In; //type: Native::Router::Bgp::AddressFamily::NoVrf::L2Vpn::DistributeList::In
         class Out; //type: Native::Router::Bgp::AddressFamily::NoVrf::L2Vpn::DistributeList::Out
 
@@ -3382,7 +3382,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::L2Vpn::Neighbor::DistributeList
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf inout; //type: Inout
-        ydk::YLeaf accesslist; //type: one of uint16, string
+        ydk::YLeaf accesslist; //type: one of string, uint16
         class Inout;
 
 }; // Native::Router::Bgp::AddressFamily::NoVrf::L2Vpn::Neighbor::DistributeList

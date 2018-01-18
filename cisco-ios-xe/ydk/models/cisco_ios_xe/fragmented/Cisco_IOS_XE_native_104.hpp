@@ -1331,7 +1331,7 @@ class Native::Mpls::Static_::Binding::Ipv4::Global::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of enumeration, uint32
+        ydk::YLeaf label; //type: one of uint32, enumeration
         class Label;
 
 }; // Native::Mpls::Static_::Binding::Ipv4::Global::Output
@@ -1405,7 +1405,7 @@ class Native::Mpls::Static_::Binding::Ipv4::Vrf::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of enumeration, uint32
+        ydk::YLeaf label; //type: one of uint32, enumeration
         class Label;
 
 }; // Native::Mpls::Static_::Binding::Ipv4::Vrf::Output

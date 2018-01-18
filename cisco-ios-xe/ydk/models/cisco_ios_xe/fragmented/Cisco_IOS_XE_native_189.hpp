@@ -390,7 +390,7 @@ class Native::Line::LineList::Padding : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of uint8, string
+        ydk::YLeaf character; //type: one of string, uint8
         ydk::YLeaf null; //type: uint8
 
 }; // Native::Line::LineList::Padding
@@ -708,7 +708,7 @@ class Native::Line::Aux : public ydk::Entity
 
         ydk::YLeaf first; //type: First
         ydk::YLeaf no_activation_character; //type: boolean
-        ydk::YLeaf activation_character; //type: one of uint8, string
+        ydk::YLeaf activation_character; //type: one of string, uint8
         ydk::YLeaf data_character_bits; //type: uint8
         ydk::YLeaf domain_lookup; //type: empty
         ydk::YLeaf editing; //type: empty
@@ -727,8 +727,8 @@ class Native::Line::Aux : public ydk::Entity
         ydk::YLeaf session_limit; //type: uint32
         ydk::YLeaf special_character_bits; //type: uint8
         ydk::YLeaf speed; //type: uint32
-        ydk::YLeaf start_character; //type: one of uint8, string
-        ydk::YLeaf stop_character; //type: one of uint8, string
+        ydk::YLeaf start_character; //type: one of string, uint8
+        ydk::YLeaf stop_character; //type: one of string, uint8
         ydk::YLeaf stopbits; //type: Stopbits
         ydk::YLeaf terminal_type; //type: string
         ydk::YLeaf txspeed; //type: uint32
@@ -879,7 +879,7 @@ class Native::Line::Aux::AccessClass::AcccessList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf access_list; //type: one of uint16, string
+        ydk::YLeaf access_list; //type: one of string, uint16
         ydk::YLeaf vrf_also; //type: empty
         class Direction;
 
@@ -974,7 +974,7 @@ class Native::Line::Aux::AutocommandOptions::AbortCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of uint8, string
+        ydk::YLeaf character; //type: one of string, uint8
 
 }; // Native::Line::Aux::AutocommandOptions::AbortCharacter
 
@@ -1062,7 +1062,7 @@ class Native::Line::Aux::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of uint8, enumeration, string
+        ydk::YLeaf char_; //type: one of string, uint8, enumeration
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -1445,7 +1445,7 @@ class Native::Line::Aux::Padding : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of uint8, string
+        ydk::YLeaf character; //type: one of string, uint8
         ydk::YLeaf null; //type: uint8
 
 }; // Native::Line::Aux::Padding
@@ -1763,7 +1763,7 @@ class Native::Line::Console : public ydk::Entity
 
         ydk::YLeaf first; //type: First
         ydk::YLeaf no_activation_character; //type: boolean
-        ydk::YLeaf activation_character; //type: one of uint8, string
+        ydk::YLeaf activation_character; //type: one of string, uint8
         ydk::YLeaf data_character_bits; //type: uint8
         ydk::YLeaf domain_lookup; //type: empty
         ydk::YLeaf editing; //type: empty
@@ -1782,8 +1782,8 @@ class Native::Line::Console : public ydk::Entity
         ydk::YLeaf session_limit; //type: uint32
         ydk::YLeaf special_character_bits; //type: uint8
         ydk::YLeaf speed; //type: uint32
-        ydk::YLeaf start_character; //type: one of uint8, string
-        ydk::YLeaf stop_character; //type: one of uint8, string
+        ydk::YLeaf start_character; //type: one of string, uint8
+        ydk::YLeaf stop_character; //type: one of string, uint8
         ydk::YLeaf stopbits; //type: Stopbits
         ydk::YLeaf terminal_type; //type: string
         ydk::YLeaf txspeed; //type: uint32
@@ -1934,7 +1934,7 @@ class Native::Line::Console::AccessClass::AcccessList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf access_list; //type: one of uint16, string
+        ydk::YLeaf access_list; //type: one of string, uint16
         ydk::YLeaf vrf_also; //type: empty
         class Direction;
 
@@ -2029,7 +2029,7 @@ class Native::Line::Console::AutocommandOptions::AbortCharacter : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of uint8, string
+        ydk::YLeaf character; //type: one of string, uint8
 
 }; // Native::Line::Console::AutocommandOptions::AbortCharacter
 
@@ -2117,7 +2117,7 @@ class Native::Line::Console::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of uint8, enumeration, string
+        ydk::YLeaf char_; //type: one of string, uint8, enumeration
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -2500,7 +2500,7 @@ class Native::Line::Console::Padding : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of uint8, string
+        ydk::YLeaf character; //type: one of string, uint8
         ydk::YLeaf null; //type: uint8
 
 }; // Native::Line::Console::Padding
@@ -2819,7 +2819,7 @@ class Native::Line::Vty : public ydk::Entity
         ydk::YLeaf first; //type: uint16
         ydk::YLeaf last; //type: uint16
         ydk::YLeaf no_activation_character; //type: boolean
-        ydk::YLeaf activation_character; //type: one of uint8, string
+        ydk::YLeaf activation_character; //type: one of string, uint8
         ydk::YLeaf data_character_bits; //type: uint8
         ydk::YLeaf domain_lookup; //type: empty
         ydk::YLeaf editing; //type: empty
@@ -2838,8 +2838,8 @@ class Native::Line::Vty : public ydk::Entity
         ydk::YLeaf session_limit; //type: uint32
         ydk::YLeaf special_character_bits; //type: uint8
         ydk::YLeaf speed; //type: uint32
-        ydk::YLeaf start_character; //type: one of uint8, string
-        ydk::YLeaf stop_character; //type: one of uint8, string
+        ydk::YLeaf start_character; //type: one of string, uint8
+        ydk::YLeaf stop_character; //type: one of string, uint8
         ydk::YLeaf stopbits; //type: Stopbits
         ydk::YLeaf terminal_type; //type: string
         ydk::YLeaf txspeed; //type: uint32
@@ -2989,7 +2989,7 @@ class Native::Line::Vty::AccessClass::AcccessList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf access_list; //type: one of uint16, string
+        ydk::YLeaf access_list; //type: one of string, uint16
         ydk::YLeaf vrf_also; //type: empty
         class Direction;
 
@@ -3084,7 +3084,7 @@ class Native::Line::Vty::AutocommandOptions::AbortCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of uint8, string
+        ydk::YLeaf character; //type: one of string, uint8
 
 }; // Native::Line::Vty::AutocommandOptions::AbortCharacter
 
@@ -3172,7 +3172,7 @@ class Native::Line::Vty::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of uint8, enumeration, string
+        ydk::YLeaf char_; //type: one of string, uint8, enumeration
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -3555,7 +3555,7 @@ class Native::Line::Vty::Padding : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf character; //type: one of uint8, string
+        ydk::YLeaf character; //type: one of string, uint8
         ydk::YLeaf null; //type: uint8
 
 }; // Native::Line::Vty::Padding

@@ -1681,7 +1681,7 @@ class Native::Flow::Monitor::Record : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf type; //type: one of enumeration, string
+        ydk::YLeaf type; //type: one of string, enumeration
         class Netflow; //type: Native::Flow::Monitor::Record::Netflow
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Record::Netflow> netflow;
@@ -3222,8 +3222,8 @@ class Native::Ip::Vrf::Mdt::Data : public ydk::Entity
         ydk::YLeaf mulicast_address; //type: string
         ydk::YLeaf wildcard_bits; //type: string
         ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf threshold_list; //type: one of uint16, string
-        ydk::YLeaf list; //type: one of uint16, string
+        ydk::YLeaf threshold_list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of string, uint16
 
 }; // Native::Ip::Vrf::Mdt::Data
 

@@ -72,7 +72,7 @@ class CiscoAlarmSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf cleared;
         static const ydk::Enum::YLeaf indeterminate;
         static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf warning;
         static const ydk::Enum::YLeaf info;

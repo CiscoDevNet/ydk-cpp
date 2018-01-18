@@ -55,7 +55,7 @@ const Enum::YLeaf CiscoLocationClass::subChannel {8, "subChannel"};
 const Enum::YLeaf CiscoAlarmSeverity::cleared {1, "cleared"};
 const Enum::YLeaf CiscoAlarmSeverity::indeterminate {2, "indeterminate"};
 const Enum::YLeaf CiscoAlarmSeverity::critical {3, "critical"};
-const Enum::YLeaf CiscoAlarmSeverity::major {4, "major"};
+const Enum::YLeaf CiscoAlarmSeverity::major_ {4, "major"};
 const Enum::YLeaf CiscoAlarmSeverity::minor {5, "minor"};
 const Enum::YLeaf CiscoAlarmSeverity::warning {6, "warning"};
 const Enum::YLeaf CiscoAlarmSeverity::info {7, "info"};

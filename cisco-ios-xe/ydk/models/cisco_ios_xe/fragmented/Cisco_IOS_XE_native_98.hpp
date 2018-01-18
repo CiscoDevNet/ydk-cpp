@@ -2932,7 +2932,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Authorization::Address : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of uint16, string
+        ydk::YLeaf ipv4; //type: one of string, uint16
 
 }; // Native::Crypto::Gkm::Group::Server::Local::Authorization::Address
 
@@ -3433,7 +3433,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Rekey::Address : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of uint16, string
+        ydk::YLeaf ipv4; //type: one of string, uint16
 
 }; // Native::Crypto::Gkm::Group::Server::Local::Rekey::Address
 

@@ -461,7 +461,7 @@ class Native::Ipv6::Route::Ipv6RouteList::Ipv6FwdList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of enumeration, string
+        ydk::YLeaf fwd; //type: one of string, enumeration
         ydk::YLeaf distance; //type: uint8
         ydk::YLeaf multicast; //type: empty
         ydk::YLeaf unicast; //type: empty
@@ -568,7 +568,7 @@ class Native::Ipv6::Route::Vrf::Ipv6RouteList::Ipv6FwdList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of enumeration, string
+        ydk::YLeaf fwd; //type: one of string, enumeration
         ydk::YLeaf distance; //type: uint8
         ydk::YLeaf multicast; //type: empty
         ydk::YLeaf unicast; //type: empty

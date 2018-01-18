@@ -2558,7 +2558,7 @@ class Native::Router::Eigrp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint16, string
+        ydk::YLeaf id; //type: one of string, uint16
         ydk::YLeaf auto_summary; //type: empty
         ydk::YLeaf maximum_paths; //type: uint8
         ydk::YLeaf nsf; //type: empty
@@ -3351,7 +3351,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::DistributeList::EigFilt : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf eig_filt; //type: one of uint16, string
+        ydk::YLeaf eig_filt; //type: one of string, uint16
         class In; //type: Native::Router::Eigrp::AddressFamily::AfIpList::DistributeList::EigFilt::In
         class Out; //type: Native::Router::Eigrp::AddressFamily::AfIpList::DistributeList::EigFilt::Out
 

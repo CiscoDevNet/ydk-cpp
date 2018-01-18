@@ -14901,11 +14901,11 @@ Native::Monitor::EventTrace::Atom::Atom()
     :
     error(std::make_shared<Native::Monitor::EventTrace::Atom::Error>())
 	,event(std::make_shared<Native::Monitor::EventTrace::Atom::Event>())
-	,major(std::make_shared<Native::Monitor::EventTrace::Atom::Major>())
+	,major_(std::make_shared<Native::Monitor::EventTrace::Atom::Major_>())
 {
     error->parent = this;
     event->parent = this;
-    major->parent = this;
+    major_->parent = this;
 
     yang_name = "atom"; yang_parent_name = "event-trace"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -14918,7 +14918,7 @@ bool Native::Monitor::EventTrace::Atom::has_data() const
 {
     return (error !=  nullptr && error->has_data())
 	|| (event !=  nullptr && event->has_data())
-	|| (major !=  nullptr && major->has_data());
+	|| (major_ !=  nullptr && major_->has_data());
 }
 
 bool Native::Monitor::EventTrace::Atom::has_operation() const
@@ -14926,7 +14926,7 @@ bool Native::Monitor::EventTrace::Atom::has_operation() const
     return is_set(yfilter)
 	|| (error !=  nullptr && error->has_operation())
 	|| (event !=  nullptr && event->has_operation())
-	|| (major !=  nullptr && major->has_operation());
+	|| (major_ !=  nullptr && major_->has_operation());
 }
 
 std::string Native::Monitor::EventTrace::Atom::get_absolute_path() const
@@ -14974,11 +14974,11 @@ std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::get_child_by_name(con
 
     if(child_yang_name == "major")
     {
-        if(major == nullptr)
+        if(major_ == nullptr)
         {
-            major = std::make_shared<Native::Monitor::EventTrace::Atom::Major>();
+            major_ = std::make_shared<Native::Monitor::EventTrace::Atom::Major_>();
         }
-        return major;
+        return major_;
     }
 
     return nullptr;
@@ -14997,9 +14997,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Atom
         children["event"] = event;
     }
 
-    if(major != nullptr)
+    if(major_ != nullptr)
     {
-        children["major"] = major;
+        children["major"] = major_;
     }
 
     return children;
@@ -15272,7 +15272,7 @@ bool Native::Monitor::EventTrace::Atom::Event::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Native::Monitor::EventTrace::Atom::Major::Major()
+Native::Monitor::EventTrace::Atom::Major_::Major_()
     :
     enable{YType::empty, "enable"},
     disable{YType::empty, "disable"},
@@ -15282,11 +15282,11 @@ Native::Monitor::EventTrace::Atom::Major::Major()
     yang_name = "major"; yang_parent_name = "atom"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Monitor::EventTrace::Atom::Major::~Major()
+Native::Monitor::EventTrace::Atom::Major_::~Major_()
 {
 }
 
-bool Native::Monitor::EventTrace::Atom::Major::has_data() const
+bool Native::Monitor::EventTrace::Atom::Major_::has_data() const
 {
     for (auto const & leaf : include.getYLeafs())
     {
@@ -15297,7 +15297,7 @@ bool Native::Monitor::EventTrace::Atom::Major::has_data() const
 	|| disable.is_set;
 }
 
-bool Native::Monitor::EventTrace::Atom::Major::has_operation() const
+bool Native::Monitor::EventTrace::Atom::Major_::has_operation() const
 {
     for (auto const & leaf : include.getYLeafs())
     {
@@ -15310,21 +15310,21 @@ bool Native::Monitor::EventTrace::Atom::Major::has_operation() const
 	|| ydk::is_set(include.yfilter);
 }
 
-std::string Native::Monitor::EventTrace::Atom::Major::get_absolute_path() const
+std::string Native::Monitor::EventTrace::Atom::Major_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/monitor/event-trace/atom/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Monitor::EventTrace::Atom::Major::get_segment_path() const
+std::string Native::Monitor::EventTrace::Atom::Major_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "major";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Atom::Major::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Atom::Major_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15337,18 +15337,18 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Atom
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::Major::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::Major_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Atom::Major::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Atom::Major_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Native::Monitor::EventTrace::Atom::Major::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Monitor::EventTrace::Atom::Major_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -15368,7 +15368,7 @@ void Native::Monitor::EventTrace::Atom::Major::set_value(const std::string & val
     }
 }
 
-void Native::Monitor::EventTrace::Atom::Major::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Monitor::EventTrace::Atom::Major_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -15384,7 +15384,7 @@ void Native::Monitor::EventTrace::Atom::Major::set_filter(const std::string & va
     }
 }
 
-bool Native::Monitor::EventTrace::Atom::Major::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Monitor::EventTrace::Atom::Major_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable" || name == "disable" || name == "include")
         return true;

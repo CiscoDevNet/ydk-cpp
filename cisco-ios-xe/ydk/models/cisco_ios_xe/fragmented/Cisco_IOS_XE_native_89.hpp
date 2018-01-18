@@ -3205,7 +3205,7 @@ class Native::RouteMap::RouteMapSeq::Set::Community::CommunityWellKnown : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList community_list; //type: list of  one of enumeration, union
+        ydk::YLeafList community_list; //type: list of  one of union, enumeration
 
 }; // Native::RouteMap::RouteMapSeq::Set::Community::CommunityWellKnown
 

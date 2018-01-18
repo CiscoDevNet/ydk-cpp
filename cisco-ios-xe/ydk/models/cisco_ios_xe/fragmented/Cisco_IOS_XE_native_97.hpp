@@ -252,7 +252,7 @@ class Native::Crypto::DynamicMap::Match : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of uint16, string
+        ydk::YLeaf address; //type: one of string, uint16
 
 }; // Native::Crypto::DynamicMap::Match
 
@@ -473,7 +473,7 @@ class Native::Crypto::DynamicMap::Set::IpIn::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of uint16, string
+        ydk::YLeaf access_group; //type: one of string, uint16
         ydk::YLeaf in; //type: empty
 
 }; // Native::Crypto::DynamicMap::Set::IpIn::Ip
@@ -518,7 +518,7 @@ class Native::Crypto::DynamicMap::Set::IpOut::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of uint16, string
+        ydk::YLeaf access_group; //type: one of string, uint16
         ydk::YLeaf out; //type: empty
 
 }; // Native::Crypto::DynamicMap::Set::IpOut::Ip
@@ -1205,7 +1205,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of uint16, string
+        ydk::YLeaf ipv4; //type: one of string, uint16
 
 }; // Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address
 
@@ -1706,7 +1706,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of uint16, string
+        ydk::YLeaf ipv4; //type: one of string, uint16
 
 }; // Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address
 
@@ -2122,7 +2122,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match::Address : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of uint16, string
+        ydk::YLeaf ipv4; //type: one of string, uint16
         ydk::YLeaf ipv6; //type: string
 
 }; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match::Address

@@ -1934,7 +1934,7 @@ class Native::RouteMap::RouteMapSeq::Match::Ip::Address : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList access_list; //type: list of  one of uint16, string
+        ydk::YLeafList access_list; //type: list of  one of string, uint16
         ydk::YLeafList prefix_list; //type: list of  string
 
 }; // Native::RouteMap::RouteMapSeq::Match::Ip::Address
@@ -1981,7 +1981,7 @@ class Native::RouteMap::RouteMapSeq::Match::Ip::Flowspec::DestPfx : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList access_list; //type: list of  one of uint16, string
+        ydk::YLeafList access_list; //type: list of  one of string, uint16
         ydk::YLeafList prefix_list; //type: list of  string
 
 }; // Native::RouteMap::RouteMapSeq::Match::Ip::Flowspec::DestPfx
@@ -2003,7 +2003,7 @@ class Native::RouteMap::RouteMapSeq::Match::Ip::Flowspec::SrcPfx : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList access_list; //type: list of  one of uint16, string
+        ydk::YLeafList access_list; //type: list of  one of string, uint16
         ydk::YLeafList prefix_list; //type: list of  string
 
 }; // Native::RouteMap::RouteMapSeq::Match::Ip::Flowspec::SrcPfx
@@ -2025,7 +2025,7 @@ class Native::RouteMap::RouteMapSeq::Match::Ip::NextHop : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList access_list; //type: list of  one of uint16, string
+        ydk::YLeafList access_list; //type: list of  one of string, uint16
         ydk::YLeafList prefix_list; //type: list of  string
 
 }; // Native::RouteMap::RouteMapSeq::Match::Ip::NextHop
@@ -2047,7 +2047,7 @@ class Native::RouteMap::RouteMapSeq::Match::Ip::RedistributionSource : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList access_list; //type: list of  one of uint16, string
+        ydk::YLeafList access_list; //type: list of  one of string, uint16
         ydk::YLeafList prefix_list; //type: list of  string
 
 }; // Native::RouteMap::RouteMapSeq::Match::Ip::RedistributionSource
@@ -2069,7 +2069,7 @@ class Native::RouteMap::RouteMapSeq::Match::Ip::RouteSource : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList access_list; //type: list of  one of uint16, string
+        ydk::YLeafList access_list; //type: list of  one of string, uint16
         ydk::YLeafList prefix_list; //type: list of  string
 
 }; // Native::RouteMap::RouteMapSeq::Match::Ip::RouteSource

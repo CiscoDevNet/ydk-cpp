@@ -1729,7 +1729,7 @@ bool CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::
 }
 
 const Enum::YLeaf AlarmSeverity::critical {1, "critical"};
-const Enum::YLeaf AlarmSeverity::major {2, "major"};
+const Enum::YLeaf AlarmSeverity::major_ {2, "major"};
 const Enum::YLeaf AlarmSeverity::minor {3, "minor"};
 const Enum::YLeaf AlarmSeverity::info {4, "info"};
 

@@ -707,7 +707,7 @@ class Native::RadiusServer::Host : public ydk::Entity
         ydk::YLeaf acct_port; //type: uint16
         ydk::YLeaf retransmit; //type: uint8
         ydk::YLeaf timeout; //type: uint16
-        ydk::YLeaf key; //type: one of enumeration, string
+        ydk::YLeaf key; //type: one of string, enumeration
         ydk::YLeaf clear_key; //type: string
         class Test; //type: Native::RadiusServer::Host::Test
 
@@ -3736,7 +3736,7 @@ class Native::Crypto::DynamicMap::Default_::Set::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of uint16, string
+        ydk::YLeaf access_group; //type: one of string, uint16
         ydk::YLeaf direction; //type: Direction
         class Direction;
 
@@ -3870,7 +3870,7 @@ class Native::AlarmContact::Severity : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf minor;
 
 };

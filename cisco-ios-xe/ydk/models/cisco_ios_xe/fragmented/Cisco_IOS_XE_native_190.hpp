@@ -345,7 +345,7 @@ class Native::Ntp::AccessGroup::Ipv4::Peer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::Peer
@@ -368,7 +368,7 @@ class Native::Ntp::AccessGroup::Ipv4::QueryOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::QueryOnly
@@ -391,7 +391,7 @@ class Native::Ntp::AccessGroup::Ipv4::Serve : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::Serve
@@ -414,7 +414,7 @@ class Native::Ntp::AccessGroup::Ipv4::ServeOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::ServeOnly
@@ -467,7 +467,7 @@ class Native::Ntp::AccessGroup::Ipv6::Peer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::Peer
@@ -490,7 +490,7 @@ class Native::Ntp::AccessGroup::Ipv6::QueryOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::QueryOnly
@@ -513,7 +513,7 @@ class Native::Ntp::AccessGroup::Ipv6::Serve : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::Serve
@@ -536,7 +536,7 @@ class Native::Ntp::AccessGroup::Ipv6::ServeOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::ServeOnly
@@ -559,7 +559,7 @@ class Native::Ntp::AccessGroup::Peer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Peer
@@ -582,7 +582,7 @@ class Native::Ntp::AccessGroup::QueryOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::QueryOnly
@@ -605,7 +605,7 @@ class Native::Ntp::AccessGroup::Serve : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Serve
@@ -628,7 +628,7 @@ class Native::Ntp::AccessGroup::ServeOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of uint16, string
+        ydk::YLeaf acl; //type: one of string, uint16
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::ServeOnly

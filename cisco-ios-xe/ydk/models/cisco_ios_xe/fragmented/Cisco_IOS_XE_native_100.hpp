@@ -3051,7 +3051,7 @@ class Native::Crypto::CryptoMap::Map::Match : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of uint16, string
+        ydk::YLeaf address; //type: one of string, uint16
 
 }; // Native::Crypto::CryptoMap::Map::Match
 
@@ -3467,7 +3467,7 @@ class Native::Crypto::MapIpv6Gdoi::Map::Match : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of uint16, string
+        ydk::YLeaf address; //type: one of string, uint16
 
 }; // Native::Crypto::MapIpv6Gdoi::Map::Match
 
